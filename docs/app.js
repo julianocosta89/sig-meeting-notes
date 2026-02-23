@@ -231,14 +231,12 @@ function showEmptyState() {
 }
 
 function showError(msg) {
-  transcriptPanel.innerHTML =
-    '<div class="error-state"><p>' + escapeHTML(msg) + '</p></div>';
-}
-
-function escapeHTML(str) {
-  const el = document.createElement('span');
-  el.textContent = str;
-  return el.innerHTML;
+  const div = document.createElement('div');
+  div.className = 'error-state';
+  const p = document.createElement('p');
+  p.textContent = msg;
+  div.appendChild(p);
+  transcriptPanel.replaceChildren(div);
 }
 
 // ── Search (Issue #5) ───────────────────────────────────────
