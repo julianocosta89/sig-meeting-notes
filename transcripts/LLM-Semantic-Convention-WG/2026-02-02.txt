@@ -1,0 +1,203 @@
+SIG: LLM Semantic Convention WG
+Date: 2026-02-02
+Duration: 34 minutes
+Source URL: https://zoom.us/rec/share/ynqxZs3iwQgNF3ap0y4xCw5BOdLD2thDDNMWOFlOPXgix5PRw1GYOVrkkqHBxRXl.8VkOAs70tXcAxPQ3
+============================================================
+
+Sergey Sergeev 02:07 Hey, folks.
+Yeah, give me a second, I just wanted to update the doc.
+So, a bunch of us are from…
+from Spawn Francisco, anybody wants to introduce Himself from outside that group.
+I see a few new phrases.
+Yeah, please add your names if you…
+Here on the code of this document, as usual, Just part of the process.
+Sound check. Can anybody hear me?
+Keith Decker 03:59 Yep.
+Oh my god.
+aditya (cisco/splunk) 04:01 Appreciate it.
+Sergey Sergeev 04:02 I started to be weird.
+Ridhima Satam 04:11 So again, I think you need to change the date, it's February 2.
+Sergey Sergeev 04:16 Yes.
+Thank you.
+Yeah, put your agenda if you have anything.
+So, I see an anonymous, raccoon. Added this.
+Memory spec.
+The way… do you want to start? I'm still, getting together the conversation, and.
+nagkumar 05:39 Yeah, it's just a follow-up on what we did last time.
+Sergey Sergeev 05:43 If you want to start sharing…
+nagkumar 05:46 Okay, yeah, give me one second. Let me bring that window up… Thanks, Shutter. Yeah.
+Okay, this, and then…
+Alright, so… Yeah, this shit.
+My screen… mmm.
+So last week, we spoke about this memory operations spec. As we all know, AI agents use some sort of memory, and it would be good for
+people who are monitoring and observing AI to know what those memory operations were, how they were updated. So, this spec talks about, an update memory operation, and what goes along with it, what are its, you know.
+properties and things like that. I also have some sort of README, so this is just a follow-up on if there were any comments, suggestions. So, all of these files are kind of not needed,
+We would only, like…
+want to discuss the actual spec. There were some questions which, we spoke about last time, why memory, spans, you know, what is the database pattern, like, how is it different from it? And I have answered all those things, and
+in the document, which is, like, the non-normative spec, pasted in here. So, yeah, anyone who has any comments on this, feel free to drop it on the PR, but yeah, let me know if this is good. I'm gonna bring this up again tomorrow, in tomorrow's meeting.
+And let's see where this and the security spec go. So, yeah, that's me.
+Sergey Sergeev 07:46 Yeah, they will… yeah, we will try to go over it, specifically, I think.
+Josh, you worked on retrieval, and… Maybe you can review it.
+Josh Winerman 08:02 Yeah, sure, I can try to take a look.
+nagkumar 08:06 Thank you.
+Sergey Sergeev 08:10 Yeah, I'm trying to find out,
+Last minute, sorry. It's Monday morning, so I didn't get much prepared, but… for conversation, idea, which we have.
+Already in semantic convention.
+So, wondering what people on the call are using for… Tracking multi-turn conversations.
+So there is a session ID, and there is a conversation ID, just wondering if anybody is using, the conversation ID at all.
+So… Now, Kumar, do you know, what, your teams are using for semantic kernel?
+nagkumar 09:02 I have to get back to you on that. I'm not entirely sure about the way
+semantic kernel or our agents framework implement those, items, but…
+Yeah, I'll get back to you on this.
+Sergey Sergeev 09:17 Yeah, I was, looking into… Also, if you…
+Yeah, yeah, I will ask it more formally, just giving a heads up. So, trying to understand, what,
+instrumentations at Microsoft are doing, regarding that conversation ID or session ID? Do you stamp it on every span in instrumentation, or do you set it, only on something like workflow or agent span?
+And then you can derive it on the backend. And, do you have any additional attributes which you…
+propagate, cross-RPC, something like,
+So, today's ID is respected by…
+OpenTelemet instrumentation, so, basically client,
+all the coins instrumented with OpenTelemet, I think, put trace ID on the header, and server-side tries to extract it.
+I think, by default, I'm wondering if anything else,
+right now is implemented. We are trying to build up that proposal.
+for… Basically a session ID, or conversation ID, whatever the attribute will be.
+And, we see that a lot of open source instrumentation waivers basically either use the baggage
+to, to basically to propagate it across RPCs, and second, most of the instrumentation libraries template on average outspan.
+So, it can be used, or metric… Aggregation by that conversation idea.
+Anyone on the call has an opinion on it?
+Yeah, we can wrap the call,
+Early today, if, there isn't… there are no…
+topics or idea for discussion. Any requests? Yeah, go ahead.
+Surya Teja 11:59 Yeah, hi, this is Surya. I just have a small doubt. So, last week in the, hotel, we were speaking about security events, so…
+Do we have any span for…
+either extracting the guardrails data from, OpenAI, or hooks and permissions data from, Anthrophic, and, sending it as spans, because, those deals… deal with the security stuff, and,
+Can provide more insight into why a certain action has been stopped, or such kind of stuff.
+If we do not have such kind of thing, I'm interested in creating a semantic convention around it, and adding it as a span inside our agent spans.
+nagkumar 12:47 Yep. So, thanks for the question. I have been proposing this, security
+thing we spoke about it last Tuesday. So the idea of adding this span is that there is a standard way for providers, like, you know, OpenAI or Anthropic, to start sending telemetry
+About, you know, things that were blocked, or things that failed to adhere to some sort of policy. So, feel free to take a look at this spec, see if the spec is good enough for all the values that you would want to, like, emit or consume.
+And, you know, feel free to leave comments there.
+Surya Teja 13:30 Oh, yeah, sure. If we have a convention around it, then I'm going to take a look at it, but yeah, thanks a lot for this, Nag.
+nagkumar 13:37 Yeah, there is a… this is the proposal for the convention. We still don't have the convention yet. So once this proposal goes through reviews, then we will be able to, like, talk about what the changes is. So,
+the non-normative is easier, Sergey, yeah. Yeah, yeah, yeah.
+Sergey Sergeev 13:57 Yeah, this is kind of easy to kind of understand what is going on here.
+nagkumar 14:03 with the use case key concepts. So yeah, feel free to drop comments on this, or if you like it, feel free to hit approve.
+comment saying how useful it is for you. That would really help.
+Surya Teja 14:17 Yeah, sure. I have one more doubt. For the create agent span, so in Anthropic, when I was trying to instrument the agent framework.
+As far as I understand, it's not doing any remote instantiation for the subagents?
+It's spawning a new subagent, so… can I still use the create agent span in that scenario, or
+Is the create agent span not valid for the scenario?
+nagkumar 14:52 That's an interesting one. Looking at… Create agent…
+That's mostly for… usually applicable when working with remote agent services.
+Yeah. With Anthropic, you create the agent locally, right?
+Surya Teja 15:18 Yeah.
+nagkumar 15:19 gold.
+Yeah, I think invoke agent, when the agent is invoked, seems a little more appropriate to me.
+Surya Teja 15:28 Okay.
+Sergey Sergeev 15:30 Wondering, who's using the create agents, overall.
+So how, how do you use it, one…
+in, observability products, basically. So, how do you monitor create agents?
+Surya Teja 15:50 Is the question, how are you monitoring creating agents and stuff, to me?
+Sergey Sergeev 15:55 Why, yeah, what is the use case for Create Agents? So, for Invoke Agent, it's quite clear, so you monitor, how many times an agent been called, etc. So, how do you use Create Agents, on your platform?
+Surya Teja 16:11 Yeah, so…
+in Claude, I'm going to speak about Anthrophic. So, you'll have a configuration where you specify, the,
+agent that you… sub-agent that you want to create. The terminology is, you give the agent that you want to create as a sub-agent when you're initializing the, main agent. So, this agent will be spawned if a particular task of that kind has been, called or anything.
+So… If a main agent calls a sub-agent, when a particular task comes.
+then this agent will be, created, as far as I understand from the SDK, but I can dig deeper and tell you if it's a different, like, if the instantiation of this sub-agent is happening during the agent creation or not.
+But yeah, can you… did you… did you get the gist of this, or should I explain more?
+Sergey Sergeev 17:07 Yeah, I'm still trying to… sorry, I'm still trying to understand, yeah, let's see what is the formal description.
+is doing. I thought it's something, like, creating a remote agent, but…
+Genetic agent creation, and it's usually applicable
+When working with remote agent services, for local services, I'm still… Yeah, not sure.
+What it represents, so Invoke Agent is clear.
+Surya Teja 17:46 Okay, okay.
+Sergey Sergeev 17:48 But create agency is.
+Interesting.
+What will be an example?
+So…
+Surya Teja 17:59 I'm going to ask your question with another question. With the OpenAI documentation that I have been reading around, it feels like OpenAI SDK has been written with an idea of orchestrating agents by a main agent. It's like,
+orchestration, pattern in microservices. There is one service which is create… which is spawning or creating a, you know, or, organizing other services. But, the…
+Cloud Agent is not doing that. It's… it's creating, its own sub-agent inside, within itself, and it is,
+working with this agent for a particular task. Say, you are writing some code, and after the code has been written, you want to review that code. So what this sub-agent is going to… what you're going to do is, you'll be creating a sub-agent which is going to review the code after the main plot has, written the code.
+this sub-agent is going to pass on the feedback to it, and it's going to modify the code based on the feedback. So, that's an example around it.
+Sergey Sergeev 19:05 Yeah, I… So, what specific,
+Why it's creating an agent instead of just…
+Just invoking the agent, or building a… Yeah, so what information
+is helpful from Kate Agent. How do you use that information on a monitoring platform, or…
+How do you use it in the product? Why is it different just from invoking some Agents.
+Surya Teja 19:44 To be honest.
+Sergey Sergeev 19:45 actions.
+Surya Teja 19:46 Yeah, to be honest, I haven't seen anything different from Invoke Agent Create. I was,
+confused with the technical semantics that was mentioned. So, because we are creating an agent from an agent. So, I thought it's corresponding to create agent, but from the discussion that we are having, I understand that it's more corresponding with invoke agent rather than create agent.
+And, hmm.
+And also, I'm a little bit confused about where we can use create agent spans.
+like, what is the use case of that span, and, specific scenarios around that, like…
+Examples around it can add more, information.
+or, stuff, so that I can justify why CreateAgent feels better for this particular use case than Invoke Agent. So, it's particularly my lack of knowledge, which is confusing me over here. It's not something…
+Sergey Sergeev 20:46 Yeah, I am asking and sorry, that,
+I'm basically asking that question, that direct, I don't know the answer to. So, for me, a create agent in…
+in something like OpenAI platform, it means that you created a new agent, which may be used, for example, by an orchestrator, so…
+The importance of, creating this agent is you can track, basically, okay, my orchestator started to work,
+Surya Teja 21:24 Yeah.
+Sergey Sergeev 21:25 Badly, what happened? Okay, somebody created, another agent, which Orchestrator started to use. That's my wild guess, by the way. I don't know if it's working this way. That's, my best, best guess when you…
+Want to track, that agent, so…
+If we move to court code, basically…
+I'm trying to think through… so, creating an agent, and… Just invoking the agent,
+Maybe, maybe the same, I think so, if the agent will be dynamically
+edit, then it makes sense. Otherwise, it's just…
+A bunch of steps, which will be…
+execute it, including agent invocation in sales, review, the code.
+In this case, that create agent does not provide much.
+Information, in my opinion.
+Surya Teja 22:36 Yeah, so let me do one small thing. Let me write down something with a few examples, so that it will add more color or information around what I'm trying to do, so that way it will be useful for a little bit of more nuanced discussion around this. Does that sound good, Sergei?
+Sergey Sergeev 22:53 Yeah, it sounds good if you can, Whilst,
+this document, in the channel, wherever the server will be good.
+Surya Teja 23:06 Yep, sure.
+Good.
+Thanks, Ag.
+I'm done for myself.
+Sergey Sergeev 23:21 Or… for… for the server-side, create agents, do you want, somebody to…
+Write down that use case.
+update implementation?
+Surya Teja 23:35 I'm going to write down a use case with an example, and if, tomorrow, if I can… we will be having more broader audience, and if I can present it over there, and if people agree with my example, I'll go ahead and raise a PR to add that examples to the documentation, and
+Enrich the documentation more.
+I'll do it for myself, I'll do it by myself, and I'll present it tomorrow.
+Sergey Sergeev 24:02 Sounds good.
+This is really great,
+And, for security telemetry examples.
+For the spec, I hope I captured it,
+captured at least partially what the question was. But basically, yeah, the recommendation is to review the spool request, and…
+To ignore a lot of the demo applications here, which are…
+So it's a lot of, different… Stories?
+But the core of the change and the spec is… Basically, in this file.
+Surya Teja 24:51 Yeah.
+Sergey Sergeev 24:52 we can… Which branches it, it's… January… this one?
+Let me link the file to the doc.
+Yeah
+Okay.
+And… This is for… One… gate, present… Gins, yeah.
+Example.
+But, yeah, the…
+I think, this is a challenge for me, so I don't know if anybody's using, already…
+Propagating, this one.
+cross RPC, or should we use just session ID to propagate it across RPC?
+For multiple use cases, including Basically… User application monitoring use case.
+Yeah, memory spec,
+Yeah, again, getting back to this, Nagumara, are you still here? Yeah, you are. So, any actionable items for us, to do with it? Do we need to do it as a part of the reviewer?
+nagkumar 27:16 Yeah, that would be great. A review of the… Non-normative, file.
+It explains all those things, like, why is… how is it different from retrieval as well?
+things that we discussed. So, yeah, the non-normative page.
+Has all the information. Review it, let me know if things look good.
+Feel free to comment on this, or send a message on Slack, anything works. I will get back to you about, the conversation ID piece.
+Sergey Sergeev 27:46 Okay, cool. Yeah, yeah, the Spoang Josh on the call.
+Can you review it in scope of the retrieval before tomorrow?
+Josh Winerman 28:02 Yeah, I can try before tomorrow.
+Sergey Sergeev 28:07 Okay, cool.
+Man, and he…
+Okay. Bye.
+pink, this is it, and we have one minute left, so I think it's only…
+The time to say goodbye, and thank you, everybody, for… Okullen to it?
+And,
+If you have any questions, so tomorrow will be another meeting with a broader group, or ask your questions in the OpenTelemet Slack.
+Thank you all. Have a good one.
+Keith Decker 30:44 Thank you.
+aditya (cisco/splunk) 30:45 Thank you.

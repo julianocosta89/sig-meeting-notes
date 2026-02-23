@@ -1,0 +1,17 @@
+[project]
+name = "otel-recordings"
+version = "0.1.0"
+description = "Fetch OpenTelemetry SIG meeting transcripts from Zoom recordings"
+requires-python = ">=3.12"
+dependencies = [
+    "playwright>=1.49",
+    "beautifulsoup4>=4.12",
+    "requests>=2.32",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["scraper"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
