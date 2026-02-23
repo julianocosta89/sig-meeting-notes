@@ -31,8 +31,9 @@ jobs:
         run: uv run playwright install chromium --with-deps
 
       - name: Fetch new transcripts
+        env:
+          SINCE: ${{ github.event.inputs.since }}
         run: |
-          SINCE="${{ github.event.inputs.since }}"
           if [ -n "$SINCE" ]; then
             uv run python main.py --since "$SINCE"
           else
