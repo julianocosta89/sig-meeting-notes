@@ -32,12 +32,22 @@
             aria-label="Search transcripts"
           >
         </div>
+
+        <div class="search-nav" hidden>
+          <span class="match-counter" aria-live="polite">0 / 0 matches</span>
+          <div class="search-nav-buttons">
+            <button type="button" class="search-nav-btn" id="prev-match-btn" aria-label="Previous match" title="Previous match">&#9650;</button>
+            <button type="button" class="search-nav-btn" id="next-match-btn" aria-label="Next match (Ctrl+G)" title="Next match (Ctrl+G)">&#9660;</button>
+          </div>
+        </div>
       </div>
 
-      <nav class="date-nav" aria-label="Meeting dates" hidden>
-        <ul id="date-list" class="date-list" role="list">
-        </ul>
-      </nav>
+      <div class="date-nav-wrapper" hidden>
+        <nav class="date-nav" aria-label="Meeting dates">
+          <ul id="date-list" class="date-list" role="list">
+          </ul>
+        </nav>
+      </div>
     </aside>
 
     <div id="transcript-panel" class="transcript-panel" role="region" aria-label="Meeting transcript" aria-live="polite">
@@ -46,6 +56,14 @@
       </div>
     </div>
   </main>
+
+  <button
+    id="scroll-top-btn"
+    type="button"
+    class="scroll-top-btn"
+    aria-label="Scroll to top"
+    hidden
+  >&#8593;</button>
 
   <script type="module" src="app.js"></script>
 </body>
