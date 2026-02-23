@@ -16,6 +16,9 @@ TRANSCRIPT_LIST_SELECTOR = "ul.transcript-list"
 # Fallback broader selector if the precise one misses
 TRANSCRIPT_WRAPPER_SELECTOR = ".transcript-wrapper"
 
+# Scroll container for Zoom's virtual-list windowing
+SCROLL_CONTAINER_SELECTOR = ".zm-scrollbar__wrap"
+
 # How long to wait for the page's load event after domcontentloaded (milliseconds)
 PAGE_LOAD_TIMEOUT_MS = 20_000
 
@@ -66,8 +69,8 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
     logger.info("Navigating to %s", url)
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=30_000)
-    except PlaywrightTimeout:
-        raise ZoomScrapeError(f"Timed out loading page: {url}")
+    except PlaywrightTimeout as exc:
+        raise ZoomScrapeError(f"Timed out loading page: {url}") from exc
 
     # Brief pause then check for password prompt
     time.sleep(2)
@@ -124,13 +127,11 @@ def _scroll_transcript_into_view(page: Page) -> None:
     visible <li> elements in the DOM.  We scroll from top to bottom in steps,
     pausing briefly at each step so Vue can materialise the next batch of items.
     """
-    scroll_container_selector = ".zm-scrollbar__wrap"
-
-    container = page.query_selector(scroll_container_selector)
+    container = page.query_selector(SCROLL_CONTAINER_SELECTOR)
     if container is None:
         logger.warning(
             "Scroll container %r not found; skipping scroll",
-            scroll_container_selector,
+            SCROLL_CONTAINER_SELECTOR,
         )
         return
 
@@ -156,7 +157,7 @@ def _scroll_transcript_into_view(page: Page) -> None:
     current = 0
     while current < max_scroll:
         current = min(current + SCROLL_STEP_PX, max_scroll)
-        container.evaluate(f"el => {{ el.scrollTop = {current}; }}")
+        container.evaluate("(el, top) => { el.scrollTop = top; }", current)
         time.sleep(SCROLL_PAUSE_S)
 
         # Re-check scrollHeight in case new items pushed it down
