@@ -49,7 +49,6 @@ _SIG_ALIASES: dict[str, list[str]] = {
     "semantic-convention":  ["semantic-convention", "semconv", "sem-conv"],
     "semantic-conventions": ["semantic-convention", "semconv", "sem-conv"],
     "devex":    ["developer-experience"],
-    "browser":  ["client"],
     "cc":       ["cc"],
     "c":        ["cc"],
     "cpp":      ["cc"],

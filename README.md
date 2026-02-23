@@ -46,7 +46,6 @@ make fetch BETWEEN=2026-01-01/2026-02-28 SIG=collector
 | `tc` | `technical-committee` |
 | `semconv`, `sem-conv`, `semantic-convention`, `semantic-conventions` | `semantic-convention`, `semconv`, `sem-conv` |
 | `devex` | `developer-experience` |
-| `browser` | `client` |
 | `cc`, `c`, `cpp`, `c++` | `cc` |
 | `k8s` | `kubernetes`, `k8s` |
 | `js` | `javascript` |
