@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-23T14:05:49Z",
+  "generated_at": "2026-02-23T16:14:25Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -8,7 +8,7 @@
         {
           "date": "2026-02-03",
           "duration_minutes": 18,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -19,17 +19,17 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 60,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 57,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 63,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -40,22 +40,22 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 61,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-18",
           "duration_minutes": 25,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 65,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 63,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -66,17 +66,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 29,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 31,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 37,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -87,12 +87,12 @@
         {
           "date": "2026-02-09",
           "duration_minutes": 11,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 14,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -103,17 +103,17 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 43,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 40,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 41,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -124,12 +124,12 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 30,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 18,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -140,17 +140,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 87,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 58,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 42,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -161,12 +161,12 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 42,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 12,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -177,7 +177,7 @@
         {
           "date": "2026-02-11",
           "duration_minutes": 30,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -188,7 +188,7 @@
         {
           "date": "2026-02-02",
           "duration_minutes": 6,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -199,17 +199,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 22,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 44,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 27,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -220,7 +220,7 @@
         {
           "date": "2026-02-12",
           "duration_minutes": 55,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -231,12 +231,12 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 225,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 44,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -247,12 +247,12 @@
         {
           "date": "2026-02-09",
           "duration_minutes": 52,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-02",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -263,12 +263,12 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 57,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 57,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -279,18 +279,7 @@
         {
           "date": "2026-02-12",
           "duration_minutes": 14,
-          "has_summary": false
-        }
-      ]
-    },
-    {
-      "slug": "GC-Project-Management-EU",
-      "name": "GC Project Management (EU)",
-      "meetings": [
-        {
-          "date": "2026-02-09",
-          "duration_minutes": 57,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -301,12 +290,12 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 30,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 8,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -317,7 +306,7 @@
         {
           "date": "2026-02-12",
           "duration_minutes": 38,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -328,17 +317,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 58,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 32,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 33,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -349,17 +338,22 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 63,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 156,
-          "has_summary": false
+          "has_summary": true
+        },
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 57,
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 67,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -370,7 +364,7 @@
         {
           "date": "2026-02-05",
           "duration_minutes": 48,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -381,17 +375,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 24,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 58,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -402,17 +396,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 30,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 60,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -423,12 +417,12 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 6,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 31,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -439,7 +433,7 @@
         {
           "date": "2026-02-12",
           "duration_minutes": 42,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -450,27 +444,27 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 62,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 68,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-09",
           "duration_minutes": 83,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 123,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-02",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -481,17 +475,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 11,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 21,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 9,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -502,17 +496,17 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 14,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 10,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 4,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -523,17 +517,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 3,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 20,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 30,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -544,17 +538,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 19,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 8,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 61,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -565,12 +559,12 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 62,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 48,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -581,7 +575,7 @@
         {
           "date": "2026-02-13",
           "duration_minutes": 54,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -592,17 +586,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 53,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 56,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 58,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -613,17 +607,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 48,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 37,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 47,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -634,17 +628,17 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 71,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 70,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 16,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -655,17 +649,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 9,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 7,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -676,7 +670,7 @@
         {
           "date": "2026-02-09",
           "duration_minutes": 50,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -687,7 +681,7 @@
         {
           "date": "2026-02-02",
           "duration_minutes": 38,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -698,17 +692,17 @@
         {
           "date": "2026-02-16",
           "duration_minutes": 19,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-09",
           "duration_minutes": 62,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-02",
           "duration_minutes": 60,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -719,12 +713,12 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 61,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 61,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -735,17 +729,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 12,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 54,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 16,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -756,17 +750,17 @@
         {
           "date": "2026-02-17",
           "duration_minutes": 65,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-10",
           "duration_minutes": 70,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-03",
           "duration_minutes": 57,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -777,12 +771,12 @@
         {
           "date": "2026-02-12",
           "duration_minutes": 27,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 35,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -793,17 +787,17 @@
         {
           "date": "2026-02-19",
           "duration_minutes": 19,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
           "duration_minutes": 38,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-05",
           "duration_minutes": 28,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -814,12 +808,12 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 29,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 62,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -830,17 +824,17 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 60,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-11",
           "duration_minutes": 62,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-04",
           "duration_minutes": 64,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -851,7 +845,7 @@
         {
           "date": "2026-02-18",
           "duration_minutes": 33,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     }
