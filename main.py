@@ -32,12 +32,7 @@ from playwright.sync_api import sync_playwright
 from scraper.sheet import Meeting, fetch_csv, filter_meetings
 from scraper.zoom import ZoomScrapeError, scrape_transcript
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
-    datefmt="%H:%M:%S",
-)
-logger = logging.getLogger("main")
+logger = logging.getLogger(__name__)
 
 TRANSCRIPTS_DIR = Path(__file__).parent / "transcripts"
 
@@ -127,8 +122,8 @@ def process_meetings(meetings: list[Meeting]) -> tuple[int, list[str]]:
                     logger.warning("Skipped — %s", exc)
                     skipped_urls.append(meeting.url)
                     failures += 1
-                except Exception as exc:  # noqa: BLE001
-                    logger.error("Unexpected error for %s: %s", meeting.url, exc)
+                except Exception:  # noqa: BLE001
+                    logger.exception("Unexpected error for %s", meeting.url)
                     skipped_urls.append(meeting.url)
                     failures += 1
                 finally:
@@ -230,6 +225,11 @@ def _parse_date(value: str, flag: str) -> datetime | None:
 
 
 def main() -> int:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
+        datefmt="%H:%M:%S",
+    )
     args = _parse_args()
 
     since: datetime | None = None
@@ -251,8 +251,8 @@ def main() -> int:
     logger.info("Fetching Google Sheet …")
     try:
         rows = fetch_csv()
-    except Exception as exc:  # noqa: BLE001
-        logger.error("Failed to fetch sheet: %s", exc)
+    except Exception:  # noqa: BLE001
+        logger.exception("Failed to fetch sheet")
         return 1
 
     meetings = filter_meetings(rows, since=since, until=until)
