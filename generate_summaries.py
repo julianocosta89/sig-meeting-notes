@@ -14,14 +14,14 @@ from pathlib import Path
 
 from openai import OpenAI
 
-from build_site import parse_header
+from scraper.transcript_io import SEPARATOR, parse_header
 
 ROOT = Path(__file__).parent
 DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "transcripts"
 SUMMARIES_DIR = ROOT / "docs" / "summaries"
 
 MAX_TRANSCRIPT_CHARS = 12_000
-SEPARATOR = "=" * 60
+_API_RATE_LIMIT_S = 1
 
 
 def read_transcript_body(path: Path) -> str:
@@ -73,7 +73,11 @@ def generate_summary(
     return response.choices[0].message.content
 
 
-def process_transcripts(client: OpenAI) -> tuple[int, int]:
+def process_transcripts(
+    client: OpenAI,
+    transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
+    summaries_dir: Path = SUMMARIES_DIR,
+) -> tuple[int, int]:
     """Process all transcripts and generate missing summaries.
 
     Returns (generated_count, skipped_count).
@@ -81,11 +85,11 @@ def process_transcripts(client: OpenAI) -> tuple[int, int]:
     generated = 0
     skipped = 0
 
-    for txt_path in sorted(DOCS_TRANSCRIPTS_DIR.glob("*/*.txt")):
+    for txt_path in sorted(transcripts_dir.glob("*/*.txt")):
         slug = txt_path.parent.name
         date_stem = txt_path.stem  # e.g. "2026-02-05"
 
-        summary_path = SUMMARIES_DIR / slug / f"{date_stem}.md"
+        summary_path = summaries_dir / slug / f"{date_stem}.md"
         if summary_path.exists():
             skipped += 1
             continue
@@ -114,8 +118,7 @@ def process_transcripts(client: OpenAI) -> tuple[int, int]:
         summary_path.write_text(summary_text + "\n", encoding="utf-8")
         generated += 1
 
-        # Rate limit: 1 second between API calls
-        time.sleep(1)
+        time.sleep(_API_RATE_LIMIT_S)
 
     return generated, skipped
 

@@ -30,13 +30,12 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from scraper.sheet import Meeting, fetch_csv, filter_meetings
+from scraper.transcript_io import SEPARATOR
 from scraper.zoom import ZoomScrapeError, scrape_transcript
 
 logger = logging.getLogger(__name__)
 
 TRANSCRIPTS_DIR = Path(__file__).parent / "transcripts"
-
-SEPARATOR = "=" * 60
 
 # Shorthand aliases expanded before matching SIG slugs.
 # Keys are lowercase; values are the search terms tried against the slug.

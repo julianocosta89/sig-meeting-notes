@@ -201,10 +201,8 @@ class TestProcessTranscripts:
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
 
         mock_client = _mock_openai_client()
-        with patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", transcripts_dir), \
-             patch("generate_summaries.SUMMARIES_DIR", summaries_dir), \
-             patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client)
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
         summary_file = summaries_dir / "Go-SIG" / "2026-02-05.md"
         assert summary_file.exists()
@@ -222,10 +220,8 @@ class TestProcessTranscripts:
         (summaries_dir / "Go-SIG" / "2026-02-05.md").write_text("existing summary")
 
         mock_client = _mock_openai_client()
-        with patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", transcripts_dir), \
-             patch("generate_summaries.SUMMARIES_DIR", summaries_dir), \
-             patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client)
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
         mock_client.chat.completions.create.assert_not_called()
         assert (summaries_dir / "Go-SIG" / "2026-02-05.md").read_text() == "existing summary"
@@ -241,10 +237,8 @@ class TestProcessTranscripts:
         )
 
         mock_client = _mock_openai_client()
-        with patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", transcripts_dir), \
-             patch("generate_summaries.SUMMARIES_DIR", summaries_dir), \
-             patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client)
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
         assert generated == 2
         assert skipped == 0
@@ -259,10 +253,8 @@ class TestProcessTranscripts:
         _write_transcript(transcripts_dir, "Bad-SIG", "2026-02-05.txt", "garbage content\n")
 
         mock_client = _mock_openai_client()
-        with patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", transcripts_dir), \
-             patch("generate_summaries.SUMMARIES_DIR", summaries_dir), \
-             patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client)
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
         mock_client.chat.completions.create.assert_not_called()
         assert not (summaries_dir / "Bad-SIG" / "2026-02-05.md").exists()
@@ -282,10 +274,8 @@ class TestProcessTranscripts:
         (summaries_dir / "Go-SIG" / "2026-02-05.md").write_text("existing")
 
         mock_client = _mock_openai_client()
-        with patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", transcripts_dir), \
-             patch("generate_summaries.SUMMARIES_DIR", summaries_dir), \
-             patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client)
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
         assert generated == 1
         assert skipped == 1
