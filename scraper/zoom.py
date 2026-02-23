@@ -16,8 +16,11 @@ TRANSCRIPT_LIST_SELECTOR = "ul.transcript-list"
 # Fallback broader selector if the precise one misses
 TRANSCRIPT_WRAPPER_SELECTOR = ".transcript-wrapper"
 
-# How long to wait for the transcript to appear (milliseconds)
-TRANSCRIPT_TIMEOUT_MS = 60_000
+# How long to wait for the page's load event after domcontentloaded (milliseconds)
+PAGE_LOAD_TIMEOUT_MS = 20_000
+
+# Fixed grace period (seconds) after page load for Vue SPA to render the transcript
+VUE_RENDER_WAIT_S = 5
 
 # Scroll step in pixels for defeating virtual-list windowing
 SCROLL_STEP_PX = 400
@@ -77,17 +80,23 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
         if err.lower() in body_text.lower():
             raise ZoomScrapeError(f"Recording unavailable ({err!r}): {url}")
 
-    # Wait for Vue SPA to render transcript (can take 15-25 s)
-    logger.info("Waiting for transcript selector …")
+    # Wait for all static resources to finish loading, then give Vue a fixed
+    # window to render the transcript. If it's not in the DOM after that, skip.
+    logger.info("Waiting for page load …")
     try:
-        page.wait_for_selector(TRANSCRIPT_LIST_SELECTOR, timeout=TRANSCRIPT_TIMEOUT_MS)
+        page.wait_for_load_state("load", timeout=PAGE_LOAD_TIMEOUT_MS)
     except PlaywrightTimeout:
-        # Maybe the transcript panel exists but with a different structure
+        logger.debug("Page load event did not fire within %dms; proceeding anyway", PAGE_LOAD_TIMEOUT_MS)
+
+    logger.info("Waiting %ds for Vue to render transcript …", VUE_RENDER_WAIT_S)
+    time.sleep(VUE_RENDER_WAIT_S)
+
+    if page.query_selector(TRANSCRIPT_LIST_SELECTOR) is None:
         if page.query_selector(TRANSCRIPT_WRAPPER_SELECTOR):
             raise ZoomScrapeError(
-                f"Transcript wrapper found but list not rendered: {url}"
+                f"Transcript panel present but no content: {url}"
             )
-        raise ZoomScrapeError(f"Transcript not found within timeout: {url}")
+        raise ZoomScrapeError(f"No transcript found: {url}")
 
     # Defeat virtual-list windowing by scrolling the container top-to-bottom
     _scroll_transcript_into_view(page)

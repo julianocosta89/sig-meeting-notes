@@ -1,11 +1,11 @@
-"""Google Sheet access: fetch public CSV export and filter for Feb 2026 meetings."""
+"""Google Sheet access: fetch public CSV export and filter meetings by date range."""
 from __future__ import annotations
 
 import csv
 import io
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 
 import requests
 
@@ -81,13 +81,31 @@ def _parse_duration(value: str) -> int:
 
 def filter_meetings(
     rows: list[dict],
-    year: int = 2026,
-    month: int = 2,
+    since: datetime | None = None,
+    until: datetime | None = None,
 ) -> list[Meeting]:
-    """Filter sheet rows to meetings in the given year/month that have a Zoom URL."""
+    """
+    Filter sheet rows to meetings in [since, until] that have a Zoom URL.
+
+    Parameters
+    ----------
+    rows:
+        Raw CSV rows from the sheet.
+    since:
+        Include meetings on or after this date (inclusive). Defaults to the
+        start of the current month.
+    until:
+        Include meetings on or before this date (inclusive). Defaults to now.
+    """
+    now = datetime.now()
+    if since is None:
+        since = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    if until is None:
+        until = now
+
     meetings: list[Meeting] = []
     for row in rows:
-        # Normalise keys (strip whitespace from header names)
+        # Normalize keys (strip whitespace from header names)
         row = {k.strip(): v.strip() for k, v in row.items() if k is not None}
 
         # Detect column names flexibly (case-insensitive lookup)
@@ -133,7 +151,11 @@ def filter_meetings(
         if start_date is None:
             continue
 
-        if start_date.year != year or start_date.month != month:
+        if start_date < since or start_date > until:
+            continue
+
+        duration = _parse_duration(duration_raw)
+        if duration <= 5:
             continue
 
         meetings.append(
@@ -141,7 +163,7 @@ def filter_meetings(
                 sig_name=sig_name,
                 sig_slug=sanitize_sig_name(sig_name),
                 start_date=start_date,
-                duration_minutes=_parse_duration(duration_raw),
+                duration_minutes=duration,
                 url=url,
             )
         )
