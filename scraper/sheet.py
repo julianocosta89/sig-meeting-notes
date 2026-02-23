@@ -1,0 +1,151 @@
+"""Google Sheet access: fetch public CSV export and filter for Feb 2026 meetings."""
+from __future__ import annotations
+
+import csv
+import io
+import re
+from dataclasses import dataclass
+from datetime import datetime
+
+import requests
+
+SHEET_CSV_URL = (
+    "https://docs.google.com/spreadsheets/d/"
+    "1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s"
+    "/gviz/tq?tqx=out:csv"
+)
+
+
+@dataclass
+class Meeting:
+    sig_name: str
+    sig_slug: str
+    start_date: datetime
+    duration_minutes: int
+    url: str
+
+
+def sanitize_sig_name(name: str) -> str:
+    """Convert a SIG name into a filesystem-safe directory name."""
+    slug = re.sub(r"[^\w\s-]", "", name)
+    slug = re.sub(r"[\s]+", "-", slug.strip())
+    return slug
+
+
+def fetch_csv(url: str = SHEET_CSV_URL) -> list[dict]:
+    """Download the public CSV export and return rows as dicts."""
+    resp = requests.get(url, timeout=30)
+    resp.raise_for_status()
+    reader = csv.DictReader(io.StringIO(resp.text))
+    return list(reader)
+
+
+def _parse_date(value: str) -> datetime | None:
+    """Try several date formats that may appear in the sheet."""
+    formats = [
+        "%m/%d/%Y %H:%M:%S",
+        "%m/%d/%Y %H:%M",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%d %H:%M",
+        "%m/%d/%Y",
+        "%Y-%m-%d",
+    ]
+    value = value.strip()
+    for fmt in formats:
+        try:
+            return datetime.strptime(value, fmt)
+        except ValueError:
+            continue
+    return None
+
+
+def _parse_duration(value: str) -> int:
+    """Return duration in minutes from a string like '60' or '1:00:00'."""
+    value = value.strip()
+    if not value:
+        return 0
+    if ":" in value:
+        parts = value.split(":")
+        try:
+            if len(parts) == 3:
+                return int(parts[0]) * 60 + int(parts[1])
+            if len(parts) == 2:
+                return int(parts[0]) * 60 + int(parts[1])
+        except ValueError:
+            return 0
+    try:
+        return int(float(value))
+    except ValueError:
+        return 0
+
+
+def filter_meetings(
+    rows: list[dict],
+    year: int = 2026,
+    month: int = 2,
+) -> list[Meeting]:
+    """Filter sheet rows to meetings in the given year/month that have a Zoom URL."""
+    meetings: list[Meeting] = []
+    for row in rows:
+        # Normalise keys (strip whitespace from header names)
+        row = {k.strip(): v.strip() for k, v in row.items() if k is not None}
+
+        # Detect column names flexibly (case-insensitive lookup)
+        row_lower = {k.lower(): v for k, v in row.items()}
+
+        sig_name = (
+            row_lower.get("name")
+            or row_lower.get("sig")
+            or row_lower.get("topic")
+            or row_lower.get("meeting name")
+            or ""
+        ).strip()
+
+        start_raw = (
+            row_lower.get("start time")
+            or row_lower.get("start")
+            or row_lower.get("date")
+            or ""
+        ).strip()
+
+        duration_raw = (
+            row_lower.get("duration")
+            or row_lower.get("duration (minutes)")
+            or "0"
+        ).strip()
+
+        url = (
+            row_lower.get("url")
+            or row_lower.get("recording url")
+            or row_lower.get("link")
+            or row_lower.get("zoom url")
+            or ""
+        ).strip()
+
+        if not url or not sig_name or not start_raw:
+            continue
+
+        # Only Zoom recording URLs
+        if "zoom.us" not in url and "zoom.com" not in url:
+            continue
+
+        start_date = _parse_date(start_raw)
+        if start_date is None:
+            continue
+
+        if start_date.year != year or start_date.month != month:
+            continue
+
+        meetings.append(
+            Meeting(
+                sig_name=sig_name,
+                sig_slug=sanitize_sig_name(sig_name),
+                start_date=start_date,
+                duration_minutes=_parse_duration(duration_raw),
+                url=url,
+            )
+        )
+
+    # Sort by SIG name then date for deterministic output
+    meetings.sort(key=lambda m: (m.sig_name, m.start_date))
+    return meetings

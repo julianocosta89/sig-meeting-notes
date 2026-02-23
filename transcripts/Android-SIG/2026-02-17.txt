@@ -1,0 +1,555 @@
+SIG: Android SIG
+Date: 2026-02-17
+Duration: 60 minutes
+============================================================
+
+Hanson 00:00:46 Hello?
+Jason Plumb 00:00:52 Good morning.
+This hoodie is a good idea.
+It's not exactly warm today.
+Hanson 00:01:03 Yeah, they say it might snow here, later this week.
+Thought we're done, but we're not. I guess we never got it this year, so far, so…
+Jason Plumb 00:01:14 Yeah, it's been weird. It's been weirdly mild.
+Hanson 00:01:21 If you see me disappear in the middle of a meeting, it's because I'm feeling like crap, so, I may, I may just,
+Depending on how I feel, so…
+Jason Plumb 00:01:28 Sorry, yeah, I think it's going around again.
+Hope you feel better.
+Hanson 00:01:34 Yeah, I've been mildly sick for, like, a week, and then last night, my cat decided to wake me up at 3 o'clock, and I just couldn't get back to sleep, so…
+Jason Plumb 00:01:45 Stupid cats.
+Hanson 00:01:47 Yeah.
+Cesar Munoz 00:01:51 Good morning.
+Hanson 00:01:52 Ayy.
+Jason Plumb 00:01:53 Hey, scissor.
+Cesar Munoz 00:02:00 It's incredible how important it becomes Sleeping properly after.
+Hanson 00:02:06 Is there some age.
+Jason Plumb 00:02:10 Yep.
+Hanson 00:02:13 Everything is… revolves around the evening routine, and trying to get to bed before a certain time, and…
+All that stuff, and when it's disrupted, it's bad news, especially when you're already kind of feeling under the weather, so…
+Jason Plumb 00:02:34 Well, let's give it 30 more seconds, I suppose.
+Hanson 00:02:38 We're releasing this week.
+Cesar Munoz 00:02:41 Yeah, that's the plan.
+I created the… changelog PR.
+Hanson 00:02:47 That's one of the things I wanted to mention.
+Jason Plumb 00:02:50 Great.
+Cesar Munoz 00:02:51 Hello, Luke.
+Jason Plumb 00:02:54 And I think we concluded last week that there were no PRs that were necessary to merge, like, we're not waiting on anything, we're clear to go, I think.
+Cesar Munoz 00:03:02 Yeah, there was just one… About upgrading the, upstream instrumentation.
+That had an issue, but…
+I fixed it in a separate PR, and it's already merged.
+to the ASER.
+Jason Plumb 00:03:20 Great, okay, cool.
+So, do you think you'll get to that tonight, or tomorrow?
+Like, assuming that.
+Cesar Munoz 00:03:29 It's March.
+Jason Plumb 00:03:30 Like, with… yeah, yeah, yeah, the release.
+Tomorrow?
+Cesar Munoz 00:03:33 and kick it.
+I mean, I could start it today, if I get the approvals.
+Or, I mean, if there's no rush, can do first thing in the morning.
+Jason Plumb 00:03:45 I don't think there's a rush. I think we could just get it done this week, it'll be fine.
+Cesar Munoz 00:03:49 Sounds good. All's I have.
+You know, in the mornings.
+Jamie, who, you know, might be able to help with the, for the follow-up PRs.
+Jason Plumb 00:04:01 Time zones. Yeah.
+Jamie Lynch 00:04:04 I should be able to help out Wednesday morning, if you need.
+Hanson 00:04:09 Oh.
+Cesar Munoz 00:04:11 Cheers.
+Jason Plumb 00:04:15 Okay, that sounds good. I know there's been a lot of chatter on… API PR? Yeah, so we can…
+spend a little bit of time talking about that. So the…
+The basic idea is that we've had a couple of issues that have popped up here and there about people who need or want to do…
+things that seem completely reasonable, like, I want to add a span processor, and we're like, well, use the builder. It's always been use the builder, right? Because most users don't need the span processor.
+But I think it's hit a point where it's been enough of that that we might want to consider some expansion of the initializer to allow for some basic
+configurability of the SDK that doesn't exist today. And so, this PR was one attempt at one approach of how to do that.
+I linked to this issue, which was kind of the most recent, and this was somebody who…
+was a little misguided in their original question, but I think Jamie and I kind of steered them back on track, and at the end of the day, I think they want to use a span processor to be able to append geo-attributes, which is not something that we offer today.
+So, like, geolocation coordinates to every piece of telemetry, there's some…
+Question on why we would or would not ever want to do that, especially for privacy reasons, but there are some users or some applications in some domains where it's really important to track that stuff.
+Great.
+spam processor and log processor being, like, very standardized, first-class elements of OpenTelemetry by this point, and there's kind of no way to do it without going all the way down to the OpenTelemetry Roam Builder.
+Which requires, you know, a pretty significant amount of additional work.
+To get configured the same way that the initializer does.
+So I came up with one way of maybe trying to accomplish that.
+And it was rightfully pointed out that this is a pretty big hammer, but the method right now is through something called SDK customizations, inside of which you can specify
+One of three… three… three things, and these are customizers for the tracer provider, logger provider, meter provider.
+And in the case of…
+like, the span processor desire, it's pretty easy, then, to just add a span processor and a log record processor, right?
+So that's really what this was getting at.
+I figured we could talk about it, and what the trade-offs are, pros and cons, and decide if, if we want to pursue this, if it's worth adding this level of…
+configurability in the initializer, and if so, what are some other ideas if we think that this is too big of a hammer? I think one of the things that was brought up and is pretty obvious is that
+there are a couple of ordering challenges here, because the order in which span processors are added in the SDK matters, because they're processed in order.
+and allowing a user to do this. Not only can they, not only do we need to be careful on where in the order they add their spam processor.
+If you don't return the same builder, and you've completely, like, nuked all changes that we might have made.
+to the tracer provider as it's being built, right? Because these are… this is like a chained… this customizer is a… it's not obvious from the syntax here, but this is a chained call in which the builder
+keeps getting stuff added to it, but the customizers allow you to potentially return a new instance. And so a user could make a new builder here and return it.
+In which case, all of our customizations, if this is done last.
+All of our customizations would be null ified.
+And if it's done first, then we need to be able… we need to be respectful of whatever they might have already put in there. Okay, that's enough ranting for me.
+Cesar Munoz 00:08:30 Well… My take on this is that I agree that we should
+make the initializer more flexible, because there's certainly… you know, requests…
+That, you know, point towards that route.
+I think we could address the issue that you showed with,
+Less of a bigger, hammer.
+Jason Plumb 00:09:02 Okay.
+Cesar Munoz 00:09:02 Basically. So, I guess my point is that we can solve it.
+without having to… I mean, the option that it's proposed here, I think it's an extreme one.
+I mean, I think it's like, yeah, it will solve the problem, but it will also… probably create.
+Possibilities for other issues that might not be… you know.
+Needed if we go with another option.
+That's… I guess that's the… That's to sum it up. I added more details in the… in my comments.
+Jason Plumb 00:09:39 Yeah, yeah.
+Hanson 00:09:46 I just finished reading the comments and the code. I think, as a feature, this is necessary. This is one of the key ways of configuring… configurating… configuring, the addition of… of attributes on a… on a…
+signal basis, so it's important to get that.
+The hammer in the sense that we're giving them the whole builder chain.
+is a little bit disconcerting, especially opening up the order guarantee. If there's a way to give them similar flexibility, but effectively inserting it, in…
+In amongst how we do ours, in a predictable order.
+Would be nice.
+So, you know, upon first glance, that's my main comment. The ability to shoot yourself in the foot is never, never bigger. If you're basically saying, here's the chain, please carefully put your thing in and hand it back.
+If it's the only way of achieving what we want, maybe, but I think we could do it without…
+Giving that level of trust, if that makes sense.
+Jason Plumb 00:11:10 It does. So, in the Java world, right, the agent has…
+a couple of ways that auto-configure can be customized through extensions, and one of the ways… I mean, and also auto-configure of the SDK itself uses these same customizers.
+And does basically the same thing, right? The… the builder…
+pattern allows them to, like, swap out… you can swap out a new instance in that if you want to.
+And that is… that's really the mechanism, but, I mean, I don't… we wouldn't necessarily have to expose it. There could be another way of just collecting these, and then not…
+Not getting a new,
+not getting a new instance or reference returned, you know, just make it purely additive. That's, like, maybe one thing we could do.
+But I think that comes with more… I think that comes with more API surface if we do that.
+Cesar Munoz 00:12:13 True, but it's also with more control over, you know, avoiding issues.
+Like, very silly issues to pop up all over the place.
+The… another thing is that, based on the nature of this
+builders from the Java SDK, which I think is also something I mentioned.
+Not… we won't… like, users still won't be able to…
+Probably customize everything they want to, even if we provide them these… these customizers, as proposed here, because…
+If I'm not mistaken, one of the things That you mentioned.
+Jason, was that some users might want to…
+Customize the exporters that we create on their behalf, and .
+Jason Plumb 00:13:05 Right.
+Cesar Munoz 00:13:07 And my understanding is that this…
+For example, the Tracer provider customizer that provides the tracer Provider Builder.
+They might get that, but…
+I don't think they can get our…
+Exporter from it, because the builder doesn't have these getters.
+So… If they want to, for example, wrap our exporter because they want to do something before
+I don't know, we store stuff in disk, for example.
+they still won't be able to do so, even with these really big hammer. So it's kind of like, at the end of the day.
+It's not… it's not even, like, fixing the whole, kind of, Issue, if we go…
+to all the possibilities that Printer Dave asked for, it's still not… Working, so… Yeah.
+Jason Plumb 00:14:08 Yeah, I think that's right.
+I think that also got brought up in the comments, is like, there has been another ask to customize
+the exporters, and… we'd…
+like, we're leveraging the existing customizers that are on the Rum Builder, but these are not exposed to the user in any way yet, right?
+So there's not a lot of customizations, but we could…
+we could probably… for the exporters, we could probably piggyback or reuse the existing HTTP export, or whatever it's called, that configuration.
+This thing, yeah.
+And expand.
+Hanson 00:14:54 Caps?
+Jason Plumb 00:14:54 Go ahead.
+Hanson 00:14:55 Doesn't this map to a specific exporter?
+Jason Plumb 00:14:58 No, this is for L3.
+Hanson 00:15:00 Okay.
+Jason Plumb 00:15:05 So, in the case that I know has been brought up more than once is, like, some…
+TLS configuration stuff, and I think that was…
+at least in part, addressed through expanding the HTTP export, but what… do you know what other customizations to the exporter have been asked about?
+I just don't have a sense of, like, what users might want to do.
+To modify the one that we are building.
+You know?
+Cesar Munoz 00:15:38 Me, me neither.
+I mean, we could, but it's like…
+Do we have to settle on a, single,
+Feature to address it all.
+Right now, or can we…
+you know, iteratively add stuff as it's been requested, such as, you know, in this case, they asked for a way to provide processors.
+Right? So, we might, you know, add a processor setter or adder, And,
+And that will fix this one, and, you know, if in the future somebody asks for a exporter, customizer, then we will add it then.
+Right. I think that will… To me, that will feel a bit…
+It will feel a bit better.
+Jason Plumb 00:16:34 So, one counterpoint to that that I want to bring up is that One benefit of… the… conf…
+Big, the customizer.
+It allows you to customize any of the features of the SDK Component Builder, and by component, I mean the span…
+provider, tracer provider, rather. But let's look at what's on there. So the, tracer provider builder, this thing…
+Hanson 00:17:10 There's a bunch of random stuff in there.
+Jason Plumb 00:17:12 Yeah, so, like, you can set the clock, you can set the ID generator, you can set the resource, you can, like, change a bunch of stuff in the SDK.
+So… If we… if we don't do this approach.
+and we only, for example, do span processor. We make a new API, we put it on initializer, and it's for span processor. That's great, and users can use that to do span processor, but if they need to do any of these other things, they cannot.
+And so we would need to incrementally keep adding new…
+API slash DSL features to the initializer, and then our footprint gets kind of big, right? This is… this is a big hammer, but it's a small surface, right? I think that, in my brain, at least, that's kind of what I'm seeing as the trade-off.
+Hanson 00:18:00 I mean…
+Jason Plumb 00:18:01 The customizers have always been, like.
+A pretty heavy-handed approach to customizing things.
+Hanson 00:18:08 I think looking at what this exposes, I can see people asking for any number of these things, and if we get to a place where we want to even provide 3 or 4 of these things.
+really, we might as well provide the whole thing. So, you know, then it basically says, how do we protect ourselves, or can we protect ourselves, you know, with… with…
+the freedom that they have. Maybe we can do a build time assertion, or something that checks the order, and if it's terr… like, if it's, like, unexpectedly bad, we just don't start the SDK and they're out.
+Because, yeah, if… if… If what is being exposed
+basically allows them to customize everything. Then it… it… it…
+I don't mind that now. I mean, given the alternative.
+Like, if we just wanted to localize it to adding exporters and processors, maybe not, but looking at all the features there, somebody want to add a sampler, somebody want to tweak the resource, or whatever.
+Jason Plumb 00:19:14 Yeah.
+Hanson 00:19:16 limits… yeah.
+Yeah.
+Cesar Munoz 00:19:21 I see the benefit, and I think it's also something I mentioned in the comments, I see the benefit of kind of making it, like, already kind of future-proof.
+In a way that… You know, we do this once, and then users then will have this
+A huge set of tools at their disposal.
+Yes, I see the benefit… that's the benefit, but the cons to me is, like.
+The first thing is that the builder, like, the customizer, for example, it might…
+Give the impression that you can customize, as in, change the stuff that we set.
+Priorly.
+And that's not true. Like, you can only add new stuff, or overwrite stuff, but you cannot change what we added before. So, if a user says, okay, well.
+I want to set my own clock, and I want it to be based on the clock.
+that Hotel Andrew is adding.
+How will they get that clock that we provide?
+Before, you know, overriding it. Things like that.
+It's like, it's still… and that's what I was mentioning earlier, it's still not gonna solve all the…
+potential issues. In the case that a user wants to set everything by themselves.
+they already have the builder, which I know it's kind of rude to just go with that option for everything.
+But if somebody's using the agents, to me, it's because they… they want some of the stuff that we…
+And they might not want to override everything, because then what's the point of using the agent? So they might just want to tweak, you know, wrap, do some stuff, some actual customizations.
+On the stuff that we configure.
+But I just don't see that the… Customizer for the builders.
+are gonna work for that use case. So…
+I mean, I still see the issues arising and, you know, with this, and probably even worse, because then they might… they may say, well, I added the customizer, and then…
+I'm setting this, you know, new, exporter.
+And… but I don't know why this exporter is not getting, I don't know.
+Called in the same, you know.
+Flow as the original path that's, you know, traveling my data.
+I thought I would customize the export that was already set there, but it did not happen, and so…
+Yeah.
+Jason Plumb 00:22:05 Yeah.
+I pulled up the, I pulled up AutoConfigure from Java Core just as, like, a comparison. So, if you want to use AutoConfigure in… to bootstrap the SDK with no agent or whatever, you can use this capability, and the agent also uses this capability.
+And they've got more, kind of, more specific types here for, like, propagator, resource customizer, and these take in a resource and return a resource, right?
+Hanson 00:22:38 So those, like…
+Jason Plumb 00:22:40 to your point, Cesar, I hear you, and what you're saying is, like, the…
+The customizer that just takes a builder with setters is, like…
+Way more destructive than something that customizes each of these individual pieces.
+Right? Where you can at least get a reference to the thing, transform it or add to it, and then get, like, return a new one by wrapping. Typically, it's through wrapping, like, doing delegation.
+Cesar Munoz 00:23:05 Yeah.
+Jason Plumb 00:23:06 But, again, the trade-off here is, like, a fairly big footprint, right? This is the one auto-configure
+it's… I mean, it's an implementation, but this is, like, the shape of auto-configure is, like, here, and it's, you know, it's pretty… there's a… I'm just gonna keep scrolling, and, like, you know, there's a lot of individual components that have to be accounted for.
+Cesar Munoz 00:23:33 Yeah, it's true, I mean, but they did it this way because I guess there was no other way.
+I mean, if it was as easy as just providing the,
+the Trace Builder Customizer, then why would they do this?
+Jason Plumb 00:23:47 Right. It's because everything's so configurable, right? Like, and one size doesn't fit all. Like, at the end of the day, we're providing something that needs to appeal to a lot of different users with a lot of different use cases, with a lot of different vendors on their backends, and, you know, I don't think that…
+That just one thing works for everyone.
+Cesar Munoz 00:24:08 Let's say, okay.
+Let's say we go with the option that you're proposing, and a user comes up saying that they want to,
+They want to add… They want to grab our exporter, because…
+they don't want to create their own exporter because they want to have the benefits of, you know, the stuff that we configure, such as disk buffering and all the stuff that's, you know, provided with DSL options.
+How are they gonna be able to do so with the approach that you're proposing?
+Jason Plumb 00:24:49 I'm sorry, say your… say your question again, I'm still waking up.
+Sorry.
+Cesar Munoz 00:24:53 Yeah, no worries.
+So, let's say a user comes up and they want to grab the exporter that we create in the agent. How they can do so?
+Jason Plumb 00:25:03 That's not accounted for yet.
+Like, this does not provide for that.
+Cesar Munoz 00:25:08 It wouldn't be possible with that API.
+Jason Plumb 00:25:11 No.
+Cesar Munoz 00:25:11 So it's kind of like, we will, like, provide this huge hammer.
+And yet, still, the stuff that users might need, it's still not…
+is still not provided, and also, We will now have to… try to… In a way, babysit them.
+Jason Plumb 00:25:31 Yeah, so this PR is not intended to solve everything, but it does solve the case where if somebody comes up with an esoteric use case that we can't cover yet for an exporter, like, we're talking about exporters.
+They can… they can make their own exporter and plug it in here to the Tracer Provider Builder.
+and replace ours, and accomplish what they want. But they have to do more lifting to create the equivalent of the one we create, right?
+That's… so to your point is, there is a way for them to do it, they don't have to go all the way down to the Rum Builder, but they do have to do more work than we ultimately want them to. But as an incremental step, this kind of… I hope this, like.
+Moves the ball a little bit downfield.
+Cesar Munoz 00:26:19 That's the thing, I don't see this as incremental, because…
+Jason Plumb 00:26:22 That's good.
+Cesar Munoz 00:26:22 What they could do in that skate is that…
+They will essentially have to create a new processor, because they cannot add a new exporter.
+Jason Plumb 00:26:30 It's true, yeah.
+Cesar Munoz 00:26:31 to the builder. Then the new processor won't have
+Any connection to the processor that we create.
+And so, if they don't want two processors exporting stuff.
+Independently, then they will have to override our builder.
+So, so…
+Jason Plumb 00:26:51 Yeah, that's legit. Yeah, okay, so that's fair. Yeah, they probably don't want double export.
+Hanson 00:26:57 So, there's almost, like, two sets of problems here. One is… is, you know, the adding processor and exporter problem. That is entangled with
+having access to the ones that we currently provide. One way of fixing that is effectively exposing them, you know, or expanding HTTP, or HTTP, the DSL.
+But I think… So, that's…
+that is, like, the problem we're looking at to solve right now. And this current solution doesn't solve that problem comprehensively.
+But what this solution does do is solve other problems that have not come up yet, and that's, like, on the rest of the provider.
+config, so, you know, the… the sampler, the resource, like, all the other stuff. So, it's almost like there are two configuration problems.
+this solves the one that we brought… I'm not really discussing, and partially solved this, the one that we are discussing. And the point that you're making, Cesar, is that we still need to solve
+the existing problem a little bit better in order for, like, the entire thread to be pulled through. And we could probably do that without solving the other set of problems. But I would say the other set of problems is probably going to come down the pipe
+Eventually, anyway. So, if we're looking at configuration, we might as well look at the whole thing in totality. So maybe this is part one, and part two is how do we…
+Expose our, exporters, or, or rather.
+expose an API that allows them to…
+thread the needle through properly. The most extreme case being, here's everything, you know, piece it together yourself. Or we take a subset of the processors and whatever, and then piece it together ourselves, in addition, exposing this stuff, to configure other things.
+There's a bit of an overlap here, which I don't like a lot.
+Cesar Munoz 00:29:10 So there will be, like, two APIs that will overlap a lot, then, if we go down that route.
+Hanson 00:29:17 just… I think it's a processor and exporter one, because to expose all the other stuff, we'd have to do what, you know, what Jason showed in the auto-config, which is, like, have everything have its own customizer, which is a lot of surface.
+Cesar Munoz 00:29:34 It is, but it's just that… and it's probably based on how the Java SDK is built, you know? It's just that the way users can actually get access to the stuff that we configure on their behalf.
+Which was the whole point of the agent, to pre-configure everything on their behalf, so…
+Jason Plumb 00:29:52 Right, and I mean, something that came up previously, like, the biggest hammer that we could provide, I think, would be to expose the RUM builder, right? We could have an API in our DSL, or we could have a DSL component that
+allows… like, takes in the instance of the Rum Builder, and returns an instance of the Rum Builder, and users… that's the biggest hammer I can imagine.
+Because the Run Builder has everything on it. It allows you to do everything. And that also creates a new dependency, right, on a module that we don't currently have API Surface exposed for.
+And then the smallest one would be, like.
+I don't know, like, span processor is pretty small, you know, that's something we could expose. So that's kind of the two extremes, right?
+Cesar Munoz 00:30:39 Yeah, like, it wouldn't be the smallest one, to be honest. Allowing them to provide their own processor is kind of…
+It's kind of big, and I will think it will solve a lot of… a lot of use cases, not only probably the one that this person is asking about.
+Jason Plumb 00:30:53 Yeah.
+Cesar Munoz 00:30:53 And it will also, you know.
+Make the agent, well, more dependent on, on…
+On the, you know, upstream types.
+But to your point of, you know, providing the biggest hammer that we can provide is the Rome Builder. That's true, and I think the reason for that is because the Rome Builder has
+they… Customizers that we are trying to… Provide here.
+I think that's the reason why it's the biggest hammer, because
+Actually, I don't see too much difference in asking a user, just go use the ROM builder, versus telling them, just use this trace
+Builder Customizer.
+Because it's essentially, like, we're still gonna ask them… we're still essentially effectively asking them to create everything from scratch.
+Jason Plumb 00:31:47 Not in the specific case of this user, because the… I think the ergonomics of this are pretty… pretty nice, right? If you want to add geo, like, replace the name of this in this class.
+with, like, geo-adding span processor. Like, the ergonomics of adding, like, these three lines, and then your implementation is pretty easy.
+For the u- for a user to use.
+Cesar Munoz 00:32:17 I mean, it could also be… ad spam processor.
+Jason Plumb 00:32:21 It could be.
+Cesar Munoz 00:32:22 And so…
+Jason Plumb 00:32:22 Instead of this, we could have a new thing, which is span processors. We could, yeah.
+Hanson 00:32:28 So, so, I mean…
+Which would bring up the order thing. So here's the smallest hammer I can think of, which is, a new interface that says, we'll append some attributes for you.
+in some point that makes sense. That interface could be completely separate from the Java API. So, you know, even if we move to Kotlin, you know, it is effectively a function that we take in.
+Well, I guess maybe the… what comes in is a little bit different, but, like, whatever it is, that is the smallest hammer that we could provide that will accomplish what this person wants to do.
+Jason Plumb 00:33:13 You mean literally, like, this hammer that's, like, two lines above, where you can just specify a supplier of attributes? Yeah. We have that. I don't know why I didn't think to suggest that to them, but they can provide global attributes.
+Hanson 00:33:26 Well, but I don't think… can that be dynamic?
+Jason Plumb 00:33:31 I think it' supplier-based. It damn well needs to be supplier-based.
+I don't know what's…
+Cesar Munoz 00:33:38 Called on every…
+Jason Plumb 00:33:39 Yeah, I think it's supplier.
+Hanson 00:33:42 Broly, probably…
+Cesar Munoz 00:33:43 Pro… probably they need… they need… I'm not sure if this, function provides
+The existing attributes, which is maybe what they want, To kind of,
+You know, enhance this… the existing attributes, maybe?
+Hanson 00:34:01 I thought that they just wanted, like, global stuff, like, geo stuff, right? Well, one example, okay.
+But what other examples? And is it basically, you know, at this.
+juncture, whether it's, like, beginning of a span, end of a span, or a span just ending, call some supplier to get some attributes and slap it on there. Because the slap it on there use case can completely be completely divorced from… I mean, as… if global attributes is what it is, then…
+That… that may just solve the problem.
+Jason Plumb 00:34:38 Yeah, I think the challenge, maybe, with using this is how, like…
+This is just a supplier, and you don't have any additional context?
+But if, like, something like Geo, that's coming from somewhere else entirely, it doesn't matter. Like, for Geo, you could just return those attributes every time.
+Hanson 00:34:58 like, but whatever your spam processor you're initializing has to have access to those attributes anyway, so, however you initialize the spam processor, you would initialize the… the, you know.
+Supplier to provide that.
+Because if…
+Jason Plumb 00:35:17 Yeah, I should have responded to them with… I didn't even think to use global attributes for this, but now that we're talking it through, it seems like a pretty obvious choice.
+I mean, that's also in keeping with Jamie's comment, like, it… it totally lines up with that.
+Well, cool. So, I think that this specific use case being asked about in this… well, I mean, it was a little confusing in the first place, but…
+The attributes case I think we already have covered, and this… I agree, then, that this hammer is entirely too big for the span attributes use case.
+Are you following that, Cesar?
+Cesar Munoz 00:36:07 Yeah, yeah, no, it's just that I haven't checked the issue in detail, but yeah, if it's all about adding, you know, global attributes, then yeah, probably that will help. I do have a point in that they don't have a context with that API, but…
+I'm not sure.
+I mean, if they need it, or if some users might need it in the future, then probably…
+Allowing them to provide, processors might… the,
+A little bigger of a hammer, but… Still small enough, so… maybe.
+Jason Plumb 00:36:39 Exactly.
+Hanson 00:36:41 Well, we still have to, like, do the threading through of order and making sure, you know, like, it…
+So, I think, I think… that is probably the trickiest part, is to find an API that
+allows them to do that, but if we can sidestep it and basically kick this down the can… kick the can down the road, especially until if we can move to all the Kotlin stuff, then we don't have to drag in all the Java API.
+Jason Plumb 00:37:06 I think that's a good segue to talking about this thing, which Jamie rightfully called out, which was we do expose… this PR that I submitted exposes SDK classes in our initializer API surface.
+which, if one day… not if, when one day we want to switch to the Kotlin implementation.
+Is gonna… is gonna cause us more pain down the road.
+So what do we want to do about that? Do we want to say.
+No Java SDK classes in the initializer APIs? In the agent APIs?
+Hanson 00:37:42 I just assume we have something like that already. If we don't, then yes, then I should definitely think we shouldn't add it to it. But I just assumed we had that, and we had to deal with that migration.
+Jason Plumb 00:37:55 I don't mean… Sorry, Hanson, just to make sure I understood what you were saying. Your assumption is that we are already exposing some SDK classes.
+Hanson 00:38:03 Yeah.
+Jason Plumb 00:38:04 Yeah, okay.
+Right?
+Dear… I don't know the answer, but you're probably right.
+Cesar Munoz 00:38:11 Actually, we added the ability to set the clock.
+not long ago, right? If that's the case, then that would be an instance of already exposing a…
+I mean, I think it's not impossible. I will say that let's make it… do it as a best effort, not to add… expose Java SDK classes.
+But I don't think it's feasible to completely avoid it. And at the end of the day.
+I'm guessing that when we change to the coupling SDK as a base, that would require a major version bump anyway, so…
+Jason Plumb 00:38:49 Yeah, it will.
+Hanson 00:38:52 Like, I don't… I don't mind…
+I don't mind… my assumption was that we're gonna have to, you know, change that, as you said, when we… when we bump it into 2.0, and when we do 2… 2X, we could do whatever we want.
+So, to wrap this up, we're gonna see if the attributes, global attributes, does, will solve this person's problems. If not…
+Jason Plumb 00:39:26 Yeah, and I will take… I will take this PR back to draft, just so that there's no confusion about it, and, you know, I think that this… I think there is room for something at this level. I think this will solve a lot of, kind of, user problems.
+But I'm certainly not married to this, so I will take it back to draft. I will respond to that other issue… to the issue
+And hopefully we can just move on from there and not make this more complicated than it needs to be.
+But I think this is a really good discussion that we're having, like, I think it's really important for us to be very thorough when it comes to expanding the agent API surface, and it sounds like we're in agreement on that, so…
+Hanson 00:40:04 Yeah, I would say, if at all possible, we should hold the line on not allowing this type of custom message until we switch to Kotlin, because, you know, every tendril we add will make it that much trickier. So, if we have the option of…
+of supporting, you know, whoever's doing whatever they're doing, but not exposing additional tendrils to the Java stack, that would be preferable.
+Jason Plumb 00:40:40 Cool.
+Cesar Munoz 00:40:42 Yeah, sounds good.
+Jason Plumb 00:40:44 Okay, I think we… I think we can probably wrap that one up for today. We can move on to this one. Cesar, are you gonna join the…
+Hanson 00:40:50 Oh, what's the plan.
+Jason Plumb 00:40:51 The client, Sig?
+Hanson 00:40:53 Hey, I just…
+Cesar Munoz 00:40:56 No. No, I just… I just wanted to… Yeah.
+Hanson 00:41:02 Go ahead.
+Cesar Munoz 00:41:03 I, I just did it.
+Hanson 00:41:04 So, go ahead.
+Cesar Munoz 00:41:06 No, I was just… I was just taking a look at the, crash instrumentation that we have in Auto Landry.
+And we're using an event name that is not in the semantic conventions. And there was an attempt to add it a while ago.
+But it got closed, so…
+I just think, I mean, based on what we discussed, which is like, you know, before moving instrumentation to stable.
+The semantic conventions have to become stable first.
+I was like, well, what does that mean for the crash? Because it's like, it's not even there yet. So,
+We created that PR.
+which is… Yeah, the first one was created by Hansen.
+Jason Plumb 00:41:52 This one.
+Cesar Munoz 00:41:54 So, it didn't go anywhere, and I… I just wanted to have at least what we already do in the agent.
+Hanson 00:42:03 Okay.
+Cesar Munoz 00:42:03 there in the semantic conventions. So, I created a very… High-level, minimalistic PR event.
+Where I… I didn't even add the thread attributes, just the exception ones, that's the minimum, very minimum stuff.
+Hanson 00:42:21 Right, so…
+Cesar Munoz 00:42:22 And I already found an issue.
+Because events But events have…
+become a little more stable in the… lately, so now device.crash doesn't sound like a good event name.
+No. And they have some good reasons there.
+And we are talking about what is a better name for it, if you're.
+Hanson 00:42:48 Yes.
+Cesar Munoz 00:42:48 Please chime in.
+Hanson 00:42:50 So this… Cool.
+I'm finally working on this, but I want to get it reviewed within… internally with the Embrace folks first, but I've actually put this into two steps. So I posted, like, a draft
+PR from my own fork, just so we can discuss it. It updates based on… it's app.crash, and it fully describes, what, a crash is.
+And then, the second PR, or second commit, I should… well, it will be two separate PRs, we'll add additional details. It's based on all the stuff we talked about
+a year ago, having to do with, like, the payloads and the heterogeneity of crash capturing, and potentially what's all there. I will comment on this.
+And say something's on the way. But this is not simply an exception. It is a specifically models an event that is about the termination of an application. An exception can be a cause of that, but it's not the same. So, I will follow up on this.
+Fantastic.
+Cesar Munoz 00:44:07 So, just to make… just to make sure, do you think…
+Having it as it's defined here, which essentially is just the event name.
+and a couple of exception attributes. Does that clashes with what you have in mind?
+Hanson 00:44:22 Yes, because the exception attributes, is very specifically tied to,
+the fact that it is an exception, and also the payload comes, or the data comes in the form of, like, exception and stack trace. A lot of times, crash capturing, the data doesn't come in that clean. It's not even readable. It's binary.
+So, it, it… it becomes slightly different. So,
+I will follow up on this very long thread. And
+So this is finally moving forward, is I guess, what I'm trying to say. And what I'm trying to define initially is going to be, extremely, bare.
+Cesar Munoz 00:45:11 Got it.
+Hanson 00:45:12 Basically, we need a time, and we need the fact that it happened, and we need the, some parameters around the state of the device and app when that happens.
+Because it's not gonna… a lot of times, it's not gonna be the reporting instance of the app. Well, it will never be the reporting instance of the app, unless you can somehow report it before you let the process die. So,
+that information has to be captured, because you don't want to report a crash, of the instance that is reporting the crash that happened, you know, two days ago, so…
+Cesar Munoz 00:45:47 And in terms of what the agent already does.
+Of sending a stack choice, for example.
+Will there still be a way to send the stack trace?
+Yes. It's just that it won't be added into a stack trace. Sorry, exception.stacktrace.
+attribute name. Is that… is that correct?
+Hanson 00:46:10 It would be in another place. Yep. And if… I mean, I think the…
+the tension here has always been, do we create one event, that covers all crashes in the app domain, or do we create one that covers a very specific type of crash in a specific domain? So, the option we went with is a general one that kind of is like a bigger umbrella, with, particular details that allows you to basically encode the separate information there. And the thing is, with exceptions, most of the
+it's gonna come in, de-obfuscated. I'm sorry, obfuscated. So you can't really use that data anyway.
+like you would from, from, like, a Java, you know, you know. So, it… it…
+You need… you need additional information.
+Cesar Munoz 00:47:00 Got it. Yeah, yeah, it makes sense. My concern is really that something…
+I've seen… it's just that I've seen a lot of PRs in the cementing Conventions repo that they… they try to cover a lot.
+And they end up failing, because…
+they cover so much that… that just because one thing is something that somebody doesn't like, then that's the blocker for that PR. So that's why I kind of at least wanted to…
+mirror what we already do, you know, here. And, what I've noticed is that
+At least what we can get out of this is to lock on a name.
+Basically. Which I… I think it's already quite of a big step. Now.
+If you're telling me, well, because…
+the reason I'm saying is that is because If you think that
+You know, you're working on it, and
+you're probably, you know, gonna be able to create a PR, I don't know.
+Soon, like, next month, or something like that.
+Hanson 00:48:10 I'll create it today.
+Cesar Munoz 00:48:12 Okay, then, then, okay, then that's even better.
+Hanson 00:48:15 The PR is done, but it merges two parts
+more or less non-controversial, and I hope that one could get in. The second part is the part that's more controversial, which is the payload part. So if, at that point, we decide that, we want
+the payload tied to the event name. Maybe the individual, crash payloads will have a separate event name. So it'll be, like, app.
+android.jvm crash or whatever. So, and then, then you could have, like, exceptions and, you know, whatever it is. But I would…
+Jason Plumb 00:48:58 attributes, right? I mean, that's the trade-off.
+Cesar Munoz 00:49:02 Yeah.
+Jason Plumb 00:49:02 And exceptions are already getting pretty well established in the semantic conventions, so sticking with the existing exceptions for the baseline case seems fine to me, and if there are more advanced or more forensic-style, payloads to be acquired, let's give them different attribute names and make them optional. That seems like a way forward.
+Hanson 00:49:23 Yep.
+Cesar Munoz 00:49:24 Yeah, yeah, sounds good to me as well. And, like, Abby…
+Jason Plumb 00:49:27 Dev.crash, I mean, device.crash, fine, like, if you want to be pedantic, which we have to be in SimConf, like, the device itself isn't crashing, it's the app, great. Then let's just call it app.crash. Like, it's so… to me, that seems so simple.
+Hanson 00:49:39 My thing is, it is app.crash, so… Yeah. Let me just submit this. I was gonna go through, like, review internally first, but I'm just… I'm gonna submit that first part, just because it's more expedient, and it'll cut off… it'll head off a lot of discussion and say, hey, this is the line I'm putting in. Do you agree with it, or not?
+Jason Plumb 00:49:58 So, if you…
+Cesar Munoz 00:49:59 If you can go ahead and create a PR that, you know, at least works as a… as a way to define a name, and.
+you know, provide the basic, you know, stack trace somewhere. Doesn't have to be the same, you know, attributes that we are using right now.
+I think that would be nice, because, you know, at least there will be something, like, we can say, okay, we're using this event, and it's not because we came up
+you know, with it ourselves, it's there in the semantic conventions. And then, if you can add a comment here explaining that, I can… I can… I could… I can close this, PR. But… but yeah, really, really what I wanted is to have something in semantic conventions.
+Hanson 00:50:37 completely fair, and that was something I wanted to do, but haven't done in, like, a year plus. But now, now there is… there is a PR. So, I will just…
+clean it up… well, I'll actually… I'll extract, a subset of it, and then actually submit it as a PR, rather than go through this internal discussion thing, at least part of it, so that we have something to… to…
+you know, that unifies this discussion with what I'm working on.
+Cesar Munoz 00:51:04 Awesome.
+Thank you.
+Jason Plumb 00:51:09 Yeah, and I mean, this is… I think it's right to ask this question, like, does it apply to web apps? And I think the answer is yes. If we use app.crash, then yeah, for sure.
+Hanson 00:51:17 I actually had an extensive talk with our web, web, folks, and, crashes, outside of, of, of…
+it's complicated, it exists, but it's not something that they normally deal with, because, they don't really… if the JavaScript can't react, which is.
+Jason Plumb 00:51:35 Right, then it's done. Yeah, game over.
+Hanson 00:51:38 There's… there's no tombstone, they can't… they can't, like… Yeah, but who knows, there could be a futuristic browser extension or something that allows you to get this shit, but yeah, I mean, we've all seen the little…
+Jason Plumb 00:51:47 The frowny… frowny computer icon or whatever.
+Hanson 00:51:51 In fact, there are, I think extensions have access to a bunch of stuff, and…
+They explained it to me, and says, this technically exists, but it's not a widespread idiom, or things that people handle.
+Jason Plumb 00:52:05 Yeah.
+Hanson 00:52:06 Apps could deal with it if they want, so…
+Cesar Munoz 00:52:09 then I would say that's all the argument you need to name it app.crash, because based on this thread.
+That was kind of like the…
+The reason why we would choose that over a device adapter crash.
+If it's, you know, useful for other platforms as well.
+Hanson 00:52:25 there's also a lot of, there's not a lot, but there's a handful of attributes under the app domain already that effectively map to end-user-facing applications. So, this…
+Jason Plumb 00:52:36 I think, yeah, I think that was called out here, right? Like these, yeah.
+Hanson 00:52:39 Yep.
+Cesar Munoz 00:52:40 Yeah.
+Actually, when I started to look at the current state of the repo, I was wondering if…
+We still need the device,
+namespace, you know? Because it kind of sounds like everything can be part of app.
+But, you know, that's another… Topic.
+Hanson 00:53:04 I will put that in today. The hardest part is the whole open up a YAML that contains,
+God, there's like a whole thing about… yeah, anyway, it's fine, I'll do it.
+Jason Plumb 00:53:15 Oh, yeah, they haven't made it super easy. So, Cesar, this is good work. I love that we're getting this dialed in. I think there's plenty of other areas where we're emitting telemetry that's not standardized yet, so I think this is great.
+Cesar Munoz 00:53:30 Yeah.
+Hanson 00:53:31 Thanks, Luke.
+getting the push, and it's… it's… yeah.
+Jason Plumb 00:53:38 We have a few minutes for a very big topic that we probably won't be able to cover, Santosh.
+Santosh 00:53:43 I know. I know. I'm tired.
+But I, yeah, I wanted to join earlier, but I couldn't. But yeah, I'll maybe add it to the agenda next week, or next time, and then make it the first item.
+Cool. So we can talk in detail.
+Jason Plumb 00:54:02 Just so you know, too, this is one of the weeks where we have the hotel client sig that's right after this. So if you… it's only a 30-minute meeting, but if you want to discuss this in the client SIG meeting, we can do that as well. Because it's not just Android.
+Santosh 00:54:15 Yeah.
+Yeah, good. But, so let's start here, and then continue it in the meeting, next one.
+Jason Plumb 00:54:23 That sounds good. Yeah, yeah.
+Santosh 00:54:25 So…
+At a high level, I wanted to get an idea of what you guys feel. I think the reasons
+we each have seem to be different. I think you are bringing in
+high cardinality as the reason, which, you know, I don't care, because my backend supports high cardinality.
+But I'm coming from a perspective where I want to simplify the stack.
+Right? I… I… I want to…
+I used to, you know, be ingesting only events before OpenTelemetry.
+you know, with my previous mobile instrumentations, it was only emitting events. Now we introduced spans.
+And therefore, there are two exporters, two connections I need to handle on my back, and I need to be supporting two ingestion pipelines.
+But, now, if we are saying metrics too, then…
+You know, it's an extra burden for…
+Someone setting up the pipelines in the backend, as also it's more…
+Are rather less efficient for the mobile apps to be sending, you know, data over multiple channels.
+And the topic of high cardinality is something that is, in my opinion, and it's very, you know, subjective.
+In my opinion, you know, it doesn't change.
+Where the metrics get created, whether, you know, we generally have…
+We, you know, infrastructure to create metrics from the spans, and at that time, if people are not careful, you end up creating high cardinality from the metrics,
+the metrics created from those spans, so you still need to deal with the iCardinality.
+But this topic is orthogonal to it, in my opinion. But that is a valid reason that, hey, if you enable
+metrics, you know, you'll end up with high cardinality. You better be prepared to deal with it, you know, as you receive it. Maybe aggregate them, or drop the high cardinality attribute.
+Or whatever. R, or, you know, Supported.
+So that's my argument, and, you know…
+any… so I, I think…
+all we need right now is a short answer. Do you guys…
+Want this to be pursued? Because in the long run, what do you feel?
+this is good to have, this guidance in the default instrumentation. I think people can always have custom instrumentations for the different situations, you know, where they feel like
+I think somebody said, hey, games is… is… gaming apps, you know, you might need metrics, and…
+The mobile point of sale, you know, which act as a… as a hub
+You know, which is collecting data from multiple other systems, you know, maybe it is representing multiple end users, not a single end user, and therefore, you know, a metric. I think we could come up with use cases, but my suggestion is, you know, let's put them into a manual instrumentation category.
+And therefore, you know, for the default instrumentation, if you were to give instructions in your OpenTelementary site, hey, to support these mobile instrumentations and run web instrumentations, how do I need to
+set up my backend, and there I want to say that, you know, you don't need to worry about metrics. But to build metrics, you… you build a metrics infrastructure to create those from events and spans.
+So what is the short answer? Do you guys… Want to support metrics?
+In the default instrumentations, or not, I think.
+Like, should we pursue this or not? Whatever be the reason.
+Hanson 00:58:15 I think we should pursue this, but I think my understanding is a little bit…
+or my feelings about this is a little bit more subtle. So, I think the back end, not having to deal with the complexity of a third pipeline,
+If the metrics coming through are useful, I think they should.
+deal with it. But I think the issue is that the metrics coming through will not be useful.
+So, therefore,
+dealing with it is not something that you should do. So, the conclusion I end up is, I think, the same, but the reason for that is where… where I think I slightly differ. And I think there is a world where hotel metrics can become useful
+for this.
+But that is a lot heavier lift.
+And if that happens, then…
+then this could be disrecommended, or we could… this could be retracted. Like, when there are useful metrics, hotel metrics, coming from, end-user-facing apps. But that is not the case right now. Even if you can restrict the resources down to low cardinality attributes, you don't get
+the information you get is gonna be so… so basic for high-level monitoring. So, that's my reason.
+So, I end up where you end up, but I took a different path.
+Jason Plumb 00:59:43 Yeah, we're almost out of time. I'll add my two cents.
+Santosh 00:59:46 joined the…
+Jason Plumb 00:59:48 I think that,
+I'm relaxing my stance a little bit on not finding client metrics valuable because of the frequency with which people ask about them so much, and I'm starting to believe that there are application-level concerns that are better tracked through metrics, but
+Let's continue this conversation, because we are out of time.
+Santosh 01:00:11 Sounds good. Thank you. Okay.
+Jason Plumb 01:00:13 Thanks, everyone, looking forward to the release tomorrow.
+Hanson 01:00:16 Okay, bye.
+Good.
+Jason Plumb 01:00:19 See ya.

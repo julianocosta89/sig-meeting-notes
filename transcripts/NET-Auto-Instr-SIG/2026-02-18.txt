@@ -1,0 +1,42 @@
+SIG: .NET Auto-Instr SIG
+Date: 2026-02-18
+Duration: 11 minutes
+============================================================
+
+Mateusz Łach 04:27 Hello?
+Piotr Kiełkowicz 04:34 I think we need to find ways for… Other guys.
+I think we can drop the meeting, as we are only from the Splanks.
+This week. What do you think?
+efshaikh 07:19 Sure.
+Alexey Pukhov 07:20 Sure, yeah.
+We've already talked.
+Piotr Kiełkowicz 07:30 See you next week.
+On this meeting, in the broader audience.
+Mateusz Łach 07:35 Dave, thank you.
+So, next week.
+Alexey Pukhov 07:37 Sure.
+See y'all next week.
+Chris Ventura 09:45 I guess I'm not the only one that had a conflict today.
+Hi.
+Unless you have something that, you want to talk through, I think we might just have to skip today's meeting.
+Without some of the other maintainers.
+efshaikh 10:08 But…
+Chris Ventura 10:09 Oh, sorry, I can't hear you.
+efshaikh 10:13 Kind of cute.
+Chris Ventura 10:15 I can hear you a little.
+efshaikh 10:20 I say it's okay to skip for… Today.
+Chris Ventura 10:23 Oh, I hear you clearly now.
+efshaikh 10:25 Yep.
+Chris Ventura 10:27 Yeah, okay, I'll put a note in the meeting doc.
+And we'll skip, feel free to reach out in Slack.
+efshaikh 10:35 Sure.
+Chris Ventura 10:36 Okay.
+efshaikh 10:37 Have a good one.
+Zach Montoya 10:58 Hi, Raj.
+Oh, it looks like we are late to the party, and the other members left the call already.
+Rajkumar Rangaraj 11:06 Oh, okay. Yeah, Ray, I got late, then joined.
+Zach Montoya 11:10 Yeah, same here. I had a meeting that went over.
+Rajkumar Rangaraj 11:13 Yeah.
+Zach Montoya 11:15 Okay.
+Rajkumar Rangaraj 11:16 Okay, then, yeah.
+Zach Montoya 11:17 Alright, I'll touch later.

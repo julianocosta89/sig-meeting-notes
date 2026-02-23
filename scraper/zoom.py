@@ -1,0 +1,163 @@
+"""Playwright browser automation to extract transcripts from Zoom recording pages."""
+from __future__ import annotations
+
+import logging
+import time
+
+from playwright.sync_api import Page, TimeoutError as PlaywrightTimeout
+
+from scraper.transcript import parse_transcript_html
+
+logger = logging.getLogger(__name__)
+
+# CSS selector for the transcript list rendered by Zoom's Vue SPA
+TRANSCRIPT_LIST_SELECTOR = "ul.transcript-list"
+
+# Fallback broader selector if the precise one misses
+TRANSCRIPT_WRAPPER_SELECTOR = ".transcript-wrapper"
+
+# How long to wait for the transcript to appear (milliseconds)
+TRANSCRIPT_TIMEOUT_MS = 60_000
+
+# Scroll step in pixels for defeating virtual-list windowing
+SCROLL_STEP_PX = 400
+
+# Pause between scrolls (seconds) to allow Vue to render newly visible items
+SCROLL_PAUSE_S = 0.3
+
+# Known error strings that indicate an unusable recording
+_ERROR_STRINGS = [
+    "Recording has expired",
+    "This recording does not exist",
+    "Recording is being processed",
+    "This recording has been deleted",
+    "Access to this recording is restricted",
+]
+
+
+class ZoomScrapeError(Exception):
+    """Raised for recoverable per-recording errors (password, expired, etc.)."""
+
+
+def scrape_transcript(page: Page, url: str) -> list[str]:
+    """
+    Navigate to a Zoom recording page and return transcript lines.
+
+    Parameters
+    ----------
+    page:
+        A fresh Playwright page (caller is responsible for context lifecycle).
+    url:
+        Full Zoom recording URL.
+
+    Returns
+    -------
+    list[str]
+        Lines in "Speaker Name: utterance" format.
+
+    Raises
+    ------
+    ZoomScrapeError
+        For expected failure modes (password, expired, no transcript).
+    """
+    logger.info("Navigating to %s", url)
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=30_000)
+    except PlaywrightTimeout:
+        raise ZoomScrapeError(f"Timed out loading page: {url}")
+
+    # Brief pause then check for password prompt
+    time.sleep(2)
+    if page.query_selector("input[type='password']"):
+        raise ZoomScrapeError(f"Recording is password-protected: {url}")
+
+    # Check for error text in page body
+    body_text = page.inner_text("body") if page.query_selector("body") else ""
+    for err in _ERROR_STRINGS:
+        if err.lower() in body_text.lower():
+            raise ZoomScrapeError(f"Recording unavailable ({err!r}): {url}")
+
+    # Wait for Vue SPA to render transcript (can take 15-25 s)
+    logger.info("Waiting for transcript selector …")
+    try:
+        page.wait_for_selector(TRANSCRIPT_LIST_SELECTOR, timeout=TRANSCRIPT_TIMEOUT_MS)
+    except PlaywrightTimeout:
+        # Maybe the transcript panel exists but with a different structure
+        if page.query_selector(TRANSCRIPT_WRAPPER_SELECTOR):
+            raise ZoomScrapeError(
+                f"Transcript wrapper found but list not rendered: {url}"
+            )
+        raise ZoomScrapeError(f"Transcript not found within timeout: {url}")
+
+    # Defeat virtual-list windowing by scrolling the container top-to-bottom
+    _scroll_transcript_into_view(page)
+
+    # Extract outerHTML of the transcript list
+    ul_element = page.query_selector(TRANSCRIPT_LIST_SELECTOR)
+    if ul_element is None:
+        raise ZoomScrapeError(f"Transcript list disappeared after scroll: {url}")
+
+    outer_html = ul_element.evaluate("el => el.outerHTML")
+    lines = parse_transcript_html(outer_html)
+
+    if not lines:
+        raise ZoomScrapeError(f"Transcript parsed to empty list: {url}")
+
+    logger.info("Extracted %d transcript lines", len(lines))
+    return lines
+
+
+def _scroll_transcript_into_view(page: Page) -> None:
+    """
+    Scroll the zm-scrollbar container to force all virtual-list items to render.
+
+    Zoom's transcript uses a virtual scroll (zm-scrollbar) that only keeps
+    visible <li> elements in the DOM.  We scroll from top to bottom in steps,
+    pausing briefly at each step so Vue can materialise the next batch of items.
+    """
+    scroll_container_selector = ".zm-scrollbar__wrap"
+
+    container = page.query_selector(scroll_container_selector)
+    if container is None:
+        logger.warning(
+            "Scroll container %r not found; skipping scroll",
+            scroll_container_selector,
+        )
+        return
+
+    # Scroll to top first
+    container.evaluate("el => { el.scrollTop = 0; }")
+    time.sleep(SCROLL_PAUSE_S)
+
+    # Get total scroll height
+    scroll_height: int = container.evaluate("el => el.scrollHeight")
+    client_height: int = container.evaluate("el => el.clientHeight")
+    max_scroll = max(0, scroll_height - client_height)
+
+    if max_scroll == 0:
+        # Content fits without scrolling – nothing to do
+        return
+
+    logger.debug(
+        "Scrolling transcript container: scrollHeight=%d, clientHeight=%d",
+        scroll_height,
+        client_height,
+    )
+
+    current = 0
+    while current < max_scroll:
+        current = min(current + SCROLL_STEP_PX, max_scroll)
+        container.evaluate(f"el => {{ el.scrollTop = {current}; }}")
+        time.sleep(SCROLL_PAUSE_S)
+
+        # Re-check scrollHeight in case new items pushed it down
+        new_height: int = container.evaluate("el => el.scrollHeight")
+        if new_height > scroll_height:
+            scroll_height = new_height
+            max_scroll = max(0, scroll_height - client_height)
+
+    # Scroll back to top so any final render pass picks up early items
+    container.evaluate("el => { el.scrollTop = 0; }")
+    time.sleep(SCROLL_PAUSE_S)
+
+    logger.debug("Finished scrolling transcript container")

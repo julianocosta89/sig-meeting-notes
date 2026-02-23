@@ -1,0 +1,25 @@
+SIG: OpenTelemetry on Mainframes Weekly Meeting
+Date: 2026-02-18
+Duration: 3 minutes
+============================================================
+
+Jim Porell 01:07 -Oh, where is everybody?
+Morgan McLean 01:13 Let me check the messages, it's possible.
+Jim Porell 01:15 See, that's where I'm going now.
+Richard Salac 01:22 I think some of the guys mentioned that they are traveling or on vacation.
+Morgan McLean 01:30 He said he can't make it.
+Jim Porell 01:33 said he couldn't make it last week… this week either.
+Morgan McLean 01:36 Oh, okay. Alright.
+Jim Porell 01:42 Let me go look at the meeting minutes from last week, and just double check.
+Nothing there, but I'm pretty sure…
+that both Greg and Rudiger said they weren't making it this week.
+Yeah, Rudiger's on vacation, so… Just confirmed that.
+Morgan McLean 02:51 Okay. Do people have any topics today, or do we want to wrap it up?
+Jim Porell 02:58 I've got nothing new, so… yeah.
+Morgan McLean 03:03 Alrighty.
+Well… We can probably end this now.
+Jim Porell 03:10 I'll make some notes, just that the three of us got together, or anybody else joined. I'll update the minutes.
+Morgan McLean 03:17 Okay. Okay.
+Perfect.
+Jim Porell 03:19 Alright, see you guys.
+Richard Salac 03:21 Tim?

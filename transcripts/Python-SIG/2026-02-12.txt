@@ -1,0 +1,535 @@
+SIG: Python SIG
+Date: 2026-02-12
+Duration: 56 minutes
+============================================================
+
+Riccardo Magliocchetti 00:12 Hello.
+Tammy Baylis 00:18 Hi, Ricardo. Hi, Josh.
+Josh Winerman 00:22 Hi, Tammy. Hi, Ricardo.
+Riccardo Magliocchetti 00:24 Hi. Hi, Josh, anytime.
+Welcome, everyone, to this Rick Python SQL.
+We're waiting a few more minutes, for more people to join.
+In the meantime, please add yourself as an attendee to the…
+Meeting notes. And also, if you have any topic you want to discuss, feel free to add them to the notes as well.
+Aaron Abbott 02:39 Hello, everyone.
+Riccardo Magliocchetti 03:30 Okay, 15 people, I think it's… Quite a big number.
+And… yeah, welcome again to this week's Python SQL.
+If you haven't done so already, please add yourself as an attendee to the notes.
+And I see where people's, writing,
+Topics, also. And yeah, if you want to discuss something, feel free to add them.
+Let me add myself, and I think we can start.
+Okay, first stopping is for me. This is just a quick, please take a look.
+Anura opened in a PR for implementing the… SDK metrics?
+while fixing the configs, I broke something, so I'll fix that, so don't… don't be afraid of seeing, like, the RNCI, but…
+Yeah, if you have time or are interested in the topic, please take a look.
+This is, like, quite simple PR, but, yeah.
+And then?
+A message from me.
+like… Was trying to take a look at the stuff we have
+in place, like, all the issues and PRs, unfinished the PRs.
+And I think we have two…
+Big topics still open, since a few.
+One is to finish adding, 3.14 testing, for country.
+I see… a message from Medio, which I don't know if it's here…
+Emídio 05:41 Yeah, I'm here. I just started to work on this, like, this, like, just push a draft that does not, like.
+And fully tested, but yeah, some fixes should be done.
+Riccardo Magliocchetti 05:55 Cool, thank you.
+And the other thing is that we have a couple of PR trying to remove the…
+dapper limit for the Rapti version.
+Like, RAPT2.0 is out since last year, end of last year, I think? Maybe before last year.
+And yeah, we still have the limit, but we support less than true.
+Version… lesser and version 2.
+We have a couple of PRs, both…
+incomplete, as they, like, they don't introduce testing with, wrapped the version 2.
+And we know that, it changes the behavior around object proxies, object proxy, but is used by…
+I think, 4 or 5 instrumentations.
+And so, yeah, if anyone has time… Or… and will to do…
+To finish this work would be appreciated for my son.
+And yeah, of course, we have plenty more PRs to review, but…
+I probably say it, like, every week, so if you have time.
+Feel free to review any PR, even if you're not an approver, and, you know, reviewing PR is probably the best way.
+To, to become an approver, if you do really let, like…
+Surya Teja 07:33 Hey, hi, I was quite late to the meeting, but I dropped in one of my PR, which is going to set up the base for adding instrumentation around Cloud Agent SDK. It's quite straightforward.
+Just wanted to get some ice. I posted that in my channel yesterday.
+Riccardo Magliocchetti 08:04 Okay, thank you.
+Okay, Ben.
+First topic, next topic is from Money James.
+about WSPR.
+Rowe, James 08:22 Yeah, I'm here to represent that one.
+Manny couldn't make it, he was the one that, committed to, so he's… I think he's, resolved the feedback.
+That was, provided on it.
+It's… he's got the new PR raised, so it's really about just getting it
+Reviewed, and see if we can get it merged.
+Aaron Abbott 08:47 Yeah, it looks like… I left the last comments, and it looks like,
+Somebody pushed some changes and responded, but there's, like, a lot of open threads, too, so, I mean, if they're resolved, feel free to click the resolve button or whatever, but…
+Yeah, I'll look at the responses there.
+Rowe, James 09:07 Cool, thank you. Yeah, that'd be really good. Thanks.
+But I'll ask… I'll talk to Manny about making sure the conversations that seem to be hanging are resolved as well.
+Cool, thanks.
+Aaron Abbott 09:25 No problem.
+Sorry, go ahead, Ricardo.
+Riccardo Magliocchetti 09:31 Please go ahead.
+Aaron Abbott 09:34 No, I didn't have anything else there.
+Riccardo Magliocchetti 09:36 Okay.
+Ben, next topic is from Josh.
+Potter's issue.
+Josh Winerman 09:52 Yeah, so, this issue has been, thank you, Aaron, for bringing this up, is I think it's part of the logging stabilization, that we've been looking at for a while, so this issue's been open for a while, and there's been a sort of stale PR that I listed below hand, but I wanted to start looking into this.
+it seems like the big problem was sort of the differentiation between environment VARs to use to set up auto-instrumentation with.
+Or config the login handler and auto-instrumentation.
+So I sort of listed what was below the issue there, in terms of, there's a conflicting SDK bar, and…
+a conflicting exporter var that I'm not sure is particularly used, but I provided a little… as much context as I could before that, but interested in looking at this.
+Riccardo Magliocchetti 10:54 Like, I remember we discussed the issue already, like, maybe a year ago, but I don't remember anything about that. But, like, one thing I can say is that,
+I think maybe we have it later in the… in the topic list, but there's people working on adding the clarity config.
+And so, whatever we implement, we should take a look also at, how the clarity config configuration stuff, so at least when
+When you eventually have that, we won't have problems.
+With configuration, expecting… having a different expectation.
+Josh Winerman 11:36 Okay, sounds good. Is there anything, I could look myself, is there anything you wouldn't mind linking, that I could take a look at?
+Off the top of your head.
+Mike Goldsmith 11:45 I'm… I'm taking… I'm doing the… or the config thing. I'm working on a couple of PRs there. I'll… I'll post them in the chat for you to look at.
+Josh Winerman 11:56 Okay, thanks, Mike.
+Mike Goldsmith 11:58 Yeah, no problem.
+Aaron Abbott 12:01 Josh, I think you also asked about the,
+struct log? Is that what it's called?
+Josh Winerman 12:07 Yeah, that's another PR I'd like to… I didn't list it here, because, I thought we needed a little more conversation around, the auto instrumentation than truck log, but I'd be happy to bring that up here, too, if you thought so, Aaron.
+Aaron Abbott 12:20 No, no, that's fine. I was just, making sure, because I think this one, yeah, probably needs a little more discussion. I… I wasn't super…
+Tuned into what was on there, but, you know, usually issues that are kind of old have a lot of…
+points on them, and I don't know, sometimes the conversation can be a little stale.
+Josh Winerman 12:38 Okay, okay, let me throw it at the end of the agenda, too, and then, if we have time, we can get around to it.
+Aaron Abbott 12:43 Yeah, yeah, I just wanted to make sure that if you're, you know, wanting to contribute something, you're not blocked or whatever.
+Josh Winerman 12:48 Okay, yeah, sounds good. Thanks, Aaron.
+Aaron Abbott 12:50 Yeah.
+Riccardo Magliocchetti 12:54 Like, a question, With the extract log instrumentation, you mean,
+like, doing the same, as we're, like, adding an handler also for struct log, right?
+Like, the very same things we have for the blog instance library.
+Right?
+Josh Winerman 13:19 Aaron, I think that's what the PR or the issue was about, right?
+Aaron Abbott 13:23 Yeah.
+Yeah.
+Maybe we could, like you said, put it in the agenda, and we can discuss, unless, Ricardo, do you… I'm guessing because you're working on this for the standard library logging.
+Riccardo Magliocchetti 13:33 Exactly.
+Aaron Abbott 13:34 Yeah. Yeah, so probably, like, we should probably…
+Riccardo Magliocchetti 13:38 Like, we have some open issues on how to handle visa handlers.
+And so probably we should have a chat, about this.
+Josh Winerman 13:49 Okay.
+Riccardo Magliocchetti 13:50 Okay, I'll throw it at the end of the agenda.
+Thank you.
+Okay…
+Next topic is from Michael.
+Michael Summerville 14:13 just to…
+Riccardo Magliocchetti 14:14 Oh, okay.
+Michael Summerville 14:15 But just a quick question for this PR, but…
+if… if we were to do the change in one go, it's about, sort of, 36 files, and you'd have to also modify, like, the same number of test files. Like, the changes aren't that big, like, they're not that large, but I'm just curious, like.
+What are your stand… what are the standards around, like, the size of
+PRs. I mean, I'd be happy to do it, it's just… it just seems like… I don't know, how big do you want to size this?
+Riccardo Magliocchetti 14:50 Well, a bit more context for other people that maybe are not into the topic, yeah.
+Michael Summerville 14:54 That's fair.
+Do you want to click on the issue?
+I think it should be linked there.
+Riccardo Magliocchetti 15:05 Yep.
+Michael Summerville 15:06 Yeah, so the idea is instead of,
+In the auto instrument, in the different auto instrumentation, sort of.
+implementations. Instead of calling that dunder name, you call the instrumentation module name that is defined… that you define inside of the package.py of that respective auto instrument here.
+And that just goes off of,
+Like, the fact that within the documentation itself, it says, you know, don't… you just want to avoid using vendor name.
+Because you can, you know, effectively create spans with… oh, excuse me, you can have, like, get tracer or get meter resolved to two different names, depending on your import.
+So what that means is, within the utterance patients.
+implementations. You have to just change A couple things, to…
+Grab that… grab the name explicitly from the import.
+And then the… the test that you write for it is effectively using… I think there's, like, a base test case that checks that the name is actually the thing that you want.
+So I implemented it for one of those, one of the auto-instrumentators, just to get the pattern down. And I think Ricardo and…
+I don't know the other gentleman's name, looked at it, and it seems like we're good for the pattern, it's just that to then replicate that pattern across the entire, like, all the autoimmstrators would then, you know, it'd be a big diff.
+So I'm just curious, like, how big of a diff is okay, is the question.
+Riccardo Magliocchetti 16:46 Well, I would say, like,
+Let's first, like, approve a merge this one.
+Michael Summerville 16:52 Okay.
+Riccardo Magliocchetti 16:53 And once we have decided the path, like, that the part is okay, I think, since it is mostly mechanical, I think it just, like.
+Adding a variable inside a module and just changing an import?
+Michael Summerville 17:06 What's…
+Riccardo Magliocchetti 17:07 That's the name?
+I think it won't be a problem to do it in one pass.
+Michael Summerville 17:13 Okay, after this one, then. So do this one first, then do all the others. Alright, I'll, I'll run the… I think it was failing the pre-commit, so I'll fix the lintz, and then I'll push a… push a change.
+Awesome, thank you.
+Riccardo Magliocchetti 17:26 Thank you.
+Next topic is from Nyudmila, but I see that She had to drop off.
+But… Okay.
+So… GenAI SIG pattern instrumentation seems to be top priority. How can we do it without increasing maintainer's efforts?
+proposal, the GenIS SIG needs to prioritize review in Python.
+As a rule of thumb for SIG members, review at least two PRs for each PR you send.
+We need to have everything common in UTs, we need common test UTs to validate the same combo. There should be unit test helpers, and Weaver life checks for general end-to-end testing.
+Maybe Aaron and Leighton, you're probably more up-to-date on Jenny's stuff than me.
+Or Keefe, maybe?
+Aaron Abbott 18:40 Yeah, yeah, I can… I think Lamila pretty much put it all here, but we discussed this in the Gen AI ISIG.
+did, like, this stack rank exercise, to figure out what was… what was most important to people to kind of work on in Gen AISIG in the next year.
+And, by far, the one with the most points was… improving, like, the Python instrumentation.
+Making it stable and reliable and all that, so… the…
+the obvious… my first thought was, you know, I put my Python maintainer hat on, and I said, well.
+I don't know if we can support the level of contributions, because the Gen AI SIG is getting pretty popular. So I wanted to raise the topic here. I think the suggestions Libila make are really, really good. Like, we could make the PRs easier to review, so that they require less kind of manual checking, especially for semantic convention stuff.
+But I think… Also, like, our… I feel like…
+we need to have more green check approvers, or we need to somehow federate it so that people can approve some portions of the contribut repo without having to be approvers for the whole thing. Which, I think… I think there's a way to do it. We tried it in the past with not much success, but I've seen it in some other hotel repos, so…
+Yeah, like, I want everybody to be able to contribute, I want it to scale
+But I also… Don't want to, like, yeah, drive maintainers crazy, or drive other approvers crazy, so…
+That was my first two cents on the topic, but yeah, could open up the floor.
+Marcelo Trylesinski 20:18 I mean, I personally find it difficult, to follow stuff around for reasons that, CI is difficult.
+So when you see a request that has 4,000 lines, and it's actually all CI automation, it's a bit weird.
+So I… I'm not necessarily, like, I just come around here and comment some stuff, but I'm not sure if…
+Maybe the focus should be actually improving the…
+the repository itself, rather than having more approvals. I mean, you can add whatever you want, but I think the problem goes a bit, beyond the number of approvals.
+Also, I had a topic, since I'm here. I've seen that a lot of requests have a lot of ignores, and those ignores are being ignored by the reviewers, like, linter ignores or, formatted ignores.
+Not ignoring those would be nice, or, something like that.
+Aaron Abbott 21:27 Yeah, yeah, I hear you, yeah. Definitely we could spend some time on the repo and make it more…
+ergonomic, make the CI a little,
+better signal. I didn't completely understand your point, Marcelo, like, maybe…
+if you want to, like, file an issue or something, if it's just around, like, generated code, there's, like, a really easy way in GitHub to ignore generated code, but…
+Yeah, I hear you, like, yeah, adding more approvers might not help, and I think Ludmilla's points here were, like, the Weaver tool can automatically validate semantic conventions, and we can make it really easy to write tests for the semantic conventions, so…
+I don't know if those two address your concerns, and maybe your concerns are more general, but yeah.
+Marcelo Trylesinski 22:17 My concerns are more general.
+But it's okay.
+Aaron Abbott 22:22 Yeah, yeah, if you don't mind, like, I don't know, you could either add it to the notes or drop an issue or something. I think you have a good understanding of the CI problems maintaining Python repos, so…
+Marcelo Trylesinski 22:38 Yes.
+I'll see what I do. Thank you.
+Riccardo Magliocchetti 22:42 Beautiful.
+But, like, from what I can see, like, from my experience.
+it's like… I don't know if getting more approvers would be, like, the answer.
+But… You know, can be bad for us, because, like.
+at the moment, we have a huge backlog of stuff to review, and we don't have reviewers, and I think that in…
+for GenAIA, like, I see also, like, a dozen of Gen AI IPLs open since a few, so…
+like, I don't know if only tooling will be enough.
+But, you know, whatever helps for me, it's great.
+Aaron Abbott 23:33 Sorry.
+Dylan Russell 23:33 So, one thought… So…
+Aaron Abbott 23:36 Oh, sorry, sorry. Just one thing I was just gonna say, to be clear, are you saying more approvers would be good, or might not help?
+Riccardo Magliocchetti 23:43 like, for me, it would be great, and, like, speaking of a GenAI approver, we have an open PR,
+Where Lyudmila was, like, did the…
+a refresh of the current approvals we have for the GenAI instrumentations.
+Bye-bye.
+And on that issue, I asked, like.
+for people who want to be approvers to actually approve the PRs.
+To, like, double-check with.
+People will really approve stuff, and the check failed, and so, like… Ma, like, yeah, like…
+I think we're still, like, in need for more approvers.
+But… yeah.
+So, like, for me, it would be great to add more approvals.
+Aaron Abbott 24:34 Okay, yeah.
+Riccardo Magliocchetti 24:36 Josh? Yeah, whoever was talking before, Josh, you got your hand up, or Dylan, whoever it was.
+Josh Winerman 24:41 Dylan, you can go ahead, feel free.
+Dylan Russell 24:43 Okay.
+I was just gonna say, I'm thinking we should encourage, like, per instrumentation reviewers.
+If possible, because I feel like it's much easier to review when you have, like, context on, like, an instrumentation.
+Like, I'm happy to do, like, any review to, like, the Gen AI… the Google Gen AI instrumentation, because I feel like I…
+Know that code really well.
+-
+I'm not sure what the best way to, like, encourage that is, but…
+That's what it seems like we should go for.
+lechen 25:20 I thought we had this ability already with, component owners.
+Has this been changed?
+Aaron Abbott 25:29 Yeah, I think… I think there's two problems. Like, one of them is that the component owners don't…
+There… it's kind of just a thing to tag people right now, and somebody keep me honest if that's not right.
+And the other thing is they have to have, like, green check in the repo if you want the PR to be merged. So they have to be an approver for the whole repo, because of the way GitHub works.
+to… so I think you can get around that with a code owner's file, or something like that, but somebody needs to actually figure that out, and I think… I think we've done it in plenty of other hotel repos, so…
+It's just kind of more tooling work.
+Riccardo Magliocchetti 26:08 Yeah, like, the problem with the component owners at the moment is that…
+If the user is not,
+An approver in our case, because we have only the approvers and maintainers group.
+even if it's in the component hours, it won't be a reviewer's or a signer for the PRs.
+So it's, like, useless until a user has not made a promise.
+And so maybe we can… I think all the repo, like, I think the JavaScript is using the triage,
+Group for handling permission.
+And maybe we can start doing that as well.
+So, at least… People won't have a green tick, a green check, but…
+At least we'll get, like, the ping for the review.
+But, yeah.
+Or you made everyone approve it for me, it's fine either way, like…
+Aaron Abbott 27:15 Josh?
+Josh Winerman 27:17 Yeah, no, I was about to say what Ricardo just mentioned. Maybe, now would be a good time to… to add two triagers in this SIG, especially if backlog is something that we're dealing with. But it might just help
+assist the approvers and maintainers to organize the issues, or the PRs, make it a little easier there. But I'm not sure that the permissions that…
+Triagers would get, would, would help.
+directly push more PRs through, too.
+lechen 27:53 Yeah, Aaron, I didn't… I don't know what was discussed in the GenAI SIG, but is the bottleneck that, like, to become an improver, I mean, not only will you, like, have the ability to approve PRs everywhere.
+But, like, is it because, like, maintainers have to manually do this and approve every single person?
+Because if that's the case, then we'll have the same issue with triagers as well, right?
+Aaron Abbott 28:22 Well, I think… I think the concern was mostly, like, this other tweet.
+lechen 28:27 power company, or…
+Aaron Abbott 28:29 No, no, I think it was mostly, like, it seems like we're having trouble keeping up with the volume for Gen AI stuff already, and since that was the main focus that people wanted, the concern was, like, Libnola wanted to share feedback with the SIG, see if we can accommodate it. So kind of all the above, like, if you have ideas, we should add them, but also, like.
+you know, if…
+if it's just not gonna work, like, if other approvers aren't interested in, you know, Gen AI stuff, and if the maintainers aren't super interested in it, then we wouldn't be able to…
+Right. You know, maintain the level of interest that the Gen AISIC has right now.
+lechen 29:07 Right, so it's just a hypothesis that, like, having the… green checkmark.
+from everyone is, like, is lacking. There might be just a lack of interest in general.
+We don't know, right?
+Aaron Abbott 29:23 Yeah, I mean, I think… I think federating the review process so that people could be sub-approvers for the sub-repos would be great. I would just like to have some kind of good signal in CI that
+at least to follow semantic conventions. Like, that's the most important one for me, because it's incredibly difficult to do PRs right now and say whether or not it follows the semantic conventions, like…
+having, like, required tests, and then having the test be a strong signal, and I think Lyudmila was working on this, and Weber has some support for it. Like, that would be the best thing for me, and I would be happy to, like, federate the reviews a lot more if we had really good test suite and CI.
+lechen 30:01 Yeah, makes sense.
+Marcelo Trylesinski 30:06 I'm checking the list of pull requests, and I…
+It doesn't seem there are a lot of pull requests JNAi-related.
+Is it only on Contrib, or are we talking about something else?
+Aaron Abbott 30:18 Yeah, contribute, contribute.
+Marcelo Trylesinski 30:20 I mean, if I see the list of…
+pull requests, I'm not seeing that many that are… Jenny, I related.
+Like, how is a lot for you?
+Aaron Abbott 30:34 I think a lot of them…
+Could you share, like, a link? I mean…
+Marcelo Trylesinski 30:39 Someone else is sharing. Yeah, sorry. Do you… do you want to share, or…
+Thank you.
+Desktop one… Oh.
+Who's here?
+Aaron Abbott 30:55 Yeah, yeah.
+Marcelo Trylesinski 30:59 So, I mean…
+Jenny, I… 1, 2, 3, 4… no, this one, I don't know what our spike is. 1, 2, 3…
+for… 5… 6… 7… 8…
+lechen 31:21 I feel like that's a lot already, right?
+Marcelo Trylesinski 31:23 Paul, but then we are in a week.
+8 in a week, and then after that, there's,
+You don't have any more, do you?
+Okay.
+Aaron Abbott 31:35 I think a lot of them have been… have actually been merged, like,
+I'm looking at just open once.
+lechen 31:49 Wait, is 8 in a week not a lot? Like, I feel like it's a lot. That's, like, outstanding, right?
+Marcelo Trylesinski 31:58 22 interactions, well, I don't know.
+If you think's a lot, Dan's a lot.
+lechen 32:09 Yeah, I guess it is subjective, but I think this is the consensus in the GenAI instrumentation, or this GenAI SIG, so…
+They probably have better under understanding of what's going on.
+Aaron Abbott 32:23 I think… I think people are interested in contributing even more, too, is kind of what I heard. Like, that was the… the highest voted thing, and there's a lot of actual people on the call who voted who want to send PRs, which I think is…
+Awesome.
+lechen 32:40 Yeah, that's great.
+Aaron Abbott 32:42 Marcelo, was your point, like.
+Marcelo Trylesinski 32:47 The way it was spoken, it seems like the majority of things are from Gen AI, but it doesn't seem so.
+It seems the majority are still related to the packages and.
+lechen 33:01 I think we have.
+Marcelo Trylesinski 33:01 Also, we saw 8… we saw 8 that were interact in a week, like, maybe they were open before or something.
+I didn't check that date.
+Yeah, 2 weeks ago.
+December… so, I mean, so it's not those 8 that were open this week.
+Aaron Abbott 33:24 Okay, that's fair. I mean, maybe… maybe we're already ready. Maybe there's no issue.
+lechen 33:32 Damn, we're so good at problem solving.
+Aaron Abbott 33:35 There was… sorry.
+Did anybody else have thoughts on that? Because I… somebody else brought up co-pilot reviews. I think they offered to set it up, and there's some support, but I… I think that's a whole other discussion.
+Marcelo Trylesinski 33:53 Copilot is free for open source projects.
+Aaron Abbott 33:57 Yeah, I think,
+maybe what Lumila said in the GenAI SIG is you have to have Copilot license on your personal account, not for… it's not, like, governed by the repo. I think
+Trask said that we have some licenses from CNCF for OpenTelemetry, so it's something we could set up.
+But I… I don't have any… much experience with it personally, like, Copilot or Cloud or whatever, you know, GenAI reviews, basically, on… on PRs, so the question was also whether or not we want to do that.
+Marcelo Trylesinski 34:32 I mean, I've been trying a lot of stuff, I can share some stuff.
+But, Copilot usually is not the best one that has been working for me. Cloud is usually too expensive via API key.
+And the one that has been working a lot is called Devin.
+Everybody here is very happy about it.
+But, there are many nowadays.
+I don't know if they have some open source kind of plan.
+Maybe they do.
+Aaron Abbott 35:01 And, like, I'm willing to try it out, we can always turn it off, but, like, Ricardo, Leighton, do you think it would be annoying? Do you think it would be net positive for the repo? What do you think?
+Riccardo Magliocchetti 35:12 I think we had a co-pilot review some times ago. I think, Lyudmila…
+some months ago, did, like, asked Copilot to do a review of our PRs, and all the comments were, like,
+tiny details, so style, or stuff like that. So, like.
+it won't catch, like, the review I've seen was not, like, deep into, like, checking semantic information or stuff like that.
+So, like, if I have to spend time, I prefer to spend time, as you suggested, to have better tests.
+like, at least have a… Test that we catch,
+Like, stuff over there, but, you know, more important than the style of the… of the code.
+But, yep.
+Aaron Abbott 36:11 Okay, cool. I… we can follow up with Trask and see what we can set up, like, as OpenTelemetry,
+What we have licenses for and all that, but…
+If you are on board, and it's a pretty low-effort thing, you can always remove it if it's really annoying.
+Marcelo Trylesinski 36:26 Oh, I have one more suggestion. I don't think the repo has cloud.md, right?
+Aaron Abbott 36:33 No, that's… yeah, that's a good idea.
+Marcelo Trylesinski 36:34 So, even if no one uses it in this meeting, which I doubt it, I think it should be added, because then you can add whatever you think is the best, and then people that are opening pull requests with the Claude can,
+Yeah, you can do a sim link with AgentsMD. That's what we have.
+And well, at least the prequels that are open have those in consideration.
+Surya Teja 37:01 I have a small doubt over here. I was meaning to push the clot.md for my Anthropic instrumentation, but I was not sure about if that is accepted or not, because I have seen a PR being discussed about it.
+Can I do it at the instrumentation level? My question is, can I do it at the instrumentation level?
+So, if no one is aware, but you can have multiple levels of this file that gives instructions depending on the directory you are on.
+Marcelo Trylesinski 37:34 in. So, what he's saying is that on the level of the instrumentation, he's actually working on.
+Right?
+Surya Teja 37:43 Yeah.
+Aaron Abbott 37:47 Yeah, it seems reasonable to me.
+We probably could have something in the repo route, too. I'm not opposed to that, personally.
+Riccardo Magliocchetti 37:59 Yeah, we can test that.
+But, like, to…
+like, I hope that would be, like, a signal to have, like, automated PRs? Because I see, you know, in other maintainers' channels where.
+Marcelo Trylesinski 38:12 I mean, you cannot avoid the… sorry.
+Riccardo Magliocchetti 38:16 But, like, some of the OpenTrem2 repos are starting to get, slop, PRs.
+from, like.
+Marcelo Trylesinski 38:26 I don't think you can avoid being spammed.
+Riccardo Magliocchetti 38:29 Yeah.
+Marcelo Trylesinski 38:29 I think the idea with this is for you to control what they're gonna… how the requests are gonna be. So if you improve this.
+This is CloudMD, at least the requests are in a better state than they would be otherwise.
+Riccardo Magliocchetti 38:49 But, yeah, you can try that.
+Aaron Abbott 38:58 Okay, yeah, maybe I'll follow up with, like, Leighton and Ricardo, I'll follow up with you offline, too.
+we can share… I can share this with, like, the GenAI SIG, and I don't know if Ludmil was planning to watch this, but it sounds like, and I agree, like, we could really improve the tooling, which Ludmil already made a proposal for. Marcel, you had some specific…
+suggestions for the CI, which I want to make sure that we get, because I think kind of good perspective, and
+Yeah, maybe adding, like, triagers and…
+Having more federated approvers would be good.
+Yeah, and one other thing I would throw in, like, I think if people want to contribute,
+If you want to contribute tooling, and if you know a lot about Python tooling, it's kind of, in my experience, every repo is a little bit bespoke, which sucks, especially since we have a big monorepo, there's not a lot of great tools for it.
+So if you…
+if you're interested in it, yeah, please, like, ping me, reach out on Slack, I think…
+I have some ideas, but really don't have time to work on it, and I think we could fix things a lot, so…
+Marcelo Trylesinski 40:10 Do you know why the CI has this… this many, why you need…
+like, that many files when you are adding a new instrumentation, or bumping a new version of Python? Like, why there are… there is one for a specific job?
+Aaron Abbott 40:28 You're talking about the check… number of checks that show up in each PR?
+Marcelo Trylesinski 40:32 I guess, I mean, when you run one of the scripts there, it generates this whole, like.
+A lot of, jobs, right?
+like, when you're adding new instrumentation, it actually generates a lot of, of jobs. Why…
+like, I don't know historically what happened, but is there, are there thoughts on reducing where, like.
+having a smarter way to run the test suite in CI.
+Aaron Abbott 41:02 Yeah, yeah, I'd be interested in it. I think one thing was that the tests were very flaky at one point. We, like, improved that a lot by having some more lock files, but…
+It was easier to rerun tests if the checks were individual, and I think the other thing was that the Matrix feature in GitHub Actions maybe didn't work for something we needed, but I agree, like, I think Matrix covers a lot of this.
+Marcelo Trylesinski 41:22 Perfect, Emilio.
+Emídio 41:23 Yeah, previously we used matrices, like, for each instrumentation and Python version, but GitHub has a limitation on the number of jobs that can run in a single file.
+It's 25th, 6.
+Marcelo Trylesinski 41:39 Okay.
+Emídio 41:40 256… yes, yeah, 56, yeah. That's a limitation, so there's…
+What we found was to generate the CI jobs using a Python script, basically.
+But you can still improve, like, instrumentation.
+can have a single matrix under it, you know? So you can iterate on the…
+Python version for a single instrumentation, reduce the number of jobs.
+Marcelo Trylesinski 42:07 But the assumption is that you'd have a job for each instrumentation, right?
+Emídio 42:13 Yeah, for each interpretation, operational system, and Python version.
+Marcelo Trylesinski 42:17 Right, where that idea is to not have this, this one, and have, per operational system and per Python version, but not per,
+Package? Like, having a single one.
+You know what I mean.
+Emídio 42:31 Yeah, and that fits on the problem Aaron said about, if you need to run again, you need to run for all the instrumentations over and over.
+Like, one feedback we received, like, 3 months ago was the CI pipeline was very quick, like, on providing feedback, because every, job runs isolated, so if you need, like, to run OpenAIv2 job, you can just run it again.
+Marcelo Trylesinski 42:58 But yeah…
+Emídio 43:00 Unfortunately, we have this limitation on GitHub's side.
+Riccardo Magliocchetti 43:12 like, I think we discussed that also, like, years ago. Like, I remember it was, like, one of the first topics
+What was in discussion when I joined the project.
+So…
+And yeah, like, at the moment, we have… at the time, we had a problem with, like, also called with concurrency.
+And so, like, splitting too many jobs was, like…
+To reduce the total, time.
+But I think about later, We… we got moved to our own workers, so we're not using the…
+GitHub shared workers anymore.
+And so things improved.
+But, like, when… I think we have an issue around about this thing, and…
+I think a middle ground could be, like, to, like, I think…
+To just do, like, one matrix for instrumentation, instead of having the… Are you geometrics, or…
+Like, or, like, now we have, like, every…
+You know, doing the metrics expansion manually.
+But yeah, like, we can think on that, yeah.
+Emídio 44:28 Yeah, I think we have an issue for this one, right? I think you're open.
+Riccardo Magliocchetti 44:32 Yep.
+Idle?
+Aaron Abbott 44:39 Yeah, I think I'm… I was just gonna call time, unless anybody has one final thing. I think we should probably… we have a couple more items.
+Riccardo Magliocchetti 44:48 Yep.
+Aaron Abbott 44:50 Okay.
+Awesome. Thank you all for the discussion.
+Riccardo Magliocchetti 44:57 Thank you. Bye.
+I think, Surya, you… It was, like, this one you mentioned before, right?
+Surya Teja 45:07 Yeah, yeah, I… unfortunately, I thought I would… I will drop early, and I mentioned… mentioned it, cutting you, sorry for that. But, this is pretty much the same, boilerplate that we added for, Vertex API.
+Vertex, as well as for Anthropic. So, this is seamlessly copied from Aaron's PR.
+So…
+Riccardo Magliocchetti 45:38 Okay, thank you.
+Okay, Josh, this one was the one you mentioned before, right?
+Josh Winerman 45:55 Yeah, this is the other issue I was taking a look at and was interested in working on. Seems like a big want from the community, but I could be wrong.
+Riccardo Magliocchetti 46:06 I don't know, like, I remember there were a time where,
+I think there were some interns or students opened, yeah.
+some UGPRs doing, implementing this, and also Loguru.
+But, yeah.
+Yeah, probably, like, as I said before, we…
+We are working on moving the…
+the standard library login handler out of the SDK.
+And we're… Like, it's not…
+clear to me. Like, we still have some issues… issues open, and so I think it would be nice to… like, I'll share,
+In the notes… The, the issue we have about the current logging handle,
+Like, make it work also for, other… Login Library System Manage.
+Josh Winerman 47:06 Okay, yeah, sounds good. Thank you.
+Riccardo Magliocchetti 47:08 Thank you.
+Marcel, I think you mentioned this before?
+Right?
+Marcelo Trylesinski 47:19 Yes, yes, all good.
+Riccardo Magliocchetti 47:21 Okay?
+Marcelo Trylesinski 47:22 I mean, I just got a bit sad that this was added.
+Because the chance that you have when it's a new instrumentation, like, it's a big chance that you have that you don't need to add this. So, I just find it a bit sad.
+This is excluding, PyRite, type checker on those, instrumentations and tests.
+And examples.
+And it was initially there to…
+Like, on some of them, which I tried to remove over time.
+And the idea was to not add new ones, it's just to keep…
+Like, the old ones there, till someone contributed.
+Riccardo Magliocchetti 48:06 Yep.
+like, probably we can now… is this something that, can be… Considered a good first issue.
+To make the tech checker work in tests, or examples?
+Like, is it a good idea to…
+Marcelo Trylesinski 48:26 I mean…
+Riccardo Magliocchetti 48:27 Oh, dear.
+Marcelo Trylesinski 48:28 There are opinions. People have opinions. I usually like to have it.
+Riccardo Magliocchetti 48:35 Yeah, like… But do you think that some, like,
+New developers to the codebase can improve on this, or it is required, but,
+Like, some experience, or seniority, or whatever.
+Marcelo Trylesinski 48:51 No, I think, I think you can add a good first issue, yeah?
+Riccardo Magliocchetti 48:56 Okay.
+So, like, we can try with that, yeah.
+Aaron Abbott 49:02 Well, I agree we shouldn't be growing the exclude list, like…
+It would be great. I think there's a lot of friction for especially tests, if you need to import stuff, and those files are in the exclusions already, so it's kind of like a chicken and egg problem, but it would be really nice if, like, literally any new code would just never increase the exclude list.
+Marcelo Trylesinski 49:23 We have, we have a configuration set there that, it doesn't care if a module is not typed.
+Aaron Abbott 49:32 Right, yeah, yeah. I think the problem is that there's some subdirectories in… inside of, like, OpenTelemetry SDK, for example.
+But yeah, we can try it.
+Riccardo Magliocchetti 49:50 Sorry, sorry.
+And Ben, let's stop with Original.
+Ridhima Satam 50:00 Yes, so this is actually a semantic convention, PR, and I was not sure if I can bring this up in this meeting, but that's why I moved it in the end.
+Yeah, so actually, this is just for spending mostly because of, Aaron, you had concerns about, how we can use the workflow in the ADK, and I think someone from ADK team also responded. If you go in the end, Cardo, there is one comment of…
+Specific from Aaron.
+Yeah, this one.
+So I think I understand what the issue is here, like, there are workflow…
+agents, sequential, parallel loops, say, in the ADK.
+And they must be creating invocation because they are modeled as agents, so… when it comes to Asian…
+I just want to say, like.
+would it be internally? And I've asked the question to the other ADK person also, like, who responded, but when it's calling an LLM, then might we can think about as most of an agent, but if it's, like, giving just a structure to the flow.
+we can also… I mean, we should be more inclined to make it as a workflow. But if we, just in case of ADK, if we cannot use workflow for all these workflow agents, I would say, in general, workflow would still have some,
+its own, advantages on some other agentic work frameworks we saw, like.
+the Langchain and, Creo AI.
+And maybe some of the agents which say, is there any applications where they don't… they are not using an agentic framework? Like, if there are just agents involved and it has to have some kind of a structure inside, we want to put it in. Like, we can always, like, manually do workflow start or end. So that's the basic idea behind it, so just want to put…
+Terr.
+Aaron Abbott 52:06 Yeah, I can… I can take a look at the comment. Was there, like, a… any specific issue for, like, instrumentation, or, like, on the Python side?
+Or was it just regarding, kind of, the conventions and ADK?
+Ridhima Satam 52:21 Yeah, it was just conventions regarding, not the instrumentation.
+But yeah, I just thought, like, you'll be here, so I just wanted to talk to you.
+Aaron Abbott 52:29 Yeah, I can reply, but I think… Yeah.
+I don't know if I have any new thoughts since last time we chatted about it, or anybody else here does.
+Ridhima Satam 52:48 Yeah, I mean, we can bring this up again in the SIG Tuesday, and then we can discuss again on this and see how it goes.
+Aaron Abbott 52:57 Okay, yeah, I can reply.
+Riccardo Magliocchetti 53:05 Thank you.
+Okay, Aaron, you added… oh, based upon it, okay.
+Aaron Abbott 53:12 Yeah, so I don't have strong opinions on the project overall, but they have this feature called Baseline. Just since Marcella was asking about the type checking, I wanted to bring this up, so…
+The idea is instead of littering, like, type ignores everywhere in your code for, when you're trying to adopt
+Type checking in new files.
+you can generate this baseline file, and it goes into it like a JSON,
+And in theory, it should work pretty well, like, when…
+You do updates or whatever, stuff like that, so…
+I was gonna ask if anybody's used this, what do you think? Because I would love to see…
+Like, all new code have type coverage, and it's kind of difficult to achieve right now with the exclude list.
+Yeah, so…
+Marcelo Trylesinski 54:02 I mean, I use… I use page by right on… on my ID.
+Great.
+I've never used this feature, though. It must pollute a lot of stuff in the first time you run, right?
+But besides that, Or does it do on an external file?
+Aaron Abbott 54:22 Yeah, yeah, that's the point, so it goes in an external file.
+Marcelo Trylesinski 54:25 Nice, yep.
+Seems good to me, like, I usually use this strategy for…
+when I'm starting, working on a new project and I need test coverage, so, I guess the same idea applies.
+Aaron Abbott 54:43 I think it's a good idea.
+Okay, have you… do you have any experience with using base pyrite in, like, a… repo CI setting.
+Marcelo Trylesinski 54:52 I have… I have, experience with doing the same idea, but not with base by right.
+Aaron Abbott 54:58 Yeah.
+Yeah, I think we had a…
+Marcelo Trylesinski 55:02 Sorry?
+Aaron Abbott 55:03 Yeah, I was gonna say, I think we had a PR to add type ignores everywhere at one point, and it was…
+enormous, and it doesn't… it's not super helpful, my experience.
+Marcelo Trylesinski 55:14 But why? Why do you have that pull request to add that many type ignores? Like, the list excludes…
+Aaron Abbott 55:21 Is that big?
+It was before that, it was before we.
+Marcelo Trylesinski 55:25 Yes, yes, okay.
+Oh, because you don't have every project on include right now, right?
+Aaron Abbott 55:32 Correct, yeah.
+Marcelo Trylesinski 55:33 Okay, I understand.
+Aaron Abbott 55:37 Okay, well, yeah, sorry, maybe I'll just play around with this and try it out, and see how it is.
+Marcelo Trylesinski 55:42 We can also talk offline. Sorry, off-call.
+Aaron Abbott 55:48 Okay.
+Alright, that's all I had.
+Riccardo Magliocchetti 56:01 Thank you.
+What's the last topic?
+Any… Wonderlasting your topic?
+comment?
+Okay, Ben, thanks, everyone.
+See you.
+Bob, thank you.
+Marcelo Trylesinski 56:23 Honestly, bye.

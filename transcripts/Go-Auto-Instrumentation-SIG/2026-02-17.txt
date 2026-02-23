@@ -1,0 +1,271 @@
+SIG: Go Auto-Instrumentation SIG
+Date: 2026-02-17
+Duration: 30 minutes
+============================================================
+
+Tyler 01:00 Hey, Mike.
+Mike Dame 01:02 Hey, Todd, how's it going?
+Tyler 01:03 Going well, how are you?
+Mike Dame 01:06 Good.
+Tyler 01:09 How's the, the weather over there in New York?
+Mike Dame 01:13 It's alright for now. I think we got some stuff that's gonna be moving through this week, so…
+We'll see.
+Tyler 01:22 Is it bitter cold as it was?
+Mike Dame 01:25 Not as bad, no. It actually, got a little nice. It was up to, I think, in the 30s the other day. I walked outside, we were clearing some snow, and I was like, it actually feels kind of warm out. Yeah. It's like 28 degrees.
+But… Better than it was, so… take it.
+Tyler 01:42 To break out the tropical t-shirt, right?
+Mike Dame 01:44 Yeah, yeah, it was kind of like, bundled up a little much. It's kind of nice sitting out here.
+Tyler 01:51 Yeah, especially if you get, like, sun, in those situations, it can.
+Mike Dame 01:54 Oh, yeah.
+Tyler 01:55 Make a difference, yeah.
+Mike Dame 01:56 I went for a walk the other day, and the sun on my back was like, oh, this actually feels really nice.
+Tyler 02:02 Yeah, it makes a big difference. It's just like, yeah, this time of year where it starts to get a little longer days, it's, like, super nice. It's, like, right in the middle of, like, January, where you're just like, oh, dude, this is just brutal, yeah.
+Mike Dame 02:13 Jim.
+Tyler 02:16 Yeah, Nikola knows even more, it's, like, even less sun up there.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 02:19 Yeah, well, it's sunny all right now.
+Tyler 02:22 Yeah, yeah.
+Well, actually, Mike, how far…
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 02:25 far.
+Tyler 02:26 How far north are you in, New York?
+Mike Dame 02:30 I'm right around Albany, I'm a little bit north of Albany, so…
+Tyler 02:33 Okay, yeah.
+Mike Dame 02:33 I mean, latitude-wise, I think that's kind of right in line with Toronto.
+Yeah. Yeah.
+Tyler 02:40 That's actually pretty close, yeah.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 02:41 across the lake.
+Mike Dame 02:43 Yeah, just across the lake there.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 02:45 Yeah.
+Mike Dame 02:46 Oh yeah, you're a little bit more north, right?
+Yeah, I was up in Montreal a couple… Tremblant a couple weeks ago, just north of Montreal, and that was cold and dark.
+Tyler 03:01 Yeah, I've only ever been to Montreal in the summer, and it's beautiful, but you get that sense from the people that are there that it's like, boy, it's it's rough in the winter around here, yeah.
+Mike Dame 03:11 It was… yeah, I couldn't believe it. The, we're taking taxis up through, like, the ski mountains with, and those… on the snow tires, they were just whipping through this, like… it was a snowstorm that weekend. I was scared driving up the mountain.
+they were just taking it like it was nothing. They were rally racing of the thing, yeah. It really felt like it, you know, just…
+Wild. But, they're used to it.
+Tyler 03:36 Yeah, alright, I guess that's… yeah, that's a big difference. Just get used to it.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 03:41 Yeah, no, I think that's really cool in Montreal. It's always at least, like… 6, 7 degrees.
+Their winters are longer as well.
+But I enjoy Montreal more, I like the city better. It's a lot more going on, and…
+I don't know.
+Tyler 04:01 Yeah, it's a really cool city. I really like it as well. It also feels like you've traveled to Europe, like, almost immediately.
+Yeah.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 04:12 I don't know, people are less uptight than in Toronto. I think over here, it's like… Yeah.
+Mike Dame 04:21 Man.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 04:22 Hmm.
+People are more reserved.
+like your records, so I just, like…
+Tyler 04:29 Yeah, I gotcha. Yeah, I… I don't know, I, like…
+I feel like if you don't speak French, though, there's always that, like… Oh, you do? Oh, so then, yeah, you probably don't see it. On my side, I'm always, like, getting, like, the look of, like, alright, yeah, fine.
+Yeah.
+Yeah, I'm jealous, I wish I spoke better French, but yeah.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 04:51 My main issue is that I… when I learned French, I learned… French, French.
+Mike Dame 04:58 differentiate.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 04:58 It's like, I get by, but it's kind of hard. Like, the further you go up Quebec, the
+kind of understand for me the accent, and it's just like, Montreal's okay. Now, Montreal is like…
+Also, a lot of… French-French now are immigrating to Montreal, like, more work, whatever. Yeah, yeah.
+Tyler 05:20 That's interesting.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 05:20 They have their own neighborhood as well.
+This is the last 5 years, and they don't mix with the Quebecois, it's so funny.
+Tyler 05:28 That is really funny, huh?
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 05:30 When you walk in this neighborhood in the middle of Montreal, you hear Parisian French all over the place.
+I mean, leave it to the French. They just love, you know.
+Tyler 05:40 Yeah. Oh, this is us, this is them, yeah. This is us.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 05:43 Yeah, exactly.
+Tyler 05:44 Yeah.
+Well, cool.
+I don't see any agenda items, so I guess I don't need to share my screen, but maybe we can just, jump in. Mike, I didn't know if you want to talk through… we had talked previously about, like, you know, OB, or sorry, auto insertification and OB and, like, that whole…
+integration, I didn't know if you want to talk more about that here?
+Mike Dame 06:09 Yeah, I guess we can talk about it a little here. I just pinged Ron to see if he was planning to join, too, because I'm sure that he has some feedback. But…
+Yeah, kind of like the three of us were talking about in the OBCIG, I think it's, pretty clear that we need a clear, or a better story of
+what is GoAuto doing? What is Obi doing? I kind of put forward this
+the way that I see it, at least, and kind of the way I've always seen it, is that Go Auto is, like, a library for developers, or, like, people that are building things like Obi, to, build off of at the… the, like.
+the library level, rather than, wrapping the… kind of call Obi the orchestrator level. So that's why I think Odegos was built off of
+that. That's kind of what we, I think, had in mind when we were, you know, donating that. Maybe not, maybe other people kind of saw that as, like, enough of a tool on its own, but…
+I've just never seen it that way, so,
+the way that I think, moving forward, trying to… I would like to solidify that as the distinction, and whether that does remain as GoAuto as its own repo and its own distinct project, or it just becomes, like, the OB API, like, the OB library that
+other people can use, to, tie into OB at different levels of abstraction.
+that's… that's kind of the overall goal. It's not about GoAuto itself, it's more about what it's providing, which is that… that layer. So…
+Yeah, I think what we were kind of looking at, and I talked about this in the Obi-Sig to the other people, is that I'm kind of seeing, like, where in Obi I could tie into from, like, Odigos as just…
+the example use case. And then I think, Nicola, you were going to be looking at the Go Auto case, kind of, you know, meeting in the middle, both of us, of what
+what OB would need from Go Auto, so I guess that's what we could talk about here, is what… what kind of changes should we see in Go Auto to make it
+pull better into… to Obi.
+What are you looking at there?
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 08:32 Yeah, for me, it's like this interface to add, to build on top.
+different extensions to the main product is important.
+of that capability in OB, one way or another, that way you can build additional tracers.
+Our probes are top.
+we can… That's sort of… I see that as a main thing, Obviously.
+Combining the code bases or not combining the web.
+Reusing this stuff, rather.
+duplicate.
+parts for the… offsets, and parsing out files, and extracting symbols, and all these things.
+that are… Direct probes, disassembly, that kind of stuff.
+That all should be calm and done.
+But yeah, we discussed it, I, I… Think of currently, like, Obi's not meant.
+I mean, it does have the interfaces, but it's not…
+Some of the stuff belongs to internal and whatnot, too.
+To be able to kind of easily…
+You plug any stuff from it, and it's not part of the OV source.
+Who want to bring that functionality over.
+Makes sense to kind of combine with the GO audit and everything.
+Mike Dame 09:58 Yeah.
+Tyler 09:59 So, I guess I wanted to ask the question, though, is, like, yeah, is it, is it…
+Like, it seems like Obi has a lot of development effort going on in it right now. And is it more a good approach to try to take, like, what Obi is
+already providing, and try to open it up, into, like, maybe even refactoring the architecture there to allow different entry points into its codebase, and essentially
+Try to, instead of doing the refactor here in the autocode, where we were originally trying to rewrite this, like, probe interface, but essentially try to do this bifurcation of, like,
+Architectural design in Obi itself.
+and trying to focus on… on that architecture there, to recreate this and, like, to provide that functionality, is that a… is that, like… it seems like…
+unifying on that is gonna yield more from the developer community and being able to, like, modify and plug in, from, like, that product, like, but is that gonna, like, be a good idea? Is that something we want to go towards?
+Mike Dame 11:04 I mean, that's… that's kind of what I'm doing for my side of the homework, is I'm, you know, I'm coming from the
+the Otogos and the Go Auto side, and seeing what should change, in OB. It's those three factors, and that's exactly what you're talking about. You know, they're not the, like… it's not the sexy feature development, but it's at least the part of it that I… and…
+really passionate about exposing, so I think if people are open to that, then yeah, that's what I'm working on, is looking at it that way. And I think it's good to have, you know, since Nikola is so familiar with OB and what it has, he can
+look at and go auto, what does it have there that, would be nice to unify on, or bring into OB, or bring into… like, we're finding the gaps from both directions, I think is a good approach to split it up.
+So then the idea of, you know, when we figure out where the gaps are on each side, then we, I think, decide, okay, do these gaps all get addressed in OBI? Some will be addressed along the way in OBI, some will probably be addressed along the way in GoAuto.
+I don't think that we have, like, the full picture yet, until we can get
+Yeah, that steel threat, that working connection from one side or another.
+But I could totally see…
+I think the… the question of, you know, the point of stability, like, what…
+We talked about it in the OV SIG.
+what does that mean for this project, too? I think that, like… like you said, the development work is in OB. We should keep trying to push OB to
+stable, and let that alone be a signal to users that when we get Obi to stable, that will be a much clearer signal to users between which one to use, just on its own, kind of inherently.
+not the only one that we're gonna go for, but that's the reason that I think that going to that stability is good.
+And… whether that stability includes something like GoAuto in the first release or not.
+is… I don't think it needs to. So, I think that what Go Auto does and provides can take a backseat to pushing the work to make sure that OB is stable.
+as long as that stable release for OB doesn't duplicate or conflict with what GoAuto does. So if Obi has the tool, and as the set of instrumentations and everything goes to stable first, then that's great, and that answers a lot of questions that people have. And then
+this work, we can kind of work on this leisurely in our background as refactors, as long as it doesn't touch, you know, public functions and APIs and stuff that were marked as V1, because we might want to change those.
+So yeah, I think that… It's… we're kind of…
+figuring out… figuring it out from both ends, but I… I do… like, I agree with you that the work is in OB, and that's the big project that we want to promote.
+And so I don't… I don't want this to slow down the progress there. We don't want to stall out and have two things that aren't stable.
+So… That's just what I would say is… if…
+And I don't think that any of this, like, framework stuff is planned to be exposed in OBV1 either, so…
+I don't think that there's really any conflict to worry about.
+Do you… do you think that that all kind of makes sense, is keep the work going in Obi?
+Take this as refactors, but also as, you know.
+Nicola doing the research for Go Auto.
+I think the writing is kind of on the wall, then, that Go Auto probably won't gonna… won't live on its own for much past OBV1.
+But… what it provides could be part of Obi, or, you know.
+However we see that to be fit, so…
+Tyler 15:12 Yeah, I think I'd rather focus on that.
+Mike Dame 15:14 Yeah.
+Tyler 15:15 like, what feature sets, like, do you need from the Go Auto stuff, I guess is more what I would focus on, and seeing, like, if that's possible to put in Obi?
+Cause, like, I get… I get that, like.
+I think that we already did research on, like, what is missing in Obi and is in Go Auto, and I think it has a lot to do with the integration with the OTEL SDK for Go, right? Like, I think that was, like, the main thing that was missing.
+there's, like, there's structural differences in architectural layout, and, like, how the single orchestrator and, like, the non-parallel, like, orchestration stuff is, like, intertwined there. But I think that it's, like, more… I'd rather focus on…
+like, the extensibility of Obi as… as a… as a…
+community direction, I guess. Because, yeah, like, I think…
+like you're saying, like, if you can make, the feature sets that you want out of Go Auto exist in Obi, then I think that that's a way to move the whole thing forward, right? Like, if there's extension points in Obi that somebody could tie into
+and add their own custom probes, like, I think that's something we want, on top of, like, just not from a vendor perspective, but from, like, a third-party perspective.
+And then if you wanted to, I think, motivate also, like, if you wanted to add in your own orchestration on top of some sort of, like, probe eBPF layer.
+I think that that's really the only thing that's missing in the abstraction part of Obi, right?
+And I think that, like, if we wanted to motivate that, I think That makes sense.
+we would just need motivation there, though, right? Because, like, you need somebody to come in and say, like, this Obie's great, but I don't want this orchestration system here, I want it to be structured in a different way.
+Mike Dame 16:59 Yeah, so I think that that's kind of… I mean, right now, it's… it's just Odagos, really me, so I… I do get that that's kind of my responsibility, and I haven't been pushing that as much as I could, but I definitely see, you know, hearing people talk about it, it, like.
+It's been kind of a, a wake-up, or not a wake-up, but, like.
+it's clear now that if this is something that I care about, and I want to push for, that I need to do the heavy lifting on that.
+And that's… that's totally fine with me. I've been kind of trying to get some of us on board with that. It sounds like everyone at OBE, or, like, all of the other maintainers, you know, no one really has any objection to
+reworking it and making it more of a framework, too, so… and I… why would they, right? It's… that… that grows the… the user base, get more customers and users running it, more feedback.
+That's open source. So, yeah, I, I think,
+I really want to… what I'm trying to do right now, in my kind of spare time, is dropping Obi into Odogos, trying to find things that
+would be really good for, like, how does that extension point plug in? The main thing is, like you said, the probes, being able to pass, you know, a custom instrument, like.
+Custom instrumentation, but also at runtime.
+you know, basically we have our whole control plane, our CRDs defined, I want to do this app, I want to do this app. How does that get passed during runtime and updated dynamically at track, you know, we're running these apps, it's all done through, like, an operator.
+So that's where the, like, code-wise integration comes in, is…
+with GoAuto, we call, like, new instrumentation, pass it a bunch of config options, say, you know, use these probes. Something… stuff that's similar to that gives us the entry point into Obi. And then there's a lot of benefits out of Obi, like, I was talking to Nicola about, like, trying to pull in network traces, the shared maps, the optimizations, like…
+So, some of what Obi's doing, like, as I try to add this, kind of lends to improvements that I could do, too.
+So, yeah, I am… I'm doing the, the homework to figure out what it is that Obi would need. I think it really… I think we kind of all understand it, though. It's… it's custom probes,
+Like, dynamic, like, runtime configuration.
+changing things without having to stop and reload the entire OV config.
+single process, multiprocess, I don't actually… like, looking into it, I don't think that's as much of an issue. I think it would be great if we could… I think that single process is just the base case to multiprocess. If your thing supports
+Single, then you can add a list, share maps, that's… that's great.
+And yeah, kind of… then, like, the new instrumentation calls, where it all ties in, like, whether that's… I think in OB, it's, like, instrumenter.run, but if there's… it looked like there's a lot of nested stuff within Instrumenter.run that could be refactored, too, because we kind of set up the net OLLI, the app OLLI,
+Breaking those into options, and they can be a bunch of if statements and stuff, too, but…
+how much do we want to refactor, is kind of what I'm looking into. So, I think that…
+I really think that it's really doable. I think that there might be stuff that we take from GoAuto, and that's why I'm glad that Nicola's doing the research to see what's… because you know about Obi a lot better than I do. I know about Go Auto a lot better than I know about Obi, so we're kind of trying to meet in the middle.
+And then kind of decide… yeah, I think it'll be a broader discussion of what the future of the Go Auto project is, but…
+it's… it's gotta have… it's kind of confusing for people to have. If it could be its own repo and framework, and maybe someday it breaks out of Obi into its own thing again, if we do that, so…
+I know, stuff is always changing, and there's always room for refactors and splitting offs.
+But I think that we have…
+Yeah, me and Nicola, like, talking about it, I think have a good idea of what We need to…
+really research and try out. Not just, like, hypothetical design docs and stuff, like.
+I'm writing code, and trying to run this and build it, and…
+pass our tests with… with Obi dropped in, so… That's my plan right now.
+Tyler 21:36 Yeah, I really think…
+From, like, the… like, the broader OpenTelemetry, like, perspective, though, like, it's… it's important to… to get this to move forward, for those reasons you're kind of talking about, because it's… I see it the same way that we talked about, like, the EPF, networking metrics.
+And it's like…
+you know, you get the question from users all the time, like, well, which one do I use? You know, and like, do they work together? So if I wanted this, can I get that? It's like, I'd rather just have that story be, like, you should just use Obi, because all the feature sets that are there. And I like the idea of saying, like, well, like, just use this one repo, and, like, we'll just… you can build the extensions from it, you can do whatever you want from there.
+I see there's a lot of, like.
+Yeah, I think from the user's, like, confusion perspective, I think that comes a lot… I mean, there's even the confusing… confusion around, like,
+you know, I want…
+system metrics as well. Do I use OB, do I use the collector, right? And I think that, like.
+the thing is, is, like, whether there's an answer or not, like, that's gonna be the problem. It's not necessarily what the answer is, it's just, like, if we have an answer for users in those situations, I think is kind of, like, the key thing. And it's a lot less confusing when you say to somebody, like.
+just… just do this, right? Like, just, like, I think there's a lot of answers that we can… we can come and streamline this process, and I think from, like,
+an adoption perspective of open telemetry, like, that's gonna be really critical in its success. So, yeah.
+Mike Dame 23:03 Yeah, I mean, I agree, and…
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 23:05 I think especially with adding this bill, this is what encouraged me quite a bit, the addition of the…
+collector-receiver.
+Then these questions get, kind of, easily get… result.
+Tyler 23:18 Agree, yeah.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 23:19 Because that was, like, a huge win.
+And, because right recently there was, like, some issues people opened and said, oh, I want to add this redactor on top of your SQL statements and all that. No, no, that's part of the collector.
+You want to deploy one executable, then build it with Collector.
+Provide a pipeline to clean that up in the extension from the collector, rather than…
+us adding features to OB and whatnot, right?
+Same with the process metrics. We had them in Bela, but it's…
+Like, there's no reason why they should be in Bela, they should be part of the…
+I mean, Collector has owned
+what happens, node exporter, receivers, and all those things. I forget what they're called, but you can extract the same information, right? So why are we duplicating this?
+Tyler 24:10 Yeah, I think if that's, like.
+that's probably something we should talk about tomorrow as well, is, like, the more I was working at that vector-receiver… sorry, it's a little bit of a tangent.
+It's just, like, the more I'm thinking, like,
+I was asked if I want to be a collector component owner in the process of trying to dig this all out, and
+I'm hesitant, but I think it's, like, needed. Like, I think it, like, it just needs to get, like, to the point where, like, yeah, we do provide that in the collector… not core, but, like, the contribib, right, or something like that.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 24:39 Which is where OB will be packaged, so…
+Tyler 24:41 Yeah, so it's like, I think that once you start seeing, like, these full integration stories, it's a lot easier to see, like, the larger system.
+And then it comes back to, like, the thing we were talking about, where it's just like, well, okay, that's great, but, like, I want to provide my own custom probes or something like that, and, like, still having solutions for extensibility sounds great.
+It's just that I don't want to, like, say, like, well, okay, if you want a custom probe, then you have to go use GoAuto, or something like that, right? Like, yeah, that's not…
+Not gonna be a great story there, yeah.
+Mike Dame 25:11 Yeah, and so I think… well, I think that the extensibility in OB doesn't need to block V1 of OB. OB can…
+be marked stable with, you know, the collector-receiver and a package of default instrumentations, and we can take our time to
+make that extensibility, that SDK and everything stable following up to that. Once we… like, the key right now is that, like, market share, that market awareness, the user awareness, or else
+if both of these stall out for, like, a year, then it's gonna fizzle. We want to get this across the finish line, and that can just be…
+the tool, the thing that people use, install this, add the collector component, whatever. It's got a bunch of good instrumentations out of the box.
+as long as that OB stability doesn't step on the toes of what Go Auto does, that we can leave that door open to ourselves to then, in OB 1.5 or something, we say, now there's a framework that, you know, you're probably never going to use.
+So it's in Obi, you don't need to know about it. But now you can have custom probes, now you can build this this way, so things like that.
+So the Go Auto… I don't think that GoAuto stability needs to block OB stability, because…
+that was kind of the idea that I think we had, or that I was really pushing for for a long time, was like, well, I want to have this framework be stable, and that's what Obi's going to be built off of, and then that's what people can use, you know, either one that kind of slows things down, makes the story confusing, like you're saying. I think let's push
+or Obi to get to end-user stability.
+As a tool, as an off-the-shelf, download it, configure it, run it, but it,
+And then we can take the time to say, alright, we're gonna make it extendable. I don't think it needs to be extendable in V1.
+Tyler 27:08 Yeah, and I'm… just to be clear, like.
+much more open to, like, a V2 of Obi.
+in the, you know, in the future of, like, we want to, like, do some major refactors than I am of, like, say, like, the Go API, right? Like, that's just…
+Mike Dame 27:22 Yeah, that's not…
+Tyler 27:22 is a non-starter. The other is, like, like, sure, why not? Like, yeah.
+Mike Dame 27:27 That is a good point, yeah. So, yeah, it could even be in that case.
+But I'm saying that we don't need to…
+this, like, this whole framework and SDK idea is not…
+it's not the main attraction to Obi, so I don't need to hold things up for it. It's something I want to do and, you know, kind of unify alongside, but…
+Obi can go ahead. We can… we can do this. We need people to start using it and get some more of that feedback. Maybe that'll help us find more use cases for this stuff if it's out there and people are actually using it, so…
+Tyler 28:01 Yeah.
+Mike Dame 28:02 Not… not paid off more than we… we can do all at once.
+Tyler 28:09 So,
+Can I ask the question about this meeting, then? Do we need to unify this meeting with the OB meeting, and just keep development efforts there moving forward? Because, like, that seems like the main purpose of this SIG, or… yeah, I guess it's still a SIG, yeah.
+Mike Dame 28:25 Yeah, I would vote for that. It's kind of just annoying to have two meetings right now anyway. I have to block off all this time twice a week. Yeah, and I have to, like, pretend I'm talking about another person when I'm talking about myself in the other meeting. Like, it's… we're working on the same project,
+That's… and it's so weird to…
+Yeah, this… I think we could consider GoAuto even, like, a sub-project of OB SIG at this point. It's, like, the same people, it's the same effort.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 28:57 Continuards, yeah.
+Mike Dame 28:59 Yeah, even if it was going to be, like, its own…
+SDK framework thing. If the plan is for Obi to use it, then, like, I would call that a sub-project of the SIG.
+Tyler 29:09 Yeah, that's… yeah, makes sense to me.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 29:12 Right?
+Mike Dame 29:12 Yeah, I would…
+to drop this, but I don't know if there's more… if you want to put it out on Slack or something.
+Tyler 29:21 Yeah, probably a good idea to select, yeah.
+Okay, yeah, I'll do that.
+Thank people.
+Well, cool, yeah, alright, that sounds good.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 29:42 Alright.
+Mike Dame 29:44 Well, get a… I get my lunchtime meeting back, me and Nicola.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 29:50 Yeah.
+Tyler 29:52 Yeah, I'm gonna go get a second cup of coffee.
+Cool, awesome. Well, I'll see you guys tomorrow, then. Yeah. Yeah, thanks, guys. See ya.
+Nikola Grcevski @ Grafana Beyla / OpenTelemetry 30:00 Bye.
