@@ -5,7 +5,7 @@ import csv
 import io
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime
 
 import requests
 
@@ -16,7 +16,7 @@ SHEET_CSV_URL = (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Meeting:
     sig_name: str
     sig_slug: str
@@ -31,15 +31,18 @@ _CANONICAL_SLUGS: dict[str, str] = {
     "OpenTelemetry-CC-SIG": "CC-SIG",
 }
 
+_SLUG_STRIP_RE = re.compile(r"[^\w\s-]")
+_SLUG_SPACE_RE = re.compile(r"\s+")
+
 
 def sanitize_sig_name(name: str) -> str:
     """Convert a SIG name into a filesystem-safe directory name."""
-    slug = re.sub(r"[^\w\s-]", "", name)
-    slug = re.sub(r"[\s]+", "-", slug.strip())
+    slug = _SLUG_STRIP_RE.sub("", name)
+    slug = _SLUG_SPACE_RE.sub("-", slug.strip())
     return _CANONICAL_SLUGS.get(slug, slug)
 
 
-def fetch_csv(url: str = SHEET_CSV_URL) -> list[dict]:
+def fetch_csv(url: str = SHEET_CSV_URL) -> list[dict[str, str]]:
     """Download the public CSV export and return rows as dicts."""
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
@@ -67,7 +70,7 @@ def _parse_date(value: str) -> datetime | None:
 
 
 def _parse_duration(value: str) -> int:
-    """Return duration in minutes from a string like '60' or '1:00:00'."""
+    """Return duration in minutes from a string like '60', '1:30' (H:MM), or '1:00:00' (H:MM:SS)."""
     value = value.strip()
     if not value:
         return 0
@@ -87,7 +90,7 @@ def _parse_duration(value: str) -> int:
 
 
 def filter_meetings(
-    rows: list[dict],
+    rows: list[dict[str, str]],
     since: datetime | None = None,
     until: datetime | None = None,
 ) -> list[Meeting]:
@@ -112,11 +115,8 @@ def filter_meetings(
 
     meetings: list[Meeting] = []
     for row in rows:
-        # Normalize keys (strip whitespace from header names)
-        row = {k.strip(): v.strip() for k, v in row.items() if k is not None}
-
-        # Detect column names flexibly (case-insensitive lookup)
-        row_lower = {k.lower(): v for k, v in row.items()}
+        # Normalize keys (strip whitespace, lowercase) for case-insensitive lookup
+        row_lower = {k.strip().lower(): v.strip() for k, v in row.items() if k is not None}
 
         sig_name = (
             row_lower.get("name")

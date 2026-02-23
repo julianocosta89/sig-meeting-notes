@@ -42,9 +42,8 @@ def _extract_speaker_and_text(li: Tag) -> tuple[str, str]:
             continue
 
         classes = child.get("class") or []
-        class_str = " ".join(classes)
 
-        if "speaker" in class_str.lower():
+        if any("speaker" in cls.lower() for cls in classes):
             speaker = child.get_text(separator=" ", strip=True)
         else:
             part = child.get_text(separator=" ", strip=True)
@@ -57,7 +56,7 @@ def _extract_speaker_and_text(li: Tag) -> tuple[str, str]:
     if not speaker and not text:
         full = li.get_text(separator="\n", strip=True)
         if "\n" in full:
-            lines = [l.strip() for l in full.split("\n") if l.strip()]
+            lines = [line.strip() for line in full.split("\n") if line.strip()]
             speaker = lines[0]
             text = " ".join(lines[1:])
         else:
