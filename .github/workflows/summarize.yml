@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: "summarize"
+  cancel-in-progress: true
+
 jobs:
   summarize:
     runs-on: ubuntu-latest
@@ -17,11 +21,12 @@ jobs:
       github.event.workflow_run.conclusion == 'success'
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v7
         with:
           version: "latest"
+          enable-cache: true
 
       - name: Install Python dependencies
         run: uv sync --frozen --group summarize
