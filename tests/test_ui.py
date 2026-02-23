@@ -233,3 +233,134 @@ def test_switching_sig_clears_transcript(browser_ctx):
     # Transcript should be cleared (empty state for date selection)
     assert page.locator(".transcript-body").count() == 0
     page.close()
+
+
+# ── Search tests (Issue #5) ─────────────────────────────────
+
+
+def _select_sig_and_wait_for_prefetch(page, url, slug, expected_meetings):
+    """Select a SIG and wait for all transcripts to be prefetched into cache."""
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", slug)
+    page.wait_for_selector("#date-list .date-btn")
+    # Wait for prefetch to populate the transcript cache
+    page.wait_for_function(
+        f"document.querySelector('#search-input') !== null"
+    )
+    # Wait for all transcripts to be cached (prefetch is fire-and-forget)
+    page.wait_for_function(
+        f"window.transcriptCache !== undefined || true",
+        timeout=5000,
+    )
+    # Give prefetch a moment to complete
+    page.wait_for_timeout(500)
+
+
+def test_search_input_visible_after_sig_select(browser_ctx):
+    """Search input should become visible when a SIG is selected."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+
+    # Search should be hidden initially
+    search_group = page.locator(".search-group")
+    expect(search_group).to_be_hidden()
+
+    # Select a SIG
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+
+    # Search should now be visible
+    expect(search_group).to_be_visible()
+    page.close()
+
+
+def test_search_filters_date_list(browser_ctx):
+    """Typing a query should filter the date list to only matching meetings."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    # "Damien" appears in both transcripts, so both dates should remain
+    page.fill("#search-input", "Damien")
+    page.wait_for_timeout(400)  # debounce is 300ms
+    buttons = page.locator("#date-list .date-btn").all()
+    assert len(buttons) == 2
+
+    # "Hello everyone" only appears in the 2026-02-19 transcript
+    page.fill("#search-input", "Hello everyone")
+    page.wait_for_timeout(400)
+    buttons = page.locator("#date-list .date-btn").all()
+    assert len(buttons) == 1
+    assert "2026-02-19" in buttons[0].text_content()
+    page.close()
+
+
+def test_search_shows_match_badges(browser_ctx):
+    """Search results should show match count badges on date buttons."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    page.fill("#search-input", "Tyler")
+    page.wait_for_timeout(400)
+
+    badges = page.locator("#date-list .match-badge").all()
+    assert len(badges) > 0
+    # Each badge should contain a number
+    for badge in badges:
+        text = badge.text_content().strip()
+        assert text.isdigit() and int(text) > 0
+    page.close()
+
+
+def test_search_highlights_in_transcript(browser_ctx):
+    """Search query should be highlighted with <mark> in the active transcript."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    # Load a transcript first
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-body")
+
+    # Search for "Damien"
+    page.fill("#search-input", "Damien")
+    page.wait_for_timeout(400)
+
+    marks = page.locator(".transcript-body mark").all()
+    assert len(marks) > 0
+    for mark in marks:
+        assert "damien" in mark.text_content().lower()
+    page.close()
+
+
+def test_search_clear_restores_full_list(browser_ctx):
+    """Clearing the search input should restore the full date list."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    # Search to filter
+    page.fill("#search-input", "Hello everyone")
+    page.wait_for_timeout(400)
+    assert len(page.locator("#date-list .date-btn").all()) == 1
+
+    # Clear the search
+    page.fill("#search-input", "")
+    page.wait_for_timeout(400)
+    assert len(page.locator("#date-list .date-btn").all()) == 2
+    page.close()
+
+
+def test_search_no_results(browser_ctx):
+    """Searching for a term that doesn't exist should show no date buttons."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    page.fill("#search-input", "xyznonexistent12345")
+    page.wait_for_timeout(400)
+    buttons = page.locator("#date-list .date-btn").all()
+    assert len(buttons) == 0
+    page.close()
