@@ -52,4 +52,10 @@ transcripts/
     YYYY-MM-DD.txt   # Header (SIG name, date, duration, URL) + transcript lines
 ```
 
-Slug is generated from the SIG name by stripping special characters and replacing spaces with hyphens.
+Slug is generated from the SIG name by stripping special characters and replacing spaces with hyphens. `_CANONICAL_SLUGS` in `sheet.py` then remaps certain slugs to a canonical form so that SIGs recorded under multiple names in the spreadsheet share one directory:
+
+| Raw slug | Canonical slug |
+|----------|---------------|
+| `OpenTelemetry-CC-SIG` | `CC-SIG` |
+
+To merge a new SIG, move its existing transcript files into the canonical directory and add an entry to `_CANONICAL_SLUGS`.
