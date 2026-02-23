@@ -584,6 +584,14 @@ def test_mobile_scroll_gradient_css(browser_ctx):
     expect(date_nav).to_be_visible()
 
     has_gradient = page.evaluate("""() => {
+        // The gradient is on .date-nav-wrapper::after in CSS
+        const wrapper = document.querySelector('.date-nav-wrapper');
+        if (wrapper) {
+            const after = window.getComputedStyle(wrapper, '::after');
+            if (after && after.backgroundImage
+                && after.backgroundImage !== 'none') return true;
+        }
+        // Fallback: check .date-nav itself
         const nav = document.querySelector('.date-nav');
         if (!nav) return false;
         const style = window.getComputedStyle(nav);
@@ -593,8 +601,6 @@ def test_mobile_scroll_gradient_css(browser_ctx):
         const after = window.getComputedStyle(nav, '::after');
         if (after && after.backgroundImage
             && after.backgroundImage !== 'none') return true;
-        const fade = nav.querySelector('.scroll-fade, .fade-hint');
-        if (fade) return true;
         return false;
     }""")
     if not has_gradient:
