@@ -405,6 +405,81 @@ mark {
   border-radius: 2px;
 }
 
+mark.current-match {
+  background: var(--accent);
+  color: var(--accent-fg);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* --- Search Match Navigation Bar --- */
+.search-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.375rem 0;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.search-nav[hidden] {
+  display: none;
+}
+
+.match-counter {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+}
+
+.search-nav-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.search-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 32px;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+
+.search-nav-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+}
+
+.search-nav-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.search-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* --- Date Navigation Wrapper (for mobile gradient) --- */
+.date-nav-wrapper {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-nav-wrapper[hidden] {
+  display: none;
+}
+
 /* --- States --- */
 .empty-state,
 .loading-state,
@@ -482,18 +557,36 @@ mark {
     max-height: none;
   }
 
-  /* Date list scrolls horizontally on mobile */
+  /* Date list scrolls horizontally on mobile with gradient fade hint */
+  .date-nav-wrapper {
+    position: relative;
+  }
+
+  .date-nav-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2.5rem;
+    background: linear-gradient(to right, transparent, var(--bg-secondary));
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .date-nav {
     overflow-y: visible;
     overflow-x: auto;
     padding: 0.5rem;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   .date-list {
     display: flex;
     gap: 0.375rem;
     flex-wrap: nowrap;
+    padding-right: 2rem;
   }
 
   .date-list li {
@@ -521,5 +614,14 @@ mark {
 
   .transcript-header dt:first-child {
     margin-top: 0;
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

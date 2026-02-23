@@ -12,7 +12,15 @@ const dateList = document.getElementById('date-list');
 const transcriptPanel = document.getElementById('transcript-panel');
 const searchInput = document.getElementById('search-input');
 const searchGroup = searchInput ? searchInput.closest('.search-group') : null;
-const dateNav = document.querySelector('.date-nav');
+const dateNavWrapper = document.querySelector('.date-nav-wrapper');
+const searchNav = document.querySelector('.search-nav');
+const matchCounter = document.querySelector('.match-counter');
+const prevMatchBtn = document.getElementById('prev-match-btn');
+const nextMatchBtn = document.getElementById('next-match-btn');
+
+// Match navigation state
+let currentMatchIndex = -1;
+let totalMatches = 0;
 
 // ── Initialization ──────────────────────────────────────────
 
@@ -75,14 +83,16 @@ async function onSIGChange(slug) {
 
   if (slug) {
     if (searchGroup) searchGroup.hidden = false;
-    if (dateNav) dateNav.hidden = false;
+    if (dateNavWrapper) dateNavWrapper.hidden = false;
+    if (searchNav) searchNav.hidden = true;
     renderDateList(getSigMeetings(slug), null);
     clearTranscript();
     updateURL(slug, null);
     prefetchTranscripts(slug);
   } else {
     if (searchGroup) searchGroup.hidden = true;
-    if (dateNav) dateNav.hidden = true;
+    if (dateNavWrapper) dateNavWrapper.hidden = true;
+    if (searchNav) searchNav.hidden = true;
     dateList.innerHTML = '';
     showEmptyState();
     updateURL(null, null);
@@ -389,6 +399,8 @@ async function handleSearch(query) {
   if (!currentSig) return;
 
   if (!query.trim()) {
+    if (searchNav) searchNav.hidden = true;
+    resetMatchNav();
     renderDateList(getSigMeetings(currentSig), currentDate);
     if (currentDate) {
       try {
@@ -424,6 +436,9 @@ async function handleSearch(query) {
     for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
       btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
     }
+    updateMatchNav();
+  } else {
+    resetMatchNav();
   }
 }
 
@@ -502,9 +517,91 @@ function getCurrentQuery() {
   return searchInput.value.trim();
 }
 
+// ── Search match navigation (Issue #9 item 5) ──────────────
+
+function updateMatchNav() {
+  const marks = transcriptPanel.querySelectorAll('.transcript-body mark');
+  totalMatches = marks.length;
+  currentMatchIndex = totalMatches > 0 ? 0 : -1;
+
+  if (totalMatches > 0 && searchNav) {
+    searchNav.hidden = false;
+    updateMatchCounter();
+    highlightCurrentMatch();
+  } else if (searchNav) {
+    searchNav.hidden = true;
+  }
+  updateNavButtons();
+}
+
+function resetMatchNav() {
+  currentMatchIndex = -1;
+  totalMatches = 0;
+  if (searchNav) searchNav.hidden = true;
+  if (matchCounter) matchCounter.textContent = '0 / 0 matches';
+  updateNavButtons();
+}
+
+function updateMatchCounter() {
+  if (!matchCounter) return;
+  if (totalMatches === 0) {
+    matchCounter.textContent = '0 / 0 matches';
+  } else {
+    matchCounter.textContent = (currentMatchIndex + 1) + ' / ' + totalMatches + ' matches';
+  }
+}
+
+function updateNavButtons() {
+  if (prevMatchBtn) prevMatchBtn.disabled = totalMatches === 0;
+  if (nextMatchBtn) nextMatchBtn.disabled = totalMatches === 0;
+}
+
+function highlightCurrentMatch() {
+  const marks = transcriptPanel.querySelectorAll('.transcript-body mark');
+  for (const m of marks) m.classList.remove('current-match');
+
+  if (currentMatchIndex >= 0 && currentMatchIndex < marks.length) {
+    const current = marks[currentMatchIndex];
+    current.classList.add('current-match');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    current.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'center'
+    });
+  }
+}
+
+function jumpToNextMatch() {
+  if (totalMatches === 0) return;
+  currentMatchIndex = (currentMatchIndex + 1) % totalMatches;
+  updateMatchCounter();
+  highlightCurrentMatch();
+}
+
+function jumpToPrevMatch() {
+  if (totalMatches === 0) return;
+  currentMatchIndex = (currentMatchIndex - 1 + totalMatches) % totalMatches;
+  updateMatchCounter();
+  highlightCurrentMatch();
+}
+
 // ── Event wiring ────────────────────────────────────────────
 
 sigSelect.addEventListener('change', e => onSIGChange(e.target.value));
 searchInput.addEventListener('input', debounce(e => handleSearch(e.target.value), 300));
+
+if (prevMatchBtn) prevMatchBtn.addEventListener('click', jumpToPrevMatch);
+if (nextMatchBtn) nextMatchBtn.addEventListener('click', jumpToNextMatch);
+
+document.addEventListener('keydown', function (e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'g') {
+    e.preventDefault();
+    if (e.shiftKey) {
+      jumpToPrevMatch();
+    } else {
+      jumpToNextMatch();
+    }
+  }
+});
 
 document.addEventListener('DOMContentLoaded', init);
