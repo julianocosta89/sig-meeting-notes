@@ -1,0 +1,551 @@
+SIG: Java SIG
+Date: 2026-02-12
+Duration: 58 minutes
+============================================================
+
+Trask Stalnaker 00:46 Hey, folks.
+I'm convinced somebody messes with the fonts in our doc just to get on, just to aggravate Jason.
+Definitely not me.
+Jason Plumb 01:54 I'm starting to wonder that too, yeah.
+John Watson 01:58 I'm wondering if it's a bit of a, a Munchausen thing, where Jason's doing it himself to get, to get some sympathy.
+It's a Merchausen font by Proxy.
+Jason Plumb 02:13 What about these headings? Oh no.
+Gregor Zeitlinger 02:19 Hello!
+Trask Stalnaker 02:24 Alright, folks, we've got a big agenda.
+Jason Plumb 02:27 Wow.
+When's the release gonna go? Probably tomorrow, or over the weekend, or something?
+Trask Stalnaker 02:49 I started working on the release notes, so…
+Jason Plumb 02:52 Cool.
+Trask Stalnaker 02:53 Maybe today.
+Yeah, I don't think we're waiting on anything.
+It's worth double checking.
+Jason Plumb 03:05 Oh, how does that keep happening?
+Trask Stalnaker 03:18 Alright, we don't even have a milestone to find.
+So we're good.
+And then, yeah, I will try not to forget about contribib.
+Jason Plumb 03:47 Has our new contrib maintainer done a release yet?
+Trask Stalnaker 03:51 There we go.
+Jay DeLuca 03:54 Yeah, I'd be happy to learn.
+Trask Stalnaker 04:00 I will send you the info.
+It's all on the, in the releasing Page.
+But yeah, always good to make sure that, The releasing page actually works.
+Jason Plumb 04:21 And just to have, like, a new set of eyes on someone who hasn't necessarily gone through it, there's always, like, little corner cases of finding stuff.
+Jay DeLuca 04:29 Yep, sounds good.
+Trask Stalnaker 04:39 Alright, folks, desperately seeking topics.
+If you've noticed, the one thing that's, on my mind, has been, 3.0,
+For the Java Instrumentation repo.
+Thinking that that will happen sometime in the first half of the year.
+The database SEMCOM stability is coming along. I think we're getting close to having the…
+stable opt-in database SEMConv ready.
+I know Gregor is working on the RPC,
+Stable Asimcon, which we are, probably going to mark that RC, next week in semantic conventions. We just got through, kind of, the last
+Issue yesterday.
+One that I haven't really talked about in this Group.
+Which might be interesting for folks.
+To be aware of is… So, we're… we're… in OpenTelemetry as a whole, we're deprecating span events.
+And one of the… the main impact this is going to have on Java instrumentation is exceptions.
+Which are today recorded as band events.
+And so, what?
+this… What we're going to do here is we have a…
+new opt-in, it's a exception signal opt-in, basically, where you can opt-in to,
+Emit exceptions over logs, over the log signal, as opposed to span events.
+And I have… A draft, for what that would look like.
+We're working out, some issues in semantic conventions around what these exception events…
+look like? Like, do we want, like, and, we've kind of decided we do want an exception name, I mean, an event name on them. So, for example.
+The event name would be HTTP client request exception, HCP Server Request Exception.
+And we have proposals for severity. Since we have log severity, what to stamp.
+The proposal is on server, exceptions to stamp
+Those as errors, and on client exceptions to stamp those as warns.
+Since those… Can very often be, like, retried, or they bubble up and get captured somewhere else.
+To make it easier for people to filter, those.
+Yeah.
+Jason Plumb 08:21 Do we anticipate deprecating the two methods, or however many there are, on span?
+It's more of an API question.
+Trask Stalnaker 08:34 I… my assumption is that someday, we would.
+Jason Plumb 08:40 Okay.
+Trask Stalnaker 08:41 But I, like, kinda… defer to Jack.
+Jack Berg 08:46 Yeah, if the APIs get deprecated at the spec level.
+I imagine we'll deprecate them in our API. That doesn't mean we have any plans to get rid of them.
+Trask Stalnaker 08:57 Yeah, yeah.
+I… Totally.
+Jason Plumb 09:02 interviews.
+Trask Stalnaker 09:03 Not getting rid of them.
+Jason Plumb 09:05 Do we expect that… I mean, it's definitely more of a spec conversation, but do we expect that to kind of follow the same route that…
+Span Events took, where there's a configurable bridge.
+Trask Stalnaker 09:19 Sorry, I lost you.
+Jason Plumb 09:21 That's alright,
+So, when you, record… sorry, when you, when you add a span event to a span today.
+It's still a real… a real span event, which we're moving away from, but there was talk about making that configurable, and it would bridge to the Logs API.
+Trask Stalnaker 09:40 Hmm.
+Jason Plumb 09:41 To create an event, kind of automatically for users.
+Trask Stalnaker 09:45 So I think that's more around the other side, like, of emitting… when you emit logs.
+For… so with these, for example, as we start to migrate and emit logs instead of span events.
+There was a certain subset of users who still wanted those on spam events.
+Over Proto.
+And so, while we are… Planning at the spec level to deprecate span events in the API.
+We're not planning to deprecate it in the SDK.
+Jason Plumb 10:25 Okay, and the protos will still have it?
+Trask Stalnaker 10:28 Yeah.
+Jason Plumb 10:29 Interesting.
+Okay.
+John Watson 10:32 I mean, I can imagine there are going to be people who don't have, like, an integrated logging and tracing backend, and if they don't, which is probably, I would say, the majority of users don't have an integrated tracing and logging backend.
+Like, there would have no way to see their exceptions anymore, right? And that would be very bad.
+Trask Stalnaker 10:55 I'm not quite as… I'm not sure it's quite as dire as, as…
+That, I think, more and more observability backends are correlating logs, and
+traces, but I totally agree, that we did get a lot of pushback in the spec when we tried to deprecate span events.
+all up
+And so that's where we ended up with that compromise of keeping them in the SDK and the proto.
+Jason Plumb 11:26 We've had a few users on Android ask about it, because they noticed that it was deprecated, and they're like, what are we gonna do over here? And we're like, well, we're probably gonna switch to events at some point, and not use span events, but…
+I didn't… I didn't realize that we're keeping the protos the same, so…
+I mean, so much of OpenTelemetry starts and is focused around the protos. It's an interesting choice. I guess I should go read up on why we're deprecating the API.
+Trask Stalnaker 11:58 We don't want to have multi… yeah, the reason is…
+We want clear guidance to instrumentation on the one way to do things.
+The recommended way to do things, and so that's why
+we would deprecate… I mean, that's the only reason why, like, in the Java SDK, we deprecate anything, because it's not like we're ever going to remove it.
+But it's like a signal to users that there's a…
+better way, a more preferred way within the OpenTelemetry ecosystem to do it.
+Jason Plumb 12:35 And by it, in this case.
+It would be… the preferred way to get a span event into a span would be to use the event API on the logging provider, the logger.
+Trask Stalnaker 12:46 Yeah. And provided the context.
+Jack Berg 12:50 pleasant, but yeah.
+Trask Stalnaker 12:54 And you would enable your bridging.
+Jason Plumb 12:57 Got it.
+Trask Stalnaker 12:57 Somehow to get that stamped back onto spam events.
+At the proto-layer.
+Jason Plumb 13:04 Got it.
+Jack Berg 13:05 The bridging is, like, there's a contributive component for that.
+That I… that I contributed a while back that does exactly this. It checks
+For… it's a log record processor, which, whenever a log is emitted, it checks if there is a span in context, and if yes, records the log as an event on the span.
+The key questions that you have to ask is, like, what are the semantics for transforming a log record to a span event?
+But.
+Jason Plumb 13:35 Sure, and it also… it also assumes that emit is being called from the current sparing context.
+Jack Berg 13:43 From the current span context.
+Jason Plumb 13:47 Like, it assumes that the… it assumes… like, in the case of an exception, for example, it assumes that the exception wasn't caught and put into a queue somewhere to be processed later.
+Like, that would break this model.
+Jack Berg 14:01 If you… and process later, meaning the log API was called with that exception later.
+Jason Plumb 14:06 Yeah.
+Jack Berg 14:07 Yeah, but the… so the… when you emit a log record through the API, the context that's attached to it is the implicit context by default, and… but you can also explicitly add a context.
+And so if you're doing, like, a queue-type situation.
+Jason Plumb 14:21 Okay.
+Jack Berg 14:22 Like, you oughta keep the,
+Jason Plumb 14:24 Yeah, yeah.
+Jack Berg 14:24 the span context associated with that exception somehow, so that you can associate it later.
+Jason Plumb 14:30 I was just dreaming up a contract way of trying to break this model, but yeah.
+Trask Stalnaker 14:34 any different than a span event, though, because you have to have the span context to…
+Add the span event anyways.
+Jason Plumb 14:41 Yeah. Yeah, yeah.
+Trask Stalnaker 14:43 You have the log… you have the spanned context to stamp on the log record.
+Jason Plumb 14:48 Okay, cool.
+That helps my mental model, thank you.
+Jack Berg 15:02 So trust…
+Just because there's not… there's a light agenda. There's… this has probably been talked about, but, is… do you have a schedule in mind for 3.0?
+Trask Stalnaker 15:13 First half of this year.
+Jack Berg 15:16 First half of this year. And do you have a sort of cadence in mind?
+You know, going forward for major releases, or is it more like, you know.
+React to the current context of the ecosystem and make a decision.
+Trask Stalnaker 15:37 Yeah, no, I don't have… any,
+it seems like every… maybe every… I mean, if I had to throw out a number, I would… it feels like every other year feels like, sort of, the cadence we're going at today.
+I wouldn't want it to be more than once a year.
+Jack Berg 16:01 Yeah.
+I'm just asking because, in a number of conversations, I've noticed other groups around open telemetry struggling with this question of, like, breaking instrumentation, breaking changes to the telemetry by instrumentation, and I think Java, the agent has a good model for this, which is just, like.
+Sort of aggregate the breaking changes together into a major version release that comes every…
+however many months, whether that's, you know, 12 or a less regular cadence, but it's still, you know, the concept is still the same, that we're going to group them together. And, I've been kind of recommend… recommending that as, like, something that other groups can follow. Like, the collector, for example, has been struggling with this type of thing for its components.
+You know, it's reluctant to stabilize any of its components because, you know, they don't… they… I guess…
+they're fearful. There's some FUD around, around, like, hey, we won't be able to make changes to this config API for these components ever again, or the behavior of these, and you know, I'm using the Java agent as an example for, like, hey, you stabilize these things, but just bundle your breaking changes every 12 or 18 months or something like that.
+So…
+Yeah, just a comment. Java Agent is doing something I think is good.
+I don't know what the right release cadence is for major versions, but, you know, I think it is good to keep that in our back pocket for, like, a user expectation that there will be major version changes.
+Jack Shirazi 17:37 I got that this was kind of, surface from the packaging SIG.
+And… I think the packaging siege should just say…
+We… we have, we have exactly that, that… a target of… Once a year breaking change.
+release. Once a year, major release, or rather, yeah.
+Trask Stalnaker 18:04 If we had a packaging SIG.
+Jack Shirazi 18:09 Yeah, it's about to happen.
+Trask Stalnaker 18:12 Nice.
+Yeah, I like the part… I do like that part of the, stable by default proposal discussions, which was…
+To have, sort of, correlated releases cycle across all of OpenTelemetry.
+Where people could still do their own release cycle, but…
+Every so often, there's, like, a…
+coordinated release, kind of Kubernetes style.
+Jack Berg 18:47 Yeah, and… If there was a sort of coordinated release cadence that started to emerge, then…
+maybe the different components that were coordinating would sort of self-organize. And, you know.
+Java and the collector, let's say they did major version bumps on some cadence, maybe they could, would start thinking about that, that, that,
+that coordination and be like… and try to align and do something like, hey, if the coordinated release happens every November, we want to make sure that, you know, our major version releases in August or September, or something like that, a couple of months lead time.
+Jack Shirazi 19:31 I think we could go the, the Java JVM model of the train.
+Just schedule releases every quarter, or half year, or whatever, and just say, whatever's in there is in there.
+Trask Stalnaker 19:47 Oh, I forgot another, another big piece in 3.0 that I'm hoping
+We will be… will stabilize his declarative configuration.
+Jack Berg 20:02 Yeah, so… The… the schema should be…
+in the spec document should be ready to stabilize soon. I just saw that, alex?
+Bowen had, had the Go implementation updated to the latest release candidate, and that PR was merged just yesterday.
+And so that means we have 3 implementations at the latest release candidate, and another 2 implementations at, you know, the previous release candidate for C2, so…
+I think 5 total implementations are, you know, around the same area.
+And so I'm going to be opening the PR to stabilize the specs soon.
+I still… I think that the Java implementation
+is… there's, like, some questions that have to be answered that are kind of thorny, but I think the agent can…
+you know, the agent only depends on the SDK,
+treating the schema as stable. The agent doesn't depend on the create and parse functions, like where those APIs are located.
+For instance, on those being stable, because the agent obfuscates those from the end user.
+So, like, even if there's some thorny outstanding questions for the SDK in terms of where stuff lives and…
+what the API contracts are, I still think the agent can make the switch if it wants to.
+Gregor Zeitlinger 21:38 We all…
+Trask Stalnaker 21:39 Would you…
+Gregor Zeitlinger 21:40 Sorry.
+Trask Stalnaker 21:41 Go ahead, Craig.
+Gregor Zeitlinger 21:42 We also haven't discussed if we want to make declarative configuration the default for Java Agent 3.
+Whether that is default in our documentation, or whether it's in the setting, yeah, both questions.
+Trask Stalnaker 22:02 Implementation-wise, I mean, I think you still have to opt into it by providing the environment variable or system property.
+to point to your YAML file.
+Gregor Zeitlinger 22:18 You mean because we don't know what the path is, or because it's not stable?
+Trask Stalnaker 22:25 I think… I thought that's how at least the SDK was…
+Going to treat it, even post-stability.
+Is there's no default path.
+Gregor Zeitlinger 22:38 Okay.
+Jack Berg 22:40 Yeah, that hasn't been discussed, like, you know, what would a default even look like for the path? You know, we'd have to make some decision of what the contents of a default config file were. We could bundle it in in resources or something like that.
+so, you know, we could do something, but it's kind of a thorny question.
+Gregor Zeitlinger 23:03 to happen.
+Jason Plumb 23:07 I was gonna say, even the collector doesn't have a default path, right? Like, it doesn't assume a file name or have defaults.
+Jack Berg 23:14 I think it does, actually.
+I think you can start the collector without pointing to a file, like, at least that one… I have, like, a vague memory of that, but .
+Jason Plumb 23:24 You wanna put money on it?
+I think it doesn't, but…
+Jack Berg 23:30 It would be… I mean, I also don't keep up with the collector that closely. Even if it did, it's like, nobody uses it like that, because what.
+Jason Plumb 23:38 Yeah.
+Jack Berg 23:39 alt speed.
+Jason Plumb 23:40 Right.
+Trask Stalnaker 23:43 I mean, in the Java agent specifically, I mean, there's…
+more of a chance of us having a default path than SDK?
+because we could say, same directory as the Java agent jar file, for example. We could see if there's a…
+Specific file located there.
+But I'm not sure. I haven't thought if that's a good…
+choice or not. I know that several other Java agents do that kind of thing, co-locate by default.
+Jack Berg 24:16 Yeah, the.
+Trask Stalnaker 24:16 config.
+Gregor Zeitlinger 24:18 I mean, that's a different question to ask, having a default path or a default content.
+Trask Stalnaker 24:23 Mmm…
+Jack Berg 24:26 Both good questions.
+Trask Stalnaker 24:26 What would… What would default content…
+John Watson 24:31 Well, I mean, we've had… we've had default environment… I mean, values with the environment config. Why wouldn't we just use the same… like, you're pointing at a collector on localhost, blah blah blah blah blah blah.
+Like, seems like that would be the reasonable default, is to keep the same defaults that we have if you start up the agent with no configuration.
+Gregor Zeitlinger 24:52 It's certainly possible, yes.
+Trask Stalnaker 24:57 And the advantage to that Versus… The advantage to having that Gregor would be then that…
+Internally, components would still get the declarative config… would see that it was using declarative config, could use, like, declarative config.
+Customizers…
+Gregor Zeitlinger 25:24 Yeah, things like that. So, rather small things. I mean, it's more the message, we are saying that declarative configuration is the default way to go for new projects.
+Jack Shirazi 25:34 So, just so I can understand, we would have a default YAML file that we point to.
+And it would accept all the old environment variables, because they're interpolated into the YAML.
+But if there's an extension, That relies on… the config properties… What would that do?
+So the third-party extension that somebody else loads in.
+Gregor Zeitlinger 26:03 We're not worth.
+Jack Shirazi 26:04 Yeah, so you'd break extensions that actually Are asking for properties.
+Gregor Zeitlinger 26:09 Right, that's why we can only discuss it in the context of a breaking change.
+Jack Berg 26:21 Yep.
+And so the declarative config equivalent is this kind of customizer approach, where you take in the in-memory representation of the data model, and make modifications to it, and then return it.
+And,
+The… that's, like, a key question in my head, is, like, what does stabilizing the in-memory representation of the data model look like?
+Because right now, it's generated from the JSON schema using a build time Gradle plugin.
+And, you know, the schema should stabilize. So, in theory, we can just take that, those generated classes.
+and take, like, a snapshot of them at stabilization time, and check them into Git properly, and say that, like, hey, this is… these… these APIs, these… these POJOs, that's what they are, is just, like, lightly annotated POJOs, like, these are now stable.
+But… Where do they live?
+what… how do we keep up with those on an ongoing basis? Because even though those POJOs are stable declarative config, the data model will continue to change over time, so we'll need to have some sort of tooling to check for updates.
+And make sure they're reflected.
+And we'll need to differentiate between the experimental types of declarative config and the stable types.
+So, these are kind of the things that are going through my mind, and all those kind of are wrapped up in this question of.
+Customizers, because the customizers, directly interact with these data model classes.
+Trask Stalnaker 28:05 And so, if I can kind of pinpoint your question, Jack Shirazi, is… It's essentially whether… this…
+Out of everything that…
+relies on Auto Configuration Customizer, all of, like, extensions, distros that have been using Auto Configuration Customerizer would no longer work in the declarative configuration path.
+Jack Shirazi 28:33 Yeah, distro's less so, because we… they're explicitly changing to the… to…
+the version, so they… they will be aware, and it's… I don't think it's that difficult for the distro to migrate.
+But the extensions… That means that if you're using an extension, it just breaks.
+Jack Berg 28:54 If you're using an extension without a distro, like, if you're using the SDK, like, vanilla, or do you mean with an agent?
+Jack Shirazi 29:03 Well, typically, the extensions that I'm talking about are with an agent, but…
+Jack Berg 29:08 Oh, you're… okay, that's the type of extension you're talking about, because technically you can just use those extensions with the SDK and no agent as well.
+Jack Shirazi 29:17 But they would also break if they're reliant on the…
+Config Pro on the properties, the auto properties, whatever they call, I forgot.
+Jack Berg 29:27 Yeah, you'd need a way to revert back to specifying that environment variables or system properties should be used. They would be broken, but we definitely still want to continue to support those.
+Indefinitely. Like, I have no plans to, like.
+to… to stop supporting them. But,
+You know, if we change the default, then…
+We need some way to revert.
+To the previous behavior, because changing the default will break those.
+Gregor Zeitlinger 30:03 We need a new environment variable that says use environment variables?
+Something like that?
+Trask Stalnaker 30:11 Well, that's one advantage to not changing, like, not having a default, is, like, we already have that signal from the user if they provide the configuration file path.
+Then we use declarative config.
+If not, we still use the auto-config customizer.
+Gregor Zeitlinger 30:33 Yeah, but that, that,
+I'm not convinced that this is good enough of an argument to make a decision.
+Trask Stalnaker 30:43 Yeah, I mean, I agree that having, in the Java agent, I don't love having both paths.
+Because… at least long-term, and I know Jack…
+There's no plans to stop supporting this.
+at the SDK side, Yeah, yeah.
+But I could see us choosing to stop supporting this at some point on the Java agent side.
+Just because… it requires extensions to support both, I mean, or distros to support both paths,
+Adds complexity there.
+Oh, and I'm… pretending I'm sharing my screen, I'm… but I'm not.
+Cool, oh, Gregor, do we have a tracking…
+I know that we have various tracking items for declarative config. Is there one that kind of
+Is on point for this.
+discussion… Do you know?
+Gregor Zeitlinger 32:09 Sorry, about what? What we want to have for 3.0?
+Trask Stalnaker 32:13 Yeah, yeah.
+Kind of what's the default state? That kind of thing.
+Gregor Zeitlinger 32:21 No, that's… that's a good point. I'll create one for that.
+Awesome. And to my previous thought,
+Where do we want to track that? We have a project for declarative configuration, but I don't know if that is a good way to keep track of what we want to do.
+Do you have a preference?
+Jack Berg 32:45 Is there a label for 3.0?
+Gregor Zeitlinger 32:49 Yeah, but, maybe that,
+gets too much if we add too many things to that. So, it has all kinds of different things we want to clean up, not like biggies.
+Jack Berg 33:05 Hmm.
+Trask Stalnaker 33:05 I think the declarative config board is good.
+I've kind of seen this as a…
+like, we will try to burn down this board for 3-0, essentially.
+Gregor Zeitlinger 33:21 We have things there that are
+past that. We could clean it up, but right now it has more things on it.
+Trask Stalnaker 33:32 Oh, I see. Things that are outside of the Java agent scope.
+Gregor Zeitlinger 33:36 Right.
+And maybe we will just punt until someone is asking for it.
+Trask Stalnaker 33:49 I don't have a strong preference.
+Jack Berg 33:53 Maybe you could have a swimline error column in the declarative config project that was, you know, items that are required for 3.0.
+You could label, those items, so you could have, like, a filtered view of 3.0 declarative config items.
+Gregor Zeitlinger 34:10 Huh, I don't know how to do that. Okay, but we can figure that out. What about this Java Instrumentation 3 project? What is that for?
+Trask Stalnaker 34:20 I've been… tagging… things that, breaking changes that we want to make in 3.0.
+Of course, I also tagged them with the, the, the, milestone.
+So it's kind of a little… unorganized.
+Gregor Zeitlinger 34:41 Okay.
+Trask Stalnaker 34:48 Yeah, I just throw on the… throw it on the board to not forget when I think of something that's… or I think that there's something… a breaking change that we want to make.
+Gregor Zeitlinger 35:01 Yeah, we should use one or the other.
+Because it's gonna get out of sync.
+Trask Stalnaker 35:08 Let's use the board.
+I like, grown to… Finally get used to…
+Gregor Zeitlinger 35:16 And let's also use this board for the declarative configuration parts, and then we can have a label to distinguish if it's getting too much.
+Trask Stalnaker 35:28 Sounds good. Yeah, yeah, we don't have quite the massive number of… we burned down some of the declarative config stuff already, so…
+Hopefully the remaining ones are… Interesting 3-0 questions.
+Gregor Zeitlinger 35:48 So, if we don't have any other issues,
+I, have a question on one of the declarative configuration
+Tasks, but it's probably not interesting for everyone.
+Robert Niedziela 36:03 I have just one question. Do we plan also to take out some incubating stuff regarding the relative config before free.orgs, or it will remain there?
+Gregor Zeitlinger 36:20 Sorry, the what? I didn't understand that.
+Robert Niedziela 36:23 So, in incubator, there is still some stuff related to declarative config, right? And is it going to go out of incubator, or not really?
+Gregor Zeitlinger 36:36 What do you mean, for example?
+Robert Niedziela 36:37 I don't remember right now, I would have to take a look at it. I had some, incubator stuff used in my project, but I don't remember now what was that.
+Gregor Zeitlinger 36:48 Do you mean incubator, not.
+Robert Niedziela 36:49 Yeah, yeah, yeah, incubator.
+Trask Stalnaker 36:57 So… Ideally, we will move… database… And… Code… out of incubator.
+These are all experimental things.
+on HTTP, this might be stabilized.
+Still remains to be seen on the SEMCON side.
+This will hopefully be stabilized on some comp, and we can move it out. This also…
+Yeah, just, let us know specifics, Robert.
+Robert Niedziela 37:43 Okay, okay, I'll find out what I need, and we'll ask next time.
+Trask Stalnaker 37:57 Alright, shall we… Give…
+folks, time back. Gregor, I can hang on, and we can chat declarative, config PRs.
+Gregor Zeitlinger 38:09 Yeah, that would be great.
+Trask Stalnaker 38:13 All right See ya.
+Jack Berg 38:16 Yeah.
+Jason Plumb 38:17 I…
+Jack Berg 38:18 I'm gonna stay on Trask.
+Trask Stalnaker 38:19 Sure, sure.
+Gregor Zeitlinger 38:23 Yeah, so, the… the one big PR about introducing this, distro node,
+It's, intertwined with the one for runtime configuration.
+Trask Stalnaker 38:42 Yes.
+Gregor Zeitlinger 38:43 And I… I couldn't get a Grok on…
+Why you did it that way, and how it's making it easier for adding the distro node.
+When I looked at the PR, it seemed like you're still using the primitives for finding out
+if a module is enabled or not, and I thought you wanted to get rid of that. That's the point where I stopped following.
+Trask Stalnaker 39:16 Yeah.
+Gregor Zeitlinger 39:17 what you're doing.
+Trask Stalnaker 39:18 So, this is, I would treat this as a step.
+Still?
+Right, it's not, this, but it's a big step of unifying and simplifying the configuration story for runtime telemetry.
+So maybe, don't worry so much about how this helps your distro node.
+PR yet.
+As, look at this… in, as its own…
+Unifying and simplifying the runtime telemetry instrumentation and its configuration.
+Gregor Zeitlinger 40:01 But then I don't understand why you're saying that,
+this PR should be before the other one, if they are kind of unrelated. Maybe they touch the same code.
+Trask Stalnaker 40:14 Because I…
+it was really hard for me to… I came to… I added this… I started down this path because your PR was so hard to follow.
+And it's not the fault of your PR, it's the fault of the runtime telemetry module configuration story today.
+is super confusing, and,
+because there's this weird mix between Java 8 configuration properties, and Java 17 configuration properties, and interplay between the two modules, and it's just… it's super confusing, and so I…
+I… couldn't successfully review your PR.
+that, and so I want to clean that up, And then…
+come back to your PR, and I think we can have a better discussion. I totally agree, like,
+Yeah, about.
+Gregor Zeitlinger 41:15 Then, why don't we look at the meat of this PR, and then we can figure out if you have a solution that is fundamentally easier to grasp.
+Or not.
+Trask Stalnaker 41:30 Sure.
+So…
+This PR will be… is a lot of work to review.
+Gregor Zeitlinger 41:44 Yeah, but I think I already found the piece where you are, looking up, what is enabled and what is not.
+Let's only look at that part.
+For a start.
+Trask Stalnaker 41:57 What's enabled?
+Okay.
+Gregor Zeitlinger 42:01 I don't exactly know what line it was, because I didn't look at it today.
+But most of the changes are just renames, right?
+Trask Stalnaker 42:11 So it's… right, you got that it's unifying into a single runtime telemetry module now?
+Gregor Zeitlinger 42:19 Right.
+Trask Stalnaker 42:19 We'll teach ours.
+Gregor Zeitlinger 42:21 I got that.
+Trask Stalnaker 42:22 And the…
+the difference here is, right, like, these things were really confusing, like, the interplay of runtime telemetry Java 17.enabled.
+Gregor Zeitlinger 42:35 Huh. With…
+Trask Stalnaker 42:36 runtime, telemetry, dot enabled… And .enable all.
+Right.
+So, what I would focus on in terms of the justification for this PR, is the simpler… configuration story.
+For… and… for users.
+Gregor Zeitlinger 42:59 Yep.
+Trask Stalnaker 43:00 If that makes sense.
+Gregor Zeitlinger 43:01 I don't argue with that, but I would still appreciate if we can look at this, where this is used, and then how this will work out with the distro node, so that we can get an understanding of that, regardless of how we merge it in the end.
+Trask Stalnaker 43:21 Sure. Tell me what you want to look at.
+Gregor Zeitlinger 43:24 I think if you look for the flag, then we will find the right place, like this Enable Oil, for example.
+Yeah, I think that's the place, right?
+Trask Stalnaker 43:46 Oh no, this is the jar analyzer.
+Gregor Zeitlinger 43:49 Oh, right.
+Trask Stalnaker 43:51 I mean, probably the interesting thing is runtime telemet.
+Telemetry Builder, I would assume.
+Oh, that's test. Here we go.
+Rebuilder, get me wrong.
+Oh, right, there's the internal, that's… that's…
+Gregor Zeitlinger 44:26 Okay, yeah, that is… that's also what I had a question about, right.
+Trask Stalnaker 44:32 Oh, yes, yes.
+Gregor Zeitlinger 44:33 I'll start with that. This is.
+Trask Stalnaker 44:37 So the naming here is just to mimic… you know how we have that convention of calling a class name experimental?
+Gregor Zeitlinger 44:45 Yeah, yeah.
+Trask Stalnaker 44:46 It's like a public API. Experimental is a public API for experimental features.
+Internal here is a public API for,
+Us for other modules in our… repo.
+I don't really… it's… I invented the… It can be named whatever.
+But yes, so this is definitely, I think, yes, configure So this is… Where lots of…
+Stuff is happening, and…
+Gregor Zeitlinger 45:29 Exactly where I added my comment. I forgot that I already asked.
+Something here. So if you scroll up, then I can show you the line.
+So here, when you look for Java 17 enabled.
+This is still the flag where you're looking if a module is enabled, right?
+Trask Stalnaker 45:56 In the future, it won't be because there's no Java 17 module.
+But let's take this one. This one is… this is the module check here.
+Gregor Zeitlinger 46:14 Right.
+Trask Stalnaker 46:17 And so, yes, I agree that this one in the distro node, we're gonna wanna pass this in…
+from the distros, so Spring Boost… Spring Starter and Java Agent will both look up the enabled flag,
+Before, and actually, they just won't even call configure in that case.
+Gregor Zeitlinger 46:45 It won't call configure, why not?
+You mean if it's not enabled?
+Trask Stalnaker 46:52 Yeah.
+Right now, it's confusing because we've got, like, 3 different enabled flags.
+In the telemetry module.
+Gregor Zeitlinger 47:03 We have this enabled all, which is making it hard, so you want to get rid of…
+Trask Stalnaker 47:07 And we have the… and we have the Java 17 enabled, and the non-Java 17 enabled.
+Gregor Zeitlinger 47:16 Okay, so you want to change that, which is a breaking change.
+Trask Stalnaker 47:22 Yes.
+Gregor Zeitlinger 47:23 Okay.
+Trask Stalnaker 47:24 this PR, is back compact?
+But it provides the simpler configuration path forward, and in 3.0, we can drop the back compat.
+Gregor Zeitlinger 47:39 Okay, but we don't need backcompat for declarative configuration.
+Trask Stalnaker 47:44 Right.
+So if that… if there's a way that you think that that can help us, that's great.
+I'm stoked.
+Gregor Zeitlinger 47:53 Thinking out aloud, I don't know yet.
+Trask Stalnaker 47:55 Yeah.
+I just assume, since we still have to read these via… we're getting these via the properties, we wouldn't need to document
+Is that it?
+The, yeah, declarative config, we could at least document that it's only officially supported, the new stuff.
+Gregor Zeitlinger 48:14 Okay.
+Trask Stalnaker 48:27 But yeah, I think that's how I see this interplay with the distro node…
+is… oh, yes, and that's your point, which is declarative config…
+the distro node only applies to declarative config, so yes, that does help us then, because…
+Yes, before calling this, you can just check now the Unified Enabled story Via declarative config.
+And skip this whole thing now.
+Gregor Zeitlinger 49:03 Okay, yeah, now it starts to make sense. Okay, right, okay.
+Yeah, yeah, can you add it as a comment right now before we both forget?
+Trask Stalnaker 49:13 Yeah, yeah, yeah, yeah.
+Gregor Zeitlinger 49:14 This makes it a lot better. Okay.
+Trask Stalnaker 49:17 Distro, NUGR…
+Unified…
+Yeah…
+Gregor Zeitlinger 49:50 Okay, and then, you said, this is a braking change. I still want to understand how that works. You said it's also backwards compatible, you have to opt into this new module, or what is the idea?
+Trask Stalnaker 50:05 Yeah.
+So… So these are the…
+The new officially supported… the new non-deprecated settings, system property settings.
+And… all of these ones… Are now deprecated.
+And we'll emit warning if people are using them.
+But since… A bunch of these didn't have the word experimental in them.
+We can't… Drop them until 3.0.
+Gregor Zeitlinger 50:51 Right, okay. Now I'm thinking if we can somehow untangle those PRs.
+If we say that the dystro PR… Will not cover.
+Trask Stalnaker 51:07 runtime telemetry at all.
+Gregor Zeitlinger 51:08 at all? Would that be possible, and then we can make it easier?
+Trask Stalnaker 51:13 Yeah.
+Yeah, if you want to pull out all the runtime telemetry stuff.
+I'm pretty sure I had reviewed… Let me double check.
+We can see which files I marked as reviewed on…
+Gregor Zeitlinger 51:32 And we would just say that, for the time being.
+Runtime telemetry does not work yet in declarative configuration.
+Trask Stalnaker 51:44 Yeah, or whatever it means, kind of do some analysis, just… docket on the PR description.
+What the limitation is.
+But yeah, I'm pretty sure… let's see, runtime, runtime, runtime… Runtime…
+Why did I not mark this as…
+Oh, I think the other…
+Thing that maybe, yeah, so let's see, there might be one more topic to discuss on this.
+PR… Which is… this enabled instrumentations…
+Do we need this?
+Do we need this interface?
+can we… Yeah.
+Gregor Zeitlinger 52:41 It made it, easier… To understand, in my opinion.
+But it's not a hard requirement.
+Trask Stalnaker 52:51 Okay. I noticed it was, and that's part of, like, I know you were using it in the… you needed it in the runtime
+The runtime telemetry, because of the complicated story over there.
+I wonder if you need it…
+now, after pulling out runtime telemetry. I'll just make a comment on it.
+Gregor Zeitlinger 53:17 Yeah, I think it was, when I had it just as a function, it was hard to reason about what is null able and what is not.
+And I found it helped understanding the code.
+But, I mean, that's subjective, of course.
+Trask Stalnaker 53:33 Yeah.
+Gregor Zeitlinger 53:39 Yeah, I would encourage you to take a look if, if…
+you can see it helps, because I… I… I really like it now.
+Trask Stalnaker 53:50 You really like the enabled instrumentations?
+Gregor Zeitlinger 53:53 Yeah, the, the… The ability to understand this thing better.
+with the interface.
+Trask Stalnaker 54:01 Okay, let's see how it's used.
+Instrumentation… Property enabled.
+Gregor Zeitlinger 54:12 It basically has two things. What is the default, and is one thing enabled?
+Trask Stalnaker 54:19 So in this case, couldn't we just… have, couldn't we just… is enabled…
+Gregor Zeitlinger 54:39 Yeah, yeah, it works.
+I'm not saying that we technically need it.
+Trask Stalnaker 54:52 instrument to early…
+But this seems a lot simpler to me than this.
+Gregor Zeitlinger 55:08 Okay, then I'll do it. I gave it a try.
+Trask Stalnaker 55:13 Okay, okay, okay.
+Cool. Feel like you have a path.
+Forward? For that?
+Gregor Zeitlinger 55:31 Alright.
+Thanks a lot!
+Trask Stalnaker 55:34 Yeah, yeah. And I will, I'll come back to this. I was… had kind of… sorry, I think I had started… sort of ignored it since I couldn't get it… I couldn't merge it for the next… the release anyways.
+So I'll follow up, and any, outstanding questions you had over there.
+Gregor Zeitlinger 55:51 Yeah, okay.
+Trask Stalnaker 55:53 Alright.
+Robert Niedziela 55:56 Yeah, so guys, I will join in just a second, because I found what I was looking for. So, the incubator stuff is still config provider, declarative config properties, this kind of things, YAML declarative config properties, so if we stabilize schema, I think they will be also ready to go out of incubator, right?
+Trask Stalnaker 56:20 Yeah, you're asking on the SDK side, incubator.
+Jack Berg 56:24 That's kind of what I was touching on in the… in the call, is just that, you know, when the spec stabilizes, we'll have the green light to stabilize things in OpenTelemetry Java, but there's still, like, a number of thorny questions that have to be answered about where things live.
+Some are easier than others, like, I think the declarative config properties is, is…
+is pretty easy. Like, I don't think… I don't see that changing much. But, like, config provider, for example, nobody has implemented that except for Java, I don't think.
+Or if they… maybe they have. I don't know, actually. But it's not part of the scope that we're going to be stabilizing in this spec.
+And so, that would be delayed.
+Trask Stalnaker 57:08 Oh… Drat, okay.
+Yeah, I was gonna ask about… because, yeah, I was gonna ask about stabilizing the instrumentation node.
+And so that… this is tied to that, right?
+Jack Berg 57:26 I think so, yeah, like, I'm trying to imagine in my head how you could stabilize the instrumentation node without config provider being stable, and I don't think it makes sense. I think they kind of go hand in hand.
+Trask Stalnaker 57:37 Okay.
+So we need to start pushing on… I'll start pushing on that.
+Opening issues, trying to push for… figure out, like, what's…
+Because that, that's… yeah, that's really important for us on the instrumentation side.
+Jack Berg 57:54 It could be actually the case that, like, there are implementations of it, and there's just no issue where we're collecting and reporting that people have implemented that. So I guess we'll find out. Opening the issue is good.
+Trask Stalnaker 58:07 Yeah, yeah, yeah.
+Thanks for raising that, Robert.
+Robert Niedziela 58:12 I'm particularly interested in getting it stable, so… Okay.
+Jack Berg 58:19 Me too.
+Robert Niedziela 58:22 Okay, thank you for the answers.
+Jack Berg 58:24 See you. Bye. See ya. See ya. Bye.

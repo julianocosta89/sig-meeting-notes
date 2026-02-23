@@ -1,0 +1,31 @@
+SIG: K8s Semantic Convention SIG
+Date: 2026-02-17
+Duration: 6 minutes
+============================================================
+
+Jina 04:06 Any injury.
+Dmitrii Anoshin 04:11 Regina.
+Jina 04:15 Oh, oh, yeah.
+I don't think anybody's joining, I just had the storage volume semantic convention here I wanted to bring up.
+Dmitrii Anoshin 04:28 Okay, do you want to discuss it now, or…
+Jina 04:32 Yeah, if you want to take a look right now, that's okay too. I did, like… I saw you had a comment, I did address that, but I had a couple of other questions, just…
+about how I should approach a couple of different things.
+So, yeah, we can discuss in the call, or if you want, you can take a look afterwards, also. Works… either thing works for me. So you, left comments there? With the… In the… yeah, on things which I wasn't certain about. Okay. Like, comment instead of…
+Yeah.
+Dmitrii Anoshin 05:08 I see. I'll probably… I'll probably need to…
+Jina 05:11 Yep.
+Dmitrii Anoshin 05:12 spend more time, rather than discussing it, one way, so…
+Alright, sounds good. Well, if I'll have more questions, if you want to discuss it, like, over the call, we can do it later, I guess.
+Jina 05:24 Yeah, that works.
+Dmitrii Anoshin 05:25 Okay, cool, thank you.
+I don't know if we should wait at all. Is there anything mentioned on the agenda? I haven't looked into that. Like, someone gonna join or not?
+Jina 05:37 No, there's nothing on the agenda.
+Dmitrii Anoshin 05:40 Do you know if Christos is around, if he's.
+Jina 05:44 I have… yeah, I'm not sure. There's no open PR also, other than mine, so I'm not sure if there is any…
+Oh.
+Dmitrii Anoshin 05:53 Okay.
+Yeah, that's fine. I can… I guess we can just call it then.
+Jina 05:59 Sounds good.
+Dmitrii Anoshin 06:00 Thank you.
+Right.
+Jina 06:03 Bye-bye.

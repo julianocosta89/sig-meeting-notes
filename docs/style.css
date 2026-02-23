@@ -1,0 +1,455 @@
+/* ==========================================================================
+   OpenTelemetry SIG Meeting Notes — Style Sheet
+   ========================================================================== */
+
+/* --- Custom Properties (Light Theme) --- */
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --fg: #1f2328;
+  --fg-muted: #656d76;
+  --accent: #0969da;
+  --accent-fg: #ffffff;
+  --border: #d1d9e0;
+  --mark-bg: #fff8c5;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+  --radius: 6px;
+}
+
+/* --- Dark Theme --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --bg-secondary: #161b22;
+    --fg: #e6edf3;
+    --fg-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-fg: #ffffff;
+    --border: #30363d;
+    --mark-bg: #3a2f00;
+  }
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
+    Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* --- Skip Link (Accessibility) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* --- Header --- */
+.site-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* --- Main Layout --- */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 3.5rem);
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  border-right: 1px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.controls {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.control-group {
+  margin-bottom: 0.75rem;
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Select (SIG Dropdown) --- */
+#sig-select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23656d76' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  cursor: pointer;
+}
+
+#sig-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: var(--accent);
+}
+
+/* --- Search Input --- */
+#search-input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+#search-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: var(--accent);
+}
+
+#search-input::placeholder {
+  color: var(--fg-muted);
+}
+
+/* --- Search Group Visibility --- */
+.search-group[hidden] {
+  display: none;
+}
+
+/* --- Date Navigation --- */
+.date-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.date-nav[hidden] {
+  display: none;
+}
+
+.date-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.date-list li {
+  margin-bottom: 2px;
+}
+
+/* --- Date Buttons --- */
+.date-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  min-height: 44px;
+  transition: background-color 0.1s ease;
+}
+
+.date-btn:hover {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.date-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.date-btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+  border-color: var(--accent);
+}
+
+.date-btn[aria-pressed="true"]:hover {
+  opacity: 0.9;
+}
+
+/* --- Match Count Badge --- */
+.match-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.date-btn[aria-pressed="true"] .match-badge {
+  background: var(--accent-fg);
+  color: var(--accent);
+}
+
+/* --- Transcript Panel --- */
+.transcript-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+/* --- Transcript Header Card --- */
+.transcript-header {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.transcript-header dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.transcript-header dt {
+  font-weight: 600;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.transcript-header dd {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transcript-header dd a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.transcript-header dd a:hover {
+  text-decoration: underline;
+}
+
+/* --- Transcript Body --- */
+.transcript-body {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.transcript-line {
+  margin: 0;
+  padding: 0.125rem 0 0.125rem 0.5rem;
+  border-left: 2px solid transparent;
+}
+
+.transcript-line:hover {
+  background: var(--bg-secondary);
+  border-left-color: var(--border);
+}
+
+.speaker-name {
+  font-weight: 700;
+}
+
+.transcript-body .timestamp {
+  color: var(--fg-muted);
+  font-size: 0.8125rem;
+}
+
+/* --- Highlight (Search Matches) --- */
+mark {
+  background: var(--mark-bg);
+  color: inherit;
+  padding: 0.0625rem 0.125rem;
+  border-radius: 2px;
+}
+
+/* --- States --- */
+.empty-state,
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--fg-muted);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.empty-state p,
+.loading-state p,
+.error-state p {
+  margin: 0;
+  max-width: 32ch;
+}
+
+.error-state {
+  color: #cf222e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error-state {
+    color: #f85149;
+  }
+}
+
+/* --- Loading Spinner --- */
+.loading-spinner {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-bottom: 0.75rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Screen Reader Only --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Responsive: Mobile (max-width: 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: none;
+  }
+
+  /* Date list scrolls horizontally on mobile */
+  .date-nav {
+    overflow-y: visible;
+    overflow-x: auto;
+    padding: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .date-list {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: nowrap;
+  }
+
+  .date-list li {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .date-btn {
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .transcript-panel {
+    padding: 1rem;
+  }
+
+  .transcript-header dl {
+    grid-template-columns: 1fr;
+    gap: 0.125rem;
+  }
+
+  .transcript-header dt {
+    margin-top: 0.375rem;
+  }
+
+  .transcript-header dt:first-child {
+    margin-top: 0;
+  }
+}

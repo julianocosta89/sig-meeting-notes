@@ -1,0 +1,264 @@
+SIG: Browser SIG
+Date: 2026-02-12
+Duration: 31 minutes
+============================================================
+
+Jared Freeze 02:01 Hey, everybody.
+martinkuba 02:07 Hi, Jared.
+Let's just give it a couple more minutes, because I think,
+Ted said that he would join today, so I'll just wait a couple more minutes.
+Jared Freeze 02:30 He just said he's not coming.
+martinkuba 02:32 Oh, he's not coming? Oh, okay.
+Jared Freeze 02:34 Yep.
+martinkuba 02:35 Alright,
+We can get started, I guess, yeah.
+Let me just.
+David Luna Bistuer 02:46 Yeah, sorry, hi?
+Welcome, everyone, good morning. Okay,
+Basically, I don't want to start getting a big conversation because we don't have much time, but basically, I've been,
+Poking around a little bit on the context manager, some thoughts that,
+At the moment, what we have is, like, we have the Stack Contest Manager, which I think it slips in the SDK3s web.
+And also, we have the zone as a separate package.
+But I've seen that there are some issues… issues. One old issue that, it's talking about moving the Stack Contact Manager somewhere else.
+And we are getting some attention on having a context manager that
+Doesn't provide… well, doesn't embed zone, say yes in it.
+well, there is, I, I've, yesterday I was talking to him, in the maintenance, maintainers meeting.
+From Chensok, I… I got this…
+This links from the Syncontact proposal, so it's moving, but it's moving slow.
+So, I guess, okay, in the future, that would be kind of the solution.
+We have something that is similar to a single color storage in Node, but in the browser.
+But we are not there yet.
+And, of course, we'll have to wait some time to get it, but it's moving on, so it's, like, it's not stalled.
+That's a good thing.
+So…
+Looking at the whole picture, so we have this, we have some… a couple of context managers around.
+People are asking, Things about the… they have the…
+They have, kind of, the appetite to help you get a new context manager, or something that helps better without paying the toll of its own, yeah, so…
+kind of two questions and see what is the temperature here, and then what are your thoughts. So, first thing is, like, okay, so I've checked the Stack Context Manager, it's kind of a… implementation's quite simple, it's really close to the new op. Basically, it's just a synchronous one.
+Doesn't carry the context, but the nob, actually, it's doing nothing.
+And it's living in the API. I don't know if that…
+maybe, I don't know, I thought… I got this crazy… well, not crazy idea, but this idea on maybe just… why not the knob, it's just stuck.
+And we move that to the API, so at least, you know, if someone is starting the API and gets in the… doesn't register any context manager, and gets one by default.
+At least you got… they got the same contents in the same stack trace, in the synchronous code.
+That's kind of my free question. And the second one is, like, okay, so since people are requesting about having a context manager without Zone, we know that we are not going to work around the async await issue that we have.
+But at least if, I don't know, if you think that it's a good idea, maybe just to work on something.
+That, yeah, helps in the context manager, but doesn't have to… come with, complete library like Zone.js.
+So, now it's your turn. I'm closing my mic, and… I'll logistics.
+martinkuba 05:57 I do have a couple of thoughts.
+First of all, I think about the default. I think,
+like, I would… I think what we want to do, and I'm…
+I think we probably would all agree that eventually we want to have some kind of,
+Like, auto-configuration, or, like, a meta package that, like, combines, like, provides some defaults to users.
+So that, you know, like, maybe, like, there's a simplified configuration, maybe, like, some default instrumentations that we recommend.
+You know, default exporter.
+default, like, processors, so, like, users don't have to, like, do all these pieces themselves, like, it kind of does it for them. So, like, this, this kind of default stack, like, context manager could be just part of that.
+I don't know, like, if moving to the API, like, do you mean…
+would that affect Node as well, or would it be, like, our own API?
+David Luna Bistuer 06:57 Yeah, it would affect them. So, other SDKs, they don't have this.
+Well, I think that, you know, we have these languages, it's living in different times, but other languages, like Java, I think that they have the… they don't have this issue, and what they provide is, like, okay, the manager is already in the API, because they only have one version, so they only have one type of context manager.
+martinkuba 07:20 I see.
+David Luna Bistuer 07:20 So that's… that's why it's sitting there.
+And that's why we have an op context manager in the API as well.
+Okay. So, yeah, and of course, if we move it to the API, it means that stack is the default, you know, it's the new op for both, for browser, node, or whatever container it's running.
+martinkuba 07:41 Yeah, I mean, I guess I would be… I would be fine just solving it by just by the default configuration, but, you know, maybe it's question for…
+For, like, the JS maintainers as well.
+The other thought that I had was… was that we've been… we've been moving to…
+To more event-based instrumentations.
+So I think, like, in the past.
+So the only use case that I can think of where, like, the context is important is for the user action instrumentation that's in Contrib.
+Which, essentially, like, you click on something, it starts, you know, starts a context, and then you have a span that kinda… that includes, like, any work that happened, like, as a result of the click.
+So you have a span for the click, then you have, like, child spans for HTTP calls or things like that, so there you have to track the context, but…
+But, like, if you only have, let's say that if we use events instead, we model…
+User interactions, not as spends, but as events.
+and, like, the HTTP calls, like, they…
+They're always only root spans, like, they don't… you know, they don't… like… We don't, like, continue work.
+after the HTTP calls are… they just become root spans that…
+For the use case of connecting to the backend.
+then I don't… I can't really think of…
+Like, a clear use case for necessarily having to attract context.
+But, like, I'm curious about, like, what other things… what others think, too.
+David Luna Bistuer 09:30 Well, I guess… Yeah, so, context is in the, in the… In the scope of tracing.
+martinkuba 09:38 Yum.
+David Luna Bistuer 09:39 Yeah, well, that happened the last week, happened to have this issue that, yeah, since the context is not really propagated, you cannot suppress tracing.
+Therefore, when you… when you have exports and the fetch instrumentation at the same time, you are…
+kind of instrumenting your own fetch request for… to export the spans, and you get that. There is a fix for that where we just, you know, just unwrapping the API engines in the…
+The, the original fetch.
+But… I don't know. I was thinking that maybe makes sense, so…
+Yeah. To get contact, to get the contact somehow.
+martinkuba 10:18 Yeah, I mean, certainly, like, I think users can always, obviously.
+if you want to use tracing in your client application, like, you would need context. I'm just, like, curious…
+If there are, like, real use cases for this, aside from
+Like, correlating the user action, like, to some work, you know, that happened.
+And
+I mean, we don't… Marco, we don't even do that right now, right? Like, we don't… we don't have nothing like that in Pharaoh.
+Marco Schäfer 10:53 Exactly, we don't have anything like that, and we also had many problems with,
+with Zone.js, when we had the async context, so we removed it eventually. We had so many bug reports from customers where it…
+was clashing with other libraries, because it's, yeah, like, ubiquitous monkey patching. I think this may also be a thing to consider.
+Like, bringing something like this by default.
+can be a problem, but… Yeah. Short answer, no, we're like, don't do that. Sorry.
+David Luna Bistuer 11:29 Okay, thank you.
+martinkuba 11:31 I think this also goes, like, in my mind, kind of my vision for this project would be, like, kind of,
+That, like, we want to… That it should be an option, but…
+if users really care about this, like, there should be a way for them to do it.
+So maybe, like, they really care about this particular instrumentation that the user actually, you know? Or, like, they want to do some tracing in their code,
+so they should be able to configure it, and maybe, like, they're okay with ZoneJS. Maybe that's more important for them to do the tracing than… than, like, the bundle size.
+But by default, I would say, like, we… like, we would not necessarily, like…
+I don't think we should provide, like, a really complicated context management by default. That's my take on it.
+David Luna Bistuer 12:26 Okay.
+Dip.
+Thank you.
+But I don't want to override others' opinions, I mean, it's just my opinion.
+That's how I'm asking for it, so, yeah.
+Feel free to write any other opinions in the document, okay? Thank you.
+Jared, I think that's, you know…
+Jared Freeze 12:48 Yeah, so I went pretty deep on…
+Why there's data loss, right, towards the end of sessions, and there's a lot of rules around, sort of, what you get to squeeze in as the browser's closing.
+And, a lot more rules than I… than I thought. So one of them is there's… so, just talking about Chrome, Chrome has the lowest limits of
+the browser. It's 9 requests, it's 64K, and it's shared across all the requests for a given render, which was really interesting. So, I actually went through all of our code, all the vendors, just to see how people are handling it. We're all doing it a little bit differently.
+We… Batch everything into less than 9 requests?
+that's the hope. That happens most of the time. I know not everyone is doing that. I know that that is not something we should expect, right? So, one of the things that…
+surprised me was that it's not origin-based or anything like that, because you could easily sort of abuse that. I understand why. You could just spin up as many domains and
+you know, hammer it with 9 requests. So anyways, I sort of built what,
+kind of the best of all of us, and put it together, that's what's in the PR.
+it's already been approved. I think, David, you may have looked at it. Yeah, and so it was just kind of like a sanity check for browser, just to make sure that it's not off-base or whatever,
+I left a note, it says, you know, I did my best with
+the limits, because the limits are not just hotel, right? Like, we're also… like, let's say somebody has Google Analytics running, or whatever, if they're putting stuff into, PeopleLive.
+you know, they're gonna be in the stack already, so it's just kind of like a best guess, like, hey, let's count R9 and our size with a little bit of headroom, and just call it good.
+I also read incorrectly that SendBeacon gets its own queue.
+and its own limits. That's not true. They're shared. So, that's why I decided just get rid of SendBeacon. Like, who cares? Because it's been available since 2015,
+Or Keep Alive, I think, is maybe 2018. Either way, it's well within the bounds of…
+reality. And so…
+The code itself, I also went through the source code. Somebody else did that. I just read their blog post about it, but they went through the source code. SendBeacon is Keep Alive under the hood now. It's all been refactored in every browser, so…
+So yeah, no point to have SynBeacon. I ripped it out. There is one question, I think, about deprecation, what is…
+deprecation, and I said, I'm just telling people not to use something, because the name is no longer relevant. I'd like to just pull it. I don't know how many people are using delegates into, like, internal functions.
+I assume somebody… if there's one person, it's… it's a breaking change, so…
+you know, check it out. I think the PR is pretty much good to go, but, that was kind of a…
+The impetus for it was, I realized, you know, our day loss at our company is in the double digits, and I was just trying to figure out why. A lot of it's actually people closing mobile browsers.
+But for desktop, we can do a better job. That was kind of the idea.
+martinkuba 16:19 That sounds good, yeah, thanks for doing that, Karen.
+And so, like, the… the… like, I don't remember the details now off the top of my head, but, like, the fetch, the Keep Alive, like, that… that…
+stays… persists, like, after the… the window, like, is destroyed. So, like, it… it can also be sent, like, it doesn't block the unloading, right? Like, the window unload, yeah.
+Jared Freeze 16:50 That's right, as long as the browser is open. So you're relying on the fact that they closed the tab or navigated, and didn't close the browser. You close the browser, it's of course dead, but… Right. I'm not sure how many people do that. I had trouble finding research on
+what people are actually doing. I'm sure it's sitting in some private UX company's database, but, yeah, I'd love to know, because I think a lot of people just leave
+I don't even think people reboot their laptops that often. I've heard, you know… which is crazy to me, like, I like to clear it out, but…
+But yeah, it does survive, as long as the browser is alive, so that's the idea. Now, the limits on that, I don't know. Like, you… I'm gonna guess that Chrome doesn't give you 60 seconds to fulfill a request or something like that. I'm sure it kills it, relatively quickly, but…
+You know, you do your best with what's available, but…
+martinkuba 17:49 Alright, the next topic,
+is both mine and Jared's. I can…
+I can share a screen for this one.
+Hold on a second…
+Okay, am I sharing the… this… the established, release, and versioning process issue? Okay.
+So… So, basically the background is…
+we're trying to get to a place, like, where we can release, do release, do publish, release and publish. And I think the first thing that we need to decide as a group is how we're gonna handle versioning in this repository.
+So… this… this issue that I created, has… is kind of, like, overarching for the whole…
+release process, but, I added a comment, yesterday after a conversation with Jared.
+About listing a few options that we can think of for, for versioning.
+How we would handle versioning here.
+So I can… I wish that I had… there was… the big… the group was bigger today, but, maybe we can revisit it next week as… again, but, just wanted to, like, point… just ask for review on this, and… and for any thoughts and comments. If it's helpful, I can go through it.
+But essentially, like, just gonna give a quick summary. We're gonna have, like, in this repository, we kinda envision to have, like, a few different types of components, like, we would have instrumentations, we would have some… some… maybe, like, some common or some core.
+functionality, like, kind of like the SDK functionality for browser. We might have some, like, configuration layer.
+And…
+I don't know, like, we haven't discussed this yet, but we might have our own API, potentially, like, if we find that it's needed.
+So, with that…
+you know, how do we… how do we version them? Are they versioned separately? Are they all sharing the same version?
+how do we signal to users that they're all com… we know what's compatible with what. The other kind of complication to this is that we have dependencies on upstream, so we have dependencies on the CoreJS,
+SDK.
+So, if… if all of these components share…
+Share… share dependencies, or have the same dependencies, that, like, we have to ensure that they, that somebody pulling down
+These packages would only pull down one version of the dependency, so, like, we don't want to, you know, inflate bundles for users, obviously.
+So, the options that are, like, listed here,
+Is… is we can have… we could have…
+Individual packages, like we have now, like, we already have, like, two instrumentations in there.
+And they would have independent versioning, independent versions. So this is essentially, like, the same model as Contrape, JSContrip, does.
+And as far as, like, compatibility.
+guarantees, like, we would… we would say that… I think we would guarantee that, the latest published packages
+have… are all compatible with each other, and they share the same dependencies. If dependencies, like, if you update dependency version numbers, then, then we would do it all together for all the components in this… in this… in this repository.
+The other option that, Jared brought up yesterday is… is maybe we don't have multiple packages, maybe we could have, like, a single package, you know, like, hotel browser, just one version.
+Everything… everything is internal, internal at that point, so… I think it's…
+I think this is pretty common, to be honest. I think, like.
+you know, like, for vendors to have a single SDK, and then, like, instrumentations, the core, all of that is included inside.
+The nice thing is that, like.
+It's very clear for users, like, you know, they don't have to worry about any compatibility.
+the… the only… there are a few things that we would have to, figure out… figured out for this. Like, we would have to,
+For example, like, how to stabilize, like, individual pieces of the codebase,
+So if, like, some instrumentation is experimental, but maybe, like, some is, like, ready to be declared stable,
+You know, do we have, how do we… how do we handle versioning of that whole thing?
+And the idea that Jared had was that we would, we would have them… we would do imports based on subpaths.
+And then… Then the other option…
+That, I'm not a big fan of, but…
+Just listed it for completeness, have multiple packages, and they all share the same version.
+I think it's…
+This is just, like, makes it just a little bit nicer to users to… to signal that
+That, you know, what's compatible.
+But… There are… there are things, like, we would always have to release everything together,
+And, like, stabilization becomes a little bit challenging, too, because like, when, if…
+Like, you can't stabilize, like, one package independently of the others.
+Hmm.
+I'm gonna stop here and just,
+See if anyone has any questions or comments.
+Jared Freeze 24:10 Yeah, I was just gonna add some color to option 2 that I proposed, which is that…
+having Experimental, the name in the… The… the import itself, I think…
+we just need to lean into what experimental actually means. So the idea was that, you know, if you go stable.
+It would come out of that…
+like, there wouldn't be an experimental folder, everything would live in packages, but the export would have experimental in the name, and the idea is that we would pull experimental out of the name once it's stabilized, leave the experimental export marked as deprecated.
+But just link it, like, it's the same folder, but have it exported in both places, so that way.
+people are still getting the newest, and it may be breaking for them, but we already called it experimental. Like, that's…
+that's something you've committed to by using something with that in the name that we've marked as such. That was my idea, so…
+Yes, it's breaking. I don't think you need a major version to make that bump, because the package itself may not have that. We may have just decided that semantic conventions are stabilized, and we're ready to do that. It won't break your code, but it…
+may change, you know? I don't think it's required that it be a major change, so that was… that was kind of my thinking in that.
+What is the easiest thing for consumers, right? Like, as maintainers, we have a different set of…
+criteria, but, you know, if we want wide adoption, I thought it would be nice to have a single import.
+And then you're just subpathing inside your own app. That would be the idea. So you just import OT hotel slash browser, one version, it's got
+you know, SDK API, like, whatever internally, and then you… you don't have to do that yourself, because we were looking at the demo. The demo code is import 6 things, set it all up yourself.
+And I feel like that's a real barrier. So that was kind of the thinking behind that.
+martinkuba 26:15 Yeah, I mean, with… that could also be solved by having that meta package.
+If you had multiple, like, if you had multiple packages, like, the idea, and I did list it here as a part of it, is that
+You know, you could have… Kind of the…
+Kind of like the, I don't know, like…
+other instrumentation or SDK package that includes all the default instrumentations as dependencies.
+That's, that's, like, the other option as well.
+Yeah, but I guess the two ways to look at this is, you know, how to…
+How to make it easier… as easy as possible for the end users, but also for us as maintainers.
+Hmm.
+Jared Freeze 27:07 Yeah, I like the auto idea a lot.
+I think just, you know, people want to get more advanced, they can start, like, dissecting things, but having that starting place, I think, is just… like, a demo with 10 lines of code would be great, you know? So, I love that.
+martinkuba 27:27 Anyway, we're almost at the time, but
+Yeah, take a look at this, give it some thought, and please comment if you have any thoughts, yeah.
+I might bring it up again next week, or post it in, actually post it in Slack, so others can take a look at it.
+Jared Freeze 27:45 Yeah, I said, I just commented to Ted that we would post it, because they…
+Know that this goes a little bit against, sort of, the…
+what's common in OTEL currently, but I also think I've heard more than once that adoption has been tough for browsers, so…
+you know, it's like, how strict do we want to be? And I'd love that, feedback from…
+you know, JS SIG and Ted as well, so…
+martinkuba 28:13 Yeah.
+Yeah, for what it's worth, I looked at…
+like, one precedent for us is the Android SIG. They recently went through this, and they…
+they're kind of, like, I think they're basically, like, option number one. They… they have…
+You can pull in things independently, they have a, like, a core… they actually have their own API, they have their own core, module, which is kind of like their own SDK, and then they have, like, a meta package for the defaults, on top of it.
+Yeah.
+Jared Freeze 28:52 Got it. Yeah, I sort of envision it like there will very rarely be majors, like, if we go with option 2.
+That, you know, it'd be a lot like CORE, where…
+you do have big changes, but as far as, like, absolutely breaking, you know, with different, sort of, top-level exports, or whatever it might be, that really wouldn't be the case. We're just…
+very vigilant about what we're exporting, what it's named, and all that. But version, you know, in sort of my vision of that, version matters a lot less.
+like, it's still Simver, but the experimental to stable
+the number matters a lot less. So, being called experimental is much more important, even though the version would be 1.2.0, or something like that. So, I think that breaks expectations a little bit, but I think it makes it easier for both of us, for, you know, consumers and authors.
+But yeah.
+Yeah, let's talk again next week, because if we can get a bigger group, that'd be… that'd be good.
+martinkuba 29:52 Yeah, sounds good. I'll put it on the agenda for next week.
+I do have one more quick thing, is,
+I… I think would be good to get help, maybe, on…
+the release and publish process, like, we need to build out some… some tooling and, GitHub workflows for this, so looking for help on this.
+And I can… maybe I can create a separate, like, subtasks, sub-issue for this, so that, you know, it doesn't get…
+Combined with this discussion here.
+Jared Freeze 30:27 Well, correct me if I'm wrong, but it's blocked by this, right?
+Because if we use Learn and Publish for option one, it's a much different world, right?
+martinkuba 30:38 That's true. That's true.
+Jared Freeze 30:40 Yeah, because I, you know, the core scripts actually grep through all the files, looking for versions, and update them.
+do their own commits and all that good stuff. So, we wouldn't necessarily have that in all the scenarios.
+So, not to say, you know, postpone the tooling or whatever, but I do think it'll be informed by whatever we decide here.
+martinkuba 31:04 Absolutely, yeah, agreed.
+Alright, we're at time.
+Thanks, everyone.
+Jared Freeze 31:14 Cool, see ya.
+David Luna Bistuer 31:15 Cheer.
+Right.
