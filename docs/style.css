@@ -82,7 +82,7 @@ body {
 /* --- Main Layout --- */
 .layout {
   display: flex;
-  min-height: calc(100vh - 3.5rem);
+  height: calc(100vh - 3.5rem);
 }
 
 /* --- Sidebar --- */
@@ -579,6 +579,7 @@ mark.current-match {
 @media (max-width: 640px) {
   .layout {
     flex-direction: column;
+    height: auto;
     min-height: auto;
   }
 
