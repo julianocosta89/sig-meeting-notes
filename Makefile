@@ -1,4 +1,4 @@
-.PHONY: install fetch help
+.PHONY: install fetch help test build
 
 UV = $(HOME)/.local/bin/uv
 
@@ -10,6 +10,8 @@ help:
 	@echo "  make fetch BETWEEN=YYYY-MM-DD/YYYY-MM-DD           Fetch transcripts within a date range"
 	@echo "  make fetch SIG=<slug>                              Fetch transcripts for a specific SIG only"
 	@echo "  make fetch SINCE=YYYY-MM-DD SIG=<slug>             Combine date and SIG filters"
+	@echo "  make test                                           Run tests"
+	@echo "  make build                                          Build docs/ site from transcripts"
 
 install:
 	$(UV) sync
@@ -21,3 +23,9 @@ ifdef BETWEEN
 else
 	$(UV) run python main.py $(if $(SINCE),--since $(SINCE),) $(if $(SIG),--sig $(SIG),)
 endif
+
+test:
+	$(UV) run --group dev pytest tests/ -v
+
+build:
+	$(UV) run python build_site.py
