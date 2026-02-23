@@ -66,6 +66,12 @@ Multiple SIGs match 'go'. Please choose one:
 Enter number:
 ```
 
+Some SIGs appear under multiple names in the spreadsheet. The script normalises these to a single canonical directory:
+
+| Spreadsheet name | Stored under |
+|------------------|--------------|
+| OpenTelemetry CC SIG | `CC-SIG` |
+
 Already-downloaded transcripts are skipped on subsequent runs.
 
 ## Output
