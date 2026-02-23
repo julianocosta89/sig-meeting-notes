@@ -51,10 +51,7 @@ def generate_summary(
     """Call OpenAI to generate a summary of the transcript."""
     prompt = (
         f"Summarize this OpenTelemetry {sig_name} meeting transcript from {date} "
-        f"({duration} minutes). Format your response EXACTLY as:\n\n"
-        f"# {sig_name} — {date}\n\n"
-        f"**Duration:** {duration} minutes\n"
-        f"**Source:** {source_url}\n\n"
+        f"({duration} minutes). Format your response EXACTLY as Markdown with these sections:\n\n"
         "## Key Topics\n- ...\n\n"
         "## Action Items\n- ...\n\n"
         "## Participants\nName1, Name2, ...\n\n"

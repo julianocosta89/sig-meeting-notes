@@ -2,7 +2,7 @@
 let manifest = null;
 let currentSig = null;
 let currentDate = null;
-let showingSummary = false;
+let currentView = 'transcript'; // 'transcript' | 'summary'
 const transcriptCache = new Map();
 const summaryCache = new Map();
 
@@ -31,12 +31,23 @@ function populateSigSelect() {
   for (const sig of manifest.sigs) {
     const opt = document.createElement('option');
     opt.value = sig.slug;
-    opt.textContent = sig.name;
+    opt.textContent = sigDisplayName(sig.name);
     sigSelect.appendChild(opt);
   }
 }
 
 // ── Helpers ─────────────────────────────────────────────────
+
+function sigDisplayName(name) {
+  return name
+    .replace(/\s*\(SIG[^)]*\)/g, '')    // "ja-JA Localization (SIG Communications)"
+    .replace(/\bSIG:?\s+Meeting\b/g, '') // "Developer Experience SIG Meeting"
+    .replace(/\s*\bSIG\b:?/g, '')        // "Entities SIG", "SIG Injector", "End-User SIG: OTel"
+    .replace(/\s*\bWG\b/g, '')           // "Agent Management WG"
+    .replace(/\s+:/g, ':')              // "End-User : OTel" → "End-User: OTel"
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 function getSigMeetings(slug) {
   const sig = manifest.sigs.find(s => s.slug === slug);
@@ -59,6 +70,7 @@ function meetingHasSummary(slug, date) {
 async function onSIGChange(slug) {
   currentSig = slug;
   currentDate = null;
+  currentView = 'transcript';
   searchInput.value = '';
 
   if (slug) {
@@ -112,7 +124,7 @@ function renderDateList(meetings, activeDate, matchCounts) {
 
 async function onDateClick(date) {
   currentDate = date;
-  showingSummary = false;
+  currentView = 'transcript';
   updateURL(currentSig, date);
   renderDateList(getSigMeetings(currentSig), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
@@ -120,6 +132,9 @@ async function onDateClick(date) {
   try {
     const text = await getTranscript(currentSig, date);
     renderTranscript(text, getCurrentQuery());
+    if (meetingHasSummary(currentSig, date)) {
+      await switchToView('summary');
+    }
   } catch (err) {
     showError('Failed to load transcript: ' + err.message);
   }
@@ -186,22 +201,32 @@ function renderTranscript(text, query) {
   headerCard.appendChild(dl);
 
   if (currentSig && currentDate && meetingHasSummary(currentSig, currentDate)) {
-    const toggleBtn = document.createElement('button');
-    toggleBtn.type = 'button';
-    toggleBtn.className = 'summary-toggle';
-    toggleBtn.textContent = showingSummary ? 'Show Transcript' : 'Show Summary';
-    toggleBtn.addEventListener('click', () => toggleSummary());
-    headerCard.appendChild(toggleBtn);
+    const tabBar = document.createElement('div');
+    tabBar.className = 'tab-bar';
+    tabBar.setAttribute('role', 'tablist');
+    for (const [view, label] of [['summary', 'Summary'], ['transcript', 'Transcript']]) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tab-btn';
+      btn.dataset.view = view;
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', 'false');
+      btn.textContent = label;
+      btn.addEventListener('click', () => switchToView(view));
+      tabBar.appendChild(btn);
+    }
+    headerCard.appendChild(tabBar);
   }
 
   transcriptPanel.appendChild(headerCard);
 
-  // Render body
+  transcriptPanel.appendChild(buildTranscriptBody(bodyText, query));
+}
+
+function buildTranscriptBody(bodyText, query) {
   const bodyEl = document.createElement('div');
   bodyEl.className = 'transcript-body';
-
-  const lines = bodyText.split('\n');
-  for (const line of lines) {
+  for (const line of bodyText.split('\n')) {
     if (!line.trim()) continue;
     const p = document.createElement('p');
     p.className = 'transcript-line';
@@ -221,12 +246,8 @@ function renderTranscript(text, query) {
     }
     bodyEl.appendChild(p);
   }
-
-  transcriptPanel.appendChild(bodyEl);
-
-  if (query) {
-    highlightMatches(transcriptPanel, query);
-  }
+  if (query) highlightMatches(bodyEl, query);
+  return bodyEl;
 }
 
 function parseBodyLine(line) {
@@ -268,30 +289,34 @@ async function getSummary(slug, date) {
   return summaryCache.get(key);
 }
 
-async function toggleSummary() {
+async function switchToView(view) {
   if (!currentSig || !currentDate) return;
+  currentView = view;
 
-  showingSummary = !showingSummary;
+  for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
+    btn.setAttribute('aria-selected', btn.dataset.view === view ? 'true' : 'false');
+  }
 
-  if (showingSummary) {
+  const bodyEl = transcriptPanel.querySelector('.transcript-body, .summary-body');
+  if (!bodyEl) return;
+
+  if (view === 'summary') {
     try {
       const md = await getSummary(currentSig, currentDate);
-      const text = await getTranscript(currentSig, currentDate);
-      renderTranscript(text, getCurrentQuery());
-      // Replace transcript body with rendered summary
-      const body = transcriptPanel.querySelector('.transcript-body');
-      if (body) {
-        body.innerHTML = '';
-        body.className = 'summary-body';
-        body.appendChild(renderMarkdown(md));
-      }
+      const summaryEl = document.createElement('div');
+      summaryEl.className = 'summary-body';
+      summaryEl.appendChild(renderMarkdown(md));
+      bodyEl.replaceWith(summaryEl);
     } catch (err) {
       showError('Failed to load summary: ' + err.message);
     }
   } else {
     try {
       const text = await getTranscript(currentSig, currentDate);
-      renderTranscript(text, getCurrentQuery());
+      const sepIdx = text.indexOf('\n====');
+      const bodyText = sepIdx === -1 ? '' :
+        text.substring(text.indexOf('\n', sepIdx + 1) + 1).trim();
+      bodyEl.replaceWith(buildTranscriptBody(bodyText, getCurrentQuery()));
     } catch (err) {
       showError('Failed to load transcript: ' + err.message);
     }
@@ -369,6 +394,9 @@ async function handleSearch(query) {
       try {
         const text = await getTranscript(currentSig, currentDate);
         renderTranscript(text, '');
+        if (meetingHasSummary(currentSig, currentDate)) {
+          await switchToView('summary');
+        }
       } catch (_) {}
     }
     return;
@@ -392,6 +420,10 @@ async function handleSearch(query) {
 
   if (currentDate && transcriptCache.has(currentSig + '/' + currentDate)) {
     renderTranscript(transcriptCache.get(currentSig + '/' + currentDate), query);
+    currentView = 'transcript';
+    for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
+      btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
+    }
   }
 }
 

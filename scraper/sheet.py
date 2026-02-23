@@ -29,6 +29,7 @@ class Meeting:
 # multiple names in the spreadsheet always land in the same directory.
 _CANONICAL_SLUGS: dict[str, str] = {
     "OpenTelemetry-CC-SIG": "CC-SIG",
+    "GC-Project-Management-EU": "Governance-Committee",
 }
 
 _SLUG_STRIP_RE = re.compile(r"[^\w\s-]")
