@@ -1,0 +1,406 @@
+SIG: End-User SIG: OTel Blueprints
+Date: 2026-02-05
+Duration: 44 minutes
+Source URL: https://zoom.us/rec/share/8c-pwjKfXyXbqCLoFVtAY0voKbiB8ba8OtIK-YsrSo8qt6Cv47Szu5Oj31hVzZL4.SRuVkwEX9ZC7QHOK
+============================================================
+
+neil yashinsky 01:21 Hey, Dan, good afternoon, good evening, good morning, everyone.
+Dan Gomez Blanco 01:25 Hello, hello.
+Amine Amanzou 01:34 Hey, Don, how are you doing?
+Dan Gomez Blanco 01:36 Good, good, good.
+I'm gonna… Try to go and claim host for this, so I can…
+stop the read.ai. We don't really like to have, note-takers on meetings that are already recorded and transcribed.
+So, I will… to claim that.
+It always takes me a while to get to the right document. I should… Bookmark it.
+Amine Amanzou 02:08 We talked about it.
+Dan Gomez Blanco 02:11 Yeah.
+Hmm.
+While we… while I do this, if you've got access to the notes, and you want to add any topics that you'd like to talk about, just add them to the… to the meeting notes.
+Kyle Shelton 04:05 Bye, Jen.
+Dan Gomez Blanco 04:06 I am. Sorry, I missed the last one.
+That's okay.
+neil yashinsky 04:10 Ask Kyle to the rescue. Good to see ya, my friend.
+Kyle Shelton 04:14 Hey, Neil, how's it going, man?
+neil yashinsky 04:16 Better now that you're here, not that it was bad to start.
+Dan Gomez Blanco 04:21 Okay, so now we're only humans here.
+neil yashinsky 04:25 At least as best we can tell, right? Nobody's failed the Turing test yet?
+Dan Gomez Blanco 04:31 Yeah.
+I'll drop the link to the notes, so you can add your topics and your name as well, if you want to add your name.
+Mmm…
+Tiffany Hrabusa 04:45 I added it to the chat already.
+Dan Gomez Blanco 04:47 You added it already, cool.
+Okay, I'm gonna move one topic… Up, perhaps, because of,
+And then we can start reviewing the board. I just wanted to give an update from Hotel Unplugs.
+Because it just happened this week.
+So, yeah, a few folks here on this call were there, so that's, yeah.
+Very successful date, I think it was good to see many end users there discussing topics, related to OTEL, and one of them that was really, like, I guess, hot topic was OTEL Blueprints.
+Yeah, Tiffany was, like, taking notes, which is great, because I'm not very good at taking notes.
+And, yeah, so, I just… just a quick summary, but you can see the… the notes in… in there,
+They are public notes. If you go to the session number 4 on that document that is linked in the notes, you will see that the… yeah, we talked about hotel blueprints with other end users and maintainers.
+the main themes that we covered were trying to explain what OTO Blueprints are.
+The current use cases that we're trying… or the current scope for blueprints that we're trying to cover. We cover that as well during that session at OTEL Unplugged.
+One of the main…
+themes that we talked about was, how do we decide the scope of Blueprints? And I think that's something that we, we talked about here the last time.
+And then now that we're trying… we're starting with 3 blueprints, right? And the scope for these blueprints…
+is still, in a way, to be decided. I saw the document on one of the… on one of the issues, you know, these… we started to collaborate on that.
+In general, just to recap, we're thinking of, one blueprint for, I guess, providing a centralized hotel.
+platform, or telemetry platform on a Kubernetes environment, so that's aimed at platform engineers.
+that want to provide OTEL for the rest of their organization in a stable way, so that includes SDK config, that includes collector gateway, and so on. Another one for Kubernetes-specific, so how do we do observability in Kubernetes, but also…
+going into the aspect of, like, like, Prometheus native components that don't expose metrics in any other format, so things that are
+Kubernetes native that just do Prometheus, at least for the time being.
+And then, the other one was related to more, like, a legacy, like, non-Kubernetes workflows, like VMs and so on. So I think we can, yeah, and as well, KubeState metrics, Node Exploratory, and so on. So yeah, so I think the other one, the, the… yeah, these are the three ones that we've got at the moment, for,
+For those,
+yeah, those are the blueprints, those are… that's the scope. However, during the day, during Hotel Unplugged, we talked about how do we…
+how do we organize them in the future? Is there a taxonomy for them? Do we want to focus on
+before we start writing a blueprint, who is this blueprint going to be for? Is it a platform engineer? Is it developers? Is it, operators? You know, who is it going to be for? And then, what environments is it targeting? Is it… and I think we're doing that, in a way, with these three. But when we're thinking about the scope for these, we should consider that.
+Another thing that was discussed during the…
+doing OTL Unplugged, was that the relationships between blueprints and reference architectures
+And, well, I think we already agreed here, or I think there's a common understanding, from what we gathered last week, that hotel blueprints are a living document that will be evolving constantly, and then reference architectures will be a point in time
+For a specific end user adopting hotel.
+And that doesn't need to be modified later. Both will be… and then… both will be side-by-side, but hotel blueprints, there's, like, a higher level that tries to aggregate some of the common challenges for many… that many companies face when they… when they start to adopt hotel, and then reference architectures will be an implementation of those.
+However, one thing that was talked about there was the fact that And I hadn't considered this.
+But some of the…
+specifics of auto… auto blueprints cannot go into very specific things, like, should you do pull, or should you do push? Or should you do delta temporality, or should you do cumulative temporality in your metrics? Things like that that are quite specific.
+And the art…
+tied to your backend, right? It will… the answer to that question will be different. If you use Prometheus as a backend, or if you use, I don't know, Influx, or if you use another, like, metrics backend. Just thinking about metrics, right, for example.
+And this is where our reference architectures can actually come in. Where, like, we have the Autel Blueprint as a general
+Guideline, and then a recommendation of, like, well, you've got these two options.
+Or many, you know, we can, we can basically have, like, Ways to approach it.
+But the implementation-specific, or things that are backend specific.
+Should remain as part of a…
+implementations of, like, different end users, right, in reference architectures.
+Neil, you've got your hand raised.
+neil yashinsky 10:24 Yeah, thanks. I was just curious, I think I agreed with everything you said, and I was just wondering.
+If there's an existing structure for, let's just say, back-end specific
+guidance, you know, not… not of a formal blueprint or whatever. Is there, is there, is there, like.
+If you have this question, you know, go to this SIG, or go to this wherever discussion group within OTEL to see how people are solving it, or is there any kind of mechanism for something like that?
+Dan Gomez Blanco 10:54 Ayy.
+neil yashinsky 10:55 Should there be?
+Dan Gomez Blanco 10:56 The back ends, that's a tricky one, and, you know, it's…
+neil yashinsky 11:00 we…
+Dan Gomez Blanco 11:02 tend, or we should, I think we should, not really, like, stay abstracted from, from back ends, because hotel, you know, should.
+neil yashinsky 11:11 Yes.
+Dan Gomez Blanco 11:12 agnostic, right?
+neil yashinsky 11:13 No, no, not to… sorry to interrupt, but not to recommend what you should do as much as, like.
+places you can consider that are… you know, especially if you've already got your back-end, you know, not here to tell you what to do, it's more like, follow the suggestions of this backend vendor, if applicable to your situation, or, you know, here's a list of backend specific resources.
+outside of the blueprint scope.
+But, I don't know, like a portal to the right place, I guess? I don't know, maybe it's outside the bounds, I'm totally cool with that. I was a thought, I was respondering myself.
+Dan Gomez Blanco 11:47 Tiffany?
+Tiffany Hrabusa 11:49 Yeah, it… it is out of bounds, for the documentation. We… we don't go into any of that.
+The extent to which we document any vendor-specific things is the… is, if they've added a component to collect or contribib that's specific to their instrumentation or their backend, then, that documentation exists.
+But we do not, link out to vendors' documentation or recommend any resources there.
+you could try going to Slack, and you might get responses from contributors who work at the vendor, but
+That's as far as we go.
+Dan Gomez Blanco 12:30 Yeah.
+neil yashinsky 12:31 No, great, thanks so much. I think that's… that makes a ton of sense, and I… so, yeah, thanks, appreciate the input. I think for a blueprint, for example, you know, imagine, like, I'm just going back to the… to the…
+Dan Gomez Blanco 12:41 to the topic of, like, delta versus cumulative, right? So you might want to say in a blueprint, for example, if you're in Kubernetes and you're ingesting data in…
+in, from Prometheus.
+And then you might want to link it to, like, maybe because we're talking about cloud-native tooling, right? So if you're, like, sending your data to a…
+cumulative, like, back in, like, Prometheus, then you just pass it through the collector and…
+you know, that's it. But if you're pushing it to another type of… you don't need to mention the vendor or backend, right? But if you say, if your backend only does delta temporality, well, then you can use this in the collector to…
+To translate it from delta to… from cumulative to delta. Like, that's… that is something that we can do, but, like, not… I wouldn't say mention, like.
+Yeah, this or that.
+The back end, yeah.
+neil yashinsky 13:33 I was really just thinking about, like, the logical conclusion of that, like, hey, this is…
+outside of our bounds, and it's totally fine if we're like, period, go, whatever, or if there's a way that we could just kind of, like, thoughtfully point people, even generally, about…
+Dan Gomez Blanco 13:51 There was one… yeah, so I think we should… we should be really careful with… with recommendations that go into the commercial aspects as well.
+And just not include them. There was one topic at the… at OTL Unplugged that someone said, like, should blueprints go into the… how do you save…
+Costs on, you know, a specific
+Well, you know, that's not something that we want to get on, yeah. It's like, yeah, we don't want to get into the commercial aspects of running a hotel.
+neil yashinsky 14:22 Right. The abstraction layer wraps around capabilities as opposed to, like, implementation details. And, like, I just kind of, like, if this is a tour of sorts of how to do things right, like, I love to
+to the extent possible, and supportable, and within the mission to, like, rather than end off on a cliff, be like, Google this thing, right? Or, well, that's also vendor-specific, how you say, like, research, you know, these… these topics to help you finalize your… your backend, or something, you know, or like I said, just period, I don't know, I was just…
+Thought the group might have input. Thanks.
+Dan Gomez Blanco 14:56 Yeah, there was another thing related to this, is, like, the scope, right? I mean, we're trying to, like, here, like, maybe we should have some, some guidelines on what… on this, and I think we should probably do… we will have some guidelines on this.
+I'm just trying to collect those, and I'll create an issue for this, because, I think it's important to have this.
+There was another question about Artel Unplugged, about the, organizational aspect.
+As in, like, should we recommend
+that you run a platform team, for example. And I think that's, well, many organizations don't have a platform team.
+I don't think we should recommend it per se, in the platform… in the blueprint, and say, hey, you know.
+to adopt hotel, you need a platform team. But what we should probably do is say, well, we have seen organizations that
+Have this type of, like…
+team that can handle this. I mean, we can recommend an auto-collector gateway and centralized pipelines, for example.
+And then we can mention that.
+The way that…
+organizations run this is through platform engineering practices, right? We don't need to go into the details of how you actually
+implement that in an organization, or like, say, you don't need to have a platform team, but somebody needs to own a centralized gateway of collectors, right?
+So I guess that's where the boundary is, that I'm not sure we should be… well, I think we shouldn't be,
+dictating organizational structure, but we should definitely say that someone should own this.
+And this is the way that others are doing it.
+lciukaj@splunk.com 16:30 I agree with that, Dan. I think that…
+we can, like, use something general, like, typical organizations are doing in that way, that what we see is in that way, not like, you need to do it in that way, right? Because…
+Yeah, we need to be as, like, politically correct as possible, and also try to not dictate how the organization should be structured. Yeah, I agree with that.
+Dan Gomez Blanco 16:55 Cool.
+Yeah, so that brings me another topic, which someone said, how are you generating ideas for blueprints? And this goes back to the process. I think we should have a process, which starts with an issue being raised, and say.
+lciukaj@splunk.com 17:09 The questions… excuse me, the questions you are going through are coming from Unplugged, the event? Okay.
+Dan Gomez Blanco 17:15 So I'll just… I'm just going through the notes of the…
+lciukaj@splunk.com 17:17 And who was asking the questions? I'm just wondering, like, people from the audience, or, like, the OpenTelemetry contributors, the community?
+Dan Gomez Blanco 17:25 End users were actually.
+lciukaj@splunk.com 17:26 Thank you, brother.
+Dan Gomez Blanco 17:27 It was yeah.
+lciukaj@splunk.com 17:28 Interesting.
+Dan Gomez Blanco 17:29 Yeah, it was good to see.
+Kyle Shelton 17:31 Oh, so it was like an open space, then.
+Dan Gomez Blanco 17:34 Yeah, so for those that were not familiar with this, Hotel Unplugged was an unconference that was run in Brussels on Monday. Hopefully, we can do it every year, or even, like, there was…
+Austin was mentioning, like, if someone is up to hosting it this year again, you know, in 2026 at some point, then that would be great. Don't know if it'll happen, but at least, you know, we want to run it once.
+lciukaj@splunk.com 17:55 Did you have, like, separate dedicated section… sorry, dedicated session for blueprints, or you just mentioned it as part.
+Dan Gomez Blanco 18:02 Yeah, so the way that an conference works is, like, when you go in the first, like, half an hour.
+lciukaj@splunk.com 18:07 Mmm.
+Dan Gomez Blanco 18:08 what topics you want to talk about, so the audience, the attendees basically go there and decide, hey, you know, what things do we want to talk about. There were many, many different tracks, many different sessions, and then one of the sessions was, voted to be hotel blueprints.
+lciukaj@splunk.com 18:22 So it was kind of an ad hoc, so it wasn't part of the agenda, it was, like, kind of in flight, right?
+Dan Gomez Blanco 18:27 And then people voted for it, and then… and actually, I have to say that at the end of Unplugged, there will probably… there will… there will be a blog post about this as well.
+But one of the things that Unplugged at the end of Unplugged was the… of the unconference was a roadmap exercise, where, you know, the hotel…
+lciukaj@splunk.com 18:46 Governance Committee.
+Dan Gomez Blanco 18:48 Put together all the current roadmap items that are…
+open, in flight, basically, for hotel, with Blueprints being one of them, and then people in the audience voted with an app, voted for the… their top priorities from the, you know, from…
+lciukaj@splunk.com 19:08 It's a motel.
+Dan Gomez Blanco 19:09 As seen by the audience, which was maintainers and end users.
+The highest priorities were browser, entities, declarative config, but in the top
+6 in the top 7? Like, Blueprints were up there as well, so…
+lciukaj@splunk.com 19:24 Awesome, so it seems there is definitely an interest in that from the end user perspective. This is good news. So, I was just wondering, you know, because I submitted a proposal for Observability Summit here in North America, like, 10-minute session about the blueprint, so I'm not sure if you are going there, Dan, for Observability Summit, but maybe someone from the US team, from USA wants to join me.
+And if I am selected for that, because we are waiting on, you know, decision, I believe that is due February 17th, but if I am selected, I'll be happy to someone join me as well, and we can go through, you know, the concept of blueprints, and also the selection process, as you mentioned now, and maybe we can also leverage the feedback from the EMEA team, from the Unplugged conference.
+Dan Gomez Blanco 20:11 That'd be awesome, yeah. So if you can… if you want to share those lights when you've… I mean, if that gets approved.
+lciukaj@splunk.com 20:16 Yeah, yeah, it must be first approved. It must be first approved, that's right, and that's what I'm hoping for.
+Dan Gomez Blanco 20:21 Fingers crossed on that one. This is cool.
+neil yashinsky 20:24 Yeah, it does.
+Dan Gomez Blanco 20:26 Yeah, so… I think that's pretty much it. I think that's what was covered, so I think,
+Yeah, I don't know if I missed that. I cut you, I cut you when you started saying so. So one of the questions was related to the selection process, right? How we are… Yeah, and this leads me to, I guess, the… I don't think there is an issue for that at the moment creates it in our board, but we should probably… I can create one later.
+to put together the process for… well, some guidelines and process for blueprints.
+lciukaj@splunk.com 20:59 I need to go.
+Dan Gomez Blanco 21:00 It starts with, like, you know, create an issue template, create some guidelines, how do you define the scope, what's in scope, what's not in scope, what's too small, what's too big.
+How do we avoid,
+issues overlapping, and then I think we should have a body of people that can approve this, which would ultimately… and I spoke to the… with the rest of the end-user SIG maintainers.
+that the idea here is that as we have… as we build this, we would like to see people here that would like to volunteer to be either triagers or approvers in those, right? I don't think it would be like being a…
+The amount of effort, clearly, we're not gonna have, like, hundreds of blueprints, proposals.
+I don't know, possibly not. So the triage is not gonna be, like, triaging the collector contract repo, right?
+So, but, you know, but we do need someone that is able to keep track of, like, the different blueprints that we, you know, that we get proposed to make sure that they follow a set of guidelines and a set of, like…
+lciukaj@splunk.com 22:07 I think that the first, you know, set of blueprints should be, you know, defined by us, by the team working on them, but the next blueprints, we need to have some process for that. Maybe end users can put some ideas, then we can vote, maybe there will be some kind of, you know, the selection process, but that's definitely something we should have in mind.
+Dan Gomez Blanco 22:27 Coop.
+Awesome.
+Cool.
+So I see that, you know, Neil…
+Volunteer? Yeah, cool. Yep. I think, you know, we…
+let's get this first round, as Lucas said. I'll, you know, I volunteer as project lead to, of course, review all this and ensure that we have this initial set of, like, blueprints.
+neil yashinsky 22:50 Perfect.
+Dan Gomez Blanco 22:51 But then, you know, after that, We can scale this, right?
+Cool.
+Right, next topic. The… let's review the board, actually, I think that's the… that's the topic.
+So let me just share my screen.
+Right, so, in progress, we've got the blueprint template.
+I've seen the comments here, I'll respond to them, and I'll respond to the comments on the…
+on the… On the actual template here.
+But I think this is almost ready to go, so I think that tomorrow I would like to raise our PR with the template, and then we can…
+I think it's pretty much, like, you know, the idea for anyone that's new to Hotel, as well, for things like this, documents, it's easier if… and I saw that was happening already in the…
+in the Kubernetes observability issue. It's easier if you create a document on Google Docs with your own account, you can share it, you can, you know, you can let people comment on it.
+And then after, like, that collaboration is done there.
+you can move it into a PR. It's a lot easier than…
+you know, that way. So you get the first round of, like, reviews there, and then you can move it into a PR, right?
+Yeah, so I've seen the comments, and I will open up here with that.
+Alexandre Ferreira 24:22 So, I was, reading the Blueprint template, again.
+And I do agree that we are… Almost there yet.
+Link.
+We're almost ready to… to go. Like, I like the… the… the idea.
+And also, the… you mentioned this is based on good… good strategy, bad strategy by remote, if I'm not mistaken. Yeah. I like this… this approach as well, and I think we can move forward.
+Dan Gomez Blanco 24:53 Nice, awesome.
+And the moment that we get this, we can start to…
+Yeah, you can see that. Now you can add blockers, and…
+In GitHub. So, yeah, these are pending on that, I guess. You can…
+Well, yeah, they're pending on that, on their Blueprint template, being approved.
+Do we want to go through these? I think we also have…
+So, I'm picking on this one because I saw that there's been some discussion here, the Kubernetes observability one, and see what we're trying to… to cover. I see that there is… that was moved into…
+this doc.
+Alexandre Ferreira 25:29 Yeah, can everyone see this doc?
+Like, if you click on this, then I need… I can see it.
+So,
+I agree to, to the points discussed that, while we are waiting for the blueprint to… to be merged, the template, we can work on the scope of this one. I don't know if we have a default format for proposing scopes or anything like that.
+If we do, I would be happy to read them, but my thought here is that for Kubernetes.
+there's two things to consider. One is monitoring, giving the ability to monitor workloads, so that, like, you can have
+metrics for resource and memory usage, and also Kubernetes events that will, will be generated as logs, but also Kubernetes-specific workloads that
+are part of the cluster, right, Leif? Yeah. Hoardiness, and eyes, and possibly,
+cloud APIs to… to provision volumes, ingress controllers, etc.
+So, this is what have been on my mind. I don't know if the first piece of it on monitoring workloads, like resource usage, if this somewhat conflicts with other blueprints, and…
+to… to finalize, part of this would be also following or recommending, telemetry enrichment based on Kubernetes labels, or well-known labels, mentioned in the telemetry docs. And yeah, that's it.
+Dan Gomez Blanco 27:26 Makes sense. I think,
+the way that I think about… the way that I was thinking about scope, and I think this covers it, pretty much, is…
+Three… three things, basically, which would be…
+The audience that you intend this to be?
+I mean, who's the audience for this? Is it a Kubernetes admin, or is it, you know, like.
+who is going to be in charge of, like, implementing this blueprint? The other one would be, what hotel components
+Is this blueprint affecting?
+And the third one is, like, what hotel… no, what not… what components or what, environment is this?
+deployed into, or observant. Like, you know, for example, in this case, it would be…
+Yeah, I think that you covered that already. But,
+Those other three, I mean, maybe, like, those other three things I've been…
+top of my… top of my mind is, like, who's it for? What hotel components does this touch?
+And then you mentioned that here, for example, for collectors.
+Yeah, so we're… we're touching collectors, but, like.
+collectors for Kubernetes monitoring, not collectors for a gateway, for example, which is covered in a different blueprint, right? To provide a gateway
+for OTLP ingest.
+Alexandre Ferreira 28:53 Yeah, so.
+Dan Gomez Blanco 28:53 And that makes sense. And then in the environment being…
+yeah, this is related… this is support in Kubernetes, it's about monitoring or observing Kubernetes workloads, and blah blah blah, I think that makes sense. It's almost like everything is here. It's just more like, if we wanted to have, like.
+a little bit of, guided approach in the future. Maybe those are the three questions that we would like to get people to answer.
+Alexandre Ferreira 29:17 Agreed. Quick question, when, you say…
+who's going to implement this as a topic? You mean who's going to implement this in the customer environment, or who's going to implement the blueprint here in the community?
+Dan Gomez Blanco 29:34 No, they… and the… who will be the end user?
+That will take this blueprint.
+And then go, like, oh, I find this really useful, I'm gonna do it in my, you know…
+I guess that's the… who is this for? I guess, who's the audience here?
+Alexandre Ferreira 29:51 Nice.
+Dan Gomez Blanco 29:51 I might be missing something, I mean, we're still, like, you know, this is all…
+you know, being discussed. This is why we're doing these initial three blueprints, right?
+But this is… I think this will allow us to ensure that we're targeting the right audiences, that we're targeting the right… that we have a good coverage of, like, audiences.
+Hotel collect, hotel components, and industry.
+environment, right.
+Those are the three.
+The three verticals, or the three…
+I don't know what you call that, like…
+Alexandre Ferreira 30:27 Nice.
+Dan Gomez Blanco 30:27 economies that we…
+Kyle Shelton 30:28 Customer profiles? I don't know, I guess that's not a good word, yeah, but yeah.
+Dan Gomez Blanco 30:33 Yeah, I see what you mean, yeah, the… yeah.
+The applicable score.
+neil yashinsky 30:36 teaser persona?
+Dan Gomez Blanco 30:40 Cool. I think that… I think that those three questions are… should be what we need.
+To start with, and then we can take it from there.
+And then I can do that the same for the other two that we've got proposed, right? So we can follow the same type of, concept for…
+Non-kubernetes environments, An infrastructure, and centralized telemetry platforms, right?
+Alexandre Ferreira 31:10 And, I see that Arthur rings a good question, that…
+If this is not the same as audience, like, who's going to implement the blueprint, or the end user?
+Dan Gomez Blanco 31:22 Yeah, the audience, yeah, exactly. I think for the first question, that's the audience, right? Yeah. Is… who's gonna read it? Who would be the person reading it, yeah.
+Alexandre Ferreira 31:31 Alright.
+Good. So… I will work on that.
+I'll let you know.
+neil yashinsky 31:44 Thanks again.
+Dan Gomez Blanco 31:47 Do we want to cover the… yeah, this one. If there's anything here. I think there was a question, but…
+Kyle Shelton 31:55 I can, if you want to assign the number 245, I can take that one for the non-Kubernetes stuff. I know that's… and see, so, and this is another pickle, right? Like…
+That's, like, opening the gates of Pandora for all of our legacy workloads and everything, so…
+Dan Gomez Blanco 32:12 Yeah, yeah, exactly. I mean, this could be… a lot, sorry. It's like… Right. Like, you know, we want to, when we say non-cates environments, I don't know, maybe we have something more specific in mind. Right. I know that, Lucas, as well, was here, wanting to…
+Help bleep this, and .
+lciukaj@splunk.com 32:31 So, no progress here, unfortunately, sorry about that. So, again, it was a super busy time here for me. I was moving to the new house, as you see, my new office, which is still empty. Nice.
+Also, we had two winter storms in North Carolina, which, like, disrupted everything, but I am about to start working on this, and I've seen there was some discussion, there are other folks who want to contribute to this, so I'm planning, this is my top priority, I'm planning to create a Google Doc and start putting some content for this blueprint, and also I'll answer to that message in this discussion as well.
+So, again, no progress here, but I'm really going to start working on that.
+Dan Gomez Blanco 33:13 By the way, just one before I let you go, Arthur, the, the description of this issue is empty, because I cannot, like, assign this. I created the issue originally, I wish I hadn't, because now, basically, like…
+I can't really edit it, but when you've got something, you know, firm, then I can edit it.
+lciukaj@splunk.com 33:34 Hold on a sec, so you mean that this is a task, and also there is an issue created as part of that, right? So we need to provide some description for this, correct?
+Dan Gomez Blanco 33:43 Yeah, so the tax… so when you add something to… this is a bit counterintuitive to some, but when you add something, an item here, to… to here, to the board, it comes as a draft issue, and then you can convert that into an issue, or you can.
+lciukaj@splunk.com 33:56 Okay.
+Dan Gomez Blanco 33:57 But in the future, when you create these issues, they will come in the SIG end user repo, and then the idea is that the person that creates the issue should be the one providing the scope and the, you know, the actual thing. I think at the moment, I created them as placeholders, and then, yeah, so now I can't really edit the scope. But yeah, that would be the…
+lciukaj@splunk.com 34:16 They can open it up.
+Dan Gomez Blanco 34:18 Arthur?
+Arthur Silva Sens 34:21 This is mostly me catching up.
+For known Kubernetes environments, Like, is there any good solution while Injector and Obi…
+Are in, like, considered stable or something like this?
+Dan Gomez Blanco 34:39 Actually, that… That brings me back to… before I let Luca speak, because I think he…
+He probably has some, some insight there.
+Another thing that was covered during Hotel Unplugged was how Blueprints
+the audience of blueprints are end users, but also maintainers. So, if we were to have a blueprint that is asked by the community to say, hey, this is how I've done
+instrumentation in… or, you know, OTEL in non-Kates environments.
+and then we find that it's really, really painful to do. That should be a signal for maintainers to say, well, we should make this easier. And then things like Injector, like, you know, can come in and make people's lives easier, right? So,
+in the future, maybe right now, we create a blueprint for this that doesn't include Injector, but as we, you know…
+as Injector is, like, out already, like…
+we could also add it now, or add it later. Like, blueprints are supposed to be a living document that should make, you know…
+Should improve as the project evolves, right?
+Arthur Silva Sens 35:48 Yeah, makes sense. X.
+Dan Gomez Blanco 35:50 So I'm not sure if, if you want to add anything, Lucas.
+lciukaj@splunk.com 35:55 Oh, I'm good here.
+Dan Gomez Blanco 35:57 Cool. Yeah, I think this will be… it will be good to… to scope this a bit, you know.
+Tied to it, then.
+non-kits environments, I think maybe, like, a specific… I don't know.
+I'll let you… I'll let you go with it, but maybe, like, yeah, it's… it can be a lot too wide, maybe, just anything that's non-Kates, right? Yeah.
+M… And, we've got, as well, this issue…
+That, yeah, do you wanna… Talk us through this…
+Oh, did I mean, leave the call? I think it was in.
+Right, so, well, I mean, just left some comments here, but I think,
+Yeah, I have not had a chance to look at this.
+But if you want to look for options for diagrams.
+That are easy to work with and review.
+Leave your… leave your thoughts here.
+From what it looks like, So, in terms of, like, the docs website, tiffany.
+anything, as long as it can be, I guess… rendered…
+In an easy way? Is there any…
+I mean, do you have any, any, anything, any… Like…
+Nose from, like, anything that you definitely wouldn't recommend.
+Or is it, like… Whatever works, as long as it's a common decision.
+Tiffany Hrabusa 37:46 Short answer is I don't know.
+I know that Mermaid works, I think that's the only…
+rend… like, diagram rendering that we're doing on the website. The other diagrams are all static images.
+But, if… I can…
+Honestly, I haven't had a chance to review Amin's comments on this, so I haven't looked into these.
+Dan Gomez Blanco 38:14 I can, and then take it to the commsig and see if any of them are feasible.
+Tiffany Hrabusa 38:19 Or if there are no's, as you said.
+neil yashinsky 38:23 Tiffany, I had time to just dig, like, a very, very, like.
+Like, right… maybe right after we got done here, the last time, and so…
+Only thing I can say is, so far, like, Mermaid seems like… I, like, I… it seems like a decent, or even a good, like, default.
+To start with.
+And it's widely enough adopted or whatever, it's popular, you know, it's got, you know.
+What am I looking for? The install base to make it, you know, the start of at least a good choice to begin with.
+Tiffany Hrabusa 38:55 Yeah, I think, I think that's fine. I think, we can always…
+investigate other options if the diagrams become too complex, or made to really render clearly.
+But I will, I will look into the options that Amin mentioned, because,
+It would be nice to be consistent across the board from the beginning.
+neil yashinsky 39:18 Yeah.
+Tiffany Hrabusa 39:19 life goals, but…
+neil yashinsky 39:21 Yeah, good shout-out, Amin 2, because I… yeah, sorry, no, I haven't… I haven't had a chance to validate any of those, so thank you for also highlighting that. Yep, sorry.
+Tiffany Hrabusa 39:29 And, I mean, like I said, I haven't looked into any of these, so I don't even know how they work, if they're static images, or if they render, but I do like the idea of a rendering tool, because, as Dan said, the blueprints are meant to be living documents, and so…
+Being able to update them easily would be a plus.
+Dan Gomez Blanco 39:55 Cool.
+Oh, yeah, I think that's it. There was one… there's one other thing that I wanted to raise.
+from catching up with the DevEx SIG, they've been busy to…
+Yeah, though I did ask a question in the… In the Slack channel,
+They… none of them are able to join at this time, which is…
+bit of a… of a bummer. So I do know… I'm thinking of, like.
+maybe occasionally joining the DevEx SIG to try to…
+I mean, I'm happy to do that as the leader of this project.
+To bring in some of the things that we discussed here.
+When I joined the… if I joined the DevEx.
+Sig?
+Or, alternatively, Change the… this meeting time.
+To a different one.
+But that's always difficult. I think it's so difficult to find time for more meetings, right? So this one worked really well, because it was, like, one week this, and another week as the end user SIG.
+Yeah.
+I don't know… If this becomes an issue.
+Then… and if they really want to be more involved, but they can't really attend this meeting time.
+then maybe, I don't know, we want to propose.
+at a different meeting time, but that's maybe something that we can discuss asynchronously on Slack, so that they are also involved in the discussion, right?
+Mmm… But one thing that I would raise is that, they mentioned…
+Now, they've got a few blog posts ready to go.
+For reference architecture, so they've half interviewed Five?
+Sort of 4 or 5.
+End users, and they've got reference architectures from end users.
+And their plan was to publish them as blog posts.
+But I think… What I will propose is that we don't
+Published them as blog posts, and we publish them in a news section.
+In the… in the website for reference architecture, so that they're always there, and they're not buried into the blog posts.
+would that be, you know, I guess.
+Yeah, why not both? Okay, yeah, I mean, how would that work? I mean, could we create a blog post
+that links to maybe, like, I don't know.
+neil yashinsky 42:29 Yeah, exactly. The post is just, like, the promotion of it, and then the content, it exists where you described it.
+Tiffany Hrabusa 42:37 There have been other instances where blog posts have been published, and then we've asked the author to add the content to the documentation as well, because it's something that should be documented, so…
+Both is fine, basically.
+Dan Gomez Blanco 42:50 Awesome.
+Sounds good.
+Nice.
+I don't know if I have a common…
+template for all of them, either, or if each reference architecture that they're public… that they're publishing is completely, completely separate. So,
+Yeah.
+I need to catch up with them. But, yeah. Anything else? Anyone wants to share?
+Can't see anything in the notes.
+neil yashinsky 43:25 Got me?
+Thanks, Dan. Thanks, everyone. Tiffany, etc.
+Minay.
+Dan Gomez Blanco 43:32 Okay.
+So if there's nothing else, well, I'll… yeah.
+neil yashinsky 43:36 Yeah, good luck with the move, Lucas. Bye.
+Dan Gomez Blanco 43:41 Alright, well, I'll see you in… 2 weeks, then. Actually.
+I won't be here in 2 weeks, I'll be on holiday, so if someone else can volunteer to lead the…
+The meeting?
+lciukaj@splunk.com 43:52 I appreciate that.
+I can do it, let me check. When is the next meeting? It's 5, 12, 19, right? I should be available, and so what is the, I mean, expectation from the host, go through the project board, take a notes, etc?
+Dan Gomez Blanco 44:11 Yeah. Add any topics for the… to discuss in the agenda?
+And then one of them can be just review, review the current status of issues, but anything else I want… that anyone wants to bring up, then, as well?
+Bring coffee and cake, yeah.
+lciukaj@splunk.com 44:26 I can do it. Awesome. My first time being a host for this, you know, the OpenTelemetry community meeting, so I'm very excited.
+Dan Gomez Blanco 44:35 Cool, awesome.
+Right, thank you very much.
+lciukaj@splunk.com 44:39 Thanks, guys, take care.
+Amine Amanzou 44:42 Thanks, guys, take care.

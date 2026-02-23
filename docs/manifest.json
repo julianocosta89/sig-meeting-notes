@@ -1,0 +1,859 @@
+{
+  "generated_at": "2026-02-23T14:05:49Z",
+  "sigs": [
+    {
+      "slug": "Agent-Management-WG",
+      "name": "Agent Management WG",
+      "meetings": [
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 18,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Android-SIG",
+      "name": "Android SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 60,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 57,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 63,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Arrow-SIG",
+      "name": "Arrow SIG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 61,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 25,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 65,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 63,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Browser-SIG",
+      "name": "Browser SIG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 29,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 31,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 37,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "CC-SIG",
+      "name": "C/C++ SIG",
+      "meetings": [
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 11,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 14,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "CICD-SemConv-SIG",
+      "name": "CI/CD SemConv SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 43,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 40,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 41,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Client-Instrumentation-SIG",
+      "name": "Client Instrumentation SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 30,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 18,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Collector-SIG",
+      "name": "Collector SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 87,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 58,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 42,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Communications-SIG",
+      "name": "Communications SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 42,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 12,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Community-Demo-App-SIG",
+      "name": "Community Demo App SIG",
+      "meetings": [
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 30,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Configuration-WG",
+      "name": "Configuration WG",
+      "meetings": [
+        {
+          "date": "2026-02-02",
+          "duration_minutes": 6,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Developer-Experience-SIG-Meeting",
+      "name": "Developer Experience SIG Meeting",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 22,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 44,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 27,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "End-User-SIG",
+      "name": "End-User SIG",
+      "meetings": [
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 55,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "End-User-SIG-OTel-Blueprints",
+      "name": "End-User SIG: OTel Blueprints",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 225,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 44,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Entities-SIG",
+      "name": "Entities SIG",
+      "meetings": [
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 52,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-02",
+          "duration_minutes": 34,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Event-WG",
+      "name": "Event WG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 57,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 57,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "FAAS-WG",
+      "name": "FAAS WG",
+      "meetings": [
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 14,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "GC-Project-Management-EU",
+      "name": "GC Project Management (EU)",
+      "meetings": [
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 57,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Go-Auto-Instrumentation-SIG",
+      "name": "Go Auto-Instrumentation SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 30,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 8,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Go-Compile-Time-Instrumentation-SIG",
+      "name": "Go Compile Time Instrumentation SIG",
+      "meetings": [
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 38,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Go-SIG",
+      "name": "Go SIG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 58,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 32,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 33,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Governance-Committee",
+      "name": "Governance Committee",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 63,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 156,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 67,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Java-Declarative-Configuration",
+      "name": "Java Declarative Configuration",
+      "meetings": [
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 48,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Java-SIG",
+      "name": "Java SIG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 24,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 58,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 34,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "JavaScript-SIG",
+      "name": "JavaScript SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 30,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 60,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 34,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "K8s-Semantic-Convention-SIG",
+      "name": "K8s Semantic Convention SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 6,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 31,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Kubernetes-Operator-SIG",
+      "name": "Kubernetes Operator SIG",
+      "meetings": [
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 42,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "LLM-Semantic-Convention-WG",
+      "name": "LLM Semantic Convention WG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 62,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 68,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 83,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 123,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-02",
+          "duration_minutes": 34,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "NET-Auto-Instr-SIG",
+      "name": ".NET Auto-Instr SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 11,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 21,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 9,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "NET-SIG",
+      "name": ".NET SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 14,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 10,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 4,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
+      "name": "OpenTelemetry on Mainframes Weekly Meeting",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 3,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 20,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 30,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "PHP-SIG",
+      "name": "PHP SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 19,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 8,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 61,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Profiling-WG",
+      "name": "Profiling WG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 62,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 48,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Prometheus-WG",
+      "name": "Prometheus WG",
+      "meetings": [
+        {
+          "date": "2026-02-13",
+          "duration_minutes": 54,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Python-SIG",
+      "name": "Python SIG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 53,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 56,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 58,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "RPC-Sem-Conv-Stability-SIG",
+      "name": "RPC Sem Conv Stability SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 48,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 37,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 47,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Ruby-SIG",
+      "name": "Ruby SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 71,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 70,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 16,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Rust-SIG",
+      "name": "Rust SIG",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 9,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 34,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 7,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "SIG-Injector",
+      "name": "SIG Injector",
+      "meetings": [
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 50,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Security-Governance-SIG",
+      "name": "Security Governance SIG",
+      "meetings": [
+        {
+          "date": "2026-02-02",
+          "duration_minutes": 38,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Semantic-Convention-SIG",
+      "name": "Semantic Convention SIG",
+      "meetings": [
+        {
+          "date": "2026-02-16",
+          "duration_minutes": 19,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-09",
+          "duration_minutes": 62,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-02",
+          "duration_minutes": 60,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Semantic-Convention-Tooling",
+      "name": "Semantic Convention Tooling",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 61,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 61,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Service-and-Deployment-SemConv",
+      "name": "Service and Deployment SemConv",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 12,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 54,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 16,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Specification-SIG",
+      "name": "Specification SIG",
+      "meetings": [
+        {
+          "date": "2026-02-17",
+          "duration_minutes": 65,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-10",
+          "duration_minutes": 70,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-03",
+          "duration_minutes": 57,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Swift-SIG",
+      "name": "Swift SIG",
+      "meetings": [
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 27,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 35,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "System-Sem-Conv-Stability-WG",
+      "name": "System Sem Conv Stability WG",
+      "meetings": [
+        {
+          "date": "2026-02-19",
+          "duration_minutes": 19,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-12",
+          "duration_minutes": 38,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 28,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "Technical-Committee",
+      "name": "Technical Committee",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 29,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 62,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "eBPF-instrumentation",
+      "name": "eBPF instrumentation",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 60,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-11",
+          "duration_minutes": 62,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-04",
+          "duration_minutes": 64,
+          "has_summary": false
+        }
+      ]
+    },
+    {
+      "slug": "ja-JA-Localization-SIG-Communications",
+      "name": "ja-JA Localization (SIG Communications)",
+      "meetings": [
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 33,
+          "has_summary": false
+        }
+      ]
+    }
+  ]
+}

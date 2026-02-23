@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenTelemetry SIG Meeting Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <h1>OpenTelemetry SIG Meeting Notes</h1>
+  </header>
+
+  <main id="main" class="layout">
+    <aside class="sidebar" aria-label="Navigation">
+      <div class="controls">
+        <div class="control-group">
+          <label for="sig-select">SIG</label>
+          <select id="sig-select">
+            <option value="">Choose a SIG...</option>
+          </select>
+        </div>
+
+        <div class="control-group search-group" hidden>
+          <label for="search-input" class="sr-only">Search transcripts</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search transcripts..."
+            aria-label="Search transcripts"
+          >
+        </div>
+      </div>
+
+      <nav class="date-nav" aria-label="Meeting dates" hidden>
+        <ul id="date-list" class="date-list" role="list">
+        </ul>
+      </nav>
+    </aside>
+
+    <div id="transcript-panel" class="transcript-panel" role="region" aria-label="Meeting transcript" aria-live="polite">
+      <div class="empty-state">
+        <p>Select a SIG to browse its meeting transcripts.</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
