@@ -25,7 +25,7 @@ jobs:
           version: "latest"
 
       - name: Install Python dependencies
-        run: uv sync --frozen
+        run: uv sync
 
       - name: Install Playwright browsers
         run: uv run playwright install chromium --with-deps
