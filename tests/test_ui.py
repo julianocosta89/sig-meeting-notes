@@ -572,7 +572,7 @@ def test_mobile_date_list_horizontal_scroll(browser_ctx):
 
 
 def test_mobile_scroll_gradient_css(browser_ctx):
-    """On mobile viewports, the date-nav should have a gradient fade hint."""
+    """On mobile viewports, the date-nav-wrapper should have a gradient fade hint."""
     context, url = browser_ctx
     page = context.new_page()
     page.set_viewport_size({"width": 375, "height": 667})
@@ -580,27 +580,19 @@ def test_mobile_scroll_gradient_css(browser_ctx):
     page.select_option("#sig-select", "Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
 
-    date_nav = page.locator(".date-nav")
-    expect(date_nav).to_be_visible()
+    wrapper = page.locator(".date-nav-wrapper")
+    expect(wrapper).to_be_visible()
 
     has_gradient = page.evaluate("""() => {
-        const nav = document.querySelector('.date-nav');
-        if (!nav) return false;
-        const style = window.getComputedStyle(nav);
-        if (style.maskImage && style.maskImage !== 'none') return true;
-        if (style.webkitMaskImage && style.webkitMaskImage !== 'none')
-            return true;
-        const after = window.getComputedStyle(nav, '::after');
-        if (after && after.backgroundImage
-            && after.backgroundImage !== 'none') return true;
-        const fade = nav.querySelector('.scroll-fade, .fade-hint');
-        if (fade) return true;
-        return false;
+        const wrapper = document.querySelector('.date-nav-wrapper');
+        if (!wrapper) return false;
+        const after = window.getComputedStyle(wrapper, '::after');
+        return after && after.backgroundImage
+            && after.backgroundImage !== 'none';
     }""")
-    if not has_gradient:
-        pytest.skip(
-            "Mobile scroll gradient not yet implemented on .date-nav"
-        )
+    assert has_gradient, (
+        "Expected gradient ::after on .date-nav-wrapper at mobile viewport"
+    )
     page.close()
 
 
