@@ -2,7 +2,9 @@
 let manifest = null;
 let currentSig = null;
 let currentDate = null;
+let showingSummary = false;
 const transcriptCache = new Map();
+const summaryCache = new Map();
 
 // DOM refs
 const sigSelect = document.getElementById('sig-select');
@@ -44,6 +46,12 @@ function getSigMeetings(slug) {
 function getSigName(slug) {
   const sig = manifest.sigs.find(s => s.slug === slug);
   return sig ? sig.name : slug;
+}
+
+function meetingHasSummary(slug, date) {
+  const meetings = getSigMeetings(slug);
+  const m = meetings.find(m => m.date === date);
+  return m ? m.has_summary : false;
 }
 
 // ── SIG selection ───────────────────────────────────────────
@@ -106,6 +114,7 @@ function renderDateList(meetings, activeDate, matchCounts) {
 
 async function onDateClick(date) {
   currentDate = date;
+  showingSummary = false;
   updateURL(currentSig, date);
   renderDateList(getSigMeetings(currentSig), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
@@ -177,6 +186,16 @@ function renderTranscript(text, query) {
     dl.appendChild(dd);
   }
   headerCard.appendChild(dl);
+
+  if (currentSig && currentDate && meetingHasSummary(currentSig, currentDate)) {
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'summary-toggle';
+    toggleBtn.textContent = showingSummary ? 'Show Transcript' : 'Show Summary';
+    toggleBtn.addEventListener('click', () => toggleSummary());
+    headerCard.appendChild(toggleBtn);
+  }
+
   transcriptPanel.appendChild(headerCard);
 
   // Render body
@@ -231,14 +250,105 @@ function showEmptyState() {
 }
 
 function showError(msg) {
-  transcriptPanel.innerHTML =
-    '<div class="error-state"><p>' + escapeHTML(msg) + '</p></div>';
+  const div = document.createElement('div');
+  div.className = 'error-state';
+  const p = document.createElement('p');
+  p.textContent = msg;
+  div.appendChild(p);
+  transcriptPanel.replaceChildren(div);
 }
 
-function escapeHTML(str) {
-  const el = document.createElement('span');
-  el.textContent = str;
-  return el.innerHTML;
+// ── Summary toggle (Issue #7) ───────────────────────────────
+
+async function getSummary(slug, date) {
+  const key = slug + '/' + date;
+  if (!summaryCache.has(key)) {
+    const res = await fetch('summaries/' + slug + '/' + date + '.md');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    summaryCache.set(key, await res.text());
+  }
+  return summaryCache.get(key);
+}
+
+async function toggleSummary() {
+  if (!currentSig || !currentDate) return;
+
+  showingSummary = !showingSummary;
+
+  if (showingSummary) {
+    try {
+      const md = await getSummary(currentSig, currentDate);
+      const text = await getTranscript(currentSig, currentDate);
+      renderTranscript(text, getCurrentQuery());
+      // Replace transcript body with rendered summary
+      const body = transcriptPanel.querySelector('.transcript-body');
+      if (body) {
+        body.innerHTML = '';
+        body.className = 'summary-body';
+        body.appendChild(renderMarkdown(md));
+      }
+    } catch (err) {
+      showError('Failed to load summary: ' + err.message);
+    }
+  } else {
+    try {
+      const text = await getTranscript(currentSig, currentDate);
+      renderTranscript(text, getCurrentQuery());
+    } catch (err) {
+      showError('Failed to load transcript: ' + err.message);
+    }
+  }
+}
+
+function renderMarkdown(md) {
+  const container = document.createDocumentFragment();
+  const lines = md.split('\n');
+  let currentList = null;
+
+  for (const line of lines) {
+    // Headings
+    if (line.startsWith('## ')) {
+      if (currentList) { container.appendChild(currentList); currentList = null; }
+      const h2 = document.createElement('h2');
+      h2.appendChild(renderInline(line.substring(3)));
+      container.appendChild(h2);
+    } else if (line.startsWith('# ')) {
+      if (currentList) { container.appendChild(currentList); currentList = null; }
+      const h1 = document.createElement('h1');
+      h1.appendChild(renderInline(line.substring(2)));
+      container.appendChild(h1);
+    } else if (line.startsWith('- ')) {
+      // List item
+      if (!currentList) currentList = document.createElement('ul');
+      const li = document.createElement('li');
+      li.appendChild(renderInline(line.substring(2)));
+      currentList.appendChild(li);
+    } else if (line.trim() === '') {
+      if (currentList) { container.appendChild(currentList); currentList = null; }
+    } else {
+      if (currentList) { container.appendChild(currentList); currentList = null; }
+      const p = document.createElement('p');
+      p.appendChild(renderInline(line));
+      container.appendChild(p);
+    }
+  }
+  if (currentList) container.appendChild(currentList);
+  return container;
+}
+
+function renderInline(text) {
+  const frag = document.createDocumentFragment();
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  for (const part of parts) {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      const strong = document.createElement('strong');
+      strong.textContent = part.slice(2, -2);
+      frag.appendChild(strong);
+    } else {
+      frag.appendChild(document.createTextNode(part));
+    }
+  }
+  return frag;
 }
 
 // ── Search (Issue #5) ───────────────────────────────────────
