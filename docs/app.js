@@ -585,10 +585,25 @@ function jumpToPrevMatch() {
   highlightCurrentMatch();
 }
 
+// ── Scroll-to-top button ────────────────────────────────────
+
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+function updateScrollTopVisibility() {
+  if (!scrollTopBtn) return;
+  scrollTopBtn.hidden = transcriptPanel.scrollTop <= 400;
+}
+
+function scrollToTop() {
+  transcriptPanel.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // ── Event wiring ────────────────────────────────────────────
 
 sigSelect.addEventListener('change', e => onSIGChange(e.target.value));
 searchInput.addEventListener('input', debounce(e => handleSearch(e.target.value), 300));
+transcriptPanel.addEventListener('scroll', updateScrollTopVisibility);
+if (scrollTopBtn) scrollTopBtn.addEventListener('click', scrollToTop);
 
 if (prevMatchBtn) prevMatchBtn.addEventListener('click', jumpToPrevMatch);
 if (nextMatchBtn) nextMatchBtn.addEventListener('click', jumpToNextMatch);

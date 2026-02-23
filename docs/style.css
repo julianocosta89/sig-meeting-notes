@@ -527,6 +527,39 @@ mark.current-match {
   to { transform: rotate(360deg); }
 }
 
+/* --- Scroll-to-Top Button --- */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-top-btn[hidden] {
+  display: none;
+}
+
+.scroll-top-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* --- Screen Reader Only --- */
 .sr-only {
   position: absolute;
