@@ -7,7 +7,8 @@ from unittest.mock import patch
 
 import pytest
 
-from build_site import build_manifest, parse_header
+from build_site import build_manifest
+from scraper.transcript_io import parse_header
 
 SAMPLE_TRANSCRIPT = """\
 SIG: Go SIG

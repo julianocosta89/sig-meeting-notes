@@ -10,6 +10,13 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+from generate_summaries import (
+    MAX_TRANSCRIPT_CHARS,
+    generate_summary,
+    process_transcripts,
+    read_transcript_body,
+)
+
 # ---------------------------------------------------------------------------
 # Sample data
 # ---------------------------------------------------------------------------
@@ -84,33 +91,50 @@ class TestTranscriptParsing:
 
     def test_extract_body_strips_header(self, tmp_path: Path) -> None:
         """The header (lines 1-5) and blank line 6 should be stripped."""
-        # This test validates that generate_summaries reads only the
-        # transcript body (after the === separator), not the header.
         p = tmp_path / "test.txt"
         p.write_text(SAMPLE_TRANSCRIPT, encoding="utf-8")
+        body = read_transcript_body(p)
+        assert "SIG:" not in body
+        assert "Date:" not in body
+        assert "Duration:" not in body
+        assert "==========" not in body
+        assert "Tyler 02:14" in body
 
-        # TODO: import and call the real extract function once implemented
-        # body = extract_transcript_body(p)
-        # assert "SIG:" not in body
-        # assert "Tyler 02:14" in body
-
-    def test_truncate_long_transcript(self) -> None:
+    def test_truncate_long_transcript(self, tmp_path: Path) -> None:
         """Transcripts exceeding ~12,000 chars should be truncated."""
-        # The body of LONG_TRANSCRIPT is ~15,000 chars
         assert len(LONG_TRANSCRIPT_BODY) > 12_000
+        p = tmp_path / "long.txt"
+        p.write_text(LONG_TRANSCRIPT, encoding="utf-8")
+        body = read_transcript_body(p)
+        assert len(body) <= MAX_TRANSCRIPT_CHARS
 
-        # TODO: import and call the real truncate function once implemented
-        # truncated = truncate_transcript(LONG_TRANSCRIPT_BODY, max_chars=12_000)
-        # assert len(truncated) <= 12_000
-
-    def test_short_transcript_not_truncated(self) -> None:
+    def test_short_transcript_not_truncated(self, tmp_path: Path) -> None:
         """Short transcripts should be returned as-is."""
-        short_body = "Tyler 02:14 Hey, Damien.\nDamien Mathieu 02:19 Hey!\n"
-        assert len(short_body) < 12_000
+        p = tmp_path / "short.txt"
+        p.write_text(SAMPLE_TRANSCRIPT, encoding="utf-8")
+        body = read_transcript_body(p)
+        assert "Tyler 02:14 Hey, Damien." in body
+        assert "Damien Mathieu 02:19 Hey!" in body
 
-        # TODO: import and call the real truncate function once implemented
-        # result = truncate_transcript(short_body, max_chars=12_000)
-        # assert result == short_body
+    def test_empty_body(self, tmp_path: Path) -> None:
+        """A transcript with only a header should return empty body."""
+        content = (
+            "SIG: Test SIG\n"
+            "Date: 2026-01-01\n"
+            "Duration: 60 minutes\n"
+            "Source URL: https://example.com\n"
+            "============================================================\n\n"
+        )
+        p = tmp_path / "empty.txt"
+        p.write_text(content, encoding="utf-8")
+        body = read_transcript_body(p)
+        assert body.strip() == ""
+
+    def test_no_separator_returns_empty(self, tmp_path: Path) -> None:
+        """A file without the separator line should return empty string."""
+        p = tmp_path / "bad.txt"
+        p.write_text("garbage content\n", encoding="utf-8")
+        assert read_transcript_body(p) == ""
 
 
 # ---------------------------------------------------------------------------
@@ -120,101 +144,141 @@ class TestTranscriptParsing:
 class TestGenerateSummary:
     """Tests for the core summary generation logic with mocked OpenAI."""
 
-    def test_generates_summary_file(self, tmp_path: Path) -> None:
+    def test_calls_openai_with_transcript(self) -> None:
+        """The OpenAI API should be called with transcript content."""
+        mock_client = _mock_openai_client()
+        result = generate_summary(
+            mock_client, "Go SIG", "2026-02-05", "33",
+            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+        )
+        mock_client.chat.completions.create.assert_called_once()
+
+    def test_returns_summary_text(self) -> None:
+        """The function should return the summary from OpenAI."""
+        mock_client = _mock_openai_client()
+        result = generate_summary(
+            mock_client, "Go SIG", "2026-02-05", "33",
+            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+        )
+        assert "Go SIG" in result
+        assert "Key Topics" in result
+
+    def test_uses_gpt4o_mini_model(self) -> None:
+        """The OpenAI call should use gpt-4o-mini for cost efficiency."""
+        mock_client = _mock_openai_client()
+        generate_summary(
+            mock_client, "Go SIG", "2026-02-05", "33",
+            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+        )
+        call_args = mock_client.chat.completions.create.call_args
+        assert call_args.kwargs["model"] == "gpt-4o-mini"
+
+    def test_prompt_includes_transcript_body(self) -> None:
+        """The prompt sent to OpenAI should include the transcript body."""
+        mock_client = _mock_openai_client()
+        generate_summary(
+            mock_client, "Go SIG", "2026-02-05", "33",
+            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey, Damien!",
+        )
+        call_args = mock_client.chat.completions.create.call_args
+        messages = call_args.kwargs["messages"]
+        prompt_text = " ".join(m["content"] for m in messages)
+        assert "Tyler" in prompt_text
+        assert "Damien" in prompt_text
+
+
+# ---------------------------------------------------------------------------
+# Tests: process_transcripts integration
+# ---------------------------------------------------------------------------
+
+class TestProcessTranscripts:
+    """Tests for the main processing loop."""
+
+    def test_creates_summary_file(self, tmp_path: Path) -> None:
         """A new summary .md file should be created for a transcript."""
-        transcripts = tmp_path / "transcripts"
-        summaries = tmp_path / "docs" / "summaries"
-        _write_transcript(transcripts, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        transcripts_dir = tmp_path / "docs" / "transcripts"
+        summaries_dir = tmp_path / "docs" / "summaries"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
 
         mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
-        # TODO: import and call the real generate function once implemented
-        # with patch("generate_summaries.TRANSCRIPTS_SRC", transcripts), \
-        #      patch("generate_summaries.SUMMARIES_DIR", summaries), \
-        #      patch("generate_summaries._get_openai_client", return_value=mock_client):
-        #     generate_summaries()
-        #
-        # summary_file = summaries / "Go-SIG" / "2026-02-05.md"
-        # assert summary_file.exists()
-        # mock_client.chat.completions.create.assert_called_once()
+        summary_file = summaries_dir / "Go-SIG" / "2026-02-05.md"
+        assert summary_file.exists()
+        assert "Go SIG" in summary_file.read_text(encoding="utf-8")
+        mock_client.chat.completions.create.assert_called_once()
 
-    def test_skips_existing_summary(self, tmp_path: Path) -> None:
+    def test_skips_existing_summaries(self, tmp_path: Path) -> None:
         """If a summary already exists, the transcript should be skipped."""
-        transcripts = tmp_path / "transcripts"
-        summaries = tmp_path / "docs" / "summaries"
-        _write_transcript(transcripts, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        transcripts_dir = tmp_path / "docs" / "transcripts"
+        summaries_dir = tmp_path / "docs" / "summaries"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
 
         # Pre-create the summary
-        (summaries / "Go-SIG").mkdir(parents=True)
-        (summaries / "Go-SIG" / "2026-02-05.md").write_text(FAKE_SUMMARY_MD)
+        (summaries_dir / "Go-SIG").mkdir(parents=True)
+        (summaries_dir / "Go-SIG" / "2026-02-05.md").write_text("existing summary")
 
         mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
-        # TODO: import and call the real generate function once implemented
-        # with patch("generate_summaries.TRANSCRIPTS_SRC", transcripts), \
-        #      patch("generate_summaries.SUMMARIES_DIR", summaries), \
-        #      patch("generate_summaries._get_openai_client", return_value=mock_client):
-        #     generate_summaries()
-        #
-        # mock_client.chat.completions.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
+        assert (summaries_dir / "Go-SIG" / "2026-02-05.md").read_text() == "existing summary"
 
-    def test_openai_called_with_transcript_content(self, tmp_path: Path) -> None:
-        """The OpenAI call should include the transcript body in the prompt."""
-        transcripts = tmp_path / "transcripts"
-        summaries = tmp_path / "docs" / "summaries"
-        _write_transcript(transcripts, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-
-        mock_client = _mock_openai_client()
-
-        # TODO: import and call the real generate function once implemented
-        # with patch("generate_summaries.TRANSCRIPTS_SRC", transcripts), \
-        #      patch("generate_summaries.SUMMARIES_DIR", summaries), \
-        #      patch("generate_summaries._get_openai_client", return_value=mock_client):
-        #     generate_summaries()
-        #
-        # call_args = mock_client.chat.completions.create.call_args
-        # messages = call_args.kwargs.get("messages") or call_args[1].get("messages")
-        # prompt_text = " ".join(m["content"] for m in messages)
-        # assert "Tyler" in prompt_text
-        # assert "Damien" in prompt_text
-
-    def test_multiple_transcripts_processed(self, tmp_path: Path) -> None:
+    def test_processes_multiple_transcripts(self, tmp_path: Path) -> None:
         """All transcripts without summaries should be processed."""
-        transcripts = tmp_path / "transcripts"
-        summaries = tmp_path / "docs" / "summaries"
-        _write_transcript(transcripts, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(transcripts, "Go-SIG", "2026-02-12.txt",
-                          SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"))
+        transcripts_dir = tmp_path / "docs" / "transcripts"
+        summaries_dir = tmp_path / "docs" / "summaries"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        _write_transcript(
+            transcripts_dir, "Go-SIG", "2026-02-12.txt",
+            SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"),
+        )
 
         mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
-        # TODO: import and call the real generate function once implemented
-        # with patch("generate_summaries.TRANSCRIPTS_SRC", transcripts), \
-        #      patch("generate_summaries.SUMMARIES_DIR", summaries), \
-        #      patch("generate_summaries._get_openai_client", return_value=mock_client):
-        #     generate_summaries()
-        #
-        # assert mock_client.chat.completions.create.call_count == 2
-        # assert (summaries / "Go-SIG" / "2026-02-05.md").exists()
-        # assert (summaries / "Go-SIG" / "2026-02-12.md").exists()
+        assert generated == 2
+        assert skipped == 0
+        assert mock_client.chat.completions.create.call_count == 2
+        assert (summaries_dir / "Go-SIG" / "2026-02-05.md").exists()
+        assert (summaries_dir / "Go-SIG" / "2026-02-12.md").exists()
 
-    def test_uses_gpt4o_mini_model(self, tmp_path: Path) -> None:
-        """The OpenAI call should use gpt-4o-mini for cost efficiency."""
-        transcripts = tmp_path / "transcripts"
-        summaries = tmp_path / "docs" / "summaries"
-        _write_transcript(transcripts, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+    def test_handles_unparseable_transcript(self, tmp_path: Path) -> None:
+        """Unparseable transcripts should be skipped without crashing."""
+        transcripts_dir = tmp_path / "docs" / "transcripts"
+        summaries_dir = tmp_path / "docs" / "summaries"
+        _write_transcript(transcripts_dir, "Bad-SIG", "2026-02-05.txt", "garbage content\n")
 
         mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            process_transcripts(mock_client, transcripts_dir, summaries_dir)
 
-        # TODO: import and call the real generate function once implemented
-        # with patch("generate_summaries.TRANSCRIPTS_SRC", transcripts), \
-        #      patch("generate_summaries.SUMMARIES_DIR", summaries), \
-        #      patch("generate_summaries._get_openai_client", return_value=mock_client):
-        #     generate_summaries()
-        #
-        # call_args = mock_client.chat.completions.create.call_args
-        # model = call_args.kwargs.get("model") or call_args[1].get("model")
-        # assert model == "gpt-4o-mini"
+        mock_client.chat.completions.create.assert_not_called()
+        assert not (summaries_dir / "Bad-SIG" / "2026-02-05.md").exists()
+
+    def test_returns_counts(self, tmp_path: Path) -> None:
+        """process_transcripts should return (generated, skipped) counts."""
+        transcripts_dir = tmp_path / "docs" / "transcripts"
+        summaries_dir = tmp_path / "docs" / "summaries"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        _write_transcript(
+            transcripts_dir, "Go-SIG", "2026-02-12.txt",
+            SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"),
+        )
+
+        # Pre-create one summary
+        (summaries_dir / "Go-SIG").mkdir(parents=True)
+        (summaries_dir / "Go-SIG" / "2026-02-05.md").write_text("existing")
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, summaries_dir)
+
+        assert generated == 1
+        assert skipped == 1
 
 
 # ---------------------------------------------------------------------------
