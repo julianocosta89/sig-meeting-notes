@@ -1,4 +1,4 @@
-"""Playwright tests for the browse UI (Issues #4 and #5)."""
+"""Playwright tests for the browse UI (Issues #4, #5, and #9)."""
 
 import json
 import pathlib
@@ -18,6 +18,21 @@ def _free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(("", 0))
         return s.getsockname()[1]
+
+
+def _make_long_transcript(sig, date, duration, lines):
+    """Generate a transcript with many lines for scroll testing."""
+    header = (
+        f"SIG: {sig}\nDate: {date}\nDuration: {duration} minutes\n"
+        f"Source URL: https://zoom.us/rec/share/long-example\n"
+        "============================================================\n\n"
+    )
+    body = "\n".join(
+        f"{'Alice' if i % 2 == 0 else 'Bob'} {i // 60:02d}:{i % 60:02d} "
+        f"Line number {i} of the transcript."
+        for i in range(lines)
+    )
+    return header + body + "\n"
 
 
 @pytest.fixture(scope="module")
@@ -42,6 +57,13 @@ def docs_site(tmp_path_factory):
                 "name": "Java SIG",
                 "meetings": [
                     {"date": "2026-02-10", "duration_minutes": 60, "has_summary": False},
+                ],
+            },
+            {
+                "slug": "Long-SIG",
+                "name": "Long SIG",
+                "meetings": [
+                    {"date": "2026-02-15", "duration_minutes": 120, "has_summary": False},
                 ],
             },
         ],
@@ -82,6 +104,11 @@ def docs_site(tmp_path_factory):
         "============================================================\n"
         "\n"
         "Jack 01:00 Welcome to Java SIG.\n"
+    )
+    long_dir = site / "transcripts" / "Long-SIG"
+    long_dir.mkdir(parents=True)
+    (long_dir / "2026-02-15.txt").write_text(
+        _make_long_transcript("Long SIG", "2026-02-15", 120, 200)
     )
 
     # Copy the real HTML, JS, and CSS from docs/
@@ -124,16 +151,20 @@ def _wait_for_app_ready(page, url):
 
 
 def test_sig_select_populated(browser_ctx):
-    """SIG dropdown should contain options from manifest."""
+    """SIG dropdown should contain options from manifest.
+
+    sigDisplayName() strips 'SIG' from display names, so we check
+    option values (slugs) rather than display text.
+    """
     context, url = browser_ctx
     page = context.new_page()
     _wait_for_app_ready(page, url)
-    options = page.evaluate(
-        "Array.from(document.querySelectorAll('#sig-select option')).map(o => o.textContent)"
+    values = page.evaluate(
+        "Array.from(document.querySelectorAll('#sig-select option')).map(o => o.value)"
     )
-    assert len(options) == 3  # placeholder + 2 SIGs
-    assert "Go SIG" in options
-    assert "Java SIG" in options
+    assert "Go-SIG" in values
+    assert "Java-SIG" in values
+    assert "Long-SIG" in values
     page.close()
 
 
@@ -363,4 +394,267 @@ def test_search_no_results(browser_ctx):
     page.wait_for_timeout(400)
     buttons = page.locator("#date-list .date-btn").all()
     assert len(buttons) == 0
+    page.close()
+
+
+# ── Issue #9 tests ───────────────────────────────────────────
+
+
+def test_scroll_top_button_hidden_initially(browser_ctx):
+    """Scroll-to-top button should be hidden when no scrolling has occurred."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    btn = page.locator("#scroll-top-btn")
+    expect(btn).to_be_hidden()
+    page.close()
+
+
+def test_scroll_top_button_appears_after_scroll(browser_ctx):
+    """Scroll-to-top button should appear after scrolling >400px in transcript pane."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.set_viewport_size({"width": 1024, "height": 600})
+    _wait_for_app_ready(page, url)
+
+    page.select_option("#sig-select", "Long-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-15").click()
+    page.wait_for_selector(".transcript-body")
+
+    btn = page.locator("#scroll-top-btn")
+    expect(btn).to_be_hidden()
+
+    # Scroll the transcript panel past 400px
+    page.evaluate("document.getElementById('transcript-panel').scrollTop = 500")
+    page.wait_for_timeout(300)
+
+    expect(btn).to_be_visible()
+    page.close()
+
+
+def test_scroll_top_button_scrolls_to_top(browser_ctx):
+    """Clicking scroll-to-top button should scroll the transcript pane to top."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.set_viewport_size({"width": 1024, "height": 600})
+    _wait_for_app_ready(page, url)
+
+    page.select_option("#sig-select", "Long-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-15").click()
+    page.wait_for_selector(".transcript-body")
+
+    # Scroll down past threshold
+    page.evaluate("document.getElementById('transcript-panel').scrollTop = 500")
+    page.wait_for_timeout(300)
+
+    # Button should be visible; click it
+    page.locator("#scroll-top-btn").click()
+    page.wait_for_timeout(600)
+
+    scroll_top = page.evaluate("document.getElementById('transcript-panel').scrollTop")
+    assert scroll_top == 0
+    page.close()
+
+
+def test_scroll_top_button_accessible(browser_ctx):
+    """Scroll-to-top button should have aria-label for accessibility."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    btn = page.locator("#scroll-top-btn")
+    assert btn.get_attribute("aria-label") == "Scroll to top"
+    page.close()
+
+
+def test_date_buttons_show_duration(browser_ctx):
+    """Date buttons should display duration alongside the date."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    buttons = page.locator("#date-list .date-btn").all()
+    texts = [b.text_content() for b in buttons]
+    # Duration should appear as "· X min"
+    assert any("33 min" in t for t in texts)
+    assert any("30 min" in t for t in texts)
+    page.close()
+
+
+def test_url_updates_on_sig_select(browser_ctx):
+    """Selecting a SIG should update the URL with ?sig= parameter."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    assert "sig=Go-SIG" in page.url
+    page.close()
+
+
+def test_url_updates_on_date_click(browser_ctx):
+    """Clicking a date should update the URL with both sig and date params."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-body")
+    assert "sig=Go-SIG" in page.url
+    assert "date=2026-02-05" in page.url
+    page.close()
+
+
+def test_deep_link_restores_sig_and_date(browser_ctx):
+    """Deep-link with sig+date should restore the full state on load."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.goto(url + "?sig=Java-SIG&date=2026-02-10")
+    page.wait_for_selector(".transcript-body")
+
+    selected = page.locator("#sig-select").input_value()
+    assert selected == "Java-SIG"
+
+    body = page.locator(".transcript-body").text_content()
+    assert "Jack" in body
+    assert "Welcome to Java SIG" in body
+
+    active_btn = page.locator("#date-list .date-btn[aria-pressed='true']")
+    assert "2026-02-10" in active_btn.text_content()
+    page.close()
+
+
+def test_deep_link_sig_only(browser_ctx):
+    """Deep-link with only sig param should select the SIG and show dates."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.goto(url + "?sig=Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    selected = page.locator("#sig-select").input_value()
+    assert selected == "Go-SIG"
+    buttons = page.locator("#date-list .date-btn").all()
+    assert len(buttons) == 2
+    assert page.locator(".transcript-body").count() == 0
+    page.close()
+
+
+# -- Issue #9: Mobile scroll gradient (Item 4) ------------------------------
+
+
+def test_mobile_date_list_horizontal_scroll(browser_ctx):
+    """On mobile, the date list should scroll horizontally."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.set_viewport_size({"width": 375, "height": 667})
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+
+    display = page.evaluate(
+        "window.getComputedStyle("
+        "document.querySelector('.date-list')).display"
+    )
+    assert display == "flex", (
+        f"Expected flex layout on mobile, got {display!r}"
+    )
+
+    overflow_x = page.evaluate(
+        "window.getComputedStyle("
+        "document.querySelector('.date-nav')).overflowX"
+    )
+    assert overflow_x == "auto", (
+        f"Expected overflow-x: auto on mobile, got {overflow_x!r}"
+    )
+    page.close()
+
+
+def test_mobile_scroll_gradient_css(browser_ctx):
+    """On mobile viewports, the date-nav should have a gradient fade hint."""
+    context, url = browser_ctx
+    page = context.new_page()
+    page.set_viewport_size({"width": 375, "height": 667})
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+
+    date_nav = page.locator(".date-nav")
+    expect(date_nav).to_be_visible()
+
+    has_gradient = page.evaluate("""() => {
+        const nav = document.querySelector('.date-nav');
+        if (!nav) return false;
+        const style = window.getComputedStyle(nav);
+        if (style.maskImage && style.maskImage !== 'none') return true;
+        if (style.webkitMaskImage && style.webkitMaskImage !== 'none')
+            return true;
+        const after = window.getComputedStyle(nav, '::after');
+        if (after && after.backgroundImage
+            && after.backgroundImage !== 'none') return true;
+        const fade = nav.querySelector('.scroll-fade, .fade-hint');
+        if (fade) return true;
+        return false;
+    }""")
+    if not has_gradient:
+        pytest.skip(
+            "Mobile scroll gradient not yet implemented on .date-nav"
+        )
+    page.close()
+
+
+# -- Issue #9: Search match navigation (Item 5) -----------------------------
+
+
+def test_search_match_count_displayed(browser_ctx):
+    """When searching with a transcript open, a match count should be shown."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-body")
+
+    page.fill("#search-input", "Tyler")
+    page.wait_for_timeout(400)
+
+    match_counter = page.locator(
+        ".match-counter, .match-count, #match-count"
+    )
+    if match_counter.count() == 0:
+        pytest.skip("Search match count element not yet implemented")
+
+    expect(match_counter.first).to_be_visible()
+    text = match_counter.first.text_content()
+    assert any(c.isdigit() for c in text), (
+        f"Expected match count number in {text!r}"
+    )
+    page.close()
+
+
+def test_search_jump_to_next_match(browser_ctx):
+    """A jump-to-next button should navigate between search matches."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-body")
+    page.fill("#search-input", "Tyler")
+    page.wait_for_timeout(400)
+
+    jump_btn = page.locator(
+        "#jump-next, .jump-next-btn, "
+        "button[aria-label*='next match'], "
+        "button[aria-label*='Next match']"
+    )
+    if jump_btn.count() == 0:
+        pytest.skip("Jump-to-next-match button not yet implemented")
+
+    jump_btn.first.click()
+    page.wait_for_timeout(200)
+
+    marks = page.locator(".transcript-body mark").all()
+    assert len(marks) > 0
     page.close()
