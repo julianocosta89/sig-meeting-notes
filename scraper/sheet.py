@@ -25,11 +25,18 @@ class Meeting:
     url: str
 
 
+# Maps generated slugs to a canonical slug so that SIGs recorded under
+# multiple names in the spreadsheet always land in the same directory.
+_CANONICAL_SLUGS: dict[str, str] = {
+    "OpenTelemetry-CC-SIG": "CC-SIG",
+}
+
+
 def sanitize_sig_name(name: str) -> str:
     """Convert a SIG name into a filesystem-safe directory name."""
     slug = re.sub(r"[^\w\s-]", "", name)
     slug = re.sub(r"[\s]+", "-", slug.strip())
-    return slug
+    return _CANONICAL_SLUGS.get(slug, slug)
 
 
 def fetch_csv(url: str = SHEET_CSV_URL) -> list[dict]:

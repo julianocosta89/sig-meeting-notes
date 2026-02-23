@@ -36,7 +36,7 @@ uv run python main.py --since 2026-02-01 --sig go
 
 The pipeline has three stages:
 
-1. **`scraper/sheet.py`** — Fetches the public Google Sheet as CSV (`SHEET_CSV_URL`), parses it into `Meeting` dataclasses, and filters by date range. Column detection is case-insensitive and tries multiple synonyms (e.g., `name`/`sig`/`topic` for the SIG name).
+1. **`scraper/sheet.py`** — Fetches the public Google Sheet as CSV (`SHEET_CSV_URL`), parses it into `Meeting` dataclasses, and filters by date range. Column detection is case-insensitive and tries multiple synonyms (e.g., `name`/`sig`/`topic` for the SIG name). `_CANONICAL_SLUGS` normalizes slugs for SIGs that appear under multiple names in the spreadsheet (e.g. `OpenTelemetry-CC-SIG` → `CC-SIG`).
 
 2. **`scraper/zoom.py`** — Uses a Playwright `Page` to navigate to each Zoom recording URL. Handles Zoom's Vue SPA virtual-list rendering by scrolling the `.zm-scrollbar__wrap` container in steps so all transcript `<li>` elements are materialized in the DOM before extraction. Raises `ZoomScrapeError` for known failure modes (password-protected, expired, no transcript).
 
