@@ -101,9 +101,7 @@ function renderDateList(meetings, activeDate, matchCounts) {
       btn.appendChild(badge);
     }
 
-    if (m.date === activeDate) {
-      btn.setAttribute('aria-pressed', 'true');
-    }
+    btn.setAttribute('aria-pressed', m.date === activeDate ? 'true' : 'false');
     btn.addEventListener('click', () => onDateClick(m.date));
     li.appendChild(btn);
     dateList.appendChild(li);
