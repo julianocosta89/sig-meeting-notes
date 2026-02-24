@@ -132,6 +132,11 @@ function meetingHasSummary(slug, date) {
 // ── SIG selection ───────────────────────────────────────────
 
 async function onSIGChange(slug, options) {
+  if (globalSearchActive) {
+    globalSearchActive = false;
+    if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
+    globalSearchInput.value = '';
+  }
   const replace = options && options.replace;
   currentSig = slug;
   currentDate = null;
@@ -1317,6 +1322,8 @@ window.addEventListener('popstate', function () {
       currentDate = null;
       renderDateList(getSigMeetings(currentSig), null);
       clearTranscript();
+      searchInput.value = '';
+      resetMatchNav();
     }
   } else if (targetView && targetView !== currentView) {
     switchToView(targetView);
