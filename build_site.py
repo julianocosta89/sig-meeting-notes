@@ -87,6 +87,7 @@ def build_manifest() -> dict:
             "date": date_str,
             "duration_minutes": header["duration_minutes"],
             "has_summary": has_summary,
+            "_sig_name": header["sig_name"],
         }
 
         if slug not in sigs:
@@ -99,9 +100,13 @@ def build_manifest() -> dict:
 
     _remove_stale_docs(source_slugs, source_files)
 
-    # Sort meetings within each SIG by date descending
+    # Sort meetings within each SIG by date descending, then use the
+    # latest meeting's SIG name as the canonical display name.
     for sig_data in sigs.values():
         sig_data["meetings"].sort(key=lambda m: m["date"], reverse=True)
+        sig_data["name"] = sig_data["meetings"][0]["_sig_name"]
+        for m in sig_data["meetings"]:
+            del m["_sig_name"]
 
     # Sort SIGs alphabetically by slug
     sorted_sigs = sorted(sigs.values(), key=lambda s: s["slug"])
