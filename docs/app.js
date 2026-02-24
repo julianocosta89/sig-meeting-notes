@@ -328,6 +328,8 @@ function renderTranscript(text, query) {
     sigBtn.textContent = sigDisplayName(getSigName(currentSig));
     sigBtn.addEventListener('click', () => {
       currentDate = null;
+      searchInput.value = '';
+      resetMatchNav();
       renderDateList(getSigMeetings(currentSig), null);
       clearTranscript();
       updateURL(currentSig, null);
@@ -647,7 +649,7 @@ async function switchToView(view) {
       } catch (err) {
         showError('Failed to load summary: ' + err.message, () => {
           summaryCache.delete(currentSig + '/' + currentDate);
-          switchToView('summary');
+          onDateClick(currentDate, { replace: true });
         });
       }
     }
@@ -666,7 +668,7 @@ async function switchToView(view) {
     } catch (err) {
       showError('Failed to load meeting notes: ' + err.message, () => {
         meetingNotesCache.delete(currentSig + '/' + currentDate);
-        switchToView('meeting-notes');
+        onDateClick(currentDate, { replace: true });
       });
     }
   } else {
@@ -684,7 +686,7 @@ async function switchToView(view) {
     } catch (err) {
       showError('Failed to load transcript: ' + err.message, () => {
         transcriptCache.delete(currentSig + '/' + currentDate);
-        switchToView('transcript');
+        onDateClick(currentDate, { replace: true });
       });
     }
   }
