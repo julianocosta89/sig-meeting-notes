@@ -1316,6 +1316,11 @@ window.addEventListener('popstate', function () {
       }
     });
   } else if (date !== (currentDate || '')) {
+    if (globalSearchActive) {
+      globalSearchActive = false;
+      if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
+      globalSearchInput.value = '';
+    }
     if (date) {
       onDateClick(date, { replace: true }).then(() => {
         if (targetView && targetView !== currentView) switchToView(targetView);
