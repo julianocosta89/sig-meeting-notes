@@ -301,6 +301,8 @@ async function getSummary(slug, date) {
 
 async function switchToView(view) {
   if (!currentSig || !currentDate) return;
+  const snapshotSig = currentSig;
+  const snapshotDate = currentDate;
   currentView = view;
 
   for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
@@ -313,21 +315,29 @@ async function switchToView(view) {
   if (view === 'summary') {
     try {
       const md = await getSummary(currentSig, currentDate);
+      if (currentSig !== snapshotSig || currentDate !== snapshotDate) return;
       const summaryEl = document.createElement('div');
       summaryEl.className = 'summary-body';
       summaryEl.appendChild(renderMarkdown(md));
       bodyEl.replaceWith(summaryEl);
     } catch (err) {
+      if (currentSig !== snapshotSig || currentDate !== snapshotDate) return;
+      currentView = 'transcript';
+      for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
+        btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
+      }
       showError('Failed to load summary: ' + err.message);
     }
   } else {
     try {
       const text = await getTranscript(currentSig, currentDate);
+      if (currentSig !== snapshotSig || currentDate !== snapshotDate) return;
       const sepIdx = text.indexOf('\n====');
       const bodyText = sepIdx === -1 ? '' :
         text.substring(text.indexOf('\n', sepIdx + 1) + 1).trim();
       bodyEl.replaceWith(buildTranscriptBody(bodyText, getCurrentQuery()));
     } catch (err) {
+      if (currentSig !== snapshotSig || currentDate !== snapshotDate) return;
       showError('Failed to load transcript: ' + err.message);
     }
   }
