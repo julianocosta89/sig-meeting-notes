@@ -10,6 +10,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+pytest.importorskip("openai")
+
 from generate_summaries import (
     MAX_TRANSCRIPT_CHARS,
     generate_summary,
