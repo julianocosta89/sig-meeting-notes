@@ -121,6 +121,13 @@ function renderDateList(meetings, activeDate, matchCounts) {
       badge.className = 'match-badge';
       badge.textContent = matchCounts[m.date];
       btn.appendChild(badge);
+    } else if (matchCounts && matchCounts[m.date] == null) {
+      // Uncached transcript — show loading spinner (Issue #34)
+      btn.classList.add('date-btn-loading');
+      const spinner = document.createElement('span');
+      spinner.className = 'btn-spinner';
+      spinner.setAttribute('aria-label', 'Loading');
+      btn.appendChild(spinner);
     }
 
     btn.setAttribute('aria-pressed', m.date === activeDate ? 'true' : 'false');
@@ -139,13 +146,26 @@ async function onDateClick(date) {
   renderDateList(getSigMeetings(currentSig), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
 
+  // Snapshot for staleness guard (Issue #33)
+  const requestedSig = currentSig;
+  const requestedDate = date;
+
   try {
     const text = await getTranscript(currentSig, date);
+
+    // Staleness guard: discard if user navigated away during fetch
+    if (currentSig !== requestedSig || currentDate !== requestedDate) return;
+
     renderTranscript(text, getCurrentQuery());
+    // Update match navigation after render (Issue #30)
+    if (getCurrentQuery()) {
+      updateMatchNav();
+    }
     if (meetingHasSummary(currentSig, date)) {
       await switchToView('summary');
     }
   } catch (err) {
+    if (currentSig !== requestedSig || currentDate !== requestedDate) return;
     showError('Failed to load transcript: ' + err.message);
   }
 }
@@ -167,6 +187,11 @@ async function prefetchTranscripts(slug) {
   await Promise.all(
     meetings.map(m => getTranscript(slug, m.date).catch(() => {}))
   );
+  // Re-run active search now that cache is warm (Issue #34)
+  const query = getCurrentQuery();
+  if (query && currentSig === slug) {
+    handleSearch(query);
+  }
 }
 
 // ── Transcript rendering ────────────────────────────────────
@@ -428,6 +453,8 @@ async function handleSearch(query) {
   }
 
   const filtered = meetings.filter(m => {
+    const key = currentSig + '/' + m.date;
+    if (!transcriptCache.has(key)) return true; // uncached = show as pending
     const count = matchCounts[m.date];
     return count != null && count > 0;
   });
