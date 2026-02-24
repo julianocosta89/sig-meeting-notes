@@ -14,8 +14,26 @@
   </header>
 
   <main id="main" class="layout">
+    <button
+      id="sidebar-toggle"
+      type="button"
+      class="sidebar-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="true"
+      hidden
+    >&#9776; Navigation</button>
     <aside class="sidebar" aria-label="Navigation">
       <div class="controls">
+        <div class="control-group">
+          <label for="global-search-input" class="sr-only">Search all SIGs</label>
+          <input
+            id="global-search-input"
+            type="search"
+            placeholder="Search all SIGs..."
+            aria-label="Search all SIG transcripts"
+          >
+        </div>
+
         <div class="control-group">
           <label for="sig-select">SIG</label>
           <select id="sig-select">

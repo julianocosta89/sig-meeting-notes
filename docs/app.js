@@ -18,17 +18,22 @@ const searchNav = document.querySelector('.search-nav');
 const matchCounter = document.querySelector('.match-counter');
 const prevMatchBtn = document.getElementById('prev-match-btn');
 const nextMatchBtn = document.getElementById('next-match-btn');
+const globalSearchInput = document.getElementById('global-search-input');
 
 // Match navigation state
 let currentMatchIndex = -1;
 let totalMatches = 0;
+
+// Global search state
+let globalSearchActive = false;
+let globalSearchAbort = null;
 
 // ── Initialization ──────────────────────────────────────────
 
 async function init() {
   const res = await fetch('manifest.json');
   if (!res.ok) {
-    showError('Failed to load manifest.');
+    showError('Failed to load manifest.', init);
     return;
   }
   manifest = await res.json();
@@ -76,7 +81,8 @@ function meetingHasSummary(slug, date) {
 
 // ── SIG selection ───────────────────────────────────────────
 
-async function onSIGChange(slug) {
+async function onSIGChange(slug, options) {
+  const replace = options && options.replace;
   currentSig = slug;
   currentDate = null;
   currentView = 'summary';
@@ -89,7 +95,7 @@ async function onSIGChange(slug) {
     if (searchNav) searchNav.hidden = true;
     renderDateList(getSigMeetings(slug), null);
     clearTranscript();
-    updateURL(slug, null);
+    updateURL(slug, null, replace);
     prefetchTranscripts(slug);
   } else {
     if (searchGroup) searchGroup.hidden = true;
@@ -97,7 +103,7 @@ async function onSIGChange(slug) {
     if (searchNav) searchNav.hidden = true;
     dateList.innerHTML = '';
     showEmptyState();
-    updateURL(null, null);
+    updateURL(null, null, replace);
   }
 }
 
@@ -137,13 +143,44 @@ function renderDateList(meetings, activeDate, matchCounts) {
     li.appendChild(btn);
     dateList.appendChild(li);
   }
+
+  // Show "no results" message when search yields nothing
+  if (matchCounts && meetings.length === 0) {
+    const noResults = document.createElement('li');
+    noResults.className = 'no-results-message';
+    noResults.setAttribute('role', 'status');
+    const strong = document.createElement('strong');
+    strong.textContent = 'No matches found';
+    const hint = document.createElement('p');
+    hint.textContent = 'Try a different search term or check spelling.';
+    noResults.appendChild(strong);
+    noResults.appendChild(hint);
+    dateList.appendChild(noResults);
+  }
 }
+
+// Keyboard navigation for date list (arrow keys, Home, End)
+dateList.addEventListener('keydown', function (e) {
+  const btns = Array.from(dateList.querySelectorAll('.date-btn'));
+  const idx = btns.indexOf(e.target);
+  if (idx === -1) return;
+  let next = -1;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = Math.min(idx + 1, btns.length - 1);
+  else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = Math.max(idx - 1, 0);
+  else if (e.key === 'Home') next = 0;
+  else if (e.key === 'End') next = btns.length - 1;
+  if (next !== -1 && next !== idx) {
+    e.preventDefault();
+    btns[next].focus();
+  }
+});
 
 // ── Date click ──────────────────────────────────────────────
 
-async function onDateClick(date) {
+async function onDateClick(date, options) {
+  const replace = options && options.replace;
   currentDate = date;
-  updateURL(currentSig, date);
+  updateURL(currentSig, date, replace);
   renderDateList(getSigMeetings(currentSig), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
 
@@ -169,7 +206,7 @@ async function onDateClick(date) {
     }
   } catch (err) {
     if (currentSig !== requestedSig || currentDate !== requestedDate) return;
-    showError('Failed to load transcript: ' + err.message);
+    showError('Failed to load transcript: ' + err.message, () => onDateClick(requestedDate));
   }
 }
 
@@ -226,6 +263,33 @@ function renderTranscript(text, query) {
 
   transcriptPanel.innerHTML = '';
 
+  // Render breadcrumb for orientation
+  if (currentSig && currentDate) {
+    const breadcrumb = document.createElement('nav');
+    breadcrumb.className = 'breadcrumb';
+    breadcrumb.setAttribute('aria-label', 'Current location');
+    const sigBtn = document.createElement('button');
+    sigBtn.className = 'breadcrumb-sig';
+    sigBtn.textContent = sigDisplayName(getSigName(currentSig));
+    sigBtn.addEventListener('click', () => {
+      currentDate = null;
+      renderDateList(getSigMeetings(currentSig), null);
+      clearTranscript();
+      updateURL(currentSig, null);
+    });
+    const sep = document.createElement('span');
+    sep.className = 'breadcrumb-sep';
+    sep.textContent = '/';
+    sep.setAttribute('aria-hidden', 'true');
+    const dateSpan = document.createElement('span');
+    dateSpan.className = 'breadcrumb-date';
+    dateSpan.textContent = currentDate;
+    breadcrumb.appendChild(sigBtn);
+    breadcrumb.appendChild(sep);
+    breadcrumb.appendChild(dateSpan);
+    transcriptPanel.appendChild(breadcrumb);
+  }
+
   // Render header as card with <dl>
   const headerCard = document.createElement('div');
   headerCard.className = 'transcript-header';
@@ -277,17 +341,37 @@ function renderTranscript(text, query) {
   const tabBar = document.createElement('div');
   tabBar.className = 'tab-bar';
   tabBar.setAttribute('role', 'tablist');
-  for (const [view, label] of [['summary', 'Summary'], ['meeting-notes', 'Meeting Notes'], ['transcript', 'Transcript']]) {
+  const views = [['summary', 'Summary'], ['meeting-notes', 'Meeting Notes'], ['transcript', 'Transcript']];
+  for (const [view, label] of views) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'tab-btn';
     btn.dataset.view = view;
+    btn.id = 'tab-' + view;
     btn.setAttribute('role', 'tab');
     btn.setAttribute('aria-selected', 'false');
+    btn.setAttribute('aria-controls', 'tabpanel');
+    btn.setAttribute('tabindex', '-1');
     btn.textContent = label;
     btn.addEventListener('click', () => switchToView(view));
     tabBar.appendChild(btn);
   }
+  // Keyboard navigation for tabs (WAI-ARIA Tabs pattern)
+  tabBar.addEventListener('keydown', function (e) {
+    const tabs = Array.from(tabBar.querySelectorAll('[role="tab"]'));
+    const idx = tabs.indexOf(e.target);
+    if (idx === -1) return;
+    let next = -1;
+    if (e.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') next = (idx - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = tabs.length - 1;
+    if (next !== -1) {
+      e.preventDefault();
+      tabs[next].focus();
+      switchToView(tabs[next].dataset.view);
+    }
+  });
   headerCard.appendChild(tabBar);
 
   transcriptPanel.appendChild(headerCard);
@@ -295,6 +379,9 @@ function renderTranscript(text, query) {
   // Append a summary-body placeholder; caller will call switchToView to fill it
   const placeholder = document.createElement('div');
   placeholder.className = 'summary-body';
+  placeholder.id = 'tabpanel';
+  placeholder.setAttribute('role', 'tabpanel');
+  placeholder.setAttribute('tabindex', '0');
   transcriptPanel.appendChild(placeholder);
 }
 
@@ -350,24 +437,103 @@ function parseBodyLine(line) {
   return { speaker: match[1], timestamp: match[2], utterance: match[3] };
 }
 
+// ── SVG Icons for empty/error states ─────────────────────────
+
+function createSVGIcon(type) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', '48');
+  svg.setAttribute('height', '48');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.5');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.classList.add('state-icon');
+
+  if (type === 'folder') {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z');
+    svg.appendChild(path);
+  } else if (type === 'calendar') {
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', '3'); rect.setAttribute('y', '4');
+    rect.setAttribute('width', '18'); rect.setAttribute('height', '18');
+    rect.setAttribute('rx', '2'); rect.setAttribute('ry', '2');
+    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line1.setAttribute('x1', '16'); line1.setAttribute('y1', '2');
+    line1.setAttribute('x2', '16'); line1.setAttribute('y2', '6');
+    const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line2.setAttribute('x1', '8'); line2.setAttribute('y1', '2');
+    line2.setAttribute('x2', '8'); line2.setAttribute('y2', '6');
+    const line3 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line3.setAttribute('x1', '3'); line3.setAttribute('y1', '10');
+    line3.setAttribute('x2', '21'); line3.setAttribute('y2', '10');
+    svg.appendChild(rect); svg.appendChild(line1); svg.appendChild(line2); svg.appendChild(line3);
+  } else if (type === 'alert') {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z');
+    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line1.setAttribute('x1', '12'); line1.setAttribute('y1', '9');
+    line1.setAttribute('x2', '12'); line1.setAttribute('y2', '13');
+    const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line2.setAttribute('x1', '12'); line2.setAttribute('y1', '17');
+    line2.setAttribute('x2', '12.01'); line2.setAttribute('y2', '17');
+    svg.appendChild(path); svg.appendChild(line1); svg.appendChild(line2);
+  }
+  return svg;
+}
+
 // ── Display helpers ─────────────────────────────────────────
 
 function clearTranscript() {
-  transcriptPanel.innerHTML =
-    '<div class="empty-state"><p>Select a meeting date to view its transcript.</p></div>';
+  const div = document.createElement('div');
+  div.className = 'empty-state';
+  div.appendChild(createSVGIcon('calendar'));
+  const heading = document.createElement('p');
+  heading.className = 'state-heading';
+  heading.textContent = 'Choose a meeting date';
+  div.appendChild(heading);
+  const p = document.createElement('p');
+  p.textContent = 'Select a date from the sidebar to view the transcript, summary, and meeting notes.';
+  div.appendChild(p);
+  transcriptPanel.replaceChildren(div);
 }
 
 function showEmptyState() {
-  transcriptPanel.innerHTML =
-    '<div class="empty-state"><p>Select a SIG to browse its meeting transcripts.</p></div>';
+  const div = document.createElement('div');
+  div.className = 'empty-state';
+  div.appendChild(createSVGIcon('folder'));
+  const heading = document.createElement('p');
+  heading.className = 'state-heading';
+  heading.textContent = 'Browse SIG meeting transcripts';
+  div.appendChild(heading);
+  const p = document.createElement('p');
+  p.textContent = 'Choose a Special Interest Group from the dropdown to see its recorded meetings.';
+  div.appendChild(p);
+  const hint = document.createElement('p');
+  hint.className = 'state-hint';
+  hint.innerHTML = 'Or press <kbd>/</kbd> to search across all SIGs.';
+  div.appendChild(hint);
+  transcriptPanel.replaceChildren(div);
 }
 
-function showError(msg) {
+function showError(msg, retryFn) {
   const div = document.createElement('div');
   div.className = 'error-state';
+  div.appendChild(createSVGIcon('alert'));
   const p = document.createElement('p');
   p.textContent = msg;
   div.appendChild(p);
+  if (retryFn) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'retry-btn';
+    btn.textContent = 'Retry';
+    btn.addEventListener('click', retryFn);
+    div.appendChild(btn);
+  }
   transcriptPanel.replaceChildren(div);
 }
 
@@ -390,16 +556,29 @@ async function switchToView(view) {
   history.replaceState(null, '', location.search + '#' + view);
 
   for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
-    btn.setAttribute('aria-selected', btn.dataset.view === view ? 'true' : 'false');
+    const isSelected = btn.dataset.view === view;
+    btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+    btn.setAttribute('tabindex', isSelected ? '0' : '-1');
   }
+  const panel = transcriptPanel.querySelector('#tabpanel');
+  if (panel) panel.setAttribute('aria-labelledby', 'tab-' + view);
 
   const bodyEl = transcriptPanel.querySelector('.transcript-body, .summary-body, .notes-body');
   if (!bodyEl) return;
 
+  function makePanel(className) {
+    const el = document.createElement('div');
+    el.className = className;
+    el.id = 'tabpanel';
+    el.setAttribute('role', 'tabpanel');
+    el.setAttribute('aria-labelledby', 'tab-' + view);
+    el.setAttribute('tabindex', '0');
+    return el;
+  }
+
   if (view === 'summary') {
     if (!meetingHasSummary(currentSig, currentDate)) {
-      const summaryEl = document.createElement('div');
-      summaryEl.className = 'summary-body';
+      const summaryEl = makePanel('summary-body');
       const p = document.createElement('p');
       p.textContent = 'No summary available.';
       summaryEl.appendChild(p);
@@ -407,19 +586,20 @@ async function switchToView(view) {
     } else {
       try {
         const md = await getSummary(currentSig, currentDate);
-        const summaryEl = document.createElement('div');
-        summaryEl.className = 'summary-body';
+        const summaryEl = makePanel('summary-body');
         summaryEl.appendChild(renderMarkdown(md));
         bodyEl.replaceWith(summaryEl);
       } catch (err) {
-        showError('Failed to load summary: ' + err.message);
+        showError('Failed to load summary: ' + err.message, () => {
+          summaryCache.delete(currentSig + '/' + currentDate);
+          switchToView('summary');
+        });
       }
     }
   } else if (view === 'meeting-notes') {
     try {
       const notesText = await getMeetingNotes(currentSig, currentDate);
-      const notesEl = document.createElement('div');
-      notesEl.className = 'notes-body';
+      const notesEl = makePanel('notes-body');
       if (notesText) {
         notesEl.appendChild(renderMarkdown(notesText));
       } else {
@@ -429,7 +609,10 @@ async function switchToView(view) {
       }
       bodyEl.replaceWith(notesEl);
     } catch (err) {
-      showError('Failed to load meeting notes: ' + err.message);
+      showError('Failed to load meeting notes: ' + err.message, () => {
+        meetingNotesCache.delete(currentSig + '/' + currentDate);
+        switchToView('meeting-notes');
+      });
     }
   } else {
     try {
@@ -437,9 +620,17 @@ async function switchToView(view) {
       const sepIdx = text.indexOf('\n====');
       const bodyText = sepIdx === -1 ? '' :
         text.substring(text.indexOf('\n', sepIdx + 1) + 1).trim();
-      bodyEl.replaceWith(buildTranscriptBody(bodyText, getCurrentQuery()));
+      const transcriptEl = buildTranscriptBody(bodyText, getCurrentQuery());
+      transcriptEl.id = 'tabpanel';
+      transcriptEl.setAttribute('role', 'tabpanel');
+      transcriptEl.setAttribute('aria-labelledby', 'tab-' + view);
+      transcriptEl.setAttribute('tabindex', '0');
+      bodyEl.replaceWith(transcriptEl);
     } catch (err) {
-      showError('Failed to load transcript: ' + err.message);
+      showError('Failed to load transcript: ' + err.message, () => {
+        transcriptCache.delete(currentSig + '/' + currentDate);
+        switchToView('transcript');
+      });
     }
   }
 }
@@ -540,7 +731,7 @@ function debounce(fn, ms) {
 }
 
 async function handleSearch(query) {
-  if (!currentSig) return;
+  if (!currentSig || globalSearchActive) return;
 
   if (!query.trim()) {
     if (searchNav) searchNav.hidden = true;
@@ -635,12 +826,17 @@ function highlightMatches(container, query) {
 
 // ── URL deep-linking ────────────────────────────────────────
 
-function updateURL(sig, date) {
+function updateURL(sig, date, replace) {
   const p = new URLSearchParams();
   if (sig) p.set('sig', sig);
   if (date) p.set('date', date);
   const qs = p.toString();
-  history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  const url = qs ? '?' + qs : location.pathname;
+  if (replace) {
+    history.replaceState({ sig: sig || null, date: date || null }, '', url);
+  } else {
+    history.pushState({ sig: sig || null, date: date || null }, '', url);
+  }
 }
 
 function restoreFromURL() {
@@ -651,9 +847,9 @@ function restoreFromURL() {
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
   if (sig) {
     sigSelect.value = sig;
-    onSIGChange(sig).then(() => {
+    onSIGChange(sig, { replace: true }).then(() => {
       if (date) {
-        onDateClick(date).then(() => {
+        onDateClick(date, { replace: true }).then(() => {
           if (targetView && targetView !== currentView) switchToView(targetView);
         });
       }
@@ -733,6 +929,249 @@ function jumpToPrevMatch() {
   highlightCurrentMatch();
 }
 
+// ── Global Search ───────────────────────────────────────────
+
+function getAllMeetings() {
+  if (!manifest) return [];
+  const all = [];
+  for (const sig of manifest.sigs) {
+    for (const m of sig.meetings) {
+      all.push({ sig: sig.slug, sigName: sig.name, date: m.date, duration: m.duration_minutes });
+    }
+  }
+  return all;
+}
+
+function extractSnippet(text, query, contextLength = 120) {
+  const lower = text.toLowerCase();
+  const q = query.toLowerCase();
+  const idx = lower.indexOf(q);
+  if (idx === -1) return '';
+  const start = Math.max(0, idx - contextLength);
+  const end = Math.min(text.length, idx + q.length + contextLength);
+  let snippet = text.substring(start, end).replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+  if (start > 0) snippet = '\u2026' + snippet;
+  if (end < text.length) snippet += '\u2026';
+  return snippet;
+}
+
+function buildSnippetWithHighlight(text, query) {
+  const frag = document.createDocumentFragment();
+  if (!query || !text) {
+    frag.appendChild(document.createTextNode(text || ''));
+    return frag;
+  }
+  const lower = text.toLowerCase();
+  const q = query.toLowerCase();
+  const qLen = query.length;
+  let lastIdx = 0;
+  let idx = lower.indexOf(q);
+  while (idx !== -1) {
+    if (idx > lastIdx) frag.appendChild(document.createTextNode(text.substring(lastIdx, idx)));
+    const mark = document.createElement('mark');
+    mark.textContent = text.substring(idx, idx + qLen);
+    frag.appendChild(mark);
+    lastIdx = idx + qLen;
+    idx = lower.indexOf(q, lastIdx);
+  }
+  if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.substring(lastIdx)));
+  return frag;
+}
+
+function gatherCachedGlobalResults(query) {
+  const results = [];
+  for (const { sig, sigName, date, duration } of getAllMeetings()) {
+    const key = sig + '/' + date;
+    if (transcriptCache.has(key)) {
+      const text = transcriptCache.get(key);
+      const count = countMatches(text, query);
+      if (count > 0) {
+        results.push({ sig, sigName, date, duration, count, snippet: extractSnippet(text, query) });
+      }
+    }
+  }
+  results.sort((a, b) => b.count !== a.count ? b.count - a.count : b.date.localeCompare(a.date));
+  return results;
+}
+
+function renderGlobalResults(results, isLoading, cachedCount, totalCount) {
+  transcriptPanel.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'global-results';
+
+  // Summary bar
+  const summary = document.createElement('div');
+  summary.className = 'global-results-summary';
+  const totalMatchCount = results.reduce((sum, r) => sum + r.count, 0);
+  if (isLoading) {
+    const found = document.createElement('span');
+    found.textContent = totalMatchCount
+      ? totalMatchCount + ' match' + (totalMatchCount !== 1 ? 'es' : '') + ' in ' + results.length + ' meeting' + (results.length !== 1 ? 's' : '')
+      : 'Searching\u2026';
+    const progress = document.createElement('span');
+    progress.className = 'global-results-progress';
+    progress.textContent = cachedCount + ' / ' + totalCount + ' transcripts searched';
+    summary.appendChild(found);
+    summary.appendChild(progress);
+  } else if (results.length === 0) {
+    summary.textContent = 'No matches found across ' + totalCount + ' meetings.';
+  } else {
+    summary.textContent = totalMatchCount + ' match' + (totalMatchCount !== 1 ? 'es' : '') + ' across ' + results.length + ' meeting' + (results.length !== 1 ? 's' : '');
+  }
+  container.appendChild(summary);
+
+  if (results.length > 0) {
+    const ul = document.createElement('ul');
+    ul.className = 'global-results-list';
+    for (const result of results) {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'global-result-btn';
+
+      const header = document.createElement('div');
+      header.className = 'result-header';
+
+      const sigName = document.createElement('span');
+      sigName.className = 'result-sig-name';
+      sigName.textContent = sigDisplayName(result.sigName);
+
+      const meta = document.createElement('span');
+      meta.className = 'result-meta';
+      meta.textContent = result.date + (result.duration ? ' \u00b7 ' + result.duration + ' min' : '');
+
+      const badge = document.createElement('span');
+      badge.className = 'match-badge';
+      badge.textContent = result.count;
+
+      header.appendChild(sigName);
+      header.appendChild(meta);
+      header.appendChild(badge);
+
+      const snippet = document.createElement('p');
+      snippet.className = 'result-snippet';
+      snippet.appendChild(buildSnippetWithHighlight(result.snippet, globalSearchInput.value.trim()));
+
+      btn.appendChild(header);
+      btn.appendChild(snippet);
+      btn.addEventListener('click', () => onGlobalResultClick(result.sig, result.date));
+      li.appendChild(btn);
+      ul.appendChild(li);
+    }
+    container.appendChild(ul);
+  }
+
+  transcriptPanel.appendChild(container);
+}
+
+async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
+  const allMeetings = getAllMeetings();
+  const uncached = allMeetings.filter(({ sig, date }) => !transcriptCache.has(sig + '/' + date));
+  let fetched = 0;
+  let rafPending = false;
+
+  const scheduleUpdate = () => {
+    if (rafPending || signal.aborted) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      if (!signal.aborted) {
+        const results = gatherCachedGlobalResults(query);
+        const cachedCount = allMeetings.length - uncached.length + fetched;
+        renderGlobalResults(results, fetched < uncached.length, cachedCount, totalCount);
+      }
+    });
+  };
+
+  // Limit concurrent fetches to avoid overwhelming the server
+  const CONCURRENCY = 6;
+  let cursor = 0;
+  async function worker() {
+    while (cursor < uncached.length && !signal.aborted) {
+      const idx = cursor++;
+      const { sig, date } = uncached[idx];
+      try { await getTranscript(sig, date); } catch (_) {}
+      fetched++;
+      scheduleUpdate();
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, uncached.length) }, worker));
+
+  if (!signal.aborted) {
+    const results = gatherCachedGlobalResults(query);
+    renderGlobalResults(results, false, totalCount, totalCount);
+  }
+}
+
+async function handleGlobalSearch(query) {
+  const q = query.trim();
+
+  if (!q) {
+    exitGlobalSearch();
+    return;
+  }
+
+  // Cancel any previous search
+  if (globalSearchAbort) globalSearchAbort.abort();
+  globalSearchAbort = new AbortController();
+  const signal = globalSearchAbort.signal;
+
+  globalSearchActive = true;
+  if (searchGroup) searchGroup.hidden = true;
+  if (dateNavWrapper) dateNavWrapper.hidden = true;
+  if (searchNav) searchNav.hidden = true;
+  resetMatchNav();
+
+  const allMeetings = getAllMeetings();
+  const totalCount = allMeetings.length;
+  const cachedCount = allMeetings.filter(({ sig, date }) => transcriptCache.has(sig + '/' + date)).length;
+  const hasUncached = cachedCount < totalCount;
+
+  // Show cached results immediately
+  const initial = gatherCachedGlobalResults(q);
+  renderGlobalResults(initial, hasUncached, cachedCount, totalCount);
+
+  if (hasUncached) {
+    await fetchUncachedForGlobalSearch(q, signal, totalCount);
+  }
+}
+
+function exitGlobalSearch() {
+  if (!globalSearchActive) return;
+  globalSearchActive = false;
+  if (globalSearchAbort) {
+    globalSearchAbort.abort();
+    globalSearchAbort = null;
+  }
+  // Restore SIG-specific UI
+  if (currentSig) {
+    if (searchGroup) searchGroup.hidden = false;
+    if (dateNavWrapper) dateNavWrapper.hidden = false;
+    renderDateList(getSigMeetings(currentSig), currentDate, null);
+    if (currentDate) {
+      onDateClick(currentDate, { replace: true }).catch(() => {});
+    } else {
+      clearTranscript();
+    }
+  } else {
+    if (searchGroup) searchGroup.hidden = true;
+    if (dateNavWrapper) dateNavWrapper.hidden = true;
+    showEmptyState();
+  }
+}
+
+async function onGlobalResultClick(slug, date) {
+  const query = globalSearchInput.value.trim();
+  globalSearchInput.value = '';
+  exitGlobalSearch();
+
+  sigSelect.value = slug;
+  await onSIGChange(slug); // resets searchInput.value to ''
+  searchInput.value = query;
+  await onDateClick(date);
+  if (query) await handleSearch(query);
+}
+
 // ── Scroll-to-top button ────────────────────────────────────
 
 const scrollTopBtn = document.getElementById('scroll-top-btn');
@@ -750,6 +1189,7 @@ function scrollToTop() {
 
 sigSelect.addEventListener('change', e => onSIGChange(e.target.value));
 searchInput.addEventListener('input', debounce(e => handleSearch(e.target.value), 300));
+globalSearchInput.addEventListener('input', debounce(e => handleGlobalSearch(e.target.value), 300));
 transcriptPanel.addEventListener('scroll', updateScrollTopVisibility);
 if (scrollTopBtn) scrollTopBtn.addEventListener('click', scrollToTop);
 
@@ -757,6 +1197,10 @@ if (prevMatchBtn) prevMatchBtn.addEventListener('click', jumpToPrevMatch);
 if (nextMatchBtn) nextMatchBtn.addEventListener('click', jumpToNextMatch);
 
 document.addEventListener('keydown', function (e) {
+  const target = e.target;
+  const inInput = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT';
+
+  // Ctrl/Cmd+G — next/prev search match
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'g') {
     e.preventDefault();
     if (e.shiftKey) {
@@ -764,7 +1208,98 @@ document.addEventListener('keydown', function (e) {
     } else {
       jumpToNextMatch();
     }
+    return;
+  }
+
+  // Escape — clear and blur search inputs
+  if (e.key === 'Escape') {
+    if (target === globalSearchInput && globalSearchInput.value) {
+      globalSearchInput.value = '';
+      handleGlobalSearch('');
+      globalSearchInput.blur();
+      return;
+    }
+    if (target === searchInput && searchInput.value) {
+      searchInput.value = '';
+      handleSearch('');
+      searchInput.blur();
+      return;
+    }
+    if (inInput) {
+      target.blur();
+      return;
+    }
+  }
+
+  // "/" — focus global search (when not typing in an input)
+  if (e.key === '/' && !inInput && !e.ctrlKey && !e.metaKey) {
+    e.preventDefault();
+    globalSearchInput.focus();
+    return;
   }
 });
+
+// ── Browser back/forward navigation ─────────────────────────
+
+window.addEventListener('popstate', function () {
+  if (!manifest) return;
+  const p = new URLSearchParams(location.search);
+  const sig = p.get('sig') || '';
+  const date = p.get('date') || '';
+  const validViews = new Set(['summary', 'meeting-notes', 'transcript']);
+  const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
+
+  if (sig !== (currentSig || '')) {
+    sigSelect.value = sig || '';
+    onSIGChange(sig, { replace: true }).then(() => {
+      if (date) {
+        onDateClick(date, { replace: true }).then(() => {
+          if (targetView && targetView !== currentView) switchToView(targetView);
+        });
+      }
+    });
+  } else if (date !== (currentDate || '')) {
+    if (date) {
+      onDateClick(date, { replace: true }).then(() => {
+        if (targetView && targetView !== currentView) switchToView(targetView);
+      });
+    } else {
+      currentDate = null;
+      renderDateList(getSigMeetings(currentSig), null);
+      clearTranscript();
+    }
+  } else if (targetView && targetView !== currentView) {
+    switchToView(targetView);
+  }
+});
+
+// ── Mobile sidebar toggle ────────────────────────────────────
+
+const sidebarToggle = document.getElementById('sidebar-toggle');
+const sidebar = document.querySelector('.sidebar');
+
+function initSidebarToggle() {
+  if (!sidebarToggle || !sidebar) return;
+  const mq = window.matchMedia('(max-width: 640px)');
+
+  function updateToggleVisibility() {
+    if (mq.matches) {
+      sidebarToggle.hidden = false;
+    } else {
+      sidebarToggle.hidden = true;
+      sidebar.classList.remove('collapsed');
+    }
+  }
+
+  sidebarToggle.addEventListener('click', () => {
+    const isCollapsed = sidebar.classList.toggle('collapsed');
+    sidebarToggle.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+  });
+
+  mq.addEventListener('change', updateToggleVisibility);
+  updateToggleVisibility();
+}
+
+initSidebarToggle();
 
 document.addEventListener('DOMContentLoaded', init);
