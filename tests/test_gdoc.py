@@ -567,6 +567,26 @@ class TestExtractSubsectionMd:
         attendees = _extract_subsection_md(section, "attendee")
         assert not any("OpAMP" in item for item in attendees)
 
+    def test_inline_attendees_on_label_line(self) -> None:
+        # "Attendees: Alice, Bob" style — content on the same line as the label.
+        section = "Attendees: Alice Smith, Bob Jones\n\nAgenda:\n\n- Item 1\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert "- Alice Smith" in attendees
+        assert "- Bob Jones" in attendees
+
+    def test_inline_single_attendee_on_label_line(self) -> None:
+        section = "Attendees: Alice Smith\n\n- Bob Jones\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert "- Alice Smith" in attendees
+        assert "- Bob Jones" in attendees
+
+    def test_inline_attendees_not_in_agenda(self) -> None:
+        section = "Attendees: Alice, Bob\n\nAgenda:\n\n- Plan review\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        agenda = _extract_subsection_md(section, "agenda")
+        assert not any("Plan review" in item for item in attendees)
+        assert not any("Alice" in item for item in agenda)
+
 
 # ---------------------------------------------------------------------------
 # DevEx SIG style: bold labels (**Attendees:**) + dash bullets (- )

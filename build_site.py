@@ -76,6 +76,11 @@ def build_manifest() -> dict:
             }
         sigs[slug]["meetings"].append(meeting_entry)
 
+    # Also preserve dirs that have metadata.md but no transcripts yet
+    # (e.g. pre-provisioned SIG metadata or temporarily empty SIG dirs).
+    for metadata_path in TRANSCRIPTS_SRC.glob("*/metadata.md"):
+        source_slugs.add(metadata_path.parent.name)
+
     _remove_stale_docs(source_slugs)
 
     for sig_data in sigs.values():

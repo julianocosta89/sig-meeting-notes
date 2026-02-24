@@ -374,3 +374,22 @@ class TestStaleFileRemoval:
         assert (src / "Go-SIG").exists()
         assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
         assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()
+
+    def test_metadata_only_sig_dir_not_deleted(self, tmp_path: Path) -> None:
+        """SIG directory with only metadata.md (no transcripts) must not be deleted."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        metadata_only = src / "New-SIG"
+        metadata_only.mkdir(parents=True)
+        (metadata_only / "metadata.md").write_text(
+            "Meeting Notes URL: https://example.com/notes\nRepository URL: https://example.com/repo\n"
+        )
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            build_manifest()
+
+        assert metadata_only.exists()
+        assert (metadata_only / "metadata.md").exists()

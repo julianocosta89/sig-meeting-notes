@@ -189,6 +189,20 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
             and len(stripped) < 200
         ):
             in_target = True
+            # Also capture content inline on the label line, e.g. "Attendees: Alice, Bob"
+            inline_match = re.search(
+                rf'\b{re.escape(keyword)}\w*\s*:\s*(.+)',
+                stripped,
+                re.IGNORECASE,
+            )
+            if inline_match:
+                inline = inline_match.group(1).strip()
+                # Discard if it's only formatting characters (e.g. "**" from "**Attendees:**")
+                if re.search(r'\w', inline):
+                    for part in re.split(r",\s*", inline):
+                        part = part.strip()
+                        if part:
+                            items.append("- " + _unescape_md(part))
             continue
 
         # Stop at another known section label
