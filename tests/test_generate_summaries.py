@@ -10,7 +10,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from generate_summaries import (
+pytest.importorskip("openai", reason="openai package not installed (install with --group summarize)")
+
+from generate_summaries import (  # noqa: E402
     MAX_TRANSCRIPT_CHARS,
     generate_summary,
     process_transcripts,

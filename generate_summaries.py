@@ -11,10 +11,12 @@ from __future__ import annotations
 import os
 import time
 from pathlib import Path
-
-from openai import OpenAI
+from typing import TYPE_CHECKING
 
 from scraper.transcript_io import SEPARATOR, parse_header
+
+if TYPE_CHECKING:
+    from openai import OpenAI
 
 ROOT = Path(__file__).parent
 DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "transcripts"
@@ -125,6 +127,8 @@ def main() -> None:
     if not api_key:
         print("ERROR: OPENAI_API_KEY environment variable is not set")
         raise SystemExit(1)
+
+    from openai import OpenAI  # noqa: PLC0415 — deferred to avoid import error in dev envs
 
     client = OpenAI(api_key=api_key)
     generated, skipped = process_transcripts(client)
