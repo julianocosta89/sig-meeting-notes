@@ -313,10 +313,9 @@ class TestStaleFileRemoval:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
+        # A truly stale dir has no transcript.md files (e.g. leftover empty dir)
         stale_dir = src / "Old-SIG"
         stale_dir.mkdir(parents=True)
-        (stale_dir / "2025-01-01").mkdir()
-        (stale_dir / "2025-01-01" / "transcript.md").write_text("stale transcript")
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
              patch("build_site.DOCS_DIR", docs):
@@ -357,5 +356,21 @@ class TestStaleFileRemoval:
              patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
+        assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
+        assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()
+
+    def test_all_malformed_headers_does_not_delete_sig_dir(self, tmp_path: Path) -> None:
+        """SIG directory must survive even when every transcript has an unparseable header."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", "garbage header\n")
+        _write_transcript(src, "Go-SIG", "2026-02-10.md", "garbage header\n")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            build_manifest()
+
+        assert (src / "Go-SIG").exists()
         assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
         assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()

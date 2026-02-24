@@ -559,8 +559,7 @@ async function handleSearch(query) {
   for (const m of meetings) {
     const key = currentSig + '/' + m.date;
     if (transcriptCache.has(key)) {
-      const combined = (transcriptCache.get(key) || '') + '\n' + (meetingNotesCache.get(key) || '');
-      matchCounts[m.date] = countMatches(combined, query);
+      matchCounts[m.date] = countMatches(transcriptCache.get(key) || '', query);
     }
   }
 

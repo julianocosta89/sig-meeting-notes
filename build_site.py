@@ -48,12 +48,12 @@ def build_manifest() -> dict:
     for md_path in sorted(TRANSCRIPTS_SRC.glob("*/*/transcript.md")):
         slug = md_path.parent.parent.name
 
+        source_slugs.add(slug)
+
         header = parse_header(md_path)
         if header is None:
             print(f"  WARNING: skipping {md_path} (unparseable header)")
             continue
-
-        source_slugs.add(slug)
 
         date_str = header["date"]
         has_summary = (md_path.parent / "summary.md").exists()
