@@ -655,7 +655,7 @@ async function switchToView(view) {
       } catch (err) {
         showError('Failed to load summary: ' + err.message, () => {
           summaryCache.delete(currentSig + '/' + currentDate);
-          onDateClick(currentDate, { replace: true });
+          onDateClick(currentDate, { replace: true }).then(() => switchToView('summary'));
         });
       }
     }
@@ -1210,11 +1210,16 @@ function exitGlobalSearch() {
   if (currentSig) {
     if (searchGroup) searchGroup.hidden = false;
     if (dateNavWrapper) dateNavWrapper.hidden = false;
-    renderDateList(getSigMeetings(currentSig), currentDate, null);
-    if (currentDate) {
-      onDateClick(currentDate, { replace: true }).catch(() => {});
+    const localQuery = getCurrentQuery();
+    if (localQuery) {
+      handleSearch(localQuery).catch(() => {});
     } else {
-      clearTranscript();
+      renderDateList(getSigMeetings(currentSig), currentDate, null);
+      if (currentDate) {
+        onDateClick(currentDate, { replace: true }).catch(() => {});
+      } else {
+        clearTranscript();
+      }
     }
   } else {
     if (searchGroup) searchGroup.hidden = true;
