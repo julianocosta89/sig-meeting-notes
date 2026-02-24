@@ -1,0 +1,60 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+- Frederic Branczyk (Polar Signals)
+- Brennan Vincent (Polar Signals)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+- [Christian Simon](mailto:christian.simon@grafana.com) (Grafana Labs/Pyroscope)
+- [Scott Gerring](mailto:scott@datadoghq.com)(Datadog)
+- [Marc Sanmiquel](mailto:marc.sanmiquel@grafana.com) (Grafana Labs/Pyroscope)
+- Morgan McLean (Splunk)
+- Cleverchuk (Solarwinds)
+
+### Agenda
+- Review action items:
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)PR has been reviewed / merged, let’s open new PRs for further work
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo: Updated proposal with new ProcessContext message to keep Resource immutable
+    - Christos: LGTM
+    - Alexey: Where should this live? It’s part of the signal but not part of the core signal?
+    - Ivo: Can definitely revisit, wasn’t sure where this should live
+    - Florian: We can put it in common
+    - Ivo: Can try this
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - Feb 1 update: Sent a PR [here](https://github.com/open-telemetry/semantic-conventions/pull/3368).
+    - Florian: Why do we need the order?
+    - Alexey: It’s a way to be maximally compatible (UI tools can present profiles in the original order)
+    - Alexey: Feel free to comment on the proposal document
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - Josh has approved the PR
+    - Bogdan and Tigran haven’t, Tigran wants to see sample [implementations](https://github.com/open-telemetry/opentelemetry-proto/pull/733#issuecomment-3844392275)
+    - Bogdan: Explicit dictionaries
+    - Nayef: There’s more context on the two approaches in: [https://cloud-native.slack.com/archives/C03J794L0BV/p1767888912927469?thread_ts=1766057693.815249&cid=C03J794L0BV](https://cloud-native.slack.com/archives/C03J794L0BV/p1767888912927469?thread_ts=1766057693.815249&cid=C03J794L0BV)
+    - [Notes - OTel Profiling: Resource Attributes / Collector Jan 7, 2026](https://docs.google.com/document/d/1nRIvyT_iKW4RLyNGJpP9HowTXtpJm99EDE7YBW94I9E/edit?tab=t.0#heading=h.1iirsc1laqg)
+- [Florian] [OTEP: correlating OBI traces to profiles](https://github.com/open-telemetry/opentelemetry-specification/pull/4855)
+  - Profiler implementation: [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1139](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1139)
+  - OBI implementation:
+    - Ivo: There are comments by Liudmila Molkova regarding prioritization / multiple instrumentation (that also affect other parts of OTel)
+    - Christos: I’ll review and approve the specification and wait for final approval before proceeding with the implementation in ebpf-profiler
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Update [on thread context draft spec](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.bmgoq3yor67o)
+  - Next steps: sample implementation in the profiler, bring this to other SIGs
+  - Alexey: Is varint the right way forward?
+  - Brennan: Varint would allow for more than 256 unique keys for the labels, how hard would it be to update this in the future? If it’s easy to extend in the future, it’s fine to not have varint from the beginning.
+  - Scott: Another option is to use two bytes instead of varint
+  - Ivo: We don’t want this to be too big as it’s going to be read from ebpf, inherent limitations may prevent people from putting too much data. Protocol is versioned so we can introduce updates with new versions
+  - Frederic: Practically, it’s hard to get changes in OTel once they make it into a spec
+  - Brennan: It’s more political than technical
+  - Frederic: All clients will implement first version of the spec, but incentive isn’t going to be as strong past that. 256 is decently high
+  - Brennan: I guess I agree
+  - Frederic: Maybe we’re limited in [Node.JS](http://Node.JS)
+  - Alexey: If there’s more than 256 attributes per thread, cardinality is high and downstream consumers can have problems - too many dimensions
+  - Brennan: There’s a limit to how much you can read in eBPF
+  - Brennan: Worst case scenario single process hundreds of different webserver endpoints with divergent attributes to track
+  - Alexey: One byte indexing can force simplicity and corporations to talk to each other

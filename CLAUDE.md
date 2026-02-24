@@ -42,14 +42,17 @@ The pipeline has three stages:
 
 3. **`scraper/transcript.py`** — Parses the extracted `outerHTML` of `ul.transcript-list` using BeautifulSoup, producing lines in `"Speaker Name: utterance"` format.
 
-**`main.py`** orchestrates the pipeline: fetches all date-range meetings, then runs `_resolve_sig()` when `--sig` is given. Before matching, the filter is looked up in `_SIG_ALIASES` (e.g. `gc` → `governance-committee`, `semconv` → `semantic-convention`/`semconv`/`sem-conv`); unrecognised values are used as-is. If the (expanded) terms match multiple SIG slugs it prints a numbered list and prompts the user to pick one interactively. After disambiguation it filters to the chosen slug, then processes recordings with one fresh Playwright browser context per recording (to avoid session state leakage), skipping already-downloaded transcripts, and writing output to `transcripts/{sig-slug}/YYYY-MM-DD.txt`.
+**`main.py`** orchestrates the pipeline: fetches all date-range meetings, then runs `_resolve_sig()` when `--sig` is given. Before matching, the filter is looked up in `_SIG_ALIASES` (e.g. `gc` → `governance-committee`, `semconv` → `semantic-convention`/`semconv`/`sem-conv`); unrecognised values are used as-is. If the (expanded) terms match multiple SIG slugs it prints a numbered list and prompts the user to pick one interactively. After disambiguation it filters to the chosen slug, then processes recordings with one fresh Playwright browser context per recording (to avoid session state leakage), skipping already-downloaded transcripts, and writing output to `docs/transcripts/{sig-slug}/YYYY-MM-DD.md`.
 
 ## Output Structure
 
+`docs/transcripts/` is the single source of truth — `main.py` writes there directly and `build_site.py` reads from there (no copy step).
+
 ```
-transcripts/
+docs/transcripts/
   {SIG-Slug}/
-    YYYY-MM-DD.txt   # Header (SIG name, date, duration, URL) + transcript lines
+    metadata.md      # Stable SIG metadata (Meeting Notes URL, Repository URL)
+    YYYY-MM-DD.md    # Header + Meeting Notes section + Zoom Recording Transcript
 ```
 
 Slug is generated from the SIG name by stripping special characters and replacing spaces with hyphens. `_CANONICAL_SLUGS` in `sheet.py` then remaps certain slugs to a canonical form so that SIGs recorded under multiple names in the spreadsheet share one directory:

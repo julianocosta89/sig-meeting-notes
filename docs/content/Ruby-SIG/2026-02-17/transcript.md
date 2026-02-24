@@ -1,0 +1,712 @@
+SIG: Ruby SIG
+Date: 2026-02-17
+Duration: 71 minutes
+Zoom Recording URL: https://zoom.us/rec/share/GlPWMnBjlLZ4JaOEaBN9aehZILAqdPLV6oQcKUfKb4W5Ych8YJVpajm61d9A9I7a.jsLHiFwee8pVCqEs
+============================================================
+
+## Zoom Recording Transcript
+
+Kayla Reopelle 00:09:06 Hi, Daniel.
+Daniel Azuma 00:09:16 Mecca.
+Turn on this, here we go.
+Kayla Reopelle 00:09:22 How you doing today?
+Daniel Azuma 00:09:25 I'm pretty good.
+How about you?
+Kayla Reopelle 00:09:29 I'm doing alright, yeah. It was nice to have a long weekend.
+Daniel Azuma 00:09:32 Oh, yeah.
+Are you, are you done with that project, or is that, still…
+Kayla Reopelle 00:09:39 about, yeah, releasing today, so I should be able to do more hotel stuff this week.
+Daniel Azuma 00:09:45 Nice.
+Kayla Reopelle 00:09:46 Yeah. Hey, Rob! How you doing?
+Robb Kidd (he/him) 00:09:50 I'm okay.
+Kayla Reopelle 00:09:55 Well, I'm glad, I'm glad okay is being met.
+Robb Kidd (he/him) 00:10:07 I, too, am hoping to be able to pick Hotel Ruby back up here in the near term. So, plug him back in. What needs doing?
+Kayla Reopelle 00:10:15 Amazing.
+Robb Kidd (he/him) 00:10:17 Well, let's see if it happens.
+Could be amazing.
+Kayla Reopelle 00:10:22 That'd be amazing.
+Okay, I haven't checked OTil's Slack today, do we know?
+I believe Schwan is out.
+And Arielle's not going to be here.
+So this might be everyone. Oh, hey!
+Okay, well, I guess we can… Get started.
+There we go.
+Alright, I was unable to make it to the Spec Sig today. I should be able to start going again next week.
+Let's see what they had to talk about.
+Stabilize exception parameter for logger emit.
+From the notes, it seems like this is part of working on deprecating span events so that exceptions are now part of log events.
+Link should be in the maintainers.
+Slack, too, so people can take a look there.
+Okay, declarative config is also nearing stability.
+Which is exciting as well.
+So the schema, YAML in memory, etc, all those options will be there.
+State of entities. Oh, that's right. So…
+There's that new concept entity that,
+is supposed to be separate from a resource. I haven't been following this conversation really closely. Does anyone else… has anyone else been paying attention to it? No.
+Robb Kidd (he/him) 00:12:57 And I only know about it peripherally as well.
+Kayla Reopelle 00:13:00 Okay.
+Well, maybe… It's another thing to…
+look at whenever we have some time. I know we're kind of in between, like, bigger projects and initiatives right now, I think just based on availability, but I imagine that
+declarative config, and… Entity support would probably be on there sometime soon.
+Maybe declarative config more so, just because it's reaching stability and this still seems like it's in flux.
+Yeah, I don't know if it's a great use of time to just try to read all about entities today, though.
+And then… Let's see… conversation about meta-discussions, a monthly state of… Something from different spec sigs.
+and maybe also a place for other SIGHS to highlight and raise awareness of work.
+So… Yeah, I guess we can keep… keep an eye on that.
+to… there's been more, like.
+meta-discussions about how to organize SIGs and how to communicate things about the specifications or set goals about certain features for everyone to reach stability on, just in that continued process for open telemetry to move from being an incubating CNCF project to an official CNCF project.
+So I think that that conversation is in line with those themes.
+But yeah, alright.
+Anything else that people want to look at SpecSIG-related before we move on?
+Okay yeah, yeah, so…
+I've been out of it in a few weeks, just working on something else, so I'm not really sure.
+Where to start? We can definitely just go through the links and kind of see what's open and make a game plan there, but before we do that, is there anything that anyone here wants to prioritize?
+Okay, let's just dive in then.
+Robb Kidd (he/him) 00:15:14 Nope, I've been out of it too long to set any sort of priorities, just…
+Finding out what's… what's up.
+Kayla Reopelle 00:15:21 Okay.
+Alright, let's see, so we have a couple of… New issues?
+Trace export report drop spans does not always produce the same set of labels, which Prometheus considers invalid.
+This one's kind of interesting, because I think it's like a… Outside of a spec feature?
+Mind if I open up this line of code? Has anyone… People read it.
+Robb Kidd (he/him) 00:16:12 Cohort.
+Daniel Azuma 00:16:12 Go ahead.
+Kayla Reopelle 00:16:20 Oh no, no line.
+Daniel Azuma 00:16:23 the life.
+Kayla Reopelle 00:16:25 Let's see if Compact is called, maybe.
+Metrics reporter, add to counter… Drop spans…
+Reason, function, compact. Okay, so this, this might be the line that was in question.
+Yeah, I'm not really sure why Compact was there to begin with.
+Robb Kidd (he/him) 00:16:52 And I guess…
+Yeah.
+Why… why record something that is nil?
+I think it's Blackhaw.
+Kayla Reopelle 00:17:02 Yeah.
+Robb Kidd (he/him) 00:17:02 But if consumers of this expect labels to be there, Consistently.
+Kayla Reopelle 00:17:10 Which, I guess, could be just a…
+Prometheus thing. I don't know if we're messing things up for other people, if we… Stop compacting.
+Robb Kidd (he/him) 00:17:20 Yep.
+Yeah, me.
+Kayla Reopelle 00:17:26 Maybe it's just worth asking them to submit a PR, and then we can have more conversation there.
+Robb Kidd (he/him) 00:17:34 Yeah, who… can we go back to the code?
+Kayla Reopelle 00:17:38 Yeah.
+Robb Kidd (he/him) 00:17:40 And this is in our… this is Metrics Reporter, which is, as I recall, a totally made-up.
+Kayla Reopelle 00:17:47 Yes.
+Robb Kidd (he/him) 00:17:47 Observing the observer thing that was implemented a while back.
+That you can implement.
+And metrics reporter is this abstract thing of, like, there's…
+Like, add to counter and a couple other functions on it that don't do anything.
+Unless you give it a concrete, metrics reporter instance that does something. I know I often just made a logger.
+But… Making something that cranks out Prometheus, or Snesty, or whatever.
+I guess there's no… contracts? At least when I last touched this, there were, like, no contracts around
+the shape of the data that would be emitted by an Hotel Ruby metrics reporter.
+People who know more about metrics.
+maybe could tell us what do other metrics receivers expect in the form of labels, and… weather.
+changing…
+Changing this to include code function when there is no function to tell you about? Does that affect anybody else?
+And then I guess we get tests for it, which is, I think, I guess, the feedback to this, issue. It's like, metrics report is kind of this dark…
+Thing that was made to solve a problem that existed a while back.
+Kayla Reopelle 00:19:07 Yeah, maybe it is time to consider using our own metrics at some point to record OTEL metrics about these things? I don't know.
+Or open telemetry logs.
+Robb Kidd (he/him) 00:19:20 Yeah…
+Kayla Reopelle 00:19:22 It's a bigger…
+Robb Kidd (he/him) 00:19:22 weird, like, Ouroboros thing, though.
+Yeah.
+Kayla Reopelle 00:19:25 Definitely.
+I guess maybe figuring out what other…
+SIGs are doing would probably be good before diving into that initiative.
+Rob, would you mind responding to this one, then?
+Robb Kidd (he/him) 00:19:41 Sure.
+Kayla Reopelle 00:19:42 That summary.
+Just add it on here.
+Robb Kidd (he/him) 00:19:44 Yeah, if you drop it in there so that I can…
+I'll make that into my to-do list.
+Kayla Reopelle 00:19:50 Awesome, thank you.
+Alright, let's take a look at this one. Exporting fails of 204, no content is returned. And it looks like it has an accompanying PR.
+And this is the logs one.
+So I can… Pick this one up.
+Similar problem in OpenTelemetry Go, so it could… Be a structure thing.
+I guess the next thing… We'll be to see if we can reproduce it.
+Not really sure what exporting fails means right now, but maybe it'll become more clear.
+Daniel Azuma 00:20:43 Do you know what they're exporting to?
+Kayla Reopelle 00:20:47 Well, it looks like they're using the OTLP logs exporter, so I think it's a batch of logs that are going through that, like, protobuf assignment in our logs exporter.
+Oh, but I guess that wouldn't be the 204 response, right? That would be whatever their endpoint is for the…
+OTLP exporter?
+Daniel Azuma 00:21:10 That's what I would… Thank goodness.
+Robb Kidd (he/him) 00:21:13 Curious about what would… What are you sending to that…
+responds with a 204, I have no content for you.
+Kayla Reopelle 00:21:19 Yeah…
+Oh, Sentry sees that it's a problem.
+For traces and metrics exporters, too.
+Which would… Makes sense, because… They're all designed pretty much the same way.
+Robb Kidd (he/him) 00:21:39 I guess it's the, does the spec say that when you export, you expect to get an OK, and not just anything in the 200 series of successes?
+Kayla Reopelle 00:21:48 It's a good question. I don't know.
+What's…
+Robb Kidd (he/him) 00:21:54 Not to be too dogged about the specs.
+Kayla Reopelle 00:21:56 Yeah, true.
+Robb Kidd (he/him) 00:21:57 Two… two something.
+Kayla Reopelle 00:22:12 Yeah, I think that would be a good question before reviewing this to understand it more.
+I can still take this one on.
+Anything else that I should… Pay attention to before we do that.
+Okay.
+Yeah, because I'm curious if there's the same issue in Go, is it just a spec thing? Oh, they…
+Already closed theirs.
+This is not required by the spec, and not something the collector requires.
+Robb Kidd (he/him) 00:23:17 The spec says res… looks like the spec says receivers should be sending a 200.
+from Full Success Exports.
+Any other unspecified HTTP response should conform to HTTP.
+There shouldn't be a 204.
+But if there is one, we should handle it anyway. Yeah.
+Yeah. You should tell us, okay, but our clients should accept its success, and say, yeah.
+Kayla Reopelle 00:23:47 Oh, yeah.
+Robb Kidd (he/him) 00:23:48 I guess.
+Is… is that… yeah.
+Being a little bit too rigid doesn't help.
+Kayla Reopelle 00:23:57 Yeah.
+Hmm.
+They just changed it to a…
+Daniel Azuma 00:24:12 I need 2XX.
+Kayla Reopelle 00:24:13 Yeah.
+Okay.
+Well, that it's merged feels like there's maybe a little more of a precedent then.
+Robb Kidd (he/him) 00:24:24 Go jump off the bridge, let's jump off the bridge, too.
+Kayla Reopelle 00:24:28 Hand in hand.
+Okay, let's see, are there any other new issues open in the last week?
+Nope.
+Let's look at pull requests.
+So, we have some dependable action… And then…
+This is the one we were just looking at. Renovate Bot…
+Looks like there's an instrumentation scope.
+Draft from Robert…
+Mmm, adding schema URL. Okay, that would be great.
+Robb Kidd (he/him) 00:25:13 Oh, I'm excited about that one.
+Kayla Reopelle 00:25:14 be wonderful. That's something that we…
+want to do before we remove, the OTOL SIMCOM stability opt-in environment variable from HTTP,
+Gems, so that that way…
+there can be at least a schema URL that's related to it when people are trying to figure out.
+Robb Kidd (he/him) 00:25:33 Yeah, incoming telemetry tells you what version it is, yeah.
+Kayla Reopelle 00:25:35 Yeah, exactly, exactly.
+Robb Kidd (he/him) 00:25:38 yeah. Oh, I have a follow-up to that when we move off of core and into Contrib.
+Kayla Reopelle 00:25:44 Okay.
+Looks like there's some Ruby 4 repairs… Our warnings that need review.
+Daniel Azuma 00:25:57 There were other PRs, related to this earlier that I think Schwan was working on.
+Kayla Reopelle 00:26:04 Okay.
+Daniel Azuma 00:26:04 I think… I think we had more or less approved them by now?
+There are at least two of them.
+But, I don't think they're… Merged.
+Kayla Reopelle 00:26:23 Yeah, I think this is one of them. I think those are both related.
+This one probably shouldn't be stale.
+Okay, well, I'll keep an eye on that first. I think my plan of attack is to
+review more of the PRs, and then try to get a clear order for merging before I start.
+Doing any merging this time around, just because there's so many changes.
+Ariel maybe has a few changes here, too, but they're all drafts, so…
+It's good to keep in mind. Anything else on this list that people want to look more closely at before we move into Contrib?
+Daniel Azuma 00:27:19 Are we okay, with 2006, my release system?
+thing that…
+Kayla Reopelle 00:27:29 Let's see… 2006. Love it when we get into years in a repo.
+Okay…
+Daniel Azuma 00:27:41 was this one that we've… we've done for, Contrib already.
+And there's been a little bit of, I've had to fix a bunch of things on that side, because there's… there's still… there have been some bugs, but I think it's… I think it's working now, and I've tried to keep this one up to date with what's been done on the Contrib side.
+So…
+Kayla Reopelle 00:28:06 Okay, I… yeah, I'm sorry for dropping the ball here, I did mean to actually approve it.
+So, I can do that now.
+Do you feel like all of the changes… all of the changes are here to make it.
+Daniel Azuma 00:28:21 Yeah, this has been up… this is up to date with what's been done on… on Contrib, so… and Contrib seems to be working now, so… Okay.
+Kayla Reopelle 00:28:31 I'll,
+Actually, let me… let me read it again before I approve it, just to make sure I understand all of the changes that are happening.
+Daniel Azuma 00:28:44 Sure.
+Kayla Reopelle 00:28:46 So I'll put that on my list.
+Nice, thank you for reminding me about that one.
+Alright, let's look at contribute. Start with issues.
+Let's see… Most recent one…
+I thought we had a config option for this, but maybe it's just in…
+Robb Kidd (he/him) 00:30:07 Could be that the, but that config option is…
+the perennial problem, at least when I was last active, is that the documentation for the configuration options for instrumentation were so, like.
+didn't really bubble up to a place where humans would find them. You have to go dig into, like… you gotta go look at a library file.
+Five directories in.
+Kayla Reopelle 00:30:29 Yeah.
+Robb Kidd (he/him) 00:30:29 So it could be that there's a config option already. I could take this one, to respond, and if there is already a config option, point it out.
+And I agree that declarative config thing is, if there's not a config option for it.
+Implementing declarative config ought to add it.
+Kayla Reopelle 00:30:48 Okay.
+Nice, that sounds good.
+Cool, cool. Let's see… There's a lot of issues that I haven't looked at, but they're…
+Looks like it's mostly stale-related.
+I think we're probably… I'm good with dropping Faraday 1 support.
+Does anyone here have any objections to that?
+Robb Kidd (he/him) 00:31:22 Nope.
+Kayla Reopelle 00:31:24 I'll add a key player.
+Robb Kidd (he/him) 00:31:25 Faraday 1 is itself not supported. I think our…
+Support philosophy has been, if the upstream people don't support it.
+Kayla Reopelle 00:31:34 Yep.
+Hmm.
+Daniel Azuma 00:31:44 There was an up… there was a release to Faraday One, on, last week.
+Kayla Reopelle 00:31:50 Oh, interesting.
+Robb Kidd (he/him) 00:31:51 What? Maybe, maybe Ariel's comment is, out of date, though.
+Kayla Reopelle 00:31:56 Huh, let's see…
+Daniel Azuma 00:32:02 110.5 was released on February 12th.
+Kayla Reopelle 00:32:06 Wow.
+Robb Kidd (he/him) 00:32:07 Alright, then.
+Kayla Reopelle 00:32:08 First time since when? 2024. Interesting, I wonder…
+Daniel Azuma 00:32:14 But, yeah.
+Kayla Reopelle 00:32:15 Well, we can add that, I guess, as a comment.
+Daniel Azuma 00:32:25 Yeah, security fix, CVE.
+Kayla Reopelle 00:32:28 Oh, okay.
+Robb Kidd (he/him) 00:32:31 I have noticed that a lot of times, it's a burden on instrumentation maintainers, but being able to have something that tells you that you're using something old
+Is, is still pretty useful.
+Kayla Reopelle 00:32:44 Yeah.
+Robb Kidd (he/him) 00:32:45 In a world where people gotta have some time to migrate off.
+Kayla Reopelle 00:32:49 Yeah.
+Jeez.
+Okay, Committing gem file lock to the repo.
+I thought we had a workaround for this.
+I'll look into the workaround that I thought we had.
+Robb Kidd (he/him) 00:33:30 I mean, a consequence of committing gem file locks is a…
+An increase in dependent bot updates to test the latest
+Of the things that we are instrumenting.
+Kayla Reopelle 00:33:47 Yeah, yup.
+I'm pretty sure.
+Robb Kidd (he/him) 00:33:51 I don't know about repeatable builds.
+Because… The gems that we produce don't themselves have
+Direct dependencies on the things of the instrument.
+They have dev dependencies for the things of the instrument, because it's a… it's a test dependency, not a…
+runtime.
+Kayla Reopelle 00:34:15 Yeah, like… This here should be taking care of the need for gem file lock for FAFSA.
+So… If it's not working anymore…
+Robb Kidd (he/him) 00:34:27 What is FASA?
+Kayla Reopelle 00:34:28 FOSA is, like, a security scanning tool that,
+top-level OpenTelemetry wants us all to have installed.
+Robb Kidd (he/him) 00:34:37 Let's see…
+Yeah, I guess… can we go back to the issue?
+I'm gonna ask my perennial, what problem do we need to solve?
+Kayla Reopelle 00:35:06 Yeah.
+And… the issue…
+Robb Kidd (he/him) 00:35:15 To implement reproducible builds, which is a weird…
+That's not really a thing for us.
+Kayla Reopelle 00:35:22 Yeah.
+Robb Kidd (he/him) 00:35:24 Unless we get specific about the… about the things that we have direct dependencies on.
+Kayla Reopelle 00:35:30 Ugh.
+What?
+Hmm.
+So the things that are being committed…
+Yeah, I don't know about this. I think I would need more…
+Robb Kidd (he/him) 00:35:49 A potential option is to get very specific with,
+No, that's a bad option. I was about to go be specific, and not,
+Pessimistic or optimistic, but specific about the versions.
+That… Jem, checking in the gem file a lot to,
+wouldn't produce… it's not a reproducible build, because consumers
+aren't going to get the specific versions in our gem file lock, because we don't ship the gem file lock.
+they'll get… We're not a compiled language, everybody. So, like… And,
+And as a library, we should not have very specific versions, or people won't… like, a very small subset of people would be able to use us.
+Kayla Reopelle 00:36:46 Okay, well, maybe it's then just a conversation, because…
+There's a reason why we added this, and… I'm not aware of…
+It hasn't seem like a burden to maintain.
+Robb Kidd (he/him) 00:36:59 Like, I could see if the goal is for the security assessment, if the goal for the security assessment
+If we were able to generate a gem file that used the minimums instead of the…
+Whatever the latest is.
+Kayla Reopelle 00:37:13 Yeah.
+Robb Kidd (he/him) 00:37:14 We could… we could test that we weren't depending on anything
+We could move the minimums so that they would, require things with security patches.
+Kayla Reopelle 00:37:28 Hmm.
+Robb Kidd (he/him) 00:37:30 But…
+I don't… in the moment, I can't think of a way that even checking in a gem file lock would help our consumers.
+Kayla Reopelle 00:37:40 Yeah.
+Robb Kidd (he/him) 00:37:41 Because they don't use the gem file lock for dependency resolution.
+I'm open to being corrected on that by the information, but that's my… Thoughts at the moment?
+Kayla Reopelle 00:37:56 I wonder… Unnecessary uploads. Like, what uploads…
+Is it the uploads in the CI run?
+Robb Kidd (he/him) 00:38:07 Yeah, I don't know who the uploads are to.
+Kayla Reopelle 00:38:10 Yeah.
+Hmm.
+to only upload pre, so maybe they're uploaded to FASA?
+Robb Kidd (he/him) 00:38:31 No, everyone won't be using the same lock file, is, I think, If… if the…
+Person opening the issue thinks that are consuming
+The consumers of this library won't be using our lock files for dependency resolution.
+Kayla Reopelle 00:38:45 So… Yeah.
+Robb Kidd (he/him) 00:38:50 Maybe it helps fossa, but it doesn't help.
+Humans using these things.
+Kayla Reopelle 00:39:04 Okay.
+That is… interesting.
+Okay.
+Let's… Check out the pull requests.
+Have some renovate action… of… RoboCop with some autocorrects…
+Mmm… Does anyone hear a Kafka user?
+Robb Kidd (he/him) 00:39:41 No, but I know some.
+Kayla Reopelle 00:39:43 Do these words make sense to you?
+Robb Kidd (he/him) 00:39:47 Oh.
+Kayla Reopelle 00:39:49 Cool.
+Robb Kidd (he/him) 00:39:50 What was the title? So, CP Cock, can be updated.
+I can run those words by people who know how to spell Kafka.
+Kayla Reopelle 00:39:59 Okay.
+I guess it is still a draft, though, so maybe we don't…
+Need to look at it yet.
+What do you think? Would you still like to run it by, or wait until it's opened?
+Robb Kidd (he/him) 00:40:17 You know what? There's… let's ease me into this. Let's wait until it comes out of draft.
+Kayla Reopelle 00:40:24 Okay.
+Okay, it looks like there's also a Lambda draft…
+Maybe we can bring in our… AWS… Experts.
+Whenever that one's officially opened.
+PG stuff…
+Hmm, that's interesting. I… I'm surprised that those aren't showing up in the traces right now.
+Robb Kidd (he/him) 00:41:24 Was there lack, just that wasn't in the list of…
+Kayla Reopelle 00:41:30 Yeah, it seems… Oh my god.
+Oh wait, are some of the ones on that list already?
+Inquiry? No, I guess not.
+Interesting.
+Robb Kidd (he/him) 00:41:49 Were, were those diff… yeah, go ahead. Were those different… Lists?
+Kayla Reopelle 00:41:55 Yeah, these are…
+Robb Kidd (he/him) 00:41:56 different lists, but…
+Kayla Reopelle 00:41:58 So one's, like, for exact.
+Robb Kidd (he/him) 00:41:59 Oh, exec-ish versus prepare versus…
+Kayla Reopelle 00:42:02 Yeah, versus prepared.
+So, I think we have similar instrumentation for all of them.
+Robb Kidd (he/him) 00:42:10 Yeah, I reckon this was a gap in… The allow list of… Things to put hooks into.
+Kayla Reopelle 00:42:24 Though… I wonder if we're already using Git result?
+I guess he didn't make any other changes, so he must be…
+I don't really understand what the tests are.
+Robb Kidd (he/him) 00:42:43 Or… or were these…
+Method send query. Call send query.
+-Oh.
+after you send a query, I guess you have to get the result, so the it statement is…
+Send query returns a nil.
+Kayla Reopelle 00:43:06 Hmm.
+Robb Kidd (he/him) 00:43:07 And it's… and the result's obtainable.
+through a get result. So it's not really… it's not testing the get result. It's testing that sent query
+produced… A query that you could get a result from.
+Kayla Reopelle 00:43:23 So, so we don't actually generate any telemetry, then, it sounds like, from it? You'd have to call getResult to…
+make spam?
+Robb Kidd (he/him) 00:43:34 I f- I… hmm…
+Don't know.
+Kayla Reopelle 00:43:42 Hmm.
+Interesting. Okay.
+Well, I mean, it's also async, so I don't know…
+I don't know.
+Robb Kidd (he/him) 00:43:55 Yeah, I don't know either. If only Robert were here.
+I think wrote the… Initially wrote the GG instrumentation.
+Kayla Reopelle 00:44:02 Oh, Hannah's been deep in it lately, too, because she's been working on stabilizing the… or getting the environment variable in there for database conventions.
+Robb Kidd (he/him) 00:44:11 Cool.
+Kayla Reopelle 00:44:12 What telemetry is…
+Okay.
+Let's see… What else we got going on?
+Another one… on PG… Pipeline methods…
+Okay, pretty similar and straightforward.
+Interesting.
+Another Postgres method I've never used.
+Any thoughts that people have on this one before I move out of it?
+Robb Kidd (he/him) 00:45:41 Nope, I'd have to… I would have to spend time staring at it and getting to know Postgres.com.
+Kayla Reopelle 00:45:57 Okay…
+Got some changelog linting… Yes, I need to look at this one this week.
+And some… problems with linking with Rails, getting the right attributes in the right places.
+Oh, I'm surprised this is his first PR.
+I… He's been very active in Slack, but I guess he hasn't submitted anything before.
+Archive Ruby Kafka instrumentation… I think there's an issue that we have that's open.
+For this…
+I don't know what that icon means.
+Oh.
+Robb Kidd (he/him) 00:47:14 instrumentation.
+Kayla Reopelle 00:47:15 Archives. Oh, that's an interesting concept.
+So we just move old instrumentations to a new directory.
+Rather than delete them entirely.
+Is anyone aware of any instrumentations we've… Archived or removed?
+Yet?
+Robb Kidd (he/him) 00:47:37 I am not.
+Daniel Azuma 00:47:40 Absolutely.
+Kayla Reopelle 00:47:42 Is this a new directory?
+Daniel Azuma 00:47:44 The archive?
+Kayla Reopelle 00:47:45 Yeah, this looks like a new directory.
+Daniel Azuma 00:47:52 top level, yeah, I…
+Kayla Reopelle 00:47:56 Yeah.
+Daniel Azuma 00:47:57 Why would we want to archive rather than… I mean, it's still… it's in the history, why?
+Kayla Reopelle 00:48:02 Yeah, I'm not sure.
+Robb Kidd (he/him) 00:48:04 Yeah, I don't know why we would…
+continue to have the files in Maine.
+Kayla Reopelle 00:48:12 Yeah, what's an archival release? Is that a Ruby Gems thing?
+Robb Kidd (he/him) 00:48:17 Not that I'm aware of.
+Kayla Reopelle 00:48:22 Oh, it has a README. Maybe in the README it explains.
+Robb Kidd (he/him) 00:48:38 I think it's so that the code continues to live in Maine, but isn't released.
+Rich.
+I don't have an immediate opinion about.
+I would like it to not be in Maine, because it's… Clutter?
+Kayla Reopelle 00:48:54 Yeah.
+Robb Kidd (he/him) 00:48:54 And you could always go back to it in the history, but knowing that it used to exist is a thing?
+Daniel Azuma 00:49:04 If you want to know what used to exist, just have a file that says these… here are the things that used to exist. And maybe even here's a link to the, to a good tag to go look if you want to see the code.
+Robb Kidd (he/him) 00:49:14 Yeah, and does Ruby Gems take you… if you've got… if a gem is published and there's, like, a source link to it.
+Daniel Azuma 00:49:20 Oh, we… I think we talked about that last week, actually, that we should be doing that, and we're not, but we should be doing that.
+Robb Kidd (he/him) 00:49:29 Like, I could see it in the gem metadata of the source link is not to the repo, but to…
+like, the repo at that gem version, so they were coming in on a tag.
+Daniel Azuma 00:49:42 Yeah, yeah. I mean, it's just a… in Ruby gems, it's just a string, so we could put anything we want, and we just have to fix our gem specs to do it.
+Kayla Reopelle 00:49:52 Yeah.
+Robb Kidd (he/him) 00:49:53 And then, at least, if you were linking off of the last gem… the last release in, say, Ruby Gems, the last release of a gem that is now archived, if that source link is too…
+Thank you.
+the directory that it lived in, with, like, scoped to the tag in the URL,
+It's like, there's the code for me! Yeah. Don't look at Maine, I'm not there anymore.
+That could be worth it.
+Kayla Reopelle 00:50:24 Yeah.
+Robb Kidd (he/him) 00:50:25 Although that's more, like, release automation we have to add to go and update that string.
+Daniel Azuma 00:50:29 Probably not. We could, we could just, modify the gem spec to, to, like, load the version.rb file and, and, and set the…
+And, and, you know…
+Robb Kidd (he/him) 00:50:45 To make it live.
+Kayla Reopelle 00:50:47 Yeah.
+Robb Kidd (he/him) 00:50:48 Dynamically program our metadata.
+Kayla Reopelle 00:50:50 I mean, there's no reason it can't be an interpolated string, right? Yeah, yeah. Evergent constant already.
+Robb Kidd (he/him) 00:50:56 We interpolate all… well, actually, the versions are already right.
+Daniel Azuma 00:50:59 Yeah, it's already, yeah, spec.version is already interpolated there, or…
+Robb Kidd (he/him) 00:51:02 Actually, right there with tree main, I think we replaced main with, V version, and…
+Kayla Reopelle 00:51:09 Are we already creating tags for all of…
+Daniel Azuma 00:51:12 Yes, we are.
+Kayla Reopelle 00:51:13 Okay.
+Yeah.
+Robb Kidd (he/him) 00:51:15 But they're big old tags, aren't they?
+Kayla Reopelle 00:51:18 Oh, yeah.
+So big, we can't even view them in the… In the preview.
+Alright, well, I'll trust that they're all there. So yeah, that…
+Robb Kidd (he/him) 00:51:33 So if we, yeah, if we were to interpolate name… And the… and the… yeah.
+Kayla Reopelle 00:51:37 Now, is that a thing we can go back and fix, I wonder, or is it only something that…
+Robb Kidd (he/him) 00:51:43 I think it would be only gems… gems released moving from here on.
+Daniel Azuma 00:51:47 Yeah.
+Robb Kidd (he/him) 00:51:48 So certainly, like, the last archived one, like, if we're gonna release one more last release to tell you that this is archived.
+could have a source link that, if you're looking at that version in Ruby Gems, would link you to the tagged.
+directory.
+Daniel Azuma 00:52:07 I could take on a really quick task to just go through and update all of our gem specs to do that.
+Kayla Reopelle 00:52:14 That would be great.
+Robb Kidd (he/him) 00:52:15 So that the next time we release them, we'll have that, yeah.
+Daniel Azuma 00:52:18 Yeah.
+Robb Kidd (he/him) 00:52:22 I think I like that, because a specific release will take you to its code, rather than
+The latest of that thing, if it even exists.
+Kayla Reopelle 00:52:31 Thank you, Daniel. I think that would be a huge help.
+Robb Kidd (he/him) 00:52:33 Yeah, that'd be good.
+Kayla Reopelle 00:52:35 patient.
+Tweet, okay, what else we got going on?
+Oh, is this… similar?
+Source code URL now contains the commit which generated the gem.
+Daniel Azuma 00:52:57 Well… Maybe E… Maybe this has already been done.
+Kayla Reopelle 00:53:03 GitHubShot, I feel like…
+Daniel Azuma 00:53:07 Oh…
+Robb Kidd (he/him) 00:53:10 That… that is more specific. It's… it's not human…
+parsable of what version might go into, but it does take you to the commit that released it.
+Daniel Azuma 00:53:19 Github.
+Shawhhhhhhh So that… oh, I see.
+Kayla Reopelle 00:53:30 You know, what concerns me about this, though, is that if it's just that commit.
+Is it just gonna be the release PR? Like, is it only gonna be a commit that shows…
+The version getting bumped?
+Robb Kidd (he/him) 00:53:45 I don't think so, because it's not taking you to the information about the commit, it's taking you to the tree at that commit.
+Kayla Reopelle 00:53:53 I see. Okay.
+Robb Kidd (he/him) 00:53:55 Because it's, because it's the repo path.
+then slash tree… if it were slash commit, then that commit ID, you would be looking at the commit details, which, yes, would be the…
+The very automated release automation commit.
+Kayla Reopelle 00:54:10 Yeah, because now we're on this commit, and we can just… Bopper.
+Robb Kidd (he/him) 00:54:14 If you were to change blob to tree.
+They would see. And then maybe…
+Go to a directory. If we go to one of the instrumentation directories?
+Yeah, any of them, and I think the, the, like, active model serializers, which is…
+Daniel Azuma 00:54:37 Yeah, just look at the directory, or…
+Kayla Reopelle 00:54:39 I'll let that commit.
+Robb Kidd (he/him) 00:54:41 So, if we were to update the URL,
+The browser location changed blob to tree.
+Kayla Reopelle 00:54:49 Andrew.
+Robb Kidd (he/him) 00:54:49 Remove… Then remove appraisals.
+Kayla Reopelle 00:54:53 Hmm. Oh, it must just be because it's not committed that it can't have Blobby tree.
+Robb Kidd (he/him) 00:54:59 I think it could do tree, it's that the path ends with a file, so it's showing you the…
+file contents.
+Kayla Reopelle 00:55:07 So…
+Robb Kidd (he/him) 00:55:08 So if you just drop off appraisals, it'll be like… that, I think, is the…
+Now it's showing you the tree of this… Gem at that commit.
+Which would be what would be tagged by a release tag, so…
+That is not an unreasonable URL. It's a little impenetrable for a human to look at.
+I might… Prefer a tag in there, which is…
+Which I think is probably also in the GitHub environment variables during the GitHub action.
+Kayla Reopelle 00:55:42 Yeah.
+Daniel Azuma 00:55:46 Why would it be, though? Because…
+Robb Kidd (he/him) 00:55:50 Why would the tag be in the environment variables?
+Daniel Azuma 00:55:52 There could be, you know, there could be zero or more tags associated with any, so…
+Robb Kidd (he/him) 00:55:59 That's a good point.
+Yup.
+I mean, the tags… go ahead, sorry.
+Daniel Azuma 00:56:05 But we do, we do know what the version number that's being released is, because it's in spec.version, and we know the name of the gem, so the tag is mechanically derived from that, so…
+Robb Kidd (he/him) 00:56:20 We could determine the tag name from information that's already here in the gem file, the version in the gem name.
+Kayla Reopelle 00:56:27 So I guess the only downside would be, like, if the tag failed for some reason, but I think the release would also fail.
+Probably in that order.
+Daniel Azuma 00:56:37 If the tag failed… oh, if we… if we failed to tag it and push the tag during the release process.
+Kayla Reopelle 00:56:45 Yeah, like, what if there was an error with the tag getting pushed?
+Robb Kidd (he/him) 00:56:48 If the gem got pushed successfully without the tag getting created successfully, it would…
+Kayla Reopelle 00:56:53 But I don't.
+Daniel Azuma 00:56:54 I don't know if that's possible.
+Robb Kidd (he/him) 00:56:56 I don't know either.
+Daniel Azuma 00:56:58 I guess it is possible. The release process, treats those things, pushing the gem, pushing the tag as separate, items, and either of them could succeed if the others fail for whatever reason.
+That said, the way the release process works is, if any of those things fail, it will treat the release as failed, and you can retry the whole thing, and it'll fill in the gaps.
+So…
+Kayla Reopelle 00:57:33 Okay.
+Daniel Azuma 00:57:33 So I don't think we need to worry about it too much.
+Robb Kidd (he/him) 00:57:37 I'm,
+I guess the question was that, like, put in the commit in there will work, and it's how important is it for the URL to be human-readable?
+Kayla Reopelle 00:57:49 Yeah.
+Robb Kidd (he/him) 00:57:50 And I don't… It'd be nice to have, I think, but I don't know that…
+I don't know that I care that much. I think it would be nice, but I shouldn't hold things up, because a commit…
+Works the same.
+That's a tank.
+Daniel Azuma 00:58:10 I don't know, I kind of prefer to see the tag, but…
+Robb Kidd (he/him) 00:58:13 I mean, I do too!
+I guess I… I don't know what the… what are the breakdown scenarios of pushing it
+pushing it with… the commit… the commit has to exist, so a gem, if it landed in Ruby Gems, would have a link back.
+Daniel Azuma 00:58:32 That worked.
+Okay, so, so, so yes, so the breakdown scenario for a tag is, yeah, we failed to push a tag, or, or, you know, or something's going on with GitHub where they can't read tags or something. On the… for… for commit.
+The breakdown scenario is, the, for some reason, GitHub SHA is not set in whatever environment that the, the release is. You know, so, for example,
+the GitHub Actions… GitHub Actions is broken, and we need to do a release, so we have to do it manually from someone's command line.
+Now we don't have GitHub Shaw available.
+Robb Kidd (he/him) 00:59:12 We'd have to… we'd have to document that… set this environment very well.
+Daniel Azuma 00:59:16 Yeah.
+Robb Kidd (he/him) 00:59:18 To your current commit.
+Versus just, if we're releasing, we're releasing a version that's gonna get tagged, so you ought to be able to find it at the tree at this location.
+Daniel Azuma 00:59:32 So, I don't know, it's… it's… they're all corner cases that…
+Robb Kidd (he/him) 00:59:35 Yep.
+Daniel Azuma 00:59:36 Maybe we don't need to.
+Robb Kidd (he/him) 00:59:38 I do prefer the tag name, too.
+Kayla Reopelle 00:59:40 Yeah.
+I think that's my preference as well.
+Daniel, would you mind… I guess I don't…
+what we should do here, if we should just reject the PR, open a different one, ask them to change it…
+Daniel Azuma 00:59:55 I'll handle this. I'll, I'll interact with SPR and figure out what to do.
+Kayla Reopelle 01:00:02 Thank you.
+Okay, sounds good.
+We're almost at time… I'm gonna look at one more. Maybe this guy?
+Robb Kidd (he/him) 01:00:27 Huh.
+So, Holly, yeah.
+Kayla Reopelle 01:00:33 Added those…
+Robb Kidd (he/him) 01:00:34 party instrumentation.
+Kayla Reopelle 01:00:35 Huge fan.
+Apologies if you already looked at this, Daniel, in a previous one.
+Daniel Azuma 01:00:41 We talked about this last week. Gosh, what did we talk about? Ugh… I am…
+I'm sorry, I'm, I'm, I'm…
+I'm not remembering what we.
+Robb Kidd (he/him) 01:01:05 I barely remember yesterday, Daniel, much less last week, that's alright.
+Kayla Reopelle 01:01:10 No problem, no problem. I mean, I've talked with Hannah about this a bit, just at a high level,
+So I think these PR is maybe more deciding, like, what we want to do in future scenarios when this happens, if we like this approach, or…
+Want to do something else?
+Robb Kidd (he/him) 01:01:30 So, I guess a meta question about this is establishing patterns that when something that we have instrumentation for goes first-party instrumentation, how do we want to communicate that to users of the… of OTEL administration for it, administration… instrumentation for it?
+Kayla Reopelle 01:01:48 This concerns me a little bit. I would have expected to have…
+A check in instrumentation about compatibility?
+Rather than doing this through the gem spec, where we're kind of, like, looking for…
+Robb Kidd (he/him) 01:02:02 I agree. I agree that we shouldn't add a direct dependency.
+to… the… to the… to our gem specs, because this now brings in Dolly.
+Kayla Reopelle 01:02:14 Yeah.
+Robb Kidd (he/him) 01:02:15 we should not do that. And if, in our version check at load time, when you're Oh, gosh.
+It's been so long since I looked at her.
+Kayla Reopelle 01:02:26 There's a compatible check, there's a compatible.
+Robb Kidd (he/him) 01:02:28 Yeah.
+They say that if we detect… we detect Dolly, we detect the Dolly version, and if the version is…
+420 or greater, just don't enable our instrumentation and throw out a warning saying, hey, you're using a version of DALI that's taking care of it, so I'm not enabling myself.
+So yeah, I would do it in the detection pattern rather than as a direct dependency to the GEM spec.
+Kayla Reopelle 01:02:54 Yeah.
+Robb Kidd (he/him) 01:02:55 And then people could continue to bring in this gem as a dependency of their project, but it won't… it'll be the no-op, because it'll go… Yeah. I don't need to put my hooks into that.
+Kayla Reopelle 01:03:06 Because right now, if someone installed the instrumentation All Gem, they would also then be installing Dolly, and if we have this version lock there, then…
+Robb Kidd (he/him) 01:03:13 Yeah.
+Kayla Reopelle 01:03:14 have version above 4.2.
+Robb Kidd (he/him) 01:03:16 Yeah, we don't want to do that.
+Kayla Reopelle 01:03:18 I, I can.
+Robb Kidd (he/him) 01:03:18 So I think if we were to just test that we… that we don't enable our instrumentation when we detect dollies present, and it's a version older that has first-party instrumentation, we just…
+We're not… it'll say, we're not… I'm not instrumenting that.
+Kayla Reopelle 01:03:32 Much like it's… much like on things that are too old, we'll say.
+Robb Kidd (he/him) 01:03:36 That's… that's too new.
+Kayla Reopelle 01:03:39 Yep.
+Robb Kidd (he/him) 01:03:46 And yeah, we definitely don't want a direct dependency, that'll get… that'll get weird.
+Kayla Reopelle 01:03:49 Yeah, yep.
+Cool. Okay, I can do that one.
+I'm glad we looked at this.
+Robb Kidd (he/him) 01:04:01 So in our last 5 minutes, I'll ask, my… the question that I had put a pin in earlier,
+Semitic inventions is a thing I last touched. How are… how's that going?
+Kayla Reopelle 01:04:14 So, there's a thing I could use your help with.
+Robb Kidd (he/him) 01:04:18 Great.
+Kayla Reopelle 01:04:19 It's been a minute since I looked at it, but I was trying to update
+Duh duh, the zoom's in the wrong spot.
+I was trying to update the semantic conventions to the latest version, and there was, like, a weird templating thing that
+Robb Kidd (he/him) 01:04:40 Shocked.
+Kayla Reopelle 01:04:41 Right? Where there was, like, a new feature that was added, and we were getting double…
+hashtags or octopus, which was a new word that I learned from this PR review, because the comment had
+The sign in it as well.
+So… yeah, so that's…
+the last I've looked at it, it's been a while, but I would just say…
+Look at this PR. Sure. I believe I've rerun it. No, I haven't rerun it.
+Yeah, I would say…
+look at the PR and see if what I'm writing makes sense, and then I can rerun it on my branch, and…
+see if whatever change I made gets rid of those.
+Pound signs.
+Robb Kidd (he/him) 01:05:30 Okay, do that.
+And with instrumentations that are converting over to newer versions of the semantic conventions.
+I think you had mentioned.
+Kayla Reopelle 01:05:42 So…
+Robb Kidd (he/him) 01:05:43 the database ones, and HTTP's still forever, and…
+Kayla Reopelle 01:05:46 and the draft PR from Roberts about the schema URL so that we can communicate…
+Robb Kidd (he/him) 01:05:51 Is there, like, a project board for that?
+Kayla Reopelle 01:05:55 No, there probably should be. I don't think there's a project board…
+At this time, so maybe that's a good thing to add. It's mostly been…
+I guess Hannah and I talking in our little New Relic land, which is in.
+Robb Kidd (he/him) 01:06:09 Sure.
+Kayla Reopelle 01:06:09 option for everybody. So, I'll make that suggestion to her to just kind of have a clearer board of what we're working on where, because she does have some issues, I believe, that are assigned to her.
+Robb Kidd (he/him) 01:06:22 Because we've had a couple customers.
+Kayla Reopelle 01:06:25 question.
+Robb Kidd (he/him) 01:06:25 when Ruby Instrumentations are gonna start using the up-to-date.
+Kayla Reopelle 01:06:30 I'd say if they're doing… if they're using HTTP, you know, clients.
+try out this environment variable. It should give them all of the stable things, and the way it's set up is, you know, you provide this, and it's either…
+You give it a value stable, if you want to just… yeah.
+Robb Kidd (he/him) 01:06:48 Yeah, you tell it whether… do you want old, do you want new, or do you want a dual write while you're migrating?
+Kayla Reopelle 01:06:52 Yep, and the only thing is that old is the absence of the environment variable.
+Robb Kidd (he/him) 01:06:57 Default behavior is old.
+Kayla Reopelle 01:06:59 Yep.
+Robb Kidd (he/him) 01:07:00 Add the environment variable, and you can tell it old, dual right, or new.
+Kayla Reopelle 01:07:04 You can just tell it new or dual. New or dual.
+Robb Kidd (he/him) 01:07:07 Oh, okay.
+Kayla Reopelle 01:07:09 That was a duck.
+Robb Kidd (he/him) 01:07:10 Set it if you want, only old. Yep.
+Kayla Reopelle 01:07:13 quietly.
+Yep.
+Okay.
+So, yeah, so that should be available for all of the HTTP instrumentations.
+Robb Kidd (he/him) 01:07:21 Like, databases next up.
+Kayla Reopelle 01:07:23 Yeah, database has been a little more complicated just because it requires some things for span naming that we don't yet.
+Robb Kidd (he/him) 01:07:31 So, Hannah kind of took a pause on just updating the attributes until we could figure out the span name thing, because db queries.
+Kayla Reopelle 01:07:39 Inherently involves parsing.
+She has a pull request for this that is open that I have been regrettably ignoring. But I know she really wants a review on it, so…
+Robb Kidd (he/him) 01:07:50 Okay.
+Kayla Reopelle 01:07:51 If that's of interest to you.
+Robb Kidd (he/him) 01:07:53 It is.
+Kayla Reopelle 01:07:53 This is the one.
+I'll put this in… Our burning questions section.
+This is the pull request that she created for it, so… it's… it's…
+pretty meaty, but it's trying to find a performant way to generate the query summary out of what we have. It's gonna be in one of our helper gems.
+But the… yeah, the goal here is to just kind of create a parser that can be used by all of the database adapter gems, and
+We still need to have a conversation about whether it's…
+You know, on by default, is there a config that controls it, etc, etc.
+Robb Kidd (he/him) 01:08:36 And I love that there's a link to the spec, I can go brush…
+refresh my memory up on that, or see what's new about it. Thanks.
+Cool, yeah, I'm interested.
+Kayla Reopelle 01:08:45 Okay, awesome. That would be fantastic. She would be thrilled.
+Cause, yeah, cause these are blocked until…
+Robb Kidd (he/him) 01:08:53 Until we figure out how to name things. It's kind of key.
+Kayla Reopelle 01:08:56 Yeah, until we decide how to name spans, so we've gone back and forth a few times. I'm like, do we just get the attributes out or not?
+And then this would be the issue for tracking HTTP stuff.
+Robb Kidd (he/him) 01:09:09 Well, this… maybe this is the board. I mean, if it's all… like, we don't have to… That's true. We don't have to… we don't have to make the process heavier than it needs to be. If there's a… if there's a tracking issue, that's cool.
+Kayla Reopelle 01:09:18 Yeah, I think there's… Let's say, let's work on some commands.
+Robb Kidd (he/him) 01:09:28 Sweet.
+Kayla Reopelle 01:09:29 Nice. Yeah, just in case there's some things… I don't think there's any… the only thing that would be in core right now would be that schema URL stuff.
+Robb Kidd (he/him) 01:09:37 Yep. So.
+Kayla Reopelle 01:09:38 We had a board, it could be beneficial to at least have both of those things in one place.
+Robb Kidd (he/him) 01:09:43 Okay.
+Kayla Reopelle 01:09:46 a link in the tracking issue. That's true, that's true.
+Robb Kidd (he/him) 01:09:49 Again, I don't want to make more work than we need to do the work.
+Kayla Reopelle 01:09:54 Yep, good point.
+Robb Kidd (he/him) 01:09:56 If a board will help, cool. I'm not asking for one, because I'm new here.
+Kayla Reopelle 01:10:02 Alright, okay, well yeah, I'll… I'll just add… Little note about…
+Robb Kidd (he/him) 01:10:10 I would say put me on the PR, but… Sure, I'm in there already.
+Kayla Reopelle 01:10:14 I'll just comment with you on there, comment that.
+Robb Kidd (he/him) 01:10:22 Sweet.
+And I'll go suss out… the customer who's brought it up recently, I'll go figure out what instrumentation… if… are they interested in something in particular?
+Kayla Reopelle 01:10:33 Nice.
+Robb Kidd (he/him) 01:10:34 Because it helps prioritize stuff if there's somebody out there who cares other than us.
+Kayla Reopelle 01:10:38 Definitely, yeah.
+Robb Kidd (he/him) 01:10:40 Nope.
+Huh?
+Kayla Reopelle 01:10:42 Sweet. Well, thanks everyone, this was super productive. Hope to see you all next week. I should be coming back to my more normal split of hotel and other things, so…
+Robb Kidd (he/him) 01:10:54 I'm hoping that, too.
+Kayla Reopelle 01:10:57 May our wishes come true. See you today.
+Robb Kidd (he/him) 01:10:58 Right, yes. Bye!
+Kayla Reopelle 01:11:00 Right.

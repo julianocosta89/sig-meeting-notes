@@ -1,0 +1,72 @@
+## Meeting Notes
+
+### Attendees
+- Ankit Singhal (Microsoft)
+- Nagkumar Arkalgud (Microsoft)
+- Kyle Hounslow (OpenSearch, AWS)
+- Keith Decker (Cisco/Splunk)
+- Josh Bonczkowski (New Relic)
+- Sergey Sergeev (Cisco/Splunk)
+- Shuning Chen (Cisco/Splunk)
+- Dat Ngo (Arize)
+- Trask Stalnaker (Microsoft)
+- Kip Chelilim
+- Shuwen Pan (Cisco)
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - https://github.com/open-telemetry/semantic-conventions/issues/3398
+    - Python genai-utils helper
+- Would stamp it on the genAi spans
+  - [aaron] Check out [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4103](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4103)
+  - [everyone, 5 min]  Intro for new members
+- Python review improvements
+  - Automation (whether follows semconv):
+    - **Unit test helpers to validate things**
+    - **Weaver live - deterministic**
+      - **Liudmila's focus**
+    - **AI-based**
+  - [aaron] Feedback from python SIG Feedback:
+    - *[Marcelo] could really improve the CI tooling to get stronger signal*
+      - [*https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3547*](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3547)
+    - *[aaron] I feel like more reviewers would be very helpful and for it to be more federated*
+      - *Dylan +1*
+      - *Riccardo +1 more reviewers*
+    - *[leighton] Problems with component owners?*
+      - *[aaron] afaict, it’s just a mechanism to tag people. The owners still need green chcek for the whole repo with our current mechanism*
+      - *Should be ways around it*
+    - *[Josh] Triager role could be helpful - across python and semconv*
+      - *[aaron] +1*
+    - *[emidio] maybe get some feedback from [opentelemetry.io](http://opentelemetry.io) maintainers team since they need to maintain a lot of groups for localization approvers [https://github.com/orgs/open-telemetry/teams?query=docs](https://github.com/orgs/open-telemetry/teams?query=docs)*
+  - *Copilot reviews?*
+    - *Anyone have experience with it*
+      - *[Marcelo] I found it useful, especially Devin*
+    - *Should add CLAUDE.md and symlink to AGENTS.md etc.*
+  - *Follow up on how to become Python contrib component owners*
+- Ani : to ( breakdown the eval semantic convection into smaller proposals, proposal for speeding up python PR and work with python SIG, offline conversation on slack with Sergey and Ankit for evals metadata and brainstorming)
+- [Kyle, 10mins] genainormalizer processor (Sponsor needed) [https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/46069](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/46069)
+  - From openinference, openllmetry, langchain, crewai, pydanticai, strands -> otel
+    - Easy to handle renames and such
+    - Aggregating multiple attributes into chat history complex attr is hard
+  - How does it interact with the python uploader?
+    - Should we move python uploader to the collector
+    - Bring blob upload issue to the spec
+  - **Looking for sponsors**
+    - Liudmila to follow up on the collector issue and consider similar cases (e.g. gRPC)
+- [Ankit] [Add `responses` operation value to `gen_ai.operation.name` by singankit · Pull Request #3337 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3337)
+- [Ankit] [How to capture user information who performs GenAI operation ? · Issue #3447 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/issues/3447)
+- [Ridhima, 1min] - asking maintainers final review, workflow PR - [https://github.com/open-telemetry/semantic-conventions/pull/3249](https://github.com/open-telemetry/semantic-conventions/pull/3249)
+  - Outer span is a grouping, can we just add a span instead of introducing new operation
+    - Invoke_agent or  another operation that might not even be gen-ai or could be a workflow
+      - With additional properties for the scope
+      - `gen_ai.conversation.<something> = true # this is presumably is a start of conversation`
+- [Surya, 1min] Need help with merging the following prs:
+- [Aaron, 5min] MCP python sdk instrumentation update
+  - I’m working on natively instrumenting the MCP SDK
+    - [https://github.com/modelcontextprotocol/python-sdk/pull/1996](https://github.com/modelcontextprotocol/python-sdk/pull/1996)
+    - which would cover `mcp >= 2` versions
+  - There are PRs in contrib too
+    - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3678](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3678)
+    - Assuming my native instr effort is successful these would cover `mcp < 2`

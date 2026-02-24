@@ -1,0 +1,55 @@
+## Meeting Notes
+
+### Attendees
+- Anirudha”Ani” Jadhav ( AWS/ LF Opensearch-Project )
+- Dylan russell (google)
+- Nagkumar Arkalgud (Microsoft)
+- Sergey Sergeev (Cisco/Splunk)
+- Zachary Groves (Datadog)
+- Liudmila Molkova (Grafana Labs)
+- Ankit Singhal (Microsoft)
+- Josh Winerman (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+- Keith Decker (Cisco/Splunk)
+- Josh Bonczkowski (New Relic)
+- Shuning Chen (Cisco/Splunk)
+- Xander Song (Arize)
+- Pavan (Cisco)
+- Neil Yashinsky (Force Multiplier Labs / [ContextCore](http://contextcore.me/) )
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+
+### Agenda
+- [Minghui, 3min] PR
+  - [https://github.com/open-telemetry/semantic-conventions/pull/3378](https://github.com/open-telemetry/semantic-conventions/pull/3378)
+    - Dylan to take another look
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3994](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3994)
+    - Ready to merge
+    - [Aaron] merged sorry CI was broken over weekend
+- Anirudha “Ani” Jadhav ( Opensearch-Project , AWS )
+  - [https://github.com/open-telemetry/semantic-conventions/issues/3398?reload=1](https://github.com/open-telemetry/semantic-conventions/issues/3398?reload=1)
+    - [https://github.com/strands-agents/sdk-python/issues/1633](https://github.com/strands-agents/sdk-python/issues/1633)
+      - DRAFT PR: https://github.com/strands-agents/evals/pull/131
+  - Is distinction between local and remote important?
+    - [aaron] +1
+- Roadmap exercise: [[External] GenAI semantic conventions and instrumentation SIG 2026 planning](https://docs.google.com/spreadsheets/d/17gqwboDQICa4jsmdaw8a4wOzLQCLHFnqOJ36Illdn6Q/edit?gid=0#gid=0)
+  - python: Not scaling super-well for now, let's discuss in the python SIG
+    - Maintainers have limited capacity to merge
+    - Code-owners are not always responsive
+    - Manual process to review: compliance automation to help with the review
+      - Can we leverage AI to help with it
+- PRs to review
+  - Stricter tool definition: [https://github.com/open-telemetry/semantic-conventions/pull/3378](https://github.com/open-telemetry/semantic-conventions/pull/3378)
+  - Workflow: [https://github.com/open-telemetry/semantic-conventions/pull/3249](https://github.com/open-telemetry/semantic-conventions/pull/3249)
+  - Reasoning tokens - [https://github.com/open-telemetry/semantic-conventions/pull/3383](https://github.com/open-telemetry/semantic-conventions/pull/3383)
+    - Has approvals, but could use more eyes
+    - questions around metrics are still open
+  - Time-to-first / between chunks [https://github.com/open-telemetry/semantic-conventions/pull/3377](https://github.com/open-telemetry/semantic-conventions/pull/3377)
+    - Would be great to get GCP perspective
+  - OpenAI new conventions: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3715](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3715)
+  - [Ankit] [Add `responses` operation value to `gen_ai.operation.name` by singankit · Pull Request #3337 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3337)
+  - [Surya] [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4166](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4166) - Instrumentation for OpenAI Sync responses instrumentation.
+  - [Surya] [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4179](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4179) - Boilerplate for anthropic agent instrumentation
+  - [Surya] [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4156](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4156) - Instrumentation for anthropic sdk’s async Message API.
+- [dylan, 2min] Do other models have a [cached token count like gemini](https://developers.googleblog.com/en/gemini-2-5-models-now-support-implicit-caching/) - should a sem conv be added for this?

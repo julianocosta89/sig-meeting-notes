@@ -1,0 +1,63 @@
+## Meeting Notes
+
+### Attendees
+- Hanson Ho (Embrace)
+- Jason (Splunk)
+- Cesar (Elastic)
+- Manoel (PostHog)
+
+### Agenda
+- Google Play SDK Console update
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1578](https://github.com/open-telemetry/opentelemetry-android/pull/1578)
+  - [admin@opentelemetry.io](mailto:admin@opentelemetry.io) email address is tied to the account
+  - There is probably a way to expand this to other members
+  - How can we see the data afterward
+  - Google Play Services needs to be installed on the device
+    - Not all devices, eg. chinese devices
+  - Do we need to also do this for other modules?
+    - Just the most core probably gives us a good start
+    - But if other installable modules get used, it would be nice to know about it for sure.
+    - “core” is a good example
+  - Take the output data with a grain of salt
+  - Can we please get this into the next release
+- Next release EOW or early next
+  - 1.2.0
+  - Cesar will run this release
+- Some talk about stability here
+  - Stability declaration is around api usage, not all modules, not telemetry
+    - (jason) We could do a better job of documenting this I think
+  - Do we have requirements around attributes?
+    - A: Yes, stable instrumentation needs stable telemetry/attributes
+    - Can require opting in to non-stable attributes
+  - Instrumentation API stability
+    - [https://github.com/open-telemetry/opentelemetry-android/issues/1541](https://github.com/open-telemetry/opentelemetry-android/issues/1541)
+    - Please take a look and provide feedback!
+- Fragments (and other instrumentations) generate SpanEvents today – but this is deprecated!
+  - So what will happen and what are we doing about it?
+  - We need to migrate away from this, but we need to bike shed the details
+  - AI: Cesar to create tracking issue: [https://github.com/open-telemetry/opentelemetry-android/issues/1579](https://github.com/open-telemetry/opentelemetry-android/issues/1579)
+  - We should have a milestone or project to throw these things into
+    - “Instrumentation-stability”
+    - “Stability-goals” – too generic?
+      - “Instrumentation-api-stability”
+      - “Fragment-stability”
+    - “Semantic” compliance?
+    - Spec compliance?
+- [Santosh/8.30 PT] a couple basic questions around use of events signal
+  - Does the android sdk allow emitting events?
+    - Yes [https://github.com/open-telemetry/opentelemetry-android/blob/main/agent-api/src/main/java/io/opentelemetry/android/OpenTelemetryRum.kt#L37](https://github.com/open-telemetry/opentelemetry-android/blob/main/agent-api/src/main/java/io/opentelemetry/android/OpenTelemetryRum.kt#L37)
+  - What about logs?
+    - Same exporter
+    - Go thru openTelemetry.getLogRecordProvider()(??)
+    - If you ended to send logs/events to different places, you should be able to do this with the RumBuilder
+      - …but we don’t make this easy in the agent
+      - It’s a fair amount of code to set up
+    - Umbrella deprecation for span events: [https://github.com/open-telemetry/opentelemetry-specification/pull/4430](https://github.com/open-telemetry/opentelemetry-specification/pull/4430)
+    - Related: [https://github.com/open-telemetry/opentelemetry-specification/pull/4824](https://github.com/open-telemetry/opentelemetry-specification/pull/4824)
+    - Related [https://github.com/open-telemetry/semantic-conventions/pull/3311](https://github.com/open-telemetry/semantic-conventions/pull/3311)
+    - Related: [https://github.com/open-telemetry/opentelemetry-specification/issues/3406](https://github.com/open-telemetry/opentelemetry-specification/issues/3406)
+- (Jason) What’s up with this serialization PR?
+  - [https://github.com/open-telemetry/opentelemetry-android/issues/1564](https://github.com/open-telemetry/opentelemetry-android/issues/1564)
+  - Sorry for the confusion – there are two things at play
+    - Timestamp (fixed)
+    - Double serialization

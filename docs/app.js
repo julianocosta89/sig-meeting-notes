@@ -2,8 +2,9 @@
 let manifest = null;
 let currentSig = null;
 let currentDate = null;
-let currentView = 'transcript'; // 'transcript' | 'summary'
+let currentView = 'summary'; // 'transcript' | 'summary' | 'meeting-notes'
 const transcriptCache = new Map();
+const meetingNotesCache = new Map();
 const summaryCache = new Map();
 
 // DOM refs
@@ -78,7 +79,7 @@ function meetingHasSummary(slug, date) {
 async function onSIGChange(slug) {
   currentSig = slug;
   currentDate = null;
-  currentView = 'transcript';
+  currentView = 'summary';
   searchInput.value = '';
   resetMatchNav();
 
@@ -142,7 +143,6 @@ function renderDateList(meetings, activeDate, matchCounts) {
 
 async function onDateClick(date) {
   currentDate = date;
-  currentView = 'transcript';
   updateURL(currentSig, date);
   renderDateList(getSigMeetings(currentSig), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
@@ -152,17 +152,19 @@ async function onDateClick(date) {
   const requestedDate = date;
 
   try {
-    const text = await getTranscript(currentSig, date);
+    const [text] = await Promise.all([
+      getTranscript(currentSig, date),
+      getMeetingNotes(currentSig, date).catch(() => ''),
+    ]);
 
     // Staleness guard: discard if user navigated away during fetch
     if (currentSig !== requestedSig || currentDate !== requestedDate) return;
 
     renderTranscript(text, getCurrentQuery());
-    // Update match navigation after render (Issue #30)
     if (getCurrentQuery()) {
+      await switchToView('transcript');
       updateMatchNav();
-    }
-    if (meetingHasSummary(currentSig, date)) {
+    } else {
       await switchToView('summary');
     }
   } catch (err) {
@@ -176,17 +178,29 @@ async function onDateClick(date) {
 async function getTranscript(slug, date) {
   const key = slug + '/' + date;
   if (!transcriptCache.has(key)) {
-    const res = await fetch('transcripts/' + slug + '/' + date + '.txt');
+    const res = await fetch('content/' + slug + '/' + date + '/transcript.md');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     transcriptCache.set(key, await res.text());
   }
   return transcriptCache.get(key);
 }
 
+async function getMeetingNotes(slug, date) {
+  const key = slug + '/' + date;
+  if (!meetingNotesCache.has(key)) {
+    const res = await fetch('content/' + slug + '/' + date + '/meeting-notes.md');
+    meetingNotesCache.set(key, res.ok ? await res.text() : '');
+  }
+  return meetingNotesCache.get(key);
+}
+
 async function prefetchTranscripts(slug) {
   const meetings = getSigMeetings(slug);
   await Promise.all(
-    meetings.map(m => getTranscript(slug, m.date).catch(() => {}))
+    meetings.map(m => Promise.all([
+      getTranscript(slug, m.date).catch(() => {}),
+      getMeetingNotes(slug, m.date).catch(() => {}),
+    ]))
   );
   // Re-run active search now that cache is warm (Issue #34)
   const query = getCurrentQuery();
@@ -197,6 +211,10 @@ async function prefetchTranscripts(slug) {
 
 // ── Transcript rendering ────────────────────────────────────
 
+function getSigData(slug) {
+  return manifest ? manifest.sigs.find(s => s.slug === slug) || null : null;
+}
+
 function renderTranscript(text, query) {
   const separatorIndex = text.indexOf('\n====');
   if (separatorIndex === -1) {
@@ -205,7 +223,6 @@ function renderTranscript(text, query) {
   }
 
   const headerText = text.substring(0, separatorIndex);
-  const bodyText = text.substring(text.indexOf('\n', separatorIndex + 1) + 1).trim();
 
   transcriptPanel.innerHTML = '';
 
@@ -221,7 +238,7 @@ function renderTranscript(text, query) {
     const dt = document.createElement('dt');
     dt.textContent = key;
     const dd = document.createElement('dd');
-    if (key === 'Source URL') {
+    if (key === 'Source URL' || key === 'Zoom Recording URL') {
       const a = document.createElement('a');
       a.href = val;
       a.textContent = val;
@@ -234,35 +251,71 @@ function renderTranscript(text, query) {
     dl.appendChild(dt);
     dl.appendChild(dd);
   }
+
+  // Append SIG-level links from manifest (Meeting Notes, Repository)
+  const sig = getSigData(currentSig);
+  if (sig) {
+    for (const [label, url] of [['Meeting Notes', sig.meeting_notes_url], ['Repository', sig.repository_url]]) {
+      if (!url) continue;
+      const dt = document.createElement('dt');
+      dt.textContent = label;
+      const dd = document.createElement('dd');
+      const a = document.createElement('a');
+      a.href = url;
+      a.textContent = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      dd.appendChild(a);
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+    }
+  }
+
   headerCard.appendChild(dl);
 
-  if (currentSig && currentDate && meetingHasSummary(currentSig, currentDate)) {
-    const tabBar = document.createElement('div');
-    tabBar.className = 'tab-bar';
-    tabBar.setAttribute('role', 'tablist');
-    for (const [view, label] of [['summary', 'Summary'], ['transcript', 'Transcript']]) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tab-btn';
-      btn.dataset.view = view;
-      btn.setAttribute('role', 'tab');
-      btn.setAttribute('aria-selected', 'false');
-      btn.textContent = label;
-      btn.addEventListener('click', () => switchToView(view));
-      tabBar.appendChild(btn);
-    }
-    headerCard.appendChild(tabBar);
+  // Always render 3-tab bar
+  const tabBar = document.createElement('div');
+  tabBar.className = 'tab-bar';
+  tabBar.setAttribute('role', 'tablist');
+  for (const [view, label] of [['summary', 'Summary'], ['meeting-notes', 'Meeting Notes'], ['transcript', 'Transcript']]) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tab-btn';
+    btn.dataset.view = view;
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', 'false');
+    btn.textContent = label;
+    btn.addEventListener('click', () => switchToView(view));
+    tabBar.appendChild(btn);
   }
+  headerCard.appendChild(tabBar);
 
   transcriptPanel.appendChild(headerCard);
 
-  transcriptPanel.appendChild(buildTranscriptBody(bodyText, query));
+  // Append a summary-body placeholder; caller will call switchToView to fill it
+  const placeholder = document.createElement('div');
+  placeholder.className = 'summary-body';
+  transcriptPanel.appendChild(placeholder);
 }
 
 function buildTranscriptBody(bodyText, query) {
   const bodyEl = document.createElement('div');
   bodyEl.className = 'transcript-body';
-  for (const line of bodyText.split('\n')) {
+
+  // Strip the '## Zoom Recording Transcript' heading if present
+  const TRANSCRIPT_SECTION = '## Zoom Recording Transcript';
+  let transcriptText = bodyText;
+  if (bodyText.startsWith(TRANSCRIPT_SECTION)) {
+    transcriptText = bodyText.substring(TRANSCRIPT_SECTION.length).trim();
+  } else {
+    const nlMarkerIdx = bodyText.indexOf('\n' + TRANSCRIPT_SECTION);
+    if (nlMarkerIdx !== -1) {
+      transcriptText = bodyText.substring(nlMarkerIdx + 1 + TRANSCRIPT_SECTION.length).trim();
+    }
+  }
+
+  // Render transcript lines
+  for (const line of transcriptText.split('\n')) {
     if (!line.trim()) continue;
     const p = document.createElement('p');
     p.className = 'transcript-line';
@@ -282,11 +335,16 @@ function buildTranscriptBody(bodyText, query) {
     }
     bodyEl.appendChild(p);
   }
+
   if (query) highlightMatches(bodyEl, query);
   return bodyEl;
 }
 
 function parseBodyLine(line) {
+  // New format: **Speaker** MM:SS utterance
+  const boldMatch = line.match(/^\*\*(.+?)\*\*\s+(\d+:\d+)\s+(.*)$/);
+  if (boldMatch) return { speaker: boldMatch[1], timestamp: boldMatch[2], utterance: boldMatch[3] };
+  // Legacy format: Speaker MM:SS utterance
   const match = line.match(/^(.+?)\s+(\d+:\d+)\s+(.*)$/);
   if (!match) return { speaker: null, timestamp: null, utterance: line };
   return { speaker: match[1], timestamp: match[2], utterance: match[3] };
@@ -318,7 +376,7 @@ function showError(msg) {
 async function getSummary(slug, date) {
   const key = slug + '/' + date;
   if (!summaryCache.has(key)) {
-    const res = await fetch('summaries/' + slug + '/' + date + '.md');
+    const res = await fetch('content/' + slug + '/' + date + '/summary.md');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     summaryCache.set(key, await res.text());
   }
@@ -333,22 +391,43 @@ async function switchToView(view) {
     btn.setAttribute('aria-selected', btn.dataset.view === view ? 'true' : 'false');
   }
 
-  const bodyEl = transcriptPanel.querySelector('.transcript-body, .summary-body');
+  const bodyEl = transcriptPanel.querySelector('.transcript-body, .summary-body, .notes-body');
   if (!bodyEl) return;
 
   if (view === 'summary') {
-    try {
-      const md = await getSummary(currentSig, currentDate);
+    if (!meetingHasSummary(currentSig, currentDate)) {
       const summaryEl = document.createElement('div');
       summaryEl.className = 'summary-body';
-      summaryEl.appendChild(renderMarkdown(md));
+      const p = document.createElement('p');
+      p.textContent = 'No summary available.';
+      summaryEl.appendChild(p);
       bodyEl.replaceWith(summaryEl);
-    } catch (err) {
-      currentView = 'transcript';
-      for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
-        btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
+    } else {
+      try {
+        const md = await getSummary(currentSig, currentDate);
+        const summaryEl = document.createElement('div');
+        summaryEl.className = 'summary-body';
+        summaryEl.appendChild(renderMarkdown(md));
+        bodyEl.replaceWith(summaryEl);
+      } catch (err) {
+        showError('Failed to load summary: ' + err.message);
       }
-      showError('Failed to load summary: ' + err.message);
+    }
+  } else if (view === 'meeting-notes') {
+    try {
+      const notesText = await getMeetingNotes(currentSig, currentDate);
+      const notesEl = document.createElement('div');
+      notesEl.className = 'notes-body';
+      if (notesText) {
+        notesEl.appendChild(renderMarkdown(notesText));
+      } else {
+        const p = document.createElement('p');
+        p.textContent = 'No meeting notes available.';
+        notesEl.appendChild(p);
+      }
+      bodyEl.replaceWith(notesEl);
+    } catch (err) {
+      showError('Failed to load meeting notes: ' + err.message);
     }
   } else {
     try {
@@ -366,47 +445,80 @@ async function switchToView(view) {
 function renderMarkdown(md) {
   const container = document.createDocumentFragment();
   const lines = md.split('\n');
-  let currentList = null;
+  let listStack = []; // array of <ul> elements indexed by depth
+
+  function flushList() {
+    if (listStack.length > 0) {
+      container.appendChild(listStack[0]);
+      listStack = [];
+    }
+  }
 
   for (const line of lines) {
-    // Headings
-    if (line.startsWith('## ')) {
-      if (currentList) { container.appendChild(currentList); currentList = null; }
+    const listMatch = line.match(/^( *)- (.*)$/);
+    if (line.startsWith('### ')) {
+      flushList();
+      const h3 = document.createElement('h3');
+      h3.appendChild(renderInline(line.substring(4)));
+      container.appendChild(h3);
+    } else if (line.startsWith('## ')) {
+      flushList();
       const h2 = document.createElement('h2');
       h2.appendChild(renderInline(line.substring(3)));
       container.appendChild(h2);
     } else if (line.startsWith('# ')) {
-      if (currentList) { container.appendChild(currentList); currentList = null; }
+      flushList();
       const h1 = document.createElement('h1');
       h1.appendChild(renderInline(line.substring(2)));
       container.appendChild(h1);
-    } else if (line.startsWith('- ')) {
-      // List item
-      if (!currentList) currentList = document.createElement('ul');
+    } else if (listMatch) {
+      const depth = Math.floor(listMatch[1].length / 2);
+      const text = listMatch[2];
+      // Pop stack if going back to shallower depth
+      while (listStack.length > depth + 1) listStack.pop();
+      // Grow stack to required depth
+      while (listStack.length < depth + 1) {
+        const ul = document.createElement('ul');
+        if (listStack.length > 0) {
+          const parentUl = listStack[listStack.length - 1];
+          const lastLi = parentUl.lastElementChild;
+          if (lastLi) lastLi.appendChild(ul);
+          else parentUl.appendChild(ul);
+        }
+        listStack.push(ul);
+      }
       const li = document.createElement('li');
-      li.appendChild(renderInline(line.substring(2)));
-      currentList.appendChild(li);
+      li.appendChild(renderInline(text));
+      listStack[listStack.length - 1].appendChild(li);
     } else if (line.trim() === '') {
-      if (currentList) { container.appendChild(currentList); currentList = null; }
+      flushList();
     } else {
-      if (currentList) { container.appendChild(currentList); currentList = null; }
+      flushList();
       const p = document.createElement('p');
       p.appendChild(renderInline(line));
       container.appendChild(p);
     }
   }
-  if (currentList) container.appendChild(currentList);
+  flushList();
   return container;
 }
 
 function renderInline(text) {
   const frag = document.createDocumentFragment();
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
   for (const part of parts) {
     if (part.startsWith('**') && part.endsWith('**')) {
       const strong = document.createElement('strong');
       strong.textContent = part.slice(2, -2);
       frag.appendChild(strong);
+    } else if (/^\[[^\]]+\]\([^)]+\)$/.test(part)) {
+      const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      const a = document.createElement('a');
+      a.href = m[2];
+      a.textContent = m[1];
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      frag.appendChild(a);
     } else {
       frag.appendChild(document.createTextNode(part));
     }
@@ -436,9 +548,7 @@ async function handleSearch(query) {
       try {
         const text = await getTranscript(currentSig, currentDate);
         renderTranscript(text, '');
-        if (meetingHasSummary(currentSig, currentDate)) {
-          await switchToView('summary');
-        }
+        await switchToView('summary');
       } catch (_) {}
     }
     return;
@@ -447,9 +557,10 @@ async function handleSearch(query) {
   const meetings = getSigMeetings(currentSig);
   const matchCounts = {};
   for (const m of meetings) {
-    const text = transcriptCache.get(currentSig + '/' + m.date);
-    if (text) {
-      matchCounts[m.date] = countMatches(text, query);
+    const key = currentSig + '/' + m.date;
+    if (transcriptCache.has(key)) {
+      const combined = (transcriptCache.get(key) || '') + '\n' + (meetingNotesCache.get(key) || '');
+      matchCounts[m.date] = countMatches(combined, query);
     }
   }
 
@@ -463,11 +574,9 @@ async function handleSearch(query) {
   renderDateList(filtered, currentDate, matchCounts);
 
   if (currentDate && transcriptCache.has(currentSig + '/' + currentDate)) {
-    renderTranscript(transcriptCache.get(currentSig + '/' + currentDate), query);
-    currentView = 'transcript';
-    for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
-      btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
-    }
+    const key = currentSig + '/' + currentDate;
+    renderTranscript(transcriptCache.get(key), query);
+    await switchToView('transcript');
     updateMatchNav();
   } else {
     resetMatchNav();

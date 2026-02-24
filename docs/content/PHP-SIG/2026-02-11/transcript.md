@@ -1,0 +1,132 @@
+SIG: PHP SIG
+Date: 2026-02-11
+Duration: 8 minutes
+Zoom Recording URL: https://zoom.us/rec/share/OWa6nBzapeIKB1RR98kGXvneeDhEPaHHEETWC55wX6LTHdhi_6C7NrHlcndUlhpg.CetRfQTeqcL_UeLF
+============================================================
+
+## Zoom Recording Transcript
+
+**Bob Strecansky** 00:30 Whoa.
+**Chris Lightfoot-Wild** 00:32 Hey, bro, you okay?
+**Bob Strecansky** 00:34 Doing alright, how are you?
+**Chris Lightfoot-Wild** 00:36 Yeah, well, thank you.
+Ms. Roskin?
+Have a very good week.
+**Bob Strecansky** 00:50 Not too bad, just… Clacking away.
+How about you?
+**Chris Lightfoot-Wild** 00:56 Same, yeah.
+Actually, looking forward to going down to the office in, two weeks' time now, so…
+**Bob Strecansky** 01:03 Did the… you said to your office?
+**Chris Lightfoot-Wild** 01:05 Well, to the work, office, yeah.
+**Bob Strecansky** 01:08 Oh, okay. Are you… you work remotely most of the time, but you're going to your office?
+**Chris Lightfoot-Wild** 01:13 Yeah, I've not been since October.
+It's last April, so…
+**Bob Strecansky** 01:19 Where's your headquarters?
+**Chris Lightfoot-Wild** 01:22 Near Cambridge, in the south, so…
+Yes, about 3-4 hours away from where I'm at.
+**Bob Strecansky** 01:30 Do you drive there?
+**Chris Lightfoot-Wild** 01:32 Yeah, yeah.
+It's a pretty easy drive,
+Just, obviously, painful having to do it at the back end of a day, after…
+**Bob Strecansky** 01:41 Yeah, oh.
+**Chris Lightfoot-Wild** 01:42 shenanigans.
+**Bob Strecansky** 01:44 You have to go for a whole day?
+**Chris Lightfoot-Wild** 01:46 We're going down for a couple of days this time, having a sort of team meetup, so that'll be cool.
+**Bob Strecansky** 01:51 Nice. Do you have a car? Do you own a car?
+**Chris Lightfoot-Wild** 01:54 Yeah, yeah, I've got a car. Although…
+My wife's car is kind of out of action, so she was like, I don't want you to take your car, because I want it, so I've got to carpool with someone else, she'll have to drop me off, but…
+**Bob Strecansky** 02:08 Nice.
+**Chris Lightfoot-Wild** 02:09 So, yeah, I kind of own a car, but inasmuch as I pay the installments, and you know, then she controls it, so…
+**Bob Strecansky** 02:17 See, you have to be smart like me and get a car that your wife is afraid to drive, and then she won't drive it.
+**Chris Lightfoot-Wild** 02:24 Yeah, absolutely.
+**Bob Strecansky** 02:28 Pal, do you have a… pal, do you have a car?
+**Pawel Filipczak** 02:31 Yes, I have few.
+**Bob Strecansky** 02:34 You have few?
+**Pawel Filipczak** 02:35 Hmm.
+**Bob Strecansky** 02:36 Are you a big park?
+**Pawel Filipczak** 02:38 Yeah, I have, I have East German Travant.
+**Bob Strecansky** 02:41 A what?
+**Pawel Filipczak** 02:42 is German Trevant, you know?
+**Bob Strecansky** 02:45 In East Vir… in East German, probably.
+**Pawel Filipczak** 02:47 German. There's no country, it's German, so I…
+**Bob Strecansky** 02:51 That's amazing.
+**Pawel Filipczak** 02:52 Yes, I have also East German barcas.
+So it's a van?
+And I have… and I have two Mondials from Forz.
+**Bob Strecansky** 03:01 I wanna see pictures of these, that sounds so cool!
+**Pawel Filipczak** 03:03 Yeah, yeah.
+Sorry, I have two old covers sent.
+to every day, or driving every day. But I'm… I'm not driving too… too much, so, yeah.
+**Chris Lightfoot-Wild** 03:15 Bit of a motel and enthusiast.
+**Pawel Filipczak** 03:17 Yeah.
+**Bob Strecansky** 03:18 We have multiple motor enthusiasts. I am also a huge motor enthusiast.
+I rebuilt… I rebuilt a 5 Series BMW from the ground up, like, a couple years ago. That was a fun project.
+And now I drive an electric truck, so… I'm all over the place.
+Right.
+Let's… let's get rockin'. I don't have a…
+A ton of stuff to talk about today.
+But…
+Do either of you have agenda items that you'd like to talk through before we take a look at the boards?
+**Pawel Filipczak** 03:57 I can just give you a short update. So, I'm working on the contribution, and now I'm…
+I… today I created a pull request with the…
+vendor customization plugin, so it will allow us, I mean, Elastic, to… to use the upstream.
+OpenTelemetry code as an elastic distribution, and also other vendors can make use of that, and…
+And that's mainly it, so we are still missing the… the component tests.
+So, Sergey is working on that, and when we will finish, then…
+I guess it will be ready for a release, and…
+And then I will ask you for a review of the… of the whole.
+Codebase, and of course, give it a try.
+So, yeah.
+That's… that's the progress.
+So, I think next week we'll focus on the… on the testing, and… and…
+I would like to finish it, early… early March, I mean, the contribution, so… That's my hope.
+If there would be no, you know…
+issues, and if everything will work, then…
+I would like to push it forward and release. Make the first release.
+**Bob Strecansky** 05:29 Why does that get so small?
+Alright, cool.
+Thanks for the update. It sounds like y'all are making really good progress.
+Mmm.
+Looks like there are a couple open pull requests. Wow, I didn't realize we'd gone over a thousand closed pull requests, that's exciting.
+So we had to renovate things to… Slap through… I'll merge those today.
+And contrary, probably about the same.
+Walk through those… The instrumentation's all envy.
+Okay, I have to review Brett's PR, too. Oh, that's a draft.
+Yeah, peanut sausages… Oh, so close to 30 million installs, we're getting… getting there.
+Cool.
+Chris, anything?
+**Chris Lightfoot-Wild** 06:51 No, for me.
+**Bob Strecansky** 06:54 Alright, Bob.
+**Chris Lightfoot-Wild** 06:55 Well, only then if you are going to look at those PRs. I approve some, but…
+**Bob Strecansky** 06:59 Okay.
+Is there a particular one?
+**Chris Lightfoot-Wild** 07:01 Do you want me to, like, re-add…
+like, you guys to be able to merge them in down the line, if, because if I approve it, it dismisses the group, so then I guess it just drops off other people's radar.
+**Bob Strecansky** 07:14 Wait, show me, do you have a specific one, an example?
+**Chris Lightfoot-Wild** 07:17 If you just go back to the contrib trip, the one at the.
+**Bob Strecansky** 07:18 Oh, shit.
+**Chris Lightfoot-Wild** 07:19 It was the Postgres sort of thing.
+**Bob Strecansky** 07:24 Yep.
+Well, would you look at that? It's merged.
+**Chris Lightfoot-Wild** 07:31 Oh, nice. Would you prefer if in future I'd re-tag the group, or…
+**Bob Strecansky** 07:37 If you…
+**Chris Lightfoot-Wild** 07:37 and tennis football.
+**Bob Strecansky** 07:39 No, I try to go through and look at those in a given cadence, so I would have seen that you approved it, and then I would have merged it.
+**Chris Lightfoot-Wild** 07:45 Cause there was one other one that someone did.
+for a line in… I think, was it PSR3, or, the trace ID and span ID fields, or something like that?
+I can.
+**Bob Strecansky** 07:57 Absolutely.
+**Chris Lightfoot-Wild** 07:58 It's like.
+**Bob Strecansky** 07:58 Is that… is that in Contrib?
+**Chris Lightfoot-Wild** 08:01 Maybe. 50-50 chance of it being.
+**Bob Strecansky** 08:06 Yeah.
+**Chris Lightfoot-Wild** 08:07 Excellent.
+**Bob Strecansky** 08:09 proof.
+**Chris Lightfoot-Wild** 08:09 screen, sorry.
+**Bob Strecansky** 08:11 And Brett approved it too, so it's double approved.
+**Chris Lightfoot-Wild** 08:15 Nice.
+**Bob Strecansky** 08:17 Alright, cool.
+**Chris Lightfoot-Wild** 08:18 That's over there, thanks very much.
+**Bob Strecansky** 08:20 Yep.
+Alright, we will see you all on the internet.
+**Chris Lightfoot-Wild** 08:26 Nice big bang.
