@@ -38,6 +38,15 @@ Duration: 60 minutes
 Jack 00:01 Hello!
 """
 
+SAMPLE_TRANSCRIPT_RENAMED = """\
+SIG: Go Instrumentation SIG
+Date: 2026-02-19
+Duration: 50 minutes
+============================================================
+
+Tyler 02:00 We renamed the SIG.
+"""
+
 
 def _write_transcript(base: Path, slug: str, filename: str, content: str) -> None:
     d = base / slug
@@ -209,6 +218,47 @@ class TestBuildManifest:
         durations = {m["date"]: m["duration_minutes"] for m in meetings}
         assert durations["2026-02-05"] == 33
         assert durations["2026-02-12"] == 45
+
+    def test_display_name_from_latest_transcript(self, tmp_path: Path) -> None:
+        """SIG display name should come from the latest-dated transcript,
+        not from alphabetical file order."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        # Older transcript uses "Go SIG"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        # Newer transcript uses "Go Instrumentation SIG" (renamed)
+        _write_transcript(src, "Go-SIG", "2026-02-19.txt", SAMPLE_TRANSCRIPT_RENAMED)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            manifest = build_manifest()
+
+        sig = manifest["sigs"][0]
+        assert sig["name"] == "Go Instrumentation SIG"
+
+    def test_display_name_stable_with_older_file_added(self, tmp_path: Path) -> None:
+        """Adding an older transcript should not change the display name."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        # Only the newer transcript initially
+        _write_transcript(src, "Go-SIG", "2026-02-19.txt", SAMPLE_TRANSCRIPT_RENAMED)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            manifest = build_manifest()
+        assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
+
+        # Now add an older transcript with a different name
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            manifest = build_manifest()
+        # Display name should still be from the latest transcript
+        assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
 
     def test_manifest_json_serializable(self, tmp_path: Path) -> None:
         src = tmp_path / "transcripts"
