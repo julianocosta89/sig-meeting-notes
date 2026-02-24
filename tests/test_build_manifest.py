@@ -367,3 +367,28 @@ class TestStaleFileRemoval:
             manifest = build_manifest()
 
         assert len(manifest["sigs"]) == 1
+
+    def test_malformed_header_does_not_delete_docs(self, tmp_path: Path) -> None:
+        """A source file with an unparseable header must not cause its
+        previously-published docs to be treated as stale and deleted."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+
+        # One valid transcript and one malformed transcript in the same SIG
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-10.txt", "garbage header\n")
+
+        # Simulate a previous build that copied both files to docs/
+        dest = docs / "transcripts" / "Go-SIG"
+        dest.mkdir(parents=True)
+        (dest / "2026-02-05.txt").write_text(SAMPLE_TRANSCRIPT)
+        (dest / "2026-02-10.txt").write_text("garbage header\n")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            build_manifest()
+
+        # Neither file should be deleted — the malformed one still exists in source
+        assert (dest / "2026-02-05.txt").exists()
+        assert (dest / "2026-02-10.txt").exists()

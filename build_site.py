@@ -30,7 +30,7 @@ def _remove_stale_docs(
     no longer have a corresponding source in transcripts/.
 
     *source_slugs* is the set of SIG slugs found in transcripts/.
-    *source_files* is a set of (slug, filename) pairs for every valid transcript.
+    *source_files* is a set of (slug, filename) pairs for every .txt file in transcripts/.
     """
     docs_transcripts = DOCS_DIR / "transcripts"
     if docs_transcripts.is_dir():
@@ -64,13 +64,13 @@ def build_manifest() -> dict:
 
     for txt_path in sorted(TRANSCRIPTS_SRC.glob("*/*.txt")):
         slug = txt_path.parent.name
+        source_slugs.add(slug)
+        source_files.add((slug, txt_path.name))
+
         header = parse_header(txt_path)
         if header is None:
             print(f"  WARNING: skipping {txt_path} (unparseable header)")
             continue
-
-        source_slugs.add(slug)
-        source_files.add((slug, txt_path.name))
 
         date_str = header["date"]
 
