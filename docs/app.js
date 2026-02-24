@@ -1,3 +1,53 @@
+// ── Theme management ─────────────────────────────────────────
+
+const THEME_KEY = 'otel-notes-theme';
+const THEME_MODES = ['auto', 'light', 'dark'];
+
+const THEME_ICONS = {
+  auto:  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><clipPath id="half-clip"><rect x="12" y="3" width="9" height="18" /></clipPath></defs><circle cx="12" cy="12" r="9" fill="currentColor" stroke="none" clip-path="url(#half-clip)" /><circle cx="12" cy="12" r="9"></circle>',
+  light: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',
+  dark: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+};
+
+const THEME_LABELS = {
+  auto: 'Switch to light mode',
+  light: 'Switch to dark mode',
+  dark: 'Switch to auto mode',
+};
+
+function getStoredTheme() {
+  try { return localStorage.getItem(THEME_KEY) || 'auto'; } catch { return 'auto'; }
+}
+
+function applyTheme(mode) {
+  if (mode === 'auto') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', mode);
+  }
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function updateBtn(mode) {
+    btn.innerHTML = THEME_ICONS[mode];
+    btn.setAttribute('aria-label', THEME_LABELS[mode]);
+    btn.title = THEME_LABELS[mode];
+  }
+
+  btn.addEventListener('click', () => {
+    const current = getStoredTheme();
+    const next = THEME_MODES[(THEME_MODES.indexOf(current) + 1) % THEME_MODES.length];
+    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    applyTheme(next);
+    updateBtn(next);
+  });
+
+  updateBtn(getStoredTheme());
+}
+
 // State
 let manifest = null;
 let currentSig = null;
@@ -1301,5 +1351,6 @@ function initSidebarToggle() {
 }
 
 initSidebarToggle();
+initThemeToggle();
 
 document.addEventListener('DOMContentLoaded', init);
