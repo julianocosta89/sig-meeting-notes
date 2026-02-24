@@ -1,13 +1,16 @@
-# OTel SIG Meeting Transcripts
+# OTel SIG Meeting Notes
 
-Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings and saves them as plain-text files organized by SIG and date.
+Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
 ## How it works
 
 1. Fetches the public [OTel recordings Google Sheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s) as CSV
 2. Navigates to each Zoom recording page using a headless Chromium browser
 3. Scrolls the transcript panel to defeat Zoom's virtual-list rendering
-4. Saves transcripts to `transcripts/{sig-slug}/YYYY-MM-DD.txt`
+4. Saves transcripts to `docs/content/{SIG-Slug}/{YYYY-MM-DD}/transcript.md`
+5. Optionally fetches meeting notes (attendees + agenda) from Google Docs into `meeting-notes.md`
+6. Optionally generates AI summaries via OpenAI into `summary.md`
+7. Builds `docs/manifest.json` from the content tree for the web UI
 
 ## Setup
 
@@ -30,10 +33,10 @@ make fetch SINCE=2026-02-01
 make fetch BETWEEN=2026-01-01/2026-02-28
 
 # Fetch a specific SIG only
-make fetch SIG=Community-Demo-App-SIG
+make fetch SIG=collector
 
 # Combine date and SIG filters
-make fetch SINCE=2026-02-01 SIG=collector
+make fetch SINCE=2026-02-01 SIG=go
 make fetch BETWEEN=2026-01-01/2026-02-28 SIG=collector
 ```
 
@@ -75,13 +78,78 @@ Already-downloaded transcripts are skipped on subsequent runs.
 
 ## Output
 
+`docs/content/` is the single source of truth. Each meeting gets its own folder:
+
 ```
-transcripts/
-  Collector-SIG/
-    2026-02-05.txt
-  Specification-SIG/
-    2026-02-10.txt
-  ...
+docs/content/
+  {SIG-Slug}/
+    metadata.md          # Meeting Notes URL + Repository URL
+    YYYY-MM-DD/
+      transcript.md      # Header + Zoom Recording Transcript
+      meeting-notes.md   # Attendees + Agenda (optional)
+      summary.md         # AI summary (optional)
 ```
 
-Each file starts with a header containing the SIG name, date, duration, and source URL, followed by transcript lines in `Speaker Name: utterance` format.
+### transcript.md format
+
+```
+SIG: Go SIG
+Date: 2026-02-05
+Duration: 33 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Speaker Name** MM:SS utterance text
+```
+
+### meeting-notes.md format
+
+```markdown
+## Meeting Notes
+
+### Attendees
+- Name 1
+- Name 2
+
+### Agenda
+- Item 1
+- Item 2
+```
+
+The file is only written when at least one of attendees or agenda is non-empty.
+
+## Web UI
+
+The content is published at **<https://julianocosta89.github.io/sig-meeting-notes/>**.
+
+Features:
+- Browse SIGs and meeting dates from a sidebar
+- Three-tab view per meeting: **Summary**, **Meeting Notes**, **Transcript**
+- Full-text search across all transcripts with match counts and keyboard navigation (`Ctrl+G` / `Cmd+G`)
+- URL deep-linking — share a link to a specific SIG, date, and tab:
+  `?sig=CC-SIG&date=2026-02-09#transcript`
+- Duration labels on date buttons
+
+### Building the manifest
+
+```bash
+uv run python build_site.py
+```
+
+## AI Summaries
+
+Summaries are generated with OpenAI `gpt-4o-mini` and require an `OPENAI_API_KEY` environment variable.
+
+```bash
+uv run python generate_summaries.py --since 2026-02-01
+```
+
+## CI / Automation
+
+| Workflow | Schedule | Description |
+|----------|----------|-------------|
+| `refresh.yml` | Weekdays 06:00 UTC | Fetches new transcripts and rebuilds the manifest |
+| `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
+| `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
+| `test.yml` | On every PR and push | Runs the full test suite |
