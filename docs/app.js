@@ -1320,6 +1320,8 @@ window.addEventListener('popstate', function () {
       globalSearchActive = false;
       if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
       globalSearchInput.value = '';
+      if (searchGroup) searchGroup.hidden = false;
+      if (dateNavWrapper) dateNavWrapper.hidden = false;
     }
     if (date) {
       onDateClick(date, { replace: true }).then(() => {
