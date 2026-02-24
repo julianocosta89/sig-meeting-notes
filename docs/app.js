@@ -387,6 +387,8 @@ async function switchToView(view) {
   if (!currentSig || !currentDate) return;
   currentView = view;
 
+  history.replaceState(null, '', location.search + '#' + view);
+
   for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
     btn.setAttribute('aria-selected', btn.dataset.view === view ? 'true' : 'false');
   }
@@ -645,10 +647,16 @@ function restoreFromURL() {
   const p = new URLSearchParams(location.search);
   const sig = p.get('sig');
   const date = p.get('date');
+  const validViews = new Set(['summary', 'meeting-notes', 'transcript']);
+  const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
   if (sig) {
     sigSelect.value = sig;
     onSIGChange(sig).then(() => {
-      if (date) onDateClick(date);
+      if (date) {
+        onDateClick(date).then(() => {
+          if (targetView && targetView !== currentView) switchToView(targetView);
+        });
+      }
     });
   }
 }
