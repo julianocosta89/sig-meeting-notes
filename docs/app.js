@@ -668,7 +668,7 @@ async function switchToView(view) {
     } catch (err) {
       showError('Failed to load meeting notes: ' + err.message, () => {
         meetingNotesCache.delete(currentSig + '/' + currentDate);
-        onDateClick(currentDate, { replace: true });
+        onDateClick(currentDate, { replace: true }).then(() => switchToView('meeting-notes'));
       });
     }
   } else {
@@ -686,7 +686,7 @@ async function switchToView(view) {
     } catch (err) {
       showError('Failed to load transcript: ' + err.message, () => {
         transcriptCache.delete(currentSig + '/' + currentDate);
-        onDateClick(currentDate, { replace: true });
+        onDateClick(currentDate, { replace: true }).then(() => switchToView('transcript'));
       });
     }
   }
