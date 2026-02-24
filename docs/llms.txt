@@ -1,0 +1,21 @@
+# OTel SIG Meeting Notes
+
+> A searchable archive of OpenTelemetry Special Interest Group (SIG) meeting transcripts, meeting notes, and AI-generated summaries. Content is scraped from Zoom recordings and enriched with attendee lists and agendas sourced from Google Docs.
+
+## Resources
+
+- [Web UI](https://julianocosta89.github.io/sig-meeting-notes/): Browse meetings by SIG and date, search transcripts, and read summaries
+- [Manifest](https://julianocosta89.github.io/sig-meeting-notes/manifest.json): JSON index of all SIGs, meeting dates, durations, and metadata
+- [Source](https://github.com/julianocosta89/sig-meeting-notes): Scraper source code, CI workflows, and raw content
+
+## Content structure
+
+Each meeting is stored under `content/{SIG-Slug}/{YYYY-MM-DD}/` and may contain:
+
+- `transcript.md` — header metadata and the full Zoom recording transcript
+- `meeting-notes.md` — attendees and agenda items
+- `summary.md` — AI-generated summary (gpt-4o-mini)
+
+## Coverage
+
+Covers OpenTelemetry SIG meetings from the public [OTel recordings spreadsheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s). New meetings are fetched automatically on weekdays and published to this site.
