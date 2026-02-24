@@ -132,10 +132,10 @@ function meetingHasSummary(slug, date) {
 // ── SIG selection ───────────────────────────────────────────
 
 async function onSIGChange(slug, options) {
+  globalSearchInput.value = '';
   if (globalSearchActive) {
     globalSearchActive = false;
     if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
-    globalSearchInput.value = '';
   }
   const replace = options && options.replace;
   currentSig = slug;
@@ -267,10 +267,10 @@ async function onDateClick(date, options) {
 
 // ── Transcript fetching ─────────────────────────────────────
 
-async function getTranscript(slug, date) {
+async function getTranscript(slug, date, signal) {
   const key = slug + '/' + date;
   if (!transcriptCache.has(key)) {
-    const res = await fetch('content/' + slug + '/' + date + '/transcript.md');
+    const res = await fetch('content/' + slug + '/' + date + '/transcript.md', signal ? { signal } : undefined);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     transcriptCache.set(key, await res.text());
   }
@@ -1147,7 +1147,7 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
     while (cursor < uncached.length && !signal.aborted) {
       const idx = cursor++;
       const { sig, date } = uncached[idx];
-      try { await getTranscript(sig, date); } catch (_) {}
+      try { await getTranscript(sig, date, signal); } catch (_) {}
       fetched++;
       scheduleUpdate();
     }
