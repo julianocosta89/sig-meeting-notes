@@ -80,6 +80,7 @@ async function onSIGChange(slug) {
   currentDate = null;
   currentView = 'transcript';
   searchInput.value = '';
+  resetMatchNav();
 
   if (slug) {
     if (searchGroup) searchGroup.hidden = false;
