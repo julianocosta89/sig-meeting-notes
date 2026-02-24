@@ -2,41 +2,53 @@
 """
 Generate AI summaries for OTel SIG meeting transcripts.
 
-Walks docs/transcripts/, calls OpenAI gpt-4o-mini for each transcript
+Walks docs/content/, calls OpenAI gpt-4o-mini for each transcript
 that doesn't already have a summary, and writes the result to
-docs/summaries/{slug}/{date}.md.
+docs/content/{slug}/{date}/summary.md.
 """
 from __future__ import annotations
 
 import os
+import re
 import time
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 from scraper.transcript_io import SEPARATOR, parse_header
 
+_TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
+
 if TYPE_CHECKING:
     from openai import OpenAI
 
 ROOT = Path(__file__).parent
-DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "transcripts"
-SUMMARIES_DIR = ROOT / "docs" / "summaries"
+DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
 
 MAX_TRANSCRIPT_CHARS = 12_000
 _API_RATE_LIMIT_S = 1
 
 
 def read_transcript_body(path: Path) -> str:
-    """Read a transcript file and return only the body (after the separator line).
+    """Read a transcript and return only the Zoom Recording Transcript section.
 
+    Finds the '## Zoom Recording Transcript' heading and returns the content
+    that follows, keeping any Meeting Notes out of the AI summary context.
+
+    Falls back to all content after the separator for legacy plain-text files.
     Truncates to MAX_TRANSCRIPT_CHARS to stay within token limits.
     """
     text = path.read_text(encoding="utf-8")
     sep_idx = text.find(SEPARATOR)
     if sep_idx == -1:
         return ""
-    body = text[sep_idx + len(SEPARATOR):]
-    body = body.lstrip("\n")
+    body = text[sep_idx + len(SEPARATOR) :]
+
+    m = _TRANSCRIPT_SECTION_RE.search(body)
+    if m:
+        body = body[m.end() :].lstrip("\n")
+    else:
+        body = body.lstrip("\n")
+
     if len(body) > MAX_TRANSCRIPT_CHARS:
         body = body[:MAX_TRANSCRIPT_CHARS]
     return body
@@ -75,7 +87,6 @@ def generate_summary(
 def process_transcripts(
     client: OpenAI,
     transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
-    summaries_dir: Path = SUMMARIES_DIR,
 ) -> tuple[int, int]:
     """Process all transcripts and generate missing summaries.
 
@@ -84,11 +95,11 @@ def process_transcripts(
     generated = 0
     skipped = 0
 
-    for txt_path in sorted(transcripts_dir.glob("*/*.txt")):
-        slug = txt_path.parent.name
-        date_stem = txt_path.stem  # e.g. "2026-02-05"
+    for txt_path in sorted(transcripts_dir.glob("*/*/transcript.md")):
+        slug = txt_path.parent.parent.name
+        date_str = txt_path.parent.name
 
-        summary_path = summaries_dir / slug / f"{date_stem}.md"
+        summary_path = txt_path.parent / "summary.md"
         if summary_path.exists():
             skipped += 1
             continue
@@ -103,7 +114,7 @@ def process_transcripts(
             print(f"  WARNING: skipping {txt_path} (empty transcript body)")
             continue
 
-        print(f"  Generating summary for {slug}/{date_stem}...")
+        print(f"  Generating summary for {slug}/{date_str}...")
         summary_text = generate_summary(
             client,
             header["sig_name"],
@@ -113,7 +124,6 @@ def process_transcripts(
             body,
         )
 
-        summary_path.parent.mkdir(parents=True, exist_ok=True)
         summary_path.write_text(summary_text + "\n", encoding="utf-8")
         generated += 1
 

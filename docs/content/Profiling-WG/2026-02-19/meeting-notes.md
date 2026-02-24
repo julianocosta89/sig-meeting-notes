@@ -1,0 +1,98 @@
+## Meeting Notes
+
+### Attendees
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- Jonathan Halliday (IBM)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- [Christos Kalkanis](mailto:christos.kalkanis@elasticsearch.com) (Elastic)
+- Josh Suereth (Google)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- Cleverchuk (Solarwinds)
+- Larry Cable (Oracle)
+- Frederic Branczyk (Polar Signals) - joined at :08
+- [Dale Hamel](mailto:dale.hamel@shopify.com) (Shopify) - joined at :21
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+
+### Agenda
+- Review action items:
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - [https://github.com/open-telemetry/opentelemetry-collector/pull/14546](https://github.com/open-telemetry/opentelemetry-collector/pull/14546)
+    - What else is needed for alpha?
+      - Felix: I think this is the main blocker.
+      - Alexey: Does the rename on the proto repo need to happen? The import path.
+      - Josh: Let me confirm with tigran and bogdan. One way is to leave it experimental, and move it to stable in the end (after each phase).
+      - Jonathan: We discussed this on slack a long time ago, and the conclusion was to keep the pkg name until stable.
+      - Josh: Let me confirm this. It impacts more than profiling.
+      - Christos: The name is v1development, but that seems perfectly fine.
+      - (people nodding)
+      - Alexey: Who will do docs?
+      - Christos: We can help with that, but we want the OTLP/Collector blocker removed first. We just need verbal confirmation.
+      - Alexey: Merged PRs are the best proof. Maybe we can work on the other docs already?
+      - Christos: I’ll look into it.
+      - Alexey: Does everybody here need to sign off on the docs?
+      - Felix: Probably not, we can fix this later.
+      - Josh: What docs do we need? There is a process to auto-import markdown docs from different repos. You might want to start onboarding to that. Alpha could be done without, but for release candidates, this would be important. [OpenTelemetry.io](http://OpenTelemetry.io) has a concepts page that you can contribute to directly. You don’t need formal onboarding docs on the official website yet, could be on your repo for alpha.
+      - Felix: Can you put onboard docs into [OpenTelemetry.io](http://OpenTelemetry.io) directly?
+      - Josh: It’s up to you, but many prefer having docs close to the implementation (can be updated in the same PR).
+      - Christos: Added documentation TODO to burndown list, open issue [here](https://github.com/open-telemetry/opentelemetry.io/issues/7874)
+      - Alexey: Do we want a blog post? I could try to draft one.
+      - Felix: +1
+      - Morgan: In the past we timed it to go live at KubeCon.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Validation tool
+    - Alexey: I think I can cross this item out and add a new TODO for the remaining work. It’d be great if people could start using the tool to validate the data they produce 🚨.
+    - Florian: I can’t use it in the eBPF profiler yet b/c it operates on the wrong API level.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - Feb 1 update: Sent a PR [here](https://github.com/open-telemetry/semantic-conventions/pull/3368).
+    - Feb 19 update: The PR was merged. Will work on adding missing features (duplicate and orphans check).
+    - Alexey: The use of this attribute needs to be added to the pprof conversion?
+    - Florian: Might be done once this is available (proto is not released yet).
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) [Resource representation?](https://github.com/open-telemetry/opentelemetry-specification/pull/4719#discussion_r2789537595)
+      - Single resource/single entity
+      - Single resource/multiple entity
+      - Multiple resource/multiple entity
+    - [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) `published_at_ns`  – switch order of writes on initial publish, separate sequence?
+    - –
+    - Ivo: Things are clear if there is one resource. But what about processes having multiple OTel SDKs with multiple entities within me.
+    - Felix: What’s the use case for multiple SDKs in one process?
+    - Josh: I’m an SDK having multiple tenants. Or the browser folks. SDK lives while the page is open. A session is a different scope. So they want the SDK to live for the page duration, and create a session and write data against it.
+    - Josh: We might have a server acting on behalf of several things. The OTEP in place is trying to address both situations. There is a default resource for the SDK. In a basic scenario, the resource and the process are the same.
+    - Josh: Pulsar or TomCat have different web applications hosted from the same process. Somebody needs to divide the world for you. IDK how this would be handled from eBPF. For profiling I would expect somebody gives you enough info about the sub-resources, or you report against the whole thing.
+    - Felix: My initial thinking is that splitting a process into multiple apps is a thread-context problem. So by default we should report against the process, but if we have more context, against the more specific resource.
+    - Josh: Right now the proposal is to slice instrumentation with tenancy in mind. This is for 10-20, not 100-1000s of divisions. It’s lexical context in the programming language. Lexical scope, not runtime scope.
+    - [https://github.com/open-telemetry/opentelemetry-specification/pull/4665](https://github.com/open-telemetry/opentelemetry-specification/pull/4665)
+    - Ivo: The thread context should map naturally. The active trace/span should not which SDK it belongs to. But on the fallback, if there is no thread context, do we default to the default resource? If we have the thread context, how do we model this in the thread context in an efficient way?
+    - Josh: We’ll need to discuss this broadly, b/c it impacts all of otel. For a given process, there is an SDK which has a default resource. Thread context tells me what the tenant is if available. Otherwise I use the default resource. We also need to think of SDKs here, not just the eBPF profiler side. The cooperative nature of SDK and eBPF is something I want to sort out.
+    - Florian: We run into this if span and trace id comes from sth like Obi that reads the info and doesn’t provides it to the eBPF profiler.
+    - Felix: My guess is that for now Obi+eBPF profiler will always end up mapping to the default resource for now. In the future the two projects might merge for closer integration.
+    - Josh: Maybe the context could be shared in eBPF? Context propagation is the heart of otel. This would be the holy grail.
+    - Felix: With Obi there is no SDK, right?
+    - Josh: Right. Profiling could be useful without tracing. But for the rest of otel this is critical.
+    - Felix: But SDKs should be P1 and Obi P2?
+    - Josh: Yes, but I’m worried Obi might see explosive growth, once available. Consider Java auto-instrumentation vs manual - the former is used much more heavily.
+    - Ivo: One thing with Obi, ideally we want the same solution for SDKs and Obi, but we have not yet found one solution that doesn’t suck for the other in terms of overhead. There is a chance we’ll need two solutions (one optimized for user space, one for kernel).
+    - Alexey: Could a process have an SDK and Obi?
+    - Josh: From a TC we would like things to overlay nicely.
+    - Alexey: Any canonical cases for multiple SDKs within the same process?
+    - Josh: We try to avoid having more than one SDK. But today if you want multiple resources in a process, you need multiple SDKs. Python has native extensions. PHP has stuff written in C++. We won’t have a good story for this yet.
+    - –
+    - Ivo: We have the timestamp in the proposal. Two small questions: We use published_at_ns as a sync for sync. On update we zero out, and the set the published. I want to use it for both creation and updates. If no one is concerned, I’ll just do it.
+    - Ivo: Another issue is if the clock goes back, is that an issue? I’m not sure if this is a big problem in practice.
+    - Felix: I think monotonic timestamp makes sense to me. Allows readers to understand the time between update and being aware of it (unlike seq counters).
+- Frederic: Period type, unit, and value mandatory?
+  - What are the values for off-cpu, and probe count?
+  - Frederic: The eBPF profiler doesn’t set these for Off-CPU and probe counters. It’s odd coming from pprof. Should we make these mandatory?
+  - Florian: Something like Off-CPU profiling and probe profiling doesn’t happen at regular intervals. So the period doesn’t make sense.
+  - Alexey: What would you expect this to be set to Frederic?
+  - Frederic: Statistically speaking we have an average (1/P).
+  - Felix: Expressing the sampling rate in the period seems reasonable?
+  - Alexey: Or period type should be set to 1000.
+  - Alexey: I can take an action item.
+- [Florian Lehner](mailto:florian.lehner@elastic.co): Write access to this document.
+  - Florian: This doc was cleared at least 2 times in the last 2 weeks? Should we lock it down? Somebody put a pirate flag and saying it “got hacked”.
+  - Josh: I’ll escalate to the GC directly. If you’re getting attacked.
+  - Frederic: K8s project also has these issues.
+  - Josh: Can you open a community issue?
+  - Florian: I’ll do it.

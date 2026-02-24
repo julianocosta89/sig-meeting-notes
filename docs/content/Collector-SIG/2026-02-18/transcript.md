@@ -1,0 +1,419 @@
+SIG: Collector SIG
+Date: 2026-02-18
+Duration: 87 minutes
+Zoom Recording URL: https://zoom.us/rec/share/XfzBU1mjD6pHDAIrly3ubs0POIt2ueG55DoX909A6x2nT0FYECrwcMJ7zVdibVLs.MEHJ5EOr4JPCic2u
+============================================================
+
+## Zoom Recording Transcript
+
+**Pablo Baeyens** 03:59 Should we get started?
+**Dmitrii Anoshin** 04:02 Yep. Hi, everyone.
+**Pablo Baeyens** 04:17 I guess… Christos, if you want to… Start with, benchmark stuff?
+**Christos Markou** 04:24 Yeah, sure, I added that as a sub-item. I'm not sure if we covered the whole topic first, or… but I can briefly mention it. So, one of the criteria for stabilizing components in collector contrib is…
+Ensuring that testing is sufficient. And there is a bullet point there saying that we should have at least one benchmark for the component, and the latest run for this benchmark should be…
+Mentioned in the docs… should be linked in the docs.
+And, yeah, by checking this, I couldn't figure out a way that we can do it easily, and also checked with another component, Prometheus.
+receiver, and it seems that, it's also lacking there. So, yeah, I just wanted to highlight this here, if there are any ideas or…
+Suggestions, it's something that we will need.
+Sooner or later.
+**Dmitrii Anoshin** 05:27 We do have end-to-end tests for Kubernetes already. It's not for the processor, I guess, but for cluster receiver, right? So, potentially, we can just utilize them.
+**Christos Markou** 05:39 So, yeah, we also have in the processor end-to-end tests. The item… the checkpoint for stability is to have a benchmark, like, performance benchmark, and…
+**Dmitrii Anoshin** 05:53 the result…
+**Christos Markou** 05:54 we should link the documentation of the component to the latest run, and link to the results there. Okay.
+And this is also already part of the stability criteria for components, so the question is if there are suggestions about how to make this linking possible.
+Something.
+**Pablo Baeyens** 06:19 Oh my god.
+**Christos Markou** 06:20 Sure.
+**Pablo Baeyens** 06:22 And what is the…
+what do we have in terms of benchmark results? Would it be logs in… GitHub Actions, or…
+**Christos Markou** 06:38 Yeah, good question. I haven't, checked that, but I guess, it should be an output of run on the CI, something like this.
+If we want to have something automated. Otherwise, we can…
+yeah, I don't know, manually run the benchmark from time to time, and update the documentation with, like, a text.
+Probably that could be an option too, if we want to solve it now, but it's better if we can, like, automate this.
+**Dmitrii Anoshin** 07:07 Yeah, I don't think we do it manually for one component, because we need to do it the same for all the others.
+**Christos Markou** 07:14 Yep.
+**Pablo Baeyens** 07:15 Right, so I was trying to use Godspeed for that, I don't think we can use it,
+Right now, maybe with dedicated runners, we will be able to.
+Until we had that, I…
+I don't know, I feel like if the… Output is…
+good enough on GitHub Actions, we could have a link for that. 2…
+answer the question for… from Israel. We want to have results
+From the last 30 days, I think is the wording?
+**Israel Blancas** 07:56 But it's just something for when we're gonna do the, like, the promotion, right? From…
+Beta to… too stable, or it's something that, like, we want to keep doing?
+I don't…
+**Pablo Baeyens** 08:11 I would…
+**Israel Blancas** 08:11 for…
+**Pablo Baeyens** 08:12 So,
+What we say is, the components documentation must include a link to the latest round of benchmark results.
+on… Wee…
+Don't really have… oh yeah, and for Beta to Stable, we do have the 30 days, requirement.
+Right, you're right.
+**Dmitrii Anoshin** 08:37 We have these results published for load tests, and they are published in a… actually in GitHub.
+pages, I guess, and it's, like, there is a graph Of the… Timings.
+That one is pretty nice, potentially, if we can utilize the same.
+My…
+**Pablo Baeyens** 09:01 If that has results for the specific component, I think a link to that is good enough. We can…
+Improve, that later.
+**Dmitrii Anoshin** 09:13 The load test, they include, like, they spin up the whole collector with,
+So, whole pipeline with several companies, so it's not, like, isolated a particular company.
+But my point is that we potentially can have, like, exist in, like…
+Benchmark results published the same way, essentially.
+Using, like, GitHub pages.
+**Christos Markou** 09:46 Okay, yeah, that… I think that helps a little bit. I can, have a look into these benchmarks.
+page, and see what we can do. I, I think…
+having maybe something, a workflow, to run weekly, and try to update… to run the benchmarks, and try to update, probably the links or something, that could also make sense, I think. Or, yeah, just publish them there, that's, also fine.
+**Pablo Baeyens** 10:17 I think it would help to have some…
+specific field on mdataGen for the link?
+Just so that we can… Automatically validates if a component has benchmark results or if it doesn't.
+**Dmitrii Anoshin** 10:33 Yeah, and that script load test, we publish for every commit in main.
+And I think that that's also good for isolated benchmark tests on the particular components.
+And also, we can, like, publish tags there as well to highlight them, whether, like.
+Not only commits, but particular attacks when we release something.
+**Christos Markou** 10:59 Okay, sounds good. I will check those, folks. Yeah, thanks.
+**Dmitrii Anoshin** 11:02 Take care, contrast.
+**Christos Markou** 11:06 Should be good to go to the next one.
+**Tigran Najaryan** 11:12 I can go next, Dmitri, unless you guys have higher priority items you want to talk about first.
+**Dmitrii Anoshin** 11:18 No, I think go ahead, stick around.
+**Tigran Najaryan** 11:20 Okay, cool.
+Hello, Logan Wong.
+I see some old friends here, some names that I don't recognize. If you don't know me, I used to be a collector maintainer.
+Okay, let me maybe share my screen.
+Yeah.
+Okay, I also used to be an OTLP protocol, one of the OTLP protocol authors. I've been recently working on a more efficient, telemetry protocol called STEF.
+And, Dmitry was helping me. I wanted to show it to you, and…
+Let's see if anyone is interested in working on it with me.
+So what is it really about? It's a new columnar data format.
+And when I say more efficient, I meant both the speed of serialization and the size on the wire. It's faster and smaller than OTLP. Steph is generic. In a way, it's similar to Protobuff.
+The difference being that the primitives are chosen to be, efficient for… particularly for telemetry data. And, there's a… there's a light prototypuff this. You define a schema and generate serializers.
+And there's a schema definition for, for an OTRP-like data and stuff, and we… there's already implementations of a collector, exporter, and receiver.
+for metrics only now. I wanted to show you guys a bit of the results of what there is. This is a size comparison between OTLP, OTLERO, and Steph. This is bytes per metric data point in the compressed form.
+So, as you can see, it's doing pretty well compared to what exists.
+And there's two tool varieties. One is with pre-salting, so it compresses a bit better, and one without.
+And this is, one of the
+I believe this is the collector metrics themselves. This is another one which is from our astronomy shop demo.
+So, a bit larger, but also relatively to the existing
+Protocols, significant size savings.
+This one is the speed comparison. This is the receiver. Collector-receiver.
+And this is the… the time it takes to…
+deserialize and convert to P data.
+In nanoseconds per metric data point.
+So, again, as you can see, it's doing…
+better than… than others, better than OTLP.
+And this one is the serialization speed, so given the P data.
+It converts it and serializes it into staff format, so essentially what the exporter does.
+And this one is the end-to-end CPU usage when you're using OTLP, receiver, and exporter.
+Versus using the staff exporter and the receiver. This is from our…
+tested benchmarks, from the Collect repository.
+And the last one I wanted to show you is the pure deserialization speed without converting into P data.
+Just to show the raw speed of how quick it is compared to something like Protopath.
+And this is nanoseconds, it's probably not very readable, this is 64…
+and 15 for the standard decompression, and 98, and I think 5, or something like that, so…
+orders… an order of magnitude or more, faster than protobuf, I would say.
+Just a couple… a bit more, I guess, information. Why is it small? It borrows some ideas from Parquet, it's columnar, and the encodings are designed to be… to compress well with this standard.
+For… for metric data, it uses… it uses, Gorilla.
+Floating point compression and delta, delta for timestamps.
+So, some ideas borrowed from elsewhere, some others designed to work well for the data that we have. Things like attribute sets, for example, they…
+By design, you can represent the deltas properly, and, there's a bit of a bit packing going on there.
+And the other element is that there's a network protocol that is designed to
+Exploit the statefulness so that you don't have to resend dictionaries over and over.
+Both the, have dictionaries, it has built-in dictionaries, but also
+the standard compressor has its own dictionaries, so those are also benefiting from keeping, keeping connections open.
+In terms of why is it passed, it does things similar to Protobuff, so it generates serializers.
+unlike, for example, Parquee implementation, which is implemented as a generic logic.
+And and… and it's optimized for.
+sequential access, essentially. So, by doing this, we avoid a lot of allocations, which is what ProGraph does, which ends up being quite a drag on performance.
+And, so by doing a single, single record at a time, we can reuse allocated buffers in memory, so there's almost no… no allocations. So almost zero allocations, so a lot of… a lot of fiddling with the performance, so, careful.
+Careful coding ground performance, essentially.
+And a lot of benchmarking and repeating and trying to make it fast.
+Very quickly, what does the… what does the… the schema look like?
+This is an example from the OTEL metric schema.
+somewhat, in some ways, similar to Protob, so it's the field name and the data type, but there's no, there's no assigned numbers to fields.
+But you can see that the primitives, right? It's, integers, signed on signed, floating point numbers, arrays, the one-off, multi-map is the… what we use for the attributes, there's dictionary encoding built in.
+And, there's a concept of a root structure where it all starts.
+So you, you declare this, and you compile it like you do with protobufs. Very similar.
+Let's skip this one.
+So what are the primitives, integers, plots, booleans, string bytes, enumerations, and you compose those into structures, one-offs, and multi-maps.
+And I was showing you the schema definition language as a compiler, just like Protobuff Compiler. And there's a support for backward and forward compatibility. You can change the schema, again, similar to Protobuff.
+There's built-in dictionary encoding, you can limit those sizes.
+to limit your memory consumption and frame size limits, the whole thing is broken down into frames, you process it frame by frame. That, again, is also…
+has limitations to… to be… to… to make sure you don't… you don't get zip bombs and stuff like that. And there's a… there's a gRPC-based, gRPC transport-based network protocol.
+So what are some of the limitations? It's obviously new and proven. There's only Go implementation right now, Java is in progress. You can only do sequential reading, there's no… you can't read the entire thing in memory, like with protobufs, and then traverse it as a graph, nothing like that exists.
+And then the protocol is state-proof, I guess, as consequences of doing that.
+I won't go into too much details. Where we are right now, there's a specification, there's a Go implementation that is fairly advanced, fairly well tested, there's fathing, there's also randomized testing. It's… I would say it's pretty close to being something that you could use in production.
+not quite there yet, but… but it's… but it's… it's fairly advanced, right? There's a receiver and exporter implementation for metrics only.
+Adding traces and loads is,
+It's a matter of adding in to the schema.
+Shouldn't be very hard to do. There's a… there's a Java implementation in progress.
+which is very new and very basic compared to Go, and what we would like to do is essentially to harden and have more tests for Go, but also especially for Java, and then support the other hotel secrets.
+I have some links here to the spec implementations and stuff like that. I will post a link to the slides in the agenda, in case anybody's interested.
+But that's primarily it. I'll stop here. If you guys have any questions, I'm happy to answer now. Otherwise, if you want to be involved in any way.
+just… reach out to me, I'll be happy to work with you.
+That's a lot of hits.
+**Alex Boten** 20:50 Tigran, I have a question for you. As… is there already a conversation about…
+Donating stuff to hotel, is that a thing that's been talked about? Sorry, I might have missed it if you've already talked about it.
+**Tigran Najaryan** 21:02 Sort of conversation about what?
+**Alex Boten** 21:04 I was wondering if there's already a conversation in the community repo or with the rest of the project about, donating stuff to hotel, or is that something that's going to… or is there no such plan moving forward?
+**Tigran Najaryan** 21:15 I mean, no. We haven't talked about it. We could look into it.
+It's a possibility, I would say, if there is an interest from the community.
+But we haven't discussed it. If you're thinking we could benefit from that, I'm open to discussing that.
+It's… it's… for now, it's an Apache-licensed open-source project. We… we… we host it on Splunk's GitHub repository.
+Nothing prevents us from… Open Cemetery could fork it, obviously, but also we could look into donating if there is enough interest.
+**Alex Boten** 21:52 Yeah, I guess the question just comes from looking at the performance numbers that you've shown here. You know, if it goes above and beyond the performance of OTLP and all the different signals for all the use cases, it seems like it would be a good way to move forward, but…
+That's just…
+You know, the optimism in me wanting to… want to believe that it's going to work for all the cases, and…
+**Tigran Najaryan** 22:20 Yeah, yeah.
+Yeah, sure, yeah.
+I'm happy to discuss that, Alex, if that's what you're interested in.
+for it to be essentially part of OpenTelemetry and not a… an independent open source project that we consume in the collector.
+I think it's doable. We should be able to do something like that.
+**Pablo Baeyens** 22:44 I have a… question. So, I think you mentioned at some point on an issue that…
+we could potentially use Steph for…
+Having a runtime model for components, so, like, loading…
+new collector components at runtime, they maybe would be on separate processes, and they would communicate using Steph with the main collector.
+surface.
+is that… Well, first, I guess, am I… am I…
+Recalling this correctly, is that something that you prefer?
+**Tigran Najaryan** 23:20 Yes.
+**Pablo Baeyens** 23:21 Okay, have you done any…
+**Tigran Najaryan** 23:24 I have not.
+**Pablo Baeyens** 23:25 It's about… okay.
+**Tigran Najaryan** 23:26 No, I haven't done anything. The reason I was proposing that is
+Precisely because of the efficiency. So the…
+when you host something outside of the collector's process, you're paying the price of serializing and deserializing all that telemetry, right? Which, in case of staff being a relatively small number, makes that a bit more attractive as a concept. I haven't done any work on that.
+Again, if there is any interest to pursue that, we could look into that.
+**Pablo Baeyens** 23:59 Okay, thanks.
+Yeah, I don't have a strong opinion on whether it's, like.
+the way to go or not, but I do think runtime components is an important thing to solve eventually, so I'm happy to explore all available options.
+**Tigran Najaryan** 24:16 Okay, yeah.
+**Dhruv Shah** 24:28 Yeah, if there are no more questions, I can take up next.
+**Tigran Najaryan** 24:34 Sounds good. Thank you, guys.
+**Dhruv Shah** 24:38 So, yeah, that thing… Share my screen.
+Hi everyone, my name is Trusha.
+So I created, two proposals. One is for the routing connector. So recently, in one of our latest studies.
+we have added a new configuration called Action Copy. So basically, instead of,
+evaluating one condition and bailing out. Basically, this configuration supports copying this data to the next pipeline and evaluate it.
+But the one, drawback of this, configuration is
+Where it keeps data on the default pipeline, so even though one statement is evaluated to be true.
+it still sends the data to default pipeline. So this proposal is about,
+Not sending the data on default pipeline if one or more, statements in this table entries, are satisfied.
+So, I have created this proposal, I have also created, one draft PR as well.
+Edmo was kind enough to, provide one workaround, and also provide a suggestion as well, but, due to
+Lesser Benwith on his side. If other code owners can chime in, I would be really grateful for that.
+There is this drought PR, as well. I mean, it's not a final implementation, but it gives a fair idea about what needs to be changed and, how big the change would be.
+Yeah, anybody have any questions or inputs regarding this?
+Okay, yeah, and there is, one second proposal as well. So this is about adding,
+Persisting resource version across collector restart and KATS Object Receiver.
+So, as of now, if the collector restarts, let's take an example of Kubernetes events. Basically, this receiver would list all the events that are
+Available in the cluster.
+And it will, send them down in the pipeline.
+Which, in case of a large cluster, it's a… you would duplication, and if the cluster… if the collector restarts multiple times in a short span, then
+We are looking at, like,
+More than 100,000 events getting duplicated on the backend side.
+So, this proposal is about, using a file storage extension.
+And then, using resource version as a checkpoint, so that, during the next restart, or whenever the collector restarts, we can use that resource version, to evaluate whether to, send that event down the pipeline or not.
+Yeah, I've prepared this proposal. There were a few other issues regarding it as well in the past.
+Yeah, and again, I mean, if any co-owners can probably chime in, give their inputs, I'm more than happy to contribute this feature to the community.
+**Dmitrii Anoshin** 27:40 I'm one of the co-owners. This sounds pretty good, thank you.
+It actually aligns with the approach that we have on other
+receivers, like a file lock receiver, for example, we do have.
+Checkpoints being stored there, so that kind of makes total sense.
+So, yeah, I… I'll take a look, and if you see, like, some delays from my side, feel free to…
+Giving me inspection.
+**Dhruv Shah** 28:06 and reach out on Slack.
+Thanks, Dimitri. Thanks a lot.
+Yeah, that's it from my side.
+**Dmitrii Anoshin** 28:15 Mikolai, you want to add something?
+**Mikołaj Świątek** 28:18 Yeah, just that back at SumoLogic, we used to have our own Kubernetes event receiver, which was separate, because we knew it was a completely different data format. That's beside the point, but we also had this feature, and it worked perfectly fine. We had it running in production, so that's, like…
+**Dhruv Shah** 28:35 Yeah.
+**Mikołaj Świątek** 28:35 validation that this is… this works fine.
+**Dhruv Shah** 28:38 Yeah, Nikola, I'm from Sumo as well. Sorry about you.
+**Mikołaj Świątek** 28:42 Excellent.
+**Dhruv Shah** 28:43 Yeah, yeah, so we had that raw KATS event receiver, so we still have it working, but, yeah, we want to move towards KATS Object Receiver, since it provides
+Or set of features.
+So, yeah, I would be more than happy if you can, you know, chime in on this feature, along with Dimiti.
+Thanks, guys.
+**Kai L** 29:18 Thank you so much through. If nothing else, I think…
+I can pick the next topic, but it's from my side.
+Bye.
+Thanks.
+Yes, do you see my screen? Let me know if you see anything.
+**Dmitrii Anoshin** 29:44 Now we can see it.
+**Kai L** 29:45 It's great. Thanks.
+So, this is Kai from Ericsson, and we are working in…
+an organization called ADP, where we're working on to build common microservices, both on Kubernetes, and providing us common building blocks for our cloud native locations within
+different use cases. So, we have, for example, users from the radio side, or pocket core, whatever, but in short is that we provide observability
+products.
+And as a generative service to our internal clients.
+So, right now, with the journey towards open inventory, we have many shoes that we are trying to push into the community and all to understand the inputs on the clinical side. So there's two topics that I want to discuss.
+The first is about the hospital mapping for business job labels.
+I submitted this event.
+Okay?
+riches about… To propose.
+a configurable mapping approach, whereas… Potentially two modes. One…
+default behavior, but we are going to have a nodes to, like, service that thing.
+server step management to determine scope.
+table, and then with the option mode, which we can have the option.
+that's job.name to remember this job by keeping the SERP's name as the logical SERP's identifier.
+This is mainly about the use case where we want.
+To have this separation.
+The bookkeep.
+job labor from the U.S. for the purpose that we want to have, and have specific. So I want to hear you in the meantime, if you think that this is something that sounds acceptable, that we can work on.
+**David Ashpole (dashpole)** 31:48 I think… so, hey, I'm, David, I lead the Prometheus, compatibility work group, and
+I own a bunch of the Prometheus components. I think…
+Oh, and I wrote the spec.
+I think this is something we can look at.
+I'm not sure about this particular solution. I think for the Prometheus receiver, I'd probably prefer if people just used
+like, relabel configs, because you can relabel the job label, if you want to have different, different jobs, per scrape target. I don't think there's anything wrong with that.
+for… I think for the Prometheus Remote Write exporter, there's maybe more of a case to be made for configuration, because you really need
+I don't know if this is what you're trying to do, but,
+you might want to have… I've heard requests… or no, no, maybe we even added this feature. There have definitely been requests in the past to
+Preserve service.name as an attribute, and not map it back to job for people that are looking for it.
+And I think there's a case to be made that maybe we should also have the option not to
+Not to provide job at all, or to allow it to be… somehow, like.
+Set by something else.
+Yeah, I'm not sure about naming either, but I'll try and review this and leave a comment. Hopefully that'll… then we can go from there. Sorry I missed this.
+**Kai L** 33:12 Yes, thank you so much for your answers.
+So we can jump to the next topic, and this is also about an issue that we had during
+the implementation phase of the Prometheus runs by an exporter, the remote by queue as well.
+And there was a previous issue that was being mentioned, by… someone on the Atlantic community.
+This is something that we already have as well, but this issue is from 2024. I have requested to reopen the issue.
+Because we have encountered a similar behavior, and we want to understand what is the current stance from the community side.
+The issue is quite simple, is that we…
+when we experience Prometheus remote write endpoint to be downloaded and visual, we see That the context
+The lung exceed, being treated as a permanent arrow.
+And, we experienced some metrics loss.
+You see data being dropped by the queue, instead of being buffered.
+So, this is an example of the log WC when the permitting signal point is done.
+We want to…
+Because we have quite strict restrictions on metric strokes, and this is something that we want to avoid. So we want to understand if the behavior we see today is the intended design for permitting a smooth ride exporter during the back-end outages.
+And we want to understand if, from Infinix perspective, do you see whether we can
+Completely replace the queuing behavior with the available common queuing behavior, or retain the perimeter smoke right while
+queue capability, which is specifically to Prometheus Remote Write.
+M… I would.
+Really appreciate the efforts, some volume.
+On the 20th piece.
+**David Ashpole (dashpole)** 35:25 Can I repeat that back to you, just to make sure I understood? So there's two issues. One is you think some things should be retried, and they're not being retried, right? And then the second is that…
+You'd like to consider switching from the write-ahead log to the
+exporter helpers, persistent queue. Is that…
+Did I understand correctly?
+**Kai L** 35:46 Yes, partially, I think. What we want is… to add…
+**David Ashpole (dashpole)** 35:51 be true.
+**Kai L** 35:53 Let's say when we have this, endpoint down, we want to have this buffered in some ways, rather than being treated as a terminal error.
+**David Ashpole (dashpole)** 36:04 Okay, so… so you don't care about the write-ahead log versus the export helper? Because the write-ahead log is, persistent.
+Buffer to disk.
+It's just, we had to reimplement a queue
+using something else, and we model it after Prometheus's,
+Write-ahead log, because we need, points to be in order.
+So, the exporter helper today doesn't have any ordering guarantees that I know of, so that's why.
+That historically is that way.
+But it's, it's just…
+The same thing, but a different implementation that meets the requirements that the exporter has.
+**Kai L** 36:42 I see, I understand. Yes, thanks for being boom.
+How would you suggest the way forward to us if we want to have some kind of workaround for this?
+**David Ashpole (dashpole)** 36:52 I mean, the first thing almost sounds like a bug.
+I'm trying to… I thought…
+I thought I remembered seeing a PR a while ago.
+About this, but I need to… I need to dig.
+Do you know what version you're on?
+Is this… do you know what the error code is as well? Is it a 500?
+Context deadline exceeded.
+**Kai L** 37:43 I can extract the full log, and maybe I can send it to you offline, if it helps.
+**David Ashpole (dashpole)** 37:50 Okay, that's fine.
+**Kai L** 37:53 Yes, right.
+**David Ashpole (dashpole)** 38:31 Alright, I think that's it for those topics.
+Unless anyone else has something.
+**Kai L** 38:35 Thanks, David.
+**Dmitrii Anoshin** 38:49 Pavel, do you want to talk about MCP?
+**Pavol Loffay** 38:52 Yeah, sure. Hi, everyone. I'm Paol. I'm mainly the OpenTelemetry Operation Maintainer, but I…
+used to work on the Collector as well in the past. Let me share my screen.
+Can you see my screen?
+**Dmitrii Anoshin** 39:23 Yes.
+**Pavol Loffay** 39:24 Awesome. Yeah, so a while ago, we submitted a proposal to… for a new project in OTEL about… we wanted to build,
+the MCP server for OpenTelemetry, or build set of agentic skills, which are essentially README files.
+The whole idea is that we would like to improve
+how users interact with OpenTelemetry through agent workflows.
+And our scope was wide. We wanted to cover all the aspects of the OpenTelemetry ecosystem, but mainly the collector. So we wanted to look at the collector, simplify the configuration operations.
+look at the semantic conventions, look at the instrumentation, essentially cover everything, every… almost all the major use cases, how people use OpenTelemetry.
+We… goods… Good feedback, on the proposal, and…
+approvals from the GC, but we didn't find a sponsor from the TC.
+And they suggest that we…
+For now, focus only on the collector use cases, and work closely with the collector Sikh on those use cases.
+So I'm gonna open the proposal, and…
+Talk a bit more about what we want to do with the collector.
+Yeah, so these ones are the goals for the collector.
+We want to enable agents to read and write valid collector configuration, and I think I was here as well in December and January, I discussed the collector schema.
+Which is a very essential part for validating the collector configuration.
+Yeah, then we want to make sure the agent can understand API breaking changes, if there's any deprecation or removal.
+We want to enable agents to upgrade the collector to understand if there is a config change or a component change in the collector, so it can produce next valid configuration.
+One idea is as well, to look at the OTTL and teach the agent to produce valid OTTL.
+And help users to troubleshoot issues with the collector.
+the… what we want to deliver, is probably an MCP server and set of these agentic skills, which are essentially README files.
+And we would like to build the MCP server, probably start building it in a separate repository, under the…
+DevEx, or kind of DevExSig. There is, as well, a request for the repo already filed.
+And… what is important to mention is, like, we don't want to…
+or we want to improve what is already out there for the collectors. So, to build the agent tech skill, we will need to have good documentation, and so if there is something missing, we will…
+contribute this to the collector repo, or the docs repo, improve that as the main source of information, and then kind of repackage it as the… under the MCP or agentic scale.
+And so what I'm looking for is someone from the CollectorSik that would sponsor this work.
+And then…
+It's gonna be a lot of exploration from our side, and then once we have better understanding
+How this could be incorporated into the collector, then maybe we will file,
+Tickets to create a new collector component.
+**Dmitrii Anoshin** 43:44 Why do I need another collector component? That's… Unclear.
+**Pavol Loffay** 43:51 So maybe when you run the collector, and the collector would expose an MCP server, it's gonna be.
+**Dmitrii Anoshin** 43:58 You want to make FCPP server part of the collector? That's… I didn't… I didn't get that part from your…
+**Pavol Loffay** 44:04 Yeah, this is, like, maybe. I think it… there is,
+I would prefer to have the MCP as a standalone component.
+**Dmitrii Anoshin** 44:13 Yeah.
+**Pavol Loffay** 44:14 Users could run it separately before they run a new collector version, and understand what needs to change in their… in their configs before they… they upgrade.
+**Dmitrii Anoshin** 44:26 I was under impression that it… you're talking about MCP servers in separate repository, which will, like.
+which… which will run by OpenTelemetry in general, like, as a server for everyone.
+if that makes sense. Like, as documentation, right, that we currently host in our OpenTelemetry.io, I was under impression that you're trying to build an MCP server publicly available, one MCP server for all, essentially, but…
+I guess that's not the case. You want to embed it in the collector and…
+**Pavol Loffay** 45:06 No, no, no, we want to build a standalone MCP server, and if we figure out that it's better to run it as part of the collector component, then we will create a case for the collector component. But as of now, we want to build it as a standalone thing without integrating directly with the collector.
+**Dmitrii Anoshin** 45:26 Okay, it's a standalone thing that will be running under OpenTelemetry governance, somewhere managed by OpenTelemetry project, essentially.
+**Pavol Loffay** 45:35 Yeah, it will be hosted in a separate repository, but we need to have someone from the collector sig that would help us to
+To work on it.
+**Dmitrii Anoshin** 45:47 Yeah, I mean, I would like to sponsor it, I just don't have, like, capacity to work on it on a server and everything, but from, like, I'm interested in general from, like, technical decisions and everything. Currently, we are working with some of my… one of my team members on schemas.
+And it's going pretty well. Hopefully, like, within a month or two, we'll be able to cover all of the…
+Collector components and provide, like, schema for the… for… per distribution for all of the…
+Available components, essentially, and that can be…
+can, be used by the MCP server.
+**Pavol Loffay** 46:30 Yeah, that's great. I think we talked already together about the schema generation. I think that's fine, we just need someone from the collector that will maybe
+help us to… to navigate some stuff in the future. Like, if you need to improve some dogs or something like that, then…
+**Dmitrii Anoshin** 46:49 Are you…
+**Pavol Loffay** 46:49 official buy-in from the collector SIG. I think what the government's community wants to avoid is that we will start building something and don't collaborate directly with the SIGs that own the component.
+**Dmitrii Anoshin** 47:02 I understand. Yeah, I… I can be that person, with the assumption that I will not be able to provide any help in building the server, but, like, in navigating and technical things, and…
+collaborating with aggressive for us.
+as part of the collector, so you can… that's…
+And maybe someone else from CollectorSeq is also interested, other maintainers.
+**Pavol Loffay** 47:26 Awesome, and we would be looking for contributors as well, and…
+I think if we will have it in separate repository, it's gonna be easier to… to onboard new people that would like to build it.
+**Dmitrii Anoshin** 47:38 I would like to be involved, to some extent in the security repo as well, in building FCP server itself. Maybe not, like, actively, but code reviews and something like that. I can…
+provide that help. And also, I… potentially, from… I can bring some people from…
+from my team, like, for example, Jan, who is working on Schema, potentially can be involved in the MCP server after that as well.
+**Pavol Loffay** 48:03 That would be great.
+So yeah, thank you, Dimitri.
+**Dmitrii Anoshin** 48:11 Sure.
+**Pavol Loffay** 48:12 If you can maybe comment on the…
+**Dmitrii Anoshin** 48:15 I already did that in some of the… when you asked in one of the threads, I said that exactly what I just said, so…
+**Pavol Loffay** 48:24 Okay.
+**Dmitrii Anoshin** 48:25 I'm not sure.
+**Pavol Loffay** 48:25 Does it?
+**Dmitrii Anoshin** 48:26 buried somewhere in, like, a lot of the comments, I can do it again.
+**Pavol Loffay** 48:30 Yeah, if you could do it maybe at the end of the PR, it would be more visible to people.
+**Dmitrii Anoshin** 48:34 Okay. Sounds good.
+**Pavol Loffay** 48:36 Alright, thanks.
+**Pablo Baeyens** 48:36 I think that way we can, send this back to the, GC, and, like, I can…
+Handle merchant disk.
+Okay, thank you.
+Bubble, if you're done, then… I can maybe read the… Topic from Tiffany.
+So… Tiffany, as a PR is part of the, cleanup of the collector-related docs on OpenTelementary.io.
+And she's looking for… I reviewed,
+She pinked me on Jade, i.e.
+maybe we'll take a look, but I can promise you, somebody else can… Can take it,
+I think this is… Important.
+on with .ie… I mean, unless anybody wants to discuss anything about this PR, I think we are done.
+**Dmitrii Anoshin** 50:13 Thank you, everyone.
+**Pablo Baeyens** 50:17 You…
+**Christos Markou** 50:18 5 volts.

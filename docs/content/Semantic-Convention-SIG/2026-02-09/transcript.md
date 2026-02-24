@@ -1,0 +1,509 @@
+SIG: Semantic Convention SIG
+Date: 2026-02-09
+Duration: 62 minutes
+Zoom Recording URL: https://zoom.us/rec/share/YnUaC1MvXZfz9CBHojpyBI5QHbB_RePIqcI7mA58X4DzQmNRelZ8HM3NIoClXYIR.oPMzOAyGPI75VkHp
+============================================================
+
+## Zoom Recording Transcript
+
+Christophe Kamphaus 00:01:18 Hello?
+Trask Stalnaker 00:01:24 Hey.
+Liudmila Molkova 00:01:26 Hello.
+Good.
+Trask Stalnaker 00:01:29 Welcome to Monday. Good Monday.
+Liudmila Molkova 00:01:31 At least it's Monday for everybody here, right?
+neil yashinsky 00:01:36 Greetings, everyone. Right.
+Nice to be with you again.
+Liudmila Molkova 00:01:45 Okay, it's probably my turn to…
+neil yashinsky 00:01:49 Is it just me, or do… I don't hear you speaking, Ludmila. Is it just me?
+Trask Stalnaker 00:01:53 Oh, I hear you.
+Can you deal?
+Christophe Kamphaus 00:01:57 bows.
+Liudmila Molkova 00:02:00 Everybody can… but Neil can hear me.
+Christophe Kamphaus 00:02:04 Yeah, I can hear you.
+Liudmila Molkova 00:02:07 Okay.
+Trask Stalnaker 00:02:10 I think it's just you, Neil.
+Liudmila Molkova 00:02:18 So, let's see, what do we have?
+Okay, please add your name to the attendees list if you have something Bring it in the agenda.
+Let's spend a couple of minutes, I don't think, so I forgot my topics. I'm going to them now, sorry.
+I want to talk about this…
+And I also want to talk about roadmap today,
+If somebody has a topic, I think you probably should add it before the roadmap, so we have the rest of the call, and it could run… run over, or…
+Anyway, let's do the triage session. Pure Triage Board.
+Nothing is ready to be merged. A couple of things are blocked.
+So this one is blocked on the topic I have in the… on the agenda.
+We'll talk about it later.
+this one… is blocked.
+Because it… I blocked it, it adds an attribute that I think would be very useful, but I don't see how instrumentation can populate it.
+in any… Remotely reliable way.
+okay, so… We has… Some things that need more approvals.
+This… Probably I would use somebody else. Oh, okay, let's… It's now ready.
+To be merged… Kubernetes Service Entity.
+I would appreciate if somebody from service and deployment, SIG would share their thoughts.
+Because it introduces the Kubernetes service name, which is…
+Not the same as service name, but very similar.
+It also introduces something around… Availability zone.
+Oh, service endpoint zone.
+Anyway, paper off… Okay.
+Ken Givens?
+Trask Stalnaker 00:05:32 The service, and deployment SIG is meeting this Thursday, it's every other Thursday. I can get that on the agenda.
+Liudmila Molkova 00:05:43 Yeah, thank you. Appreciate it.
+And finally, this is yet another Jimmy IPR. It needs more approvals.
+I'll have a couple of minutes… Seems… There are some… Things we can't triage.
+Trask, do you… oh, do you want to bring it out? Do you want to…
+Trask Stalnaker 00:06:17 No, I just… I just barely sent that PR, so I think it's… can…
+Just needs some… let it bake a little bit.
+Liudmila Molkova 00:06:30 Yeah, sounds good.
+Okay, there are a bunch of his friends.
+If somebody can approve and munch them, that would be awesome.
+It was a fast… The riage session?
+There are a lot of things…
+Here, that is awaiting co-donor's approval.
+Maybe, I also want to add this to the agenda.
+it went through a lot of approvals, and then I think it went in a different direction, and I want to talk about it.
+Okay.
+So, let's move on to the agenda.
+To Rusk, adding attributes to metrics after stabilization.
+Do you want to approve me to present?
+Trask Stalnaker 00:07:43 No, I don't really have anything to present.
+So, we've talked about this theoretical case.
+before. It is now a real, practical case.
+So the JVMGC duration metric
+We added… we stabilized it, then we realized, hey, there's another metric that, I mean, another attribute, low cardinality attribute, that would be… would have been great to have on that metric.
+So, we added it as opt-in.
+Per our policy.
+And…
+Now, with, the instrumentation, Java Instrumentation repo is going to take a major version bump, in the first half of this year.
+And so we would like to start recording this attribute by default.
+in… the 3.0 version of our instrumentation.
+But it's not clear from semantic conventions if that's… allowed…
+that… that is allowed. Like, does that… it would look weird then somebody validating against semantic conventions, because SEMCOM says it's opt-in, but now we're omitting it by default.
+So, like, kind of what I…
+I feel like there's something missing where it, attribute, state.
+Where it is recommended for new Instrumentations, or major version bumps.
+But you can't… Add it.
+For our breaking rules to… an existing… metric without The major version bump.
+Yeah, Josh.
+Josh Suereth 00:09:51 Yeah, so I think you hit the nail on the head there, is that this is a major version bump of the definition.
+And so, people who are relying on the previous SEMCOM need to know they need a major version bump for the next version.
+Right?
+Trask Stalnaker 00:10:05 Yeah.
+Josh Suereth 00:10:06 Like, that's… the, the.
+Trask Stalnaker 00:10:07 Oh, I see.
+Josh Suereth 00:10:09 So.
+Trask Stalnaker 00:10:09 Major, yeah.
+Josh Suereth 00:10:11 Yeah, like, SemConv should not make that change.
+in a minor version, it should make that change in a major version bump, and we need to… or, if what you're asking for is finer-grained versioning of SEMCOV, where, like, JVM could version…
+and have major version bumps separately, that's fine. But again, it's a breaking change to people who were relying on that previous version, SEPCOM to another major version.
+We need to make sure that instrumentation follows along with a major version bump.
+Right? That, like, you're not doing this without a major version bump, so you're doing everything correct, it's just Semconv itself should also do something correct here, right? Which I think is…
+We don't have a way to do major version bumps in SEMCOM at all.
+We don't have a plan… I mean, we have a plan for it, kind of, but it's the whole frickin' repository.
+So… I actually would be fine if we did a 2.0.
+And let you release… you know, SEMCOM 2.0 with this version bump for JVM.
+I'm also fine if we find a way to piecemeal release pieces of Semcov, if we wanted to go with that as an avenue here. But I don't think it's on the table to
+make this change without a major version bump in some fashion. You're doing it on instrumentation, it should also be true of the Java conventions.
+Trask Stalnaker 00:11:40 Do you think,
+Do you think there's a… I mean, the middle ground that I always wanted to explore was…
+Sort of a… intermediate,
+Where the attribute would be marked in some way that it was…
+fine to be… it was recommended by default for new instrumentation.
+Or…
+do you think my lens is too much from the… because I'm thinking from instrumentation, and I deliver instrumentation, and I guarantee that it's not going to break users without a major version bump.
+But… Do you think there are people who are also relying on
+The backend data, the data that's coming out of that, aligning with the SumConv…
+the major version bumping of SEMCOM being required as well?
+Josh Suereth 00:12:44 I mean, if we… if we want this… so, sorry, Lumila, to jump in. If we want some kind to be successful, I think that's true. So think of it this way. If I'm using version 1 and version 2 of your instrumentation, and I get the metric with and without the attribute at the same time, do things work?
+sometimes no, depending on your metric system. Sometimes, yes, depending on your metric system, right? Like, it kind of depends.
+Trask Stalnaker 00:13:10 But I mean, that's kind of the case across… I mean, when we deliver a major version bump.
+Josh Suereth 00:13:16 Yes.
+Trask Stalnaker 00:13:17 Of instrumentation, like, we are not guaranteeing that those two things… we are making lots of breaking changes in the telemetry.
+Josh Suereth 00:13:25 this is why, like, the schema URL evolution to start allowing us to diff between versions and, like, explain to these systems that they are different, or, like, keep them separated in some fashion, so you know that this is version 1 and this is version 2, and your query can still be successful.
+across the two. Like, that's one of the things we're going for, right? And, like, I think the simple model we had when we started with Semcov, which is… and we debated this back and forth when we started around versioning.
+I would love if the JVM set of metrics
+was tied to JVM instrumentation in a way that when this bumps, this bumps, major version.
+Trask Stalnaker 00:14:07 Oh, that's a good idea. So, if we brought… we could move the JVM metrics in YAML and SEMCOM definitions into the instrumentation repo.
+And then we could bump… We could align them.
+I like that.
+Liudmila Molkova 00:14:28 That was going to ask.
+This is the GVM, the right thing, we would cost in.
+Java repo, Java Instrumentation Repo.
+whatever Java repo we will pick for semantic conventions.
+Trask Stalnaker 00:14:43 Yeah, so I was originally thinking we would host the JVM metrics in the core Java repo.
+But that, since it…
+Applies, sort of, more broadly than just our instrumentation.
+But we are not major version bumping that repo.
+So I think…
+And I think it would be fine to host it in the instrumentation repo. It can still be…
+More broadly applicable than just our instrumentation.
+Liudmila Molkova 00:15:23 Cool. Did we find the first genie pig?
+To further… the Federation?
+Trask Stalnaker 00:15:33 That solution works for me.
+Josh Suereth 00:15:34 Yeah, I think… so, I just want to add… sorry, I didn't raise my hand.
+I'm jumping in a bunch. The one thing I'd love to, solve, too, is if we move JVM metrics into the Java repo, it'd be nice if the documentation that we have
+Is kinda in, in, open FilmTree I.O.
+Still somehow shows that.
+So, like, I think you can absolutely move in the JVM repo, and that's what we're trying to do with this federated CENCOM.
+I just added… sorry, I was late. I added a topic around some federated SMCOF things we're doing, where, like, we're gonna help you be super successful in that, you'll abide by all the policies we need for OTEL, you can do your major version bump. I think this is the right direction to move.
+But there's a set of challenges we'll have to sort out, and I think if we start with JVM, maybe that's the best way to start, because, you know, you're here, we're very friendly with JVM, and we can kind of figure out how to make JVM successful.
+and still feel like a cohesive whole in SEMCOM?
+And then move… move from there, right?
+Trask Stalnaker 00:16:40 Makes sense.
+Alright, thank you, Lydmilla.
+Liudmila Molkova 00:16:50 Yeah, thank you all.
+Okay, moving on to the next topic. This came up, oh, GitHub will do it.
+Kind to us.
+This came up in, RPC conventions, and we are… other than that, we are pretty much ready to go release candidates.
+So the tricky thing about RPC is… the…
+Server address, or the other aspects of recording the endpoint.
+So, it's common to use some sort of a service registry, or load, external load balancer, the client-side load balancing, that, receives a list of servers.
+And then in the background, and then the client picks one of the servers. It could be, I don't know, round robin or anything.
+So let's say it's a zookeeper.
+So it's the service registry.
+And what client has is this… this URL.
+Or some sort of a configuration that points to the service registry.
+And then… The… when we call a specific
+instance. We actually call a specific instance, right? We can call it by IP or by the, very granular domain name.
+So then there is a question. So, do we set server address at all?
+If I set server address, it's like the logical server thinks, like, we are calling.
+In this case, it's not actually something we're calling, it's just the address of the registry where we got the configuration from.
+And we can still record the full string for the target. Let's put it aside. Let's think about what we do for server address. So one option is to still set it to the server registry address, because it's better than nothing.
+And it provides some grouping for the… Instances we talked to.
+Very imprecise grouping, though.
+Other option, don't set it, then the…
+Dashboards, like, the most generic thing we have about client spends is the server address.
+and error type, those are the two main things. So, in theory, somebody could build a dashboard, or
+Or span-to-metrics pipeline, where they leverage server address.
+And here it won't be present, and it would be, uncommon and not great with this very broad dashboards.
+Then I'm listing the options tree here, just for completeness, to highlight that it has high cardinality. So if we know a domain name of this.
+server, it doesn't help us because it's high cardinality, and it makes things worse, or it could be high cardinality. It's likely to be high cardinality.
+So I think we are,
+Picking between option 1 and option 2?
+And I think, Trask, you… you're leaning towards Option 1. I'm curious if you changed your mind since we last talked about it.
+Trask Stalnaker 00:20:26 I don't like any of the options.
+Liudmila Molkova 00:20:36 Okay, yeah, Josh, go ahead.
+Josh Suereth 00:20:38 What… So…
+Okay, this is a horrible rationale, but what's the difference between looking up via registry the name and a DNS name for server address?
+Liudmila Molkova 00:20:53 The practical part is that this address is not even the full
+paths within the register, right? The registry can have paths in it.
+The other part is that
+We probably should redefine the server address.
+Because it currently says the endpoint that we talked to, but it has nothing to do with the actual call.
+Josh Suereth 00:21:22 Yeah, I… From a… from a usage standpoint,
+the GRPC target is a little too… like, I…
+I like the spirit of option one.
+But I think we would have to change a little bit of what server.address is in some fashion.
+like, it… like, if there was a way that we could include the Zookeeper URL there, but without the slash hello servers, maybe that'd be better, and change the definition. But, like, to me, this is just…
+DNS in another name, right? It's… it's… there's a naming service that takes a really high cardinality address and turns it into a name, and we wanted server address to be more human-readable, that, like, name.
+Which is why you were… I believe, and I could be wrong, because I haven't followed up in a while, server address would be the DNS name, if a DNS name was used, right? And network peer address would be, like, the IP you talk to, right?
+So I think this is in line with that decision.
+Liudmila Molkova 00:22:27 This is in line with this decision, but imagine in case of HTTP, if somebody provided to you the…
+DNS, the… how is it called? The main registry name, the 888 in Google, right? You would put 888 in server address.
+So it's the name of the…
+The registry instead of the endpoint.
+Trask Stalnaker 00:23:00 I think you're sort of getting at this, I'm not sure the server address
+like, the server address can be a Unix-C, like, socket path thing, so it's not strictly… A…
+Host, like, a host address?
+at least in this Zookeeper example, where… the…
+The hello servers, the actual target is part of the path.
+you could put that whole thing, maybe, into server address as an option?
+Treating it like a… to Josh's, like, hey, it's kind of the same thing as a DNS.
+Name.
+Liudmila Molkova 00:24:01 Okay, that's an interesting option.
+Trask Stalnaker 00:24:05 I don't know if that works also with, like, the double registry and other client… I mean, because you could, in theory, client load balancer registry servers could be a single address plus, like, post data to get your info.
+Liudmila Molkova 00:24:27 Yeah, Neil, go ahead.
+neil yashinsky 00:24:28 Oh, hi, thanks. Totally very new, question, because this one is, you know, I think, anything on the network side, I always really defer to,
+people who know a lot better than I do. But I… the first thing that I was wondering is the… in the… in the options listed, you know, we had address and port, etc, and, you know, Josh and Trask were just describing, kind of, like, address as a name, and, like, I was just wondering what the…
+Are these the only elements available to us? Is there not, like, a server.name option that's on the table? Again, that's totally…
+I feel like they're…
+a high-level, not, you know, dumb question is pejorative, I don't want to use that, but, like, that's a silly question, I guess, or, you know, a new person's question, so forgive me if that's silly, but I'm just wondering.
+There's, what, 5 elements in there? Is there… could or should there be 6? That includes a name, or something that, addresses the comments that Josh and Treshk just described? Or…
+Liudmila Molkova 00:25:31 We can introduce new attributes, but I think that the key part, that server address is something very common.
+it's present on pretty much every client's pen. Yes. And it's nice to keep the invariant, and it's more of a question, how do we…
+Represent information that we have in this common way.
+neil yashinsky 00:25:53 Yeah.
+Liudmila Molkova 00:25:53 So you don't need to learn new things.
+neil yashinsky 00:25:56 Yeah, yeah, so not in a destructive fashion, really as a complementary fashion, I guess is what I'm wondering, in usage with this, I guess it seems like the address thing is important, and
+you know, just broadly speaking to the point, like, I'm just wondering if some sort of concatenation option would be possible to reflect the fact that this could have more than one variables or values, and at least that way they can be extracted programmatically with a delimiter or something.
+Trask Stalnaker 00:26:24 So server.address sort of is a name, like, it's a logical name, like, it's the… before, it's not necessarily an IP.
+Address…
+neil yashinsky 00:26:36 Right.
+Trask Stalnaker 00:26:38 So, you're…
+neil yashinsky 00:26:38 name of sorts.
+Trask Stalnaker 00:26:40 Right.
+neil yashinsky 00:26:41 It's kind of weird, because it's used as both, right? In that instance, it's a name that's, like, explicitly defined somewhere else as an address. Which, I mean, is probably a smart decision choice. I'm not trying to criticize that as bad, as, like, that's how it worked or whatever.
+Trask Stalnaker 00:26:58 So we haven't really used it beyond, it being a…
+neil yashinsky 00:27:05 server, like, strictly defined, right.
+Trask Stalnaker 00:27:08 Or, Unix socket.
+path.
+neil yashinsky 00:27:13 God.
+Thank you, that makes sense.
+Trask Stalnaker 00:27:17 I think, given that we… given that it's not strictly a…
+like, a server host address, since we also support it being, IP.
+That means that backends…
+Shouldn't be… can't rely on it, like, parsing it as an actual address already today?
+Which gives us maybe some flexibility to do… Something more… Interesting in server.address.
+neil yashinsky 00:27:52 Great, yeah.
+like, I just wonder, like, architecturally, what's… how can you support the design constraints so that
+It's always right in the domain that it's used, or the context that it's used.
+Forgive me, that just seems like staking me out.
+Liudmila Molkova 00:28:16 Well, so, it sounds like we're… it could be interesting to…
+Check this idea. I'll check it out.
+Let's see if I like it.
+Moving on, Sundar Shan, you want the PR to be triaged?
+Oops.
+GitHub is not cooperating with me today. Is it just me?
+Josh Suereth 00:28:41 No, I was having the same issue. If you retry a couple times, it'll eventually work, but I think they're having a little bit of an issue.
+neil yashinsky 00:28:49 I even slapped for it.
+Christophe Kamphaus 00:28:50 decloud an incident.
+Sudarshan S 00:28:54 Yeah.
+Yeah, hi, yeah, I'm Sudarshan. So, just to give you a context on this.
+So, initially, we had semantic conventions for what I call… for database semantic conventions defined around February.
+So that got pushed, and we have implemented in JavaScript, and…
+ODP.net, JDBC, some of those. So this, recently we changed the db.namespace definition.
+So based on, Ludimal had some inputs on.
+re-look, revisiting the db.namespace.
+So…
+So, that has been addressed, and some of the… some of the… some more enhancements have been done to the db.namespace.
+So that change for, incorporating the changes for db.namespace has been pushed, and it is present in the main.
+Now, this is to make the Oracle database specification
+to, I mean, to stable state.
+So that is the attempt, here.
+So, I mean, we have drivers, implemented
+The initial version, which we released in February, March, around, And that is last year.
+Liudmila Molkova 00:30:27 So you, you have, like, you have instrumentations, right? You have prototypes for it?
+Sudarshan S 00:30:34 ESS, TypeScript, yes, yes. It is being implemented in TypeScript.
+except this change, which is recently merged, like, I think 2 weeks back, db.namespace, that recent changes are still…
+to be incorporated in the TypeScript and the other drivers.
+Liudmila Molkova 00:30:54 Yeah, and… When you're marking… you're marking release candidate, this pan itself…
+But it would probably make sense to mark all the attributes.
+as well.
+Sudarshan S 00:31:17 Okay.
+Okay, to the release candidate, or… they are recent, I mean, they are introduced,
+Yeah, like, in the last PR, that is 2 weeks back, so…
+Should I change that to release candidate or stable something?
+Are you planning…
+Trask Stalnaker 00:31:41 Are you wanting to… what's your,
+What do you want to mark stable in this For initial push.
+The… do you want to include the attributes, any of those attributes in the initial stability?
+I guess that's kind of the question to decide whether to move them to RC or leave them as development.
+It's fine if you'd… To leave them as development, as long as they're not on metrics.
+Sudarshan S 00:32:16 Yes, yes, yeah.
+Yeah, right now, yeah, they are… they are not on metrics. I mean, they are not specified in the standard.
+So… yeah, I mean, I want to mark the spec, the database specification to stable.
+And these attributes, db.
+domain, and they can be marked as development. Does that work?
+Liudmila Molkova 00:32:45 I think it's your choice.
+Trask Stalnaker 00:32:48 Am I getting that right, Lydmilla?
+Liudmila Molkova 00:32:52 Well, yeah, so, but… You want to mark the spec, which means this document, right?
+Sudarshan S 00:32:58 ESS, yeah, yes, yes.
+Liudmila Molkova 00:33:01 So I think you, you just marked this pen?
+As… as RC?
+You probably want to change this as well, but if… if you think you're ready… it's not a question of
+time per se, when you added these attributes to the semantic conventions. It's a question of, do you want
+them to go stable, right? Along with the span.
+Sudarshan S 00:33:27 Yes, yes.
+Liudmila Molkova 00:33:29 The only question is, did you actually try to populate them in your prototypes? Are you happy with the outcome?
+And, do you think they are ready to be marked as RC and unstable?
+Sudarshan S 00:33:45 Yes, yes. I mean,
+Because these are recently added, it is yet to be, I mean, it's just present as a local change, and…
+It is not… not pushed, or it is not implemented in, TypeScript Driver yet, so…
+But can we mark these attributes as development and still mark the document as a stable?
+Oh.
+Liudmila Molkova 00:34:13 Hollywood Market Go ahead, Jess.
+Trask Stalnaker 00:34:16 Yeah, you can mark it as mixed.
+Sudarshan S 00:34:20 So sorry, I didn't get.
+Trask Stalnaker 00:34:21 Mixed, mixed stability. It means that
+Some parts of the document are stable, and some part are still development.
+Sudarshan S 00:34:33 Okay, okay.
+Okay, got it.
+Yeah, I can make the change in the same PR,
+Okay, I mean, I just wanted this PR to be reopened, so I can incorporate those changes.
+Liudmila Molkova 00:34:49 Oh, I see, yeah.
+Sudarshan S 00:34:54 I can just show you.
+Liudmila Molkova 00:35:18 I… I will try my best to reopen it. Oh!
+Let's try.
+Trask Stalnaker 00:35:27 And…
+Liudmila Molkova 00:35:39 It goes through.
+Sudarshan S 00:35:41 Yeah, that's all I had, yeah, thank you. I will make the change.
+Trask Stalnaker 00:35:50 I'll check it, Vanilla, while you move on with the agenda.
+Liudmila Molkova 00:35:54 Thank you, I appreciate it.
+Okay, I wanted to bring up the PR with stabilizing deployment.
+so I think it got some approvals.
+But later on, we realized that the deployment entity first doesn't have any identifying attributes.
+Which does not seem right.
+Josh Suereth 00:36:20 Oh, the name is the identifying attribute, so we first need to do that.
+We… yeah.
+Liudmila Molkova 00:36:27 Oh, the name is the identifier.
+Josh Suereth 00:36:29 Yeah, I thought we had fixed the YAML for this. When we talked about it in the deployment entity SIG,
+Basically, we had a discussion about, A, is there anything else in deployment that's important? And B, is the name always identifying? And I think the answer, like, Trask, were you there for this one? I don't remember. Okay.
+Trask Stalnaker 00:36:48 I don't think… I don't remember that.
+Josh Suereth 00:36:50 Okay.
+Yeah, I think it's fair to push back and say, hey, can you make the name be the identity of the entity? Because it should be. But deployment, yeah, we had a bunch of discussions about, is there anything else that deployment needs, but the name is the identity here.
+Liudmila Molkova 00:37:09 Yes.
+And then…
+Then there is a next question. I think this PR went in a different direction, and it now contains a bunch of things, and sorry for mixing things up, but it's called deployment, and not deployment name, and we have things like deployment name and deployment ID.
+Which could be attributes on a deployment entity. So maybe this one should be called deployment name?
+Josh Suereth 00:37:39 This is not the PR I remember reviewing.
+Liudmila Molkova 00:37:42 Yes, it's changed quite a bit.
+Josh Suereth 00:37:44 Why did all this get added? Okay, that's something to follow up.
+It should… I thought we were stabilizing deploymentenvironment.name, and there was a deployment.environmentEntity.
+who was identified by its name. That was it.
+That was all I expected this to be.
+All this other stuff, I'm not sure where it came from, so I…
+Liudmila Molkova 00:38:07 It came from my comments that I'm sorry I didn't know. I was asking if that's right.
+Josh Suereth 00:38:14 That's fine, that's fine. I will make comments appropriate. I didn't… sorry, I wasn't watching this one. I will… I will make comments on this and, and try to steer it back in that direction.
+Liudmila Molkova 00:38:25 Yeah.
+But then, this part is probably still relevant if you don't want anything else to be…
+On that entity, it should be deployment environment, not deployment.
+Josh Suereth 00:38:36 Yes. Yes, it should definitely be, deployment.environment. Yep.
+Yeah, I think we… we… we did not…
+talk about deployment, as far as I'm aware in that sake. Are you… did… are you familiar? Go ahead, Trask, I was gonna check with you if we had talked about deployment outside of deployment environment.
+Trask Stalnaker 00:39:01 Yeah, I don't think there was anything else to add to it.
+But I wanted to raise, Yao's comment.
+whether about deploy… he referenced an issue
+on this PR that was about whether deployment environment name should be an enum.
+Or if there should be standard values for it.
+Which I think… feel like deserves some discussion.
+Josh Suereth 00:39:36 Yeah, let's, let's… let's take that back and talk about it. I think…
+That's a really good point, and I feel like we should… Resolve that.
+Trask Stalnaker 00:39:46 Okay, I'll add it to the agenda for Thursday.
+I think Yao already blocked it, if I recall, on that comment.
+Liudmila Molkova 00:40:05 Okay, thank you.
+And Josh, let's talk about federated SEMconf.
+Josh Suereth 00:40:12 Yeah, so this is just, some status on federating SEMConv. If you're not familiar with this, I think the topic after this is talking about why we're doing this, so I'm gonna jump into the details, then we can talk about why, I guess. But, we created this OpenTelemetry Weaver Packages, group. This is supposed to be a bunch of reusable packages you can use with Weaver if you're defining your own SEMConf
+yourself.
+This is designed right now, we got a bunch of, like, scripts and things to set it up, to do tests, to make sure things work, and are contributing our first set of policy checks. There is a PR for the first full policy.
+and this comes from Weaver, or sorry, it comes from semantic conventions. So the first full policy is just our backwards compatibility checks. The next one I'm going to add is our stability rules. But the idea would be that we're going to move the checks that we have
+Oh, if you wanna… if you wanna look at the… the files change, that's an example test, by the way. You're looking at, like, the bash script. The rego is the actual policies. It's… which, so if you close all the tests, yeah, there's the… there's the actual set of policies.
+I don't know why it's still looking at diagnostic output. Oh, it's just big. Okay.
+So, anyway, this is the set of policies that is enforcing backwards compatibility in semantic conventions. This actually adds backwards compatibility for spans, because it's using the new syntax in Weaver where we're going to have a span type.
+that denotes the type of a span and, can actually track that… the life of a span through version to version.
+So, looking for reviews on this to make sure that, like, everything went in okay, but the idea overall is that we're going to get the important pieces of semantic conventions that you need to be OTEL compliant as reusable packages. So if you're using Weaver, Trask.
+in Java, to define JVM metrics, you should be able to apply these policies with this command line here, where you put the dash P, and then the backwards compatibility check reference, and it will
+use this…
+rule to do your backwards compatibility checking. I'm working on, the next thing in Weaver that we're going to add to make this simpler is that "-P. You'll be able to specify, like, a version and just flat, like, policies check backwards compatibility, instead of having to put the whole git URL in, so we'll have, like, a simplification for this repo. That's just a convenience thing.
+you can still use it today. So, the idea here is we're going to get everything into there, you're going to have a reasonable set of things to generate docs, reasonable set of policies, and so there should be consistency… the same consistency semantic conventions brings should be decomposable, so we can have
+Groups that work independently, that own things, that do major version bumps independently, successfully.
+So that's part one, is this policies thing. Part two was the next line.
+Which is, trying to improve the documentation for how you can rely on a common registry. This is a PR, you can see I'm getting, more sophisticated with Copilot. I basically had Copilot go reverse engineer
+all of the unit tests we have and help me write the docs with an initial script of, like, what it needs to provide. But this is how you can build a multi-registry system with Weaver today. This… we had this in Weaver examples, which I pulled from to put here, but we didn't have it actually documented out. So this is a PR describing to people how you can have
+Your own semantic convention registry that depends on semantic convention attributes.
+And does its own extra stuff.
+It talks about, like, best practices, how to test, what errors look like, that kind of stuff.
+trying to get this in shape. This is meant… I reviewed this whole thing, which I did write a lot,
+And it looks pretty good as a start. I think we'll make changes to it over time, but we're trying to get this documented out for you. So if you wanted to start prototyping what it looks like.
+I think we're at a stage today, with the latest release of Weaver, where you could start actually prototyping, having a multi-registry syntax, and start, you know, defining your own conventions, and…
+as we roll out these packages, you'll have the policy enforcement that Weaver provides for semantic conventions, but on your repo. So, we're getting there.
+Okay, I don't think I had any other links in the docs, because I think those were the only two interesting things we did. Oh yeah, just a reminder, Ludmila has an OTEP about how we're going to publish all this stuff when it's done.
+And we're working towards building this in Weaver. So, like, you're starting to see this get implemented as a prototype, where we're testing it out. This is the draft of what we'd eventually like the whole process to be.
+So, this is just a reminder, Ludmila's working on some good stuff here. We're implementing the backing feature of it, and so please take a look, please review, and we'd love feedback.
+Liudmila Molkova 00:45:28 Awesome.
+neil yashinsky 00:45:28 I'll take a look, see if I can add anything useful. I mean, don't set your expectations high, Josh, but you know, I'll give it the old college try.
+Christophe Kamphaus 00:45:38 a question. Would all the rego policies from SumConf and the…
+Templates for the markdown generation be later.
+B in this package.
+Josh Suereth 00:45:51 Great question. Will all of them move? The answer is no.
+SEMCOMF will have very specific things that it needs.
+like, we can actually have naming guidance we don't enforce on the rest of OTEL. That's fine.
+The other thing is, right now, our markdown generation is tied to how we are in OpenTelemetry.io. The markdown generation that would be provided in this packages registry might not exactly match what we do today. It might be something more generic. Like what,
+I'll phrase this for a Weaver approver slash maintainer. You know how we have a registry for attributes and entities, and that's it?
+Imagine if the world was only a registry.
+That's probably what packages will look like, and that's probably what documentation will look like for these
+repos that come off. So we need to actually get that sorted out. In Semcov, we have a blended world.
+with how we do docs, and we really focus on this, you know, overriding Markdown snippets.
+In the packages, we're planning to actually have everything be auto-generated, and so the markdown will actually probably look different.
+I'm… I actually think, as well.
+I'd rather have HTML with JavaScript, where we can have, like, search and fast filters and crap that we can't really do in Markdown.
+We'll provide… like, we'll figure out that world as we go, but…
+The short answer is no, not everything moves. Only the things that have to move to be shared.
+Liudmila Molkova 00:47:27 It actually puts more pressure on us to put things into YAML that we…
+Avoid it, like, didn't get to putting, like, histogram boundaries and stuff like that.
+Christophe Kamphaus 00:47:40 Sounds good.
+Liudmila Molkova 00:47:46 Okay, that's exciting. Cannot wait to remove half of the semantic conventions from this repo.
+Josh Suereth 00:47:58 Yeah, we still need to make it feel centralized. That's the… that's the hard part at the end.
+Liudmila Molkova 00:48:03 Yeah, that's a great one. So it sounds like we would have a place where we import all auto
+good conventions, and we will render them on a TLIO.
+Josh Suereth 00:48:17 Exactly. So that's… that's TBD.
+Liudmila Molkova 00:48:20 Yeah.
+Cool, moving on, Kai, let's talk about the…
+the centralized semantic conventions. You, have you got some, good input from the previous topic?
+Kai L 00:48:36 Yes, thank you so much. And, yes, earlier we had a discussion on the related systematic conventions, on teleco alarm standards, and also we had a conversation on the TOS-related parameters.
+And its relation on the security semantic convention that we had previously, with the hotel security semantic conventions Group.
+And we… it was really useful for us internally, but we had a follow-up question on what the first is about to understand the amount of effort that required
+to drive a such secondary convention effort, because I got information that we can own this effort, fund.
+For our organization, and, to drive it,
+a part of this so-called decentralized seminary Convention.
+And there was a link to the main semantic convention that we have here.
+So it would be good to understand the amount of effort that we need to drive a such effort.
+Liudmila Molkova 00:49:43 I think we, it would be unfair for you to be the first user of this thing, unless you feel adventurous.
+And we probably should create… should go through this effort.
+once was among, people who work on OpenTelemetry help trust, and GVM metrics could be the guinea pig, and then it would help us understand the effort. And also, there are a lot of rough edges right now, and we probably will fix a lot of them as we go through this exercise.
+How do others feel about it?
+Josh Suereth 00:50:19 I think that makes sense. I'm really distracted by your cats.
+But…
+Kai L 00:50:26 Anyway. Yeah.
+Josh Suereth 00:50:27 The, here's what I'll add.
+There is an open cybersecurity framework.
+set of semantic conventions in security. There is ECS that was contributing into OpenTelemetry. One thing we never resolved, but will be on your
+you know, something to pay attention to, because it was an unanswered question the whole time, was like, what does that mean for us? Like.
+do… are we going to try to make, try to take Open Cybersecurity Framework and, ECS and create a new convention that's different than the two? Are we going to try to line up with them and provide conversion rules?
+I actually think there's a lot that you can start with.
+In defining, like, the framework of how you're going to do conventions here, and how you're going to think about them?
+Without actually having to…
+you know, write down YAML files just yet. But if you wanted to, I think,
+like Lyudmila said, You can be a guinea pig if you want.
+I'm happy to have more guinea pigs than less, just in terms of where it stands, it's rough. So, with that caveat, if you wanted to start here and start using it, I'd be comfortable trying to support you.
+What I… what my main concern about is not necessarily anything to do with, is the tooling ready? It is 100% to do with that space in observability, like security, observability combined. I still think is pretty ambiguous. I think you have to cut through…
+and make some hard decisions in OTEL, or get OTEL to, of like, cool, what's our story around Open Cybersecurity Framework? How are we going to integrate? How are we going to, you know, is it a compatibility layer that we're going to make sure we have?
+What are we gonna do with ECS semantic conventions that haven't been pulled in yet? One thing we've been doing with those is where ECS diverges from what we did for tracing.
+we're prioritizing tracing, right? And so, those kind of meta decisions, I actually think are hard, and you could start working on with a group of people. You know, start answering with a proposal. You know, we want to do cybersecurity stuff, we want to do,
+you're looking at telco alarm standards, TLS semantic conventions, let's take the whole crazy space, let's reduce scope, and let's have a few simple questions and answers of, you know.
+if there's TLS in ECS, great, here's what it looks like. There's TLS in ECS.
+Great, here's what it looks like, here's what we're proposing for OTEL, and here's how it's compatible, right? That would be awesome, if you wanted to put that together. You don't need tooling for that.
+all you need is the ability to write a PR, or an issue, or markdown with a proposal of what you want to do. So, I think that that's actually worthwhile getting started on. Does that make sense?
+Kai L 00:53:23 Thank you so much for the input. We had a discussion earlier on the effort of merging ECS with the Autel Security Semantic Convention, and then I got the information that this security cit group was
+Pretty much, it wouldn't dominate because of lack of interest and drive, and, we talked about that there could be possibilities to restart as such effort.
+Do you think this is somehow connected? Or, let's say if we are going to start trying to restart as such effort.
+how…
+how big effort will this be? Like, how big of a commitment would this be required for our organization?
+Josh Suereth 00:54:03 Yeah, I think… so, generally, starting this immense convention effort is big. I think…
+starting a security semantic effort would be large. Like, not gonna lie, it's gonna be… I think it… one of the problems with security and ECF, ECS was, like, there weren't enough people in OpenTelemetry that cared, and so it was hard. I would recommend trying to de-scope.
+The key to de-scoping, though, is you need to make sure that enough answers are put in place that you're not forced to answer every single question about security and open telemetry, right? So if you can find a way to say, we want to focus on TLS,
+and telco alarm standards. And here are the answers to the big questions for how this will interact with security if and when we expand further. Great.
+But that's going to be the magic of what you want to do here, is you want a clear scoping document of what you want covered, why you want it covered, and how you're going to bridge between these ecosystems, because again, there's 3 that I'm aware of. There's OTEL, there's ECS, which is OTEL now, right, and OCSF.
+So, if you put that document together, target it against TLS, you can minimize what you're working on to just what you care about, and that's what I'd recommend for now, because it takes the standard forward, it gives us actually something that we can hang, it gives us a scope that we can make progress on.
+I'm just gonna warn you of the things that stopped the security sake before, which were, like, it was large in scope, there were some unanswered questions of how to deal with all of this.
+And there was, we actually had a lack of tooling support for security that we struggled to make progress on as well, for some of the stuff that ECS did. Like, there was a bit of a tooling thing. I don't expect you to run into that latter one, you might, but I think we have some answers for that now.
+The first one, though, is the thing I think you can nip in the bud by having a very clearly scoped proposal, and having quick answers that you align on now.
+for… here's what it looks like in ECS, here's what it looks like in OCSF, here's what we want to build, and what those two are missing, and what compatibility looks like. You do that now for TLS, you scope yourself to TLS, I think it's a much leftover.
+Kai L 00:56:21 Thank you so much, Osh.
+Yes, just as a follow-up question, then, on this, because it was first related to the TURS submitted convention, and then we also had a question on the telecom standards, and…
+I remember a mentioning of decentralized effort on this semantic convention, because I think it's two different things, right? For the TN semantic convention, it's about the security, it's the security SIG group.
+That was relating that. And then, about the telecollar Standards, then this is something for the teleco users.
+To have a specific semantic convention effort, and to be involved in that.
+And as I understood that, we don't have such effort right now, and if we want to create such effort, we will need to own this effort.
+But just to understand what are the, like, how large effort is this required, and do we have any existing examples that we can use as a reference to start as such decentralized systematic convention?
+Josh Suereth 00:57:30 I'm being very verbose in my responses, so I'll try to be short. As Ludmila said, we don't have an example yet. We, like, legitimately, we're trying to find our first example.
+So it is a path we're on, it's something we know that we need to do. We've built a lot of tooling to allow it. We have an examples repo where companies are effectively building their own semantic conventions internally, and that's how they're using Weaver, and so we know that it works for that.
+we haven't sorted it out for OTEL yet, so that, like, you'd be the first or the second, if Java's the first.
+project to try it in OpenTelemetry.
+So you… it will be cutting edge, it will be, like, we're exploring.
+So if you wanted to wait until you feel like the tooling is more stable, so it's less effort on your part, great. Like, just let us know. We'll try to give you a heads up when we feel like it's ready for, like, general adoption. Right now, we're looking for, kind of, partners to work out the kinks in the first federation, if you will.
+My expectation is the collector and Java might be our first two big partners, and then we'll explore more from there.
+Kai L 00:58:40 Thanks for the… thanks for the input. And Java is initiating something, currently, so are there any documentations or any pages available, just so that we can, have some reference to… just to have an understanding of how this… how such effort is being initiated?
+Josh Suereth 00:58:58 Yeah, you can… you can take a look at this PR that I… I just, created, or I should say I had AI create, but this one describes how to set up a multi-registry, system where you can define your own registry that depends on the semantic invention registry. This is not,
+It's not complete in the sense of there will be a set of policies that we ask you enforce.
+for your registry from semantic conventions, to make sure you abide by the semantic convention policies, that, that is coming as we expose those in that package I was talking about. So, like, my update with those three things are kind of the pieces of what you will need.
+to go forward. The full set of documents for exactly how to do it in SEMCOV aren't written yet, because we're actually writing… we're writing the pieces as we go, and we don't have, like, a cohesive whole yet. We're getting there.
+But again, you'd be working with us. So, there is a, on CNCF Slack, there is a channel called OTEL Weaver.
+Hotel-weaver, we probably should…
+Have aliases for that as well, but that is the best place to ask for help and questions today.
+Kai L 01:00:12 Thank you so much, Josh. Yes.
+Liudmila Molkova 01:00:16 We are out of time. Let's talk about roadmap next time. I'm still collecting input from the SIGs. If you are in the SIG and you would like to commit to something in 2026, I'll put a link to the issue.
+Here, after the meeting.
+See you around.
+Trask Stalnaker 01:00:35 By…
+neil yashinsky 01:00:35 to run.
+Kai L 01:00:38 Thank you so much.
+Sudarshan S 01:00:39 Thank you. Thanks, sir.

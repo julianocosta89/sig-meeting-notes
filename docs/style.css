@@ -382,6 +382,62 @@ body {
   margin-bottom: 0.25rem;
 }
 
+/* --- Meeting Notes Body --- */
+.notes-body {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.notes-body h1 {
+  font-size: 1.25rem;
+  margin: 1.25rem 0 0.5rem;
+  font-weight: 600;
+}
+
+.notes-body h2 {
+  font-size: 1.0625rem;
+  margin: 1rem 0 0.375rem;
+  font-weight: 600;
+}
+
+.notes-body h3 {
+  font-size: 1rem;
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 600;
+}
+
+.notes-body p {
+  margin: 0.5rem 0;
+}
+
+.notes-body ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.notes-body li {
+  margin-bottom: 0.25rem;
+}
+
+.notes-body a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.notes-body a:hover {
+  text-decoration: underline;
+}
+
+.summary-body a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.summary-body a:hover {
+  text-decoration: underline;
+}
+
 /* --- Transcript Body --- */
 .transcript-body {
   font-family: var(--font-mono);
