@@ -228,3 +228,91 @@ class TestBuildManifest:
         serialized = json.dumps(manifest, indent=2)
         roundtripped = json.loads(serialized)
         assert roundtripped["sigs"][0]["slug"] == "Go-SIG"
+
+
+class TestStaleFileRemoval:
+    def test_stale_transcript_file_removed(self, tmp_path: Path) -> None:
+        """A file in docs/transcripts/ with no source counterpart is removed."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        # Pre-create a stale file in docs/transcripts/
+        stale_dir = docs / "transcripts" / "Go-SIG"
+        stale_dir.mkdir(parents=True)
+        stale_file = stale_dir / "2025-01-01.txt"
+        stale_file.write_text("stale content")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            build_manifest()
+
+        assert not stale_file.exists()
+        # The valid file should still be there
+        assert (docs / "transcripts" / "Go-SIG" / "2026-02-05.txt").exists()
+
+    def test_stale_sig_directory_removed(self, tmp_path: Path) -> None:
+        """An entire SIG directory in docs/transcripts/ is removed when no
+        source transcripts exist for that slug."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        # Pre-create a stale SIG directory
+        stale_dir = docs / "transcripts" / "Old-SIG"
+        stale_dir.mkdir(parents=True)
+        (stale_dir / "2025-01-01.txt").write_text("stale")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            build_manifest()
+
+        assert not stale_dir.exists()
+
+    def test_stale_summary_directory_removed(self, tmp_path: Path) -> None:
+        """An orphaned SIG directory in docs/summaries/ is removed when no
+        source transcripts exist for that slug."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        # Pre-create a stale summary directory
+        stale_summary = docs / "summaries" / "Old-SIG"
+        stale_summary.mkdir(parents=True)
+        (stale_summary / "2025-01-01.md").write_text("stale summary")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            build_manifest()
+
+        assert not stale_summary.exists()
+
+    def test_no_stale_files_is_noop(self, tmp_path: Path) -> None:
+        """When docs/ mirrors source exactly, nothing is removed."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            build_manifest()
+
+        assert (docs / "transcripts" / "Go-SIG" / "2026-02-05.txt").exists()
+
+    def test_docs_transcripts_dir_missing_is_safe(self, tmp_path: Path) -> None:
+        """build_manifest works even when docs/transcripts/ doesn't exist yet."""
+        src = tmp_path / "transcripts"
+        docs = tmp_path / "docs"
+        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+
+        # Don't pre-create docs/ at all
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs), \
+             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+            manifest = build_manifest()
+
+        assert len(manifest["sigs"]) == 1

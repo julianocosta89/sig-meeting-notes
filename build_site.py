@@ -22,9 +22,45 @@ SUMMARIES_DIR = DOCS_DIR / "summaries"
 MANIFEST_PATH = DOCS_DIR / "manifest.json"
 
 
+def _remove_stale_docs(
+    source_slugs: set[str],
+    source_files: set[tuple[str, str]],
+) -> None:
+    """Remove files/dirs under docs/transcripts/ and docs/summaries/ that
+    no longer have a corresponding source in transcripts/.
+
+    *source_slugs* is the set of SIG slugs found in transcripts/.
+    *source_files* is a set of (slug, filename) pairs for every valid transcript.
+    """
+    docs_transcripts = DOCS_DIR / "transcripts"
+    if docs_transcripts.is_dir():
+        for slug_dir in sorted(docs_transcripts.iterdir()):
+            if not slug_dir.is_dir():
+                continue
+            slug = slug_dir.name
+            if slug not in source_slugs:
+                shutil.rmtree(slug_dir)
+                print(f"  Removed stale docs/transcripts/{slug}/")
+                continue
+            for txt_file in sorted(slug_dir.glob("*.txt")):
+                if (slug, txt_file.name) not in source_files:
+                    txt_file.unlink()
+                    print(f"  Removed stale docs/transcripts/{slug}/{txt_file.name}")
+
+    if SUMMARIES_DIR.is_dir():
+        for slug_dir in sorted(SUMMARIES_DIR.iterdir()):
+            if not slug_dir.is_dir():
+                continue
+            if slug_dir.name not in source_slugs:
+                shutil.rmtree(slug_dir)
+                print(f"  Removed stale docs/summaries/{slug_dir.name}/")
+
+
 def build_manifest() -> dict:
     """Walk transcripts/ and build the manifest dict + copy files to docs/."""
     sigs: dict[str, dict] = {}
+    source_slugs: set[str] = set()
+    source_files: set[tuple[str, str]] = set()
 
     for txt_path in sorted(TRANSCRIPTS_SRC.glob("*/*.txt")):
         slug = txt_path.parent.name
@@ -32,6 +68,9 @@ def build_manifest() -> dict:
         if header is None:
             print(f"  WARNING: skipping {txt_path} (unparseable header)")
             continue
+
+        source_slugs.add(slug)
+        source_files.add((slug, txt_path.name))
 
         date_str = header["date"]
 
@@ -57,6 +96,8 @@ def build_manifest() -> dict:
                 "meetings": [],
             }
         sigs[slug]["meetings"].append(meeting_entry)
+
+    _remove_stale_docs(source_slugs, source_files)
 
     # Sort meetings within each SIG by date descending
     for sig_data in sigs.values():
