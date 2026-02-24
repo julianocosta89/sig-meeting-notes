@@ -80,13 +80,19 @@ let globalSearchAbort = null;
 
 // ── Initialization ──────────────────────────────────────────
 
+let initInProgress = false;
+
 async function init() {
+  if (initInProgress) return;
+  initInProgress = true;
   const res = await fetch('manifest.json');
   if (!res.ok) {
+    initInProgress = false;
     showError('Failed to load manifest.', init);
     return;
   }
   manifest = await res.json();
+  initInProgress = false;
   populateSigSelect();
   restoreFromURL();
 }
