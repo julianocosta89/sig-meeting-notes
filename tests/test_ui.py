@@ -24,11 +24,12 @@ def _make_long_transcript(sig, date, duration, lines):
     """Generate a transcript with many lines for scroll testing."""
     header = (
         f"SIG: {sig}\nDate: {date}\nDuration: {duration} minutes\n"
-        f"Source URL: https://zoom.us/rec/share/long-example\n"
+        f"Zoom Recording URL: https://zoom.us/rec/share/long-example\n"
         "============================================================\n\n"
+        "## Zoom Recording Transcript\n\n"
     )
     body = "\n".join(
-        f"{'Alice' if i % 2 == 0 else 'Bob'} {i // 60:02d}:{i % 60:02d} "
+        f"**{'Alice' if i % 2 == 0 else 'Bob'}** {i // 60:02d}:{i % 60:02d} "
         f"Line number {i} of the transcript."
         for i in range(lines)
     )
@@ -47,6 +48,8 @@ def docs_site(tmp_path_factory):
             {
                 "slug": "Go-SIG",
                 "name": "Go SIG",
+                "meeting_notes_url": "",
+                "repository_url": "",
                 "meetings": [
                     {"date": "2026-02-19", "duration_minutes": 30, "has_summary": False},
                     {"date": "2026-02-05", "duration_minutes": 33, "has_summary": False},
@@ -55,6 +58,8 @@ def docs_site(tmp_path_factory):
             {
                 "slug": "Java-SIG",
                 "name": "Java SIG",
+                "meeting_notes_url": "",
+                "repository_url": "",
                 "meetings": [
                     {"date": "2026-02-10", "duration_minutes": 60, "has_summary": False},
                 ],
@@ -62,53 +67,102 @@ def docs_site(tmp_path_factory):
             {
                 "slug": "Long-SIG",
                 "name": "Long SIG",
+                "meeting_notes_url": "",
+                "repository_url": "",
                 "meetings": [
                     {"date": "2026-02-15", "duration_minutes": 120, "has_summary": False},
+                ],
+            },
+            {
+                "slug": "Notes-SIG",
+                "name": "Notes SIG",
+                "meeting_notes_url": "https://docs.google.com/document/d/notes-sig/edit",
+                "repository_url": "https://github.com/open-telemetry/notes-sig",
+                "meetings": [
+                    {"date": "2026-02-05", "duration_minutes": 45, "has_summary": False},
                 ],
             },
         ],
     }
     (site / "manifest.json").write_text(json.dumps(manifest))
 
-    # Create transcript files
-    go_dir = site / "transcripts" / "Go-SIG"
-    go_dir.mkdir(parents=True)
-    (go_dir / "2026-02-05.txt").write_text(
+    # Create per-meeting folder structure: content/{slug}/{date}/transcript.md
+    def _write_meeting(slug, date, transcript_text, meeting_notes_text=None):
+        d = site / "content" / slug / date
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "transcript.md").write_text(transcript_text)
+        if meeting_notes_text:
+            (d / "meeting-notes.md").write_text(meeting_notes_text)
+
+    _write_meeting(
+        "Go-SIG", "2026-02-05",
         "SIG: Go SIG\n"
         "Date: 2026-02-05\n"
         "Duration: 33 minutes\n"
-        "Source URL: https://zoom.us/rec/share/example\n"
+        "Zoom Recording URL: https://zoom.us/rec/share/example\n"
         "============================================================\n"
         "\n"
-        "Tyler 02:14 Hey, Damien.\n"
-        "Damien Mathieu 02:19 Hey!\n"
-        "Tyler 02:20 How's it going?\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Tyler** 02:14 Hey, Damien.\n"
+        "**Damien Mathieu** 02:19 Hey!\n"
+        "**Tyler** 02:20 How's it going?\n",
+        "## Meeting Notes\n"
+        "\n"
+        "### Attendees\n"
+        "- Tyler\n"
+        "- Damien Mathieu\n",
     )
-    (go_dir / "2026-02-19.txt").write_text(
+    _write_meeting(
+        "Go-SIG", "2026-02-19",
         "SIG: Go SIG\n"
         "Date: 2026-02-19\n"
         "Duration: 30 minutes\n"
-        "Source URL: https://zoom.us/rec/share/example2\n"
+        "Zoom Recording URL: https://zoom.us/rec/share/example2\n"
         "============================================================\n"
         "\n"
-        "Tyler 02:00 Hello everyone.\n"
-        "Damien Mathieu 02:05 Hi Tyler.\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Tyler** 02:00 Hello everyone.\n"
+        "**Damien Mathieu** 02:05 Hi Tyler.\n",
     )
-    java_dir = site / "transcripts" / "Java-SIG"
-    java_dir.mkdir(parents=True)
-    (java_dir / "2026-02-10.txt").write_text(
+    _write_meeting(
+        "Java-SIG", "2026-02-10",
         "SIG: Java SIG\n"
         "Date: 2026-02-10\n"
         "Duration: 60 minutes\n"
-        "Source URL: https://zoom.us/rec/share/java-example\n"
+        "Zoom Recording URL: https://zoom.us/rec/share/java-example\n"
         "============================================================\n"
         "\n"
-        "Jack 01:00 Welcome to Java SIG.\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Jack** 01:00 Welcome to Java SIG.\n",
     )
-    long_dir = site / "transcripts" / "Long-SIG"
-    long_dir.mkdir(parents=True)
-    (long_dir / "2026-02-15.txt").write_text(
-        _make_long_transcript("Long SIG", "2026-02-15", 120, 200)
+    _write_meeting(
+        "Long-SIG", "2026-02-15",
+        _make_long_transcript("Long SIG", "2026-02-15", 120, 200),
+    )
+    _write_meeting(
+        "Notes-SIG", "2026-02-05",
+        "SIG: Notes SIG\n"
+        "Date: 2026-02-05\n"
+        "Duration: 45 minutes\n"
+        "Zoom Recording URL: https://zoom.us/rec/share/notes-example\n"
+        "============================================================\n"
+        "\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Alice** 00:30 Welcome to the meeting.\n"
+        "**Bob** 00:45 Thanks for having me.\n",
+        "## Meeting Notes\n"
+        "\n"
+        "### Attendees\n"
+        "- Alice\n"
+        "- Bob\n"
+        "\n"
+        "### Agenda\n"
+        "- Review last meeting\n"
+        "- New proposals\n",
     )
 
     # Copy the real HTML, JS, and CSS from docs/
@@ -191,6 +245,8 @@ def test_transcript_renders(browser_ctx):
     page.select_option("#sig-select", "Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
     body = page.locator(".transcript-body").text_content()
     assert "Tyler" in body
@@ -219,6 +275,8 @@ def test_deep_link(browser_ctx):
     context, url = browser_ctx
     page = context.new_page()
     page.goto(url + "?sig=Go-SIG&date=2026-02-05")
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
     body = page.locator(".transcript-body").text_content()
     assert "Tyler" in body
@@ -250,6 +308,8 @@ def test_switching_sig_clears_transcript(browser_ctx):
     page.select_option("#sig-select", "Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
     # Switch to Java SIG
@@ -351,11 +411,11 @@ def test_search_highlights_in_transcript(browser_ctx):
     page = context.new_page()
     _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
 
-    # Load a transcript first
+    # Load a transcript first (default tab is Summary)
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
-    page.wait_for_selector(".transcript-body")
+    page.wait_for_selector(".tab-bar")
 
-    # Search for "Damien"
+    # Search for "Damien" — auto-switches to Transcript tab with highlights
     page.fill("#search-input", "Damien")
     page.wait_for_timeout(400)
 
@@ -420,6 +480,8 @@ def test_scroll_top_button_appears_after_scroll(browser_ctx):
     page.select_option("#sig-select", "Long-SIG")
     page.wait_for_selector("#date-list .date-btn")
     page.locator("#date-list .date-btn", has_text="2026-02-15").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
     btn = page.locator("#scroll-top-btn")
@@ -443,6 +505,8 @@ def test_scroll_top_button_scrolls_to_top(browser_ctx):
     page.select_option("#sig-select", "Long-SIG")
     page.wait_for_selector("#date-list .date-btn")
     page.locator("#date-list .date-btn", has_text="2026-02-15").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
     # Scroll down past threshold
@@ -502,7 +566,7 @@ def test_url_updates_on_date_click(browser_ctx):
     page.select_option("#sig-select", "Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
-    page.wait_for_selector(".transcript-body")
+    page.wait_for_selector(".tab-bar")
     assert "sig=Go-SIG" in page.url
     assert "date=2026-02-05" in page.url
     page.close()
@@ -513,6 +577,8 @@ def test_deep_link_restores_sig_and_date(browser_ctx):
     context, url = browser_ctx
     page = context.new_page()
     page.goto(url + "?sig=Java-SIG&date=2026-02-10")
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
     selected = page.locator("#sig-select").input_value()
@@ -606,6 +672,8 @@ def test_search_match_count_displayed(browser_ctx):
     _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
 
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
     page.fill("#search-input", "Tyler")
@@ -632,6 +700,8 @@ def test_search_jump_to_next_match(browser_ctx):
     _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
 
     page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
     page.fill("#search-input", "Tyler")
     page.wait_for_timeout(400)
@@ -649,4 +719,80 @@ def test_search_jump_to_next_match(browser_ctx):
 
     marks = page.locator(".transcript-body mark").all()
     assert len(marks) > 0
+    page.close()
+
+
+# ── New format rendering tests ───────────────────────────────
+
+
+def test_transcript_header_zoom_url_is_link(browser_ctx):
+    """'Zoom Recording URL' field in the header should render as a clickable link."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-header")
+
+    link = page.locator(".transcript-header a[href*='zoom.us']")
+    assert link.count() > 0, "Expected a link to zoom.us in the transcript header"
+    page.close()
+
+
+def test_manifest_meeting_notes_url_rendered_as_link(browser_ctx):
+    """SIG-level meeting_notes_url from the manifest should render as a link."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Notes-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".transcript-header")
+
+    link = page.locator(".transcript-header a[href*='docs.google.com']")
+    assert link.count() > 0, "Expected Meeting Notes URL from manifest to render as link"
+    page.close()
+
+
+def test_meeting_notes_section_renders(browser_ctx):
+    """Meeting Notes tab should show Attendees and Agenda from meeting-notes.md."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Notes-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Meeting Notes").click()
+    page.wait_for_selector(".notes-body")
+
+    notes_text = page.locator(".notes-body").text_content()
+    assert "Attendees" in notes_text
+    assert "Alice" in notes_text
+    assert "Agenda" in notes_text
+    assert "Review last meeting" in notes_text
+    page.close()
+
+
+def test_speaker_bold_format_renders(browser_ctx):
+    """Speaker names in **bold** format should render as speaker-name spans."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Go-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
+    page.wait_for_selector(".transcript-body")
+
+    # Speaker names should be in .speaker-name spans, not raw **...**
+    speaker_spans = page.locator(".transcript-body .speaker-name").all()
+    assert len(speaker_spans) > 0
+    speaker_texts = [s.text_content() for s in speaker_spans]
+    assert any("Tyler" in t for t in speaker_texts)
+    assert not any("**" in t for t in speaker_texts), (
+        "Speaker spans should not contain ** markdown markers"
+    )
     page.close()

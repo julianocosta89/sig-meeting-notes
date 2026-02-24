@@ -1,0 +1,273 @@
+SIG: System Sem Conv Stability WG
+Date: 2026-02-05
+Duration: 28 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Donal O'Sullivan** 00:55 -Oh.
+**Dmitrii Anoshin** 00:58 I don't.
+**Donal O'Sullivan** 01:02 Hey, Mitri, how are you?
+**Dmitrii Anoshin** 01:05 Doing well, trying to get rid of this, note-taker.
+**Donal O'Sullivan** 01:11 Yeah, I saw it, I joined again.
+**Dmitrii Anoshin** 01:19 Okay, cool. It's… it's gone.
+**neil yashinsky** 01:25 Morning or afternoon? Dmitri and Donna?
+**Donal O'Sullivan** 01:31 I knew.
+**neil yashinsky** 01:32 I didn't hear Gematri, am I… oh, no, sorry, it's my bad.
+I feel like instead of being off by 1, the new, most common programming error is like, oh, my Zoom is on, whatever. In this case, I had my headphones plugged in.
+So, how's it going?
+**Dmitrii Anoshin** 01:54 All good? How are you?
+**neil yashinsky** 01:56 Very good. Thanks.
+**Donal O'Sullivan** 02:28 Guess we'll wait.
+Wait for Chris and… Braden?
+**Dmitrii Anoshin** 02:34 Yeah, let's wait, for another minute.
+**Pablo Baeyens** 02:39 8.
+**Dmitrii Anoshin** 03:39 Do folks have anything to add to the agenda today?
+**neil yashinsky** 03:47 I'm sorry, I missed that. Could you say that again, please?
+**Dmitrii Anoshin** 03:50 Do you have anything to discuss for me.
+**neil yashinsky** 03:51 Oh, yeah, no, not me, personally, thanks.
+**Dmitrii Anoshin** 03:56 Yep.
+**Christos Markou** 04:01 Maybe, just a heads up that we had some…
+Additional comments on the discussion that we had last time.
+About the dual schema and the M.O.Gen tool.
+But we can discuss it offline. Everything is on the issue, so…
+Yeah, if you have some time, please take a look.
+It's something that we can progress.
+**Pablo Baeyens** 04:41 I think I didn't comment replying to…
+Your answer to my question there?
+Oh, but…
+I did upvote it, like, I… I think I understand it now. It makes sense to… to do the…
+MDataGen.
+Changes.
+In my opinion.
+**Dmitrii Anoshin** 05:07 I'm gonna review this today, I think I…
+I left your comment, but it must be somewhere else.
+So, yeah.
+I think here we go more into the details how we're gonna implement this.
+Okay.
+And thank you, Donald, for doing… Pushing this forward. Appreciate it.
+**Donal O'Sullivan** 06:06 Oh yeah, no worries. It was more of a group effort now, and myself and Chris had some conversations offline as well, and I think that kind of helped,
+Iron out a couple of the ideas.
+But it does look like the single schema with the versioned metrics may… looks like it does work, which is good, so…
+It was actually able to…
+do a POC myself locally with it, and it… it works where you don't have to break the user's config, which is nice. So, I guess it's a viable approach we could take.
+**Dmitrii Anoshin** 06:48 Nice.
+**Braydon Kains (Google)** 06:50 How does it work when the,
+version isn't there. I'm sorry if this question was already answered in the issue. Maybe I misread, but…
+**Donal O'Sullivan** 06:57 Yeah, no, it does… yeah, I… if I understand you correctly, Braden, so if you don't provide… if you don't specify in the user config what version you want to use?
+**Braydon Kains (Google)** 07:06 Yeah.
+**Donal O'Sullivan** 07:08 Yeah, yeah, so you're able to control that with a feature gate, so you can just specify
+If you want to use the… the new semantic invention or not.
+And it works that way, and you don't have to edit the user's config.
+**Braydon Kains (Google)** 07:24 Okay.
+**Donal O'Sullivan** 07:24 If that makes sense.
+**Braydon Kains (Google)** 07:30 So we'll still… we'll still end up with the…
+with a breakage when we finally decide to remove the old schema, right? Which I think we're just kind of screwed for anyway, no matter what we do.
+But… At least it should be.
+Easier.
+**Dmitrii Anoshin** 07:50 Yeah, I guess once we… once we deprecate… not deprecate, but move to stable both… both fissure gates.
+It means that user configuration will not be able to accept Old metrics, essentially.
+**Donal O'Sullivan** 08:06 Hmm.
+**Dmitrii Anoshin** 08:07 And that kind of… I think that's…
+Natural, that's how it's supposed to be.
+**Braydon Kains (Google)** 08:13 Yeah, I don't think we're escaping that at all.
+**Dmitrii Anoshin** 08:15 Of course, yeah.
+Yeah, I think, like, user interface is specifically for how to configure a matrix and everything, but feature gate kind of take precedence and, like, higher levels.
+Like, configuration.
+**Donal O'Sullivan** 08:34 The nice thing, though, with the mdataGen tool update is you can provide the, the name override, so, like, for the new… for the newer version of the convention, you can use the existing name, so you don't, like, break, like, say, like, UIs or something, or dashboards or whatever.
+The emitted metric name is the same, if that makes sense.
+That's something we want to do.
+**Braydon Kains (Google)** 09:03 The uniqueness of a… Of a metric name within a resource isn't… something that…
+OTLP is trying to guarantee, right? I didn't think so, but, like, if we have one host resource producing two metrics called system.cpu.time.
+I don't think that's a protocol violation, but maybe we should, like, make sure that that's true.
+I… don't think so, but…
+**Donal O'Sullivan** 09:31 That's… that's a good shout, yeah.
+That would be good to… to nail down.
+**Braydon Kains (Google)** 09:38 See if I can find anything.
+**Donal O'Sullivan** 09:40 Because it would be weird if, yeah, you're admitting it twice, and it might have two different,
+Values, or two different, pipes, or whatever.
+**Braydon Kains (Google)** 09:47 You know, and even a, like.
+It might be easier if we…
+produce two resources. Like, if when we're double writing, we have… they're under two separate resource entries, might make it easier.
+**Dmitrii Anoshin** 10:06 If the source is the same, I don't think it's gonna be… Valid.
+**Braydon Kains (Google)** 10:12 Oh, yes. Yeah, I think you're right.
+**Dmitrii Anoshin** 10:16 So, I skimmed through the…
+Through the issue. And just wanted to confirm that we are still not introducing new
+like, separate config option, right? It's still gonna be under metrics, and we'll merge everything. If both feature gates are enabled, we'll merge everything under that, right?
+Because I saw some… I saw, metrics.
+Legacy.
+That was suggested.
+Metrics underscore syncconf.
+And Matrix Legacy, we're not doing that, right?
+**Donal O'Sullivan** 10:57 That would be two separate schemas, right? So I… so the discussion, the kind of direction myself and Chris were looking at was where you have one schema. So you still have your metrics key, and then you have your… your actual…
+the metrics that you're emitting, the individual ones, and you can version them, if that makes sense. So you don't have two separate schemas, you still have the one schema.
+**Dmitrii Anoshin** 11:18 Okay, so it'll be merged under the same metrics as a group, essentially.
+**Donal O'Sullivan** 11:21 Yeah, yeah, yeah, yeah, so essentially the, yeah, the user config, then you still have the existing metrics key, and you have your names under there, yeah, spot on, yeah.
+**Dmitrii Anoshin** 11:29 The thing is, is that, like, if there is a conflict, let's say one metric, like, old metric and new metric had the same name but different attributes, it's still… we still have to resolve that when we emit the data, because, like, data would be invalid if we emit both, right?
+And in that case, that conflict also can be applied to the configuration interface, so it's, like, kind of natural to resolve that conflict in the config, and it will be resolved by itself when we emit the metrics.
+Cool.
+Thank you.
+**neil yashinsky** 12:03 Yeah, I did finally get around to just posting, some more details that I had been elaborating to, so definitely don't need to be discussed now, but I did, just post a reply on,
+45592, with my thoughts. So, happy to, chat about them when you have a chance.
+Just gonna grab my coffee.
+**Christos Markou** 12:29 Regarding the… Having different, resource…
+metrics or whatever. I think that also makes sense, because,
+It could be hard for backends to, like, handle…
+Metrics with the same name, but having different types, or whatever.
+So maybe if we, duplicate in a way that we can…
+have two different, let's say, buckets, resource metrics buckets, also setting the, schema URL or something like this, that we can help us distinguish that we are, actually emitting something differently, so backends can identify this and…
+Store them in a way that, Do not, you know, conflict.
+Crystal.
+**Dmitrii Anoshin** 13:19 Sorry, didn't want to interrupt you.
+**Christos Markou** 13:21 Yeah, that's all I was thinking about. Okay. Go ahead.
+**Dmitrii Anoshin** 13:26 So, I think that backends typically don't, don't really, really read the schema URLs, and cannot, like…
+Let's say it's gonna be hard for them to…
+Distinguish and take one or another.
+And also from… like, I'm not sure, from OpenTelemetry's specification standpoint.
+the schema URL, which you put under scope, it cannot…
+like, the separate metrics into two separate buckets. I don't think…
+Yeah, I'm not sure if it's written somewhere or not, but I don't think we can emit both. That's the problem. If the metric is… this metric name is the same, and it's just different attributes.
+we somehow need to intervene and, like, explicitly say what we're gonna emit. If there are attributes that are completely, like, different.
+like, if they conflict, so potentially we just need to take one and, like, emit one instead. Or if they… if they… if attribute names are, let's say, just renamed, I guess in that case, it's just better to emit
+Metrics, same metric with both attributes.
+it'll be much cleaner. So, let's say we have one metric, right? CPU time, and in CPU time, you change, like, let's say CPU attribute to CPU core. And,
+if you emit both feature gates, I think it's natural to emit one metric with two attributes, CPU and CPU core, and they will be, like, related to each other strictly, and on the back end, it will be the same number of MTSs.
+But if you emit two metrics.
+with the same metric, but different… metric name, but different attributes. That's probably…
+I think, like, so it's not… I'm not speaking from behalf of Splunk, because for us, it's gonna be fine, we'll be able to handle it. But I think I… I would imagine that some backend just can… will not be able to handle that. It's kind of…
+It's not… valid OTLP data from my…
+like, perspective, but I'm not sure if I can confirm that with documentation for the specification, but it feels like it is.
+What do you think?
+**Christos Markou** 15:58 My point was mainly about the type of the metric. I don't have any specific example, I'm not sure if we will hit something like this, but let's say that, VES0
+version 0 emits an integer, and then we change this to something like float or something. Yes. I guess this will, you know, blow up things.
+**Dmitrii Anoshin** 16:19 Yes.
+**Christos Markou** 16:19 At least elastic shirts will complain about this, I'm sure.
+**Dmitrii Anoshin** 16:22 And it will complain if we send both, like, metrics with… like, both metrics with same name, but different, types. That's gonna be pretty bad, right?
+**Christos Markou** 16:33 Yeah, yeah, yeah.
+Find a way to root them in a different, like, you know, table or index thing, so…
+**Dmitrii Anoshin** 16:39 Yeah, yeah, that's… I understand that. And from my… like, I… I think… We just don't, like…
+care about that for now, but once we have… once we run into these situations, because I'm not even sure we'll run… we will have those… those issues.
+And if we have those issues, we need to keep it
+keep it possible to, like, manually, let's say, tell what's gonna happen in those situations. So for this use case, I would say, like, potentially, it's just, if both feature gates are enabled, we send new metric type, and only one metric with the new metric type. It will be kind of…
+I don't know, it seems like the best solution.
+**Christos Markou** 17:27 Right. Yeah, I haven't thought of this yet, just occurred to me while we talk about this.
+**Dmitrii Anoshin** 17:34 But my point is that we have to put it in the configuration. We shouldn't split them separately, because it's, like, this conflict
+like, it has to be explicitly. It has to be explicitly, we need to put it in the configuration to solve the… to resolve the conflict for the users, and make it, like…
+Easier for them to understand what's going on.
+**neil yashinsky** 17:56 if I understand correctly, you're saying it's better to force their hand explicitly than cause them to make changes that could have
+Unforeseen your implications.
+**Dmitrii Anoshin** 18:06 Yeah, yeah, that's general idea, yes.
+**neil yashinsky** 18:09 I think… I agree.
+**Christos Markou** 18:13 But this is when the attributes, for example, differ, right?
+**Braydon Kains (Google)** 18:19 I think the scenario is, like, the name of the metric didn't change, but semantics about it did, whether that's the data type or the attributes.
+**Dmitrii Anoshin** 18:29 Before attributes, I think if it's attributory name, it's simple. We just… we emit both attributes. I think that's gonna be, like, the most straightforward solution. We kind of… we re-aggregate it right from the… write the source, and we put two ag… two attributes on the same metric.
+If that makes sense.
+But for the type, it's completely different. Like, if type is changed, it's… we have to, like, explicitly somehow resolve it. It doesn't make any sense to emit two metrics with the same name, but different types.
+**Braydon Kains (Google)** 19:15 With the… with that specific point about, like, changing from int to float, that gets…
+Extra hairy with, like, the… the actual proto has, like, those, like.
+the proto just has a field for float value and a field for int value, and, like, if they're both set and they're both different, like, I don't even know how backends are supposed to
+treat that.
+**Dmitrii Anoshin** 19:38 You, you, you cannot, it's one-off field.
+**Braydon Kains (Google)** 19:40 It's a one-off, okay, yeah.
+**Dmitrii Anoshin** 19:42 Yeah.
+**Braydon Kains (Google)** 19:49 Should we maybe be… so we have… we had an RFC about the two-feature gate mode, and it was sort of predicated on this idea that we could double write, but it's seeming like we're… we're possibly running into something that wasn't discussed in the RFC. Maybe… should… should we…
+Revisit it and… and discuss it.
+on… I mean, the RFC's merged, I think.
+So, maybe we need to open an issue against the RFC and bring this up.
+**Dmitrii Anoshin** 20:18 Yeah, financially expanded, I guess.
+**Braydon Kains (Google)** 20:21 Nope.
+**Donal O'Sullivan** 20:22 Yeah.
+Yeah, I agree, I was just gonna say, like, do you just not allow to admit both at the same time?
+**Dmitrii Anoshin** 20:29 Yep.
+**Braydon Kains (Google)** 20:32 I think it would… it would help to have a…
+a practical written example of what we're talking about here. Like, two theoretical schemas, same metric name, different types, or different attributes, and, like, what happens wrong in that scenario, and you use that as an explicit, like, case for, like, we can't support double write because this will happen and everything will explode.
+**neil yashinsky** 20:56 Agreed.
+**Braydon Kains (Google)** 20:57 And we should probably write it down, too, because people are probably going
+People are probably going to want to know.
+**neil yashinsky** 21:08 I almost wonder if that's, like, worthy of…
+what's the word I'm looking back for? That insight, funneling that insight back to the Blueprints Hotels group? Because it seems like that might be an interesting pattern. I don't know if that's too specific for them or not.
+**Braydon Kains (Google)** 21:22 Oh yeah, I haven't talked to anyone on that group.
+Are you part of it and know who I might be able to message? Maybe I should message someone.
+**neil yashinsky** 21:30 Oh, yeah, I sit in on those, regularly. Yeah, it's, Dan, Dan, let me review the meeting notes.
+**Braydon Kains (Google)** 21:39 Dan Gomez? Gomez?
+**neil yashinsky** 21:41 Yes, exactly, exactly.
+**Braydon Kains (Google)** 21:42 Yeah.
+Maybe I'll see if they've done anything about this, but…
+**neil yashinsky** 21:47 I don't think…
+**Braydon Kains (Google)** 21:48 Yeah.
+**neil yashinsky** 21:48 they slash we have. I think we're still kind of working through the early parts of the template and the scope and things like that.
+**Braydon Kains (Google)** 21:54 Makes sense.
+**neil yashinsky** 21:55 But there might be guiding examples or whatever. He certainly, you know, I've forgotten more about that than he… no. He's forgotten more about it than I know, so… thanks.
+**Braydon Kains (Google)** 22:06 Because this broadly does apply to double-writing schemas, regardless of being in the collector context.
+**neil yashinsky** 22:13 Right.
+**Braydon Kains (Google)** 22:13 We're gonna work… everyone's gonna… would run into this if they tried to support Double Right.
+**neil yashinsky** 22:18 Right, and that, like, we were talking… I know, I know they were specifically talking yesterday about, what is the, the Prometheus-specific collector that their people are kind of dual operating inside of Kubernetes.
+Not the same, but similar.
+**Braydon Kains (Google)** 22:44 So I don't know who wants to take on writing that. I can, just not today.
+But either way, we can start an issue, at least on our collector RFC, about this.
+**neil yashinsky** 23:00 I would be happy to contribute, but I can't, lead it at the moment.
+**Braydon Kains (Google)** 23:06 That is fine.
+I will link the issue when I make it in our system metrics group, so you should be able to follow that and see once it's open.
+**neil yashinsky** 23:16 Fantastic, yeah. And if I have, a spare cycle, I'll definitely, add some context where I can.
+**Braydon Kains (Google)** 23:23 True.
+**Dmitrii Anoshin** 23:41 I can actually take that if, like…
+**Braydon Kains (Google)** 23:43 Okay, sure.
+**Dmitrii Anoshin** 23:44 the data model.
+I will send it once it's ready, so we can…
+I don't want to go into too much… too many details there, so I don't want to, like, cover every possible edge case to not delay that, at least, like, typical theoretical issues that we can run in, so we can at least, like, have some groundwork to build on top.
+**Braydon Kains (Google)** 24:15 Yeah.
+I think the…
+those most obvious edge cases that we found with, like, same name, different attributes, and same name, different types. I think that enough is enough to… that is enough to say that this is already a problem, let alone what other stuff we could run into.
+**Dmitrii Anoshin** 24:32 Sounds good.
+**Braydon Kains (Google)** 24:37 Cool, I'll watch out for that.
+This will be interesting, because I know the double right is…
+key to some people's, like, SEMCOMF migration plans, like, I think people sort of have the expectation that
+Like, the host metrics receiver, for example, might be able to
+Write both for a time, and then we could compare and contrast, and…
+If that's not going to be feasible on a data model level, then…
+We'll need to sort of adjust some… some of the theoretical migration plans there. And it might be a little bit more painful for everyone, unfortunately.
+**Dmitrii Anoshin** 25:25 Sounds good.
+Cool, if we don't have anything else for today, I think we can wrap it up.
+**Braydon Kains (Google)** 25:32 I think the only thing I'll bring up is not,
+not semantic conventions, right, specifically, but I have a host metrics PR, and since, Dimitri, you're the only other co-owner, I think you're the only person who can, like, technically review and approve.
+**Dmitrii Anoshin** 25:46 Sure. Send it in the chat.
+**Braydon Kains (Google)** 25:49 Yep, I will. Unfortunately, it's, kind of big.
+Sorry, in advance.
+**Dmitrii Anoshin** 25:56 And also, someone from…
+Splunk site is pinging me about, like, additional PRs, additional metrics to that receiver, specifically for Darwin, so I wanted to run it by you, because I remember you wanted to standardize that thing in some way.
+**Braydon Kains (Google)** 26:15 Oh, yeah.
+**Dmitrii Anoshin** 26:16 But they potentially want to… I don't know, should I ask them to go to Simple, but they are, like…
+Yeah, we build our own collector, and instead, we don't really care too much, so… I don't want to…
+**Braydon Kains (Google)** 26:32 Oh, yeah.
+**Dmitrii Anoshin** 26:34 So…
+**Braydon Kains (Google)** 26:37 Okay, I remember this. Let me talk to,
+Let me talk to Roger about this, because he knows a bit more about this stuff, too.
+**Dmitrii Anoshin** 26:45 Yeah, maybe at least some direction, so maybe I'll create a… I don't… I don't care too much, they can go and build their own collector anyway, it's just…
+like, I don't… I want to avoid divergence, if possible.
+**Braydon Kains (Google)** 27:01 Yeah.
+**Dmitrii Anoshin** 27:02 Give them some, like… be better citizens from one time we just had to.
+**Braydon Kains (Google)** 27:08 Yeah, that makes sense.
+the Darwin stuff is always, always, tough for me, because, I don't have a Mac, I've never used one, and so it's like, anytime there's something Darwin-specific, I'm, like.
+Googling by the seat of my pants, trying to figure stuff out. So that's why I attended.
+to push this stuff off, but… but I will… I will bring this up. Roger definitely knows more about this stuff, and we'll try and figure something out here.
+**Dmitrii Anoshin** 27:31 Okay, sounds good. Yeah, just, like, ping me, maybe in Slack, or reply to this PR if you have time. Roger, you want to… maybe I can?
+I can post it in the chat in that case.
+**Braydon Kains (Google)** 27:47 I don't think Roger's on the call today, but…
+Yeah, post it in the system metrics channel would work, or in just a DM to us, too, it'd probably be fun.
+**Dmitrii Anoshin** 27:58 Okay, sounds good, I can reach out to him. He's not from Google, right, so it's not like you have better…
+**Braydon Kains (Google)** 28:04 No.
+**Dmitrii Anoshin** 28:05 Way to connect.
+**Braydon Kains (Google)** 28:06 from Elastic.
+**Dmitrii Anoshin** 28:07 Okay, sounds good.
+**Donal O'Sullivan** 28:09 Just a heads up, Roger's in Australia, so there's a bit of a time difference at the minute, but .
+**Braydon Kains (Google)** 28:15 Okay. Oh, right, there's that elastic Australia something or other going on, right?
+**Donal O'Sullivan** 28:22 I think he's just out there for a while, I'm not sure. He's out there for a while, I think, but…
+**Braydon Kains (Google)** 28:26 Okay.
+That's fine.
+**Dmitrii Anoshin** 28:31 Cool.
+Okay, thank you, everyone.
+**neil yashinsky** 28:36 Same. Thanks.
+**Braydon Kains (Google)** 28:37 Thanks, everyone.
+**Pablo Baeyens** 28:38 you…
+**Donal O'Sullivan** 28:39 Bye-bye.
+**Pablo Baeyens** 28:39 Bye.

@@ -1,0 +1,53 @@
+## Meeting Notes
+
+### Attendees
+- Robb Kidd
+- Kayla Reopelle
+- Daniel Azuma
+- Arjun Rajappa
+
+### Agenda
+- [Spec SIG](https://docs.google.com/document/d/1pdvPeKjA8v8w_fGKAN68JjWBmVJtPCpqdi9IZrd6eEo/preview) Update (max 15 min)
+- Core ([Issues](https://github.com/open-telemetry/opentelemetry-ruby/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby/pulls))
+  - ​​robb will comment: [https://github.com/open-telemetry/opentelemetry-ruby/issues/2040](https://github.com/open-telemetry/opentelemetry-ruby/issues/2040)
+    - Robb: changed my mind - I think we should remove the .compact. Commented on Issue.
+  - Kayla will comment: [https://github.com/open-telemetry/opentelemetry-ruby/issues/2043](https://github.com/open-telemetry/opentelemetry-ruby/issues/2043)
+    - What does the spec say about how to handle 2xx responses?
+  - There’s some Ruby 4 PRs that need to be analyzed
+  - Kayla to review: [https://github.com/open-telemetry/opentelemetry-ruby/pull/2006](https://github.com/open-telemetry/opentelemetry-ruby/pull/2006)
+- Contrib ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pulls))
+  - Robb will respond: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1998](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1998)
+    - If there is a config, point it out; otherwise declarative config
+      - There’s a config for server side (rack)
+      - No config for client-side instrumentation I saw.
+  - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1927](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1927)
+    - 1.x had a security release last week
+  - Kayla: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1962](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/1962)
+    - We may have a workaround for this… is it not working?
+    - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/blob/main/.github/workflows/fossa.yml#L22](https://github.com/open-telemetry/opentelemetry-ruby-contrib/blob/main/.github/workflows/fossa.yml#L22)
+    - Checking in Gemfile lock isn’t a reproducible build because we don’t ship our Gemfile.lock in our builds
+    - As a library we shouldn’t have specific versions
+    - Is the goal for the security assessment to generate a Gemfile that used the minimums instead of the latest, we could test to make sure we’re not depending on anything without security patches
+    - How does this help our consumers?
+    - The consumers of our gem will not be using the lockfile for dependency resolution
+  - PG instrumentation PR: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1992](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1992)
+    - What telemetry is emitted from this change? Do you have to call get_result to create any spans?
+  - Related PG PR: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1991](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1991)
+  - Kayla to review: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1988](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1988)
+  - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1986](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1986)
+    - Proposal for how to archive ruby-kafka
+    - Do we just need a file somewhere that has a list of the files that used to exist?
+    - Another reason to update the Source Code links in RubyGems to link to the tags rather than main: directory it lived in + tag to the URL
+    - One last release for EOL with the correct source link for the tagged directory
+    - Daniel will take on going through our gemspecs to update the source link
+    - PR available but for git sha in URL: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1984](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1984)
+    - Daniel will respond
+  - Dalli: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1982](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1982)
+    - Find another way; don’t bring Dalli in as a dependency
+    - If we detect dalli, detect the version; if it’s greater than 4.2.0; fail the compatible? Check
+    - Kayla can check in with Hannah about this
+    - Add a test to check to see what happens if a version above 4.2 gets installed (our instrumentation should skip)
+- Burning questions?
+    - Hannah’s PR for query summary [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1918](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1918)
+    - Hannah’s work on semconv: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues?q=is%3Aissue%20state%3Aopen%20author%3Ahannahramadan](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues?q=is%3Aissue%20state%3Aopen%20author%3Ahannahramadan)
+- ✨ Happy Reports ✨

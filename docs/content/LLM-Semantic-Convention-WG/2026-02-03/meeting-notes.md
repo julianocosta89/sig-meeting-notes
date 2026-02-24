@@ -1,0 +1,78 @@
+## Meeting Notes
+
+### Attendees
+- Nagkumar Arkalgud (Microsoft)
+- John McBride (paper Compute co.)
+- Josh Bonczkowski (New Relic)
+- Dat Ngo (Arize AI)
+- Zach Groves (Datadog)
+- Anirudha Jadhav ( Opensearch-Project , AWS )
+- Neil Yashinsky (Force Multiplier Labs / [ContextCore](http://contextcore.me/) )
+- Shenoy Pratik (Opensearch-Project, AWS)
+- Shuwen Pan (Cisco)
+- Xander Song (Arize)
+- Aaron Abbott (Google)
+- Tao Chen (Microsoft)
+- Keith Decker (Cisco/Splunk)
+- Pavan (Cisco)
+- Kip Chelilim
+- Sergey Sergeev (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- [Nagkumar] - Security spec -  - [https://github.com/nagkumar91/semantic-conventions/blob/gen-ai-security-guardian/docs/gen-ai/non-normative/security_implementation_gen_ai_spec.md](https://github.com/nagkumar91/semantic-conventions/blob/gen-ai-security-guardian/docs/gen-ai/non-normative/security_implementation_gen_ai_spec.md)
+  - **Call to action to review  [https://github.com/open-telemetry/semantic-conventions/pull/3233](https://github.com/open-telemetry/semantic-conventions/pull/3233)**
+  - Introduces some new security semantics around A2A, MCP, etc.
+- [Surya] - Anthropic streaming and async instrumentation
+- **Call to action to review ^**
+- Python SDK: visible instrumentation on Otel sem conv for Anthropic: then people can get it off pypy
+- Need additional reviewers! **Anyone else interested in reviewing PRs targeting Anthropic for Py SDK?**
+  - @Neil volunteered!
+  - @ani too! Anirudha - https://github.com/anirudha
+- [John] Show / tell - just open sourced, working on providing client spans: [https://github.com/papercomputeco/tapes](https://github.com/papercomputeco/tapes)
+  - State of the Go SDKs? [https://github.com/open-telemetry/opentelemetry-go](https://github.com/open-telemetry/opentelemetry-go)
+  - FYI seperate SDK / language WG - [https://github.com/open-telemetry/community](https://github.com/open-telemetry/community)
+- [Pavan] ongoing PR implementing [session.id](http://session.id) in GenAI utils - [https://github.com/signalfx/splunk-otel-python-contrib/pull/186](https://github.com/signalfx/splunk-otel-python-contrib/pull/186). Issue - [https://github.com/open-telemetry/semantic-conventions/issues/2883](https://github.com/open-telemetry/semantic-conventions/issues/2883)
+  - Working with Splunk - how can session ID be set, how can it be propagated between boundaries (client agent, etc.)
+  - Bringing in “agent orchestrator” (A2A protos) so sessions can propagate between them: session umbrella.
+  - **Looking for feedback, PR review ^**
+  - @Aaron - anything blocking opening PR to actual upstream? These changes have been on Splunk clone.
+    - Goal to show how easily this can be utilized by instrumentation (and how it’s already being used)
+    - Open draft PR (if large), smaller chunks ideal
+    - Future demo
+- [Ankit] [Add `responses` operation value to `gen_ai.operation.name` by singankit · Pull Request #3337 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3337)
+  - Introduces new `gen_ai.api.type` for defining “chat.completions”, “responses, etc. API
+  - **Request for review -** @Aaron seems like the right direction, centralize on naming
+  - @Tao Chen - how is this different from “operation” name?
+- [Surya] Need help in merging this pr from Minghui [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3994](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3994)
+  - Adding content capture stuff on Anthropic instrumentation in Py SDK
+  - **Request for review**
+- If folks are interested and time permitting
+  - Intro to [ContextCore](https://contextcore.me/) Business Observability Semantic Layer I guess…
+    - Extrapolate human readable formats implementing multiple OpenTelemetery and A2A specifications to define Business Observability semantically.
+    - Create more clarity without more tools
+    - Programmatic meta-data generation from project management tools to derive observability strategies
+    - Project Management via time series databases
+    - Create a shared meta data layer for business and technical teams.
+    - Embed business context into observability tools including K8s CRDs, alerts, notification policies, etc.
+    - Uses traces and spans for agent tasks
+    - Agent optimized data storage for context optimization
+    - Timeseries DB for
+      - agent skills
+      - Lessons learned
+      - Agent task tracking
+    - Persists agent session details
+- [Anirundha]
+  - ADOT Session description
+  - Proposal to describe evaluation input
+- [Sergey]
+  - Checked on session propagation to the child span
+    - Need a demo and a proposal
+    - **action item**: Sergey to demo SDOT implementation and update the proposal with the example
+  - How to set a session in the OTel way (traceloop, langfuse, etc use custom method of the instrumentation library)
+    - Can use OTel baggage
+    - util-genai can be configured to stamp all or some of the baggage attributes on every span
+    - **action item**: Sergey to implement and demo in SDOT
+  - agent_name and workflow_name propagation from the parent to child spans
+    - LLM usage and duration metrics
+    - **action item**: Sergey to make a proposal and demo using SDOT util-genai

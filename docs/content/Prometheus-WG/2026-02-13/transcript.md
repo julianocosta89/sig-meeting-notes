@@ -1,0 +1,534 @@
+SIG: Prometheus WG
+Date: 2026-02-13
+Duration: 54 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**David Ashpole (dashpole)** 01:51 Hey, welcome, everyone.
+If you have topics you want to discuss, make sure you add them to the agenda.
+**Arthur Silva Sens** 02:01 Oh, no.
+**David Ashpole (dashpole)** 02:02 Hmm.
+**Arthur Silva Sens** 02:04 got AI reading.
+Didn't really…
+**David Ashpole (dashpole)** 02:46 Nice, it left.
+**Arthur Silva Sens** 03:03 I put two topics there.
+Not sure what we want to talk about first, though.
+What are people more interested in?
+Prometra's receiver, or they spec?
+**David Ashpole (dashpole)** 03:22 I think the receiver, maybe.
+**Arthur Silva Sens** 03:31 Goodbye.
+I'm not at my place now, I can't share my screen very, very well.
+**David Ashpole (dashpole)** 03:42 You want me to go to the project board, or what should I share?
+**Arthur Silva Sens** 03:44 If you can, that would be awesome.
+**David Ashpole (dashpole)** 03:49 This is it?
+**Arthur Silva Sens** 03:52 Yes.
+So, for this one, if I remember correctly, Braden? Braden? I don't remember his name exactly.
+**David Ashpole (dashpole)** 04:09 Braden Keynes.
+**Arthur Silva Sens** 04:10 Braden, he offered to, write down, RFC.
+**David Ashpole (dashpole)** 04:15 Yeah. That unblocks us.
+**Arthur Silva Sens** 04:17 But I don't know if he had the chance to do it.
+**David Ashpole (dashpole)** 04:20 Let me ping him. He's… I work pretty closely with him.
+**Arthur Silva Sens** 04:24 Cool.
+But, like, it… Is there a chance that he cannot work on this?
+**David Ashpole (dashpole)** 04:35 I'll ask. I think he does plan to work on this.
+**Arthur Silva Sens** 04:46 Okay.
+I was just wondering… If it doesn't work, like, what should we do?
+**David Ashpole (dashpole)** 05:02 No. Me market is not stale.
+Let me also maybe mark it not help wanted right now.
+And where's that linked?
+**Gregor Zeitlinger** 05:39 Hello.
+**Arthur Silva Sens** 05:41 Whoa.
+What exactly are you looking for, David?
+**David Ashpole (dashpole)** 05:45 There was an issue in the collector repo, right?
+**Arthur Silva Sens** 05:49 Yes.
+**David Ashpole (dashpole)** 05:50 Yes.
+**Arthur Silva Sens** 06:11 And once we opened the issue, we got some… AIs love yours.
+**David Ashpole (dashpole)** 06:17 We did indeed.
+**Arthur Silva Sens** 06:18 Good.
+That's what… I think this is one of the comments from AI, so…
+**David Ashpole (dashpole)** 06:25 Yeah, yeah.
+Okay.
+I… I pinged Braden. I'll… Maybe he'll ping back by the time the, meeting's over.
+**Arthur Silva Sens** 06:36 Cool.
+**David Ashpole (dashpole)** 06:37 So what else do we have? We have a deprecation…
+Did the next release happen yet? This might be actionable.
+**Arthur Silva Sens** 06:44 I don't remember.
+We can remove on, we are still looking at the self-observability issue, though.
+**David Ashpole (dashpole)** 06:53 Oh, sorry, yep.
+Yeah, so this one, I think…
+We're just waiting on a release.
+**Arthur Silva Sens** 07:03 1.45 is out already.
+**David Ashpole (dashpole)** 07:06 Okay.
+**krajo** 07:24 Can you hear me, David?
+**David Ashpole (dashpole)** 07:26 Yes, yes. Yep.
+**krajo** 07:27 Oh, cool.
+Yeah, so this is my first time trying this, on default. Anyway, you can ask, assign me some tasks. The last one I…
+finished, or… well, there was nothing to do, I just… Closed it.
+So, you can assign something.
+**David Ashpole (dashpole)** 07:44 Okay.
+This one should be pretty trivial, if you want,
+To move a feature gate from beta to stable.
+Probably just means deleting some tests.
+**krajo** 07:58 Yeah, that's a good issue for me, because I've never done it, so it's also kind of discovery.
+**David Ashpole (dashpole)** 08:03 Okay.
+It's yours.
+Awesome.
+Oh, cool.
+I think somebody… no, nobody… someone opened a PR for this for the remote right exporter, maybe.
+**Arthur Silva Sens** 08:32 Yeah, it was for the remote, right.
+**David Ashpole (dashpole)** 08:35 Yeah, this is a big chunk of work.
+Let's go back to that, documentation.
+**Arthur Silva Sens** 08:46 I don't know what to do with documentation.
+I feel like this is something that needs to be worked on the collector's sick, like, they come up with…
+Patterns or criteria that they like to see?
+I don't know.
+Can we look at the… on the issue… the issue description, there is a list of things that we… we need to do.
+**Owen Williams (he/she)** 09:16 Do we know… oop, I'm not… video. Do we know which of these things we are missing, or is it… because this just looks like a basic… yeah, this is just a basic list of all the things we do need. So is it… is the first step just to be to go through this list and figure out what we have and what we're missing?
+**Arthur Silva Sens** 09:31 Probably, yeah.
+**David Ashpole (dashpole)** 09:33 Probably.
+Okay, yeah, so let's write that.
+**krajo** 09:47 Does that mean that you are volunteering, Owen?
+**Owen Williams (he/she)** 09:51 I was hesitating, because I'm trying to figure out if that's something I have
+realistic time for. Sure, throw me down for now, and then…
+as is tradition, in two weeks, I can be like, oops, that's not actually happening.
+**Arthur Silva Sens** 10:04 I.
+**Owen Williams (he/she)** 10:06 But this seems like.
+**Arthur Silva Sens** 10:07 I don't need to…
+**Owen Williams (he/she)** 10:08 This seems like a thing that's fairly straightforward that I can do.
+**Arthur Silva Sens** 10:12 Like, but, like, I think it would be very bad if we tell the community, hey, Owen is doing this, and you don't find the time. Like, we don't need to pressure you. Like, if you find the time, that's great. If somebody else do it, that's fine as well.
+**Owen Williams (he/she)** 10:27 I… yeah, I'm okay with grabbing… grabbing the… the baton.
+For now. And then… and then if… and then if it's… and then if it seems that it's not happening, then I can…
+find somebody else to pass it to. But yes, I'm happy to be… I'm happy to be responsible for that first step.
+**Arthur Silva Sens** 10:45 Okay.
+**krajo** 10:46 You can put me as well as helping, because I need to ramp up.
+works in auto.
+So feel free, Owen, to assign me tasks if you want, but I'll take a look as well.
+**Owen Williams (he/she)** 11:02 Thank you. Cool.
+**David Ashpole (dashpole)** 11:05 I also… Don't think this…
+Will be the, the thing that ends up holding up the, like, 1.0 cut of…
+the collector or something, right? Like, it…
+We have documentation, it's just organic, and, you know.
+Could, of course, do with the reorganization and maybe missing things, but, yeah.
+This is very good to do, just from a…
+Like, it will make all of our lives easier when people open fewer issues thing.
+There we go.
+Awesome. Awesome, awesome.
+Okay, and now we're on to the spec.
+Okay, so I think we have…
+two PRs open right now, the histograms and the summaries one.
+**Arthur Silva Sens** 12:16 Yes.
+Let's take a look. Those are very basic PRs, the things that I think it's very hard to get it wrong.
+**David Ashpole (dashpole)** 12:26 Yeah.
+**Arthur Silva Sens** 12:26 Eventually, we'll get to the difficult ones, like target info.
+Native histograms, and stuff like this.
+**David Ashpole (dashpole)** 12:36 Yes.
+Yeah, I only had, like, editorial comments on that.
+**Arthur Silva Sens** 12:43 We'll take a look today.
+**David Ashpole (dashpole)** 12:45 And thank you for… Sorry, I should reassign these to you.
+**Arthur Silva Sens** 12:51 Okay, so…
+**krajo** 12:52 Did… sorry, did someone… From native Instagram maintainers, Bjorn or myself, look at this.
+Probably not, right?
+**David Ashpole (dashpole)** 13:01 You were on the original PR that added native histogram spec stuff?
+**krajo** 13:06 Yeah, probably.
+**David Ashpole (dashpole)** 13:07 And so it's just, like, as we're going to stability, like, we should definitely re…
+Like, look through it again, compare it to the most recent stuff we've been talking about, and make sure everything still makes sense.
+**krajo** 13:18 Perfect.
+**Arthur Silva Sens** 13:19 Once we declare it stable, we… We are making a promise.
+the… the transformation from native histogram to OTLP will continue to be the same.
+So that's just what we mean.
+By making it stable.
+I promise.
+**krajo** 13:42 Yeah. Right. I mean, the primitive side is stable.
+So, I think this is fine. There's one thing that might…
+introduce some nuance here is Open Matrix 2, but we'll see if that…
+**Arthur Silva Sens** 14:00 OpenMetrics 2 might bring changes to native histograms.
+**krajo** 14:06 No, but… Sir?
+**David Ashpole (dashpole)** 14:09 there'll be a text representation of Native history.
+**Arthur Silva Sens** 14:12 Yeah, yeah.
+**David Ashpole (dashpole)** 14:12 Hasn't been before.
+**krajo** 14:15 Yeah, and there's…
+one discussion ongoing about, you know, how do you convey that a histogram is an HCB or classic?
+when it's packaged as an explicit histogram in Utah Word or an HCV in Prometus Word. Because there's a question, like, how do you treat it when you unpack it or un…
+You know, decomposes.
+**Arthur Silva Sens** 14:43 Let's assign Cryo for this one, the native Instagram.
+**David Ashpole (dashpole)** 14:47 8 of his scrums? Okay, let me find it.
+**krajo** 14:50 Yep.
+**David Ashpole (dashpole)** 14:52 The only issue is… I can't seem to…
+The number of people I seem to be able to assign is, like, zero in the spec repo.
+**Arthur Silva Sens** 15:05 That's Cryorama, if you put the full name, maybe it goes right.
+What?
+Yeah, I have no idea how this works.
+**krajo** 15:16 Maybe I have to comment on it or something.
+I'll do that one.
+Yeah, I'll do that once I'm with a laptop, not on mobile.
+**David Ashpole (dashpole)** 15:30 Let me open this in a new… Sorry.
+**Arthur Silva Sens** 15:38 Zoom.
+Okay, that'll switch.
+**David Ashpole (dashpole)** 15:44 Later.
+Okay.
+I will just… Mention that you're gonna work on it.
+**Arthur Silva Sens** 16:16 Like, do… what do you all think, like, Can we stabilize everything?
+But… Target info, scope, And what else?
+**David Ashpole (dashpole)** 16:30 I mean, I think scope, target info are maybe the most controversial.
+**Arthur Silva Sens** 16:39 Let's stabilize everything, but those two in the next two weeks. Is that reasonable?
+**David Ashpole (dashpole)** 16:48 I think so.
+I would really like to stabilize scope. I feel like that's not actually…
+Very, controversial, it's just we haven't implemented it.
+**Arthur Silva Sens** 17:01 Yeah, yeah, I would like to see the PR getting merged.
+Before we… stabilize.
+**David Ashpole (dashpole)** 17:10 And then I think Target Info will be the last.
+Big, like… Question.
+**Gregor Zeitlinger** 17:16 Scopes are already implemented in the Java client?
+**Arthur Silva Sens** 17:21 Yeah, not in the premises receiver.
+**Gregor Zeitlinger** 17:24 Okay.
+**David Ashpole (dashpole)** 17:24 On the right.
+Cool. Is there anything else, related to either the spec or the…
+Prometheus receiver people wanted to talk about?
+**Arthur Silva Sens** 17:49 I remember another thing, the appender V2 thing.
+**David Ashpole (dashpole)** 17:52 Oh, yeah.
+**Arthur Silva Sens** 17:53 do we want to… I realize I said something very incorrect in the Slack channel. We can upgrade Prometheus without migrating to V2.
+But, like…
+I feel like this is a big chunk of work that we want to get it correct before our stabilizing.
+What do you think, like… Do you… are you confident with stabilizing without migrating first?
+**David Ashpole (dashpole)** 18:24 Yes? As in… Like, if… if we… if we move to a Pender V2, I… I think…
+it's like, there's just risk if we wait, right? If we wait and don't move to a penderv2, and then Prometheus removes appender V1, and then we discover that it doesn't work, like, yeah, then we're all gonna be, like, dropping everything we're doing, and…
+having to put out the fire, right? So, I…
+But we would still go upstream to Prometheus and fix it, and, like, figure out how to make it work, right?
+But I think it's more a risk on that front than, like…
+We would break our stability guarantees or anything as a result.
+I don't think that that would be the outcome either way.
+If that makes sense.
+I think it's.
+**Arthur Silva Sens** 19:16 Yeah, that's… I feel… I guess I'm just a little bit anxious.
+A lot of work.
+**krajo** 19:26 Arthur, to be… So, to put this into perspective.
+Like, this up-ender V2 comes from an idea that David and I had for the OTRP, Receiver in Prometus.
+**David Ashpole (dashpole)** 19:39 So, basically, it's…
+**krajo** 19:41 kind of was tailor-made for OTLB.
+So, I… I hope… maybe it's a lot of work to put it in there, but I don't think it's very risky.
+**Arthur Silva Sens** 19:52 Got it.
+When I tried, I saw some… some bugs there, mostly on saleness markers.
+But, yeah, okay, like, if you are… you two are confident, then, I'm happy…
+To agree with you.
+**David Ashpole (dashpole)** 20:13 Yeah, the work that I did was mostly, like.
+Migrating the remote… the equivalent of migrating the remote write exporter.
+to use the appender v2 interface?
+But… it should… I agree that, like, data model-wise, I don't have any big concerns.
+**Arthur Silva Sens** 20:34 Coop?
+**David Ashpole (dashpole)** 20:49 I haven't been going to the stability working group on Mondays. I have… I've had a conflict.
+Do you know how close they are to wanting to mark the… Collector stable?
+**Arthur Silva Sens** 21:03 Not closed at all, mostly because some very important components don't have coders.
+For example, file log, receiver, and resource… Oh, resource detector, processor…
+**David Ashpole (dashpole)** 21:20 Only me.
+**Arthur Silva Sens** 21:22 it has.
+But, like, not enough.
+**David Ashpole (dashpole)** 21:25 Yeah, yeah, I own it because if I stepped down, then there would be no owners, but…
+**Arthur Silva Sens** 21:29 Yeah.
+**David Ashpole (dashpole)** 21:30 I hope… review PRs, I don't… I can't work on it.
+**Arthur Silva Sens** 21:34 Yeah, so the challenge… the challenge there is finding cod owners for those two…
+Components, and then drive the work to stabilize them.
+**David Ashpole (dashpole)** 21:44 Yep.
+Okay, well, it's at least good to know that we're not the…
+We're not the only ones holding things up, you know.
+**Arthur Silva Sens** 21:57 Yeah, yeah.
+So the other topic there, stabilizing the Prometus Exporter spec, This is also blocking.
+The collector view what?
+Because they… they want to…
+they want to adopt the declarative config as well, and take, like… there is an initiative in OpenTelemetry that everything that is enabled by default needs to be stable.
+**David Ashpole (dashpole)** 22:27 If users want to use anything that is not stable, they need to use feature gates, a special flag, or anything.
+**Arthur Silva Sens** 22:35 Similar.
+Yeah. And the Prometheus… the… The piece of configuration
+that configures how Prometheus metrics are exposed is declared… is experimental today.
+**David Ashpole (dashpole)** 22:50 So, collector cannot adopt.
+**Arthur Silva Sens** 22:53 This configuration if we don't destabilize it.
+**David Ashpole (dashpole)** 22:57 Okay.
+**Arthur Silva Sens** 23:00 I… I think the only piece that is missing…
+It's stabilizing the translation strategy, and everything else is stable already.
+**David Ashpole (dashpole)** 23:10 Well, and the actual… OTLP to Prometheus data model part, right?
+**Arthur Silva Sens** 23:17 Oh, yes, right.
+**David Ashpole (dashpole)** 23:18 So, and that's… yeah.
+once… once… I feel like once we've stabilized One Direction.
+The other direction should be… maybe a little bit…
+Less con… like, once we make a decision, for example, on whether target info is gonna be what we stick with, or if we need to add any language to that.
+To support.
+Or to future-proof or something, or leave it disabled, like, we can just make the same decisions on the exporter side.
+Fair.
+**Arthur Silva Sens** 23:53 We could also leave some… something experimental.
+And, tell people to implement feature gates.
+**David Ashpole (dashpole)** 24:02 Yes, we can do that too.
+**Arthur Silva Sens** 24:09 Okay, so… So there… there are two…
+work streams there. I think translation strategy is not gonna be that easy.
+We've… I've been discussing with Gregor.
+**David Ashpole (dashpole)** 24:25 Oh, yeah.
+**Arthur Silva Sens** 24:25 that… and Owen as well, like, it's not easy to stabilize all the options, because it violates OpenMetrix 1.0.
+And some main… some Prometus maintainers don't like that.
+So, for example, David, if we tell people… if somebody uses a translation strategy that removes suffixes.
+Open metrics demands, like, it's a must that they need to be present.
+**David Ashpole (dashpole)** 25:00 Yes.
+But the plan was always that
+Sorry, don't… let me find the…
+It's a good discussion to have.
+**Arthur Silva Sens** 25:19 SDK…
+**David Ashpole (dashpole)** 25:21 Supporters.
+Prometheus.
+So what do we have?
+So, what you're saying is if someone uses, for example, no translation.
+And then scrapes it with open metrics, what should happen?
+**Arthur Silva Sens** 26:06 Yes.
+**David Ashpole (dashpole)** 26:10 I think, in that case, you should still get the suffixes.
+I think the harder part is explaining it to users, or making that clear.
+Because… Like… If you use a Prometheus client today.
+And add a metric without a suffix.
+Right, like, if I use Prometheus Client Go and define, like, my metric, Without a suffix.
+And then scrape it with open metrics.
+And I have a unit defined, like…
+Presumably, I'll get the suffix added by… the client library?
+Or, like.
+**Arthur Silva Sens** 26:51 Yep.
+**David Ashpole (dashpole)** 26:52 It's like… and that's the behavior that we should probably end up having, is like, no translation is just as if someone used the Prometheus client and gave it that name.
+**Arthur Silva Sens** 27:02 I think we put some notes down there, like content negotiation and how content negotiation interacts with translation strategy.
+But apparently, some… Apparently, this is impossible for a few Prometus exporters.
+**David Ashpole (dashpole)** 27:20 Really?
+**Arthur Silva Sens** 27:21 Dead… yeah, go ahead.
+**Owen Williams (he/she)** 27:23 So yeah, the whole intent of no translation is you get the metric name as it was defined in the code. Nothing added, because the intent is that if there's a unit, it's passed through metadata, or if there's a type, it's passed through metadata.
+The idea is no mutation of the name as defining code. It is not…
+do what Prometheus does. That's not… that's not what this is supposed to do. That would be…
+One of the with suffixes options.
+**David Ashpole (dashpole)** 27:54 So do you… do you think that if someone tries to scrape that with… if someone sets no translation and then tries to scrape with open metrics.
+Should it just, like, fail all the scrapes? Is that the right thing to do?
+**Owen Williams (he/she)** 28:07 So, are you talking about Open Metrics 1 or 2?
+**David Ashpole (dashpole)** 28:09 Yeah, yeah, someone screamed.
+**Owen Williams (he/she)** 28:11 Yeah, okay, so, yeah, this is, this is, this is where the, the…
+Basically, this was written with Open Metrics 2 in mind.
+This is kind of out of scope for Open Metrics 1. I think there's a good argument to say that Open Metrics 1 should not respond to the escaping term, and should just always do the Prometheus translation.
+And that we have de facto Open Metrics 2 implementations that have started to respond to it. If that's… if people want to go by, sort of, the letter of the spec, I think that sort of…
+the way…
+it would read. But this is something where the Go implementation kind of ignores it and just allows you to do the escaping thing. But if we're drawing a distinction between open metrics 1 and 2,
+I'd say that OpenMetrics 1, because it requires suffixes, cannot support no translation.
+And so I think… I think if you say… if you say, I am requesting OpenMetrix 1, and I am requesting escaping of no translation, then that should fail a scrape, because that's an incompatible…
+request.
+**Gregor Zeitlinger** 29:23 I also have a question, is the same true for using dots instead of underscores, or is that a different discussion?
+**Owen Williams (he/she)** 29:32 Yeah, I mean, it depends what Open Metrics 1 says about characters, if Open Metrics 1
+does not support dots, then it doesn't support dots.
+**David Ashpole (dashpole)** 29:43 That's… I think it doesn't… it says it doesn't support dots.
+But I thought that ship had already sailed, that when we implemented UTF-8 support, we just did it everywhere.
+**Owen Williams (he/she)** 29:53 Exactly, yeah, that's my point, and that is… it's the question of, are we insisting that the code be…
+comply to the wording of the spec exactly, and if people want to do that, then that's fine, and we can roll back the support that we've written, and wait till we actually push out. This is why I want to get 2.0 out, so that then this question kind of goes away, and we just sort of say, whoops, we kind of messed up that
+transition, now you've got OpenMetrics 2.0, which supports all these modes, and there's no question. So, for me, the priority is get OpenMetrics 2 out.
+And then… People can handle 1.0 however they want.
+**Gregor Zeitlinger** 30:32 Reason I'm asking is, if the question comes up, is it allowed that my client,
+as studs, and I think the answer is yes, then. Just wanted to make sure.
+**Owen Williams (he/she)** 30:43 Yeah, I think… Put it this way, adding support
+For dots, does not break anything.
+else. It only adds… it only lets it read something that technically the spec says shouldn't be legal, but it…
+does not break anything if you are… if you're serving OpenMetrics 1, it'll… it'll still work. So, in that sense, it is… it is a compatible change in that nothing breaks. It just means that it can read something that's not quite
+spec compliant.
+**Gregor Zeitlinger** 31:18 Okay.
+**Arthur Silva Sens** 31:20 Yeah.
+**David Ashpole (dashpole)** 31:20 Sorry.
+**Arthur Silva Sens** 31:21 Prometheus.
+**David Ashpole (dashpole)** 31:23 Yeah, go ahead, Eric.
+**Arthur Silva Sens** 31:24 For me, it's very confusing.
+and OpenMetrix says something, and Prometus accepts… when… when accepting OpenMetrix, it doesn't… It doesn't care.
+Like, we just do whatever we feel is right.
+Or, like, do we want to be compliant to OpenMetrix, or do we want to be compliant to Prometes?
+**Owen Williams (he/she)** 31:48 It's kind of… yeah, hold on, I have to go back, but yeah, sorry.
+**David Ashpole (dashpole)** 31:58 I mean, I think we should try and…
+So, my issue right now is that Like…
+We're defining a bunch of config options.
+And people choose these at startup, and then people scrape dynamically, so, like…
+you can choose no translation and then can scrape with any of the protocols, right? So, like, we have to define behavior for what happens for no translation and open metrics.
+**Arthur Silva Sens** 32:28 Yeah, like… But, like, if you have something, and you choose null translation, and you choose open metrics.
+It is true, you are violating open metrics, but Prometheus will accept it. Like, Prometheus will scrape your metrics without the fixes, without, like, with dots.
+And it will work, even though it's not compliant to open metrics.
+**David Ashpole (dashpole)** 32:52 Bye.
+I think…
+It's like, in some ways, right, it's unclear to me who's ultimately responsible, like, should the server be rejecting, or should the clients be sanitizing?
+**Owen Williams (he/she)** 33:18 put it this way, I think it is…
+I think it is acceptable for a system, when it receives a scrape.
+that's asking for open metrics and no translation to say, that's not spec compliant, I'm not doing that.
+The reality is, we have a system
+That happily accepts that and passes it along.
+Which is…
+fine, because we, you know, both pieces agree, and that's okay. I think it is acceptable to say, hey, that's not a valid combination.
+And then once Open Metrics 2 comes out.
+as long as you're saying, hey, I want OpenMetrix 2, then that's a valid combination, everything works again.
+I think… if… Yep.
+Go ahead.
+**krajo** 34:10 Yeah, so… My read on the question that David raised is that
+Currently, it is the server that is, you know, deciding what it accepts or not, and the client is, changing what it gets. It's not sanitizing it, it's changing it, and I think
+I think this…
+we learned the hard way that this is not great. So, in the future, I think with Openetrix II,
+It should be… That the server doesn't really…
+Verify things, it accepts what it gets.
+And and the client is sanitizing. It's not…
+changing, but it gets just sanitizes. So, in my head, we have talked about this pedantic registry, meaning that
+if I want to get Prometus, Or whatever compliant names.
+the client should just reject or accept what you've tried, but shouldn't change it. So the…
+The bright future would be, or the, you know,
+desired future, in my head, would be that the SDKs, deal with this.
+**David Ashpole (dashpole)** 35:20 So, can I ask a follow-up to that?
+So if somebody asks… For no translation.
+And then scrapes with Open Metrics 1.
+What… what do you think the resulting behavior should be?
+If the clients are the ones dealing with it.
+That's to you, Cryo.
+**krajo** 35:42 Oh, that's for me. Well, I guess…
+that kind of thing already exists, so I would say reject, but
+that's not the reality. Like, I think we should reject it, but…
+that's not what happens. So, I think… We need to be, like,
+more clear with OpenMetrix 2, and more clear with expectation on SDKs in the future.
+**Arthur Silva Sens** 36:14 Owen, go for it, I'm gonna change topics.
+**Owen Williams (he/she)** 36:17 Yeah, I think, again, it matters…
+what version you're asking for. I think, for now, we're in this…
+incorrect period. I think when Open Metrics 2 is released, then I would be happy to change the behavior of Prometheus and start
+rejecting… No translation, if you're asked for open metrics 1.
+And then, if you're asked for Open Metrics 2, that's compatible, that's a valid combination. So it's version dependent.
+I don't think we should fix it before…
+**David Ashpole (dashpole)** 36:50 That feels like a big breaking change for a lot of users, though. No?
+Can we ever start rejecting things that we previously accepted?
+**krajo** 37:02 I don't think so. So that's going to remain broken, basically, but…
+**Owen Williams (he/she)** 37:06 Yeah, yeah, that's fair.
+**krajo** 37:09 Yeah.
+**Owen Williams (he/she)** 37:10 So this way, for the code path where it is working for Go, Python. Keep…
+maintain that, but if anybody's writing, like, Java hasn't done it, Rust hasn't done it, Ruby hasn't done it, they can start with…
+And, you know, maybe there'll be a mailing list thing that says, oh, my Go thing works with OpenMetrics, but then I try it with Java and it doesn't, and it's like, well… I don't know, I feel like this problem sort of goes away magically because Prometheus will be asking for Open Metrics 2.0.
+And unless somebody's on an old version, I just don't see how they'll see this problem, necessarily. But it seems like an edge case.
+**David Ashpole (dashpole)** 37:48 What if we change the wording just to say that no translation does the minimum amount of translation necessary to be compliant with the protocol? Something like…
+**Owen Williams (he/she)** 38:00 The… the whole point of no translation is, does not alter.
+If it cannot serve that metric.
+without altering it, it's gotta fail it.
+Because that's… that's the… that's the one… that is the one thing we were asked from all the hotel people, was stop mutating my metric names, do not mutate. And I… the intent is, if you say no translation, it does not mutate.
+**David Ashpole (dashpole)** 38:28 Okay.
+then I think we… And I think probably the resolution has to be something like… If someone scrapes…
+Open Metrics 1 on an endpoint that's configured with no translation, and includes
+Any… and their metric names violate any of the rules, then the scrape will just fail.
+**krajo** 38:49 Well, you can say, It's undefined what will happen, because it depends on the servers, you know.
+**David Ashpole (dashpole)** 38:57 Sure, sure, sure. Assume…
+Assume the server is lazy and accepts it, or… and doesn't care. Like, should the client side fail? Or I…
+It feels weird… right, it feels weird to be sitting on both sides of the table going, this thing is not allowed, but as a client, I'm going to allow it, and as a server, I'm also going to allow it.
+**Owen Williams (he/she)** 39:21 I think it's… yeah, go ahead.
+**Arthur Silva Sens** 39:23 Can I jump in? I, we started this conversation
+About, like, how to stabilize this pack.
+Okay. Because… because collector needs to be stable by default, and it depends on this part of the spec.
+I can't… to move things forward and allow collector to be stable.
+Could we suggest them to use feature gates for this piece of configuration?
+And then we… We'll take our time to stabilize things.
+**David Ashpole (dashpole)** 39:54 Yeah, I mean, it is… the config is a may.
+Today.
+So we could leave it in development, and then people who want to implement it can implement it, and they can still stabilize.
+I think, but it's… Like, it is…
+I guess from my perspective, it's concerning if…
+Like, we don't think that this is…
+like, I'd rather answer the question now. I don't know if I'm arguing
+Or if… if I understand the point of the Java maintainers properly, but…
+Yeah, anyways, we can move on to another topic, sorry.
+**Owen Williams (he/she)** 40:35 Yeah, yeah, that's okay. I think, I think the last thing I would say is I'm… I'm personally comfortable with the idea that we have a spec that says one thing, and we have a reality on the ground that's a little different.
+That we try to contain, and…
+You know, I don't necessarily insist that that mistake propagate to all the other
+SDKs. I just think that…
+problem goes away once OpenMetrics 2.0 comes out, in a lot of ways. I have trouble imagining somebody who is on a way old version of Prometheus that doesn't support OpenMetrix 2.0, but does want UTF-8 and no translation anyway.
+**David Ashpole (dashpole)** 41:15 I would…
+**Owen Williams (he/she)** 41:16 Yeah.
+**David Ashpole (dashpole)** 41:17 I would personally like if someone who's in contact with the Java people that have raised this.
+**Gregor Zeitlinger** 41:23 One of the maintainers?
+**David Ashpole (dashpole)** 41:25 Okay, I just… I'd like to have an issue somewhere where we can track this.
+And put it in our project board, and…
+I want to make sure I properly understand the concerns of the people that raise this, so that we can make sure that it is addressed.
+I don't know if… I don't know if we've… has the conversation been helpful? Like…
+Have we actually captured what they're…
+Concerned about, or are we just talking about other random things?
+**Gregor Zeitlinger** 41:53 And… So, I thought it was clear from the conversation that,
+we have, reservations about implementing the translation strategies, because we would break open metrics 1. This is all that's about. But how can I answer you… your question? I'm not sure how I can do that.
+**David Ashpole (dashpole)** 42:17 I guess, what… what have we… we've proposed?
+maybe some solutions, right? One is… Yep. Cool.
+**Owen Williams (he/she)** 42:24 Yeah, can I pro- can I propose?
+**David Ashpole (dashpole)** 42:26 I guess… I haven't heard any, or…
+I'd like a place where we can discuss and come to a common… agreement with…
+you folks who have concerns. That's all I'm asking for.
+**Gregor Zeitlinger** 42:37 Well, it's not with the Java maintainer folks, it is that we had put it on the agenda of,
+Prometheus Developer Summit, we also talked about it.
+**David Ashpole (dashpole)** 42:50 Okay.
+**Gregor Zeitlinger** 42:51 But maybe I'm misremembering, because Arthur is saying that we had put it on there, but we didn't discuss it, but,
+when I talked to the other Java maintainers, we decided that we don't want to make a unilateral decision and want to wait
+to get consensus from the Prometheus maintainers.
+But if they are okay with breaking the, open metrics back.
+**David Ashpole (dashpole)** 43:23 Okay.
+**Owen Williams (he/she)** 43:24 Yeah, I think, I think my, my proposal…
+So if proposal one is, go ahead and break open metric spec, Proposal 2 is…
+Because this says May, don't implement it for Open Metrics 1, only implement it for Open Metrics 2.
+And then there'll be this little… there'll be this difference where Go does work with Open Metrics 1, and Java doesn't work with Open Metrics 1 when you try to do that negotiation, but I think that's…
+you know, okay, we messed up, but, like, I'm… I'm okay with that situation.
+**Gregor Zeitlinger** 44:00 We're not making it worse for anyone who's already using it, right?
+**Owen Williams (he/she)** 44:05 That's my… yeah.
+**Gregor Zeitlinger** 44:08 So…
+**Owen Williams (he/she)** 44:09 Like I say, there might be this… yep.
+**Gregor Zeitlinger** 44:11 Sorry.
+**Owen Williams (he/she)** 44:12 There might be this situation where somebody is scraping multiple endpoints, one is Go, one is Java.
+And it works with Go, and it doesn't work with Java, they post to a mailing list, and we say, so sorry, this was a mistake, Go wasn't supposed to support this, please wait till Open Metrics 2 comes out, which will definitely be soon, and then it'll just start working. And I think that's acceptable to me.
+**Gregor Zeitlinger** 44:37 What we could support in Java is,
+Having two of the four values, because,
+UTF-8 with suffixes is possible. I don't know if that is helping anyone, but, this would still work.
+**David Ashpole (dashpole)** 44:54 it also… it also violates the open metrics spec. Yeah, that's… it was never part of the open metrics.
+**Owen Williams (he/she)** 45:01 Fantastic.
+**David Ashpole (dashpole)** 45:01 But we implemented it anyways.
+**Gregor Zeitlinger** 45:03 Oh, okay. So, I understood that differently, okay.
+**Owen Williams (he/she)** 45:06 I think it would be cleaner and more understandable for people if open metrics won, you don't get any of that new stuff.
+And you just say, hey, it's only supported in Open Metrics 2, and then… and then I think…
+That feels… That feels cleaner to me. That's what we should have done for Go, but we kind of…
+Got ahead of ourselves.
+**Gregor Zeitlinger** 45:27 Yeah.
+**Owen Williams (he/she)** 45:29 And also, it does, unfortunately, the spec does say that the options must be, so…
+You're violating spec to only implement two of them, type of thing.
+**David Ashpole (dashpole)** 45:39 We can change that.
+Or we could say, We can add language that says.
+must be limited to, or something that makes it clear that you can have not all of them available, or something. I don't know.
+**Owen Williams (he/she)** 45:55 Sure.
+And I'm… and I… I should be… I should be clear that I… I…
+I do want, you know, I'm obviously…
+pushing strongly for a particular set of… set of outcomes. I think the thing I believe most strongly is no translation should do what it says. That's the thing that I really… that really means a lot to me. A lot of the stuff around it is a… I'm much more convinvincible to do one thing or the other. I wanna… I wanna do what makes people feel comfortable.
+**David Ashpole (dashpole)** 46:25 What gives users a good experience, that sort of thing.
+**Gregor Zeitlinger** 46:28 Yeah, I'm with you on that. If no translation would do anything else, then everybody would confuse.
+**Owen Williams (he/she)** 46:34 Yeah, that's… Cool. Alright.
+Sorry to get excited.
+**Gregor Zeitlinger** 46:40 We all do.
+**David Ashpole (dashpole)** 46:49 I wrote that down as a little consensus.
+Any other topics? I think, Arthur, you said you had one more you wanted to discuss.
+A while back.
+Baby.
+**Arthur Silva Sens** 47:01 I don't remember.
+**David Ashpole (dashpole)** 47:04 You said I had my hand up, I wanted to change topics, but it…
+**Arthur Silva Sens** 47:08 Oh, right. It was… it was about the collector, how to unblock collector.
+I think, you, you, then you said that a permitous exporter may, so they are not obligated to, to follow this.
+**David Ashpole (dashpole)** 47:22 Yeah, I don't think…
+I don't think translation strategy is hugely blocking. Also, because the collector's metrics are all Prometheus compliant, bizarrely.
+So…
+**Arthur Silva Sens** 47:34 Yes. They… they are migrating. They want to migrate to DOTS.
+**David Ashpole (dashpole)** 47:39 Okay, exciting.
+Fish.
+**Arthur Silva Sens** 47:42 no, no.
+Sorry, I forgot. So, the translation strategy is a part of the whole exporter spec.
+there is a Prometheus metric… metric exporter, and this Prometheus metric exporter is experimental in itself.
+So, do we need to stabilize the translation… translation set strategy?
+to stabilize the whole Prometus exporter.
+Spec?
+**David Ashpole (dashpole)** 48:17 I mean, we could leave it experimental, it just means that nobody will implement it, right?
+Or, like, Everyone will remove it and put it behind a feature gate.
+**Arthur Silva Sens** 48:27 Yeah, the… That's a breaking change for the collector. The collector already implements part of the Prometheus exporter.
+**David Ashpole (dashpole)** 48:35 Sorry, the translation strategy option will have to be behind.
+**Arthur Silva Sens** 48:39 Okay.
+**David Ashpole (dashpole)** 48:39 That's the, like, so if… if that's the thing that we need to hide.
+That… and keep in development, because… But I…
+I don't think this… I think this just needs discussion and, like, clear options, and then picking one.
+**Arthur Silva Sens** 48:54 Okay.
+**David Ashpole (dashpole)** 48:55 I don't think this is gonna be, like, nearly as hard as some of the other topics we have.
+**Arthur Silva Sens** 49:00 Okay, that sounds good to me. I'll bring that up to them.
+I don't have anything else.
+**David Ashpole (dashpole)** 49:11 Is there anyone else who wants to raise topics for today?
+Sorry, I've been sharing a random spec page for the past 20 minutes.
+**Arthur Silva Sens** 49:28 I don't think so.
+**David Ashpole (dashpole)** 49:29 Alright.
+Thanks everyone for joining, and I'll see you guys in 2 weeks.
+**Arthur Silva Sens** 49:35 Right.
+**krajo** 49:38 Goodbye.

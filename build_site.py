@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """
-Build the docs/ tree for GitHub Pages from the transcripts/ directory.
+Build the docs/ tree for GitHub Pages.
 
-Reads every transcripts/{slug}/{date}.txt, parses the 4-line header,
-copies the file into docs/transcripts/{slug}/{date}.txt, and writes
-docs/manifest.json with metadata about every SIG and meeting.
+docs/content/ is the single source of truth for all meeting content.
+Each meeting lives in docs/content/{slug}/{date}/ with:
+  - transcript.md   — transcript header + speaker lines
+  - meeting-notes.md — attendees and agenda (optional)
+  - summary.md       — AI summary (optional)
+
+SIG-level metadata is in docs/content/{slug}/metadata.md.
+
+Reads every docs/content/{slug}/{date}/transcript.md, parses the header,
+and writes docs/manifest.json with metadata about every SIG and meeting.
 """
 from __future__ import annotations
 
@@ -13,75 +20,43 @@ import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scraper.transcript_io import parse_header
+from scraper.transcript_io import parse_header, parse_reference
 
 ROOT = Path(__file__).parent
-TRANSCRIPTS_SRC = ROOT / "transcripts"
+TRANSCRIPTS_SRC = ROOT / "docs" / "content"
 DOCS_DIR = ROOT / "docs"
-SUMMARIES_DIR = DOCS_DIR / "summaries"
 MANIFEST_PATH = DOCS_DIR / "manifest.json"
 
 
-def _remove_stale_docs(
-    source_slugs: set[str],
-    source_files: set[tuple[str, str]],
-) -> None:
-    """Remove files/dirs under docs/transcripts/ and docs/summaries/ that
-    no longer have a corresponding source in transcripts/.
-
-    *source_slugs* is the set of SIG slugs found in transcripts/.
-    *source_files* is a set of (slug, filename) pairs for every .txt file in transcripts/.
-    """
-    docs_transcripts = DOCS_DIR / "transcripts"
-    if docs_transcripts.is_dir():
-        for slug_dir in sorted(docs_transcripts.iterdir()):
-            if not slug_dir.is_dir():
-                continue
-            slug = slug_dir.name
-            if slug not in source_slugs:
-                shutil.rmtree(slug_dir)
-                print(f"  Removed stale docs/transcripts/{slug}/")
-                continue
-            for txt_file in sorted(slug_dir.glob("*.txt")):
-                if (slug, txt_file.name) not in source_files:
-                    txt_file.unlink()
-                    print(f"  Removed stale docs/transcripts/{slug}/{txt_file.name}")
-
-    if SUMMARIES_DIR.is_dir():
-        for slug_dir in sorted(SUMMARIES_DIR.iterdir()):
-            if not slug_dir.is_dir():
-                continue
-            if slug_dir.name not in source_slugs:
-                shutil.rmtree(slug_dir)
-                print(f"  Removed stale docs/summaries/{slug_dir.name}/")
+def _remove_stale_docs(source_slugs: set[str]) -> None:
+    """Remove slug dirs under docs/content/ for SIGs no longer present in source."""
+    if not TRANSCRIPTS_SRC.is_dir():
+        return
+    for slug_dir in sorted(TRANSCRIPTS_SRC.iterdir()):
+        if not slug_dir.is_dir():
+            continue
+        if slug_dir.name not in source_slugs:
+            shutil.rmtree(slug_dir)
+            print(f"  Removed stale docs/content/{slug_dir.name}/")
 
 
 def build_manifest() -> dict:
-    """Walk transcripts/ and build the manifest dict + copy files to docs/."""
+    """Walk docs/content/ and build the manifest dict."""
     sigs: dict[str, dict] = {}
     source_slugs: set[str] = set()
-    source_files: set[tuple[str, str]] = set()
 
-    for txt_path in sorted(TRANSCRIPTS_SRC.glob("*/*.txt")):
-        slug = txt_path.parent.name
+    for md_path in sorted(TRANSCRIPTS_SRC.glob("*/*/transcript.md")):
+        slug = md_path.parent.parent.name
+
         source_slugs.add(slug)
-        source_files.add((slug, txt_path.name))
 
-        header = parse_header(txt_path)
+        header = parse_header(md_path)
         if header is None:
-            print(f"  WARNING: skipping {txt_path} (unparseable header)")
+            print(f"  WARNING: skipping {md_path} (unparseable header)")
             continue
 
         date_str = header["date"]
-
-        # Copy transcript to docs/transcripts/{slug}/
-        dest_dir = DOCS_DIR / "transcripts" / slug
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(txt_path, dest_dir / txt_path.name)
-
-        # Check for summary
-        summary_path = SUMMARIES_DIR / slug / f"{date_str}.md"
-        has_summary = summary_path.exists()
+        has_summary = (md_path.parent / "summary.md").exists()
 
         meeting_entry = {
             "date": date_str,
@@ -91,24 +66,29 @@ def build_manifest() -> dict:
         }
 
         if slug not in sigs:
+            ref = parse_reference(md_path.parent.parent / "metadata.md")
             sigs[slug] = {
                 "slug": slug,
                 "name": header["sig_name"],
+                "meeting_notes_url": ref["meeting_notes_url"] if ref else "",
+                "repository_url": ref["repository_url"] if ref else "",
                 "meetings": [],
             }
         sigs[slug]["meetings"].append(meeting_entry)
 
-    _remove_stale_docs(source_slugs, source_files)
+    # Also preserve dirs that have metadata.md but no transcripts yet
+    # (e.g. pre-provisioned SIG metadata or temporarily empty SIG dirs).
+    for metadata_path in TRANSCRIPTS_SRC.glob("*/metadata.md"):
+        source_slugs.add(metadata_path.parent.name)
 
-    # Sort meetings within each SIG by date descending, then use the
-    # latest meeting's SIG name as the canonical display name.
+    _remove_stale_docs(source_slugs)
+
     for sig_data in sigs.values():
         sig_data["meetings"].sort(key=lambda m: m["date"], reverse=True)
         sig_data["name"] = sig_data["meetings"][0]["_sig_name"]
         for m in sig_data["meetings"]:
             del m["_sig_name"]
 
-    # Sort SIGs alphabetically by slug
     sorted_sigs = sorted(sigs.values(), key=lambda s: s["slug"])
 
     manifest = {

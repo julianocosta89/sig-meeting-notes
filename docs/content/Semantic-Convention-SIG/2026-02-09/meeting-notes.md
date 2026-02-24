@@ -1,0 +1,47 @@
+## Meeting Notes
+
+### Agenda
+- Triage
+- [trask, 10 min] Adding attributes to metrics after stabilization
+  - Metric [`jvm.gc.duration`](http://jvm.gc) has an opt-in attribute `jvm.gc.cause`
+  - The only reason this particular attribute is opt-in is because it was added after stabilizing the metric and it's a breaking change in semconv to add a recommended attribute to a stable metric (in most cases).
+  - But I think instrumentation that takes a major version bump should add it.
+  - How can we codify this?
+  - Semconv need a major version bump
+  - Middle ground: recommended for new instrumentations (or new major versions)
+  - What if we moved JVM metrics to Java repo?
+    - Version along with instrumentation
+    - Docs on otel.io would still show it (pulled conventions from other repos)
+- [Liudmila, 10 min] [https://github.com/open-telemetry/semantic-conventions/issues/3408](https://github.com/open-telemetry/semantic-conventions/issues/3408)
+  - We can put the whole target string into server.address
+- [Sudarshan (Oracle)] Can this PR be triaged
+  - [https://github.com/open-telemetry/semantic-conventions/pull/2989](https://github.com/open-telemetry/semantic-conventions/pull/2989)
+  - What's in the scope of stability
+    - oracledb.* attributes?
+    - Mixed stability for the doc
+    - AI on maintainers: reopen the PR
+- [Liudmila, 5 min] deployment [https://github.com/open-telemetry/semantic-conventions/pull/3339](https://github.com/open-telemetry/semantic-conventions/pull/3339)
+  - Josh will comment on the PR
+  - Entity name is identifying attr, env.name is descriptive
+  - Entity should be called deployment.env
+- [suereth] Federated Semconv
+  - Shared packages - [https://github.com/open-telemetry/opentelemetry-weaver-packages](https://github.com/open-telemetry/opentelemetry-weaver-packages)
+    - Moving "required" packages from semconv into here for OTEL things.
+    - Starting with [backwards compatibility checks](https://github.com/open-telemetry/opentelemetry-weaver-packages/pull/6)
+    - Not all policies will move over - some are otel-semconv-specific
+    - Docs generation: probably just registry, no hand-written markdown, it will look differently
+  - Improving [documentation for relying on common registry](https://github.com/open-telemetry/weaver/pull/1190)
+  - Please review Liudmila's OTEP - [https://github.com/open-telemetry/opentelemetry-specification/pull/4815](https://github.com/open-telemetry/opentelemetry-specification/pull/4815)
+- [Kai, 8 mins] Understanding the effort of driving security related decentralized semantic convention effort.(Earlier discussion on  telco alarm standards (X.733 / 3GPP) and TLS Semantic conventions)
+  - Other existing examples for reference of decentralized semantic convention?
+    - Docs for federated registry [https://github.com/open-telemetry/weaver/blob/b64704f23ce4b503f8667d46c3abee3fda267b52/docs/multi-registry.md](https://github.com/open-telemetry/weaver/blob/b64704f23ce4b503f8667d46c3abee3fda267b52/docs/multi-registry.md)
+    - [#otel-weaver slack](https://cloud-native.slack.com/archives/C0697EXNTL3)
+  - A lot of things to decide before doing actual yaml
+  - Relation to OCSF: [https://github.com/ocsf/ocsf-schema](https://github.com/ocsf/ocsf-schema)
+    - Also ECS [https://www.elastic.co/docs/reference/ecs/ecs-tls](https://www.elastic.co/docs/reference/ecs/ecs-tls)
+    - Slack channel in OCSF: [#otel-collaboration](https://opencybersecu-lz97379.slack.com/archives/C093WML72JW)
+    - The key is to de-scope to specific areas
+      - What and why is covered
+      - How to bridge it to existing things (OCSF / ECS / existing OTel)
+- [Liudmila, 10 min] Roadmap [https://github.com/open-telemetry/semantic-conventions/issues/3330](https://github.com/open-telemetry/semantic-conventions/issues/3330)
+  - Still looking for input from sigs

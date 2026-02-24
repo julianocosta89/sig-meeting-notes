@@ -1,0 +1,158 @@
+SIG: Client Instrumentation SIG
+Date: 2026-02-03
+Duration: 18 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Maciek Grzybowski** 01:10 Okay, it's definitely not what I wanted to try. Oh, yes.
+The Zoom… the new Zoom update, it, like, it messed something around, like, there are some new buttons, and…
+Things are misplaced.
+**Jason Plumb** 01:29 There was a clip in the US during COVID when everything was shut down and remote of this, attorney.
+Like, a lawyer? Like, did you see this, the CAD video? He's like, I assure you.
+**João Oliveira** 01:40 Yeah.
+**Jason Plumb** 01:41 Yeah, that's brilliant.
+I love it.
+Well, I think I've missed the last, like, one or two of these Client SIG meetings,
+Has Martin been showing up and running them, or do we know…
+**João Oliveira** 02:05 Yeah, Martin ran…
+At least the last one. I don't know if I made it to the one before that.
+**Jason Plumb** 02:18 So this meeting comes immediately after the Android SIG meeting, so I come out of an hour of Android SIG into this meeting.
+Every other week, and…
+I can run it, I've run it in the past, but it's, like, also not that much fun to run two meetings back-to-back.
+And I like it when Martin does it, to be honest.
+**Maciek Grzybowski** 02:41 The previous one, we… we met there, but there was no topics to discuss, so, like, the meeting was relatively short.
+**Jason Plumb** 02:48 It might be the same thing today.
+If you care about… I will just say, from the Android call, we also had a fairly light agenda, but we spent at least half the hour, talking about network timing attributes and modeling, so I will…
+I don't even have the,
+the doc open, but I can share a couple of links in the doc.
+To, to an effort that's being done to sort of model network timing events for,
+HTTP spans. So, on the client side, you make a web request, there's a start and end, you get a span with a name and URL path stuff, but there's a bunch of other timing information that some Roam platforms want to get, like how long it took you to do the DNS lookup, and how long did it take to transfer headers, and…
+how long before you got the first bite of the response body, like, that kind of stuff. So… let me find the dock, and then I can…
+And we don't have to belabor this, I just… I thought I'd mention it since we were talking about it, and it's, you know, client-related.
+**Maciek Grzybowski** 03:56 Yeah.
+I think I found it. It's at http spun events, yeah.
+**Jason Plumb** 04:02 It is, yeah. I just wanted to put it in the client doc.
+This is pretty far behind, so today is Feb 3rd.
+Oops.
+**Maciek Grzybowski** 04:19 So the goal of this, this discussion, I think what this comment is proposing is to align things
+somehow to what's there on the browser side, right? So they deliver timings as separate events.
+And… Yeah, separate event, and that's the idea.
+Being discussed for mobile, right?
+**Jason Plumb** 04:43 I actually don't know. The fact that this is in semantic conventions, suggests that maybe there is some alignment, but I don't know if aligning with, if mobile is a priority of this. I can't speak to that. I don't know.
+But, I will say that she's aware of certain behaviors on the website, and has definitely given that some consideration. Specifically.
+In Android, we sort of get one event from which we can pick all this stuff, and it's synchronous, and like, in the web, it's just… they get fired these asynchronous messages, so it's a different processing model.
+So I'm just making a note here for people to come back to if they want to take a look at that. It's this one.
+And this, I think she's inclined to maybe close this and open a smaller one, because this is pretty big, and it's also been going on for a while, it's like…
+It's taken a few forms, and so the latest comment was sort of like…
+It seemed like it was kind of reinventing it, but like…
+Down here, so maybe just a new issue will happen, but… Anyway…
+I think it's a lot of good stuff. I mean, this is, like, super-duper helpful to have all of these detailed timings for some…
+For some products,
+But we don't have a spec for it yet, so that's what she's trying to do.
+Oh, that's the wrong tab. That's the right tab. Okay.
+**Maciek Grzybowski** 06:19 Yes, this is something we should be… we should be looking into in the site. We also collect those things in our events, and we need to… we need to check if there is some…
+Some learning we can bring there, yes.
+**Jason Plumb** 06:33 Yeah, that'd be cool.
+That sounds great. Do you also capture those on Android?
+Sorry? Do you know if you capture those on Android?
+**Maciek Grzybowski** 06:51 Yes, yes, yes, it's part of our common schema, so both iOS and Android.
+**Jason Plumb** 06:54 Okay.
+Does your common schema have a cool name?
+**Maciek Grzybowski** 07:01 It's RAM event schema. That's not a commander.
+**Jason Plumb** 07:11 Oh, I was hoping for a cool name.
+**Maciek Grzybowski** 07:15 Do you have some?
+**Jason Plumb** 07:17 I mean, the Elastic schema is just ECS, Elastic Common Schema, that's also not very exciting.
+We don't have an exciting name, no.
+Okay, well, I'm happy to call it at that if other people don't have additional topics that they're interested in discussing.
+**Maciek Grzybowski** 07:38 Actually, maybe one thing, like, to briefly discuss something that we were rising on, in DoubleDoc's side recently.
+And it relates to this schema thing. In our schema, like, in our events, there is, like, quite a few, like.
+Aggregation type of things, and we were wondering about
+such concepts existing on the auto side of the thing. By this, I mean, for example.
+answering questions like, what are the views which have the most number of, like, the highest number of errors? Or what are the views that, like.
+render this, like, the most… are the slowest to be displayed, right?
+This kind of… this kind of questions are, like, we are very oriented about, you know, like, answering real problems through data, and to get there, like, so far, our approach was to
+adds aggregations to events, so kind of count things as they go, like count in session event, for example, count number of network requests that were there, right?
+And we were wondering, like, how this translates to… to open telemetry around in general.
+Because everything is… it seems to be, like.
+independent events, which is something, like, I love totally. It's very scalable and very, like, flexible, flexible approach, although it makes it harder to…
+you know, to get into some meaningful conclusions with the data. It's easy to see the timeline of events, like, how things go and what's happening in the app, but it's harder to, like, query, like, you know, like, a large set of this data and find some things.
+**Jason Plumb** 09:22 Yeah, so I… in my purview, I don't think that OpenTelemetry has a good answer to this question yet. I think that it's up to us collectively to try and answer that by coming up with semantic conventions and specification that sort of describes these behaviors. And especially on the client side.
+as you well know, it's… it's challenging. So, I think it's… I think it's helpful, or I think it's fun to, like, actually look at this question.
+And if you are, like, an application designer or a product owner, and you're like, I want to know what views have the most number of errors, the very first thing I might ask you is.
+Are you asking about Android or iOS, right? So, very first thing, like, on which platform are you asking this for? Because you might not.
+**Maciek Grzybowski** 10:07 What is the… what is the view?
+**Jason Plumb** 10:08 Exactly, like, what's a view? And you might not have been forthcoming with that information, or you weren't even thinking about that, because your application's cross-device, or cross-platform, whatever, but it… let's say that… because I have my Android hat on.
+let's say that you say it's Android, the first thing I'm gonna say is, like, okay, on what version of Android? Like, what API level?
+on what type of hardware? Are you talking about on modern Pixel devices, or are you talking about the lowest-end, like, 3-year-old Samsung phone? Like, you know, those are different error rates, probably.
+So the number of… so I'm immediately thinking about dimensions, right? So if this is a metric.
+And metrics are aggregated in OpenTelemetry.
+If they're… if it's a metric, then you have to think of what dimensions are important to you.
+And we currently do allow metrics to be created on the client side, but there's been a lot of discussion about maybe discouraging that.
+Because of the dimensionality problem.
+Right, as soon as you put a metric on a million handsets, a million devices.
+Your cardinality will explode with resource information alone.
+And then to be able to answer these questions about, like, well, what… what facets, like, what…
+what dimensionalities do you care about in this… within this question? And oftentimes, I think the person asking the question
+doesn't know the answer in advance. So they're gonna think… they're gonna be like, well, I want to look at it this way.
+But now that I've done that, then I also want to look at it this way, right? And so, I think it's a hard question, and coming up with a set of dimensions to be able to answer those questions kind of generically has proven difficult for this group.
+**Maciek Grzybowski** 11:52 Yeah, but do you mean that this sort of question, they rather belong to the metric SIG? It's not.
+**Jason Plumb** 11:59 No, that's not what I'm saying. No, no. Like, client-side, web browser, Android, iOS, like, we should be figuring that stuff out. The metrics people don't care about as much about this.
+Yeah.
+**Maciek Grzybowski** 12:13 Okay.
+So, and metrics, they could be a generic solution to this problem, right? And then you, like, you basically keep adding dimensions, and you have, like, generic metric, you can, like, get some meaningful information and conclusions from this alpha. Those are, like, maybe quite
+mobile-oriented or rail user monitoring-oriented questions, like, like, understanding that, like, parts of my application which suffer from errors the most. Like, I think there are, like, quite a few
+questions that people try to answer the most, like, crash-free session rates, for example, Mobile, like, that's one common SLO that you are trying to reach. So maybe the, like, the path there is through, like, finding out those questions first, and then, like, trying to solve them in
+Maybe not a generic way, but some specific way.
+**Jason Plumb** 13:05 Yeah, something like crash and crash rate, that's… to me, it seems like that's pretty well aggregated on the back end.
+Like, if you're getting crash events…
+And those have timing with them, like…
+**Maciek Grzybowski** 13:16 Computing a rate from that, like, how many per hour, how many per day.
+**Jason Plumb** 13:21 That seems pretty straightforward to aggregate on backends.
+**Maciek Grzybowski** 13:24 Per hour, per day, yes, but if you think about, like, the number of sessions, the percentage of sessions that are impacted, then it's harder, because you need to somehow count the sessions that didn't experience a crash, and that's not a simple query, right?
+**Jason Plumb** 13:37 Right. Yeah, true.
+Yep.
+Yeah, even our definition of session in OpenTelemetry right now is still a little bit nebulous. We've been… we haven't… no one's really taken that initiative to, like.
+narrow down what it is. Like, Hanson from Embrace, who works on Android, has gotten started on that effort a few times, but it hasn't really been completed. Like, we don't have a… if you go and scratch around the entire spec and semantic conventions, you won't find a definition of session, really.
+**Maciek Grzybowski** 14:10 I found it in the implementation contract.
+**Jason Plumb** 14:12 Yeah.
+**Maciek Grzybowski** 14:13 Okay, so this 15 minutes of inactivity and, like, some maximum, maximum time, like.
+**Jason Plumb** 14:18 Yeah.
+**Maciek Grzybowski** 14:18 But in this, like, it doesn't belong to, to the specification. I don't know how, like, how consistent this is with browser, for example.
+**Jason Plumb** 14:27 Yeah, there's a lot of history. I've been involved in this project for a while, so I kind of know some of the history about it. There was…
+We've gone back and forth a little bit on how to model the session. Right now, it is just an attribute.
+And it's an attribute that gets put on spam data. Mobile hates this, right? Because they are really worried about size of payloads.
+And having a redundant, repeated session ID on every little piece of telemetry is, like, really cumbersome for them. And they're worried about payload size, or had been worried about payload size. The…
+the resource, the OpenTelemetry resource, Has historically been immutable.
+so it doesn't change during the life cycle, and we were like, but we wanted to be able to change the session ID, and
+I think the current state is that there's some discussion about making the resource mutable for various reasons, you know?
+**Maciek Grzybowski** 15:24 Yes.
+**Jason Plumb** 15:25 We haven't yet moved the semantic… we haven't yet changed the semantic conventions to say anything other than it's just an attribute. It could be moved to a resource attribute, if it's mutable.
+If the resource itself is mutable. But we haven't done that work yet.
+**Maciek Grzybowski** 15:42 Okay, but that's an interesting context. I know that session ID is, like, not stable, like, not even there, and I know that there is, like, we consider
+mutable resources to be a dependency on that, but I didn't know that the main concern here is, like, the payload size. But I understand, like, how resource defined ones per payload optimizes this payload size, so…
+**Jason Plumb** 16:05 Exactly, so resources… yeah, yeah, and resource is, like, kind of an umbrella for the telemetry that's sent within it, so it's a good candidate for the stuff that really doesn't change, or that can be batched like that, and so we've always wanted… I think, collectively, we always wanted session to be on resource, but the fact that a session can change or roll over during…
+During the use of an app is, like, problematic then.
+Because you…
+**Maciek Grzybowski** 16:30 Oops.
+Then there, like… that opens a door.
+I mean, it's a good direction, I think, but it opens the door for, like, more discussions like that. There is, for example, this, connectivity status, or something like that, like, what type of internet connection is, like, the device using, which is also, like, an attribute added to, like, most of the events, I can imagine.
+this being part of the research, too? Like, if the, like, main optimization is, you know, like, to reduce the payload size, why not looking at that one?
+**Jason Plumb** 17:02 Yeah.
+True.
+**Maciek Grzybowski** 17:07 Bye, thank you.
+Okay, those are… Good insights.
+It's…
+**Jason Plumb** 17:20 Yeah.
+**Maciek Grzybowski** 17:20 something we were discussing on the, like, Datadog site, and we'll keep discussing, and maybe, like, eventually we'll come up with some proposals on that.
+**Jason Plumb** 17:29 Yeah, cool, that, I mean, that's definitely helpful. I think the…
+the number of people, like, showing up and helping in the client SIG has fluctuated a little bit, and also, once… once Web kind of split off and is doing web stuff, this meeting has been less…
+attended, and probably been less attractive to people to show up to, so… I don't know the current state of it. We should reach out to, like, our sponsor and see where we're at.
+But that's kind of all I have. I think it was a good discussion.
+Are either of you making it to Amsterdam?
+No.
+I still don't have confirmation if I am or not, but I figured… It's worth a shot.
+Alright, well, I'm outta here.
+**João Oliveira** 18:20 Nice chatting with you. Yeah, take care.
+Right.
+**Maciek Grzybowski** 18:23 2?

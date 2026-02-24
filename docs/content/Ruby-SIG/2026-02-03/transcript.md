@@ -1,0 +1,129 @@
+SIG: Ruby SIG
+Date: 2026-02-03
+Duration: 16 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Hannah Ramadan** 01:15 Hey, Schwan!
+**Xuan Cao** 01:19 Hello?
+**Hannah Ramadan** 01:20 So, I don't… it might just be us. I know Kayla and Arielle can't attend today.
+And I… I think… I was actually planning to leave in a minute, so I'm glad, you came. Maybe we could, since it's just us, take a quick look at the, spec stig, and then…
+I had thought today, since maybe it was a lighter group, I'm just trying to, like, each take an hour. That would be the SIG meeting, and maybe, like, look at something OTO-related. I think, for me at least, one of my biggest,
+like, hurdles is just finding time to do hotel stuff, so… I was kind of thinking to do that.
+**Xuan Cao** 02:06 Yeah, sure. We can, we can, take a look at Spike.
+**Hannah Ramadan** 02:11 Yeah, let's do that.
+So, today…
+Okay, it looks like there were two main discussions.
+Or actually, sorry, a couple reference-based attributes.
+Entity event specification, and then OTLP binary distribution.
+Okay, I'm not sure, do you… do you want to go into any of these topics?
+Let's do a quick scan of things.
+**Xuan Cao** 03:46 So… Kind of interested in this kind of binary distribution, so… Are they going to…
+Seems like they wanted to… Make the pull-up buff as, kind of binary that… Inside of those,
+Exporters? Is that what I think, trying to do?
+**Hannah Ramadan** 04:15 Yeah, I'm not… I wish they had a link or some other, like…
+PR, looks like it's just a question.
+**Xuan Cao** 04:23 Hmm.
+**Hannah Ramadan** 04:24 So, requesting for libraries, library authors should publish a protobuf. Oh, but we have avoided this because of the risk of breaking users.
+Okay, it looks like…
+**Xuan Cao** 04:42 Hmm.
+**Hannah Ramadan** 04:42 The decision was not to do it a couple years ago, so…
+**Xuan Cao** 04:48 Oh, I see.
+**Hannah Ramadan** 04:52 Okay, so I guess nothing's changed.
+Okay.
+Nice, okay, so maybe we can just go through…
+Some of these… I don't know.
+Okay, that one's been merged, and… oh, nice, thanks.
+Yep, okay, cool.
+Nice. I guess…
+Those three have been merged. I… those might have been related to the CI failure. I know that the one I worked on, Grape, was… I don't know if the CI's passing right now.
+Well, looks good.
+I think that's the latest one.
+It looks like we have some new issues.
+**Xuan Cao** 06:44 Can you take a look what is failing for this, I think it's a new kind of… oh, they didn't…
+Merge the latest change that you made for those.
+**Hannah Ramadan** 07:00 Which one?
+**Xuan Cao** 07:02 The, the, the, maybe the, maybe the first one?
+**Hannah Ramadan** 07:22 Oh yeah, that seems like…
+**Xuan Cao** 07:26 Whoa.
+**Hannah Ramadan** 07:40 I'm not sure what this failure is. I…
+**Xuan Cao** 07:46 Okay, maybe, maybe they update their libraries, and then something, something, some, something changed that.
+Catch up.
+**Hannah Ramadan** 07:53 Yeah,
+Well, I actually, like, was, you know, kind of looking for something to do in the hour, so maybe I can take a look at this and see what's up.
+Not sure if it's just this PR, or if this was already…
+Taken care of. Probably not, because we just re-ran books.
+Okay, that dolly failures, I'm thinking.
+I'd love to work out.
+Oh, nice.
+I don't know who added… This… Our old merge settings.
+Maybe I'll copy this into the agenda for next time so we don't miss it.
+Sean, do you have any, like, issues or PRs for anything that you wanted to…
+Go over, make sure, like, people took a look at.
+**Xuan Cao** 09:28 Yeah, for the… yeah, for the… for the… for the core libraries, I have, like, two,
+That is for the…
+First to not use OpenStract, and then the second is to replace the CGI with, the URL, for the Unicode encoding, decoding.
+Yeah, I already, pinged Ariel to have another look, but,
+I don't think there's any,
+I mean, if there's any question for this, yeah, maybe,
+I'll ask around to give them approval for this one.
+**Hannah Ramadan** 10:17 Okay, nice. Nice. Okay, cool.
+**Xuan Cao** 10:22 Okay.
+Oh, that's good.
+**Hannah Ramadan** 10:25 Ariel just got in that one, and…
+Looks like Arielle's in here right now and reviewing some stuff, so… Have some comments.
+**Xuan Cao** 10:39 Oh, okay.
+Okay, I'll take a… First, man.
+**Hannah Ramadan** 10:46 Nice.
+**Xuan Cao** 10:50 And then the other one is,
+this, this, this, in the country for the lyrical, because I was sitting for a long time, I already, I saw you already, reviewed it before once, maybe,
+I mean, moral approval would be, better to,
+To… to make him moving along?
+**Hannah Ramadan** 11:14 Yeah.
+Is that for the zero code?
+**Xuan Cao** 11:17 Yeah, yeah, yeah, and then, yeah,
+I still don't know what will be the…
+the final push to make it happen. I mean, this one won't interfering any, like, our current,
+Because it will be a standalone, it won't be an expansion at all.
+I mean, we can even put into the separate repo, if that's necessary.
+And, yeah, that's… pretty much it. And, I updated the stuff to make it more,
+Make the script easier to review, because it was, kind of a… Messy before, but now…
+Yeah, I think, and also, I did a bunch of testing. I think it…
+I think I have more confidence, too, for this.
+Kind of.
+rep, gem to out, get released.
+**Hannah Ramadan** 12:31 Nice, okay. Cool, I'll take a look at this in the next hour, and then…
+Yeah, I'll also add that approval.
+check, and then hopefully… I don't know what else we would need, maybe Ariel?
+Take a look if he's been having comments, but…
+I think I… don't need that anymore.
+**Xuan Cao** 13:03 Yeah, and also, one thing, I wanted to, because I wanted to make into a new folder, because this folder is too long. It has, like,
+It… The repo looks.
+ugly, so I wanted to make into… put into, like, maybe create a new folder called a package.
+**Hannah Ramadan** 13:23 Mmm.
+**Xuan Cao** 13:24 And then, changing the name from the… something kind of zero coding, zero.
+Or also in your implementation?
+**Hannah Ramadan** 13:35 Yeah, I think that would be a good idea.
+**Xuan Cao** 13:38 Yeah, because this is really not, part of a…
+OpenTelemetry incentation is just a… kind of a…
+standard, standalone gym that, install all those, all those, implementations, so…
+**Hannah Ramadan** 13:58 Right, that makes sense. It's not really, like… Yeah.
+instrumentation.
+**Xuan Cao** 14:07 Yeah, I'll do the change, and then.
+**Hannah Ramadan** 14:12 Yeah, yeah, if you do that change, then I think…
+re-request a review, and then Kayla can take a look and hopefully just re-approve, and then we can get this margin close. I know this has been open for
+Yeah, solid year. It's funny how time flies. Oh wait, that was when you…
+**Xuan Cao** 14:29 Yeah, that's…
+Yeah, and also, I, I also updated the, the operators, because, since the year, they changed it a lot, and then,
+So, hopefully they still have the interest to merge stuff in.
+Yeah.
+**Hannah Ramadan** 15:51 Okay.
+That looks good, I'll take another look at…
+Auto instrumentation, and then also the…
+the dolly issue, and hopefully was probably related to…
+Okay, cool. TurboCop type stuff.
+Okay, nice, alright, I think that all looks good.
+So we can… And here, and I'll take the rest of the time to do some hotel stuff.
+If all that sounds good, I'll see you next week, Sean.
+**Xuan Cao** 16:52 Yep. See you next week. Okay. Thank you. Bye.

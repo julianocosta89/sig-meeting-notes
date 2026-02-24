@@ -1,0 +1,565 @@
+SIG: Arrow SIG
+Date: 2026-02-10
+Duration: 65 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+Albert Lockett 00:02:11 It is.
+Laurent Querel 00:02:14 Hello, Shane.
+Chanly Ly 00:02:17 Blue.
+Laurent Querel 00:02:20 Oh, man.
+Okay, February 10…
+Oops.
+I'm waiting for, for Joshua, I think he will join us soon.
+Oh, fresh ways down.
+Okay, great.
+We call you.
+jmacdonald 00:03:39 I had to reboot my machine for reasons… Here I am.
+Laurent Querel 00:03:45 Okay.
+Great.
+jmacdonald 00:03:48 I'm.
+Laurent Querel 00:03:49 I went through…
+jmacdonald 00:03:50 Just… just for everyone's information, I went through the issues list. There's more than a whole page of new issues since 2 weeks ago, since we sort of skipped them last time.
+And I picked out maybe the highest priority ones, I think. Some of them are just recording what people are working on that don't look like it requires discussion. And then I've picked out some that are kind of, like, I know kind of bigger issues.
+So that's the list in front of us.
+Laurent Querel 00:04:14 Sounds good.
+jmacdonald 00:04:16 Okay.
+Laurent Querel 00:04:16 So do you want to, to maybe start with triage, and, I can, I can do a follow-up, for example, on the Proposal Zero, which one… Yeah, that sounds good. Okay.
+jmacdonald 00:04:26 So, let me… let me see who's here. Yeah, the first one, I know that the… Drew's just concerned about, sort of, I think, a usability issue when we start and have dead nodes. We fail.
+And the Go Collector allows that, and I think it gives some convenience, although I would prefer a warning from the Go Collector, which it does not give you. So there's a question about what we think here.
+Laurent Querel 00:04:55 Can you precisely, when you say a dead node, what that means?
+jmacdonald 00:04:59 Like, a node that has no linkage. Oh, Drew's here.
+Laurent Querel 00:05:02 Unconnected nodes. Oh, okay, okay, okay.
+drewrelmas 00:05:08 So, I noticed that this is an actual, like, engine startup error. The error it outputs is pasted at the bottom of the issue, but for example here,
+There's no incoming edge to the batch processor, there's only the receiver straight to an exporter, and this…
+has an error, which…
+what the pipeline should theoretically be able to start up, you just wouldn't get your batching behavior. So, I'm curious if this should be a non-fatal error and more like a warning.
+Laurent Querel 00:05:46 I agree. I will vote for it, indeed. Especially now that we have a separation between nerds and,
+The wiring part?
+I mean, even before, in fact, but yes, I agree. Having a warning, clearly indicated.
+And, and not failing like that, yes. Sounds good for me.
+jmacdonald 00:06:14 Yeah, I think…
+A warning will be nice. I don't believe the Go collector tells you, and I've definitely scratched my head a few times at, like, I meant to add that component back to the list, and then I started, and I waited, and nothing happened. It was kind of disappointing.
+Laurent Querel 00:06:29 Okay. So when we… so that was, triage deciding, can you remind me what was the…
+The label, when we move from deciding to, okay, it's decided.
+Maybe it's triage decided, or it's… what?
+approved. I don't remember what was the nomenclature there.
+drewrelmas 00:06:52 I'm not sure about this.
+jmacdonald 00:06:54 Yeah, I don't remember either. I wish Tom were here, since he was spending some time on that, and he's not.
+Laurent Querel 00:06:59 Okay, so, maybe we can… we can change that once we… we know.
+But, yeah, the idea would be…
+Yeah, to change the label, if I understood well.
+Yeah, that looks like a no-brainer for me.
+drewrelmas 00:07:15 Okay.
+Thank you.
+jmacdonald 00:07:19 I looked… I found this one about static TLS block, and it… I thought it was worth raising because it's, this fellow, Chris Bandy.
+Who… it's nice to see people, I think, from the outside who are not
+I'm not associated with either of the companies in the room here, as far as I know. So that's nice, and I want us to pay attention to it. I would bring this to allow it, I think, given the TLS, but I just wanted to, like, raise that and make sure people see it.
+Laurent Querel 00:07:52 Yep.
+Makes any sense for me. I had a…
+A question for this, contributor, but, after a quick discussion.
+I was pleasantly… I mean, for me, the fact that he was just looking at using one of the subcrafts independently of the…
+the main…
+process that we have, and he wanted to be able to, make the GMalloc, optional in this specific case, but still keeping the default GMalloc
+For the… the mint process.
+I'm also perfectly fine with that. That's why I basically,
+Approved it, and it's now merged.
+So, yes, I agree, if it's… Yeah, it was good.
+jmacdonald 00:08:52 Cool. Yeah, you can run, yeah, different memory allocators and different threads.
+Laurent Querel 00:08:58 We can already do it, but I think that his main concern was… That the default, allocator…
+he wanted a solution where the specific crate, I think the engine crate, I don't remember exactly, but this one, I think, or the controller crate, he wanted to be able to use it without the default allocator.
+And the way that it was defined was,
+Possible, but at the top level.
+At the top level of this project, not at one of the sublevel.
+jmacdonald 00:09:41 Got it. That's tricky stuff. I didn't ever think about what it means to configure more than one memory allocator, actually.
+Laurent Querel 00:09:50 Oh, we could.
+It's… it looks… for me, the… it looks like this person wants to use part of the project into a different other project, and he wants to be able to import.
+jmacdonald 00:10:05 No, I get it.
+Laurent Querel 00:10:06 What?
+And and still being able to define its own allocator in that case.
+I think that's what, he was looking for.
+Which makes sense for me, and .
+jmacdonald 00:10:21 Yeah. If he's ready to accept the fact that right now it's not yet stabilized and not yet published on Quiz.io.
+Laurent Querel 00:10:29 And, and we'll have to figure out how to… To adapt its own…
+Project, because this dependency will most likely change without any notice.
+jmacdonald 00:10:41 Yeah.
+Laurent Querel 00:10:42 That's fine for me.
+jmacdonald 00:10:43 I hope to get to know this person and what they're doing, it sounds interesting.
+Laurent Querel 00:10:47 Yes, definitively.
+jmacdonald 00:10:49 The last one that I put on that's kind of triage, just to, like, let people know about it, is, like, almost a philosophical debate about logging style, and I am going to try and recuse myself and get out of it, because I have opinions that are just gonna waste everyone's time. I said as much on the issue,
+there's a PR open by CJO to answer these questions.
+And… I will accept whatever people like. No opinions here.
+It's…
+Laurent Querel 00:11:22 Don't read it.
+jmacdonald 00:11:25 I think I…
+people not to read it, and to let Erin and CJ make their minds up, but it's really about how unique are these names at the start of the log event?
+And are they messaging Like, are they statements of information, or are they kind of, like.
+Condensed, sort of hierarchical descriptions, often, like, dotted names, like, in the examples.
+you know, like, you can see at the top of the screen, help, I've fallen down versus climber.fallen, or help requested. Those were…
+those were my examples, but then CJO has added to it.
+I truly don't care. I don't want to spend my time on it anymore, and I… but I apologize for introducing it.
+Laurent Querel 00:12:13 Yeah, I have an opinion on it, but I can definitely participate to the conversation. And I think, yeah, event naming is mentioned from CJO.
+jmacdonald 00:12:24 Yeah.
+Laurent Querel 00:12:26 Yeah.
+jmacdonald 00:12:26 If you click into the PR… Personally, we…
+Laurent Querel 00:12:29 Personally, if we want to… so my reasoning will be the following, and I agree, we don't have to necessarily argue in this meeting, but
+Codifying, event name. It's… the debate is about event name versus body.
+I think, and and that is not an event name for me.
+Definitely not.
+jmacdonald 00:12:52 Correct.
+Laurent Querel 00:12:54 So it's a body. So if we consider that, event name.
+Is a mandatory thing if we want to create an event in hotel.
+It's not mandatory for logs, but it's mandatory to create an event
+So, if that's the case, the only required thing is that
+That is, like, an optional stuff.
+jmacdonald 00:13:17 Yeah.
+And I, again, I'm not going to say anymore, truly.
+Okay. I will let that open on my, in my, yeah, there's, there's an…
+Laurent Querel 00:13:30 Appreciate it.
+jmacdonald 00:13:31 Or… you'll see it.
+Laurent Querel 00:13:32 Okay. Good.
+jmacdonald 00:13:35 Right, so then, for those present, I think feel free to add more items to the agenda. I put 3 up that I… I think I'm most interested in us discussing the first one with Laurent and the folks from Microsoft here today.
+The other two are, well, Goken would like to discuss, the extension idea and sort of discuss some questions about synchronization and…
+And, in the engine. And then, the last one, I don't think we need to spend too much time on. I've already discussed it with Laurent, and it's an internal, like, issue that we've just posted. I can go into that when we get there. So yeah, let's, I think, start with you, Laurent.
+Laurent Querel 00:14:18 Yeah, okay, I will try to keep that, under 15 minutes. We already discussed about it, I think it's really feasible.
+jmacdonald 00:14:26 Yeah. So…
+Laurent Querel 00:14:29 I remember we had, multiple discussion regarding the stabilization, Of the… the configuration model.
+And, we like, I think, both Microsoft's side and FF's side to…
+to reach a point where we, we have a V1 of this configuration model, so we can build on top of that.
+selling taller stuff.
+So… I will not go back to the… what we discussed already, I think, last week, the comparison between the… the GoCollector configuration.
+In fact, this, this, basically GitHub issue is… A summary, or,
+yeah, a complete explanation of the previous discussion, where I described precisely the
+The… the values problem and limitation of the… of this, configuration file.
+Then I took, an example
+If you, if you, if you need, we can always go back to those problems, so let me know.
+Then I discuss about, an hypothetical
+Sorry for my English.
+pipeline, and how that will be,
+translated into the GoCollector configuration, which does not support directly this kind of Not so complicated, but
+unusual, let's say, DAG, so we have to split it, so that's explained there. And then, here is the V1 of the configuration model for the OTAP DF engine.
+where we can represent a real DAG, directed acyclic graph.
+Where we, the graph topology is explicit, so that we don't really have implicit things, like in the GoCollector, with the fan-in, fan-out, between the receiver, processor, processor, exporters.
+Where we… one of the innovations is this concept of hyperages.
+Which is, an important aspect of the engine that opens a lot of, possibilities, including the…
+the named output mechanism that we use for some processors, like the fan-out processor, for example.
+I'm talking about, this separation, the not-specific configuration, And,
+Yeah, and then I would put digestible. So, here is the…
+my proposal, and I think we have a few things to discuss there, and then I will implement those changes, hopefully this week.
+So, no changes, node, ID, no changes. We, we simplified, it was part of another proposal that was already discussed, but we basically merge
+this concept of kind and plugin URL into one single field, name type.
+could be named differently if you prefer, but basically, we have this short versus fully qualified URN. Anyway, from this short or fully qualified URN, we can determine the kind, and we can determine which component to instantiate.
+So there is no need to… for repetition, that's why we end up with a single field, currently name field, currently name…
+Dipes.
+Then we have config, no changes. Here we have the custom node configuration, and what is important to understand is this,
+Those fields under config are interpreted by the node implementation. They are not interpreted by the engine.
+Then, I was, it's a new thing, I was suggesting, an optional field, also reserved, named extensions.
+It's a mapping, so key-value pairs, or the values could be any kind of YAML value.
+We, we need that,
+at F5, because this engine will be extended.
+And we want to be able to express some extension. So, we'd like to have
+a configuration file where both the FI-specific extension could be expressed there, and that would be the responsibility of the specific implementation
+To validate the extension mapping, but, it's just about reserving this, this, field?
+And I think there is an example, later in this description, but the…
+We will also have some additional policy-oriented or properties-oriented field, like the telemetry, tenancy, lifecycle stuff.
+Right now, we don't support that, but we can entirely imagine it, and the fact that we
+We now space the custom configuration, give us the option to add here anything that is not already defined.
+Then we have… we… another change, instead of having this complicated output blur, that we had, that we have currently.
+we… I think we already decided last time that we could extract that into a list of, a declaration of hyper edges.
+I'm proposing a potential alternative name for HyperEdge.
+for the Hyper AG section, that could be wiring.
+So we wire, basically, the node.
+Maybe easier to understand for the… for most of the people.
+And then, no big change either here, so we have the form, the two, an example of policy, in that case, financial policy.
+And…
+I'm basically applying the extension mechanism at any level. So, extension at the level of the hyper edge.
+Extensions at the level of a specific policy.
+Again, it's fully optional.
+It's just something that could be used by a special implementation of this engine.
+Yeah, and then we have example and, and future extension with, the…
+what we discussed last time, I think. So, yeah, waiting for feedback regarding the small changes, and my goal really is, based on this conversation.
+If everyone is okay, we change the triage status to approved.
+And, I will go and implement that as soon as possible.
+jmacdonald 00:21:53 I certainly have questions, but I'd like to hear Andres, First.
+Andres Borja 00:21:59 Yeah, no, my comment is related to the, you know, the extensions in the co-collector.
+Defining us even that way that you define any other…
+nodes or components, and then you reference it, you know, so…
+So ideally, we should have something like, besides notes at the top, we should have something like extensions, where we define them by name, and give them a name.
+And then we just.
+Laurent Querel 00:22:27 Okay.
+Andres Borja 00:22:28 them from the components. So if you have a receiver or an exporter, that was kind of, like, the main use case, or the initial use case.
+You have a receiver, you will reference the extension by name, or the extensions, because it could be multiple.
+Laurent Querel 00:22:45 So, my bad, I used the term extension, it's not equivalent to the term extension used in the Go Connector.
+the extension into the GoCollector is about a component that…
+Could… an extension that could be reused, from one node to… from one node, or…
+By multiple nodes, so let's say the authentication extension
+I'm not talking about that there, so sorry, it's misleading. We need maybe to find a different name for this type of extension, because there, it's more…
+Additional, custom configuration that are not,
+Let's imagine that you, you have, I know tap the FNG,
+with some custom thing that are implemented by F5, or by Microsoft.
+And… and we want to be able to support additional policies or additional…
+Yeah, additional policies, I think, that will be a good example.
+they are not really considered as the extension in the sense of what the GoCollector is doing, but, really, like, additional policies supported by this specific engine. So I need to find a different name for this field.
+I think that's, a good feedback.
+jmacdonald 00:24:18 Yeah, thank you. I was gonna say almost the same thing. It's… it would confuse people to use that word, extensions, and I think the topic that we're about to go into with GoCan is more about that other kind of extension.
+Laurent Querel 00:24:30 Yes.
+jmacdonald 00:24:30 it's almost like a meta extension, in a sense, though, and so I get the connection.
+I was wondering, in… someone more familiar with Kubernetes might have a better answer than this, but I feel like Kubernetes has similar kind of space in its API structures, or its configuration model. And I…
+I think labels is, almost the term they would use.
+Or is…
+Laurent Querel 00:25:01 Level is restrictive, yeah, it's restrictive because it's, we really want to be able to express
+policies that are very specific to a file, so it's a complex subject. It's not just a key value per file, by zinc value.
+jmacdonald 00:25:18 I… I do wonder… this is probably… we've got to watch our time box, but I do wonder if it's not possible to express this, type of concept
+Using that more classical definition of an extension, just to say that
+and the way I would phrase that is.
+and we can keep talking with Gokan's issue in a sec, these… the concept of an extension is just that there's a type with a configuration that is a… that at least logically starts with your engine and stops with your engine.
+And you can refer to it, so that, say, the classic example is in an exporter or a receiver, you have an off
+component that you need to talk to, and that is going to be supplied by an extension. So, in your configuration, you have a field named Authenticator, and it names the extension. So, you could have,
+the way I would do this if I was following the playbook in my head for extensions, especially the way it's done in Go, is I would have, you know, let's suppose your extension that you're just thinking of is, like, a scheduling
+thing. You've got special hardware, maybe, you've got special scheduling, maybe you've got something special going on.
+And so you want to have the F5 scheduler extension enabled when you run your engine, and that just means that there's a block of extension somewhere that has configuration that's totally specific to you, and then over in your
+you know, your node configuration in the structures on the page here, you would have a
+like a…
+A scheduler extension, and it would name the thing, and then you would go find your configuration.
+I mean to say just that possibly the same structures could support you,
+Laurent Querel 00:27:07 I don't think it's…
+I think it's very confusing that I named it extension. I'm sorry for that, but it's not the same thing, because extension…
+The way that, I think it's done in the GoCollector, and they… also in the proposal from,
+Google can. It's based on…
+A well-defined trait or a well-defined interface.
+That needs to be specified into the open source project.
+rights.
+Because we could have…
+jmacdonald 00:27:46 I see, I see. So you're saying these are… and you're right, but the notion of an extension is meant to give you the flexibility to introduce new interfaces later.
+But in your case, there's literally no interface. You're not going to change what the code does. You're going to supply a different implementation of the code. Yes.
+Yeah.
+Okay, because we have some… we have some elements that I can't mention.
+Laurent Querel 00:28:14 That will not be, reasonable to put into
+A generic open source project.
+I could define an interface or a trait.
+But then, only if I will use it, which doesn't make sense. So that's why, we just need to reserve, and I think that could be used by other,
+potential company in the future. We just need to reserve,
+a section that… I need to find a good name for it.
+That will be, just,
+YAML values.
+gokhan 00:28:58 Yeah, maybe…
+Laurent Querel 00:28:58 And, interpreted by this specific implementation, where the interface is not known in advance.
+jmacdonald 00:29:08 I'd like to hear, well, first, Andres, thank you.
+Andres Borja 00:29:12 Well, I think, yeah, I think it's different, but even assuming that it's something different.
+it would be still… I mean, it would be good to have the separation of the definition and the usage similar
+Do other things, right?
+So, if you are calling it extensions too, right, we should have a block extensions 2 in the…
+You know, at the top level, at the same level as the nodes, and then reference it wherever you… you need to…
+to relate it, right? Or to assign it.
+Laurent Querel 00:29:49 Wow.
+I don't see the punts.
+You know what? I think,
+I know exactly what I want to do on my side. I just like to get the option to have a reserve world. Reserve world, because anyway,
+Except in the Microsoft side.
+You… you need this kind of stuff, then we can discuss
+If we… if we have a definition at the top level.
+But because it's just right now a reserved keyword.
+Inside the node, declaration, and,
+hyper-edge declaration, I don't think we need to,
+To go further in terms of how to do it.
+Andres Borja 00:30:37 Let's say you want to have to finance policies, and then you want to reuse the same extension, right?
+You know, chorra.
+Laurent Querel 00:30:45 No, no, I just want to be able to add some additional configuration specifically to this place.
+Or, to add some additional policy… specific policy that only our engine will understand.
+into a specific Node instance.
+it's not really an extension with multiple implementations. There is only one implementation, and it's there by default. There is no reason to declare that at the top level.
+Andres Borja 00:31:20 If you want to use it in different policies, right?
+Laurent Querel 00:31:25 So…
+Andres Borja 00:31:26 I mean, if you want to use it at different nodes, at different ages, the hyperages, if you want to use it at different hyper ages, you…
+You don't need to re-copy and paste.
+Laurent Querel 00:31:36 No, I mean, it's like if you are saying, oh, the config will be defined at the top level, because maybe we will be able to reuse it in different places.
+We don't do that today.
+So,
+Same thing for that. Let's say that it's, let's name, instead of extension, let's name it,
+I don't know, config extension, or config.
+jmacdonald 00:32:01 Let's think on the naming. I think that it's gonna delay us, and we can move forward, I think, just agreeing that we're not talking about extensions here.
+Andres Borja 00:32:10 And my second comment related is, it would be nice to have, like, a real use case, something more tangible, because I'm having a hard time, how can you extend something that.
+Laurent Querel 00:32:20 I don't want to explain the use case.
+jmacdonald 00:32:22 Yeah. It just took place, right?
+Laurent Querel 00:32:25 Okay, let's just define that we want a reserve name there, that anyone can use, but we have a specific usage for it.
+So I will come back… With username, and
+And, yeah, and we will just take this name reserved.
+So it will not be something that anyone can reuse, for a different purpose than you.
+jmacdonald 00:32:55 And is it always one key?
+At a value, or is it… Multiple, never mind.
+Laurent Querel 00:33:03 Hi.
+jmacdonald 00:33:04 No worries.
+Laurent Querel 00:33:06 Yeah, let's move.
+jmacdonald 00:33:07 on, because I think this is not a big deal, and .
+Laurent Querel 00:33:11 No middle singers.
+jmacdonald 00:33:12 People come up with good open source extension ideas.
+Laurent Querel 00:33:15 I can never remove it if you want, because I don't want to spend too much time on that, which…
+Doesn't look like a good use of our time.
+jmacdonald 00:33:23 I can imagine, customizing the engine to run in weird locations, systems on a chip, whatever. Maybe we need.
+Laurent Querel 00:33:30 Yeah.
+jmacdonald 00:33:31 like this. I can see it, I just don't know how to talk anymore either. Thank you. May we move on to, what's next? So, I think… well, Gokan had his hand up, and now I think, would…
+either we keep going… Goken, maybe, maybe you could make your remarks.
+gokhan 00:33:51 I wanted to just ask a concrete example of what an extension would be in this case, or what, like, just… just that. I don't know if I missed it, but…
+jmacdonald 00:33:59 I think, we should suspend that. I think we can come up.
+gokhan 00:34:03 That's okay, but yeah, just, that was my question, but yeah, I can pass on that.
+Laurent Querel 00:34:08 I'm sorry I used the term extension, it was…
+not the best choice for the naming. That has nothing to do with the extension mechanism that you are implementing.
+jmacdonald 00:34:22 Naming is hard. I think we should think about it. I also don't like hyper edges, by the way. I would prefer just edges. I think most of the world doesn't know the difference between a hyper edge and an edge, but that's my opinion.
+Laurent Querel 00:34:33 And what about flooring?
+jmacdonald 00:34:35 Instead of whiteboard. It makes me want.
+It makes me think of the physical, like, our analogy is pipelines, and that's a different… that's an electrical analogy. I want the word pipes or something, but that's too far. I would… I don't know.
+I don't know.
+Pipeline. No. Pipe. Pipe. Nevermind.
+Laurent Querel 00:34:56 Mmm, thank you.
+jmacdonald 00:34:57 Again, naming is hard.
+Laurent Querel 00:34:58 Thank you.
+Yeah, I don't like pipes.
+jmacdonald 00:35:01 Bullshit.
+Laurent Querel 00:35:02 pipe is, yeah, okay. So can we just maybe focus on… because I really like to see this, all this work done, by the end of the week.
+I'm not talking about this extension, I'm talking about all the rest.
+Can we just,
+because I didn't get any feedback. I wrote this, stuff last, last Thursday, I think?
+No reaction. I really like to accelerate and implement that as soon as possible. I think that's the same thing on the Microsoft side.
+Can we just focus on deciding, maybe the name of that? And,
+And, agree on the fact that we moved too tight.
+And, this from two, and, if we all agree on that, then I think we can say done, and change the triage label.
+jmacdonald 00:36:04 I'm looking around at the thumbs up. I'm… I… does anyone have a strong opinion,
+I think naming is hard, and it takes a little moment to think about, you know, maybe the name hyper edges, but I do like your Brahmin 2. I like having optional stuff that we don't often need, especially in all of our examples. The examples are very verbose, because we have all these sort of, like, like, stuff.
+So I am happy with this, if that's what you want to hear.
+Laurent Querel 00:36:41 Yeah, I'm… yeah, so, everyone is aligned with that, with this, so I accept that, maybe.
+I'm okay.
+jmacdonald 00:36:51 connections.
+Laurent Querel 00:36:52 It… Connections, perfect, go. I was just…
+drewrelmas 00:36:56 Typing that in the chat, Josh.
+jmacdonald 00:36:58 Sweet, yeah, that was on my mind as well, so maybe that's the one.
+Laurent Querel 00:37:05 Okay.
+jmacdonald 00:37:08 Last words on that? I think… I think that's a winner.
+Laurent Querel 00:37:13 Okay, I will adapt to the…
+The proposal based on that, and .
+Andres Borja 00:37:18 different from the concept of pipeline in the OpenTelemetry world?
+Laurent Querel 00:37:24 We want to represent DAG here. So,
+What do you mean, core set of pipeline? The pipeline that we have here?
+Correct, yeah. It's misleading, because there are… For the reason explained there.
+jmacdonald 00:37:40 In my opinion, it's listening, because first, the pipeline in this world are.
+Laurent Querel 00:37:45 typed, per signal type. You can't have a pipeline that is Both metric and logs.
+Andres Borja 00:37:52 I'm not saying use the same… I'm not saying use the same architecture or format, but…
+But I'm trying to map…
+The pipeline, like, the thing, the piece that you have on the receivers and processors, you are basically…
+Creating the connections between them, so…
+So, maybe pipeline one is just those connections that you are defining there.
+Soap.
+Laurent Querel 00:38:20 So my, my feedback to that, when I, we discussed, previously with, with, I think, Joshua, was…
+My problem with that is reusing the same term that the GoCollector is using.
+I think will be a potential…
+recurrent problem, because people will have the same expectation that they have with the GoCollector.
+Meaning that those pipelines are single type in terms of signal, and those pipelines have
+The same kind of…
+Implicit, connection between the receiver and the processor, and between the processor and the exporter.
+And that's not the case. So, that's why I was against, personally, reusing the term pipeline.
+To avoid those endless discussions that we could have in the future with people that, seeing exactly the same terminology, will expect the same type of approach.
+jmacdonald 00:39:21 Yeah,
+So, Goken said some things in the chat, but I wanted to respond, by adding that, I… well, responding to the… the confusion about connection… about the extensions, just one more time, I put in
+another link that's important to us, or another issue that's important to us here, and I wonder how you feel about it, since it's so close to this topic.
+So I put in issue 1949, I can put it in the chat right now, but it's now in the notes as well. This is,
+So close to what you called
+unfortunately, extensions, which could be some other word, like…
+secrets, we'll call it, or, like, I don't know, like, labels, or… but the point is that we want to put extra telemetry attributes
+on the entity that forms the pipeline in the node. So it's almost like asking for a similar feature to have
+essentially arbitrary key values in… at every level of the configuration where we have telemetry, because we want extra. And the reason why I'm connecting these two is that this is how we can insert the OTEL concept of a pipeline just by throwing another attribute on it.
+So, OTEL pipeline might be the attribute we give after we translate the OTEL pipeline into the data flow engine configuration.
+Laurent Querel 00:40:55 Oh… So I understand the why you are saying that attributes and what I mean, extension, or…
+connected, I'm not sure to understand the relation with the…
+jmacdonald 00:41:07 If you go back to that hotel collector configuration, the names of the pipelines are meaningful to the user, so metrics slash unsanitized means something to the user, and we don't have a way to put that in.
+to the configuration. Those names are…
+Laurent Querel 00:41:26 Oh, okay, okay.
+jmacdonald 00:41:28 And so they…
+Laurent Querel 00:41:28 So… we… we could… so the year… the entire pipeline is… is that. It's… it's not, like,
+Here, we are… I mean, the big difference is…
+we design only one pipeline here, not two, not three.
+jmacdonald 00:41:45 We're finding 3 pipelines, we want to have, like.
+And it's just one set of nodes, then we want to have an extra, like, attribute somewhere that becomes telemetry, that we can tell the user, you gave us this logical model that's like a no-tel collector, and we have… remember the names that you gave us.
+Does that make sense?
+Laurent Querel 00:42:07 Do you… okay, so are you saying that… because something that was not representative into this proposal is…
+above this level, nodes, nodes and edges or connections,
+That represents an entire pipeline definition, but we also have to support those pipeline groups and pipelines. They have ID, they could have a description.
+Are you talking about the…
+being able to assign an ID to this entire thing. If that's the case, then we already have a format for it.
+jmacdonald 00:42:46 Yeah, I sort of am, but I don't want to force you into that, or really, Drew, I'd like to hear Drew's idea, or thoughts, just because, yes, but I still probably want arbitrary key values on top.
+drewrelmas 00:43:00 Yeah, I was just gonna say, I know this represents a single pipeline right now, but, we…
+If we were gonna move to that model of,
+like, using multiple pipelines in the OTAP config model, we would need to figure out the, receiver fan-out.
+gracefully, because a receiver, you know, think about the GO model, receivers can be used, duplicating the data to
+multiple places, right? So it… it wouldn't be uncommon to have a single receiver go to multiple pipelines, and we don't really have the cross-pipeline node capability at this time, so…
+My logical model for multiple pipelines today, like, as the code, as it's sitting in main right now, is…
+technically only one OTAP pipeline that is a collection of all the nodes from all my, Go pipelines, and then, if that's the case, I do want the thing that Joshua was just talking about.
+Laurent Querel 00:44:07 Okay, got it. So…
+yeah, I think we need to separate the conversation, but my vision on that was…
+We, that's why we support the pipeline group, pipelines, and topics.
+So if we have a situation where
+We, we need, for whatever reason, to share the same
+Receiver between different types of pipeline configuration.
+Then, in the model, in the thread per core model that we, we, we support, in order to keep one thread per pipeline instance.
+The idea was to have an ingest sightline With the corresponding configuration.
+Targeting a topic.
+And then different other pipeline configuration consuming this topic.
+And… and consuming it into…
+I mean, or in a fan-out mode, so…
+basically reading all the same IP data message.
+so we have effectively, we keep the boundary, each pipeline, or…
+let's say, consuming… are assigned to one thread, we have the… the telemetry, CPU and memory, corresponding to the correspond.
+Corresponding to the… to this specific pipeline instance.
+We can restart the corresponding pipeline without
+any difficulty with the rest of the existing pipeline that are running into this engine, and without restarting the…
+even restarting the ingest pipeline where your single receiver is. I think that was the…
+I think it's compatible with what you'd like to reproduce. It's slightly done differently, to keep, in my opinion, the
+The nice property of this engine, and adding also some additional capabilities, like being able to do some live reconfiguration
+And also to… Monitor per pipeline instance.
+every matrix.
+Even the ones that are usually impossible to… To, for example, you can't,
+in the GoConnector, you can't have memory or CPU metric for for that.
+jmacdonald 00:46:50 Gotcha. I'm starting to understand.
+there's… this is… this is, like, the… I guess…
+What you're saying sounds nice, and I think this is an appealing design. I wouldn't disagree.
+Laurent Querel 00:47:02 I mean, we already have it.
+jmacdonald 00:47:04 Right, exactly. I still wouldn't tell Drew, you must implement pipeline groups, you must map that OTEL model onto one pipeline group per processor chain, and one pipeline group per receiver, and one pipeline group per exporter, because they share
+Where… because I know that we have a potential as well, like, a configuration is valid when you say, I have one thread, I only want one thread, I have two pipelines with fanout, it's a thread per core, I want all of my work to be one thread, and it will work.
+And maybe that's what would work for me, or… you know. So we could have different configurations. And in that configuration that I described.
+Laurent Querel 00:47:45 But, you know… But the… so the… yeah, I think that's exactly what we have here. We, we have…
+Multiple pipelines implemented into a single pipeline.
+jmacdonald 00:47:58 Yeah.
+Laurent Querel 00:48:00 So, that's exactly what you are describing.
+jmacdonald 00:48:02 The pipeline name was lost.
+the pipeline?
+Laurent Querel 00:48:05 Okay, so, do we… the, you and Ru will be at tea if, we…
+Let's rename extension attributes, and then you can use that As you won't.
+I'm also okay with the term attribute, by the way.
+jmacdonald 00:48:25 We'll figure it out. This, again, is naming. I want to save the time to talk with Gokan about extensions now, to be… to… to respect that.
+Cool. Yep. I think we made a lot of progress here.
+Laurent Querel 00:48:38 Okay.
+jmacdonald 00:48:39 So, maybe I could reintroduce this. I've been talking with Goken for a while. It's a hard problem. Honestly, it's a hard problem in every language, because it's different in every language, and Rust is pretty challenging here. So…
+Auth extensions are kind of like the working example. We can imagine other extensions. I've looked at rate-limiting extensions in the Go environment, so…
+We're really trying to figure out how to make multiple instances… multiple implementations of an interface compatible with shared and local, compatible with the engine design, compatible with performance, and makes sense, and we're having trouble.
+Goken, would you like to speak on that?
+Or introduce the topic in any way yourself.
+gokhan 00:49:26 Okay, yeah, can I share my screen?
+Laurent Querel 00:49:30 Yes, I will be stopping the sharing. Go ahead.
+gokhan 00:49:40 First time sharing screen on this, okay.
+So… about…
+But initially, when we talked about… when I asked about the extensions and what it should do, I heard multiple feedbacks.
+And one of the things seemed like it should be multi-tenant, this and that. And in general, one of the challenges that I was trying to solve was authentication, but looking at how authentication was sold in Go, and…
+how Rust operates, etc, it seemed like you cannot just
+You know, transparency authentication, because you cannot intercept calls, etc, and, and,
+Because you don't want to dictate what kind of client each component use, and things like that. So I thought, you know, why not take an approach to extensions in a generic way, and then…
+Let it be more like,
+Maybe configurable services that you can locate, where there is a contract sealed in the engine, and the consumers and the
+you know, people who develop those extensions, you know, people who develop those extensions expose the capabilities through the interfaces in the engine to keep the API stable, and the consumers rely on that API.
+that is in the engine to be able to consume those extensions. That means that the idea for that is to generally keep the, you know, enforce the stability of the API, because,
+on the other side, I was thinking, if we leave people free to do whatever they want to do, and
+you can just say, like, I want to develop an Azure Ident authentication, for example, extension, and all it does is it has a start method, and it exposes each type.
+is itself, and then the consumers will just refer that type directly, and and then the extension developer needs to follow the rules of semantic versioning, so that, you know, no breaking changes, etc. But there's, like.
+hopeful thinking, wishful thinking, probably. So, the idea, was to, you know, enforce it at the engine level, so that, you know, there are traits defined in there, and…
+What, and, and, for general purpose, functionalities.
+So that… We can create those, first-class, trades, and,
+Yeah, provider functionality through those traits.
+And,
+And the idea for at least the one I wanted to go for, and probably… I'm still learning the quote base, so I'm… probably made a mistake there, but the idea is to have one instance per core, or per pipeline, actually instance per core, and
+to…
+then, provide access to any component through some service locator pattern style. So I was like, how do I, achieve this, kind of pattern? And, I ended up, you know, landing on this sort of design.
+that… thought, idea, that I have,
+created an issue for us to discuss on. You know, there are a lot of things that probably needs to be corrected there for us, where the extensions are declared in the configuration, and
+some… some of the… one of the comments, a comment that Lauren made about, not being synced, and those made sense, and that's still, you know, how, together with my…
+understanding, increasing in the squad base.
+I…
+jmacdonald 00:53:44 Alright, gonna ask you to slow down a little bit, and I want to scroll up and look at the interface, like the service discovery pattern, as you called it. I think this really gets to the crux of this
+scroll down, please, to the code snippets past the configuration. Yeah, this… this Arc stuff, the bundle, this is where,
+I've worked… we've looked at this quite a bit, and
+the problem, generally speaking, is you have someone who's going to consume the API, and you have someone who's going to provide the API, and you don't want to introduce, like, a version lock or a dependency between them. So, what GoCan was saying earlier is the… and this is sort of following how this works in the Go environment, is the collector or the… we, the repository owners, are responsible for
+you know, good design. We have to design good auth interfaces that are hopefully usable again and again, and we have to keep them stable. And if we find that our existing good, stable interfaces are no longer good.
+We have to create new ones without breaking the old ones, because that's how extensions… you can't… you can't just break stuff once you have extensions. They live forever, and you've published your interfaces, you have to stick to them, so we have to be careful.
+But where I run into trouble here, and I'd love to hear others' thoughts, is, like, at some level, somewhere during your setup, I think it's the pipeline context, we can give you a mapping saying, I know the extensions for this pipeline, here are their names and their numbers.
+like, that… at that point, there's a… at the sort of bottom of the screen, we have this, like, GET extension with a… with the TurboFish for dine bearer token provider. So bearer token provider is the stable interface that we've all looked at, and it's a dynamic…
+And we're… the question now is, how do we know whether we want shared or local? How do we get a handle to that bearer token provider instance or implementation at… as we start the pipeline? And then how do we hold it, and how is it synchronized? Those are my questions. It's a lot of questions.
+Laurent Querel 00:55:52 I think I can underst… I can, respond to that.
+So the… in this example, the effect on LER,
+Will be cool from… from a node.
+And, the effect on blur is either shared or local, depending on the type of the node.
+So… The fact that you need
+A shared or local extension is directly related to
+Or correlated to the fact that your node is shared and local, so…
+I don't see any… any problem there. The,
+yeah, the effect on Blur will be already there, and…
+jmacdonald 00:56:31 That makes sense.
+Laurent Querel 00:56:32 It's a different implementation, yeah.
+jmacdonald 00:56:35 How about the dynamic, the keyword DYN there? Like, do we worry about the dynamic dispatch, or the V-table of it, or is that literally the nature of extensions?
+Laurent Querel 00:56:47 No, I think that in that case, if we want to support different… implementation provider.
+Yeah, we need some kind of dynamic dispatch.
+Okay.
+jmacdonald 00:57:00 Yes. And would you say that if you're a local effect handler, you get back an RC ref cell of DynBearer token, or box dyne bearer token, and that you get an RC… sorry, an arc mutex of
+dined bearer token provider Imple, maybe? I don't know, like, I'm… this is where my Rust knowledge runs into a little bit of…
+Some sort of limits.
+Is that correct?
+Laurent Querel 00:57:27 Thank you.
+Yeah, I think that I need… we need to go into detail of the implementation. I'm not yet sure of the right…
+What is…
+gokhan 00:57:38 So, so…
+Laurent Querel 00:57:39 from there, what is of use for me is the effect owner is a different implementation depending on which situation we are, shared versus local. So we… that means that we have the flexibility
+We have a slightly different signature, or get extension, depending on where we are.
+jmacdonald 00:57:57 Got it.
+That makes sense to me. I feel like I… Go ahead, go, Ken.
+gokhan 00:58:04 Before the time ends, I wanted to get one question in there that I was curious about. I wanted to take a few attempts on different styles of implementation and trying to figure out what works best here, and maybe then we will have more things to talk on. But one thing that I wanted to understand was, Laurent mentioned that don't use sync.
+And he never mentioned anything about send. I saw that, other components could be local or shared. Shared supports send, whereas local, no send, and no,
+sync, and I understood that the main… the main impact of that is if you have a send or sync, you, you cannot use RC.
+That, that, you know, like, takes away their chance of optimization.
+And I was wondering, if we were to provide… if we were to go with this sort of implementation, out of a million choices, and if you were to say that, okay, we're going to provide you
+interfaces that you can implement. Do we need to, for example, or, like, trades, do we need to say bear token provider, like, local bear token provider, then shared bear token provider? So do we need… should we go for an implementation that way? Hypothetically speaking, again, if I follow up with this.
+And then, because maybe for better to provide that that's not necessary, right? But maybe there, we have a chance to provide the, those interface.
+those trade options to be local or shared as well, or to simplify the code and actually to make those service discovery thing easier, because that seems like in the… if I have to go for shared or local, then it will also seemingly might require multiple registries, and multiple types of even resolving, how to, you know, like, get those instances.
+And, that add complexity. Would it be a problem to just assume that the extensions are send-only, that way it can still work with local or shared components, but we would like the ability to optimize for RC,
+That is, and, you know, like, given that what the purpose of those extensions will be, is that a necessary optimization? If yes, I can try to, you know, solve the problem for that.
+If not, you know, maybe it will be.
+Laurent Querel 01:00:10 on those coup.
+gokhan 01:00:10 For me to just have it.
+Laurent Querel 01:00:13 Yeah, understood.
+jmacdonald 01:00:16 I, I wonder…
+Laurent Querel 01:00:17 I recommend…
+jmacdonald 01:00:17 just to help with that question is that I think probably the answer in the end of time is yes, we want all the optimizations, but in your case, Gokan, like, we know what we want as a token provider interface, and we know that the first available one that we need is the Azure SDK. And so.
+you know, we can start with shared and kind of, like, just leave empty stubs where the local implementation goes, and just do the shared version. And I think you're right, we'll come to a point where someone wants to implement a local thing, maybe not a token provider, though, like, but maybe… my example is local rate limiting.
+We can do rate limiting without New Texas, and so on.
+On a per-thread basis.
+And that would be a local pattern. We'll figure it out later.
+Laurent Querel 01:01:03 Yeah, so…
+gokhan 01:01:04 So, so, listen.
+Laurent Querel 01:01:05 We'll describe a more,
+I will describe in your thread, a more detailed version of what I will say now, but, I think it's okay if the… the…
+Trait is, a trait, and a sync traits with, we use a send,
+yeah, send implementation that could be used in both local and shared.
+What was super important is not… Forcing the sync.
+Because then,
+that's where the overhead will come, and there is no good reason to make… I mean, they are all bad reasons, in my opinion, if it was sync. So what I want to avoid is an extension that is shared across multiple pipeline instances. That will be very, very bad.
+But…
+gokhan 01:02:09 Yeah, I wanted to avoid that, too. There's a mistake in my original design based on the lack of my understanding of the…
+Laurent Querel 01:02:16 So, otherwise, I don't have any… I don't have any other issue with the…
+with the Bureau token provider that implement async, send, I mean, it's totally okay.
+In order to simplify, because if we want to create… if we want to avoid to create different traits, one for local, one for shared.
+Which makes sense, it's okay if it's send, and that could be used in these two specific contexts.
+And that will simplify the… the work of the implementer of those extensions.
+And that will not, and…
+A significant overhead, for user of those extensions.
+gokhan 01:03:11 I didn't understand the last part.
+Laurent Querel 01:03:13 Sorry?
+gokhan 01:03:16 Are the none on the… Understood.
+Laurent Querel 01:03:17 Oh, okay. I'm saying that, you know, it's 5PM, I will take the time to…
+to add some more detailed explanation into your, into your… I don't remember, your PR or your GitHub issue, I need to retrieve it. If you can just copy-past this, although it's part of the Google Doc. I will go from there, and I will add, more detailed explanation.
+gokhan 01:03:44 Okay, thank you. Thank you so much, Soria.
+Laurent Querel 01:03:48 Otherwise, that's great that we have those, these quokies.
+He's excellent.
+gokhan 01:03:54 Thank you, yeah, I'm still learning, but by the time I'm there, Yeah, I'll do much better.
+Laurent Querel 01:04:03 Thank you.
+Andres Borja 01:04:05 Winter does.
+Laurent Querel 01:04:06 Okay, I think we are at the end of the… oh, Andres, you have something to…
+Andres Borja 01:04:10 No, same, thank you, and bye.
+Laurent Querel 01:04:13 Okay, thank you, bye.
+Albert Lockett 01:04:15 Hi, everyone.
+gokhan 01:04:16 Bye.
+Jake Dern 01:04:17 Bye.

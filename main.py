@@ -15,27 +15,32 @@ Usage
 
 Output
 ------
-    transcripts/
+    docs/content/
       {sig-slug}/
-        YYYY-MM-DD.txt
+        metadata.md                    (stable SIG metadata; created once)
+        YYYY-MM-DD/
+          transcript.md                (header + ## Zoom Recording Transcript)
+          meeting-notes.md             (attendees + agenda, only if non-empty)
 """
 from __future__ import annotations
 
 import argparse
 import logging
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+from scraper import community, gdoc
 from scraper.sheet import Meeting, fetch_csv, filter_meetings
-from scraper.transcript_io import SEPARATOR
+from scraper.transcript_io import SEPARATOR, parse_reference
 from scraper.zoom import ZoomScrapeError, scrape_transcript
 
 logger = logging.getLogger(__name__)
 
-TRANSCRIPTS_DIR = Path(__file__).parent / "transcripts"
+TRANSCRIPTS_DIR = Path(__file__).parent / "docs" / "content"
 
 # Shorthand aliases expanded before matching SIG slugs.
 # Keys are lowercase; values are the search terms tried against the slug.
@@ -62,22 +67,99 @@ _SIG_ALIASES: dict[str, list[str]] = {
 }
 
 
+_SPEAKER_LINE_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2})\s+(.*)$")
+
+
 def make_output_path(meeting: Meeting) -> Path:
     date_str = meeting.start_date.strftime("%Y-%m-%d")
-    return TRANSCRIPTS_DIR / meeting.sig_slug / f"{date_str}.txt"
+    return TRANSCRIPTS_DIR / meeting.sig_slug / date_str / "transcript.md"
 
 
-def write_transcript(path: Path, meeting: Meeting, lines: list[str]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    header = (
+def _format_body_line(line: str) -> str:
+    """Convert 'Speaker MM:SS utterance' to '**Speaker** MM:SS utterance'.
+
+    Lines that don't match the speaker-timestamp pattern are returned as-is.
+    """
+    m = _SPEAKER_LINE_RE.match(line)
+    if m:
+        return f"**{m.group(1)}** {m.group(2)} {m.group(3)}"
+    return line
+
+
+def _ensure_metadata(meeting: Meeting, transcript_path: Path) -> str:
+    """Return the meeting-notes URL for the SIG; bootstrap metadata.md if absent.
+
+    If metadata.md doesn't exist in the SIG directory, fetches the URL from
+    the community README once and writes the file. Returns "" if the URL
+    cannot be determined (user can fill it in manually).
+    """
+    sig_dir = transcript_path.parent.parent
+    metadata_path = sig_dir / "metadata.md"
+
+    if metadata_path.exists():
+        ref = parse_reference(metadata_path)
+        return ref["meeting_notes_url"] if ref else ""
+
+    notes_url = community.get_meeting_notes_url(meeting.sig_slug)
+    sig_dir.mkdir(parents=True, exist_ok=True)
+    metadata_path.write_text(
         f"SIG: {meeting.sig_name}\n"
-        f"Date: {meeting.start_date.strftime('%Y-%m-%d')}\n"
-        f"Duration: {meeting.duration_minutes} minutes\n"
-        f"Source URL: {meeting.url}\n"
-        f"{SEPARATOR}\n\n"
+        f"Meeting Notes: {notes_url}\n"
+        f"Repository: \n",
+        encoding="utf-8",
     )
-    path.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
+    if notes_url:
+        logger.info("Created metadata.md for %s", meeting.sig_slug)
+    else:
+        logger.info(
+            "Created metadata.md for %s (no notes URL found — fill in manually)",
+            meeting.sig_slug,
+        )
+    return notes_url
+
+
+def write_transcript(
+    path: Path,
+    meeting: Meeting,
+    lines: list[str],
+    notes: dict[str, list[str]] | None = None,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    date_str = meeting.start_date.strftime("%Y-%m-%d")
+
+    parts = [
+        f"SIG: {meeting.sig_name}",
+        f"Date: {date_str}",
+        f"Duration: {meeting.duration_minutes} minutes",
+        f"Zoom Recording URL: {meeting.url}",
+        SEPARATOR,
+        "",
+        "## Zoom Recording Transcript",
+        "",
+    ]
+
+    parts.extend(_format_body_line(line) for line in lines)
+    parts.append("")
+
+    path.write_text("\n".join(parts), encoding="utf-8")
     logger.info("Saved %s", path)
+
+    # Write meeting-notes.md only if we have content
+    has_attendees = notes and notes.get("attendees")
+    has_agenda = notes and notes.get("agenda")
+    if has_attendees or has_agenda:
+        notes_parts = ["## Meeting Notes", ""]
+        if has_attendees:
+            notes_parts.append("### Attendees")
+            notes_parts.extend(notes["attendees"])
+            notes_parts.append("")
+        if has_agenda:
+            notes_parts.append("### Agenda")
+            notes_parts.extend(notes["agenda"])
+            notes_parts.append("")
+        notes_path = path.parent / "meeting-notes.md"
+        notes_path.write_text("\n".join(notes_parts), encoding="utf-8")
+        logger.info("Saved %s", notes_path)
 
 
 def process_meetings(meetings: list[Meeting]) -> tuple[int, list[str]]:
@@ -110,12 +192,21 @@ def process_meetings(meetings: list[Meeting]) -> tuple[int, list[str]]:
                     meeting.url,
                 )
 
+                # Ensure metadata.md exists; fetch meeting notes from Google Doc
+                notes_url = _ensure_metadata(meeting, out_path)
+                date_str = meeting.start_date.strftime("%Y-%m-%d")
+                notes = (
+                    gdoc.fetch_meeting_notes(notes_url, date_str)
+                    if notes_url
+                    else {"attendees": [], "agenda": []}
+                )
+
                 # Fresh context + page per recording to avoid state leakage
                 context = browser.new_context()
                 page = context.new_page()
                 try:
                     lines = scrape_transcript(page, meeting.url)
-                    write_transcript(out_path, meeting, lines)
+                    write_transcript(out_path, meeting, lines, notes)
                 except ZoomScrapeError as exc:
                     logger.warning("Skipped — %s", exc)
                     skipped_urls.append(meeting.url)

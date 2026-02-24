@@ -1,9 +1,11 @@
 {
-  "generated_at": "2026-02-23T16:14:25Z",
+  "generated_at": "2026-02-24T15:24:36Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
       "name": "Agent Management WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/19WA5-ex8rNFIBIyVb5VqMXfWNmUQwppGhN8zBeNG0f4",
+      "repository_url": "https://github.com/open-telemetry/opamp-spec",
       "meetings": [
         {
           "date": "2026-02-03",
@@ -15,6 +17,8 @@
     {
       "slug": "Android-SIG",
       "name": "Android SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1W72oElAJuYx3efM9wkH5l1iksdfwmTSkVl-H7KHTLnY",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-android",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -36,6 +40,8 @@
     {
       "slug": "Arrow-SIG",
       "name": "Arrow SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1z8_Ra-ALDaYNa88mMj1gOZtOpLZLRk0-dZEmDjPmcUs",
+      "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -62,6 +68,8 @@
     {
       "slug": "Browser-SIG",
       "name": "Browser SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1G3yBAV5SzWBO3mmsBUos5bsn4yxsqkS1MLWl1urVojQ",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-browser",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -82,7 +90,9 @@
     },
     {
       "slug": "CC-SIG",
-      "name": "C/C++ SIG",
+      "name": "OpenTelemetry C/C++ SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1rdF6GZcCqH9huo3oqur5x_McsPS_qQ9OPSRFjIqndm8",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-cpp",
       "meetings": [
         {
           "date": "2026-02-09",
@@ -99,6 +109,8 @@
     {
       "slug": "CICD-SemConv-SIG",
       "name": "CI/CD SemConv SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1CdzXD16QpayEpPxae_3u-7BLyzv0GgzZrKvV7tTFDr0",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -120,6 +132,8 @@
     {
       "slug": "Client-Instrumentation-SIG",
       "name": "Client Instrumentation SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-browser",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -136,6 +150,8 @@
     {
       "slug": "Collector-SIG",
       "name": "Collector SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1AeWpwxjMPm8jOAZymCB3BrwwmNiJiKOO7dc4EvVq3x0",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -157,6 +173,8 @@
     {
       "slug": "Communications-SIG",
       "name": "Communications SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry.io",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -173,6 +191,8 @@
     {
       "slug": "Community-Demo-App-SIG",
       "name": "Community Demo App SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/16f-JOjKzLgWxULRxY8TmpM_FjlI1sthvKurnqFz9x98",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
         {
           "date": "2026-02-11",
@@ -184,6 +204,8 @@
     {
       "slug": "Configuration-WG",
       "name": "Configuration WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1uNgWQLQZcSVfBLRXfW9XCVJmKa5NH9R15fSOXhmpGWw",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-configuration",
       "meetings": [
         {
           "date": "2026-02-02",
@@ -195,6 +217,8 @@
     {
       "slug": "Developer-Experience-SIG-Meeting",
       "name": "Developer Experience SIG Meeting",
+      "meeting_notes_url": "https://docs.google.com/document/d/1QDZYAvGJbqgodJaTxRPmRZh-fEJjb6XstvPUst6h50w",
+      "repository_url": "https://github.com/open-telemetry/sig-developer-experience",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -216,6 +240,8 @@
     {
       "slug": "End-User-SIG",
       "name": "End-User SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1e-UNZA3Tuno9b53RQbe--whUcO0VIXF3P81oXsrBK6g",
+      "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
           "date": "2026-02-12",
@@ -227,6 +253,8 @@
     {
       "slug": "End-User-SIG-OTel-Blueprints",
       "name": "End-User SIG: OTel Blueprints",
+      "meeting_notes_url": "https://docs.google.com/document/d/1e-UNZA3Tuno9b53RQbe--whUcO0VIXF3P81oXsrBK6g",
+      "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -243,6 +271,8 @@
     {
       "slug": "Entities-SIG",
       "name": "Entities SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/15Yt9ss2_EhuFPqItPbk4vjfpeRDAQ5WCUVuY_kCeOAo",
+      "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
           "date": "2026-02-09",
@@ -259,6 +289,8 @@
     {
       "slug": "Event-WG",
       "name": "Event WG",
+      "meeting_notes_url": "",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -275,6 +307,8 @@
     {
       "slug": "FAAS-WG",
       "name": "FAAS WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/16dGljp7YY7jgzxydDKsin8DQCCx6HQqdQHorDxTx6SQ",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-12",
@@ -286,6 +320,8 @@
     {
       "slug": "Go-Auto-Instrumentation-SIG",
       "name": "Go Auto-Instrumentation SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1P6am_r_cxCX1HcpDQlznrTrTOvwN2whshL0f58lXSWI",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-go-instrumentation",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -302,6 +338,8 @@
     {
       "slug": "Go-Compile-Time-Instrumentation-SIG",
       "name": "Go Compile Time Instrumentation SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1XkVahJfhf482d3WVHsvUUDaGzHc8TO3sqQlSS80mpGY",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation",
       "meetings": [
         {
           "date": "2026-02-12",
@@ -313,6 +351,8 @@
     {
       "slug": "Go-SIG",
       "name": "Go SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1E5e7Ld0NuU1iVvf-42tOBpu2VBBLYnh73GJuITGJTTU",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-go",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -334,6 +374,8 @@
     {
       "slug": "Governance-Committee",
       "name": "Governance Committee",
+      "meeting_notes_url": "",
+      "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -360,6 +402,8 @@
     {
       "slug": "Java-Declarative-Configuration",
       "name": "Java Declarative Configuration",
+      "meeting_notes_url": "https://docs.google.com/document/d/1D7ZD93LxSWexHeztHohRp5yeoTzsi9Dj1HRm7Tad-hM",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-java",
       "meetings": [
         {
           "date": "2026-02-05",
@@ -371,6 +415,8 @@
     {
       "slug": "Java-SIG",
       "name": "Java SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1D7ZD93LxSWexHeztHohRp5yeoTzsi9Dj1HRm7Tad-hM",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-java",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -392,6 +438,8 @@
     {
       "slug": "JavaScript-SIG",
       "name": "JavaScript SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1tCyoQK49WVcE-x8oryZOTTToFm7sIeUhxFPm9g-qL1k",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -413,6 +461,8 @@
     {
       "slug": "K8s-Semantic-Convention-SIG",
       "name": "K8s Semantic Convention SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/17DqFVlLvO43neXXTwlSd1zcKjSRA8P3d0Y444QNwUTQ",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -429,6 +479,8 @@
     {
       "slug": "Kubernetes-Operator-SIG",
       "name": "Kubernetes Operator SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-operator",
       "meetings": [
         {
           "date": "2026-02-12",
@@ -440,6 +492,8 @@
     {
       "slug": "LLM-Semantic-Convention-WG",
       "name": "LLM Semantic Convention WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1EKIeDgBGXQPGehUigIRLwAUpRGa7-1kXB736EaYuJ2M",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -471,6 +525,8 @@
     {
       "slug": "NET-Auto-Instr-SIG",
       "name": ".NET Auto-Instr SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1yjjD6aBcLxlRazYrawukDgrhZMObwHARJbB9glWdHj8",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -492,6 +548,8 @@
     {
       "slug": "NET-SIG",
       "name": ".NET SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1yjjD6aBcLxlRazYrawukDgrhZMObwHARJbB9glWdHj8",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -513,6 +571,8 @@
     {
       "slug": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
       "name": "OpenTelemetry on Mainframes Weekly Meeting",
+      "meeting_notes_url": "https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE",
+      "repository_url": "https://github.com/open-telemetry/sig-mainframe",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -534,6 +594,8 @@
     {
       "slug": "PHP-SIG",
       "name": "PHP SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1WLDZGLY24rk5fRudjdQAcx_u81ZQWCF3zxiNT-sz7DI",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-php",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -555,6 +617,8 @@
     {
       "slug": "Profiling-WG",
       "name": "Profiling WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/19UqPPPlGE83N37MhS93uRlxsP1_wGxQ33Qv6CDHaEp0",
+      "repository_url": "https://github.com/open-telemetry/sig-profiling",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -571,6 +635,8 @@
     {
       "slug": "Prometheus-WG",
       "name": "Prometheus WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1OijO_NZyR7gb7AvUj_KxKbcbsN09XQmq_ExZeDlgEOg",
+      "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
           "date": "2026-02-13",
@@ -582,6 +648,8 @@
     {
       "slug": "Python-SIG",
       "name": "Python SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/18w8zOBm_mbety0OqlPwxc7dvnfu641EgmrO4AdJef0U",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-python",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -603,6 +671,8 @@
     {
       "slug": "RPC-Sem-Conv-Stability-SIG",
       "name": "RPC Sem Conv Stability SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/11AtPWuaNGl2MfhRwgWqNbnjAPtK06jMKWh5-_YbWuHE",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -624,6 +694,8 @@
     {
       "slug": "Ruby-SIG",
       "name": "Ruby SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1EaIbfDE1elWTWt3bhilggki_OCRJZoFCSYZJXgc9KsM",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-ruby",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -645,6 +717,8 @@
     {
       "slug": "Rust-SIG",
       "name": "Rust SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/12upOzNk8c3SFTjsL6IRohCWMgzLKoknSCOOdMakbWo4",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-rust",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -666,6 +740,8 @@
     {
       "slug": "SIG-Injector",
       "name": "SIG Injector",
+      "meeting_notes_url": "https://docs.google.com/document/d/10bZsPhjbJHt-vamRg5kqHQf4ZANUiLOJxP9HYCONe94",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-injector",
       "meetings": [
         {
           "date": "2026-02-09",
@@ -677,6 +753,8 @@
     {
       "slug": "Security-Governance-SIG",
       "name": "Security Governance SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg",
+      "repository_url": "https://github.com/open-telemetry/sig-security",
       "meetings": [
         {
           "date": "2026-02-02",
@@ -688,6 +766,8 @@
     {
       "slug": "Semantic-Convention-SIG",
       "name": "Semantic Convention SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/10xG7DNKWRhxNmFGt3yYd3980a9uwS8lMl2LvQL3VNK8",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-16",
@@ -709,6 +789,8 @@
     {
       "slug": "Semantic-Convention-Tooling",
       "name": "Semantic Convention Tooling",
+      "meeting_notes_url": "https://docs.google.com/document/d/1ygwXgOFRF01UfUOgMr_ElyL7fSDPchTKSrqfj-_HeyA",
+      "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -725,6 +807,8 @@
     {
       "slug": "Service-and-Deployment-SemConv",
       "name": "Service and Deployment SemConv",
+      "meeting_notes_url": "https://docs.google.com/document/d/1Fy6yXfZqrwN_oHw95Bdfg_0hzUgzlk3VO5wA1invgkI",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -746,6 +830,8 @@
     {
       "slug": "Specification-SIG",
       "name": "Specification SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/15Yt9ss2_EhuFPqItPbk4vjfpeRDAQ5WCUVuY_kCeOAo",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
           "date": "2026-02-17",
@@ -767,6 +853,8 @@
     {
       "slug": "Swift-SIG",
       "name": "Swift SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1LugL8r4bAkbTxZ1Gq_6j_8SDv1LuZaNeUdR-QLN4d48",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-swift",
       "meetings": [
         {
           "date": "2026-02-12",
@@ -783,6 +871,8 @@
     {
       "slug": "System-Sem-Conv-Stability-WG",
       "name": "System Sem Conv Stability WG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1p5TH57t43XpxA48onLzX4PIr3g6ydYKCtR_AUlsCnQk",
+      "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
           "date": "2026-02-19",
@@ -804,6 +894,8 @@
     {
       "slug": "Technical-Committee",
       "name": "Technical Committee",
+      "meeting_notes_url": "",
+      "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -820,6 +912,8 @@
     {
       "slug": "eBPF-instrumentation",
       "name": "eBPF instrumentation",
+      "meeting_notes_url": "https://docs.google.com/document/d/1ZkmUT2EHKfgtLqrgx3WI8aBy2QNyZeTwSKXxe3DI6Pw",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation",
       "meetings": [
         {
           "date": "2026-02-18",
@@ -841,6 +935,8 @@
     {
       "slug": "ja-JA-Localization-SIG-Communications",
       "name": "ja-JA Localization (SIG Communications)",
+      "meeting_notes_url": "https://docs.google.com/document/d/1venl18Obvp3vD-lR_9Hj9k826s_weF0vzWe-TdaDkuY",
+      "repository_url": "https://github.com/open-telemetry/docs-ja",
       "meetings": [
         {
           "date": "2026-02-18",

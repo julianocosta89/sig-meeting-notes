@@ -47,11 +47,24 @@ Duration: 50 minutes
 Tyler 02:00 We renamed the SIG.
 """
 
+SAMPLE_METADATA = """\
+SIG: Go SIG
+Meeting Notes: https://docs.google.com/document/d/go-doc/edit
+Repository: https://github.com/open-telemetry/opentelemetry-go
+"""
+
 
 def _write_transcript(base: Path, slug: str, filename: str, content: str) -> None:
+    date = Path(filename).stem  # e.g. "2026-02-05"
+    d = base / slug / date
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "transcript.md").write_text(content, encoding="utf-8")
+
+
+def _write_metadata(base: Path, slug: str, content: str = SAMPLE_METADATA) -> None:
     d = base / slug
     d.mkdir(parents=True, exist_ok=True)
-    (d / filename).write_text(content, encoding="utf-8")
+    (d / "metadata.md").write_text(content, encoding="utf-8")
 
 
 class TestParseHeader:
@@ -63,6 +76,17 @@ class TestParseHeader:
         assert result["sig_name"] == "Go SIG"
         assert result["date"] == "2026-02-05"
         assert result["duration_minutes"] == 33
+        assert result["source_url"] == "https://zoom.us/rec/share/abc123"
+
+    def test_new_format_zoom_recording_url(self, tmp_path: Path) -> None:
+        p = tmp_path / "test.md"
+        p.write_text(
+            "SIG: Go SIG\nDate: 2026-02-05\nDuration: 33 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/abc123\n"
+            "============================================================\n"
+        )
+        result = parse_header(p)
+        assert result is not None
         assert result["source_url"] == "https://zoom.us/rec/share/abc123"
 
     def test_missing_sig_prefix(self, tmp_path: Path) -> None:
@@ -99,13 +123,12 @@ class TestParseHeader:
 
 class TestBuildManifest:
     def test_basic_manifest(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert len(manifest["sigs"]) == 1
@@ -117,15 +140,53 @@ class TestBuildManifest:
         assert sig["meetings"][0]["duration_minutes"] == 33
         assert sig["meetings"][0]["has_summary"] is False
 
-    def test_meetings_sorted_descending(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
+    def test_sig_metadata_from_metadata_md(self, tmp_path: Path) -> None:
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(src, "Go-SIG", "2026-02-12.txt", SAMPLE_TRANSCRIPT_2)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_metadata(src, "Go-SIG")
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        sig = manifest["sigs"][0]
+        assert sig["meeting_notes_url"] == "https://docs.google.com/document/d/go-doc/edit"
+        assert sig["repository_url"] == "https://github.com/open-telemetry/opentelemetry-go"
+
+    def test_sig_metadata_empty_when_no_metadata_md(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        sig = manifest["sigs"][0]
+        assert sig["meeting_notes_url"] == ""
+        assert sig["repository_url"] == ""
+
+    def test_metadata_md_not_included_as_meeting(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_metadata(src, "Go-SIG")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert len(manifest["sigs"][0]["meetings"]) == 1
+
+    def test_meetings_sorted_descending(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         meetings = manifest["sigs"][0]["meetings"]
@@ -134,84 +195,62 @@ class TestBuildManifest:
         assert meetings[1]["date"] == "2026-02-05"
 
     def test_sigs_sorted_alphabetically(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(src, "Java-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT_JAVA)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Java-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT_JAVA)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         slugs = [s["slug"] for s in manifest["sigs"]]
         assert slugs == ["Go-SIG", "Java-SIG"]
 
-    def test_transcript_copied_to_docs(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
-        docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
-            build_manifest()
-
-        copied = docs / "transcripts" / "Go-SIG" / "2026-02-05.txt"
-        assert copied.exists()
-        assert copied.read_text(encoding="utf-8") == SAMPLE_TRANSCRIPT
-
     def test_has_summary_true(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-
-        # Create a summary file
-        summary_dir = docs / "summaries" / "Go-SIG"
-        summary_dir.mkdir(parents=True)
-        (summary_dir / "2026-02-05.md").write_text("# Summary\n")
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        # Summary lives as a sibling of transcript.md
+        (src / "Go-SIG" / "2026-02-05" / "summary.md").write_text("# Summary\n")
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"][0]["meetings"][0]["has_summary"] is True
 
     def test_generated_at_present(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert "generated_at" in manifest
         assert manifest["generated_at"].endswith("Z")
 
     def test_empty_transcripts_dir(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
-        src.mkdir()
         docs = tmp_path / "docs"
+        src = docs / "content"
+        src.mkdir(parents=True)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"] == []
 
     def test_duration_values(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(src, "Go-SIG", "2026-02-12.txt", SAMPLE_TRANSCRIPT_2)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         meetings = manifest["sigs"][0]["meetings"]
@@ -220,171 +259,133 @@ class TestBuildManifest:
         assert durations["2026-02-12"] == 45
 
     def test_display_name_from_latest_transcript(self, tmp_path: Path) -> None:
-        """SIG display name should come from the latest-dated transcript,
-        not from alphabetical file order."""
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        # Older transcript uses "Go SIG"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        # Newer transcript uses "Go Instrumentation SIG" (renamed)
-        _write_transcript(src, "Go-SIG", "2026-02-19.txt", SAMPLE_TRANSCRIPT_RENAMED)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-19.md", SAMPLE_TRANSCRIPT_RENAMED)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         sig = manifest["sigs"][0]
         assert sig["name"] == "Go Instrumentation SIG"
 
     def test_display_name_stable_with_older_file_added(self, tmp_path: Path) -> None:
-        """Adding an older transcript should not change the display name."""
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        # Only the newer transcript initially
-        _write_transcript(src, "Go-SIG", "2026-02-19.txt", SAMPLE_TRANSCRIPT_RENAMED)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-19.md", SAMPLE_TRANSCRIPT_RENAMED)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
         assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
 
-        # Now add an older transcript with a different name
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
-        # Display name should still be from the latest transcript
         assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
 
     def test_manifest_json_serializable(self, tmp_path: Path) -> None:
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(src, "Java-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT_JAVA)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Java-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT_JAVA)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
-        # Should not raise
         serialized = json.dumps(manifest, indent=2)
         roundtripped = json.loads(serialized)
         assert roundtripped["sigs"][0]["slug"] == "Go-SIG"
 
 
 class TestStaleFileRemoval:
-    def test_stale_transcript_file_removed(self, tmp_path: Path) -> None:
-        """A file in docs/transcripts/ with no source counterpart is removed."""
-        src = tmp_path / "transcripts"
+    def test_stale_sig_dir_removed(self, tmp_path: Path) -> None:
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        # Pre-create a stale file in docs/transcripts/
-        stale_dir = docs / "transcripts" / "Go-SIG"
+        # A truly stale dir has no transcript.md files (e.g. leftover empty dir)
+        stale_dir = src / "Old-SIG"
         stale_dir.mkdir(parents=True)
-        stale_file = stale_dir / "2025-01-01.txt"
-        stale_file.write_text("stale content")
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
-            build_manifest()
-
-        assert not stale_file.exists()
-        # The valid file should still be there
-        assert (docs / "transcripts" / "Go-SIG" / "2026-02-05.txt").exists()
-
-    def test_stale_sig_directory_removed(self, tmp_path: Path) -> None:
-        """An entire SIG directory in docs/transcripts/ is removed when no
-        source transcripts exist for that slug."""
-        src = tmp_path / "transcripts"
-        docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-
-        # Pre-create a stale SIG directory
-        stale_dir = docs / "transcripts" / "Old-SIG"
-        stale_dir.mkdir(parents=True)
-        (stale_dir / "2025-01-01.txt").write_text("stale")
-
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert not stale_dir.exists()
 
-    def test_stale_summary_directory_removed(self, tmp_path: Path) -> None:
-        """An orphaned SIG directory in docs/summaries/ is removed when no
-        source transcripts exist for that slug."""
-        src = tmp_path / "transcripts"
-        docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-
-        # Pre-create a stale summary directory
-        stale_summary = docs / "summaries" / "Old-SIG"
-        stale_summary.mkdir(parents=True)
-        (stale_summary / "2025-01-01.md").write_text("stale summary")
-
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
-            build_manifest()
-
-        assert not stale_summary.exists()
-
     def test_no_stale_files_is_noop(self, tmp_path: Path) -> None:
-        """When docs/ mirrors source exactly, nothing is removed."""
-        src = tmp_path / "transcripts"
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
-        assert (docs / "transcripts" / "Go-SIG" / "2026-02-05.txt").exists()
+        assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
 
-    def test_docs_transcripts_dir_missing_is_safe(self, tmp_path: Path) -> None:
-        """build_manifest works even when docs/transcripts/ doesn't exist yet."""
-        src = tmp_path / "transcripts"
+    def test_transcripts_dir_missing_is_safe(self, tmp_path: Path) -> None:
         docs = tmp_path / "docs"
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        # Don't pre-create docs/ at all
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert len(manifest["sigs"]) == 1
 
-    def test_malformed_header_does_not_delete_docs(self, tmp_path: Path) -> None:
-        """A source file with an unparseable header must not cause its
-        previously-published docs to be treated as stale and deleted."""
-        src = tmp_path / "transcripts"
+    def test_malformed_header_does_not_delete_transcript(self, tmp_path: Path) -> None:
         docs = tmp_path / "docs"
+        src = docs / "content"
 
-        # One valid transcript and one malformed transcript in the same SIG
-        _write_transcript(src, "Go-SIG", "2026-02-05.txt", SAMPLE_TRANSCRIPT)
-        _write_transcript(src, "Go-SIG", "2026-02-10.txt", "garbage header\n")
-
-        # Simulate a previous build that copied both files to docs/
-        dest = docs / "transcripts" / "Go-SIG"
-        dest.mkdir(parents=True)
-        (dest / "2026-02-05.txt").write_text(SAMPLE_TRANSCRIPT)
-        (dest / "2026-02-10.txt").write_text("garbage header\n")
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-10.md", "garbage header\n")
 
         with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs), \
-             patch("build_site.SUMMARIES_DIR", docs / "summaries"):
+             patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
-        # Neither file should be deleted — the malformed one still exists in source
-        assert (dest / "2026-02-05.txt").exists()
-        assert (dest / "2026-02-10.txt").exists()
+        assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
+        assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()
+
+    def test_all_malformed_headers_does_not_delete_sig_dir(self, tmp_path: Path) -> None:
+        """SIG directory must survive even when every transcript has an unparseable header."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", "garbage header\n")
+        _write_transcript(src, "Go-SIG", "2026-02-10.md", "garbage header\n")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            build_manifest()
+
+        assert (src / "Go-SIG").exists()
+        assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
+        assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()
+
+    def test_metadata_only_sig_dir_not_deleted(self, tmp_path: Path) -> None:
+        """SIG directory with only metadata.md (no transcripts) must not be deleted."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        metadata_only = src / "New-SIG"
+        metadata_only.mkdir(parents=True)
+        (metadata_only / "metadata.md").write_text(
+            "Meeting Notes URL: https://example.com/notes\nRepository URL: https://example.com/repo\n"
+        )
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            build_manifest()
+
+        assert metadata_only.exists()
+        assert (metadata_only / "metadata.md").exists()
