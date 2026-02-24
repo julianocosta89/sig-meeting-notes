@@ -318,6 +318,10 @@ async function switchToView(view) {
       summaryEl.appendChild(renderMarkdown(md));
       bodyEl.replaceWith(summaryEl);
     } catch (err) {
+      currentView = 'transcript';
+      for (const btn of transcriptPanel.querySelectorAll('.tab-btn')) {
+        btn.setAttribute('aria-selected', btn.dataset.view === 'transcript' ? 'true' : 'false');
+      }
       showError('Failed to load summary: ' + err.message);
     }
   } else {
@@ -609,7 +613,7 @@ if (prevMatchBtn) prevMatchBtn.addEventListener('click', jumpToPrevMatch);
 if (nextMatchBtn) nextMatchBtn.addEventListener('click', jumpToNextMatch);
 
 document.addEventListener('keydown', function (e) {
-  if ((e.ctrlKey || e.metaKey) && e.key === 'g') {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'g') {
     e.preventDefault();
     if (e.shiftKey) {
       jumpToPrevMatch();
