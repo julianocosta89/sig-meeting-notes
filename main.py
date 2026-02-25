@@ -162,13 +162,17 @@ def write_transcript(
         logger.info("Saved %s", notes_path)
 
 
-def process_meetings(meetings: list[Meeting]) -> tuple[int, list[str]]:
+def process_meetings(meetings: list[Meeting]) -> tuple[int, int, list[str]]:
     """
     Scrape transcripts for all meetings.
 
-    Returns (failure_count, skipped_urls).
+    Returns (error_count, skipped_count, skipped_urls).
+    error_count   — unexpected exceptions (should fail the workflow).
+    skipped_count — expected skips, e.g. no transcript available on Zoom.
+    skipped_urls  — URLs for all skipped recordings (both kinds).
     """
-    failures = 0
+    errors = 0
+    skipped = 0
     skipped_urls: list[str] = []
 
     with sync_playwright() as pw:
@@ -210,18 +214,18 @@ def process_meetings(meetings: list[Meeting]) -> tuple[int, list[str]]:
                 except ZoomScrapeError as exc:
                     logger.warning("Skipped — %s", exc)
                     skipped_urls.append(meeting.url)
-                    failures += 1
+                    skipped += 1
                 except Exception:  # noqa: BLE001
                     logger.exception("Unexpected error for %s", meeting.url)
                     skipped_urls.append(meeting.url)
-                    failures += 1
+                    errors += 1
                 finally:
                     page.close()
                     context.close()
         finally:
             browser.close()
 
-    return failures, skipped_urls
+    return errors, skipped, skipped_urls
 
 
 def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
@@ -372,22 +376,32 @@ def main() -> int:
             m.url,
         )
 
-    failures, skipped_urls = process_meetings(meetings)
+    errors, skipped, skipped_urls = process_meetings(meetings)
 
     if skipped_urls:
-        print("\nSkipped recordings (no transcript found):")
+        print("\nSkipped recordings (no transcript available):")
         for url in skipped_urls:
             print(f"  {url}")
 
-    if failures:
+    if skipped:
         logger.warning(
-            "Completed with %d failure(s) out of %d meetings",
-            failures,
+            "%d recording(s) had no transcript — skipped (not a failure)",
+            skipped,
+        )
+
+    if errors:
+        logger.error(
+            "Completed with %d unexpected error(s) out of %d meetings",
+            errors,
             len(meetings),
         )
         return 1
 
-    logger.info("All %d meetings processed successfully", len(meetings))
+    logger.info(
+        "Done: %d meeting(s) processed, %d skipped (no transcript)",
+        len(meetings) - skipped,
+        skipped,
+    )
     return 0
 
 
