@@ -94,6 +94,8 @@ async function init() {
     manifest = await res.json();
     populateSigSelect();
     restoreFromURL();
+    const pendingGlobal = globalSearchInput.value.trim();
+    if (pendingGlobal) handleGlobalSearch(pendingGlobal);
   } catch (err) {
     showError('Failed to load manifest.', init);
   } finally {
@@ -1189,6 +1191,8 @@ async function handleGlobalSearch(query) {
     exitGlobalSearch();
     return;
   }
+
+  if (!manifest) return;
 
   // Cancel any previous search
   if (globalSearchAbort) globalSearchAbort.abort();
