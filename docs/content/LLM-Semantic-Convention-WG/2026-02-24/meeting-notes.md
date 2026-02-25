@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Nagkumar Arkalgud (Microsoft)
+- Josh Winerman (Cisco/Splunk)
+- Liudmila Molkova (Grafana Labs)
+- Keith Decker (Cisco/Splunk)
+- James Mattei (Elastiflow)
+- Anirudha”Ani” Jadhav ( AWS/ Opensearch-Project )
+- Dat Ngo (Arize)
+- Ankit Singhal (Microsoft)
+- Neil Yashinsky (Force Multiplier Labs / [ContextCore](http://contextcore.me/) )
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Nagkumar, 3 mins]: Memory Spec [https://github.com/open-telemetry/semantic-conventions/pull/3250](https://github.com/open-telemetry/semantic-conventions/pull/3250)
+  - Both memory interactions and memory contents
+  - Each of the memory operations in a new span
+  - Agent
+    - Retrieve from memory // can be done via a tool call
+    - Can the put into sys message or add as a message
+  - One of the possible ways
+    - Invoke_agent
+      - Llm
+      - Tool call
+        - Retrieve from memory
+      - Llm
+  - We have prototypes: mem0, crewai, langchain
+  - Maps to ADK, Bedrock, MS AI Foundry
+  - Action items: get reviews from different providers
+- [Ankit, 15 min] Server spans and async modeling (agent, tools, inference)
+  - Server spans
+    - InvokeAgent
+    - ExecuteTool
+    - Inference
+  - Client case
+    - Best case: Span: invoke_agent
+      - Client Span: Start long-running operation (operation id)
+        - Server Span:
+          - Handle starting long running operation
+          - if server wants to report it, it can
+          - It's probably just an HTTP or RPC server span
+      - Loop
+        - Span: Get status (operation id)
+      - Span: GetResult of operation  (operation id)
+    - Or one trace, but not one encompassing span
+    - Worst case:
+      - All spans are in different traces
+      - There is one operation id
+  - Server side (GenAi)
+    - Server Invoke_agent: what does it describe?
+      - **Full flow**
+      - **![][image1]**
+  - How to model async calls to them
+    - Example: [https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-background](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-background)
+    - Based on [https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)
+      - Should be PRODUCER/CONSUMER
+    - Span links?
+      - How much to follow messaging semconv?
+- [Liudmila] Workflow span [https://github.com/open-telemetry/semantic-conventions/pull/3249](https://github.com/open-telemetry/semantic-conventions/pull/3249)
+- [Liudmila] User info [https://github.com/open-telemetry/semantic-conventions/issues/3447](https://github.com/open-telemetry/semantic-conventions/issues/3447)
