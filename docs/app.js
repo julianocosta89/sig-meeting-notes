@@ -271,7 +271,7 @@ async function onDateClick(date, options) {
     }
   } catch (err) {
     if (currentSig !== requestedSig || currentDate !== requestedDate) return;
-    showError('Failed to load transcript: ' + err.message, () => onDateClick(requestedDate));
+    showError('Failed to load transcript: ' + err.message, () => onDateClick(requestedDate, { replace: true }));
   }
 }
 
@@ -618,6 +618,8 @@ async function getSummary(slug, date) {
 
 async function switchToView(view) {
   if (!currentSig || !currentDate) return;
+  const requestedSig = currentSig;
+  const requestedDate = currentDate;
   currentView = view;
 
   history.replaceState(null, '', location.search + '#' + view);
@@ -644,7 +646,7 @@ async function switchToView(view) {
   }
 
   if (view === 'summary') {
-    if (!meetingHasSummary(currentSig, currentDate)) {
+    if (!meetingHasSummary(requestedSig, requestedDate)) {
       const summaryEl = makePanel('summary-body');
       const p = document.createElement('p');
       p.textContent = 'No summary available.';
@@ -652,11 +654,13 @@ async function switchToView(view) {
       bodyEl.replaceWith(summaryEl);
     } else {
       try {
-        const md = await getSummary(currentSig, currentDate);
+        const md = await getSummary(requestedSig, requestedDate);
+        if (currentSig !== requestedSig || currentDate !== requestedDate) return;
         const summaryEl = makePanel('summary-body');
         summaryEl.appendChild(renderMarkdown(md));
         bodyEl.replaceWith(summaryEl);
       } catch (err) {
+        if (currentSig !== requestedSig || currentDate !== requestedDate) return;
         showError('Failed to load summary: ' + err.message, () => {
           summaryCache.delete(currentSig + '/' + currentDate);
           onDateClick(currentDate, { replace: true }).then(() => switchToView('summary'));
@@ -665,7 +669,8 @@ async function switchToView(view) {
     }
   } else if (view === 'meeting-notes') {
     try {
-      const notesText = await getMeetingNotes(currentSig, currentDate);
+      const notesText = await getMeetingNotes(requestedSig, requestedDate);
+      if (currentSig !== requestedSig || currentDate !== requestedDate) return;
       const notesEl = makePanel('notes-body');
       if (notesText) {
         notesEl.appendChild(renderMarkdown(notesText));
@@ -676,6 +681,7 @@ async function switchToView(view) {
       }
       bodyEl.replaceWith(notesEl);
     } catch (err) {
+      if (currentSig !== requestedSig || currentDate !== requestedDate) return;
       showError('Failed to load meeting notes: ' + err.message, () => {
         meetingNotesCache.delete(currentSig + '/' + currentDate);
         onDateClick(currentDate, { replace: true }).then(() => switchToView('meeting-notes'));
@@ -683,7 +689,8 @@ async function switchToView(view) {
     }
   } else {
     try {
-      const text = await getTranscript(currentSig, currentDate);
+      const text = await getTranscript(requestedSig, requestedDate);
+      if (currentSig !== requestedSig || currentDate !== requestedDate) return;
       const sepIdx = text.indexOf('\n====');
       const bodyText = sepIdx === -1 ? '' :
         text.substring(text.indexOf('\n', sepIdx + 1) + 1).trim();
@@ -694,6 +701,7 @@ async function switchToView(view) {
       transcriptEl.setAttribute('tabindex', '0');
       bodyEl.replaceWith(transcriptEl);
     } catch (err) {
+      if (currentSig !== requestedSig || currentDate !== requestedDate) return;
       showError('Failed to load transcript: ' + err.message, () => {
         transcriptCache.delete(currentSig + '/' + currentDate);
         onDateClick(currentDate, { replace: true }).then(() => switchToView('transcript'));
@@ -805,8 +813,10 @@ async function handleSearch(query) {
     resetMatchNav();
     renderDateList(getSigMeetings(currentSig), currentDate);
     if (currentDate) {
+      const sig = currentSig, date = currentDate;
       try {
-        const text = await getTranscript(currentSig, currentDate);
+        const text = await getTranscript(sig, date);
+        if (currentSig !== sig || currentDate !== date) return;
         renderTranscript(text, '');
         await switchToView('summary');
       } catch (_) {}
