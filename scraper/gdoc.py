@@ -263,19 +263,19 @@ def _extract_leading_attendees(section_text: str) -> list[str]:
     """Extract attendees from a section that has no explicit 'Attendees:' label.
 
     Some docs (e.g. Rust SIG) list attendees as plain bullet items directly
-    under the date heading with no label.  Collect leading list items, stopping
-    at the first heading or known section label.
+    under the date heading with no label.  Collect the leading contiguous
+    bullet block, stopping as soon as any non-empty non-list line is seen
+    (headings, labels, free-text prose) to avoid pulling in content from
+    later parts of the section (e.g. "Discussion" or "Parking lot" bullets).
     """
     items: list[str] = []
     for line in section_text.split("\n"):
         stripped = line.strip()
-        # Stop at a heading (e.g. "### Agenda/Minutes:")
-        if re.match(r"^#{1,6}\s", stripped):
+        if not stripped:
+            continue
+        # Stop at any non-list line — attendees are a contiguous bullet block
+        if not re.match(r"^[-*]", stripped):
             break
-        # Stop at a non-list line that looks like a section label
-        if stripped and not re.match(r"^[-*]", stripped):
-            if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
-                break
         m = _LIST_ITEM_RE.match(line.rstrip())
         if m:
             text = _unescape_md(m.group(2).rstrip())
