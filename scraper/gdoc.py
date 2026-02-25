@@ -239,14 +239,46 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
             if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
                 break
 
-        # Collect list items
+        # Collect list items (* / - prefixed) and tab-indented lines.
+        # Some docs (e.g. Rust SIG) write agenda notes as tab-indented plain
+        # text rather than using bullet markers.
         if in_target:
             m = _LIST_ITEM_RE.match(line.rstrip())
             if m:
                 depth = len(m.group(1)) // 2
                 text = _unescape_md(m.group(2).rstrip())
                 items.append("  " * depth + "- " + text)
+            elif line.startswith("\t"):
+                depth = len(line) - len(line.lstrip("\t"))
+                text = _unescape_md(line.strip())
+                if text:
+                    items.append("  " * depth + "- " + text)
 
+    return items
+
+
+def _extract_leading_attendees(section_text: str) -> list[str]:
+    """Extract attendees from a section that has no explicit 'Attendees:' label.
+
+    Some docs (e.g. Rust SIG) list attendees as plain bullet items directly
+    under the date heading with no label.  Collect leading list items, stopping
+    at the first heading or known section label.
+    """
+    items: list[str] = []
+    for line in section_text.split("\n"):
+        stripped = line.strip()
+        # Stop at a heading (e.g. "### Agenda/Minutes:")
+        if re.match(r"^#{1,6}\s", stripped):
+            break
+        # Stop at a non-list line that looks like a section label
+        if stripped and not re.match(r"^[-*]", stripped):
+            if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
+                break
+        m = _LIST_ITEM_RE.match(line.rstrip())
+        if m:
+            text = _unescape_md(m.group(2).rstrip())
+            if text.strip():  # skip empty placeholder items like "* "
+                items.append("- " + text)
     return items
 
 
@@ -306,8 +338,14 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
         if not agenda:
             agenda = _extract_subsection_md(section, "note")
 
+        attendees = _extract_subsection_md(section, "attendee")
+        if not attendees:
+            # Some docs (e.g. Rust SIG) list attendees directly under the date
+            # heading with no "Attendees:" label; extract them as leading items.
+            attendees = _extract_leading_attendees(section)
+
         return {
-            "attendees": _extract_subsection_md(section, "attendee"),
+            "attendees": attendees,
             "agenda": agenda,
         }
     except Exception:  # noqa: BLE001
