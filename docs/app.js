@@ -1251,7 +1251,7 @@ async function onGlobalResultClick(slug, date) {
   exitGlobalSearch();
 
   sigSelect.value = slug;
-  await onSIGChange(slug); // resets searchInput.value to ''
+  await onSIGChange(slug, { replace: true }); // resets searchInput.value to ''
   searchInput.value = query;
   await onDateClick(date);
   if (query) await handleSearch(query);
