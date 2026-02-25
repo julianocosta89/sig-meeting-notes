@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-25T09:32:47Z",
+  "generated_at": "2026-02-25T09:33:12Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -238,7 +238,7 @@
         {
           "date": "2026-02-25",
           "duration_minutes": 16,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-18",
