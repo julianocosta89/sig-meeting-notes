@@ -10,7 +10,7 @@ without raising.
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -248,6 +248,15 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
 
     try:
         section = _find_date_section(_DOC_CACHE[export_url], _date_variants(date))
+        if not section:
+            # Some docs date their sections by the day before the actual meeting
+            # (e.g. Monday notes for a Tuesday Zoom recording). Try the previous
+            # day as a fallback before giving up.
+            try:
+                prev_date = (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
+                section = _find_date_section(_DOC_CACHE[export_url], _date_variants(prev_date))
+            except ValueError:
+                pass
         if not section:
             return empty
 
