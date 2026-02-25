@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-25T08:21:21Z",
+  "generated_at": "2026-02-25T09:32:47Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -235,6 +235,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1QDZYAvGJbqgodJaTxRPmRZh-fEJjb6XstvPUst6h50w",
       "repository_url": "https://github.com/open-telemetry/sig-developer-experience",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 16,
+          "has_summary": false
+        },
         {
           "date": "2026-02-18",
           "duration_minutes": 22,
