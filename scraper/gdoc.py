@@ -271,7 +271,15 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
         if export_url not in _DOC_CACHE:
             resp = requests.get(export_url, timeout=20)
             resp.raise_for_status()
-            _DOC_CACHE[export_url] = resp.text
+            if resp.text.strip():
+                _DOC_CACHE[export_url] = resp.text
+            else:
+                # Markdown export silently returns empty for very large docs.
+                # Fall back to plain-text export, which has no size limit.
+                txt_url = export_url.replace("format=md", "format=txt")
+                resp = requests.get(txt_url, timeout=20)
+                resp.raise_for_status()
+                _DOC_CACHE[export_url] = resp.text
     except requests.RequestException:
         return empty
 
