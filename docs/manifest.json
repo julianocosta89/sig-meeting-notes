@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-24T22:07:04Z",
+  "generated_at": "2026-02-25T08:20:05Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -20,6 +20,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1W72oElAJuYx3efM9wkH5l1iksdfwmTSkVl-H7KHTLnY",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-android",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 41,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 60,
@@ -43,6 +48,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1z8_Ra-ALDaYNa88mMj1gOZtOpLZLRk0-dZEmDjPmcUs",
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 61,
+          "has_summary": false
+        },
         {
           "date": "2026-02-19",
           "duration_minutes": 61,
@@ -112,6 +122,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1CdzXD16QpayEpPxae_3u-7BLyzv0GgzZrKvV7tTFDr0",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 31,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 43,
@@ -275,6 +290,11 @@
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
+          "date": "2026-02-23",
+          "duration_minutes": 53,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-09",
           "duration_minutes": 52,
           "has_summary": true
@@ -292,6 +312,11 @@
       "meeting_notes_url": "",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 51,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 57,
@@ -477,6 +502,19 @@
       ]
     },
     {
+      "slug": "Kotlin-SIG",
+      "name": "Kotlin SIG",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-02-23",
+          "duration_minutes": 41,
+          "has_summary": false
+        }
+      ]
+    },
+    {
       "slug": "Kubernetes-Operator-SIG",
       "name": "Kubernetes Operator SIG",
       "meeting_notes_url": "https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4",
@@ -495,6 +533,16 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1EKIeDgBGXQPGehUigIRLwAUpRGa7-1kXB736EaYuJ2M",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 63,
+          "has_summary": false
+        },
+        {
+          "date": "2026-02-23",
+          "duration_minutes": 31,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 62,
@@ -551,6 +599,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1yjjD6aBcLxlRazYrawukDgrhZMObwHARJbB9glWdHj8",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 17,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 14,
@@ -744,6 +797,11 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-injector",
       "meetings": [
         {
+          "date": "2026-02-23",
+          "duration_minutes": 61,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-09",
           "duration_minutes": 50,
           "has_summary": true
@@ -769,6 +827,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/10xG7DNKWRhxNmFGt3yYd3980a9uwS8lMl2LvQL3VNK8",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-02-23",
+          "duration_minutes": 65,
+          "has_summary": false
+        },
         {
           "date": "2026-02-16",
           "duration_minutes": 19,
@@ -833,6 +896,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/15Yt9ss2_EhuFPqItPbk4vjfpeRDAQ5WCUVuY_kCeOAo",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
+        {
+          "date": "2026-02-24",
+          "duration_minutes": 55,
+          "has_summary": false
+        },
         {
           "date": "2026-02-17",
           "duration_minutes": 65,
