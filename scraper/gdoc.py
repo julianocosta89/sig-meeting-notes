@@ -248,10 +248,13 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
 
     try:
         section = _find_date_section(_DOC_CACHE[export_url], _date_variants(date))
-        if not section:
+        if section is None:
             # Some docs date their sections by the day before the actual meeting
             # (e.g. Monday notes for a Tuesday Zoom recording). Try the previous
             # day as a fallback before giving up.
+            # Use `is None` (not falsiness) so that an intentionally empty section
+            # (e.g. a cancelled meeting placeholder) is respected as-is and we
+            # don't silently attach the previous day's attendees/agenda to it.
             try:
                 prev_date = (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
                 section = _find_date_section(_DOC_CACHE[export_url], _date_variants(prev_date))
