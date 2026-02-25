@@ -25,7 +25,9 @@ _LIST_ITEM_RE = re.compile(r"^( *)[-*]\s+(.+)")
 _LOCALIZED_MONTH_ABBREVS: dict[int, list[str]] = {
     1:  ["sty"],        # Polish: styczeń
     2:  ["lut"],        # Polish: luty
+    3:  ["mar"],        # Polish: marzec  (same spelling as English but lowercase in Polish docs)
     4:  ["kwi"],        # Polish: kwiecień
+    5:  ["maj"],        # Polish: maj     (differs from English "May")
     6:  ["cze"],        # Polish: czerwiec
     7:  ["lip"],        # Polish: lipiec
     8:  ["sie"],        # Polish: sierpień
