@@ -1075,7 +1075,7 @@ function gatherCachedGlobalResults(query) {
   return results;
 }
 
-function renderGlobalResults(results, isLoading, cachedCount, totalCount) {
+function renderGlobalResults(results, isLoading, cachedCount, totalCount, query) {
   transcriptPanel.innerHTML = '';
   const container = document.createElement('div');
   container.className = 'global-results';
@@ -1131,11 +1131,11 @@ function renderGlobalResults(results, isLoading, cachedCount, totalCount) {
 
       const snippet = document.createElement('p');
       snippet.className = 'result-snippet';
-      snippet.appendChild(buildSnippetWithHighlight(result.snippet, globalSearchInput.value.trim()));
+      snippet.appendChild(buildSnippetWithHighlight(result.snippet, query));
 
       btn.appendChild(header);
       btn.appendChild(snippet);
-      btn.addEventListener('click', () => onGlobalResultClick(result.sig, result.date));
+      btn.addEventListener('click', () => onGlobalResultClick(result.sig, result.date, query));
       li.appendChild(btn);
       ul.appendChild(li);
     }
@@ -1148,7 +1148,8 @@ function renderGlobalResults(results, isLoading, cachedCount, totalCount) {
 async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
   const allMeetings = getAllMeetings();
   const uncached = allMeetings.filter(({ sig, date }) => !transcriptCache.has(sig + '/' + date));
-  let fetched = 0;
+  let succeeded = 0;
+  let failed = 0;
   let rafPending = false;
 
   const scheduleUpdate = () => {
@@ -1158,8 +1159,8 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
       rafPending = false;
       if (!signal.aborted) {
         const results = gatherCachedGlobalResults(query);
-        const cachedCount = allMeetings.length - uncached.length + fetched;
-        renderGlobalResults(results, fetched < uncached.length, cachedCount, totalCount);
+        const cachedCount = allMeetings.length - uncached.length + succeeded;
+        renderGlobalResults(results, succeeded + failed < uncached.length, cachedCount, totalCount, query);
       }
     });
   };
@@ -1171,8 +1172,7 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
     while (cursor < uncached.length && !signal.aborted) {
       const idx = cursor++;
       const { sig, date } = uncached[idx];
-      try { await getTranscript(sig, date, signal); } catch (_) {}
-      fetched++;
+      try { await getTranscript(sig, date, signal); succeeded++; } catch (_) { failed++; }
       scheduleUpdate();
     }
   }
@@ -1180,7 +1180,10 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
 
   if (!signal.aborted) {
     const results = gatherCachedGlobalResults(query);
-    renderGlobalResults(results, false, totalCount, totalCount);
+    const cachedCount = allMeetings.length - uncached.length + succeeded;
+    // Keep isLoading=true when some fetches failed so the summary
+    // shows "X / Y transcripts searched" rather than claiming all were searched.
+    renderGlobalResults(results, failed > 0, cachedCount, totalCount, query);
   }
 }
 
@@ -1212,7 +1215,7 @@ async function handleGlobalSearch(query) {
 
   // Show cached results immediately
   const initial = gatherCachedGlobalResults(q);
-  renderGlobalResults(initial, hasUncached, cachedCount, totalCount);
+  renderGlobalResults(initial, hasUncached, cachedCount, totalCount, q);
 
   if (hasUncached) {
     await fetchUncachedForGlobalSearch(q, signal, totalCount);
@@ -1249,8 +1252,7 @@ function exitGlobalSearch() {
   }
 }
 
-async function onGlobalResultClick(slug, date) {
-  const query = globalSearchInput.value.trim();
+async function onGlobalResultClick(slug, date, query) {
   globalSearchInput.value = '';
   exitGlobalSearch();
 
