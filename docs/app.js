@@ -85,16 +85,20 @@ let initInProgress = false;
 async function init() {
   if (initInProgress) return;
   initInProgress = true;
-  const res = await fetch('manifest.json');
-  if (!res.ok) {
-    initInProgress = false;
+  try {
+    const res = await fetch('manifest.json');
+    if (!res.ok) {
+      showError('Failed to load manifest.', init);
+      return;
+    }
+    manifest = await res.json();
+    populateSigSelect();
+    restoreFromURL();
+  } catch (err) {
     showError('Failed to load manifest.', init);
-    return;
+  } finally {
+    initInProgress = false;
   }
-  manifest = await res.json();
-  initInProgress = false;
-  populateSigSelect();
-  restoreFromURL();
 }
 
 function populateSigSelect() {
