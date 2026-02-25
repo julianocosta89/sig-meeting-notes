@@ -798,11 +798,13 @@ function renderInline(text) {
 
 function debounce(fn, ms) {
   let t;
-  return function () {
+  function debounced() {
     const args = arguments;
     clearTimeout(t);
     t = setTimeout(() => fn.apply(this, args), ms);
-  };
+  }
+  debounced.cancel = () => clearTimeout(t);
+  return debounced;
 }
 
 async function handleSearch(query) {
@@ -1226,6 +1228,7 @@ function exitGlobalSearch() {
     if (dateNavWrapper) dateNavWrapper.hidden = false;
     const localQuery = getCurrentQuery();
     if (localQuery) {
+      if (!currentDate) clearTranscript();
       handleSearch(localQuery).catch(() => {});
     } else {
       renderDateList(getSigMeetings(currentSig), currentDate, null);
@@ -1270,8 +1273,10 @@ function scrollToTop() {
 // ── Event wiring ────────────────────────────────────────────
 
 sigSelect.addEventListener('change', e => onSIGChange(e.target.value));
-searchInput.addEventListener('input', debounce(e => handleSearch(e.target.value), 300));
-globalSearchInput.addEventListener('input', debounce(e => handleGlobalSearch(e.target.value), 300));
+const debouncedHandleSearch = debounce(e => handleSearch(e.target.value), 300);
+const debouncedHandleGlobalSearch = debounce(e => handleGlobalSearch(e.target.value), 300);
+searchInput.addEventListener('input', debouncedHandleSearch);
+globalSearchInput.addEventListener('input', debouncedHandleGlobalSearch);
 transcriptPanel.addEventListener('scroll', updateScrollTopVisibility);
 if (scrollTopBtn) scrollTopBtn.addEventListener('click', scrollToTop);
 
@@ -1296,12 +1301,14 @@ document.addEventListener('keydown', function (e) {
   // Escape — clear and blur search inputs
   if (e.key === 'Escape') {
     if (target === globalSearchInput && globalSearchInput.value) {
+      debouncedHandleGlobalSearch.cancel();
       globalSearchInput.value = '';
       handleGlobalSearch('');
       globalSearchInput.blur();
       return;
     }
     if (target === searchInput && searchInput.value) {
+      debouncedHandleSearch.cancel();
       searchInput.value = '';
       handleSearch('');
       searchInput.blur();
