@@ -2,6 +2,20 @@
 
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
+## Repository layout
+
+| Path | Description |
+|------|-------------|
+| [`scraper/`](scraper/) | Python package — three-stage transcript extraction pipeline (Sheet → Zoom → Parse) |
+| [`scripts/`](scripts/) | One-off utility scripts (e.g. backfill meeting notes) |
+| [`tests/`](tests/) | Test suite (pytest) |
+| [`docs/`](docs/) | Static site deployed to GitHub Pages (HTML, CSS, JS, and all content) |
+| [`.github/workflows/`](.github/workflows/) | CI/CD — automated fetching, summarisation, testing, and deployment |
+| `main.py` | CLI entry point — orchestrates the full pipeline |
+| `build_site.py` | Builds `docs/manifest.json` from the content tree |
+| `generate_summaries.py` | Generates AI summaries via OpenAI for meetings without one |
+| `Makefile` | Developer shortcuts (`make install`, `make fetch`, `make test`, etc.) |
+
 ## How it works
 
 1. Fetches the public [OTel recordings Google Sheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s) as CSV

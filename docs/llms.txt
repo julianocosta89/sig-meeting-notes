@@ -4,18 +4,101 @@
 
 ## Resources
 
-- [Web UI](https://julianocosta89.github.io/sig-meeting-notes/): Browse meetings by SIG and date, search transcripts, and read summaries
-- [Manifest](https://julianocosta89.github.io/sig-meeting-notes/manifest.json): JSON index of all SIGs, meeting dates, durations, and metadata
-- [Source](https://github.com/julianocosta89/sig-meeting-notes): Scraper source code, CI workflows, and raw content
+- Web UI: https://julianocosta89.github.io/sig-meeting-notes/
+- Manifest (JSON): https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+- Source: https://github.com/julianocosta89/sig-meeting-notes
 
-## Content structure
+## How to find content
 
-Each meeting is stored under `content/{SIG-Slug}/{YYYY-MM-DD}/` and may contain:
+### 1. Start with the manifest
 
-- `transcript.md` — header metadata and the full Zoom recording transcript
+The manifest lists every SIG and its meetings. Fetch it to discover what is available:
+
+    GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+
+Response shape:
+
+    {
+      "generated_at": "2026-02-25T...",
+      "sigs": [
+        {
+          "slug": "Collector-SIG",
+          "name": "Collector SIG",
+          "meeting_notes_url": "https://docs.google.com/document/d/...",
+          "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
+          "meetings": [
+            { "date": "2026-02-04", "duration_minutes": 42, "has_summary": true },
+            { "date": "2026-02-11", "duration_minutes": 35, "has_summary": true }
+          ]
+        }
+      ]
+    }
+
+### 2. Fetch individual files
+
+Each meeting has up to three files. Build the URL from the SIG slug and date:
+
+    https://julianocosta89.github.io/sig-meeting-notes/content/{SIG-Slug}/{YYYY-MM-DD}/{file}
+
+Files:
+
+- `summary.md` — AI-generated summary (best starting point, short)
 - `meeting-notes.md` — attendees and agenda items
-- `summary.md` — AI-generated summary (gpt-4o-mini)
+- `transcript.md` — full Zoom recording transcript (can be very long)
+
+### 3. Examples
+
+Get the AI summary for the Collector SIG meeting on 2026-02-04:
+
+    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/summary.md
+
+Get the meeting notes (attendees + agenda) for the same meeting:
+
+    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/meeting-notes.md
+
+Get the full transcript:
+
+    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/transcript.md
+
+### 4. Typical workflow
+
+1. Fetch `manifest.json` to find the SIG slug and available dates
+2. Read `summary.md` first — it gives a concise overview of what was discussed
+3. If you need details, read `meeting-notes.md` for the agenda and attendees
+4. Fall back to `transcript.md` only when you need verbatim quotes or the full discussion
+
+## File formats
+
+### transcript.md
+
+    SIG: Collector SIG
+    Date: 2026-02-04
+    Duration: 42 minutes
+    Zoom Recording URL: https://zoom.us/rec/share/...
+    ============================================================
+
+    ## Zoom Recording Transcript
+
+    **Speaker Name** MM:SS utterance text
+
+### meeting-notes.md
+
+    ## Meeting Notes
+
+    ### Attendees
+    - Name 1 (Company)
+    - Name 2 (Company)
+
+    ### Agenda
+    - Item 1
+    - Item 2
+
+### summary.md
+
+    ## Key Topics
+    - Topic 1 summary
+    - Topic 2 summary
 
 ## Coverage
 
-Covers OpenTelemetry SIG meetings from the public [OTel recordings spreadsheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s). New meetings are fetched automatically on weekdays and published to this site.
+Covers OpenTelemetry SIG meetings from the public OTel recordings spreadsheet (https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s). New meetings are fetched automatically on weekdays and published to this site.
