@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-25T09:33:12Z",
+  "generated_at": "2026-02-26T07:04:23Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -169,6 +169,11 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
       "meetings": [
         {
+          "date": "2026-02-25",
+          "duration_minutes": 7,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-18",
           "duration_minutes": 87,
           "has_summary": true
@@ -209,6 +214,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/16f-JOjKzLgWxULRxY8TmpM_FjlI1sthvKurnqFz9x98",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 34,
+          "has_summary": false
+        },
         {
           "date": "2026-02-11",
           "duration_minutes": 30,
@@ -408,6 +418,11 @@
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
         {
+          "date": "2026-02-25",
+          "duration_minutes": 34,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-18",
           "duration_minutes": 63,
           "has_summary": true
@@ -471,6 +486,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1tCyoQK49WVcE-x8oryZOTTToFm7sIeUhxFPm9g-qL1k",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 59,
+          "has_summary": false
+        },
         {
           "date": "2026-02-18",
           "duration_minutes": 30,
@@ -582,6 +602,11 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation",
       "meetings": [
         {
+          "date": "2026-02-25",
+          "duration_minutes": 48,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-18",
           "duration_minutes": 11,
           "has_summary": true
@@ -655,6 +680,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1WLDZGLY24rk5fRudjdQAcx_u81ZQWCF3zxiNT-sz7DI",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-php",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 22,
+          "has_summary": false
+        },
         {
           "date": "2026-02-18",
           "duration_minutes": 19,
@@ -732,6 +762,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/11AtPWuaNGl2MfhRwgWqNbnjAPtK06jMKWh5-_YbWuHE",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 31,
+          "has_summary": false
+        },
         {
           "date": "2026-02-18",
           "duration_minutes": 48,
@@ -861,6 +896,11 @@
       "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
+          "date": "2026-02-25",
+          "duration_minutes": 60,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-18",
           "duration_minutes": 61,
           "has_summary": true
@@ -971,6 +1011,11 @@
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
         {
+          "date": "2026-02-25",
+          "duration_minutes": 35,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-18",
           "duration_minutes": 29,
           "has_summary": true
@@ -988,6 +1033,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1ZkmUT2EHKfgtLqrgx3WI8aBy2QNyZeTwSKXxe3DI6Pw",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation",
       "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 60,
+          "has_summary": false
+        },
         {
           "date": "2026-02-18",
           "duration_minutes": 60,
