@@ -18,18 +18,43 @@ _DOC_ID_RE = re.compile(r"docs\.google\.com/document/d/([^/?#]+)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)")
 _LIST_ITEM_RE = re.compile(r"^( *)[-*]\s+(.+)")
 
+# Non-English month abbreviations observed in OTel SIG docs, keyed by month
+# number.  Used by _date_variants() to generate localized heading variants and
+# by _DATE_SEPARATOR_RE to recognise plain-text date separators written in
+# those locales (e.g. a Polish contributor writing "18 lut 2026").
+_LOCALIZED_MONTH_ABBREVS: dict[int, list[str]] = {
+    1:  ["sty"],        # Polish: styczeń
+    2:  ["lut"],        # Polish: luty
+    3:  ["mar"],        # Polish: marzec  (same spelling as English but lowercase in Polish docs)
+    4:  ["kwi"],        # Polish: kwiecień
+    5:  ["maj"],        # Polish: maj     (differs from English "May")
+    6:  ["cze"],        # Polish: czerwiec
+    7:  ["lip"],        # Polish: lipiec
+    8:  ["sie"],        # Polish: sierpień
+    9:  ["wrz"],        # Polish: wrzesień
+    10: ["paź", "paz"], # Polish: październik
+    11: ["lis"],        # Polish: listopad
+    12: ["gru"],        # Polish: grudzień
+}
+
+# Flat set of all localized abbreviations for use in the separator regex.
+_ALL_LOCALIZED = {a for abbrevs in _LOCALIZED_MONTH_ABBREVS.values() for a in abbrevs}
+
 # Matches a line that is likely a meeting-date separator in plain-text docs.
 # Handles formats like:
 #   "Feb 19, 2026 8:00 AM - General meeting"  (month-first)
 #   "Wed, Feb 18, 2026 (Pacific Time)"         (weekday prefix)
-#   "17 Feb 2026 11:00 AM PST"                 (day-first)
+#   "17 Feb 2026 11:00 AM PST"                 (day-first, English)
+#   "18 lut 2026"                              (day-first, Polish locale)
 #   "2026-02-18"  /  "2026/02/18"              (ISO / slash)
+_LOCALIZED_PAT = "|".join(sorted(_ALL_LOCALIZED, key=len, reverse=True))
 _DATE_SEPARATOR_RE = re.compile(
     r"^(?:\w{2,9},?\s+)?"                              # optional weekday + comma
     r"(?:"
     r"\d{4}[-/]\d{1,2}[-/]\d{1,2}"                    # 2026-02-18 or 2026/02/18
     r"|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z.]*\s+\d{1,2}"  # Feb 18
-    r"|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"         # 17 Feb
+    r"|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"         # 17 Feb (English)
+    rf"|\d{{1,2}}\s+(?:{_LOCALIZED_PAT})\b"           # 18 lut (localized)
     r")",
     re.IGNORECASE,
 )
@@ -56,13 +81,14 @@ def _to_export_url(doc_url: str) -> str | None:
 def _date_variants(iso_date: str) -> list[str]:
     """Return multiple text representations of an ISO date for heading matching.
 
-    Handles the date formats commonly used by OTel SIG doc authors.
+    Handles the date formats commonly used by OTel SIG doc authors, including
+    localized month abbreviations (e.g. Polish "lut" for February).
     """
     try:
         dt = datetime.strptime(iso_date, "%Y-%m-%d")
     except ValueError:
         return [iso_date]
-    return [
+    variants = [
         iso_date,                                            # 2026-02-05
         f"{dt.year}/{dt.month:02d}/{dt.day:02d}",           # 2026/02/05
         f"{dt.year}/{dt.month}/{dt.day}",                   # 2026/2/5
@@ -77,6 +103,11 @@ def _date_variants(iso_date: str) -> list[str]:
         f"{dt.day} {dt.strftime('%b')} {dt.year}",          # 5 Feb 2026
         f"{dt.day:02d} {dt.strftime('%b')} {dt.year}",      # 05 Feb 2026
     ]
+    # Add localized (non-English) month-name variants, e.g. "18 lut 2026".
+    for abbrev in _LOCALIZED_MONTH_ABBREVS.get(dt.month, []):
+        variants.append(f"{dt.day} {abbrev} {dt.year}")     # 5 lut 2026
+        variants.append(f"{dt.day:02d} {abbrev} {dt.year}") # 05 lut 2026
+    return variants
 
 
 def _unescape_md(text: str) -> str:
@@ -210,14 +241,46 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
             if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
                 break
 
-        # Collect list items
+        # Collect list items (* / - prefixed) and tab-indented lines.
+        # Some docs (e.g. Rust SIG) write agenda notes as tab-indented plain
+        # text rather than using bullet markers.
         if in_target:
             m = _LIST_ITEM_RE.match(line.rstrip())
             if m:
                 depth = len(m.group(1)) // 2
                 text = _unescape_md(m.group(2).rstrip())
                 items.append("  " * depth + "- " + text)
+            elif line.startswith("\t"):
+                depth = len(line) - len(line.lstrip("\t"))
+                text = _unescape_md(line.strip())
+                if text:
+                    items.append("  " * depth + "- " + text)
 
+    return items
+
+
+def _extract_leading_attendees(section_text: str) -> list[str]:
+    """Extract attendees from a section that has no explicit 'Attendees:' label.
+
+    Some docs (e.g. Rust SIG) list attendees as plain bullet items directly
+    under the date heading with no label.  Collect the leading contiguous
+    bullet block, stopping as soon as any non-empty non-list line is seen
+    (headings, labels, free-text prose) to avoid pulling in content from
+    later parts of the section (e.g. "Discussion" or "Parking lot" bullets).
+    """
+    items: list[str] = []
+    for line in section_text.split("\n"):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # Stop at any non-list line — attendees are a contiguous bullet block
+        if not re.match(r"^[-*]", stripped):
+            break
+        m = _LIST_ITEM_RE.match(line.rstrip())
+        if m:
+            text = _unescape_md(m.group(2).rstrip())
+            if text.strip():  # skip empty placeholder items like "* "
+                items.append("- " + text)
     return items
 
 
@@ -242,7 +305,15 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
         if export_url not in _DOC_CACHE:
             resp = requests.get(export_url, timeout=20)
             resp.raise_for_status()
-            _DOC_CACHE[export_url] = resp.text
+            if resp.text.strip():
+                _DOC_CACHE[export_url] = resp.text
+            else:
+                # Markdown export silently returns empty for very large docs.
+                # Fall back to plain-text export, which has no size limit.
+                txt_url = export_url.replace("format=md", "format=txt")
+                resp = requests.get(txt_url, timeout=20)
+                resp.raise_for_status()
+                _DOC_CACHE[export_url] = resp.text
     except requests.RequestException:
         return empty
 
@@ -269,8 +340,14 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
         if not agenda:
             agenda = _extract_subsection_md(section, "note")
 
+        attendees = _extract_subsection_md(section, "attendee")
+        if not attendees:
+            # Some docs (e.g. Rust SIG) list attendees directly under the date
+            # heading with no "Attendees:" label; extract them as leading items.
+            attendees = _extract_leading_attendees(section)
+
         return {
-            "attendees": _extract_subsection_md(section, "attendee"),
+            "attendees": attendees,
             "agenda": agenda,
         }
     except Exception:  # noqa: BLE001
