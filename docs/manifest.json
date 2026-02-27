@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-27T06:56:00Z",
+  "generated_at": "2026-02-27T06:57:05Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -84,7 +84,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 34,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
@@ -402,7 +402,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 35,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
@@ -476,7 +476,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 54,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
@@ -563,7 +563,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 61,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
@@ -762,7 +762,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 46,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
@@ -882,7 +882,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 44,
-          "has_summary": false
+          "has_summary": true
         }
       ]
     },
@@ -959,7 +959,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 53,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
@@ -1015,7 +1015,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 24,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-12",
@@ -1038,7 +1038,7 @@
         {
           "date": "2026-02-26",
           "duration_minutes": 27,
-          "has_summary": false
+          "has_summary": true
         },
         {
           "date": "2026-02-19",
