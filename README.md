@@ -59,7 +59,7 @@ make fetch BETWEEN=2026-01-01/2026-02-28 SIG=collector
 | Shorthand | Expands to |
 |-----------|------------|
 | `otel` | `opentelemetry` |
-| `gc` | `cc` |
+| `gc` | `governance-committee` |
 | `tc` | `technical-committee` |
 | `semconv`, `sem-conv`, `semantic-convention`, `semantic-conventions` | `semantic-convention`, `semconv`, `sem-conv` |
 | `devex` | `developer-experience` |
