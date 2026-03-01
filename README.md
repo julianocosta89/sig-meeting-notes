@@ -28,7 +28,7 @@ Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches t
 
 ## Setup
 
-Requires Python 3.12+ and [uv](https://github.com/astral-sh/uv).
+Requires Python 3.14+ and [uv](https://github.com/astral-sh/uv).
 
 ```bash
 make install

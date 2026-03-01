@@ -5,7 +5,7 @@ import csv
 import io
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -103,14 +103,14 @@ def filter_meetings(
     rows:
         Raw CSV rows from the sheet.
     since:
-        Include meetings on or after this date (inclusive). Defaults to the
-        start of the current month.
+        Include meetings on or after this date (inclusive). Defaults to
+        14 days ago.
     until:
         Include meetings on or before this date (inclusive). Defaults to now.
     """
     now = datetime.now()
     if since is None:
-        since = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        since = (now - timedelta(days=14)).replace(hour=0, minute=0, second=0, microsecond=0)
     if until is None:
         until = now
 

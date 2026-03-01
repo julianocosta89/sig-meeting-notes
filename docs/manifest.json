@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-27T06:57:05Z",
+  "generated_at": "2026-03-01T14:49:42Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -746,6 +746,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1OijO_NZyR7gb7AvUj_KxKbcbsN09XQmq_ExZeDlgEOg",
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
+        {
+          "date": "2026-02-27",
+          "duration_minutes": 27,
+          "has_summary": true
+        },
         {
           "date": "2026-02-13",
           "duration_minutes": 54,

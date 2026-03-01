@@ -11,7 +11,7 @@ Usage
     uv run python main.py --since 2026-02-01
 
     Fetches all meetings from 2026-02-01 (inclusive) through today.
-    Omit --since to default to the first day of the current month.
+    Omit --since to default to the last 14 days.
 
 Output
 ------
@@ -281,7 +281,7 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "Fetch meetings on or after this date (inclusive). "
-            "Defaults to the first day of the current month."
+            "Defaults to 14 days ago."
         ),
     )
     group.add_argument(
@@ -361,7 +361,7 @@ def main() -> int:
     elif since:
         range_label = f"since {since.strftime('%Y-%m-%d')}"
     else:
-        range_label = "start of current month"
+        range_label = "last 14 days"
     logger.info("Found %d meetings with Zoom URLs (%s)", len(meetings), range_label)
 
     if not meetings:
