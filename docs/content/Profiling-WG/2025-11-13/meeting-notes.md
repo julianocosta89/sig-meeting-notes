@@ -1,0 +1,100 @@
+## Meeting Notes
+
+### Attendees
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Alban Crequy](mailto:muadda@gmail.com) (Microsoft / Inspektor Gadget team)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- Jonathan Halliday (IBM)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Dale Hamel](mailto:dale.hamel@shopify.com) (Shopify)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Christian Simon](mailto:christian.simon@grafana.com) (Grafana Labs/Pyroscope)
+
+### Agenda
+- Review Active Action Items
+  - [[Florian Lehner](mailto:florian.lehner@elastic.co)] otlp <-> pprof converter.
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078)
+    - Florian: Remaining semantic conventions needed to represent pprof specific fields in OTLP (b/c we didn’t retain them from pprof).
+    - Florian: Needs more reviewers.
+  - [All] Review Context Propagation documents: [Sharing Process-Level Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0#heading=h.lp3k1tq7iqaq) or [TLV encoding for OTEL_CTX](https://docs.google.com/document/d/1Ij6SYfv0lHOhTNsXNGVFpra3ZCfz-WC7QBXdB_OaoYc/edit?tab=t.0#heading=h.llbgke6lmlbd).
+    - Ivo: Rewrote the original doc in the OTEP format and opened a PR for it: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo: Tried to discuss it with spec SIG this week, but the meeting was pushed.
+    - Ivo: I’ve updated this PR for the protobuf format, please review:  [https://github.com/open-telemetry/sig-profiling/pull/13](https://github.com/open-telemetry/sig-profiling/pull/13)
+    - Ivo: Should I move my prototypes ([https://github.com/ivoanjo/proc-level-demo](https://github.com/ivoanjo/proc-level-demo)) to the sig-profiling repo?
+    - Felix: Yeah, makes sense to me.
+    - Christos: Yeah, let’s get all the tooling in the same place.
+  - [Jonathan] We agree and should document that the values/timestamps shape should be the same for all samples in the given profile. See overlap with [#714](https://github.com/open-telemetry/opentelemetry-proto/pull/714).
+    - Christos: Seems to overlap with: [https://github.com/open-telemetry/opentelemetry-proto/pull/724](https://github.com/open-telemetry/opentelemetry-proto/pull/724)
+    - Jonathan: Not quite.
+    - Jonathan: I’ll do a follow-up PR once #724 lands.
+  - [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [~~#714~~](https://github.com/open-telemetry/opentelemetry-proto/pull/714) [#724](https://github.com/open-telemetry/opentelemetry-proto/pull/724)
+    - Jonathan to ping Josh
+  - Alban: Reach out to the kernel folks to check how they see the severity.
+    - I emailed on 22 Oct. I received feedback.
+    - Security Advisories:
+      - [GHSA-7jcw-7r7m-wp3p](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/security/advisories/GHSA-7jcw-7r7m-wp3p)
+      - [GHSA-f2r5-5m7w-p5cx](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/security/advisories/GHSA-f2r5-5m7w-p5cx)
+    - Alban: We need a decision on whether or not we want to use procfs (instead process_vm_read).
+    - Christos: We, the elastic folks, don’t like the procfs. But we’d be open to make it a fallback if needed.
+    - Christos: I’m more inclined to go with the artificial timeout via signal. But it could clash with future runtime usage of the signal.
+    - Alban: I don’t like the timeout solution, b/c it’s difficult to get right. For many interpreters we need to read the memory many times, so each read could take a long time before the timeout.
+    - Christos: Fabled has replied on the advisory to spell out the issues with procfs. procfs feels like a hack.
+    - Felix: In discussion with Alban, the use case of hyperscalers came up, which might want to profile untrusted workloads.
+    - Christos: Elastic doesn’t have time to work on this, but we wouldn’t be opposed to a patch from somebody else.
+    - Alban: Could this be done in public?
+    - Christos: I think so.
+    - Florian: One reason we switched to process_vm_read is due to race conditions (process or thread exists).
+    - Felix: I think if the kernel people don’t mind going public, we don’t either.
+    - Alban: The kernel people think it’s not a bug, they think procfs is a viable solution.
+    - Felix: In that case I think we’re okay with the info going public, a lot of people use process_vm_read like the ebpf profiler does.
+    - Christos: But procfs work could still be done in public?
+    - Felix: Yeah.
+    - Alban: That would be good for me as well.
+    - Conclusion: We’ll keep the ebpf security advisory private for now until Alban’s decides to publish it (maybe after his kernel patch for a new syscall options to be non-blocking lands). But work on the procfs workaround can proceed in public.
+    - Alban: There is a second security advisory. PR is ready.
+    - Christos: If you addressed all feedback, just ping us, and we’ll take another look.
+    - Alban: There are two PRs. One is for the main thing. The other is for the APM one.
+    - Christos: Yeah, the APM thing might be be superseded by a [new proposal](https://github.com/open-telemetry/opentelemetry-specification/pull/4719). The current elastic thing is not specified in OTel yet.
+    - Felix: I’ll get Ivo access to the issue so we can avoid having similar issues with the new proposal.
+  - [Florian] Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - Florian: TC doesn’t have a unified opinion on how to implement this (add dict capabilities into AnyValue?).
+    - Florian: We might also have to figure out protocol capability negotiations. This will add a lot of complexity on us and the other signals. I think this is not on our critical path for now. But there are people at Kubecon discussing this.
+    - Felix: Nayef and I have been making progress on the benchmarks, but not ready to share yet. Should be done by the next meeting.
+    - Nayef: Setup is an EC2 instance with a mini kube instance with the otel demo which has lots of processes running, including a python process that forks a lot. Splitting by process id should be notable in this workload. There is a loadgen running.
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - Alexey: Not much updates, need to react to the feedback on the PR.
+    - Alexey: One thing I need to add to the code is the optional checks for dictionary not having dupes or orphans. This will require deep value comparison. Conceptually an OTel attribute is JSON. Are there primitives in otel to serialize this to string?
+    - Felix: Would the [cmp.Diff()](https://pkg.go.dev/github.com/google/go-cmp/cmp) thing do the trick? Nayef: Can you drop a link to the collector thing you showed me earlier? Print pdata as text: [https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/internal/otlptext/profiles.go](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/internal/otlptext/profiles.go)
+  - [Alexey Alexandrov](mailto:aalexand@google.com) See [this](#bookmark=id.9immnxam3n5h) - update the dictionary docs to clarify the value identity semantics. Sent PR [#732](https://github.com/open-telemetry/opentelemetry-proto/pull/732).
+    - Alexey: Done.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Send a PR clarifying the start timestamp / duration conventions. See [this discussion](#bookmark=id.an4px2jo7lgp).
+    - Alexey: Not done yet. Will work on it.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order attribute.
+    - Alexey: Not done yet. Will work on it.
+  - [Alexey] doc_url pprof attribute - [https://github.com/open-telemetry/opentelemetry-proto/pull/588](https://github.com/open-telemetry/opentelemetry-proto/pull/588), we still need to add it. Needs a semconv PR.
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078)
+    - Florian: I think this is covered by my PR.
+    - Felix: Will remove this from the TODOs as a dupe.
+- Review [Mimic Ruby's backtrace logic in ruby interpreter and tracer, add support for ruby CMEs by dalehamel · Pull Request #907 · open-telemetry/opentelemetry-ebpf-profiler](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/907)
+  - Dale: I noticed that the line numbers for the leaf frames are incorrect. I have a fix for this. But Timo has a new PR ([943](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943/)) to make the frame struct variable length. That’s required. But otherwise the majority of the PR will remain the same and can be reviewed (but can’t be landed yet).
+  - Dale: The PR itself extends the behavior for the existing unwinder and interpreter. In Ruby there is a callable method entry which this adds support for.
+  - Alexey: This probably only applies to AOT languages, not ruby. Return instructions on the stack will point to the next instructions, so we usually do pc-1.
+  - Dale: There are two instruction sequences we need to deal with.
+  - Christos: Both me and Florian will review this. It’s easy to introduce race conditions to the process manager. Testing is hard. Need to wrap up the review on Timo’s PR tomorrow and then next week start with Dale’s PR.
+  - Dale: I have additional work on top of this, assuming 907 lands, I’ll follow up with two more PRs. One is to add GC frames (added an issue for the motivation). Another one adds support for JIT. Right now JIT completely breaks ruby profiling, but I have a workaround for this.
+  - Christos: We had a chat about codeowners for the interpreters at elastic yesterday. How would you feel about being a codeowner for ruby?
+  - Dale: Yeah, that would make sense. At shopify we have a team of ruby contributors that I can access as well.
+  - Christos: We don’t want to be blocked as codeowners. They’ll get notified, but we’ll allow moving forward without blocking on their reviews.
+  - Dale: We could likely benefit from fixes, so we’d be willing to maintain and help.
+  - Dale: I’ll keep an eye on 943, meanwhile 907 can be reviewed.
+- Alexey: cmp compares values pairwise. I need some lookup tables.
+  - Felix: Maybe you could just json.Marshal the struct and compare?
+  - Alexey: Maybe, I’ll consider it.
+- Jonathan: Next meeting is on thanks giving.
+  - Felix: I think we should meet anyway (those who can).
+- Jonathan: Will marcus run the serviceability meeting again?
+  - Ivo: Marcus is running a survey for the best dates. He’ll run it again.
+  - Jonathan: He should post it on the serviceability slack that still exists..
+  - Ivo: Link is [https://forms.gle/jFhiX8Wwfka58T8Z8](https://forms.gle/jFhiX8Wwfka58T8Z8)
+  - Jonathan: We should probably present the signal, especially when it comes to JFR conversion.

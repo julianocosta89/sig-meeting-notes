@@ -1,0 +1,80 @@
+## Meeting Notes
+
+### Attendees
+- Patrice Chalin (CNCF)
+- Tiffany Hrabusa (Grafana Labs)
+- Vitor Vasconcellos (Mercado Libre)
+- Leandro Caracciolo (OllyGarden)
+- Jay DeLuca (Grafana Labs)
+- Severin Neumann (Causely)
+- Sophia Solomon (Elastic)
+- Diana Todea (VictoriaMetrics)
+- Jack Berg (Grafana Labs)
+
+### Agenda
+- [Patrice] Followup to [2025-11-25](#2025-11-25), esp "Meeting early in the year to decide on our top three priorities"
+  - Use quarterly milestones? See [Milestones list](https://github.com/open-telemetry/opentelemetry.io/milestones) and [26Q1](https://github.com/open-telemetry/opentelemetry.io/milestone/18) for example
+  - Comments:
+  - 1.
+  - 2.
+  - 3.
+  - More?
+  - ACTION ITEM: Spend some time thinking about projects you’d like to prioritize
+- [Vitor / Patrice] Labeling criteria for “good first issue”
+  - e.g. [https://github.com/open-telemetry/opentelemetry.io/issues/8750](https://github.com/open-telemetry/opentelemetry.io/issues/8750)
+- [Patrice] Scalable maintenance regarding the registry:
+  - [Registry: enforce requirement for a contact, automate entry curating #8885](https://github.com/open-telemetry/opentelemetry.io/issues/8885)
+- [Tiffany] Do we want to do another docs survey, and if so, when?
+  - Decision: wait until large projects land (Collector docs, Ecosystem Explorer, Blueprints), so maybe run about two years after the last (Q4 2026)
+- [Tiffany] Can we settle on the architecture for OTel Blueprints? Any thoughts on the [proposed architecture](https://github.com/open-telemetry/sig-end-user/issues/237):
+  - Top level: Guidance and Architecture
+    - Where in the nav?
+    - Will explain what blueprints and reference architectures are and how to add one (pointing to templates in End User SIG repo, where they will triage and coordinate before a PR is created in docs repo)
+  - Child pages for **Blueprints** and **Reference architectures**
+  - Decision: top-level section between Collector and Migration. We can rearchitect later after sitting with it for a while.
+  - Tiffany to ask about diagrams - how do the Blueprints folks plan to create diagrams?
+- [Diana / Vitor] Localization projects
+  - Improving visibility and observability
+    - [OpenTelemetry.io Analytics public dashboard](https://lookerstudio.google.com/reporting/34c2a65a-39e8-44aa-afa0-094975fee55d/page/4VDGB?s=tSTKxK1ECeU)
+      - Can we add localization numbers to this dashboard?
+    - [https://github.com/vitorvasc/opentelemetry-contribution-metrics](https://github.com/vitorvasc/opentelemetry-contribution-metrics)
+      - This repo contains the scripts created to gather the numbers and analytics used in the blog post (e.g. contributions per locale, etc.)
+  - Gathering and incorporating feedback from general public
+- [Jay / Jack] Configuration docs: [https://github.com/open-telemetry/opentelemetry.io/pull/8723](https://github.com/open-telemetry/opentelemetry.io/pull/8723)
+  - This is for declarative configuration, it’s just about to stabilize
+    - This is part a larger user experience improvement effort
+  - There are two pages associated with the [opentelemetry-configuration](https://github.com/open-telemetry/opentelemetry-configuration) project that we would like to automate management of:
+    - The Types schema information ([mirrored from this content](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md))
+    - The language implementation status ([mirrored from this content](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/language-support-status.md))
+  - We plan to create two workflows that will automatically create PRs to update the opentelemetry.io pages:
+    - The language implementation status job will run nightly
+    - The “Types” workflow will be triggered after new releases of the configuration project
+  - The information is dense, and does not always map cleanly into an html table. It is especially challenging to navigate when on mobile screen sizes
+  - We need to do this in a way that will play nicely with localization efforts and tooling
+  - Thoughts on the proposed approach?
+    - Patrice: be sure performance and latency aren’t effected
+      - We’ve historically not concerned ourselves about localizing the registry. We could potentially not do it here
+        - What's more important? Having an up to date english only versioned? Or have localized versions that might be behind?
+        - Maybe it doesn't matter because change should happen infrequently
+    - Marylia: need to make sure the localization tooling works to be able to continue alerting when drift happens etc
+      - We might not care about the non-translated components changing, but would need to notify when things like headings changed
+    - Fabrizio: Would like to have a way to have an easy way to see status of specs
+      - High level summary of the different specs,  language features etc
+        - Ex: “Is profiling ready yet”
+        - “Status hub”
+      - Patrice: we have a status page - could use some polish and different visualizations
+    - Jack:
+      - Need to rethink the information architecture
+        - Ordering of pages, make sure they make sense
+        - Some pages only apply to declarative config and the current modeling doesn’t represent that
+        - Make sure it’s clear what you are looking at the status of
+      - Patrice: there are workarounds to “root” pages
+- [Jay] Ecosystem explorer - [Ecosystem Explorer Project](https://docs.google.com/document/d/1QBpFmSR54fGus8q6RraUj0-mEjSoX7S7fdlgsvxZsuk/edit?tab=t.tmt6iw1eyphn#heading=h.6wue2cxije07)
+  - Making some progress with the collector components (display names)
+  - Configuration automation (as discussed above)
+  - Java metadata population progress ~70%
+  - Next:
+    - See [Ecosystem Explorer Project](https://docs.google.com/document/d/1QBpFmSR54fGus8q6RraUj0-mEjSoX7S7fdlgsvxZsuk/edit?tab=t.luwp1zg56o32#heading=h.cwjplki9iwbp) Decisions tab:
+      - Decide on repo name and contents
+      - Get repo created
+- [UK] Blog translation, but not marked as "AI used"

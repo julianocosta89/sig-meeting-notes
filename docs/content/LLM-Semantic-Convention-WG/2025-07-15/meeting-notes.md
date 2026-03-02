@@ -1,0 +1,55 @@
+## Meeting Notes
+
+### Attendees
+- Shipra Jain [Microsoft]
+- Xander Song (Arize)
+- Ridhima Satam (Cisco/Splunk)
+- Liudmila Molkova (Microsoft)
+- Alex Hall (Pydantic)
+- Samuel (Pydantic)
+- Aaron Abbott (Google)
+- Dat Ngo (Arize)
+- Tao Chen (Microsoft)
+
+### Agenda
+- Standing topics:
+  - Triage
+    - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+- [liudmila, 1m] APAC meeting is moved to  every other Tuesday at 10:00 UTC+8 (Monday 7pm PT). Next one is in two weeks
+- [liudmila, 1m] The plan is to merge complex attribute support OTEP today - [https://github.com/open-telemetry/opentelemetry-specification/pull/4485](https://github.com/open-telemetry/opentelemetry-specification/pull/4485)  🍾
+- [Shipra, 5-10 mins] Agents execute_tool and LLM span enhancement [https://github.com/lmolkova/semantic-conventions/pull/12](https://github.com/lmolkova/semantic-conventions/pull/12)
+  - Liudmila to share tooling guidances
+  - Shipra to share PR against semconv - DONE (thanks Liudmila for the guiding docs) [https://github.com/open-telemetry/semantic-conventions/pull/2528/files](https://github.com/open-telemetry/semantic-conventions/pull/2528/files)
+- Ridhima[5 min] gen-ai SDK producing semantic conventions compatible telemetry - [https://github.com/wrisa/opentelemetry-python-contrib/pull/2](https://github.com/wrisa/opentelemetry-python-contrib/pull/2)
+  - Let's follow otel terminology and avoid sd/exporter on the API layer
+  - Let discuss high-level design
+- [liudmila, 15 min] From attributes and events PR - [https://github.com/open-telemetry/semantic-conventions/pull/2179](https://github.com/open-telemetry/semantic-conventions/pull/2179)
+  - What should we do when content is not enabled
+    - Notes:
+      - If we remove skeleton, we need to call it out as a change
+      - Tool call info is actually useful
+      - Should we update the schema to require content
+        - This would make it harder to evolve the schema to not be required
+        - We could also send skeleton in another place
+    - Skeleton
+    - Summary
+    - Nothing
+      - Let's start here
+    - Could it be added incrementally?
+      - Probably yes
+    - Output may contain output or handoff or output + info on tools called (file search query, citations) - output is a wrong word
+    - Agent message history is interleaved
+    - One array?
+    - Should we use the same attributes/schemas for inference and agent
+      - Would be nice
+  - Instructions
+    - Instructions for agents
+    - Instructions in chat history in random locations (which mostly is not supported)
+    - Sensitivity - usually not sensitive, but sometimes are
+    - Parametrized prompts
+- [Everyone, 5 min] PRs to review
+  - Attributes and events - ready for review - [https://github.com/open-telemetry/semantic-conventions/pull/2179](https://github.com/open-telemetry/semantic-conventions/pull/2179)
+  - MCP [https://github.com/open-telemetry/semantic-conventions/pull/2083](https://github.com/open-telemetry/semantic-conventions/pull/2083)
+  - GCP config attribute [https://github.com/open-telemetry/semantic-conventions/pull/2125](https://github.com/open-telemetry/semantic-conventions/pull/2125)
+  - Embeddings  OpenAI in Python [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461)
+  - Langchain instrumentation - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3600](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3600)

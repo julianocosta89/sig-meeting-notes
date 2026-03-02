@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- [Daniel Dyla](mailto:dyladan@gmail.com)
+- Trask Stalnaker (Microsoft)
+- Armin Ruech (Dynatrace)
+- Alexandra Konrad (Elastic)
+- Liudmila Molkova (Microsoft)
+- Christophe Kamphaus
+- James Thompson
+- Valeriy Leykin (Dynatrace)
+
+### Agenda
+- (timebox 7 min) Project Status + Triage + Blockers
+  - Stability Blockers
+  - PR Triage Board: [https://github.com/orgs/open-telemetry/projects/67/views/1](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - Issue Triage Board: [https://github.com/orgs/open-telemetry/projects/131/views/1](https://github.com/orgs/open-telemetry/projects/131/views/1)
+- (timebox 50 min) General topics
+  - [trask, 5 min] June release
+  - [liudmila, 5 min] changing metric value type is not breaking?  [https://github.com/open-telemetry/semantic-conventions/pull/2444](https://github.com/open-telemetry/semantic-conventions/pull/2444)
+    - Bring it back to weaver
+    - It should not be a strong requirement to use the same type
+    - Maybe we should use annotation - a hint to instrumentor
+    - [suereth] Specification:
+      - [https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/data-model.md#opentelemetry-protocol-data-model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/data-model.md#opentelemetry-protocol-data-model)
+      - Within certain data point types (e.g., Sum and Gauge) there is variation permitted in the numeric point value; in this case, the associated variation (i.e., floating-point vs. integer) is not considered identifying.
+  - [liudmila, 1 min] announcement - copilot review instructions experiment - [https://github.com/open-telemetry/semantic-conventions/pull/2447](https://github.com/open-telemetry/semantic-conventions/pull/2447)
+    - [suereth] Fun blog from co-worker on possibilities: [https://philipotoole.com/gpt-is-writing-the-github-issues-copilot-is-fixing-them/](https://philipotoole.com/gpt-is-writing-the-github-issues-copilot-is-fixing-them/)
+  - Updowncounter naming [https://github.com/open-telemetry/semantic-conventions/pull/2317](https://github.com/open-telemetry/semantic-conventions/pull/2317)
+    - [braydonk] We pluralize some counters cause I interpreted the guidance to mean counters could be pluralized [https://github.com/open-telemetry/semantic-conventions/blob/5074db9efeccbbaa106547d5f836a80372c1e53e/model/process/metrics.yaml#L102](https://github.com/open-telemetry/semantic-conventions/blob/5074db9efeccbbaa106547d5f836a80372c1e53e/model/process/metrics.yaml#L102)
+  - [https://github.com/open-telemetry/semantic-conventions/issues/2443](https://github.com/open-telemetry/semantic-conventions/issues/2443)
+    - Liudmila will take a look, let's try to get it in into the release
+  - Documentation focused pr’s or basic attribute addition
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2428](https://github.com/open-telemetry/semantic-conventions/pull/2428)
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2424](https://github.com/open-telemetry/semantic-conventions/pull/2424)
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2423](https://github.com/open-telemetry/semantic-conventions/pull/2423)
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2420](https://github.com/open-telemetry/semantic-conventions/pull/2420)
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2368](https://github.com/open-telemetry/semantic-conventions/pull/2368)
+  - [suereth] Concerns on Entity Registry? [https://github.com/open-telemetry/semantic-conventions/pull/2278](https://github.com/open-telemetry/semantic-conventions/pull/2278)
+    - will merge after release
+  - [suereth] How to model semconv moving?
+    - [https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/how-to-write-conventions](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/how-to-write-conventions)
+    - [https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/how-to-define-semantic-conventions.md](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/how-to-define-semantic-conventions.md)
+  - [thompson] Generic workflows
+    - [https://github.com/open-telemetry/semantic-conventions/pull/2387](https://github.com/open-telemetry/semantic-conventions/pull/2387)
+    - CICD thoughts
+      - Would CICD entities become workflow entities?
+      - Would this cover other workflows like business engines?
+        - that's the goal
+      - Discoverability - How would someone find this and know to use this?
+        - Could solve via documentation?
+        - e.g. CI/CD docs would link to workflow
+      - Would there be overlap between k8s workflows and CICD workflows?
+        - workflow is managed by a platform
+        - nested workflow is something to consider
+        - Look into Tekton

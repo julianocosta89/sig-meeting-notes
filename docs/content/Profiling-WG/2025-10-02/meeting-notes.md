@@ -1,0 +1,90 @@
+## Meeting Notes
+
+### Attendees
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- Jonathan Halliday (IBM)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+- cleverchuk(solarwinds)
+- .
+
+### Agenda
+- Review Active Action Items
+  - [Alexey Alexandrov] Write a profiling signal proto consistency check tool / library (existing code: 1, 2). This is in progress now in sig-profiling repo (WIP diff).
+    - Alexey: Made some progress on the checker, but haven’t send a PR yet.
+  - [Alexey Alexandrov] pprof -> OTel converter.
+    - Florian Lehner[receiver/pprof] [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843)
+    - Florian: Looking for feedback, especially from Antoine
+    - Antoine: Didn’t get a chance to review yet.
+  - [All] Review Context Propagation documents:[Resource Definition in the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1Ud2EQZMmFCYOhdSXW0VFHIdKb-Ltzd03bImZgIC1syM/edit?tab=t.0#heading=h.jav84tdbpj0h), [Sharing Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0#heading=h.lp3k1tq7iqaq) or [TLV encoding for OTEL_CTX](https://docs.google.com/document/d/1Ij6SYfv0lHOhTNsXNGVFpra3ZCfz-WC7QBXdB_OaoYc/edit?tab=t.0#heading=h.llbgke6lmlbd), [Sharing Thread-Level Information with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.0#heading=h.rdsycckexrcs),
+    - Ivo: Replied to most feedback on thread level info. Still looking for feedback from this group. For me next step is to talk to the OTel SDK SIGs.
+  - [**Owner wanted**] We agree and should document that the values/timestamps shape should be the same for all samples in the given profile.
+    - See PR discussion below, the two overlap.
+  - [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [#714](https://github.com/open-telemetry/opentelemetry-proto/pull/714)
+    - Jonathan: Discussion is mostly around the comments.
+    - Felix: Let’s break up the key grouping changes from the comments so we can land it.
+    - Jonathan: Ok.
+  - [Alexey] Update original_payload_format/original_payload field docs - don't special case pprof, mention "if lossy conversion then you can include the orig payload", emphasize this is optional. Maybe mention that even pprof conversion can be lossy in exotic cases (bespoke timestamp encoding?). See [this discussion](#bookmark=id.vdpjbusaz7ui).
+    - Alexey: Will work on this. Almost ready.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Add payload format semconv (or spec?) value declaration. Examples: pprof / JFR. See [this discussion](#bookmark=id.vdpjbusaz7ui). And update original_payload_format accordingly
+    - Florian: I spoke to communication SIG this week, they are welcoming input on the spec and sem conv aspects. Especially as we move forward with alpha.
+    - Florian: Next step is to reach out to them.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)Open OTel profiling documentation issue in OTel [repo](https://github.com/open-telemetry/opentelemetry.io/issues). Done in [#7874](https://github.com/open-telemetry/opentelemetry.io/issues/7874)
+    - Completed, moved to archive.
+- [Christos] We’ve recently received two back-to-back DoS advisories for eBPF profiler, discuss coming up with a service promise and documenting it as part of the project. The OTel Collector security policy is [here](https://github.com/open-telemetry/opentelemetry-collector?tab=security-ov-file#readme) (generic, covers other OTel projects too including the eBPF profiler). We’ll probably need something more fine-grained that addresses impractical DoS attacks that we’re not willing to mitigate. Is there precedent for finer-grained project-specific security policies in OTel?
+  - Felix: The attacks allowed disabling/halting the profiler, but not further escalation.
+  - Frederic: We have a policy, I’ll check on the details.
+  - Felix: Next steps: I’ll pull Frederic and Florian into the details of these attacks.
+  - Florian: We [previously hit an issue](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d319f344561de23e810515d109c7278919bff7b0) with a bug in the kernel with bpf_probe_read, that the file system could run into a deadlock. I helped to get a fix backported with help of Huawei and Meta.
+  - Alexey: Is this different from a program affecting other programs?
+  - Felix: Seems like the same class of issue.
+- [Christos] Clarify [profiles: improve Sample message clarity and usage documentation. by jhalliday · Pull Request #714 · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/pull/714)
+  - See discussion above.
+  - Jonathan: Yeah, let’s defer discussion until Christos is back next time.
+- [Nayef] Is the lack of `schema_url` for the InstrumentationScope attributes expected?
+  - Nayef: Current proto has two schema url fields. One at resource profile level. Comment says it applies to determine the version of semantic conventions that applies. On scope profiles it applies to scope profiles. But there is none for scope attributes. This is a case for other signals as well. Is this expected, or something we want to fix?
+  - Felix: Let’s defer until Josh joins or take it to the proto maintainers.
+  - Nayef: We could update the comment to say it applies to the attributes and underlying profiles.
+  - Felix: Maybe raise a PR that makes the comment update on the other signals to start the discussion.
+  - Nayef: I’ll do this if I don’t get feedback from Josh or somebody.
+- [Alexey] Zero index values discussion - [#711](https://github.com/open-telemetry/opentelemetry-proto/pull/711). Any changes we want based on that?
+  - Alexey: There were review comments on whether we considered allowing empty dictionaries. My explanation was to have all references be valid. Otherwise any index 0 value would be an invalid payload.
+  - Alexey: When I write unit tests for schema conformance checker, I need to declare these 1 element dictionaries.
+  - Felix: Thanks for getting the change landed, I don’t see a compelling reason to backtrack.
+  - (thumbs up in the zoom)
+- [Alexey] Dictionaries - any objection to adding a comment about value identity semantics?
+  - Dictionary values should (must? I think we previously said "should") be unique.
+  - But whether they are unique or not should be indistinguishable in the profile interpretation. In other words, compacting a profile by uniquifying its dictionaries by value can't break or alter the "meaning" of the profile.
+  - Alexey: We discussed having a check if values in the dict are transitively unique. In general there is no good reason to have duplication in the tables. We agreed to allow duplication, but that we prefer not having it.
+  - Felix: Yes, I agree.
+  - Alexey: If somebody takes a dictionary and compacts it, it should not change the meaning of the payload.
+  - (thumbs up in the zoom)
+  - Alexey: Ok, I’ll propose a PR.
+- [Alexey] Profile timestamp, duration and sample timestamps.
+  - Profile.duration_nano == 0 is a valid duration. Right? Example: live heap profile.
+  - Sample.timestamps_unix_nano ∈ [Profile.time_unix_nano, Profile.time_unix_nano+Profile.duration_nano] must be true. Right?
+  - Does this imply that profiles with Profile.duration_nano == 0 can't carry sample timestamps?
+  - Alexey: Live heap profile stack traces could have timestamps of time of allocation.
+  - Felix: Not a crazy idea, been discussed on the Go issue tracker.
+  - Alexey: Ok, then maybe the timestamps should fall into the start + duration range.
+  - Felix: Seems okay to me.
+  - Alexey: I’ll try to send a PR to improve the documentation.
+- [Alexey] Should Profile.comment_strindices be an attribute?
+  - Alexey: This is historically from pprof. pprof didn’t have profile level attributes.
+  - Felix: I would think this makes sense.
+  - Florian: I’d object b/c the attributes we added in semconv for pprof were all booleans. I expect pushback from the semconv group.
+  - Alexey: We should check if there are existing attributes that are arrays of strings. I think I saw some.
+  - Florian: I don’t remember such attributes.
+  - Felix: If those attributes existed?
+  - Florian: Then I’d be fine with using a pprof attribute for this.
+  - Alexey: I’ll check for prior art and report back.
+- [Florian] Do we want protocol consistency? [profiles: add line_table to ProfilesDictionary](https://github.com/open-telemetry/opentelemetry-proto/pull/719)
+  - Florian: While writing the receiver for pprof I noticed that we have no line_table.
+  - Florian: I ran the benchmarks we had discussed before. The differences were below 1%. Tigran commented on the PR saying there is probably no impact.
+  - Alexey: I looked at PR and commented. It didn’t strike me as an obvious case for another indirection. There are runtime costs that are harder to measure. More GC pressure. The message is pretty small.
+  - Felix: Let’s continue discussion in the PR.
+  - Florian: SGTM. If there is no feedback we can also close it.
+- [Felix] KubeCon EU 2026 CFP

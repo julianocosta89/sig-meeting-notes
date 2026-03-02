@@ -1,0 +1,51 @@
+## Meeting Notes
+
+### Attendees
+- Jason - Splunk
+- Jamie - Embrace
+- Mustafa - Honeycomb
+- Hanson - Embrace
+- João - Datadog
+- Cesar - Elastic
+
+### Agenda
+- [jason] - Releases!
+  - 1.0.1 is out
+    - We are now on the hook for not breaking the agent/initializer api
+      - Adding new API is totally fine
+    - THANK YOU EVERYONE!
+  - 1.1.0 can go next week (assuming upstream happens late this week).
+    - Let’s get your favorite PRs in now.
+  - Releasing with automation was hard.
+    - We don’t support patch releases yet (we probably need this anyway)
+    - We definitely don’t support -rc.x suffixes yet (do we need to for 2.x?)
+- [https://github.com/open-telemetry/opentelemetry-kotlin](https://github.com/open-telemetry/opentelemetry-kotlin) is bootstrapped
+  - Contribs welcome!
+- [jason] - Looking forward on stability
+  - What’s next?
+  - Instrumentation api?
+    - Probably needs to happen before any individual instrumentations go stable
+    - Relatively small api
+  - Core might be harder than we realize?
+    - Probably not a priority?
+- [jason] - Android clock foo
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1486](https://github.com/open-telemetry/opentelemetry-android/pull/1486)
+    - The clock is a part of otel core, so we expect users to already be familiar with the concept
+    - Is there a clock in spec? Doesn’t seem like it?
+    - Do we really want this on the agent, or would it be better just capped at the OTRB?
+      - Decision: we are ok with adding this to the agent
+    - What do other vendors do for this?
+      - Splunk uses the otel clock and doesn’t do anything special afaik
+      - Elastic uses elapsed nano compared with NTP server time, falling back to local system time.
+      - Embrace? - elapsed nano time, basically ([https://github.com/open-telemetry/opentelemetry-android/pull/1487](https://github.com/open-telemetry/opentelemetry-android/pull/1487) )
+      - DataDog?
+      - Honeycomb? - nothing special, uses otel clock
+- [Cesar] - Stable Disk buffering (probably after [this breaking change](https://github.com/open-telemetry/opentelemetry-java-contrib/issues/2540)).
+  - If/when that change goes in we will need to make sure we call .remove() in our implementation
+- GRPC issue [https://github.com/open-telemetry/opentelemetry-android/issues/1507](https://github.com/open-telemetry/opentelemetry-android/issues/1507)
+  - We don’t support it right now through the agent but do through the OTRBuilder.
+  - Should we support it in the agent?
+  - Can we get a straw-man implementation here to help show what that looks like?
+  - GRPC is one of the two common otel export protocols so we should probably do that.
+- Please take a look at [https://github.com/open-telemetry/opentelemetry.io/pull/8713](https://github.com/open-telemetry/opentelemetry.io/pull/8713)
+- [name] - <Insert your topic here>

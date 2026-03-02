@@ -1,0 +1,90 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Cloudera)
+- Trask Stalnaker (Microsoft)
+- Jack Berg (New Relic)
+- Jason (Splunk)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana)
+- Jean Bisutti (Microsoft)
+- Peter Findeisen (Cisco)
+- Jonathan Halliday (IBM)
+- Robert Niedziela (Splunk)
+- Jay DeLuca (Grafana)
+- Lauri Tulmin (Splunk)
+
+### Agenda
+- [trask] native instrumentation continued: [https://github.com/open-telemetry/opentelemetry-java/issues/7412](https://github.com/open-telemetry/opentelemetry-java/issues/7412)
+  - Options
+    - 1. Define an interface with a single method `setOpenTelemetry`
+      - Library can implement this interface
+      - Agent can instrument
+      - E.g. HttpClientBuilder implements “SetOpenTelemetry”
+        - We would implement the constructor and call setOpenTelemetry()
+      - HttpClient implements “SetOpenTelemetry”
+        - Works for Java agent
+        - But looks weird for library instrumentation because users can only call setOpenTelemetry post-construction
+      - Probably not very efficient instrumentation
+      - Doesn’t work well if a library doesn’t follow a builder pattern
+      - Can an annotation help us? Probably not - best instrumentation allows us to not have to parse the bytecode.
+    - 2. AgentOpenTelemetry
+      - Similar to using GlobalOpenTelemetry
+      - Library instrumentation would initialize its openTelemetry instance to AgentOpenTelemetry.get(), and would provide a way for users to explicitly set their own which would override it
+      - Icky for native libraries to have to be aware of / interact with something called “AgentOpenTelemetry”
+    - 3. Use GlobalOpenTelemetry
+      - Library instrumentation would initialize its openTelemetry instance to GlobalOpenTelemetry.get(), and would provide a way for users to explicitly set their own which would override it
+      - E.g. HttpClientBuilder
+        - openTelemetry = GlobalOpenTelemetry.get()
+        - setOpenTelemetry() can be used in library instrumentation mode
+      - E.g. HttpClient
+        - openTelemetry = GlobalOpenTelemetry.get()
+        - Expose OpenTelemetry via the constructor, or deal with complication of what to do if mutating state after
+      - Do you need to know if it’s a no-op?
+        - It’s an optimization concern
+        - OpenTelemetry.isNoop() / isEnabled()
+      - Timing condition?
+      - What if we added an SPI (e.g. OpenTelemetryProvider) which: 1. Allowed users to initialize an OpenTelemetry instance 2. Was invoked during GlobalOpenTelemetry initialization process
+        - This would give users a tool to guarantee that they can initialize GlobalOpenTelemetry, regardless of how early instrumentation libraries access GlobalOpenTelemetry.get()
+        - Consider spring:
+          - In spring, you want to initialize OpenTelemetry as a bean
+          - Implementing the SPI would mean initializing OpenTelemetry outside spring lifecycle
+      - What if no-op state can be swapped at runtime when setting the global later
+  - [from June 12th] [jack] Recommendation for instrumentation libraries to access `OpenTelemetry` instance [https://github.com/open-telemetry/opentelemetry-java/issues/7412](https://github.com/open-telemetry/opentelemetry-java/issues/7412)
+    - Related: [https://github.com/open-telemetry/opentelemetry-java/issues/6604](https://github.com/open-telemetry/opentelemetry-java/issues/6604)
+    - Interface OpenTelemetryInstaller
+      - setOpenTelemetry(..)
+    - AbcClient implements OpenTelemetryInstaller
+      - setOpenTelemetry(..)
+      - AbcClientBuilder implements OpenTelemetryInstaller
+    - Detect if GlobalOpenTelemetry is used? (without changing the state)
+      - Libraries can use this to provide a default
+        - GlobalOpenTelemetry.getOrNoop()
+    - AbcClient
+      - private OpenTelemetry openTelemetry = GlobalOpenTelemetry.getOrNull()
+      - public AbcClient(OpenTelemetry openTelemetry) {
+      - }
+- Global OpenTelemetry Callback?
+  - Get a callback on the first OpenTelemetry instance is created
+    - public static GlobalOpenTelemetry.setCallback(Consumer<OpenTelemetry>)
+      - buildAndRegisterGlobal()
+        - GlobalOpenTelemetry.set()
+      - May simplify Logback appender (and others) implementation
+      - What if you explicitly set No-op OpenTelemetry?
+      - **With async callback, need to delay initialization of metric instruments**
+      - Android has this otel callback mechanism: [https://github.com/open-telemetry/opentelemetry-android/blob/main/core/src/main/java/io/opentelemetry/android/OpenTelemetryRumBuilder.java#L461C39-L461C55](https://github.com/open-telemetry/opentelemetry-android/blob/main/core/src/main/java/io/opentelemetry/android/OpenTelemetryRumBuilder.java#L461C39-L461C55)
+    - Vert.x does it like this: [https://vertx.io/docs/vertx-opentelemetry/java/](https://vertx.io/docs/vertx-opentelemetry/java/)
+- [gregor] running lychee locally could be done easier with mise - see [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14155](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14155)
+  - Should we add mise - either replacing the docker setup, or in addition?
+- [trask for Steve Rao] API for passing in new YAML config to SDK?
+  - Initially only implement tracers -> config -> disabled
+  - [jack] What if…
+    - We had an agent extension
+    - Which starts a background thread and stores an instance of OpenTelemetrySdk
+    - On periodic basis, re-read the configuration file contents
+    - Extract the relevant bits such that they could call the update function [SdkTracerProvider#setTracerConfigurator](https://github.com/open-telemetry/opentelemetry-java/blob/05f67023da1f029a2fdfe09652701e301921a281/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/SdkTracerProvider.java#L123)
+  - Ready for such a thing to contrib. For including in opentelemetry-java, would need to drive at spec level.
+- [trask for Minghui] [https://github.com/open-telemetry/opentelemetry-java-contrib/pull/1855](https://github.com/open-telemetry/opentelemetry-java-contrib/pull/1855)
+- [trask] auto spotless?
+  - Could do comment-driven, but then need to wait a long time for the build
+- [jkwatson] another set of eyes on [https://github.com/open-telemetry/opentelemetry-java/pull/7448](https://github.com/open-telemetry/opentelemetry-java/pull/7448) would be good (it’s small… changes suggested/required by errorprone upgrade)
+- [jason] Does anybody know anything about this property? [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14172](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14172)

@@ -1,0 +1,80 @@
+## Meeting Notes
+
+### Attendees
+- Braydon Kains (Google)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- Jonathan Halliday (IBM)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- Felix Geisendörfer (Datadog)
+- .
+- .Josh Suereth (Google) [First 30 only]
+- Alban Crequy (Microsoft / Inspektor Gadget team)
+- Frederic Branczyk (Polar Signals)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- cleverchuk(solarwinds)
+- Antoine Toulme (Splunk)
+
+### Agenda
+- Review Active Action Items
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - Waiting for Alexey to respond to PR comments.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co)[receiver/pprof] [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843)
+    - Florian: First part landed (pprof -> OTLP). Converting from OTLP to pprof is still missing.
+    - Florian: We have this translation layer, OTLL. There is a ton of work (started by Tim in Feb). A lot of specific stuff. The resource level changes will have a high impact. The dictionary will cause a lot of code.
+  - [All] Review Context Propagation documents: [Sharing Process-Level Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0#heading=h.lp3k1tq7iqaq) or [TLV encoding for OTEL_CTX](https://docs.google.com/document/d/1Ij6SYfv0lHOhTNsXNGVFpra3ZCfz-WC7QBXdB_OaoYc/edit?tab=t.0#heading=h.llbgke6lmlbd). [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Update on context sharing:
+    - [https://github.com/open-telemetry/sig-profiling/pull/13](https://github.com/open-telemetry/sig-profiling/pull/13) discussion around .proto format for process context
+    - [https://github.com/ivoanjo/proc-level-demo/tree/main/otel-java-extension-demo](https://github.com/ivoanjo/proc-level-demo/tree/main/otel-java-extension-demo) demo as OTEL Java SDK extension
+    - Presented process-level spec at OTEL Java SIG and OTEL-specification SIG. Working on turning [current proposal doc](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0) into an OTEP => Will share in #otel-profiles draft PR soon
+    - No progress yet on Java thread-level context sharing
+    - Josh: LGTM. I approved the PR. If Java folks are good with FFI, that’s great.
+    - Ivo: We can have a fallback.
+  - [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [~~#714~~](https://github.com/open-telemetry/opentelemetry-proto/pull/714) [#724](https://github.com/open-telemetry/opentelemetry-proto/pull/724)
+    - Christos: Josh might be confused, going to wait for his reply.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Add payload format semconv (or spec?) value declaration. Examples: pprof / JFR. See [this discussion](#bookmark=id.vdpjbusaz7ui). And update original_payload_format accordingly.
+    - Florian: Still waiting for merging. Will ping people again: [https://github.com/open-telemetry/opentelemetry-specification/pull/4685](https://github.com/open-telemetry/opentelemetry-specification/pull/4685)
+  - Alban: Reach out to the kernel folks to check how they see the severity.
+    - I emailed on 22 Oct. No replies. I sent a reminder on 29 Oct.
+    - Alban: If I don’t hear back, I’ll send a patch to the public mailing list without mentioning the details of the security issue.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) See [this](#bookmark=id.9immnxam3n5h) - update the dictionary docs to clarify the value identity semantics. Sent PR [#732](https://github.com/open-telemetry/opentelemetry-proto/pull/732).
+    - Some review comments need to be addressed before merging.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Send a PR clarifying the start timestamp / duration conventions. See [this discussion](#bookmark=id.an4px2jo7lgp).
+    - No PR yet, Alexey not here to update.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Profile.comment_strindices as an attribute - see [this discussion](#bookmark=id.9ql1dx83kk6r). Action item is to check whether there is a precedent for having string array attributes in semconv. Done, see below.
+    - Florian: We removed the field from the protocol. This is handled by semconv now.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order attribute.
+    - No PR yet, Alexey not here to update.
+  - [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Reach out to the specification SIG on whether the InstrumentationScope `schema_url` applies to InstrumentationScope attributes. [https://github.com/open-telemetry/opentelemetry-proto/pull/727](https://github.com/open-telemetry/opentelemetry-proto/pull/727)
+    - Done.
+  - [Alexey] doc_url pprof attribute - [https://github.com/open-telemetry/opentelemetry-proto/pull/588](https://github.com/open-telemetry/opentelemetry-proto/pull/588), we still need to add it. Needs a semconv PR.
+    - No PR yet, Alexey not here to update.
+- [Braydon Kains](mailto:braydonk@google.com) Identifying process executable entity in Semconv [https://github.com/open-telemetry/semantic-conventions/pull/2657#discussion_r2474290953](https://github.com/open-telemetry/semantic-conventions/pull/2657#discussion_r2474290953)
+  - Braydon: executable name seems unstable. The name of an executable can change during the process lifetime. GNU Build ID seems interesting, but might not always be available.
+  - Christos: I left a comment. What I recommended is our custom file hash ([process.executable.build_id.htlhash](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/#process-executable-build-id-htlhash) ). - [htlhash algorithm specification](https://opentelemetry.io/docs/specs/otel/profiles/mappings/#algorithm-for-processexecutablebuild_idhtlhash)
+  - Josh: How about we use the build id to identify the process, and the process name would be a descriptive attribute.
+  - Josh: Another option is to make this an attribute of the profile. Will we need to attach any other data to the build id that is not a profile?
+  - Christos: I can’t think about use cases where we need something on top of build id. If we do this, we need to use the hashing scheme across otel.
+  - Josh: Is the hash id important enough to be an entity shared with all signals? As long as people can use it as a repeatable id.
+  - Josh: An example is the specification for trace id. Some bits need to be random. But e.g. amazon puts timestamps into some of the bits. OpenTelemetry doesn’t do this, all bits are random. But the s
+  - Felix: My thinking is that the hash should be a resource level thing for all signals. But this implies that the algorithm is shared, not an implementation detail.
+  - Christos: There is a problem when different containers have binaries with the same hash id.
+  - Josh: We’re allowing multiple entities on a resource. You can have build id and container id and hash on the two together. Their proposal recommended a hard coded list of attributes, but we can’t do that. pod_name might not be unique across kubernetes clusters. That’s a decision we let users make. The cloud provider adds cluster information. Going forward we want to be clear what’s identifying (e.g. container_id, executable id).
+  - Florian: We have a lot of identifying attribute on the sample level, not the resource level.
+  - Josh: The reason we want the attributes in resource is so we can do the grouping consistently. Group by resource should be the same for all signals in the collector. The collector has consistent hashing and routing, this uses the notion of resource.
+  - Felix: Okay, so it sounds like the situation with multiple containers in the same executable is gonna be solved by considering multiple identifying attributes (executable hash, container id).
+  - Florian: Where should the dictionary live?
+  - Josh: What you build is really good and we should have done it for all signals, but it’s too late. We could have a ResourceRef that will reference the dictionary locally. I’d like for the design to impact the design for the rest of OTel. This would be a clear win for all of OpenTelemetry. I did some experiments to confirm that.
+  - Josh: For now we should get the resource attributes for profiling into resources. Even if it means making a profiling specific Resource message.
+  - Felix: I think we can add the resource dictionary support with only changing the collector code gen for the resource attribute getter function.
+  - Josh: There needs to be a signal specific dictionary. A stateful thing with remembering dictionaries would be a new protocol.
+  - Josh: We can introduce the dictionary for profiling and then give other signals a heads-up. Getting dicts into OTLP is a 2-5 year time horizon. For profiling it should be doable in a couple of months.
+  - Felix: Do we still need a benchmark?
+  - Josh: Yes.
+  - Christos: We could move the attributes to resource even without dictionaries.
+- [Florian Lehner](mailto:florian.lehner@elastic.co) Feedback from [Technical committee meeting notes (PUBLIC)](https://docs.google.com/document/d/1hOHPCu5TGenqTeWPB9qQB_qd33uITZBcvK1FnWxYJAw/edit?tab=t.0#heading=h.b7waypgjgepk)
+  - [Current smallest Resource entity](https://github.com/open-telemetry/opentelemetry-proto/blob/024778c324d10ccaefa8b5bf7ff50da126f6fdd7/opentelemetry/proto/profiles/v1development/profiles.proto#L172-L176): Host-level profilers will usually create one ResourceProfile per container, as well as one additional ResourceProfile grouping all samples from non-containerized processes.
+  - Expected smallest Resource entity: process thread (?)
+  - [opentelemetry-proto#733](https://github.com/open-telemetry/opentelemetry-proto/pull/733) “[resource] introduce reference based attributes”
+- Christos: Looking ahead to end of the year. Is it realistic to get the alpha out? Josh seems okay with doing the minimal thing there. Then we need some benchmarking.
+  - Florian: We can’t move on to alpha, we need some stability on the collector side. If the draft PR gets merged tomorrow, we need a release of the protocol. There is a long chain. There will be a lot of people needed to get this done by the end of the year.
+  - Christos: We can ask for a release of the protocol anytime Tigran said. Delays could come from the collector or SDKs.
+  - Felix: We’ll try to push hard on the benchmarking since it could block Florian’s PR from landing. The goal should be to get the PR merged by the next meeting.

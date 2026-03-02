@@ -1,0 +1,208 @@
+SIG: Go Auto-Instrumentation SIG
+Date: 2025-07-29
+Duration: 30 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Tyler Yahn** 00:53 Hey Mike.
+**Mike Dame** 01:00 Hey? How's it going.
+**Tyler Yahn** 01:02 It's going good! How are you.
+**Mike Dame** 01:04 Good. Thanks. Yeah.
+**Tyler Yahn** 01:11 How's the Boston weather these days.
+**Mike Dame** 01:15 It's a little hot this week, but the weekend looks like it's gonna be a little bit nicer, and my son's birthday party coming up so, hoping it holds out.
+**Tyler Yahn** 01:25 Nice. Yeah, you got anything fun planned like, go to a park or something like that.
+**Mike Dame** 01:29 I, just a little birthday party, have some family friends out.
+**Tyler Yahn** 01:32 Yeah, oh, nice. Sounds good.
+**Mike Dame** 01:36 And we always have horrible whenever, like me and my wife, or we've ever like had a party or hosted people. It's always been like
+you're freezing or rainy, or like way too hot and muddy. So like this will be the one
+like the 1st time ever if the weather holds out. So we're really hoping that doesn't turn around on us.
+**Tyler Yahn** 01:55 Yeah, right? Do you have like a a backyard and and everything.
+**Mike Dame** 01:59 Yeah, yeah, we got some room and some space.
+**Tyler Yahn** 02:01 Oh, nice. Yeah, that kind of stinks when you got like all that space. And you gotta like, just hang out inside.
+**Mike Dame** 02:07 Yeah, it's so easy. So hopefully, we get lucky this time.
+**Tyler Yahn** 02:11 Yeah, nice.
+How's it going? Raphael?
+**Rafael Roquetto** 02:21 I'm good. How are you? How are you guys doing.
+**Tyler Yahn** 02:24 Doing? Well, yeah.
+**Mike Dame** 02:25 Good.
+**Tyler Yahn** 02:28 I think is, I think Nicola is out
+is. Well, he's out next month, I think. I don't know. Is he out right now?
+**Rafael Roquetto** 02:35 I don't think so. He hasn't said anything, so I believe he will come.
+**Tyler Yahn** 02:38 Okay.
+**Mike Dame** 02:41 Here he's from. If you're on the call you can add yourself to the you should be able to edit the the minute the meeting notes.
+**Tyler Yahn** 02:56 Is Ron able to make it? Or is he out.
+**Mike Dame** 02:59 Ron said. He's gonna be a little bit late.
+**Tyler Yahn** 03:03 Okay?
+Yeah. Well, okay, I'm looking at the agenda. I don't. We don't have much
+of anything. So this might be a quick meeting. But if you guys have topics you wanted to talk about, please feel free to add them as well.
+And yeah, as Mike said, it looks like everyone's on the attendees list. We can probably wait just a little bit. I can start sharing my screen. We can get started here in a second
+cool. All right. Yeah. So just to start us off. I like, I really only had one topic. I was looking. We don't have actually we could double check. There's no actual open Prs, which is pretty cool.
+Yeah. And then I was looking at our goals. We're really kind of there's only like 2 actual goals that are kind of, I think you would say, maybe in progress. And it's just this
+migration to the bail integration. So working with the Epf files themselves, which is kind of blocking everything else in this binary file object tracking.
+And so I wanted to just kind of go over the work I did on the binary object file tracking. So this is something where it was just calling this to your attention. We've come up with like
+tons and tons of
+things. To actually like, you know, solve this problem. One of them was to run a go MoD proxy. And so the module proxy is just something that can
+essentially serve up wherever the module is. And there's different protocols using like Vcs is the common, and then you can also directly serve like a zip file. So the idea was that you would have our vanity. URL. Point to a custom module, proxy that we would run that module proxy would directly serve zip files that included zips of the whole
+module, plus all the generated object files, meaning that like it wouldn't have to be kept in Vcs or get I don't know. I'm saying Vcs, we don't use the curial or something like that, and then it would then serve whatever like that content is, except it wouldn't like have to be tracked as like these binary files.
+So yeah, I mean, I put together a proof of concept. It's in a repository. It's like, not full featured, but it works let me see if I can find it like it just serves like a static zip file for this like one version of auto
+like, in theory, we could do it so that it automatically generated these and cache these, and they could build like its own, like Module directory for these. But that wasn't really. It was more just like the point was to show that, like this worked
+and get some takeaways, and so kind of the takeaways were, it's a bad idea. Just kind of a tldr, like, yeah, bad idea. So one of it's just like it becomes an attack vector because if you think about it like, you have unverified code that's getting shipped to users that like we don't have any like like human interaction with, it's just going to be something that, like a computer is going to generate. And so
+if ever, there's some sort of way to like compromise the module proxy server. It's starting to serve, you know. Malicious code is pretty easy.
+so it adds, like a I'm not saying like that is very easy to do. But I'm saying like it adds another attack vector. Like surface area. So like that's not a great idea.
+Another thing is like the go some files. We have to start working with those like more in like
+carefully.
+because anything that we've already released that doesn't actually have these binary files in. We can't go back and then change that the go. Some files wouldn't match, and these go. Some files are checksums of what has already been served to ensure that, like, what the user is, downloading is the correct thing that is downloaded. So
+yeah, that is just like that. Like you, you can't change that. And so the hash of what we've already served is not going to be changeable. So the only thing we could do is to try to start serving these object files going forward and these things going forward, which is like, you know, that's not a problem, but like going forward. That means that then we need to be very careful about retaining whatever we do serve. Because if you, you know, say you lose everything, all these zip files that you've already generated, and you need to go regenerate them.
+I'd have to go double check. But like, there's a really good chance that like, if you're using a different version of Bpf to go. If there's some sort of like dependency difference. If there's some sort of like Timestamps, maybe even can affect the hash that's actually being generated like these things become very like brittle at that point, which is kind of by intention, like you really don't want things to be changing. You know, it should be a very static definition of what's being served for users. So I think this provides a lot of like
+We need to if we were going to go this route build in a lot of redundancy and reliability into supporting, like the long term preservation of whatever is generated here.
+So I am.
+It sounds complicated. But it also sounds like it's a really good way to like, have some error prone situation. Where, if we mess up like you're gonna have
+downstream users getting security errors. So
+I think this part is complicated and it kind of restricts what the solution can be. I think this part really says like, we probably shouldn't be doing this.
+I think this is a great idea if you're going to like, keep things internal and like, it's behind some sort of like VPN or something like that. But like this is going to be on a public Internet space. And so it's going to be very prone to, I think, compromising systems, especially if you think about the impact. Because anything that like takes a dependency on this is
+yeah, it could cause problems. So yeah, I think with that, I think I would say, we probably don't want to do that. I was then looking at this commit object files into the release branch. But maybe I'll just pause here if there's any questions about this.
+**Mike Dame** 09:03 Yeah, I think it's really cool. Proof of concept. I could see how it could be like expanded to trib sort of setup where other people can, you know, add their own. It doesn't support, for you know, people just kind of building their own
+What are they probes so they'd have to kind of get their stuff generated and put into this
+proxy through hotel. But I think that that's kind of an I think that this was a pretty cool thing to see, and it's it's neat that you can do this kind of stuff with the go module proxy. But yeah, I agree, the the attack vector stuff and then to to an extent, the other points that I was making, that it's not fully portable to like anyone that wants to write their own and ship it.
+The other solutions aren't really great for that, either. But this just doesn't address that. So yeah, cool. Cool to see.
+you know. Probably other use cases for it. But yeah, I agree with you.
+**Tyler Yahn** 10:10 Yeah. And like, yeah, there's actually, I think, some, some pretty cool like
+go proxies that exist like module proxies. Already I was basing this off of
+I think it was like, go proxy. I can't remember exactly, but like there's other
+like very full featured proxies that don't allow you to do. Custom fetches, but they do allow you to do like
+a lot of custom rules if you wanted to like, put like different layers of Vcs. Or if you wanted to do some like really interesting to like go some like experimental features. But
+yeah, it's a whole. It's a whole world. I would say, I would not try to reuse this. If you're watching this recording, and you want to build your own module proxies, there's way better solutions out there. But yeah, I think, like, it's a cool idea. Yeah.
+proof of concept. I guess. Yeah.
+so related to the object files in the release branch like this seems pretty straightforward to me, like I think that the idea is more about like finding a get branching workflow that would work best for us.
+I. The thing is is that like
+you, when you go fetch something. The default, configuration for a git repository is to fetch all upstream
+remote branches. But that's configurable. So, like all of these release branches, the idea is that, like we wouldn't have any committed binary objects in like, say main, but once we do a release that that release branch would contain
+these generated files. And so if you didn't want to actually get you know this in your git history you could exclude those, and so that is something you can do. I've looked into it like you can set up your git config to say like, don't ever pull any branch that starts with release in it, or something like we could put a naming scheme in there. Essentially. So then your your local get. History is very fast. I don't know. I'm still looking into like the cloning possibilities, because I don't know if you can like clone it
+by default. It may just try to pull everything. But that's that was my thing for today. Looking into that. So yeah, I'm still looking into this. But I think it like, this is actually a pretty viable solution.
+yeah. And I think it's really useful because it one. It keeps things in version control. So it's human
+reviewable. I think that it has something in the long term preservation, because, like, it's in Github, it's going to. We can tag these things directly, and you can just start serving them out of the repository that we already have. We don't have to put in any sort of 3rd party system. On top of this.
+you can. Also, you know, the the thing is is like, there's also different branching strategies that I wanted to look into, where maybe we actually have, just like a, you know, a main branch. But then we have, like a.
+you know, a rolling release branch that, like a bot, will continually check something into that for each commit. Because the problem is, it's with each release branch. This works really good if you wanted to use a release. But if you wanted to use like a commit hash like any commit hash from main, is still not going to contain any of these binary objects, so it'd be kind of nice if there was like an equivalent of like. Okay, this commit just went into main, like, there's 1 on this like.
+Develop branch or this release branch, or something like that. That also would be just a you know, a mirror of that. But it contains the binary objects at that point.
+So again, like, there's a lot, I think maybe some questions there. I don't have answers. I'm just saying I'm looking into it. But these are kind of I think some really cool ideas, and I think it actually is a good medium, like workaround, because it it in theory, does bloat the git history. But it's something that you can configure to ignore is kind of the idea. And so I think that might actually be the solution that we're looking for.
+**Rafael Roquetto** 13:52 Yeah, I don't have much to add, except that
+I think you based on what you're what you're saying. It would really depends on the kind of workflows we would be having. I often have multiple work trees of the same repo, including release branches when I'm back back porting stuff. So I mean, maybe that in that scenario, if I release, release branches, track the object files, there's no way out.
+but it works for everything else. Right. I mean, it works with, go get it works it. It goes back. That's what I guess
+Psyllium upf recommends, or the canonical way. The other thing that we one thing
+we have to be mindful of when committing object files
+that is not related to size.
+But it's
+who is who is gonna be committing those like on Pr. Because people could be pushing malicious or or broken code. That's just just a side note.
+**Tyler Yahn** 14:55 Yeah, I think that's a good point. And obviously, we can add, like, Ci verification of those. And I mean, ideally, like, a user doesn't push those like in my ideal world like it's it's 1 of those things where.
+But like I'm saying, like in the release branch process, maybe it's there. I guess maybe a user would push that. But, like like in general, like a user's not pushing object files to main in their development workflow. In fact, it may be just in like a git ignore. But then, like in this thing like this sync branch or something like that, maybe there's like just a bot that's doing that. And it can be verified at that point. But yeah, I agree, like, I definitely don't think you want users just being able to randomly push
+things. And so permissions are going to be important. There.
+**Rafael Roquetto** 15:35 So, Microsoft redider, they do push empty object files, they get overwritten. And once you view them.
+This wouldn't work obviously for us as a dependency, like, if you're trying to import, they go out as a dependency. You want. You want the full object files. But maybe if it makes it easier, and I don't know if it does. What we could do in that front is, have a pre commit hook.
+and also check that enforces that these files they could be checked. But they are empty, they're truncated. So then the Ci can do the rest of the job, whatever that means? Is it like opening a new Pr on the corresponding release branch that actually
+builds those object files and replace the empty ones with the the full ones. But then it's built from our our like tool chain or containers verified, and everything things like that, you know, that should be the second. Take care of and replacing that, and for the users to the same workflow like the
+you, we would always commit empty empty files.
+That might be an easy way. I don't know. I'm just thinking out loud brainstorming.
+**Tyler Yahn** 16:46 Yeah, I think that the committing empty files could work as long as you also have like A, because you need. If you have a pre-commit check that checks that you also need like a prefetch or a pre like merge that would update them.
+because, like the the problem is, if you have empty files, you switch your compile time failure to a runtime failure right? Which is actually kind of not what you want. You want to catch that as early as possible, especially if it's going to be some sort of like panic like that, right? And so, or or worse. And so I think
+I think that that sounds good as long as like when you also like would pull in a new. You know
+version it would. It would do some sort of generate command on your behalf.
+That might be annoying, though. But yeah, I think that there's I think there's some solutions here. I do think that like.
+yeah, the the usability from a user, yeah, go ahead.
+**Rafael Roquetto** 17:40 For I've been only for the main branch, like for the release branches we still like for me, to the actual fat files and people using
+using.
+**Tyler Yahn** 17:50 Oh, yeah, I understand.
+**Rafael Roquetto** 17:51 Extreme. Yeah, yeah, sorry.
+**Tyler Yahn** 17:53 Yeah, I was thinking this, I thought you were talking about the main branch as well. I just yeah, it's
+Yeah, I think it's, I think it's just like, so the problem is is like, you go and run this right now, when you start the project up, you're gonna get like, it's just not going to compile right? And it's gonna tell you, like, this reference file doesn't exist like this is a bad like
+definition, right?
+Versus like, if it's if it's empty, it's going to be like, cool. Yeah, go ahead. Start running. And then you're gonna start running. And it's going to be like,
+yeah, yeah. And so I think it. Yeah, it's like a little bit more obvious to the user that like, Oh, this is actually where the missing file is, instead of like a generic like this, Ebpf thing that I tried to load just doesn't make any sense. Yeah.
+**Rafael Roquetto** 18:37 Would a workaround of? I don't know how how we do it. If we do have a make file that we have make compile, it could have a I guess. Maybe that's what you were saying. I'm not sure. Like a Pre. A target that runs before the checks. If the files are empty, it fails
+like so in the.
+**Tyler Yahn** 18:54 Yeah.
+**Rafael Roquetto** 18:55 Something like that. It's not ideal, though, right?
+**Tyler Yahn** 18:58 I mean, the make file already. Kind of does that, though, because it has a generate target, that is a dependency before the build, right. So it's already like handling the compile time error that you would get normally. And so like, I think it like, that might be just the way we'd want to keep doing that from a development standpoint.
+Yeah, I just don't see how like adding a 0 size file is going to save us or like win us anything. It might just cause more problems than than.
+**Rafael Roquetto** 19:23 Right? Yeah, right? Right.
+**Tyler Yahn** 19:26 But I, yeah. But to your point about like the workflows, though. Yeah, I think that's that's kind of what I'm still trying to think of
+and and walk through these ideas of like what workflows we want for our branching structure here. If we, if we want to go in this direction? Do we just want release branches? Do we want to have like
+some sort of syncing? Is there a Ci that does that syncing like, what? What does that look for? So I don't know the answers. That's still something I'm thinking about. But yeah.
+**Rafael Roquetto** 19:51 When your phone let me try. Sorry. Go ahead.
+**Tyler Yahn** 19:53 No, I was gonna ask for feedback. So yeah, if you have thoughts, I'd love to hear them.
+**Rafael Roquetto** 19:57 So I was, gonna say, when I try in the past, I try a few workflows with Bela and
+what kind of worked first.st I wanted like whenever I pushed a Pr. That the Ci would, it did a validation of the object files, and I think it. I don't remember from the top of my mind, but it kind of it. Tried to build the
+it tried to build because we're committing the object file. So it tried to build the object files again.
+and then it did a diff to, so if they did, it didn't match, then it would fail. The the Ci check. Because, see, your object files are weird. So some sort of poor man's integrity check. I know that's not ideal, but it was a
+no, that's.
+**Tyler Yahn** 20:40 That's what I was thinking, too. Yeah, it's something exactly like that. Like, yeah, like, essentially, especially on like these release branches, or whatever wherever is supposed to contain the object files like
+you have some sort of Ci, that is a standard tool chain that you like have checked in that knows it's going to use. You know, this, these versions
+ideally. It's not tampered with. You know, obviously, like there are really smart people out there that maybe can fix that, but or get around that. But like, the idea is that it's not going to happen. And so then, yeah, you just run that. And if there's a difference between the 2, then yeah. And we do that for a lot of other things like go MoD tidy stuff as well like it'll fail. Essentially, you commit it to history, and, like you, just use, get to say, like, Hey, is this clean? And if it isn't, then fail. So yeah.
+**Rafael Roquetto** 21:26 Right.
+**Tyler Yahn** 21:26 Yeah, I think what you're describing is what I was thinking, yeah.
+**Rafael Roquetto** 21:29 When I did that it was because what I originally wanted to do was that the Ci would actually generate and commit the file so it would generate an extra commit on the actual branch.
+But I had a lot. I had problems with people with forks.
+So if I you know inside Grafana the repo. It was fine, but people 1st couldn't, didn't have the tokens or whatever, so I know from the top of my mind, so don't put me on that. This was a long time ago.
+What seemed to be like the canonical way of doing this big quotes was not generating another commit in the same branch and the on the fork, or whatever, but it would generate. It was easier for generate a new pr, then then fork that branch and included the file. So I mean, we end up doing the diff check because it was easier for us.
+But if there is a way of having Ci actually build those files and override them. So you know, whatever people are committing.
+you know, doesn't get doesn't get in. But our stuff gets in, that's you know. There'll be better.
+**Tyler Yahn** 22:29 Yeah.
+**Rafael Roquetto** 22:30 I don't know how to do that, or, if that's possible.
+**Mike Dame** 22:32 I? Just so that's I. Sorry. Go ahead.
+I just kind of prefer the open a new pr instead of like a adding stuff to the commit after it's been merged. It's a little you know. You don't actually get to see what is going into the the pull request. There, if it's just ci adding it after the merge. So I actually like the idea of it opening a pull request and tagging and saying, Hey, this was just merged from this Pr, so that we can actually can see it and verify it.
+**Rafael Roquetto** 23:02 It just just one clarification you you was adding before the merge, so you would add, as part of the open Pr.
+Before I got merged. It has a check.
+So that's what it was doing. But I I know this is not ideal.
+**Mike Dame** 23:16 Yeah.
+**Rafael Roquetto** 23:17 Yep.
+**Tyler Yahn** 23:18 Yeah. And well, yeah, so I think there's a few to work from, I think what Mike's also talking about is, if say, we had, like a constant wrong, long running branch that anything that went to main would just get like automatic, automatically, like
+pushed over and to your point, though, like we could have it so that it does that in a pr, it's just that that becomes like a maintenance burden.
+right? Like every commit to main means that we also need to review a Pr to commit to whatever this long running branch is right. And so
+I mean, I'm not opposed to that like, obviously, we want checks in this. And I think that might actually just be what we need
+to do.
+**Rafael Roquetto** 23:59 I mean, if there is a way, and I don't know if that contradicts what you're saying, Mike. So I'm not saying this is a good idea if there is an actual, proper way of
+pushing a new comment at the tip of the branch.
+That, you know, as part of the checks that's checking the branch, you know. That would be one way, but that the annoying part with that is that it's overriding your brain. So you, if you.
+you know, on downstream on your computer, then you you already have a diff there. But
+**Mike Dame** 24:27 I just don't like having automatic stuff pushed to like if I'm opening a Pr to add like a line to file A, and suddenly, Ci pushes a new commit to my Pr, that adds a change on file X, and then I need to go. Say, I wanna go make an update. And now, my, my local is out of date with my fork branch that I've opened, and
+it's just kind of a weird workflow, I think, to be automatically pushing stuff into you know, changes that people are proposing. But I think it's a lot more clean, a lot cleaner to have that opened. As you know, this is a bot Pr that is based off of this change that you know this, you know basically what you're saying, just nitpicking on the how it would be done, either automatically. Versus you know, it's its own discrete change.
+**Rafael Roquetto** 25:18 Isn't it.
+**Mike Dame** 25:18 My feedback on it.
+**Rafael Roquetto** 25:21 Yeah, makes sense.
+**Mike Dame** 25:22 Differently than.
+**Rafael Roquetto** 25:25 Yeah. So I guess there are 2
+2 aspects of it. One is apart from the release branches where we would be committing the object files
+One aspect is like, for instance, the main branch. How we would would be like a user making a contribution, would would it? Would he or she push the object file? Would it would be get, ignore, or whatever? That's 1 thing.
+and the other thing is, the other aspect of it is the Ci side of things, because regardless, if you're pushing or not object files you ignore or whatnot, I think you
+it would be important, for you know, especially when doing releases, for then the Ci can generate a commit on the release branch, for instance, is much less maintenance burden with, you know, it could be a Github action, or something that you know, building and and commit object files, so that the release is always including object files building from source. Not from what whatever people push, I guess that's more from a security standpoint.
+**Tyler Yahn** 26:26 Yeah. So I think
+you know, just talking through this, I think there's, I mean, there's a lot of still open questions that we just discussed. But one of the things that I am kind of thinking is that like, maybe we should just try to solve the
+committing the binary objects into like like tagged releases. And don't worry about trying to do like support. Commit releases just yet. Like for just for one reason being that like, maybe nobody cares and like, yeah. So so maybe like, then this like workflow burden would also like, kind of like, show what we're
+what we could do in the long term to support like commit hashes. But, like.
+you know, for right now, we could just try to support like tagged releases at least.
+But yeah, then, how that looks like with like the branching structure, the Ci jobs. The developer workflows that kind of thing like, I think that's still something I want to
+explore. So yeah, I'll keep keep working on that.
+Okay.
+okay. Going back to the agenda. I don't see anything else listed in the agenda, so I can pause here. Any other topics we wanted to talk about.
+If not,
+We could probably end it here, I think, like, I said, we looked through the Prs, nothing open right now. So yeah, I think we're looking pretty good.
+Yeah, cool anything. Cool. People are working on
+fun projects, side projects for auto installation.
+**Rafael Roquetto** 28:02 I've been experimenting with I don't know if I mentioned it before.
+but this is this is, I guess, more related to ob than this. But I mean, there's a huge intersection
+or tracking only Http request at this stage
+but instead of using K. Probes, and you well, forget about your probes, K. Probes. And it's all based on on Evpf socket programs.
+So the idea is to see how we could do well, the whole point was.
+if there is a better way of correlating requests, and
+I noticed that I mean the one thing every connection has in common is the file descriptors. So if
+if I could, at a higher level without K probes, just use these different Ebpf programs like, I guess, called sock message. Sock Ops. There is another one from top of my, and I forgot to track
+Http requests and connection duration. It simplifies things massively because you don't. When you, for instance, you
+add A. K probe to. I don't know. Tcp receive message, you receiving really low level chunks that you you know. Maybe the request is still ongoing. You need to change those things and whatnot these programs. They let you ask the kernel to buffer things. So when you in frame things in a in a way where? Okay, I have enough data. Now, parse it. So yeah, just very experimental stuff. That's a separate repo on my personal hub. But maybe in the future it could be useful.
+**Tyler Yahn** 29:48 I think. So. I think, yeah, that sounds like it. It is a higher level abstraction. That maybe is all that we need. So yeah, that sounds cool.
+**Rafael Roquetto** 29:55 No.
+**Tyler Yahn** 29:56 Yeah, cool. Well, yeah, I'm I'm I'll look forward to seeing the Pr.
+**Rafael Roquetto** 30:00 Yeah, yeah.
+**Tyler Yahn** 30:03 Yeah.
+okay. Awesome. Well, thanks everyone for joining. I appreciate your time. We'll still keep working. And yeah, I'll see you all in a week's time.
+Alright, bye, everyone.
+**Rafael Roquetto** 30:13 But.

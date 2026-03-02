@@ -1,0 +1,68 @@
+## Meeting Notes
+
+### Attendees
+- Dan
+- Ernest
+- Andrej
+- Lisa
+- Adriana
+- Reese
+- Sophia
+- Victoria
+
+### Agenda
+  - [Adriana] We need more movement for this. We need to send sign up slots for people we identified. Henryk has some slots available. Reese put together a running list of who are we interviewing. It would be good to create a doc with more details and status. Sophia and Reese will be there.
+    - We need someone to reach out to the participants
+    - We also need to get the promos out. Thumbnails for Youtube, and Soc. media. Also the countdown.
+  - When (Nov/Dec)?
+    - [Adriana] We can live stream from KubeCon in November.
+    - [Daniel] In December, we might do something shorter. Slides optional. New people elected to GC and TC could join.
+    - [Reese] We can do a holiday themed episode. :)
+  - Who (1 or 2 speakers)?
+  - Do we tweak the format?
+  - How long it is
+    - Up to 40 min.
+  - [Adriana] Can someone create an item in GH on the SIG board.
+    - [Reese] Will do that.
+  - We don’t need to necessarily limit ourselves to folks from Japan. Is there someone in India, China, Australia, NZ, etc. we can leverage?
+  - [Adriana] Any of the streams can be run in the APAC region. Lisa mentioned that it is a challenge to find English speakers in Japan.
+  - [Lisa] Language should not be the bottle neck. Perhaps we can do it in whatever language speakers are comfortable with and afterwards add subtitles. I will look into AI tools.
+  - [Lisa] Finding the speakers is the bottleneck. If you have any suggestions, please let me know. I will work with Yoshi on a post in Japanese. Will create an issue.
+  - [Dan] We can also have the sessions in the morning EMEA time so it is more friendly for APAC folks.
+  - Three potential speakers:
+    - Max Fröhlich (December - approached us via Slack)
+    - Pedro Ivo Raimundo (November - met at KCD Warsaw)
+    - Sawmills team via Sharone Zitzman (January 2026 - DMed me on Slack)
+  - [Andrej] I talked to Arve Knudsen, a Prometheus maintainer, at PromCon. He might want to talk about info function in Prometheus that allows to query OTel resource attributes in a more elegant way in Prom. Is this relevant. Prom is not a vendor but a CNCF project, so I guess that should be OK. Any thoughts?
+  - [Dan] I think it would be awesome to have someone from Prom talk.
+  - [Adriana] We can make it even more broad and talk about OTel<>Prom interoperability.
+  - [Adriana] Try to work with them and discuss potential dates.
+  - A big refresh of the [End-user resources page](https://opentelemetry.io/community/end-user/) on opentelemetry.io got released last week. Check it out and let us know if you have any feedback.
+  - There is still a lot of room for improvements there – adding video or link embeds, more fancy UI elements, pictures… Any volunteers to work on it? :) Here is [the issue](https://github.com/open-telemetry/sig-end-user/issues/191).
+  - [https://github.com/open-telemetry/sig-end-user/issues/142](https://github.com/open-telemetry/sig-end-user/issues/142)
+  - [https://github.com/open-telemetry/sig-end-user/issues/190](https://github.com/open-telemetry/sig-end-user/issues/190)
+  - [Dan] Was there idea to write a blog post.
+  - [Reese] Yes. We can just reuse the transcript.
+  - [Adriana] Transcript + 5 bullet points. Or something newsletter styled.
+  - [Dan] TC/GC wanted to do a roadmap type of a blog post.
+  - Related to the donated script to download transcripts, but also to GHA
+  - Dan has been merging patches, but there are some major versions to upgrade
+  - Would be good to add some unit tests to the script so we can upgrade things with a bit more certainty.
+  - [Dan] I am worried that when I bump too many versions, it might break the script. It would be good to have somunit tests.
+  - [Dan] I can create an issue for this. If someone do it, that would be great. If not I can do it after KubeCon.
+  - [Victoria] Would this be a good first issue? We could get contributors that way.
+  - [Dan] Yes. I will mark it.
+  - OTel is running for CNCF graduation. We got some feedback. Some about communicating stability, release life cycle, the way how end users install OTel.
+  - New project proposal coming soon! Stay tuned on the `community` repo.
+  - Blueprint is a way to say – take different envs, different best practices, deployment patterns. On Collector side, there is an effort related.
+  - I would love to get end user involved. Alolita in End user TAG was doing ‘reference architectures’. We can do that about how to deploy OTel at scale.
+  - I will lead this. I would like more people to join me.
+  - [Reese] What help do you need?
+  - [Dan] We need to raise awarenes – 1st step.
+  - [Andre] In OTel me, we are doing something like that. Could we combine that?
+  - [Dan] That could work. We could go back through OTel me and try to extract common patterns.
+  - [https://architecture.cncf.io/](https://architecture.cncf.io/)
+    - [https://architecture.cncf.io/architectures/?all=true](https://architecture.cncf.io/architectures/?all=true)
+  - [Dan] Alolita mentioned she could tell us how they are doing it.
+    - Shared with your mates [https://opentelemetry.io/blog/2025/otel-unplugged-fosdem/](https://opentelemetry.io/blog/2025/otel-unplugged-fosdem/)
+    - [Lisa] Organizers asked us for help with promoting it. I will create a draft.

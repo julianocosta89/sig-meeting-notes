@@ -1,0 +1,57 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- Alexandra Konrad (Elastic)
+- James Thompson
+- [Daniel Dyla](mailto:dyladan@gmail.com)
+- Armin Ruech (Dynatrace)
+- Christophe Kamphaus
+
+### Agenda
+- (timebox 7 min) Project Status + Triage + Blockers
+  - Stability Blockers
+  - PR Triage Board: [https://github.com/orgs/open-telemetry/projects/67/views/1](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - Issue Triage Board: [https://github.com/orgs/open-telemetry/projects/131/views/1](https://github.com/orgs/open-telemetry/projects/131/views/1)
+- (timebox 50 min) General topics
+  - [suereth] peer.* attributes
+    - [https://github.com/open-telemetry/lol semantic-conventions/pull/2807](https://github.com/open-telemetry/semantic-conventions/pull/2807)
+    - [https://github.com/open-telemetry/community/blob/main/projects/service-and-deployment-semconv.md](https://github.com/open-telemetry/community/blob/main/projects/service-and-deployment-semconv.md)
+    - [https://cloud-native.slack.com/archives/C09HLNSSJSE](https://cloud-native.slack.com/archives/C09HLNSSJSE)
+    - Failure state:
+      - Anytime we HAVE to change another namespace/attribute where one namespace changes (e.g. heavy coupling)
+    - Similar to embedding discussion
+    - Different ways to model - Raw
+      - Option 1
+        - Resource
+          - [service.name](http://service.name) = A
+          - Scope
+            - Span
+              - name = GET / ….
+              - kind = CLIENT
+              - [peer.service.name](http://peer.service.name) = B
+      - Option 2
+        - Resource
+          - [service.name](http://service.name) = A
+          - Scope
+            - Span
+              - name = GET / ….
+              - kind = CLIENT
+              - [service.name](http://peer.service.name) = B
+  - Types
+    - Geo
+      - lat
+      - lon
+    - ProcessRef
+      - pid
+      - …
+    - ServiceRef
+      - [service.name](http://service.name)
+      - service.namespace
+  - Semconv
+    - client.request.location: type Geo
+    - peer: type ServiceRef
+  - Overall: oh
+    - What is the litmus test for when to include "peer" on a span attribute vs. not include it?
+    - Aren't all span attributes *implicitly* peer? E.g. we're not using it in RPC semconv yet.
+    - peer.* *could* be used by any semconv group, not just service.

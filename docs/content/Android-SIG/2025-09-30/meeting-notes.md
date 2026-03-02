@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Jason (Splunk)
+- Jamie Lynch (Embrace)
+- Mustafa Haddara (Honeycomb)
+- Cesar (Elastic)
+- Grace L (AWS)
+- cleverchuk(solarwinds)
+- Surbhi A (Cisco)
+
+### Agenda
+- [jason] Blog post announcing intent to go stable
+  - [https://github.com/open-telemetry/opentelemetry.io/pull/7903](https://github.com/open-telemetry/opentelemetry.io/pull/7903)
+  - Link to feedback issue?
+  - We agree October release for rc1?
+    - Sounds like a yes
+- [jason] alpha suffix on all modules except android-agent. Are we aligned on this:
+  - android-agent-1.0.0-rc1
+  - Instrumentation-activity-1.0.0-rc1-alpha vs Instrumentation-activity-1.0.0-alpha-rc1
+  - After finally being “stable”
+    - android-agent-1.0.0
+    - Instrumentation-activity-1.0.0-alpha
+  - We think we do need rc1
+  - We should also add something in the docs to indicate that -alpha means non-stable (still can change) in spite of semver 1.x
+  - Needs build work to make this “rcX” suffix work with automation!!!?!!
+    - Needs to happen in the next couple weeks
+    - AI: Cesar to take a look (thank you!)
+  - AI: Jason to create issue to flesh out docs here [https://opentelemetry.io/docs/platforms/client-apps/android/](https://opentelemetry.io/docs/platforms/client-apps/android/)
+- [jason] How do most vendors authorize telemetry on ingest from their client instrumentation?
+  - Vendors:
+    - Splunk does this with a shared secret (token) in a bespoke header
+    - Embrace? Subdomains per cust
+    - Elastic? Auth header
+    - AWS? Auth header or Resourced Based Policies (to allow traffic from specific alias, ipAddress, etc.)
+    - Honeycomb? Auth header
+      - Support grpc as an option, so they create their own exporter
+    - Grafana?
+  - How can we make this easy for users to supply/provide?
+  - How many can do this lazily/refresh?
+  - Endpoint headers are already supported [https://github.com/open-telemetry/opentelemetry-android/blob/main/android-agent/src/main/kotlin/io/opentelemetry/android/agent/OpenTelemetryRumInitializer.kt#L59C9-L59C24](https://github.com/open-telemetry/opentelemetry-android/blob/main/android-agent/src/main/kotlin/io/opentelemetry/android/agent/OpenTelemetryRumInitializer.kt#L59C9-L59C24)
+- [jason] FYI we should add our instrumentation to the registry
+  - Registry is here: [https://opentelemetry.io/ecosystem/registry/](https://opentelemetry.io/ecosystem/registry/)
+  - Tracking issue [https://github.com/open-telemetry/opentelemetry.io/issues/7932](https://github.com/open-telemetry/opentelemetry.io/issues/7932)
+- [Surbhi] If time allows 😀  Discuss [this proposal](https://github.com/open-telemetry/opentelemetry-android/issues/1267) regarding enhancing HTTP instrumentations with span events for gathering network phases breakdown.
+  - [https://github.com/open-telemetry/semantic-conventions/issues/2827](https://github.com/open-telemetry/semantic-conventions/issues/2827)
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14835](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14835)
+  - Use case isn’t super clearly defined? Drill down for users to view all the events/timestamps or aggregate sections across?
+  - Span events are going away long term in favor of events
+    - The api probably remains mid term
+  - When implemented this should be opt-in for users/distros that want/need it
+  - Would be nice if we could get these consistently across http client instrumentations
+    - Not all are easy, but there are some hacks surbhi has up her sleeve for httpurlconnection
+  - These might be an interesting use case for client-side metrics because they are so network oriented and less device-specific? Maybe?
+- [Grace] App spans PR ([github.com/open-telemetry/semantic-conventions/pull/2831](http://github.com/open-telemetry/semantic-conventions/pull/2831)), screen load definition
+  - Please review and leave feedback
+  - This is helpful, the names in android for this stuff are not very standard
+  - More broadly, we might need both framework specific semconv and generic client/app semconv
+    - Challenging to find total commonality between platforms
+    - View visibility to track how long a user stays on a “screen”
+  - How to handle long running spans?
+    - Is there guidance around when to use a span and when to use events?
+    - If an event has a timestamp and a duration, how is this so different from a span?
+    - Correlation is often simpler and less expensive (more scalable) client side

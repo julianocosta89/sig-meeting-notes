@@ -1,0 +1,54 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Cloudera)
+- Tyler Benson (ServiceNow)
+- Trask Stalnaker (Microsoft)
+- Jay DeLuca (Grafana Labs)
+- Jack Shirazi (Elastic)
+- [Bruce Bujon](mailto:bruce.bujon@datadoghq.com) (Datadog)
+- Robert Niedziela (Splunk)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- [Matthew Li](mailto:matthew.li@datadoghq.com) (Datadog)
+- Peter Findeisen (Cisco)
+- Lauri Tulmin (Splunk)
+- Jonathan Halliday (IBM)
+
+### Agenda
+- Standing topic: issue triage
+  - [is:open -label:"needs author feedback","needs repro","contribution welcome"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+-label%3A%22needs+author+feedback%22%2C%22needs+repro%22%2C%22contribution+welcome%22)
+  - [is:open label:"needs triage"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22)
+- Standing topic: [stackoverflow questions](https://stackoverflow.com/search?tab=newest&q=%5bopen-telemetry%5d%20java)
+- [Trask] Instrumentation and Contrib Releases
+  - Might slip until Mon/Tue
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188)
+- [Jack s] co-owner request for [dynamic control](https://github.com/open-telemetry/opentelemetry-java-contrib/issues/2416) contrib
+- [John W] The ever increasing Java 8 problem
+  - Mac OS testing
+    - [https://github.com/open-telemetry/opentelemetry-java/pull/7841](https://github.com/open-telemetry/opentelemetry-java/pull/7841) to drop support for testing on java 8 on mac.
+  - Snakeyaml-engine for declarative config
+    - Potentially lots of CVE false positives in the future
+    - Separate distribution?
+    - Major version bump for SDK to limit to Java 11+
+    - Can users bring the old version of snakeyaml-engine on their own?
+  - Mockito
+  - Fuzz
+  - Equals verifier (17+)
+  - Junit (17+)
+  - Any runtime dependencies besides snakeyaml?
+  - Percentage of OpenTelemetry Java agent users on Java 8?
+  - Get involved in Snakeyaml project to help backport fixes
+    - Log4j went this route, but ends up with false positives because the CVE detectors aren’t smart
+  - Write our own yaml parser?
+  - Vendor in snakeyaml
+  - Other yaml parsers?
+- [Trask] remote configuration
+  - [https://github.com/open-telemetry/opentelemetry-specification/pull/4672](https://github.com/open-telemetry/opentelemetry-specification/pull/4672)
+  - PolicyProvider
+  - Declarative Config - define which part is mutable?
+    - Register listeners for updates to a specific declarative config node
+  - Could create a MutableConfigProvider
+    - Declarative or Non-declarative config
+- [Trask] bar for new instrumentations?
+- [Tyler] Servlet Library Instrumentation
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188)

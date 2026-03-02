@@ -1,0 +1,62 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (Red Hat)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Elsa Keirouz](mailto:elsa.keirouz@datadoghq.com) (Datadog)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Tim Rühsen](mailto:tim.ruehsen@elastic.co) (Elastic)
+- [Alexey Alexandrov](mailto:aalexand@google.com)
+- [Marc Sanmiquel](mailto:marcsanmiquel@gmail.com) (Grafana Labs / Pyroscope)
+
+### Agenda
+- Review Action Items
+- Stack Trace Representation
+  - Christos: Based on my benchmarking, I’m in favor of switching to the [simple stack trace proposal](https://github.com/open-telemetry/opentelemetry-proto/pull/645) (a single stack_id reference into a stacks dictionary).
+  - Christos: Haven’t found any cases where post-compression the simple stack trace proposal wasn’t competitive.
+  - Alexey: This sounds good to me.
+  - Christos: Would be good if people could verify my [benchmarks](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/524).
+  - Felix: I’ll try to get the PR ready for review.
+- Profiling 1.0: Is a symbol upload protocol on the critical path?
+  - Felix: Even without symbols we have something useful. Runtime profilers typically include symbols. Even eBPF can include symbols in the profile if available on the host.
+  - Christos: Current signal allows people to use their own symbol solutions. My concern is to get something stable so that collector folks and others can adopt it.
+  - Frederic: I’m also in favor of going ahead without symbols and doing it later. It’s additive.
+  - Alexey: I’m also okay to go ahead without symbols and get adoption and perhaps more contributors.
+- Alexey: Having a round-trip-converter for pprof to pprof.
+  - Felix: We committed to otel being a superset of pprof. Having a round trip converter would be proof that we achieved that.
+  - Florian: There is a receiver in the works for this already. [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/40548](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/40548/files)
+- Timestamps
+  - Felix: [#649](https://github.com/open-telemetry/opentelemetry-proto/pull/649) clarifies how timestamps are supposed to work and should cover the use cases we have.
+  - Florian: Are we talking about delta encoding?
+  - Christos: I think we agreed to not do that for now.
+  - Felix: Yeah. We should be good on timestamps after 649 lands.
+  - Christos: Devfiler is OSS now and can be used for testing.
+  - Alexey: Maybe the PR title could be updated to be more clear.
+  - Florian: Will do it.
+- Process information and context propagation: [Context Propagation for the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1fPjlTE1nVAET75nmJ2vaPTOfjPiaQgUyIBc0u5qX8Vw/edit?tab=t.0)
+  - Frederic: We just landed the Go label support. And we’re working on custom label support for v8. We think we’ll need something custom. We couldn’t get the native approach to work with v8. I’m wondering if we should try to scope this to all languages or limit it to C/C++/Rust.
+  - Florian: If you just use the container id, you can get the service name in the collector. TLSDESC is very interesting though.
+  - Nayef: If it’s a tag we can associate with a container. But if it’s per process, we can’t do it (e.g. 2 processes in the same container).
+  - Florian: The pid is also reported.
+  - Felix: This would probably not work if you have a sidecar in the same container. Just knowing the pid is not enough.
+  - Florian: I’ll have to think about this.
+  - Frederic: We use this feature to communicate app specific things to the profiler.
+  - Felix: Use case is service oriented view.
+  - Florian: Environment variables could solve this issue.
+  - Christos: Would be good to do this without sending the data down to the kernel.
+  - Alexey: What languages would the proposal from today target?
+  - Elsa: The goal is to cover as many languages as possible. For the thread level it would be C/C++/Rust or any language that could have a native component. Otherwise we need separate solutions for languages that can’t support that.
+  - Alexey: How much is the context propagation within the process in scope? It would be good to have examples of end-to-end flow.
+  - Felix: The OTel SDKs will have to set the context.
+  - Frederic: pprof label support in the eBPF profiler has landed. (but no support in the SDK yet)
+  - Frederic: We wrote a custom reporter that collects the information “in this container at this label”.
+  - Felix: I forgot that we didn’t think about the env variables.
+  - Nayef: The SDK can be configured in code.
+  - Felix: But the SDK could update the env of the process. The SDK needs to set the service name anyway, regardless of mechanism.
+  - Alexey: Would logging be interested in this to capture the service name.
+  - Florian: As Grafana contributed their belay eBPF solution, it might already have some solution in the context. Maybe we could integrate there.
+  - Christos: This introduces an additional requirement of having the profiler and beyla.
+  - Nayef: My understanding is beyla is not extracting things from the SDKs, it creates its own trace context.
+  - Felix: Looks like the initial bayla code dropped happened. But I suspect for now the SDKs will be the most common use case.

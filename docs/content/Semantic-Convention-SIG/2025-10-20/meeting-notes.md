@@ -1,0 +1,54 @@
+## Meeting Notes
+
+### Attendees
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- [Daniel Dyla](mailto:dyladan@gmail.com) (Dynatrace)
+- Alexandra Konrad (Elastic)
+- James Thompson
+- Josh Suereth
+- Liudmila Molkova (Grafana Labs)
+- Christophe Kamphaus
+- Michele Mancioppi (Dash0; only first 30 mins; sorry for dropping out abruptly!)
+- Nick Moore (Grafana Labs)
+- Armin Ruech (Dynatrace)
+
+### Agenda
+- (timebox 7 min) Project Status + Triage + Blockers
+  - Stability Blockers
+  - PR Triage Board: [https://github.com/orgs/open-telemetry/projects/67/views/1](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - Issue Triage Board: [https://github.com/orgs/open-telemetry/projects/131/views/1](https://github.com/orgs/open-telemetry/projects/131/views/1)
+    - What should we do with SIG issues before they are triaged?
+    - Can we automate board based on labels? Changing label doesn't seem to work
+- (timebox 50 min) General topics
+  - [Florian] [https://github.com/open-telemetry/semantic-conventions/pull/2861](https://github.com/open-telemetry/semantic-conventions/pull/2861)
+    - Please review, let's document mapping
+  - [Michele] peer.service discussion
+    - Peer.service is used by OpenTracing, potentially should be in mapping (otel.*)
+      - Peer is too broad - network.peer is better scoped
+        - Not clear how to sync it with the rest of entities
+      - service.peer.* ?
+        - This can evolve along with service.*
+      - End goal: annotate outgoing spans with peer info - could be manual or automated
+      - Can we reuse service.name (as span attribute)
+        - Span group by span attribute service.name returns outgoing only
+        - Some tools don't differentiate span vs resource attrs and flatten down
+          - Theory: People who flatten should differentiate
+      - You don't need otel conventions to use peer.service
+      - Semconv is about how things should be
+    - Config peer.* impl [https://github.com/open-telemetry/opentelemetry-configuration/blob/1cdb6f697995b0855e933b6d21f364104f319a98/examples/kitchen-sink.yaml#L864](https://github.com/open-telemetry/opentelemetry-configuration/blob/1cdb6f697995b0855e933b6d21f364104f319a98/examples/kitchen-sink.yaml#L864)
+  - [suereth] General Semconv Maintenance work
+    - "How to guides"
+      - How to Write Conventions - [https://github.com/open-telemetry/semantic-conventions/blob/main/docs/how-to-write-conventions/README.md](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/how-to-write-conventions/README.md)
+        - Spans
+        - Metrics
+          - Note: this discussion reminded me: [https://cloud-native.slack.com/archives/C041APFBYQP/p1760557872551669](https://cloud-native.slack.com/archives/C041APFBYQP/p1760557872551669)
+        - Events
+      - Call to action to define things!!!!
+      - Releasing
+        - How to create migration guide
+          - We can automate this using weaver diff
+  - Triage
+    - https://github.com/open-telemetry/semantic-conventions/pull/2756
+      - Let's ask to expand other attributes
+      - Use dots
+      - We need cloud group - Josh can sponsor from GCP side

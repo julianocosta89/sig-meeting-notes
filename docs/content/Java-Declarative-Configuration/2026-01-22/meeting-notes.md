@@ -1,0 +1,58 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Sublime Security)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Sylvain Juge (Elastic)
+- Trask Stalnaker (Microsoft)
+- Jonathan Halliday (IBM)
+- Jay DeLuca (Grafana Labs)
+- Peter Findeisen (Cisco)
+- cleverchuk(solarwinds)
+- Jack Shirazi (Elastic)
+- Jason (Splunk)
+- [Bruce Bujon](mailto:bruce.bujon@datadoghq.com) (Datadog)
+- Pranav Sharma (Google)
+- Lauri Tulmin (Splunk)
+- Jean Bisutti (Microsoft)
+
+### Agenda
+- [Sylvain/Jack S] Indy migration [proposal](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/13031#issuecomment-3767684171)
+  - Flip default for otel.javaagent.experimental.indy from false to true
+    - No affect on extensions?
+      - Can we exclude extensions until major version bump
+    - What about distributions?
+      - Could detect via package name io.opentelemetry.javaagent
+    - “Officially deprecate inline” in release notes
+    - Update muzzle, or use extension manifest to identify
+      - To know about indy vs non-indy
+    - Can get rid of shading
+    - Once comfortable, can hardcode inlining and remove runtime conversion
+    - Deprecate old APIs?
+- [jack] Resurrecting effort to remove shared internal code: [https://github.com/open-telemetry/opentelemetry-java/pull/6978](https://github.com/open-telemetry/opentelemetry-java/pull/6978)
+  - What this unlocks: in a post-shared internal world, opentelemetry-java dependencies don’t need to be aligned
+    - Key user problem: Spring bom + OpenTelemetry bom
+  - Tactics to avoid shared internal code:
+    - **Copy / paste** simple code into all the modules that use it. Use gradle (e.g. shading) to keep in sync. See prior art where we generate [OtelVersion](https://github.com/open-telemetry/opentelemetry-java/blob/main/buildSrc/src/main/kotlin/io/opentelemetry/gradle/OtelVersionClassPlugin.kt) class for any module that needs it.
+      - Or automatic shading approach
+      - Downside is artifact size bloat
+    - **Add new type of package, e.g.`*.internal.util.*`.** Classes in this package have stable APIs, but include mandatory javadoc discouraging use outside of otel internals. This solves the shared internal code issue while giving us some room to not stress about perfect API design / implementation, which would slow us down.
+      - Downside is these APIs still need scrutiny, and it will be judgement call of whether any given class belongs in util vs. standard public API
+    - **Promote APIs to public which should be public**. Stop keeping things experimental indefinitely and adopt a mentality of stabilizing APIs when we don’t have any known blockers.
+    - Accept the problem, but offer the user better detection and mitigation solutions
+      - For example, on start, detect version of all modules and emit a warning when versions misalign
+- [Sylvain] implement “convenient” configuration for rule based sampler without declarative configuration
+  - Ignore by URL, user-agent, …
+  - How can a distribution easily override declarative configuration, for example with a custom sampler ?
+  - [https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/incubator/src/main/java/io/opentelemetry/sdk/extension/incubator/fileconfig/DeclarativeConfigurationCustomizer.java](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/incubator/src/main/java/io/opentelemetry/sdk/extension/incubator/fileconfig/DeclarativeConfigurationCustomizer.java)
+- [Jonathan] Approve (or not) OTEP: Process Context: Sharing Resource Attributes with External Readers from Oct 30th 2025 mtg. Profiling SIG are happy, now depends on SDK maintainers. [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+- [jack] Could use some eyes on these benchmark / testing PRs prior to improving metric performance
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7986](https://github.com/open-telemetry/opentelemetry-java/pull/7986)
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/8000](https://github.com/open-telemetry/opentelemetry-java/pull/8000)
+- [Trask] Java Instrumentation 3.0
+  - Stable semantic conventions
+    - Code
+    - Database
+    - RPC
+  - Invoke dynamic
+  - Declarative configuration

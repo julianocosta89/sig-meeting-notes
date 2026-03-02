@@ -1,0 +1,66 @@
+## Meeting Notes
+
+### Attendees
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- Giuseppe Ognibene (Coralogix)
+- Stephen Lang (Grafana)
+- Mario Macias (Grafana)
+- Tyler Yahn (Splunk)
+- Nikola Grcevski (Grafana)
+- Marc Tudurí (Grafana)
+- Nimrod Avni (Coralogix)
+- Sven Cowart (ElastiFlow)
+- Mike Dame (Odigos)
+- Mattia Meleleo (Coralogix)
+- Rob Cowart (ElastiFlow)
+- Maksym Ivashchenko (ElastiFlow)
+
+### Agenda
+- [Florian] [Vanity URL](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1085) - [go.opentelemetry.io/obi](http://go.opentelemetry.io/obi)
+- [Nikola] Related to the 2026 roadmap - some ideas:
+  - Stabilization of features and performance, working towards 1.0 release.
+    - Performance
+    - Log correlation works really well
+    - OTel collector receiver - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1094)
+    - Extend network metrics based on Nimrod’s proposal to make them more useful - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1153)
+    - Maybe: works well with the OTel profiler? - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1137)
+    - Update all metrics and traces to make sure it’s up to date with the latest semconv - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1135)
+    - Better service metadata when not running in Kubernetes - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1138)
+    - .NET context propagation works, at least for .NET 9+ if we can’t make it work for .NET 5+ - [epic](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1136)
+  - Configuration
+    - Review structure of configuration
+    - Integration with OpenTelemetry declarative configuration - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/594)
+  - Semantic conventions
+    - [Sven] [Proposal: Adopt OpenTelemetry Semantic Conventions for Network Flow Attributes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1091)
+    - [Sven] [Align OBI Network Attributes with OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1092)
+    - [Stephen] [Telemetry schemas](https://opentelemetry.io/docs/specs/otel/schemas/) for transitions
+  - Make sure OBI works well combined with the OTel SDKs - [epic](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140)
+    - If OTel SDK traces are only enabled, metrics exemplars should be able to use the OTel SDK trace information
+    - We can wrap SDK traces with OBI, allowing SDK trace request timing information to be as [accurate](https://opentelemetry.io/docs/zero-code/obi/requesttime/) as if traces were generated with OBI
+    - Consistent labelling with SDK generated telemetry
+  - Increase protocol coverage. MQTT, AMQP, NATS?, other higher level protocol parsers - [epic](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1134)
+    - MQTT and AMQP short term
+    - Maybe Google cloud services
+    - Redis pubsub
+  - Runtime metrics with OBI, e.g. GC metrics, number of threads, number of goroutines etc. - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139)
+  - [Tyler] Binary signing - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13)
+- [Nimrod] 2026 roadmap (excluding points above)
+  - gRPC Context propagation - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1095)
+  - Rust tokio context propagation - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1096)
+  - Extend MongoDB support
+    - Compressed payloads - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1097)
+    - Version 5 and below - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1098)
+  - integration with existing applications sending telemetry - [epic](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140)
+    - Allow combining manual instrumentation with OBI auto instrumentation
+    - In addition to Go (other languages)
+    - Have OBI extract metrics from the application
+    - Develop a hybrid approach where OBI would still supplement the telemetry an SDK produces (i.e. OBI for DNS and the SDK for HTTP)
+      - May need a OBI<->SDK protocol to define what telemetry is set
+  - reduce overhead by using tracing programs instead of kprobes
+    - Optimization
+    - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1099)
+  - experiment with program batch attach apis
+    - Optimization that should be lower priority than the tracing programs to replace kprobes
+  - http full payload extraction (full header and payload on spans, with obfuscations) - [issue](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/396%20)
+- We need to document the helm chart on the readme and [opentelemetry.io](http://opentelemetry.io)
+- [Tyler] [Open PRs Review](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pulls)

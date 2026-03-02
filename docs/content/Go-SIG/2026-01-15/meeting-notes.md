@@ -1,0 +1,107 @@
+## Meeting Notes
+
+### Attendees
+- Tyler Yahn (Splunk)
+- Robert Pająk (Splunk)
+- Bryan Boreham (Grafana Labs)
+- [Owen Williams](mailto:owen.williams@grafana.com)(Grafana Labs)
+- David Ashpole (Google)
+
+### Agenda
+- [Tyler] Review goal directed developer capacity from 2025:
+  - [Weaver support](https://github.com/open-telemetry/opentelemetry-go/issues/5668): 100% (size: small)
+  - [SDK self-observability signals](https://github.com/open-telemetry/opentelemetry-go/issues/2547): 78% (size: large)
+  - [Go runtime metrics stabilization](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655): 50% (size: medium)
+  - [Logs API stable](https://github.com/orgs/open-telemetry/projects/43): 50% (size: large)
+  - [otelhttp semconv migration](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/8107): 100% (size: medium)
+  - [File-based configuration](https://github.com/open-telemetry/opentelemetry-go-contrib/issues?q=label%3A%22area%3A%20file-config%22): 60% (size: large)
+  - Breakdown (does not include non-goal accomplishments):
+    - 1 small tasks
+    - 1.5 medium tasks
+    - 1.88 large tasks
+- [Tyler] Identify 2026 goals:
+  - [SDK self-observability signals](https://github.com/open-telemetry/opentelemetry-go/issues/2547)
+  - [Go runtime metrics stabilization](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655)
+  - [Logs API stable](https://github.com/orgs/open-telemetry/projects/43)
+  - Instrumentation stabilization?
+    - [Otelhttp](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/8107)
+      - Semconv HTTP metrics are missing(?)
+      - What is there is not documented
+    - otelmux
+    - otelgin
+    - otelecho
+    - Otelrestful
+      - Owner David
+      - Lower priority
+      - K8s uses this
+    - Zpages
+      - Collector uses this
+      - David is the owner and want to stabilize this
+      - There are no semantic conventions around this
+    - We need to determine if we can stabilize prior to semconv stabilization for these pkgs (today, the answer is no).
+      - [OTEP](https://github.com/open-telemetry/opentelemetry-specification/pull/4813)
+      - Unstable or non-existent semconv:
+        - otelhttptrace
+        - otelgrpc
+        - otelmongo
+        - otellambda
+        - otelaws
+        - host
+  - Stabilize detectors
+    - Autodetect
+      - Maybe this should be bundled with the otelconf package?
+      - This also supports environment variable configuration support
+      - Maybe a sub-package of otelconf
+    - We need to determine if we can stabilize prior to semconv stabilization for these pkgs (today, the answer is no).
+      - [OTEP](https://github.com/open-telemetry/opentelemetry-specification/pull/4813)
+      - Unstable or non-existent semconv:
+        - AWS lambda
+        - Azure
+  - Stabilize the autoexport package?
+    - Same as the autodetect, move into otelconf
+  - Stabilize or remove the samplers?
+    - Jaegerremote
+      - Stabilize
+    - Probability consistent
+      - Will need to keep until a replacement exists
+      - Not sure about stabilization
+  - Stabilize the propagators
+    - Autoprop
+      - Same as the autodetect, move into otelconf
+    - OpenCensus
+      - Not a goal for 2026
+  - [File-based configuration](https://github.com/open-telemetry/opentelemetry-go-contrib/issues?q=label%3A%22area%3A%20file-config%22)
+  - [Enabled method for metrics](https://github.com/open-telemetry/opentelemetry-go/pull/7763)
+    - Done?
+    - We should use this everywhere
+    - 2026 goal: document and use this
+  - [Stabilize prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/blob/f809f7d71e2d1477ac9c85360569cf506afb78ce/versions.yaml#L24-L27)
+    - Yes to stabilizing the prom exporter
+  - Stabilize the prometheus bridge
+    - No to stabilizing this; not a priority
+  - [Support the new W3C random flag](https://github.com/open-telemetry/opentelemetry-go/issues/7635)
+    - Related to the probability consistent sampler replacement
+    - Still development in spec, needs to be added as experimental
+  - Optimize the metric SDK
+    - We need to break these tasks down
+      - Expo hist
+      - Attribute set optimization
+      - Time weighted hist reservoir
+      - Fixed size hist reservoir optimization
+      - Blog post
+  - [Support the environment variable propagation](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/8300)
+    - Adding as experimental
+    - Low priority
+- [Tyler] Plan for 2026 goal communication
+  - Track in a project? Issue?
+  - Blog post?
+  - [Tyler] AI: [create a project board](https://github.com/orgs/open-telemetry/projects/186/views/3) for all
+    - Ask contributor to take ownership of issues
+    - REview in next meeting
+    - Blog after that
+- [dashpole] Metrics API and performance update:
+  - Updates: [https://github.com/open-telemetry/opentelemetry-go/issues/7743#issuecomment-3746546034](https://github.com/open-telemetry/opentelemetry-go/issues/7743#issuecomment-3746546034)
+  - Benchmarks: [https://github.com/open-telemetry/opentelemetry-go/pull/7768](https://github.com/open-telemetry/opentelemetry-go/pull/7768)
+- [Tyler] Next release
+  - [https://github.com/open-telemetry/opentelemetry-go/milestone/76](https://github.com/open-telemetry/opentelemetry-go/milestone/76)
+  - [https://github.com/open-telemetry/opentelemetry-go-contrib/milestone/34](https://github.com/open-telemetry/opentelemetry-go-contrib/milestone/34)

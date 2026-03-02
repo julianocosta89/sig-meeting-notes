@@ -1,0 +1,330 @@
+SIG: Entities SIG
+Date: 2025-06-19
+Duration: 64 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+Josh Suereth 00:03:08 Hello!
+Endre Sara 00:03:13 Thank you.
+I'm just a busy girl, and it may be a
+a lot of people today. I guess.
+Josh Suereth 00:03:32 Yeah, yeah, kind of that's kind of what I'm expecting. Yeah.
+but I decided to join just because it's like, it's it's a thunderstorming. So I didn't have a chance to. Actually.
+I have off. But I can't really do my garden. So I thought I'd just join and see how people are doing.
+because it doesn't bother me, you know.
+How are you doing.
+Endre Sara 00:03:59 I'm great. It actually stopped raining, and it is actually relatively sunny. So I may go outside. But but I feel the same way. I don't. I like
+we actually have the day off, but it's a quiet day, so I might as well get some work done.
+Josh Suereth 00:04:18 Yeah. Yeah. If you if you want to talk about anything or need anything, we can talk about it. Otherwise. We can call it I the
+my, my topics are all basically, I'm trying to get this
+Endre Sara 00:04:34 Guide going so
+because I'm reading the Pr. And it's actually my favorite subject, even though I have not yet commented on anything. I am super excited to, you know, I guess. Learn more and understand more on how this could be used.
+so. And and
+I have not been studying this Pr. For the 2 weeks that he's been out. But I think that conceptually the idea of guiding people on I don't know. Maybe I'm going to butcher this, but
+is a sounds like a inheritance concept is where you say, like, I have a container, and then I have a Kubernetes container that has, like special attributes, gives a lot of freedom to people to
+start with something common and then build on that. It's always hard both to name things and to decide on what is in a superclass and what is in a subclass. But I think that's just a healthy conversation to be able to find the world that we live in. Including the additional attributes that may not exist in some places, but they're relevant or very important for some other use cases to be able to create is a container. But with the additional things
+and I think that's what's even more interesting is the
+idea of relationships between them. And what are the? And I'm like hopping. So what is the semantics of the relationships? in terms of.
+if I want to add the new relationship? Do I subclass the entity? Or are the relationships defined on their own? And I'm sorry I should have just read the Guide. But.
+Josh Suereth 00:06:34 No, that's fine. Yeah, the the notion. So relationships right now, or
+we're we're doing this crazy thing where we are trying to like where people are actively using open telemetry today.
+And the whole resource part of open telemetry is just this, this like unknown thing. So the relationship part is actually phase 2 of this Sig, right? So we have ideas of what it looks like. We think we know how we're going to design it. But we haven't like sat down and really made it work. What we have done, though, is we're trying to unblock like the Kubernetes folks are trying to stabilize all of their
+really like entities today. So we're like, okay, what's the bare minimum we need to define. So if, if, like, the way relationships works seems hazy. It's because well, we we
+kind of know what it looks like, but we haven't sorted it out. The theory and the thing that we know we can do, at least, for, like Kubernetes objects is there? Will. We can actually have a model defined somewhere like where you read Kubernetes.
+You look at all the objects. And then you just write like a relationship between them in some fashion. Right? So we know that we can discover this programmatically, because people do this today with Kubernetes, right? What we aren't sure about
+with relationships is like.
+can we rely on Kubernetes to be like, you know, the foundation of everything? Or are there weird complications that will show up in practice as we start trying to define other relationships, you know, like my one of the problems, I think we need to sort out is
+you don't have one source of truth for for resource ever. So there's the Kubernetes Api, right? That's the source of truth and the whole. The whole thing we're trying to do here is like, all right.
+tie down to source of truth, so that we have a limited problem. We're solving. Right? So we'll understand entities with Kubernetes. We'll understand entities with Docker because we can, or Oci and ask it about things right? Well, let's understand entities with vms on like clouds, because we can ask their Apis about stuff.
+Now, how do you bridge that?
+How do you get like? Okay, I discovered a bunch of, you know, relationships in cloud. I discovered a bunch of relationships in Kubernetes. I need to tie the knot somehow. That's a piece that we haven't really sorted out like I have. I have plans of what I think will work.
+but we we haven't implemented anything yet. We think we know how to do it. We think we have a good plan, but it's it's 1 of those deals where you know
+this is probably a bad turn of phrase to use right now. But no, no strategy lasts. The 1st hit with the enemy, if you will like. No design, stays the same way, you initially intended it. But I think we have a good concept to go through, and I think we'll be able to work through that design. It's just we don't know specifics yet, because we got to sort through some hard problems.
+Endre Sara 00:09:36 Yeah, so so I actually not single-handedly myself only. But
+I've been kind of doing this for the last 15 years in Kubernetes is less than that, but but more broadly, but not in open source, which is what I think I'd like to change. And and it's not that I want to
+necessarily forcing. Well, actually, never mind. So let me try to explain it. So so I was basically the 1st engineer at the company that we started called Turbonomic, and it was acquired by Ibm some 4 years ago, whatever. So I don't actually have access to the code. But conceptually, what we did in Turbo is that we
+we created a you would call it semantic conventions. We call it a model that describe that these are the type of entities you can have. These are the type of relationships you have. And then.
+specifically, in the context of the product, we were getting data from Kubernetes. We were getting data from Cloud. We were getting data from on-prem virtualization from Apm tools, and we had to figure out how to pull that data together, both in terms of the representation of the entities, the attributes as well as the relationship between them.
+And we've applied some some techniques in terms of like saying that like. Well, 1st of all, this is the semantic meaning of the relationship. It can come from 4 different places, and either they get stitched together, based on some common id, or if they get it from multiple places, then this is the priority in which we
+override the.
+Josh Suereth 00:11:23 Yeah, it's awesome stuff we talked about. We we that's awesome. Yeah, anyway. Keep going.
+Endre Sara 00:11:28 So so we sold that to Ibm. It doesn't matter now. 2 years ago we started a new company, and we're doing this well, we're solving a completely different problem. But underlying foundational to that problem is representing entities and relationship. What we're what we're solving in the current company is reasoning about causality. It's like.
+Josh Suereth 00:11:49 Yes.
+Endre Sara 00:11:49 If this thing breaks, what will it cause if these things are observed? What can cause them fundamentally underneath that I need to understand entities and relationships with some level of semantics. And I am so. The difference is that back, 15 years ago there was no open telemetry. So we were just calling bespoke Apis. Now we're building this whole thing on top of open telemetry. But I actually would like the
+semantic definition to be open source rather than bespoke. And and in terms of the current semantic conventions, we are using them as is but anti-design relationships are fundamental. So the reason I want to be more involved is is to be able to bring some of those not just theories, but practices, or whatever it takes.
+one of the interesting things that we are are doing with this is.
+and I don't know how much of a heresy this sounds is without entities and relationships. People are trying to centralize all of their observed data logs, matrix and thesis in a place.
+And then they are like trying to make queries based on common labels. And they hope that like, Oh, if I have a matching resource label, that must be the same log and the trace and the metric. And I'm like, Yeah, I found my container, and I'm like, Well, that actually is a bit of an overkill, and not very reliable anyway. So if there was a way to say like this is my entity. Now, what if I can
+reduce the amount of data that I need to collect by turning it into an entity? In the 1st place, now, maybe I could do sampling. Maybe I could do all these other things because my
+foundational entity relationship. Things are represented and not parsed out of some sample data that is missing 99% of the actual good communication between my services. So what if all of this was processed at the edge.
+You know, it could be an open telemetry collector or something that says, like, Okay.
+I actually understand what I can understand here. And maybe the raw data is simple, but the entity representation relationship is is, I mean, complete is an overstatement, but as complete as it can be.
+Josh Suereth 00:14:13 Right right. And one of the one of the things that we had a lot of debates about in the Sig was actually the this localized view of entities versus global view for context, I'll put this in the notes. If it looks like you have them open.
+Endre Sara 00:14:27 Yeah.
+Josh Suereth 00:14:32 So so Google cloud observability, which is both monitoring and logging, have this notion of monitored resource.
+which is like the identity of the resource you're monitoring. And they try to have a global
+view where, like, you have one and only one thing right
+and one of the debates we had, which I think the way you're talking makes it, you know, aligns with the way the Sig has been thinking, which is, you know, local identity is actually somewhat important for open source. Like, we want the collector to be able to understand things in its local context, and it might not be able to get global.
+Endre Sara 00:15:11 Yeah.
+Josh Suereth 00:15:11 You know, because it doesn't know. And the only way you can assume global understanding of a resource is, if you own everything
+like on Google Cloud. We can just force everyone to like, you know, fit this model. But there's some friction there, right like when we when we integrate like an open source thing. We're basically taking their resources and and manipulating them into our model right?
+And so I think we want to allow that to happen in open telemetry. But we need a way to keep open telemetry open. And so we we move from like a global id to this local id where we expect to have something local, understand context and enrich context like the collector. So yeah.
+Endre Sara 00:15:52 So. So we we kind of face this problem in both companies. And I guess most fundamentally, this comes down to you know, what is the id because I can generate the local id
+and I can have all the most beautiful uids in the world. I can't really guarantee that it is globally unique.
+Can I hope that I can tell that 2 things discovered from the same time? Same from 2 places is the same thing.
+maybe, but but but, like the the understanding of the identity is, is is really important. And then, for example, assigning an id and then what I what I've done in most of the places I said, like, okay, here is the
+locally unique Id that I can assign as well as I can.
+Josh Suereth 00:16:45 And.
+Endre Sara 00:16:46 What I'm just going to put a label on the entity that says that this is your Google, Id, and like, if anybody wants to go after Google. Id. Look at that. It's a Google, Id and create some of the conventions like Google Ids will always be labeled as Blah blah, because I can understand how that is useful.
+But I can't force everybody to run everything in Google as much as I like Google. But besides, the point.
+Josh Suereth 00:17:12 Yeah. Yeah. But I think that's that's the point behind, like, what we're doing in hotel is, is we? We? I don't think it's feasible for us to create a global identity. But can we create enough instrumentation where, like, in a person using open telemetry can do it? And can they make that easy right.
+Endre Sara 00:17:32 so wait. So my my answer was the cheapest one is just put a label on it. Do you mean that to give them the ability to create the it's.
+Josh Suereth 00:17:45 So so yeah, like, in open telemetry, if you're in Google Cloud, you'll get the Google Cloud identity label right? If I want to uniquely identify everything in my company with an Id right?
+What that means is, I need to have an Id that I can generate for things from Google cloud. So where and how do I do that? So if I, if if Google Cloud has instrumentation or Amazon, because we already have resource, detection for Amazon and Google cloud that pop the Aws on and put the Gcp resource id right in in things. So the fact that we already have that means we already have a label. But then how? If I'm a company? And I'm like, Okay, I don't want 2 different labels. I want like one label for for a thing.
+Can I do that? And that's this notion of like enrichment where I could have in the collector.
+I could make my own little service. Right? That says, Okay, when a Google Id comes in, attach my id to it as well like in addition. So I get both. I get my unique Id that I want. And I get the Google Cloud One. And I can make sure that I know that my Id and the Google Cloud Id are the same thing
+right or or the they talk about the same entity. I should say they're not the same Id, but they talk about the same thing. Yeah.
+Endre Sara 00:18:54 Yeah. Yeah. So so I'm just, you know, pulling up my own internal code base where I have this entity dot go. But I have like a collection of
+this is how I create a cluster. Id. This is how I create a snowflake table. Id, this is how I create a you know, Job Id, or whatever Http endpoint. And and we are kind of creating these helper methods ourselves to be able to say that, like you know, this thing might be coming from datadog.
+I can parse it into an id. This thing might be coming from, you know, preferably open telemetry, but whatever I can parse it into an id. And the way that I construct the Id is actually common, but I'm giving myself. The good thing is that I don't have, like
+our company only has like 12 engineers, so I don't have to argue with a lot of people on how come on this should be. But but but but I but I think I think so. Okay.
+Besides, a lot of hot air.
+what do you think is helpful in terms of either writing things, using examples to be able to kind of, you know. Make any one of these things progress in whatever direction you are intending to go.
+Josh Suereth 00:20:14 So if you want to see what we're doing now, let me. I can start presenting actually hold on
+one sec. What we're up to now.
+where's my present? I haven't done the share screen on this computer yet. I'm actually joined from my personal computer today. So what we're up to now. We have this at the top. We have our
+Project board, and I'm trying to keep this up to date with things that we're working on. So if we look at this, we have phase one, we have ncotep, and we have phase 2 and we have things that we don't have a status for yet. Right? So
+these are questions like entity data model defining relations. This is just we have to do the work to define what relations look like and how they are in practice, like physically. What do they look like? What we're working on right now is over here, which is, we're trying to actively finish the whole resource entity, relationship thing. So this is, you know.
+resource and opentelemetry is supposed to be the source of data. So when I put a signal, a log metric trace, I know what produced it. And we're allowing multiple entities to be within resource, right? So we want to make sure that we can unblock
+everyone who wants to stabilize their attributes for resource.
+And so we're moving to entities. And we're stabilizing them in an entity by entity fashion. So what you saw was the adding support for semantic conventions. That guide, I wrote.
+that is part of that of. We want semantic conventions to be able to stabilize these resource attributes prior to entities, we actually had no idea how to stabilize or actually work with resource and hotel in semantic conventions. It was just raw chaos. Everything was all over the place. So that's the thing you read there.
+There's this notion of how mechanically things work and go to detect your label set. So in go SDK, basically, every label is discovered individually.
+I think, is what this says. And there's work to be done in. Go where we're talking about basically having a partial detector where we can detect each label of an entity individually and stitch it together in the SDK where we allow, go to kind of violate what we we want, entities to always come with ids by default. But since we can't break
+compatibility with the current go library. We need to sort out like what to do, to not make things break. So the idea would be, we make a new interface that these partial detection things can work, that we can still stitch together an entity and fail.
+Endre Sara 00:22:56 It's basically a merge.
+Josh Suereth 00:22:58 Basically a merge. Yeah, and and something that would be kind of specific to go. But we could reuse in other languages if we find the same problem. We don't have that problem in Java, but we do have that problem in go. So we might have that problem in other languages like Javascript and such we'll we'll have to see.
+I know we don't have it in Javascript. We might have it in Python. That's the one I haven't looked at
+anyway. So that's that's that's 1 of the things that's like a to do, Dimitri was. Gonna look at that. You can ping him and then the other thing is
+how to deal with labels or sorry attributes that are basic structure.
+We. We want our ids to be simple labels like key value pairs, you know. Just just ideally just one label. But the specification is changing and might allow
+big old attributes in there. So you know, we might need to figure out what we want to do about that. That's what this one is, anyway, things that haven't been picked up yet.
+We have.
+Let's start at the top. Entities should be supported by schema files. This one is going to probably get deferred because we're rebooting schema files. But if you're familiar with opentelemetry, semantic conventions, there's a schema file that tells you when everything changes, we need to understand how entity changes are allowed there. If they are and what they are allowed to do. That's a decision to make. It's currently assigned to me. But if you wanted to look at that or write things feel free.
+Updating resource model inversioning stability specification. This is related, basically, what do we consider a breaking change to an entity?
+If I change, you know a descriptive attribute, name. Does that break the entity or not.
+you know. Would that break downstream users of this? If I change the type that absolutely breaks things. So we need to tell people not to do that. But like, how do we prevent people using entities from having broken systems. How do we know what's a breaking change? We actually specify that fully. So that's what that's what this one is. I don't. Yeah.
+So right now, I don't think we're enforcing stability of anything with entities by spec. In practice we are because we're just using good judgment. But we need to actually fully specify that.
+Okay.
+the other thing we want. And I don't know if you how much you interact with this. But basically, we want environment variables to be able to provide entities. We have a In our Otep. We had this, I can. There's a there's a link to the Otep in the design. But basically, we want the ability where
+you can like in Kubernetes or in other systems where I have, I have control of your environment. I can push your identity down
+so I could set a set of environment variables that say, here's the here's your identified label in this environment, you know, like, here's your Kubernetes Id, or here's your Amazon, Id or or whatever, and that entities can interact with that. So that's what that one is that one I'm excited to get to. But we have time, and then we have a bunch of questions to answer that if you have code that actually already does this
+that would help us guide some of the questions. So, for example, this is a question about if we need to understand
+whether or not a collectors running locally next to
+something or not for the purpose of attaching identity. Right? So
+if the collector has discovered a bunch of ids about entities that it knows like I know the host. I know the Kubernetes pod, or whatever, and I want to attach that to resource.
+Can we just use the fact that we're running right beside the thing
+to do that kind of attachment? Or do we need to be more generic and and kind of dumb? So this is just a question of like, should you know, can the collector do this? And then how does it do it?
+Okay.
+Endre Sara 00:27:14 Sorry. This is super helpful exactly. I mean all of these, and I'm processing it. Maybe.
+Josh Suereth 00:27:23 I'm going fast. I don't expect you to remember everything, but I expect you to find one that you like and then say cool, I want to work on that one. Yeah.
+Endre Sara 00:27:31 So so wait. And maybe I'm asking some really
+basic fundamental questions in context of using environment variables. If you do it for resources already I can certainly resource. You know an environment variable that that says that this is the name of my whatever right. Of course, you could apply this to entities and and ids that is very localized. Again, assuming that you have control
+over this, the this thing would still end up in the open telemetry collector turned into an entity's
+signal, has
+opposed to, or, in addition to, not having control over the environment and the auto collector by itself making up the entities based on the
+signals that it's getting.
+Yeah, like this. What? Yeah.
+Josh Suereth 00:28:26 The so so the idea would be right now, the way we do detection and stuff right? There's a there's kind of a startup delay. So the hotel collector has to go talk to an Api and say, Hey, what are the entities in their relationships? Same with the SDK like in Javascript. Some of these detection things we do are asynchronous calls.
+And so we actually have to delay reporting the initial telemetry until we actually understand what those ids and relationships are right.
+But if we can use environment, variables, or something that is available when you start up like that that has been given to you by the platform.
+Then we don't have to do these remote calls to ask, Who are we? Right? It's it's a it's a bit more efficient. We already allow this, and people have interacted with it for resource. So we have this hotel resource attributes environment variable that every SDK is supposed to pull attributes from. So you can push tags. The problem with this is.
+one person gets to set that environment variable, and then everyone else just has to accept that someone else said it or blow it away right? There's no like interaction between it. There's no like Kubernetes can provide an environment variable. And docker can right? There's no I can provide one, and Kubernetes can provide when they work together.
+Endre Sara 00:29:50 Yeah. So back to the other open issue about merging labels and and better. Consequently the priority of
+who who has more? Yeah.
+Josh Suereth 00:30:00 So so we have in the resources and entities thing we talk about this notion of an environment, variable detector.
+and all we do is here is specify the requirements of what it needs to do right? So we should be able to specify multiple entities and environment variable.
+We should easily be able to append or leverage multiple participating systems if needed. I think in practice it's going to be like Kubernetes will do it.
+Maybe, like Amazon, Lambdas and Cloud Run, and whatever the azure version of that is, eks aks Gke, that maybe they all do it. But if somebody else wants to participate. We don't want to box them out, and lastly, if we discover, and if we discover via N variable, it should be 1st class. You should be able to do everything you can with this env injection that you can do with the regular system. And it should interact.
+You know, it's basically if you think about it. It's push based identity versus pull-based identity. We want them to work well together. Yeah.
+Endre Sara 00:31:06 Yep.
+Josh Suereth 00:31:07 What was the last thing I forget? Oh, yeah.
+we you can have a priority across environment variables. And someone can pick which one's most important. So you know how you said, you have code to say, like, Choose this one over this one.
+We want to be able to give people that configuration if possible. So those are the minimum requirements that we have for the system the actual design of what this environment variable is or looks like or how it interacts with everything that's all like
+to be defined. That's what that task is.
+Endre Sara 00:31:39 Yeah, I see we're finding ourselves in our own code base to externalizing all of these to declarative descriptions, because it is impossible to remember, what piece of code does any one of these things, including priorities? So so like, naturally, yeah.
+they're using that are using it. But the declarations are are in in some yam, or whatever the thing is.
+Josh Suereth 00:32:08 One of our earlier decisions in the Sig was basically like, we'll have a config file. That config file will allow users to order the importance they have for like entities or relationships. And we'll just like that. That's the baseline, right? So we'll provide a good out of the box order like we want the ability to do that. No tell. But at a minimum. Users should be able to configure that sucker somewhere instead of hard coding. No.
+yeah.
+Endre Sara 00:32:35 Okay, so sorry. I distracted you because you were going through the other issues. But what I was thinking is that so? So you basically either pull the entities by some Async method or you're pushing it from the actual.
+You know thing that is possibly more authoritative. But at the end the entities. Signal ends up materializing itself somewhere in an hotel collector. So I guess because that's really the 1st place where you could try to resolve these conflicts and.
+Josh Suereth 00:33:13 We can do so. There's 2 places that we have to focus on. One is the collector, but also and and again, this might not be. I don't know where your company is with open telemetry adoption, but our Apis and Sdks have a notion of resource and entity detection, so actually targeting both of those.
+So it's possible that this environment variable. In fact, I think it's more likely the environment variable hits the SDK, and then the collector gets to use it.
+Endre Sara 00:33:40 Okay? So
+that is interesting, because obviously, for the most part, the SDK runs inside my runtime. What is my runtime have access to. Obviously it has access to environment variables. But will it have access to a Google cloud? Api is questionable, or is that merged someplace else.
+Josh Suereth 00:34:08 I. I can confirm that the Google Cloud has a metadata service that most most people have access to. You can lock down access to it. But most people don't, and you can use that to discover your id you can. Sorry you can use that. Discover an id that's relatively close to your id, not necessarily your physical id that you would want.
+Endre Sara 00:34:30 We actually just had this thing I was writing some code last week, and I had to parse the Google Metadata service to be able to pick up. Figure out if this is the same, the other thing that I found someplace else. So you're okay. So you're saying that you're saying that
+you, you would prefer the SDK to be able to get this data where it can.
+And I guess maybe if for some reason that is not possible. Then the auto collector can add things.
+Josh Suereth 00:35:05 The hotel collector makes up the difference. Yep, yep.
+Endre Sara 00:35:08 But at the end the okay. Now the the other very, you know. Maybe naive question, is that so? This being a signal
+Where do you expect the life of these entities? And I mean the life cycle of these entities to be maintained and managed.
+Josh Suereth 00:35:31 Yeah, so I'm on the Otep thing. So the understanding the lifetime. I think there's 2 2 things that will that will maintain the lifetime.
+If you're inside of an SDK we are talking about having the resource provider have a where
+actually it might not be called out in this design, because there's a future design.
+we we think there will be a new resource provider in the SDK that will manage the lifetime of things an SDK, discovers.
+Yeah, I think there's an additional component. And the reason this, the collector is not caught out here. By the way, and it's it's a hotel process thing. When we talk about SDK changes, they have to hit 20 languages and the specification. So we are way more formal about it. So this is describing how all those languages will change for the collector. Dimitri has just been doing implementations of this. So I think the collector will have a component that can understand the lifecycle of things that it's managing
+right.
+And then the other bit, which is from our earlier thing is we'll have events that come out for entities, and we're not right now. We're not sure if SDK will ever produce these, or if they just come from the collector, or if they come from both.
+if the SDK is managing entities, it might also need to send these events. But the the idea would be.
+we have a state event, which is basically just a here's the current state of this thing like a heartbeat. And then we would explicitly send a delete event when something's deleted.
+So if you miss the delete event, you can use the heartbeat to say I haven't seen this in N amount of time. It's probably dead
+but you get a heartbeat every now and then, so you would get entity state would come
+when something changes, and then kind of at a heartbeat, I think, is kind of the way we were thinking about this. And I don't know how long the heartbeat would be. I'd imagine it to be a very long heartbeat, honestly.
+Endre Sara 00:37:34 So we wrote this code, maybe now, probably more than a year ago, where we were kind of I mean again, between 11 engineers. This is easy, but but we said that you know what. Let's I think that for most of the Kubernetes entities, we said that like we're going to send a heartbeat every 30 seconds
+if you, the numbers don't matter. But actually, and if you don't see it for 30 min, just garbage collected. But you can spend, you can send an Xpc delete. And then we found ourselves into things that are even
+less reliable, like, we are actually representing the communication between 2 entities, and it turns out that you may not observe communication for an hour. But that doesn't mean that those 2 things will never, ever communicate in the future. So then, we ended up having a different garbage collection
+time for things that I observed less regularly, but but ended up basically with the same thing. We are sending a heartbeat, and we are sending an explicit delete for things that we can
+discovered not to exist like a container. Deleted is it's deleted, and then and then at the end of all of this, we ended up with, Okay, but then, on the other side of this, where do we? What do we do with the references to entities that are deleted because I want to go back and find my container from yesterday? But it no longer exists. Can I still find it so then this, anyway, that's the far end of the
+event. Yeah.
+Josh Suereth 00:39:21 Well, I think this is why, like you've seen a cube State metrics right? They treat. They treat entities as a as a time series like a metric
+where basically, the metric has a value of one when the thing exists and a value of 0 when it's deleted.
+and they'll use that to like. Say, you know, what? What was the what did the system look like a day ago, you know. So so they're not actually
+And this is kind of what what I see and what I think we have to resolve in the long run is like, you know, is is entities a database relationship model, where everything is just the current state? Or is it a time series where you actually have to track over time?
+What did things look like at a piece in time and designing those 2 is kind of hard.
+you know. From a scalability standpoint. We have to like.
+Sure, we can get this right? Yeah.
+Endre Sara 00:40:16 Yeah, I think that the cost of keeping time series of things that
+rarely change is high, and to be able to reconstruct something in time is expensive. But then, on the other hand.
+snapshotting the state of the entities and their relationships especially, you know, 14 h and 20 min ago
+is hard. Sorry. You're probably highlighting it. Yeah, okay.
+Josh Suereth 00:40:55 Yeah, I I do think so. What I'll say is just based on this discussion. We'd love to have your participation. The Sig. And bringing the context of like, hey, we built the system. Here's how it works. Here's like design considerations going forward so like would absolutely love to have you more active, more involved. If any of the stuff we've been talking about so far, you know, resonates with you as something you want to work on.
+you know. Please join in. There's any writing we want to do of like considerations. We should have you know it. We, the 2 design docs we wrote, are this data model and the resources and entity Sig in the specification. So this is a Github. Open telemetries open to specification
+under oh, taps, you'll see entities.
+Endre Sara 00:41:40 Yeah.
+Josh Suereth 00:41:41 If you didn't see this, we actually wrote inside of entities and inside of resource. Actually, maybe resource is a bit better. We wrote, some of our goals like what we want resource to provide how people use it today. This notion of telescoping is the thing that
+we've kind of implicitly talked about. But this is the idea in opentelemetry, where people are adding a label to do filtering, and they're putting it right on the signal. So they're denormalizing their data right? Instead of having entities as a separate thing that you query to understand relationships, they're just assuming that the label can filter across all data wherever it is. You know the thing you're talking about with like a central database, with all the signals and one label for everything.
+So I call that a telescoping identity where you know, I could have a metric that just says, Here is the Vm. It came from.
+but I could also have a metric that says, Here's the Aws zone it came from, and I've telescoped my identity. I've added more to it so I can filter right. And and in open telemetry. We want you to have the ability to decide. Okay, I'm going to make every single signal really expensive, because joining is hard for me, and I want everything as a label that I can filter on very quickly.
+or you can telescope down to where you're sending smaller identities right? And I'm using some other system that tells me about entities and relationships, and that will let me do filtering
+so that's anyway, if the if you're if you're curious about like things we've been thinking about and things we're working on. We've tried to write it down.
+That entities guide that you're reviewing is the next step of that of like, how we think about the system. So I'm really, really glad to hear it's resonating with you around things that you faced and things you're doing, because that that's what we want to see. If you
+have any concerns with any of this. You want to write up anything. Please do. If any of these. This, this is under open telemetry. Project entities.
+Endre Sara 00:43:49 Let's see.
+Josh Suereth 00:43:50 If any of these appeal to you, and you want to take a crack at solving them or coming back with writing for us like, please do like that. We're we're more than happy to have someone who has actual on the ground expertise with this join us right? Because we have a few people who do. But but we don't have a lot of people who have the expertise and are actively contributing.
+Endre Sara 00:44:11 Yeah, I know. I I should definitely
+right. One other naive question in the context of telescoping.
+how? What do you think about. If you have any views on distributed versus centralized lookups and joins, and all of these things, like the obvious thing is, I collect everything into datadog, and then only in data log. I can look up everything. But I'm not really a huge fan of this, but the alternatives are all more complicated.
+Josh Suereth 00:44:46 Yeah, yeah, I I. So we.
+Endre Sara 00:44:50 I'm using their log as a stand-in. I actually don't care for their log at all. Hopefully, nobody gets offended.
+Josh Suereth 00:44:57 Yeah, I I think it said to some extent it depends on what your database is good at. Right? So some sometimes your, I think. How do I phrase this? There is enterprise, open telemetry, and there is small team, open telemetry for small team, open telemetry.
+I think telescoping as much as possible, shove it into a database, and just simply having those labels. There is the easiest thing they can get. They can use these naive databases that don't really do joins well, and they'll be successful
+when you start to scale up. I think that's where it gets complicated. And you're making some hard trade-offs. So like.
+I know for us internally.
+our decision to denormalize is pretty important. So when we add a label to do a filter
+it has to hold a lot of weight. We don't just, you know, do that because one new label, could, you know.
+could be gigabytes to terabytes, to petabytes of data depending on what signals you're talking about. Right?
+So we we're kind of more in this dance between. Some things are worth adding to every signal. And some things are worth joining. And you're you're you're always evaluating that trade off.
+Yeah. But.
+Endre Sara 00:46:20 I mean, I think that if you are considering things as time series, then then accordingly gets kind of like exponentially, you know, more expensive. If you are not thinking about this as a time series, then well, then, it's easier. But I guess
+what I meant. I meant maybe more aggressively rather than just a database or not.
+Is there a facility by which you could look up something that is not centrally collected, but distributed, collected. So, for example, can I ask a collector and say, like, Well, you know what? You're not sending me half of your data. But can I find this entity that you're aware of by this label that you didn't manage to push up.
+Josh Suereth 00:47:09 Yeah, we we actually have. So internally, we I'm gonna make this sound more beautiful than it is. But we have layers of observability like
+availability if you will. So for things that I need to alert on very quickly, right? I need to make sure all the labels and things that I'm filtering on, and and my views are immediately available at ingestion time. I'm not going to join across databases. I need them hot, fresh, fast because I'm gonna alert. And I need to respond within, you know, like a couple minutes, because that's how critical that thing is.
+But then there's some things where
+we have this blended world, where we'll throw a bunch of data into a couple different places, and we'll have a job that live joins pieces of it and writes that quickly to it to like a fast
+join store right? And then we have this ginormous data lake of just okay. Everything's distributed. Everything's in there that you can get access to.
+But you might have to wait a day to get an answer, you know. That's that's a bit of an exaggeration. It could just be like, you know, a 10 min query for something huge, right? But it takes a while. It's not like you're going to have a dashboard off of that. But you can. You can join the data. So when you want a dashboard. You do that optimal thing where you actually have. You know some what's it called?
+I used to call it. There's a term for this where you process data as it comes in like opl or something. Anyway, you.
+Endre Sara 00:48:44 You get what I mean?
+Josh Suereth 00:48:45 Like you're, you're processing data as it comes in and doing some joins and making an optimized store to have dashboards off of it. And it's a little bit delayed compared to just direct ingestion and alerting.
+We we have, like those 3, and we kind of like, you know, toy between those 3. So keeping the raw data and being able to access it, I think, is always somewhat valuable if you can afford it.
+And then, having that intermediate thing, I think, is also pretty valuable. So that's why in hotel again, that's where my notion of telescoping came in, because I'm thinking of those kind of 3 use cases.
+Endre Sara 00:49:22 Yeah, each of them makes sense. But
+they're all kind of assume that you're centralizing your data. That is, the data is mostly flowing in one direction.
+What if there was a bidirectional ability to say that like? Well, I never want to centralize this data, but I still want to be able to query, Slash, join on, you know. Find me all the entities that are in this zone, or something. I mean. It's not a good example. And then. Now pull out the you know.
+you know, cloudwatch metrics or something from a store based on this thing. And and obviously, if I push all of this into a big database. I could do this. Can I do this without collecting that data?
+Josh Suereth 00:50:21 Yeah, this is where? And again, I'll speak, not not from my my company, but personally, have you used Apache data fusion.
+I'm like, I'm I'm maybe, too, in love with this project. I think it's amazing. It it is. I think there's a python Api and a rust. Api, I've only used the rust side. But it's basically an SQL engine
+where you can describe data stores, distributed data stores right? And it gives you the ability to use SQL to query across them.
+And so if you don't have your data centralized, you can still figure out how to make an optimal query where I query my entity store and get the entities I want, and then feed that to a query against like datadog, or whatever, and get the data I want out of that as long as you can like, make a table interface.
+and it supports a whole bunch of stuff out of the box. So it's really like that kind of a vibe is more what I'm thinking the world's moving to right of. Yeah, sure, we're going to have distributed data. I can put acls on each thing. But maybe I put a data fusion server in the middle that even though the data is distributed. I can still get access to it now. It's not going to be fast as if it's
+look co-located. But it's amazing, right.
+Endre Sara 00:51:42 I mean that. So, by the way, fundamental to that is the identity of the entities, and to be able to refer to things so that you.
+Josh Suereth 00:51:53 Exactly.
+Endre Sara 00:51:53 A join and a filter, and all those other things. So this everything, I think, is kind of very, very foundational to be able to even think about this. But in that case,
+you you you yeah, you you could afford to have.
+you know, possibly a lot more, a lot higher cardinality, but not collected centrally, because you can query on it. And and because you're not querying one big database locally, that's actually possibly not as bad, having like 10 more labels, because you only query in it like once in a you know, whatever other day, or something.
+Josh Suereth 00:52:32 Yeah, yeah. And and you have, you have a data store kind of optimized on the entity side that should return things very, very fast.
+Endre Sara 00:52:40 Now, do you think that if there was, and maybe I'm jumping ahead like, you know, decades or something? But but but maybe not.
+Do you think that there is a possibility of the collector maintaining that state? Or do you think that would be too much? And then you're thinking about like something else that's like distributed something, something that runs, and then it stores locally. Next to the collector.
+Josh Suereth 00:53:07 So I think.
+Endre Sara 00:53:08 Can the collector be the interface to that thing?
+Josh Suereth 00:53:13 Yeah, I, my, my. And again, this might be because I'm too used to the like Google Google scale. Or like, you know, Facebook, Meta scale that kind of thing of like large systems. But I would not want to put read time pressure on the collector
+for 2 reasons. One is, I think the Collector's entity state will mostly be an in-memory store.
+and so you don't have the ability to offload things to disk
+and if you did have the ability to offload things to disk. I think the reliability of the collector would be a little more suspect
+so so that so if you think about it? Right? The collector is responsible for getting all your data in. And you have this query based, use case where you're trying to query into the collector directly. I would be a little bit concerned with that. I do think, if you were going to do
+cool control plane shenanigans of like, hey? You know, I want the ability to go tell the collector to change how it's sampling logs or traces from these 12 entities and fire that down. That's the kind of connection I would have the collector
+to change the data plane. But I don't know if I would query right from it. I think I would rather, personally, I'd rather have the collector fire that data to some other store, even if it's like per cluster, right? Just from a a reliability standpoint alone. Yeah.
+Endre Sara 00:54:37 Yeah, that makes sense. So so what we did in our little implementation is that we?
+Well, yeah, it's not like.
+it's coming from opentelemetry. But none of this is actually implemented inside opentelemetry. We basically dumped a little time series database into each one of the clusters, and I can make a a remote join across a bunch of them, not using data fusion. But that would be nice, by the way. And and and we are currently doing a local entity store.
+Actually, we are doing it in memory. But I can kind of join across those which is also distributed. So I could say, like, you know. Get me 5 entities across 3 clusters, and then pull the 4 metrics out of those 2 entities across those 3 clusters.
+and it is really cool because I end up. I mean, yes, I am
+persisting some data. I am using some memory, but I am distributing it as far as to the edge as possible. And at the end, the actual data that I'm collecting centrally is the polar opposite of a huge data warehouse. I actually have, like Kilobytes of data centrally, because I only need some reference data to be able to know where to go
+would.
+Josh Suereth 00:56:06 Yeah, yeah. I mean, as as long as as long as that. If you have the right kind of abuse, like rules around that that fan out.
+Endre Sara 00:56:15 Yeah, yeah.
+Josh Suereth 00:56:16 That's pretty interesting. Yeah. The other, the question would be, what would you do if like a region went down?
+Yeah. Because if you're
+pushing to the edge right, but I could see I could see an interesting like you store it. You store it somewhere centrally.
+but you defer to the edge. If you don't have data yet. That's also an interesting idea.
+Endre Sara 00:56:37 Yeah, I mean, yeah. So so yeah. So if I thing, yes, I I could.
+I mean, I'm describing what we implemented is maybe extreme. But you don't have to be an extreme. You could say like, Well, there are some signals that I have locally okay, fine. And then, like, you could decide on. How much do you push locally? But then, instead of dropping the rest of the data, you can have some representation of the data at the edge and then pull it, maybe with a different sla. But whatever. But but whatever?
+so, okay. But but your point. Okay, so your point is that that in itself, maybe, is too much for the collector itself. But the collector can feed it in, and I guess maybe that's even too much for the query.
+So I don't know. Like, maybe that's also a different protocol on. How do you pull that back? If this was distributed.
+Josh Suereth 00:57:30 I think there would be a different protocol to to query it. I
+like again, I'll say, you know, personally, I probably wouldn't run a system like that, just because of how our reliability guarantees need to be for me where I work. But like, if you wanted to do something in the collector. They have this extension mechanism. Where? And I would talk to Demetrius about this you could have. We have, for example, the collector can be the source of
+sampling config for Sdks with Jaeger. Remote sampler. We're trying to improve this with OP-amp, if you're familiar with that. But the there's a way where Sdks can ask the collector, Hey, what is my sampling rate right now? And you can configure it centrally on one collector, and then all the sdks will use the config from the collector.
+That's not terribly different than you kind of having a way to ask the collector like, Hey, what's your state right now? Or like self describing metrics. So I don't think it'd be outside the realm of possibility that people would add that as a feature of a collector like I can inspect the state of a collector remotely inspect what entities it has.
+I. Personally, I would prefer myself. I would probably always push that somewhere else to avoid overloading the the RAM and things in my collectors, but like, if your system can support it, and you have the headroom, and it's saving you a lot of a lot of data store other places. I could see that working out right? So.
+Endre Sara 00:59:02 The previous point that you made about reliability. It has a lot to do with. What do you want to do with this data? And I think that this is philosophy. But I think philosophically, people who have not defined a purpose for their data
+are more inclined to collect them, and being able to retrieve them somewhat without distinction. And then you end up with a data lake, whereas what I'm trying to do is to actually start with a purpose of like this is what I want to get out of my data. Now, I have the freedom to centralize only this much and distribute only this much under these different slos, because that serves my purpose and my purpose, by the way, is
+understanding system behavior like, can I reason about the behavior of my system, if I for, like, you know, can I tell when you know this Kafka topic is not being consumed?
+I don't need to collect every single message to know the answer?
+Josh Suereth 01:00:09 Yeah. Yeah. But so so the only thing I'll caveat, I think there are.
+There's a few things to think about. And and the one. It's actually a cost benefit analysis. The reason why everyone creates these data lakes and throws so much data in is because they like you said they don't know, solving an unknown unknown when you hit a problem where suddenly you know what you need to collect. I had this hit me where I had a latency problem
+in. So I was working again. We were working on a Google assistant back in the day, and we had a latency problem that I needed more information on, and it was in a very narrow slice of traffic.
+right?
+It took me a few months to get the instrumentation to production and collect enough data that I could find the problem.
+Because I was like, you know, we weren't just collecting data for unknown unknowns. We're only collecting per purpose data. And that's that's the trade off of like, sometimes you. And and again, this is like a decision everyone has to make of like, okay, what data do I want for unknowns unknowns? How much do I want to spend? Because when you have that data lake with all that crap in there, and you need to find the needle in the haystack. It's awesome. But then, when you look at the bill sometimes it's not awesome, right.
+Endre Sara 01:01:26 I know.
+Josh Suereth 01:01:26 I've been on both sides of that. Yeah.
+Endre Sara 01:01:28 That makes perfect sense. I think that it
+in real life. I think that the way this shapes up is that people say like, well, here's a new problem. Oh, what do I need to instrument to be able to enter this new problem?
+Let me collect that forever.
+Josh Suereth 01:01:47 Yes.
+Endre Sara 01:01:47 Which at that point this is not an unknown unknown until you run into the next unknown that you realize that like. Well, I haven't collected that data. Let me collect that data as well. But I'm sorry I'm being cynical.
+Yeah.
+Josh Suereth 01:02:00 And it's better it's better to have a big general purpose.
+No like well suited
+data lake that you can ask general questions from. And when you have an unknown that you now know about.
+just ask your database, what with what it has to solve it, if you can, and then only if you can't look for data that is general, not like very acutely specific to just that problem. Yeah.
+Endre Sara 01:02:28 So so I think we're hopefully in the next couple of weeks. We want to put up a A,
+you know, you think about this as a purpose of like, why do I want to look at anything? What are the potential causes that I want to be able to identify in my system for different misbehaviors, and and the reason that we want to put it out
+at least as readable document. Maybe it's not programmatic. I mean, we do have a programmatic definition internally, but but like to be able to say that like this is the purpose for which you want to be able to collect data. If you can think of other purposes, let's
+figure out what those other purposes are. I don't know how this is going to fly, but but I have this proposition, that that
+there's actually 80 90% of the problems are the same. And if you as much as people will say, like, well, we solved every root cause the 1st time. It will never happen again. Everybody has, you know. My thing ran out of memory. My, you know. Kafka broker broke up. My database clears are slow. And anyway, so so if we can solve for 80% of those problems you will still end up with, you know, argue 1020, whatever percent of unknown unknowns.
+But at least in that context, maybe there is a way to
+to be more purposeful rather than just throw big data, but that goes beyond this conversation. I'm sorry I'm distracting you. And stealing this whole conversation.
+Josh Suereth 01:03:58 No, the I think. Honestly, I'm glad I joined, because this was this was just, I, I think, a really good, healthy conversation overall of like what we're doing. And why? So, yeah, I like.
+we, let's let's yeah.
+I look forward to working more with you. If you're interested in helping out with the Sig. And anything I can help answer to get into this stuff like, let's do it.
+Endre Sara 01:04:21 Are you? Are you going to be at observity corn next week by any chance.
+Josh Suereth 01:04:28 Oh, no, it's so. It's it's my, it's my 20th anniversary. And so I yeah, I can't. I can't swing that I normally I would be there right. But no, I can't. It's I can't do that. So I'm out. I'm out all next week. Yeah.
+Endre Sara 01:04:43 That's okay. I'll be never, but only for the day. But but these zooms are are hopefully, you know, correct, anyway. So
+yeah, sure. Thank you.
+Josh Suereth 01:04:54 I need to drop and thank you again, man, I'll I'll.
+Endre Sara 01:04:56 See you bye.

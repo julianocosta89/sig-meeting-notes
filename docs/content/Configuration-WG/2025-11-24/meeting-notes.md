@@ -1,0 +1,33 @@
+## Meeting Notes
+
+### Attendees
+- Jack Berg (Grafana Labs)
+- Marylia Gutierrez (Grafana Labs)
+- [Yevhenii Solomchenko](mailto:ysolomchenko@splunk.com) (Splunk)
+- Alex Boten (Honeycomb)
+- Jamie Danielson (Honeycomb)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Tyler Yahn (Splunk)
+- [jamie] What to do when we have declarative config and programmatic config
+  - For same component
+    - For example Setting up node SDK, sets a span processor, conflicts with declarative config
+    - Ideally you don’t want both as options… there isn’t a spec’d answer. Programmatic would just be there to supplement options that can’t be described in config.
+    - Splunk has programmatic as highest priority, then config, then env var.
+  - For different components
+    - Supplement as needed, will be language-dependent.
+  - Not really resolved because different languages will have different preferences. Prog vs env var was never spec’d and different languages do different things… we could consider adding spec but you can end up with different and unexpected behavior.
+- [yevhenii] [https://github.com/open-telemetry/opentelemetry-configuration/issues/336](https://github.com/open-telemetry/opentelemetry-configuration/issues/336)
+  - Grafana distro PoC: [https://github.com/grafana/grafana-opentelemetry-java/pull/1062](https://github.com/grafana/grafana-opentelemetry-java/pull/1062)
+  - Leaning toward Option 1 (vendor top level)... but use “distribution” instead of “vendor”
+- [jack] Default and null behavior [https://github.com/open-telemetry/opentelemetry-configuration/pull/426](https://github.com/open-telemetry/opentelemetry-configuration/pull/426)
+  - defaultBehavior used instead of “default” in json schema because “default” requires just the default value that matches the type… which is too restrictive to describe default behavior in a way that humans will appreciate (e.g. more semantic meaning provided via natural language)... example “the http://localhost:4318/v1/{signal} (where signal is 'traces',”
+  - What about actual default values? Example “1000” currently shows up as “10000 is used” for defaultBehavior which is a bit awkward… may we consider adding “default” field.
+- [Gregor] Env var replacement breaks types if it’s in “additionalProperties”
+  - E.g. int becomes string
+  - If it’s quoted, it’s a string - rules are defined in [https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution)
+- [alex] prometheus exporter - best way to get this moved out of development/experimental
+  - Spec needs to be stable!
+  - Arthur Sens and David Ashpole are driving stability
+- [Gregor] propagator discussion from last week
+  - Where to open a PR?
+  - Propagator.yaml in config repo (if no propagators are used…)

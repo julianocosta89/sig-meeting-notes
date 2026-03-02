@@ -1,0 +1,53 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- Arthur Sens - will miss last 30mins
+- Laurent Querel
+- Jeremy Blythe
+- Liudmila (for the first 40 minutes)
+- Arianna Vespri
+
+### Agenda
+- [arthursens] Following up on [https://github.com/open-telemetry/weaver/pull/1138](https://github.com/open-telemetry/weaver/pull/1138)
+  - Seems like my initial plan for infer was not as ambitious as Jeremy's. I'm happy to work on the bigger idea, but need some help understanding it.
+  - [suereth] Response
+    - Let's keep small composable CLI commands
+      - registry infer - infers a repo
+      - registry live-check - ensures conformance
+    - Both can use live_check crate (and makes sense to)
+    - Let's start slow - simple `infer` for now and expand over time.
+  - How to handle dependencies?
+    - If we infer a bunch of RPC related things but don't depend on semconv, issue.
+    - Could we use `schema_url` to infer dependencies (and not add/infer those things).
+  - Action Items
+    - Make sure current PR can be expanded in the future
+    - SpanEvent vs. Event
+      - When it's deprecated in Spec, we can issue warning in live-check.
+      - Inferring SpanEvent as Event is fine for now.
+    - Entity
+      - Should we infer entity?
+      - We can wait for this
+- [suereth] Proposal for out of the box defaults in Weaver: [https://github.com/open-telemetry/weaver/pull/1145](https://github.com/open-telemetry/weaver/pull/1145)
+  - Main points from review
+    - Why embed in weaver at all?
+    - Should otel-semconv use these defaults?
+  - Other discussion
+    - Governance model?
+  - General Discussion
+    - Overall - Let's do it
+    - Some defaults should probably be baked into weaver, but generally moving templates to new repo is good.
+    - Will need to sort out best practices, etc.
+    - [jeremy] Request for jsonl output from live-check. Don't want a template just to create JSON.  Serde can do this. We should have output options *before* templates, e.g. `json`, `template`, `jsonl`, `yaml`, `xml?`
+      - Need to make sure command-line for output is consistent.  Let's re-align this.
+    - [laurent] opentelemetry-weaver-templates - we have JQ + Policies, is this the right name? Let's find a better name
+    - Do we need the default artifacts into this repository?
+      - This adds friction to our dev stack.
+      - Martin's comments about just using a convention?
+      - Let's make a decision about *which* defaults stay and which move (and which we just drop).
+        - AI - josh will add a first cut to the proposal.
+        - Error templates can live in weaver.
+        - Do we want to bake code generation into weaver?
+    - This could be a way to pick things you want.
+    - When it comes to policies - we should support pulling in more than one.
+- Schema v2 OTEP - talk about decentralizing [https://github.com/lmolkova/opentelemetry-specification/pull/3](https://github.com/lmolkova/opentelemetry-specification/pull/3)

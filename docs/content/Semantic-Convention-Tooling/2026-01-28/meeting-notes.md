@@ -1,0 +1,91 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- Nathan Smith
+- Arianna Vespri
+- Arthur Sens - (for the first half)
+- Jeremy Blythe
+
+### Agenda
+- [suereth] Build Issues -
+  - CLIB version discrepancy
+    - Docker Build image using Debian, Release image uses Alpine
+    - Some dependencies are starting to show different CLIB symbol usage
+    - Look into moving back to MUSL for Docker.
+    - Possibility - Docker image is built by downloading release images?
+  - [Node.js](http://Node.js) Issues
+    - Shai-Halud has locked down my ability to use randomly downloaded files from the internet (NVM is a non-option)
+    - We don't want release build *altering* which version of dependencies is downloaded
+    - package-lock.json is different depending on [node.js](http://node.js) version
+    - NPM v9 vs v10 - Change how optional packages are reported in package-lock.json
+    - `npm ci` is SUPPOSED to fix the problem, but can't across major versions of NPM.
+    - *We can look at using locks in package.json on node + npm version.*
+    - Reach out to javascript SIG for help here!
+- [suereth] Template Repo
+  - Goal
+    - one example "package" that does markdown gen
+    - one example "package' that does stability policies
+    - A build that "tests" these packages
+    - Uses weaver github action.
+    - Uses renovate
+    - Documentation describing how to add + test new packages.
+  - Decisions
+    - How to test?
+      - policy
+        - Example Repository
+        - Example output of findings JSON
+        - Diff the findings, fail on change
+      - documentation generation
+        - Example Repository
+        - Example output of generation
+        - Diff output, fail on change
+      - ***Should we make a `weaver registry test-*`  command?***
+    - How "good" to make the initial packages?
+      - focus on easy jinja and readability first
+      - Docs - from Arianna
+      - Policy - from Josh
+    - To consider for the future - benchmarks / performance for templates.
+- [suereth] Depending on Resolved Schema - [https://github.com/open-telemetry/weaver/pull/1160](https://github.com/open-telemetry/weaver/pull/1160)
+  - Imports
+    - Can only import *from registry*
+    - Only supports events, metrics and entities
+      - Should we add spans?  (by type)
+    - Can only import from the registry
+      - Should we allow importing refinements?
+      - We should keep final syntax in mind.
+  - Extends
+    - Can only extend a group via V1
+    - No syntax in V2 for refinement
+      - Need to know how to refine things in V2.
+  - Attribute Refs
+    - What should "source group id" be for V2?
+    - V2 does NOT require requirement_level until you're on a signal, what should the default be?
+  - Provenance
+    - How much should we try to preserve for dependencies?
+- [liudmila] Building registry on top of otel (e.g. collector or java-instr)
+  - [https://github.com/open-telemetry/opentelemetry-weaver-examples/pull/33/](https://github.com/open-telemetry/opentelemetry-weaver-examples/pull/33/)
+  - Resolved schema contains relevant things only
+  - One registry per repo is a default recommendation
+  - OTel schemas:
+    - Today: otel.io/schemas/x.y.z
+    - Tomorrow:
+      - otel.io/schemas/**semconv**/x.y.z
+      - otel.io/schemas**/collector**/...
+      - otel.io/schemas**/java**/...
+      - otel.io/schemas**/**
+  - Future: conflict resolution
+    - don't allow conflicts beyond diamond dependency problems
+    - We'd need to merge attributes from multiple versions of the same dependency in attr catalog
+    - A -> otel
+    - B -> otel
+    - Linear order
+      - Same major version: use latest version
+      - Don't allow major version conflict
+  - Semconv 2.0 ? 1.x.y-dev
+    - Let's think about it
+- [arthursens] Just a reminder to review [https://github.com/open-telemetry/weaver/pull/1138](https://github.com/open-telemetry/weaver/pull/1138)
+  - I won't be joining today, so it really is just a reminder :)
+  - I wanna start working on switching to v2 and also on jeremy's idea to compare with an existing registry as follow-ups.
+- [arianna] Just mentioning that I submitted this PR (about [creating OOTB documentation generation](https://github.com/open-telemetry/weaver/pull/1166) - Registry of signals) that Josh is already reviewing.
+  - OpenTelemetry - Packages repository request
