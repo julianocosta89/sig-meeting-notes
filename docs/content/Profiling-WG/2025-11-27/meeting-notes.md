@@ -1,0 +1,76 @@
+## Meeting Notes
+
+### Attendees
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- [Dale Hamel](mailto:dale.hamel@shopify.com) (Shopify).
+- Frederic Branczyk (Polar Signals)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Roger Coll (Elastic)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Marc Sanmiquel](mailto:marcsanmiquel@gmail.com) (Grafana Labs/Pyroscope)
+
+### Agenda
+- Review Active Action Items
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - No updates - not attending.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Send a PR clarifying the start timestamp / duration conventions. See [this discussion](#bookmark=id.an4px2jo7lgp).
+    - Nov 26 update: Sent [#744](https://github.com/open-telemetry/opentelemetry-proto/pull/744).
+    - No updates - not attending.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - No updates - not attending.
+  - [[Florian Lehner](mailto:florian.lehner@elastic.co)] otlp <-> pprof converter.
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078)
+      - ^---- 🚨Needs reviews from the profiling SIG.
+    - [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357)
+      - ^---- Needs reviews/feedback from the profiling SIG.
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - ^---- 🚨Needs more reviews from the profiling SIG.
+    - Ivo: Main feedback was folks asking why we’re using a custom proto rather than the otel resource message. I updated the PR to implement that suggestion.
+    - Florian: I like the new direction.
+    - Ivo: I was going to open a PR to copy samples to sig-profiling. Haven’t finished yet because I need to update examples to the new format. Hope to have it soon.
+    - Ivo: We made good progress on implementing thread context sharing for Java.
+  - [Jonathan] We agree and should document that the values/timestamps shape should be the same for all samples in the given profile. [#742](https://github.com/open-telemetry/opentelemetry-proto/pull/742) awaits review.
+    - ^---- 🚨Needs more reviews from the profiling SIG.
+  - [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [~~#714~~](https://github.com/open-telemetry/opentelemetry-proto/pull/714) [#724](https://github.com/open-telemetry/opentelemetry-proto/pull/724)
+    - Done.
+  - Alban: Reach out to the kernel folks to check how they see the severity.
+    - I emailed on 22 Oct. I received feedback.
+    - No updates - not attending.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Changes to OTel pdata: [https://github.com/open-telemetry/opentelemetry-collector/pull/14188](https://github.com/open-telemetry/opentelemetry-collector/pull/14188)
+    - Done.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) / [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Benchmarks. See agenda below.
+- [Florian Lehner](mailto:florian.lehner@elastic.co) - [[Feedback from Slack](https://cloud-native.slack.com/archives/C03J794L0BV/p1763214980654989)] rename `message Location` to `message Frame`.
+  - Florian: Location originates from pprof. I don’t feel strongly about this.
+  - Frederic: Frame could be more confusing, because there are inlined frames (the lines).
+  - Felix: Maybe PhysicalFrame + InlinedFrame? I also found Location + Line confusing when I saw it the first time.
+  - Florian: Maybe we can just document this better and stay with the existing nomenclature.
+  - Frederic: PhysicalFrame + InlinedFrame also doesn’t describe this perfectly. But I agree that the current names are not very intuitive.
+  - Felix: I think we should stay with what we have unless we see a stronger signal from users.
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)Node v24.x (LTS) unwinding [issue](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/issues/981), maybe someone (Polar Signals, Datadog, ..?) has a fix already that can be contributed?
+  - Florian: v24 doesn’t work yet.
+  - Frederic: I think we fixed this in our fork. I pinged Brendan on the issue. We have customers running on v24. But it’s possible there is more stuff we missed. We just did this last week, but the plan is to contribute it back upstream.
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com)/[Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) [benchmark results](https://github.com/felixge/sig-profiling/blob/b4fd2254ac09d028e245c24c1defabc24d0d3dd5/otlp-bench/reports/2025-11-27-gh733-resource-attr-dict/README.md) for Florian’s resource attribute dictionary [PR #733](https://github.com/open-telemetry/opentelemetry-proto/pull/733).
+  - Florian: Thanks, looks good.
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Looking into OBI (eBPF instrumentation).
+  - Nayef: They are distributing this as a dedicated container that is not a collector. They want to distribute as a receiver as well. Maybe we should have a single ebpf distribution for the demonset. I send them a slack message to float around the idea. They seem onboard with it.
+  - Florian: I attended the eBPF instrumentation SIG meeting. I asked the same question. Their plan is to implement with the collector at some point, but not sure when. For the eBPF profiler we make it quite easy to use it as a receiver in a regular otel collector. You don’t need the eBPF distribution. But combining both would be awesome. They send out a signal per process, so they could benefit from the dictionary approach as well. The context sharing approach from Ivo would also be a benefit to them.
+  - Ivo: +1 to using process context propagation for OBI as well. Came up in the Specifications SIG.
+  - Felix: +1 to sharing.
+  - Florian: They produce traces and metrics and also do k8s attribute enrichment themselves.
+  - Florian: I feel that the TC doesn’t want dictionaries for other OTLP signals in v1.
+- Update on PR for Ruby. Dec
+  - Dale: Decided to go with Timo’s [PR](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943). Been reviewed once by Florian. If that lands, I’ve already rebased my PR on it. And that should make it easier to review.
+  - Florian: We’re a little short staffed right now, but we’ll help with it. The direction of it is good.
+  - Dale: Been looking into context propagation for Ruby as well.
+  - Frederic: We solved it for v8 and starting on python. It’s possible there is going to be overlap.
+  - Dale: thread local storage seems to be good. Ruby has its own fiber concept. We need to store it on those.
+  - Frederic: We had to solve similar issues in v8.
+  - Dale: I’ll keep an eye out. Subscribing to everything on the repo.
+  - Frederic: We tried some of this for Rust. Are you talking to Brendan, Ivo?
+  - Ivo: Yes, but not so much yet.
+  - Frederic: Reach out to him, he’s been working on this for the past year.
+  - Dale: We’ll prototype something on our fork.

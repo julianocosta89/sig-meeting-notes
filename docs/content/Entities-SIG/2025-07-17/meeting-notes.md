@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- [Daniel Dyla](mailto:dyladan@gmail.com)(first 30 minutes)
+- Josh Suereth
+- [Nathan Smith](mailto:nathan.smith@elastic.co)
+- Dmitry Anoshin
+
+### Agenda
+- [josh] Directional shift from SDK -> API discussions
+  - Focus on EntityProvider API + OTEP
+- [10 min] [Ted] What do we need to prototype along with the EntityProvider?
+  - The EntityProvider is glue code. We need to understand what we are gluing together.
+    - How should SDK startup block and await entity detection?
+    - How should exporters segment batches of data in response to entity changes?
+  - OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4316](https://github.com/open-telemetry/opentelemetry-specification/pull/4316)
+  - Spec PR: [https://github.com/open-telemetry/opentelemetry-specification/pull/4565](https://github.com/open-telemetry/opentelemetry-specification/pull/4565)
+  - [josh] [https://github.com/jsuereth/opentelemetry-specification/blob/resource-provider/oteps/4316-resource-provider.md](https://github.com/jsuereth/opentelemetry-specification/blob/resource-provider/oteps/4316-resource-provider.md)
+- [10 min] [Ted] EntityProvider naming bikeshed
+  - Entity vs Resource?
+  - Doesn’t confuse users
+  - Isn’t awkward to describe
+  - [defer actual bikeshed]
+- [20min] [Josh] What are the right "primitives" for EntityProvider
+  - Proposal:
+    - Add or Update - adds entity if it doesn't exist, updates description otherwise
+      - Should this swap out the entire description?
+      - If you have two detectors - one only knows about description, you lose these.
+    - Add or Replace - "force add", removes previous if id is different.
+    - Delete - Removes an entity
+  - Discussions:
+    - Do we need the ability to add 'descriptive' attributes as add-on?
+      - We don't want SDK to have to deal with these merges if we can.
+      - We want to force Entity to be coherent when it is reported.
+      - We could ensure "Detector" can have extensible descriptive attribute detection.
+      - Each Entity manages its complete state.
+    - How do we handle conflicts in "detection" that is registered?
+      - e.g. two entity detectors that report the same entity type
+        - e.g. AWS or GCP reporting `host` entity and the general purpose `host` detector.
+        - semconv today declares that cloud identity wins.
+      - Delete followed by add causes issues with transactional behavior.
+      - We need to design so users have control here.
+      - If you have conflicting IDs - first wins
+        - Do we want to do something with dropped IDs?
+      - Should we have a way to report entities that should NOT be modified after initialization?
+      - Can we model this around entity types instead of detectors?
+        - e.g.
+          - detectors:
+- [dmitry]
+  - [https://github.com/open-telemetry/opentelemetry-specification/pull/4593](https://github.com/open-telemetry/opentelemetry-specification/pull/4593)
+  - [https://github.com/open-telemetry/opentelemetry-specification/pull/4594](https://github.com/open-telemetry/opentelemetry-specification/pull/4594)
+    - Entity on ENV
+      - Possible concerns around size - ignore for now, keep it simple
+      - Make it so "append to ENV" works in event of conflicts - allow proceeding ";"
+      - Prototype w/ otel operator
+- [josh] Tasking / Triage next steps

@@ -1,0 +1,65 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com) (Cloudera)
+- Jack Shirazi (Elastic)
+- Jay DeLuca (Grafana Labs)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Jason (Splunk)
+- Jonathan Halliday (IBM)
+- Peter Findeisen (Cisco)
+- Robert Niedziela (Splunk)
+- Pranav Sharma (Google)
+
+### Agenda
+- Standing topic: issue triage
+  - [is:open -label:"needs author feedback","needs repro","contribution welcome"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+-label%3A%22needs+author+feedback%22%2C%22needs+repro%22%2C%22contribution+welcome%22)
+  - [is:open label:"needs triage"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22)
+- Standing topic: [stackoverflow questions](https://stackoverflow.com/search?tab=newest&q=%5bopen-telemetry%5d%20java)
+- [Jay] Instrumentation documentation / explorer updates
+  - New [documenting instrumentation readme](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/documenting-instrumentation.md)
+  - New [Supported libraries page on](https://opentelemetry.io/docs/zero-code/java/agent/supported-libraries/) [openteletry.io](http://openteletry.io)
+    - [Automated synchronization auditor](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14706)
+  - Added library readmes and links to java docs in explorer ([example](https://jaydeluca.github.io/instrumentation-explorer/library/2.20/armeria-1.3))
+  - Working on creating a community project document for making the explorer an official part of the OTel docs
+  - Stability - should we include this? How to think about it?
+    - [Jason] This is hard in general because when new library versions are released, things might change/break
+    - [Trask] Stability to me is when a user changes our things and it changes/breaks their things
+    - [Jack] What is the benefit of defining it stable?
+      - For libraries, the API is stable
+      - For agent instrumentations - the telemetry is stable, and won’t change in incompatible ways
+      - People also ask “is this production ready”? (-alpha tag)
+      - For all breaking changes, does that mean we would need to create a new instrumentation?
+        - This has typically been our strategy, which is why we encode the minimum supported library version in the package name. So if we break our contract we can at least make a distinction there.
+        - People who depend on the old one might be broken (if we change the package name), because action would be needed on their end to change their dependencies
+    - [Lauri] We don’t really advertise “stable” instrumentations as is
+    - [Jack] Many of us have distributions, do we have customers saying they can’t use it because the instrumentation is not stable?
+      - Not so much for Jack
+      - [Trask] Not so much for agent, but for standalone library instrumentations (they have the scary -alpha tag)
+        - Different terminology would probably be better, people wouldn’t care
+    - Maybe this could apply just to library instrumentations, and handled on a case by case basis
+    - Declaring stability is a lot of effort, ensuring the API makes sense, is backwards compatible etc. Would be difficult to manage for so many instrumentations
+    - OTel wide guidance says that instrumentations published by OTel can only be marked stable if the semantic conventions are stable.
+      - What about when new semantic conventions are added
+        - They need to be opt-in
+    - Could use different verbiage instead of “stability”
+      - “semantic convention stability”
+      - “API stability”
+  - Next piece: Additional descriptor: “[functions](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14247)”
+    - Does this seem valuable to others? Do the options listed in the issue make sense?
+- [Gregor] Patch release for [https://github.com/open-telemetry/opentelemetry-java/pull/7664](https://github.com/open-telemetry/opentelemetry-java/pull/7664) ?
+  - Yes, do it and tell Trask
+- [Patrick] [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14707](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14707)
+- [Robert] Metrics naming: [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14411](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14411)
+  - [https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/naming.md#instrument-naming](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/naming.md#instrument-naming)
+- [Trask] Java 26
+  - [https://github.com/open-telemetry/opentelemetry-java/issues/7219](https://github.com/open-telemetry/opentelemetry-java/issues/7219)
+  - --sun-misc-unsafe-memory-access=deny
+  - Try to add to test matrix in all 3 Java repos
+- [Trask] Eventually visible
+  - [https://github.com/open-telemetry/opentelemetry-specification/pull/4645](https://github.com/open-telemetry/opentelemetry-specification/pull/4645)
+- [Trask] Complex attributes
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7632](https://github.com/open-telemetry/opentelemetry-java/pull/7632)
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7661](https://github.com/open-telemetry/opentelemetry-java/pull/7661)
+- [Gregor] FYI: Smoke Tests now support Java (migration still in progress)
+  - Thanks Lauri for the help!

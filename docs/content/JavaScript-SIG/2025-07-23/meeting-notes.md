@@ -1,0 +1,59 @@
+## Meeting Notes
+
+### Attendees
+- Swapnil Nagar (Microsoft)
+- Jimmy Thomson (Gradient Edge)
+- Marylia Gutierrez (Grafana Labs)
+- [Daniel Dyla](mailto:dyladan@gmail.com)
+- Jamie Danielson (Honeycomb)
+- Trent Mick (Elastic)
+- Svetlana Brennan (New Relic)
+- Raphaël Thériault (SolarWinds)
+
+### Agenda
+- **Feel free to add your topics below ↙️ 🙂**
+- [Marylia] Created an issue listing all DB plugins (came from the question [here](https://github.com/open-telemetry/opentelemetry-js-contrib/issues/2951)), so people can grab specific ones to help out
+  - [https://github.com/open-telemetry/opentelemetry-js-contrib/issues/2953](https://github.com/open-telemetry/opentelemetry-js-contrib/issues/2953)
+- [Marylia] Any feedback on my current plan for declarative config?
+  - [https://github.com/open-telemetry/opentelemetry-js/issues/5626#issuecomment-3104113606](https://github.com/open-telemetry/opentelemetry-js/issues/5626#issuecomment-3104113606)
+  - Create a ConfigProvider in the opentelemetry-core package
+  - At the first version the ConfigProvider only use env var, so it won't change the existing behaviour
+  - I will manually create a class Configuration, which will have all parameters defined in the config spec. The idea is to eventually have this automated, similar to sem conv, so we are always aligned
+  - Now when ConfigProvider is initialized, it checks all the values from env var or default when those are not set, and create an object for config, which can then be read by any other package
+  - Pick another package as the test (open to suggestions here, plan is on opentelemtry-sdk-node) and replace all the calls for getEnv* to call the new ConfigProvider that will return those values
+  - After this is all working with env var, add functionality to construct this config object from a config file and return that on the ConfigProvider (still giving the option to use env var when file doesn't exist)
+  - When this is working for this test package, then move on to others, including the removal of reading env var at all when it make sense
+- [Swapnil/Jimmy] ES Build Support for OTEL Libraries.
+  - Experiencing issues w/ instrumentations when using esbuild bundling
+  - Existing plugin outside of otel [https://www.npmjs.com/package/opentelemetry-esbuild-plugin-node](https://www.npmjs.com/package/opentelemetry-esbuild-plugin-node)
+    - [https://github.com/DrewCorlin/opentelemetry-esbuild-plugin-node](https://github.com/DrewCorlin/opentelemetry-esbuild-plugin-node)
+    - [Original PR in contrib](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/1856#issuecomment-2570023766)
+    - Useful step is to try this out, put together feedback, and see how it might integrate into the repo. Examples / repro is super useful too.
+    - Drew may also be worth trying to work with
+  - There is a browser SIG that recently started up, meets Thursday at 8:30 PT, and Üit’s something they’re looking at for bundling needs in the browser.
+  - It’s unclear whether that includes any support for bundling for server-side.
+  - For the ESBuild support to move forward it would require more involvement from folks to improve it. Feedback on use in prod will be helpful.
+  - Some previous efforts to improve upon it can be [found in repo](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-js+esbuild&type=pullrequests)
+  - In CNCF Slack there are otel channels like otel-js, otel-js-dev, etc.
+- [svetlana]: last logs GA issue: [https://github.com/open-telemetry/opentelemetry-js/issues/5723](https://github.com/open-telemetry/opentelemetry-js/issues/5723)
+  - Dan assigned for now, if Svetlana wanting to help reach out to him!
+- API 2.0 POC - considerations for Events/Logs API
+  - Should we do the Event API in the way the current API is written, or should it be written in the style of the proposed API 2.0
+  - API 2.0 may take a while to be ready…
+  - Nested attributes will be coming for all signals. Events are back to using Logs API now but with Event Name.
+- [david] Ready for review [https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2932](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2932)
+  - Test services script
+- [david] attempt to move forward on ESM (draft PRs in contrib)
+  - Issue: [https://github.com/open-telemetry/opentelemetry-js/issues/3989](https://github.com/open-telemetry/opentelemetry-js/issues/3989), [https://github.com/open-telemetry/opentelemetry-js/issues/4898](https://github.com/open-telemetry/opentelemetry-js/issues/4898)
+  - PoC with current toolchain [https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2955](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2955)
+  - PoC with `tsup` [https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2954](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2954)
+- [aaron] GCP resource detector [https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2818](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2818)
+  - At this point the variables and metadata are pretty well-baked so likely not a lot of changes there.
+  - There is hopefully minimal maintenance overhead with it.
+  - We should pin dependencies
+  - We may be able to replace gcp-metadata with http rest calls? That is what elastic did for their wrapper for gcp.
+  - Semantic convention update may be useful in this PR or fast-follow since new attributes are getting added in (use new style e.g. ATTR_FAAS_NAME)
+  - Aaron probably will open separate PR
+- [Untriaged bugs](https://github.com/open-telemetry/opentelemetry-js/issues?q=is%3Aissue+is%3Aopen+label%3Atriage+label%3Abug+-label%3Apriority%3Ap1++-label%3Apriority%3Ap2++-label%3Apriority%3Ap3++-label%3Apriority%3Ap4+)
+- [Untriaged contrib bugs](https://github.com/open-telemetry/opentelemetry-js-contrib/issues?q=is%3Aissue+is%3Aopen+label%3Atriage%2Cbug+-label%3Apriority%3Ap1++-label%3Apriority%3Ap2++-label%3Apriority%3Ap3++-label%3Apriority%3Ap4)
+- [Old Contrib PR Triage](https://github.com/open-telemetry/opentelemetry-js-contrib/pulls?q=is%3Apr+is%3Aopen+sort%3Acreated-asc)

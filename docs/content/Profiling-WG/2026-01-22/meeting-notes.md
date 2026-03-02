@@ -1,0 +1,91 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- cleverchuk(solarwinds)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- Brennan Vincent (Polar Signals)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- Josh Suereth (Google)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Dale Hamel](mailto:dale.hamel@shopify.com)(Shopify)
+- [Scott Gerring](mailto:scott@datadoghq.com)(Datadog)
+
+### Agenda
+- Review action items:
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Christos, Florian, Nayef gave a green check. If others could comment that’d be great 🚨.
+    - Christos: Have you talked to OTel SDK people already? They’re the most important stakeholders.
+    - Ivo: I pinged some folks on the Java SIG in Nov/Dec and got some feedback. People seemed okay-ish, but we need to reach out to specification and the other SDKs to give this a pass.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - Florian: We got consensus between Tigran, Josh and Bogdan on how it should be done. The PR is updated. Only Felix approved so far. We need the TC members' approval. But some more SIG members would be great 🚨.
+    - Christos: I just approved it. Bogdan might ask for making it more genierc at some point (so other signals could use it). The next step would be the proof of concept.
+    - Josh: Looking at the PR, don’t you need [the key](https://github.com/florianl/opentelemetry-proto/blob/617d9f0baaf5fe74d95b836ff351e0ae3afca858/opentelemetry/proto/common/v1/common.proto#L73-L74) of the attribute in the dictionary?
+    - Florian: I’d like to tackle this as a follow-up.
+    - Josh: Please do it soon to make sure we don’t lose the TCs attention.
+    - Josh: Do you allow complex values in attributes?
+    - Florian: No.
+    - Josh: In the entity/semconv SIG we debated having restrictions on resources to not allow complex attributes. But we didn’t do that. I’ll approve with some NITs.
+    - Florian: I’ll address the nits.
+    - Josh: I’d have preferred profiling using a different Resource message for profiling, but I’ll defer to Bogdan on that.
+    - Felix: The [version we benchmarked](https://github.com/open-telemetry/sig-profiling/blob/67c2e38d095385fc8d1387212471b6ec0d37f7fb/otlp-bench/internal/otlpversions/gh733/opentelemetry/proto/common/v1/common.pb.go#L328-L333) had the key_ref field added.
+    - Florian: We should get this in the collector to start experimenting.
+    - Felix: I’m not sure if splitting the collector work into two phases (without key refs and with) will make things faster.
+    - Christos: I agree, it will be easier to agree on the proto first, and then do the collector implementation.
+    - Florian: Works for me.
+    - → Agreed that we want #733 + potential follow up PR for key refs in the proto (also resolve [KeyValueAndUnit](https://github.com/open-telemetry/opentelemetry-proto/blob/d6dc40fe54b8d441fd7a920af29d96c3ba6ed36a/opentelemetry/proto/profiles/v1development/profiles.proto#L488-L499) with Bogdan) before we start collector implementation.
+    - Florian: Do we want to push a release without key refs and then one with key refs?
+    - → No, one OTLP release. (Christos, Felix, Josh)
+    - Josh: I’m worried Bogdan might change his mind, so our OTLP changes won’t be sticky until he’s happy and implements this in the collector.
+    - Florian: I’ll follow up with both.
+    - Jonathan: Don’t we have a version of the profiles proto that has this already?
+    - Felix: This is not in the profile proto, but in the common proto (resource) impacting all signals.
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - Alexey: Would like to get more feedback. Got LGTM from Florian. 🚨
+    - Alexey: I need to add some additional checks for dicts (orphans and duplicate entries). But I’d like to land this version first.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - Just need time to get it done. I’m not blocked on anything.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) [Proposed OTEP for thread-level context sharing](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.bmgoq3yor67o)
+  - Brennan: Can we talk about max record size? We have a thread-level context sharing mechanism at PolarSignals. We have a limit in terms of number of items and then a length limit for keys/values. This works better with eBPFs loop limits. Should this be part of the protocol? It could communicate sth that’s higher than what the profiler could handle.
+  - Scott: You could degrade gracefully if you can’t read the whole buffer. You could drop attributes that are further down.
+  - Brennan: That’s true. We kinda do this already.
+  - Brennan: Another thing: Do the buffers always need to be the same size? We don’t want multiple probe_read calls. But maybe it could be a length and then buffer (needs two read calls), so you don’t always need to allocate the maximum buffer all the time.
+  - Scott: Others probably have stronger opinions. I’m interested in them.
+  - Florian: Was there a consideration to use an eBPF map to share this info between processes? bpf_probe_read might not be a way to scale this. Otel Obi project is also interested in this. Was this considered in some way?
+  - Ivo: We’re aware of OBI. We’ve not gone very far into how that would look like. We might need to support both.
+  - Florian: Yeah, I also see them as an addition/add-on.
+  - Alexey: Question about the format. The thread-local fields will be added to the process context?
+  - Ivo: Yes.
+  - Alexey: There is a schema type and version, is this for flexibility? Does this mean somebody else might want to use a different format?
+  - Alexey: Do you even need the schema field? Or is this version enough?
+  - Ivo: Yes, we can simplify this. For go we have the pprof labels, so maybe we could use schema_type:go.
+  - Alexey: Maybe mention this in the text.
+  - Alexey: Another question I had, is using one byte for the key byte indexing … are sure nobody will have 257 keys?
+  - Scott: Good question. What do the PolarSignals folks think?
+  - Brennan: None of our customers are using anywhere close to 256 keys. More like 10-20. I can imagine it being possible. Some large orgs might have this issue due to independent teams doing stuff.
+  - Brennan: We could use varint.
+  - Scott: Would be great to get feedback.
+  - Felix: Is varint an issue for eBPF.
+  - Brennan: Should be fine.
+  - Felix: varint is nice and flexible and good for compact size, but decoding speed is less than fixed size ints. Worth thinking about.
+  - Christos: Can also decode in userspace (eBPF reads records only)
+  - Christos: Question to Ivo, do you plan to have a sample eBPF implementation during/after the proposal gets reviewed?
+  - Ivo: We want to have a sample implementation ready while the review is in progress
+  - Christos: Doesn’t have to be production-ready or what ends up merged into ebpf-profiler, just something concrete to clarify the proposal and help answer questions
+  - Alexey: Why is root span id part of the record?
+  - Scott: It’s something we need on our side for the profiler.
+  - Ivo: I believe there was experiments on that. Elastic also has a “transaction-id”. At Datadog we find this useful. If people don’t like it as a top-level item, we’ll record this further down.
+  - Alexey: In the profiler we use 16 byte trace + 8 byte span id, no root span id. It seems random to have root span here.
+  - Felix: Action item for us is writing down what we find useful with local root span to discuss (or remove the item).
+  - Brennan: I’ll add a draft PR for this tomorrow (that I don’t expect this to land).
+- Felix: Alpha.
+  - Felix: Do we need to collector implementation of the new ref stuff before alpha?
+  - Christos: Yeah.
+  - Florian: Yeah, we also need to refactor the profiler. That’s essential for the eBPF profiler.
+  - Christos: Docs could also be required. [Fabrizio Ferri Benedetti](mailto:fabri.ferribenedetti@elastic.co) can help us out. Need to jump on it once we know the way forward is clear (final acceptance on references+implementation)
+- Dale: Quick item on Ruby. 907 landed. Other PRs are getting reviews. Will be out for 2 weeks, but then come back.

@@ -1,0 +1,52 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Microsoft)
+- Shipra Jain (Microsoft)
+- [Sujay Solomon](mailto:sujaysolomon@google.com) (Google)
+- Tao Chen (Microsoft)
+- Sergey Sergeev (Cisco/Splunk)
+- Alex Hall (Pydantic)
+- Pavan Sudheendra (Cisco/Agncty)
+- Giovanna Carofiglio (Cisco/Agncty)
+- Jacques Samain (Cisco/Agncty)
+- Xander Song (Arize)
+
+### Agenda
+- Standing topics:
+  - Triage
+    - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+- [Shipra,10 mins] - Discuss proposal for Multi-Agent Observability [https://docs.google.com/document/d/1fcPe3SB_koRNeOoioq28RbA1BC7MNA7-/edit?usp=drive_link&ouid=109914447143824537379&rtpof=true&sd=true](https://docs.google.com/document/d/1fcPe3SB_koRNeOoioq28RbA1BC7MNA7-/edit?usp=drive_link&ouid=109914447143824537379&rtpof=true&sd=true)
+- [Pavan, 5-10 mins] - Discuss Single & Multi-agentic system observability proposal
+  - [https://docs.google.com/document/d/1qbxluJawowrKnn-NExeDsNIpVgrpUOVMRXJC_sS9HKs/edit?usp=sharing](https://docs.google.com/document/d/1qbxluJawowrKnn-NExeDsNIpVgrpUOVMRXJC_sS9HKs/edit?usp=sharing)
+    - Released in Agency
+- Let's collaborate between MS and Cisco
+  - Let's have 1-off meeting (we can make it regular)  and decide what's in common and hot to proceed
+  - [Slack thread to coordinate on the topic](https://cloud-native.slack.com/archives/C06KR7ARS3X/p1751387098889969) in #otel-genai-instrumentation slack
+- [liudmila, 10 min] Chat discussion: uploading the whole history vs individual pieces
+  - Let's take _ref attributes away for now and come back to it (in order to make progress on the rest of this PR)
+- [liudmila, last 20 min] Project planning
+  - Finalize chat history refactoring and implement it in semconv
+    - In progress
+  - Common package in python to reduce boilerplate and simplify instrumentations
+    - [Sergey Sergeev](mailto:sergeys@splunk.com)Cisco is making progress, stay tuned
+  - Configuration story for instrumentations in python
+    - Not in progress on the SIG side
+  - Evaluations
+    - Some work in progress at MS (but private)
+  - Multi-Agent:
+    - Microsoft and Cisco are interested, longer-term project
+    - Separate work stream
+  - Misc semconv additions:
+    - Streaming details
+    - Tool definitions
+    - More details about tool calls (arguments, outputs)
+    - Agent details and protocols
+    - Multi-modal content
+- [Everyone, offline] PRs to review
+  - Lanchain POC - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3600](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3600)
+  - Renames [https://github.com/open-telemetry/semantic-conventions/pull/2046](https://github.com/open-telemetry/semantic-conventions/pull/2046)
+  - Attributes and events - ready for review - [https://github.com/open-telemetry/semantic-conventions/pull/2179](https://github.com/open-telemetry/semantic-conventions/pull/2179)
+  - MCP [https://github.com/open-telemetry/semantic-conventions/pull/2083](https://github.com/open-telemetry/semantic-conventions/pull/2083)
+  - GCP config attribute [https://github.com/open-telemetry/semantic-conventions/pull/2125](https://github.com/open-telemetry/semantic-conventions/pull/2125)
+  - Embeddings  OpenAI in Python [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461)

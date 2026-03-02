@@ -1,0 +1,57 @@
+## Meeting Notes
+
+### Attendees
+- Shipra Jain [Microsoft]
+- Tristan Sloughter (Groq)
+- Bruno Baptista (IBM)
+- Liudmila Molkova (Grafana Labs)
+- Samuel Colvin (Pydantic)
+- Alex Hall (Pydantic)
+- Shuwen Pan (Cisco)
+- Pavan (Cisco)
+- Keith Decker (Cisco/Splunk)
+- Xander Song (Arize)
+- Hardik Surana (Cisco/Splunk)
+- [Sujay Solomon](mailto:sujaysolomon@google.com) (Google)
+- Sergey Sergeev (Cisco/Splunk)
+- Dylan russell (google)
+- Aaron Abbott (Google)
+- Susan Chang (Elastic)
+
+### Agenda
+- Standing topics:
+  - Triage
+    - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+    - [everyone, 5 min]  Intro for new members
+  - https://github.com/open-telemetry/semantic-conventions/issues/2664
+    - AI on Shipra and Sergey: please share links to docs and PR related to agentic things in comments
+  - [Shipra - 2 mins] PR Merge request, 2 approvals received, all checks passed: [Add tool definition and other tool-related attributes in invoke-agent, inference, and execute-tool spans by ShipraJain01 · Pull Request #2702 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/2702)
+  - [Sergey - 5m] agentic attributes in gen_ai metrics
+    - Should we add low-cardinality [agentic attributes](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-agent-spans.md) to the [gen_ai metrics](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-metrics.md)? Specifically - gen_ai.agent.id, gen_ai[.agent.name](http://.agent.name)
+    - If we report agent and llm token usage, we'd report them twice
+    - If we report only on the llm level, we don't have agent info there
+      - How do we propagate agent info to llm call to report it there?
+    - AI: Sergey to share PoC in the slack channel
+  - [Sergey - 5m] inference cost metrics
+    - [https://github.com/open-telemetry/semantic-conventions/issues/2312](https://github.com/open-telemetry/semantic-conventions/issues/2312)
+    - AI: discuss at the SemConv call (8am PT Monday)
+    - General process - project proposal, e.g. [https://github.com/open-telemetry/community/pull/2837](https://github.com/open-telemetry/community/pull/2837)
+  - [Sergey - 5m] GenAI Evaluation Metrics
+    - Instrumentation-side, low-card representation of eval.result event
+    - Metric name: either per-eval name  or one metric with eval name as attribute
+    - Type: histogram
+    - Value: score
+    - Attributes:
+      - Label
+    - AI: need to document the above with explanation on what to do when there is no numeric score
+  - [Bruno -2m] Auditing events
+    - Events that allow to reconstruct communication with the model
+    - Somewhat related - https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-events.md#event-eventgen_aiclientinferenceoperationdetails
+    - AI: demo (once ready)
+  - [Samuel - 2m] If/when we get around to adding `operation.cost`, what type would it have sorry had to drop off call
+    - Float vs double:
+      - Otel has int64 and double
+      - [https://github.com/open-telemetry/opentelemetry-proto/blob/c0a98a1847d3124ac5f9ecd02d0e2d2732bbb590/opentelemetry/proto/metrics/v1/metrics.proto#L405-L410](https://github.com/open-telemetry/opentelemetry-proto/blob/c0a98a1847d3124ac5f9ecd02d0e2d2732bbb590/opentelemetry/proto/metrics/v1/metrics.proto#L405-L410)
+      - Is double precision enough?
+        - If not, we'd have to have string attribute, but it's impossible to aggregate
+  - [Liudmila, 5 min] Status update [The current state of OTel GenAI Semantic Conventions and Instrumentation SIG](https://docs.google.com/document/d/1wQK77BCS2LVy72mKmZuWg9CS0Ex7WmesOsun-5BXUvg/edit?tab=t.0#heading=h.q15lcnl52fbv)

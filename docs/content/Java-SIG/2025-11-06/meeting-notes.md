@@ -1,0 +1,60 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Cloudera)
+- Jonathan Halliday (IBM)
+- Trask Stalnaker (Microsoft)
+- Jason (Splunk)
+- Jay DeLuca (Grafana Labs)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com)(Grafana Labs)
+- Jack Shirazi (Elastic)
+- Jean Bisutti (Microsoft)
+- Lauri Tulmin (Splunk)
+- Peter Findeisen (Cisco)
+- Prasad Sawool (Jio)
+- Bruno Baptista (IBM)
+- cleverchuk(solarwinds)
+- Andrew Wong (Capital One)
+- Bhaskar Banerjee (Capital One)
+
+### Agenda
+- Core repo release
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7606](https://github.com/open-telemetry/opentelemetry-java/pull/7606)
+- Next week’s instrumentation release
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12846](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12846)
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12608](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12608)
+- [Gregor] How to determine if Global Otel is set
+  - How to check if global otel set (without causing side effects)
+    - Check if Java agent is running? Or someone else set it up
+  - How to check if an OpenTelemetry instance is a noop
+    - To shortcircuit? Already have Tracer/Instrument/Logger isEnabled
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7452](https://github.com/open-telemetry/opentelemetry-java/pull/7452)
+  - Proposed usage: [https://github.com/spring-projects/spring-boot/pull/46230/files#diff-63ffcb2553d0c128598cf354f3cc917eb9d21e2a243334f0420a925fcbe4ada4R129-R133](https://github.com/spring-projects/spring-boot/pull/46230/files#diff-63ffcb2553d0c128598cf354f3cc917eb9d21e2a243334f0420a925fcbe4ada4R129-R133)
+  - Maybe just check some class from the agent is in the classpath?
+  - [jack] PR: **GlobalOpenTelemetry.isSet()**
+- [Tyler] Update on Servlet Filter instrumentation.
+- [Gregor] Should promotion to stable be a breaking change?
+  - [https://github.com/open-telemetry/opentelemetry-java-contrib/pull/2030#discussion_r2478971040](https://github.com/open-telemetry/opentelemetry-java-contrib/pull/2030#discussion_r2478971040)
+  - From Jack Shirazi:  so clearly from the discussion in the README, we'll want to support more than one name. How will that be achieved (specifically, we'll want both experimental_inferred_spans and inferred_spans to be supported at some point in the future)
+  - Jack Berg: for a period of time (a couple of months), both should be supported
+    - There’s no tooling for that ATM, but it could be added
+      - If user requests “foo/development”, we can return “foo” (stable), “foo/alpha” or “foo/beta”
+      - If user requests “foo”, we cannot return “foo/development”, because that would be a false sense of security
+- [Jack s/Sylvain/Jonas/Cesar] Indy (invoke dynamic) [next steps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/13031#issuecomment-3496353158)
+  - Please read Sylvain’s comment in the above line, and comment
+  - For clarity here, where we are:
+    - Invoke dynamic is the Byte Buddy author's recommended way to do instrumentations, and comes with a host of [benefits (see "Benefits ...")](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/8999), eg no shading, allows instrumentation breakpoints, better isolation, removes advice class restrictions
+    - All instrumentations have now been migrated to be able to use invoke dynamic (or if not, please point out anything missing)
+    - The immediate proposal is to flip `otel.javaagent.experimental.indy` to true by default. In precise terms this:
+      - doesn't affect any instrumentation that has already been migrated (ie has isIndyReady() returning true) - which should be all the instrumentation in the OpenTelemetry agent (except those where it doesn't apply because they use different byte buddy APIs
+      - will now enforce that any inlined instrumentation will cause an error (this affects the agent instrumentation, not extensions), this could possibly affect downstream distributions, not the agent …
+      - distributions with custom instrumentations which don't return true from isIndyReady()  will still get those instrumentations auto-converted by the instrument re-writer to be indy compatible, but there may be edge cases where the re-writes fail, and these need to be manually migrated (we're prepared to help)
+  - Proposals of subsequent steps for the 3.0 release are in the Sylvain’s comment
+- [Trask] Complex attributes prototypes
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7632](https://github.com/open-telemetry/opentelemetry-java/pull/7632)
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7813](https://github.com/open-telemetry/opentelemetry-java/pull/7813)
+  - put(valueKey(“abc”), Value.of(“xyz”))
+  - put(stringKey(“abc”), “xyz”)
+  - Value<?> value = Attributes.get(valueKey(“abc”))
+- [Trask] [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15144#discussion_r2489000559](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15144#discussion_r2489000559)
+- [Bhaskar] When is the OTLP/stdout feature going to be moved up from ‘experimental’ and are there concerns on using this exporter in Prod. I ask because the Console exporter has been explicitly called out as not suited for Production. https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#in-development-exporter-selection

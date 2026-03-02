@@ -1,0 +1,52 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Cloudera)
+- Jonathan Halliday (IBM)
+- Trask Stalnaker (Microsoft)
+- Marylia Gutierrez (Grafana Labs)
+- Jason (Splunk)
+- Jay DeLuca (Grafana Labs)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+- Jack Berg (Grafana Labs)
+- Pranav Sharma (Google)
+- Bruno Baptista (IBM)
+- Peter Findeisen (Cisco)
+- Jack Shirazi (Elastic)
+- cleverchuk(solarwinds)
+- Lauri Tulmin (Splunk)
+
+### Agenda
+- Standing topic: issue triage
+  - [is:open -label:"needs author feedback","needs repro","contribution welcome"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+-label%3A%22needs+author+feedback%22%2C%22needs+repro%22%2C%22contribution+welcome%22)
+  - [is:open label:"needs triage"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22)
+- Standing topic: [stackoverflow questions](https://stackoverflow.com/search?tab=newest&q=%5bopen-telemetry%5d%20java)
+- [Marylia] Feedback from survey to non-members:
+  - Avg 7 answers: 5/5
+  - Confusion on next steps after approval. People seeing getting approval, but taking several days/week to actually get merged after that
+  - Sometimes want more than 1 approval
+  - Path to maintainer?
+  - Contrib story is different
+  - Can be more communicative in PRs from new contributors
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) present [Sharing Process-Level Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0) from profiling SIG -> Hoping to get feedback on the current proposal as something that we'll try to standardize and then plan to contribute to OTEL Java
+  - [https://github.com/ivoanjo/proc-level-demo/tree/main/anonmapping-clib](https://github.com/ivoanjo/proc-level-demo/tree/main/anonmapping-clib)
+- [Jay] Documenting configurations
+  - Following up from the discussion last week:
+    - Put together a page in the explorer: [https://jaydeluca.github.io/instrumentation-explorer/configurations](https://jaydeluca.github.io/instrumentation-explorer/configurations)
+    - Opened [an issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/15084) to track further work in this area
+- [Trask] Complex attributes
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7632](https://github.com/open-telemetry/opentelemetry-java/pull/7632)
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7661](https://github.com/open-telemetry/opentelemetry-java/pull/7661)
+- [Trask] Stability
+  - [https://github.com/open-telemetry/opentelemetry.io/pull/8208](https://github.com/open-telemetry/opentelemetry.io/pull/8208)
+    - Resource detectors
+  - “libraries should not enable alpha or experimental instrumentations” BY DEFAULT
+  - Customer wants
+    - GA
+    - Support
+    - Not stability
+  - Android instrumentation
+  - Log unstable instrumentation which would have been applied
+- [Jason] - Release problem and transparency?
+- Issue triage (if time allows)
+  - [Resource name quantization using OTel SDK’s for java microservices #14970](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14970)

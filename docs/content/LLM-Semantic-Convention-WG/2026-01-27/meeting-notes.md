@@ -1,0 +1,69 @@
+## Meeting Notes
+
+### Attendees
+- Ankit Singhal (Microsoft)
+- Nagkumar Arkalgud (Microsoft)
+- Liudmila Molkova
+- Keith Decker (Cisco/Splunk)
+- John McBride (paper Compute co.)
+- Josh Winerman (Cisco/Splunk)
+- Pradeep Nair (Cisco/Splunk)
+- Aaron Abbott (Google)
+- Dat Ngo (Arize)
+- Shuwen Pan (Cisco)
+- Pavan (Cisco)
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Ankit]: [Built-in Tools Support by singankit · Pull Request #3038 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3038)
+  - Let's get approval from Aaron
+- [Ankit]: [[gen-ai] Clarify invoke_agent span creation responsibility in distributed scenarios · Issue #3334 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/issues/3334)
+  - [Add `responses` operation value to `gen_ai.operation.name` by singankit · Pull Request #3337 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3337)
+  - Client -> server -> langraph
+- [Liudmila, 15 min] Roadmap for 2026 - what should we target? [https://github.com/open-telemetry/semantic-conventions/issues/3330](https://github.com/open-telemetry/semantic-conventions/issues/3330)
+  - Instrumentations
+    - Fully functional utils?
+    - Central validation including attribute schema?
+    - Onboard all python instrumentations to gen-ai utils
+    - Specific instrumentations:
+      - Langchain?
+      - Inference traces and metrics across all libs?
+  - Stabilize a subset of conventions for inference?
+  - Have reasonable agent conventions + instrumentation?
+  - Ideas:
+    - Ankit, Neil: Server-side tracing
+    - Workflows
+    - Security, guardrails, memory (resources) operations
+    - More tool calls support
+  - Proposal
+    - Stability: Hardening core set of inference: consider stabilization and instr libs consistent
+    - New features:
+      - Workflow
+      - Adding support for more tools types / operations
+      - Server side?
+    - Maybe do a stack ranking like last time (issue/doc/etc)
+- [Liudmila on behalf of Haotong, 5min] 	[https:/git/hub.com/open-telemetry/semantic-conventions/issues/3335](https://github.com/open-telemetry/semantic-conventions/issues/3335)
+- vLLM pull request - [https://github.com/vllm-project/vllm/pull/32573](https://github.com/vllm-project/vllm/pull/32573)
+- Also agent server instrumentation
+- Workflow
+  - Invoke_agent (INTERNAL)
+    - Inference
+      - HTTP
+        - vLLM: server inference span // ollama, llamacpp, etc
+          - Token generation details
+  - Invoke_agent (client)
+    - HTTP
+      - Provider: invoke_agent  (SERVER) //bedrock, azure, etc?
+      - Provider: server-side tool execution as a span
+- [Nagkumar]: Security spec for gen_ai [https://github.com/open-telemetry/semantic-conventions/pull/3233](https://github.com/open-telemetry/semantic-conventions/pull/3233)
+  - Span for guardrails with details on type of guardrail / findings / etc
+  - Instrumentation for client or hosted agent
+  - Lanchain, langgraph, openai
+  - Aaron could share with Google folks, but might be a lot to take a look
+  - OWASP recommendations might be applicable (trustworthy agents)
+- [Pavan] Follow up on feedback for the example implementation of [session.id](http://session.id) attribute - [https://github.com/open-telemetry/semantic-conventions/issues/2883](https://github.com/open-telemetry/semantic-conventions/issues/2883)
+- [Surya] Anthropic instrumentation for streaming and async clients
+- [Liudmila] Agent vs model tokens [https://github.com/open-telemetry/semantic-conventions/issues/1918](https://github.com/open-telemetry/semantic-conventions/issues/1918)

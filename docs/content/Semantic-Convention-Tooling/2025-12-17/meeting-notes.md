@@ -1,0 +1,60 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- Jeremy Blythe
+- Laurent Querel
+- Arianna Vespri
+- Liudmila
+
+### Agenda
+- Triage
+  - Did a pass through issues and have fixed
+- [suereth] [https://github.com/open-telemetry/weaver/pull/1064](https://github.com/open-telemetry/weaver/pull/1064) - weaver update-markdown v2
+  - Works like a charm, but doesn't solve the problems we need to solve
+    - Example: `<!-- semconv cloudevents –>`
+    - Not just a set of attributes, has `requirement_level`
+  - To check .registry.attributes (it's currently just .attributes)
+  - TBD - Figure out why JQ filters that return primitives (like "hello") are being auto-converted into objects (like { 'e': 0, 'l': 0, 'h': 0 })
+- [lmolkova] V2 Stuff
+  - Using V2 to publish V2 Schema - what should be end result
+    - Today -
+      - Renders partial diffs
+    - Instead
+      - Registry Manifest
+        - Add file_format
+        - Keep name/description
+        - semconv_version -> version
+      - Serve "schema url" = manifest
+      - A pointer to an archive
+        - Archive has two files
+          - Schema
+          - Diff
+    - Diff:
+      - Use weaver one as v2
+      - Allow to generate schema v1.1.0 as an extension and same ext can be used as prometheus
+    - Breaking change:
+      - Let's walk collector walks folks through and get their approval
+      - People do use it, but it's not great anyway
+      - We'll provide alternative ways
+    - This all should be an OTEP
+  - Workflow that allows to generate repo layout for non-semconv
+    - Given manifest and model folder generate all the schema-publish stuff
+    - We can publish on GH artifacts
+    - Weaver registry publish - could do the thing
+- [jeremy] UI next steps
+  - Weaver serve cli
+    - Weaver registry serve? It's not necessarily about the registry
+  - Future: playgrounds for jq and jinja
+  - Also future: hot-load registry from UX, or even create registry from UX
+  - Connection to inference (listening to telemetry and inferring schema from it)
+    - Probably two independent features that have future together
+  - To figure out:
+    - Command
+    - Distribution mechanism
+    - UI seems cool and ready
+- [suereth] Creating agents:
+  - Docs agent - https://github.com/open-telemetry/weaver/pull/1081
+  - Others?
+    - test agent?
+  - [https://github.com/jsuereth/weaver/tree/docs-agent/improve-docs-3](https://github.com/jsuereth/weaver/tree/docs-agent/improve-docs-3)

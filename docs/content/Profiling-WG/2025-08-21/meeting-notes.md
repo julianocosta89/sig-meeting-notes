@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Francesco Andreuzzi](mailto:andreuzzi.francesco@gmail.com)(AWS / Async-Profiler)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- cleverchuk(solarwinds)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- Frederic Branczyk (Polar Signals)
+- Antoine Toulme (Splunk)
+- [Joel Höner](mailto:joel@zystem.io) (zystem)
+
+### Agenda
+- Review action items:
+- Review Context Propagation documents:
+  - Christos: Needs buy-in from OTel SDKs. Had some questions about semantics. Can resolve this async.
+- [Felix] Proposal: Let’s publish 1-2 “release candidates” to allow for more testing and feedback rather than jumping to 1.0 directly. rc1 should go out in August.
+  - Frederic: +1 to RC. Even if OTel doesn’t typically doesn’t do it. We can do it for the group here.
+  - Alexey: +1 to RC. Maybe we could do a blog post to get feedback.
+  - JH: [General maturity](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#alpha) suggested we should go to Alpha first.
+  - Antoine: I want to be convinced about pprof compatibility. I’m worried it’s not working yet, and it’s a big endeavor. Last meeting I brought a PR.
+  - Florian: I agree that it doesn’t make sense to implement processors based on the 1.7 proto release from March. We would benefit from a 1.8 release.
+  - Christos: Stack trace PR needs ASCII Diagram fix.
+  - Florian: I can take a TODO to ask about 1.8.
+  - Frederic: I integrated the latest changes into Parca last week and it worked pretty well.
+  - [JH] min requirements for rc1? #672, #645, … ? if it’s not 100% complete, is it even really a release candidate?
+  - [Florian] we might want to follow OTel maturity levels. [General maturity levels](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md) and [OTel collector maturity levels](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md). So v1development to v1alpha?
+  - [JH] no renaming of package at this time, see slack thread.
+- [suereth] [Labels](https://github.com/open-telemetry/semantic-conventions/issues/2561) on profiles from pprof vs. resource attributes.
+  - Are these truly something owned by the profile or process?
+  - Are these Resource labels you'd attach to process, similar to resource detection in other signals today?
+  - Florian: The ebpf profiler currently uses a custom process.context label. I’ve talked to SIG, but a lot of people were out due to vacations. I’ll follow up again.
+  - Nayef: Some overlap of these labels with service, container tags, etc. might make more sense as resource attributes as labels in the sample on the profile. Could make it easier to switch between SDK profiles and eBPF profiles.
+  - Florian: Some labels should be special cases, like service name. Limiting to service name and container id might be reasonable, but we need to be careful.
+- [JH] Sample’s ‘repeated’ attribute_indices has different semantics to ‘repeated’ values and ‘repeated’ timestamps_unix_nano. Can we improve docs?
+  - Some parts of the sample define the object, e.g. the stack trace.
+  - Attributes are repeated fields, but they don’t map to individual samples.
+  - Christos: Yeah, right now it’s unspecified.
+  - JH: Values is similar, why is not just an attribute.
+  - Alexey: I assume the order is not important for attributes?
+  - JH: Yeah.
+  - Alexey: Maybe rename the field to set?
+  - Christos: I feel like we intended the attributes to apply to all samples.
+  - Christos: values and timestamps should be grouped together.
+  - JH: And change docs a bit.
+  - Alexey: It’s difficult to check for mistakes with the consistency check tool. Each key should be assigned only once in the list. We could check for that.
+  - JH: I’ll take a pass at this and raise a PR.
+  - JH: The other field change I considered is having an occurrence count. For memory allocations the value would then be the allocation size.
+  - Alexey: Should profile consistency check tool be tied to the alpha release?
+  - Felix: Doesn’t have to be on the critical path. Alpha needs to be settled before consistency checks can be implemented.
+  - Florian: Once alpha is out, people can play with it. Receiver that Antoine mentioned is just one thing we break. I think we should have Alexey’s tool before the announcement.
+  - JH: Maybe we could tag it internally as alpha for implementers and then announce alpha for users at KubeCon.
+- [Felix] Any more comments: [Profiles: simplify profile stack trace representation by felixge · Pull Request #645 · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/pull/645) . If not I’ll resolve comments and get it ready for merge.
+  - Christos: I’ll send a PR, [DONE](https://github.com/felixge/opentelemetry-proto/pull/2)
+  - Josh: You’ll still need people to click merge. But you can approve.
+  - Josh: We’re trying to expand maintainer-ship. If anybody would be interested that’d be great.
+- [Florian] [Nightly builds of OTel Collector with profiling](https://hub.docker.com/r/otel/opentelemetry-collector-ebpf-profiler).
+- [Alexey] Clarify that labels should only be used for categorical values.
+  - Felix: Makes sense, but should probably be a recommendation.
+  - Alexey: Yeah, maybe we should tell people to think about the cardinality.
+  - Alexey: I’ll add a comment to ask people to think about cardinality.
+- Josh: If you need anything from me. Got a perma-conflict in the first 30 minutes. So add it the last 30 minutes.

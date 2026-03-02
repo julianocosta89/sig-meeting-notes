@@ -1,0 +1,105 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Francesco Andreuzzi](mailto:andreuzzi.francesco@gmail.com) (AWS/Async-Profiler)
+- [Alban Crequy](mailto:muadda@gmail.com)(Microsoft, Inspektor Gadget team)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+- [Daniel Schwartz-Narbonne](mailto:daniel.schwartznarbonne@datadoghq.com)(Datadog)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com)(Datadog)
+- Frederic Branczyk (Polar Signals)
+- cleverchuk(solarwinds)
+- .
+
+### Agenda
+- Review Active Action Items
+- [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+  - Needs feedback.
+- [Florian Lehner](mailto:florian.lehner@elastic.co)[receiver/pprof] [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42843)
+  - Florian: Blocked on feedback from code owners (e.g. Antoine). I pinged them on slack last week, but no response yet.
+- [All] Review Context Propagation documents:[Resource Definition in the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1Ud2EQZMmFCYOhdSXW0VFHIdKb-Ltzd03bImZgIC1syM/edit?tab=t.0#heading=h.jav84tdbpj0h), [Sharing Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0#heading=h.lp3k1tq7iqaq) or [TLV encoding for OTEL_CTX](https://docs.google.com/document/d/1Ij6SYfv0lHOhTNsXNGVFpra3ZCfz-WC7QBXdB_OaoYc/edit?tab=t.0#heading=h.llbgke6lmlbd), [Sharing Thread-Level Information with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.0#heading=h.rdsycckexrcs),
+  - Ivo: Got good feedback from Florian. Still need to incorporate some feedback we got so far.
+  - Ivo: We have a key-value format. Is that good, or should we have explicit fields.
+  - Ivo: If we encode the data using protobuf, where would we store the protobuf schema file?
+  - Felix: For now we can put it here: [https://github.com/open-telemetry/sig-profiling](https://github.com/open-telemetry/sig-profiling) and find a permanent home later.
+  - Ivo: We have some new ideas around [Resource Definition in the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1Ud2EQZMmFCYOhdSXW0VFHIdKb-Ltzd03bImZgIC1syM/edit?tab=t.0#heading=h.jav84tdbpj0h) and will make a new proposal soon, so it can be ignored for now by the group.
+  - Ivo: For thread level stuff we’re prototyping right now. But we can also remove the [Sharing Thread-Level Information with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.0#heading=h.rdsycckexrcs) document from the list for now.
+  - Frederic: We’ve been doing this kind of stuff for some time now. We should scope this so that we only treat C/C++/Rust (maybe Java). We recently implemented this in v8. To get it to be acceptable in terms of performance, we had to do something custom.
+  - Ivo: We have a Go-specific solution for Go already. We should be more clear that there won’t be a one-size fits all solution. But we agree with that.
+  - Frederic: I’ll ask my team to look into this as well and give feedback on the document for thread-level.
+  - Felix: Why does process-level not come up?
+  - Frederic: We attach process level meta data in our own reporter. We don’t use OTLP.
+  - Felix: Don’t you need service names and similar things?
+  - Frederic: We consider this workload metadata. Should be discovered by k8s or other things.
+- [**Owner wanted**] We agree and should document that the values/timestamps shape should be the same for all samples in the given profile. See overlap with [#714](https://github.com/open-telemetry/opentelemetry-proto/pull/714).
+  - Partially split into #724 which we’ll tackle first and then come back to timestamps.
+- [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [~~#714~~](https://github.com/open-telemetry/opentelemetry-proto/pull/714) [#724](https://github.com/open-telemetry/opentelemetry-proto/pull/724)
+  - Needs more reviewers.
+- [Alexey] Update original_payload_format/original_payload field docs - don't special case pprof, mention "if lossy conversion then you can include the orig payload", emphasize this is optional. Maybe mention that even pprof conversion can be lossy in exotic cases (bespoke timestamp encoding?). See [this discussion](#bookmark=id.vdpjbusaz7ui). Sent [#722](https://github.com/open-telemetry/opentelemetry-proto/pull/722).
+  - Needs more reviewers.
+  - Florian: The PR on the spec for documenting the valid payload format values is in progress.
+  - Felix: I’ll review.
+- [Florian Lehner](mailto:florian.lehner@elastic.co) Add payload format semconv (or spec?) value declaration. Examples: pprof / JFR. See [this discussion](#bookmark=id.vdpjbusaz7ui). And update original_payload_format accordingly.
+  - [https://github.com/open-telemetry/opentelemetry-specification/pull/4685](https://github.com/open-telemetry/opentelemetry-specification/pull/4685)
+  - Florian: PR seems ready to merge. I’ll reach out to them next week to ask for the conditions to merge.
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Pull [florian.lehner@elastic.co](mailto:florian.lehner@elastic.co) and Frederic into eBPF profiler security reports to discuss policy.
+  - Felix: Florian got added, but Frederic did not yet.
+  - Frederic: We don’t have a definition in Parca.
+  - Florian: The advisories stall the syscalls on the kernel side. I see it as a kernel limitation. It impacts anybody using the syscall.
+  - Alban: I’m not aware of upstream discussions yet. I’m not sure if starting a discussion on LKML would be good b/c it would be public.
+  - Florian: The Linux kernel folks have introduced a security reporting mechanism where the discussions are not in public.
+  - Nayef: For k8s seccomp is not enabled by default.
+  - Alban: I’ll reach out to the kernel folks.
+- [Alexey Alexandrov](mailto:aalexand@google.com) See [this](#bookmark=id.9immnxam3n5h) - update the dictionary docs to clarify the value identity semantics.
+  - Alexey: Not done yet. WIP.
+  - Alexey: What should we do about dictionary entries that are not referenced?
+  - Felix: We should treat it as a warning, not an error.
+  - Florian: Thumbs up.
+  - Alexey: Except the 0 entry which must exist.
+  - We have consensus on this.
+- [Alexey Alexandrov](mailto:aalexand@google.com) Send a PR clarifying the start timestamp / duration conventions. See [this discussion](#bookmark=id.an4px2jo7lgp).
+  - Alexey: TODO / WIP.
+- [Alexey Alexandrov](mailto:aalexand@google.com) Profile.comment_strindices as an attribute - see [this discussion](#bookmark=id.9ql1dx83kk6r). Action item is to check whether there is a precedent for having string array attributes in semconv. Done, see below.
+  - Alexey: Got a local PR for this. But wanted Florian’s change for the semantic convention to land first, as well as my other PR.
+  - Alexey: We should submit this soon since it shifts the field ids.
+  - Alexey: Not blocked on this, will send a PR when I get a chance.
+  - Alexey: Some reviews in OpenTelemetry take a long time.
+  - Felix: Please feel free to directly ping me.
+- [Florian Lehner](mailto:florian.lehner@elastic.co)Introduce pprof.profile.comment - [https://github.com/open-telemetry/semantic-conventions/pull/2861](https://github.com/open-telemetry/semantic-conventions/pull/2861)
+  - TODO: [Florian Lehner](mailto:florian.lehner@elastic.co) Remove comment_strindices from proto
+  - Blocked on the semantic convention approvers.
+  - Alexey: I’m blocked on this.
+  - Florian: I’ll join the semantic conventions SIG on Monday and ask for feedback.
+  - Alexey: It’d be great to have a contact for each repo to ping when we’re stuck on approvals. We shouldn’t
+  - Florian: The answer I get is pinging the folks in the slack in the #otel-collector-dev, but not getting responses there. It often takes 4-5 weeks to get PRs merged.
+  - Alexey: We can try pinging Tigran. I’ll DM him to ask for advice.
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Reach out to the specification SIG on whether the InstrumentationScope `schema_url` applies to InstrumentationScope attributes.
+  - Nayef: Reached out already earlier today, waiting for them to respond.
+- [Alexey] doc_url pprof attribute - [https://github.com/open-telemetry/opentelemetry-proto/pull/588](https://github.com/open-telemetry/opentelemetry-proto/pull/588), we still need to add it.
+  - Alexey: Needs another semantic convention PR.
+  - Alexey: I’ll take it.
+- [Alexey] Sample type order attribute.
+  - Alexey: When we removed the default sample type, we said we need to specify the semantic conventions for this. Our round trip converter will depend on this.
+  - Alexey: It’s a comment on the PR removing the default sample type.
+  - Alexey: I’ll raise a sem-conv PR for this.
+  - Florian: When writing a converter I found that we don’t have an answer to the question on whether things like function_id’s should be the same after a round trip.
+  - Alexey: While this would make comparison easier, it seems like we shouldn’t require.
+  - Alexey: pprof -raw doesn’t include the ids, the round trip should compare the output of -raw.
+  - Felix: Should we talk about this in the spec PR you have open?
+  - Florian: I can add it to the PR.
+  - Felix: I’d be in favor of that.
+- [Frederic] Is “Line” still accurate now that it contains the line number and column index?
+  - Frederic: We looked into source map support for JS, but we need columns for this.
+  - Florian: Isn’t the column just an attribute of the line (in the sense of “attached to”).
+  - Federic: We were thinking maybe position.
+  - Alexey: In DWARF it’s called Line table.
+  - Frederic: I don’t think that’s true, the line table only contains lines, but the columns are a separate entry.
+  - Felix: Do we care enough to raise a PR?
+  - Frederic: Okay, then let’s just leave it.
+- [Alban] Security Policy
+  - TODO(Alban): Follow [https://docs.kernel.org/process/security-bugs.html](https://docs.kernel.org/process/security-bugs.html)
+  - Covered above.
+- [Alban] I’m working on using OTel eBPF Profiler in Inspektor Gadget ([PoC](https://github.com/inspektor-gadget/inspektor-gadget/pull/4925)). I am using [Patrick’s patch](https://github.com/alban/opentelemetry-ebpf-profiler/commit/8d797a0afe01f90ce870b3b81b199cae0d3d19f6) with correlation id.

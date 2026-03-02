@@ -1,0 +1,59 @@
+## Meeting Notes
+
+### Attendees
+- Jay DeLuca (Grafana Labs)
+- Jack Shirazi (Elastic)
+- Jonathan Halliday (IBM)
+- Jason (Splunk)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana)
+- Trask Stasnaker (Microsoft)
+- Peter Findeisen (Cisco)
+- Lauri Tulmin (Splunk)
+
+### Agenda
+- Standing topic: issue triage
+  - [is:open -label:"needs author feedback","needs repro","contribution welcome"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+-label%3A%22needs+author+feedback%22%2C%22needs+repro%22%2C%22contribution+welcome%22)
+  - [is:open label:"needs triage"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22)
+- Standing topic: [stackoverflow questions](https://stackoverflow.com/search?tab=newest&q=%5bopen-telemetry%5d%20java)
+- [Robert] Declarative Configuration Validation
+  - Ways to validate declarative config after it’s customized
+    - There is a lot of flexibility, where should we validate?
+    - Validate the content, not just the schema
+  - Some distros had already implemented validation for other configs (urls etc), looking for parity
+    - Results in a log message
+    - Should there be a fallback in the case of failure?
+  - DeclarativeConfigCustomizer allows rebuilding the entire configuration, which could break the schema (?)
+  - Expected result from a failed validation
+    - **Log a warning and proceed with potentially “degraded” performance/functionality**
+    - Fail startup completely?
+  - Need to run it after all customizers are run so validation occurs on the “final” state
+    - Should there be a separate validator step / SPI?
+  - AI: Open an issue in java core or configuration repo to ask
+    - Unsure if this is part of the spec, it would be worth raising so that it’s handled consistently across languages.
+    - Potentially a customizer with a “max order” so that it runs last
+- [Jay] How was Jason’s experience with weaver in contrib?
+  - This PR: [https://github.com/open-telemetry/opentelemetry-java-contrib/pull/1960](https://github.com/open-telemetry/opentelemetry-java-contrib/pull/1960)
+  - [https://github.com/breedx-splk/semantic-conventions/tree/weaver_metrics_search_hackery/metrics-index](https://github.com/breedx-splk/semantic-conventions/tree/weaver_metrics_search_hackery/metrics-index) hackery
+  - Trask: look at schema v2
+    - There are semantic conventions where there’s a span with required/optional, but then there’s what a given instrumentation sends
+      - Could have extensions that expand spans and alter attributes
+    - Schema v1 are schema files in semconv
+      - Just diffs from last version / transforms
+    - “Telemetry schema” (v2)
+      - Real schema
+    - There’s a spec issue by Josh
+    - [https://github.com/open-telemetry/weaver/issues/824](https://github.com/open-telemetry/weaver/issues/824)
+- [Jay] Instrumentation categories
+  - Instrumentations could fall into multiple categories
+  - Logging bridges
+    - Don’t generate telemetry
+    - Could potentially be an enricher
+  - Context propagation instrumentations that just help propagate context
+  - Enricher
+    - Http Route
+    - Can also Internal spans (controllers / views)
+      - Spring MVC
+      - These often set the HTTP route (spans are disabled by default)
+  - Supported libraries page we have “HTTP Route” as category
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md)
+    - Also notes that there are categories for reference

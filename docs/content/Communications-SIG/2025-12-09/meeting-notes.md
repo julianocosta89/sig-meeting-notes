@@ -1,0 +1,60 @@
+## Meeting Notes
+
+### Attendees
+- [Vitor Vasconcellos](mailto:vvasconcellos1@gmail.com) (Mercado Libre)
+- Marylia Gutierrez (Grafana Labs)
+- Tiffany Hrabusa (Grafana Labs)
+- Jay DeLuca (Grafana Labs)
+- Leandro Caracciolo (OllyGarden)
+- Severin Neumann (Causely)
+- Sophia Solomon (Elastic)
+
+### Agenda
+- **PSA: There is no meeting for the remainder of 2025**
+- [Tiffany] Collector docs refactoring has brought the AI issue front and center.
+  - [Marylia] For Portuguese localization, they took a phased approach:
+    - For obvious non-speakers, refer them to other issues in the repo
+    - For those who didn’t seem to review the AI output - ask them to review
+    - If they don’t review/disappear, close the PR
+  - [Tiffany] Noticed that one contributor submitted an AI-assisted PR where the template was deleted from the description, so no acknowledgment.
+    - Maybe we should add the AI score that Patrice mentioned as a forcing function. If the contributor uses AI but doesn’t complete the template checkbox, we have grounds to push back?
+  - [Tiffany] Have a thin skin and finding it hard to take a firm stance here, but the review burden is not sustainable.
+- [Jay] EcoSystem Explorer
+  - High level project goals
+    - Collector metadata synchronized with registry and documentation site pages
+      - Supporting the new architecture in flight by Tiffany
+    - A ecosystem explorer website for the Java agent documentation, updates are automated
+      - Collector, golang, javascript as well (as far as we can get)
+    - A database of metadata about the ecosystem that can be used by tools and LLMs
+  - Where we are
+    - Project mechanics/infra
+      - [Project Board](https://github.com/orgs/open-telemetry/projects/175)
+      - [Github teams created](https://github.com/open-telemetry/community/issues/3175)
+        - [ecosystem-explorer-approvers](https://github.com/orgs/open-telemetry/teams/ecosystem-explorer-approvers)
+        - [Ecosystem-explorer-maintainers](https://github.com/orgs/open-telemetry/teams/ecosystem-explorer-maintainers)
+      - Repo (?) TBD
+    - Metadata (source)
+      - Java in progress
+      - Collector already in place, evolving as needed (display names etc)
+      - Golang experimentation
+      - Future - Javascript
+    - Metadata collection / data aggregation
+      - POC in place for collector
+      - POC in place for Java
+    - Documentation automation
+      - Java (supported libraries, auditing)
+      - Collector - component stability
+  - Next steps
+    - [Jay DeLuca](mailto:jay.deluca@grafana.com) to start mapping out work, populating project board backlog
+      - December might be slow, hoping to hit full speed in January
+      - Going to create a feature list, categorized by MVP vs longer term
+      - Create soft timeline/milestones
+    - If anyone has ideas about design/presentation of information for things like the collector components - HELP WANTED!
+      - [https://opentelemetry.io/docs/collector/components/](https://opentelemetry.io/docs/collector/components/)
+- [Severin/Vitor] [https://github.com/open-telemetry/opentelemetry.io/pull/7815](https://github.com/open-telemetry/opentelemetry.io/pull/7815)
+  - “Our thoughts around adopting and standardizing this action in the repo was that it has good activity and is maintained by a GitHub employee. On the other hand, given the [recent supply-chain concerns](https://research.jfrog.com/post/shai-hulud-the-second-coming/), I'd lean toward going in the opposite direction as well.
+  - We need to discuss how to address that long term, there is a lot of good and best practices for github actions we need to verify that we follow them across our repo
+    - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14799/files](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14799/files)
+- [Leandro] Experimenting with Penpot to transfer assets to an open source tool that designers can use to make edits
+  - Will demo next year
+- Happy new year!

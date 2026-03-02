@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+      - Marcelo Trylesinski (Pydantic)
+      - Dylan Russell (google)
+      - Riccardo Magliocchetti (Elastic)
+      - John Scancella
+      - Keith Decker (Cisco/Splunk)
+      - Shuwen Pan (Cisco)
+      - Joshua Winerman (Cisco/Splunk)
+      - Tammy Baylis (SolarWinds)
+      - Aaron Abbott (Google)
+      - Pavan (Cisco)
+      - Leighton Chen (Microsoft)
+      - Ridhima Satam(Cisco/Splunk)
+      - Hector Hernandez (Microsoft)
+
+### Agenda
+      - Riccardo: 1.37.0 / 0.58b0 is out
+      - Release issues:
+      - -contrib announcements category locked for maintainers -> unlocked manually
+      - util/opentelemetry-util-genai: broken README and not excluded from packages released in scripts/build.sh -> https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3364
+      - Riccardo: anyone interested in remote configuration PTAL at my PR adding a basic http client https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3635
+      - This is just adding a package so no risks for sdk or distros
+      - Riccardo: For next release I think we should start merging logs PR or we’ll sit on them indefinitely
+      - Latest release should unblock conversions from Events ot Logs in genai instrumentations
+      - [aaron] +1
+      - [aaron] breaking changes?
+      - * [aaron] Can we take a vote on how to do breaking changes? Many small vs one big release with breaking changes
+      - [Marcelo] if there is no provision for this, please add some indication when deprecated things will be removed
+      - I prefer date
+      - [Dylan] it is in the _logs package, so it’s technically “unstable”
+      - [Marcelo] it’s technically OK but we (pydantic?) depend on it already
+      - [John] open rewrite https://docs.openrewrite.org/
+      - Automated ways to do this and notify users are really helpful
+      - Language agnostic should work with Python
+      - [Marcelo] what’s annoying is we have a package on top of OTel. Users sometimes may pin my package but not their transitive deps.
+      - There is an expectation that OTel libs will not break their code
+      - [Riccardo] it mostly shouldn’t break the users since it’s a lower level API mostly in instrumentation
+      - We don’t pin opentelemetry-sdk in our lib’s dependencies
+      - [Dylan] what about when we remove the underscore?
+      - [Hector] I think having multiple breaking changes at once and communicating clearly is better. We need to make these changes to move this forward
+      - [aaron] which specific changes to align to the spec do we think are worth breaking users?
+      - https://github.com/open-telemetry/opentelemetry-python/pull/4676
+      - Next steps:
+      - Making have a separate call just for this
+      - Come up with a list of breaking changes, see https://github.com/open-telemetry/opentelemetry-python/issues/4750
+      - Once we know the scope we can decide
+      - [Keith] - GenAI Utils Inference PR - Would like some feedback https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3732
+      - [Ridhima, 1m] - asking for final review for llm invocation support for langchain instrumentation - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3665
+      - Pavan: Proposal to introduce decorators in GenAI utils to capture telemetry in framework/SDK agnostic manner - https://docs.google.com/document/d/1iObGwWkruHJCUyQ3BgWCOU8fcD7gTVhXTxhfPRsd_Z8/edit?usp=sharing
+      - Tammy: more docs PRs! PTAL. This time to document existing sqlcommenter features
+      - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3720
+      - https://github.com/open-telemetry/opentelemetry-python/pull/4734
+      - Open issue: https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3162
+      - Now in the semconv: https://github.com/open-telemetry/semantic-conventions/pull/2495

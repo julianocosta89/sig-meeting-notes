@@ -1,0 +1,59 @@
+## Meeting Notes
+
+### Attendees
+- Hanson Ho (Embrace)
+- cleverchuk(solarwinds)
+- Cesar (Elastic)
+- Jamie Lynch (Embrace)
+- Jason (Splunk)
+- Mustafa Haddara (Honeycomb)
+- Jairo (honeycomb)
+- Surbhi A (Cisco)
+
+### Agenda
+- Thanks for the build enhancements folks!
+- (Jason) Multiple instances of OpenTelemetryRum?
+  - [https://github.com/open-telemetry/opentelemetry-android/issues/1071](https://github.com/open-telemetry/opentelemetry-android/issues/1071) (multiple instances over time, shutting down between each)
+  - [https://github.com/open-telemetry/opentelemetry-android/issues/1103](https://github.com/open-telemetry/opentelemetry-android/issues/1103) (goals unclear, but mentions library using rum sdk or multiple webviews(??))
+  - [https://github.com/open-telemetry/opentelemetry-android/issues/1095](https://github.com/open-telemetry/opentelemetry-android/issues/1095) (use case is changing endpoints or api keys)
+    - Jason swag demo swappable exporter [https://github.com/breedx-splk/opentelemetry-android/pull/1](https://github.com/breedx-splk/opentelemetry-android/pull/1)
+  - Do we think this is a good idea?
+  - What are some pitfalls?
+    - Not exactly low overhead…
+    - Synchronization writing to disk and reading back from disk (and paths)
+    - Ensuring that all instrumentation can be installed multiple times
+      - Instrumentation doesn’t currently have a shutdown (uninstall)
+  - Hanson thinks multiple instances should be a no
+    - Too many assumptions about there being only one
+    - Capturing instrumentation is expensive, doing it multiple times is also expensive
+    - Shutdown is also interesting / challenging
+      - **Seems like if the sdk supports it we should support it**
+      - The restart might be the real challenge
+  - It should be technically doable.
+  - So far we seem to be mostly frowning on multiple concurrent instances.
+  - The [multiple instance use case](https://github.com/open-telemetry/opentelemetry-android/issues/1103#issuecomment-3132320174) is attempting to send library usage telemetry to a different vendor/backend location.
+    - But the library is trying to init its own instance.
+    - To send data about its own internal usage
+    - …even in cases where the App isn’t instrumented or using OTel at all.
+    - Shouldn’t the library just be using the upstream otel sdk directly then?
+      - Disk buffering should still be pluggable
+- (Jason) What do you think about making [DelegatingExporter](https://github.com/open-telemetry/opentelemetry-android/blob/main/core/src/main/java/io/opentelemetry/android/export/DelegatingExporter.kt) no longer internal (public)
+  - Helps with this use case [https://github.com/open-telemetry/opentelemetry-android/issues/1095](https://github.com/open-telemetry/opentelemetry-android/issues/1095)
+  - Oh wait, yeah, so it’s really only helping in the buffering delegating case, so this exporter has more than one job. Hrmph.
+  - It’s still a lot of work for the users to set up swappable exporters when api keys or endpoints change, but at least users wouldn’t have to reinvent this part of things.
+  - What else could we do to better support this use case?
+- (Surbhi) Discuss [this](https://github.com/open-telemetry/opentelemetry-android/issues/232) open  issue regarding READ_PHONE_STATE permission.
+  - Should we solve it using [this](https://github.com/open-telemetry/opentelemetry-android/issues/232#issuecomment-1911734197) suggested solution? i.e to remove the permission from our SDK, fail gracefully and add documentation for apps to add it in their manifest if they need those specific features.
+  - Permission added to [two](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-android%20READ_PHONE_STATE&type=code) modules currently, looks like it is **needed for network carrier and subtype details,** anything else needs it?
+  - I think a PR is welcome for this.
+- (Leonardo) Adding trace id to http requests via OkHttp / HttpUrlConnection agents?
+  - What is being asked here?
+  - Trace context (which includes trace id) is already propagated by default by instrumented http clients.
+    - If you’re using the instrumented client it should just work. If not, there’s a problem.
+    - The non-instrumented clients won’t propagate trace context automatically
+  - The propagator is set up automatically [https://github.com/open-telemetry/opentelemetry-android/blob/7a45e1782ce5af93bfe5a3f8cee3d09a01bb5fb6/core/src/main/java/io/opentelemetry/android/OpenTelemetryRumBuilder.java#L112](https://github.com/open-telemetry/opentelemetry-android/blob/7a45e1782ce5af93bfe5a3f8cee3d09a01bb5fb6/core/src/main/java/io/opentelemetry/android/OpenTelemetryRumBuilder.java#L112)
+  - Are you asking about [https://github.com/open-telemetry/opentelemetry-specification/issues/3811](https://github.com/open-telemetry/opentelemetry-specification/issues/3811) where the server can provide its own trace it back to the caller???
+- (Leonardo) Configuring disk exporter to flush on app close?
+  - Shouldn’t this happen already?
+  - The SDK should be calling flush and close on all exporters
+  - Can we get a use case that shows this isn’t happening?

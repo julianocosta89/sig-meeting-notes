@@ -1,0 +1,59 @@
+## Meeting Notes
+
+### Attendees
+- Bruno Baptista (IBM)
+- Eric Deandrea (IBM)
+- Liudmila Molkoav (Grafana Labs)
+- Xander Song (Arize)
+- Ridhima Satam (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Joshua Winerman (Cisco/Splunk)
+- Dat Ngo (Arize)
+- Aaron Abbott (Google)
+- Keith Decker (Cisco/Splunk)
+- Tao Chen (Microsoft)
+- Tristan Sloughter (Groq)
+- Samuel Colvin (Pydantic)
+- Tyler Benson (ServiceNow)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Bruno, 15m] Guest [Eric Deandrea](https://bsky.app/profile/ericdeandrea.dev) will show us Quarkus audit events prototype.
+  - Dashboard based on the audit events showing failures, number of invocations, guardrails executions, tokens, duration, can replay for evals
+    - how/if to record guardrails in semantic conventions
+    - Related OTel GenAI event definition - [https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-events.md#event-eventgen_aiclientinferenceoperationdetails](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-events.md#event-eventgen_aiclientinferenceoperationdetails)
+- [Minghui, 10m] Some additional questions arising from the instrumentation developments: [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14613](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14613)
+  - unified management of the capture of input and output messages
+  - in multi-turn conversation scenarios, will there be multiple UserMessages, or will there be multiple MessageParts within a single UserMessages?
+    - AI: Liudmila to chat with Munghui and see if spec needs to be clarified
+  - the trade-off between agent framework and model client SDK instrumentation
+    - AI: the same
+- [Minghui, 5m] Some confuse of gen_ai[.provider.name](http://.provider.name)
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/5307e200280aa6bf1439c6351950c53d01295119/instrumentation/openai/openai-java-1.1/library/src/main/java/io/opentelemetry/instrumentation/openai/v1_1/ChatAttributesGetter.java#L28-L31](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/5307e200280aa6bf1439c6351950c53d01295119/instrumentation/openai/openai-java-1.1/library/src/main/java/io/opentelemetry/instrumentation/openai/v1_1/ChatAttributesGetter.java#L28-L31)
+  - extract it by base_url or by framework?
+    - Best effort, client sdk otherwise
+- [Liudmila, Aaron, Alex ] [External storage reference discussion](https://github.com/open-telemetry/semantic-conventions/issues/2753)
+  - Upload the whole things somewhere else or upload individual pieces
+  - Opportunity to upload system messages and other things once (by md5, etc)
+  - What happens when user sends a pre-signed URL with short expiry, or when e.g. responds with a 2 hour expiry
+  - Should we put more small attachments vs fewer large attachments
+    - It’s easier to preview in a UI if things are split.
+      - What if we treat the non _ref variant as the preview?
+    - It’s harder when you need to fetch all the data for
+      - e.g. evals if it’s split up into many buckets
+      - e.g. prompt or response with one large attachment
+  - Not clear on what’s common, what’s vendor-specific
+  - AI: Aaron will give a demo :)
+- [Ridhima, 5m] - LLM invocation in langchain instrumentation -  [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3665](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3665)
+  - Is this necessary to share PyPi package name to OTel ?
+  - We can put SUPPRESS_LANGUAGE_MODEL_INSTRUMENTATION_KEY into genai-util
+  - TracerConfig for disabling [https://opentelemetry.io/docs/specs/otel/trace/sdk/#tracerconfig](https://opentelemetry.io/docs/specs/otel/trace/sdk/#tracerconfig),
+    - [https://opentelemetry.io/docs/specs/otel/trace/sdk/#tracerconfigurator](https://opentelemetry.io/docs/specs/otel/trace/sdk/#tracerconfigurator) takes the full InstrumentationScope
+  - example config  - [https://github.com/open-telemetry/opentelemetry-configuration/blob/094671ba39b016a992d11a32958c7759b244aeb3/examples/kitchen-sink.yaml#L776](https://github.com/open-telemetry/opentelemetry-configuration/blob/094671ba39b016a992d11a32958c7759b244aeb3/examples/kitchen-sink.yaml#L776)
+    - AI: Liudmila will create issue in semconv, discuss if scope name ot attributes are more appropriate for filtering
+- [Liudmila, 15 min] PRs to review
+  - Agent role vs goal vs description - [https://github.com/open-telemetry/semantic-conventions/pull/2685](https://github.com/open-telemetry/semantic-conventions/pull/2685)
+  - Session.id
+  - Task / workflow [https://github.com/open-telemetry/semantic-conventions/pull/2713](https://github.com/open-telemetry/semantic-conventions/pull/2713)

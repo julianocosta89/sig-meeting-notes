@@ -1,0 +1,33 @@
+## Meeting Notes
+
+### Agenda
+- [Jonathan] We receive some messages from community members asking for a LFX mentorship
+  - Reference: [https://cloud-native.slack.com/archives/C01LSCJBXDZ/p1751908176143879](https://cloud-native.slack.com/archives/C01LSCJBXDZ/p1751908176143879)
+  - Submit proposals: Wed, July 2 – Tue, July 29, 2025 11AM PDT (18:00 UTC)
+  - Mentorship: September 8 to November 28
+  - Reference: [https://github.com/cncf/mentoring/tree/main/programs/lfx-mentorship/2025/03-Sep-Nov](https://github.com/cncf/mentoring/tree/main/programs/lfx-mentorship/2025/03-Sep-Nov)
+  - TLDR; We need to brainstorm ideas and find possible mentors that have time.
+    - Suggestion to reach out to others like David, Bartek. Arthur can be a mentor but would need another person to share responsibilities.
+- [Krajo] [https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41139](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41139)
+  - Seems like there’s a conflict between how Prometheus workflow wants to use [service.name](http://service.name) attribute to pass “job” as part of a  key for target_info metric VS people wanting to see something more useful/expected in the [service.name](http://service.name). From Prometheus' point of view it shouldn’t matter if we overwrote the “job” with something better, as long as it’s consistent with target_info. So maybe we need an option to seed “job” differently before target_info is created.
+  - [Cyrille] Grafana Labs is conducting user research on resource attribute promotion that suggests that favoring “semantic [service.name](http://service.name)” will meet expectations of many users
+    - We see adoption of `service_name` , `service_namespace` , and `service_instance_id` being the first benefit people get from promotion, more than slicing & dicing on metadata like k8s.* resource attributes… → this
+  - GL also does relabel rules to add job as namespace/pod label name
+  - [Specify resource attributes using Kubernetes annotations | OpenTelemetry](https://opentelemetry.io/docs/specs/semconv/non-normative/k8s-attributes/) implemented by the otelcol k8s attributes processor when using `otel_annotations: true`
+  - [`kubernetes_sd_config`: support retrieving K8s deployment/cronjob/job name #16747](https://github.com/prometheus/prometheus/issues/16747)
+  - Rough plan:
+    - Add an option/feature flag to allow OTEL Prometheus Receiver to overwrite the job label according to spec, with what metadata we have. (when kubernetes discovery is there)
+    - Add additional resource attributes from __meta service discovery attributes.
+    - Solve harder problems:
+      - Kube service discovery to provide all labels needed (permissions?)
+      - Target Allocator?
+- [arthur] I've opened a PR re-introducing the scope labels [https://github.com/prometheus/prometheus/pull/16878](https://github.com/prometheus/prometheus/pull/16878)
+- [cyrille] do we have docs on scope info? Metic name? Label names? Some labels or metric name seem to be prefixed like `otel_`
+  - `OTel scope info metric is removed`
+  - *The instrumentation scope is defined by the (name,version,schema_url,attributes) tuple* [https://opentelemetry.io/docs/specs/otel/common/instrumentation-scope/](https://opentelemetry.io/docs/specs/otel/common/instrumentation-scope/)
+  - Created labels: `otel_scope_name` , `otel_scope_schema_url` , `otel_scope_version, otel_scope_<<scope-attribute-name>>`
+- [dashpole]  Sync on Prometheus OTLP appender
+  - [https://github.com/prometheus/prometheus/pull/16855](https://github.com/prometheus/prometheus/pull/16855) (appender) vs [https://github.com/prometheus/prometheus/pull/16784](https://github.com/prometheus/prometheus/pull/16784) (to PRW 2.0).
+  - Next steps?
+    - Dashpole move injection point to NewAPI after Arthur’s revert PR is merged.
+    - Krajo will work on a PoC + benchmark. Question about labels.Label performance in this scenario. [Bryan Boreham](mailto:bboreham@prometheus.io)

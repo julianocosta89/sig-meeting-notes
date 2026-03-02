@@ -1,0 +1,58 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Grafana Labs)
+- Dat Ngo (Arize)
+- Josh Bonczkowski (New Relic)
+- Xander Song (Arize)
+- Keith Decker (Cisco/Splunk)
+- Surya Teja (NA)
+- Joshua Winerman (Cisco/Splunk)
+- Michael He (AWS)
+- Pavan (Cisco)
+- Nagkumar Arkalgud (Microsoft)
+- Sergey Sergeev (Cisco/Splunk)
+- Aaron Abbott (Google)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+    - Task/workflow:
+      - AI: Liudmila will setup official OTel agents call
+      - Start with Mon 9am-9:30 am PT and group can decide if to reschedule it
+        - Let’s make sure Dani and IBM folks have a chance to join
+  - [everyone, 5 min]  Intro for new members
+- Open PRs to review
+  - Please review embedding instr - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461)
+  - [[gen-ai] expand invoke_agent span documentation beyond remote agents #2881](https://github.com/open-telemetry/semantic-conventions/pull/2881)
+  - [Pavan] [https://github.com/open-telemetry/semantic-conventions/pull/2594](https://github.com/open-telemetry/semantic-conventions/pull/2594)
+    - What is session in GenAI ?
+      - Conversation vs workflow vs session - 3 different things ?
+        - Context propagation
+        - Session - one browser session, which may include multiple traces in it.
+        - Workflow - may include multiple agent/browsers involved
+        - Conversation - Multi-turn assistant conversation (may include one or more multiple sessions)
+      - Arize: conversation and session id are the same
+        - Session is a collection of traces (span attribute and context managers that stamp on all spans created in that context)
+        - Purpose: customer is frustrated with this sessions, let’s run evals on the whole session
+        - No workflow-specific conventions
+          - Workflow may be composed of specific spans
+        - Langchain has something (conv/sess/group/unknown) as extra arg - OpenInference converts it into attr from that thing
+      - ADK: has a built-in notion of session
+      - Client / browser - RUM-related - tracks user behavior, rather than agent/GenAI
+      - Let’s not bikeshed on the name right now
+- General discussions
+  - [Nagkumar, 15 mins] Workflow span for multi-agent - how to group multiple spans [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3825](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3825)
+    - [Keith] Possibly relates to issue: [https://github.com/open-telemetry/semantic-conventions/issues/2912](https://github.com/open-telemetry/semantic-conventions/issues/2912)
+    - What’re the unique characteristics of the workflow
+      - Workflow run has a duration - from the end user perspective it’s usually a single-turn
+    - Can we ground this discussion to the specific frameworks to avoid inventing new things?
+    - Parallel agents would have different conversations (?)
+      - [https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/)
+    - AWS explicitly recommends propagating baggage [https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html#observability-configure-3p-session](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html#observability-configure-3p-session)
+    - We need a span for the multi-agent interaction unit,
+      - Let’s try to define it without workflow/etc id
+      - Down the road we can add a new attribute for the unit(s) of work
+  - [aaron, will be a little late] Blob / file parts [https://github.com/open-telemetry/semantic-conventions/pull/2754](https://github.com/open-telemetry/semantic-conventions/pull/2754)
+    - Waiting for additional approvals
+    - Also [https://github.com/open-telemetry/semantic-conventions/issues/2906](https://github.com/open-telemetry/semantic-conventions/issues/2906)

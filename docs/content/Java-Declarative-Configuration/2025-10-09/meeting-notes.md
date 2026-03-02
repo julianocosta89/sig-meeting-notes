@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- Jay DeLuca (Grafana Labs)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Jason (Splunk)
+- Bruno Baptista (IBM)
+- Jack Berg (Grafana Labs)
+- Trask Stalnaker (Microsoft)
+- Jack Shirazi (Elastic)
+- Peter Findeisen (Cisco)
+- Robert Niedziela (Splunk)
+- Pranav Sharma (Google)
+- [John Watson](mailto:jkwatson@gmail.com)(Cloudera)
+
+### Agenda
+- [Jason] - Android is still struggling with okhttp module flavoring, and it’s impacting users. TL;DR - okhttp now publishes two flavors one “jvm” and one “android”. Core uses “jvm”:
+  - User submitted issue: [https://github.com/open-telemetry/opentelemetry-android/issues/1294](https://github.com/open-telemetry/opentelemetry-android/issues/1294)
+  - And another comment from a different user [https://github.com/open-telemetry/opentelemetry-android/issues/1257#issuecomment-3383283423](https://github.com/open-telemetry/opentelemetry-android/issues/1257#issuecomment-3383283423)
+  - Our original “fix” that doesn’t address the transitive dep from core:
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1155/files](https://github.com/open-telemetry/opentelemetry-android/pull/1155/files)
+  - We think this “solution” in core ultimately causes this: [https://github.com/open-telemetry/opentelemetry-java/pull/7681/files](https://github.com/open-telemetry/opentelemetry-java/pull/7681/files)
+    - This has not been released yet!!
+    - Because [this published pom](https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-exporter-sender-okhttp/1.54.1/opentelemetry-exporter-sender-okhttp-1.54.1.pom) contains “jvm” and we’re nice to non-maven users.
+    - But there’s also a module file that will be published that gradle/android should use (not the pom, derp)
+  - ~~Can we just make a new module that publishes with the kotlin dependency and make it explicit?~~
+    - ~~Then android can use it as its dependency~~
+    - We don’t need to do this
+  - Other ideas instead?
+  - Should be fixed in next release by [https://github.com/open-telemetry/opentelemetry-java/pull/7681](https://github.com/open-telemetry/opentelemetry-java/pull/7681)
+- [Jay] [ZIO maintainer considers the opentelemetry instrumentation as broken](https://github.com/zio/zio-telemetry/issues/1029#issuecomment-3193647090). Is there value in keeping it?
+  - Related to [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/3916](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/3916)
+  - Disable by default in 3.0?
+- [Gregor] should we add [mise](https://mise.jdx.dev/) commands for common tasks (build, format, test) - now that we use mise for link checking?
+- No need right now
+- [Gregor] new slot for declarative config meeting (or discuss here, see topic queue above)
+  - Every other Thu the hour before this meeting, starting 3 weeks from today
+- [Jack s] After what configurable point is GlobalOpenTelemetry.get() giving me the agent configured SDK? (I want to print it’s configuration)
+  - Using `AgentExtension` would work as an external extension but doesn’t work if included with the agent distribution because of classloader clashes with shaded/non-shaded resources from the SPI service loading
+- [Bruno] The [SemanticStability](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation-api/src/main/java/io/opentelemetry/instrumentation/api/internal/SemconvStability.java) class.
+  - Retrieves system properties at static time.
+  - There is a new PR to expose declarative config to instrumentation.
+  - Spring starter PR (maybe similar to quarkus): [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14062](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14062)
+  - AI Gregor to open issue(s) for otel.semconv-stability.opt-in in declarative config
+    - [https://github.com/open-telemetry/semantic-conventions/issues/2894](https://github.com/open-telemetry/semantic-conventions/issues/2894)
+- Java Core Release
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7727](https://github.com/open-telemetry/opentelemetry-java/pull/7727)
+- [Jay] Issue/PR Triage
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/932](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/932)
+    - I think this can be closed now?
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/3484](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/3484)
+    - Do we still want to do this?
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/11354](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/11354)
+    - Anything we need to do in order to push this forward?
+    - Related to [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7030](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7030)

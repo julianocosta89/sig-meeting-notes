@@ -1,0 +1,63 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Microsoft)
+- Hardik Surana (Cisco/Splunk)
+- Josh Bonczkowski (New Relic)
+- Aaron Abbott (Google)
+- Bruno Baptista (Red Hat)
+- Sergey Sergeev (Cisco Splunk)
+- Alex Hall (Pydantic)
+- Samuel Colvin (Pydantic)
+- Giovanna Carofiglio (Cisco/Agntcy)
+- Pavan Sudheendra (Cisco/Agncty)
+
+### Agenda
+- Standing topics:
+  - Triage
+    - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+- [liudmila, 10m] The GC and TC are collecting feedback from all SIGs in order to put together a roadmap (past and future) to share with the community:
+  - What were the SIG's biggest achievements during the last 12 months?
+    - Python instrumentation libs: openai, google vertex and genai, bedrock (part of boto)
+    - Semconv: agents
+    - Groundwork for better chat history representation
+    - Semconv adoption in external communities: pydantic, crewai, lanchain4j, spring-ai, Azure AI SDKs
+  - What work is the SIG planning for the upcoming 12 months?
+    - Finalize chat history refactoring and implement it in semconv
+      - Liudmila
+    - Common package in python to reduce boilerplate and simplify instrumentations
+      - Sergey, Aaron
+    - Configuration story for instrumentations in python
+      - TODO: Python SIG
+    - Evaluations
+      - Semantic conventions for eval results
+        - TODO: Microsoft, Cisco
+        - Pydantic folks would review,
+      - Running evals on top of telemetry
+        - TODO: Cisco
+        - Prior art: Pydantic evals [https://ai.pydantic.dev/evals/](https://ai.pydantic.dev/evals/)
+- Multi-Agent:
+  - Conventions
+    - Instrumentations
+      - Context propagation
+      - Microsoft and Cisco are interested, longer-term project
+    - Misc semconv additions:
+      - Streaming details
+      - Tool definitions
+      - More details about tool calls (arguments, outputs)
+      - Agent details and protocols
+      - Multi-modal content
+  - Are there any areas and/or sub projects that the GC/TC can help with? (e.g. cross-SIG blockers, prioritization, etc)
+    - Vector DB conventions, chat sessions - is it GenAI - we'll collaborate with general semconv and browser SIGs
+    - Onboarding to otel semconv
+    - OpenLLMetry donation followup
+    - Conventions are conservative, but there is a push to bring bleeding edge things in
+      - We need conventions for shared instrumentations
+- [liudmila, 20 min] Project planning [https://docs.google.com/document/d/1jLVSlJojWFiVBRDSd9jsySjrV4O98eIMYeG7q_odlLA/edit?usp=sharing](https://docs.google.com/document/d/1jLVSlJojWFiVBRDSd9jsySjrV4O98eIMYeG7q_odlLA/edit?usp=sharing)
+- [Everyone, 5 min] PRs to review
+  - Renames [https://github.com/open-telemetry/semantic-conventions/pull/2046](https://github.com/open-telemetry/semantic-conventions/pull/2046)
+  - Attributes and events - ready for review - [https://github.com/open-telemetry/semantic-conventions/pull/2179](https://github.com/open-telemetry/semantic-conventions/pull/2179)
+  - MCP [https://github.com/open-telemetry/semantic-conventions/pull/2083](https://github.com/open-telemetry/semantic-conventions/pull/2083)
+  - GCP config attribute [https://github.com/open-telemetry/semantic-conventions/pull/2125](https://github.com/open-telemetry/semantic-conventions/pull/2125)
+  - Embeddings  OpenAI in Python [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3461)
+- [Samuel, 2 mins] we started work on a single source of truth for LLM pricing data, [https://github.com/pydantic/llm-pricing](https://github.com/pydantic/llm-pricing)

@@ -1,0 +1,51 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- [krajo Krajcsovits](mailto:gyorgy.krajcsovits@grafana.com) (grafana) just listening in
+- [Nathan Smith](mailto:nathan.smith@elastic.co)
+
+### Agenda
+- [suereth] Prototyping efforts - [https://github.com/open-telemetry/opentelemetry-specification/pull/4665](https://github.com/open-telemetry/opentelemetry-specification/pull/4665)
+  - Now confident in direction [https://github.com/jsuereth/opentelemetry-java/tree/wip-entity-and-providers](https://github.com/jsuereth/opentelemetry-java/tree/wip-entity-and-providers)
+  - What do we need to finish the multi-tenant SDK OTEP?
+  - [dan] Questions while filling in SDK details
+    - Can two providers safely share an export pipeline? What level of sharing is appropriate? Things like flush and shutdown are complicated when multiple providers share components.
+      - [suereth] Strawman:
+        - Flush - will flush
+          - Flushing without shutting down => get this to backend quickly because something may happen soon.
+          - Flush parent - forces children to flush
+          - Flush child - may or may not flush parent.
+        - Shutdown - "mark available for cleaning"
+          - Export pipeline CANNOT be shutdown until all associated providers are shutdown.
+    - How should we distinguish between stateful components which must be recreated (e.g. metric storage) and stateless components which can be shared (e.g. spanprocessor)? Is this even possible? We may not be able to assume any user-provided components are stateless.
+      - If wanted to "clone" we'd have to create a clone method.
+      - **Assumption - all components are re-usable, except Metrics.**
+    - Can user-provided components be expected to gracefully handle changing resource?
+      - JS Exporters will likely break.
+      - We will need to drive this as an effort in SDKs and advertise this as "breaking" assumption.
+    - Should we create "real" providers or "light" providers which do not have their own configurations? Up to the implementation?
+      - "light" - This means all providers share the same configuration.
+      - "real" - can directly address config.
+      - **Let's focus on light for now**
+        - can ignore OpAMP / child config specific - they get parent
+        - When child is shutdown - parent should remain running.
+    - If "light" we can remove the above restrictions about configuration changes. This also simplifies things like OpAMP
+    - How can file-based configuration and/or OpAMP distinguish between parent and child providers
+    - How do parent/child providers interact when `ForceFlush` or `Shutdown` are called? We want to be able to shut down child providers without affecting parent providers presumably.
+  - Three things users care about
+    - I want to report against Entity
+    - I want to flush data in this provider
+    - I want to shutdown reporting against this Entity.
+- [suereth] Landing Specification work
+  - Goal: EntityDetector + Resource.merge Specification
+    - Unblock ENV entity propagation
+    - Unblock Weaver-based semantic convention codegen
+    - Target languages
+      - JavaScript
+      - Java
+      - Go
+- [krajo] Prometheus - Gauging work - thinking about attributes<->labels for OTEL metrics.
+  - We believe it's safe to use "identifying" attributes and unsafe to use descriptive
+- [suereth] Implications of stabilization effort?
+- [suereth] Update status

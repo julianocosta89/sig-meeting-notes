@@ -1,0 +1,52 @@
+## Meeting Notes
+
+### Attendees
+- Jason (Splunk)
+- Mustafa Haddara (honeycomb)
+- Cesar (Elastic)
+- Jamie Lynch (Embrace)
+- Grace Lim (Amazon)
+- Hanson Ho (Embrace)
+- cleverchuk(solarwinds)
+- Manoel (PostHog)
+
+### Agenda
+- Roadmap to v1.0.0
+  - We have labeled some issues – [https://github.com/open-telemetry/opentelemetry-android/issues?q=is%3Aissue%20state%3Aopen%20label%3Av1.0.0-required](https://github.com/open-telemetry/opentelemetry-android/issues?q=is%3Aissue%20state%3Aopen%20label%3Av1.0.0-required)
+    - Do you have others you think qualify? Do you disagree with any of those?
+  - What do we mean by “stability”?
+    - **Features shouldn’t be part of it?**
+      - We can always add new features to an existing stable release.
+    - Can we be stable while depending on core non-stable components?
+      - What about disk buffering?
+    - API surface
+      - Stability means that the api won’t have breaking changes in the near future
+      - Start with a small api surface and then add as needed.
+      - “Incubating” packages are a lot of work
+      - Can we leverage @Experimental annotations for this instead?
+    - Test cases
+      - What about coverage?
+    - Telemetry shape
+    - Should we have a tracking issue for which modules are stable?
+      - Agent is the first/main target?
+    - OtelRumConfig has a lot of stuff in it and we are concerned about using it in a stable version
+      - Do we have a way to make certain apis “experimental” while being stable?
+      - We have a lot of moving pieces.
+      - How do we know or declare that an experimental thing is good to move to stable?
+    - OtelRumConfig vs. OpenTelemetryRumBuilder – both are config
+      - We should consolidate those or figure that out
+      - **Kotlin type safe builder can help us here**
+        - Incremental path forward
+    - Core will remain alpha
+    - Instrumentation will also remain alpha
+    - Kotlin vs. java for major apis?
+      - We need to identify what public APIs are using java and migrate those before 1.0
+  - rc1, rc2? How many/months?
+    - 2-3 rc versions max? Assuming no surprises?
+- Grace - Semantic convention for screen/view load and app launch (Grace Lim)
+  - [https://github.com/open-telemetry/semantic-conventions/pull/2744](https://github.com/open-telemetry/semantic-conventions/pull/2744)
+  - Related existing art in android [https://github.com/open-telemetry/opentelemetry-android/blob/5e508b83ee9d0f7c151017f07ad71eddc7ec80ab/common/src/main/java/io/opentelemetry/android/common/RumConstants.kt#L17](https://github.com/open-telemetry/opentelemetry-android/blob/5e508b83ee9d0f7c151017f07ad71eddc7ec80ab/common/src/main/java/io/opentelemetry/android/common/RumConstants.kt#L17)
+  - Views [https://developer.android.com/reference/android/view/View](https://developer.android.com/reference/android/view/View)
+  - We should use display for the physical device’s screen and screen for the application’s UI screen
+  - Still aligned on [app.screen.name](http://app.screen.name), still need to update description. Hanson will follow up with a comment of what needs to be changed.
+- This month’s release

@@ -1,0 +1,87 @@
+## Meeting Notes
+
+### Attendees
+- Dave Cadwallader (Oracle)
+- Trask Stalnaker (Microsoft)
+- Ruediger Schulze (IBM)
+- Josh Suereth (Google)
+- Armin Ruech (Dynatrace)
+- Sven Cowart (ElastiFlow)
+- Kai Levin (Ericsson)
+- Nagkumar Arkalgud (Microsoft)
+- Matthew Hensley (Grafana Labs)
+- Christophe Kamphaus
+- Rob Cowart (ElastiFlow)
+
+### Agenda
+- Triage
+  - [https://github.com/open-telemetry/semantic-conventions/pull/3304](https://github.com/open-telemetry/semantic-conventions/pull/3304) - check if alpha/beta are necessary
+- [Dan / Liudmila] Error.message deprecation [https://github.com/open-telemetry/semantic-conventions/issues/3307](https://github.com/open-telemetry/semantic-conventions/issues/3307)
+  - Feature Flag community was using it for year +, causes pain
+  - Considering going their own way - we could suggest to decentralize and host/own them
+  - Can stabilize right after
+- [Liudmila, 15 min] Semantic Conventions roadmap for 2026
+  - [https://github.com/open-telemetry/semantic-conventions/issues/3330](https://github.com/open-telemetry/semantic-conventions/issues/3330)
+  - Ideas:
+    - Federated Semconv - V2 Schema, Dependencies + Publishing
+    - Stabilize conventions:
+      - RPC,
+      - service?
+      - system/process?
+      - K8s?
+      - Feature-flags?
+      - error/exception docs
+    - Deprecate span events
+    - Finish first cut of all "How To Write Semantic Conventions" Guides
+    - Create a backlog of "de-facto stable, but alpha" semantic convention areas in a "grab bag" list for SIG forming
+    - Onboard at least on contrib repo to weaver live checks and automated testing
+    - Introduce span identity
+    - Start messaging stabilization
+    - Declarative configuration for instrumentations as part of semconv
+  - Principles: stability, decentralization
+  - Things we're not getting to:
+    - we won't get to everything from the above list and other ideas
+    - Let's list it here
+  - Next steps:
+    - Looking for input from sub-SIGs
+      - What do you expect to ship in 2026?
+      - Are there areas you're ready to stabilize?
+      - Are there things you need from other parts of the semconv community?
+    - Create tasks, update roadmap, write blog/doc
+- [Sven, 15 min] Network-specific semantic conventions
+  - Flow
+    - Introduce a new namespace
+    - Working draft of semantic conventions: [source](https://github.com/elastiflow/mermin/blob/beta/docs/spec/semantic-conventions.md)
+    - [IANA IPFIX Spec](https://www.iana.org/assignments/ipfix/ipfix.xhtml)
+  - App-specific network metrics
+    - The OBI SIG is interested in implementing the metrics described [here](https://github.com/open-telemetry/opentelemetry-network/blob/main/docs/metrics/metrics.yaml) for opentelemetry-network.
+    - Refresh the opentelemetry-network metrics, and align them with the full body of work we are working on.
+  - SNMP/Trap
+    - Likely would not introduce a new namespace, but instead inform new attributes within “network” and “system” namespaces.
+  - Prefixing flow attributes
+    - source.<namespace>.* vs <namespace>.source.* (source.k8s.pod.uid vs k8s.*.pod.uid)
+  - Let's start with project proposal
+    - Start with something that's shared across SIGs:
+      - OBI
+      - System/process
+      - Security?
+  - Josh Suereth: google is interested
+  - Networking instr/conventions SIG
+    - We don't need to revive the repo
+- [Kai, 10 min] Telco alarm & TLS semantic conventions
+  - To understand if OTel has semantic conventions for telco alarm standards (X.733 / 3GPP)
+  - Missing TLS related parameters in OTLP
+    - metadata.tls_server_sno
+    - metadata.tls_client_sno
+    - metadata.tls_crl_issuer
+    - metadata.tls_crl_sno
+    - metadata.tls_crl_this_upd
+    - Metadata.tls_crl_next_upd
+  - Domains that would well as one of the decentralized efforts
+    - Conventions would be owned by Ericsson or part of the org that owns Telco)
+  - How to advertise it to the community
+    - Blog post
+    - Registry on otel.io or link from semconv
+  - ECS merge
+    - SemConv Security SIG owns that, went dormant (not Security SIG)
+    - [https://www.elastic.co/docs/reference/ecs/ecs-opentelemetry](https://www.elastic.co/docs/reference/ecs/ecs-opentelemetry)

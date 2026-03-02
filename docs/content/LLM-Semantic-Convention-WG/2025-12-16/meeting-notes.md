@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- Aaron Abbott (Google)
+- Xander Song (Arize)
+- Liudmila Molkova
+- Ankit Singhal (Microsoft)
+- Dylan Russell (google)
+- Joshua Winerman (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Josh Bonczkowski (New Relic)
+- Zach Groves (Datadog)
+- Srinivas Kommoori (Gigamon)
+- Alex Hall (Pydantic)
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Ankit]: [Built-in Tools Support by singankit · Pull Request #3038 · open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions/pull/3038)
+  - Built-in tools common parts:
+    - Results
+    - Additional properties
+  - What do we want to do with it, why do we want it
+    - Re-invoke tool
+      - This needs exact recording
+    - Show them similarly to or differently than function tools
+      - This needs generic recording
+  - Interesting to generalize some tools and others would be generic
+    - Let's start with code-interpreter
+  - Way to make progress:
+    - Let's compare openai, google, anthropic
+    - Option1: one part (request + response)
+    - Option2: two parts
+    - Option 2.5: two parts and extend Function calls
+- [Liudmila] MCP [https://github.com/open-telemetry/semantic-conventions/pull/2083](https://github.com/open-telemetry/semantic-conventions/pull/2083)
+  - No open discussions
+  - Got approval from Alex
+  - Anyone else wants to take a look?
+    - [Aaron] Yes LGTM but need to approve
+- [Josh] Retrieval Span Support: [https://github.com/open-telemetry/semantic-conventions/pull/2924](https://github.com/open-telemetry/semantic-conventions/pull/2924)
+  - Help with a few comments?
+  - [{"id": "foo", "score":0.42, .....}]
+- [Liudmila] Happy Holidays!
+  - OTel: no meetings Dec 22 to Jan 2 (Mon Jan 5 first business day)
+  - See you on Jan 6!
+- [Aaron] any feedback on “new” semantic conventions for inference with JSON schemas?
+  - Has anyone adopted it?
+    - GCP is using it [https://docs.cloud.google.com/stackdriver/docs/instrumentation/collect-view-multimodal-prompts-responses](https://docs.cloud.google.com/stackdriver/docs/instrumentation/collect-view-multimodal-prompts-responses)
+    - Happy to demo it after holidays
+- [Pavan/Ridhima] - Session id and workflow proposal [https://github.com/open-telemetry/semantic-conventions/blob/b6bfc44631e28e87a0252011a8898e8098cb0ff9/docs/gen-ai/Session-and-Workflow-for-GenAI-Observability.md](https://github.com/open-telemetry/semantic-conventions/blob/b6bfc44631e28e87a0252011a8898e8098cb0ff9/docs/gen-ai/Session-and-Workflow-for-GenAI-Observability.md)
+  - Workflow is long and wouldn't work as a part of generic metric
+  - Workflow name is a good candidate for baggage or to stamp it on underlying spans, so it's not the same as agent name
+  - ADK: workflow and invoke agent are the same
+  - Example of attributes pushed down to child spans in ADK [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3961](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3961)

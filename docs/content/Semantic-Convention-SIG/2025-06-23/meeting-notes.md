@@ -1,0 +1,69 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth
+- Braydon Kains (Google)
+- Joao Grassi (Dynatrace)
+- Bruno Baptista (Red Hat)
+- Trask Stalnaker (Microsoft)
+- Liudmila Molkova (Microsoft)
+- Bertrand Martin (MetricsHub)
+- Christos Markou (Elastic)
+- Alexandra Konrad (Elastic)
+- Sam Xie (Cisco)
+- Christophe Kamphaus
+
+### Agenda
+- [trask, 10m] The GC and TC are collecting feedback from all SIGs in order to put together a roadmap (past and future) to share with the community:
+  - What were the SIG's biggest achievements during the last 12 months?
+    - As a whole or specific to the process/infra of Semantic Conventions?
+    - As a whole
+      - DB stability
+      - code stability
+      - feature flag RC
+    - Non-normative guidelines being flushed out
+      - Conventions for semantic conventions
+    - “How to define new semantic conventions”
+      - Naming
+      - Recording errors - in dev
+      - (other things under docs/general)
+    - Automation for these
+  - What work is the SIG planning for the upcoming 12 months?
+    - new SIGs
+      - RPC
+      - Security
+    - process work
+      - automate schema-next.yaml
+      - codegen automation
+      - Guidance work
+        - modeling guides
+        - naming guides
+    - Triage process - semconv repo has become very busy
+  - Are there any areas and/or sub projects that the GC/TC can help with? (e.g. cross-SIG blockers, prioritization, etc)
+    - General maintainers and approvers - so much to review/approve/merge
+      - Could use more general maintainers / approvers
+    - Struggling with PRs that don’t have a SIG
+      - Scope? Don’t accept PRs without a SIG?
+- [suereth, 1m] Last minute thoughts on Entity Modelling Guide: [https://github.com/open-telemetry/semantic-conventions/pull/2328](https://github.com/open-telemetry/semantic-conventions/pull/2328)
+  - Has enough approvals to merge, plan to merge today.
+- [alexandra, 10m] Question about metric names
+  - currently it’s impossible to create names **hw.cpu.speed** and **hw.cpu.speed.limit** altogether as second name creates a namespace. see [https://github.com/open-telemetry/semantic-conventions/pull/2380](https://github.com/open-telemetry/semantic-conventions/pull/2380) - UPDATE: I see this rule was removed in [https://github.com/open-telemetry/semantic-conventions/pull/1694/files#diff-ddaa4626828899fb2df9b8272b06ae485d0619cb8d2c16a14b291fe8f9e9182bL53](https://github.com/open-telemetry/semantic-conventions/pull/1694/files#diff-ddaa4626828899fb2df9b8272b06ae485d0619cb8d2c16a14b291fe8f9e9182bL53), do we still have it?
+  - We had already an old [discussion](https://github.com/open-telemetry/semantic-conventions/issues/50) about it and there is an ask to revisit it
+  - Can break when events are composed into metrics (attribute -> metric)
+  - [bruno] Could use car battery as inspiration
+    - state of charge, e.g. vs. manufacturing values.
+    - Degradation can happen. % of current capacity vs. manufactured value
+    - should speed be frequency?
+      - Similar to "processor speed" as this is commonly used term for it.
+      - speed.limit seems odd
+  - Attribute Event -> Metric conversion
+    - Event:
+    - Calculate metrics from events:
+  - What should the naming be for HW?
+    - e.g. `fan.speed.current` vs. `fan.speed.limit`
+    - `fan.speed.usage`?
+- [liudmila, 5 min] Rename `az.*` and `azure_*` to `azure.` - [https://github.com/open-telemetry/semantic-conventions/pull/1698](https://github.com/open-telemetry/semantic-conventions/pull/1698)
+  - We should we rename other platforms to follow new guidance
+  - And should probably rename `cloud.platform` to `cloud.platform.name` or something more meaningful
+- [sam, 1m] please review [https://github.com/open-telemetry/semantic-conventions/pull/2363](https://github.com/open-telemetry/semantic-conventions/pull/2363)
+- [liudmila, 5 min] naming guidance

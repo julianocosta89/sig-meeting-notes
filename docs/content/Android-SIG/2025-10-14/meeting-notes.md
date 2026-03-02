@@ -1,0 +1,59 @@
+## Meeting Notes
+
+### Attendees
+- Jason (Splunk, a Cisco company)
+- Hanson Ho (Embrace)
+- Mustafa Haddara (Honeycomb)
+- Jairo (honeycomb)
+- Leonardo (Amazon)
+- cleverchuk(solarwinds)
+- Cesar (Elastic)
+
+### Agenda
+- [Leonardo] Some PRs! Still resolving some feedback, would like more general opinions:
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1283](https://github.com/open-telemetry/opentelemetry-android/pull/1283)
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1281](https://github.com/open-telemetry/opentelemetry-android/pull/1281)
+  - [Semantic convention PR](https://github.com/open-telemetry/semantic-conventions/pull/2831)
+- [Leonardo] Instrumentation loading in background
+  - Did some profiling of the startup (perfetto)
+    - Profiling is complicated
+    - Can we get a trace to look at next time?
+    - Some init is performed already in secondary threads.
+    - This effort is focused on delay of the main thread startup
+  - What is making app start longer?
+    - Init logic in okhttp (either client creation or init startup)
+      - If bytecode weaving at build time is used, then we add some code around the builder
+      - Classloading shouldn’t really be impacted
+    - Auto-discovery of instrumentations via service loader ←- yes
+      - Has to walk classes which probably touches disk
+      - One day can we move this to our fancy futuristic gradle plugin?
+  - Do some apps not necessarily need instrumentation to be initialized at startup?
+    - In embrace the init is typically pretty fast, as long as init doesn’t do classloading or binder or disk/network.
+    - Doing delayed init makes the app lifecycle much harder to reason about
+      - Is there ever a moment when init is “done”? If not, then you always have to consider it when looking at data….
+    - App performance vs. RUM/DEM. These are subtly different things.
+      - Debugging use case, especially server side
+      - RUM has different concerns than debugging
+      - AI: Hanson to link to his talk at Droidcon on this topic
+- [Jason] - disk buffering
+  - Probably a horrible idea that over complicates things, but plant the seed:
+    - Can we start with network (no disk) when it’s available, falling back to disk buffering only when the network is unavailable.
+    - Only buffering when network is not available.
+    - Storing in disk is also super fast, so completing a “write” is much “safer” for data completeness.
+    - On the export side, deletes are only after network send confirmed, so much safer.
+    - When things are going bad, that’s when you want the data the most – so having it be safer is better.
+    - Can we mute/stop exporting when the network is unavailable? Abstract check for network availability.
+    - Can we reduce the time until export?
+      - This is all configurable
+      - Should we change the defaults in android?
+      - Disk buffering config is no longer user-facing in initializer?
+    - Maybe we think about another strategy rather than time 30s -> 33s gap to read
+      - Write to .tmp file and then rename?
+        - This is what embrace does
+      - Could also be event based
+    - There is not a “manual flush(export)” method.
+    - AI: Hason - create issue about manual flush
+    - AI: Jason - create issue about timing vs. rename/event
+- [jason] - withspan - [https://github.com/open-telemetry/opentelemetry-android/issues/412](https://github.com/open-telemetry/opentelemetry-android/issues/412)
+- RC1 next week!
+  - Can we verify that the release process handles rc1 rc2 suffix etc.

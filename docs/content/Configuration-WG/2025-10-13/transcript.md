@@ -1,0 +1,200 @@
+SIG: Configuration WG
+Date: 2025-10-13
+Duration: 30 minutes
+Zoom Recording URL: https://zoom.us/rec/share/b_za7EWRC9BU4V5_HDCBO8JpJJuzai3XWvl81iXvlDueCzoAd0HDZECrMkrSqLCI.yQGIBkUiufMWXiMw
+============================================================
+
+## Zoom Recording Transcript
+
+**Tyler** 01:07 Hey, Jack.
+**Jack Berg** 01:08 What's going on, Tyler?
+**Tyler** 01:10 Not much. Good to see ya. How was the break?
+**Jack Berg** 01:13 It's ongoing. Yeah? I'm just, yeah, I don't… I started a new job at Grafana in, in the beginning of November, but, so I sort of, like, switched companies, and I extended my parental leave with a little self-funded leave.
+**Tyler** 01:29 Yeah. Are you gonna immediately take parental leave at Grafana? I think that's the pro move, dude.
+**Jack Berg** 01:34 Well, it's actually… yeah, I don't think I can. Well, maybe. I don't know what the fine print says, but even my parental leave at, like, New Relic, they have, like, a clawback, where if, like, you don't come back to work, they, like, claw back your parental pay, so… I've basically been on sabbatical, not parental leave.
+**Tyler** 01:52 Oh, yeah, yeah, I see, yeah. Oh, that's kind of annoying, but it is what it is, right?
+**Jack Berg** 01:58 Yeah, like…
+Yeah, exactly. I don't know, like, you only have an opportunity to, like, switch jobs and take a break once every, like, n years, and I was like, regardless of the pay situation, I'm just gonna…
+I'm just gonna take some time and reset.
+**Tyler** 02:15 Yeah.
+Yeah, it usually comes out in the wash anyways, like, you get all, like, you know, you try to time it perfectly, and then you're like, you know, 2 or 3 years later, you're like, why did I care? Like…
+**Jack Berg** 02:26 Right, yeah. In the big picture.
+**Tyler** 02:28 Yeah, exactly. So, it's not… it's not really an issue, but… yeah.
+Well, cool. Yeah, so, does that mean you have a little bit of time?
+Do you work on OTEL while you're taking a break, or you just, want some… a blue moon sort of thing?
+**Jack Berg** 02:41 I'm doing, like, 6 to 10 hours a week, somewhere in there. You know, the baby's getting a little bit older, and so, you know, I'm starting to ease myself back in. I don't want to just go completely dull and, like, turn off completely and forget how to write software, so…
+**Tyler** 02:57 Yeah, I doubt that'll happen, but… I mean, I know what you mean. You get, like… and I don't know, like…
+It's… it's a passion project as well as a, you know, a job, so, yeah.
+**Jack Berg** 03:07 Yeah, that's right.
+**Tyler** 03:08 Yeah.
+**Jack Berg** 03:09 So yeah, there's, like, I added an item to the agenda. It's just you and me today, so I don't even know, if you think it's worth sharing just for the sake of you and the recording, or if we should, like, skip to next time, but,
+I've been working on this thing called, the meta schema. Maybe you've heard Alex and I talk about this.
+**Tyler** 03:31 Yeah, I… I don't… I mean, I've heard you talk about it, I don't know enough about it.
+But yeah, I'd be interested in talking about it if you wanted to go over it. Obviously, like, this is recorded. We don't have meetings every week anymore, it's every other week, so, yeah, I think, I think I'd be interested.
+**Jack Berg** 03:48 Yeah, why don't I do that then? I'll… it's kind of a big PR that I opened, and it's big because…
+well, there's some… there's a decent amount of content, but really, the thing that makes it a lot of lines is that there's a lot of generated code. So I don't think it's as intimidating as it seems, but
+Why don't… why don't we go through it real quick, and just try not to take too much time, because it's just you and myself, so hopefully we can get you back, early. And yeah, hopefully some of the other people that regularly attend this can watch the recording.
+**Tyler** 04:21 Yeah, sounds good.
+**Jack Berg** 04:23 Alright, so I'll share my screen.
+Alright, so…
+The meta schema. There's things that we want to track in configuration that don't fit cleanly into JSON schema, and the metaschema is this concept that I've come up with for, how we track that information. And so, some of the initial use cases are type and property semantics. So, we have this file today called typedescriptions.yaml.
+that contains, like, you know, descriptions about all the different types and their properties, and expected semantics of language implementations. And so, like.
+there's some… there's some that's, like, informational content in there that's, like, I guess, informal, and then there's some stuff that's, like, sort of binding that we want to maybe add some more, some more structure around, make more official, so that it's clear that these aren't just, like, suggestions. This is, like, the… the way we ought to… all SDK implementations ought to behave.
+So that's one thing.
+Another thing, this is kind of minor, but, which portions of the schema represent the SDK extension plugin interface types? It'd be nice to just, like, have a flag somewhere where we can indicate that, you know, this is what those are, and they have common sort of behavior, in structure.
+And then language implementation status. So, you know, on a type-by-type basis and a property-property basis, what is the status of the different language implementations?
+And so, you know, these are things that maybe you could fit into JSON schema a little bit, because, like, JSON schema isn't necessarily, like, if you add your own property definitions to JSON schema.
+it won't, like, fail to compile. Like, you can add your own keywords to it, but, like, some things don't fit well in JSON. Like, descriptions, property descriptions. Those are, like, multi-line things, and writing multi-line descriptions in JSON is, like, famously annoying, because of just, like, you know, the quote situation in there. So it's more convenient to write this in YAML.
+And then also, this, this other thing, language implementation status, so, like.
+For reasons I'll get into later, it would be really inconvenient to maintain language implementation status metadata in the JSON schema itself. So…
+you know, I kind of think all this points to separately maintaining some of this data in a parallel data structure. And so that's what the metaschema is, and I've added some tooling to ensure that the metaschema is kept in sync with the JSON schema, and so these are things like, hey.
+You know, at build time.
+or, you know, as a make task, add any missing types or properties to the metaschema that don't exist. So, like, if you go and you add something new to the JSON schema, we want to make sure you don't forget about the metaschema, and it gets out of sync. And so, you know, there's a task that automatically adds those missing types and properties and stubs them out.
+With, like, you know, default values, and if you don't run that task, your build will fail.
+Right? So if, like, any of these metaschema
+tasks that are… there's some code generation stuff, and there's some, like, synchronization tasks. If any of these aren't run at build time, it fails. So it's like… it's kind of like a GoFormats thing, or a… in Java, we have this thing called Spotless, that's a similar thing, and it's just like, you know, the expectation is that you run these before you check in your code.
+So, similarly, it would remove any extra types or properties from the meta schema, so, like, you know, if you try to add stuff that isn't in sync with the JSON schema, it would remove that clutter as well. And, like I said, the build fails if this tooling hasn't been run.
+So, there's two tasks that this meta schema facilitates right now. The one that we've had for a while, and it's just kind of morphing forms, is,
+comment generation, right? So we have these example files, and they have… they're, like, richly commented, and the comments are all kept in sync with each other so that, you know, it's less error-prone, and it's less of a maintenance burden. And so, that has, you know, kind of evolved into the metaschema.
+And then the other one, and this is net new, is markdown generation for the whole schema. So, once you have all this data, and you have kind of tools to kind of collect information from the JSON schema and the meta schema for a particular type, you can do some interesting and useful markdown generation to make it really easy to navigate the JSON schema in a human-friendly way.
+So that's, that's it, and that's like, you know, conceptually all the things involved, and I guess,
+A useful thing to do would be to go and, like, look at this new task, the generated markdown, because I think it's kind of interesting, and, you know, I could see it being something that lands on, like, Opentelemetry.io someday.
+So, yeah, let's go look at that.
+So, this is in a working branch that I have, and
+You know, what do we have? So we have, like, a…
+table of contents sections, and so, you know, we have all of our types defined. These are all the types that are met and described in the JSON schema.
+And then, you know, there's separate sections for the language support status, and so, you know, I filled out the language support status for Java, but, you know, I would… I expect this list to grow as other maintainers go and contribute to this. And then, you know, there's a section for SDK extension plugins, and so, like, let's go to one of these types here, and we can kind of see what type of information we have, so…
+The best one to start is the, you know, the top, the entry point, OpenTelemetry configuration.
+And so, you know, we can do things like generate a table of all the properties, and for each property, you know, describe its type.
+And so, you know, types can either be scalar, like file format is just a string, or they can be, you know, complex types, like other types that are referenced in the schema, and so we have, like, linking between these, right? So you can, like, click over and see what the definition for attribute limits is.
+You know, we describe whether the type is, or whether the property is required or not, whether there's any additional constraints, you know, and just to give you an example of what constraints looks like, like, let's see if we can find one.
+That actually has constraints. Oh, here we go. Like, schedule delay. We have a constraint that says the minimum value is zero. We have a, exclusive minimum for the max queue size of zero, right? So, you know, any sort of validation constraints that exist on these properties, we just, like, enumerate there for convenience.
+And then the description. So this is the, you know, a piece of data that's contained in the meta schema, and so we collect information that comes from both, like, the JSON schema, and that's, like, these first columns, and then in the meta schema, this is this last column, and we can print it in a user-friendly way.
+We can also, down here, there's, like, the collapsible section about language support status, and so you could go see at a glance, like, for this specific type and its properties, what is the language support status? And, you know, I imagine this table being
+having columns for each of the different languages, right? So you could see, like, at a glance, what the status is of all the different properties for Java, and then, you know.NET, Go, JavaScript, whatever.
+And it's collapsible because, you know, maybe not everybody is interested in that. That's kind of a particular use case.
+And then, you know, types themselves have, like, constraints, right? So I enumerate those, so a type can have additional properties or not. It can have, you know, a set of fields that are required, and so on and so forth. So there's, like, sort of type-level constraints that I print, and then,
+Oh, this is interesting. Usages. That's another thing I'm printing. So, anytime a type is used somewhere else in the schema, I have, like, I have backlinking there. So, like, you know, oh, you're looking at this open tracing propagator type. Where is it actually used? And we get, like, a link up to, you know, the type that references that. So it's sort of an infinite linking situation.
+That helps in navigating this schema, right?
+And then finally, you know, just for, you know, I show the raw JSON schema for every type with a link to its source file. So, you know, if you don't trust this, you can go click a link and go see where the source is defined.
+And so all this kind of adds up to, like, you know, I think making it a little bit more friendly, user-friendly to navigate what's going on here, and easier to understand at a glance.
+**Tyler** 13:45 I like it, yeah.
+**Jack Berg** 13:48 Yeah, I think, I think it'll help. One other thing, I guess, that's worth calling attention to is, like, so, you know, I talked about within a specific type, how you can see, like, the language support status, so…
+you know, you might all… you might be interested in this, like, hey, what's the status of this type view selector across all languages? Because that's, like, an interesting question to say, like, hey, are we ready to stabilize this? Right? So, like, it's, you know, it's supported in 3 different languages or something.
+But from a user's standpoint, I'm only… might only be interested in the language Java. So I want to see, like, an enumeration for the language Java of all the types and all the properties and their status.
+And so, like, you know, from that perspective, you know, all the way up at the top, back at the table of contents, you know, there's this language support status header, and you know, each one of these languages that is, you know, defines its support status, I print out, like, you know, a table of all of its types and, you know, the support status of all of its properties. And so, you know, it's,
+It's like, whose perspective do you want to see it from? Do you want to see it from the type perspective or from the language perspective? And you can do both, and it's just, like, a matter of how you want to print this and present this to the user.
+**Tyler** 15:02 How is this generated?
+**Jack Berg** 15:04 This is just a little JavaScript, file, so…
+**Tyler** 15:07 the, the, the Java, support.
+Status?
+**Jack Berg** 15:12 Yeah, so, if I go back up to…
+the root, and then I go to the schema. You know, previously we had a file called typedescriptions.yaml in this schema directory, now we have a metaschema.yaml file. And, you know, the structure of this is…
+you know, there's a top-level entry called types, and this is an array of every single type that is defined in the JSON schema. And, you know, as I mentioned.
+if there's any types missing from here, the tooling will automatically generate it and stub it out, and if there's any extra types, they'll be deleted. So that's… that's that. But then, further on in this file, like, if we go all the way down…
+There's a section and… called Language Implementations.
+And this is another top-level entry here, and, you know, it's an array, and each entry in this array represents a particular language's implementation status. And so this is a little data structure that I, like, I sketched out on, like, what might be convenient
+to enter and maintain from a maintainer's perspective, right? So from, like, the Java maintainers, like, I want to see all of the types and all the properties in, like, one place. I don't want to have to, like, you know, you know, this meta scheme is a thousand lines long. I don't want to have to go and, like, scroll through there and update my status for Java across, like, a thousand different lines. I want my Java status to be, you know, compact.
+Right? And so, that's kind of what this represents, right? So…
+You know, the build tooling, again, it maintains this data structure and makes sure that, like, all the types and properties are represented, and, you know, this has all been stubbed out, and the expectation would be that me, the maintainer of Java, would go in and update the status of this. And so for each type, indicate whether it's, you know, supported or unsupported, and, you know, if it is supported, are there any unsupported properties?
+Because that's going to be the case, right? It's like, we support this type, but we don't support these new properties yet.
+And maybe there's a better way to represent this, but this is just, like, what I came up with, you know, quickly. So,
+Yeah, that's where this is defined, and all this is sort of referenced in the code generation, or the markdown generation.
+**Tyler** 17:32 I gotcha. Cool.
+Cool.
+Are you using Weaver, or do you look at using Weaver to do a lot of this generation?
+**Jack Berg** 17:41 No, so, my understanding of Weaver is that it's…
+And maybe you can correct my understanding, but, like, you know.
+the semantic conventions have a particular data structure that they use to represent, you know, all of that metadata in YAML, and Weaver has this, like, Markdown and just, like, template generation tooling in there where you can take that data structure and, you know, print it out in any variety of ways, and that could be, you know, generating code, or generating Markdown, or generating this.
+And this is where maybe you could correct my understanding, but is it deeply tied to the, like, the data structure of semantic conventions?
+**Tyler** 18:25 No, like, the YAML format is pretty freeform. The tooling that's built around it is very… it has more specifics there. So, like, you know, parsing…
+you know, one of the things it does is it does, like, essentially, like, parsing of this, and then, like, refinement, so if you wanted to annotate, or if you wanted to remove things, those tooling around those actions are really, like, semantic convention specific, but…
+No, it's pretty… it's actually a pretty good, like, just general
+Templating engine like you're talking about.
+**Jack Berg** 19:01 And it doesn't care about, like, the source data format, like, you know…
+it could… it could provide tooling to do this type of thing I was describing, where it could, like, you know, help me maintain this YAML data structure, and like, you know, add entries that need to be there, remove entries that shouldn't be there, things like that.
+**Tyler** 19:19 That, that part, the, removing entries that shouldn't be there, yeah.
+the adding the ones that aren't there, I don't know.
+I'm not an expert on WeWork, I've just used a lot of it, and so I don't… I don't know if, like, the functionality for that is there.
+But I'd be interested to find out, like, yeah, I definitely think Josh Sirth would know a lot more than I would, obviously. But, yeah, I mean, I think, I think definitely the refinement step is, I think, the thing that is gonna be critical to whether it's usable here or not.
+**Jack Berg** 19:52 Yeah, yeah, that…
+Yeah, I should read more about that. Obviously, if there's, like, another use case for that tool in the OpenTelemetry ecosystem, we ought to use it.
+**Tyler** 20:03 Well, like, the thing that I'm, like, thinking about is, like, it,
+like you said, like, it's good for markdown generation, I think that that's cool, but you can also use this to do, like, code generation, too.
+Which might be an interesting… because, like, if this is already parsing this to do markdown generation, you can take those templating files, and then all you have to do is say, like, instead of…
+going from this, go to this, and, like, you can parse that, essentially, into a new thing. So this meta schema could actually be used for, I think.
+like, code annotation, as well as, markdown generation, and other, other, like, interesting things I haven't thought of yet, kind of thing, so…
+**Jack Berg** 20:42 Yeah, as you're mentioning that, it's like, you know, there is data in here that would be useful in the code generation part. Like, when we generate all of our types and properties for, like, Java bindings for this, you know, none of them are annotated with descriptions. Like, the descriptions would be useful, like, in there as, you know, comments in the Java code.
+That'd be an interesting problem for Weaver then, though, because it would have to stitch together, like, two different data sources, like the JSON schema plus the meta schema, and then, you know, that's, like, the input into its templating engine piece, and you'd have to spit that out.
+**Tyler** 21:16 It'd be cool if we could do something like that, especially if it could, like, hand off the, like, the JSON schema, like, generation, code generation, you know, and then come back and then annotate with this. Like, I think that'd be a really cool, like, functional element to it. I think, like.
+Based on the way I've seen, like, the website generated using Weaver, it seems possible, because, like, it's… it's really good at saying, like.
+hey, at this section in the code, have, like, a specific annotation that says, like, this is where our weaver will generate something, and then it will go and it will go do this thing,
+Where it'll actually, like, then put in the pieces that it's actually looking for. So, yeah, I'd be interested to see…
+**Jack Berg** 21:57 You're talking about, like, the semantic conventions section of the website?
+**Tyler** 22:00 Yeah, yeah, I mean, like, it's… yeah, exactly, yeah. And so, like, all of this, like, markdown-looking stuff, like, see that table there? Like, it's generating that table, but the stuff above it, and, like, some optional things, like, it'll have, like, all these other, like, yeah, like, those sort of things are, like, hand-curated, and, like, the, and so then, like, below it, it'll be like, hey, we were…
+put a generation here, and I'll put, like, essentially, like, a tag, like…
+This should be some sort of, like, description of something after this, and it will be like, oh, I know what that is, and I'm gonna, like, put that there, and it will fill out the actual, produce markdown, which… or, in this case, HTML, but yeah.
+So there's, like, a lot of functional elements there, but I don't…
+to be clear, like, I don't know if that's a… like, I don't know if I'd say that's a blocker for getting the meta schema, like, as you proposed, but I do think it's worth maybe looking at, if not…
+As an update here, but as, like, a follow-up or something like that, yeah.
+**Jack Berg** 22:55 Yeah, like, I definitely sh… I'll follow up with Josh, and
+Lauren? Is that his name?
+**Tyler** 23:05 Oh yeah, yeah, yeah, and I think maybe Lyudmila as well, but I think just Josh and, is it Lauren? Lori, that's it, yeah, Lori.
+**Jack Berg** 23:13 Yeah, and
+I… I… yeah, I'm sort of skeptical about it, because, like, I don't know how you would… like, what is…
+how would you build something that, like, is schema independent? Like, the schema for the data that you want to represent here
+is, like, you know, is different for semantic conventions versus, you know, configuration, and…
+you know, there's generic templating engines that, like, you know, will take arbitrary data and, you know, provide you, like, templating
+languages, like DSLs, for spitting out any sort of file from that, but I don't think Weaver tries to be that. I think Weaver somehow is… it seems like it should be coupled to the semantic conventions data format somehow, but I'll look into it.
+Yeah, I would, so, like I said, like, a lot of, like, the.
+**Tyler** 24:10 the parsing step, and then going into the refinement. So, like, if you say, like, hey, I want…
+just the, you know, stable metrics or something like that. Like, it has a… it has a special function just for that, where it, like… but it's all a JQ query at that point, right? So it's already gone through the, like, parsing and loading of whatever the input is. It's translated it into this, like.
+JQ, like, structure. It'll pass it through some sort of, like, functional elements there that'll, like, do refinement. It'll, you know, and then you can do a lot of, like, movement of things if you want, and, like, that's, like, the part where you can, like, you know, re… recombine things.
+And then it will pass that through down through the steps of that, like, templating engine that you're talking about. Like, so, like, it's essentially, like, a full… full…
+parsing engine. It's just that all that refinement step and all the things that come down, like, it has a lot of tooling around semantic conventions for it.
+**Jack Berg** 25:00 Like, helper functions types of things?
+**Tyler** 25:01 Yeah, yeah, yeah, yeah, exactly. And, like, it has very generic helper functions as well, but, like, it's, like, yeah, like, give me all, like, the stable metrics, like, it's going to look for data structures that are of a certain form, and that's the part where the semantic conventions really comes in, but… yeah, from my understanding, like, especially, I've seen some talks as well that do this, where they, like, put in just, like.
+Custom arbitrary, like, file formats on the beginning, and, like, they're able to then use a lot of, like, the…
+the functional elements of Weaver Downstream, which is, like.
+They become way more powerful than just.
+**Jack Berg** 25:33 You've seen talks about this?
+**Tyler** 25:35 Yeah, like, the last KubeCon, there were a few talks, like, definitely, like,
+there was one on, automatic Prometheus, like, translation schemes, so essentially, like, they would, be able to say, like, define how they wanted to do a migration between one Prometheus data model to another, and so that was, like, their own custom format, but then the cool thing was that, like, it got, like.
+way more powerful, where, like, the Weaver engine was able to then ad hoc auto-generate past schemas and do a migration strategy for them in, like, their own, like, endpoints. So, like, there was a lot of, like, really cool, like, real-time parsing that was actually going on through Weaver, yeah.
+**Jack Berg** 26:16 Any chance you could dig up that talk?
+**Tyler** 26:19 Yeah.
+**Jack Berg** 26:19 I know, maybe that's inconvenient. If you just, like, remember the rough title of it, I'm sure I could find it as well on YouTube, but.
+**Tyler** 26:27 Yeah, no, it was… it was… it was a great talk. It was cool, because it was, like, Josh Sorth had given a talk on Weaver and how powerful it was, and he did some, like, cool code generation stuff, but, like, yeah, then… God, I can't remember the guy's name, it's not Freiburg, but, like…
+he gave this… he's, like, one of the Prometheus maintainers. He, like, essentially took Josh's talk, and he was just like, here's how I would…
+he didn't know Josh was gonna give the talk. He was like, here's how I would use Weaver to do this really cool thing, and and so I was like, oh, wow, okay, like, that's actually really cool.
+**Jack Berg** 26:58 I know who you're talking about.
+**Tyler** 27:02 Yeah… I…
+**Jack Berg** 27:04 Fabian? Are you talking about Fabian?
+**Tyler** 27:07 No… I don't think it was him.
+But I can take a look for the talk, and I can send it to you. Yeah.
+**Jack Berg** 27:15 Okay, that'd be fantastic. Yeah, I think you're right, like, if, if there is an opportunity for reuse, like, that's something we should pursue. And, you know, we've, because this is just, like, build tooling, it's not, like, actually…
+essential to the… it's… I don't know, it's… it's like… it's patch… it's tacked on, it's not core, right? Yeah, yeah. And it's already evolved once, like, you know, or it seems like it's gonna evolve once. It was, like, this type descriptions.yaml, and now it's the metaschema, and maybe it, like, it morphs into something else, or some of the… some of the scripts or tooling morphs as well, so…
+**Tyler** 27:50 Yeah, I think that, like, there's already a lot of value in, like, what you're showing here. I mean, that's, you know, gregor last time was asking about, like, default values alone, right? Like, that was.
+**Jack Berg** 28:00 Yeah.
+**Tyler** 28:00 And so, having some sort of readable thing that isn't, you know, some prerequisite where you have to know JSON schema is going to be really important here, so…
+like, like you said, yeah, it's just build tooling. I think there's gonna be a lot of, like, cool opportunities if we do use Weaver, because there's, like, gonna be a lot of reuse of any sort of templates for Weaver, but…
+Yeah, again, like, that's… I don't think it should block what you have here, I guess, is what I'm saying.
+**Jack Berg** 28:27 Yeah, that… yeah, I think we're in agreement. And just, like, one thing to think about, so, like, right now.
+we have these descriptions that read something like this. It's like, this is pretty typical. There's, like, a top-level thing that, like, you know, is a terse description of what it is, and then there's some sort of additional line that's, like.
+semantic interpretations, like the allowable values, what SDKs are expected to, like, do for different values and things like that, and then there's this line, which is like, you know, for types that are not required, what is the behavior when it is omitted or null ?
+Like, this is a very typical thing. And so, to me, this seems like it should be split out into 3 different pieces of data. Like, the terse description, the semantics, and then the default behavior. And that's, like, a very useful thing to do as well, like, and that's, I guess, to Gregor's point. Like, if we could have the default split out, and also enforced, right? So, we need to have the default semantics defined for
+any property which is not required. If it's required and it's omitted, you don't need a default, right? Because, like, the validation will fail if it's omitted. But if it's not required, then you need to describe what implementation should do when it's not there. So, that's, like, I think a natural evolution as well, like, you know, break out this information. But I didn't want to boil the ocean. I wanted to do one thing at a time.
+**Tyler** 29:48 Yeah, I agree. I think that'd be great, because then you can always recombine these, right?
+**Jack Berg** 29:52 Right, exactly, exactly. When you're spitting out the comments for the YAML examples, just, you know, format them and combine these three parts.
+**Tyler** 30:02 Right. Yeah. Yeah. No, exactly.
+**Jack Berg** 30:06 Yeah.
+Well, cool. Yeah, great discussion. Yeah, I hope other people watch this. Maybe I'll point them to this, if,
+Maybe I'll point to a comment on the PR to those, so that, like, you know, anybody that's interested can have a more detailed overview.
+**Tyler** 30:22 Yeah, and I would, I'm really interested to hear what Josh Sheriff would think about the Weaver, capability. Because, I mean, also, if he comes back and he's like, Tyler doesn't know what he's talking about, I would listen to him.
+**Jack Berg** 30:31 Yeah, and now Lydon Mill is my coworker, so, she's also a weaver whiz as well, so… Yeah.
+**Tyler** 30:39 Yeah, absolutely, absolutely. So, cool.
+**Jack Berg** 30:43 Alright, awesome. Well, any other topics, or should we call it?
+**Tyler** 30:46 It looks good. Yeah, good seeing you.
+**Jack Berg** 30:48 Yeah, nice to see you too, Tyler. Take care.
+**Tyler** 30:50 Yep, bye.
+**Jack Berg** 30:51 That's it.

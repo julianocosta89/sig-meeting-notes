@@ -1,0 +1,66 @@
+## Meeting Notes
+
+### Attendees
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- Frederic Branczyk (Polar Signals)
+- Josh Suereth
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- [Dale Hamel](mailto:dale.hamel@shopify.com)(Shopify)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Jonathan Halliday (IBM)
+- .
+
+### Agenda
+- Review Action Items
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - [skipped] Alexey is on PTO today.
+    - Florian: Needs more attention and review from people. 🚨
+  - [[Florian Lehner](mailto:florian.lehner@elastic.co)] otlp <-> pprof converter.
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078)  ← Merged
+    - [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357) ← Approved by Christos/Felix. Need contrib approver.
+    - Christos: Let’s ping Antoine directly.
+    - Florian: Will do.
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo: Christos helped with fleshing things out and make things more efficient. Removed need for a fallback on older kernels, using memfd instead.
+    - Ivo: What’s missing to get the approval from the Profiling SIG?
+    - 🚨Needs review from Profiling SIG.
+    - Ivo: Thread level context experiment got a bit delayed, but hope to have it ready for the next meeting.
+    - Florian: I joined the eBPF instrumentation SIG and they also have this UC. They want to correlate traces, metrics and logs. Their idea is to use an eBPF map. I asked them to reach out and get feedback from them.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - [skipped] Alexey is on PTO today.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - See [Notes - OTel Profiling: Resource Attributes / Collector Jan 7, 2026](https://docs.google.com/document/d/1nRIvyT_iKW4RLyNGJpP9HowTXtpJm99EDE7YBW94I9E/edit?tab=t.0#heading=h.1iirsc1laqg) call.
+    - Christos: + we’re doing string interning.
+    - Christos: We should go back to the old version of the PR that doesn’t add a new AnyRefValue.
+    - Felix: I’d like that.[Notes - OTel Profiling: Resource Attributes / Collector Jan 7, 2026](https://docs.google.com/document/d/1nRIvyT_iKW4RLyNGJpP9HowTXtpJm99EDE7YBW94I9E/edit?tab=t.0#heading=h.1iirsc1laqg)
+    - Florian: AnyRefValue was mostly used to avoid logs/metrics/traces using this stuff.
+    - Josh: We’ll have to talk to bogdan for the collector. But another concern is just confusion for other components like SDKs. Tigran and I didn’t want to have the refs in the existing messages, but Bogdan did.
+    - Nayef: Putting the refs in AnyValue would allow us to use it in the profiling signal as well, which would address Bogdan’s other concern.
+    - Josh: Let’s clarify if Bogdan wants the refs on the proto on pdata.
+    - Christos: I’ll ping Bogdan and get the answer.
+    - Christos: We can just experiment right?
+    - Florian: I think it’s a lot of work.
+- [Dale Hamel](mailto:dale.hamel@shopify.com) Request for Ruby CME PR reviewers? (probably in the new year at this point)
+  - [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943) got merged
+  - [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/907](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/907) rebase on it when merged, then ready to review
+  - Dale: It’s progressing, just waiting for the next review cycle. New PR 1048 is impacting things, and a new ruby version is out.
+  - Frederic: Review on [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1048](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1048) would be great
+  - Frederic: The above also happens to touch ruby stuff. It’s a smaller PR, but the others were open before.
+  - Florian: My preference would be to have Dale’s first, and then land 1048.
+  - Frederic: I’m okay with landing 907 first as well.
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)Any update on [Node.JS](http://Node.JS) v24.x LTS unwinding? See [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/issues/981](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/issues/981)
+  - Christos: Question for Frederic.
+  - Frederic: I’ll ping Brandon internally to look at it.
+  - Christos: There is a draft PR for Lua JIT, would be great to land it.
+  - Christos: I’ll ask Timos to make time available for reviews.
+  - Frederic: Don’t continue with the old PR, we’ve done lots of fixes on top.
+- [Alexey Alexandrov](mailto:aalexand@google.com) Sample.values / Sample.timestamps_unix_nano: Would it make sense to have a scalar Sample.value field for the (presumably common) case when no array is needed?
+  - [JH] against this - Sample codec logic is complex enough already, the space saving isn’t worth the added complexity.
+  - Felix: I’d also like to keep what we got.
+- Felix: Attributes without references in main payload.
+  - Florian: He’s not aware that we use attributes with units. This makes a big difference.
+  - Christos: I’ll ask Bogdan to clarify on this as well.
+  - Nayef: I wasn’t sure if he was talking about this only for pdata, or also on the wire.

@@ -1,0 +1,83 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- Josh Suereth (Google)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Christian Simon](mailto:christian.simon@grafana.com) (Grafana Labs/Pyroscope)
+- [Frederic Branczyk](mailto:frederic.branczyk@polarsignals.com) (Polar Signals) (left 5:30 PM CEST)
+- Martin Stadler (Mirantis)
+- Cleverchuk (solarwinds)
+- [Joel Höner](mailto:joel@zystem.io) (zystem)
+- [Francesco Andreuzzi](mailto:andreuzzi.francesco@gmail.com) (AWS)
+
+### Agenda
+- Review Action Items
+  - Review PR [https://github.com/open-telemetry/opentelemetry-proto/pull/672](https://github.com/open-telemetry/opentelemetry-proto/pull/672)
+    - Jonathan: Semantics of attributes units field needs discussion.
+    - Alexey: Do we have specific examples for attributes with different units? It’s complex.
+    - Jonathan: I agree. SemConv should define the units. Network traffic, maybe one user thinks it’s bytes and another user thinks it’s megabytes.
+    - Alexey: bytes is the easier case. process ids vs names would be a more complex example.
+    - Jonathan: I added a proposal in the comments in the last few minutes before the meeting.
+    - Florian: What about dropping the AttributesUnit on our side, but then adding it to the Attribute message directly.
+    - Jonathan: Attribute units will be sparse, some attributes will just be strings.
+    - Jonathan: The point of the mechanism is where the name doesn’t define the unit.
+    - Alexey: The origin of this is the unit on Labels in pprof.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/8ff4bd148bfc490a9b5167e0acb4cb89937cadb4/pkg/normalizer/otel.go#L347-L419)).
+    - Alexey: I started looking into this. I plan to use Go. There is code in the links above and in parca. In the collector repo there is this in-memory layer (pdata). Parca uses the proto directly.
+    - Florian: pdata doesn’t support nested messages yet. This means filtering can’t work yet.
+    - Alexey: Who is the intended audience for the pdata interface? eBPF profiler?
+    - Josh: It’s for code passing data in the collector. Stable independently of the protocol.
+    - Alexey: Could be a standalone command line tool. Or could be an API called by the producers of profilers. Does the collector do any consistency checks for the data it receives?
+    - Florian: I don’t think so.
+    - Josh: It’s a per-receiver decision. Generic OTLP doesn’t do much.
+    - Felix: I think for now doing a standalone tool off the protos. Later it could be a collector processor. But that would be less flexible for now.
+    - Josh: I strongly recommend having this outside the proto repo. The proto repo could consume it as a container.
+    - Alexey: There is an OpenTelemetry Go Build Tools.
+    - Josh: It’s owned by the Go ecosystem to do code generation.
+    - Josh: If you want to open a community issue for repo, that should work. I highly recommend your own repo.
+    - Felix: Can we request a temporary repo?
+    - Josh: Yes, but let’s give it a timeline.
+    - Alexey: A tool for converting otel to pprof and back. But that code could live forever.
+    - Josh: Maybe you should have a converter? OpAMP has a library repo that gets used by other Otel projects.
+    - Alexey: Would we do converters in different languages?
+    - Felix: I propose to stay focused on validation. I’ll raise the community issue for a tmp repo.
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Write down all the concerns for stack traces (performance, simplicity).
+    - Felix: I will drop this, I think we have enough alignment okay.
+  - Review [benchmarks](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/524) from Christos
+    - Alexey: I remember taking a quick look.
+    - Christos: No newer comments. But had a good back and forth with Beau.
+    - Christos: If Alexey is okay with not going the double array direction, then I think we can move forward here.
+    - Christos: Remaining protocol changes
+      - stack trace representation
+      - default_sample_type
+      - attribute units
+      - has_* attributes
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Getting [simple stack trace id](https://github.com/open-telemetry/opentelemetry-proto/pull/645) PR ready
+    - Felix: I resolved the merge conflict. I will update PR description and then mark ready for review. Goal is to get it approved before or at the next meeting.
+  - [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Can we have OTel SDK communicate process level information through writing process environment variables
+    - Nayef: We can’t write to environment variables because the eBPF profiler can’t see the changes from setenv b/c it’s a libc thing and not a syscall, so procfs doesn’t see the change. Additionally, writing environment variables is not thread safe.
+    - Nayef: We’ll write a document on sharing resource level attributes between SDKs and the eBPF profiler. It will recap the details from above as well as use cases. Document will be available next time.
+- Drop `default_sample_type` – [GH Issue](https://github.com/open-telemetry/opentelemetry-proto/issues/633#issuecomment-3056622636) - [PR](https://github.com/open-telemetry/opentelemetry-proto/pull/679)
+  - Felix: I’ll add a full example of how the round trip will work to the PR description.
+- [Florian Lehner](mailto:florian.lehner@elastic.co)Can we drop [Mapping.has_[functions|filenames|line_numbers|inline_frames]](https://github.com/open-telemetry/opentelemetry-proto/blob/c30610041736aa5c0077b156f27b09e878b797ea/opentelemetry/proto/profiles/v1development/profiles.proto#L444-L448)? Or maybe going forward [https://github.com/open-telemetry/opentelemetry-proto/pull/595](https://github.com/open-telemetry/opentelemetry-proto/pull/595) ?
+  - Florian: The PR above suggested replacing the fields with an ENUM which would simplify things.
+  - Florian: In eBPF we don’t use or set these fields. Maybe Alexey can explain if there is a big value to these fields or if it’s tech debt.
+  - Alexey: pprof uses them to see the level of symbolication for a mapping to potentially improve the quality by looking at the binary. pprof uses these fields as a hint to decide if it should look at the binary or not. Not sure if it’s useful for the problem, I’d say yes, but I’m biased toward pprof. We’ll need something for the round trip. Attributes might be the easiest.
+  - Felix: I would argue this should be attributes. It’s mostly needed for a viewer like pprof. Cloud systems will prefer the symbols from separate symbol pipelines.
+  - Alexey: I can drop this and add `pprof.` attributes for this.
+  - Florian: Speaking of SemConv, we might need to use the `profiles.` prefix.
+  - Josh: You need a namespace that is reasonably unique. If  `pprof` is generic (something other than profiling using this acronym) we would need another prefix. We don’t have a way of defining attributes in the OTel scopes. For the profiling signal itself, we don’t have the ability to define profiling specific attributes. The `profiling.` prefix was recommended for profiling specific attributes. But it only needs to be reasonably unique, `pprof` could be fine. Yes, it could be reasonable to use that.
+  - Felix: We can probably use the `pprof` prefix.
+  - Florian: So we drop the bool fields?
+  - Felix: Yes.
+  - Christos: Maybe we should keep it all under `profiles`.
+  - Florian: We use `profiles` for frame types: [https://opentelemetry.io/docs/specs/semconv/general/profiles/](https://opentelemetry.io/docs/specs/semconv/general/profiles/)
+  - Alexey: Yes, I like the grouping.
+  - Christos: Also has better discoverability.
+  - Josh: SemConv will have signal specific registries. We already have entity registries (but not on the website yet). Don’t over-correct on how things work today.
+  - Felix: Ok, sounds like we’ll go with `profiles.pprof` and remove the bool fields. The rest can be hashed out offline.

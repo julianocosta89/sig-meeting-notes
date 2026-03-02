@@ -1,0 +1,87 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Dale Hamel](mailto:dale.hamel@shopify.com) (Shopify)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- Josh Suereth
+
+### Agenda
+- Review Active Action Items
+  - [[Alexey Alexandrov](mailto:aalexand@google.com)] Write a profiling signal proto consistency check tool / library (existing code: [1](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/38452), [2](https://github.com/parca-dev/parca/blob/main/pkg/normalizer/otel.go)). Initial PR sent in [#12](https://github.com/open-telemetry/sig-profiling/pull/12).
+    - Alexey: I updated the PR to address the comments. All mandatory checks are there. PR should be good to merge. Still some checks for orphan and dupe entries in dict.
+    - 🚨SIG members: Please review the PR.
+  - [[Florian Lehner](mailto:florian.lehner@elastic.co)] otlp <-> pprof converter.
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078)
+      - Florian: Got some feedback on this a few hours ago.
+    - [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/44357)
+    - 🚨SIG members: Please review the PR.
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo will join later, will circle back to this.
+  - Alban: Reach out to the kernel folks to check how they see the severity.
+    - I emailed on 22 Oct. I received feedback.
+    - Florian: Maybe we can drop the action item. Feedback is that this won’t be treated as a security issue by the kernel. A new flag will be added tho. There is nothing else for us to do.
+    - → We’ll drop this from the agenda for now, but can be brought up again.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Send a PR clarifying the start timestamp / duration conventions. See [this discussion](#bookmark=id.an4px2jo7lgp).
+    - Nov 26 update: Sent [#744](https://github.com/open-telemetry/opentelemetry-proto/pull/744). Merged now.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Sample type order / default sample type attribute.
+    - Nov 26 update: Wrote up notes / a proposal [here](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0).
+    - → We’ll circle back to this, see agenda.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733)
+    - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) / [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) Benchmarks.
+    - Felix: Hierarchical resources idea was brought up.
+    - Josh: The confusion on why dictionaries for resources were suggested has been resolved. We don’t have a great solution. We have things we want to do in the future, and things that work today.
+    - Josh: Hierarchical resource idea is that a process resource could have a host resource as the parent. But it’s too early for us to figure this out, it’s something we want to do across OTLP. The idea here is not just a dictionary, the model of OTLP would shift. This was on a private slack channel. I can share my branch. It’s an idea of where we could go with entities. It’s a long path to get there. Tigran removed his block from dictionaries. I sat down with David Ashpole who walked me through why it’s going to be hard in the collector. We haven’t found a solution yet that will be easy for the collector. That’s our number one blocker for picking a direction going forward. There is resistance on the collector side. I’m not sure what path will be successful. I’d be fine with adding the dictionaries for just profiling and pushing for that in the TC. If Bogdan, Tigran and I can agree, we should be able to do it.
+    - Antoine: Rather than discussing the merits of the model, it would be great to get feedback. We worked on a pprof receiver for the collector to report its own profiles. We have landed something in the collector. But we’re not aligned on the translation code yet. I’m stuck. Getting feedback from people will make a difference.
+    - Josh: Are you worried about breakage?
+    - Antoine: No. I’m okay with this. I want to get this in front of people to get feedback.
+    - Florian: I have [opened helpers](https://github.com/open-telemetry/opentelemetry-collector/pull/14235) for collector contrib to unblock the pprof receiver and translator. Once we get feedback, we should be able to get things unblocked. I think this is unrelated to resource handling. This part of the protocol is unlikely to change.
+    - Christos: We had profiling deployed already, some people are using it. The main issue is the constant breakage. We need something more stable.
+    - Josh: That’s also my goal. I want to give you the quickest path to stability that sets us up for future success. Options:
+      - 1. Keep signal as it is today (inefficient with lots of resources). The benchmark is batching a couple different hosts together.
+      - 2. We push for dictionaries. The compression gains are [significant](https://github.com/open-telemetry/sig-profiling/tree/main/otlp-bench/reports/2025-11-27-gh733-resource-attr-dict). Representative for many k8s workloads. We haven’t found a solution that would work for other signals without breakage. So the option here is to only allow dictionaries for profiles and do a lot of work in the collector to make this work.
+      - 3. Hierarchical resources. The entities SIG is trying to make changes to resources. We could encode the parenting relationship. So the resource could just have the pid + reference to parent entity. This is a possibility, but we’ll need something in the interim.
+      - 4. We make a v2 of OTLP. Profiling is in the v2 directory. Then we can make changes to v2. That’s not a trigger we want to pull b/c we’re focusing on stability.
+    - Alexey: About the difficulties in the collector, are they written down somewhere?
+    - Josh: Not AFAIK. Would be great to have it written down. Allocs in Go are expensive. We have a raw structure rather than an interface. For performance reasons it’s difficult.
+    - Florian: It would be great if Bogdan would write this down. I don’t see a big advantage for a v2 for profiling. The changes need to be done in the collector for both. Profiling is in a sub-x pkg already anyway. For option 3 I get the idea, it sounds tempting, but not in a state that can be used properly. Parents are referenced to resource messages, it’s not clearly defined how things can be mixed and filtered. My favorite is going with option 2. I see the work in the collector, but I don’t see why we can’t make this happen.
+    - Josh: I get what you’re saying. Tigran and I think 3 would be ideal if we’re further along, but we’re not there yet today. So 3 is probably a no-go.
+    - Christos: To clarify option 1. That contains a dictionary, but not for resources.
+    - Josh: Option 1 would leave the dictionary as it is today. The main use case is enrichment of resources.
+    - Florian: 733 is just about resource messages where we don’t have dictionaries. If we kept the attributes on the samples, it would increase data volumes a lot.
+    - Felix: Resources are used everywhere in the collector. Adding dict support, even just for profiles, will require a lot of changes.
+    - Josh: Again, the main use case is k8s attribute enrichment.
+    - Alexey: There was an initial issue from bogdan about premature optimization. That issue is still there. Is Bogdan okay with top-level dictionaries now?
+    - Josh: Bogdan hadn’t looked at the benchmarks yet. IDK if he still feels like its premature optimization. I’ll see if he can join the SIG. The TC (Tigran and I) looked at the benchmarks and think it’s a legitimate issue. The question of why this is not an issue for other signals, it’s because we typically don’t have many resources in the same payload, even after time window merges.
+    - Alexey: OTel 2 sounds very heavy. Python 3 started in 2008.
+    - Josh: Yeah if we do a v2, we’d have to support both forever. That’s why we are looking for backwards compatibility solutions. There were discussions around content negotiation. I think we can’t add it without that being a breaking change. That’s my opinion (not TC).
+    - Felix: What are the next steps?
+    - Josh: Schedule a meeting with Bogdan about collector concerns.
+    - Felix: Option 1 does not feel like it would allow us to get to alpha.
+    - Josh: You can add me as an optional. Maybe we can summarize the notes from above to steer that meeting. Invite Bogdan, Tigran, SIG members. + Florian, Alexey + make it visible (Update from Dec 18, 2025: A [slack message](https://cloud-native.slack.com/archives/C03J794L0BV/p1766057693815249) has been posted in the otel-profiles channel).
+- Discuss sample order for pprof attributes: [https://github.com/open-telemetry/semantic-conventions/pull/3078](https://github.com/open-telemetry/semantic-conventions/pull/3078), [Handling pprof and OTel sample / profiler order and defaults](https://docs.google.com/document/d/1CF_xg0AFBGyFhkL1hdSSaOXW4pLApg39PwYdcM0xVW8/edit?tab=t.0#heading=h.nigir63t6usm).
+  - Felix: Use case is to round trip pprof -> otel -> pprof.
+  - Florian: The order of profiles in the conversion could be different. We shouldn’t add complexity.
+  - Felix: We have specified [a default in otel](https://github.com/open-telemetry/opentelemetry-proto/blob/049d4332834935792fd4dbd392ecd31904f99ba2/opentelemetry/proto/profiles/v1development/profiles.proto#L196-L198).
+  - Felix: Key question is if pprof sample types are an absolute order (except for last item).
+  - Alexey: I would consider the order to be absolute.
+  - Florian: The dictionary ids will be different on round trip.
+  - Felix: I think if we don’t do an order attribute, we risk subtle breakage of pprof attributes.
+  - Florian: I can remove the sample type from my PR.
+  - Alexey: I’ll create a new PR for the ordering stuff.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Process Context updates.
+  - Christos: Making good progress.
+  - 🚨 Ivo: I hope we can get feedback from the SIG folks. Please look at it and give us feedback.
+- Admin note: Next meeting Jan 8th - enjoy the holidays!
+- < The items below were not discussed - copied to next meeting >
+- [Dale Hamel](mailto:dale.hamel@shopify.com) Request for Ruby CME PR reviewers? (probably in the new year at this point)
+  - [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/943) looks close to merging
+  - [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/907](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/907) rebase on it when merged, then ready to review
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)Any update on [Node.JS](http://Node.JS) v24.x LTS unwinding?
+- [Alexey Alexandrov](mailto:aalexand@google.com) Sample.values / Sample.timestamps_unix_nano: Would it make sense to have a scalar Sample.value field for the (presumably common) case when no array is needed?
+  - [JH] against this - Sample codec logic is complex enough already, the space saving isn’t worth the added complexity.

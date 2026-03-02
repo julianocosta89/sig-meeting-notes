@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth (Google)
+- Bertrand Martin (MetricsHub)
+- [Daniel Dyla](mailto:dyladan@gmail.com)
+- Alexandra Konrad (Elastic)
+- Christophe Kamphaus
+- James Thompson
+- Nick Moore (Grafana)
+- Armin Ruech (Dynatrace)
+- Trask Stalnaker (Microsoft)
+
+### Agenda
+- (timebox 7 min) Project Status + Triage + Blockers
+  - Stability Blockers
+  - PR Triage Board: [https://github.com/orgs/open-telemetry/projects/67/views/1](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - Issue Triage Board: [https://github.com/orgs/open-telemetry/projects/131/views/1](https://github.com/orgs/open-telemetry/projects/131/views/1)
+- (timebox 50 min) General topics
+  - [joao] OS Type discussions
+    - Should we align `os.type` values with ECS?
+    - Or should we deprecate it and rename to `os.base`?
+    - My suggestion after looking at the current state: [https://github.com/open-telemetry/semantic-conventions/pull/2423#discussion_r2189858883](https://github.com/open-telemetry/semantic-conventions/pull/2423#discussion_r2189858883)
+    - Discussions
+      - [liudmilla] Does anything in OpenTelemetry emit OS attributes?
+        - If we can't detect these OS in instrumentation, should we define them?
+      - [bertrand] This structure (type, name, family) matches what we see elsewhere.
+        - NT could be "windows"
+        - Family / Name could be more free-form.
+      - [thompson] What to do about ECS's os.type?
+        - [suereth] ECS already marks os.type as conflict, so we don't think using it for this reason is a blocker.
+      - [alexandra] Pulling in `os.family` from ECS too.
+      - Action Items
+        - We need system semconv to approve this.
+        - We should have prototypes
+  - [joao] Clarification on how to populate OS resource attributes
+    - I think [`os.name`](http://os.name), `os.description` and `os.version` are OK as they are and just need to be better described/how to populate. The question that is left is how to record the kernel version. If we want that, we need to introduce a new attribute.
+    - [alexandra] Note: ECS has os.kernel already, we could leverage this too.
+    - Action Item: Propose this to System Semconv group as future work.
+  - [alexandra] Continue hardware discussion [https://github.com/open-telemetry/semantic-conventions/pull/2380](https://github.com/open-telemetry/semantic-conventions/pull/2380)
+    - Concerns using namespace as field
+      - hw.temperature + hw.temperature.limit
+      - battery.charge + battery.charge.limit
+      - Metrics currently aren't limited on namespace collisions
+    - Since it's already in markdown, should we define in YAML and figure out what to do going forward? - this is defined already in the PR above
+      - Action Items
+        - Let's create an issue that this is blocking HW stability
+        - Let's merge PR as-is with no changes to existing conventions.
+  - [Liudmila, 1m] Looking for general-semconv approval on gen_ai.system -> gen_ai.provider.name and related naming updates [https://github.com/open-telemetry/semantic-conventions/pull/2046](https://github.com/open-telemetry/semantic-conventions/pull/2046) (approved by GenAI SIG)
+    - Need more Reviewers, PTAL at how breaking changes are communicated / opted in.
+  - [Liudmila, 1m] Schema-next automation - [https://github.com/open-telemetry/semantic-conventions/pull/2307](https://github.com/open-telemetry/semantic-conventions/pull/2307) ready for the final review, no blockers
+    - Please Review
+  - [Liudmila & Josh, 5m] Schema v2 drafts
+    - Demo - [https://github.com/open-telemetry/weaver/pull/829](https://github.com/open-telemetry/weaver/pull/829)
+    - Issue - [https://github.com/open-telemetry/weaver/issues/824](https://github.com/open-telemetry/weaver/issues/824)
+  - [Liudmila, 5m ] HTTP - Fixing URI origin is confusing - [https://github.com/open-telemetry/semantic-conventions/pull/2463](https://github.com/open-telemetry/semantic-conventions/pull/2463)

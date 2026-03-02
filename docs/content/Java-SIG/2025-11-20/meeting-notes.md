@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Jack Berg (Grafana Labs)
+- Trask Stalnaker (Microsoft)
+- Jay DeLuca (Grafana Labs)
+- [Bruce Bujon](mailto:bruce.bujon@datadoghq.com) (Datadog)
+- Ghareeb Falazi (IBM)
+- Jason (Splunk)
+- Peter Findeisen (Cisco)
+- Tyler Benson (ServiceNow)
+- Prasad Sawool (Jio)
+- Bruno Baptista (IBM)
+- Matthew Li (Datadog)
+- Robert Niedziela (Splunk)
+- Lauri Tulmin (Splunk)
+
+### Agenda
+- [trask] [Complex attributes incubating implementation](https://github.com/open-telemetry/opentelemetry-java/pull/7814)
+  - We can potentially stabilize as early as Jan 15 (6 months after the OTEP was merged)
+  - Bridging extended attributes [https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/ed38281ca8eb04e11bb72bbbd2ecdc9e8792e9e8/instrumentation/opentelemetry-api/opentelemetry-api-1.50/javaagent/src/main/java/io/opentelemetry/javaagent/instrumentation/opentelemetryapi/v1_50/incubator/logs/ApplicationLogRecordBuilder150Incubator.java#L161](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/ed38281ca8eb04e11bb72bbbd2ecdc9e8792e9e8/instrumentation/opentelemetry-api/opentelemetry-api-1.50/javaagent/src/main/java/io/opentelemetry/javaagent/instrumentation/opentelemetryapi/v1_50/incubator/logs/ApplicationLogRecordBuilder150Incubator.java#L161)
+  - [jack] Will target merging before next release
+- [Jay / Gregor] Opportunities for others to help redistribute some of the workload from  Lauri/Trask?
+  - Ways for others to identify high priority issues/PR reviews/tasks (from the perspective of the maintainers)
+  - Areas to focus on to grow expertise (e.g. indy) to have better review capacity in the future?
+  - [Trask] stability
+    - [Database stability](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12608)
+    - [HTTP library stability](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/12846)
+    - [Logging stability](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/8637)
+    - [Declarative config stability](https://github.com/orgs/open-telemetry/projects/151)
+    - RPC stability
+  - [Lauri]
+    - Issues and discussions from users
+    - Reviewing pull requests
+- [Ghareeb]: Iceberg Library Instrumentation
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15114](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15114)
+  - Explore upstreaming to Apache Iceberg
+  - PR pending further review
+- [Tyler] Servlet Library Instrumentation
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/15188)
+  - Refactored and removed code duplication via shadow
+  - PR is smaller now
+- [Bruno] Refactor http, grpc senders and promote to public API
+  - [https://github.com/open-telemetry/opentelemetry-java/pull/7782](https://github.com/open-telemetry/opentelemetry-java/pull/7782)
+- [jack] INFORM: spec + declarative config + java implementation of rule based sampler
+  - Java implementation [https://github.com/open-telemetry/opentelemetry-java/pull/7861](https://github.com/open-telemetry/opentelemetry-java/pull/7861)
+  - Config schema: [https://github.com/open-telemetry/opentelemetry-configuration/pull/410](https://github.com/open-telemetry/opentelemetry-configuration/pull/410)
+    - [Example](https://github.com/open-telemetry/opentelemetry-configuration/commit/cc0cdad55dce4bc14076d9aed553d3800f2e97fa#diff-fc7a00e409f6f8ee06b07f4205f2e956376779451ca7f1b4c9716717d4466669R1124-R6217)
+  - Can deprecate / remove contrib [RuleBasedRoutingSampler](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers#declarative-configuration) after landing
+- [trask] [https://github.com/open-telemetry/opentelemetry-specification/pull/4738](https://github.com/open-telemetry/opentelemetry-specification/pull/4738)
+  - Proposal for remote control via OpAmp
+- [jason] Contrib release today
+  - AI: Jason will run it
+- [Gregor]: Declarative Config topics if time allows

@@ -1,0 +1,58 @@
+## Meeting Notes
+
+### Attendees
+- Sergey (Cisco/Splunk)
+- Dat Ngo (Arize)
+- Dylan Russell (google)
+- Siddharth Pareek (NatWest Group)
+- Bruno Baptista (IBM)
+- Ridhima Satam(Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Xander Song (Arize)
+- Pavan (Cisco)
+- Keith Decker (Cisco/Splunk)
+- Joshua Winerman (Cisco/Splunk)
+- Pradeep Nair (Cisco/Splunk)
+- Harshit Kumar (IBM)
+- Tao Chen (Microsoft)
+- Guangya Liu (IBM)
+- Pratibha Moogi (IBM)
+- Divya Pathak (IBM)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Liudmila, 15 min] PRs to review
+  - Agent role vs goal vs description - [https://github.com/open-telemetry/semantic-conventions/pull/2685](https://github.com/open-telemetry/semantic-conventions/pull/2685)
+    - Some discussion with Alex already
+    - Where is it used outside of custom application, is there useful to standardize?
+    - [Dany] not in agent.role
+      - Define a team and define it on there
+    - [aaron] is the question if this should exist, or if how to name it and which existing frameworks map to this concept?
+      - [Pavan] on me to give better example
+  - Session.id
+- [Sergey] there’s also workflow [https://github.com/open-telemetry/semantic-conventions/issues/1688](https://github.com/open-telemetry/semantic-conventions/issues/1688)
+- [aaron] there’s also span links for causal relationship, and you can add attributes to the linkage
+- Messaging might uses this [https://github.com/open-telemetry/semantic-conventions/tree/0f0b82687dc6cec0c0f55811b295bd10914745ae/docs/messaging](https://github.com/open-telemetry/semantic-conventions/tree/0f0b82687dc6cec0c0f55811b295bd10914745ae/docs/messaging)
+  - Task / workflow [https://github.com/open-telemetry/semantic-conventions/pull/2713](https://github.com/open-telemetry/semantic-conventions/pull/2713) Divya/Harshit/Dany
+    - Clarify the relationship between span and task
+    - Dany to start a thread on the [slack channel](https://cloud-native.slack.com/archives/C06KR7ARS3X) with Splunk/Microsoft teams.
+- ~~[Samuel - 2m] If/when we get around to adding `operation.cost`, what type would it have sorry had to drop off call~~
+  - ~~I think we discussed this sufficiently in previous meetings, so I think we can just remove from here~~
+- [Minghui, 10m] Some additional questions arising from the instrumentation developments: [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14613](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14613)
+  - unified management of the capture of input and output messages
+  - in multi-turn conversation scenarios, will there be multiple UserMessages, or will there be multiple MessageParts within a single UserMessages?
+  - the trade-off between agent framework and model client SDK instrumentation
+- [Minghui, 5m] Some confuse of gen_ai[.provider.name](http://.provider.name)
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/5307e200280aa6bf1439c6351950c53d01295119/instrumentation/openai/openai-java-1.1/library/src/main/java/io/opentelemetry/instrumentation/openai/v1_1/ChatAttributesGetter.java#L28-L31](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/5307e200280aa6bf1439c6351950c53d01295119/instrumentation/openai/openai-java-1.1/library/src/main/java/io/opentelemetry/instrumentation/openai/v1_1/ChatAttributesGetter.java#L28-L31)
+  - extract it by base_url or by framework?
+- [Aaron] multi modal json schemas [https://github.com/open-telemetry/semantic-conventions/pull/2754](https://github.com/open-telemetry/semantic-conventions/pull/2754)
+- [Dany] [Semantic Conventions for Generative AI Agentic Systems (gen_ai.*) #2664](https://github.com/open-telemetry/semantic-conventions/issues/2664)
+  - Multi agent
+- [Pavan] [semantic-conventions/pull/2594](https://github.com/open-telemetry/semantic-conventions/pull/2594)
+  - [Sergey] we can probably introduce these use-cases
+    - Session - one browser session, which may include multiple traces in it.
+    - Workflow - may include multiple agent/browsers involved
+    - Conversation - Multi-turn assistant conversation (may include one or more multiple sessions)
+  - Need a high-level design doc, with a few examples of using Session/Workflow/Conversation

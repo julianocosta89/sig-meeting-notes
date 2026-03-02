@@ -1,0 +1,65 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth - Will miss second 30 minutes
+- Liudmila - Will also miss second half
+- Arthur Sens - will also miss second half
+- Arianna Vespri
+- Jeremy Blythe
+- Laurent Querel
+
+### Agenda
+- [liudmila] Schemas polish/docs PR [https://github.com/open-telemetry/weaver/pull/1106/](https://github.com/open-telemetry/weaver/pull/1106/)
+  - All schemas have `file_format`; not version, since it's ambiguous (version of semconv or version of schema)
+    - 2.0.0 - manifest
+    - 2.0.0/definition
+    - 2.0.0/resolved
+    - 2.0.0/materialized
+    - 2.0.0/diff
+    - Upside: prefix is semver
+    - Downside: we'll need some automation to flag when we add features without incrementing versions
+  - All files have schema_url (pointing to manifest), diff has head_schema_url and baseline_schema_url
+  - registry_url | id are gone, we might want to keep them (consistently on all schemas) when running weaver against definition schema (no schema url published)
+    - Need to sort out "raw" / definition registries (or, e.g. depending on github-tag vs. released version)
+- [liudmila] Multi-registry in OTEP [https://github.com/open-telemetry/opentelemetry-specification/pull/4815](https://github.com/open-telemetry/opentelemetry-specification/pull/4815)
+  - repository_url - in Manifest
+    - [lquerel] registry may be in sub-folder (e.g. [https://github.com/open-telemetry/semantic-conventions#model/](https://github.com/open-telemetry/semantic-conventions#model/))
+    - This should represent "where I get the manifest file from"
+    - ex - downloading manifest file representing resolved registry
+      - optionally has repository_url / registry_url
+- [arthursens] I've opened a [draft PR](https://github.com/open-telemetry/weaver/pull/1138) for the weaver registry infer command. I've added a few questions there, looking for guidance to make this PR mergeable.
+- [suereth] New Resolution Algorithm - [https://github.com/open-telemetry/weaver/pull/1136](https://github.com/open-telemetry/weaver/pull/1136)
+  - Can now load *from resolved schema*, or definition schema
+  - Two phases:
+    - load definitions (resolved or "raw")
+      - Returned [LoadedSemconvRegistry](https://github.com/jsuereth/weaver/blob/wip-resolve-from-resolved-schema/crates/weaver_resolver/src/lib.rs#L40)
+    - resolve (skipped if already resolved)
+      - Will recursively resolve dependencies into [ResolvedDependency](https://github.com/jsuereth/weaver/blob/wip-resolve-from-resolved-schema/crates/weaver_resolver/src/dependency.rs#L17) - i.e. a ResolvedTelemetrySchema.
+      - Uses *similar* technique to existing resolution, but can search for `Attribute` or `Group` on ResolvedDependency list.
+      - Will leverage `imports` to pull in `Group`s from ResolvedDependency list.
+  - TODOs:
+    - Need to support resolving from V2 schema
+    - Need to fix stable-sort of post-resolution output.
+    - Handling uniqueness of group across dependencies?
+      - Should a dependency be able to declare a new signal with the same `name` (SignalId) as a dependency?
+      - Should dependencies have "namespaces" we use when referring to things?
+    - Major cleanups to ensure only *one* method to load/resolve is used throughout the codebase.
+  - Important discussion points
+    - **Stable resolved schema output**
+      - Today - attribute catalog is *not sorted*.
+      - Future - We regenerate the attribute catalog such that there's a stable order to how attributes show up there (and that order is NOT dependent on how we read files).
+    - **File formats and "Manifest"**
+      - Today - Manifest is 100% optional.
+      - Future - Manifest missing becomes a warning.
+        - No Manifest = Legacy "Definition" schema
+        - Manifest = Look inside to determine schema type
+          - `resolved_schema_url` - Resolve the schema found at this URL
+          - No `resolved_schema_url` - Treat the directory the manifest is found within as a "definition" schema.
+        - Resolve Schema Formats - We should update these to declare versions (Similar to [https://github.com/open-telemetry/weaver/pull/1106/](https://github.com/open-telemetry/weaver/pull/1106/))
+    - **Rust Related Issues**
+      - We have lots of redundant types/methods and inconsistently use them.
+        - Plan to nix SemconvRegistry
+        - The `Weaver` abstractions vs `SchemaResolver` vs `SemconvRegistry` - We don't necessarily follow the same resolution steps in all our tests / code paths.
+      - `VirtualDirectory` lacks `clone` - because it remembers temporary directories in an unshareable manner.
+- [laurent] OTEP + Resolution algorithm
+  - Keep OTEP open until the resolution algorithm is complete and validates OTEP.
