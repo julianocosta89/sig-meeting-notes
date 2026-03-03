@@ -86,6 +86,17 @@ function inRange(dateStr) {
   return dateStr >= filterFrom && dateStr <= filterTo;
 }
 
+function isValidDateParam(s) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  const d = new Date(s + 'T00:00:00');
+  if (isNaN(d.getTime())) return false;
+  // Reject rolled-over dates (e.g. "2026-02-31" normalises to "2026-03-03")
+  const y = String(d.getFullYear()).padStart(4, '0');
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${mo}-${day}` === s;
+}
+
 let manifestMinDate = null;
 function computeManifestMinDate() {
   let min = '9999-99-99';
@@ -1235,19 +1246,16 @@ function restoreFromURL() {
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
 
   // Restore date range from URL params
-  if (fromParam && toParam) {
-    const fromDate = new Date(fromParam + 'T00:00:00');
+  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam)) {
     const toDate = new Date(toParam + 'T00:00:00');
-    if (!isNaN(fromDate.getTime()) && !isNaN(toDate.getTime())) {
-      filterFrom = fromParam;
-      filterTo = toParam;
-      calYear = toDate.getFullYear();
-      calMonth = toDate.getMonth();
-      updateDateRangeLabel();
-      // Re-populate SIG dropdown with new range
-      sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
-      populateSigSelect();
-    }
+    filterFrom = fromParam;
+    filterTo = toParam;
+    calYear = toDate.getFullYear();
+    calMonth = toDate.getMonth();
+    updateDateRangeLabel();
+    // Re-populate SIG dropdown with new range
+    sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
+    populateSigSelect();
   }
 
   const sigInRange = sig && manifest.sigs.some(
@@ -1680,7 +1688,7 @@ window.addEventListener('popstate', function () {
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
 
   // Restore date range from URL
-  if (fromParam && toParam) {
+  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam)) {
     filterFrom = fromParam;
     filterTo = toParam;
     updateDateRangeLabel();
