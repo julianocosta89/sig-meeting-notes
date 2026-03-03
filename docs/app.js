@@ -80,7 +80,12 @@ const globalSearchInput = document.getElementById('global-search-input');
 
 // ── Date range helpers ────────────────────────────────────────
 
-function isoDate(d) { return d.toISOString().slice(0, 10); }
+function isoDate(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
 
 function inRange(dateStr) {
   return dateStr >= filterFrom && dateStr <= filterTo;
@@ -1699,10 +1704,13 @@ window.addEventListener('popstate', function () {
   sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
   populateSigSelect();
 
-  if (sig !== (currentSig || '')) {
+  const popSigInRange = sig && manifest.sigs.some(
+    s => s.slug === sig && s.meetings.some(m => inRange(m.date))
+  );
+  if (sig !== (currentSig || '') && (popSigInRange || !sig)) {
     sigSelect.value = sig || '';
     onSIGChange(sig, { replace: true }).then(() => {
-      if (date) {
+      if (date && inRange(date)) {
         onDateClick(date, { replace: true }).then(() => {
           if (targetView && targetView !== currentView) switchToView(targetView);
         });
