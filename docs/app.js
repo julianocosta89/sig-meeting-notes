@@ -241,7 +241,7 @@ function closeCalendar() {
 
 function onDateRangeChange() {
   updateDateRangeLabel();
-  updateURL(currentSig, currentDate, true);
+  updateURL(currentSig, currentDate, false);
 
   // Repopulate SIG dropdown
   sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
