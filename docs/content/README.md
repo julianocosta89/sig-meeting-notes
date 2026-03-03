@@ -47,8 +47,11 @@ content/
 `End-User-SIG` ·
 `End-User-SIG-OTel-Blueprints` ·
 `Entities-SIG` ·
+`Erlang-SIG` ·
+`es-Localization-SIG-Communications` ·
 `Event-WG` ·
 `FAAS-WG` ·
+`GC-Project-Management` ·
 `Go-Auto-Instrumentation-SIG` ·
 `Go-Compile-Time-Instrumentation-SIG` ·
 `Go-SIG` ·
@@ -63,12 +66,14 @@ content/
 `LLM-Semantic-Convention-WG` ·
 `NET-Auto-Instr-SIG` ·
 `NET-SIG` ·
+`Network-SIG` ·
 `OpenTelemetry-on-Mainframes-Weekly-Meeting` ·
 `PHP-SIG` ·
 `Profiling-WG` ·
 `Project-Tooling-SIG` ·
 `Prometheus-WG` ·
 `Python-SIG` ·
+`ro-RO-Localization-SIG-Communications` ·
 `RPC-Sem-Conv-Stability-SIG` ·
 `Ruby-SIG` ·
 `Rust-SIG` ·
