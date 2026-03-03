@@ -274,6 +274,7 @@ function wireCalendarListeners() {
   calGrid.addEventListener('click', e => {
     const btn = e.target.closest('.cal-day');
     if (!btn || btn.disabled) return;
+    e.stopPropagation();
     const d = btn.dataset.date;
     if (!d) return;
     if (!pendingFrom) {
