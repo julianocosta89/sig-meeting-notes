@@ -1731,14 +1731,28 @@ window.addEventListener('popstate', function () {
     // Range may have changed with the same sig/date — reconcile the view.
     if (currentSig) {
       const inRangeMeetings = getSigMeetings(currentSig).filter(m => inRange(m.date));
-      const activeDate = currentDate && inRange(currentDate) ? currentDate : null;
-      renderDateList(inRangeMeetings, activeDate);
-      if (currentDate && !inRange(currentDate)) {
+      if (inRangeMeetings.length === 0) {
+        currentSig = null;
         currentDate = null;
-        clearTranscript();
+        dateList.innerHTML = '';
+        transcriptPanel.innerHTML = '';
+        if (searchGroup) searchGroup.hidden = true;
+        if (dateNavWrapper) dateNavWrapper.hidden = true;
+        showEmptyState();
+        updateURL(null, null, true);
+        if (globalSearchInput.value.trim()) handleGlobalSearch(globalSearchInput.value.trim());
+      } else {
+        const activeDate = currentDate && inRange(currentDate) ? currentDate : null;
+        renderDateList(inRangeMeetings, activeDate);
+        if (currentDate && !inRange(currentDate)) {
+          currentDate = null;
+          clearTranscript();
+        }
+        if (targetView && targetView !== currentView) switchToView(targetView);
       }
+    } else if (targetView && targetView !== currentView) {
+      switchToView(targetView);
     }
-    if (targetView && targetView !== currentView) switchToView(targetView);
   }
 });
 
