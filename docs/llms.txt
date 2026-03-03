@@ -6,47 +6,76 @@
 
 - Web UI: https://julianocosta89.github.io/sig-meeting-notes/
 - Manifest (JSON): https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+- Full LLM reference: https://julianocosta89.github.io/sig-meeting-notes/llms-full.txt
 - Source: https://github.com/julianocosta89/sig-meeting-notes
 
 ## How to find content
 
 ### 1. Start with the manifest
 
-The manifest lists every SIG and its meetings. Fetch it to discover what is available:
+Fetch the manifest to discover all SIGs and their meetings:
 
     GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
 
 Response shape:
 
     {
-      "generated_at": "2026-02-25T...",
+      "generated_at": "2026-03-02T20:28:12Z",
+      "min_date": "2025-06-16",
+      "max_date": "2026-02-27",
       "sigs": [
         {
           "slug": "Collector-SIG",
           "name": "Collector SIG",
           "meeting_notes_url": "https://docs.google.com/document/d/...",
           "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
+          "meeting_count": 28,
           "meetings": [
-            { "date": "2026-02-04", "duration_minutes": 42, "has_summary": true },
-            { "date": "2026-02-11", "duration_minutes": 35, "has_summary": true }
+            { "date": "2026-02-04", "duration_minutes": 42, "has_summary": true, "has_meeting_notes": true }
           ]
         }
       ]
     }
 
+Top-level fields:
+- `generated_at` — UTC timestamp of last manifest build
+- `min_date` / `max_date` — earliest and latest meeting dates across all SIGs
+- `sigs` — array of SIG objects sorted alphabetically by slug
+
+SIG fields:
+- `slug` — URL-safe identifier (used in content URLs)
+- `name` — human-readable display name
+- `meeting_notes_url` — link to the SIG's Google Doc (may be empty)
+- `repository_url` — link to the SIG's GitHub repo (may be empty)
+- `meeting_count` — total number of meetings for this SIG
+
+Meeting fields:
+- `date` — ISO 8601 date (YYYY-MM-DD)
+- `duration_minutes` — meeting length in minutes
+- `has_summary` — true if an AI summary exists (skip fetching summary.md when false)
+- `has_meeting_notes` — true if meeting notes exist (skip fetching meeting-notes.md when false)
+
 ### 2. Fetch individual files
 
 Each meeting has up to three files. Build the URL from the SIG slug and date:
 
-    https://julianocosta89.github.io/sig-meeting-notes/content/{SIG-Slug}/{YYYY-MM-DD}/{file}
+    https://julianocosta89.github.io/sig-meeting-notes/content/{slug}/{YYYY-MM-DD}/{file}
 
-Files:
+Files (in recommended read order):
 
-- `summary.md` — AI-generated summary (best starting point, short)
-- `meeting-notes.md` — attendees and agenda items
-- `transcript.md` — full Zoom recording transcript (can be very long)
+- `summary.md` — AI-generated summary (short, best starting point; only exists when `has_summary` is true)
+- `meeting-notes.md` — attendees and agenda (only exists when `has_meeting_notes` is true)
+- `transcript.md` — full Zoom transcript (always exists; can be very long)
 
-### 3. Examples
+### 3. Typical workflow
+
+1. Fetch `manifest.json` to find SIG slugs, date ranges, and availability flags
+2. Filter to the SIG and date range you need using `slug` and `date` fields
+3. Read `summary.md` first (check `has_summary`) — gives a concise overview
+4. If you need attendees or agenda, read `meeting-notes.md` (check `has_meeting_notes`)
+5. Fall back to `transcript.md` only for verbatim quotes or the full discussion
+
+### 4. Examples
 
 Get the AI summary for the Collector SIG meeting on 2026-02-04:
 
@@ -59,13 +88,6 @@ Get the meeting notes (attendees + agenda) for the same meeting:
 Get the full transcript:
 
     GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/transcript.md
-
-### 4. Typical workflow
-
-1. Fetch `manifest.json` to find the SIG slug and available dates
-2. Read `summary.md` first — it gives a concise overview of what was discussed
-3. If you need details, read `meeting-notes.md` for the agenda and attendees
-4. Fall back to `transcript.md` only when you need verbatim quotes or the full discussion
 
 ## File formats
 
@@ -81,6 +103,8 @@ Get the full transcript:
 
     **Speaker Name** MM:SS utterance text
 
+Header fields are on lines 1-4, separated from the body by a line of `=` characters. The body starts with a `## Zoom Recording Transcript` heading followed by timestamped speaker lines.
+
 ### meeting-notes.md
 
     ## Meeting Notes
@@ -93,11 +117,22 @@ Get the full transcript:
     - Item 1
     - Item 2
 
+Contains two subsections: Attendees (bulleted list of participants) and Agenda (bulleted list of discussion items, may include links).
+
 ### summary.md
 
     ## Key Topics
     - Topic 1 summary
     - Topic 2 summary
+
+    ## Action Items
+    - Action item 1
+    - Action item 2
+
+    ## Participants
+    Comma-separated list of participant names
+
+Contains up to three sections: Key Topics (main discussion points), Action Items (follow-ups), and Participants (names). Generated by GPT-4o-mini.
 
 ## Coverage
 
