@@ -57,6 +57,14 @@ const transcriptCache = new Map();
 const meetingNotesCache = new Map();
 const summaryCache = new Map();
 
+// Date range filter state
+let filterFrom = null;       // YYYY-MM-DD
+let filterTo   = null;       // YYYY-MM-DD
+let calYear    = null;       // currently displayed calendar month
+let calMonth   = null;
+let pendingFrom = null;      // first click during "selecting to" mode
+let hoverDate  = null;       // mouseover preview date
+
 // DOM refs
 const sigSelect = document.getElementById('sig-select');
 const dateList = document.getElementById('date-list');
@@ -69,6 +77,253 @@ const matchCounter = document.querySelector('.match-counter');
 const prevMatchBtn = document.getElementById('prev-match-btn');
 const nextMatchBtn = document.getElementById('next-match-btn');
 const globalSearchInput = document.getElementById('global-search-input');
+
+// ── Date range helpers ────────────────────────────────────────
+
+function isoDate(d) { return d.toISOString().slice(0, 10); }
+
+function inRange(dateStr) {
+  return dateStr >= filterFrom && dateStr <= filterTo;
+}
+
+let manifestMinDate = null;
+function computeManifestMinDate() {
+  let min = '9999-99-99';
+  for (const sig of manifest.sigs)
+    for (const m of sig.meetings)
+      if (m.date < min) min = m.date;
+  manifestMinDate = min;
+}
+
+function initDateRange() {
+  const today = new Date();
+  const from  = new Date(today);
+  from.setDate(today.getDate() - 14);
+  filterFrom = isoDate(from);
+  filterTo   = isoDate(today);
+  calYear  = today.getFullYear();
+  calMonth = today.getMonth();
+  updateDateRangeLabel();
+}
+
+function updateDateRangeLabel() {
+  const today = isoDate(new Date());
+  const twoWeeksAgo = isoDate(new Date(Date.now() - 14 * 86400000));
+  const label = document.getElementById('date-range-label');
+  label.textContent =
+    filterFrom === twoWeeksAgo && filterTo === today
+      ? 'last two weeks'
+      : filterFrom + ' \u2192 ' + filterTo;
+}
+
+function renderCalendar() {
+  const grid = document.getElementById('cal-grid');
+  const monthLabel = document.getElementById('cal-month-label');
+  grid.innerHTML = '';
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  monthLabel.textContent = monthNames[calMonth] + ' ' + calYear;
+
+  const today = isoDate(new Date());
+
+  // Determine effective range for highlighting
+  let rangeStart = filterFrom;
+  let rangeEnd = filterTo;
+  if (pendingFrom) {
+    rangeStart = pendingFrom;
+    rangeEnd = hoverDate || pendingFrom;
+    if (rangeEnd < rangeStart) {
+      const tmp = rangeStart;
+      rangeStart = rangeEnd;
+      rangeEnd = tmp;
+    }
+  }
+
+  // Weekday headers
+  for (const day of ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']) {
+    const span = document.createElement('span');
+    span.className = 'cal-weekday';
+    span.textContent = day;
+    grid.appendChild(span);
+  }
+
+  // First day of month and number of days
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  // Padding cells
+  for (let i = 0; i < firstDay; i++) {
+    const span = document.createElement('span');
+    span.className = 'cal-day cal-day--empty';
+    grid.appendChild(span);
+  }
+
+  // Day buttons
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cal-day';
+    btn.dataset.date = dateStr;
+    btn.textContent = d;
+
+    const isDisabled = dateStr < manifestMinDate || dateStr > today;
+    if (isDisabled) {
+      btn.classList.add('cal-day--disabled');
+      btn.disabled = true;
+    }
+
+    if (dateStr === rangeStart) btn.classList.add('cal-day--from');
+    if (dateStr === rangeEnd) btn.classList.add('cal-day--to');
+    if (dateStr > rangeStart && dateStr < rangeEnd) btn.classList.add('cal-day--in-range');
+    if (dateStr === today) btn.classList.add('cal-day--today');
+    if (pendingFrom && dateStr === pendingFrom) btn.classList.add('cal-day--pending');
+
+    grid.appendChild(btn);
+  }
+
+  // Update prev/next button disabled state
+  const calPrev = document.getElementById('cal-prev');
+  const calNext = document.getElementById('cal-next');
+  if (manifestMinDate) {
+    const minYear = parseInt(manifestMinDate.slice(0, 4), 10);
+    const minMonth = parseInt(manifestMinDate.slice(5, 7), 10) - 1;
+    calPrev.disabled = calYear <= minYear && calMonth <= minMonth;
+  }
+  const todayDate = new Date();
+  calNext.disabled = calYear >= todayDate.getFullYear() && calMonth >= todayDate.getMonth();
+}
+
+function openCalendar() {
+  pendingFrom = null;
+  hoverDate = null;
+  renderCalendar();
+  const popup = document.getElementById('calendar-popup');
+  popup.removeAttribute('hidden');
+  document.getElementById('date-range-row').setAttribute('aria-expanded', 'true');
+}
+
+function closeCalendar() {
+  const popup = document.getElementById('calendar-popup');
+  popup.setAttribute('hidden', '');
+  document.getElementById('date-range-row').setAttribute('aria-expanded', 'false');
+  pendingFrom = null;
+  hoverDate = null;
+}
+
+function onDateRangeChange() {
+  updateDateRangeLabel();
+  updateURL(currentSig, currentDate, true);
+
+  // Repopulate SIG dropdown
+  sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
+  populateSigSelect();
+
+  // Clear SIG selection if it no longer has meetings in range
+  if (currentSig) {
+    const sig = manifest.sigs.find(s => s.slug === currentSig);
+    if (!sig || !sig.meetings.some(m => inRange(m.date))) {
+      currentSig = null;
+      currentDate = null;
+      dateList.innerHTML = '';
+      transcriptPanel.innerHTML = '';
+      if (searchGroup) searchGroup.hidden = true;
+      if (dateNavWrapper) dateNavWrapper.hidden = true;
+      showEmptyState();
+      updateURL(null, null, true);
+      return;
+    }
+    sigSelect.value = currentSig;
+    renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate);
+
+    // If current date is out of range, clear it
+    if (currentDate && !inRange(currentDate)) {
+      currentDate = null;
+      clearTranscript();
+      updateURL(currentSig, null, true);
+    }
+  }
+
+  // Re-run active search
+  if (globalSearchInput.value.trim()) handleGlobalSearch(globalSearchInput.value.trim());
+  else if (searchInput.value.trim()) handleSearch(searchInput.value.trim());
+}
+
+function wireCalendarListeners() {
+  const dateRangeRow = document.getElementById('date-range-row');
+  const calGrid = document.getElementById('cal-grid');
+  const calPrev = document.getElementById('cal-prev');
+  const calNext = document.getElementById('cal-next');
+  const calReset = document.getElementById('cal-reset');
+
+  dateRangeRow.addEventListener('click', openCalendar);
+  dateRangeRow.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openCalendar();
+    }
+  });
+
+  calGrid.addEventListener('click', e => {
+    const btn = e.target.closest('.cal-day');
+    if (!btn || btn.disabled) return;
+    const d = btn.dataset.date;
+    if (!d) return;
+    if (!pendingFrom) {
+      pendingFrom = d;
+      renderCalendar();
+    } else {
+      if (d >= pendingFrom) {
+        filterFrom = pendingFrom;
+        filterTo   = d;
+      } else {
+        pendingFrom = d;
+        renderCalendar();
+        return;
+      }
+      closeCalendar();
+      onDateRangeChange();
+    }
+  });
+
+  calGrid.addEventListener('mouseover', e => {
+    if (!pendingFrom) return;
+    const btn = e.target.closest('.cal-day');
+    if (!btn || btn.disabled || !btn.dataset.date) return;
+    hoverDate = btn.dataset.date;
+    renderCalendar();
+  });
+
+  calPrev.addEventListener('click', e => {
+    e.stopPropagation();
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+  });
+
+  calNext.addEventListener('click', e => {
+    e.stopPropagation();
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCalendar();
+  });
+
+  calReset.addEventListener('click', e => {
+    e.stopPropagation();
+    initDateRange();
+    closeCalendar();
+    onDateRangeChange();
+  });
+
+  // Close on click outside
+  document.addEventListener('click', e => {
+    const popup = document.getElementById('calendar-popup');
+    if (!popup.hidden && !popup.contains(e.target) &&
+        !dateRangeRow.contains(e.target))
+      closeCalendar();
+  });
+}
 
 // Match navigation state
 let currentMatchIndex = -1;
@@ -92,8 +347,11 @@ async function init() {
       return;
     }
     manifest = await res.json();
+    computeManifestMinDate();
+    initDateRange();
     populateSigSelect();
     restoreFromURL();
+    wireCalendarListeners();
     const pendingGlobal = globalSearchInput.value.trim();
     if (pendingGlobal) handleGlobalSearch(pendingGlobal);
   } catch (err) {
@@ -105,6 +363,7 @@ async function init() {
 
 function populateSigSelect() {
   for (const sig of manifest.sigs) {
+    if (!sig.meetings.some(m => inRange(m.date))) continue;
     const opt = document.createElement('option');
     opt.value = sig.slug;
     opt.textContent = sigDisplayName(sig.name);
@@ -160,7 +419,7 @@ async function onSIGChange(slug, options) {
     if (searchGroup) searchGroup.hidden = false;
     if (dateNavWrapper) dateNavWrapper.hidden = false;
     if (searchNav) searchNav.hidden = true;
-    renderDateList(getSigMeetings(slug), null);
+    renderDateList(getSigMeetings(slug).filter(m => inRange(m.date)), null);
     clearTranscript();
     updateURL(slug, null, replace);
     prefetchTranscripts(slug);
@@ -248,7 +507,7 @@ async function onDateClick(date, options) {
   const replace = options && options.replace;
   currentDate = date;
   updateURL(currentSig, date, replace);
-  renderDateList(getSigMeetings(currentSig), date);
+  renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), date);
   transcriptPanel.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><p>Loading\u2026</p></div>';
 
   // Snapshot for staleness guard (Issue #33)
@@ -342,7 +601,7 @@ function renderTranscript(text, query) {
       currentDate = null;
       searchInput.value = '';
       resetMatchNav();
-      renderDateList(getSigMeetings(currentSig), null);
+      renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), null);
       clearTranscript();
       updateURL(currentSig, null);
     });
@@ -815,7 +1074,7 @@ async function handleSearch(query) {
   if (!query.trim()) {
     if (searchNav) searchNav.hidden = true;
     resetMatchNav();
-    renderDateList(getSigMeetings(currentSig), currentDate);
+    renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate);
     if (currentDate) {
       const sig = currentSig, date = currentDate;
       try {
@@ -828,7 +1087,7 @@ async function handleSearch(query) {
     return;
   }
 
-  const meetings = getSigMeetings(currentSig);
+  const meetings = getSigMeetings(currentSig).filter(m => inRange(m.date));
   const matchCounts = {};
   for (const m of meetings) {
     const key = currentSig + '/' + m.date;
@@ -911,6 +1170,13 @@ function updateURL(sig, date, replace) {
   const p = new URLSearchParams();
   if (sig) p.set('sig', sig);
   if (date) p.set('date', date);
+  // Add from/to only when they differ from the default two-week window
+  const today = isoDate(new Date());
+  const twoWeeksAgo = isoDate(new Date(Date.now() - 14 * 86400000));
+  if (filterFrom && filterTo && (filterFrom !== twoWeeksAgo || filterTo !== today)) {
+    p.set('from', filterFrom);
+    p.set('to', filterTo);
+  }
   const qs = p.toString();
   const url = qs ? '?' + qs : location.pathname;
   if (replace) {
@@ -924,8 +1190,24 @@ function restoreFromURL() {
   const p = new URLSearchParams(location.search);
   const sig = p.get('sig');
   const date = p.get('date');
+  const fromParam = p.get('from');
+  const toParam = p.get('to');
   const validViews = new Set(['summary', 'meeting-notes', 'transcript']);
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
+
+  // Restore date range from URL params
+  if (fromParam && toParam) {
+    filterFrom = fromParam;
+    filterTo = toParam;
+    const toDate = new Date(toParam + 'T00:00:00');
+    calYear = toDate.getFullYear();
+    calMonth = toDate.getMonth();
+    updateDateRangeLabel();
+    // Re-populate SIG dropdown with new range
+    sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
+    populateSigSelect();
+  }
+
   if (sig) {
     sigSelect.value = sig;
     onSIGChange(sig, { replace: true }).then(() => {
@@ -1017,6 +1299,7 @@ function getAllMeetings() {
   const all = [];
   for (const sig of manifest.sigs) {
     for (const m of sig.meetings) {
+      if (!inRange(m.date)) continue;
       all.push({ sig: sig.slug, sigName: sig.name, date: m.date, duration: m.duration_minutes });
     }
   }
@@ -1238,7 +1521,7 @@ function exitGlobalSearch() {
       if (!currentDate) clearTranscript();
       handleSearch(localQuery).catch(() => {});
     } else {
-      renderDateList(getSigMeetings(currentSig), currentDate, null);
+      renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate, null);
       if (currentDate) {
         onDateClick(currentDate, { replace: true }).catch(() => {});
       } else {
@@ -1304,8 +1587,13 @@ document.addEventListener('keydown', function (e) {
     return;
   }
 
-  // Escape — clear and blur search inputs
+  // Escape — close calendar popup first, then clear search inputs
   if (e.key === 'Escape') {
+    const calPopup = document.getElementById('calendar-popup');
+    if (calPopup && !calPopup.hidden) {
+      closeCalendar();
+      return;
+    }
     if (target === globalSearchInput && globalSearchInput.value) {
       debouncedHandleGlobalSearch.cancel();
       globalSearchInput.value = '';
@@ -1341,8 +1629,21 @@ window.addEventListener('popstate', function () {
   const p = new URLSearchParams(location.search);
   const sig = p.get('sig') || '';
   const date = p.get('date') || '';
+  const fromParam = p.get('from');
+  const toParam = p.get('to');
   const validViews = new Set(['summary', 'meeting-notes', 'transcript']);
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
+
+  // Restore date range from URL
+  if (fromParam && toParam) {
+    filterFrom = fromParam;
+    filterTo = toParam;
+    updateDateRangeLabel();
+  } else if (filterFrom !== isoDate(new Date(Date.now() - 14 * 86400000)) || filterTo !== isoDate(new Date())) {
+    initDateRange();
+  }
+  sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
+  populateSigSelect();
 
   if (sig !== (currentSig || '')) {
     sigSelect.value = sig || '';
@@ -1367,7 +1668,7 @@ window.addEventListener('popstate', function () {
       });
     } else {
       currentDate = null;
-      renderDateList(getSigMeetings(currentSig), null);
+      renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), null);
       clearTranscript();
       searchInput.value = '';
       resetMatchNav();
