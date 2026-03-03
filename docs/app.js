@@ -167,6 +167,7 @@ function renderCalendar() {
     btn.className = 'cal-day';
     btn.dataset.date = dateStr;
     btn.textContent = d;
+    btn.setAttribute('aria-label', monthNames[calMonth] + ' ' + d + ', ' + calYear);
 
     const isDisabled = dateStr < manifestMinDate || dateStr > today;
     if (isDisabled) {
@@ -189,10 +190,10 @@ function renderCalendar() {
   if (manifestMinDate) {
     const minYear = parseInt(manifestMinDate.slice(0, 4), 10);
     const minMonth = parseInt(manifestMinDate.slice(5, 7), 10) - 1;
-    calPrev.disabled = calYear <= minYear && calMonth <= minMonth;
+    calPrev.disabled = calYear < minYear || (calYear === minYear && calMonth <= minMonth);
   }
   const todayDate = new Date();
-  calNext.disabled = calYear >= todayDate.getFullYear() && calMonth >= todayDate.getMonth();
+  calNext.disabled = calYear > todayDate.getFullYear() || (calYear === todayDate.getFullYear() && calMonth >= todayDate.getMonth());
 }
 
 function openCalendar() {
@@ -202,12 +203,17 @@ function openCalendar() {
   const popup = document.getElementById('calendar-popup');
   popup.removeAttribute('hidden');
   document.getElementById('date-range-row').setAttribute('aria-expanded', 'true');
+  // Move focus to the previous-month button inside the popup
+  const firstFocusable = popup.querySelector('button:not(:disabled)');
+  if (firstFocusable) firstFocusable.focus();
 }
 
 function closeCalendar() {
   const popup = document.getElementById('calendar-popup');
   popup.setAttribute('hidden', '');
-  document.getElementById('date-range-row').setAttribute('aria-expanded', 'false');
+  const row = document.getElementById('date-range-row');
+  row.setAttribute('aria-expanded', 'false');
+  row.focus();
   pendingFrom = null;
   hoverDate = null;
 }
@@ -291,6 +297,7 @@ function wireCalendarListeners() {
     if (!pendingFrom) return;
     const btn = e.target.closest('.cal-day');
     if (!btn || btn.disabled || !btn.dataset.date) return;
+    if (hoverDate === btn.dataset.date) return; // skip redundant re-render
     hoverDate = btn.dataset.date;
     renderCalendar();
   });
@@ -316,10 +323,26 @@ function wireCalendarListeners() {
     onDateRangeChange();
   });
 
+  // Focus trap: keep Tab cycling inside the open popup
+  const popup = document.getElementById('calendar-popup');
+  popup.addEventListener('keydown', e => {
+    if (e.key === 'Tab') {
+      const focusable = popup.querySelectorAll('button:not(:disabled)');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+  });
+
   // Close on click outside
   document.addEventListener('click', e => {
-    const popup = document.getElementById('calendar-popup');
-    if (!popup.hidden && !popup.contains(e.target) &&
+    const calPopup = document.getElementById('calendar-popup');
+    if (!calPopup.hidden && !calPopup.contains(e.target) &&
         !dateRangeRow.contains(e.target))
       closeCalendar();
   });
@@ -362,12 +385,27 @@ async function init() {
 }
 
 function populateSigSelect() {
+  // Remove previous empty-range hint if present
+  const oldHint = document.getElementById('no-meetings-hint');
+  if (oldHint) oldHint.remove();
+
+  let count = 0;
   for (const sig of manifest.sigs) {
     if (!sig.meetings.some(m => inRange(m.date))) continue;
     const opt = document.createElement('option');
     opt.value = sig.slug;
     opt.textContent = sigDisplayName(sig.name);
     sigSelect.appendChild(opt);
+    count++;
+  }
+
+  // Show a hint when the date range contains no meetings
+  if (count === 0) {
+    const hint = document.createElement('p');
+    hint.id = 'no-meetings-hint';
+    hint.style.cssText = 'font-size:0.8rem;color:var(--fg-muted);margin:0.25rem 0 0;';
+    hint.textContent = 'No meetings in this date range.';
+    sigSelect.parentNode.appendChild(hint);
   }
 }
 
