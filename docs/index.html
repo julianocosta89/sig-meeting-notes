@@ -54,6 +54,24 @@
         </div>
 
         <div class="control-group">
+          <div id="date-range-row" role="button" tabindex="0" aria-label="Date range filter" aria-haspopup="dialog" aria-expanded="false">
+            <span class="cal-icon" aria-hidden="true">📅</span>
+            <span id="date-range-label">last two weeks</span>
+          </div>
+          <div id="calendar-popup" role="dialog" aria-label="Select date range" aria-modal="true" hidden>
+            <div class="cal-header">
+              <button id="cal-prev" aria-label="Previous month">‹</button>
+              <span id="cal-month-label"></span>
+              <button id="cal-next" aria-label="Next month">›</button>
+            </div>
+            <div id="cal-grid" class="cal-grid" role="grid" aria-label="Calendar"></div>
+            <div class="cal-footer">
+              <button id="cal-reset">Reset to last two weeks</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
           <label for="sig-select">SIG</label>
           <select id="sig-select">
             <option value="">Choose a SIG...</option>
