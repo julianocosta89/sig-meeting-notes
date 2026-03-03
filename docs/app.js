@@ -249,6 +249,7 @@ function onDateRangeChange() {
       if (dateNavWrapper) dateNavWrapper.hidden = true;
       showEmptyState();
       updateURL(null, null, true);
+      if (globalSearchInput.value.trim()) handleGlobalSearch(globalSearchInput.value.trim());
       return;
     }
     sigSelect.value = currentSig;
@@ -1246,7 +1247,7 @@ function restoreFromURL() {
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
 
   // Restore date range from URL params
-  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam)) {
+  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam) && fromParam <= toParam) {
     const toDate = new Date(toParam + 'T00:00:00');
     filterFrom = fromParam;
     filterTo = toParam;
@@ -1688,7 +1689,7 @@ window.addEventListener('popstate', function () {
   const targetView = validViews.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
 
   // Restore date range from URL
-  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam)) {
+  if (fromParam && toParam && isValidDateParam(fromParam) && isValidDateParam(toParam) && fromParam <= toParam) {
     filterFrom = fromParam;
     filterTo = toParam;
     updateDateRangeLabel();
