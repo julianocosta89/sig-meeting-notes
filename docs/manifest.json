@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T20:28:12Z",
+  "generated_at": "2026-03-03T06:50:19Z",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -1703,6 +1703,11 @@
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
+          "date": "2026-03-02",
+          "duration_minutes": 63,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-23",
           "duration_minutes": 53,
           "has_summary": true
@@ -2427,10 +2432,15 @@
     },
     {
       "slug": "Governance-Committee",
-      "name": "Governance Committee",
+      "name": "GC Project Management (EU)",
       "meeting_notes_url": "",
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
+        {
+          "date": "2026-03-02",
+          "duration_minutes": 24,
+          "has_summary": false
+        },
         {
           "date": "2026-02-25",
           "duration_minutes": 34,
@@ -3202,6 +3212,11 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-03-02",
+          "duration_minutes": 37,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-23",
           "duration_minutes": 41,
           "has_summary": true
@@ -3307,6 +3322,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1EKIeDgBGXQPGehUigIRLwAUpRGa7-1kXB736EaYuJ2M",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-03-02",
+          "duration_minutes": 32,
+          "has_summary": false
+        },
         {
           "date": "2026-02-24",
           "duration_minutes": 63,
@@ -5007,6 +5027,11 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-injector",
       "meetings": [
         {
+          "date": "2026-03-02",
+          "duration_minutes": 21,
+          "has_summary": false
+        },
+        {
           "date": "2026-02-23",
           "duration_minutes": 61,
           "has_summary": true
@@ -5260,6 +5285,11 @@
       "meeting_notes_url": "https://docs.google.com/document/d/10xG7DNKWRhxNmFGt3yYd3980a9uwS8lMl2LvQL3VNK8",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-03-02",
+          "duration_minutes": 63,
+          "has_summary": false
+        },
         {
           "date": "2026-02-23",
           "duration_minutes": 65,
