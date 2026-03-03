@@ -1721,7 +1721,7 @@ window.addEventListener('popstate', function () {
         });
       }
     });
-  } else if (date !== (currentDate || '')) {
+  } else if (date !== (currentDate || '') && (sig === (currentSig || '') || !sig)) {
     if (globalSearchActive) {
       globalSearchActive = false;
       if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
@@ -1729,7 +1729,7 @@ window.addEventListener('popstate', function () {
       if (searchGroup) searchGroup.hidden = false;
       if (dateNavWrapper) dateNavWrapper.hidden = false;
     }
-    if (date) {
+    if (date && inRange(date)) {
       onDateClick(date, { replace: true }).then(() => {
         if (targetView && targetView !== currentView) switchToView(targetView);
       });
