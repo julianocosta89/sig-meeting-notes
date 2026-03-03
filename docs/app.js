@@ -597,7 +597,7 @@ async function getMeetingNotes(slug, date) {
 }
 
 async function prefetchTranscripts(slug) {
-  const meetings = getSigMeetings(slug);
+  const meetings = getSigMeetings(slug).filter(m => inRange(m.date));
   await Promise.all(
     meetings.map(m => Promise.all([
       getTranscript(slug, m.date).catch(() => {}),
@@ -1718,8 +1718,18 @@ window.addEventListener('popstate', function () {
       searchInput.value = '';
       resetMatchNav();
     }
-  } else if (targetView && targetView !== currentView) {
-    switchToView(targetView);
+  } else {
+    // Range may have changed with the same sig/date — reconcile the view.
+    if (currentSig) {
+      const inRangeMeetings = getSigMeetings(currentSig).filter(m => inRange(m.date));
+      const activeDate = currentDate && inRange(currentDate) ? currentDate : null;
+      renderDateList(inRangeMeetings, activeDate);
+      if (currentDate && !inRange(currentDate)) {
+        currentDate = null;
+        clearTranscript();
+      }
+    }
+    if (targetView && targetView !== currentView) switchToView(targetView);
   }
 });
 
