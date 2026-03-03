@@ -111,10 +111,15 @@ function computeManifestMinDate() {
   manifestMinDate = min;
 }
 
+function defaultRangeStart() {
+  const d = new Date();
+  d.setDate(d.getDate() - 14);
+  return d;
+}
+
 function initDateRange() {
   const today = new Date();
-  const from  = new Date(today);
-  from.setDate(today.getDate() - 14);
+  const from  = defaultRangeStart();
   filterFrom = isoDate(from);
   filterTo   = isoDate(today);
   calYear  = today.getFullYear();
@@ -124,7 +129,7 @@ function initDateRange() {
 
 function updateDateRangeLabel() {
   const today = isoDate(new Date());
-  const twoWeeksAgo = isoDate(new Date(Date.now() - 14 * 86400000));
+  const twoWeeksAgo = isoDate(defaultRangeStart());
   const label = document.getElementById('date-range-label');
   label.textContent =
     filterFrom === twoWeeksAgo && filterTo === today
@@ -1228,7 +1233,7 @@ function updateURL(sig, date, replace) {
   if (date) p.set('date', date);
   // Add from/to only when they differ from the default two-week window
   const today = isoDate(new Date());
-  const twoWeeksAgo = isoDate(new Date(Date.now() - 14 * 86400000));
+  const twoWeeksAgo = isoDate(defaultRangeStart());
   if (filterFrom && filterTo && (filterFrom !== twoWeeksAgo || filterTo !== today)) {
     p.set('from', filterFrom);
     p.set('to', filterTo);
@@ -1698,7 +1703,7 @@ window.addEventListener('popstate', function () {
     filterFrom = fromParam;
     filterTo = toParam;
     updateDateRangeLabel();
-  } else if (filterFrom !== isoDate(new Date(Date.now() - 14 * 86400000)) || filterTo !== isoDate(new Date())) {
+  } else if (filterFrom !== isoDate(defaultRangeStart()) || filterTo !== isoDate(new Date())) {
     initDateRange();
   }
   sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
