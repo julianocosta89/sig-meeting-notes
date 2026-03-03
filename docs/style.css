@@ -1060,11 +1060,11 @@ mark.current-match {
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 0.85rem;
+  line-height: 1;
   color: var(--fg-muted);
   background: var(--bg);
   user-select: none;
 }
-#date-range-row svg { display: block; }
 #date-range-row:hover { border-color: var(--accent); color: var(--fg); }
 #date-range-row:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 
