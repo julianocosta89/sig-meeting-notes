@@ -1236,21 +1236,27 @@ function restoreFromURL() {
 
   // Restore date range from URL params
   if (fromParam && toParam) {
-    filterFrom = fromParam;
-    filterTo = toParam;
+    const fromDate = new Date(fromParam + 'T00:00:00');
     const toDate = new Date(toParam + 'T00:00:00');
-    calYear = toDate.getFullYear();
-    calMonth = toDate.getMonth();
-    updateDateRangeLabel();
-    // Re-populate SIG dropdown with new range
-    sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
-    populateSigSelect();
+    if (!isNaN(fromDate.getTime()) && !isNaN(toDate.getTime())) {
+      filterFrom = fromParam;
+      filterTo = toParam;
+      calYear = toDate.getFullYear();
+      calMonth = toDate.getMonth();
+      updateDateRangeLabel();
+      // Re-populate SIG dropdown with new range
+      sigSelect.innerHTML = '<option value="">Choose a SIG...</option>';
+      populateSigSelect();
+    }
   }
 
-  if (sig) {
+  const sigInRange = sig && manifest.sigs.some(
+    s => s.slug === sig && s.meetings.some(m => inRange(m.date))
+  );
+  if (sigInRange) {
     sigSelect.value = sig;
     onSIGChange(sig, { replace: true }).then(() => {
-      if (date) {
+      if (date && inRange(date)) {
         onDateClick(date, { replace: true }).then(() => {
           if (targetView && targetView !== currentView) switchToView(targetView);
         });
