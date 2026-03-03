@@ -44,13 +44,31 @@
     <aside class="sidebar" aria-label="Navigation">
       <div class="controls">
         <div class="control-group">
-          <label for="global-search-input" class="sr-only">Search all SIGs</label>
+          <label for="global-search-input" class="sr-only">Search all transcripts</label>
           <input
             id="global-search-input"
             type="search"
-            placeholder="Search all SIGs..."
-            aria-label="Search all SIG transcripts"
+            placeholder="Search all transcripts..."
+            aria-label="Search all transcripts"
           >
+        </div>
+
+        <div class="control-group">
+          <div id="date-range-row" role="button" tabindex="0" aria-label="Date range filter" aria-haspopup="dialog" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="date-range-label">last two weeks</span>
+          </div>
+          <div id="calendar-popup" role="dialog" aria-label="Select date range" aria-modal="true" hidden>
+            <div class="cal-header">
+              <button id="cal-prev" aria-label="Previous month">‹</button>
+              <span id="cal-month-label"></span>
+              <button id="cal-next" aria-label="Next month">›</button>
+            </div>
+            <div id="cal-grid" class="cal-grid" role="grid" aria-label="Calendar"></div>
+            <div class="cal-footer">
+              <button id="cal-reset">Reset to last two weeks</button>
+            </div>
+          </div>
         </div>
 
         <div class="control-group">
@@ -61,12 +79,12 @@
         </div>
 
         <div class="control-group search-group" hidden>
-          <label for="search-input" class="sr-only">Search transcripts</label>
+          <label for="search-input" class="sr-only">Search SIG transcripts</label>
           <input
             id="search-input"
             type="search"
-            placeholder="Search transcripts..."
-            aria-label="Search transcripts"
+            placeholder="Search SIG transcripts..."
+            aria-label="Search SIG transcripts"
           >
         </div>
 

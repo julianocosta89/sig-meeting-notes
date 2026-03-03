@@ -197,7 +197,9 @@ def browser_ctx(docs_site):
 
 def _wait_for_app_ready(page, url):
     """Navigate and wait until the app has loaded the manifest."""
-    page.goto(url)
+    # Use a fixed date range covering the test fixture data so all test meetings
+    # are always in range regardless of when the tests run.
+    page.goto(url + "?from=2026-02-01&to=2026-02-28")
     # Wait until the SIG select has more than 1 option (placeholder + SIGs loaded)
     page.wait_for_function(
         "document.querySelectorAll('#sig-select option').length > 1"
@@ -274,7 +276,7 @@ def test_deep_link(browser_ctx):
     """Loading with ?sig=Go-SIG&date=2026-02-05 should render directly."""
     context, url = browser_ctx
     page = context.new_page()
-    page.goto(url + "?sig=Go-SIG&date=2026-02-05")
+    page.goto(url + "?from=2026-02-01&to=2026-02-28&sig=Go-SIG&date=2026-02-05")
     page.wait_for_selector(".tab-bar")
     page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
@@ -576,7 +578,7 @@ def test_deep_link_restores_sig_and_date(browser_ctx):
     """Deep-link with sig+date should restore the full state on load."""
     context, url = browser_ctx
     page = context.new_page()
-    page.goto(url + "?sig=Java-SIG&date=2026-02-10")
+    page.goto(url + "?from=2026-02-01&to=2026-02-28&sig=Java-SIG&date=2026-02-10")
     page.wait_for_selector(".tab-bar")
     page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
@@ -597,7 +599,7 @@ def test_deep_link_sig_only(browser_ctx):
     """Deep-link with only sig param should select the SIG and show dates."""
     context, url = browser_ctx
     page = context.new_page()
-    page.goto(url + "?sig=Go-SIG")
+    page.goto(url + "?from=2026-02-01&to=2026-02-28&sig=Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
     selected = page.locator("#sig-select").input_value()
     assert selected == "Go-SIG"

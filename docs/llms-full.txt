@@ -1,0 +1,187 @@
+# OTel SIG Meeting Notes — Full LLM Reference
+
+> Extended reference for LLM/agent consumption. For a concise overview, see llms.txt.
+
+## Manifest schema
+
+    GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+
+### Full example (truncated)
+
+```json
+{
+  "generated_at": "2026-03-02T20:28:12Z",
+  "min_date": "2025-06-16",
+  "max_date": "2026-02-27",
+  "sigs": [
+    {
+      "slug": "Collector-SIG",
+      "name": "Collector SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1r2JC14-40VbrB0a_DnPi7g2Z4wMfOJMObxNQLrhcXCk",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
+      "meeting_count": 28,
+      "meetings": [
+        {
+          "date": "2026-02-25",
+          "duration_minutes": 42,
+          "has_summary": true,
+          "has_meeting_notes": true
+        },
+        {
+          "date": "2026-02-18",
+          "duration_minutes": 35,
+          "has_summary": true,
+          "has_meeting_notes": false
+        }
+      ]
+    },
+    {
+      "slug": "Go-SIG",
+      "name": "Go SIG",
+      "meeting_notes_url": "https://docs.google.com/document/d/1E5e7W5A6DMTyUh_aPauXNOeqYpN0joG1uss4z7KUCAU",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-go",
+      "meeting_count": 15,
+      "meetings": [
+        {
+          "date": "2026-02-05",
+          "duration_minutes": 33,
+          "has_summary": false,
+          "has_meeting_notes": true
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Field reference
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `generated_at` | string | UTC ISO 8601 timestamp of last build |
+| `min_date` | string | Earliest meeting date across all SIGs (YYYY-MM-DD) |
+| `max_date` | string | Latest meeting date across all SIGs (YYYY-MM-DD) |
+| `sigs` | array | SIG objects, sorted alphabetically by `slug` |
+| `sigs[].slug` | string | URL-safe identifier used in content URLs |
+| `sigs[].name` | string | Human-readable display name |
+| `sigs[].meeting_notes_url` | string | Google Doc URL for this SIG (may be empty) |
+| `sigs[].repository_url` | string | GitHub repo URL (may be empty) |
+| `sigs[].meeting_count` | integer | Total number of meetings |
+| `sigs[].meetings` | array | Meetings sorted newest-first |
+| `sigs[].meetings[].date` | string | ISO 8601 date (YYYY-MM-DD) |
+| `sigs[].meetings[].duration_minutes` | integer | Meeting duration in minutes |
+| `sigs[].meetings[].has_summary` | boolean | True if AI summary exists |
+| `sigs[].meetings[].has_meeting_notes` | boolean | True if meeting notes exist |
+
+## Content URL pattern
+
+    https://julianocosta89.github.io/sig-meeting-notes/content/{slug}/{YYYY-MM-DD}/{file}
+
+Where `{slug}` and `{YYYY-MM-DD}` come from the manifest, and `{file}` is one of:
+
+- `transcript.md` — always exists
+- `summary.md` — only when `has_summary` is true
+- `meeting-notes.md` — only when `has_meeting_notes` is true
+
+## Example content files
+
+### transcript.md
+
+```
+SIG: Collector SIG
+Date: 2025-08-05
+Duration: 36 minutes
+============================================================
+
+## Zoom Recording Transcript
+
+**Andrew Wilkins @ Elastic Observability** 01:46 Antoine.
+**Antoine Toulme** 01:47 Hello!
+Good!
+**Dmitrii Anoshin** 03:02 That works.
+**Andrew Wilkins @ Elastic Observability** 03:03 Hey dimitri.
+**Antoine Toulme** 04:18 Oh, no, because they just upgraded our slack and they turned on AI in slack.
+```
+
+**Parsing notes:**
+- Lines 1-4 are the header (key: value pairs)
+- Line 5 is a separator (`====...`)
+- Line 7+ is the body, starting with `## Zoom Recording Transcript`
+- Speaker lines: `**Speaker Name** MM:SS utterance text`
+- Continuation lines (no speaker prefix) belong to the previous speaker
+
+### meeting-notes.md
+
+```
+## Meeting Notes
+
+### Attendees
+- Antoine Toulme (Splunk)
+- [Andrew Wilkins](mailto:axw@elastic.co) (Elastic)
+- Dmitry Anoshin (Splunk)
+- Sean Marciniak (Splunk)
+
+### Agenda
+- [Andrew] service/telemetry changes & naming
+  - https://github.com/open-telemetry/opentelemetry-collector/issues/4970
+- [Antoine] https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41793
+```
+
+**Parsing notes:**
+- Attendees: bulleted list, may include markdown links and company names in parentheses
+- Agenda: bulleted list, items may be prefixed with `[Name]` and include nested links
+
+### summary.md
+
+```
+## Key Topics
+- Discussion on the context manager, including the Stack Context Manager and its integration with the SDK.
+- Consideration of a default configuration for context management to simplify user experience.
+- Challenges with Zone.js and its impact on async context management.
+
+## Action Items
+- Explore the feasibility of creating a simplified context manager without Zone.js.
+- Review and finalize the PR addressing data loss and context management improvements.
+
+## Participants
+Jared Freeze, martinkuba, David Luna Bistuer, Marco Schafer
+```
+
+**Parsing notes:**
+- Three sections: Key Topics (bulleted), Action Items (bulleted), Participants (comma-separated)
+- Generated by GPT-4o-mini from the transcript
+
+## Query walkthrough
+
+**Goal:** Find what the Collector SIG discussed about telemetry providers in August 2025.
+
+1. Fetch the manifest:
+
+       GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+
+2. Find the Collector SIG entry (slug: `Collector-SIG`), filter meetings to August 2025:
+
+       dates: ["2025-08-26", "2025-08-20", "2025-08-13", "2025-08-05"]
+
+3. Check `has_summary` for each date. If true, start with the summary:
+
+       GET .../content/Collector-SIG/2025-08-05/summary.md
+
+4. If the summary mentions telemetry providers, get the full transcript for details:
+
+       GET .../content/Collector-SIG/2025-08-05/transcript.md
+
+5. Search the transcript for relevant keywords to find the exact discussion.
+
+**Goal:** List all SIGs that met in the last week.
+
+1. Fetch the manifest.
+2. For each SIG, check if `meetings[0].date` falls within the last 7 days.
+3. Return matching SIG names and their most recent meeting dates.
+
+## Coverage
+
+- Data source: public OTel recordings spreadsheet
+- Update frequency: automated on weekdays (GitHub Actions cron at 6 AM UTC)
+- Date range: check `min_date` and `max_date` in the manifest
+- 57 SIGs, 1200+ meetings as of March 2026

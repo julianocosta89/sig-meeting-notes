@@ -58,10 +58,13 @@ def build_manifest() -> dict:
         date_str = header["date"]
         has_summary = (md_path.parent / "summary.md").exists()
 
+        has_meeting_notes = (md_path.parent / "meeting-notes.md").exists()
+
         meeting_entry = {
             "date": date_str,
             "duration_minutes": header["duration_minutes"],
             "has_summary": has_summary,
+            "has_meeting_notes": has_meeting_notes,
             "_sig_name": header["sig_name"],
         }
 
@@ -83,16 +86,21 @@ def build_manifest() -> dict:
 
     _remove_stale_docs(source_slugs)
 
+    all_dates: list[str] = []
     for sig_data in sigs.values():
         sig_data["meetings"].sort(key=lambda m: m["date"], reverse=True)
         sig_data["name"] = sig_data["meetings"][0]["_sig_name"]
+        sig_data["meeting_count"] = len(sig_data["meetings"])
         for m in sig_data["meetings"]:
+            all_dates.append(m["date"])
             del m["_sig_name"]
 
     sorted_sigs = sorted(sigs.values(), key=lambda s: s["slug"])
 
     manifest = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "min_date": min(all_dates) if all_dates else None,
+        "max_date": max(all_dates) if all_dates else None,
         "sigs": sorted_sigs,
     }
     return manifest
