@@ -1,0 +1,54 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Grafan Labs)
+- Nagkumar Arkalgud (Microsoft)
+- Aaron Abbott (Google)
+- Trask Stalnaker (Microsoft)
+- Keith Decker (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+- Josh Winerman (Cisco/Splunk)
+- Tao Chen (Microsoft)
+- Sergey Sergeev (Cisco/Splunk)
+- Anirudha”Ani” Jadhav ( AWS/ Opensearch-Project )
+- Dat Ngo (Arize AI)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - Please apply to otel membership if you want [https://github.com/open-telemetry/community/issues/new?template=membership.md](https://github.com/open-telemetry/community/issues/new?template=membership.md)
+  - [everyone, 5 min]  Intro for new members
+- [Liudmila] Workflow span - [https://github.com/open-telemetry/semantic-conventions/pull/3249](https://github.com/open-telemetry/semantic-conventions/pull/3249)
+  - Workflow != invoke_agents
+  - Comments on the PR
+- [Ankit/Trask, 15 min] [Invoke agent server span](https://github.com/open-telemetry/semantic-conventions/pull/3473)
+  - Async server spans?
+    - SpanKind CONSUMER if async (SERVER if not)
+      - First example of conditional kind
+    - Recommend parent/child, should we document given some diff with messaging
+      - What happens if server run by different company
+        - [https://github.com/open-telemetry/opentelemetry-specification/issues/1633](https://github.com/open-telemetry/opentelemetry-specification/issues/1633)
+        - Server owner can decide, if client is untrusted
+          - Can still link to untrusted context
+        - Probably want to export some layers (genai) to end users, not every bit of internal infra
+      - AI Trask: Who does it hurt if invoke_agent on server is SERVER vs CONSUMER
+        - Matters more on the client
+      - What's the end goal: show what agent did when it happened on the server not instrumented by the client
+      - Why async matters:
+        - Span kind (consumer if client does not await)
+        - Async only on client (?)
+    - ![][image1]
+  - Is it ok to extend attributes.gen_ai.inference.client for now?
+    - Should model be on the invoke_agent
+      - Sometimes applicable (e.g. pick model in ghcopilot or chatgpt)
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3473#discussion_r2856261862](https://github.com/open-telemetry/semantic-conventions/pull/3473#discussion_r2856261862)
+    - Preference to split out attributes.gen_ai.**inference**.common?
+      - Split to invoke_agent.client, inference.client and invoke_agent.server
+      - Start with invoke_agent.server
+    - attributes.gen_ai.**invoke_agent**.common?
+    - In this PR or separate PR?
+  - client.address / client.port
+    - [https://github.com/open-telemetry/semantic-conventions/pull/3473#discussion_r2865999616](https://github.com/open-telemetry/semantic-conventions/pull/3473#discussion_r2865999616)
+    - Useful when not capturing HTTP server span separately
+    - Person instrumenting can choose to opt-in (based on configuration)
+- [Aaron] [https://github.com/open-telemetry/semantic-conventions/pull/3378](https://github.com/open-telemetry/semantic-conventions/pull/3378)
