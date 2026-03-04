@@ -8,6 +8,7 @@ docs/content/{slug}/{date}/summary.md.
 """
 from __future__ import annotations
 
+import argparse
 import os
 import re
 import time
@@ -88,15 +89,19 @@ def generate_summary(
 def process_transcripts(
     client: OpenAI,
     transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
+    since: date | None = None,
+    until: date | None = None,
 ) -> tuple[int, int]:
-    """Process all transcripts and generate missing summaries.
+    """Process transcripts in the given date range and generate missing summaries.
 
+    When neither ``since`` nor ``until`` is provided, defaults to the last 2 weeks.
     Returns (generated_count, skipped_count).
     """
     generated = 0
     skipped = 0
 
-    cutoff = date.today() - timedelta(weeks=2)
+    if since is None and until is None:
+        since = date.today() - timedelta(weeks=2)
 
     for txt_path in sorted(transcripts_dir.glob("*/*/transcript.md")):
         slug = txt_path.parent.parent.name
@@ -106,7 +111,10 @@ def process_transcripts(
             meeting_date = date.fromisoformat(date_str)
         except ValueError:
             continue
-        if meeting_date < cutoff:
+        if since is not None and meeting_date < since:
+            skipped += 1
+            continue
+        if until is not None and meeting_date > until:
             skipped += 1
             continue
 
@@ -144,6 +152,14 @@ def process_transcripts(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate AI summaries for OTel SIG transcripts.")
+    parser.add_argument("--since", metavar="YYYY-MM-DD", help="Only process meetings on or after this date.")
+    parser.add_argument("--until", metavar="YYYY-MM-DD", help="Only process meetings on or before this date.")
+    args = parser.parse_args()
+
+    since = date.fromisoformat(args.since) if args.since else None
+    until = date.fromisoformat(args.until) if args.until else None
+
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         print("ERROR: OPENAI_API_KEY environment variable is not set")
@@ -152,7 +168,7 @@ def main() -> None:
     from openai import OpenAI  # noqa: PLC0415 — deferred to avoid import error in dev envs
 
     client = OpenAI(api_key=api_key)
-    generated, skipped = process_transcripts(client)
+    generated, skipped = process_transcripts(client, since=since, until=until)
     print(f"Generated {generated} summaries, skipped {skipped} existing")
 
 
