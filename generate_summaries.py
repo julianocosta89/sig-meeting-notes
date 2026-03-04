@@ -11,6 +11,7 @@ from __future__ import annotations
 import os
 import re
 import time
+from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -95,9 +96,19 @@ def process_transcripts(
     generated = 0
     skipped = 0
 
+    cutoff = date.today() - timedelta(weeks=2)
+
     for txt_path in sorted(transcripts_dir.glob("*/*/transcript.md")):
         slug = txt_path.parent.parent.name
         date_str = txt_path.parent.name
+
+        try:
+            meeting_date = date.fromisoformat(date_str)
+        except ValueError:
+            continue
+        if meeting_date < cutoff:
+            skipped += 1
+            continue
 
         summary_path = txt_path.parent / "summary.md"
         if summary_path.exists():
