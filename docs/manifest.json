@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T06:55:35Z",
+  "generated_at": "2026-03-05T06:57:53Z",
   "min_date": "2025-06-16",
   "max_date": "2026-03-05",
   "sigs": [
@@ -306,7 +306,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 43,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -750,7 +750,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 10,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -1764,7 +1764,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 29,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -2961,7 +2961,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 61,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false
         },
         {
@@ -3375,7 +3375,7 @@
         {
           "date": "2026-03-05",
           "duration_minutes": 59,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -3600,7 +3600,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 59,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -4311,7 +4311,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 40,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -4767,7 +4767,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 22,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -4932,7 +4932,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 15,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -5637,7 +5637,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 44,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -5991,7 +5991,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 27,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -6660,7 +6660,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 61,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -6861,7 +6861,7 @@
         {
           "date": "2026-03-05",
           "duration_minutes": 19,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
@@ -7569,7 +7569,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 62,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false
         },
         {
@@ -7728,7 +7728,7 @@
         {
           "date": "2026-03-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true
         },
         {
