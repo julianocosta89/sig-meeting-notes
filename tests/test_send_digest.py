@@ -80,19 +80,8 @@ def _mock_subprocess_result(stdout: str = "") -> MagicMock:
     return result
 
 
-# SHA that the workflow passes as SUMMARIZE_HEAD_SHA (the pre-run HEAD)
-FAKE_PRE_RUN_SHA = "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee00"
-# SHA after summarize pushes its commit (different → guard passes, diff proceeds)
-FAKE_NEW_SHA = "1111111122222222333333334444444455555555ff"
-
-
-def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
-    """Return [git_rev_parse_result, git_diff_result] for subprocess.run side_effect.
-
-    rev-parse returns FAKE_NEW_SHA (≠ FAKE_PRE_RUN_SHA) so the guard recognises
-    that summarize pushed a new commit and proceeds to the git diff.
-    """
-    return [_mock_subprocess_result(FAKE_NEW_SHA), _mock_subprocess_result(diff_stdout)]
+# SHA of the commit that summarize pushed (passed via artifact as SUMMARIZE_COMMIT_SHA)
+FAKE_COMMIT_SHA = "1111111122222222333333334444444455555555ff"
 
 
 # ---------------------------------------------------------------------------
@@ -101,13 +90,14 @@ def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
 
 
 class TestGetNewSummaryPaths:
-    """Tests for git diff filtering and SHA guard."""
+    """Tests for git diff filtering and commit SHA routing."""
 
     def test_git_diff_filtering(self) -> None:
         """Only paths ending with /summary.md should be returned."""
+        env = {"SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA, "SUMMARIZE_COMMIT_FOUND": "true"}
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(GIT_DIFF_OUTPUT)),
-            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_PRE_RUN_SHA}),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(GIT_DIFF_OUTPUT)),
+            patch.dict("os.environ", env),
         ):
             paths = get_new_summary_paths()
         assert len(paths) == 2
@@ -115,21 +105,22 @@ class TestGetNewSummaryPaths:
         assert "docs/content/Go-SIG/2026-03-05/transcript.md" not in paths
         assert "docs/content/Collector-SIG/2026-03-05/meeting-notes.md" not in paths
 
-    def test_no_new_commit_guard(self) -> None:
-        """If HEAD equals SUMMARIZE_HEAD_SHA, summarize committed nothing → return []."""
+    def test_no_summarize_commit_skips(self) -> None:
+        """SUMMARIZE_COMMIT_FOUND=true, SHA empty → summarize pushed nothing → return []."""
+        env = {"SUMMARIZE_COMMIT_SHA": "", "SUMMARIZE_COMMIT_FOUND": "true"}
         with (
-            # rev-parse returns the same SHA as SUMMARIZE_HEAD_SHA → no new commit
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(FAKE_PRE_RUN_SHA)) as mock_run,
-            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_PRE_RUN_SHA}),
+            patch("send_digest.subprocess.run") as mock_run,
+            patch.dict("os.environ", env),
         ):
             paths = get_new_summary_paths()
         assert paths == []
-        mock_run.assert_called_once()  # git diff never called
+        mock_run.assert_not_called()  # no git calls needed
 
-    def test_no_sha_env_skips_guard(self) -> None:
-        """Without SUMMARIZE_HEAD_SHA (workflow_dispatch), guard is skipped."""
+    def test_workflow_dispatch_uses_head_diff(self) -> None:
+        """SUMMARIZE_COMMIT_FOUND=false (workflow_dispatch) → fall back to HEAD~1 diff."""
         import os as _os
-        _os.environ.pop("SUMMARIZE_HEAD_SHA", None)
+        _os.environ.pop("SUMMARIZE_COMMIT_SHA", None)
+        _os.environ.pop("SUMMARIZE_COMMIT_FOUND", None)
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(
                 "docs/content/Go-SIG/2026-03-05/summary.md\n"
@@ -145,9 +136,9 @@ class TestMain:
     def test_empty_recipients_after_filter(self) -> None:
         """DIGEST_TO with only commas -> no valid addresses -> exits cleanly."""
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
-        env = _env(DIGEST_TO=",,,", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(DIGEST_TO=",,,", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
@@ -157,24 +148,28 @@ class TestMain:
         mock_post.assert_not_called()
 
     def test_no_new_summaries(self) -> None:
-        """HEAD == SUMMARIZE_HEAD_SHA (no new commit) -> exits cleanly, no API calls."""
+        """SUMMARIZE_COMMIT_FOUND=true, SHA empty → summarize pushed nothing → exits cleanly."""
         with (
-            # rev-parse returns same SHA as SUMMARIZE_HEAD_SHA → guard fires → []
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(FAKE_PRE_RUN_SHA)),
-            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_PRE_RUN_SHA}),
+            patch("send_digest.subprocess.run") as mock_run,
+            patch.dict("os.environ", {"SUMMARIZE_COMMIT_SHA": "", "SUMMARIZE_COMMIT_FOUND": "true"}),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
         ):
             main()
         assert exc_info.value.code == 0
+        mock_run.assert_not_called()
         mock_post.assert_not_called()
 
     def test_missing_digest_to(self) -> None:
         """DIGEST_TO not set -> exits cleanly."""
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
-            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_PRE_RUN_SHA, "DIGEST_TO": ""}),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch.dict("os.environ", {
+                "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
+                "SUMMARIZE_COMMIT_FOUND": "true",
+                "DIGEST_TO": "",
+            }),
             pytest.raises(SystemExit) as exc_info,
         ):
             main()
@@ -182,10 +177,10 @@ class TestMain:
 
     def test_missing_resend_api_key(self) -> None:
         """RESEND_API_KEY not set -> exits with error."""
-        env = _env(RESEND_API_KEY="", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(RESEND_API_KEY="", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch.dict("os.environ", env, clear=False),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             pytest.raises(SystemExit) as exc_info,
@@ -195,7 +190,6 @@ class TestMain:
 
     def test_happy_path(self, tmp_path: Path) -> None:
         """New summaries found -> OpenAI called -> Resend POST made."""
-        # Write a summary file to disk
         summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
         summary_dir.mkdir(parents=True)
         (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
@@ -204,11 +198,11 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -235,11 +229,12 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(DIGEST_TO="a@test.com, b@test.com, c@test.com", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(DIGEST_TO="a@test.com, b@test.com, c@test.com",
+                   SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -262,11 +257,12 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(DIGEST_TO="a@test.com,,b@test.com,", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(DIGEST_TO="a@test.com,,b@test.com,",
+                   SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -290,11 +286,11 @@ class TestMain:
         mock_resp.status_code = 400
         mock_resp.text = "Bad Request"
 
-        env = _env(SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        env = _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),

@@ -41,6 +41,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/content/
+          PUSHED_SHA=""
           if git diff --cached --quiet; then
             echo "No new summaries to commit — skipping."
           else
@@ -49,4 +50,15 @@ jobs:
             git add docs/manifest.json
             git commit -m "chore: generate meeting summaries $(date -u +%Y-%m-%d)"
             git push
+            PUSHED_SHA=$(git rev-parse HEAD)
           fi
+          # Write pushed SHA (or empty) so the digest workflow can diff exactly
+          # the commit this run produced, preventing duplicate digests on reruns.
+          echo "$PUSHED_SHA" > summarize-commit-sha.txt
+
+      - name: Upload summary commit SHA artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: summarize-commit-sha
+          path: summarize-commit-sha.txt
+          retention-days: 1

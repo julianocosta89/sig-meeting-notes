@@ -31,37 +31,42 @@ SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 
 
 def get_new_summary_paths() -> list[str]:
-    """Return paths of new summary.md files committed in the triggering summarize run.
+    """Return paths of new summary.md files committed by the triggering summarize run.
 
-    When triggered via workflow_run, the workflow passes SUMMARIZE_HEAD_SHA
-    (= github.event.workflow_run.head_sha), which is the HEAD SHA *before*
-    the summarize run executes. If summarize pushed a new commit, the repo
-    HEAD after checkout will be different from that value. If HEAD still
-    equals SUMMARIZE_HEAD_SHA, summarize produced no new commit and we exit
-    early to prevent duplicate digests on reruns/retries.
+    When triggered via workflow_run, the workflow downloads the artifact written
+    by summarize and passes:
+      SUMMARIZE_COMMIT_SHA  — the exact commit that summarize pushed (empty if
+                              summarize produced no new commit).
+      SUMMARIZE_COMMIT_FOUND — "true" when this is a workflow_run trigger.
 
-    When SUMMARIZE_HEAD_SHA is absent (workflow_dispatch / local runs) the
-    guard is skipped so manual testing always proceeds to the git diff.
+    If SUMMARIZE_COMMIT_FOUND is true and SUMMARIZE_COMMIT_SHA is empty,
+    summarize pushed nothing this run → return [] immediately.  This correctly
+    short-circuits summarize reruns/retries that produce no new commit, even
+    though HEAD still differs from the pre-run SHA.
+
+    If SUMMARIZE_COMMIT_SHA is set, diff only that specific commit so that
+    reruns of the digest workflow always see the exact same file set.
+
+    When SUMMARIZE_COMMIT_FOUND is false (workflow_dispatch / local runs), fall
+    back to HEAD~1 so manual testing always proceeds to the diff.
     """
-    pre_run_sha = os.environ.get("SUMMARIZE_HEAD_SHA", "").strip()
-    if pre_run_sha:
-        actual_sha = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            capture_output=True, text=True, cwd=ROOT,
-        ).stdout.strip()
-        if actual_sha == pre_run_sha:
-            # HEAD unchanged → summarize committed nothing → nothing to digest
-            return []
-        # Diff from the pre-run SHA so we capture exactly what summarize pushed,
-        # not whatever happened to be in HEAD~1 on a rerun.
-        diff_base = pre_run_sha
-    else:
-        diff_base = "HEAD~1"
+    commit_sha = os.environ.get("SUMMARIZE_COMMIT_SHA", "").strip()
+    commit_found = os.environ.get("SUMMARIZE_COMMIT_FOUND", "false").lower() == "true"
 
-    result = subprocess.run(
-        ["git", "diff", "--name-only", diff_base, "HEAD", "--", "docs/content"],
-        capture_output=True, text=True, cwd=ROOT,
-    )
+    if commit_found:
+        if not commit_sha:
+            # Summarize ran but pushed no new commit → nothing to digest
+            return []
+        result = subprocess.run(
+            ["git", "diff", "--name-only", f"{commit_sha}~1", commit_sha, "--", "docs/content"],
+            capture_output=True, text=True, cwd=ROOT,
+        )
+    else:
+        # workflow_dispatch or local run → diff the last commit
+        result = subprocess.run(
+            ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"],
+            capture_output=True, text=True, cwd=ROOT,
+        )
     return [
         line for line in result.stdout.strip().splitlines()
         if line.endswith("/summary.md")

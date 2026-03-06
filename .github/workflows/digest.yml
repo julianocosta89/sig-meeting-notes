@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  actions: read      # needed to download artifacts from the triggering workflow run
 
 concurrency:
   group: "digest"
@@ -26,6 +27,27 @@ jobs:
         with:
           fetch-depth: 0          # full history so SUMMARIZE_HEAD_SHA is always reachable for git diff
 
+      - name: Download summary commit SHA artifact
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
+        with:
+          name: summarize-commit-sha
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read summary commit SHA
+        id: read-sha
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            SHA=$(cat summarize-commit-sha.txt 2>/dev/null | tr -d '[:space:]')
+            echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=" >> "$GITHUB_OUTPUT"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098  # v7.3.1
         with:
           version: "latest"
@@ -39,6 +61,8 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
-          # Empty on workflow_dispatch (manual runs skip the SHA guard)
-          SUMMARIZE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          # SHA of the exact commit summarize pushed (empty if nothing was pushed).
+          # found=true means this is a workflow_run trigger; found=false means workflow_dispatch.
+          SUMMARIZE_COMMIT_SHA: ${{ steps.read-sha.outputs.sha }}
+          SUMMARIZE_COMMIT_FOUND: ${{ steps.read-sha.outputs.found }}
         run: uv run python scripts/send_digest.py
