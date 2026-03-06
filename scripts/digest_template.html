@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OTel SIG Daily Digest</title>
+  <!--[if !mso]><!-->
+  <style>
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media only screen and (max-width: 480px) {
+      .email-container { width: 100% !important; }
+      .card-td { padding: 16px 16px !important; }
+      .header-td { padding: 20px 16px !important; }
+    }
+  </style>
+  <!--<![endif]-->
+</head>
+<body style="margin: 0; padding: 0; background-color: #f6f8fa; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+
+<!-- Preheader (hidden preview text) -->
+<div style="display: none; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #f6f8fa;">
+  {{ count }} OTel SIG meeting{{ 's' if count != 1 else '' }} summarised - {{ date }}
+</div>
+
+<!-- Outer wrapper -->
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="background-color: #f6f8fa;">
+  <tr>
+    <td align="center" style="padding: 24px 16px;">
+
+      <!-- Email container -->
+      <table class="email-container" border="0" cellpadding="0" cellspacing="0" role="presentation" width="600" style="max-width: 600px; width: 100%; background-color: #ffffff; border: 1px solid #d1d9e0; border-radius: 6px; overflow: hidden;">
+
+        <!-- Header -->
+        <tr>
+          <td class="header-td" align="center" style="background-color: #f6f8fa; padding: 28px 24px 20px; border-bottom: 1px solid #d1d9e0;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+              <tr>
+                <td align="center">
+                  <img src="{{ logo_b64 }}" alt="OTelMinutes" width="200" style="display: block; max-width: 200px; height: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-top: 12px;">
+                  <span style="font-size: 22px; font-weight: 600; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Daily Digest</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Date + count subtitle -->
+        <tr>
+          <td align="center" style="padding: 20px 24px 0;">
+            <span style="font-size: 14px; color: #59636e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">{{ date }} &middot; {{ count }} meeting{{ 's' if count != 1 else '' }}</span>
+          </td>
+        </tr>
+
+        <!-- AI narrative -->
+        <tr>
+          <td style="padding: 16px 24px 20px;">
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">{{ narrative }}</p>
+          </td>
+        </tr>
+
+        <!-- Horizontal rule -->
+        <tr>
+          <td style="padding: 0 24px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+              <tr>
+                <td style="border-top: 1px solid #d1d9e0; font-size: 1px; line-height: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Meeting cards -->
+        {% for meeting in meetings %}
+        <tr>
+          <td class="card-td" style="padding: 20px 24px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="background-color: #f6f8fa; border: 1px solid #d1d9e0; border-radius: 6px;">
+              <tr>
+                <td style="padding: 16px 20px;">
+                  <!-- SIG name -->
+                  <div style="font-size: 17px; font-weight: 700; color: #dc9e10; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 4px;">{{ meeting.slug }}</div>
+                  <!-- Date -->
+                  <div style="font-size: 13px; color: #59636e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 12px;">{{ meeting.date }}</div>
+                  <!-- Excerpt -->
+                  <div style="font-size: 14px; line-height: 1.5; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 16px;">{{ meeting.excerpt }}</div>
+                  <!-- CTA button -->
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                    <tr>
+                      <td align="center" style="background-color: #dc9e10; border-radius: 6px;">
+                        <a href="{{ meeting.link }}" target="_blank" style="display: inline-block; padding: 8px 20px; font-size: 14px; font-weight: 600; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; text-decoration: none;">Read more &#8594;</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        {% endfor %}
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding: 0 24px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+              <tr>
+                <td style="border-top: 1px solid #d1d9e0; font-size: 1px; line-height: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding: 16px 24px 24px;">
+            <p style="margin: 0; font-size: 12px; line-height: 1.5; color: #59636e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You're receiving this because DIGEST_TO includes your address.</p>
+          </td>
+        </tr>
+
+      </table>
+      <!-- /Email container -->
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

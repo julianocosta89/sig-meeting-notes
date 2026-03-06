@@ -11,6 +11,7 @@ Required env vars:
 """
 from __future__ import annotations
 
+import base64
 import os
 import subprocess
 import sys
@@ -19,6 +20,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import requests
+from jinja2 import Template
 
 if TYPE_CHECKING:
     from openai import OpenAI
@@ -83,27 +85,59 @@ def build_deep_link(slug: str, meeting_date: str) -> str:
     return f"{SITE_BASE_URL}?sig={slug}&date={meeting_date}"
 
 
+def _load_logo_b64() -> str:
+    """Read the SVG logo and return a base64 data URI string."""
+    logo_path = ROOT / "docs" / "OTelMinutes-logo.svg"
+    svg_bytes = logo_path.read_bytes()
+    encoded = base64.b64encode(svg_bytes).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded}"
+
+
+def _make_excerpt(content: str) -> str:
+    """Extract a plain-text excerpt from summary content."""
+    lines = content.strip().splitlines()
+    # Skip markdown headings, take the first real content
+    for line in lines:
+        stripped = line.strip()
+        if stripped and not stripped.startswith("##"):
+            return stripped[:300]
+    return content[:300].strip()
+
+
+def _render_html(template_vars: dict) -> str:
+    """Load and render the Jinja2 HTML email template."""
+    template_path = Path(__file__).resolve().parent / "digest_template.html"
+    template_src = template_path.read_text(encoding="utf-8")
+    template = Template(template_src)
+    return template.render(**template_vars)
+
+
 def build_email(
     narrative: str, summaries: list[dict[str, str]], today: str, count: int
 ) -> dict[str, str]:
     """Build subject, HTML body, and plain-text body for the digest email."""
     subject = f"OTel SIG Daily Digest — {today} ({count} meetings)"
 
-    # HTML body
-    html_parts = [
-        "<h1>OTel SIG Daily Digest</h1>",
-        f"<p>{narrative}</p>",
-        "<hr>",
-    ]
+    # Build meetings list with excerpts and links
+    meetings = []
     for s in summaries:
         link = build_deep_link(s["slug"], s["date"])
-        # Simple markdown-to-HTML: convert lines starting with ## / - / **
-        body_html = s["content"].replace("\n", "<br>\n")
-        html_parts.append(f"<h2>{s['slug']} — {s['date']}</h2>")
-        html_parts.append(f"<div>{body_html}</div>")
-        html_parts.append(f'<p><a href="{link}">Read more</a></p>')
+        meetings.append({
+            "slug": s["slug"],
+            "date": s["date"],
+            "content": s["content"],
+            "link": link,
+            "excerpt": _make_excerpt(s["content"]),
+        })
 
-    html_body = "\n".join(html_parts)
+    # HTML body via Jinja2 template
+    html_body = _render_html({
+        "narrative": narrative,
+        "date": today,
+        "count": count,
+        "meetings": meetings,
+        "logo_b64": _load_logo_b64(),
+    })
 
     # Plain-text body
     text_parts = ["OTel SIG Daily Digest", "", narrative, "", "---", ""]

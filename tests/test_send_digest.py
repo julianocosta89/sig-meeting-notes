@@ -25,6 +25,8 @@ from send_digest import (  # noqa: E402
     send_email,
 )
 
+FAKE_LOGO_B64 = "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4="
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -154,6 +156,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
@@ -183,6 +186,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
@@ -209,6 +213,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp),
             pytest.raises(SystemExit) as exc_info,
         ):
