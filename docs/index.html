@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OpenTelemetry SIG Meeting Notes</title>
+  <title>OTel Minutes</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>try{var t=localStorage.getItem('otel-notes-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -12,7 +12,55 @@
   <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header">
-    <h1>OpenTelemetry SIG Meeting Notes</h1>
+    <h1 class="site-logo" aria-label="OTel Minutes">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="40 9 746.14 140" aria-hidden="true" focusable="false">
+        <defs>
+          <style>
+            .brand { color: #dc9e10; }
+            .text-base {
+              font-family: "Segoe UI", "Roboto", sans-serif;
+              font-size: 120px;
+              fill: currentColor;
+            }
+            .text-otel { font-weight: 600; }
+            .text-minutes { font-weight: 400; }
+            .metric-line {
+              fill: none;
+              stroke: currentColor;
+              stroke-width: 14;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .metric-node {
+              fill: none;
+              stroke: currentColor;
+              stroke-width: 6;
+            }
+          </style>
+          <symbol id="metric-m" viewBox="0 0 200 200" overflow="visible">
+            <mask id="cut-nodes-m" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="200" height="200" fill="white"/>
+              <circle cx="30" cy="170" r="11" fill="black"/>
+              <circle cx="30" cy="30" r="11" fill="black"/>
+              <circle cx="100" cy="120" r="11" fill="black"/>
+              <circle cx="170" cy="30" r="11" fill="black"/>
+              <circle cx="170" cy="170" r="11" fill="black"/>
+            </mask>
+            <polyline class="metric-line" mask="url(#cut-nodes-m)" points="30,170 30,30 100,120 170,30 170,170"/>
+            <circle class="metric-node" cx="30" cy="170" r="14"/>
+            <circle class="metric-node" cx="30" cy="30" r="14"/>
+            <circle class="metric-node" cx="100" cy="120" r="14"/>
+            <circle class="metric-node" cx="170" cy="30" r="14"/>
+            <circle class="metric-node" cx="170" cy="170" r="14"/>
+          </symbol>
+        </defs>
+        <g class="brand">
+          <text x="40" y="120" class="text-base text-otel">OTel</text>
+          <use href="#metric-m" x="330" y="10" width="140" height="140"/>
+          <text x="460" y="120" class="text-base text-minutes">inutes</text>
+        </g>
+      </svg>
+    </h1>
     <div class="header-actions">
       <a
         href="https://github.com/julianocosta89/sig-meeting-notes"

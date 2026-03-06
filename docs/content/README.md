@@ -22,7 +22,7 @@ content/
 
 ## Conventions
 
-- **SIG slugs** are derived from the SIG name by stripping special characters and replacing spaces with hyphens. Some slugs are further canonicalised in `scraper/sheet.py` (e.g. `OpenTelemetry-CC-SIG` → `CC-SIG`).
+- **SIG slugs** are derived from the SIG name by stripping special characters and replacing spaces with hyphens. Some slugs are further canonicalised in `scraper/sheet.py` via `_CANONICAL_SLUGS` (e.g. `OpenTelemetry-CC-SIG` → `CC-SIG`, `GC-Project-Management-EU` → `Governance-Committee`).
 - **Already-downloaded** transcripts are skipped on subsequent runs — the presence of `transcript.md` is the deduplication signal.
 - **metadata.md** is a simple key-value file (`SIG:`, `Meeting Notes:`, `Repository:`).
 

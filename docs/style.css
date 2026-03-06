@@ -94,9 +94,17 @@ body {
 
 .site-header h1 {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.4;
+  line-height: 1;
+}
+
+.site-logo svg {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+[data-theme="light"] .brand {
+  color: #3d4c86;
 }
 
 .header-actions {

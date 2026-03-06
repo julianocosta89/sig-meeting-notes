@@ -1,4 +1,4 @@
-# OTel SIG Meeting Notes
+<img src="docs/OTelMinutes-logo.svg" width="200" alt="OTel Minutes Logo" />
 
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
@@ -87,6 +87,7 @@ Some SIGs appear under multiple names in the spreadsheet. The script normalises 
 | Spreadsheet name | Stored under |
 |------------------|--------------|
 | OpenTelemetry CC SIG | `CC-SIG` |
+| GC Project Management EU | `Governance-Committee` |
 
 Already-downloaded transcripts are skipped on subsequent runs.
 
@@ -135,7 +136,7 @@ The file is only written when at least one of attendees or agenda is non-empty.
 
 ## Web UI
 
-The content is published at **<https://julianocosta89.github.io/sig-meeting-notes/>**.
+The content is published at **<https://otelminutes.jcosta.dev/>**.
 
 Features:
 - Browse SIGs and meeting dates from a sidebar
