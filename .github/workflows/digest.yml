@@ -40,4 +40,6 @@ jobs:
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
           # Empty on workflow_dispatch (manual runs skip the SHA guard)
           SUMMARIZE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          # Used to skip reruns and prevent duplicate digest emails
+          DIGEST_RUN_ATTEMPT: ${{ github.run_attempt }}
         run: uv run python scripts/send_digest.py

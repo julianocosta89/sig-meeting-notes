@@ -52,9 +52,14 @@ def get_new_summary_paths() -> list[str]:
         if actual_sha == pre_run_sha:
             # HEAD unchanged → summarize committed nothing → nothing to digest
             return []
+        # Diff from the pre-run SHA so we capture exactly what summarize pushed,
+        # not whatever happened to be in HEAD~1 on a rerun.
+        diff_base = pre_run_sha
+    else:
+        diff_base = "HEAD~1"
 
     result = subprocess.run(
-        ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"],
+        ["git", "diff", "--name-only", diff_base, "HEAD", "--", "docs/content"],
         capture_output=True, text=True, cwd=ROOT,
     )
     return [
@@ -202,6 +207,14 @@ def _create_openai_client(api_key: str) -> OpenAI:
 
 
 def main() -> None:
+    # Guard against duplicate digests when the digest workflow itself is rerun.
+    # DIGEST_RUN_ATTEMPT is set to github.run_attempt by the workflow; absent on
+    # workflow_dispatch so manual runs always proceed.
+    run_attempt = int(os.environ.get("DIGEST_RUN_ATTEMPT", "1"))
+    if run_attempt > 1:
+        print(f"Rerun detected (attempt {run_attempt}), skipping to prevent duplicate digest.")
+        sys.exit(0)
+
     summary_paths = get_new_summary_paths()
     if not summary_paths:
         print("No new summaries, skipping.")
@@ -210,6 +223,11 @@ def main() -> None:
     digest_to = os.environ.get("DIGEST_TO", "").strip()
     if not digest_to:
         print("DIGEST_TO not set, skipping.")
+        sys.exit(0)
+
+    recipients = [r.strip() for r in digest_to.split(",") if r.strip()]
+    if not recipients:
+        print("DIGEST_TO contains no valid addresses, skipping.")
         sys.exit(0)
 
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
@@ -228,7 +246,6 @@ def main() -> None:
     narrative = generate_digest_narrative(client, summaries)
 
     today = date.today().isoformat()
-    recipients = [r.strip() for r in digest_to.split(",") if r.strip()]
     email = build_email(narrative, summaries, today, len(summaries))
     send_email(resend_key, recipients, email)
 

@@ -142,6 +142,33 @@ class TestGetNewSummaryPaths:
 class TestMain:
     """Tests for the main() orchestration."""
 
+    def test_rerun_guard(self) -> None:
+        """DIGEST_RUN_ATTEMPT > 1 -> exits cleanly without any subprocess or API calls."""
+        with (
+            patch("send_digest.subprocess.run") as mock_run,
+            patch.dict("os.environ", {"DIGEST_RUN_ATTEMPT": "2"}),
+            patch("send_digest.requests.post") as mock_post,
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
+        assert exc_info.value.code == 0
+        mock_run.assert_not_called()
+        mock_post.assert_not_called()
+
+    def test_empty_recipients_after_filter(self) -> None:
+        """DIGEST_TO with only commas -> no valid addresses -> exits cleanly."""
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+        env = _env(DIGEST_TO=",,,", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        with (
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest.requests.post") as mock_post,
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
+        assert exc_info.value.code == 0
+        mock_post.assert_not_called()
+
     def test_no_new_summaries(self) -> None:
         """HEAD == SUMMARIZE_HEAD_SHA (no new commit) -> exits cleanly, no API calls."""
         with (
