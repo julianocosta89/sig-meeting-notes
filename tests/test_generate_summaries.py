@@ -5,6 +5,7 @@ These tests mock the OpenAI client so no API key or network access is needed.
 from __future__ import annotations
 
 import textwrap
+from datetime import date
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -236,7 +237,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client, transcripts_dir)
+            process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         summary_file = transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md"
         assert summary_file.exists()
@@ -255,7 +256,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client, transcripts_dir)
+            process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         mock_client.chat.completions.create.assert_not_called()
         assert (
@@ -274,7 +275,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir)
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         assert generated == 2
         assert skipped == 0
@@ -289,7 +290,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client, transcripts_dir)
+            process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         mock_client.chat.completions.create.assert_not_called()
 
@@ -307,7 +308,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir)
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         assert generated == 1
         assert skipped == 1
@@ -323,7 +324,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir)
+            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         # Only the real transcript should be processed
         assert generated == 1
@@ -336,7 +337,7 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            process_transcripts(mock_client, transcripts_dir)
+            process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         call_args = mock_client.chat.completions.create.call_args
         messages = call_args.kwargs["messages"]
