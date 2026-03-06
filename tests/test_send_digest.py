@@ -190,10 +190,6 @@ class TestMain:
 
     def test_happy_path(self, tmp_path: Path) -> None:
         """New summaries found -> OpenAI called -> Resend POST made."""
-        summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
-        summary_dir.mkdir(parents=True)
-        (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
-
         mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
@@ -202,9 +198,11 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=[
+                _mock_subprocess_result(diff_output),   # git diff in get_new_summary_paths
+                _mock_subprocess_result(SAMPLE_SUMMARY), # git show in parse_summary_info
+            ]),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
-            patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -221,10 +219,6 @@ class TestMain:
 
     def test_multiple_recipients(self, tmp_path: Path) -> None:
         """DIGEST_TO with comma-separated list -> to field is a list."""
-        summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
-        summary_dir.mkdir(parents=True)
-        (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
-
         mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
@@ -234,9 +228,11 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=[
+                _mock_subprocess_result(diff_output),
+                _mock_subprocess_result(SAMPLE_SUMMARY),
+            ]),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
-            patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -249,10 +245,6 @@ class TestMain:
 
     def test_blank_recipients_filtered(self, tmp_path: Path) -> None:
         """Trailing comma or double-comma in DIGEST_TO -> blank entries dropped."""
-        summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
-        summary_dir.mkdir(parents=True)
-        (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
-
         mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
@@ -262,9 +254,11 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=[
+                _mock_subprocess_result(diff_output),
+                _mock_subprocess_result(SAMPLE_SUMMARY),
+            ]),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
-            patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -277,10 +271,6 @@ class TestMain:
 
     def test_resend_error_handling(self, tmp_path: Path) -> None:
         """Resend returns 400 -> error printed, exits non-zero."""
-        summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
-        summary_dir.mkdir(parents=True)
-        (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
-
         mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 400
@@ -290,9 +280,11 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=[
+                _mock_subprocess_result(diff_output),
+                _mock_subprocess_result(SAMPLE_SUMMARY),
+            ]),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
-            patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),

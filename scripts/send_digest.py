@@ -73,14 +73,26 @@ def get_new_summary_paths() -> list[str]:
     ]
 
 
-def parse_summary_info(path: str) -> dict[str, str]:
-    """Extract slug, date, and content from a summary path."""
+def parse_summary_info(path: str, commit_sha: str = "") -> dict[str, str]:
+    """Extract slug, date, and content from a summary path.
+
+    When commit_sha is provided, content is read directly from that commit via
+    ``git show`` so the snapshot always matches the diff that identified the file,
+    regardless of any subsequent commits on the branch.
+    """
     # path looks like docs/content/{slug}/{date}/summary.md
     parts = Path(path).parts
     slug = parts[-3]
     meeting_date = parts[-2]
-    full_path = ROOT / path
-    content = full_path.read_text(encoding="utf-8") if full_path.exists() else ""
+    if commit_sha:
+        result = subprocess.run(
+            ["git", "show", f"{commit_sha}:{path}"],
+            capture_output=True, text=True, cwd=ROOT,
+        )
+        content = result.stdout
+    else:
+        full_path = ROOT / path
+        content = full_path.read_text(encoding="utf-8") if full_path.exists() else ""
     return {"slug": slug, "date": meeting_date, "content": content}
 
 
@@ -237,7 +249,8 @@ def main() -> None:
         print("ERROR: RESEND_API_KEY not set")
         sys.exit(1)
 
-    summaries = [parse_summary_info(p) for p in summary_paths]
+    commit_sha = os.environ.get("SUMMARIZE_COMMIT_SHA", "").strip()
+    summaries = [parse_summary_info(p, commit_sha) for p in summary_paths]
 
     client = _create_openai_client(api_key)
     narrative = generate_digest_narrative(client, summaries)
