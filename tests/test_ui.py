@@ -374,11 +374,13 @@ def test_search_filters_date_list(browser_ctx):
     page = context.new_page()
     _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
 
-    # "Damien" appears in both transcripts, so both dates should remain
+    # "Damien" appears as speaker in both transcripts, but only in utterance
+    # text of 2026-02-05 ("Hey, Damien.") — speaker names are stripped from search
     page.fill("#search-input", "Damien")
     page.wait_for_timeout(400)  # debounce is 300ms
     buttons = page.locator("#date-list .date-btn").all()
-    assert len(buttons) == 2
+    assert len(buttons) == 1
+    assert "2026-02-05" in buttons[0].text_content()
 
     # "Hello everyone" only appears in the 2026-02-19 transcript
     page.fill("#search-input", "Hello everyone")
@@ -678,7 +680,8 @@ def test_search_match_count_displayed(browser_ctx):
     page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
 
-    page.fill("#search-input", "Tyler")
+    # Use "Hey" which appears in utterance text (not just speaker names)
+    page.fill("#search-input", "Hey")
     page.wait_for_timeout(400)
 
     match_counter = page.locator(
@@ -705,7 +708,8 @@ def test_search_jump_to_next_match(browser_ctx):
     page.wait_for_selector(".tab-bar")
     page.locator(".tab-btn", has_text="Transcript").click()
     page.wait_for_selector(".transcript-body")
-    page.fill("#search-input", "Tyler")
+    # Use "Hey" which appears in utterance text (not just speaker names)
+    page.fill("#search-input", "Hey")
     page.wait_for_timeout(400)
 
     jump_btn = page.locator(
@@ -797,4 +801,109 @@ def test_speaker_bold_format_renders(browser_ctx):
     assert not any("**" in t for t in speaker_texts), (
         "Speaker spans should not contain ** markdown markers"
     )
+    page.close()
+
+
+# ── Phase 1: Speaker-strip search tests ──────────────────────
+
+
+def test_search_match_count_excludes_speaker_names(browser_ctx):
+    """Search match counts should reflect content hits only, not speaker-label hits.
+
+    "Tyler" appears as a speaker name in both Go-SIG transcripts, but only
+    appears in the utterance text of the 2026-02-19 transcript ("Hi Tyler.").
+    After stripping speakers, only 2026-02-19 should match, with a count of 1.
+    """
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    page.fill("#search-input", "Tyler")
+    page.wait_for_timeout(400)
+
+    # Only the 2026-02-19 date should remain (has "Hi Tyler." in utterance)
+    buttons = page.locator("#date-list .date-btn").all()
+    dates = [b.text_content() for b in buttons]
+    assert len(buttons) == 1, (
+        f"Expected 1 date with content match for 'Tyler', got {len(buttons)}: {dates}"
+    )
+    assert "2026-02-19" in dates[0]
+
+    # The match badge should show 1 (one utterance hit), not 2+ (speaker labels)
+    badge = page.locator("#date-list .match-badge").first
+    assert badge.text_content().strip() == "1"
+    page.close()
+
+
+def test_search_snippet_excludes_speaker_prefix(browser_ctx):
+    """Global search result snippets should not contain **Speaker** MM:SS prefixes.
+
+    extractSnippet operates on stripSpeakers output, so .result-snippet cards
+    in the global search panel must show only utterance text — not raw markdown
+    speaker labels — even when the query also appears as a speaker name.
+    """
+    context, url = browser_ctx
+    page = context.new_page()
+    # Do NOT select a SIG — global search is triggered via #global-search-input
+    _wait_for_app_ready(page, url)
+
+    # "Tyler" is a speaker name in both Go-SIG dates but appears as an utterance
+    # hit only in 2026-02-19 ("Hi Tyler."). The result snippet for that card must
+    # not start with the "**Tyler** 02:00" speaker-prefix pattern.
+    page.fill("#global-search-input", "Tyler")
+    page.wait_for_selector(".result-snippet", timeout=5000)
+    page.wait_for_timeout(300)
+
+    snippets = page.locator(".result-snippet").all()
+    assert len(snippets) > 0, "Expected at least one global search result card"
+
+    for snippet in snippets:
+        text = snippet.text_content()
+        assert "**" not in text, (
+            f"Snippet contains raw markdown speaker prefix: {text!r}"
+        )
+    page.close()
+
+
+def test_search_no_mark_inside_speaker_or_timestamp(browser_ctx):
+    """<mark> elements should never appear inside .speaker-name or timestamp spans.
+
+    The highlightMatches TreeWalker should skip text nodes inside
+    .speaker-name and .timestamp elements, so searching for a speaker's
+    name should not inject <mark> into those spans.
+    """
+    context, url = browser_ctx
+    page = context.new_page()
+    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+
+    # Load transcript where "Damien Mathieu" is a speaker name
+    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Transcript").click()
+    page.wait_for_selector(".transcript-body")
+
+    # Search for a speaker's name — should highlight in utterances but NOT in labels
+    page.fill("#search-input", "Damien")
+    page.wait_for_timeout(400)
+
+    # Verify no <mark> inside .speaker-name elements
+    marks_in_speaker = page.locator(".transcript-body .speaker-name mark").all()
+    assert len(marks_in_speaker) == 0, (
+        f"Found {len(marks_in_speaker)} <mark> elements inside .speaker-name spans"
+    )
+
+    # Verify no <mark> inside .timestamp elements
+    marks_in_timestamp = page.locator(".transcript-body .timestamp mark").all()
+    assert len(marks_in_timestamp) == 0, (
+        f"Found {len(marks_in_timestamp)} <mark> elements inside .timestamp spans"
+    )
+
+    # But "Damien" should still appear highlighted in the utterance text
+    # ("Hey, Damien." in the 2026-02-05 transcript)
+    marks = page.locator(".transcript-body mark").all()
+    assert len(marks) > 0, (
+        "Expected at least one <mark> highlight for 'Damien' in utterance text"
+    )
+    for mark in marks:
+        assert "damien" in mark.text_content().lower()
     page.close()

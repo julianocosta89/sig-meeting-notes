@@ -817,13 +817,22 @@ function buildTranscriptBody(bodyText, query) {
 }
 
 function parseBodyLine(line) {
-  // New format: **Speaker** MM:SS utterance
-  const boldMatch = line.match(/^\*\*(.+?)\*\*\s+(\d+:\d+)\s+(.*)$/);
+  // New format: **Speaker** MM:SS or HH:MM:SS utterance
+  const boldMatch = line.match(/^\*\*(.+?)\*\*\s+(\d+:\d+(?::\d+)?)\s+(.*)$/);
   if (boldMatch) return { speaker: boldMatch[1], timestamp: boldMatch[2], utterance: boldMatch[3] };
-  // Legacy format: Speaker MM:SS utterance
-  const match = line.match(/^(.+?)\s+(\d+:\d+)\s+(.*)$/);
+  // Legacy format: Speaker MM:SS or HH:MM:SS utterance
+  const match = line.match(/^(.+?)\s+(\d+:\d+(?::\d+)?)\s+(.*)$/);
   if (!match) return { speaker: null, timestamp: null, utterance: line };
   return { speaker: match[1], timestamp: match[2], utterance: match[3] };
+}
+
+function stripSpeakers(text) {
+  return text.split('\n').map(line => {
+    const parsed = parseBodyLine(line);
+    if (!parsed || !parsed.utterance) return line;
+    if (parsed.speaker === null && parsed.timestamp === null) return line;
+    return parsed.utterance;
+  }).join('\n');
 }
 
 // ── SVG Icons for empty/error states ─────────────────────────
@@ -1178,7 +1187,7 @@ async function handleSearch(query) {
 
 function countMatches(text, query) {
   if (!query) return 0;
-  const lower = text.toLowerCase();
+  const lower = stripSpeakers(text).toLowerCase();
   const q = query.toLowerCase();
   let count = 0;
   let idx = 0;
@@ -1193,7 +1202,14 @@ function countMatches(text, query) {
 
 function highlightMatches(container, query) {
   if (!query) return;
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (node.parentElement && node.parentElement.closest('.speaker-name, .timestamp')) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
 
@@ -1371,6 +1387,7 @@ function getAllMeetings() {
 }
 
 function extractSnippet(text, query, contextLength = 120) {
+  text = stripSpeakers(text);
   const lower = text.toLowerCase();
   const q = query.toLowerCase();
   const idx = lower.indexOf(q);
