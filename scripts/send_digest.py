@@ -20,7 +20,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import requests
-from jinja2 import Template
 
 if TYPE_CHECKING:
     from openai import OpenAI
@@ -32,7 +31,21 @@ SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 
 
 def get_new_summary_paths() -> list[str]:
-    """Return paths of new summary.md files from the last commit."""
+    """Return paths of new summary.md files committed in today's summarize run.
+
+    Guards against re-sending stale summaries on runs where summarize.yml
+    completed successfully but produced no new commit: if HEAD is not today's
+    summarize commit we return an empty list immediately.
+    """
+    today = date.today().isoformat()
+    log = subprocess.run(
+        ["git", "log", "-1", "--format=%ae|||%s"],
+        capture_output=True, text=True, cwd=ROOT,
+    ).stdout.strip()
+    author_email, _, subject = log.partition("|||")
+    if "github-actions" not in author_email or f"generate meeting summaries {today}" not in subject:
+        return []
+
     result = subprocess.run(
         ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"],
         capture_output=True, text=True, cwd=ROOT,
@@ -106,6 +119,8 @@ def _make_excerpt(content: str) -> str:
 
 def _render_html(template_vars: dict) -> str:
     """Load and render the Jinja2 HTML email template."""
+    from jinja2 import Template  # noqa: PLC0415 — deferred to avoid import error without summarize group
+
     template_path = Path(__file__).resolve().parent / "digest_template.html"
     template_src = template_path.read_text(encoding="utf-8")
     template = Template(template_src)

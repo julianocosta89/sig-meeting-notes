@@ -7,8 +7,9 @@ from __future__ import annotations
 
 import sys
 import textwrap
+from datetime import date as _date
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock, call, patch
 
 import pytest
 
@@ -79,6 +80,19 @@ def _mock_subprocess_result(stdout: str = "") -> MagicMock:
     return result
 
 
+def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
+    """Return [git_log_result, git_diff_result] for subprocess.run side_effect.
+
+    The git log result simulates today's summarize commit so that
+    get_new_summary_paths() passes its guard check and proceeds to git diff.
+    """
+    today = _date.today().isoformat()
+    log_result = _mock_subprocess_result(
+        f"github-actions[bot]@users.noreply.github.com|||chore: generate meeting summaries {today}"
+    )
+    return [log_result, _mock_subprocess_result(diff_stdout)]
+
+
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
@@ -89,21 +103,32 @@ class TestGetNewSummaryPaths:
 
     def test_git_diff_filtering(self) -> None:
         """Only paths ending with /summary.md should be returned."""
-        with patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(GIT_DIFF_OUTPUT)):
+        with patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(GIT_DIFF_OUTPUT)):
             paths = get_new_summary_paths()
         assert len(paths) == 2
         assert all(p.endswith("/summary.md") for p in paths)
         assert "docs/content/Go-SIG/2026-03-05/transcript.md" not in paths
         assert "docs/content/Collector-SIG/2026-03-05/meeting-notes.md" not in paths
 
+    def test_stale_commit_guard(self) -> None:
+        """If HEAD is not today's summarize commit, return empty immediately."""
+        stale_log = _mock_subprocess_result(
+            "github-actions[bot]@users.noreply.github.com|||chore: generate meeting summaries 2025-01-01"
+        )
+        with patch("send_digest.subprocess.run", return_value=stale_log) as mock_run:
+            paths = get_new_summary_paths()
+        assert paths == []
+        mock_run.assert_called_once()  # git diff never called
+
 
 class TestMain:
     """Tests for the main() orchestration."""
 
     def test_no_new_summaries(self) -> None:
-        """git diff returns empty -> exits cleanly, no API calls."""
+        """HEAD is not today's summarize commit -> exits cleanly, no API calls."""
+        stale_log = _mock_subprocess_result("someuser@example.com|||some unrelated commit")
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result("")),
+            patch("send_digest.subprocess.run", return_value=stale_log),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -113,10 +138,9 @@ class TestMain:
 
     def test_missing_digest_to(self) -> None:
         """DIGEST_TO not set -> exits cleanly."""
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(
-                "docs/content/Go-SIG/2026-03-05/summary.md\n"
-            )),
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
             patch.dict("os.environ", {"DIGEST_TO": ""}, clear=False),
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -126,10 +150,9 @@ class TestMain:
     def test_missing_resend_api_key(self) -> None:
         """RESEND_API_KEY not set -> exits with error."""
         env = _env(RESEND_API_KEY="")
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(
-                "docs/content/Go-SIG/2026-03-05/summary.md\n"
-            )),
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
             patch.dict("os.environ", env, clear=False),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             pytest.raises(SystemExit) as exc_info,
@@ -152,7 +175,7 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -182,7 +205,7 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -209,7 +232,7 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
@@ -231,19 +254,25 @@ class TestBuildEmail:
             {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
             {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
         ]
-        email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
+        with (
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
+        ):
+            email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
         assert "2026-03-05" in email["subject"]
         assert "2 meetings" in email["subject"]
 
     def test_deep_link_urls(self) -> None:
-        """HTML body contains correct deep-link URLs."""
+        """Plain-text body contains correct deep-link URLs."""
         summaries = [
             {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
             {"slug": "Collector-SIG", "date": "2026-03-06", "content": SAMPLE_SUMMARY},
         ]
-        email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
-        assert "?sig=Go-SIG&date=2026-03-05" in email["html"]
-        assert "?sig=Collector-SIG&date=2026-03-06" in email["html"]
+        with (
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
+        ):
+            email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
         assert "?sig=Go-SIG&date=2026-03-05" in email["text"]
         assert "?sig=Collector-SIG&date=2026-03-06" in email["text"]
 
