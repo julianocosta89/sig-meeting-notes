@@ -1,6 +1,6 @@
 # docs/
 
-Static site served via GitHub Pages at [julianocosta89.github.io/sig-meeting-notes](https://julianocosta89.github.io/sig-meeting-notes/).
+Static site served via GitHub Pages at [otelminutes.jcosta.dev](https://otelminutes.jcosta.dev/).
 
 ## Files
 
