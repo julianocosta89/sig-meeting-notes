@@ -817,11 +817,11 @@ function buildTranscriptBody(bodyText, query) {
 }
 
 function parseBodyLine(line) {
-  // New format: **Speaker** MM:SS utterance
-  const boldMatch = line.match(/^\*\*(.+?)\*\*\s+(\d+:\d+)\s+(.*)$/);
+  // New format: **Speaker** MM:SS or HH:MM:SS utterance
+  const boldMatch = line.match(/^\*\*(.+?)\*\*\s+(\d+:\d+(?::\d+)?)\s+(.*)$/);
   if (boldMatch) return { speaker: boldMatch[1], timestamp: boldMatch[2], utterance: boldMatch[3] };
-  // Legacy format: Speaker MM:SS utterance
-  const match = line.match(/^(.+?)\s+(\d+:\d+)\s+(.*)$/);
+  // Legacy format: Speaker MM:SS or HH:MM:SS utterance
+  const match = line.match(/^(.+?)\s+(\d+:\d+(?::\d+)?)\s+(.*)$/);
   if (!match) return { speaker: null, timestamp: null, utterance: line };
   return { speaker: match[1], timestamp: match[2], utterance: match[3] };
 }
