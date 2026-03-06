@@ -836,34 +836,32 @@ def test_search_match_count_excludes_speaker_names(browser_ctx):
 
 
 def test_search_snippet_excludes_speaker_prefix(browser_ctx):
-    """Global search result snippets should NOT start with **Speaker** MM:SS prefixes.
+    """Global search result snippets should not contain **Speaker** MM:SS prefixes.
 
-    After stripSpeakers, extractSnippet operates on utterance-only text,
-    so snippets should contain the spoken content without speaker labels.
+    extractSnippet operates on stripSpeakers output, so .result-snippet cards
+    in the global search panel must show only utterance text — not raw markdown
+    speaker labels — even when the query also appears as a speaker name.
     """
     context, url = browser_ctx
     page = context.new_page()
-    _select_sig_and_wait_for_prefetch(page, url, "Go-SIG", 2)
+    # Do NOT select a SIG — global search is triggered via #global-search-input
+    _wait_for_app_ready(page, url)
 
-    # Load a transcript and search for a term that appears in an utterance
-    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
-    page.wait_for_selector(".tab-bar")
-    page.locator(".tab-btn", has_text="Transcript").click()
-    page.wait_for_selector(".transcript-body")
+    # "Tyler" is a speaker name in both Go-SIG dates but appears as an utterance
+    # hit only in 2026-02-19 ("Hi Tyler."). The result snippet for that card must
+    # not start with the "**Tyler** 02:00" speaker-prefix pattern.
+    page.fill("#global-search-input", "Tyler")
+    page.wait_for_selector(".result-snippet", timeout=5000)
+    page.wait_for_timeout(300)
 
-    page.fill("#search-input", "Damien")
-    page.wait_for_timeout(400)
+    snippets = page.locator(".result-snippet").all()
+    assert len(snippets) > 0, "Expected at least one global search result card"
 
-    # Get the rendered transcript body text and find all <mark> elements
-    body_html = page.locator(".transcript-body").inner_html()
-    # The snippet/highlight context around "Damien" should not include
-    # the **Speaker** MM:SS prefix pattern
-    import re
-    # Check that no <mark> content sits right after a bold-timestamp pattern
-    # i.e., the raw "**Tyler** 02:14" prefix should not appear near highlights
-    assert "**" not in body_html, (
-        "Raw ** markdown should not appear in rendered transcript body"
-    )
+    for snippet in snippets:
+        text = snippet.text_content()
+        assert "**" not in text, (
+            f"Snippet contains raw markdown speaker prefix: {text!r}"
+        )
     page.close()
 
 
