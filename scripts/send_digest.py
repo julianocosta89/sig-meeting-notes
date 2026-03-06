@@ -187,9 +187,11 @@ def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> No
         sys.exit(1)
 
 
-def _create_openai_client(cls: type, api_key: str) -> OpenAI:
+def _create_openai_client(api_key: str) -> OpenAI:
     """Create an OpenAI client instance (seam for testing)."""
-    return cls(api_key=api_key)
+    from openai import OpenAI as _OpenAI  # noqa: PLC0415 — deferred to avoid import error without summarize group
+
+    return _OpenAI(api_key=api_key)
 
 
 def main() -> None:
@@ -215,9 +217,7 @@ def main() -> None:
 
     summaries = [parse_summary_info(p) for p in summary_paths]
 
-    from openai import OpenAI as _OpenAI  # noqa: PLC0415
-
-    client = _create_openai_client(_OpenAI, api_key)
+    client = _create_openai_client(api_key)
     narrative = generate_digest_narrative(client, summaries)
 
     today = date.today().isoformat()
