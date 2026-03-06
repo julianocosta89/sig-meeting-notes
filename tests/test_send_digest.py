@@ -238,6 +238,33 @@ class TestMain:
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
         assert call_json["to"] == ["a@test.com", "b@test.com", "c@test.com"]
 
+    def test_blank_recipients_filtered(self, tmp_path: Path) -> None:
+        """Trailing comma or double-comma in DIGEST_TO -> blank entries dropped."""
+        summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
+        summary_dir.mkdir(parents=True)
+        (summary_dir / "summary.md").write_text(SAMPLE_SUMMARY)
+
+        mock_client = _mock_openai_client()
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+
+        env = _env(DIGEST_TO="a@test.com,,b@test.com,", SUMMARIZE_HEAD_SHA=FAKE_PRE_RUN_SHA)
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+
+        with (
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
+            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest.ROOT", tmp_path),
+            patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
+            patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
+        ):
+            main()
+
+        call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
+        assert call_json["to"] == ["a@test.com", "b@test.com"]
+
     def test_resend_error_handling(self, tmp_path: Path) -> None:
         """Resend returns 400 -> error printed, exits non-zero."""
         summary_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"

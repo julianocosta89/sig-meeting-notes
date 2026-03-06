@@ -228,7 +228,7 @@ def main() -> None:
     narrative = generate_digest_narrative(client, summaries)
 
     today = date.today().isoformat()
-    recipients = [r.strip() for r in digest_to.split(",")]
+    recipients = [r.strip() for r in digest_to.split(",") if r.strip()]
     email = build_email(narrative, summaries, today, len(summaries))
     send_email(resend_key, recipients, email)
 
