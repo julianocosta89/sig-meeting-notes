@@ -1,0 +1,85 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- Josh Suereth (Google)
+- [Christos Kalkanis](mailto:christos.kalkanis@elasticsearch.com)(Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals) - joined :08
+
+### Agenda
+- Review action items:
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Draft a blog post for the Alpha launch and circulate with the SIG (specifically include Morgan, Josh (who else?)).
+    - Draft is [here](https://docs.google.com/document/d/1t1dz6ebaPONVrWCWy09j0f1n_Tgle7ZCrA8yqugY250/edit?tab=t.0).
+    - Alexey: Please review and comment. Will also ask Morgan from the GC to review.
+    - Christos: Would be good to show devfiler + ebpf profiler as an example.
+    - Felix: Add a screenshot, if possible.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - Alexey: Didn’t continue with this, not an alpha blocker right?
+    - Felix: Yes, shouldn’t be blocking.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Alexey: Not done yet. But not an alpha blocker.
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo: Still missing updates to spec: a) Document usage of default resource when there are multiple SDKs; b) Change publish synchronization to happen on timestamp and not signature; c) Did not finish discussion on using monotonic timestamp or not
+    - Ivo: Next step is to make updates, and then re-request feedback.
+  - [Florian Lehner](mailto:florian.lehner@elastic.co) Referenced Resources: [https://github.com/open-telemetry/opentelemetry-proto/pull/733](https://github.com/open-telemetry/opentelemetry-proto/pull/733) (landed)
+    - [https://github.com/open-telemetry/opentelemetry-collector/pull/14546](https://github.com/open-telemetry/opentelemetry-collector/pull/14546) (draft)
+    - [https://github.com/open-telemetry/opentelemetry-collector/pull/14652](https://github.com/open-telemetry/opentelemetry-collector/pull/14652) (draft)
+    - [https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/46331](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/46331) (draft)
+    - Josh: I’ll try to kick off the release for the proto repo today.
+    - Florian: KeyValueAttr discussion with Bogdan … but we all agree that this shouldn’t be blocking for the alpha.
+    - Josh: TC also concluded that this shouldn’t be blocking (Bogdan didn’t attend tho).
+    - Florian: KeyValueAttr could be a breaking change.
+    - Josh: If we make a change, we would add a unit field to the KeyValue message.
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com): [Roadmap to Profiling Alpha · Issue #64 · open-telemetry/sig-profiling](https://github.com/open-telemetry/sig-profiling/issues/64)
+  - Josh: If 1.10.0 is the alpha release, you should make the comments.
+  - → Conclusion: We don’t want the alpha maturity comments in the proto yet, b/c that would effectively release the alpha already and we want the TC to review before that. We also don’t need the “Development” status for now while we’re still in development. And again: No import path renaming will be needed.
+  - Alexey: Any risks on TC Review finding last minute blockers?
+  - Josh: Tigran and I have been active here to try to reduce the risk. For Beta I would like to be more involved with keeping the TC posted early. If you look at the TC recording yesterday, we talked a lot about profiling. Do I expect any issues right now? No.
+  - Felix: Bogdan not approving the Unit being a non-blocker yet is maybe a risk.
+  - Josh: In this case, we could take that to vote.
+  - Alexey: What about the “Spec SIG” meeting?
+  - Josh: This was initially just about the spec, but it’s now a meeting point between the TC and people working on the spec. If you want TC feedback on profiling, this is a good meeting to go. We aim to have sufficient TC people in the meeting, typically 4-6 people are there (> 50% of the TC). The discussion in this meeting will be the initial TC feedback for the TC review. We’ll do a follow-up the next day.
+  - Alexey: What about the Go codegen?
+  - Josh: Each language owns their proto packaging, people will need a heads-up.
+  - Felix: The collector also hand-rolls the code-gen, but Florian is updating that. The other SDKs can be upgraded later.
+- [Florian Lehner](mailto:florian.lehner@elastic.co): When promoting from Development to Alpha to Beta and finally to stable - do we require a package path renaming? Can [https://github.com/open-telemetry/opentelemetry-proto?tab=readme-ov-file#experiments](https://github.com/open-telemetry/opentelemetry-proto?tab=readme-ov-file#experiments) be made more explicit so that *profiles/v1development* can stay until *profiles/v1*?
+  - Related: [https://github.com/open-telemetry/sig-profiling/issues/64](https://github.com/open-telemetry/sig-profiling/issues/64)
+  - Decision: v1development will remain, until the package gets promoted to stable
+  - Josh: The [proto README](https://github.com/open-telemetry/opentelemetry-proto) says that development should be included in the package name until the signal reaches stable.
+  - Josh: The guidance to not include development into the import path is meant for instrumentations, not for new signals in the proto repo.
+  - Josh: You would indicate the stability level with comments on the proto. Take a look at e.g. [EntitityRef](https://github.com/open-telemetry/opentelemetry-proto/blob/c3bbecc26001cc8bd6feca131d6a56517aed26c2/opentelemetry/proto/common/v1/common.proto#L125C1-L125C25). You should go through every single message in profiling and put a message on where it is in terms of stability.
+  - Alexey: Once we go to alpha, will be stop the practice of renumbering fields?
+  - (continued in Christos’ agenda item below)
+- [Christos Kalkanis](mailto:christos.kalkanis@elasticsearch.com) (Related to previous point) How do we make breaking changes detectable by producers/consumers post-alpha if we can’t change the package? One goal of the alpha is to attract a lot more new users and deployments. Silent breaking changes with unclear side-effects as data travels down the processing chain are not conducive to that goal.
+  - Florian: We could use resource attributes (telemetry.sdk.version) we could do this. The routing processor of the otel collector makes use of this.
+  - Josh (Chat): telemetry.sdk.version is on "instrumentation scope" not resource
+  - Alexey: Versioning has costs associated with it.
+  - Christos: Until stable, we try to support the latest version of the protocol. But we could check if the data received is from an older version and drop it.
+  - Josh: instrumentation.scope has a version, it’s meant to capture changes to the attributes, e.g. from pid to process_id. There could be an instrumentation.scope for pprof or otel, but that doesn’t sound like what you want here. With metrics we’d always use new ids. Maybe we should formalize it. If the id doesn’t exist, we would say “it’s not supported anymore”.
+  - Christos: On the backend it would be good to detect the issue so we can force clients to upgrade.
+  - Nayef: We’ve been trying to update to the latest version of the proto, and then stopped supporting the older versions.
+  - Felix: I think it would be nice to have the OTLP version on the payload so we could support older versions and newer versions after the alpha release.
+  - Christos: I was thinking about a version that’s bumped on breaking changes.
+  - Felix: I don’t think I would like another versioning scheme on top of OTLPs release versions
+  - Nayef: I think the scope schema could handle this?
+  - Josh: I don’t think so (see earlier discussion). It’s about the shape of the attributes. You should open a bug against the proto report. I like the idea of communicating the version of the proto you’re using in the request. I’d like to have this on the protocol for all signals.
+  - Nayef: Right now the schema only supports attributes, but in theory it could be extended?
+  - Josh: It’s not designed to handle protocol changes.
+  - Felix: My suggestion for short-term is to avoid breaking changes during alpha and queue them all up for beta.
+  - Christos: Sounds good (+nods in the room).
+- Felix: Weekly meetings?
+  - Felix: Let’s meet weekly from now on.
+  - (nodes, + thumbs up)
+  - Alexey: Who can modify the cal?
+  - Josh: You might already be allowed to change it.
+  - Felix: I’ll handle it.
+  - Josh: Ping your GC liason if needed (Morgan).
+- – pushed to next meeting
+- Frederic: Should line, start line, and column be unsigned integers? (and 32-bit?)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Thread context next steps:
+  - There's a draft PR now [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1229](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1229)
+  - Are we ready to open a PR with the OTEP to opentelemetry-specification?
