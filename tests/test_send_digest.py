@@ -142,19 +142,6 @@ class TestGetNewSummaryPaths:
 class TestMain:
     """Tests for the main() orchestration."""
 
-    def test_rerun_guard(self) -> None:
-        """DIGEST_RUN_ATTEMPT > 1 -> exits cleanly without any subprocess or API calls."""
-        with (
-            patch("send_digest.subprocess.run") as mock_run,
-            patch.dict("os.environ", {"DIGEST_RUN_ATTEMPT": "2"}),
-            patch("send_digest.requests.post") as mock_post,
-            pytest.raises(SystemExit) as exc_info,
-        ):
-            main()
-        assert exc_info.value.code == 0
-        mock_run.assert_not_called()
-        mock_post.assert_not_called()
-
     def test_empty_recipients_after_filter(self) -> None:
         """DIGEST_TO with only commas -> no valid addresses -> exits cleanly."""
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"

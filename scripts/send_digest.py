@@ -207,14 +207,6 @@ def _create_openai_client(api_key: str) -> OpenAI:
 
 
 def main() -> None:
-    # Guard against duplicate digests when the digest workflow itself is rerun.
-    # DIGEST_RUN_ATTEMPT is set to github.run_attempt by the workflow; absent on
-    # workflow_dispatch so manual runs always proceed.
-    run_attempt = int(os.environ.get("DIGEST_RUN_ATTEMPT", "1"))
-    if run_attempt > 1:
-        print(f"Rerun detected (attempt {run_attempt}), skipping to prevent duplicate digest.")
-        sys.exit(0)
-
     summary_paths = get_new_summary_paths()
     if not summary_paths:
         print("No new summaries, skipping.")
