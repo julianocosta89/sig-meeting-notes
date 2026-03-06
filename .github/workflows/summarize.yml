@@ -44,6 +44,13 @@ jobs:
           PUSHED_SHA=""
           if git diff --cached --quiet; then
             echo "No new summaries to commit — skipping."
+            # A previous attempt may have already pushed summaries before failing.
+            # If HEAD has advanced past the trigger SHA, that prior-attempt commit
+            # contains the summaries; report it so the digest is not silently dropped.
+            if [ "$(git rev-parse HEAD)" != "${{ github.sha }}" ]; then
+              PUSHED_SHA=$(git rev-parse HEAD)
+              echo "Previous attempt already pushed $PUSHED_SHA — reporting for digest."
+            fi
           else
             echo "New summaries detected — rebuilding manifest."
             uv run python build_site.py
