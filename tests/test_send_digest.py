@@ -80,17 +80,16 @@ def _mock_subprocess_result(stdout: str = "") -> MagicMock:
     return result
 
 
-def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
-    """Return [git_log_result, git_diff_result] for subprocess.run side_effect.
+FAKE_HEAD_SHA = "abc123def456abc123def456abc123def456abc123"
 
-    The git log result simulates today's summarize commit so that
-    get_new_summary_paths() passes its guard check and proceeds to git diff.
+
+def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
+    """Return [git_rev_parse_result, git_diff_result] for subprocess.run side_effect.
+
+    The rev-parse result returns FAKE_HEAD_SHA, matching the SUMMARIZE_HEAD_SHA
+    env var used in tests so that get_new_summary_paths() passes its guard check.
     """
-    today = _date.today().isoformat()
-    log_result = _mock_subprocess_result(
-        f"github-actions[bot]@users.noreply.github.com|||chore: generate meeting summaries {today}"
-    )
-    return [log_result, _mock_subprocess_result(diff_stdout)]
+    return [_mock_subprocess_result(FAKE_HEAD_SHA), _mock_subprocess_result(diff_stdout)]
 
 
 # ---------------------------------------------------------------------------
@@ -99,36 +98,53 @@ def _subprocess_side_effects(diff_stdout: str) -> list[MagicMock]:
 
 
 class TestGetNewSummaryPaths:
-    """Tests for git diff filtering."""
+    """Tests for git diff filtering and SHA guard."""
 
     def test_git_diff_filtering(self) -> None:
         """Only paths ending with /summary.md should be returned."""
-        with patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(GIT_DIFF_OUTPUT)):
+        with (
+            patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(GIT_DIFF_OUTPUT)),
+            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_HEAD_SHA}),
+        ):
             paths = get_new_summary_paths()
         assert len(paths) == 2
         assert all(p.endswith("/summary.md") for p in paths)
         assert "docs/content/Go-SIG/2026-03-05/transcript.md" not in paths
         assert "docs/content/Collector-SIG/2026-03-05/meeting-notes.md" not in paths
 
-    def test_stale_commit_guard(self) -> None:
-        """If HEAD is not today's summarize commit, return empty immediately."""
-        stale_log = _mock_subprocess_result(
-            "github-actions[bot]@users.noreply.github.com|||chore: generate meeting summaries 2025-01-01"
-        )
-        with patch("send_digest.subprocess.run", return_value=stale_log) as mock_run:
+    def test_sha_mismatch_guard(self) -> None:
+        """If HEAD SHA differs from SUMMARIZE_HEAD_SHA, return [] without running git diff."""
+        with (
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result("differentsha")) as mock_run,
+            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_HEAD_SHA}),
+        ):
             paths = get_new_summary_paths()
         assert paths == []
         mock_run.assert_called_once()  # git diff never called
+
+    def test_no_sha_env_skips_guard(self) -> None:
+        """Without SUMMARIZE_HEAD_SHA (workflow_dispatch), guard is skipped."""
+        with (
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(
+                "docs/content/Go-SIG/2026-03-05/summary.md\n"
+            )),
+            patch.dict("os.environ", {}, clear=False),
+        ):
+            # Ensure the env var is absent
+            import os
+            os.environ.pop("SUMMARIZE_HEAD_SHA", None)
+            paths = get_new_summary_paths()
+        assert len(paths) == 1
 
 
 class TestMain:
     """Tests for the main() orchestration."""
 
     def test_no_new_summaries(self) -> None:
-        """HEAD is not today's summarize commit -> exits cleanly, no API calls."""
-        stale_log = _mock_subprocess_result("someuser@example.com|||some unrelated commit")
+        """SUMMARIZE_HEAD_SHA mismatch -> exits cleanly, no API calls."""
         with (
-            patch("send_digest.subprocess.run", return_value=stale_log),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result("differentsha")),
+            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_HEAD_SHA}),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -141,7 +157,7 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
             patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
-            patch.dict("os.environ", {"DIGEST_TO": ""}, clear=False),
+            patch.dict("os.environ", {"SUMMARIZE_HEAD_SHA": FAKE_HEAD_SHA, "DIGEST_TO": ""}),
             pytest.raises(SystemExit) as exc_info,
         ):
             main()
@@ -149,7 +165,7 @@ class TestMain:
 
     def test_missing_resend_api_key(self) -> None:
         """RESEND_API_KEY not set -> exits with error."""
-        env = _env(RESEND_API_KEY="")
+        env = _env(RESEND_API_KEY="", SUMMARIZE_HEAD_SHA=FAKE_HEAD_SHA)
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
             patch("send_digest.subprocess.run", side_effect=_subprocess_side_effects(diff_output)),
@@ -171,7 +187,7 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env()
+        env = _env(SUMMARIZE_HEAD_SHA=FAKE_HEAD_SHA)
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
@@ -179,6 +195,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
@@ -201,7 +218,7 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(DIGEST_TO="a@test.com, b@test.com, c@test.com")
+        env = _env(DIGEST_TO="a@test.com, b@test.com, c@test.com", SUMMARIZE_HEAD_SHA=FAKE_HEAD_SHA)
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
@@ -209,6 +226,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
@@ -228,7 +246,7 @@ class TestMain:
         mock_resp.status_code = 400
         mock_resp.text = "Bad Request"
 
-        env = _env()
+        env = _env(SUMMARIZE_HEAD_SHA=FAKE_HEAD_SHA)
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
@@ -236,6 +254,7 @@ class TestMain:
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest.ROOT", tmp_path),
             patch("send_digest._create_openai_client", return_value=mock_client),
+            patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp),
             pytest.raises(SystemExit) as exc_info,

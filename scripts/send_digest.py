@@ -31,20 +31,24 @@ SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 
 
 def get_new_summary_paths() -> list[str]:
-    """Return paths of new summary.md files committed in today's summarize run.
+    """Return paths of new summary.md files committed in the triggering summarize run.
 
-    Guards against re-sending stale summaries on runs where summarize.yml
-    completed successfully but produced no new commit: if HEAD is not today's
-    summarize commit we return an empty list immediately.
+    When triggered via workflow_run, the workflow passes SUMMARIZE_HEAD_SHA
+    (= github.event.workflow_run.head_sha). We compare it against the actual
+    HEAD SHA: if they differ, summarize.yml ran but produced no new commit, so
+    we exit early to prevent duplicate digests on reruns/retries.
+
+    When SUMMARIZE_HEAD_SHA is absent (workflow_dispatch / local runs) the
+    guard is skipped so manual testing always proceeds to the git diff.
     """
-    today = date.today().isoformat()
-    log = subprocess.run(
-        ["git", "log", "-1", "--format=%ae|||%s"],
-        capture_output=True, text=True, cwd=ROOT,
-    ).stdout.strip()
-    author_email, _, subject = log.partition("|||")
-    if "github-actions" not in author_email or f"generate meeting summaries {today}" not in subject:
-        return []
+    expected_sha = os.environ.get("SUMMARIZE_HEAD_SHA", "").strip()
+    if expected_sha:
+        actual_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            capture_output=True, text=True, cwd=ROOT,
+        ).stdout.strip()
+        if actual_sha != expected_sha:
+            return []
 
     result = subprocess.run(
         ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"],
@@ -118,12 +122,12 @@ def _make_excerpt(content: str) -> str:
 
 
 def _render_html(template_vars: dict) -> str:
-    """Load and render the Jinja2 HTML email template."""
-    from jinja2 import Template  # noqa: PLC0415 — deferred to avoid import error without summarize group
+    """Load and render the Jinja2 HTML email template with autoescaping enabled."""
+    from jinja2 import Environment, FileSystemLoader  # noqa: PLC0415 — deferred to avoid import error without summarize group
 
-    template_path = Path(__file__).resolve().parent / "digest_template.html"
-    template_src = template_path.read_text(encoding="utf-8")
-    template = Template(template_src)
+    template_dir = Path(__file__).resolve().parent
+    env = Environment(loader=FileSystemLoader(str(template_dir)), autoescape=True)
+    template = env.get_template("digest_template.html")
     return template.render(**template_vars)
 
 

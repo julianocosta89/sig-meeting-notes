@@ -38,4 +38,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
+          # Empty on workflow_dispatch (manual runs skip the SHA guard)
+          SUMMARIZE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: uv run python scripts/send_digest.py
