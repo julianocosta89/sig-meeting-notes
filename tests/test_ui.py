@@ -82,6 +82,15 @@ def docs_site(tmp_path_factory):
                     {"date": "2026-02-05", "duration_minutes": 45, "has_summary": False},
                 ],
             },
+            {
+                "slug": "Unsafe-SIG",
+                "name": "Unsafe SIG",
+                "meeting_notes_url": "javascript:alert('xss')",
+                "repository_url": "data:text/plain,not-safe",
+                "meetings": [
+                    {"date": "2026-02-06", "duration_minutes": 25, "has_summary": False},
+                ],
+            },
         ],
     }
     (site / "manifest.json").write_text(json.dumps(manifest))
@@ -163,6 +172,23 @@ def docs_site(tmp_path_factory):
         "### Agenda\n"
         "- Review last meeting\n"
         "- New proposals\n",
+    )
+    _write_meeting(
+        "Unsafe-SIG", "2026-02-06",
+        "SIG: Unsafe SIG\n"
+        "Date: 2026-02-06\n"
+        "Duration: 25 minutes\n"
+        "Zoom Recording URL: javascript:alert('xss')\n"
+        "============================================================\n"
+        "\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Mallory** 00:30 Link handling test.\n",
+        "## Meeting Notes\n"
+        "\n"
+        "### Agenda\n"
+        "- [click me](javascript:alert('xss'))\n"
+        "- [safe link](https://example.com)\n",
     )
 
     # Copy the real HTML, JS, and CSS from docs/
@@ -758,6 +784,40 @@ def test_manifest_meeting_notes_url_rendered_as_link(browser_ctx):
 
     link = page.locator(".transcript-header a[href*='docs.google.com']")
     assert link.count() > 0, "Expected Meeting Notes URL from manifest to render as link"
+    page.close()
+
+
+def test_unsafe_urls_do_not_render_as_links(browser_ctx):
+    """javascript:/data: links in transcript headers and manifest metadata must not render as anchors."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Unsafe-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-06").click()
+    page.wait_for_selector(".transcript-header")
+
+    assert page.locator(".transcript-header a[href^='javascript:']").count() == 0
+    assert page.locator(".transcript-header a[href^='data:']").count() == 0
+    assert page.locator(".transcript-header").text_content().count("javascript:alert('xss')") >= 1
+    page.close()
+
+
+def test_markdown_javascript_links_render_as_text(browser_ctx):
+    """Unsafe markdown links should be rendered as text, not clickable anchors."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Unsafe-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-06").click()
+    page.wait_for_selector(".tab-bar")
+    page.locator(".tab-btn", has_text="Meeting Notes").click()
+    page.wait_for_selector(".notes-body")
+
+    assert page.locator(".notes-body a[href^='javascript:']").count() == 0
+    assert page.locator(".notes-body").text_content().count("click me (javascript:alert('xss'))") == 1
+    assert page.locator(".notes-body a[href='https://example.com/']").count() == 1
     page.close()
 
 

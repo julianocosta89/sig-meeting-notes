@@ -56,6 +56,7 @@ let currentView = 'summary'; // 'transcript' | 'summary' | 'meeting-notes'
 const transcriptCache = new Map();
 const meetingNotesCache = new Map();
 const summaryCache = new Map();
+const ALLOWED_LINK_PROTOCOLS = new Set(['http:', 'https:', 'mailto:']);
 
 // Date range filter state
 let filterFrom = null;       // YYYY-MM-DD
@@ -455,6 +456,16 @@ function getSigName(slug) {
   return sig ? sig.name : slug;
 }
 
+function sanitizeHref(raw) {
+  if (!raw || typeof raw !== 'string') return null;
+  try {
+    const parsed = new URL(raw, window.location.origin);
+    return ALLOWED_LINK_PROTOCOLS.has(parsed.protocol) ? parsed.href : null;
+  } catch {
+    return null;
+  }
+}
+
 function meetingHasSummary(slug, date) {
   const meetings = getSigMeetings(slug);
   const m = meetings.find(m => m.date === date);
@@ -620,12 +631,23 @@ async function getMeetingNotes(slug, date) {
 
 async function prefetchTranscripts(slug) {
   const meetings = getSigMeetings(slug).filter(m => inRange(m.date));
-  await Promise.all(
-    meetings.map(m => Promise.all([
-      getTranscript(slug, m.date).catch(() => {}),
-      getMeetingNotes(slug, m.date).catch(() => {}),
-    ]))
-  );
+  const CONCURRENCY = 6;
+  // cursor is shared across workers. JS is single-threaded so cursor++ is
+  // atomic between await yields — no synchronisation primitives needed.
+  let cursor = 0;
+
+  async function worker() {
+    while (cursor < meetings.length) {
+      const idx = cursor++;
+      const m = meetings[idx];
+      await Promise.all([
+        getTranscript(slug, m.date).catch(() => {}),
+        getMeetingNotes(slug, m.date).catch(() => {}),
+      ]);
+    }
+  }
+
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, meetings.length) }, worker));
   // Re-run active search now that cache is warm (Issue #34)
   const query = getCurrentQuery();
   if (query && currentSig === slug) {
@@ -692,12 +714,17 @@ function renderTranscript(text, query) {
     dt.textContent = key;
     const dd = document.createElement('dd');
     if (key === 'Source URL' || key === 'Zoom Recording URL') {
-      const a = document.createElement('a');
-      a.href = val;
-      a.textContent = val;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      dd.appendChild(a);
+      const safeHref = sanitizeHref(val);
+      if (safeHref) {
+        const a = document.createElement('a');
+        a.href = safeHref;
+        a.textContent = val;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        dd.appendChild(a);
+      } else {
+        dd.textContent = val;
+      }
     } else {
       dd.textContent = val;
     }
@@ -713,12 +740,17 @@ function renderTranscript(text, query) {
       const dt = document.createElement('dt');
       dt.textContent = label;
       const dd = document.createElement('dd');
-      const a = document.createElement('a');
-      a.href = url;
-      a.textContent = url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      dd.appendChild(a);
+      const safeHref = sanitizeHref(url);
+      if (safeHref) {
+        const a = document.createElement('a');
+        a.href = safeHref;
+        a.textContent = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        dd.appendChild(a);
+      } else {
+        dd.textContent = url;
+      }
       dl.appendChild(dt);
       dl.appendChild(dd);
     }
@@ -1111,12 +1143,17 @@ function renderInline(text) {
       frag.appendChild(strong);
     } else if (/^\[[^\]]+\]\([^)]+\)$/.test(part)) {
       const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-      const a = document.createElement('a');
-      a.href = m[2];
-      a.textContent = m[1];
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      frag.appendChild(a);
+      const safeHref = sanitizeHref(m[2]);
+      if (safeHref) {
+        const a = document.createElement('a');
+        a.href = safeHref;
+        a.textContent = m[1];
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        frag.appendChild(a);
+      } else {
+        frag.appendChild(document.createTextNode(m[1] + ' (' + m[2] + ')'));
+      }
     } else {
       frag.appendChild(document.createTextNode(part));
     }

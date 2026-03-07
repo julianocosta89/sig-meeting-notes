@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import sys
 import textwrap
+import subprocess
 from datetime import date as _date
 from pathlib import Path
 from unittest.mock import MagicMock, call, patch
@@ -128,6 +129,20 @@ class TestGetNewSummaryPaths:
         ):
             paths = get_new_summary_paths()
         assert len(paths) == 1
+
+    def test_git_diff_failure_exits(self) -> None:
+        """git diff failure should exit non-zero instead of silently returning an empty set."""
+        env = {"SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA, "SUMMARIZE_COMMIT_FOUND": "true"}
+        with (
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=subprocess.CalledProcessError(128, ["git", "diff"], stderr="bad revision"),
+            ),
+            patch.dict("os.environ", env),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            get_new_summary_paths()
+        assert exc_info.value.code == 1
 
 
 class TestMain:
@@ -293,6 +308,20 @@ class TestMain:
         ):
             main()
 
+        assert exc_info.value.code == 1
+
+    def test_git_show_failure_exits(self) -> None:
+        """git show failure while reading a summary snapshot should fail fast."""
+        paths = ["docs/content/Go-SIG/2026-03-05/summary.md"]
+        with (
+            patch("send_digest.get_new_summary_paths", return_value=paths),
+            patch("send_digest.subprocess.run", side_effect=subprocess.CalledProcessError(
+                128, ["git", "show"], stderr="missing object"
+            )),
+            patch.dict("os.environ", _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA)),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
         assert exc_info.value.code == 1
 
 

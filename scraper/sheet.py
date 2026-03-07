@@ -6,6 +6,7 @@ import io
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from urllib.parse import urlparse
 
 import requests
 
@@ -34,6 +35,7 @@ _CANONICAL_SLUGS: dict[str, str] = {
 
 _SLUG_STRIP_RE = re.compile(r"[^\w\s-]")
 _SLUG_SPACE_RE = re.compile(r"\s+")
+_ALLOWED_ZOOM_HOSTS = ("zoom.us", "zoom.com")
 
 
 def sanitize_sig_name(name: str) -> str:
@@ -49,6 +51,25 @@ def fetch_csv(url: str = SHEET_CSV_URL) -> list[dict[str, str]]:
     resp.raise_for_status()
     reader = csv.DictReader(io.StringIO(resp.text))
     return list(reader)
+
+
+def _is_zoom_recording_url(url: str) -> bool:
+    """Return True when URL is an HTTP(S) URL hosted on a Zoom domain."""
+    # urlparse rarely raises, but can on malformed IPv6 literals.
+    # None/empty hostname is handled below via `(parsed.hostname or "")`.
+    try:
+        parsed = urlparse(url.strip())
+    except ValueError:
+        return False
+
+    if parsed.scheme not in ("http", "https"):
+        return False
+
+    host = (parsed.hostname or "").lower()
+    if not host:
+        return False
+
+    return any(host == domain or host.endswith("." + domain) for domain in _ALLOWED_ZOOM_HOSTS)
 
 
 def _parse_date(value: str) -> datetime | None:
@@ -151,8 +172,8 @@ def filter_meetings(
         if not url or not sig_name or not start_raw:
             continue
 
-        # Only Zoom recording URLs
-        if "zoom.us" not in url and "zoom.com" not in url:
+        # Only Zoom recording URLs hosted on official Zoom domains
+        if not _is_zoom_recording_url(url):
             continue
 
         start_date = _parse_date(start_raw)
