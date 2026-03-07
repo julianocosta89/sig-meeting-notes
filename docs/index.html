@@ -37,26 +37,25 @@
               stroke-width: 6;
             }
           </style>
-          <symbol id="metric-m" viewBox="0 0 200 200" overflow="visible">
-            <mask id="cut-nodes-m" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-              <rect x="0" y="0" width="200" height="200" fill="white"/>
-              <circle cx="30" cy="170" r="11" fill="black"/>
-              <circle cx="30" cy="30" r="11" fill="black"/>
-              <circle cx="100" cy="120" r="11" fill="black"/>
-              <circle cx="170" cy="30" r="11" fill="black"/>
-              <circle cx="170" cy="170" r="11" fill="black"/>
-            </mask>
+          <mask id="cut-nodes-m" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="200" height="200" fill="white"/>
+            <circle cx="30" cy="170" r="11" fill="black"/>
+            <circle cx="30" cy="30" r="11" fill="black"/>
+            <circle cx="100" cy="120" r="11" fill="black"/>
+            <circle cx="170" cy="30" r="11" fill="black"/>
+            <circle cx="170" cy="170" r="11" fill="black"/>
+          </mask>
+        </defs>
+        <g class="brand">
+          <text x="40" y="120" class="text-base text-otel">OTel</text>
+          <g transform="translate(330,10) scale(0.7)">
             <polyline class="metric-line" mask="url(#cut-nodes-m)" points="30,170 30,30 100,120 170,30 170,170"/>
             <circle class="metric-node" cx="30" cy="170" r="14"/>
             <circle class="metric-node" cx="30" cy="30" r="14"/>
             <circle class="metric-node" cx="100" cy="120" r="14"/>
             <circle class="metric-node" cx="170" cy="30" r="14"/>
             <circle class="metric-node" cx="170" cy="170" r="14"/>
-          </symbol>
-        </defs>
-        <g class="brand">
-          <text x="40" y="120" class="text-base text-otel">OTel</text>
-          <use href="#metric-m" x="330" y="10" width="140" height="140"/>
+          </g>
           <text x="460" y="120" class="text-base text-minutes">inutes</text>
         </g>
       </svg>
