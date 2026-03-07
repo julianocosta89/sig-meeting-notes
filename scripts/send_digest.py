@@ -29,6 +29,23 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 
 
+def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
+    """Run a git command and fail fast on non-zero exit."""
+    try:
+        return subprocess.run(
+            ["git", *args],
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+            check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        cmd = "git " + " ".join(args)
+        stderr = (exc.stderr or "").strip()
+        print(f"ERROR: {cmd} failed ({exc.returncode}){': ' + stderr if stderr else ''}")
+        raise SystemExit(1) from exc
+
+
 def get_new_summary_paths() -> list[str]:
     """Return paths of new summary.md files committed by the triggering summarize run.
 
@@ -56,16 +73,10 @@ def get_new_summary_paths() -> list[str]:
         if not commit_sha:
             # Summarize ran but pushed no new commit → nothing to digest
             return []
-        result = subprocess.run(
-            ["git", "diff", "--name-only", f"{commit_sha}~1", commit_sha, "--", "docs/content"],
-            capture_output=True, text=True, cwd=ROOT,
-        )
+        result = _run_git(["diff", "--name-only", f"{commit_sha}~1", commit_sha, "--", "docs/content"])
     else:
         # workflow_dispatch or local run → diff the last commit
-        result = subprocess.run(
-            ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"],
-            capture_output=True, text=True, cwd=ROOT,
-        )
+        result = _run_git(["diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"])
     return [
         line for line in result.stdout.strip().splitlines()
         if line.endswith("/summary.md")
@@ -84,10 +95,7 @@ def parse_summary_info(path: str, commit_sha: str = "") -> dict[str, str]:
     slug = parts[-3]
     meeting_date = parts[-2]
     if commit_sha:
-        result = subprocess.run(
-            ["git", "show", f"{commit_sha}:{path}"],
-            capture_output=True, text=True, cwd=ROOT,
-        )
+        result = _run_git(["show", f"{commit_sha}:{path}"])
         content = result.stdout
     else:
         full_path = ROOT / path
