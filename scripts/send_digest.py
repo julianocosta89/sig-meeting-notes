@@ -26,7 +26,6 @@ if TYPE_CHECKING:
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CONTENT_DIR = ROOT / "docs" / "content"
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 
 
@@ -119,6 +118,8 @@ def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -
         temperature=0.3,
         max_tokens=1024,
     )
+    if not response.choices:
+        raise ValueError("OpenAI returned no choices")
     return response.choices[0].message.content
 
 
@@ -185,11 +186,10 @@ def build_email(
 
     # Plain-text body
     text_parts = ["OTel SIG Daily Digest", "", narrative, "", "---", ""]
-    for s in summaries:
-        link = build_deep_link(s["slug"], s["date"])
-        text_parts.append(f"{s['slug']} — {s['date']}")
-        text_parts.append(s["content"])
-        text_parts.append(f"Read more: {link}")
+    for m in meetings:
+        text_parts.append(f"{m['slug']} — {m['date']}")
+        text_parts.append(m["content"])
+        text_parts.append(f"Read more: {m['link']}")
         text_parts.append("")
 
     text_body = "\n".join(text_parts)
