@@ -103,6 +103,12 @@ body {
   width: auto;
 }
 
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .brand {
+    color: #3d4c86;
+  }
+}
+
 [data-theme="light"] .brand {
   color: #3d4c86;
 }

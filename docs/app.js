@@ -829,7 +829,6 @@ function parseBodyLine(line) {
 function stripSpeakers(text) {
   return text.split('\n').map(line => {
     const parsed = parseBodyLine(line);
-    if (!parsed || !parsed.utterance) return line;
     if (parsed.speaker === null && parsed.timestamp === null) return line;
     return parsed.utterance;
   }).join('\n');
@@ -1162,7 +1161,7 @@ async function handleSearch(query) {
   for (const m of meetings) {
     const key = currentSig + '/' + m.date;
     if (transcriptCache.has(key)) {
-      matchCounts[m.date] = countMatches(transcriptCache.get(key) || '', query);
+      matchCounts[m.date] = countMatches(stripSpeakers(transcriptCache.get(key) || ''), query);
     }
   }
 
@@ -1187,7 +1186,7 @@ async function handleSearch(query) {
 
 function countMatches(text, query) {
   if (!query) return 0;
-  const lower = stripSpeakers(text).toLowerCase();
+  const lower = text.toLowerCase();
   const q = query.toLowerCase();
   let count = 0;
   let idx = 0;
@@ -1387,7 +1386,6 @@ function getAllMeetings() {
 }
 
 function extractSnippet(text, query, contextLength = 120) {
-  text = stripSpeakers(text);
   const lower = text.toLowerCase();
   const q = query.toLowerCase();
   const idx = lower.indexOf(q);
@@ -1428,7 +1426,7 @@ function gatherCachedGlobalResults(query) {
   for (const { sig, sigName, date, duration } of getAllMeetings()) {
     const key = sig + '/' + date;
     if (transcriptCache.has(key)) {
-      const text = transcriptCache.get(key);
+      const text = stripSpeakers(transcriptCache.get(key));
       const count = countMatches(text, query);
       if (count > 0) {
         results.push({ sig, sigName, date, duration, count, snippet: extractSnippet(text, query) });
