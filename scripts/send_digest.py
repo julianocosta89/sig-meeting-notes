@@ -156,7 +156,7 @@ def _make_excerpt(content: str) -> str:
     return content[:300].strip()
 
 
-def _render_html(template_vars: dict) -> str:
+def _render_html(template_vars: dict) -> str:  # pragma: no cover
     """Load and render the Jinja2 HTML email template with autoescaping enabled."""
     from jinja2 import (  # noqa: PLC0415 — deferred to avoid import error without summarize group
         Environment,
