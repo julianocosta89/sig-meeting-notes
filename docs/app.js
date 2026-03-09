@@ -641,7 +641,7 @@ async function prefetchTranscripts(slug) {
       const idx = cursor++;
       const m = meetings[idx];
       await Promise.all([
-        getTranscript(slug, m.date).catch(() => {}),
+        getTranscript(slug, m.date).catch(() => {/* empty */}),
         getMeetingNotes(slug, m.date).catch(() => {/* empty */}),
       ]);
     }
