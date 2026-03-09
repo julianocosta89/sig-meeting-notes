@@ -14,6 +14,7 @@ import pytest
 from generate_summaries import (
     MAX_TRANSCRIPT_CHARS,
     generate_summary,
+    main,
     process_transcripts,
     read_transcript_body,
 )
@@ -365,3 +366,102 @@ class TestSummaryFormat:
         """Generated summaries should include duration and source URL."""
         assert "**Duration:**" in FAKE_SUMMARY_MD
         assert "**Source:**" in FAKE_SUMMARY_MD
+
+
+# ---------------------------------------------------------------------------
+# Tests: process_transcripts — additional branches
+# ---------------------------------------------------------------------------
+
+
+class TestProcessTranscriptsEdgeCases:
+    def test_skips_non_iso_date_directory(self, tmp_path: Path) -> None:
+        """Directories whose names are not ISO dates should be skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        bad_dir = transcripts_dir / "Go-SIG" / "not-a-date"
+        bad_dir.mkdir(parents=True)
+        (bad_dir / "transcript.md").write_text(SAMPLE_TRANSCRIPT, encoding="utf-8")
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir,
+                                                     since=date(2026, 1, 1))
+        assert generated == 0
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_skips_transcripts_after_until(self, tmp_path: Path) -> None:
+        """Transcripts with dates after `until` should be skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir,
+                                                     since=date(2026, 1, 1),
+                                                     until=date(2026, 1, 31))
+        assert generated == 0
+        assert skipped == 1
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_default_dates_run_without_error(self, tmp_path: Path) -> None:
+        """Calling with since=None, until=None should apply the 2-week default."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir)
+        assert generated == 0
+
+    def test_skips_empty_transcript_body(self, tmp_path: Path) -> None:
+        """Transcripts with no body after the separator should be skipped with a warning."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        empty_body = (
+            "SIG: Go SIG\n"
+            "Date: 2026-02-05\n"
+            "Duration: 33 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
+            "============================================================\n\n"
+            "## Zoom Recording Transcript\n\n"
+            "   \n"
+        )
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", empty_body)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(mock_client, transcripts_dir,
+                                                     since=date(2026, 1, 1))
+        assert generated == 0
+        mock_client.chat.completions.create.assert_not_called()
+
+
+# ---------------------------------------------------------------------------
+# Tests: main()
+# ---------------------------------------------------------------------------
+
+
+class TestMain:
+    def test_missing_api_key_exits(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Missing OPENAI_API_KEY should print an error and exit with code 1."""
+        monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+        with patch("sys.argv", ["generate_summaries"]):
+            with pytest.raises(SystemExit) as exc_info:
+                main()
+        assert exc_info.value.code == 1
+
+    def test_main_calls_process_transcripts(self, monkeypatch: pytest.MonkeyPatch,
+                                            tmp_path: Path) -> None:
+        """main() should invoke process_transcripts with the given date range."""
+        import sys as _sys
+
+        monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+        mock_openai_mod = MagicMock()
+        mock_openai_mod.OpenAI.return_value = _mock_openai_client()
+
+        with (
+            patch("sys.argv", ["generate_summaries", "--since", "2026-01-01",
+                                "--until", "2026-01-31"]),
+            patch.dict(_sys.modules, {"openai": mock_openai_mod}),
+            patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", tmp_path),
+            patch("generate_summaries.process_transcripts", return_value=(0, 0)) as mock_proc,
+        ):
+            main()
+
+        mock_proc.assert_called_once()

@@ -142,3 +142,18 @@ class TestGetMeetingNotesUrl:
         with patch("scraper.community.requests.get", return_value=mock_resp):
             url = get_meeting_notes_url("go")
         assert url == ""
+
+    def test_reverse_prefix_match(self) -> None:
+        """key = 'collector-sig', target = 'collector' → key.startswith(target + '-') match."""
+        readme = (
+            "| Name | Meeting Time | Meeting Notes |\n"
+            "|------|-------------|---------------|\n"
+            "| Collector SIG: Core&nbsp; | Monday | "
+            "[Google Doc](https://docs.google.com/document/d/reverse-id/edit) |\n"
+        )
+        mock_resp = MagicMock()
+        mock_resp.text = readme
+        mock_resp.raise_for_status = MagicMock()
+        with patch("scraper.community.requests.get", return_value=mock_resp):
+            url = get_meeting_notes_url("collector")
+        assert url == "https://docs.google.com/document/d/reverse-id/edit"
