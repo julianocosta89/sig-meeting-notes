@@ -45,17 +45,17 @@ def _cell_to_key(cell: str) -> str:
       'Go: SDK + Automatic …'            → 'go'
     """
     # Strip HTML tags and entities
-    cell = _HTML_RE.sub("", cell)
-    cell = _ENTITY_RE.sub(" ", cell).strip()
+    text = _HTML_RE.sub("", cell)
+    text = _ENTITY_RE.sub(" ", text).strip()
 
     # Use only the part before the first colon (e.g. "Java" from "Java: SDK + …")
-    if ":" in cell:
-        cell = cell.split(":")[0].strip()
+    if ":" in text:
+        text = text.split(":")[0].strip()
 
     # Apply the same slug normalisation as sheet.sanitize_sig_name()
-    cell = _NONWORD_RE.sub("", cell)
-    cell = _SPACE_RE.sub("-", cell.strip())
-    return cell.lower()
+    text = _NONWORD_RE.sub("", text)
+    text = _SPACE_RE.sub("-", text.strip())
+    return text.lower()
 
 
 def _parse_readme(text: str) -> dict[str, str]:
