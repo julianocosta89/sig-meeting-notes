@@ -1,9 +1,8 @@
 """Tests for scraper/community.py — README parsing and slug lookup."""
+
 from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 import scraper.community as community
 from scraper.community import _cell_to_key, _parse_readme, get_meeting_notes_url
@@ -66,7 +65,10 @@ class TestParseReadme:
 
     def test_semantic_conventions_url(self) -> None:
         result = _parse_readme(_SAMPLE_README)
-        assert result["semantic-conventions"] == "https://docs.google.com/document/d/semconv-doc-id/edit"
+        assert (
+            result["semantic-conventions"]
+            == "https://docs.google.com/document/d/semconv-doc-id/edit"
+        )
 
     def test_collector_url(self) -> None:
         result = _parse_readme(_SAMPLE_README)

@@ -1,4 +1,5 @@
 """Parse Zoom transcript HTML into plain-text speaker utterances."""
+
 from __future__ import annotations
 
 from bs4 import BeautifulSoup, Tag

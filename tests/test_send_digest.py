@@ -3,14 +3,14 @@
 These tests mock subprocess, OpenAI, requests, and env vars so no
 API keys or network access are needed.
 """
+
 from __future__ import annotations
 
+import subprocess
 import sys
 import textwrap
-import subprocess
-from datetime import date as _date
 from pathlib import Path
-from unittest.mock import MagicMock, call, patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -99,7 +99,10 @@ class TestGetNewSummaryPaths:
         """Only paths ending with /summary.md should be returned."""
         env = {"SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA, "SUMMARIZE_COMMIT_FOUND": "true"}
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(GIT_DIFF_OUTPUT)),
+            patch(
+                "send_digest.subprocess.run",
+                return_value=_mock_subprocess_result(GIT_DIFF_OUTPUT),
+            ),
             patch.dict("os.environ", env),
         ):
             paths = get_new_summary_paths()
@@ -122,12 +125,14 @@ class TestGetNewSummaryPaths:
     def test_workflow_dispatch_uses_head_diff(self) -> None:
         """SUMMARIZE_COMMIT_FOUND=false (workflow_dispatch) → fall back to HEAD~1 diff."""
         import os as _os
+
         _os.environ.pop("SUMMARIZE_COMMIT_SHA", None)
         _os.environ.pop("SUMMARIZE_COMMIT_FOUND", None)
         with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(
-                "docs/content/Go-SIG/2026-03-05/summary.md\n"
-            )),
+            patch(
+                "send_digest.subprocess.run",
+                return_value=_mock_subprocess_result("docs/content/Go-SIG/2026-03-05/summary.md\n"),
+            ),
         ):
             paths = get_new_summary_paths()
         assert len(paths) == 1
@@ -138,7 +143,9 @@ class TestGetNewSummaryPaths:
         with (
             patch(
                 "send_digest.subprocess.run",
-                side_effect=subprocess.CalledProcessError(128, ["git", "diff"], stderr="bad revision"),
+                side_effect=subprocess.CalledProcessError(
+                    128, ["git", "diff"], stderr="bad revision"
+                ),
             ),
             patch.dict("os.environ", env),
             pytest.raises(SystemExit) as exc_info,
@@ -153,7 +160,9 @@ class TestMain:
     def test_empty_recipients_after_filter(self) -> None:
         """DIGEST_TO with only commas -> no valid addresses -> exits cleanly."""
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
-        env = _env(DIGEST_TO=",,,", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        env = _env(
+            DIGEST_TO=",,,", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true"
+        )
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
@@ -168,7 +177,9 @@ class TestMain:
         """SUMMARIZE_COMMIT_FOUND=true, SHA empty → summarize pushed nothing → exits cleanly."""
         with (
             patch("send_digest.subprocess.run") as mock_run,
-            patch.dict("os.environ", {"SUMMARIZE_COMMIT_SHA": "", "SUMMARIZE_COMMIT_FOUND": "true"}),
+            patch.dict(
+                "os.environ", {"SUMMARIZE_COMMIT_SHA": "", "SUMMARIZE_COMMIT_FOUND": "true"}
+            ),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -182,11 +193,14 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
-            patch.dict("os.environ", {
-                "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
-                "SUMMARIZE_COMMIT_FOUND": "true",
-                "DIGEST_TO": "",
-            }),
+            patch.dict(
+                "os.environ",
+                {
+                    "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
+                    "SUMMARIZE_COMMIT_FOUND": "true",
+                    "DIGEST_TO": "",
+                },
+            ),
             pytest.raises(SystemExit) as exc_info,
         ):
             main()
@@ -194,7 +208,9 @@ class TestMain:
 
     def test_missing_resend_api_key(self) -> None:
         """RESEND_API_KEY not set -> exits with error."""
-        env = _env(RESEND_API_KEY="", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        env = _env(
+            RESEND_API_KEY="", SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true"
+        )
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
@@ -215,10 +231,13 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=[
-                _mock_subprocess_result(diff_output),   # git diff in get_new_summary_paths
-                _mock_subprocess_result(SAMPLE_SUMMARY), # git show in parse_summary_info
-            ]),
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=[
+                    _mock_subprocess_result(diff_output),  # git diff in get_new_summary_paths
+                    _mock_subprocess_result(SAMPLE_SUMMARY),  # git show in parse_summary_info
+                ],
+            ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
@@ -240,15 +259,21 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(DIGEST_TO="a@test.com, b@test.com, c@test.com",
-                   SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        env = _env(
+            DIGEST_TO="a@test.com, b@test.com, c@test.com",
+            SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA,
+            SUMMARIZE_COMMIT_FOUND="true",
+        )
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=[
-                _mock_subprocess_result(diff_output),
-                _mock_subprocess_result(SAMPLE_SUMMARY),
-            ]),
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=[
+                    _mock_subprocess_result(diff_output),
+                    _mock_subprocess_result(SAMPLE_SUMMARY),
+                ],
+            ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
@@ -266,15 +291,21 @@ class TestMain:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
-        env = _env(DIGEST_TO="a@test.com,,b@test.com,",
-                   SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        env = _env(
+            DIGEST_TO="a@test.com,,b@test.com,",
+            SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA,
+            SUMMARIZE_COMMIT_FOUND="true",
+        )
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=[
-                _mock_subprocess_result(diff_output),
-                _mock_subprocess_result(SAMPLE_SUMMARY),
-            ]),
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=[
+                    _mock_subprocess_result(diff_output),
+                    _mock_subprocess_result(SAMPLE_SUMMARY),
+                ],
+            ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
@@ -297,10 +328,13 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
         with (
-            patch("send_digest.subprocess.run", side_effect=[
-                _mock_subprocess_result(diff_output),
-                _mock_subprocess_result(SAMPLE_SUMMARY),
-            ]),
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=[
+                    _mock_subprocess_result(diff_output),
+                    _mock_subprocess_result(SAMPLE_SUMMARY),
+                ],
+            ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
@@ -317,9 +351,12 @@ class TestMain:
         paths = ["docs/content/Go-SIG/2026-03-05/summary.md"]
         with (
             patch("send_digest.get_new_summary_paths", return_value=paths),
-            patch("send_digest.subprocess.run", side_effect=subprocess.CalledProcessError(
-                128, ["git", "show"], stderr="missing object"
-            )),
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=subprocess.CalledProcessError(
+                    128, ["git", "show"], stderr="missing object"
+                ),
+            ),
             patch.dict("os.environ", _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA)),
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -450,6 +487,7 @@ class TestBuildDeepLink:
 
     def test_starts_with_site_base(self) -> None:
         from send_digest import SITE_BASE_URL
+
         url = build_deep_link("Java-SIG", "2026-02-10")
         assert url.startswith(SITE_BASE_URL)
 
@@ -462,6 +500,7 @@ class TestBuildDeepLink:
 class TestLoadLogob64:
     def test_returns_data_uri(self, tmp_path: Path) -> None:
         import base64 as _b64
+
         svg = b"<svg></svg>"
         (tmp_path / "docs").mkdir()
         (tmp_path / "docs" / "OTelMinutes-logo.svg").write_bytes(svg)
@@ -481,15 +520,17 @@ class TestSendEmail:
         mock_resp = MagicMock()
         mock_resp.status_code = 200
         with patch("send_digest.requests.post", return_value=mock_resp):
-            send_email("key", ["u@example.com"],
-                       {"subject": "S", "html": "<p>test</p>", "text": "test"})
+            send_email(
+                "key", ["u@example.com"], {"subject": "S", "html": "<p>test</p>", "text": "test"}
+            )
 
     def test_201_status_succeeds(self) -> None:
         mock_resp = MagicMock()
         mock_resp.status_code = 201
         with patch("send_digest.requests.post", return_value=mock_resp):
-            send_email("key", ["u@example.com"],
-                       {"subject": "S", "html": "<p>test</p>", "text": "test"})
+            send_email(
+                "key", ["u@example.com"], {"subject": "S", "html": "<p>test</p>", "text": "test"}
+            )
 
     def test_error_status_exits(self) -> None:
         mock_resp = MagicMock()
@@ -497,8 +538,11 @@ class TestSendEmail:
         mock_resp.text = "Bad Request"
         with patch("send_digest.requests.post", return_value=mock_resp):
             with pytest.raises(SystemExit):
-                send_email("key", ["u@example.com"],
-                           {"subject": "S", "html": "<p>test</p>", "text": "test"})
+                send_email(
+                    "key",
+                    ["u@example.com"],
+                    {"subject": "S", "html": "<p>test</p>", "text": "test"},
+                )
 
 
 # ---------------------------------------------------------------------------
@@ -518,10 +562,8 @@ class TestMainExtra:
             "RESEND_API_KEY": "key",
         }
         with (
-            patch("send_digest.subprocess.run",
-                  return_value=_mock_subprocess_result(diff_output)),
-            patch("send_digest.os.environ.get",
-                  side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             pytest.raises(SystemExit) as exc_info,
         ):
             main()

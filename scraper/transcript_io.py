@@ -3,6 +3,7 @@
 Provides the canonical header parser and separator constant used by
 both build_site.py and generate_summaries.py.
 """
+
 from __future__ import annotations
 
 import re

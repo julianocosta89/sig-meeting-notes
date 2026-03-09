@@ -7,6 +7,7 @@ Everything is best-effort: if the doc is private, the date section is
 missing, or the formatting is unexpected, empty lists are returned
 without raising.
 """
+
 from __future__ import annotations
 
 import re
@@ -23,18 +24,18 @@ _LIST_ITEM_RE = re.compile(r"^( *)[-*]\s+(.+)")
 # by _DATE_SEPARATOR_RE to recognise plain-text date separators written in
 # those locales (e.g. a Polish contributor writing "18 lut 2026").
 _LOCALIZED_MONTH_ABBREVS: dict[int, list[str]] = {
-    1:  ["sty"],        # Polish: styczeń
-    2:  ["lut"],        # Polish: luty
-    3:  ["mar"],        # Polish: marzec  (same spelling as English but lowercase in Polish docs)
-    4:  ["kwi"],        # Polish: kwiecień
-    5:  ["maj"],        # Polish: maj     (differs from English "May")
-    6:  ["cze"],        # Polish: czerwiec
-    7:  ["lip"],        # Polish: lipiec
-    8:  ["sie"],        # Polish: sierpień
-    9:  ["wrz"],        # Polish: wrzesień
-    10: ["paź", "paz"], # Polish: październik
-    11: ["lis"],        # Polish: listopad
-    12: ["gru"],        # Polish: grudzień
+    1: ["sty"],  # Polish: styczeń
+    2: ["lut"],  # Polish: luty
+    3: ["mar"],  # Polish: marzec  (same spelling as English but lowercase in Polish docs)
+    4: ["kwi"],  # Polish: kwiecień
+    5: ["maj"],  # Polish: maj     (differs from English "May")
+    6: ["cze"],  # Polish: czerwiec
+    7: ["lip"],  # Polish: lipiec
+    8: ["sie"],  # Polish: sierpień
+    9: ["wrz"],  # Polish: wrzesień
+    10: ["paź", "paz"],  # Polish: październik
+    11: ["lis"],  # Polish: listopad
+    12: ["gru"],  # Polish: grudzień
 }
 
 # Flat set of all localized abbreviations for use in the separator regex.
@@ -49,12 +50,12 @@ _ALL_LOCALIZED = {a for abbrevs in _LOCALIZED_MONTH_ABBREVS.values() for a in ab
 #   "2026-02-18"  /  "2026/02/18"              (ISO / slash)
 _LOCALIZED_PAT = "|".join(sorted(_ALL_LOCALIZED, key=len, reverse=True))
 _DATE_SEPARATOR_RE = re.compile(
-    r"^(?:\w{2,9},?\s+)?"                              # optional weekday + comma
+    r"^(?:\w{2,9},?\s+)?"  # optional weekday + comma
     r"(?:"
-    r"\d{4}[-/]\d{1,2}[-/]\d{1,2}"                    # 2026-02-18 or 2026/02/18
+    r"\d{4}[-/]\d{1,2}[-/]\d{1,2}"  # 2026-02-18 or 2026/02/18
     r"|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z.]*\s+\d{1,2}"  # Feb 18
-    r"|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"         # 17 Feb (English)
-    rf"|\d{{1,2}}\s+(?:{_LOCALIZED_PAT})\b"           # 18 lut (localized)
+    r"|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"  # 17 Feb (English)
+    rf"|\d{{1,2}}\s+(?:{_LOCALIZED_PAT})\b"  # 18 lut (localized)
     r")",
     re.IGNORECASE,
 )
@@ -89,24 +90,24 @@ def _date_variants(iso_date: str) -> list[str]:
     except ValueError:
         return [iso_date]
     variants = [
-        iso_date,                                            # 2026-02-05
-        f"{dt.year}/{dt.month:02d}/{dt.day:02d}",           # 2026/02/05
-        f"{dt.year}/{dt.month}/{dt.day}",                   # 2026/2/5
-        f"{dt.month}/{dt.day}/{dt.year}",                   # 2/5/2026
-        f"{dt.month:02d}/{dt.day:02d}/{dt.year}",           # 02/05/2026
-        dt.strftime("%B %d, %Y"),                            # February 05, 2026
-        f"{dt.strftime('%B')} {dt.day}, {dt.year}",         # February 5, 2026
-        dt.strftime("%b %d, %Y"),                            # Feb 05, 2026
-        f"{dt.strftime('%b')} {dt.day}, {dt.year}",         # Feb 5, 2026
-        dt.strftime("%b. %d, %Y"),                           # Feb. 05, 2026
-        f"{dt.strftime('%b.')} {dt.day}, {dt.year}",        # Feb. 5, 2026
-        f"{dt.day} {dt.strftime('%b')} {dt.year}",          # 5 Feb 2026
-        f"{dt.day:02d} {dt.strftime('%b')} {dt.year}",      # 05 Feb 2026
+        iso_date,  # 2026-02-05
+        f"{dt.year}/{dt.month:02d}/{dt.day:02d}",  # 2026/02/05
+        f"{dt.year}/{dt.month}/{dt.day}",  # 2026/2/5
+        f"{dt.month}/{dt.day}/{dt.year}",  # 2/5/2026
+        f"{dt.month:02d}/{dt.day:02d}/{dt.year}",  # 02/05/2026
+        dt.strftime("%B %d, %Y"),  # February 05, 2026
+        f"{dt.strftime('%B')} {dt.day}, {dt.year}",  # February 5, 2026
+        dt.strftime("%b %d, %Y"),  # Feb 05, 2026
+        f"{dt.strftime('%b')} {dt.day}, {dt.year}",  # Feb 5, 2026
+        dt.strftime("%b. %d, %Y"),  # Feb. 05, 2026
+        f"{dt.strftime('%b.')} {dt.day}, {dt.year}",  # Feb. 5, 2026
+        f"{dt.day} {dt.strftime('%b')} {dt.year}",  # 5 Feb 2026
+        f"{dt.day:02d} {dt.strftime('%b')} {dt.year}",  # 05 Feb 2026
     ]
     # Add localized (non-English) month-name variants, e.g. "18 lut 2026".
     for abbrev in _LOCALIZED_MONTH_ABBREVS.get(dt.month, []):
-        variants.append(f"{dt.day} {abbrev} {dt.year}")     # 5 lut 2026
-        variants.append(f"{dt.day:02d} {abbrev} {dt.year}") # 05 lut 2026
+        variants.append(f"{dt.day} {abbrev} {dt.year}")  # 5 lut 2026
+        variants.append(f"{dt.day:02d} {abbrev} {dt.year}")  # 05 lut 2026
     return variants
 
 
@@ -222,14 +223,14 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
             in_target = True
             # Also capture content inline on the label line, e.g. "Attendees: Alice, Bob"
             inline_match = re.search(
-                rf'\b{re.escape(keyword)}\w*\s*:\s*(.+)',
+                rf"\b{re.escape(keyword)}\w*\s*:\s*(.+)",
                 stripped,
                 re.IGNORECASE,
             )
             if inline_match:
                 inline = inline_match.group(1).strip()
                 # Discard if it's only formatting characters (e.g. "**" from "**Attendees:**")
-                if re.search(r'\w', inline):
+                if re.search(r"\w", inline):
                     for part in re.split(r",\s*", inline):
                         part = part.strip()
                         if part:
@@ -327,7 +328,9 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
             # (e.g. a cancelled meeting placeholder) is respected as-is and we
             # don't silently attach the previous day's attendees/agenda to it.
             try:
-                prev_date = (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
+                prev_date = (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)).strftime(
+                    "%Y-%m-%d"
+                )
                 section = _find_date_section(_DOC_CACHE[export_url], _date_variants(prev_date))
             except ValueError:
                 pass
