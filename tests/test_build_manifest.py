@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import pytest
 
-from build_site import build_manifest
+from build_site import build_manifest, main as build_main
 from scraper.transcript_io import parse_header
 
 SAMPLE_TRANSCRIPT = """\
@@ -375,6 +375,68 @@ class TestStaleFileRemoval:
         assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
         assert (src / "Go-SIG" / "2026-02-10" / "transcript.md").exists()
 
+    def test_has_meeting_notes_true(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "Go-SIG" / "2026-02-05" / "meeting-notes.md").write_text(
+            "## Meeting Notes\n\n### Attendees\n- Tyler\n", encoding="utf-8"
+        )
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert manifest["sigs"][0]["meetings"][0]["has_meeting_notes"] is True
+
+    def test_has_meeting_notes_false(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert manifest["sigs"][0]["meetings"][0]["has_meeting_notes"] is False
+
+    def test_min_max_dates(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert manifest["min_date"] == "2026-02-05"
+        assert manifest["max_date"] == "2026-02-12"
+
+    def test_min_max_dates_none_when_empty(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        src.mkdir(parents=True)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert manifest["min_date"] is None
+        assert manifest["max_date"] is None
+
+    def test_meeting_count(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), \
+             patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert manifest["sigs"][0]["meeting_count"] == 2
+
     def test_metadata_only_sig_dir_not_deleted(self, tmp_path: Path) -> None:
         """SIG directory with only metadata.md (no transcripts) must not be deleted."""
         docs = tmp_path / "docs"
@@ -393,3 +455,44 @@ class TestStaleFileRemoval:
 
         assert metadata_only.exists()
         assert (metadata_only / "metadata.md").exists()
+
+
+# ---------------------------------------------------------------------------
+# TestBuildSiteMain — the main() entry point
+# ---------------------------------------------------------------------------
+
+
+class TestBuildSiteMain:
+    def test_main_writes_manifest_json(self, tmp_path: Path) -> None:
+        """main() should create docs/ and write manifest.json."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        manifest_path = docs / "manifest.json"
+        with (
+            patch("build_site.TRANSCRIPTS_SRC", src),
+            patch("build_site.DOCS_DIR", docs),
+            patch("build_site.MANIFEST_PATH", manifest_path),
+        ):
+            build_main()
+
+        assert manifest_path.exists()
+        data = json.loads(manifest_path.read_text(encoding="utf-8"))
+        assert len(data["sigs"]) == 1
+        assert data["sigs"][0]["slug"] == "Go-SIG"
+
+    def test_main_creates_docs_dir(self, tmp_path: Path) -> None:
+        """main() should create DOCS_DIR if it doesn't exist."""
+        docs = tmp_path / "new_docs"
+        src = docs / "content"
+
+        manifest_path = docs / "manifest.json"
+        with (
+            patch("build_site.TRANSCRIPTS_SRC", src),
+            patch("build_site.DOCS_DIR", docs),
+            patch("build_site.MANIFEST_PATH", manifest_path),
+        ):
+            build_main()
+
+        assert docs.exists()

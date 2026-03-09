@@ -8,6 +8,7 @@ import pytest
 import scraper.gdoc as gdoc
 from scraper.gdoc import (
     _date_variants,
+    _extract_leading_attendees,
     _extract_subsection_md,
     _find_date_section,
     _normalize_date_text,
@@ -872,3 +873,93 @@ class TestFetchMeetingNotes:
             fetch_meeting_notes("https://docs.google.com/document/d/ABC/edit", "2026-02-12")
         # Second call must use cache — only one HTTP request
         assert mock_get.call_count == 1
+
+    def test_empty_md_falls_back_to_txt(self) -> None:
+        """When the Markdown export is empty, the plain-text export should be tried."""
+        empty_resp = MagicMock()
+        empty_resp.text = "   "  # whitespace only → .strip() == ""
+        empty_resp.raise_for_status = MagicMock()
+
+        real_resp = MagicMock()
+        real_resp.text = _SAMPLE_MD
+        real_resp.raise_for_status = MagicMock()
+
+        with patch("scraper.gdoc.requests.get", side_effect=[empty_resp, real_resp]) as mock_get:
+            result = fetch_meeting_notes(
+                "https://docs.google.com/document/d/ABC/edit", "2026-02-05"
+            )
+        assert mock_get.call_count == 2
+        assert result["attendees"] != []
+
+    def test_previous_day_fallback(self) -> None:
+        """If the target date is not found, the day before should be tried."""
+        doc = "# 2026-02-04\n\nAttendee:\n\n* Tyler\n\nAgenda:\n\n* Test item\n"
+        with patch("scraper.gdoc.requests.get", return_value=self._mock_resp(doc)):
+            result = fetch_meeting_notes(
+                "https://docs.google.com/document/d/ABC/edit", "2026-02-05"
+            )
+        assert "- Tyler" in result["attendees"]
+        assert any("Test item" in item for item in result["agenda"])
+
+
+# ---------------------------------------------------------------------------
+# _date_variants — localized month abbreviations
+# ---------------------------------------------------------------------------
+
+
+class TestDateVariantsLocalized:
+    def test_polish_february_lut(self) -> None:
+        variants = _date_variants("2026-02-05")
+        assert "5 lut 2026" in variants
+        assert "05 lut 2026" in variants
+
+    def test_polish_january_sty(self) -> None:
+        variants = _date_variants("2026-01-15")
+        assert "15 sty 2026" in variants
+
+    def test_polish_december_gru(self) -> None:
+        variants = _date_variants("2026-12-03")
+        assert "3 gru 2026" in variants
+
+
+# ---------------------------------------------------------------------------
+# _extract_leading_attendees
+# ---------------------------------------------------------------------------
+
+
+class TestExtractLeadingAttendees:
+    def test_collects_leading_bullets(self) -> None:
+        section = "* Alice\n* Bob\n\nAgenda\n\n* Item 1\n"
+        result = _extract_leading_attendees(section)
+        assert result == ["- Alice", "- Bob"]
+
+    def test_stops_at_non_list_line(self) -> None:
+        section = "* Alice\n* Bob\nSome label:\n* Charlie\n"
+        result = _extract_leading_attendees(section)
+        assert result == ["- Alice", "- Bob"]
+
+    def test_empty_section_returns_empty(self) -> None:
+        assert _extract_leading_attendees("") == []
+
+    def test_no_leading_bullets_returns_empty(self) -> None:
+        section = "Some heading\n* Alice\n"
+        assert _extract_leading_attendees(section) == []
+
+    def test_skips_blank_lines(self) -> None:
+        section = "\n* Alice\n\n* Bob\n\nSome prose\n"
+        result = _extract_leading_attendees(section)
+        assert "- Alice" in result
+        assert "- Bob" in result
+
+    def test_skips_empty_placeholder_items(self) -> None:
+        section = "* Alice\n* \n* Bob\n"
+        result = _extract_leading_attendees(section)
+        assert "- Alice" in result
+        assert "- Bob" in result
+        assert len([r for r in result if not r.strip("- ")]) == 0
+
+    def test_dash_bullets_supported(self) -> None:
+        section = "- Alice Smith\n- Bob Jones\n\nAgenda\n"
+        result = _extract_leading_attendees(section)
+        assert "- Alice Smith" in result
+        assert "- Bob Jones" in result
