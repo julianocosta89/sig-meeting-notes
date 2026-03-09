@@ -40,7 +40,7 @@ function initThemeToggle() {
   btn.addEventListener('click', () => {
     const current = getStoredTheme();
     const next = THEME_MODES[(THEME_MODES.indexOf(current) + 1) % THEME_MODES.length];
-    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    try { localStorage.setItem(THEME_KEY, next); } catch {/* empty */}
     applyTheme(next);
     updateBtn(next);
   });
