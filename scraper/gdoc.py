@@ -160,13 +160,11 @@ def _find_date_section(md_text: str, date_variants: list[str]) -> str | None:
             if section_start is not None and not is_plain and level <= section_level:
                 return "\n".join(lines[section_start:i])
 
-            for variant in date_variants:
-                if variant in text:
-                    section_start = i + 1
-                    section_level = level
-                    is_plain = False
-                    section_has_content = False
-                    break
+            if any(v in text for v in date_variants):
+                section_start = i + 1
+                section_level = level
+                is_plain = False
+                section_has_content = False
         else:
             stripped = line.strip()
             if not stripped or re.match(r"^[-*]\s", stripped):
@@ -196,6 +194,25 @@ def _find_date_section(md_text: str, date_variants: list[str]) -> str | None:
     return None
 
 
+def _parse_inline_label_content(stripped: str, keyword: str) -> list[str]:
+    """Extract comma-separated items from an inline label like 'Attendees: Alice, Bob'."""
+    inline_match = re.search(
+        rf"\b{re.escape(keyword)}\w*\s*:\s*(.+)",
+        stripped,
+        re.IGNORECASE,
+    )
+    if not inline_match:
+        return []
+    inline = inline_match.group(1).strip()
+    if not re.search(r"\w", inline):
+        return []
+    return [
+        "- " + _unescape_md(part.strip())
+        for part in re.split(r",\s*", inline)
+        if part.strip()
+    ]
+
+
 def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
     """Extract list items from the named subsection within a date section.
 
@@ -222,19 +239,7 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
         ):
             in_target = True
             # Also capture content inline on the label line, e.g. "Attendees: Alice, Bob"
-            inline_match = re.search(
-                rf"\b{re.escape(keyword)}\w*\s*:\s*(.+)",
-                stripped,
-                re.IGNORECASE,
-            )
-            if inline_match:
-                inline = inline_match.group(1).strip()
-                # Discard if it's only formatting characters (e.g. "**" from "**Attendees:**")
-                if re.search(r"\w", inline):
-                    for part in re.split(r",\s*", inline):
-                        part = part.strip()
-                        if part:
-                            items.append("- " + _unescape_md(part))
+            items.extend(_parse_inline_label_content(stripped, keyword))
             continue
 
         # Stop at another known section label
