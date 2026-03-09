@@ -83,10 +83,10 @@ def _parse_date(value: str) -> datetime | None:
         "%m/%d/%Y",
         "%Y-%m-%d",
     ]
-    value = value.strip()
+    stripped = value.strip()
     for fmt in formats:
         try:
-            return datetime.strptime(value, fmt)
+            return datetime.strptime(stripped, fmt)
         except ValueError:
             continue
     return None
@@ -94,11 +94,11 @@ def _parse_date(value: str) -> datetime | None:
 
 def _parse_duration(value: str) -> int:
     """Return duration in minutes from a string like '60', '1:30' (H:MM), or '1:00:00' (H:MM:SS)."""
-    value = value.strip()
-    if not value:
+    stripped = value.strip()
+    if not stripped:
         return 0
-    if ":" in value:
-        parts = value.split(":")
+    if ":" in stripped:
+        parts = stripped.split(":")
         try:
             if len(parts) == 3:
                 return int(parts[0]) * 60 + int(parts[1])
@@ -107,7 +107,7 @@ def _parse_duration(value: str) -> int:
         except ValueError:
             return 0
     try:
-        return int(float(value))
+        return int(float(stripped))
     except ValueError:
         return 0
 
