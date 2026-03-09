@@ -126,9 +126,8 @@ def _normalize_date_text(text: str) -> str:
     Converts ``**Wed, Feb 19th, 2026**`` → ``Wed, Feb 19, 2026`` so that
     date variants without ordinals match correctly.
     """
-    text = text.replace("**", "")
-    text = re.sub(r"(\d)(st|nd|rd|th)\b", r"\1", text, flags=re.IGNORECASE)
-    return text
+    result = text.replace("**", "")
+    return re.sub(r"(\d)(st|nd|rd|th)\b", r"\1", result, flags=re.IGNORECASE)
 
 
 def _find_date_section(md_text: str, date_variants: list[str]) -> str | None:
@@ -209,6 +208,20 @@ def _parse_inline_label_content(stripped: str, keyword: str) -> list[str]:
     return ["- " + _unescape_md(part.strip()) for part in re.split(r",\s*", inline) if part.strip()]
 
 
+def _collect_list_item(line: str) -> str | None:
+    """Return a formatted list item string for a bullet or tab-indented line, or None."""
+    m = _LIST_ITEM_RE.match(line.rstrip())
+    if m:
+        depth = len(m.group(1)) // 2
+        return f"{'  ' * depth}- {_unescape_md(m.group(2).rstrip())}"
+    if line.startswith("\t"):
+        depth = len(line) - len(line.lstrip("\t"))
+        text = _unescape_md(line.strip())
+        if text:
+            return f"{'  ' * depth}- {text}"
+    return None
+
+
 def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
     """Extract list items from the named subsection within a date section.
 
@@ -247,16 +260,9 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
         # Some docs (e.g. Rust SIG) write agenda notes as tab-indented plain
         # text rather than using bullet markers.
         if in_target:
-            m = _LIST_ITEM_RE.match(line.rstrip())
-            if m:
-                depth = len(m.group(1)) // 2
-                text = _unescape_md(m.group(2).rstrip())
-                items.append("  " * depth + "- " + text)
-            elif line.startswith("\t"):
-                depth = len(line) - len(line.lstrip("\t"))
-                text = _unescape_md(line.strip())
-                if text:
-                    items.append("  " * depth + "- " + text)
+            item = _collect_list_item(line)
+            if item:
+                items.append(item)
 
     return items
 
@@ -332,9 +338,10 @@ def fetch_meeting_notes(doc_url: str, date: str) -> dict[str, list[str]]:
                 prev_date = (datetime.strptime(date, "%Y-%m-%d") - timedelta(days=1)).strftime(
                     "%Y-%m-%d"
                 )
-                section = _find_date_section(_DOC_CACHE[export_url], _date_variants(prev_date))
             except ValueError:
-                pass
+                prev_date = None
+            if prev_date:
+                section = _find_date_section(_DOC_CACHE[export_url], _date_variants(prev_date))
         if not section:
             return empty
 
