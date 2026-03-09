@@ -40,13 +40,22 @@ jobs:
         run: uv run ruff format .
 
       - name: Commit formatting fixes
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
           if ! git diff --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git commit -am "style: apply ruff formatting"
             git push
+          fi
+
+      - name: Fail on unformatted code
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          if ! git diff --quiet; then
+            echo "Formatting violations found. Run 'ruff format .' locally and commit."
+            git diff
+            exit 1
           fi
 
   test:
