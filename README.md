@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![codecov](https://codecov.io/gh/julianocosta89/sig-meeting-notes/branch/main/graph/badge.svg?token=KJPHQ4J431)](https://codecov.io/gh/julianocosta89/sig-meeting-notes)
+[![codecov](https://codecov.io/github/julianocosta89/sig-meeting-notes/branch/main/graph/badge.svg?token=MGIOK92W3H)](https://codecov.io/github/julianocosta89/sig-meeting-notes)
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60866%2Fgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B60866%2Fgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield&issueType=license)
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B60866%2Fgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield&issueType=security)](https://app.fossa.com/projects/custom%2B60866%2Fgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield&issueType=security)
 [![Run Tests](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/test.yml/badge.svg)](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/test.yml)
