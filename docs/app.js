@@ -71,7 +71,7 @@ const sigSelect = document.getElementById('sig-select');
 const dateList = document.getElementById('date-list');
 const transcriptPanel = document.getElementById('transcript-panel');
 const searchInput = document.getElementById('search-input');
-const searchGroup = searchInput ? searchInput.closest('.search-group') : null;
+const searchGroup = searchInput?.closest('.search-group') ?? null;
 const dateNavWrapper = document.querySelector('.date-nav-wrapper');
 const searchNav = document.querySelector('.search-nav');
 const matchCounter = document.querySelector('.match-counter');
@@ -357,8 +357,9 @@ function wireCalendarListeners() {
       const last = focusable[focusable.length - 1];
       if (e.shiftKey) {
         if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-      } else {
-        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      } else if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     }
   });
@@ -448,12 +449,12 @@ function sigDisplayName(name) {
 
 function getSigMeetings(slug) {
   const sig = manifest.sigs.find(s => s.slug === slug);
-  return sig ? sig.meetings : [];
+  return sig?.meetings ?? [];
 }
 
 function getSigName(slug) {
   const sig = manifest.sigs.find(s => s.slug === slug);
-  return sig ? sig.name : slug;
+  return sig?.name ?? slug;
 }
 
 function sanitizeHref(raw) {
@@ -469,7 +470,7 @@ function sanitizeHref(raw) {
 function meetingHasSummary(slug, date) {
   const meetings = getSigMeetings(slug);
   const m = meetings.find(m => m.date === date);
-  return m ? m.has_summary : false;
+  return m?.has_summary ?? false;
 }
 
 // ── SIG selection ───────────────────────────────────────────
@@ -480,7 +481,7 @@ async function onSIGChange(slug, options) {
     globalSearchActive = false;
     if (globalSearchAbort) { globalSearchAbort.abort(); globalSearchAbort = null; }
   }
-  const replace = options && options.replace;
+  const replace = options?.replace;
   currentSig = slug;
   currentDate = null;
   currentView = 'summary';
@@ -558,7 +559,7 @@ function renderDateList(meetings, activeDate, matchCounts) {
 }
 
 // Keyboard navigation for date list (arrow keys, Home, End)
-dateList.addEventListener('keydown', function (e) {
+dateList.addEventListener('keydown', function onDateListKeydown(e) {
   const btns = Array.from(dateList.querySelectorAll('.date-btn'));
   const idx = btns.indexOf(e.target);
   if (idx === -1) return;
@@ -576,7 +577,7 @@ dateList.addEventListener('keydown', function (e) {
 // ── Date click ──────────────────────────────────────────────
 
 async function onDateClick(date, options) {
-  const replace = options && options.replace;
+  const replace = options?.replace;
   currentDate = date;
   updateURL(currentSig, date, replace);
   renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), date);
@@ -658,7 +659,7 @@ async function prefetchTranscripts(slug) {
 // ── Transcript rendering ────────────────────────────────────
 
 function getSigData(slug) {
-  return manifest ? manifest.sigs.find(s => s.slug === slug) || null : null;
+  return manifest?.sigs.find(s => s.slug === slug) ?? null;
 }
 
 function renderTranscript(text, query) {
@@ -778,7 +779,7 @@ function renderTranscript(text, query) {
     tabBar.appendChild(btn);
   }
   // Keyboard navigation for tabs (WAI-ARIA Tabs pattern)
-  tabBar.addEventListener('keydown', function (e) {
+  tabBar.addEventListener('keydown', function onTabBarKeydown(e) {
     const tabs = Array.from(tabBar.querySelectorAll('[role="tab"]'));
     const idx = tabs.indexOf(e.target);
     if (idx === -1) return;
@@ -1240,7 +1241,7 @@ function highlightMatches(container, query) {
   if (!query) return;
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
-      if (node.parentElement && node.parentElement.closest('.speaker-name, .timestamp')) {
+      if (node.parentElement?.closest('.speaker-name, .timestamp')) {
         return NodeFilter.FILTER_REJECT;
       }
       return NodeFilter.FILTER_ACCEPT;
@@ -1474,7 +1475,7 @@ function gatherCachedGlobalResults(query) {
   return results;
 }
 
-function renderGlobalResults(results, isLoading, cachedCount, totalCount, query) {
+function renderGlobalResults(results, { isLoading, cachedCount, totalCount, query }) {
   transcriptPanel.innerHTML = '';
   const container = document.createElement('div');
   container.className = 'global-results';
@@ -1559,7 +1560,7 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
       if (!signal.aborted) {
         const results = gatherCachedGlobalResults(query);
         const cachedCount = allMeetings.length - uncached.length + succeeded;
-        renderGlobalResults(results, succeeded + failed < uncached.length, cachedCount, totalCount, query);
+        renderGlobalResults(results, { isLoading: succeeded + failed < uncached.length, cachedCount, totalCount, query });
       }
     });
   };
@@ -1582,7 +1583,7 @@ async function fetchUncachedForGlobalSearch(query, signal, totalCount) {
     const cachedCount = allMeetings.length - uncached.length + succeeded;
     // Keep isLoading=true when some fetches failed so the summary
     // shows "X / Y transcripts searched" rather than claiming all were searched.
-    renderGlobalResults(results, failed > 0, cachedCount, totalCount, query);
+    renderGlobalResults(results, { isLoading: failed > 0, cachedCount, totalCount, query });
   }
 }
 
@@ -1614,7 +1615,7 @@ async function handleGlobalSearch(query) {
 
   // Show cached results immediately
   const initial = gatherCachedGlobalResults(q);
-  renderGlobalResults(initial, hasUncached, cachedCount, totalCount, q);
+  renderGlobalResults(initial, { isLoading: hasUncached, cachedCount, totalCount, query: q });
 
   if (hasUncached) {
     await fetchUncachedForGlobalSearch(q, signal, totalCount);
@@ -1688,7 +1689,7 @@ if (scrollTopBtn) scrollTopBtn.addEventListener('click', scrollToTop);
 if (prevMatchBtn) prevMatchBtn.addEventListener('click', jumpToPrevMatch);
 if (nextMatchBtn) nextMatchBtn.addEventListener('click', jumpToNextMatch);
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keydown', function onDocumentKeydown(e) {
   const target = e.target;
   const inInput = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT';
 
@@ -1740,7 +1741,7 @@ document.addEventListener('keydown', function (e) {
 
 // ── Browser back/forward navigation ─────────────────────────
 
-window.addEventListener('popstate', function () {
+window.addEventListener('popstate', function onPopState() {
   if (!manifest) return;
   const p = new URLSearchParams(location.search);
   const sig = p.get('sig') || '';
