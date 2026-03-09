@@ -1,4 +1,4 @@
-.PHONY: install fetch help test build summarize run
+.PHONY: install fetch help test build summarize run lint hooks
 
 UV = $(HOME)/.local/bin/uv
 
@@ -14,6 +14,8 @@ help:
 	@echo "  make build                                          Build docs/ site from transcripts"
 	@echo "  make summarize                                      Generate AI summaries (requires OPENAI_API_KEY)"
 	@echo "  make run                                            Serve docs/ site locally on http://localhost:8000"
+	@echo "  make lint                                           Run ruff linting and format check"
+	@echo "  make hooks                                          Install pre-commit hooks"
 
 install:
 	$(UV) sync
@@ -38,3 +40,9 @@ summarize:
 
 run:
 	python3 -m http.server 8000 --directory docs
+
+lint:
+	$(UV) run --group dev ruff check . && $(UV) run --group dev ruff format --check .
+
+hooks:
+	$(UV) run --group dev pre-commit install

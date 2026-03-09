@@ -22,6 +22,7 @@ Output
           transcript.md                (header + ## Zoom Recording Transcript)
           meeting-notes.md             (attendees + agenda, only if non-empty)
 """
+
 from __future__ import annotations
 
 import argparse
@@ -45,24 +46,24 @@ TRANSCRIPTS_DIR = Path(__file__).parent / "docs" / "content"
 # Shorthand aliases expanded before matching SIG slugs.
 # Keys are lowercase; values are the search terms tried against the slug.
 _SIG_ALIASES: dict[str, list[str]] = {
-    "otel":     ["opentelemetry", "otel"],
+    "otel": ["opentelemetry", "otel"],
     "opentelemetry": ["opentelemetry", "otel"],
-    "gc":       ["gc"],
-    "tc":       ["technical-committee"],
-    "semconv":              ["semantic-convention", "semconv", "sem-conv"],
-    "sem-conv":             ["semantic-convention", "semconv", "sem-conv"],
-    "semantic-convention":  ["semantic-convention", "semconv", "sem-conv"],
+    "gc": ["gc"],
+    "tc": ["technical-committee"],
+    "semconv": ["semantic-convention", "semconv", "sem-conv"],
+    "sem-conv": ["semantic-convention", "semconv", "sem-conv"],
+    "semantic-convention": ["semantic-convention", "semconv", "sem-conv"],
     "semantic-conventions": ["semantic-convention", "semconv", "sem-conv"],
-    "devex":    ["developer-experience"],
-    "cc":       ["cc"],
-    "c":        ["cc"],
-    "cpp":      ["cc"],
-    "c++":      ["cc"],
-    "k8s":      ["kubernetes", "k8s"],
-    "js":       ["javascript"],
-    "dotnet":   ["net-"],
-    ".net":     ["net-"],
-    "lambda":   ["faas"],
+    "devex": ["developer-experience"],
+    "cc": ["cc"],
+    "c": ["cc"],
+    "cpp": ["cc"],
+    "c++": ["cc"],
+    "k8s": ["kubernetes", "k8s"],
+    "js": ["javascript"],
+    "dotnet": ["net-"],
+    ".net": ["net-"],
+    "lambda": ["faas"],
     "serverless": ["faas"],
 }
 
@@ -103,9 +104,7 @@ def _ensure_metadata(meeting: Meeting, transcript_path: Path) -> str:
     notes_url = community.get_meeting_notes_url(meeting.sig_slug)
     sig_dir.mkdir(parents=True, exist_ok=True)
     metadata_path.write_text(
-        f"SIG: {meeting.sig_name}\n"
-        f"Meeting Notes: {notes_url}\n"
-        f"Repository: \n",
+        f"SIG: {meeting.sig_name}\nMeeting Notes: {notes_url}\nRepository: \n",
         encoding="utf-8",
     )
     if notes_url:
@@ -240,10 +239,13 @@ def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
     - Many matches → prints a numbered list and prompts the user to pick one.
     """
     search_terms = _SIG_ALIASES.get(sig_filter.lower(), [sig_filter])
-    matched = sorted({
-        m.sig_slug for m in meetings
-        if any(term.lower() in m.sig_slug.lower() for term in search_terms)
-    })
+    matched = sorted(
+        {
+            m.sig_slug
+            for m in meetings
+            if any(term.lower() in m.sig_slug.lower() for term in search_terms)
+        }
+    )
 
     if not matched:
         logger.warning("No SIG matching %r found in the given date range", sig_filter)
@@ -265,7 +267,7 @@ def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
             print(f"Please enter a number between 1 and {len(matched)}.")
         except ValueError:
             print("Invalid input — please enter a number.")
-        except (EOFError, KeyboardInterrupt):
+        except EOFError, KeyboardInterrupt:
             print("\nAborted.")
             return None
 
@@ -279,10 +281,7 @@ def _parse_args() -> argparse.Namespace:
         "--since",
         metavar="YYYY-MM-DD",
         default=None,
-        help=(
-            "Fetch meetings on or after this date (inclusive). "
-            "Defaults to 14 days ago."
-        ),
+        help=("Fetch meetings on or after this date (inclusive). Defaults to 14 days ago."),
     )
     group.add_argument(
         "--between",
@@ -334,7 +333,11 @@ def main() -> int:
         if since is None or until is None:
             return 1
         if since > until:
-            logger.error("--between START (%s) must not be after END (%s)", args.between[0], args.between[1])
+            logger.error(
+                "--between START (%s) must not be after END (%s)",
+                args.between[0],
+                args.between[1],
+            )
             return 1
     elif args.since:
         since = _parse_date(args.since, "--since")

@@ -2,6 +2,7 @@
 
 These tests mock the OpenAI client so no API key or network access is needed.
 """
+
 from __future__ import annotations
 
 import textwrap
@@ -51,7 +52,8 @@ SAMPLE_TRANSCRIPT_LEGACY = textwrap.dedent("""\
 """)
 
 LONG_TRANSCRIPT_BODY = "**Alice** 00:01 " + ("word " * 3000) + "\n"
-LONG_TRANSCRIPT = textwrap.dedent("""\
+LONG_TRANSCRIPT = (
+    textwrap.dedent("""\
     SIG: Go SIG
     Date: 2026-02-05
     Duration: 60 minutes
@@ -60,7 +62,9 @@ LONG_TRANSCRIPT = textwrap.dedent("""\
 
     ## Zoom Recording Transcript
 
-""") + LONG_TRANSCRIPT_BODY
+""")
+    + LONG_TRANSCRIPT_BODY
+)
 
 FAKE_SUMMARY_MD = textwrap.dedent("""\
     # Go SIG — 2026-02-05
@@ -105,6 +109,7 @@ def _mock_openai_client(response_text: str = FAKE_SUMMARY_MD) -> MagicMock:
 # ---------------------------------------------------------------------------
 # Tests: transcript body extraction & truncation
 # ---------------------------------------------------------------------------
+
 
 class TestTranscriptParsing:
     """Tests for reading and truncating transcript text."""
@@ -178,15 +183,20 @@ class TestTranscriptParsing:
 # Tests: summary generation with mocked OpenAI
 # ---------------------------------------------------------------------------
 
+
 class TestGenerateSummary:
     """Tests for the core summary generation logic with mocked OpenAI."""
 
     def test_calls_openai_with_transcript(self) -> None:
         """The OpenAI API should be called with transcript content."""
         mock_client = _mock_openai_client()
-        result = generate_summary(
-            mock_client, "Go SIG", "2026-02-05", "33",
-            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+        generate_summary(
+            mock_client,
+            "Go SIG",
+            "2026-02-05",
+            "33",
+            "https://zoom.us/rec/share/example",
+            "Tyler 02:14 Hey!",
         )
         mock_client.chat.completions.create.assert_called_once()
 
@@ -194,8 +204,12 @@ class TestGenerateSummary:
         """The function should return the summary from OpenAI."""
         mock_client = _mock_openai_client()
         result = generate_summary(
-            mock_client, "Go SIG", "2026-02-05", "33",
-            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+            mock_client,
+            "Go SIG",
+            "2026-02-05",
+            "33",
+            "https://zoom.us/rec/share/example",
+            "Tyler 02:14 Hey!",
         )
         assert "Go SIG" in result
         assert "Key Topics" in result
@@ -204,8 +218,12 @@ class TestGenerateSummary:
         """The OpenAI call should use gpt-4o-mini for cost efficiency."""
         mock_client = _mock_openai_client()
         generate_summary(
-            mock_client, "Go SIG", "2026-02-05", "33",
-            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey!",
+            mock_client,
+            "Go SIG",
+            "2026-02-05",
+            "33",
+            "https://zoom.us/rec/share/example",
+            "Tyler 02:14 Hey!",
         )
         call_args = mock_client.chat.completions.create.call_args
         assert call_args.kwargs["model"] == "gpt-4o-mini"
@@ -214,8 +232,12 @@ class TestGenerateSummary:
         """The prompt sent to OpenAI should include the transcript body."""
         mock_client = _mock_openai_client()
         generate_summary(
-            mock_client, "Go SIG", "2026-02-05", "33",
-            "https://zoom.us/rec/share/example", "Tyler 02:14 Hey, Damien!",
+            mock_client,
+            "Go SIG",
+            "2026-02-05",
+            "33",
+            "https://zoom.us/rec/share/example",
+            "Tyler 02:14 Hey, Damien!",
         )
         call_args = mock_client.chat.completions.create.call_args
         messages = call_args.kwargs["messages"]
@@ -227,6 +249,7 @@ class TestGenerateSummary:
 # ---------------------------------------------------------------------------
 # Tests: process_transcripts integration
 # ---------------------------------------------------------------------------
+
 
 class TestProcessTranscripts:
     """Tests for the main processing loop."""
@@ -251,9 +274,7 @@ class TestProcessTranscripts:
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
         # Pre-create the summary
-        (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").write_text(
-            "existing summary"
-        )
+        (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").write_text("existing summary")
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
@@ -261,22 +282,25 @@ class TestProcessTranscripts:
 
         mock_client.chat.completions.create.assert_not_called()
         assert (
-            (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").read_text()
-            == "existing summary"
-        )
+            transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md"
+        ).read_text() == "existing summary"
 
     def test_processes_multiple_transcripts(self, tmp_path: Path) -> None:
         """All transcripts without summaries should be processed."""
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(
-            transcripts_dir, "Go-SIG", "2026-02-12.md",
+            transcripts_dir,
+            "Go-SIG",
+            "2026-02-12.md",
             SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"),
         )
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
 
         assert generated == 2
         assert skipped == 0
@@ -300,7 +324,9 @@ class TestProcessTranscripts:
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(
-            transcripts_dir, "Go-SIG", "2026-02-12.md",
+            transcripts_dir,
+            "Go-SIG",
+            "2026-02-12.md",
             SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"),
         )
 
@@ -309,7 +335,9 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
 
         assert generated == 1
         assert skipped == 1
@@ -325,7 +353,9 @@ class TestProcessTranscripts:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
 
         # Only the real transcript should be processed
         assert generated == 1
@@ -351,6 +381,7 @@ class TestProcessTranscripts:
 # ---------------------------------------------------------------------------
 # Tests: summary output format
 # ---------------------------------------------------------------------------
+
 
 class TestSummaryFormat:
     """Tests for the expected Markdown structure of generated summaries."""
@@ -383,8 +414,9 @@ class TestProcessTranscriptsEdgeCases:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir,
-                                                     since=date(2026, 1, 1))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
         assert generated == 0
         mock_client.chat.completions.create.assert_not_called()
 
@@ -395,9 +427,9 @@ class TestProcessTranscriptsEdgeCases:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir,
-                                                     since=date(2026, 1, 1),
-                                                     until=date(2026, 1, 31))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1), until=date(2026, 1, 31)
+            )
         assert generated == 0
         assert skipped == 1
         mock_client.chat.completions.create.assert_not_called()
@@ -426,8 +458,9 @@ class TestProcessTranscriptsEdgeCases:
 
         mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
-            generated, skipped = process_transcripts(mock_client, transcripts_dir,
-                                                     since=date(2026, 1, 1))
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
         assert generated == 0
         mock_client.chat.completions.create.assert_not_called()
 
@@ -446,8 +479,9 @@ class TestMain:
                 main()
         assert exc_info.value.code == 1
 
-    def test_main_calls_process_transcripts(self, monkeypatch: pytest.MonkeyPatch,
-                                            tmp_path: Path) -> None:
+    def test_main_calls_process_transcripts(
+        self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    ) -> None:
         """main() should invoke process_transcripts with the given date range."""
         import sys as _sys
 
@@ -456,8 +490,9 @@ class TestMain:
         mock_openai_mod.OpenAI.return_value = _mock_openai_client()
 
         with (
-            patch("sys.argv", ["generate_summaries", "--since", "2026-01-01",
-                                "--until", "2026-01-31"]),
+            patch(
+                "sys.argv", ["generate_summaries", "--since", "2026-01-01", "--until", "2026-01-31"]
+            ),
             patch.dict(_sys.modules, {"openai": mock_openai_mod}),
             patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", tmp_path),
             patch("generate_summaries.process_transcripts", return_value=(0, 0)) as mock_proc,

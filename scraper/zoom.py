@@ -1,10 +1,12 @@
 """Playwright browser automation to extract transcripts from Zoom recording pages."""
+
 from __future__ import annotations
 
 import logging
 import time
 
-from playwright.sync_api import Page, TimeoutError as PlaywrightTimeout
+from playwright.sync_api import Page
+from playwright.sync_api import TimeoutError as PlaywrightTimeout
 
 from scraper.transcript import parse_transcript_html
 
@@ -89,16 +91,16 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
     try:
         page.wait_for_load_state("load", timeout=PAGE_LOAD_TIMEOUT_MS)
     except PlaywrightTimeout:
-        logger.debug("Page load event did not fire within %dms; proceeding anyway", PAGE_LOAD_TIMEOUT_MS)
+        logger.debug(
+            "Page load event did not fire within %dms; proceeding anyway", PAGE_LOAD_TIMEOUT_MS
+        )
 
     logger.info("Waiting %ds for Vue to render transcript …", VUE_RENDER_WAIT_S)
     time.sleep(VUE_RENDER_WAIT_S)
 
     if page.query_selector(TRANSCRIPT_LIST_SELECTOR) is None:
         if page.query_selector(TRANSCRIPT_WRAPPER_SELECTOR):
-            raise ZoomScrapeError(
-                f"Transcript panel present but no content: {url}"
-            )
+            raise ZoomScrapeError(f"Transcript panel present but no content: {url}")
         raise ZoomScrapeError(f"No transcript found: {url}")
 
     # Defeat virtual-list windowing by scrolling the container top-to-bottom

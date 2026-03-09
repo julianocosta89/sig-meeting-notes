@@ -1,4 +1,5 @@
 """Tests for scraper/sheet.py URL filtering and meeting selection."""
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -89,7 +90,9 @@ class TestSanitizeSigName:
 
 class TestFetchCsv:
     def test_returns_parsed_rows(self) -> None:
-        csv_text = "Name,Start Time,Duration,URL\nGo SIG,2026-02-05 10:00,60,https://zoom.us/rec/share/x\n"
+        csv_text = (
+            "Name,Start Time,Duration,URL\nGo SIG,2026-02-05 10:00,60,https://zoom.us/rec/share/x\n"
+        )
         mock_resp = MagicMock()
         mock_resp.text = csv_text
         mock_resp.raise_for_status = MagicMock()
@@ -178,53 +181,93 @@ _RANGE = dict(since=datetime(2026, 2, 1), until=datetime(2026, 2, 28, 23, 59))
 
 class TestFilterMeetingsColumnSynonyms:
     def test_sig_column_for_name(self) -> None:
-        row = {"SIG": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "SIG": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_topic_column_for_name(self) -> None:
-        row = {"Topic": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Topic": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_meeting_name_column(self) -> None:
-        row = {"Meeting Name": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Meeting Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_start_column_for_date(self) -> None:
-        row = {"Name": "Example SIG", "Start": "2026-02-05 10:00", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_date_column_for_start(self) -> None:
-        row = {"Name": "Example SIG", "Date": "2026-02-05", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Date": "2026-02-05",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_recording_url_column(self) -> None:
-        row = {"Name": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "Recording URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "Recording URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_link_column(self) -> None:
-        row = {"Name": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "Link": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "Link": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_zoom_url_column(self) -> None:
-        row = {"Name": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-               "Zoom URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "Zoom URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_duration_minutes_column(self) -> None:
-        row = {"Name": "Example SIG", "Start Time": "2026-02-05 10:00",
-               "Duration (minutes)": "30", "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration (minutes)": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
     def test_duration_too_short_excluded(self) -> None:
-        row = {"Name": "Example SIG", "Start Time": "2026-02-05 10:00", "Duration": "5",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "5",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert filter_meetings([row], **_RANGE) == []
 
     def test_missing_url_excluded(self) -> None:
@@ -232,21 +275,33 @@ class TestFilterMeetingsColumnSynonyms:
         assert filter_meetings([row], **_RANGE) == []
 
     def test_missing_name_excluded(self) -> None:
-        row = {"Start Time": "2026-02-05 10:00", "Duration": "30",
-               "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert filter_meetings([row], **_RANGE) == []
 
     def test_none_key_rows_handled(self) -> None:
-        row = {None: "junk", "Name": "Example SIG", "Start Time": "2026-02-05 10:00",
-               "Duration": "30", "URL": "https://zoom.us/rec/share/x"}
+        row = {
+            None: "junk",
+            "Name": "Example SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
 
 def test_filter_meetings_default_dates_includes_recent() -> None:
     """A meeting from yesterday should be included when since/until are defaulted."""
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M")
-    row = {"Name": "Recent SIG", "Start Time": yesterday, "Duration": "30",
-           "URL": "https://zoom.us/rec/share/recent"}
+    row = {
+        "Name": "Recent SIG",
+        "Start Time": yesterday,
+        "Duration": "30",
+        "URL": "https://zoom.us/rec/share/recent",
+    }
     meetings = filter_meetings([row])
     assert len(meetings) == 1
     assert meetings[0].sig_name == "Recent SIG"
@@ -255,19 +310,35 @@ def test_filter_meetings_default_dates_includes_recent() -> None:
 def test_filter_meetings_default_dates_excludes_old() -> None:
     """A meeting 30 days ago is beyond the 14-day default window."""
     old_date = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d %H:%M")
-    row = {"Name": "Old SIG", "Start Time": old_date, "Duration": "30",
-           "URL": "https://zoom.us/rec/share/old"}
+    row = {
+        "Name": "Old SIG",
+        "Start Time": old_date,
+        "Duration": "30",
+        "URL": "https://zoom.us/rec/share/old",
+    }
     assert filter_meetings([row]) == []
 
 
 def test_filter_meetings_sorted_by_sig_then_date() -> None:
     rows = [
-        {"Name": "Zebra SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-         "URL": "https://zoom.us/rec/share/z"},
-        {"Name": "Alpha SIG", "Start Time": "2026-02-10 10:00", "Duration": "30",
-         "URL": "https://zoom.us/rec/share/a1"},
-        {"Name": "Alpha SIG", "Start Time": "2026-02-05 10:00", "Duration": "30",
-         "URL": "https://zoom.us/rec/share/a2"},
+        {
+            "Name": "Zebra SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/z",
+        },
+        {
+            "Name": "Alpha SIG",
+            "Start Time": "2026-02-10 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/a1",
+        },
+        {
+            "Name": "Alpha SIG",
+            "Start Time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/a2",
+        },
     ]
     meetings = filter_meetings(rows, **_RANGE)
     assert meetings[0].sig_name == "Alpha SIG"
@@ -281,4 +352,3 @@ def test_is_zoom_url_handles_valueerror() -> None:
     """urlparse raising ValueError should be caught and return False."""
     with patch("scraper.sheet.urlparse", side_effect=ValueError("malformed IPv6")):
         assert not _is_zoom_recording_url("https://[malformed")
-

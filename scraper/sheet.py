@@ -1,4 +1,5 @@
 """Google Sheet access: fetch public CSV export and filter meetings by date range."""
+
 from __future__ import annotations
 
 import csv
@@ -149,16 +150,11 @@ def filter_meetings(
         ).strip()
 
         start_raw = (
-            row_lower.get("start time")
-            or row_lower.get("start")
-            or row_lower.get("date")
-            or ""
+            row_lower.get("start time") or row_lower.get("start") or row_lower.get("date") or ""
         ).strip()
 
         duration_raw = (
-            row_lower.get("duration")
-            or row_lower.get("duration (minutes)")
-            or "0"
+            row_lower.get("duration") or row_lower.get("duration (minutes)") or "0"
         ).strip()
 
         url = (

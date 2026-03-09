@@ -9,6 +9,7 @@ Required env vars:
     RESEND_API_KEY  — Resend API key
     DIGEST_TO       — comma-separated list of recipient email addresses
 """
+
 from __future__ import annotations
 
 import base64
@@ -73,14 +74,13 @@ def get_new_summary_paths() -> list[str]:
         if not commit_sha:
             # Summarize ran but pushed no new commit → nothing to digest
             return []
-        result = _run_git(["diff", "--name-only", f"{commit_sha}~1", commit_sha, "--", "docs/content"])
+        result = _run_git(
+            ["diff", "--name-only", f"{commit_sha}~1", commit_sha, "--", "docs/content"]
+        )
     else:
         # workflow_dispatch or local run → diff the last commit
         result = _run_git(["diff", "--name-only", "HEAD~1", "HEAD", "--", "docs/content"])
-    return [
-        line for line in result.stdout.strip().splitlines()
-        if line.endswith("/summary.md")
-    ]
+    return [line for line in result.stdout.strip().splitlines() if line.endswith("/summary.md")]
 
 
 def parse_summary_info(path: str, commit_sha: str = "") -> dict[str, str]:
@@ -105,15 +105,16 @@ def parse_summary_info(path: str, commit_sha: str = "") -> dict[str, str]:
 
 def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -> str:
     """Call OpenAI to produce a concise meta-summary narrative."""
-    combined = "\n\n".join(
-        f"### {s['slug']} ({s['date']})\n{s['content']}" for s in summaries
-    )
+    combined = "\n\n".join(f"### {s['slug']} ({s['date']})\n{s['content']}" for s in summaries)
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {
                 "role": "system",
-                "content": "You are an editor writing a concise daily digest for the OpenTelemetry community.",
+                "content": (
+                    "You are an editor writing a concise daily digest"
+                    " for the OpenTelemetry community."
+                ),
             },
             {
                 "role": "user",
@@ -155,9 +156,12 @@ def _make_excerpt(content: str) -> str:
     return content[:300].strip()
 
 
-def _render_html(template_vars: dict) -> str:
+def _render_html(template_vars: dict) -> str:  # pragma: no cover
     """Load and render the Jinja2 HTML email template with autoescaping enabled."""
-    from jinja2 import Environment, FileSystemLoader  # noqa: PLC0415 — deferred to avoid import error without summarize group
+    from jinja2 import (  # noqa: PLC0415 — deferred to avoid import error without summarize group
+        Environment,
+        FileSystemLoader,
+    )
 
     template_dir = Path(__file__).resolve().parent
     env = Environment(loader=FileSystemLoader(str(template_dir)), autoescape=True)
@@ -175,22 +179,26 @@ def build_email(
     meetings = []
     for s in summaries:
         link = build_deep_link(s["slug"], s["date"])
-        meetings.append({
-            "slug": s["slug"],
-            "date": s["date"],
-            "content": s["content"],
-            "link": link,
-            "excerpt": _make_excerpt(s["content"]),
-        })
+        meetings.append(
+            {
+                "slug": s["slug"],
+                "date": s["date"],
+                "content": s["content"],
+                "link": link,
+                "excerpt": _make_excerpt(s["content"]),
+            }
+        )
 
     # HTML body via Jinja2 template
-    html_body = _render_html({
-        "narrative": narrative,
-        "date": today,
-        "count": count,
-        "meetings": meetings,
-        "logo_b64": _load_logo_b64(),
-    })
+    html_body = _render_html(
+        {
+            "narrative": narrative,
+            "date": today,
+            "count": count,
+            "meetings": meetings,
+            "logo_b64": _load_logo_b64(),
+        }
+    )
 
     # Plain-text body
     text_parts = ["OTel SIG Daily Digest", "", narrative, "", "---", ""]
@@ -226,7 +234,9 @@ def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> No
 
 def _create_openai_client(api_key: str) -> OpenAI:
     """Create an OpenAI client instance (seam for testing)."""
-    from openai import OpenAI as _OpenAI  # noqa: PLC0415 — deferred to avoid import error without summarize group
+    from openai import (
+        OpenAI as _OpenAI,  # noqa: PLC0415 — deferred to avoid import error without summarize group
+    )
 
     return _OpenAI(api_key=api_key)
 

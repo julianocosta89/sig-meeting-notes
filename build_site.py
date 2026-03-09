@@ -13,11 +13,12 @@ SIG-level metadata is in docs/content/{slug}/metadata.md.
 Reads every docs/content/{slug}/{date}/transcript.md, parses the header,
 and writes docs/manifest.json with metadata about every SIG and meeting.
 """
+
 from __future__ import annotations
 
 import json
 import shutil
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from scraper.transcript_io import parse_header, parse_reference
@@ -98,7 +99,7 @@ def build_manifest() -> dict:
     sorted_sigs = sorted(sigs.values(), key=lambda s: s["slug"])
 
     manifest = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "min_date": min(all_dates) if all_dates else None,
         "max_date": max(all_dates) if all_dates else None,
         "sigs": sorted_sigs,
