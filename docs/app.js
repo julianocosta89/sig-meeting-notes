@@ -1635,7 +1635,7 @@ function exitGlobalSearch() {
     const localQuery = getCurrentQuery();
     if (localQuery) {
       if (!currentDate) clearTranscript();
-      handleSearch(localQuery).catch(() => {});
+      handleSearch(localQuery).catch(() => {/* empty */});
     } else {
       renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate, null);
       if (currentDate) {
