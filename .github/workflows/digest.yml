@@ -37,8 +37,10 @@ jobs:
 
       - name: Read summary commit SHA
         id: read-sha
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
             SHA=$(cat summarize-commit-sha.txt 2>/dev/null | tr -d '[:space:]')
             echo "sha=$SHA" >> "$GITHUB_OUTPUT"
             echo "found=true" >> "$GITHUB_OUTPUT"
