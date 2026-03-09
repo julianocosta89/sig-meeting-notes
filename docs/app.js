@@ -1639,7 +1639,7 @@ function exitGlobalSearch() {
     } else {
       renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate, null);
       if (currentDate) {
-        onDateClick(currentDate, { replace: true }).catch(() => {});
+        onDateClick(currentDate, { replace: true }).catch(() => {/* empty */});
       } else {
         clearTranscript();
       }
