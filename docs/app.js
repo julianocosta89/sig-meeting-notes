@@ -40,7 +40,7 @@ function initThemeToggle() {
   btn.addEventListener('click', () => {
     const current = getStoredTheme();
     const next = THEME_MODES[(THEME_MODES.indexOf(current) + 1) % THEME_MODES.length];
-    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    try { localStorage.setItem(THEME_KEY, next); } catch {/* empty */}
     applyTheme(next);
     updateBtn(next);
   });
@@ -642,7 +642,7 @@ async function prefetchTranscripts(slug) {
       const m = meetings[idx];
       await Promise.all([
         getTranscript(slug, m.date).catch(() => {/* empty */}),
-        getMeetingNotes(slug, m.date).catch(() => {}),
+        getMeetingNotes(slug, m.date).catch(() => {/* empty */}),
       ]);
     }
   }
@@ -1188,7 +1188,7 @@ async function handleSearch(query) {
         if (currentSig !== sig || currentDate !== date) return;
         renderTranscript(text, '');
         await switchToView('summary');
-      } catch (_) {}
+      } catch (_) {/* empty */}
     }
     return;
   }
@@ -1635,11 +1635,11 @@ function exitGlobalSearch() {
     const localQuery = getCurrentQuery();
     if (localQuery) {
       if (!currentDate) clearTranscript();
-      handleSearch(localQuery).catch(() => {});
+      handleSearch(localQuery).catch(() => {/* empty */});
     } else {
       renderDateList(getSigMeetings(currentSig).filter(m => inRange(m.date)), currentDate, null);
       if (currentDate) {
-        onDateClick(currentDate, { replace: true }).catch(() => {});
+        onDateClick(currentDate, { replace: true }).catch(() => {/* empty */});
       } else {
         clearTranscript();
       }
