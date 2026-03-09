@@ -14,6 +14,7 @@ Usage:
     # Limit to one SIG (substring match on slug)
     python scripts/backfill_meeting_notes.py --execute --sig agent-management
 """
+
 from __future__ import annotations
 
 import argparse
@@ -48,12 +49,17 @@ def _format_notes(attendees: list[str], agenda: list[str]) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--execute", action="store_true",
-                        help="Write changes to disk (default: dry run)")
-    parser.add_argument("--force", action="store_true",
-                        help="Re-fetch and overwrite existing meeting-notes.md files")
-    parser.add_argument("--sig", default=None,
-                        help="Limit to SIGs whose slug contains this substring")
+    parser.add_argument(
+        "--execute", action="store_true", help="Write changes to disk (default: dry run)"
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-fetch and overwrite existing meeting-notes.md files",
+    )
+    parser.add_argument(
+        "--sig", default=None, help="Limit to SIGs whose slug contains this substring"
+    )
     args = parser.parse_args()
     dry_run = not args.execute
 
@@ -108,8 +114,10 @@ def main() -> None:
 
         stats["updated"] += 1
 
-    print(f"\nDone. checked={stats['checked']} updated={stats['updated']} "
-          f"no_url={stats['no_url']} no_content={stats['no_content']}")
+    print(
+        f"\nDone. checked={stats['checked']} updated={stats['updated']} "
+        f"no_url={stats['no_url']} no_content={stats['no_content']}"
+    )
 
 
 if __name__ == "__main__":

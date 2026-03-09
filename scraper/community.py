@@ -8,15 +8,14 @@ NOT called on every scraper run.
 Repository column is absent from the community README tables, so
 repository_url is always returned as an empty string (fill in manually).
 """
+
 from __future__ import annotations
 
 import re
 
 import requests
 
-README_URL = (
-    "https://raw.githubusercontent.com/open-telemetry/community/main/README.md"
-)
+README_URL = "https://raw.githubusercontent.com/open-telemetry/community/main/README.md"
 
 # Matches: [Google Doc](https://docs.google.com/...)
 _GDOC_RE = re.compile(r"\[Google Doc\]\((https://docs\.google\.com/[^)]+)\)")

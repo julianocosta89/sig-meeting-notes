@@ -1,9 +1,8 @@
 """Tests for scraper/gdoc.py — Google Docs meeting-notes extraction."""
+
 from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 import scraper.gdoc as gdoc
 from scraper.gdoc import (
@@ -314,6 +313,7 @@ Attendees
 # _to_export_url
 # ---------------------------------------------------------------------------
 
+
 class TestToExportUrl:
     def test_edit_url(self) -> None:
         url = _to_export_url("https://docs.google.com/document/d/ABC123/edit")
@@ -337,6 +337,7 @@ class TestToExportUrl:
 # ---------------------------------------------------------------------------
 # _date_variants
 # ---------------------------------------------------------------------------
+
 
 class TestDateVariants:
     def test_contains_iso(self) -> None:
@@ -376,6 +377,7 @@ class TestDateVariants:
 # _normalize_date_text
 # ---------------------------------------------------------------------------
 
+
 class TestNormalizeDateText:
     def test_strips_bold_markers(self) -> None:
         assert _normalize_date_text("**Feb 18, 2026**") == "Feb 18, 2026"
@@ -403,6 +405,7 @@ class TestNormalizeDateText:
 # _unescape_md
 # ---------------------------------------------------------------------------
 
+
 class TestUnescapeMd:
     def test_removes_hash_escape(self) -> None:
         assert _unescape_md(r"issue \#4568") == "issue #4568"
@@ -424,6 +427,7 @@ class TestUnescapeMd:
 # ---------------------------------------------------------------------------
 # _find_date_section
 # ---------------------------------------------------------------------------
+
 
 class TestFindDateSection:
     def test_finds_iso_date(self) -> None:
@@ -478,6 +482,7 @@ class TestFindDateSection:
 # _extract_subsection_md
 # ---------------------------------------------------------------------------
 
+
 class TestExtractSubsectionMd:
     def _section(self, md: str = _SAMPLE_MD, date: str = "2026-02-05") -> str:
         s = _find_date_section(md, _date_variants(date))
@@ -511,8 +516,9 @@ class TestExtractSubsectionMd:
 
     def test_case_insensitive_keyword(self) -> None:
         section = self._section()
-        assert _extract_subsection_md(section, "ATTENDEE") == \
-               _extract_subsection_md(section, "attendee")
+        assert _extract_subsection_md(section, "ATTENDEE") == _extract_subsection_md(
+            section, "attendee"
+        )
 
     def test_nested_items_produce_indented_lines(self) -> None:
         section = self._section(_NESTED_MD)
@@ -530,7 +536,8 @@ class TestExtractSubsectionMd:
     def test_links_preserved(self) -> None:
         section = self._section(_LINK_MD)
         result = _extract_subsection_md(section, "agenda")
-        assert "- Review [Issue 123](https://github.com/open-telemetry/opentelemetry-specification/issues/123)" in result
+        spec_issue_url = "https://github.com/open-telemetry/opentelemetry-specification/issues/123"
+        assert f"- Review [Issue 123]({spec_issue_url})" in result
         assert "- Visit [example](https://example.com)" in result
 
     def test_backslash_escapes_removed_in_items(self) -> None:
@@ -593,6 +600,7 @@ class TestExtractSubsectionMd:
 # DevEx SIG style: bold labels (**Attendees:**) + dash bullets (- )
 # ---------------------------------------------------------------------------
 
+
 class TestDevExStyle:
     """Regression tests for docs that use **Bold:** labels and dash bullets."""
 
@@ -619,8 +627,9 @@ class TestDevExStyle:
 
     def test_agenda_nested_items(self) -> None:
         agenda = _extract_subsection_md(self._section(), "agenda")
-        assert "- \\[Nico\\] MCP updates".replace("\\[", "[").replace("\\]", "]") or \
-               any("MCP updates" in item for item in agenda)
+        assert "- \\[Nico\\] MCP updates".replace("\\[", "[").replace("\\]", "]") or any(
+            "MCP updates" in item for item in agenda
+        )
         assert any("No TC sponsor" in item for item in agenda)
         assert any("Re-scope" in item for item in agenda)
 
@@ -633,6 +642,7 @@ class TestDevExStyle:
 # ---------------------------------------------------------------------------
 # Arrow-SIG style: plain-text date with extra content after date variant
 # ---------------------------------------------------------------------------
+
 
 class TestArrowStyle:
     def _section(self, date: str = "2026-02-19") -> str:
@@ -664,6 +674,7 @@ class TestArrowStyle:
 # NET SIG style: day-first date format ("17 Feb 2026")
 # ---------------------------------------------------------------------------
 
+
 class TestNetStyle:
     def _section(self, date: str = "2026-02-17") -> str:
         s = _find_date_section(_NET_STYLE_MD, _date_variants(date))
@@ -691,6 +702,7 @@ class TestNetStyle:
 # ---------------------------------------------------------------------------
 # RPC SIG style: bold paragraph with weekday prefix + ordinal suffix
 # ---------------------------------------------------------------------------
+
 
 class TestRpcStyle:
     def _section(self, date: str = "2026-02-18") -> str:
@@ -721,6 +733,7 @@ class TestRpcStyle:
 # Java SIG style: heading with bold + ordinal suffix
 # ---------------------------------------------------------------------------
 
+
 class TestJavaStyle:
     def _section(self, date: str = "2026-02-19") -> str:
         s = _find_date_section(_JAVA_STYLE_MD, _date_variants(date))
@@ -749,6 +762,7 @@ class TestJavaStyle:
 # Dotted-month style: "Feb. 18, 2026" headings + Topics label
 # ---------------------------------------------------------------------------
 
+
 class TestDottedMonthStyle:
     def _section(self, date: str = "2026-02-18") -> str:
         s = _find_date_section(_DOTTED_MONTH_MD, _date_variants(date))
@@ -776,6 +790,7 @@ class TestDottedMonthStyle:
 # Notes-label style: "Notes" section as agenda fallback (Collector-SIG)
 # ---------------------------------------------------------------------------
 
+
 class TestNotesLabelStyle:
     def _section(self, date: str = "2026-02-18") -> str:
         s = _find_date_section(_NOTES_LABEL_MD, _date_variants(date))
@@ -800,6 +815,7 @@ class TestNotesLabelStyle:
 # ---------------------------------------------------------------------------
 # fetch_meeting_notes (integration via mocked HTTP)
 # ---------------------------------------------------------------------------
+
 
 class TestFetchMeetingNotes:
     def setup_method(self) -> None:

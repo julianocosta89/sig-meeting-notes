@@ -8,7 +8,7 @@ import subprocess
 import time
 
 import pytest
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import expect, sync_playwright
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -104,7 +104,8 @@ def docs_site(tmp_path_factory):
             (d / "meeting-notes.md").write_text(meeting_notes_text)
 
     _write_meeting(
-        "Go-SIG", "2026-02-05",
+        "Go-SIG",
+        "2026-02-05",
         "SIG: Go SIG\n"
         "Date: 2026-02-05\n"
         "Duration: 33 minutes\n"
@@ -116,14 +117,11 @@ def docs_site(tmp_path_factory):
         "**Tyler** 02:14 Hey, Damien.\n"
         "**Damien Mathieu** 02:19 Hey!\n"
         "**Tyler** 02:20 How's it going?\n",
-        "## Meeting Notes\n"
-        "\n"
-        "### Attendees\n"
-        "- Tyler\n"
-        "- Damien Mathieu\n",
+        "## Meeting Notes\n\n### Attendees\n- Tyler\n- Damien Mathieu\n",
     )
     _write_meeting(
-        "Go-SIG", "2026-02-19",
+        "Go-SIG",
+        "2026-02-19",
         "SIG: Go SIG\n"
         "Date: 2026-02-19\n"
         "Duration: 30 minutes\n"
@@ -136,7 +134,8 @@ def docs_site(tmp_path_factory):
         "**Damien Mathieu** 02:05 Hi Tyler.\n",
     )
     _write_meeting(
-        "Java-SIG", "2026-02-10",
+        "Java-SIG",
+        "2026-02-10",
         "SIG: Java SIG\n"
         "Date: 2026-02-10\n"
         "Duration: 60 minutes\n"
@@ -148,11 +147,13 @@ def docs_site(tmp_path_factory):
         "**Jack** 01:00 Welcome to Java SIG.\n",
     )
     _write_meeting(
-        "Long-SIG", "2026-02-15",
+        "Long-SIG",
+        "2026-02-15",
         _make_long_transcript("Long SIG", "2026-02-15", 120, 200),
     )
     _write_meeting(
-        "Notes-SIG", "2026-02-05",
+        "Notes-SIG",
+        "2026-02-05",
         "SIG: Notes SIG\n"
         "Date: 2026-02-05\n"
         "Duration: 45 minutes\n"
@@ -174,7 +175,8 @@ def docs_site(tmp_path_factory):
         "- New proposals\n",
     )
     _write_meeting(
-        "Unsafe-SIG", "2026-02-06",
+        "Unsafe-SIG",
+        "2026-02-06",
         "SIG: Unsafe SIG\n"
         "Date: 2026-02-06\n"
         "Duration: 25 minutes\n"
@@ -227,9 +229,7 @@ def _wait_for_app_ready(page, url):
     # are always in range regardless of when the tests run.
     page.goto(url + "?from=2026-02-01&to=2026-02-28")
     # Wait until the SIG select has more than 1 option (placeholder + SIGs loaded)
-    page.wait_for_function(
-        "document.querySelectorAll('#sig-select option').length > 1"
-    )
+    page.wait_for_function("document.querySelectorAll('#sig-select option').length > 1")
 
 
 def test_sig_select_populated(browser_ctx):
@@ -342,9 +342,7 @@ def test_switching_sig_clears_transcript(browser_ctx):
 
     # Switch to Java SIG
     page.select_option("#sig-select", "Java-SIG")
-    page.wait_for_function(
-        "document.querySelectorAll('#date-list .date-btn').length === 1"
-    )
+    page.wait_for_function("document.querySelectorAll('#date-list .date-btn').length === 1")
     buttons = page.locator("#date-list .date-btn").all()
     assert len(buttons) == 1
     assert "2026-02-10" in buttons[0].text_content()
@@ -363,12 +361,10 @@ def _select_sig_and_wait_for_prefetch(page, url, slug, expected_meetings):
     page.select_option("#sig-select", slug)
     page.wait_for_selector("#date-list .date-btn")
     # Wait for prefetch to populate the transcript cache
-    page.wait_for_function(
-        f"document.querySelector('#search-input') !== null"
-    )
+    page.wait_for_function("document.querySelector('#search-input') !== null")
     # Wait for all transcripts to be cached (prefetch is fire-and-forget)
     page.wait_for_function(
-        f"window.transcriptCache !== undefined || true",
+        "window.transcriptCache !== undefined || true",
         timeout=5000,
     )
     # Give prefetch a moment to complete
@@ -649,21 +645,13 @@ def test_mobile_date_list_horizontal_scroll(browser_ctx):
     page.select_option("#sig-select", "Go-SIG")
     page.wait_for_selector("#date-list .date-btn")
 
-    display = page.evaluate(
-        "window.getComputedStyle("
-        "document.querySelector('.date-list')).display"
-    )
-    assert display == "flex", (
-        f"Expected flex layout on mobile, got {display!r}"
-    )
+    display = page.evaluate("window.getComputedStyle(document.querySelector('.date-list')).display")
+    assert display == "flex", f"Expected flex layout on mobile, got {display!r}"
 
     overflow_x = page.evaluate(
-        "window.getComputedStyle("
-        "document.querySelector('.date-nav')).overflowX"
+        "window.getComputedStyle(document.querySelector('.date-nav')).overflowX"
     )
-    assert overflow_x == "auto", (
-        f"Expected overflow-x: auto on mobile, got {overflow_x!r}"
-    )
+    assert overflow_x == "auto", f"Expected overflow-x: auto on mobile, got {overflow_x!r}"
     page.close()
 
 
@@ -686,9 +674,7 @@ def test_mobile_scroll_gradient_css(browser_ctx):
         return after && after.backgroundImage
             && after.backgroundImage !== 'none';
     }""")
-    assert has_gradient, (
-        "Expected gradient ::after on .date-nav-wrapper at mobile viewport"
-    )
+    assert has_gradient, "Expected gradient ::after on .date-nav-wrapper at mobile viewport"
     page.close()
 
 
@@ -710,17 +696,13 @@ def test_search_match_count_displayed(browser_ctx):
     page.fill("#search-input", "Hey")
     page.wait_for_timeout(400)
 
-    match_counter = page.locator(
-        ".match-counter, .match-count, #match-count"
-    )
+    match_counter = page.locator(".match-counter, .match-count, #match-count")
     if match_counter.count() == 0:
         pytest.skip("Search match count element not yet implemented")
 
     expect(match_counter.first).to_be_visible()
     text = match_counter.first.text_content()
-    assert any(c.isdigit() for c in text), (
-        f"Expected match count number in {text!r}"
-    )
+    assert any(c.isdigit() for c in text), f"Expected match count number in {text!r}"
     page.close()
 
 
@@ -788,7 +770,8 @@ def test_manifest_meeting_notes_url_rendered_as_link(browser_ctx):
 
 
 def test_unsafe_urls_do_not_render_as_links(browser_ctx):
-    """javascript:/data: links in transcript headers and manifest metadata must not render as anchors."""
+    """javascript:/data: links in transcript headers and manifest metadata
+    must not render as anchors."""
     context, url = browser_ctx
     page = context.new_page()
     _wait_for_app_ready(page, url)
@@ -816,7 +799,8 @@ def test_markdown_javascript_links_render_as_text(browser_ctx):
     page.wait_for_selector(".notes-body")
 
     assert page.locator(".notes-body a[href^='javascript:']").count() == 0
-    assert page.locator(".notes-body").text_content().count("click me (javascript:alert('xss'))") == 1
+    xss_label = "click me (javascript:alert('xss'))"
+    assert page.locator(".notes-body").text_content().count(xss_label) == 1
     assert page.locator(".notes-body a[href='https://example.com/']").count() == 1
     page.close()
 
@@ -919,9 +903,7 @@ def test_search_snippet_excludes_speaker_prefix(browser_ctx):
 
     for snippet in snippets:
         text = snippet.text_content()
-        assert "**" not in text, (
-            f"Snippet contains raw markdown speaker prefix: {text!r}"
-        )
+        assert "**" not in text, f"Snippet contains raw markdown speaker prefix: {text!r}"
     page.close()
 
 
@@ -961,9 +943,7 @@ def test_search_no_mark_inside_speaker_or_timestamp(browser_ctx):
     # But "Damien" should still appear highlighted in the utterance text
     # ("Hey, Damien." in the 2026-02-05 transcript)
     marks = page.locator(".transcript-body mark").all()
-    assert len(marks) > 0, (
-        "Expected at least one <mark> highlight for 'Damien' in utterance text"
-    )
+    assert len(marks) > 0, "Expected at least one <mark> highlight for 'Damien' in utterance text"
     for mark in marks:
         assert "damien" in mark.text_content().lower()
     page.close()

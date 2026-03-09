@@ -6,6 +6,7 @@ Walks docs/content/, calls OpenAI gpt-4o-mini for each transcript
 that doesn't already have a summary, and writes the result to
 docs/content/{slug}/{date}/summary.md.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -153,8 +154,12 @@ def process_transcripts(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate AI summaries for OTel SIG transcripts.")
-    parser.add_argument("--since", metavar="YYYY-MM-DD", help="Only process meetings on or after this date.")
-    parser.add_argument("--until", metavar="YYYY-MM-DD", help="Only process meetings on or before this date.")
+    parser.add_argument(
+        "--since", metavar="YYYY-MM-DD", help="Only process meetings on or after this date."
+    )
+    parser.add_argument(
+        "--until", metavar="YYYY-MM-DD", help="Only process meetings on or before this date."
+    )
     args = parser.parse_args()
 
     since = date.fromisoformat(args.since) if args.since else None

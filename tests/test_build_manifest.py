@@ -1,13 +1,13 @@
 """Tests for build_site.py manifest builder."""
+
 from __future__ import annotations
 
 import json
 from pathlib import Path
 from unittest.mock import patch
 
-import pytest
-
-from build_site import build_manifest, main as build_main
+from build_site import build_manifest
+from build_site import main as build_main
 from scraper.transcript_io import parse_header
 
 SAMPLE_TRANSCRIPT = """\
@@ -127,8 +127,7 @@ class TestBuildManifest:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert len(manifest["sigs"]) == 1
@@ -146,8 +145,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_metadata(src, "Go-SIG")
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         sig = manifest["sigs"][0]
@@ -159,8 +157,7 @@ class TestBuildManifest:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         sig = manifest["sigs"][0]
@@ -173,8 +170,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_metadata(src, "Go-SIG")
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert len(manifest["sigs"][0]["meetings"]) == 1
@@ -185,8 +181,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         meetings = manifest["sigs"][0]["meetings"]
@@ -200,8 +195,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Java-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT_JAVA)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         slugs = [s["slug"] for s in manifest["sigs"]]
@@ -214,8 +208,7 @@ class TestBuildManifest:
         # Summary lives as a sibling of transcript.md
         (src / "Go-SIG" / "2026-02-05" / "summary.md").write_text("# Summary\n")
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"][0]["meetings"][0]["has_summary"] is True
@@ -225,8 +218,7 @@ class TestBuildManifest:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert "generated_at" in manifest
@@ -237,8 +229,7 @@ class TestBuildManifest:
         src = docs / "content"
         src.mkdir(parents=True)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"] == []
@@ -249,8 +240,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         meetings = manifest["sigs"][0]["meetings"]
@@ -264,8 +254,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-19.md", SAMPLE_TRANSCRIPT_RENAMED)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         sig = manifest["sigs"][0]
@@ -276,15 +265,13 @@ class TestBuildManifest:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-19.md", SAMPLE_TRANSCRIPT_RENAMED)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
         assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
 
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
         assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
 
@@ -294,8 +281,7 @@ class TestBuildManifest:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Java-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT_JAVA)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         serialized = json.dumps(manifest, indent=2)
@@ -313,8 +299,7 @@ class TestStaleFileRemoval:
         stale_dir = src / "Old-SIG"
         stale_dir.mkdir(parents=True)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert not stale_dir.exists()
@@ -324,8 +309,7 @@ class TestStaleFileRemoval:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
@@ -335,8 +319,7 @@ class TestStaleFileRemoval:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert len(manifest["sigs"]) == 1
@@ -348,8 +331,7 @@ class TestStaleFileRemoval:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-10.md", "garbage header\n")
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert (src / "Go-SIG" / "2026-02-05" / "transcript.md").exists()
@@ -363,8 +345,7 @@ class TestStaleFileRemoval:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", "garbage header\n")
         _write_transcript(src, "Go-SIG", "2026-02-10.md", "garbage header\n")
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert (src / "Go-SIG").exists()
@@ -379,8 +360,7 @@ class TestStaleFileRemoval:
             "## Meeting Notes\n\n### Attendees\n- Tyler\n", encoding="utf-8"
         )
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"][0]["meetings"][0]["has_meeting_notes"] is True
@@ -390,8 +370,7 @@ class TestStaleFileRemoval:
         src = docs / "content"
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"][0]["meetings"][0]["has_meeting_notes"] is False
@@ -402,8 +381,7 @@ class TestStaleFileRemoval:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["min_date"] == "2026-02-05"
@@ -414,8 +392,7 @@ class TestStaleFileRemoval:
         src = docs / "content"
         src.mkdir(parents=True)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["min_date"] is None
@@ -427,8 +404,7 @@ class TestStaleFileRemoval:
         _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
         _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
 
         assert manifest["sigs"][0]["meeting_count"] == 2
@@ -445,8 +421,7 @@ class TestStaleFileRemoval:
             "Meeting Notes URL: https://example.com/notes\nRepository URL: https://example.com/repo\n"
         )
 
-        with patch("build_site.TRANSCRIPTS_SRC", src), \
-             patch("build_site.DOCS_DIR", docs):
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             build_manifest()
 
         assert metadata_only.exists()
