@@ -467,7 +467,7 @@ class TestMakeExcerpt:
         assert "Heading" in result
 
     def test_truncates_long_line(self) -> None:
-        content = "Regular text: " + "x" * 400 + "\n"
+        content = f"Regular text: {'x' * 400}\n"
         assert len(_make_excerpt(content)) <= 300
 
     def test_empty_content(self) -> None:

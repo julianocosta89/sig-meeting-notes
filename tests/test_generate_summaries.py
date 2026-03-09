@@ -51,7 +51,7 @@ SAMPLE_TRANSCRIPT_LEGACY = textwrap.dedent("""\
     Tyler 02:20 How's it going?
 """)
 
-LONG_TRANSCRIPT_BODY = "**Alice** 00:01 " + ("word " * 3000) + "\n"
+LONG_TRANSCRIPT_BODY = f"**Alice** 00:01 {'word ' * 3000}\n"
 LONG_TRANSCRIPT = (
     textwrap.dedent("""\
     SIG: Go SIG
