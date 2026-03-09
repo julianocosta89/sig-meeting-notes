@@ -1188,7 +1188,7 @@ async function handleSearch(query) {
         if (currentSig !== sig || currentDate !== date) return;
         renderTranscript(text, '');
         await switchToView('summary');
-      } catch (_) {}
+      } catch (_) {/* empty */}
     }
     return;
   }
