@@ -1,0 +1,111 @@
+OTel Minutes — OpenTelemetry SIG Meeting Recordings
+Copyright 2024–2026 Juliano Costa
+
+This project is licensed under the Apache License, Version 2.0.
+See the LICENSE file at the root of this repository for the full text.
+
+---
+
+This product includes software developed by third parties.
+The following packages are used at runtime and their licenses are listed below.
+
+-------------------------------------------------------------------------------
+playwright 1.58.0
+License: Apache-2.0
+Homepage: https://playwright.dev
+Copyright (c) Microsoft Corporation
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+requests 2.32.5
+License: Apache-2.0
+Homepage: https://requests.readthedocs.io
+Copyright 2019 Kenneth Reitz
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+beautifulsoup4 4.14.3
+License: MIT
+Homepage: https://www.crummy.com/software/BeautifulSoup/
+Copyright (c) 2004–2023 Leonard Richardson
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+soupsieve 2.8.3
+License: MIT
+Homepage: https://facelessuser.github.io/soupsieve/
+Copyright (c) 2018 – 2024 Isaac Muse
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+certifi 2026.1.4
+License: MPL-2.0
+Homepage: https://github.com/certifi/python-certifi
+Copyright (c) 2011 Kenneth Reitz, 2012 Subgraph, 2018 Continuum Analytics, Inc.
+Note: Used unmodified. MPL-2.0 file-level copyleft is not triggered.
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+charset-normalizer 3.4.4
+License: MIT
+Homepage: https://github.com/Ousret/charset_normalizer
+Copyright (c) 2019 TAHRI Ahmed R.
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+idna 3.11
+License: BSD-3-Clause
+Homepage: https://github.com/kjd/idna
+Copyright (c) 2013–2024, Kim Davies and contributors. All rights reserved.
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+urllib3 2.6.3
+License: MIT
+Homepage: https://urllib3.readthedocs.io
+Copyright (c) 2008–2020 Andrey Petrov and contributors
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+greenlet 3.3.2
+License: MIT
+Homepage: https://greenlet.readthedocs.io
+Copyright (c) Armin Rigo, Christian Tismer and contributors
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+pyee 13.0.1
+License: MIT
+Homepage: https://github.com/jfhbrook/pyee
+Copyright (c) Josh Holbrook and contributors
+-------------------------------------------------------------------------------
+
+The following packages are used only when the optional "summarize" feature
+is enabled (uv sync --group summarize) and are not part of the base install:
+
+-------------------------------------------------------------------------------
+openai (MIT) — https://github.com/openai/openai-python
+jinja2 (BSD-3-Clause) — https://jinja.palletsprojects.com
+markupsafe (BSD-3-Clause) — https://markupsafe.palletsprojects.com
+httpx (BSD-3-Clause) — https://www.python-httpx.org
+httpcore (BSD-3-Clause) — https://github.com/encode/httpcore
+h11 (MIT) — https://github.com/python-hyper/h11
+anyio (MIT) — https://anyio.readthedocs.io
+sniffio (MIT) — https://github.com/python-trio/sniffio
+distro (Apache-2.0) — https://github.com/python-distro/distro
+pydantic (MIT) — https://docs.pydantic.dev
+pydantic-core (MIT) — https://github.com/pydantic/pydantic-core
+annotated-types (MIT) — https://github.com/annotated-types/annotated-types
+typing-extensions (PSF-2.0) — https://github.com/python/typing_extensions
+typing-inspection (MIT) — https://github.com/Goldziher/typing-inspection
+jiter (MIT) — https://github.com/pydantic/jiter
+tqdm (MPL-2.0, MIT) — https://tqdm.github.io
+colorama (BSD-3-Clause) — https://github.com/tartley/colorama
+-------------------------------------------------------------------------------
+
+Note: All MPL-2.0 packages (certifi, tqdm) are used unmodified.
+The file-level copyleft obligation of MPL-2.0 applies only to modified files
+and is therefore not triggered by this project.
+
+The dev-only packages (pytest, pytest-asyncio, pytest-cov, coverage, Pygments,
+pluggy, iniconfig, packaging) are not distributed and require no attribution.
