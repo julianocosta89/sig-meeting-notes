@@ -6,6 +6,7 @@ from unittest.mock import MagicMock, patch
 
 import scraper.gdoc as gdoc
 from scraper.gdoc import (
+    _collect_list_item,
     _date_variants,
     _extract_leading_attendees,
     _extract_subsection_md,
@@ -371,6 +372,40 @@ class TestDateVariants:
 
     def test_invalid_date_returns_original(self) -> None:
         assert _date_variants("not-a-date") == ["not-a-date"]
+
+
+# ---------------------------------------------------------------------------
+# _collect_list_item
+# ---------------------------------------------------------------------------
+
+
+class TestCollectListItem:
+    def test_bullet_star(self) -> None:
+        assert _collect_list_item("* Alice") == "- Alice"
+
+    def test_bullet_dash(self) -> None:
+        assert _collect_list_item("- Bob") == "- Bob"
+
+    def test_nested_two_spaces(self) -> None:
+        assert _collect_list_item("  * Nested") == "  - Nested"
+
+    def test_nested_four_spaces(self) -> None:
+        assert _collect_list_item("    * Deep") == "    - Deep"
+
+    def test_tab_indented(self) -> None:
+        assert _collect_list_item("\tItem") == "  - Item"
+
+    def test_tab_indented_two_tabs(self) -> None:
+        assert _collect_list_item("\t\tItem") == "    - Item"
+
+    def test_tab_indented_empty_text_returns_none(self) -> None:
+        assert _collect_list_item("\t   ") is None
+
+    def test_plain_line_returns_none(self) -> None:
+        assert _collect_list_item("Not a list item") is None
+
+    def test_empty_string_returns_none(self) -> None:
+        assert _collect_list_item("") is None
 
 
 # ---------------------------------------------------------------------------
@@ -916,6 +951,15 @@ class TestFetchMeetingNotes:
             )
         assert "- Tyler" in result["attendees"]
         assert any("Test item" in item for item in result["agenda"])
+
+    def test_invalid_date_format_returns_empty(self) -> None:
+        """An unparseable date string must not raise; prev-day fallback is skipped."""
+        doc = "# 2026-02-04\n\nAttendee:\n\n* Tyler\n\nAgenda:\n\n* Test item\n"
+        with patch("scraper.gdoc.requests.get", return_value=self._mock_resp(doc)):
+            result = fetch_meeting_notes(
+                "https://docs.google.com/document/d/ABC/edit", "not-a-date"
+            )
+        assert result == {"attendees": [], "agenda": []}
 
 
 # ---------------------------------------------------------------------------
