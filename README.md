@@ -1,12 +1,12 @@
 [![codecov](https://codecov.io/gh/julianocosta89/sig-meeting-notes/branch/main/graph/badge.svg?token=KJPHQ4J431)](https://codecov.io/gh/julianocosta89/sig-meeting-notes)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield&issueType=security)
 
 <img src="docs/OTelMinutes-logo.svg" width="200" alt="OTel Minutes Logo" />
 
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
 ## Repository layout
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield)
-
 
 | Path | Description |
 |------|-------------|
@@ -173,7 +173,3 @@ uv run python generate_summaries.py --since 2026-02-01
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
 | `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
 | `test.yml` | On every PR and push | Runs the full test suite |
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_large)
