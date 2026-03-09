@@ -206,11 +206,7 @@ def _parse_inline_label_content(stripped: str, keyword: str) -> list[str]:
     inline = inline_match.group(1).strip()
     if not re.search(r"\w", inline):
         return []
-    return [
-        "- " + _unescape_md(part.strip())
-        for part in re.split(r",\s*", inline)
-        if part.strip()
-    ]
+    return ["- " + _unescape_md(part.strip()) for part in re.split(r",\s*", inline) if part.strip()]
 
 
 def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
