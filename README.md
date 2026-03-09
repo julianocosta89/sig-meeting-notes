@@ -172,3 +172,9 @@ uv run python generate_summaries.py --since 2026-02-01
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
 | `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
 | `test.yml` | On every PR and push | Runs the full test suite |
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+Third-party dependency attributions are listed in the [NOTICE](NOTICE) file.
