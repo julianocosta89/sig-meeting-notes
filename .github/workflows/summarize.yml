@@ -38,6 +38,8 @@ jobs:
         run: uv run python generate_summaries.py
 
       - name: Commit changes if any
+        env:
+          TRIGGER_SHA: ${{ github.sha }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -48,7 +50,7 @@ jobs:
             # A previous attempt may have already pushed summaries before failing.
             # If HEAD has advanced past the trigger SHA, that prior-attempt commit
             # contains the summaries; report it so the digest is not silently dropped.
-            if [ "$(git rev-parse HEAD)" != "${{ github.sha }}" ]; then
+            if [ "$(git rev-parse HEAD)" != "$TRIGGER_SHA" ]; then
               PUSHED_SHA=$(git rev-parse HEAD)
               echo "Previous attempt already pushed $PUSHED_SHA — reporting for digest."
             fi
