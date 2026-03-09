@@ -5,6 +5,8 @@
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
 ## Repository layout
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_shield)
+
 
 | Path | Description |
 |------|-------------|
@@ -171,3 +173,7 @@ uv run python generate_summaries.py --since 2026-02-01
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
 | `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
 | `test.yml` | On every PR and push | Runs the full test suite |
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjulianocosta89%2Fsig-meeting-notes?ref=badge_large)
