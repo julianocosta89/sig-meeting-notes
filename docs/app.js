@@ -642,7 +642,7 @@ async function prefetchTranscripts(slug) {
       const m = meetings[idx];
       await Promise.all([
         getTranscript(slug, m.date).catch(() => {}),
-        getMeetingNotes(slug, m.date).catch(() => {}),
+        getMeetingNotes(slug, m.date).catch(() => {/* empty */}),
       ]);
     }
   }
