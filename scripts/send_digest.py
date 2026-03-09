@@ -33,8 +33,8 @@ SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
     """Run a git command and fail fast on non-zero exit."""
     try:
-        return subprocess.run(
-            ["git", *args],
+        return subprocess.run(  # noqa: S603
+            ["git", *args],  # noqa: S607
             capture_output=True,
             text=True,
             cwd=ROOT,
