@@ -523,7 +523,7 @@ function renderDateList(meetings, activeDate, matchCounts) {
     }
     btn.appendChild(document.createTextNode(label));
 
-    if (matchCounts && matchCounts[m.date] != null) {
+    if (matchCounts?.[m.date] != null) {
       const badge = document.createElement('span');
       badge.className = 'match-badge';
       badge.textContent = matchCounts[m.date];
@@ -1793,32 +1793,30 @@ window.addEventListener('popstate', function onPopState() {
       searchInput.value = '';
       resetMatchNav();
     }
-  } else {
+  } else if (currentSig) {
     // Range may have changed with the same sig/date — reconcile the view.
-    if (currentSig) {
-      const inRangeMeetings = getSigMeetings(currentSig).filter(m => inRange(m.date));
-      if (inRangeMeetings.length === 0) {
-        currentSig = null;
+    const inRangeMeetings = getSigMeetings(currentSig).filter(m => inRange(m.date));
+    if (inRangeMeetings.length === 0) {
+      currentSig = null;
+      currentDate = null;
+      dateList.innerHTML = '';
+      transcriptPanel.innerHTML = '';
+      if (searchGroup) searchGroup.hidden = true;
+      if (dateNavWrapper) dateNavWrapper.hidden = true;
+      showEmptyState();
+      updateURL(null, null, true);
+      if (globalSearchInput.value.trim()) handleGlobalSearch(globalSearchInput.value.trim());
+    } else {
+      const activeDate = currentDate && inRange(currentDate) ? currentDate : null;
+      renderDateList(inRangeMeetings, activeDate);
+      if (currentDate && !inRange(currentDate)) {
         currentDate = null;
-        dateList.innerHTML = '';
-        transcriptPanel.innerHTML = '';
-        if (searchGroup) searchGroup.hidden = true;
-        if (dateNavWrapper) dateNavWrapper.hidden = true;
-        showEmptyState();
-        updateURL(null, null, true);
-        if (globalSearchInput.value.trim()) handleGlobalSearch(globalSearchInput.value.trim());
-      } else {
-        const activeDate = currentDate && inRange(currentDate) ? currentDate : null;
-        renderDateList(inRangeMeetings, activeDate);
-        if (currentDate && !inRange(currentDate)) {
-          currentDate = null;
-          clearTranscript();
-        }
-        if (targetView && targetView !== currentView) switchToView(targetView);
+        clearTranscript();
       }
-    } else if (targetView && targetView !== currentView) {
-      switchToView(targetView);
+      if (targetView && targetView !== currentView) switchToView(targetView);
     }
+  } else if (targetView && targetView !== currentView) {
+    switchToView(targetView);
   }
 });
 
