@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/julianocosta89/sig-meeting-notes/branch/main/graph/badge.svg?token=KJPHQ4J431)](https://codecov.io/gh/julianocosta89/sig-meeting-notes)
+
 <img src="docs/OTelMinutes-logo.svg" width="200" alt="OTel Minutes Logo" />
 
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.

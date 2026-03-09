@@ -18,6 +18,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
+    _load_logo_b64,
+    _make_excerpt,
     build_deep_link,
     build_email,
     generate_digest_narrative,
@@ -367,3 +369,160 @@ class TestGenerateDigestNarrative:
         result = generate_digest_narrative(mock_client, summaries)
         mock_client.chat.completions.create.assert_called_once()
         assert result == FAKE_NARRATIVE
+
+    def test_no_choices_raises_value_error(self) -> None:
+        """Empty choices list from OpenAI should raise ValueError."""
+        mock_client = MagicMock()
+        mock_response = MagicMock()
+        mock_response.choices = []
+        mock_client.chat.completions.create.return_value = mock_response
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        with pytest.raises(ValueError):
+            generate_digest_narrative(mock_client, summaries)
+
+
+# ---------------------------------------------------------------------------
+# TestParseSummaryInfo — filesystem path (no commit SHA)
+# ---------------------------------------------------------------------------
+
+
+class TestParseSummaryInfo:
+    def test_reads_from_filesystem(self, tmp_path: Path) -> None:
+        path = "docs/content/Go-SIG/2026-03-05/summary.md"
+        summary_file = tmp_path / path
+        summary_file.parent.mkdir(parents=True, exist_ok=True)
+        summary_file.write_text("Summary content", encoding="utf-8")
+
+        with patch("send_digest.ROOT", tmp_path):
+            result = parse_summary_info(path)
+
+        assert result["slug"] == "Go-SIG"
+        assert result["date"] == "2026-03-05"
+        assert result["content"] == "Summary content"
+
+    def test_returns_empty_content_when_file_missing(self, tmp_path: Path) -> None:
+        path = "docs/content/Go-SIG/2026-03-05/summary.md"
+        with patch("send_digest.ROOT", tmp_path):
+            result = parse_summary_info(path)
+
+        assert result["slug"] == "Go-SIG"
+        assert result["date"] == "2026-03-05"
+        assert result["content"] == ""
+
+
+# ---------------------------------------------------------------------------
+# TestMakeExcerpt
+# ---------------------------------------------------------------------------
+
+
+class TestMakeExcerpt:
+    def test_returns_first_non_heading_line(self) -> None:
+        content = "## Key Topics\n- Item 1\n## Action Items\n- Item 2\n"
+        assert _make_excerpt(content) == "- Item 1"
+
+    def test_skips_heading_lines(self) -> None:
+        content = "## Heading\n\nSome text here.\n"
+        assert _make_excerpt(content) == "Some text here."
+
+    def test_all_headings_falls_back_to_raw(self) -> None:
+        content = "## Only Headings\n## More Headings\n"
+        result = _make_excerpt(content)
+        assert "Heading" in result
+
+    def test_truncates_long_line(self) -> None:
+        content = "Regular text: " + "x" * 400 + "\n"
+        assert len(_make_excerpt(content)) <= 300
+
+    def test_empty_content(self) -> None:
+        assert _make_excerpt("") == ""
+
+
+# ---------------------------------------------------------------------------
+# TestBuildDeepLink
+# ---------------------------------------------------------------------------
+
+
+class TestBuildDeepLink:
+    def test_format(self) -> None:
+        url = build_deep_link("Go-SIG", "2026-03-05")
+        assert "sig=Go-SIG" in url
+        assert "date=2026-03-05" in url
+
+    def test_starts_with_site_base(self) -> None:
+        from send_digest import SITE_BASE_URL
+        url = build_deep_link("Java-SIG", "2026-02-10")
+        assert url.startswith(SITE_BASE_URL)
+
+
+# ---------------------------------------------------------------------------
+# TestLoadLogob64
+# ---------------------------------------------------------------------------
+
+
+class TestLoadLogob64:
+    def test_returns_data_uri(self, tmp_path: Path) -> None:
+        import base64 as _b64
+        svg = b"<svg></svg>"
+        (tmp_path / "docs").mkdir()
+        (tmp_path / "docs" / "OTelMinutes-logo.svg").write_bytes(svg)
+        with patch("send_digest.ROOT", tmp_path):
+            result = _load_logo_b64()
+        assert result.startswith("data:image/svg+xml;base64,")
+        assert _b64.b64encode(svg).decode("ascii") in result
+
+
+# ---------------------------------------------------------------------------
+# TestSendEmail
+# ---------------------------------------------------------------------------
+
+
+class TestSendEmail:
+    def test_200_status_succeeds(self) -> None:
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        with patch("send_digest.requests.post", return_value=mock_resp):
+            send_email("key", ["u@example.com"],
+                       {"subject": "S", "html": "<p>test</p>", "text": "test"})
+
+    def test_201_status_succeeds(self) -> None:
+        mock_resp = MagicMock()
+        mock_resp.status_code = 201
+        with patch("send_digest.requests.post", return_value=mock_resp):
+            send_email("key", ["u@example.com"],
+                       {"subject": "S", "html": "<p>test</p>", "text": "test"})
+
+    def test_error_status_exits(self) -> None:
+        mock_resp = MagicMock()
+        mock_resp.status_code = 400
+        mock_resp.text = "Bad Request"
+        with patch("send_digest.requests.post", return_value=mock_resp):
+            with pytest.raises(SystemExit):
+                send_email("key", ["u@example.com"],
+                           {"subject": "S", "html": "<p>test</p>", "text": "test"})
+
+
+# ---------------------------------------------------------------------------
+# TestMain — additional cases
+# ---------------------------------------------------------------------------
+
+
+class TestMainExtra:
+    def test_missing_openai_api_key(self) -> None:
+        """OPENAI_API_KEY not set → exits with error."""
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+        env = {
+            "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
+            "SUMMARIZE_COMMIT_FOUND": "true",
+            "DIGEST_TO": "user@example.com",
+            "OPENAI_API_KEY": "",
+            "RESEND_API_KEY": "key",
+        }
+        with (
+            patch("send_digest.subprocess.run",
+                  return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.os.environ.get",
+                  side_effect=lambda k, d="": env.get(k, d)),
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
+        assert exc_info.value.code == 1
