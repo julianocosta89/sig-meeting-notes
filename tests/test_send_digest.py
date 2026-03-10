@@ -19,13 +19,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
     _load_logo_b64,
-    _make_excerpt,
     build_deep_link,
     build_email,
     generate_digest_narrative,
     get_new_summary_paths,
     main,
     parse_summary_info,
+    parse_summary_sections,
     send_email,
 )
 
@@ -395,6 +395,26 @@ class TestBuildEmail:
         assert "?sig=Go-SIG&date=2026-03-05" in email["text"]
         assert "?sig=Collector-SIG&date=2026-03-06" in email["text"]
 
+    def test_highlights_present_in_meetings(self) -> None:
+        """Each meeting dict from build_email should have a populated highlights list."""
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        captured: list[dict] = []
+
+        def _capture_render(template_vars: dict) -> str:
+            captured.append(template_vars)
+            return "<html>mock</html>"
+
+        with (
+            patch("send_digest._render_html", side_effect=_capture_render),
+            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
+        ):
+            build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 1)
+
+        meetings = captured[0]["meetings"]  # type: ignore[index]
+        assert len(meetings) == 1
+        assert "highlights" in meetings[0]
+        assert meetings[0]["highlights"] == ["Discussed collector stability"]
+
 
 class TestGenerateDigestNarrative:
     """Tests for OpenAI narrative generation."""
@@ -416,6 +436,28 @@ class TestGenerateDigestNarrative:
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
         with pytest.raises(ValueError):
             generate_digest_narrative(mock_client, summaries)
+
+    def test_single_meeting_uses_summary_prompt(self) -> None:
+        """One-meeting input should not ask for cross-SIG correlations."""
+        mock_client = _mock_openai_client()
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        generate_digest_narrative(mock_client, summaries)
+        call_kwargs = mock_client.chat.completions.create.call_args[1]
+        user_msg = next(m["content"] for m in call_kwargs["messages"] if m["role"] == "user")
+        assert "cross-cutting" not in user_msg
+        assert "correlations" not in user_msg
+
+    def test_multi_meeting_uses_cross_sig_prompt(self) -> None:
+        """Multiple meetings should get the cross-SIG correlation prompt."""
+        mock_client = _mock_openai_client()
+        summaries = [
+            {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
+            {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
+        ]
+        generate_digest_narrative(mock_client, summaries)
+        call_kwargs = mock_client.chat.completions.create.call_args[1]
+        user_msg = next(m["content"] for m in call_kwargs["messages"] if m["role"] == "user")
+        assert "cross-cutting" in user_msg
 
 
 # ---------------------------------------------------------------------------
@@ -448,30 +490,53 @@ class TestParseSummaryInfo:
 
 
 # ---------------------------------------------------------------------------
-# TestMakeExcerpt
+# TestParseSummarySections
 # ---------------------------------------------------------------------------
 
 
-class TestMakeExcerpt:
-    def test_returns_first_non_heading_line(self) -> None:
-        content = "## Key Topics\n- Item 1\n## Action Items\n- Item 2\n"
-        assert _make_excerpt(content) == "- Item 1"
+class TestParseSummarySections:
+    def test_parses_key_topics_as_highlights(self) -> None:
+        content = "## Key Topics\n- Discussed collector stability\n- Reviewed PR #42\n"
+        result = parse_summary_sections(content)
+        assert result["highlights"] == ["Discussed collector stability", "Reviewed PR #42"]
 
-    def test_skips_heading_lines(self) -> None:
-        content = "## Heading\n\nSome text here.\n"
-        assert _make_excerpt(content) == "Some text here."
+    def test_strips_leading_dash_from_bullets(self) -> None:
+        content = "## Key Topics\n- Item with dash\n"
+        result = parse_summary_sections(content)
+        assert result["highlights"] == ["Item with dash"]
 
-    def test_all_headings_falls_back_to_raw(self) -> None:
-        content = "## Only Headings\n## More Headings\n"
-        result = _make_excerpt(content)
-        assert "Heading" in result
+    def test_parses_action_items(self) -> None:
+        content = "## Action Items\n- Follow up on PR #123\n- Update docs\n"
+        result = parse_summary_sections(content)
+        assert result["action_items"] == ["Follow up on PR #123", "Update docs"]
 
-    def test_truncates_long_line(self) -> None:
-        content = f"Regular text: {'x' * 400}\n"
-        assert len(_make_excerpt(content)) <= 300
+    def test_parses_participants(self) -> None:
+        content = "## Participants\nTyler, Damien\n"
+        result = parse_summary_sections(content)
+        assert result["participants"] == "Tyler, Damien"
 
-    def test_empty_content(self) -> None:
-        assert _make_excerpt("") == ""
+    def test_empty_content_returns_empty(self) -> None:
+        result = parse_summary_sections("")
+        assert result["highlights"] == []
+        assert result["action_items"] == []
+        assert result["participants"] == ""
+
+    def test_missing_section_returns_empty(self) -> None:
+        content = "## Key Topics\n- Only topics here\n"
+        result = parse_summary_sections(content)
+        assert result["action_items"] == []
+        assert result["participants"] == ""
+
+    def test_unknown_section_ignored(self) -> None:
+        content = "## Unknown Section\n- Should be ignored\n## Key Topics\n- Kept\n"
+        result = parse_summary_sections(content)
+        assert result["highlights"] == ["Kept"]
+
+    def test_full_summary(self) -> None:
+        result = parse_summary_sections(SAMPLE_SUMMARY)
+        assert result["highlights"] == ["Discussed collector stability"]
+        assert result["action_items"] == ["Follow up on PR #123"]
+        assert result["participants"] == "Tyler, Damien"
 
 
 # ---------------------------------------------------------------------------
