@@ -196,7 +196,6 @@ def _load_logo_b64() -> str:
     return f"data:image/svg+xml;base64,{encoded}"
 
 
-
 def _render_html(template_vars: dict) -> str:  # pragma: no cover
     """Load and render the Jinja2 HTML email template with autoescaping enabled."""
     from jinja2 import (  # noqa: PLC0415 — deferred to avoid import error without summarize group
