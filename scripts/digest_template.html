@@ -57,16 +57,23 @@
           </td>
         </tr>
 
-        <!-- AI narrative -->
+        <!-- AI narrative callout -->
         <tr>
-          <td style="padding: 16px 24px 20px;">
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">{{ narrative }}</p>
+          <td style="padding: 16px 24px 0;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="background-color: #fffbeb; border: 1px solid #f0d060; border-radius: 6px;">
+              <tr>
+                <td style="padding: 14px 16px;">
+                  <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #a07010; margin-bottom: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Today across OTel</div>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">{{ narrative }}</p>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
         <!-- Horizontal rule -->
         <tr>
-          <td style="padding: 0 24px;">
+          <td style="padding: 20px 24px 0;">
             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
               <tr>
                 <td style="border-top: 1px solid #d1d9e0; font-size: 1px; line-height: 1px;">&nbsp;</td>
@@ -86,8 +93,12 @@
                   <div style="font-size: 17px; font-weight: 700; color: #dc9e10; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 4px;">{{ meeting.slug }}</div>
                   <!-- Date -->
                   <div style="font-size: 13px; color: #59636e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 12px;">{{ meeting.date }}</div>
-                  <!-- Excerpt -->
-                  <div style="font-size: 14px; line-height: 1.5; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin-bottom: 16px;">{{ meeting.excerpt }}</div>
+                  <!-- Highlights -->
+                  {% if meeting.highlights %}
+                  <ul style="margin: 0 0 14px 0; padding-left: 18px; font-size: 13px; line-height: 1.6; color: #1f2328; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+                    {% for item in meeting.highlights %}<li style="margin-bottom: 3px;">{{ item }}</li>{% endfor %}
+                  </ul>
+                  {% endif %}
                   <!-- CTA button -->
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>

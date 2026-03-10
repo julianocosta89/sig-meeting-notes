@@ -103,9 +103,63 @@ def parse_summary_info(path: str, commit_sha: str = "") -> dict[str, str]:
     return {"slug": slug, "date": meeting_date, "content": content}
 
 
+def parse_summary_sections(content: str) -> dict:
+    """Parse a summary.md string into structured sections.
+
+    Returns a dict with keys:
+      - highlights: list[str] — bullets from ## Key Topics
+      - action_items: list[str] — bullets from ## Action Items
+      - participants: str — text from ## Participants
+    """
+    highlights: list[str] = []
+    action_items: list[str] = []
+    participants_lines: list[str] = []
+    current_section: str | None = None
+
+    for raw_line in content.splitlines():
+        line = raw_line.strip()
+        if line.startswith("## "):
+            heading = line[3:].strip().lower()
+            if "key topic" in heading:
+                current_section = "highlights"
+            elif "action item" in heading:
+                current_section = "action_items"
+            elif "participant" in heading:
+                current_section = "participants"
+            else:
+                current_section = None
+            continue
+        if not line or current_section is None:
+            continue
+        if current_section == "highlights":
+            highlights.append(line.lstrip("- ").strip() if line.startswith("- ") else line)
+        elif current_section == "action_items":
+            action_items.append(line.lstrip("- ").strip() if line.startswith("- ") else line)
+        elif current_section == "participants":
+            participants_lines.append(line)
+
+    return {
+        "highlights": highlights,
+        "action_items": action_items,
+        "participants": " ".join(participants_lines),
+    }
+
+
 def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -> str:
-    """Call OpenAI to produce a concise meta-summary narrative."""
+    """Call OpenAI to produce a concise cross-SIG narrative."""
     combined = "\n\n".join(f"### {s['slug']} ({s['date']})\n{s['content']}" for s in summaries)
+    if len(summaries) == 1:
+        user_prompt = (
+            "Write a concise 2–3 sentence summary of today's OpenTelemetry SIG meeting."
+            " Write plain prose with no markdown formatting.\n\n" + combined
+        )
+    else:
+        user_prompt = (
+            "Write a concise 2–4 sentence narrative connecting today's OpenTelemetry SIG"
+            " meetings. Identify cross-cutting themes, shared concerns, and correlations"
+            " across different SIGs — do not simply list each meeting. Write plain prose"
+            " with no markdown formatting.\n\n" + combined
+        )
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -118,10 +172,7 @@ def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -
             },
             {
                 "role": "user",
-                "content": (
-                    "Write a concise digest of today's OpenTelemetry SIG meetings "
-                    f"based on these summaries:\n\n{combined}"
-                ),
+                "content": user_prompt,
             },
         ],
         temperature=0.3,
@@ -145,16 +196,6 @@ def _load_logo_b64() -> str:
     return f"data:image/svg+xml;base64,{encoded}"
 
 
-def _make_excerpt(content: str) -> str:
-    """Extract a plain-text excerpt from summary content."""
-    lines = content.strip().splitlines()
-    # Skip markdown headings, take the first real content
-    for line in lines:
-        stripped = line.strip()
-        if stripped and not stripped.startswith("##"):
-            return stripped[:300]
-    return content[:300].strip()
-
 
 def _render_html(template_vars: dict) -> str:  # pragma: no cover
     """Load and render the Jinja2 HTML email template with autoescaping enabled."""
@@ -175,17 +216,18 @@ def build_email(
     """Build subject, HTML body, and plain-text body for the digest email."""
     subject = f"OTel SIG Daily Digest — {today} ({count} meetings)"
 
-    # Build meetings list with excerpts and links
+    # Build meetings list with highlights and links
     meetings = []
     for s in summaries:
         link = build_deep_link(s["slug"], s["date"])
+        sections = parse_summary_sections(s["content"])
         meetings.append(
             {
                 "slug": s["slug"],
                 "date": s["date"],
                 "content": s["content"],
                 "link": link,
-                "excerpt": _make_excerpt(s["content"]),
+                "highlights": sections["highlights"],
             }
         )
 
