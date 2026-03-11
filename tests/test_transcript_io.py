@@ -41,10 +41,12 @@ class TestExtractTranscriptBody:
             f"SIG: Go SIG\nDate: 2026-01-01\nDuration: 30 minutes\n{SEPARATOR}\n\n"
             "## Zoom Recording Transcript\n\n"
             "**Alice** 00:01 Hello\n"
-            "**Bob** 00:05 Thanks\n"
+            "## Meeting Notes\n\n"
+            "Some notes\n"
         )
         body = extract_transcript_body(text)
         assert "**Alice** 00:01 Hello" in body
+        assert "Some notes" not in body
         assert "SIG: Go SIG" not in body
 
     def test_falls_back_to_all_content_after_separator(self):
