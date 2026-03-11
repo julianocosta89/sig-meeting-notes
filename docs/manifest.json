@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-10T06:49:06Z",
+  "generated_at": "2026-03-11T06:52:56Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-03-09",
+  "max_date": "2026-03-10",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -84,6 +84,12 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1W72oElAJuYx3efM9wkH5l1iksdfwmTSkVl-H7KHTLnY",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-android",
       "meetings": [
+        {
+          "date": "2026-03-10",
+          "duration_minutes": 58,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
         {
           "date": "2026-03-03",
           "duration_minutes": 58,
@@ -295,7 +301,7 @@
           "has_meeting_notes": true
         }
       ],
-      "meeting_count": 35
+      "meeting_count": 36
     },
     {
       "slug": "Arrow-SIG",
@@ -303,6 +309,12 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1z8_Ra-ALDaYNa88mMj1gOZtOpLZLRk0-dZEmDjPmcUs",
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
+        {
+          "date": "2026-03-10",
+          "duration_minutes": 95,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
         {
           "date": "2026-03-05",
           "duration_minutes": 60,
@@ -544,7 +556,7 @@
           "has_meeting_notes": true
         }
       ],
-      "meeting_count": 40
+      "meeting_count": 41
     },
     {
       "slug": "Browser-SIG",
@@ -937,6 +949,12 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 15,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
+        {
           "date": "2026-03-03",
           "duration_minutes": 8,
           "has_summary": true,
@@ -1075,7 +1093,7 @@
           "has_meeting_notes": true
         }
       ],
-      "meeting_count": 23
+      "meeting_count": 24
     },
     {
       "slug": "Client-Instrumentation-SIG",
@@ -2293,6 +2311,12 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 15,
+          "has_summary": false,
+          "has_meeting_notes": false
+        },
+        {
           "date": "2026-03-03",
           "duration_minutes": 56,
           "has_summary": true,
@@ -2455,7 +2479,7 @@
           "has_meeting_notes": false
         }
       ],
-      "meeting_count": 27
+      "meeting_count": 28
     },
     {
       "slug": "FAAS-WG",
@@ -4090,6 +4114,12 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 61,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
+        {
           "date": "2026-03-09",
           "duration_minutes": 24,
           "has_summary": true,
@@ -4354,7 +4384,7 @@
           "has_meeting_notes": true
         }
       ],
-      "meeting_count": 44
+      "meeting_count": 45
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -4582,6 +4612,12 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 22,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
+        {
           "date": "2026-03-03",
           "duration_minutes": 54,
           "has_summary": true,
@@ -4780,7 +4816,7 @@
           "has_meeting_notes": false
         }
       ],
-      "meeting_count": 33
+      "meeting_count": 34
     },
     {
       "slug": "Network-SIG",
@@ -7036,6 +7072,12 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 64,
+          "has_summary": false,
+          "has_meeting_notes": true
+        },
+        {
           "date": "2026-03-03",
           "duration_minutes": 62,
           "has_summary": true,
@@ -7240,7 +7282,7 @@
           "has_meeting_notes": false
         }
       ],
-      "meeting_count": 34
+      "meeting_count": 35
     },
     {
       "slug": "Swift-SIG",
@@ -8029,6 +8071,12 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-03-10",
+          "duration_minutes": 14,
+          "has_summary": false,
+          "has_meeting_notes": false
+        },
+        {
           "date": "2026-01-13",
           "duration_minutes": 19,
           "has_summary": true,
@@ -8083,7 +8131,7 @@
           "has_meeting_notes": false
         }
       ],
-      "meeting_count": 9
+      "meeting_count": 10
     },
     {
       "slug": "ja-JA-Localization-SIG-Communications",
