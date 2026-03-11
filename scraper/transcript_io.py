@@ -21,15 +21,14 @@ def count_transcript_lines(body: str) -> int:
     return sum(1 for line in body.splitlines() if line.strip() and not line.strip().startswith("#"))
 
 
-def read_transcript_body(path: Path) -> str:
-    """Read a transcript file and return only the Zoom Recording Transcript section.
+def extract_transcript_body(text: str) -> str:
+    """Extract the Zoom Recording Transcript section from transcript file text.
 
     Finds the '## Zoom Recording Transcript' heading and returns the content
     that follows, keeping any Meeting Notes out of the body.
 
     Falls back to all content after the separator for legacy plain-text files.
     """
-    text = path.read_text(encoding="utf-8")
     sep_idx = text.find(SEPARATOR)
     if sep_idx == -1:
         return ""
@@ -40,6 +39,11 @@ def read_transcript_body(path: Path) -> str:
     else:
         body = body.lstrip("\n")
     return body
+
+
+def read_transcript_body(path: Path) -> str:
+    """Read a transcript file and return only the Zoom Recording Transcript section."""
+    return extract_transcript_body(path.read_text(encoding="utf-8"))
 
 
 _DURATION_RE = re.compile(r"(\d+)\s+minutes?")

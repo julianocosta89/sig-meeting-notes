@@ -22,7 +22,12 @@ from typing import TYPE_CHECKING
 
 import requests
 
-from scraper.transcript_io import MIN_TRANSCRIPT_LINES, count_transcript_lines, read_transcript_body
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    count_transcript_lines,
+    extract_transcript_body,
+    read_transcript_body,
+)
 
 if TYPE_CHECKING:
     from openai import OpenAI
@@ -275,12 +280,25 @@ def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> No
         sys.exit(1)
 
 
-def _is_trivial_transcript(summary_path: str) -> bool:
-    """Check if the transcript for a summary path has too few lines."""
-    transcript_path = ROOT / Path(summary_path).parent / "transcript.md"
-    if not transcript_path.exists():
-        return False
-    body = read_transcript_body(transcript_path)
+def _is_trivial_transcript(summary_path: str, commit_sha: str = "") -> bool:
+    """Check if the transcript for a summary path has too few lines.
+
+    When commit_sha is provided, reads the transcript from that commit snapshot
+    so the trivial check is evaluated against the same revision as the summaries
+    being digested (consistent with parse_summary_info).
+    """
+    transcript_git_path = str(Path(summary_path).parent / "transcript.md")
+    if commit_sha:
+        try:
+            result = _run_git(["show", f"{commit_sha}:{transcript_git_path}"])
+        except SystemExit:
+            return False
+        body = extract_transcript_body(result.stdout)
+    else:
+        transcript_path = ROOT / transcript_git_path
+        if not transcript_path.exists():
+            return False
+        body = read_transcript_body(transcript_path)
     return count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
 
 
@@ -322,7 +340,7 @@ def main() -> None:
     commit_sha = os.environ.get("SUMMARIZE_COMMIT_SHA", "").strip()
 
     # Filter out trivial meetings before building summaries
-    non_trivial_paths = [p for p in summary_paths if not _is_trivial_transcript(p)]
+    non_trivial_paths = [p for p in summary_paths if not _is_trivial_transcript(p, commit_sha)]
     if not non_trivial_paths:
         print("No non-trivial summaries, skipping.")
         sys.exit(0)

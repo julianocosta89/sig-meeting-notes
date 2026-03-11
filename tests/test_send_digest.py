@@ -699,3 +699,41 @@ class TestIsTrivialTranscript:
         """Missing transcript file should not be considered trivial."""
         with patch("send_digest.ROOT", tmp_path):
             assert _is_trivial_transcript("docs/content/Go-SIG/2026-03-05/summary.md") is False
+
+    def test_trivial_transcript_with_commit_sha(self) -> None:
+        """With commit_sha, reads transcript via git show at that commit snapshot."""
+        from scraper.transcript_io import SEPARATOR
+
+        trivial_text = (
+            f"SIG: Go SIG\nDate: 2026-03-05\nDuration: 5 minutes\n{SEPARATOR}\n\nSpeaker: hi\n"
+        )
+        with patch("send_digest._run_git") as mock_git:
+            mock_git.return_value = MagicMock(stdout=trivial_text)
+            result = _is_trivial_transcript(
+                "docs/content/Go-SIG/2026-03-05/summary.md", commit_sha="abc123"
+            )
+        assert result is True
+        mock_git.assert_called_once_with(
+            ["show", "abc123:docs/content/Go-SIG/2026-03-05/transcript.md"]
+        )
+
+    def test_real_transcript_with_commit_sha(self) -> None:
+        """With commit_sha and enough lines, is not trivial."""
+        from scraper.transcript_io import SEPARATOR
+
+        lines = "\n".join(f"Speaker: line {i}" for i in range(10))
+        real_text = f"SIG: Go SIG\nDate: 2026-03-05\nDuration: 30 minutes\n{SEPARATOR}\n\n{lines}\n"
+        with patch("send_digest._run_git") as mock_git:
+            mock_git.return_value = MagicMock(stdout=real_text)
+            result = _is_trivial_transcript(
+                "docs/content/Go-SIG/2026-03-05/summary.md", commit_sha="abc123"
+            )
+        assert result is False
+
+    def test_git_show_failure_not_trivial(self) -> None:
+        """If git show fails (e.g. file not in that commit), treat as not trivial."""
+        with patch("send_digest._run_git", side_effect=SystemExit(1)):
+            result = _is_trivial_transcript(
+                "docs/content/Go-SIG/2026-03-05/summary.md", commit_sha="abc123"
+            )
+        assert result is False
