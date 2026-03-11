@@ -619,6 +619,7 @@ async function onDateClick(date, options) {
         trivialEl.appendChild(p);
         bodyEl.replaceWith(trivialEl);
       }
+      resetMatchNav();
       return;
     }
 
