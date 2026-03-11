@@ -1,0 +1,57 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Grafana)
+- Nagkumar Arkalgud (Microsoft)
+- Aaron Abbott (Google)
+- Josh Winerman (Cisco/Splunk)
+- Tao Chen (Microsoft)
+- Keith Decker (Cisco/Splunk)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Sergey Sergeev (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- [Ankit/Trask, 10 min] How to document severity (and error message) on [GenAI Evaluation result event](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/gen-ai-events.md#event-gen_aievaluationresult)
+  - [Severity considerations](https://github.com/open-telemetry/semantic-conventions/pull/3311)
+  - [Using body for error message if any](https://github.com/open-telemetry/semantic-conventions/pull/3343)
+  - Two parts:
+    - Result of eval, separate sampling, separate consumer (maybe)
+      - Can do consistent sampling based on data being evaluated
+    - Process of eval: spans, errors
+  - E.g. span/trace is enqueued for eval
+    - App or lib can produce eval result
+  - Eval event needs love (for agents, maybe decide on success)
+- [Ankit/Trask, 5 min] [Invoke agent server span](https://github.com/open-telemetry/semantic-conventions/pull/3473)
+  - Let's not extend any client groups
+  - Why server span is needed?
+    - When agent runs on the server, client does not know what happened there
+    - Servers running agents would also record individual llms and tool calls
+  - Tokens
+    - Internal Invoke_agent  (aggregated usage?)
+      - Internal Invoke_agent (aggregated usage?)
+        - Llm (usage)
+    - Client invoke_Agent (aggregated usage from server?)
+      - Server invoke_Agent (aggregated usage?)
+        - Llm (usage)
+    - How to query total usage without double-counting:
+      - Opt1: filter by llm spans only (capture aggregated on agents)
+      - Opt2: don't capture on agents when llm calls are reported
+      - Opt3: different attribute names for llm and aggregated
+        - Pydantic AI does it
+      - GCP UI folks can have comments
+- [Nagkumar, 2 min] Memory spec - Approvals/reviews needed [https://github.com/open-telemetry/semantic-conventions/pull/3250](https://github.com/open-telemetry/semantic-conventions/pull/3250)
+- [Aaron, 5 min] MCP ecosystem updates
+  - FYI: FastMCP (python) has native OTel instrumentation following MCP semconv [https://gofastmcp.com/servers/telemetry](https://gofastmcp.com/servers/telemetry) 🎉
+  - Aaron is working on getting in the core MCP SDK too
+    - [https://github.com/modelcontextprotocol/python-sdk/pull/2132](https://github.com/modelcontextprotocol/python-sdk/pull/2132)
+  - MCP SEP merged and documents _meta based propagation now [https://modelcontextprotocol.io/community/seps/414-request-meta](https://modelcontextprotocol.io/community/seps/414-request-meta)
+  - Notifications semantics are a little fuzzy [https://github.com/open-telemetry/semantic-conventions/blob/v1.40.0/docs/gen-ai/mcp.md](https://github.com/open-telemetry/semantic-conventions/blob/v1.40.0/docs/gen-ai/mcp.md)
+    - Duration of JSON RPC notifications which don’t have [response](https://www.jsonrpc.org/specification#notification:~:text=Notifications%20are%20not%20confirmable%20by%20definition%2C%20since%20they%20do%20not%20have%20a%20Response%20object%20to%20be%20returned.%20As%20such%2C%20the%20Client%20would%20not%20be%20aware%20of%20any%20errors%20(like%20e.g.%20%22Invalid%20params%22%2C%22Internal%20error%22).)
+      - Python is fire-and-forget
+      - Server span on the client
+      - AI: Let's document it better
+- [Aaron, 2 min] What’s the status of [opentelemetry-instrumentation-langchain in contrib](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain)
+  - Doesn’t look like we got shared ownership [on PyPI yet](https://pypi.org/project/opentelemetry-instrumentation-langchain/)
