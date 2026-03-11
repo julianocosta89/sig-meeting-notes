@@ -45,6 +45,26 @@ class TestFindTrivialSummaries:
         affected = find_trivial_summaries(tmp_path)
         assert affected == []
 
+    def test_trivial_transcript_with_appended_section_detected(self, tmp_path: Path) -> None:
+        """Trivial transcript followed by a Meeting Notes section should still be detected."""
+        meeting_dir = tmp_path / "Go-SIG" / "2026-03-01"
+        meeting_dir.mkdir(parents=True)
+        # 1 transcript line + appended ## Meeting Notes with several lines
+        text = (
+            f"SIG: Go SIG\nDate: 2026-03-01\nDuration: 5 minutes\n{SEPARATOR}\n\n"
+            "## Zoom Recording Transcript\n\n"
+            "**Alice** 00:01 Okay\n"
+            "## Meeting Notes\n\n"
+            "- Attendee 1\n- Attendee 2\n- Attendee 3\n"
+        )
+        (meeting_dir / "transcript.md").write_text(text, encoding="utf-8")
+        summary = meeting_dir / "summary.md"
+        summary.write_text("## Key Topics\n- Hallucinated\n", encoding="utf-8")
+
+        affected = find_trivial_summaries(tmp_path)
+        assert len(affected) == 1
+        assert affected[0] == summary
+
 
 class TestDryRunVsExecute:
     def test_dry_run_does_not_delete(self, tmp_path: Path) -> None:

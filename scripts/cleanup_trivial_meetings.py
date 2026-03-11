@@ -11,19 +11,14 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from scraper.transcript_io import MIN_TRANSCRIPT_LINES, SEPARATOR, count_transcript_lines
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    count_transcript_lines,
+    read_transcript_body,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_CONTENT_DIR = ROOT / "docs" / "content"
-
-
-def read_transcript_body(path: Path) -> str:
-    """Read a transcript and return content after the separator."""
-    text = path.read_text(encoding="utf-8")
-    sep_idx = text.find(SEPARATOR)
-    if sep_idx == -1:
-        return ""
-    return text[sep_idx + len(SEPARATOR) :].lstrip("\n")
 
 
 def find_trivial_summaries(content_dir: Path) -> list[Path]:
