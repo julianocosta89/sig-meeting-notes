@@ -30,7 +30,7 @@ from send_digest import (  # noqa: E402
     send_email,
 )
 
-FAKE_LOGO_B64 = "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4="
+FAKE_LOGO_B64 = "data:image/png;base64,iVBORw0KGgo="
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -575,13 +575,13 @@ class TestLoadLogob64:
     def test_returns_data_uri(self, tmp_path: Path) -> None:
         import base64 as _b64
 
-        svg = b"<svg></svg>"
+        png = b"\x89PNG\r\n\x1a\n"
         (tmp_path / "docs").mkdir()
-        (tmp_path / "docs" / "OTelMinutes-logo.svg").write_bytes(svg)
+        (tmp_path / "docs" / "OTelMinutes-logo.png").write_bytes(png)
         with patch("send_digest.ROOT", tmp_path):
             result = _load_logo_b64()
-        assert result.startswith("data:image/svg+xml;base64,")
-        assert _b64.b64encode(svg).decode("ascii") in result
+        assert result.startswith("data:image/png;base64,")
+        assert _b64.b64encode(png).decode("ascii") in result
 
 
 # ---------------------------------------------------------------------------
