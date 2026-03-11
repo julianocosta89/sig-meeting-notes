@@ -11,15 +11,19 @@ from __future__ import annotations
 
 import argparse
 import os
-import re
 import time
 from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from scraper.transcript_io import SEPARATOR, parse_header
-
-_TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    count_transcript_lines,
+    parse_header,
+)
+from scraper.transcript_io import (
+    read_transcript_body as _read_transcript_body,
+)
 
 if TYPE_CHECKING:
     from openai import OpenAI
@@ -34,24 +38,10 @@ _API_RATE_LIMIT_S = 1
 def read_transcript_body(path: Path) -> str:
     """Read a transcript and return only the Zoom Recording Transcript section.
 
-    Finds the '## Zoom Recording Transcript' heading and returns the content
-    that follows, keeping any Meeting Notes out of the AI summary context.
-
-    Falls back to all content after the separator for legacy plain-text files.
-    Truncates to MAX_TRANSCRIPT_CHARS to stay within token limits.
+    Delegates to scraper.transcript_io.read_transcript_body, then truncates
+    to MAX_TRANSCRIPT_CHARS to stay within OpenAI token limits.
     """
-    text = path.read_text(encoding="utf-8")
-    sep_idx = text.find(SEPARATOR)
-    if sep_idx == -1:
-        return ""
-    body = text[sep_idx + len(SEPARATOR) :]
-
-    m = _TRANSCRIPT_SECTION_RE.search(body)
-    if m:
-        body = body[m.end() :].lstrip("\n")
-    else:
-        body = body.lstrip("\n")
-
+    body = _read_transcript_body(path)
     if len(body) > MAX_TRANSCRIPT_CHARS:
         body = body[:MAX_TRANSCRIPT_CHARS]
     return body
@@ -132,6 +122,12 @@ def process_transcripts(
         body = read_transcript_body(txt_path)
         if not body.strip():
             print(f"  WARNING: skipping {txt_path} (empty transcript body)")
+            continue
+
+        line_count = count_transcript_lines(body)
+        if line_count < MIN_TRANSCRIPT_LINES:
+            print(f"  WARNING: skipping {txt_path} (trivial transcript: {line_count} lines)")
+            skipped += 1
             continue
 
         print(f"  Generating summary for {slug}/{date_str}...")
