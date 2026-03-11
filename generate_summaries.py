@@ -17,7 +17,12 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from scraper.transcript_io import MIN_TRANSCRIPT_LINES, SEPARATOR, count_transcript_lines, parse_header
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    SEPARATOR,
+    count_transcript_lines,
+    parse_header,
+)
 
 _TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
 

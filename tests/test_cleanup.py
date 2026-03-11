@@ -5,7 +5,6 @@ from __future__ import annotations
 from pathlib import Path
 
 from scraper.transcript_io import MIN_TRANSCRIPT_LINES, SEPARATOR
-
 from scripts.cleanup_trivial_meetings import find_trivial_summaries
 
 
