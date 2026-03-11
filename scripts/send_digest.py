@@ -22,7 +22,7 @@ from typing import TYPE_CHECKING
 
 import requests
 
-from scraper.transcript_io import MIN_TRANSCRIPT_LINES, count_transcript_lines
+from scraper.transcript_io import MIN_TRANSCRIPT_LINES, count_transcript_lines, read_transcript_body
 
 if TYPE_CHECKING:
     from openai import OpenAI
@@ -280,8 +280,6 @@ def _is_trivial_transcript(summary_path: str) -> bool:
     transcript_path = ROOT / Path(summary_path).parent / "transcript.md"
     if not transcript_path.exists():
         return False
-    from generate_summaries import read_transcript_body  # noqa: PLC0415
-
     body = read_transcript_body(transcript_path)
     return count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
 

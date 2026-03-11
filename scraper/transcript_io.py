@@ -13,10 +13,33 @@ SEPARATOR = "=" * 60
 
 MIN_TRANSCRIPT_LINES = 3  # non-blank, non-heading lines required for a real meeting
 
+_TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
+
 
 def count_transcript_lines(body: str) -> int:
     """Count non-blank, non-Markdown-heading lines in a transcript body."""
     return sum(1 for line in body.splitlines() if line.strip() and not line.strip().startswith("#"))
+
+
+def read_transcript_body(path: Path) -> str:
+    """Read a transcript file and return only the Zoom Recording Transcript section.
+
+    Finds the '## Zoom Recording Transcript' heading and returns the content
+    that follows, keeping any Meeting Notes out of the body.
+
+    Falls back to all content after the separator for legacy plain-text files.
+    """
+    text = path.read_text(encoding="utf-8")
+    sep_idx = text.find(SEPARATOR)
+    if sep_idx == -1:
+        return ""
+    body = text[sep_idx + len(SEPARATOR) :]
+    m = _TRANSCRIPT_SECTION_RE.search(body)
+    if m:
+        body = body[m.end() :].lstrip("\n")
+    else:
+        body = body.lstrip("\n")
+    return body
 
 
 _DURATION_RE = re.compile(r"(\d+)\s+minutes?")

@@ -23,10 +23,10 @@ from pathlib import Path
 
 from scraper.transcript_io import (
     MIN_TRANSCRIPT_LINES,
-    SEPARATOR,
     count_transcript_lines,
     parse_header,
     parse_reference,
+    read_transcript_body,
 )
 
 ROOT = Path(__file__).parent
@@ -67,10 +67,7 @@ def build_manifest() -> dict:
 
         has_meeting_notes = (md_path.parent / "meeting-notes.md").exists()
 
-        # Read transcript body (content after the separator) to check triviality
-        text = md_path.read_text(encoding="utf-8")
-        sep_idx = text.find(SEPARATOR)
-        body = text[sep_idx + len(SEPARATOR) :] if sep_idx != -1 else ""
+        body = read_transcript_body(md_path)
         is_trivial = count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
 
         meeting_entry = {
