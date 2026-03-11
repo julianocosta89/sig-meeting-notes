@@ -11,6 +11,16 @@ from pathlib import Path
 
 SEPARATOR = "=" * 60
 
+MIN_TRANSCRIPT_LINES = 3  # non-blank, non-heading lines required for a real meeting
+
+
+def count_transcript_lines(body: str) -> int:
+    """Count non-blank, non-Markdown-heading lines in a transcript body."""
+    return sum(
+        1 for line in body.splitlines()
+        if line.strip() and not line.strip().startswith("#")
+    )
+
 _DURATION_RE = re.compile(r"(\d+)\s+minutes?")
 
 

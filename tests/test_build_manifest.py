@@ -51,6 +51,18 @@ Source URL: https://zoom.us/rec/share/ghi789
 Tyler 02:00 We renamed the SIG.
 """
 
+SAMPLE_TRANSCRIPT_TRIVIAL = """\
+SIG: Go SIG
+Date: 2026-02-20
+Duration: 2 minutes
+Source URL: https://zoom.us/rec/share/trivial123
+============================================================
+
+## Zoom Recording Transcript
+
+**Tyler** 00:01 Hello?
+"""
+
 SAMPLE_METADATA = """\
 SIG: Go SIG
 Meeting Notes: https://docs.google.com/document/d/go-doc/edit
@@ -278,6 +290,42 @@ class TestBuildManifest:
         with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
             manifest = build_manifest()
         assert manifest["sigs"][0]["name"] == "Go Instrumentation SIG"
+
+    def test_trivial_transcript_flagged(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-20.md", SAMPLE_TRANSCRIPT_TRIVIAL)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        meeting = manifest["sigs"][0]["meetings"][0]
+        assert meeting["trivial"] is True
+
+    def test_real_transcript_not_trivial(self, tmp_path: Path) -> None:
+        real_transcript = """\
+SIG: Go SIG
+Date: 2026-02-05
+Duration: 33 minutes
+Source URL: https://zoom.us/rec/share/abc123
+============================================================
+
+## Zoom Recording Transcript
+
+**Tyler** 02:14 Hey, Damien.
+**Damien Mathieu** 02:19 Hey!
+**Tyler** 02:22 Let's get started with the agenda.
+**Damien Mathieu** 02:30 Sounds good to me.
+"""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", real_transcript)
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        meeting = manifest["sigs"][0]["meetings"][0]
+        assert meeting["trivial"] is False
 
     def test_manifest_json_serializable(self, tmp_path: Path) -> None:
         docs = tmp_path / "docs"

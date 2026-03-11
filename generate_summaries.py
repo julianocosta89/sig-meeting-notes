@@ -17,7 +17,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from scraper.transcript_io import SEPARATOR, parse_header
+from scraper.transcript_io import MIN_TRANSCRIPT_LINES, SEPARATOR, count_transcript_lines, parse_header
 
 _TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
 
@@ -132,6 +132,12 @@ def process_transcripts(
         body = read_transcript_body(txt_path)
         if not body.strip():
             print(f"  WARNING: skipping {txt_path} (empty transcript body)")
+            continue
+
+        line_count = count_transcript_lines(body)
+        if line_count < MIN_TRANSCRIPT_LINES:
+            print(f"  WARNING: skipping {txt_path} (trivial transcript: {line_count} lines)")
+            skipped += 1
             continue
 
         print(f"  Generating summary for {slug}/{date_str}...")

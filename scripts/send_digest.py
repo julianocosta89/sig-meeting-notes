@@ -22,6 +22,8 @@ from typing import TYPE_CHECKING
 
 import requests
 
+from scraper.transcript_io import MIN_TRANSCRIPT_LINES, count_transcript_lines
+
 if TYPE_CHECKING:
     from openai import OpenAI
 
@@ -273,6 +275,17 @@ def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> No
         sys.exit(1)
 
 
+def _is_trivial_transcript(summary_path: str) -> bool:
+    """Check if the transcript for a summary path has too few lines."""
+    transcript_path = ROOT / Path(summary_path).parent / "transcript.md"
+    if not transcript_path.exists():
+        return False
+    from generate_summaries import read_transcript_body  # noqa: PLC0415
+
+    body = read_transcript_body(transcript_path)
+    return count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
+
+
 def _create_openai_client(api_key: str) -> OpenAI:
     """Create an OpenAI client instance (seam for testing)."""
     from openai import (
@@ -309,7 +322,14 @@ def main() -> None:
         sys.exit(1)
 
     commit_sha = os.environ.get("SUMMARIZE_COMMIT_SHA", "").strip()
-    summaries = [parse_summary_info(p, commit_sha) for p in summary_paths]
+
+    # Filter out trivial meetings before building summaries
+    non_trivial_paths = [p for p in summary_paths if not _is_trivial_transcript(p)]
+    if not non_trivial_paths:
+        print("No non-trivial summaries, skipping.")
+        sys.exit(0)
+
+    summaries = [parse_summary_info(p, commit_sha) for p in non_trivial_paths]
 
     client = _create_openai_client(api_key)
     narrative = generate_digest_narrative(client, summaries)

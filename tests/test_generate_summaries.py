@@ -442,6 +442,101 @@ class TestProcessTranscriptsEdgeCases:
             generated, skipped = process_transcripts(mock_client, transcripts_dir)
         assert generated == 0
 
+    def test_skips_trivial_transcript_one_line(self, tmp_path: Path) -> None:
+        """A transcript with only 1 line should be skipped as trivial."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        one_line = (
+            "SIG: Go SIG\n"
+            "Date: 2026-02-05\n"
+            "Duration: 33 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
+            "============================================================\n\n"
+            "## Zoom Recording Transcript\n\n"
+            "**Tyler** 02:14 Hey, Damien.\n"
+        )
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", one_line)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
+        assert generated == 0
+        assert skipped == 1
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_skips_trivial_transcript_two_lines(self, tmp_path: Path) -> None:
+        """A transcript with MIN_TRANSCRIPT_LINES - 1 lines should be skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        two_lines = (
+            "SIG: Go SIG\n"
+            "Date: 2026-02-05\n"
+            "Duration: 33 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
+            "============================================================\n\n"
+            "## Zoom Recording Transcript\n\n"
+            "**Tyler** 02:14 Hey, Damien.\n"
+            "**Damien Mathieu** 02:19 Hey!\n"
+        )
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", two_lines)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
+        assert generated == 0
+        assert skipped == 1
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_generates_summary_at_min_lines(self, tmp_path: Path) -> None:
+        """A transcript with exactly MIN_TRANSCRIPT_LINES lines should be summarised."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        three_lines = (
+            "SIG: Go SIG\n"
+            "Date: 2026-02-05\n"
+            "Duration: 33 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
+            "============================================================\n\n"
+            "## Zoom Recording Transcript\n\n"
+            "**Tyler** 02:14 Hey, Damien.\n"
+            "**Damien Mathieu** 02:19 Hey!\n"
+            "**Tyler** 02:20 How's it going?\n"
+        )
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", three_lines)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
+        assert generated == 1
+        assert skipped == 0
+        mock_client.chat.completions.create.assert_called_once()
+
+    def test_skips_es_localization_trivial_body(self, tmp_path: Path) -> None:
+        """An es-Localization-style single-line transcript should be skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        es_body = (
+            "SIG: es-Localization\n"
+            "Date: 2026-02-05\n"
+            "Duration: 5 minutes\n"
+            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
+            "============================================================\n\n"
+            "## Zoom Recording Transcript\n\n"
+            '**Fernando Grimaldo** 13:47 Okay\u2026\n'
+        )
+        _write_transcript(transcripts_dir, "es-Localization", "2026-02-05.md", es_body)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
+        assert generated == 0
+        assert skipped == 1
+        mock_client.chat.completions.create.assert_not_called()
+
     def test_skips_empty_transcript_body(self, tmp_path: Path) -> None:
         """Transcripts with no body after the separator should be skipped with a warning."""
         transcripts_dir = tmp_path / "docs" / "content"

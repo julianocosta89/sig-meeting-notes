@@ -18,6 +18,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
+    _is_trivial_transcript,
     _load_logo_b64,
     build_deep_link,
     build_email,
@@ -166,6 +167,7 @@ class TestMain:
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest.requests.post") as mock_post,
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -193,6 +195,7 @@ class TestMain:
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch.dict(
                 "os.environ",
                 {
@@ -215,6 +218,7 @@ class TestMain:
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch.dict("os.environ", env, clear=False),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -239,6 +243,7 @@ class TestMain:
                 ],
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -275,6 +280,7 @@ class TestMain:
                 ],
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -307,6 +313,7 @@ class TestMain:
                 ],
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -336,6 +343,7 @@ class TestMain:
                 ],
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
@@ -351,6 +359,7 @@ class TestMain:
         paths = ["docs/content/Go-SIG/2026-03-05/summary.md"]
         with (
             patch("send_digest.get_new_summary_paths", return_value=paths),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             patch(
                 "send_digest.subprocess.run",
                 side_effect=subprocess.CalledProcessError(
@@ -629,7 +638,64 @@ class TestMainExtra:
         with (
             patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
             pytest.raises(SystemExit) as exc_info,
         ):
             main()
         assert exc_info.value.code == 1
+
+    def test_all_trivial_summaries_skips(self) -> None:
+        """All summaries trivial → exits cleanly with no email sent."""
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+        env = _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        with (
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=True),
+            patch("send_digest.requests.post") as mock_post,
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
+        assert exc_info.value.code == 0
+        mock_post.assert_not_called()
+
+
+# ---------------------------------------------------------------------------
+# TestIsTrivialTranscript
+# ---------------------------------------------------------------------------
+
+
+class TestIsTrivialTranscript:
+    def test_trivial_transcript_detected(self, tmp_path: Path) -> None:
+        """Transcript with fewer than MIN_TRANSCRIPT_LINES should be trivial."""
+        from scraper.transcript_io import SEPARATOR
+
+        meeting_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
+        meeting_dir.mkdir(parents=True)
+        transcript = meeting_dir / "transcript.md"
+        transcript.write_text(
+            f"SIG: Go SIG\nDate: 2026-03-05\nDuration: 5 minutes\n{SEPARATOR}\n\nSpeaker: hi\n",
+            encoding="utf-8",
+        )
+        with patch("send_digest.ROOT", tmp_path):
+            assert _is_trivial_transcript("docs/content/Go-SIG/2026-03-05/summary.md") is True
+
+    def test_real_transcript_not_trivial(self, tmp_path: Path) -> None:
+        """Transcript with enough lines should not be trivial."""
+        from scraper.transcript_io import SEPARATOR
+
+        meeting_dir = tmp_path / "docs" / "content" / "Go-SIG" / "2026-03-05"
+        meeting_dir.mkdir(parents=True)
+        lines = "\n".join(f"Speaker: line {i}" for i in range(10))
+        transcript = meeting_dir / "transcript.md"
+        transcript.write_text(
+            f"SIG: Go SIG\nDate: 2026-03-05\nDuration: 30 minutes\n{SEPARATOR}\n\n{lines}\n",
+            encoding="utf-8",
+        )
+        with patch("send_digest.ROOT", tmp_path):
+            assert _is_trivial_transcript("docs/content/Go-SIG/2026-03-05/summary.md") is False
+
+    def test_missing_transcript_not_trivial(self, tmp_path: Path) -> None:
+        """Missing transcript file should not be considered trivial."""
+        with patch("send_digest.ROOT", tmp_path):
+            assert _is_trivial_transcript("docs/content/Go-SIG/2026-03-05/summary.md") is False

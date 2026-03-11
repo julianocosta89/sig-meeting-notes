@@ -473,6 +473,12 @@ function meetingHasSummary(slug, date) {
   return m?.has_summary ?? false;
 }
 
+function meetingIsTrivial(slug, date) {
+  const meetings = getSigMeetings(slug);
+  const m = meetings.find(m => m.date === date);
+  return m?.trivial ?? false;
+}
+
 // ── SIG selection ───────────────────────────────────────────
 
 async function onSIGChange(slug, options) {
@@ -597,6 +603,25 @@ async function onDateClick(date, options) {
     if (currentSig !== requestedSig || currentDate !== requestedDate) return;
 
     renderTranscript(text, getCurrentQuery());
+
+    // Trivial meetings: replace tab content with a placeholder
+    if (meetingIsTrivial(requestedSig, requestedDate)) {
+      const tabBar = transcriptPanel.querySelector('.tab-bar');
+      if (tabBar) tabBar.remove();
+      const bodyEl = transcriptPanel.querySelector('.transcript-body, .summary-body, .notes-body');
+      if (bodyEl) {
+        const trivialEl = document.createElement('div');
+        trivialEl.className = 'empty-state';
+        trivialEl.appendChild(createSVGIcon('calendar'));
+        const p = document.createElement('p');
+        p.className = 'state-heading';
+        p.textContent = 'No discussions took place during this meeting.';
+        trivialEl.appendChild(p);
+        bodyEl.replaceWith(trivialEl);
+      }
+      return;
+    }
+
     if (getCurrentQuery()) {
       await switchToView('transcript');
       updateMatchNav();
