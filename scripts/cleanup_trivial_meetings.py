@@ -58,5 +58,5 @@ def main() -> None:
     print(f"\n{'Deleted' if args.execute else 'Found'} {len(affected)} trivial summary file(s).")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

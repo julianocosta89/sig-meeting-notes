@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+from unittest.mock import patch
 
 from scraper.transcript_io import MIN_TRANSCRIPT_LINES, SEPARATOR
-from scripts.cleanup_trivial_meetings import find_trivial_summaries
+from scripts.cleanup_trivial_meetings import find_trivial_summaries, main
 
 
 def _write_transcript(base: Path, slug: str, date: str, line_count: int) -> Path:
@@ -64,6 +65,53 @@ class TestFindTrivialSummaries:
         affected = find_trivial_summaries(tmp_path)
         assert len(affected) == 1
         assert affected[0] == summary
+
+
+class TestMain:
+    def test_dry_run_prints_would_delete(self, tmp_path: Path, capsys) -> None:
+        meeting_dir = _write_transcript(tmp_path, "Go-SIG", "2026-03-01", 1)
+        summary = meeting_dir / "summary.md"
+        summary.write_text("## Key Topics\n- Nothing\n", encoding="utf-8")
+
+        with (
+            patch("scripts.cleanup_trivial_meetings.DOCS_CONTENT_DIR", tmp_path),
+            patch("scripts.cleanup_trivial_meetings.ROOT", tmp_path),
+            patch("sys.argv", ["cleanup_trivial_meetings.py"]),
+        ):
+            main()
+
+        out = capsys.readouterr().out
+        assert "Would delete" in out
+        assert summary.exists()
+
+    def test_execute_deletes_and_reports(self, tmp_path: Path, capsys) -> None:
+        meeting_dir = _write_transcript(tmp_path, "Go-SIG", "2026-03-01", 1)
+        summary = meeting_dir / "summary.md"
+        summary.write_text("## Key Topics\n- Nothing\n", encoding="utf-8")
+
+        with (
+            patch("scripts.cleanup_trivial_meetings.DOCS_CONTENT_DIR", tmp_path),
+            patch("scripts.cleanup_trivial_meetings.ROOT", tmp_path),
+            patch("sys.argv", ["cleanup_trivial_meetings.py", "--execute"]),
+        ):
+            main()
+
+        out = capsys.readouterr().out
+        assert "Deleted" in out
+        assert not summary.exists()
+
+    def test_no_affected_prints_message(self, tmp_path: Path, capsys) -> None:
+        meeting_dir = _write_transcript(tmp_path, "Go-SIG", "2026-03-01", MIN_TRANSCRIPT_LINES)
+        (meeting_dir / "summary.md").write_text("## Key Topics\n- Real\n", encoding="utf-8")
+
+        with (
+            patch("scripts.cleanup_trivial_meetings.DOCS_CONTENT_DIR", tmp_path),
+            patch("scripts.cleanup_trivial_meetings.ROOT", tmp_path),
+            patch("sys.argv", ["cleanup_trivial_meetings.py"]),
+        ):
+            main()
+
+        assert "No trivial meetings" in capsys.readouterr().out
 
 
 class TestDryRunVsExecute:

@@ -304,11 +304,9 @@ def _is_trivial_transcript(summary_path: str, commit_sha: str = "") -> bool:
 
 def _create_openai_client(api_key: str) -> OpenAI:
     """Create an OpenAI client instance (seam for testing)."""
-    from openai import (
-        OpenAI as _OpenAI,  # noqa: PLC0415 — deferred to avoid import error without summarize group
-    )
+    from openai import OpenAI as _OpenAI  # noqa: PLC0415  # pragma: no cover
 
-    return _OpenAI(api_key=api_key)
+    return _OpenAI(api_key=api_key)  # pragma: no cover
 
 
 def main() -> None:
