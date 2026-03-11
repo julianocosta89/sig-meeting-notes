@@ -11,6 +11,48 @@ from pathlib import Path
 
 SEPARATOR = "=" * 60
 
+MIN_TRANSCRIPT_LINES = 3  # non-blank, non-heading lines required for a real meeting
+
+_TRANSCRIPT_SECTION_RE = re.compile(r"^## Zoom Recording Transcript\s*$", re.MULTILINE)
+_NEXT_SECTION_RE = re.compile(r"^##\s", re.MULTILINE)
+
+
+def count_transcript_lines(body: str) -> int:
+    """Count non-blank, non-Markdown-heading lines in a transcript body."""
+    return sum(1 for line in body.splitlines() if line.strip() and not line.strip().startswith("#"))
+
+
+def extract_transcript_body(text: str) -> str:
+    """Extract the Zoom Recording Transcript section from transcript file text.
+
+    Finds the '## Zoom Recording Transcript' heading and returns only the
+    content up to the next '##' section (e.g. '## Meeting Notes'), so
+    appended sections are not counted as transcript lines.
+
+    Falls back to all content after the separator for legacy plain-text files
+    (which have no section headings).
+    """
+    sep_idx = text.find(SEPARATOR)
+    if sep_idx == -1:
+        return ""
+    body = text[sep_idx + len(SEPARATOR) :]
+    m = _TRANSCRIPT_SECTION_RE.search(body)
+    if m:
+        body = body[m.end() :].lstrip("\n")
+        # Stop at the next section heading (e.g. ## Meeting Notes)
+        next_sec = _NEXT_SECTION_RE.search(body)
+        if next_sec:
+            body = body[: next_sec.start()]
+    else:
+        body = body.lstrip("\n")
+    return body
+
+
+def read_transcript_body(path: Path) -> str:
+    """Read a transcript file and return only the Zoom Recording Transcript section."""
+    return extract_transcript_body(path.read_text(encoding="utf-8"))
+
+
 _DURATION_RE = re.compile(r"(\d+)\s+minutes?")
 
 

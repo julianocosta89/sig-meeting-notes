@@ -22,6 +22,13 @@ from typing import TYPE_CHECKING
 
 import requests
 
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    count_transcript_lines,
+    extract_transcript_body,
+    read_transcript_body,
+)
+
 if TYPE_CHECKING:
     from openai import OpenAI
 
@@ -273,13 +280,33 @@ def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> No
         sys.exit(1)
 
 
+def _is_trivial_transcript(summary_path: str, commit_sha: str = "") -> bool:
+    """Check if the transcript for a summary path has too few lines.
+
+    When commit_sha is provided, reads the transcript from that commit snapshot
+    so the trivial check is evaluated against the same revision as the summaries
+    being digested (consistent with parse_summary_info).
+    """
+    transcript_git_path = str(Path(summary_path).parent / "transcript.md")
+    if commit_sha:
+        try:
+            result = _run_git(["show", f"{commit_sha}:{transcript_git_path}"])
+        except SystemExit:
+            return False
+        body = extract_transcript_body(result.stdout)
+    else:
+        transcript_path = ROOT / transcript_git_path
+        if not transcript_path.exists():
+            return False
+        body = read_transcript_body(transcript_path)
+    return count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
+
+
 def _create_openai_client(api_key: str) -> OpenAI:
     """Create an OpenAI client instance (seam for testing)."""
-    from openai import (
-        OpenAI as _OpenAI,  # noqa: PLC0415 — deferred to avoid import error without summarize group
-    )
+    from openai import OpenAI as _OpenAI  # noqa: PLC0415  # pragma: no cover
 
-    return _OpenAI(api_key=api_key)
+    return _OpenAI(api_key=api_key)  # pragma: no cover
 
 
 def main() -> None:
@@ -309,7 +336,14 @@ def main() -> None:
         sys.exit(1)
 
     commit_sha = os.environ.get("SUMMARIZE_COMMIT_SHA", "").strip()
-    summaries = [parse_summary_info(p, commit_sha) for p in summary_paths]
+
+    # Filter out trivial meetings before building summaries
+    non_trivial_paths = [p for p in summary_paths if not _is_trivial_transcript(p, commit_sha)]
+    if not non_trivial_paths:
+        print("No non-trivial summaries, skipping.")
+        sys.exit(0)
+
+    summaries = [parse_summary_info(p, commit_sha) for p in non_trivial_paths]
 
     client = _create_openai_client(api_key)
     narrative = generate_digest_narrative(client, summaries)

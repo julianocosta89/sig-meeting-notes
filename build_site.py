@@ -21,7 +21,13 @@ import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 
-from scraper.transcript_io import parse_header, parse_reference
+from scraper.transcript_io import (
+    MIN_TRANSCRIPT_LINES,
+    count_transcript_lines,
+    parse_header,
+    parse_reference,
+    read_transcript_body,
+)
 
 ROOT = Path(__file__).parent
 TRANSCRIPTS_SRC = ROOT / "docs" / "content"
@@ -61,11 +67,15 @@ def build_manifest() -> dict:
 
         has_meeting_notes = (md_path.parent / "meeting-notes.md").exists()
 
+        body = read_transcript_body(md_path)
+        is_trivial = count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
+
         meeting_entry = {
             "date": date_str,
             "duration_minutes": header["duration_minutes"],
             "has_summary": has_summary,
             "has_meeting_notes": has_meeting_notes,
+            "trivial": is_trivial,
             "_sig_name": header["sig_name"],
         }
 
