@@ -196,11 +196,11 @@ def build_deep_link(slug: str, meeting_date: str) -> str:
 
 
 def _load_logo_b64() -> str:
-    """Read the SVG logo and return a base64 data URI string."""
-    logo_path = ROOT / "docs" / "OTelMinutes-logo.svg"
-    svg_bytes = logo_path.read_bytes()
-    encoded = base64.b64encode(svg_bytes).decode("ascii")
-    return f"data:image/svg+xml;base64,{encoded}"
+    """Read the PNG logo and return a base64 data URI string."""
+    logo_path = ROOT / "docs" / "OTelMinutes-logo.png"
+    png_bytes = logo_path.read_bytes()
+    encoded = base64.b64encode(png_bytes).decode("ascii")
+    return f"data:image/png;base64,{encoded}"
 
 
 def _render_html(template_vars: dict) -> str:  # pragma: no cover
