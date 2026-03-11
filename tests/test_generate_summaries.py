@@ -524,7 +524,7 @@ class TestProcessTranscriptsEdgeCases:
             "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
-            '**Fernando Grimaldo** 13:47 Okay\u2026\n'
+            "**Fernando Grimaldo** 13:47 Okay\u2026\n"
         )
         _write_transcript(transcripts_dir, "es-Localization", "2026-02-05.md", es_body)
 

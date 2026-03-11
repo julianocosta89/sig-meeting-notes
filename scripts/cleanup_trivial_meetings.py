@@ -40,9 +40,7 @@ def find_trivial_summaries(content_dir: Path) -> list[Path]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Remove summary.md files for trivial meetings."
-    )
+    parser = argparse.ArgumentParser(description="Remove summary.md files for trivial meetings.")
     parser.add_argument(
         "--execute", action="store_true", help="Actually delete files (default is dry-run)."
     )

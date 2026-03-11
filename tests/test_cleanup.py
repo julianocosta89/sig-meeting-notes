@@ -31,9 +31,7 @@ class TestFindTrivialSummaries:
 
     def test_real_meeting_not_affected(self, tmp_path: Path) -> None:
         """Meeting with enough lines should not be affected."""
-        meeting_dir = _write_transcript(
-            tmp_path, "Go-SIG", "2026-03-01", MIN_TRANSCRIPT_LINES
-        )
+        meeting_dir = _write_transcript(tmp_path, "Go-SIG", "2026-03-01", MIN_TRANSCRIPT_LINES)
         summary = meeting_dir / "summary.md"
         summary.write_text("## Key Topics\n- Real topic\n", encoding="utf-8")
 
