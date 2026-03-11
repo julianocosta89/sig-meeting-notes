@@ -1213,8 +1213,10 @@ async function handleSearch(query) {
       try {
         const text = await getTranscript(sig, date);
         if (currentSig !== sig || currentDate !== date) return;
-        renderTranscript(text, '');
-        await switchToView('summary');
+        if (!meetingIsTrivial(sig, date)) {
+          renderTranscript(text, '');
+          await switchToView('summary');
+        }
       } catch (_) {/* empty */}
     }
     return;
@@ -1239,10 +1241,14 @@ async function handleSearch(query) {
   renderDateList(filtered, currentDate, matchCounts);
 
   if (currentDate && transcriptCache.has(currentSig + '/' + currentDate)) {
-    const key = currentSig + '/' + currentDate;
-    renderTranscript(transcriptCache.get(key), query);
-    await switchToView('transcript');
-    updateMatchNav();
+    if (meetingIsTrivial(currentSig, currentDate)) {
+      resetMatchNav();
+    } else {
+      const key = currentSig + '/' + currentDate;
+      renderTranscript(transcriptCache.get(key), query);
+      await switchToView('transcript');
+      updateMatchNav();
+    }
   } else {
     resetMatchNav();
   }
