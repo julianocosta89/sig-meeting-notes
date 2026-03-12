@@ -14,10 +14,8 @@ Zoom Recording URL: https://zoom.us/rec/share/Vr5mF-s7F6ga5E2xLVT1HQdmnbXIkVVACs
 **Dan Gomez Blanco** 00:44 Going.
 **Alolita Sharma** 00:51 Hey! Everyone! Good morning! Good morning!
 **Dan Gomez Blanco** 00:54 Hello!
-**Alolita Sharma** 00:55 Could you access the link I shared
-in the Gc. Channel? Then, Pablo.
-because I couldn't move the doc to the gc. Folder. Because I just cannot see it. So maybe this I'll just seek your help in terms of
-moving it. There.
+**Alolita Sharma** 00:55 Could you access the link I shared in the Gc. Channel? Then, Pablo.
+because I couldn't move the doc to the gc. Folder. Because I just cannot see it. So maybe this I'll just seek your help in terms of moving it. There.
 **Pablo Baeyens** 01:19 I don't have access.
 **Alolita Sharma** 01:22 You don't have access. Okay.
 **Dan Gomez Blanco** 01:23 Just request. I just requested access as well.
@@ -27,8 +25,7 @@ moving it. There.
 Yeah, I.
 **Dan Gomez Blanco** 01:40 You wanted to move it to the the
 **Alolita Sharma** 01:44 Yeah, to the folder.
-**Dan Gomez Blanco** 01:46 To the admin account to the workspace. I think
-the annoying thing is that if you don't create it in a workspace, I'm not sure if you can move it.
+**Dan Gomez Blanco** 01:46 To the admin account to the workspace. I think the annoying thing is that if you don't create it in a workspace, I'm not sure if you can move it.
 **Alolita Sharma** 01:54 Okay, okay. So what I'll do is I'll copy it in there. Once we have covered it today, I'll just copy it in.
 **Dan Gomez Blanco** 02:01 That sounds good. Yeah, you need to log in with the admin.
 **Alolita Sharma** 02:04 Okay. Okay.
@@ -45,8 +42,7 @@ Hi, Austin, can you just request access? Please? Good morning.
 **Austin Parker** 02:45 I just requested it.
 **Alolita Sharma** 02:48 Sorry about this.
 **Austin Parker** 02:53 Alright!
-**Alolita Sharma** 03:01 Hang on
-Morgan. Can you just access the request? Access.
+**Alolita Sharma** 03:01 Hang on Morgan. Can you just access the request? Access.
 **Morgan McLean** 03:15 To which is it in?
 Let me just.
 I got it.
@@ -55,8 +51,7 @@ I got it.
 **Severin Neumann** 03:29 Will we have a private meeting, or.
 **Morgan McLean** 03:31 I'll do it from there.
 **Alolita Sharma** 03:33 Yes, that's true. We do. Should I get another link.
-or do you? One of you have a chat room that we can just go to
-I can start another zoom. Let me do that, and I'll put the link in the chat.
+or do you? One of you have a chat room that we can just go to I can start another zoom. Let me do that, and I'll put the link in the chat.
 Sounds good. See you there.
 **Dan Gomez Blanco** 03:51 Do it.
 **Alolita Sharma** 03:52 Okay? Bye.

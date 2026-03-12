@@ -13,8 +13,7 @@ Zoom Recording URL: https://zoom.us/rec/share/3Qmqq3NKSjzgXgYJZm3HO2e7ENSS5yH0wx
 I was, I didn't know if anyone else was gonna make it today, so… Oh.
 **MG Marylia Gutierrez** 03:48 Yeah, because I don't think I even added topics, not sure if I actually have topics for today.
 **Amy Super** 03:54 Oh, okay, there's nothing in the agenda, so have at it.
-No, I'm saying, like, I don't have any… Oh, you don't have topics. Oh, I thought you said you have topics, but you
-added them, I see, okay. Yeah, I mean, I think the only thing I was just gonna share an update that, I wrote a blog post to call for participants for the interviews.
+No, I'm saying, like, I don't have any… Oh, you don't have topics. Oh, I thought you said you have topics, but you added them, I see, okay. Yeah, I mean, I think the only thing I was just gonna share an update that, I wrote a blog post to call for participants for the interviews.
 **MG Marylia Gutierrez** 04:18 And I'm about to, open the PR for that. So, so it's written, it's ready, I just need to, like, push the right buttons to send it along. Nice, cool. I actually already had somebody sign up to be interviewed.
 **Amy Super** 04:34 But they are… it looks like they actually are already a pretty active contributor, so, we'll see what comes with that.
 **MG Marylia Gutierrez** 04:43 But yeah, I opened up, like, meeting slots all the way through.
@@ -29,16 +28,13 @@ Let's…
 **MG Marylia Gutierrez** 05:20 From collector, from the Java, but yeah, nothing.
 a lot of information. The majority just gave, like, the score without any extra comments. I think only one case did add the comments, but in general, yeah, we're good reviews.
 **Amy Super** 05:37 Right.
-Where are the results, or where are the…
-Yeah, I guess, like, the response is going.
+Where are the results, or where are the… Yeah, I guess, like, the response is going.
 **MG Marylia Gutierrez** 05:47 is because, like, when I have access to the form itself, so I have, like, edit access.
 **Amy Super** 05:52 So when you have it, you can see the replies on it as well.
-Got it. Wait, so wait, can I see them, or is that… or is it just…
-I think you can add me as, like, a collaborator.
+Got it. Wait, so wait, can I see them, or is that… or is it just… I think you can add me as, like, a collaborator.
 to the form, and then I should be able to see the replies.
 If you don't mind.
-**MG Marylia Gutierrez** 06:15 Yeah, because we usually… we…
-put only for people that is, like, our approver or, like, maintainer, but now you also have the status, so yes.
+**MG Marylia Gutierrez** 06:15 Yeah, because we usually… we… put only for people that is, like, our approver or, like, maintainer, but now you also have the status, so yes.
 **Amy Super** 06:24 Nice.
 **MG Marylia Gutierrez** 06:59 Gonna send a D.
 Grafana email, or…
@@ -54,15 +50,10 @@ not like a, oh, as soon as you got married, I'm gonna share, and then we will kn
 **MG Marylia Gutierrez** 07:59 Yeah, I'm grouping a couple, and then I share, yeah.
 **Amy Super** 08:02 Nice.
 Very cool.
-So, I was also wondering,
-So, I won't be at PromCon, but I will be at KubeCon, and I'm wondering if there is anything…
-it's, like, a lot to do all at once, but I wonder if there's anything we want to do…
-To take advantage of these in-person things.
+So, I was also wondering, So, I won't be at PromCon, but I will be at KubeCon, and I'm wondering if there is anything… it's, like, a lot to do all at once, but I wonder if there's anything we want to do… To take advantage of these in-person things.
 **MG Marylia Gutierrez** 08:33 So usually at CoopCon, there is one area that is, like, the OpenTelemy Observatory.
 **Amy Super** 08:39 So usually people…
-**MG Marylia Gutierrez** 08:41 From hotel stay on that one. And there are, like, a few events that are run by the people that want to be
-just stay basically there. So, for example, we do have, the… a day to, like, just contribute, people just, like, first-time contributors, just… and we have a bunch of maintainers to help them guide in on how to do this, and then…
-each day, they have, like… we have people from, like, JavaScript this time, we have people from Java this time, and they usually have, like, a schedule they're putting, so people would know. So, if you just, like, have free time, and you just, like, pop up there.
+**MG Marylia Gutierrez** 08:41 From hotel stay on that one. And there are, like, a few events that are run by the people that want to be just stay basically there. So, for example, we do have, the… a day to, like, just contribute, people just, like, first-time contributors, just… and we have a bunch of maintainers to help them guide in on how to do this, and then… each day, they have, like… we have people from, like, JavaScript this time, we have people from Java this time, and they usually have, like, a schedule they're putting, so people would know. So, if you just, like, have free time, and you just, like, pop up there.
 **Amy Super** 09:26 Yeah. There will be people that, like.
 **MG Marylia Gutierrez** 09:28 users wanted to have, like, sometimes ask questions for people that are there, or just, yeah, both, like, contributors or users of a hotel.
 **Amy Super** 09:37 Got it. Okay, good to know. Alright, I will stop by there.
@@ -77,16 +68,13 @@ Right.
 **Amy Super** 10:13 Two weeks, yeah.
 **MG Marylia Gutierrez** 10:14 Fair.
 Yeah, it's next week.
-**Amy Super** 10:16 Yeah, next week, yeah. I'm not ready at all. And then 2 weeks after that is…
-They're all team off-site.
+**Amy Super** 10:16 Yeah, next week, yeah. I'm not ready at all. And then 2 weeks after that is… They're all team off-site.
 **MG Marylia Gutierrez** 10:28 Yeah, but then I'm going to Brazil for OBSCON, like, the Grafana one.
 **Amy Super** 10:34 Got it? Okay.
 Yeah.
-Yeah, it's a lot. It's a lot of… there's a lot of travel this time of year, so… Yeah. Because you can't do it in the summer, because everyone's on holiday, and you can't do it, like, after, like, mid-November, everyone's on holiday also, and so it's like, you have to, like, group everything together, so…
-Yeah. Cool. Okay, well, at least I'll see you in Brussels, so, you know, we can hang out there. Nice.
+Yeah, it's a lot. It's a lot of… there's a lot of travel this time of year, so… Yeah. Because you can't do it in the summer, because everyone's on holiday, and you can't do it, like, after, like, mid-November, everyone's on holiday also, and so it's like, you have to, like, group everything together, so… Yeah. Cool. Okay, well, at least I'll see you in Brussels, so, you know, we can hang out there. Nice.
 Okay, cool. Any… do you need anything from me?
-**MG Marylia Gutierrez** 11:05 As soon as, like, you open up PR, feel free to, like, tag me, I can help review, and then if you do, like, a…
-post about it. Probably they can do one from the official, like, hotel to share, like, the blog post, so we can also, like, repost, so let people know. Because on the post, do you add the link for your calendar, or…
+**MG Marylia Gutierrez** 11:05 As soon as, like, you open up PR, feel free to, like, tag me, I can help review, and then if you do, like, a… post about it. Probably they can do one from the official, like, hotel to share, like, the blog post, so we can also, like, repost, so let people know. Because on the post, do you add the link for your calendar, or…
 **Amy Super** 11:27 Yeah.
 **MG Marylia Gutierrez** 11:28 Okay, yeah. And yeah, as long as you make sure that it's valid until, like, whatever, just in case people don't…
 **Amy Super** 11:35 Right, yeah, I have set… I have it set so that, like, I… like, people can only schedule, like, I need, like, a 4-hour notice and only, like, 2 per day. Like, I've got it set so that, like, I will say it's not been my experience doing UX research that people, like, beat down the door to talk to you, you know? Like, it's not like…

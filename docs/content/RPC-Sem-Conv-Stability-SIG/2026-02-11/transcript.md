@@ -13,8 +13,7 @@ And we have our, note-taking friend, per usual.
 One of them's polite and, like, lets you just chat them up and tell them to go away.
 **Matthew Hensley / Grafana Labs** 02:53 Oh, that's pretty… nice.
 **Trask Stalnaker** 02:55 Yeah, right, that seems like the minimum that they could do.
-I just… I can't be bothered to go look up the… Meeting owner code…
-Anymore, and just to evict the other bot.
+I just… I can't be bothered to go look up the… Meeting owner code… Anymore, and just to evict the other bot.
 **Matthew Hensley / Grafana Labs** 03:17 Yeah, huh.
 Not like it's not being recorded anyway, so…
 **Trask Stalnaker** 03:20 I've given up.
@@ -31,10 +30,8 @@ The… my concept of what server.address was.
 **Trask Stalnaker** 04:59 Have you seen this yet? Steve?
 **Steve Rao** 05:02 Yeah, yes.
 **Trask Stalnaker** 05:04 Okay.
-So, the part that I think would be…
-Nice to add to the WPR.
-Is the equivalent of… So this, so this is for GRPC…
-And it gives these examples.
+So, the part that I think would be… Nice to add to the WPR.
+Is the equivalent of… So this, so this is for GRPC… And it gives these examples.
 In gRPC terms of mapping target string to different server address, server port combinations.
 So you'll see this is kind of the interesting one now.
 Where server.address, can be… The whole registry service… URL.
@@ -42,11 +39,8 @@ In which case port isn't set.
 Or it could even be… Comment delimited.
 If it's… if it's not looking it up in a service.
 registry.
-But it sounded like the…
-Common case. It was pretty common for the service registry, so it would be nice to get
-Sort of define what that would look like for Dubbo.
-**Steve Rao** 06:38 Okay, yeah,
-Yeah, for double registry scenarios, yeah, I think maybe users don't want to see the registry address.
+But it sounded like the… Common case. It was pretty common for the service registry, so it would be nice to get Sort of define what that would look like for Dubbo.
+**Steve Rao** 06:38 Okay, yeah, Yeah, for double registry scenarios, yeah, I think maybe users don't want to see the registry address.
 Because the information is not very, useful for them, because they, they can gather the information from the configuration.
 And.
 **Trask Stalnaker** 07:09 I mean, so let me kind of explain why this is useful.
@@ -56,30 +50,25 @@ in general… Is, sure, people definitely can look that up if they need.
 It allows backends that are doing, like, showing you your service graph.
 Who's talking to what services.
 allows them to show, oh, I've got these… clients.
-That are all talking to this same…
-GRPC service, and I can represent this GRPC service.
+That are all talking to this same… GRPC service, and I can represent this GRPC service.
 **Steve Rao** 07:54 on my map.
 **Trask Stalnaker** 07:56 using this… name, essentially.
 **Steve Rao** 08:03 Mmm… Okay.
 **Trask Stalnaker** 08:08 So remember, this is also getting stamped onto metrics.
 Right, which allows you to then aggregate Response times by… your… gRPC service.
 Which is super… useful.
-**Steve Rao** 08:34 Hmm, okay, yeah,
-Yeah, but in double, scenarios, yeah, maybe we can, discard some, example case, and to, clarify this, this point. Yeah, maybe I think.
-Mmm… Okay, let me… let me send a…
-Send me a URL in… in chat.
+**Steve Rao** 08:34 Hmm, okay, yeah, Yeah, but in double, scenarios, yeah, maybe we can, discard some, example case, and to, clarify this, this point. Yeah, maybe I think.
+Mmm… Okay, let me… let me send a… Send me a URL in… in chat.
 **Liudmila Molkova** 09:10 Of this PR.
 **Steve Rao** 09:12 No.
 Yeah, it's, it's, server.address, implementation in Java instrumentation.
-Yeah, currently, we…
-Yeah, we get the server address, server port, like this in Java instrumentation, and usually it will return a string.
+Yeah, currently, we… Yeah, we get the server address, server port, like this in Java instrumentation, and usually it will return a string.
 Or IP address. Yeah.
 And in this case, yeah, how we, combination the server.js according to the latest semantic convention.
 **Liudmila Molkova** 09:54 We would not use this at all.
 But then, we need some other means to… find the… The registry address provided.
 At setup time.
-**Steve Rao** 10:17 Yeah, you mean the, in double scenarios, the server address,
-Well, be the registry address.
+**Steve Rao** 10:17 Yeah, you mean the, in double scenarios, the server address, Well, be the registry address.
 **Liudmila Molkova** 10:29 It will be the registry address, and if there is any, like, additional passwords within this registry, it would contain.
 that pass.
 **Steve Rao** 10:41 Okay, yeah, I understand your answer.
@@ -89,30 +78,25 @@ on top of.
 **Liudmila Molkova** 11:06 Yeah, like, I think you have a network peer socket address, it's, like, line 37?
 This would stay.
 **Steve Rao** 11:15 Yeah, yeah.
-Yeah, if we, yeah, approve this semantic convention, but,
-But, it was some problem we can solve, something like, proxy.
+Yeah, if we, yeah, approve this semantic convention, but, But, it was some problem we can solve, something like, proxy.
 scenarios.
 We can get, Logic address.
-**Liudmila Molkova** 11:57 And yeah, I think that this… this proposal is… we… we'll spend some time on prototyping, where we…
-Well, validated.
+**Liudmila Molkova** 11:57 And yeah, I think that this… this proposal is… we… we'll spend some time on prototyping, where we… Well, validated.
 It complicates the instrumentation, for sure, because you might not have access to the string in, let's say, Interceptor.
 And you would need to… Have some other means to update it.
 **Steve Rao** 12:29 Okay.
-**Trask Stalnaker** 12:31 Yeah, that's a good point about prototyping. I can,
-I can prototype for the gRPC Java instrumentation.
+**Trask Stalnaker** 12:31 Yeah, that's a good point about prototyping. I can, I can prototype for the gRPC Java instrumentation.
 **Liudmila Molkova** 12:45 Nice, thank you.
 **Matthew Hensley / Grafana Labs** 12:47 That's something I actually wanted to discuss today. I've started on the .NET WCF client.
 That's in .NET contrib, just getting it set up to have metrics at all.
-And weaving that in, so…
-Yeah, if we're not sure about the exact definition of this attribute, I mean, it seems like there's not too much else left.
+And weaving that in, so… Yeah, if we're not sure about the exact definition of this attribute, I mean, it seems like there's not too much else left.
 Might be worth just trying to see how hard it is to get something that aligns.
 And then… adjusting of… It's not reasonable to do.
 **Trask Stalnaker** 13:20 Yeah, I'll put up a… I'll put up a POC for Java that's… yeah, Gregor's working on the broader RPC, SEMComp update.
 But I'll put in a POC that just purely, like.
 Tries out this server address, implemented change.
 **Liudmila Molkova** 13:42 Yeah, I think I've checked, how the gRBC native instrumentation does it, because they do it.
-And they have some special API that…
-We might be able to call.
+And they have some special API that… We might be able to call.
 But…
 **Trask Stalnaker** 14:00 Hmm.
 **Liudmila Molkova** 14:02 Yeah, like, I didn't try it fully, so it's worth trying it out and seeing.
@@ -141,17 +125,14 @@ You can…
 Pretty complicated.
 **Trask Stalnaker** 16:16 Oh, you can have multiple registries.
 Global default registries…
-**Liudmila Molkova** 16:31 Then you need to associate the service with the registry, and then it's…
-multiple, but you pick one for a specific service? Is it the case?
+**Liudmila Molkova** 16:31 Then you need to associate the service with the registry, and then it's… multiple, but you pick one for a specific service? Is it the case?
 Yeah, this one is kinda interesting.
-**Trask Stalnaker** 16:52 Oh, I think I remember you mentioning this, Steve, that the registry… It's… Just a single… only one…
-A registry only serves one… service.
+**Trask Stalnaker** 16:52 Oh, I think I remember you mentioning this, Steve, that the registry… It's… Just a single… only one… A registry only serves one… service.
 Like, you can't register multiple services in one registry?
 **Steve Rao** 17:19 No, yeah, for one, registry, yeah, maybe, users can register, several, surveys.
 **Trask Stalnaker** 17:35 Oh, okay, here's the service name.
 Review.
-**Steve Rao** 17:42 And you can see the scenario, too. Yeah, maybe…
-Let's scroll down. Yes, in order to…
+**Steve Rao** 17:42 And you can see the scenario, too. Yeah, maybe… Let's scroll down. Yes, in order to…
 **Trask Stalnaker** 17:51 To this one?
 **Steve Rao** 17:53 Yeah.
 No.
@@ -168,29 +149,18 @@ REF, okay, yes.
 You could use…
 **Steve Rao** 18:46 Could consider using…
 **Trask Stalnaker** 18:49 this.
-slash…
-There's no ref on this one, I see.
-This one has the raft, I don't really…
-Understand why some of them have a ref.
+slash… There's no ref on this one, I see.
+This one has the raft, I don't really… Understand why some of them have a ref.
 And some of them don't.
 One… Option.
-But yeah, what I'm… I mean, I think…
-Probably, Steve, if you could do some work on…
-Figuring that out, what would be best, what would work well for… Double… And…
-propose that in your PR…
-And I mean, worst case, like, I'm just thinking if we were moving, we could always… I mean, I think it still would… I'll do this, I would like to do this before we potentially even merge or declare RC.
-This, this one, the prototyping, the server.address, but…
-I'll do that relatively quickly.
-But I was thinking we could mark RC…
-We don't have to include Dubbo in the, you know, initial RC. We could add it, like, to RC, like, a week later, if we need a little bit more time to…
-Think about the…
+But yeah, what I'm… I mean, I think… Probably, Steve, if you could do some work on… Figuring that out, what would be best, what would work well for… Double… And… propose that in your PR… And I mean, worst case, like, I'm just thinking if we were moving, we could always… I mean, I think it still would… I'll do this, I would like to do this before we potentially even merge or declare RC.
+This, this one, the prototyping, the server.address, but… I'll do that relatively quickly.
+But I was thinking we could mark RC… We don't have to include Dubbo in the, you know, initial RC. We could add it, like, to RC, like, a week later, if we need a little bit more time to… Think about the…
 **Steve Rao** 21:15 Okay, okay.
 **Trask Stalnaker** 21:16 registry service mapping.
 **Steve Rao** 21:20 Okay.
 Yeah, when we'll release the RC version?
-**Trask Stalnaker** 21:32 Whenever we can. I think we are…
-I think this is really the… Last piece… on the…
-Before we'll be ready for… to mark GRPC, at least.
+**Trask Stalnaker** 21:32 Whenever we can. I think we are… I think this is really the… Last piece… on the… Before we'll be ready for… to mark GRPC, at least.
 as RC.
 And so I think this would be, the only thing before we mark Dubbo as RC.
 **Steve Rao** 22:04 Okay.
@@ -199,13 +169,10 @@ Matter of days.
 **Steve Rao** 22:13 Okay, yeah, I will, yeah, try my best to figure, as you said, to come up with a plan for that.
 Good.
 **Trask Stalnaker** 22:23 Cool.
-Prototypes, yeah, Matt, I… you were saying you were…
-working on the .NET WCF prototype, how's that going?
-**Matthew Hensley / Grafana Labs** 22:46 I'm just scaffolding out, having to weave metrics and traces. Most of the .NET stuff was not built with an eye towards that, so…
-It's always fun trying to figure out how to move it forward.
+Prototypes, yeah, Matt, I… you were saying you were… working on the .NET WCF prototype, how's that going?
+**Matthew Hensley / Grafana Labs** 22:46 I'm just scaffolding out, having to weave metrics and traces. Most of the .NET stuff was not built with an eye towards that, so… It's always fun trying to figure out how to move it forward.
 To support both.
-So, just getting it all arranged, I don't expect it'll be too bad to actually getting the attributes once…
-It's able to handle both.
+So, just getting it all arranged, I don't expect it'll be too bad to actually getting the attributes once… It's able to handle both.
 Yeah, and there's also the gRPC driver for .NET that I was not going to… Attempt.
 **Trask Stalnaker** 23:22 Oh, is that part of, the .NET Core?
 Components…
@@ -219,8 +186,7 @@ Plus Auto Instrumentation, right?
 Predates the native one.
 That's actually from, like, DGRPC org.
 And then, let's see, I'm not sure which client…
-**Trask Stalnaker** 24:17 Is there a perp… do we… I mean, do we…
-need the one in .NET contribib, now that they have native?
+**Trask Stalnaker** 24:17 Is there a perp… do we… I mean, do we… need the one in .NET contribib, now that they have native?
 **Matthew Hensley / Grafana Labs** 24:28 Yeah, eventually I'll need to be caught up in instrumentation, because in .NET land, things live forever.
 As long as they're supported.
 **Liudmila Molkova** 24:38 They, they, they have activity of source instrumentation.
@@ -237,11 +203,9 @@ Versions, though that's becoming less of an issue.
 **Trask Stalnaker** 25:39 Oh, I see, this is instrumentation of… there's multiple gRPC packages, and therefore there's multiple instrumentations.
 **Matthew Hensley / Grafana Labs** 25:49 Yes, there's…
 **Trask Stalnaker** 25:50 of each package.
-**Matthew Hensley / Grafana Labs** 25:51 there's 3, gRPC…
-implementations. So there's one built into ASP.NET Core, and that emits its own stuff, and that's up to the runtime team. Just have to make sure they're aware of these changes.
+**Matthew Hensley / Grafana Labs** 25:51 there's 3, gRPC… implementations. So there's one built into ASP.NET Core, and that emits its own stuff, and that's up to the runtime team. Just have to make sure they're aware of these changes.
 And hopefully they can get them in this year.
-And then the rest of these are…
-I see, okay, thank you for… Yeah, it's always .NET flowcharts.
+And then the rest of these are… I see, okay, thank you for… Yeah, it's always .NET flowcharts.
 For everything.
 **Liudmila Molkova** 26:20 So the… there is a native one, but it follows gRPC conventions, not OTEL conventions.
 **Matthew Hensley / Grafana Labs** 26:29 Yes.
@@ -250,11 +214,8 @@ There.
 But not so… anyway.
 It's kind of funny that they did that.
 **Trask Stalnaker** 26:50 Yeah.
-**Matthew Hensley / Grafana Labs** 26:50 I… I just vote, don't worry about it, and if people want metrics, the…
-Like, public community pressure, you know, like, contributions welcome.
-I'm happy to help them along, but there's cone odors for these components that…
-should theoretically be willing to pick it up. Otherwise, can do it later on, but…
-WCF is so dormant, Probably the only one still looking at it.
+**Matthew Hensley / Grafana Labs** 26:50 I… I just vote, don't worry about it, and if people want metrics, the… Like, public community pressure, you know, like, contributions welcome.
+I'm happy to help them along, but there's cone odors for these components that… should theoretically be willing to pick it up. Otherwise, can do it later on, but… WCF is so dormant, Probably the only one still looking at it.
 So it seems like a good choice to go after.
 **Liudmila Molkova** 27:22 Oh, by the way, I remember James Newton King told that he would be okay with us reaching out.
 We can actually ping him and ask him if he is interested in Supporting… new conventions in gRPC.net.
@@ -267,10 +228,7 @@ Out of the box.
 **Liudmila Molkova** 28:02 Yeah.
 Maybe Task, would you be interested in pinging him on Teams?
 **Trask Stalnaker** 28:09 Sure.
-**Matthew Hensley / Grafana Labs** 28:16 So, as far as,
-prototypes, concrete way. I'm happy to go after WCF. Like I said, there's no one…
-Taking a look at it, so…
-getting that reviewed and merged is just working with the existing maintainers. Obviously got some Java things going, but don't we need one more language?
+**Matthew Hensley / Grafana Labs** 28:16 So, as far as, prototypes, concrete way. I'm happy to go after WCF. Like I said, there's no one… Taking a look at it, so… getting that reviewed and merged is just working with the existing maintainers. Obviously got some Java things going, but don't we need one more language?
 for, to meet the requirements for going stable.
 **Liudmila Molkova** 28:41 I can do PyPython.
 **Matthew Hensley / Grafana Labs** 28:46 Terp?
@@ -281,25 +239,19 @@ Across some number of languages, but yeah, it's ideal to have 3 languages.
 **Liudmila Molkova** 29:22 I mean, if you… if you want to go for it, but I don't mind doing Python.
 you, I mean, you're, you're… We did the .NET, I did the Python.
 **Matthew Hensley / Grafana Labs** 29:34 Yeah.
-I didn't know what was actually popular, RPC-wise besides gRPC and other runtimes, so it's like, if…
-wanting to do something for Node or Python, what's actually in use, and…
-Does it maybe need the gRPC translation?
+I didn't know what was actually popular, RPC-wise besides gRPC and other runtimes, so it's like, if… wanting to do something for Node or Python, what's actually in use, and… Does it maybe need the gRPC translation?
 Layer.
 **Liudmila Molkova** 29:54 Hmm.
 Let's see what we have from Clayton.
 This jerky… There is no ConnectRPC, and JSON RPC doesn't make sense.
-**Matthew Hensley / Grafana Labs** 30:25 And I might be overthinking it, but I just think about, because of the additional translation and the work that's gone on to gRPC,
-It's definitely needed, but as far as prototypes and making sure we can get access to these attribute values and such.
+**Matthew Hensley / Grafana Labs** 30:25 And I might be overthinking it, but I just think about, because of the additional translation and the work that's gone on to gRPC, It's definitely needed, but as far as prototypes and making sure we can get access to these attribute values and such.
 **Liudmila Molkova** 30:38 It'll.
 **Matthew Hensley / Grafana Labs** 30:41 take a little bit longer than… like, WCF is super straightforward.
 Once the scaffolding is in place, so…
-**Liudmila Molkova** 30:51 And it provides a good coverage in a sense that the conventions are generic enough for WSCF to
-use that. I think it brings more value than just repeating gRPC in another language.
+**Liudmila Molkova** 30:51 And it provides a good coverage in a sense that the conventions are generic enough for WSCF to use that. I think it brings more value than just repeating gRPC in another language.
 **Matthew Hensley / Grafana Labs** 31:16 Alright. One thing to consider about Python, kind of totally unrelated, but there's about to be some work when it comes to gRPC and protobuf.
 To reduce dependencies.
-So, I… if you're gonna do something gRPC in Python, you might double-check that, because there's… some movement to…
-reduce…
-the C extensions that I relied on, and moving some of it to build time instead of runtime dependencies, because of dependency conflicts.
+So, I… if you're gonna do something gRPC in Python, you might double-check that, because there's… some movement to… reduce… the C extensions that I relied on, and moving some of it to build time instead of runtime dependencies, because of dependency conflicts.
 **Liudmila Molkova** 31:47 But that would be for the exporters, right? And the instrumentation would need to depend on gRPC anyway.
 **Matthew Hensley / Grafana Labs** 31:54 likely, but I don't know how far they're willing… how far people are willing to take some of it.
 As far as reducing dependencies, because the C extension stuff in Python's causing issues. So, just… just something to be aware of. I'm sure… I don't know that it applies in this case, but it'd be unfortunate to put a bunch of hours into it and get told, oh, we're doing this completely differently now.
@@ -310,19 +262,14 @@ Yes.
 Okay.
 So then it's prototype time.
 We'll hold this PR until we have a little bit more confidence that it's visible, right?
-And we can…
-pretty much merge anything else. Steve, do you think we should merge double in the current shape and follow up on the registry? Because I think
-if your PR covers… The story, partially.
+And we can… pretty much merge anything else. Steve, do you think we should merge double in the current shape and follow up on the registry? Because I think if your PR covers… The story, partially.
 But, but…
 **Steve Rao** 33:20 Nope.
 **Liudmila Molkova** 33:21 Yeah. Okay.
-**Steve Rao** 33:22 Yeah, I think, yeah, it's good to merge it, now, and I can,
-send a follow-up PR to solve the, remaining question.
-**Liudmila Molkova** 33:37 And if I understand correctly, this is just that the cover is the part where
-People don't use registry, and they provide some address directly, right?
+**Steve Rao** 33:22 Yeah, I think, yeah, it's good to merge it, now, and I can, send a follow-up PR to solve the, remaining question.
+**Liudmila Molkova** 33:37 And if I understand correctly, this is just that the cover is the part where People don't use registry, and they provide some address directly, right?
 **Steve Rao** 33:48 Yeah.
-**Trask Stalnaker** 33:56 Okay, great. I will, I'll give this a… Look, and get another…
-Checkmark on it, so we can merge it.
+**Trask Stalnaker** 33:56 Okay, great. I will, I'll give this a… Look, and get another… Checkmark on it, so we can merge it.
 **Liudmila Molkova** 34:09 Nice.
 **Matthew Hensley / Grafana Labs** 34:12 Is there…
 **Trask Stalnaker** 34:12 Alright.
@@ -335,11 +282,8 @@ I mean, how we can solicit this feedback. We can advertise it in spec call.
 Right? That we are close to our sea.
 We can… blog about it.
 Maybe once we're HNRC?
-**Trask Stalnaker** 35:05 Yeah, it's a little… tricky catch-22, one of the…
-goals of American at RC is…
-We don't get a lot of attention from people during the implementation phase.
-But when they see that it's RC, then they pay attention, and they're like, okay, now we'll… now we'll…
-Check it out.
+**Trask Stalnaker** 35:05 Yeah, it's a little… tricky catch-22, one of the… goals of American at RC is… We don't get a lot of attention from people during the implementation phase.
+But when they see that it's RC, then they pay attention, and they're like, okay, now we'll… now we'll… Check it out.
 And we certainly can and have in the past.
 made breaking changes during RC.
 Based on feedback.
@@ -347,13 +291,10 @@ Based on feedback.
 **Trask Stalnaker** 35:50 Asking questions.
 **Matthew Hensley / Grafana Labs** 35:51 More pointed ones, and if we know we're holding off for a little bit while we… Double-check some things.
 Could be.
-Interesting if they could just go ahead and take a look while we do other things, and then we can address it
-Maybe a little less messy.
+Interesting if they could just go ahead and take a look while we do other things, and then we can address it Maybe a little less messy.
 **Liudmila Molkova** 36:08 We also have KubeCon next month. I think we should totally do RC by KubeCon.
-We can advertise it there, and then…
-sometime after KubeCon, depending on the feedback.
-We could…
-Consider stability… not right after, but let's give it another month after, and then just so it's stable.
+We can advertise it there, and then… sometime after KubeCon, depending on the feedback.
+We could… Consider stability… not right after, but let's give it another month after, and then just so it's stable.
 **Matthew Hensley / Grafana Labs** 36:39 Yeah, I have no problem with that, I think… Unless we run into something… That is difficult to solve.
 Probably can't imagine what that would be at this point. Seems perfectly reasonable.
 **Liudmila Molkova** 36:54 Yeah, like, if we… we probably would have some project update on the KubeCon as usual, and if we mention it there, it would also increase chances for people.

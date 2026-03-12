@@ -26,18 +26,14 @@ Yeah, we haven't.
 I think we've not even talked this year, have we?
 **Andrej** 05:11 Probably once, or maybe once, yeah, yeah.
 **Ernest Owojori** 05:14 Yeah, it was, once.
-Yeah, it's okay
-Let me check the agenda…
+Yeah, it's okay Let me check the agenda…
 **Andrej** 05:23 Hello, Reece.
 **Reese Lee** 05:24 Andre. Ernest.
 Hello, Joey.
 **Ernest Owojori** 05:32 Ayy.
 Oh, not a lot of our agenda, yeah.
 **Reese Lee** 05:50 We just had, our first hotel and practice.
-And I think it was pretty good. We had, a pretty good turnout, and there was a lot of engagement. There was, like,
-At one point, there were a lot of questions Coming in and… We had to…
-Go back and make sure we didn't…
-Missed… missed some questions.
+And I think it was pretty good. We had, a pretty good turnout, and there was a lot of engagement. There was, like, At one point, there were a lot of questions Coming in and… We had to… Go back and make sure we didn't… Missed… missed some questions.
 See how late.
 **Adriana Villela** 06:18 The stream today?
 Yeah, the rapid fire, like, Josh was, like, just reading them off.
@@ -52,29 +48,20 @@ Speaks to the hearts of all.
 **Adriana Villela** 06:51 For sure.
 **Andrej** 07:01 Alrighty.
 Hello, Joy. Good to have you here. I don't think you joined before, right? Do you wanna tell us a bit about yourself? We can… we are happy to do a round of introductions if you want.
-**Joy** 07:18 Okay, yeah, sure. So my name is Joy, and, I'm joining from Nigeria, Nigeria, and I'm a front-end engineer, and, I got to know about the open telemetry,
-network on LinkedIn, and this is my first time attending one of their meetings. I've…
-I think I used to have a mix-up for the time…
-trying to know which time was suitable for me, and I just finished, the YouTube,
-with Josh Lee, and I heard there was going to be another meeting in 15 minutes, so I went to the Google Calendar, and I was just going through, and I tried to click on the Zoom link, and it brought me here. So I'm happy to be here among you.
+**Joy** 07:18 Okay, yeah, sure. So my name is Joy, and, I'm joining from Nigeria, Nigeria, and I'm a front-end engineer, and, I got to know about the open telemetry, network on LinkedIn, and this is my first time attending one of their meetings. I've… I think I used to have a mix-up for the time… trying to know which time was suitable for me, and I just finished, the YouTube, with Josh Lee, and I heard there was going to be another meeting in 15 minutes, so I went to the Google Calendar, and I was just going through, and I tried to click on the Zoom link, and it brought me here. So I'm happy to be here among you.
 And I'm eager to learn.
-I'm also trying to, get into the LFX internship, so,
-start my journey into open source contributions, so I'm happy to be here to learn more.
+I'm also trying to, get into the LFX internship, so, start my journey into open source contributions, so I'm happy to be here to learn more.
 **Reese Lee** 08:33 That's awesome, Joy! We're happy to have you!
 **Joy** 08:36 Thank you.
 **Andrej** 08:38 Yeah, thank you. Yeah, shall we do a round of intros? What do you think, folks?
 **Adriana Villela** 08:44 Absolutely, absolutely.
 **Andrej** 08:47 Yeah.
 So, I'll start. Since I already mentioned. My name is Andre, I am, I am a user researcher.
-And I am a maintainer in a Sikh end user, and I work mostly on surveys that our Sikh is, like, working on, for…
-things related to, like, any open telemetry topics. And, I… yeah, and I'm based in the Czech Republic.
+And I am a maintainer in a Sikh end user, and I work mostly on surveys that our Sikh is, like, working on, for… things related to, like, any open telemetry topics. And, I… yeah, and I'm based in the Czech Republic.
 Yeah.
 I'll go next. My name's Adriana. I am based in Toronto, Canada, originally from Brazil.
 **Adriana Villela** 09:31 I've been a maintainer in the SIG since, what, like, early 2023 with Reese? I think Reese is our most senior SIG member, because I think you were here, like, since the beginning, right?
-or close to it. And Reese and I are newly minted hotel community managers as well, so, yeah, we'll probably be stepping back somewhat from
-this SIG to, as we take on more of the, community management role, but,
-super excited to have you on, and I can't believe that someone actually heeded our, like, come join us for the SIG meeting after the livestream, so thank you so much for joining us. This is… this is awesome. We are always happy to have
-more folks contributing, and, and super happy to see, like, Ernest, joining our SIG calls, and, and, and you've, you've just put in, you're, you're putting in for, for hotel membership, right, Ernest?
+or close to it. And Reese and I are newly minted hotel community managers as well, so, yeah, we'll probably be stepping back somewhat from this SIG to, as we take on more of the, community management role, but, super excited to have you on, and I can't believe that someone actually heeded our, like, come join us for the SIG meeting after the livestream, so thank you so much for joining us. This is… this is awesome. We are always happy to have more folks contributing, and, and super happy to see, like, Ernest, joining our SIG calls, and, and, and you've, you've just put in, you're, you're putting in for, for hotel membership, right, Ernest?
 **Ernest Owojori** 10:36 Yeah, that's correct.
 **Adriana Villela** 10:37 Yay!
 **Ernest Owojori** 10:39 Okay, when y'all done, I wanted to…
@@ -86,31 +73,20 @@ For the time theory mentorship that we did with Hotel.
 And I think it was a pretty much a good run for me.
 And, that's where I'm still here. That was my entry point.
 And, since then, I have been contributing, you know, I designed the survey guidelines that we currently have.
-And we hope to improve it over time and do some other…
-research that aligns with, what we are doing here, that are interesting.
-So that's pretty much it. I particularly don't know, maybe Joy can tell us later, the LFX mentorship that she's trying to…
-get into, but I'm not aware if Any 19 IAs submitted one.
+And we hope to improve it over time and do some other… research that aligns with, what we are doing here, that are interesting.
+So that's pretty much it. I particularly don't know, maybe Joy can tell us later, the LFX mentorship that she's trying to… get into, but I'm not aware if Any 19 IAs submitted one.
 So, we are happy to help in whatever way we can. For context, I'm also a Nigerian, currently based in Nigeria, to be precise.
-**Reese Lee** 11:46 And I'm Reece, my…
-One of my old managers was the one who kind of spearheaded the end-user working group, back in 20…
-21…
+**Reese Lee** 11:46 And I'm Reece, my… One of my old managers was the one who kind of spearheaded the end-user working group, back in 20… 21…
 **Adriana Villela** 12:02 Damn.
 **Reese Lee** 12:03 And so… Yeah, I've… Been around since the very beginning.
-And it's been really… it's been really cool to see…
-the project develop over time, and the working group evolved into a SIG,
-And… yeah, I'm excited to see…
-What the next few years will bring, so…
-I don't know if you saw the…
-link to the, our meeting notes, Joy, but I'll put it in the group chat as well. But you can always find the…
-the link to any SIG notes in the calendar invite.
+And it's been really… it's been really cool to see… the project develop over time, and the working group evolved into a SIG, And… yeah, I'm excited to see… What the next few years will bring, so… I don't know if you saw the… link to the, our meeting notes, Joy, but I'll put it in the group chat as well. But you can always find the… the link to any SIG notes in the calendar invite.
 Excuse me.
 Oh, did I not put the right one? Oh, I did, okay.
 **Joy** 12:58 Thank you.
 **Adriana Villela** 13:01 And are you… are you part of our Slack channel already, Joy?
 **Joy** 13:04 Yes, I joined the Slack channel.
 **Adriana Villela** 13:10 Yay.
-**Joy** 13:10 Awesome. Yeah, so…
-The one I belong to… I have… in the channels, I can see CNCF, new contributors, the general channel, the hallway, the open telemetry, and then the random.
+**Joy** 13:10 Awesome. Yeah, so… The one I belong to… I have… in the channels, I can see CNCF, new contributors, the general channel, the hallway, the open telemetry, and then the random.
 **Adriana Villela** 13:26 So, join the SIG… OTEL SIG End Users channel, that's the one that our… our, group is based on… works off of.
 **Joy** 13:38 Oh.
 **Adriana Villela** 13:40 Hang on, let me send a link. Why am I… Not finding it right now.
@@ -118,8 +94,7 @@ here.
 Here's a direct link.
 **Joy** 13:57 to the channel.
 **Adriana Villela** 13:58 take you to it, and then once you join that channel, the meeting notes doc is pinned to the channel as well, so…
-**Andrej** 14:25 Alrighty, shall we move to the… I'm… I have this…
-as even… as user research, this is a terrible feature, but I… I just can't bear the silence.
+**Andrej** 14:25 Alrighty, shall we move to the… I'm… I have this… as even… as user research, this is a terrible feature, but I… I just can't bear the silence.
 **Adriana Villela** 14:38 Oh, no, that's fine, I can't bear silences either.
 Do you wanna, do you wanna share our, our agenda?
 **Andrej** 14:44 Yeah, yeah, I can… I can do that, I can do that. Awesome.
@@ -137,83 +112,56 @@ So…
 Oh, but I'll be at KubeCon. Are you gonna be.
 **Andrej** 15:42 Cuba! Yeah, sorry, I didn't hear. Yeah, I will be there, I will be there, yeah.
 **Adriana Villela** 15:45 Oh, yeah.
-**Andrej** 15:46 That's great. Looking forward to meeting you there, then. And
-we talked about this in, on Slack, that, folks were…
-Took a lot of initiative, and, did recordings.
+**Andrej** 15:46 That's great. Looking forward to meeting you there, then. And we talked about this in, on Slack, that, folks were… Took a lot of initiative, and, did recordings.
 And it turned out that there were two folks doing recordings.
 in, like, kind of separately. So, there was… Aziz, and agnan, recording.
-And both of them quite quickly, released some, like,
-some stuff for review. They still haven't figured out
-how do they want to, like, combine these two things, or if they… if they want to? So it's still, like, not… not sold, but I just wanted to… to ask you, Adriana and Rhys, if you could… if you could take a look at some point and review, just to make sure that… that,
-The outcome will be… According to how you see the videos.
+And both of them quite quickly, released some, like, some stuff for review. They still haven't figured out how do they want to, like, combine these two things, or if they… if they want to? So it's still, like, not… not sold, but I just wanted to… to ask you, Adriana and Rhys, if you could… if you could take a look at some point and review, just to make sure that… that, The outcome will be… According to how you see the videos.
 Yeah, like…
 **Adriana Villela** 16:59 Cool.
 **Andrej** 17:00 good enough to publish to our hotel, YouTube channel.
 **Adriana Villela** 17:07 Okay, sounds good.
-**Andrej** 17:09 I, and I, and I edit a…
-Yeah, a GitHub issue link there.
+**Andrej** 17:09 I, and I, and I edit a… Yeah, a GitHub issue link there.
 So this is the only… this is one thing, and another one.
 We had this discussion about vendor neutrality, some time ago.
-And I think it would be awesome to write some…
-documentation about what does it mean. And, yeah, there's also, like.
-because I really admire, Adriana, you especially, and I think Aries and Dan as well, like, how…
-You keep things, like, you keep things,
-Yeah, like, you have this sense of, like, when things are going off track, like, when people are trying to,
-Or, like, maybe not even intentionally, but might be getting
-might start, like, breaking those rules that we have. I don't have it yet. Like, I totally do not have it. So, it would be super helpful if… if you folks,
-If either you folks could document that, like, what does it mean for you to… to be vendor neutral? Or, we can… we can ask
-Some, like, new contributors to…
-right guidelines on venture neutrality, but I think it would be awesome if you could collaborate in some way with them on that.
+And I think it would be awesome to write some… documentation about what does it mean. And, yeah, there's also, like.
+because I really admire, Adriana, you especially, and I think Aries and Dan as well, like, how… You keep things, like, you keep things, Yeah, like, you have this sense of, like, when things are going off track, like, when people are trying to, Or, like, maybe not even intentionally, but might be getting might start, like, breaking those rules that we have. I don't have it yet. Like, I totally do not have it. So, it would be super helpful if… if you folks, If either you folks could document that, like, what does it mean for you to… to be vendor neutral? Or, we can… we can ask Some, like, new contributors to… right guidelines on venture neutrality, but I think it would be awesome if you could collaborate in some way with them on that.
 **Adriana Villela** 18:40 Yeah, that sounds good. We can… we can start, like, a Google Doc.
 **Andrej** 18:44 Huh.
 **Adriana Villela** 18:45 For now, and then… and then we can move that to, like, to the repo, to the GitHub repo.
 **Andrej** 18:51 Yeah, yeah, that'd be cool. I have one contributor, a volunteer, Viditya.
 She was contributing some stuff to the end user section of our website.
 And she said she would be interested in, like, further docs-related contributions. Oh, cool! So she might be… she might help with that.
-But…
-Yeah, I don't think she would be able to, like, create it just by herself, because I think there's, like, a lot of… a lot of, implicit knowledge you folks have, or, like, just understanding of how things work. So…
+But… Yeah, I don't think she would be able to, like, create it just by herself, because I think there's, like, a lot of… a lot of, implicit knowledge you folks have, or, like, just understanding of how things work. So…
 **Adriana Villela** 19:31 Fair enough.
 **Andrej** 19:32 Yeah.
 Cool. So, yeah, just want to ask if you think it's, it makes sense.
-And if yes, okay, cool. So, in that case, I will create an issue for that. I can spin the document, and
-And, mention it to Viditia, and… yeah.
+And if yes, okay, cool. So, in that case, I will create an issue for that. I can spin the document, and And, mention it to Viditia, and… yeah.
 Can take it from there, I guess.
 **Adriana Villela** 19:54 Alright.
-**Andrej** 19:56 Yeah. I'm freaking out, honestly, when I heard about you folks getting that, community manager thing, and Rhys already mentioned that, like, you will be, like, slightly, like, slowly, stepping
-out, or I don't exactly remember the formulation that you, Adriana, mentioned, but…
-There's a lot of very new contributors around, like, fortunately.
+**Andrej** 19:56 Yeah. I'm freaking out, honestly, when I heard about you folks getting that, community manager thing, and Rhys already mentioned that, like, you will be, like, slightly, like, slowly, stepping out, or I don't exactly remember the formulation that you, Adriana, mentioned, but… There's a lot of very new contributors around, like, fortunately.
 **Adriana Villela** 20:18 Thank you.
 **Andrej** 20:19 And then it's still, I guess he will still be around, but…
 **Adriana Villela** 20:24 Yeah, I think Dan might be on vacation?
 **Andrej** 20:26 Maybe, maybe, maybe.
-**Adriana Villela** 20:27 I think he… I know when he… he messaged yesterday, like, when I was asking about the social posts, he was mentioning that…
-I think he was going… Okay. He was getting ready to go on vacation, so…
-Yeah. Yeah, and actually on that thread, because
-Something that I've been thinking about. I know, like, Dan is involved with the hotel blueprints thing, and that it's.
+**Adriana Villela** 20:27 I think he… I know when he… he messaged yesterday, like, when I was asking about the social posts, he was mentioning that… I think he was going… Okay. He was getting ready to go on vacation, so… Yeah. Yeah, and actually on that thread, because Something that I've been thinking about. I know, like, Dan is involved with the hotel blueprints thing, and that it's.
 **Andrej** 20:52 You know.
 **Adriana Villela** 20:53 being treated as part of End User SIG, but while I feel that it's… there's overlap.
-I don't feel… I feel like it's not…
-I don't think it makes sense for it to be part of end-user SIG per se.
+I don't feel… I feel like it's not… I don't think it makes sense for it to be part of end-user SIG per se.
 Because there's some people who are, like, more interested in the Blueprint stuff, and they're gonna attend the Blueprints meeting, right?
-And other people just want the end-user SIG stuff, like, we can collaborate in the same way that we collaborate with ContribX and DevX folks, but…
-I don't… I personally don't… I don't think it makes sense to…
-for it to be necessarily part of the SIG, because there's so much stuff that's, like.
+And other people just want the end-user SIG stuff, like, we can collaborate in the same way that we collaborate with ContribX and DevX folks, but… I don't… I personally don't… I don't think it makes sense to… for it to be necessarily part of the SIG, because there's so much stuff that's, like.
 separate already. Even, like, a separate meeting cadence.
 **Andrej** 21:47 and…
 **Adriana Villela** 21:49 I don't know if you guys agree.
-**Reese Lee** 21:59 I would… For myself, I prefer Dan to be part of the discussion, because he can
-He's much better to speak to.
+**Reese Lee** 21:59 I would… For myself, I prefer Dan to be part of the discussion, because he can He's much better to speak to.
 **Adriana Villela** 22:09 Oh, yeah, that's super fair.
 And I'm not saying, like, I'm not saying I'm kicking out Dan, either.
 Please…
 **Reese Lee** 22:19 Oh, yeah, yeah, yeah.
 **Adriana Villela** 22:20 Super clear.
 Yeah, Dan might have different thoughts. This is just, like, my… the way that I look at it.
-In, in terms of, of, like, from an organization standpoint, but…
-I think it's just a thought.
+In, in terms of, of, like, from an organization standpoint, but… I think it's just a thought.
 **Reese Lee** 22:39 Yeah, I mean, part of it, too, I think, you know, the Blueprint stuff.
-if I'm not mistaken, is… More of, like,
-like a working group thing? So, it's not necessarily… You know, it's like a… Intense, short-term effort.
+if I'm not mistaken, is… More of, like, like a working group thing? So, it's not necessarily… You know, it's like a… Intense, short-term effort.
 Right, right, right. And I think that's…
 **Adriana Villela** 23:05 Oh, fair, fair.
 **Reese Lee** 23:06 voids.
@@ -231,17 +179,12 @@ Alrighty, and that's it, yeah, so my, my urge to have something on the agenda wa
 **Adriana Villela** 24:15 Awesome, awesome.
 **Ernest Owojori** 24:16 Yeah, I just felt I should give you a general update of what has been going on behind the scenes.
 Yeah, so, based on the comments we… got from Damiena Jude.
-I think. And I think, Andre as well, spoke with them, had forced them. So we… Adrian noticed that the way the question was asked originally gave rooms for some…
-loopholes.
-And, we did not necessarily consider that in… consider that in the analysis. So that affected the, particular…
-Clearly, the…
-the, question that was asking the ease of use, where I said, 60-something percent of people could not agree that a collector builder is easy to use. So when we added those necessary filters, we now notice that about 45% don't necessarily agree that it is easy to use. Why about 54?
+I think. And I think, Andre as well, spoke with them, had forced them. So we… Adrian noticed that the way the question was asked originally gave rooms for some… loopholes.
+And, we did not necessarily consider that in… consider that in the analysis. So that affected the, particular… Clearly, the… the, question that was asking the ease of use, where I said, 60-something percent of people could not agree that a collector builder is easy to use. So when we added those necessary filters, we now notice that about 45% don't necessarily agree that it is easy to use. Why about 54?
 said he teased.
 So… and that's a lot of difference, so we are currently thinking maybe we should update the blog, but we want to run that through Pablo for two things majorly, which is, should we upload the blog post?
 I believe it's issues, yes. So then, after that, whoever the maintainer presentation that is still on the GitHub issue, but I think Pablo is super busy today. I believe he will respond to me as soon as he can.
-Yeah, so that's that for update on Collector. Then for the Japanese survey, it's ongoing. You know, what I… funny enough, I'm not checking my guide to… to analyze, but I think, mentally, I'm still following what I wrote. I just try to…
-do those, all different types of variables. I'm close to concluding that then I'll start asking all the questions I've drafted down the moment I have all the…
-multiple responses fledged out, you know, all different types of variables that are defined in the guide, then we can now start talking about reviewing, which I believe should be possible next week.
+Yeah, so that's that for update on Collector. Then for the Japanese survey, it's ongoing. You know, what I… funny enough, I'm not checking my guide to… to analyze, but I think, mentally, I'm still following what I wrote. I just try to… do those, all different types of variables. I'm close to concluding that then I'll start asking all the questions I've drafted down the moment I have all the… multiple responses fledged out, you know, all different types of variables that are defined in the guide, then we can now start talking about reviewing, which I believe should be possible next week.
 You know, Andrew should be able to review the results then.
 And then we'll just go through back and forth reviews. It's ongoing, yeah, that's the point. And thanks to Andre, we… we uploaded the data set for the collector.
 And, he did that on the PR, which I believe will be managed very soon.
@@ -259,11 +202,8 @@ Yeah, yeah, yeah.
 **Andrej** 27:18 That's, that's all, that was the question.
 **Reese Lee** 27:25 Cool.
 **Andrej** 27:37 So, next is the OTIP, hotel in practice.
-**Reese Lee** 27:41 Awesome. Yeah. I just wanted to share that Josh Lee's session had…
-high engagement, lots of follow-up questions, we also had a number of more general OTL questions, so that was just kind of interesting.
-And next week, we have the ground cover session, which…
-did have, we had to make some changes due to some concerns from the community around it being… sounded kind of like a vendor pitch. But they were super willing to work with us, and we modified the abstract, and now we're… we're just waiting for the…
-Slide deck to review ahead of the session next week.
+**Reese Lee** 27:41 Awesome. Yeah. I just wanted to share that Josh Lee's session had… high engagement, lots of follow-up questions, we also had a number of more general OTL questions, so that was just kind of interesting.
+And next week, we have the ground cover session, which… did have, we had to make some changes due to some concerns from the community around it being… sounded kind of like a vendor pitch. But they were super willing to work with us, and we modified the abstract, and now we're… we're just waiting for the… Slide deck to review ahead of the session next week.
 And also, we will have Nicola from the OB SIG to host and moderate.
 that way, he can, you know, kind of… speak to hotels… eBPF… As needed.
 **Adriana Villela** 28:45 Yep.
@@ -274,38 +214,25 @@ Nice.
 **Reese Lee** 29:05 So Nicola is based in Toronto as well?
 **Adriana Villela** 29:07 He is, yeah, yeah.
 Yeah, which I hadn't realized at first, and I'm like, wait, it's the same guy who's been emailing me about the meetup! I'm like, how cool is that? Yeah.
-Yeah, no, I think it's great. I'm very happy that he has agreed very last minute to step in, and I think this ensures that we, we keep the conversation,
-we…
-we ensure that the right parts of OpenTelemetry are being highlighted, because we definitely don't want, you know, going back to that, you know, we don't want anything to sound like a vendor pitch, or a…
-You know, highlighting…
-putting… putting the OpenTelemetry community in bad light. We're here to uplift the work that we're all doing, you know, working at different vendors as individual contributors, working towards the same goal, so…
-This… this puts in some… some guardrails, shall we say.
-**Reese Lee** 30:11 Yeah. Yeah, and I think,
-Having… you know, even something small about vendor neutrality in the…
-even just in the, OTLM practice, Page would be helpful, cause…
+Yeah, no, I think it's great. I'm very happy that he has agreed very last minute to step in, and I think this ensures that we, we keep the conversation, we… we ensure that the right parts of OpenTelemetry are being highlighted, because we definitely don't want, you know, going back to that, you know, we don't want anything to sound like a vendor pitch, or a… You know, highlighting… putting… putting the OpenTelemetry community in bad light. We're here to uplift the work that we're all doing, you know, working at different vendors as individual contributors, working towards the same goal, so… This… this puts in some… some guardrails, shall we say.
+**Reese Lee** 30:11 Yeah. Yeah, and I think, Having… you know, even something small about vendor neutrality in the… even just in the, OTLM practice, Page would be helpful, cause…
 **Adriana Villela** 30:26 Yeah.
-**Reese Lee** 30:27 when I went to look, I was like, oh, we actually don't explicitly say you know…
-We don't explicitly spell it out.
+**Reese Lee** 30:27 when I went to look, I was like, oh, we actually don't explicitly say you know… We don't explicitly spell it out.
 **Adriana Villela** 30:36 Yeah, yeah.
 **Reese Lee** 30:37 M.
 Even though, you know, it… it seems like a common sense…
 **Adriana Villela** 30:43 Yeah, we just kind of assume it because we've got that, like, that context in our heads, the tribal knowledge, if you will, right?
 **Reese Lee** 30:51 Yeah. So yeah, I think that that'll be really good to have.
 **Adriana Villela** 30:54 Yup.
-Yeah, and
-Yeah, and I think, we're going to be looking for… I know Ground Cover had volunteered to do, like, two Hotel in Practice and one HotelMe. I guess we'll see how… how this goes, and then we can… we can see if there's…
-We… we can use that to determine, you know.
+Yeah, and Yeah, and I think, we're going to be looking for… I know Ground Cover had volunteered to do, like, two Hotel in Practice and one HotelMe. I guess we'll see how… how this goes, and then we can… we can see if there's… We… we can use that to determine, you know.
 future… future sessions with them. I think it's great to have, like, these queued up.
-It would also be nice to make sure that we have other folks speaking for OTEL and Practice, HotelMe. I had a couple of leads, and then people were, like, messaging me, and they're like, oh, I'm super interested, and then they would disappear for months on end, and then they're like, I'm interested again. I'm like, great, let's book it, and then they disappear again, like…
-Such as… such is the nature of these things.
+It would also be nice to make sure that we have other folks speaking for OTEL and Practice, HotelMe. I had a couple of leads, and then people were, like, messaging me, and they're like, oh, I'm super interested, and then they would disappear for months on end, and then they're like, I'm interested again. I'm like, great, let's book it, and then they disappear again, like… Such as… such is the nature of these things.
 **Reese Lee** 31:55 Yeah…
 **Adriana Villela** 31:56 I know people get busy with work and stuff, it's… it's super normal.
 **Reese Lee** 32:00 Oh, there's some uncertainties about some topics, okay.
-**Andrej** 32:05 Yeah, yeah, yeah, talking about this, I… I added an issue to the repo about…
-about Prometheus, folks, wanted to talk about the Prometheus hotel interoperability.
+**Andrej** 32:05 Yeah, yeah, yeah, talking about this, I… I added an issue to the repo about… about Prometheus, folks, wanted to talk about the Prometheus hotel interoperability.
 **Adriana Villela** 32:19 But, as far as I heard.
-**Andrej** 32:21 There are some, like, unresolved, discussions about some of those things that they want to talk about, so…
-Yeah.
+**Andrej** 32:21 There are some, like, unresolved, discussions about some of those things that they want to talk about, so… Yeah.
 for now, I think they will have to… we'll have to wait until they sort it out. I mean, they… I told them that there is an opportunity for them to speak when they are ready, and now we should just wait until the time comes.
 So, yeah, I'll talk to them, I'll keep in touch with them, and if it will look like it's just, like, a temporary thing, I'll keep the issue opened. If it seems that it will take longer time, I will just close it.
 **Adriana Villela** 32:58 Okay.
@@ -313,16 +240,12 @@ So, yeah, I'll talk to them, I'll keep in touch with them, and if it will look l
 **Ernest Owojori** 33:09 Yeah, I was going to ask, do we have some time to ask Joy?
 what the LFET mentorship she wants to apply to, and how we can help.
 **Adriana Villela** 33:19 Oh, yeah.
-**Joy** 33:26 Okay, thank you, everybody. So, I applied to a couple, and one of them is the…
-DNCF, open telemetry, Tooling for detecting impact of behavioral changes in goal.
-libraries live, and it's the 2026 term one, so that is…
-One of them that I applied to.
+**Joy** 33:26 Okay, thank you, everybody. So, I applied to a couple, and one of them is the… DNCF, open telemetry, Tooling for detecting impact of behavioral changes in goal.
+libraries live, and it's the 2026 term one, so that is… One of them that I applied to.
 And the other one I applied to is the… DNCF, Opencast.
 open… open costs, open cost UI revamp.
-And, yeah, then the other one is the…
-upgrade core routing and state management in the Jagger user interface.
-So, these are the three. I don't know, maybe I should…
-Copy and paste in the charts.
+And, yeah, then the other one is the… upgrade core routing and state management in the Jagger user interface.
+So, these are the three. I don't know, maybe I should… Copy and paste in the charts.
 **Ernest Owojori** 34:29 Yeah, I think, maybe we can point you to the right seat for the hotel go one.
 I believe Adiana should be able to give more direction on that.
 **Adriana Villela** 34:42 I think… I think the SIG is probably called OTel-go. Let me double-check.
@@ -334,8 +257,7 @@ I think that's for auto-instrumentation stuff.
 As a good starting point.
 **Joy** 35:14 Okay.
 Yeah. Thank you.
-**Ernest Owojori** 35:21 Exactly on that. For the rest, we probably don't know. I don't know other projects that she mentioned. So…
-So…
+**Ernest Owojori** 35:21 Exactly on that. For the rest, we probably don't know. I don't know other projects that she mentioned. So… So…
 **Adriana Villela** 35:33 And Joy, just a question for you, regardless of the LFX mentorship, is the end-user SIG something you want to, contribute to regularly?
 **Joy** 35:46 Yes.
 This is something I would love to contribute to regularly.
@@ -351,12 +273,8 @@ Andre has, like he mentioned, is doing some stuff around the surveys. I think th
 **Joy** 36:39 Okay?
 Yeah, thank you.
 **Reese Lee** 36:45 No problem.
-Yeah, I know we have a tiny backlog for OTIP, because we want to have A full session with…
-OB SIG and client instrumentation has also…
-express interest, so I think we are good, and then whenever the Prometheus people are able to figure out
-the interoper-based stuff, I think, will be good for a few months.
-**Adriana Villela** 37:18 The Prometheus one is… I'm guessing it's a follow-up to the interoperability,
-Survey that we did last year.
+Yeah, I know we have a tiny backlog for OTIP, because we want to have A full session with… OB SIG and client instrumentation has also… express interest, so I think we are good, and then whenever the Prometheus people are able to figure out the interoper-based stuff, I think, will be good for a few months.
+**Adriana Villela** 37:18 The Prometheus one is… I'm guessing it's a follow-up to the interoperability, Survey that we did last year.
 **Andrej** 37:28 Potentially. I mean, like.
 It would be about interoperability, if, like, to what extent it would be about that survey or not. I don't know, we haven't talked about.
 **Adriana Villela** 37:44 a good opportunity, then, for it, still.
@@ -364,28 +282,20 @@ To bring it up, like, when they do reach out, ask if they want to do a follow-up
 **Andrej** 37:56 It's a great question, that's a great question. I will make a note, and I'll talk to them about it.
 **Reese Lee** 38:07 Oh, this is interesting.
 **Joy** 38:09 Was this, like.
-**Reese Lee** 38:12 What people wanted to…
-Talk about… talk about for the…
+**Reese Lee** 38:12 What people wanted to… Talk about… talk about for the…
 **Adriana Villela** 38:22 Oh, damn.
 **Andrej** 38:24 Yeah, yeah, the picture that I posted.
 Yeah, so I just want to mention.
 **Joy** 38:29 Some will think.
-**Andrej** 38:30 At OTL Unplugged, there were 3… 3…
-things, or three boards, where people could suggest topics for the unconference. There was one about community and ecosystem. Unfortunately, I haven't found a better, photo, of it, because
-This was the first one that was discarded, unfortunately, and it's not even my photo.
-So, some of those might be hard to read, but what is important, and what I found really interesting, that there were a lot of… there were a lot of things
-depth.
-A lot of topics that people found interesting in the area of
-community and end users and stuff. So, I expected that I will just be hanging out there when people will be talking about technical things, but actually, there were always some end-user related
-Or, like, user experience related, sessions.
-And, yeah, it was pretty cool, it was pretty cool. One… another thing that I wanted to mention is that…
-someone… shared this topic, that it would be cool to have more, content.
+**Andrej** 38:30 At OTL Unplugged, there were 3… 3… things, or three boards, where people could suggest topics for the unconference. There was one about community and ecosystem. Unfortunately, I haven't found a better, photo, of it, because This was the first one that was discarded, unfortunately, and it's not even my photo.
+So, some of those might be hard to read, but what is important, and what I found really interesting, that there were a lot of… there were a lot of things depth.
+A lot of topics that people found interesting in the area of community and end users and stuff. So, I expected that I will just be hanging out there when people will be talking about technical things, but actually, there were always some end-user related Or, like, user experience related, sessions.
+And, yeah, it was pretty cool, it was pretty cool. One… another thing that I wanted to mention is that… someone… shared this topic, that it would be cool to have more, content.
 About, like, pre-production and production.
 off.
 Hotel.
 I actually didn't know to what ext… like, yeah, I just wanted to bring it up here, like, what do you think? It's really just, like, one or two people, probably, like.
-pointing it out. As I said, I did… I don't have a photo of the… of the very last moment when this was…
-Before it got discarded?
+pointing it out. As I said, I did… I don't have a photo of the… of the very last moment when this was… Before it got discarded?
 **Reese Lee** 40:20 Yeah, there's also…
 **Adriana Villela** 40:22 like that.
 **Reese Lee** 40:23 Yeah, there's also one about end-user best practices that looks like it has 7… er… I can't tell, 4 votes?
@@ -393,23 +303,19 @@ retail.
 Yeah, more than one.
 It's the blue one, yeah, at the bottom.
 **Adriana Villela** 40:43 Nice.
-**Andrej** 40:46 So, yeah, it was just… it was very interesting for me to see that, like, how…
-How much it actually resonates, this whole theme of…
+**Andrej** 40:46 So, yeah, it was just… it was very interesting for me to see that, like, how… How much it actually resonates, this whole theme of…
 **Joy** 40:55 End user…
 **Andrej** 40:59 like, surfacing end-user experiences and talking about them, sharing them, so yeah, it was really good.
 A top, top team there.
 **Reese Lee** 41:09 Oh, that's awesome.
-**Adriana Villela** 41:10 from Ernest in the chat. Isn't the blueprint meant to solve the best practices issue? I think it's meant to highlight, at least my understanding, the use cases, like…
-And to help us towards graduated status, I think?
+**Adriana Villela** 41:10 from Ernest in the chat. Isn't the blueprint meant to solve the best practices issue? I think it's meant to highlight, at least my understanding, the use cases, like… And to help us towards graduated status, I think?
 I wish Dan was here.
 **Reese Lee** 41:28 Yes.
 **Adriana Villela** 41:29 make sure I'm saying it right, but I think that's my understanding of it anyway.
-**Reese Lee** 41:34 I think it's related, because the… so the blueprint outlines a strategic reference for teams operating in
-different environments.
+**Reese Lee** 41:34 I think it's related, because the… so the blueprint outlines a strategic reference for teams operating in different environments.
 **Joy** 41:52 Yeah.
 **Ernest Owojori** 41:53 maybe…
-**Reese Lee** 41:54 But yeah, I think the overall goal is…
-best practices, so I think you're…
+**Reese Lee** 41:54 But yeah, I think the overall goal is… best practices, so I think you're…
 **Ernest Owojori** 42:01 Okay, okay.
 **Reese Lee** 42:02 You're right.
 **Ernest Owojori** 42:03 I think I… I obviously don't know the details of the blueprint, but I know I had a couple of meetings where Dan talked about.
@@ -417,23 +323,17 @@ best practices, so I think you're…
 **Ernest Owojori** 42:12 When others join, and they just say, you know, we've been doing it this way, and we think it's the best, why can't we document, you know?
 And I think, it would be nice to see what they are coming up with, so that we won't duplicate efforts, you know.
 Yeah.
-**Reese Lee** 42:34 Yeah, but I think these, like, the lessons… the best practices that…
-Like, those general topics would be really good for,
-content.
+**Reese Lee** 42:34 Yeah, but I think these, like, the lessons… the best practices that… Like, those general topics would be really good for, content.
 **Joy** 42:55 If we could get…
 **Reese Lee** 42:59 Yeah, it's been a while since we had an Oh Tell Me session.
 **Adriana Villela** 43:03 I know, yeah.
-Yeah, I… yeah, and this, honestly, that would totally address,
-The pre… the pre-prod, post-prod thing, and that would be such a good.
+Yeah, I… yeah, and this, honestly, that would totally address, The pre… the pre-prod, post-prod thing, and that would be such a good.
 **Joy** 43:18 use cases.
 **Adriana Villela** 43:18 Like, we all talk about, like, oh, we're starting to implement OpenTelemetry, but it's like.
-okay, I want to know what happened when you turned on your instrumentation, and then you, you know, you deployed your collectors. Was it a total disaster? What did you do to prepare? I feel like Hazel touched a little bit upon that when she did her…
-her O'TellMe a couple years back, because she talked about, the fact that they had, like, all this telemetry, and it's, like, great, I have all this telemetry, but a lot of this stuff is crap, and so it's not being, like, particularly useful to us, and how do you, ensure that you're, you know.
-You're actually emitting meaningful telemetry from your systems, but it would be really, really nice if we could,
-If we could get some use cases.
+okay, I want to know what happened when you turned on your instrumentation, and then you, you know, you deployed your collectors. Was it a total disaster? What did you do to prepare? I feel like Hazel touched a little bit upon that when she did her… her O'TellMe a couple years back, because she talked about, the fact that they had, like, all this telemetry, and it's, like, great, I have all this telemetry, but a lot of this stuff is crap, and so it's not being, like, particularly useful to us, and how do you, ensure that you're, you know.
+You're actually emitting meaningful telemetry from your systems, but it would be really, really nice if we could, If we could get some use cases.
 **Joy** 44:08 pieces.
-**Adriana Villela** 44:09 I… I do wonder, because we're… we're in a bit of a survey lull right now, right? I wonder if we can put out a Google Form, to solicit, or just have, actually, a Google Form
-For people to fill out for O'Tell Me and O'Tel in Practice. Like, this has been, like, so ad hoc.
+**Adriana Villela** 44:09 I… I do wonder, because we're… we're in a bit of a survey lull right now, right? I wonder if we can put out a Google Form, to solicit, or just have, actually, a Google Form For people to fill out for O'Tell Me and O'Tel in Practice. Like, this has been, like, so ad hoc.
 In the past, but maybe we need to formalize this a little bit better. And I'm taking a page from, like, I'm… I'm one of the organizers for KCD Toronto, and one of the things that we did was, like.
 create a Google form for soliciting volunteers, because before I was like, oh, who wants to volunteer? Fill out… so now it's like, fill out the form, tell me what areas you're interested in. Let's have a form for this!
 **Reese Lee** 44:57 You know what?
@@ -443,28 +343,21 @@ Yes, let's make this.
 **Adriana Villela** 45:15 Scalable.
 **Andrej** 45:17 I would just be afraid, like, looking at our backlog right now, it feels like it's quite full for next upcoming, like, a few months, I would be just afraid that it might scale too much.
 We good!
-**Reese Lee** 45:32 Focus mainly on, like, specifically we're looking for, you know, end users, Who are able to share…
-implementation questions and… Yeah.
+**Reese Lee** 45:32 Focus mainly on, like, specifically we're looking for, you know, end users, Who are able to share… implementation questions and… Yeah.
 **Adriana Villela** 45:46 Yeah.
 **Reese Lee** 45:47 So try to make it a little bit more focused.
 And explain, you know, why we are looking for this specifically.
-And then, of course, like, you know, make it clear that this is not a vendor pitch,
-Yeah, no, I think, I think that would be a great way to… To do this…
-**Adriana Villela** 46:13 Also, just because they fill out the form doesn't mean it's an automatic acceptance, you know what I mean? Like, this is their opportunity to pitch to us on why…
-they would want to be in this, and then give, and then we can use it to also collect information on, like, when do you want to do your session? .
+And then, of course, like, you know, make it clear that this is not a vendor pitch, Yeah, no, I think, I think that would be a great way to… To do this…
+**Adriana Villela** 46:13 Also, just because they fill out the form doesn't mean it's an automatic acceptance, you know what I mean? Like, this is their opportunity to pitch to us on why… they would want to be in this, and then give, and then we can use it to also collect information on, like, when do you want to do your session? .
 **Reese Lee** 46:33 What?
 **Adriana Villela** 46:33 What are the takeaways? And it doesn't have to be, like.
 I don't… I also don't want it to be, like, a CFP thing, where people are like, ugh, I don't want to fill.
 **Reese Lee** 46:41 Oh, yeah, yeah, yeah.
-**Adriana Villela** 46:42 It's gotta be easy to fill out, I don't want it to be off-putting. But,
-I'm hoping the form will be, like, straightforward enough that it'll compel people to fill it out, and we'll get…
-We'll create a backlog of people… of presentations for HotelMe and Hotel in Practice, because right now.
-Like, we're just running around with…
-Like, chickens with their heads cut off, trying to chase people down.
+**Adriana Villela** 46:42 It's gotta be easy to fill out, I don't want it to be off-putting. But, I'm hoping the form will be, like, straightforward enough that it'll compel people to fill it out, and we'll get… We'll create a backlog of people… of presentations for HotelMe and Hotel in Practice, because right now.
+Like, we're just running around with… Like, chickens with their heads cut off, trying to chase people down.
 Like, I basically meet people, and I'm like, hey, would you like to do hotel and practice? Like, I'll go to conferences and talk to people. I'm like, you should come on!
 We need a more formalized process.
-**Reese Lee** 47:24 Yeah, no, this is good. Yeah…
-I know, like, some organizations are a little… More strict about, you know, What can be shared, and…
+**Reese Lee** 47:24 Yeah, no, this is good. Yeah… I know, like, some organizations are a little… More strict about, you know, What can be shared, and…
 **Adriana Villela** 47:39 Yeah.
 **Reese Lee** 47:40 Some have to ask, like, request legal approval, so…
 **Adriana Villela** 47:44 Yeah. Yeah.
@@ -482,17 +375,12 @@ First, and I have, like, way too long, of my, like, my own backlog for hotel. So
 **Adriana Villela** 49:49 Okay.
 Awesome.
 have at it, then. Do you want to do a form for Hotel and Practice and a separate one for HotelMe, or do you want to just, one form for both?
-**Reese Lee** 50:01 I'm gonna think on that, because I want it to be… you know, kind of follow what we just talked about, and so…
-I think these would probably be… make more sense than the Oh Tell Me side.
+**Reese Lee** 50:01 I'm gonna think on that, because I want it to be… you know, kind of follow what we just talked about, and so… I think these would probably be… make more sense than the Oh Tell Me side.
 But yeah, I will need to noodle on it a little bit more.
-**Adriana Villela** 50:25 Okay. Yeah, for hotel and practice, I think having a…
-Having a forum to just, like, gauge interest.
-**Reese Lee** 50:35 Yeah, I mean, I think with hotel and practice, we have…
-We do have some issues on the board for upcoming ones, so…
-But no, we don't have anything for Hotel Me, and I think that…
+**Adriana Villela** 50:25 Okay. Yeah, for hotel and practice, I think having a… Having a forum to just, like, gauge interest.
+**Reese Lee** 50:35 Yeah, I mean, I think with hotel and practice, we have… We do have some issues on the board for upcoming ones, so… But no, we don't have anything for Hotel Me, and I think that…
 **Adriana Villela** 50:51 Yeah.
-**Reese Lee** 50:52 if… It's more of a format where we can…
-Talk to, like, yeah, talk to people, and they don't have to, like, put together a presentation.
+**Reese Lee** 50:52 if… It's more of a format where we can… Talk to, like, yeah, talk to people, and they don't have to, like, put together a presentation.
 **Adriana Villela** 51:02 That's less lift for them, and then it might not…
 **Reese Lee** 51:06 Get in the way of, you know, any legal or security concerns from their.
 **Adriana Villela** 51:10 Beautiful.
@@ -501,13 +389,11 @@ Talk to, like, yeah, talk to people, and they don't have to, like, put together 
 Yeah, and specifically about, like…
 **Reese Lee** 51:24 end user… concerns.
 **Adriana Villela** 51:27 Yeah, yeah.
-Yeah, and I'm thinking on a similar vein, like,
-having a proper process for people to sign up for Humans of O'Tol.
+Yeah, and I'm thinking on a similar vein, like, having a proper process for people to sign up for Humans of O'Tol.
 As well, because it's also been like, hey, you're cool.
 **Reese Lee** 51:40 Yeah, and we…
 **Adriana Villela** 51:41 Fill out a form.
-**Reese Lee** 51:44 Yeah, and we always just say, like, oh, you know, reach out to us, but if we had a form, it would…
-Make it so much easier, yeah.
+**Reese Lee** 51:44 Yeah, and we always just say, like, oh, you know, reach out to us, but if we had a form, it would… Make it so much easier, yeah.
 **Adriana Villela** 51:51 Yeah, yeah.
 Yeah. I can… I can throw that form together for Humans of Hotel.
 And then… Post that on the channel for… for feedback.
@@ -522,8 +408,7 @@ And then… Post that on the channel for… for feedback.
 **Reese Lee** 52:25 I…
 **Adriana Villela** 52:26 day for you.
 **Reese Lee** 52:28 I'll see you on Monday!
-**Adriana Villela** 52:30 It's a holiday on Monday? Yes. For us, it's Family Day. It's so Canadian that we have, like, a holiday called Family Day. It's like…
-Of course, it's called Family Day.
+**Adriana Villela** 52:30 It's a holiday on Monday? Yes. For us, it's Family Day. It's so Canadian that we have, like, a holiday called Family Day. It's like… Of course, it's called Family Day.
 **Reese Lee** 52:40 That's cute. I support that.
 Thank you.
 **Ernest Owojori** 52:45 Where are you traveling to Argenta for the holiday? Because…

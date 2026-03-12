@@ -14,9 +14,7 @@ Zoom Recording URL: https://zoom.us/rec/share/0CZjIHni7pvwIi2uIlA3AFOAWiJdq5FVY1
 **Patrice CNCF** 01:08 Aye.
 **Severin Neumann** 01:34 Was the 3-day I bought here the last time as well, or is it, like, once in a while?
 **Patrice CNCF** 01:45 Wasn't there the last time, who's there?
-**Severin Neumann** 01:52 Yeah, because I think we have a meta issue in the community repo to track that, like…
-How often this happens and something like that, so…
-Maybe let me check on that.
+**Severin Neumann** 01:52 Yeah, because I think we have a meta issue in the community repo to track that, like… How often this happens and something like that, so… Maybe let me check on that.
 **Patrice CNCF** 02:03 So you see it happening today, right? I don't know if she.
 **Severin Neumann** 02:05 Yeah.
 **Patrice CNCF** 02:05 Before or after the bot.
@@ -32,61 +30,41 @@ You ready to roll?
 Or do we miss anybody? Is… Anybody?
 **Patrice CNCF** 03:35 A few minutes after, I think we're good.
 Get started.
-**Severin Neumann** 03:43 Alright, just put a message into the comms channel, so maybe people who
-Forgot about it, can still join it.
+**Severin Neumann** 03:43 Alright, just put a message into the comms channel, so maybe people who Forgot about it, can still join it.
 Yeah, if you have any topics, there's always, like, Put them into the agenda.
 So we can… Talk about them.
 Let me… I can share my screen if you like, so I can put it up for everybody.
 You can see this, hopefully.
 We have at least two topics on the agenda. Again, if you want to add anything, just open up the document and edit there.
-Patrice, I guess you put it here, because Fabri's not here, the…
-Draft homepage copy changes, so do we want to take a quick look into that?
-**Patrice CNCF** 04:34 Sure, at this point, My suggestion was, so there…
-several changes proposed here, and I think…
-we should just go through them one by one, not during today's meeting, but I'm just saying one by one, because some of them may be contentious, and one of them in particular, if you look at the preview, go to the preview. Oh, yeah.
-I… oh, the link… I put the link in the top, but… No worries. So,
-If you notice the… tagline.
-is very short now. And as I… as you may have seen in Slack, I suggested maybe that
-GC or the TC should comment on whether they want that. So I think we could start with that, and just bring that up in the next meeting, if you think it's worthwhile.
+Patrice, I guess you put it here, because Fabri's not here, the… Draft homepage copy changes, so do we want to take a quick look into that?
+**Patrice CNCF** 04:34 Sure, at this point, My suggestion was, so there… several changes proposed here, and I think… we should just go through them one by one, not during today's meeting, but I'm just saying one by one, because some of them may be contentious, and one of them in particular, if you look at the preview, go to the preview. Oh, yeah.
+I… oh, the link… I put the link in the top, but… No worries. So, If you notice the… tagline.
+is very short now. And as I… as you may have seen in Slack, I suggested maybe that GC or the TC should comment on whether they want that. So I think we could start with that, and just bring that up in the next meeting, if you think it's worthwhile.
 **Severin Neumann** 05:34 I think I put it into the GC agenda already.
 And also ask Yorasi to… because I will miss GC meeting tomorrow.
-But I asked Jurassi to… Flag it, or…
-Marilia, if you… if you're around tomorrow, you can… you can mention it as well. I mean, I… I think it's a…
-it's a bold, bold proposal, so I can't.
+But I asked Jurassi to… Flag it, or… Marilia, if you… if you're around tomorrow, you can… you can mention it as well. I mean, I… I think it's a… it's a bold, bold proposal, so I can't.
 **Patrice CNCF** 05:58 It is.
 **Severin Neumann** 05:59 But, yeah, I think that's not a call we should be making, right? I mean, there's a lot of things where we can just run and say, like, yeah, this is what we do.
 **Patrice CNCF** 06:08 Exactly.
 **Severin Neumann** 06:09 We do it, but maybe not the tagline.
 So yeah, I will… I will… I will defer this to the… to the GC, yeah.
 **Patrice CNCF** 06:19 Yeah.
-**Severin Neumann** 06:20 I mean, but saying that at the same time, like, if you like it or if you don't like it, please go to the PR and comment on it, right? So I have a…
-I think I have opened up,
-An open comment on that, so if you have opinions on that.
-Please also do not… like, like at the end, because it's not also not the GC alone to…
-to make that call, I guess, so everybody…
-In the community should be able to Comment on that, so… Yeah.
+**Severin Neumann** 06:20 I mean, but saying that at the same time, like, if you like it or if you don't like it, please go to the PR and comment on it, right? So I have a… I think I have opened up, An open comment on that, so if you have opinions on that.
+Please also do not… like, like at the end, because it's not also not the GC alone to… to make that call, I guess, so everybody… In the community should be able to Comment on that, so… Yeah.
 I mean, it's definitely easier than the high-quality ubiquitous and portable telemetry to enable effective observability.
 I cannot remember that since forever, but yeah, we will figure out.
-Patrice, any of the other changes that we at least quickly should look into, or is it more like that you…
-would ask everybody to… to take a look and review it. I think that's the major change, right?
-**Patrice CNCF** 07:21 that's one of the major changes, and I've been quite busy with other things, so I haven't looked into the other…
-suggestions.
+Patrice, any of the other changes that we at least quickly should look into, or is it more like that you… would ask everybody to… to take a look and review it. I think that's the major change, right?
+**Patrice CNCF** 07:21 that's one of the major changes, and I've been quite busy with other things, so I haven't looked into the other… suggestions.
 I think there was a re… there's a regrouping, so… Yeah.
 No, I don't have anything else to present at this… at this moment, but maybe I'll… I'll do it. At the next meeting, I'll present the next chunk.
 **Severin Neumann** 07:48 Yeah.
 I mean, one thing we could talk about or think about is, like, splitting it out in smaller.
-sorry, into smaller pieces, because I assume there's a few of them that are not controversial, and a few of them that might
-require
-a longer debate, so maybe that's… that's… because I like the idea to quickly iterate on our homepage, since we now have changed it, but at the same time, I… I think there's a few things we… we should
-Debate more deeply, and there's a few things that we probably just can… a proof, so yeah.
-But yeah, I said I… I flagged it with the GC, and…
-We should… should talk about that.
-**Patrice CNCF** 08:33 Yeah, let's start with that. I don't have the time to split the PR up, and
-person who submitted it, whose name I don't want to mispronounce, just said, okay, you guys, you deal with it, you take it from here. So, if we're going to take it from here, we'll do it piecewise per meeting, or if Fabri has more time, then he can do it.
+sorry, into smaller pieces, because I assume there's a few of them that are not controversial, and a few of them that might require a longer debate, so maybe that's… that's… because I like the idea to quickly iterate on our homepage, since we now have changed it, but at the same time, I… I think there's a few things we… we should Debate more deeply, and there's a few things that we probably just can… a proof, so yeah.
+But yeah, I said I… I flagged it with the GC, and… We should… should talk about that.
+**Patrice CNCF** 08:33 Yeah, let's start with that. I don't have the time to split the PR up, and person who submitted it, whose name I don't want to mispronounce, just said, okay, you guys, you deal with it, you take it from here. So, if we're going to take it from here, we'll do it piecewise per meeting, or if Fabri has more time, then he can do it.
 **Severin Neumann** 08:58 Yeah, yeah, yeah, we can maybe see if Faberi has some capacity for it, so… .
 **Patrice CNCF** 09:04 Yep.
-given that we've revamped the page already, I want to timeshare and work on other things in the…
-in priority.
+given that we've revamped the page already, I want to timeshare and work on other things in the… in priority.
 **Severin Neumann** 09:14 Okay.
 Okay.
 Cool.
@@ -94,29 +72,16 @@ Anything else on that one?
 **Patrice CNCF** 09:22 No, thank you for the note, whoever's taking notes.
 Thank you, Tiffany.
 **Severin Neumann** 09:31 Cool, let's talk about Tiffany's topic, then.
-**Tiffany Hrabusa** 09:35 Yeah, so, I think…
-I think, Marillia, you might have been in that session at O'Tel Unplugged. Severin, I… I don't think you were, but…
+**Tiffany Hrabusa** 09:35 Yeah, so, I think… I think, Marillia, you might have been in that session at O'Tel Unplugged. Severin, I… I don't think you were, but…
 **Severin Neumann** 09:46 We talked about it shortly, yeah.
-**Tiffany Hrabusa** 09:49 Yeah, so…
-There was a session at Hotel Unplugged, and one of the topics that came up was,
-How we can better empower the localization teams to organize their work.
-And one of the… Seemingly small, but…
-pretty annoying roadblocks for them, is that when we create… when they create, like, a checklist for,
-updating, pages from… that have drifted, they're not able to, like, check off the pages that they've done, they can't go back and edit the list with stuff like that, so it gets very tedious for them to track their work. So, one of the asks was, can we…
-Allow them to edit issues.
-edit issue descriptions. So, that was the smaller ask, and I think Severin has kind of
-Taken that in, like, a broader context, how we can, help these teams.
+**Tiffany Hrabusa** 09:49 Yeah, so… There was a session at Hotel Unplugged, and one of the topics that came up was, How we can better empower the localization teams to organize their work.
+And one of the… Seemingly small, but… pretty annoying roadblocks for them, is that when we create… when they create, like, a checklist for, updating, pages from… that have drifted, they're not able to, like, check off the pages that they've done, they can't go back and edit the list with stuff like that, so it gets very tedious for them to track their work. So, one of the asks was, can we… Allow them to edit issues.
+edit issue descriptions. So, that was the smaller ask, and I think Severin has kind of Taken that in, like, a broader context, how we can, help these teams.
 Make sure that their work isn't getting, blocked.
-**Diana Todea** 10:51 Yeah, thank you, Tiffany. Yeah, it was me and Nima who proposed this, and…
-Yeah, it's very tedious, so if it can be automated, that'll be… that'll be great.
+**Diana Todea** 10:51 Yeah, thank you, Tiffany. Yeah, it was me and Nima who proposed this, and… Yeah, it's very tedious, so if it can be automated, that'll be… that'll be great.
 **Severin Neumann** 11:05 Yeah, maybe a specific and a general comment.
-I think that specific thing we might be able to fix was, like… giving… language approvers…
-higher permissions on our repository. Those permissions will not include capabilities to merge.
-But I think the capability to edit things. So, so…
-and this is a more general comment, GitHub permissions are a nightmare, right? They're very…
-unflexible and very, like, not how we want them to be, especially the… and this is maybe then the bigger conversation, and we had this conversation before, it's like, what we unfortunately cannot do with GitHub as it is today is say things like, hey,
-the French localization team is only allowed
-to merge PRs into the French folder, right? That's unfortunately impossible with GitHub as of today.
+I think that specific thing we might be able to fix was, like… giving… language approvers… higher permissions on our repository. Those permissions will not include capabilities to merge.
+But I think the capability to edit things. So, so… and this is a more general comment, GitHub permissions are a nightmare, right? They're very… unflexible and very, like, not how we want them to be, especially the… and this is maybe then the bigger conversation, and we had this conversation before, it's like, what we unfortunately cannot do with GitHub as it is today is say things like, hey, the French localization team is only allowed to merge PRs into the French folder, right? That's unfortunately impossible with GitHub as of today.
 So we can probably help with that one, but the other one is still, like, a bigger conversation that we should have at some point, or right now, where we see, like.
 How can we… How can we enable localization teams to be much more independent?
 Patrice?
@@ -124,160 +89,97 @@ Patrice?
 And one of the obvious ways to contain or offer that sort of an organization is to have a separate repo.
 For a language, and then… The language maintainers could have full freedom.
 to… Manage permissions for their team.
-So that would be one way. I'm just offering that as a suggestion, given that
-We are coming up on limitations.
+So that would be one way. I'm just offering that as a suggestion, given that We are coming up on limitations.
 In terms of permissions for a single repo.
-**Severin Neumann** 13:14 If I remember correctly, that was one of the solutions. Like, I remember the Vitor, right, you created, like, last year sometimes, that file where we looked into, like, the different
-Different possibilities that we have, right?
+**Severin Neumann** 13:14 If I remember correctly, that was one of the solutions. Like, I remember the Vitor, right, you created, like, last year sometimes, that file where we looked into, like, the different Different possibilities that we have, right?
 And, like, having a separate repository was one of them.
 I think at the end.
-it's definitely one of the most compelling ones. The only question is, like, how do we… like…
-Dan, because I assume there's then something that we need to keep those repositories in sync, right?
-How, like, should then the localizations be, like, a…
-a Hugo submodule that we mount in, similar to how we do it to the specs, like.
+it's definitely one of the most compelling ones. The only question is, like, how do we… like… Dan, because I assume there's then something that we need to keep those repositories in sync, right?
+How, like, should then the localizations be, like, a… a Hugo submodule that we mount in, similar to how we do it to the specs, like.
 That's standard logistics that we would have to figure out, right?
 **Patrice CNCF** 14:08 Right?
 And they're… Advantages and disadvantages in there.
 **Severin Neumann** 14:15 Yeah.
 **Patrice CNCF** 14:15 headaches one way or another.
 The other thing I wanted to mention, specifically about meta issues?
-Maybe what the language teams can do,
-For the meta-issues that list a… list a whole bunch of drifted pages, they could just…
-create their own issue. I don't know if there's… there's a way to… For language maintainers.
+Maybe what the language teams can do, For the meta-issues that list a… list a whole bunch of drifted pages, they could just… create their own issue. I don't know if there's… there's a way to… For language maintainers.
 At least for them to create an issue.
-Close the original if it… it wasn't their team that…
-created it. Does that seem like it might offer a temporary solution?
+Close the original if it… it wasn't their team that… created it. Does that seem like it might offer a temporary solution?
 Or a partial solution?
 Am I making sense?
-**Tiffany Hrabusa** 15:06 Yeah, I think,
-I think one of the things, because I was kind of talking about, like, the approver-maintainer role as well, but there are a lot of localization contributors who don't have any,
-defined status in… in the communications repo, and so…
-They would still like to be able to indicate that they've worked on something, and that they've completed it.
-In a more organized way, but they probably don't have permissions to approve things, and they definitely don't have permissions to merge things, so…
-That might be introducing an additional level of complexity.
+**Tiffany Hrabusa** 15:06 Yeah, I think, I think one of the things, because I was kind of talking about, like, the approver-maintainer role as well, but there are a lot of localization contributors who don't have any, defined status in… in the communications repo, and so… They would still like to be able to indicate that they've worked on something, and that they've completed it.
+In a more organized way, but they probably don't have permissions to approve things, and they definitely don't have permissions to merge things, so… That might be introducing an additional level of complexity.
 To have, like, any… Maybe member of the OpenTelemetry organization be able to edit?
 issues, I'm not sure.
 What people feel about that.
-**Severin Neumann** 16:01 I mean, my immediate answer would be if they do not have those permissions, because they're not reflected
-in a role, Then it's the localization team's responsibility
-to fix that, right? Like, if someone is contributing to the Portuguese localizations for, like, 3 months, and is consistently showing
-good… consistent contributions.
-they should add them to the approvers. And if they do not have the permissions to add them to the approvers, then they should reach out to us, since they're like, hey, we want to add this person
-to… To the approvers, right?
-I think that that's the lowest barrier, I think, like…
-In that regards, I think the language group should be, like, self-organizing.
+**Severin Neumann** 16:01 I mean, my immediate answer would be if they do not have those permissions, because they're not reflected in a role, Then it's the localization team's responsibility to fix that, right? Like, if someone is contributing to the Portuguese localizations for, like, 3 months, and is consistently showing good… consistent contributions.
+they should add them to the approvers. And if they do not have the permissions to add them to the approvers, then they should reach out to us, since they're like, hey, we want to add this person to… To the approvers, right?
+I think that that's the lowest barrier, I think, like… In that regards, I think the language group should be, like, self-organizing.
 and we had… have done this in the past, right? That they said, like, oh, we have this and that person, and he's… he or she stepped up and did, like, a lot of amazing things, so can we… can we have them as an approver?
-I… I think we should not… Not do that, so…
-I wonder if the approvers even have, like…
-Permissions to add people to their own team.
+I… I think we should not… Not do that, so… I wonder if the approvers even have, like… Permissions to add people to their own team.
 Maybe we can check on that.
 But that's, like, if that's a limitation, that's definitely something, like, we should fix, right?
-**Patrice CNCF** 17:29 Other than the, suggestion of… of having a…
-a submodule, a separate repo. Another possibility to circumvent GitHub limitations is what is done in Kubernetes. They have a…
-a bot with…
-the Kubernetes bot allows… there's a lot of commands that you can use, and anybody can use, including
-Assigning issues, so anybody who types slash assign will get an issue assigned.
-So that's a way of… Allowing anybody to,
-Do more of common requests, like assigning an issue, but without opening up all the permissions.
+**Patrice CNCF** 17:29 Other than the, suggestion of… of having a… a submodule, a separate repo. Another possibility to circumvent GitHub limitations is what is done in Kubernetes. They have a… a bot with… the Kubernetes bot allows… there's a lot of commands that you can use, and anybody can use, including Assigning issues, so anybody who types slash assign will get an issue assigned.
+So that's a way of… Allowing anybody to, Do more of common requests, like assigning an issue, but without opening up all the permissions.
 So I don't know what you think of that sort of a… solution.
-And once there's a bot, then it's programmed so we can…
-encode whatever restrictions we want per folder, per… locale.
-But, of course, it would require the time to…
-Either write the bot or investigate what's out there and is configurable and usable.
+And once there's a bot, then it's programmed so we can… encode whatever restrictions we want per folder, per… locale.
+But, of course, it would require the time to… Either write the bot or investigate what's out there and is configurable and usable.
 Some… Just throwing out ideas, maybe we don't have to decide yet, but…
 **Severin Neumann** 19:06 again, I think we… We discussed most of the solutions at some point already, right?
-I think I'm just wondering about the following, right? At the end, like, would we want
-eventually, like… and by we, right now, I mean SICCOMs, right? Like, and no, not SICCOMs, because localization… DOCS maintainers and DOCS approvers, right? Like, we want to focus on
-The non-localized stuff, Meaning, like, we also at the same time want the localizations teams
-To be as independent as possible, right?
-And my feeling is also that within the localization teams and within the localization approvers, there's people that want to step up and say, like, hey, I want to have more responsibility, I want to
-Do something here, right?
-So, so, and this is a proposal now, that we say, like, hey, this is…
-This is… we are open to that.
+I think I'm just wondering about the following, right? At the end, like, would we want eventually, like… and by we, right now, I mean SICCOMs, right? Like, and no, not SICCOMs, because localization… DOCS maintainers and DOCS approvers, right? Like, we want to focus on The non-localized stuff, Meaning, like, we also at the same time want the localizations teams To be as independent as possible, right?
+And my feeling is also that within the localization teams and within the localization approvers, there's people that want to step up and say, like, hey, I want to have more responsibility, I want to Do something here, right?
+So, so, and this is a proposal now, that we say, like, hey, this is… This is… we are open to that.
 But you have to do the heavy lifting.
-So pick one, pick the repository, pick the bot, pick… another solution And then…
-Sure, we have to probably do some approvals here and there.
+So pick one, pick the repository, pick the bot, pick… another solution And then… Sure, we have to probably do some approvals here and there.
 But it's your job to walk through that, to enable that.
 How does this sound?
 **Patrice CNCF** 20:31 Sure. Whatever… if, for example.
 a localization team, like Portuguese, might be adventurous and wish to experiment with a separate repo. I mean, we are going to have to coordinate anyways.
 In terms of.
-**Severin Neumann** 20:49 I think that I'll always… There will always be…
-some work on our end, right? And some, some, some, some coordination.
-But if a few people are…
-interested to say, like, hey, we want to have an open telemetry
-localizations repository, and when I think about that, that repository should be for all localizations, and not only for specific ones.
-Then, yeah, people can figure out on their own how to
-do that, right? And maybe we should not be doing that, and give them… give them the freedom to do that.
-**Marylia Gutierrez** 21:28 Yeah, I'm gonna put my voice against another repro, just because, yeah, I've…
-Because you get to, like, a similar problem, because first of all, now, okay, now we have a new repo to coordinate, and, like, okay, if somebody's doing something very different on that repo compared to the main
-comms one, like, how you're gonna align, and then you… you're doing this so, like, people can do their own thing, but then you get to the same issue, like.
-okay, now a maintainer of the repo can merge any PR, so that means somebody from Portuguese can merge somebody, like, a PR from Japanese. So you're just trusting people that they're not gonna merge something that
-They are not familiar with, which is the same thing that we should be doing here.
-So I don't think creating a new repo… I think he causes more…
-like, work than actually help with the issue. So just, yeah, putting a…
-the other side of the coin here.
+**Severin Neumann** 20:49 I think that I'll always… There will always be… some work on our end, right? And some, some, some, some coordination.
+But if a few people are… interested to say, like, hey, we want to have an open telemetry localizations repository, and when I think about that, that repository should be for all localizations, and not only for specific ones.
+Then, yeah, people can figure out on their own how to do that, right? And maybe we should not be doing that, and give them… give them the freedom to do that.
+**Marylia Gutierrez** 21:28 Yeah, I'm gonna put my voice against another repro, just because, yeah, I've… Because you get to, like, a similar problem, because first of all, now, okay, now we have a new repo to coordinate, and, like, okay, if somebody's doing something very different on that repo compared to the main comms one, like, how you're gonna align, and then you… you're doing this so, like, people can do their own thing, but then you get to the same issue, like.
+okay, now a maintainer of the repo can merge any PR, so that means somebody from Portuguese can merge somebody, like, a PR from Japanese. So you're just trusting people that they're not gonna merge something that They are not familiar with, which is the same thing that we should be doing here.
+So I don't think creating a new repo… I think he causes more… like, work than actually help with the issue. So just, yeah, putting a… the other side of the coin here.
 **Patrice CNCF** 22:29 Yeah, I agree, I would not go with a single repo for all locales. I would go one repo per locale.
-That way, it makes for an independent silo. But, that being said, I…
-Do agree that having another repo
-Is a lot of work, and coordination.
+That way, it makes for an independent silo. But, that being said, I… Do agree that having another repo Is a lot of work, and coordination.
 And, our… the solution we have now is pretty good.
 Maybe there are inflexibilities that we can live with for a little longer.
-And,
-if we want to grow beyond that, I'm kind of feeling that a bot with special commands could be more helpful, but,
-Yeah.
+And, if we want to grow beyond that, I'm kind of feeling that a bot with special commands could be more helpful, but, Yeah.
 Don't have any further concrete solutions to propose.
-**Severin Neumann** 23:30 Okay, so… The feeling is still, like…
-Enabling that is a… is a hurdle.
+**Severin Neumann** 23:30 Okay, so… The feeling is still, like… Enabling that is a… is a hurdle.
 And if it would enable it, like, having something like a bot, Seems to be… preference.
 Has… okay, so… yeah.
-**Patrice CNCF** 23:54 If it… if it reaches a point… it reaches a point where this is a priority, I can…
-try and, allot some time, but I don't think it'll happen before the fall.
-But I can start looking into it more seriously to have a bot
-along the lines of maybe what Kubernetes has.
+**Patrice CNCF** 23:54 If it… if it reaches a point… it reaches a point where this is a priority, I can… try and, allot some time, but I don't think it'll happen before the fall.
+But I can start looking into it more seriously to have a bot along the lines of maybe what Kubernetes has.
 If that can help.
 **Severin Neumann** 24:16 I don't know.
-**Diana Todea** 24:18 Yeah, so I think, yeah, all of you are right in the sense that, if you're, let's say, asking for a specific local, I don't know, like, community Portuguese or Chinese, doesn't matter, maybe to do this as a test and see if they want to go ahead, because obviously, I think it's…
-Also, it adds complexity, but there are also, like, you know, mixed feelings. They're like, if they want to be more independent, they should try to, you know, have it… do it like a test.
-But also, it depends in the long run if they will do it or not, so it really depends on a very particular locale. So, like, people get tired after a while, so it's kind of hard to…
-scale, and also I can focus like this in the future. But yeah, I think here is very tricky, because the human factor is really important, and also each locale is, like, each community around the locale is very different.
-I'm not sure, maybe… if…
-If we should ask, maybe, if, somebody, like, one of these, like, these communities wants to, like, offer to test this, or not, depending also on their workload, or, you know, how many members they have.
+**Diana Todea** 24:18 Yeah, so I think, yeah, all of you are right in the sense that, if you're, let's say, asking for a specific local, I don't know, like, community Portuguese or Chinese, doesn't matter, maybe to do this as a test and see if they want to go ahead, because obviously, I think it's… Also, it adds complexity, but there are also, like, you know, mixed feelings. They're like, if they want to be more independent, they should try to, you know, have it… do it like a test.
+But also, it depends in the long run if they will do it or not, so it really depends on a very particular locale. So, like, people get tired after a while, so it's kind of hard to… scale, and also I can focus like this in the future. But yeah, I think here is very tricky, because the human factor is really important, and also each locale is, like, each community around the locale is very different.
+I'm not sure, maybe… if… If we should ask, maybe, if, somebody, like, one of these, like, these communities wants to, like, offer to test this, or not, depending also on their workload, or, you know, how many members they have.
 etc.
 I, I, I think… doesn't make sense, yeah.
 **Severin Neumann** 25:52 Yeah, I think at the end, it's maybe the easiest if we put out an issue and say, like, hey, if any of the language approvers… and I would really scope it down to that, right? Like.
 this is not something anybody can do, right? This is something where we say, like, hey, if anybody of the trusted people like that are already working on this for long enough to have a good understanding of how our localization works.
 Wants to figure something out.
-We would be open to that, right? So… because at the end, also, I don't think, like, the non-localization
-People in our repository, which is mainly the maintainers.
+We would be open to that, right? So… because at the end, also, I don't think, like, the non-localization People in our repository, which is mainly the maintainers.
 should not be blocking the localization groups, right? So that's the situation we are in right now. So, yeah, maybe we put something out and say, like, hey.
 we want to make progress on that, but, like, we need someone or some people to drive that, right? I'm totally fine with reviewing the PRs, I'm totally fine with having discussions on that, but, like, we need someone to drive that. So, yeah, maybe that's a good idea, I don't know.
-**Diana Todea** 26:59 Yeah, it makes sense, and also I agree, because, I mean, it goes to the fact that, as I, you know, started my first, contributions, and then moving forward, like, one of the questions I actually asked you, Severin, is, like, why there isn't any
-approver specifically for a locale, so, you know, it drills down to the whole architecture of the repos, etc. So yeah, it's kind of also hard to understand also, like, different locales want to be more independent, but also it goes to the actual work they need to do.
-So if one, two people in a specific locality are the only ones that are doing constant work, then, you know, it's gonna be up to them to also drive this,
-forward, but I think we should give the opportunity to at least try it, right?
+**Diana Todea** 26:59 Yeah, it makes sense, and also I agree, because, I mean, it goes to the fact that, as I, you know, started my first, contributions, and then moving forward, like, one of the questions I actually asked you, Severin, is, like, why there isn't any approver specifically for a locale, so, you know, it drills down to the whole architecture of the repos, etc. So yeah, it's kind of also hard to understand also, like, different locales want to be more independent, but also it goes to the actual work they need to do.
+So if one, two people in a specific locality are the only ones that are doing constant work, then, you know, it's gonna be up to them to also drive this, forward, but I think we should give the opportunity to at least try it, right?
 Nope.
 **Severin Neumann** 27:53 Okay, yeah.
 I will think about, like, how to phrase and build the issue. I will maybe share it with the maintainers before now.
 And we can put this out if… We agree on that?
-**Patrice CNCF** 28:12 So while there's been discussion, I've been feeling into this, and
-What is the issue gonna propose, exactly? And if it's…
-experimentation with… sorry, it'll feel like I'm backtracking, but if it's experimentation with… Trying a separate repo.
-That's gonna require coordination, and
-not a priority that I would like
-Myself to dedicate time to at the moment.
-And I'm… just in this meeting, I'm feeling more and more that a bot would,
-Be the most flexible… and adaptive solution that we can have. And if there is a bot, then…
-It would probably be up to us maintainers to put that in place.
+**Patrice CNCF** 28:12 So while there's been discussion, I've been feeling into this, and What is the issue gonna propose, exactly? And if it's… experimentation with… sorry, it'll feel like I'm backtracking, but if it's experimentation with… Trying a separate repo.
+That's gonna require coordination, and not a priority that I would like Myself to dedicate time to at the moment.
+And I'm… just in this meeting, I'm feeling more and more that a bot would, Be the most flexible… and adaptive solution that we can have. And if there is a bot, then… It would probably be up to us maintainers to put that in place.
 That's my feeling at this point.
 **Severin Neumann** 29:13 Yeah, but I mean, I agree with you that it would be up to us to put it into place, but it could be someone who's not a maintainer, but, like, a localization approver, or a group of localization approvers, to do some of the investigations and do some of the… Okay, sure.
-of, like, okay, what… what… how could this look like, right? And then we can still talk about, like, hey, can you bring us a PR that, like, integrates that? Or maybe we figure out, hey, we need some dedicated infrastructure to even run that, which is a…
-completely different beast to, like, just running this through a… through a GitHub automation, right? So, yeah.
+of, like, okay, what… what… how could this look like, right? And then we can still talk about, like, hey, can you bring us a PR that, like, integrates that? Or maybe we figure out, hey, we need some dedicated infrastructure to even run that, which is a… completely different beast to, like, just running this through a… through a GitHub automation, right? So, yeah.
 **Patrice CNCF** 29:53 Okay.
-**Severin Neumann** 29:54 Yeah, it's, like, at least how I think about it, so…
-Saying that, I mean, we always have to anticipate that a merge bot comes with its own set of
-security considerations, right? Because, like, you hand off that thing to…
-To a layer of, of, additional… Attack surface.
+**Severin Neumann** 29:54 Yeah, it's, like, at least how I think about it, so… Saying that, I mean, we always have to anticipate that a merge bot comes with its own set of security considerations, right? Because, like, you hand off that thing to… To a layer of, of, additional… Attack surface.
 But yeah, maybe there's… maybe there's some good solutions out there that we… that we can rely on, so… so that's… yeah.
 At the end, it's a help-me-help-you situation, right?
 **Patrice CNCF** 30:32 Sounds good.
@@ -294,44 +196,31 @@ Since he can't respond.
 **Severin Neumann** 31:41 Yeah, yeah.
 That's fine with me.
 I can create an issue, did I create an issue?
-Okay, next one. Diana, you had an additional question on, like, the
-the triage a role, so I think that's an… that's an important one.
+Okay, next one. Diana, you had an additional question on, like, the the triage a role, so I think that's an… that's an important one.
 **Diana Todea** 32:03 Yeah, yeah, so obviously I was taking a look at the, the information we have on, on the page about the different roles, so I was, like, maybe trying to clarify a bit, okay, that's, like.
 is it the main repo? So, like, OpenCemmetry, OpenSeometry.io is, like, covers all the issues?
 you know, trying to label them, asking questions, etc, etc. I mean, from your experience, if you can give me a bit more, like.
 practical examples, so I could actually start Working on that.
-**Severin Neumann** 32:48 I mean, you almost summarized it perfectly, right? Like, what do you… what do you do… what do you do for the languages right now? I mean, you can… you can translate it to…
-to issues that come in into the broader repository and into PRs that come in. I mean, I think the important thing is maybe
-In that specific case, it's like…
-when you read an issue, or when you look at a PR, And you don't feel comfortable
-with it, right? Because maybe it's tech you're not familiar with. Let's say…
-you know, go Python PHP, but someone brings in a C++ thing.
-Then maybe that's not a thing you should… you should, let's say, comment on technology-wise, but maybe you can do,
-a copy editing review, and say, like, hey, use different words, blah blah blah, and maybe you can tag the C++ approvers and maintainers and say, like, hey, can you take a look at that?
+**Severin Neumann** 32:48 I mean, you almost summarized it perfectly, right? Like, what do you… what do you do… what do you do for the languages right now? I mean, you can… you can translate it to… to issues that come in into the broader repository and into PRs that come in. I mean, I think the important thing is maybe In that specific case, it's like… when you read an issue, or when you look at a PR, And you don't feel comfortable with it, right? Because maybe it's tech you're not familiar with. Let's say… you know, go Python PHP, but someone brings in a C++ thing.
+Then maybe that's not a thing you should… you should, let's say, comment on technology-wise, but maybe you can do, a copy editing review, and say, like, hey, use different words, blah blah blah, and maybe you can tag the C++ approvers and maintainers and say, like, hey, can you take a look at that?
 So, so I think, but overall, yeah, it's about, like, looking at incoming issues and PRs, and provide your feedback on them, and learn while you go, right?
 **Diana Todea** 34:02 Sure.
 Perfect, and can I, yeah, sorry to interrupt, yeah.
-**Tiffany Hrabusa** 34:08 Oh, sorry, Diana. I was just going to add to what Severin said, that,
-I'm not very good on the tech side of stuff, but usually I have a sense of an issue comes in, whether it's well-scoped, like, whether we have all the details we need or not. So that's another thing that you can do as a triageer. Like, if you read through an issue and you have questions about how it would be implemented, even if you don't understand the tech.
-Just trying to…
-flesh that out fully for whoever's going to solve the issue is a great thing you can do as a triager.
+**Tiffany Hrabusa** 34:08 Oh, sorry, Diana. I was just going to add to what Severin said, that, I'm not very good on the tech side of stuff, but usually I have a sense of an issue comes in, whether it's well-scoped, like, whether we have all the details we need or not. So that's another thing that you can do as a triageer. Like, if you read through an issue and you have questions about how it would be implemented, even if you don't understand the tech.
+Just trying to… flesh that out fully for whoever's going to solve the issue is a great thing you can do as a triager.
 **Diana Todea** 34:40 Perfect. Yeah, and if I have, like, any questions to, you know, to pick your brain, like, what would be the best channels to ask you, on Slack?
 Like, I don't know, some… Yeah.
 **Tiffany Hrabusa** 34:54 Yeah.
 There's, there's an OTELCOMS Triagers channel, which is, private.
 And…
 **Diana Todea** 35:04 Yep.
-**Tiffany Hrabusa** 35:04 So you can ask questions that…
-you may not want to ask publicly, but if it's something that you think others might benefit from, then feel free to ask in the hotel comms channel.
+**Tiffany Hrabusa** 35:04 So you can ask questions that… you may not want to ask publicly, but if it's something that you think others might benefit from, then feel free to ask in the hotel comms channel.
 **Diana Todea** 35:15 Okay, got it, perfect, thank you.
-**Severin Neumann** 35:24 just to add a last thing, I mean, technically we have, like,
-we started, and then I think… I'm not sure, like, how far we got with them, like, we have this triage practice implemented at some point.
+**Severin Neumann** 35:24 just to add a last thing, I mean, technically we have, like, we started, and then I think… I'm not sure, like, how far we got with them, like, we have this triage practice implemented at some point.
 It's still, like… How you say, like… under experimentation.
 But if you look for something that helps you to say, like, oh, I can label things, or I can, like, add something to it, that could also be a starting point. And in saying that, like, what you always can do is also, like.
-you're now…
-the newest member of our triages group, so this also means, like, you're the one asking the most questions, so don't hesitate to also raise issues if you think, like, anything in our processes is broken, right? There's always also good practice, like.
-telling us, like, hey, this is not working, this is not something I understand, etc. That's… that's how we…
-How we evolve best.
+you're now… the newest member of our triages group, so this also means, like, you're the one asking the most questions, so don't hesitate to also raise issues if you think, like, anything in our processes is broken, right? There's always also good practice, like.
+telling us, like, hey, this is not working, this is not something I understand, etc. That's… that's how we… How we evolve best.
 **Diana Todea** 36:27 Yep, perfect.
 **Severin Neumann** 36:31 Awesome. Anything else on that topic?
 **Diana Todea** 36:38 No, not really, yep.
@@ -339,48 +228,32 @@ How we evolve best.
 **Leandro Caracciolo** 36:46 Yeah, hi everyone. Just to mention that I shared on the… on the Hotelcom's channel, the… some… some social media covers for LinkedIn and YouTube.
 following the same visual identity of the website, so feel free, if you want to update on the channels, or if you want me to create some cover for another one, for another channel, I'll be happy to help with it.
 Tucson.
-**Severin Neumann** 37:17 I think a good starting point, if you would, like, I just shared the links to, like, them in…
-And… Slack, but if you… If you could create… a GitHub issue on that?
+**Severin Neumann** 37:17 I think a good starting point, if you would, like, I just shared the links to, like, them in… And… Slack, but if you… If you could create… a GitHub issue on that?
 So we can put them either into the repository or, once again, into any of the other folders.
-And I just feel like that my comment I wrote onto that is still in draft mode. I think, one question I would have also, and this is broader, like, to everybody else, I mean, technically we could also use those images for…
-those preview cards that are created from, like, this open graph things, or however this is called, instead of, like, always having the hotel logo, maybe we could find a way to…
-to do variations of that. That's maybe another part we could discuss, but yeah, Tiffany?
-**Tiffany Hrabusa** 38:17 That's actually exactly what I was going to say. I, when I saw Leandro's post, I went into Buffer to figure out if there was a way
-to add those images as the default, and I couldn't figure it out.
-One thing I've noticed is that if the blog post has an image in it itself, then that comes up as an option to choose. So…
-I don't really have time to, like, fully investigate the buffer setup, and how to get images in there that we can always choose from, but one option would be to add these as, like, a banner image at the top of each blog post, or, like, a banner… I don't know.
+And I just feel like that my comment I wrote onto that is still in draft mode. I think, one question I would have also, and this is broader, like, to everybody else, I mean, technically we could also use those images for… those preview cards that are created from, like, this open graph things, or however this is called, instead of, like, always having the hotel logo, maybe we could find a way to… to do variations of that. That's maybe another part we could discuss, but yeah, Tiffany?
+**Tiffany Hrabusa** 38:17 That's actually exactly what I was going to say. I, when I saw Leandro's post, I went into Buffer to figure out if there was a way to add those images as the default, and I couldn't figure it out.
+One thing I've noticed is that if the blog post has an image in it itself, then that comes up as an option to choose. So… I don't really have time to, like, fully investigate the buffer setup, and how to get images in there that we can always choose from, but one option would be to add these as, like, a banner image at the top of each blog post, or, like, a banner… I don't know.
 And then that would make it automatically appear as an option for the social media posts.
 But I… I don't know.
-**Patrice CNCF** 39:13 So if you'd like to change the open graph image,
-I'd be glad to do it or show you how to do it. I can change the default image. We can also do it per section.
-So I would rather not suggest that each blog post attach an image just so that we can get the social, but, there…
-Doxy is set up to be able to support A choice of images.
+**Patrice CNCF** 39:13 So if you'd like to change the open graph image, I'd be glad to do it or show you how to do it. I can change the default image. We can also do it per section.
+So I would rather not suggest that each blog post attach an image just so that we can get the social, but, there… Doxy is set up to be able to support A choice of images.
 And that we can change over time, and that we can have in different sections, so…
 **Tiffany Hrabusa** 39:48 Yeah, that would be great. I knew that adding it to every blog post was not the ideal solution.
 **Patrice CNCF** 39:55 That was my brain saying, I don't have time to figure this out, that's what I'm going to suggest.
 **Severin Neumann** 40:01 Yeah, there's, as Patrice said, there's ways to do that, and Doxy is capable of doing that.
-So, Leandro, if you raise an issue for that, like Patrice or anybody else who knows Doxy well enough, or Hugo well enough, should be able to
-Turn this into something… Quickly.
+So, Leandro, if you raise an issue for that, like Patrice or anybody else who knows Doxy well enough, or Hugo well enough, should be able to Turn this into something… Quickly.
 But I think starting point is to just have them in the repository as something that we can… that we can easily reference.
 **Leandro Caracciolo** 40:31 Okay?
 **Severin Neumann** 40:35 And also, like, the good thing is what always is important to say at the moment you create issues and your PRs get merged.
-that's also, like, the best way how we count contributions, right? Unfortunately, like, everything you put into a Google Drive or into a presentation is unfortunately not…
-counted equally well, so I'm always a big fan if you… if you say, like, hey, I did something, I added something, which makes it then also easier for us to say, like, hey, let's…
-add Leandro to the project. I hope you're a member of the GitHub hotel.
-work right now, but let's say we say, like, hey, we want to find a way to…
-also, for example, offer you to become a triager, etc, etc, that's always helping. I mean, we also keep track of the other ones, but that's always the easiest, so…
-That's also a general note on that topic.
-Awesome. I like them really much, and it, like, it's an alternative to…
-having… I saw the hotel logo all the time, or leave it to the social media.
-person…
-which is very often Tiffany right now, to figure out what image to put there, right? So that's like having some flexibility here, and some…
-Some fresh images is definitely cool.
+that's also, like, the best way how we count contributions, right? Unfortunately, like, everything you put into a Google Drive or into a presentation is unfortunately not… counted equally well, so I'm always a big fan if you… if you say, like, hey, I did something, I added something, which makes it then also easier for us to say, like, hey, let's… add Leandro to the project. I hope you're a member of the GitHub hotel.
+work right now, but let's say we say, like, hey, we want to find a way to… also, for example, offer you to become a triager, etc, etc, that's always helping. I mean, we also keep track of the other ones, but that's always the easiest, so… That's also a general note on that topic.
+Awesome. I like them really much, and it, like, it's an alternative to… having… I saw the hotel logo all the time, or leave it to the social media.
+person… which is very often Tiffany right now, to figure out what image to put there, right? So that's like having some flexibility here, and some… Some fresh images is definitely cool.
 Awesome.
 **Leandro Caracciolo** 42:00 Right.
 **Severin Neumann** 42:01 We have another 20 minutes? Any other topic, anything anybody wants to bring up?
 Taking this as a no.
-Yeah, there's a lot of things that I still need to chase in our repositories, and…
-to do so, I will follow up with all of you on Slack, and yeah, talk to you in two weeks.
+Yeah, there's a lot of things that I still need to chase in our repositories, and… to do so, I will follow up with all of you on Slack, and yeah, talk to you in two weeks.
 **Diana Todea** 42:32 I'm good.
 **Severin Neumann** 42:33 Bye-bye.
 **Patrice CNCF** 42:34 Alright, thanks everybody. Bye.

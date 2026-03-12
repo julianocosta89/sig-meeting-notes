@@ -19,8 +19,7 @@ Huh, I'm not connected with Pierre yet. Why?
 **Juliano Costa | Datadog** 03:03 Yeah.
 **Pierre Tessier** 03:04 I'm now gonna get a lot more time working on the demo, for what it's worth. I know I've told you this before, like, it's coming, it's coming. Well, it finally happened.
 Last week we started the transition, and this week we kind of made it official.
-So, and, the most best part was me just removing all these meeting invites on my calendar, just…
-mass deletes, leaving a whole bunch of Slack channels.
+So, and, the most best part was me just removing all these meeting invites on my calendar, just… mass deletes, leaving a whole bunch of Slack channels.
 **Juliano Costa | Datadog** 03:28 Oh, boy.
 **Pierre Tessier** 03:29 Give me the time to do things. So…
 **Juliano Costa | Datadog** 03:31 This… this is, like, the… the… the meme, the cliche meme, like, ugh.
@@ -55,8 +54,7 @@ Yeah. I have other concerning ones, like, Kafka 84 restarts, low gen 19, not bad
 **Juliano Costa | Datadog** 05:34 Yes.
 **Pierre Tessier** 05:35 If you run the demo for an extended period of time, you will eat up your temp space, and you will blow up. I have a solution for it.
 Roll the deployment.
-when you roll the deployment, it'll nuke its temp space, and it'll recreate its init directory. And I think we should probably include
-maybe a cron job, Pod that runs once a week.
+when you roll the deployment, it'll nuke its temp space, and it'll recreate its init directory. And I think we should probably include maybe a cron job, Pod that runs once a week.
 that restarts a couple things, was my idea. I'm about to try that here internally.
 So, there's some things in the demo. We already do it for our own demo today that we run at Honeycomb.
 We do this more because we want the failures to always happen at the same time of day. So at midnight, we restart the key services in a demo, so it restarts all its own internal clocks, so the failures kind of happen on a pattern, it's like 4 hours and, like, 10 minutes, or something like that, our pattern, and it just works. So you know that 8am every day, your time.
@@ -66,8 +64,7 @@ Eventually, you're gonna run out of hard drugs.
 **Juliano Costa | Datadog** 06:43 Yes.
 Yeah, makes sense.
 **Pierre Tessier** 06:47 Does it make sense to just restart postcards? You don't care about those records over time. And can we document it and saying, hey, look.
-maybe even make it an option. When you run… when you sell this with Helm, we're…
-For long-term running, we're going to restart things, so things will reset every…
+maybe even make it an option. When you run… when you sell this with Helm, we're… For long-term running, we're going to restart things, so things will reset every…
 **Juliano Costa | Datadog** 07:07 Yeah, I… the only thing that I don't know how to do is… one thing that we discussed is that we want to drop the helm, right? Or, no, actually, not drop helm. We want to drop the Kubernetes manifests.
 So we can implement that in help, then we are.
 **Pierre Tessier** 07:25 Yeah, you would implement it in Helm.
@@ -90,8 +87,7 @@ One thing that, so Roger pinged me because, we had an open chat, and he said tha
 So, I will, adhere.
 to the dock.
 Jesus.
-Thank you, Google, for being so…
-So he's playing with this Rust Headless Chrome.
+Thank you, Google, for being so… So he's playing with this Rust Headless Chrome.
 to replace… The logic that we currently have.
 So, I don't know…
 **Pierre Tessier** 09:44 There's a benefit here, just a memory thing.
@@ -111,8 +107,7 @@ Okay.
 **Pierre Tessier** 10:33 No, this is not right, somebody's modified this, don't, don't… no.
 **Juliano Costa | Datadog** 10:36 Okay.
 **Pierre Tessier** 10:38 I take that ball back.
-**Juliano Costa | Datadog** 10:40 I will, take a look at my… where is…
-Load generator, and I'll go to my service manager.
+**Juliano Costa | Datadog** 10:40 I will, take a look at my… where is… Load generator, and I'll go to my service manager.
 **Pierre Tessier** 11:03 I will…
 **Juliano Costa | Datadog** 11:03 Yeah, so…
 **Pierre Tessier** 11:05 Back to you on that one.
@@ -126,10 +121,7 @@ So I'm all for anything that could Diminished memory footprint.
 In every way possible.
 Now the downside here is that we get… Locus gives us a nice UI for the low gen.
 would we get the same thing out of this headless Chrome thing?
-**Juliano Costa | Datadog** 11:57 I have never heard of this, so he shared the message, like,
-Half an hour angle, so I…
-I have no clue. That will…
-Do you use the… the UI from low cost?
+**Juliano Costa | Datadog** 11:57 I have never heard of this, so he shared the message, like, Half an hour angle, so I… I have no clue. That will… Do you use the… the UI from low cost?
 **Pierre Tessier** 12:15 No, but it's there.
 Every once in a while, I use it to stop the test.
 So I could force traffic through, the web tier and make sure it's just my traffic.
@@ -139,14 +131,10 @@ Yeah, what I see, I… when I… when I need to do that, I kill the… the low g
 **Juliano Costa | Datadog** 12:42 Yeah.
 **Pierre Tessier** 12:43 it's easy for it to stop and restart the test. I'm gonna try some things, I'm just gonna deploy one single service and retry a thing.
 That's why I used it.
-**Juliano Costa | Datadog** 12:58 We haven't, I don't think we… we had a call together since the…
-Product reviews were, was merged.
+**Juliano Costa | Datadog** 12:58 We haven't, I don't think we… we had a call together since the… Product reviews were, was merged.
 But… I played with it, yeah.
-I want to bring up something that I was…
-trying to investigate, and I… I failed miserably… miserably? Miserably?
-And, So…
-Currently, in the demo, we have… if you go to the Docker Compose, and go to the…
-I think it's, like, 500-something. 500… 38.
+I want to bring up something that I was… trying to investigate, and I… I failed miserably… miserably? Miserably?
+And, So… Currently, in the demo, we have… if you go to the Docker Compose, and go to the… I think it's, like, 500-something. 500… 38.
 We have this all-time instrumentation gen AI capture message content equals true.
 So, in theory…
 **Pierre Tessier** 14:01 Oh, wait.
@@ -159,27 +147,21 @@ Okay, hotel instrumentation gen AI capture message content equals true, yeah.
 **Juliano Costa | Datadog** 14:18 So… In theory, that whenever the user asks, like, hey, is this product recommended for a kid?
 This message, this text should be recorded as a SPAN event.
 I think SpendEvent is the… the default.
-Currently, we have,
-A custom attribute that has app.
+Currently, we have, A custom attribute that has app.
 add something like, ID, and add something Question?
 that we are adding the question there. But this actually shouldn't be required. This Gen AI capture message should be captured automatically.
-So, I asked the guys on the…
-the Gen AI hotel channel, and the guy said, hey, we have this new thing here, now we… with the new semantic conventions, this doesn't accept, a Boolean anymore, it accepts a known.
-So I played around with all the possible ways, and it didn't work, so I opened Aisha to the Python,
-to the Python repo, but I wonder if that actually ever worked. So, now I don't remember. Because we have the PandaBot updating dependencies, so that maybe broke stuff?
+So, I asked the guys on the… the Gen AI hotel channel, and the guy said, hey, we have this new thing here, now we… with the new semantic conventions, this doesn't accept, a Boolean anymore, it accepts a known.
+So I played around with all the possible ways, and it didn't work, so I opened Aisha to the Python, to the Python repo, but I wonder if that actually ever worked. So, now I don't remember. Because we have the PandaBot updating dependencies, so that maybe broke stuff?
 With new releases.
 But yeah.
 **Pierre Tessier** 15:55 So, right now, if you turn it on or off, it doesn't do anything?
 **Juliano Costa | Datadog** 15:59 No. So, like, true or false doesn't change anything, and also it's changing for the num, and using… there is another environment variable, of course, to use the newest symmetry conventions.
 So if you use this new one, you need to change the boolean for the num.
-And, yeah, I tried, like,
-text, I tried, uppercase, lowercase, whatever. All the combinations possible didn't work, so I just opened the issue and hoped for the best. But the Python
-REPL has, like.
+And, yeah, I tried, like, text, I tried, uppercase, lowercase, whatever. All the combinations possible didn't work, so I just opened the issue and hoped for the best. But the Python REPL has, like.
 400 or something issues open, and, you know, I don't know if I will ever get a reply, so…
 **Pierre Tessier** 16:47 Yeah, I don't see any… Span events at all.
 in product reviews.
-**Juliano Costa | Datadog** 16:54 So…
-Product reviews, traces, there are two traces. One that has 10 spends, and one that has 11.
+**Juliano Costa | Datadog** 16:54 So… Product reviews, traces, there are two traces. One that has 10 spends, and one that has 11.
 you should look for the traces that have 11 high spans. Those are the ones that are actually calling the LLM.
 **Pierre Tessier** 17:15 Mine will have 3 or 9.
 **Juliano Costa | Datadog** 17:21 Okay.
@@ -199,8 +181,7 @@ One sec.
 **Juliano Costa | Datadog** 18:20 Yep.
 And it is.
 **Pierre Tessier** 18:23 And…
-**Juliano Costa | Datadog** 18:23 We have the environment variable there, so maybe Derek, when he, sent the PR, it was working, so that's why I wonder if…
-That actually ever worked.
+**Juliano Costa | Datadog** 18:23 We have the environment variable there, so maybe Derek, when he, sent the PR, it was working, so that's why I wonder if… That actually ever worked.
 **Pierre Tessier** 18:39 I could see it making… Get AI assistant response.
 **Juliano Costa | Datadog** 18:51 Where his brother Cruz.
 Oh, come on.
@@ -210,9 +191,7 @@ elsewhere.
 **Juliano Costa | Datadog** 19:17 Yeah.
 **Pierre Tessier** 19:20 Yeah, because I don't see that span event anywhere in here.
 Let me check…
-**Juliano Costa | Datadog** 19:32 I don't know if you have that ready,
-I mean, one thing… so, why I'm asking you this is that…
-I wanted to cut a release before, holidays.
+**Juliano Costa | Datadog** 19:32 I don't know if you have that ready, I mean, one thing… so, why I'm asking you this is that… I wanted to cut a release before, holidays.
 **Pierre Tessier** 19:47 Yeah. So we actually have the product reviews usable for everyone.
 **Juliano Costa | Datadog** 19:52 But if not… if it's not working, then I… I don't know if we should…
 **Pierre Tessier** 19:57 Well, it works, it just probably, it still needs some cleaning up.
@@ -226,8 +205,7 @@ That should be where I would expect to see the question.
 **Juliano Costa | Datadog** 20:37 Yes.
 And we do, like, Gen AI response finish reasons.
 **Pierre Tessier** 20:43 Yeah, like, I guess the input token's 58, so clearly…
-**Juliano Costa | Datadog** 20:49 We are capturing stuff, yeah. And this is… if we check the scope name, the instrumentation is taking care of that, so this is not a,
-a metal span or anything. Different from the.
+**Juliano Costa | Datadog** 20:49 We are capturing stuff, yeah. And this is… if we check the scope name, the instrumentation is taking care of that, so this is not a, a metal span or anything. Different from the.
 **Pierre Tessier** 21:04 Yeah, and then I can see output tokens is 43, so input was 58. And now the input tokens would include the description from the other products as well, right?
 **Juliano Costa | Datadog** 21:17 The what?
 **Pierre Tessier** 21:18 It would include the question, as well as the description from the other products, would be the input.
@@ -243,36 +221,31 @@ Because it just sees one big prompt.
 **Pierre Tessier** 22:10 So maybe what we're doing is good, but I would still rather have that question part of chat.
 you know.
 It's one span below. It's one span two, you know.
-at that product in question, probably belongs more to, like, genai. whatever the…
-I think we have all the data today. I think there may be things we need to do, and Gen AI, Ali's still evolving, where we work with the SDKs to make sure that we have all the right things captured.
+at that product in question, probably belongs more to, like, genai. whatever the… I think we have all the data today. I think there may be things we need to do, and Gen AI, Ali's still evolving, where we work with the SDKs to make sure that we have all the right things captured.
 But yeah, some shit.
 Yeah, we should cut this.
 So, that's…
 **Juliano Costa | Datadog** 22:53 Okay.
 One question for you.
-Do you think, so, I saw that you…
-added a bunch of commits to… to Martin's PR.
+Do you think, so, I saw that you… added a bunch of commits to… to Martin's PR.
 **Pierre Tessier** 23:15 Yeah, or commits, yeah, I need to talk to you real quick about that PR. I have one question for it, and it's… and then I need you to approve it, because I made so many changes to it.
 I worked with Martin on it this morning.
 **Juliano Costa | Datadog** 23:25 to finalize the last couple things, just to clarify a couple things with them. For what it's worth, the majority of the PRs were just linter errors.
 **Pierre Tessier** 23:32 They kept on hitting this morning, like, oh my god, never frickin' said winters.
-reason why it probably didn't work for some people was the ports he had hard-coded in a couple spots, and his NGINX…
-For the… you should not have a past rewrite on it, because of the way the thing was starting up.
+reason why it probably didn't work for some people was the ports he had hard-coded in a couple spots, and his NGINX… For the… you should not have a past rewrite on it, because of the way the thing was starting up.
 I cleaned all that up, I made it so the port is now dynamic versus… based on an environment variable, NGINX routes the data properly. The only question I have is, do we want to use the endpoint telemetry or the endpoint telemetry dash docs?
 That's the only question I really have.
 **Juliano Costa | Datadog** 24:12 what is your opinion on that? I… I don't have… I don't think I have strong opinions.
 **Pierre Tessier** 24:19 I think… so the service is already called Telemetry-Docs.
 And I feel like it should be telemetry-docs, and it should be that.
 Because maybe one day, we might want to open up a way for you to see a stream of telemetry at the telemetry endpoint.
-I don't know if that would ever be a case, but, you know, maybe one day there's a way to
-to do a thing. I don't know.
+I don't know if that would ever be a case, but, you know, maybe one day there's a way to to do a thing. I don't know.
 But, so I think Kamachi Dogs feels better for me.
 But, like, I don't care.
 That was the only thing.
 **Juliano Costa | Datadog** 24:55 Okay.
 the only thing I discussed with Martin, on Slack.
-was… Like, it was before he sent the PR. We were discussing about the PR, because he…
-He kind of teased everyone in the…
+was… Like, it was before he sent the PR. We were discussing about the PR, because he… He kind of teased everyone in the…
 **Pierre Tessier** 25:13 Yeah. A little bit.
 **Juliano Costa | Datadog** 25:14 Never opened a PR, and then I reached out to.
 **Pierre Tessier** 25:16 Then finally he opens the PR, and by the way, he's been talking Weaver internally at Honeycomb for, like.
@@ -287,11 +260,9 @@ I personally use Weaver to generate docs, generate code, so let's say that I hav
 **Pierre Tessier** 25:53 Yep.
 **Juliano Costa | Datadog** 25:53 my Java class with all the attributes, perfect.
 And, the live check to validate the telemetry.
-So whenever someone opens up here, I have a load gen that sends,
-I have a request that goes through the service, and then the service emits OTLP to Weaver, and Weaver validates the telemetry that it receives.
+So whenever someone opens up here, I have a load gen that sends, I have a request that goes through the service, and then the service emits OTLP to Weaver, and Weaver validates the telemetry that it receives.
 **Pierre Tessier** 26:20 Yeah, yeah.
-**Juliano Costa | Datadog** 26:20 Yeah, left check. This, those are the three things that I've been doing with Weaver. I know that there is the…
-another one that uses Rego for, I think, policy validation or something. I haven't checked this one yet, like, schema validation, whatever.
+**Juliano Costa | Datadog** 26:20 Yeah, left check. This, those are the three things that I've been doing with Weaver. I know that there is the… another one that uses Rego for, I think, policy validation or something. I haven't checked this one yet, like, schema validation, whatever.
 But I haven't reached that level.
 So, my question is, finally.
 Should we have a running service for Weaver?
@@ -308,16 +279,13 @@ Which is where our daughter.
 So a win…
 **Pierre Tessier** 28:01 When it was Weaver today.
 **Juliano Costa | Datadog** 28:02 Oh, yes.
-**Pierre Tessier** 28:04 On, on, on… so we would just add that, but for…
-So what we do… so we would use Weaver to generate the same docs.
+**Pierre Tessier** 28:04 On, on, on… so we would just add that, but for… So what we do… so we would use Weaver to generate the same docs.
 Or the schemas that we maintain in the demo.
 **Juliano Costa | Datadog** 28:15 Yes.
-**Pierre Tessier** 28:16 And we might have to duplicate those schemas inside of the…
-the hotel.io repo, but that's fine.
+**Pierre Tessier** 28:16 And we might have to duplicate those schemas inside of the… the hotel.io repo, but that's fine.
 Yes, we should. We should.
 And we should have, like, a section in the demo. I think that makes a lot of sense.
-And then, effectively, now, this telemetry dock service is just kind of a duplicate of the…
-Telemetry docs section inside OTel I.O. docs demo.
+And then, effectively, now, this telemetry dock service is just kind of a duplicate of the… Telemetry docs section inside OTel I.O. docs demo.
 Or would we even still… So basically, this service that we have right now.
 **Juliano Costa | Datadog** 28:53 Oh, that's good.
 **Pierre Tessier** 28:53 telemetry Dock Service.
@@ -333,45 +301,33 @@ And I, this is where we… we have… we had a…
 Because our official docs is really OpenTelemetry I.O. docs.
 **Juliano Costa | Datadog** 29:47 Yeah, and I, like, when you are running the demo, why do you want a service with the docs? This is where I didn't get from.
 **Pierre Tessier** 29:56 So you can see the telemetry that's available for you.
-But… Really, you should be just going to docs.opentometry.io forward slash demo…
-Elementary, whatever the hell. Yeah, yes,
-So, should all of this, what we just did, be better served to be part of… OTelio.
-And if anything, we just provide…
-Documentation, or like, hey, go see the telemetry available here.
-**Juliano Costa | Datadog** 30:28 I don't know, because… So, like…
-The value of having the… all the…
-All the attributes defined here is that we can later run the live check.
+But… Really, you should be just going to docs.opentometry.io forward slash demo… Elementary, whatever the hell. Yeah, yes, So, should all of this, what we just did, be better served to be part of… OTelio.
+And if anything, we just provide… Documentation, or like, hey, go see the telemetry available here.
+**Juliano Costa | Datadog** 30:28 I don't know, because… So, like… The value of having the… all the… All the attributes defined here is that we can later run the live check.
 **Pierre Tessier** 30:44 It's locally.
 **Juliano Costa | Datadog** 30:46 If we… well, unless… no, actually, if the schema is on the demo, is on the…
 **Pierre Tessier** 30:53 And we'd be…
-**Juliano Costa | Datadog** 30:54 It is on the OpenTele Entry I.O, we can query from there and use the schema from OpenTele Entry I.O. Well, good question. Now I'm, like, yeah, I don't know. So…
-Okay.
+**Juliano Costa | Datadog** 30:54 It is on the OpenTele Entry I.O, we can query from there and use the schema from OpenTele Entry I.O. Well, good question. Now I'm, like, yeah, I don't know. So… Okay.
 What… Yeah, I don't want to get into it.
 **Pierre Tessier** 31:13 release if we're not gonna move it forward. That's right.
 **Juliano Costa | Datadog** 31:16 Yum.
 **Pierre Tessier** 31:19 Ugh.
 This is the real problem.
 That'll have your answer.
-**Juliano Costa | Datadog** 31:28 Yeah, I also don't have an answer for that, and this is where I quite didn't get what Marty was telling me, and then now seeing it, like, I still…
-Don't know… how that would work, or why would that work? I think I have my…
-My discussion with him, no.
+**Juliano Costa | Datadog** 31:28 Yeah, I also don't have an answer for that, and this is where I quite didn't get what Marty was telling me, and then now seeing it, like, I still… Don't know… how that would work, or why would that work? I think I have my… My discussion with him, no.
 Man, I have another meeting now, so I will.
 **Pierre Tessier** 31:56 Yeah.
 **Juliano Costa | Datadog** 31:56 Absolutely.
-**Pierre Tessier** 31:57 I know what you're saying,
-Let's hold off merging this for this release, then. Let's cut this release without it.
-let's hold it for the next version, but I… I…
-I do think we should generate schemas in here.
+**Pierre Tessier** 31:57 I know what you're saying, Let's hold off merging this for this release, then. Let's cut this release without it.
+let's hold it for the next version, but I… I… I do think we should generate schemas in here.
 Because the schema generation should be part of the actual source code.
 And then we probably just end up copying those schemas back into OTELIO.
 We already do that for a couple other files.
 like, dashboard definitions and stuff like that with Helm, where we copy them over to the Helm repo. So, I have a feeling that's gonna be the process.
 Schemas live inside the demo.
-They get copied into the I.O. repo, And…
-we use… we render documentation inside the I.O. repo. We don't actually render documentation here. The only thing we use here is schemas is for live check.
+They get copied into the I.O. repo, And… we use… we render documentation inside the I.O. repo. We don't actually render documentation here. The only thing we use here is schemas is for live check.
 **Juliano Costa | Datadog** 32:54 Yeah, we could keep the schema here, and without duplicating to the OpenTelemTree I.O, I think we can use Weaver in OpenTelemetry I.O. to generate, based on the schema.
-**Pierre Tessier** 33:05 based on schemas and demo? Even better. Even better. But I think that's what we should be doing. That should be the angle we should be doing, and all this documentation should actually live inside of
-hotel.io.
+**Pierre Tessier** 33:05 based on schemas and demo? Even better. Even better. But I think that's what we should be doing. That should be the angle we should be doing, and all this documentation should actually live inside of hotel.io.
 **Juliano Costa | Datadog** 33:16 Awesome. Okay.
 **Pierre Tessier** 33:18 Okay.
 **Juliano Costa | Datadog** 33:18 cope.

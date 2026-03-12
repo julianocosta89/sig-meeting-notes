@@ -12,8 +12,7 @@ Michele Mancioppi 00:04:10 What's up? How's Ron?
 Bastian Krol 00:04:12 Hello?
 Tedsuo 00:04:13 Good healing, yeah.
 Michele Mancioppi 00:04:15 Right.
-Tedsuo 00:04:16 It's in this very weird phase right now where
-The nerves are starting to come back.
+Tedsuo 00:04:16 It's in this very weird phase right now where The nerves are starting to come back.
 Which means it's like, you know that sensation when, like, your foot falls asleep or something?
 It's like that, but all the time.
 Bastian Krol 00:04:33 Oh, shit. That doesn't sound great.
@@ -26,15 +25,13 @@ Tedsuo 00:05:03 Oh, I was, I was actually about to add this to the agenda. I tho
 There are a couple sections I wanted to just fill in.
 Real quick.
 Michele Mancioppi 00:05:17 It needs, like, I was… I felt the need… I felt like… I had a feeling that I… I was not striking the right balance between info dump and scoping.
-Tedsuo 00:05:27 I, I, I do have a little bit of worry about…
-you know, just, I want to make sure we don't accidentally re-litigate things, you know what I mean? Like, we already went through accepting this donation and stuff like that, right? But now, we're getting onto, like, bigger visions.
+Tedsuo 00:05:27 I, I, I do have a little bit of worry about… you know, just, I want to make sure we don't accidentally re-litigate things, you know what I mean? Like, we already went through accepting this donation and stuff like that, right? But now, we're getting onto, like, bigger visions.
 Michele Mancioppi 00:05:44 Around, like, package management and, like, a real install experience.
 Tedsuo 00:05:49 So, that would be my one thing, is I want to make sure when we put this project file in, people do not misinterpret this as, like.
 we are right now starting up this bigger effort, because that might… like, I don't want people coming in and being like, you can't work on this injector, because we didn't approve it yet.
 Which wouldn't happen…
 Michele Mancioppi 00:06:07 Isn't that past… isn't that way past before us?
-Tedsuo 00:06:10 I think so, but because we didn't, like…
-do this when we should have, right? It might look to people right at this moment when we're super crunched for time and really not wanting to start big, new projects.
+Tedsuo 00:06:10 I think so, but because we didn't, like… do this when we should have, right? It might look to people right at this moment when we're super crunched for time and really not wanting to start big, new projects.
 Michele Mancioppi 00:06:26 At the time you came in.
 Tedsuo 00:06:27 starting a big new project. We… I'm saying we aren't starting a big new project. I'm just, like, let's make sure…
 Michele Mancioppi 00:06:33 I want it on the record, and Zoom be my witness.
@@ -45,9 +42,7 @@ Michele Mancioppi 00:06:45 So that's very clear.
 Tedsuo 00:06:47 you're not doing anything wrong, to be super clear. This is like… like, when this donation came through, I was like, okay, so some code got donated and went through the proper thing, and then you guys started a SIG, but, like.
 did anyone, like, do all the new SIG things that we're trying to do now? And it's like, didn't look like we did them. That's fine.
 But normally, if we were to start a SIG up like this, we would want to figure out things, like, who's the TC member, who's the liaison for this SIG?
-And how,
-expect, how involved are they? Are they just, like, a point of contact? So when the SIG…
-is, like, confused about how things work. They know which… who they can reach out to.
+And how, expect, how involved are they? Are they just, like, a point of contact? So when the SIG… is, like, confused about how things work. They know which… who they can reach out to.
 Or is there a TCM?
 Michele Mancioppi 00:07:34 We know exactly what we want to do. It's all the same monies around it that confuse the hell out of me.
 Tedsuo 00:07:40 Yeah.
@@ -57,8 +52,7 @@ Like, we should have a SIG that's just focused on this mechanism, As a standalon
 And then there's, like, all the extra stuff around packaging and, like, productizing open telemetry, right? And, like…
 Michele Mancioppi 00:08:19 I don't think anybody has a problem with seeding.
 The idea of the packaging is maintaining the packaging that I don't think the SIG is equipped to do.
-Tedsuo 00:08:28 Right, right. We're not equipped to do that. We're not saying we're gonna do that right now. So let's just make sure that this project file doesn't…
-Look too much.
+Tedsuo 00:08:28 Right, right. We're not equipped to do that. We're not saying we're gonna do that right now. So let's just make sure that this project file doesn't… Look too much.
 Michele Mancioppi 00:08:38 bootstrapping.
 Tedsuo 00:08:40 Like, all that stuff.
 Michele Mancioppi 00:08:41 Yeah, let's go through it, so that I can put it behind me, say, check, satisfy with it, let's go.
@@ -87,19 +81,12 @@ Michele Mancioppi 00:10:02 Okay, wait, wait a second, sir. Again, I am profoundl
 The project file is about the entire SIG, because I asked you to say, Ted, is it about the injector, is it about the system package in Scoop to KubeCon? And you said the latter.
 Tedsuo 00:10:16 What, what is, what is this… yeah, so this SIG is working on building the injector. We have some deliverables we want to aim for, for this SIG.
 you know, starting with KubeCon, we have, like, a couple of phases we want to go through.
-But my understanding from the last call was people were saying, like, there's more…
-work that needs to be done to turn this into a product, then…
-build out this injector in stages, right? You need to then take it and…
-use it in all these different package management systems and places, and this SIG is saying, like, we're not…
-Except as maybe some kind of proof of concept, we're not… we're not doing that.
+But my understanding from the last call was people were saying, like, there's more… work that needs to be done to turn this into a product, then… build out this injector in stages, right? You need to then take it and… use it in all these different package management systems and places, and this SIG is saying, like, we're not… Except as maybe some kind of proof of concept, we're not… we're not doing that.
 Michele Mancioppi 00:10:59 Hence.
 Tedsuo 00:11:00 So that's… that's the main thing, is like… like, to… to say that… just to mention, like, we're only working on the injector. So when you say, this project file does not concern the injector itself, that seems confusing.
-Michele Mancioppi 00:11:14 Now, the project file…
-Is it the scope is the entire SIG, or is it just the one initiative we have into KubeCon?
+Michele Mancioppi 00:11:14 Now, the project file… Is it the scope is the entire SIG, or is it just the one initiative we have into KubeCon?
 That is the part that I've heard both versions.
-Tedsuo 00:11:28 So, it's…
-it's… you want to put in as much as you can till when we say this SIG is then going to…
-to re-up. Like, if you want to say the SIG plans on having a couple of stages.
+Tedsuo 00:11:28 So, it's… it's… you want to put in as much as you can till when we say this SIG is then going to… to re-up. Like, if you want to say the SIG plans on having a couple of stages.
 That's okay. I don't want to focus on, like, dot dot dot, and then we're gonna do some cool stuff later. Let's just be clear about what this SIG is trying to deliver now until KubeCon, and then, like, we can talk a bit about what this SIG plans to do after that.
 But in addition to what this SIG may want to do after that, my understanding was people wanted a separate SIG to get formed, that was separate from this SIG to do the packaging and the productizing.
 Because that might be a different mix of people.
@@ -109,8 +96,7 @@ So.
 Michele Mancioppi 00:12:26 No, I can go down both ways. I just, I said, okay, I'll give it a stab, because that is usually the way that I clarify my confusion, and I was somewhat confused from the last time we spoke.
 Tedsuo 00:12:37 Yeah.
 Michele Mancioppi 00:12:38 Okay, let's see…
-Tedsuo 00:12:40 Don't… don't let me confuse you too much. I… I think this is a good…
-What you wrote is generally good.
+Tedsuo 00:12:40 Don't… don't let me confuse you too much. I… I think this is a good… What you wrote is generally good.
 What's your concept of… The deliverables, like, every… all the details you put in seem fine to me.
 About what we intend to deliver.
 Michele Mancioppi 00:13:03 packages… We do not foresee this segment.
@@ -143,8 +129,7 @@ operator, and… Short doing… Streamline.
 Auto.
 Strong rotation.
 Experience.
-I'll say not to affect…
-interactive seed.
+I'll say not to affect… interactive seed.
 Actually, it was hardened.
 Spun.
 Okay.
@@ -165,9 +150,7 @@ You're not?
 The word operator is very overloaded.
 Tedsuo 00:18:09 True. It's true.
 Michele Mancioppi 00:18:10 just practitioners.
-Tedsuo 00:18:13 So…
-Yeah, I've been… I've been trying to work on my pitch. I'm actually gonna give a… a rough version of this pitch. I'm in London at, OBSCON right now, and I'm gonna do a talk
-on Wednesday, Here, that's just, just, like, broadly speaking, showing, like.
+Tedsuo 00:18:13 So… Yeah, I've been… I've been trying to work on my pitch. I'm actually gonna give a… a rough version of this pitch. I'm in London at, OBSCON right now, and I'm gonna do a talk on Wednesday, Here, that's just, just, like, broadly speaking, showing, like.
 what we can install easily now, and, like, what we're working towards installing in the future. But one of the angles I've noticed is, like, all of the work we're putting in right now, everyone's like, we need better docks, we need better docks, we need better docks.
 But with…
 Michele Mancioppi 00:18:48 It's boring, right? We could just make something that works on the internet.
@@ -184,15 +167,13 @@ Come back next.
 Quarter.
 Tedsuo 00:19:52 Right.
 Who… can people just directly solve their own problems, or do they have to go through people who are busy and don't care?
-Michele Mancioppi 00:20:01 That was the entire,
-the entire claim to glory of Instana. He would just install the agent, and it would do a lot of terrible things, and you would… you wouldn't.
+Michele Mancioppi 00:20:01 That was the entire, the entire claim to glory of Instana. He would just install the agent, and it would do a lot of terrible things, and you would… you wouldn't.
 Tedsuo 00:20:10 Exactly.
 Michele Mancioppi 00:20:10 It was not to compare.
 Tedsuo 00:20:11 That's… that's the thing we're saying, and this is… I wanna… when we start proselytizing about this to the larger community, we're gonna get some pushback from people who are like, we should just make the dogs better, we…
 Antoine Toulme 00:20:24 Auto instrumentation.
 Michele Mancioppi 00:20:26 And then we look at those people straight in the eye and say, great idea, go and do that, meanwhile we do this.
-Tedsuo 00:20:32 Right. Well,
-No. We're gonna… we're gonna pull the community along with us, right? We're not gonna… we're not going to be.
+Tedsuo 00:20:32 Right. Well, No. We're gonna… we're gonna pull the community along with us, right? We're not gonna… we're not going to be.
 Michele Mancioppi 00:20:41 No, people that come and say, oh, go and do better instrumentation.
 Documentation said, nope.
 Tedsuo 00:20:47 But… but… so this is the case I want to make to people, is there's… there's two different audiences, right, that have main audiences that have access to different things, right? There's…
@@ -207,10 +188,8 @@ Antoine Toulme 00:21:25 I mean, you know, this admin rhymes with PHP in my admin
 Tedsuo 00:21:30 Yeah, it's all still LAMP stack, if you look at it sideways. But, the bigger point is that, like, we want to say we've got operators and we've got developers.
 Right? They have different needs, they have access to different things. Like you were saying, people need to be able to get their job done directly, and the reason why we need the injector is there's a whole bunch of stuff that operators just literally cannot install right now.
 There's a couple of things they can install, and that's what's kind of in the oper… The open telemetry operator already, right? Like, our digital operator can install a couple of things, but it… that's it, right? And the reason it doesn't install the other things is, like, there's no mechanism for it to be able to do that.
-And that's why we need to build this, is there's a whole audience out there, and there are many, many organizations where that's actually the person
-Who's gonna be the person who does this?
-Antoine Toulme 00:22:27 So, so, Ted, who's going to be the people who are going to have the bandwidth and,
-Frankly, the wind in the lungs to go and complain about the fact that this exists.
+And that's why we need to build this, is there's a whole audience out there, and there are many, many organizations where that's actually the person Who's gonna be the person who does this?
+Antoine Toulme 00:22:27 So, so, Ted, who's going to be the people who are going to have the bandwidth and, Frankly, the wind in the lungs to go and complain about the fact that this exists.
 Tedsuo 00:22:37 You know, it's not about people complaining about stuff existing, it's just about the fact that OpenTelemetry's, like, stretched pretty thin. So we're really trying to increase our project management and, like.
 decrease the number of initiatives, because we… OpenTelemetry has this, like.
 Antoine Toulme 00:22:59 We live in that one, huh.
@@ -224,27 +203,21 @@ And if you have, like.
 If you've… just like with a computer, if you've just totally… oversaturated your CPU cores.
 Everything is gonna get done, but everything is gonna get done slower.
 Antoine Toulme 00:23:59 No, but, you know, no, no, wait, wait, wait, wait. There's many, many, many, many, many things you're saying here which are interesting on their own.
-One of them is first that we are going to limit the capacity of the project to the capacity of the TC, which…
-I don't care for, I'm sorry, get more people in your TC, right?
+One of them is first that we are going to limit the capacity of the project to the capacity of the TC, which… I don't care for, I'm sorry, get more people in your TC, right?
 Tedsuo 00:24:14 Absolutely. Well, we're doing some changes there, too. We're gonna have a bunch of spec maintainers, so we're trying to take a bunch of TC responsibility and say, here's all the spec maintainers. So we're trying to find ways to get more people.
 Antoine Toulme 00:24:26 Delegate. Delegate, right.
-Tedsuo 00:24:28 But here's the problem, Anthony, is we've noticed that when SIGs just work off in a corner, right, and they don't…
-could, like…
-If the work they're doing is generally work that could stay off in a corner and no one would ever have to care about it, then great. But, like, for SIGs.
+Tedsuo 00:24:28 But here's the problem, Anthony, is we've noticed that when SIGs just work off in a corner, right, and they don't… could, like… If the work they're doing is generally work that could stay off in a corner and no one would ever have to care about it, then great. But, like, for SIGs.
 more often than not, when the SIGs go off in a corner and work for a long time, and then come back to the community and be like, we built all this shit without anyone giving us any feedback.
 Like, that often doesn't, like… result in success.
 Because these things are too interrelated with each other, so we want to make sure that we aren't doing, like, experimental projects, and I don't want to waste your meeting talking about this, by the way, so I'm going to shut up after this. But, like, we don't.
 Bastian Krol 00:25:14 I think this is extremely important to get this straight, so take the time.
-Tedsuo 00:25:20 It's…
-we… we just recognize that, like, we can't keep spinning up more and more things, right? And what keeps happening is more and more people are interested in OpenTelemetry, so they want to do more. And we want to keep saying yes, so we do, but if… if it's totally diffuse.
-and there's no organizing across the little fiefdoms, then the project loses coherence. And OpenTelemetry right now, to me, already feels like it's
-like, I want the injector as part of this process of bringing some coherence back.
+Tedsuo 00:25:20 It's… we… we just recognize that, like, we can't keep spinning up more and more things, right? And what keeps happening is more and more people are interested in OpenTelemetry, so they want to do more. And we want to keep saying yes, so we do, but if… if it's totally diffuse.
+and there's no organizing across the little fiefdoms, then the project loses coherence. And OpenTelemetry right now, to me, already feels like it's like, I want the injector as part of this process of bringing some coherence back.
 Right? You know, we have, like, lots of pieces now, there's lots of things that need to get targeted with those pieces. The community needs to know, like, what is all this, like, giant pile of stuff I have to install, right?
 Antoine Toulme 00:26:09 Oh, okay, okay, so…
 Tedsuo 00:26:11 It's, it's like…
 Antoine Toulme 00:26:11 That's weird.
-Tedsuo 00:26:12 People are really feeling like we're hitting a wall here, where we need to, like, stop adding new shit, and just go to town, like…
-Mac, do you remember Snow Leopard?
+Tedsuo 00:26:12 People are really feeling like we're hitting a wall here, where we need to, like, stop adding new shit, and just go to town, like… Mac, do you remember Snow Leopard?
 when…
 Antoine Toulme 00:26:24 Yeah, yeah.
 Tedsuo 00:26:25 Finally, it was just like, you know what, we're gonna just, like, make things not suck for, like, a year, and not keep adding new crazy shit.
@@ -262,8 +235,7 @@ We talk about it like, oh, you just, like, install some packages, right? That is
 Your dependency manager's not gonna tell you that, like, nothing's gonna tell you that.
 except some weird-ass, like, tools, maybe in Python or some other languages, like, every.
 Michele Mancioppi 00:28:02 Python is the worst offender that I've mentioned in terms of packaging.
-Tedsuo 00:28:06 Exactly, right? Everything is, like, kind of bespoke, and that's what's actually making it
-So if we can instead replace all of that shit with something very uniform.
+Tedsuo 00:28:06 Exactly, right? Everything is, like, kind of bespoke, and that's what's actually making it So if we can instead replace all of that shit with something very uniform.
 Which is what this injector does.
 Antoine Toulme 00:28:19 So, Ted, okay, so I took it the wrong way. I thought… I assumed that what you meant is, like, oh, the injector is just one more, distraction from the goal of open symmetry, and actually, you're saying, no, this is actually great, because it ties the boat together, and it makes it real critical.
 Tedsuo 00:28:32 Right, right. But… but… but we are… but we need it desperately, right? We're trying to, like, bring the project in and just focus on, like.
@@ -274,16 +246,14 @@ Tedsuo 00:28:58 If you're… if you're in the infrastructure monitoring market.
 you kind of… you're just like… like, I don't know, you're not… or if you're just, like, application devs, like, you're… you don't work for, like, an APM company, right? You're, like, an Apple.
 Antoine Toulme 00:29:13 KG.
 Tedsuo 00:29:14 who works at, like, Google or Microsoft or something. You might be like, I don't… there's other factions in OTEL who might not understand how this is really solving it for people.
-That's… that's the thing, right? So we need to make… and we can't just be like, shut the fuck up, right? Like, we have to sell. We have to… we want the community to be, like, happy if we're gonna come in in this moment and be like, we got… we have the solution for the problems, and we want to pivot this community towards…
-more of… Okay.
+That's… that's the thing, right? So we need to make… and we can't just be like, shut the fuck up, right? Like, we have to sell. We have to… we want the community to be, like, happy if we're gonna come in in this moment and be like, we got… we have the solution for the problems, and we want to pivot this community towards… more of… Okay.
 product, packaging-focused, kind of experience.
 Antoine Toulme 00:29:51 So, so…
 Tedsuo 00:29:52 We have to actually sell the community on it, because not… there's a percentage of the community that's like, obviously this is important, but there's actually a big chunk of it who doesn't have background to understand this, because they personally don't need it.
 Michele Mancioppi 00:30:07 Is that true?
 Antoine Toulme 00:30:08 Over here.
 Michele Mancioppi 00:30:08 surprises me.
-the amount of, people in the open territory community that
-Do not sympathize with Joe Rondo out there.
+the amount of, people in the open territory community that Do not sympathize with Joe Rondo out there.
 I don't get it.
 Tedsuo 00:30:21 It depends on which rando. They really sympathize with the application developers, which is why they really want to, like, improve the documentation in the OTEL demo.
 Michele Mancioppi 00:30:30 Vision developers don't want to add packages either manually.
@@ -296,12 +266,10 @@ Michele Mancioppi 00:31:15 Wait until the BPF people get rid of this.
 Tedsuo 00:31:17 But here's the thing, we need stuff from other SIGs, right? Like, I'm hearing you guys, like, bitch about Python, right? Like, we need the Python SIG to, like, do some stuff.
 Antoine Toulme 00:31:26 Oh, yeah.
 Michele Mancioppi 00:31:27 No, no, no, I don't bitch about the Python's thing. I bitch about Python, the language, and the package managers. It's a very different thing.
-Tedsuo 00:31:33 And, like, I'm just saying…
-From my perspective, there's, like, a bigger pivot around getting the whole community to focus on productizing this thing, in general.
+Tedsuo 00:31:33 And, like, I'm just saying… From my perspective, there's, like, a bigger pivot around getting the whole community to focus on productizing this thing, in general.
 Antoine Toulme 00:31:43 I thought…
 Tedsuo 00:31:45 Can we pivot to that, have it not turn into, like, a giant shouting match, where people are all feeling a different part of the elephant? So I just want to go into that initiative with a big pitch and a plan and stuff, like, already in place, you know, so that we're not being, like.
-hey, what do you all think? We're going in and being like, here's how we're gonna solve this, right? Here's…
-here's the product department coming in with our pitch, here's how we're gonna solve these problems, here's what the requirements are, here's what the problems really are, like, here's how.
+hey, what do you all think? We're going in and being like, here's how we're gonna solve this, right? Here's… here's the product department coming in with our pitch, here's how we're gonna solve these problems, here's what the requirements are, here's what the problems really are, like, here's how.
 Antoine Toulme 00:32:15 For sure you're gonna get some shit for that. I mean, you're gonna get some shit for that than if you just screw up with yourself.
 Tedsuo 00:32:20 But it's gonna take a bit of work, and that's what I'm here for. I'm here to do that.
 Antoine Toulme 00:32:24 Yeah, you can evangelize the vision of the.
@@ -323,13 +291,11 @@ Tedsuo 00:33:33 to keep rapidly, like, we don't want to slow down with this inje
 Antoine Toulme 00:33:39 Yeah.
 Tedsuo 00:33:40 You're totally right.
 Antoine Toulme 00:33:40 that's…
-Tedsuo 00:33:41 We don't want anyone to block us from shipping it, and we're lucky there, because we've got enough languages that we don't need
-a lot of work out of that we can chip for, right? A couple of things, like.
+Tedsuo 00:33:41 We don't want anyone to block us from shipping it, and we're lucky there, because we've got enough languages that we don't need a lot of work out of that we can chip for, right? A couple of things, like.
 Michele Mancioppi 00:33:53 That is enough to deliver value.
 Tedsuo 00:33:54 Great in Python.
 Antoine Toulme 00:33:55 Yeah, but…
-Michele Mancioppi 00:33:56 There are enough to deliver value, and luckily there are some with the biggest
-I mean, Python would be great.
+Michele Mancioppi 00:33:56 There are enough to deliver value, and luckily there are some with the biggest I mean, Python would be great.
 Python's probably the last to get on board of the language that can be done.
 Tedsuo 00:34:07 But you can come after Python after you've shown the value elsewhere.
 Michele Mancioppi 00:34:12 I…
@@ -338,8 +304,7 @@ Michele Mancioppi 00:34:13 I know this enough.
 Tedsuo 00:34:15 Totally. Yeah.
 But I just… I am thinking a couple of steps ahead, just because I'm like, man, it's a big community, so, like, I gotta figure out my pitch with you guys, and then…
 Antoine Toulme 00:34:29 Absolutely.
-Tedsuo 00:34:30 Sell the GC, sell the TC, start selling the maintainers, and just… just beat a drum. It's not like a one giant thing is ever gonna happen, but it's like you…
-You just start door knocking, right? You start beating that drum.
+Tedsuo 00:34:30 Sell the GC, sell the TC, start selling the maintainers, and just… just beat a drum. It's not like a one giant thing is ever gonna happen, but it's like you… You just start door knocking, right? You start beating that drum.
 Antoine Toulme 00:34:44 Yeah, yeah, you're… this is really important, what you're doing, Ted. I think this is… actually, I was very excited because I heard that you might be getting lunch with Jason Plum, who's a maintainer of Java.
 And I was telling Jason, hey, you need to take time with Ted, you gotta talk about the injector follow our burger, because you're gonna have a lot of feedback for him in the messaging, how to present that, how to feed that to Java people.
 Because there's a fine line, there's a few keywords you can say in the right order for a Java person to be like, oh, okay, sure, no problem, right?
@@ -347,8 +312,7 @@ Michele Mancioppi 00:35:15 The general people are the least… are the least peo
 Antoine Toulme 00:35:25 That's why I'd like to start with the easy case. We get the easy wins out. You show a very nice integration, a demo. Everybody from Gelastic is, like, up on the scenes, like, yeah, great! And then one of the different guys on the back of the room is like, shit, we better get on the bandwagon.
 Which is the whole logic of it.
 Tedsuo 00:35:43 But can't the operator already inject the agent for that very reason?
-Michele Mancioppi 00:35:46 Yeah, but it requires you to go and, exactly, that's why I said it works very well. But you still need to go and annotate the single pod, so…
-Effectively, there is, right?
+Michele Mancioppi 00:35:46 Yeah, but it requires you to go and, exactly, that's why I said it works very well. But you still need to go and annotate the single pod, so… Effectively, there is, right?
 Booking contract there.
 Tedsuo 00:35:57 Yeah.
 But I…
@@ -371,18 +335,13 @@ Michele Mancioppi 00:37:12 I mean, please proofread the goals so that we're on t
 I'm always, like, I found, like, goals and milestones, it all… it's all the same thing for me.
 What goals are we missing here, Scott?
 Tedsuo 00:37:50 I think these… these goals are fine.
-I think the goals section is…
-you know, I think the main thing maybe there is to…
-Yeah, I mean, if we wanted to just one-line it, it's like… Create, mechanism, or… .
+I think the goals section is… you know, I think the main thing maybe there is to… Yeah, I mean, if we wanted to just one-line it, it's like… Create, mechanism, or… .
 Michele Mancioppi 00:38:25 Out of the box instrumentation.
-Tedsuo 00:38:27 as… Well… as well as…
-to install… The SDK and… Library Instrument…
-mentation in…
+Tedsuo 00:38:27 as… Well… as well as… to install… The SDK and… Library Instrument… mentation in…
 Michele Mancioppi 00:38:53 as many…
 Tedsuo 00:38:55 languages as possible.
 Using… The same mechanism?
-Michele Mancioppi 00:39:02 Yes, let me refine it a bit. Install, SDKs, and… Library art instrumentations applicable to
-All applications on a line-axis host.
+Michele Mancioppi 00:39:02 Yes, let me refine it a bit. Install, SDKs, and… Library art instrumentations applicable to All applications on a line-axis host.
 Just… By means of adding… Is it urgent… There's our system packages.
 And… Support as many languages.
 as possible.
@@ -391,8 +350,7 @@ Tedsuo 00:39:56 AMP.
 We know from industry experience That this significantly improves installation… It says at… scale.
 Michele Mancioppi 00:40:20 Yep.
 Very nice.
-Tedsuo 00:40:26 Especially… In situations when application… Developers are not…
-Something like that.
+Tedsuo 00:40:26 Especially… In situations when application… Developers are not… Something like that.
 Application owners is, like, the other weird term in typical, but I don't know.
 Michele Mancioppi 00:40:49 effort.
 To, maintain… Observerated table set types.
@@ -411,12 +369,8 @@ Okay, so… So now we're… we're starting to repeat ourselves.
 Why now?
 Michele Mancioppi 00:42:13 I actually would just leave this… this was the original paragraph.
 Like, we feel OpenTel Entry needs to provide more product, like, that there's including experience to newcomers.
-Tedsuo 00:42:23 Yeah, there's use to the ease of… yes, and I think that's the cool key…
-This is especially critical when or organizations… that want…
-the… and again, I don't know…
-I don't want to use the term sysadmin or SRE, but it's, like, the system operator, or something?
-want…
-to… I mean, I don't know quite how you… like, there's… many organizations have… it's like, we want the lowest… it's, like, almost like IT, you know? It's, like, more like the people… you're saying, hey, install this thing that can do all this, like, crazy, dangerous stuff, and basically looks like a fucking injection attack.
+Tedsuo 00:42:23 Yeah, there's use to the ease of… yes, and I think that's the cool key… This is especially critical when or organizations… that want… the… and again, I don't know… I don't want to use the term sysadmin or SRE, but it's, like, the system operator, or something?
+want… to… I mean, I don't know quite how you… like, there's… many organizations have… it's like, we want the lowest… it's, like, almost like IT, you know? It's, like, more like the people… you're saying, hey, install this thing that can do all this, like, crazy, dangerous stuff, and basically looks like a fucking injection attack.
 And organizations look… agents like that, and they're like, we want the, like.
 sysadmin security person to be in charge of this fucking thing, right? Because this thing can do too many dangerous things, especially, like, after SolarWinds, right?
 Michele Mancioppi 00:43:38 So instead of saying what they want, let's say what the situation is.
@@ -440,19 +394,15 @@ Name, oh… Operators.
 The grief, the benefits of application of Library, author.
 It's one dishes.
 And this will front-load, because I'm not writing in Italian.
-Oh, unco…
-Alright.
+Oh, unco… Alright.
 Okay. This is the same as the goals?
 Just in purple?
 Such a good deal.
 Tedsuo 00:45:43 caffeine!
-Michele Mancioppi 00:45:46 I did try to get my former friends economically involved, but…
-It takes an act of God for them to do something.
-Tedsuo 00:45:54 I think the, you know, the one question we'll probably get asked here is about more, like, maybe, like,
-I mean, you can imagine people being like, why is Dynatrace not involved?
+Michele Mancioppi 00:45:46 I did try to get my former friends economically involved, but… It takes an act of God for them to do something.
+Tedsuo 00:45:54 I think the, you know, the one question we'll probably get asked here is about more, like, maybe, like, I mean, you can imagine people being like, why is Dynatrace not involved?
 Right, they're heavily involved in OpenTelemetry.
-Michele Mancioppi 00:46:08 They also have some of the best…
-of LD preload technologies, and that's exactly why they're not going to contribute to this.
+Michele Mancioppi 00:46:08 They also have some of the best… of LD preload technologies, and that's exactly why they're not going to contribute to this.
 Tedsuo 00:46:16 But have we actually asked them?
 Michele Mancioppi 00:46:20 That's a fair question.
 Antoine Toulme 00:46:24 We certainly have.
@@ -477,20 +427,17 @@ Tedsuo 00:47:24 They, they might, they might be interested.
 Antoine Toulme 00:47:26 Usually the answer I've gotten from people who are product managers, who are deep inside vendors, beside me, Kelly, and myself, is that they don't actually know what a transformative does, they don't go into discussions with the community, they don't really pay attention, and the last ones to pick up on any of this.
 And usually, they reluctantly will look at any issue, not because we tell them to, but because the customer is yelling in their ears for, like.
 You know, enough for them to pay attention.
-Michele Mancioppi 00:47:51 I actually have a theory, and the theory is, if the product managers
-Of some of the major vendors understood.
+Michele Mancioppi 00:47:51 I actually have a theory, and the theory is, if the product managers Of some of the major vendors understood.
 the social potential of OpenTelemetry would never have happened.
 Antoine Toulme 00:48:05 Well, this is why I'm here, right? I mean… Just be clear.
 Michele Mancioppi 00:48:08 I don't know what to say. You can pick the top right corner of the quadrant.
 And then go and ask to the project leader, say, are you happy about OpenTelemetry? And they will go like, yeah, of course we are.
 Anything they're not.
 Because it actually chips away at the most valuable asset of, I'm sorry, with the company, the vendor lock-in.
-Tedsuo 00:48:34 Well, if you have faith in your product,
-Then, frictionless telemetry doesn't necessarily sound bad.
+Tedsuo 00:48:34 Well, if you have faith in your product, Then, frictionless telemetry doesn't necessarily sound bad.
 Antoine Toulme 00:48:44 No, it's a great idea.
 M…
-Tedsuo 00:48:47 But if you already… it's more that if you already have a thing that's really advanced, why do you want to, like, rebuild it from scratch? That's more what we see. If someone's already done all the work to build this Dynatrace 1 agent thing, they're like, we got one and it works right now, and we're not… So, same thing, like, with, like, browser stuff. We're like…
-you know, the people like Sentry and whatever, who are, like, really, really advanced, you know, they throw shade at OTEL, but also, like, we would have to get really far along on the browser before we started getting even close to, like.
+Tedsuo 00:48:47 But if you already… it's more that if you already have a thing that's really advanced, why do you want to, like, rebuild it from scratch? That's more what we see. If someone's already done all the work to build this Dynatrace 1 agent thing, they're like, we got one and it works right now, and we're not… So, same thing, like, with, like, browser stuff. We're like… you know, the people like Sentry and whatever, who are, like, really, really advanced, you know, they throw shade at OTEL, but also, like, we would have to get really far along on the browser before we started getting even close to, like.
 this stuff they ship. So, you know, they're probably not going to be like, why… why would we be wast… it would be a waste of effort at this juncture to get involved. But later, they tend to get… those kinds of organizations get involved, once it starts to get closer to where.
 Antoine Toulme 00:49:33 That's…
 Tedsuo 00:49:34 Proprietary stuff was.
@@ -510,18 +457,15 @@ Michele Mancioppi 00:50:39 Who's on the TC?
 Tedsuo 00:50:40 I don't know that we have one right now, but I would like to ask Jack Berg.
 Michele Mancioppi 00:50:45 That was the due diligence, right?
 Tedsuo 00:50:48 Yeah, he did the due diligence.
-Then…
-And for other reasons, I think he would be a good pick. So I'm gonna ask him, don't put anything in the.
+Then… And for other reasons, I think he would be a good pick. So I'm gonna ask him, don't put anything in the.
 Michele Mancioppi 00:50:56 Alright.
 Tedsuo 00:50:56 Yet?
 Antoine Toulme 00:50:58 GC is, Morgan…
 Tedsuo 00:51:00 GC liaison, it can be me, it can be Morgan.
 Antoine Toulme 00:51:04 Yeah, we can put that, so…
 Tedsuo 00:51:08 I am excited for Morgan to be back in action.
-Antoine Toulme 00:51:14 It's… Yeah, no, I… I depend on this man, like…
-the air breathe, so… Yeah, he's…
-Tedsuo 00:51:24 Okay. And then we have timeline. Actually, the one thing…
-It is just the… for staffing.
+Antoine Toulme 00:51:14 It's… Yeah, no, I… I depend on this man, like… the air breathe, so… Yeah, he's…
+Tedsuo 00:51:24 Okay. And then we have timeline. Actually, the one thing… It is just the… for staffing.
 It is just injector approvers, right, essentially?
 There aren't… there aren't other engineers floating around working on other things.
 We can just point it.
@@ -531,8 +475,7 @@ Michele Mancioppi 00:51:54 Yeah, no.
 Antoine Toulme 00:51:55 It never worked for me. You can open as many issues as you want.
 Feel free.
 I don't…
-Michele Mancioppi 00:52:02 I mean, technically, it might be that Elastic actually brings,
-some help for the Python SDK to remove one of the biggest issues, that is the…
+Michele Mancioppi 00:52:02 I mean, technically, it might be that Elastic actually brings, some help for the Python SDK to remove one of the biggest issues, that is the…
 Antoine Toulme 00:52:11 Sure.
 Michele Mancioppi 00:52:12 I'm looking forward to see them, lift their tissue.
 Antoine Toulme 00:52:17 Let's support Ruby first, just to spite them.
@@ -553,16 +496,12 @@ Tedsuo 00:53:00 Just making my job harder, it's no big deal.
 Michele Mancioppi 00:53:04 This we already have, right?
 Tedsuo 00:53:09 Okay. SIG meetings, roadmap, so this, this shit is, is just, we can just plug this stuff…
 Antoine Toulme 00:53:19 I mean.
-Tedsuo 00:53:21 gitHub project, this is actually…
-Sorry, I put this in the wrong spot. This is… Should be… under here…
-It's just, like… Oh… It's here.
-Sig meeting is…
-Do we have this on the… let me see the community page.
+Tedsuo 00:53:21 gitHub project, this is actually… Sorry, I put this in the wrong spot. This is… Should be… under here… It's just, like… Oh… It's here.
+Sig meeting is… Do we have this on the… let me see the community page.
 Antoine Toulme 00:54:01 Yep, we do.
 Michele Mancioppi 00:54:02 Yep.
 Antoine Toulme 00:54:03 I would rather… Oh, the whole thing.
-Tedsuo 00:54:06 Yeah, I'd rather link…
-Because all this stuff, we write it and triplicate it, and then it fucking gets out of date.
+Tedsuo 00:54:06 Yeah, I'd rather link… Because all this stuff, we write it and triplicate it, and then it fucking gets out of date.
 Antoine Toulme 00:54:16 Yeah.
 Tedsuo 00:54:19 Okay.
 Antoine Toulme 00:54:20 Is there a reason this is a Google Doc?
@@ -572,28 +511,22 @@ Tedsuo 00:54:37 I have all the other project files, and I'm just gonna be like.
 We never wrote this thing when we added it, so we're just adding it now.
 This is not… this is… I'm gonna tell people, like, this has already been approved, no one made a project file, so we're doing it now.
 Antoine Toulme 00:54:51 Well, no one told us. Is there a… another.
-Tedsuo 00:54:53 Totally fine. Yeah, no, I mean, I want to do a bit of a post-mortem with GCTC and be like, wow, this…
-this thing blew through. Maybe it… and it seems like it blew through post us setting that stuff up, so… a little bit like what happened, but…
+Tedsuo 00:54:53 Totally fine. Yeah, no, I mean, I want to do a bit of a post-mortem with GCTC and be like, wow, this… this thing blew through. Maybe it… and it seems like it blew through post us setting that stuff up, so… a little bit like what happened, but…
 Antoine Toulme 00:55:07 Is there a list of things?
 Oh, my God, I've never been to this.
 Tedsuo 00:55:11 Not on, not on the, not on the, donations.
 I feel like we haven't been doing a great job managing donations.
 I feel like it's… it can be… because people are so busy.
-donations, I feel like the people donating are often in a position where they're, like, maybe waiting
-for GC or TPC people, it doesn't feel as organized as it should be.
+donations, I feel like the people donating are often in a position where they're, like, maybe waiting for GC or TPC people, it doesn't feel as organized as it should be.
 But…
 Antoine Toulme 00:55:39 Are you talking about the projects folder under the community repository?
 Tedsuo 00:55:43 Yeah, that's where I'm gonna put this.
 Antoine Toulme 00:55:45 If I was to read this, I would be very, very unhappy with, like, I need to go and fix Collector V1 right now.
 It's filled with TBD links, and… Whoa.
 Like, it's dangerous.
-Tedsuo 00:55:58 I would like Sigs to… to start…
-going back and kind of, like, updating this, but again, I'm not… I'm not trying to fix the path, I'm trying to make the new SIGs, like…
+Tedsuo 00:55:58 I would like Sigs to… to start… going back and kind of, like, updating this, but again, I'm not… I'm not trying to fix the path, I'm trying to make the new SIGs, like…
 Antoine Toulme 00:56:09 Okay, then…
-Tedsuo 00:56:10 So we've got this SIG, we've got the browser SIG. I'm saying if we're spinning up new things, let's…
-Let's have our project files up to date. Let's, like… Try to make the meetings…
-snappy, let's try to have deadlines, let's try to have, like, not endless projects, but short-scale projects, right? That's why we don't want to just have SIGs, because a SIG is this, like, endless thing. It's just a group of people that meets. We want to have
-A project with a deadline.
+Tedsuo 00:56:10 So we've got this SIG, we've got the browser SIG. I'm saying if we're spinning up new things, let's… Let's have our project files up to date. Let's, like… Try to make the meetings… snappy, let's try to have deadlines, let's try to have, like, not endless projects, but short-scale projects, right? That's why we don't want to just have SIGs, because a SIG is this, like, endless thing. It's just a group of people that meets. We want to have A project with a deadline.
 like, some goal that the SIG is trying to meet, and an…
 Antoine Toulme 00:56:42 But, sir, this is open source. But, okay, fine, sure, okay.
 Tedsuo 00:56:46 I mean, it's… but it's, like, it's open source at massive scale, right? It's open source at a scale where, like, not doing these organizing things are causing some problems.
@@ -624,8 +557,7 @@ Michele Mancioppi 00:59:16 Yeah, but in this case, it's actually not realistic.
 Because… We will need support from other SIGs to get non-Java, non-Node.js languages off the ground.
 Tedsuo 00:59:30 Yeah, exactly.
 I think it's great if Sigs can just ship on their own, right? And that was part of the… part of the bureaucracy was, like.
-Yeah, I don't know, it'd be great to have less bureaucracy, but…
-I'm also excited about how OpenTelemetry… we did a lot of work around not forcing you into our implementations.
+Yeah, I don't know, it'd be great to have less bureaucracy, but… I'm also excited about how OpenTelemetry… we did a lot of work around not forcing you into our implementations.
 Right? If someone wants to build a better… if they're like, this Python SDK sucks. This… whatever… this OTEL component sucks. I just… I think I could just make a better SDK if I just ignored your fucking spec and everything else.
 And someone can just go build that, and compete with us, and I actually think that's a good thing.
 And I'm intrigued to see when and how it starts happening.
@@ -645,9 +577,7 @@ Hard.
 You know, and, like, no features. You don't get any features. All you get is Protobuff.
 like, pushed out the door as fast as possible in C++, that's literally all this thing does, and then hooked it up to the Open Tracing API.
 And it was, like, blazing fast.
-Are there a bunch of people who are like, fuck you, I'd never touch your C++ monstrosity? Yes. But are there people…
-People who are like, I don't care about features or options or anything, all I care about is how fast can I ship the telemetry off the box. And there's no one implementation that's gonna make both people happy, right? The people who want, like, a language-native framework, and the people who just want
-Willing to, like, put up with painful things to get the speed.
+Are there a bunch of people who are like, fuck you, I'd never touch your C++ monstrosity? Yes. But are there people… People who are like, I don't care about features or options or anything, all I care about is how fast can I ship the telemetry off the box. And there's no one implementation that's gonna make both people happy, right? The people who want, like, a language-native framework, and the people who just want Willing to, like, put up with painful things to get the speed.
 Anyways…
 Michele Mancioppi 01:01:56 Cool.
 Antoine Toulme 01:01:58 I'm catching up.
@@ -668,8 +598,7 @@ Bastian Krol 01:02:47 Yeah, so you're in the card school.
 Aw.
 Michele Mancioppi 01:02:50 Yeah, way too ruin my rhetoric argument, man. Thank you.
 Tedsuo 01:02:55 Is that the same place? I went to the Instana office years ago. Is it the same town?
-Michele Mancioppi 01:02:59 again. It's actually in, like…
-the other side of Germany in, North Weiss.
+Michele Mancioppi 01:02:59 again. It's actually in, like… the other side of Germany in, North Weiss.
 Tedsuo 01:03:06 Okay.
 What about you, Bashin? Where are you located?
 Bastian Krol 01:03:10 I'm in Dortmund, also Germany, so that's somewhat close to Zoling, which is also a very unremarkable drift town.

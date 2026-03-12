@@ -12,8 +12,7 @@ Zoom Recording URL: https://zoom.us/rec/share/96hXLb2U4BTku4AZsmHkhhunypOMwLFE9X
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 00:16 I'm good.
 You didn't go to Hotel Unplug, right?
 **Tyler** 00:20 I didn't know… I'm still here in the States. How about you?
-**Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 00:23 No, me neither. Oh, okay. Last minute, sort of…
-I was able to go. I had an appointment, I wasn't able to go, but then I was able to go, but I couldn't find a decent flight.
+**Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 00:23 No, me neither. Oh, okay. Last minute, sort of… I was able to go. I had an appointment, I wasn't able to go, but then I was able to go, but I couldn't find a decent flight.
 **Tyler** 00:34 Oh, yeah, fair enough. Yeah, that would have been quite a trip, all the way to Brussels. Yeah, that one, yeah.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 00:42 Oh, yeah.
 It seems it was great. I got some feedback from Mario today, and he loved it.
@@ -24,8 +23,7 @@ It seems it was great. I got some feedback from Mario today, and he loved it.
 **Tyler** 01:16 Yeah, it sounded pretty cool. I, I don't know if they're gonna do more, like, over here.
 Like, they had that one in Seattle a while ago that was pretty great.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 01:26 I see.
-**Tyler** 01:27 Yeah, I, like, that was,
-It wasn't last year, so it must have been, like, 2024.
+**Tyler** 01:27 Yeah, I, like, that was, It wasn't last year, so it must have been, like, 2024.
 And my favorite part about that was I could drive to it, so… Yeah. Yeah.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 01:39 Oh, yeah.
 **Tyler** 01:41 Yeah.
@@ -58,8 +56,7 @@ Yeah, I think there's a chance I should be there as well. Oh, nice. Not 100% yet
 On the Monday.
 **Tyler** 03:43 Yeah, and then there's, like, again, the Maintainers, summit.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 03:48 On a Sunday? Oh, really?
-**Tyler** 03:50 Yeah, it's like a day negative one, so, yeah, it's, it's definitely…
-The KubeCon North America one was tough. Like, there was definitely some, some, some people there, but it was definitely not as well attended, I think, as it has.
+**Tyler** 03:50 Yeah, it's like a day negative one, so, yeah, it's, it's definitely… The KubeCon North America one was tough. Like, there was definitely some, some, some people there, but it was definitely not as well attended, I think, as it has.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 04:04 Oh.
 **Tyler** 04:04 Okay.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 04:06 Yeah, I completely forgot about that.
@@ -72,14 +69,12 @@ Well…
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 04:30 Same for Monday, right? I mean, observability Day for me would… I would have to leave on Saturday night.
 Yeah. My whole week is shot, so…
 **Tyler** 04:39 Yeah.
-Yeah, I… I… if I go, I'm gonna try to…
-spend some extra time there, but yeah, I… again, like, super tentative on what that actually means right now. It may turn into me not actually going, so who knows? Oh, okay.
+Yeah, I… I… if I go, I'm gonna try to… spend some extra time there, but yeah, I… again, like, super tentative on what that actually means right now. It may turn into me not actually going, so who knows? Oh, okay.
 But… Mike, are you… are you planning on joining? And EU?
 **Mike Dame** 05:01 Probably not, no, not EU, but we're looking at, like, the Observability Summit, and just been trying to do some KubeCon North America stuff this year.
 Actually, when does it use, what, next month?
 **Tyler** 05:13 March, yeah, end of March.
-**Mike Dame** 05:15 Orange, yeah. Yeah, I just moved, so I'm, like, trying to…
-down a little bit. Yeah, I went from Massachusetts to New York, so, oh, okay.
+**Mike Dame** 05:15 Orange, yeah. Yeah, I just moved, so I'm, like, trying to… down a little bit. Yeah, I went from Massachusetts to New York, so, oh, okay.
 **Tyler** 05:26 Boo. Come on, dude.
 **Mike Dame** 05:30 I got family out here, but, yeah, it's… it sounds like, it'll be a good time, so I'll have to catch… I'll definitely catch the recording of your talk, Nicole, and if, I didn't… was anyone else… did you guys say you were giving talks, too, or…
 **Tyler** 05:42 I'm not giving a talk, no.
@@ -108,10 +103,8 @@ Yeah, the SRE conferences are also really fun. I've been to, I think, one of tho
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 07:10 It's much smaller than KubeCon, though.
 **Tyler** 07:12 It's super small, yeah, and I kind of like that, because, like, there's a lot more, I think, hallway conversation that gets sparked because of that, and, like, yeah, it's way more, yeah, I definitely like that.
 Well, cool. I'm looking at the meeting notes, I don't see anything on the agenda. I didn't have anything in specific to talk about. I could pause here, if anybody else had things to talk about, I think everyone's… yeah, it looks like everyone's already added their name to the agenda.
-But yeah, there's tons of work going on in the background for me, so…
-Yeah, I don't have too much to say here.
-But yeah, we could probably end the meeting early here, and we can plan on…
-Continuing the discussion tomorrow as well. Seems to be a lot of meetings.
+But yeah, there's tons of work going on in the background for me, so… Yeah, I don't have too much to say here.
+But yeah, we could probably end the meeting early here, and we can plan on… Continuing the discussion tomorrow as well. Seems to be a lot of meetings.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 08:06 Yep.
 **Rafael Roquetto** 08:07 Sounds good.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 08:08 Yeah, nice catching up.

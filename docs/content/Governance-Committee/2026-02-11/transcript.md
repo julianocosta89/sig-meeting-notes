@@ -21,39 +21,30 @@ Liudmila Molkova 00:05:58 Yeah, it's working now, thank you.
 Juraci Paixão Kröhling 00:05:59 I think everyone…
 Severin Neumann 00:06:02 Everybody was just quiet, so…
 Juraci Paixão Kröhling 00:06:06 You're all too shy.
-Severin Neumann 00:06:12 Should we get started, or…
-Do we miss anybody? I think there's a few people missing.
+Severin Neumann 00:06:12 Should we get started, or… Do we miss anybody? I think there's a few people missing.
 Jack Berg 00:06:20 Yeah, well, we're 5 over.
 Severin Neumann 00:06:23 Yeah, let's get started.
 I put a few topics into the agenda, I think we can quickly go over that. I had it initially only in the GC meeting notes, but I thought, like, this could be interesting for everybody.
 I was just checking today, we rolled out something, and I'm not sure if everybody's aware of that, like, we have created something, what we call the post-merge survey, that we, like, started in docs and then rolled out into a few other SIGs.
 And what we do with that is, like, if someone is not yet a member of the OpenTelemetry org, we add a small comment to a PR and say, like, hey, thank you for contributing.
-let us know how the experience was, right? So this is…
-aimed towards people that are not yet part of the work, and I thought it was interesting to see that, like, by now we have a 130-person
-Responding to that, and we have a very good rating.
+let us know how the experience was, right? So this is… aimed towards people that are not yet part of the work, and I thought it was interesting to see that, like, by now we have a 130-person Responding to that, and we have a very good rating.
 And let's say the feedback is not surprising, right? That people say, like, hey, we have a good experience.
-maintainers are doing a great job, and a consistent pain point is that, like, yeah, sometimes revenues are slow, some things are confusing, and of course, CLA and signing that one is a trouble. So yeah, I thought it's just…
-A good idea to maybe share that, and…
-If anybody has more questions on that, or wants to dive into this data, I can… I can answer questions.
+maintainers are doing a great job, and a consistent pain point is that, like, yeah, sometimes revenues are slow, some things are confusing, and of course, CLA and signing that one is a trouble. So yeah, I thought it's just… A good idea to maybe share that, and… If anybody has more questions on that, or wants to dive into this data, I can… I can answer questions.
 Marylia Gutierrez 00:07:52 Yeah, for this one, I actually review, like, every Monday, see, like, how many new entries we have, and every time we collect enough, I actually go to that SIG and share the results with that SIG. So I have been doing this since we started.
 I think maybe a couple of you have seen me joining on their calls and providing feedback, but yeah, I've been doing this since we started.
 Tigran Najaryan 00:08:14 Why did we limit it to non-members only?
-Severin Neumann 00:08:18 To just not be annoying. I mean, we can still expand it, right? We can still, like… but the initial idea was, like, okay, we want to reach people
-that are, like, very early in the stage of contributing, right? I think we can talk about having it either expanded to, like, every contribution, or we can talk about having a separate one.
+Severin Neumann 00:08:18 To just not be annoying. I mean, we can still expand it, right? We can still, like… but the initial idea was, like, okay, we want to reach people that are, like, very early in the stage of contributing, right? I think we can talk about having it either expanded to, like, every contribution, or we can talk about having a separate one.
 But yeah, the idea was, like, keep it small, keep it focused on new contributors.
-Tigran Najaryan 00:08:50 No, I think this is great, but I would also be interested in learning what the existing members think about
-the experience, maybe for a short period of time, it doesn't have to be forever, right? For a week or something like that, maybe.
+Tigran Najaryan 00:08:50 No, I think this is great, but I would also be interested in learning what the existing members think about the experience, maybe for a short period of time, it doesn't have to be forever, right? For a week or something like that, maybe.
 And I would be also interested in maybe a breakdown by the repos, so that if there's a repository I'm responsible for, and there's a feedback that something is not great.
 I would like to do something about it, but…
 Severin Neumann 00:09:14 Yeah.
 Tigran Najaryan 00:09:14 having the average of the, I guess, of the entire open telemetry doesn't help me much as a maintainer of a particular repository.
 Marylia Gutierrez 00:09:21 And the questions are by repo, so we do have the responses and the part. That's great. Yeah, it's by repo, so this is why I'm able to, like, go back to that SIG and share, but yeah.
 Tigran Najaryan 00:09:31 Okay, great.
-Pablo Baeyens 00:09:33 We have the contributor experience survey, which was done last summer, and that has more people that have been…
-Contributors for a longer time.
+Pablo Baeyens 00:09:33 We have the contributor experience survey, which was done last summer, and that has more people that have been… Contributors for a longer time.
 I'm sure the book.
-Severin Neumann 00:09:54 Yeah, but… but I think we can… we can see how we can maybe, I don't know, expand this to… to something we can maybe really run, like, once per year for…
-specific period of time, or something like that, but yeah. I just saw that it's cool feedback, and.
+Severin Neumann 00:09:54 Yeah, but… but I think we can… we can see how we can maybe, I don't know, expand this to… to something we can maybe really run, like, once per year for… specific period of time, or something like that, but yeah. I just saw that it's cool feedback, and.
 Tigran Najaryan 00:10:09 No, that's good. It's good to see that we're… yeah, the averages look pretty good, right? So I wouldn't… I guess that's great.
 For me to do anything better than that, I need to have the specific feedback for the areas I am responsible for. It would be good to have that feedback.
 Severin Neumann 00:10:26 Yeah, I just rolled it up for the whole org, right? So there's more details into that. I thought, like, hey, for just sharing that, I'd just roll it up, but, like, if you're, for example, are interested, like, we have it for JS, Java.net, and Collector, so if you want to add it to other reports as well, then we can roll it out.
@@ -61,123 +52,75 @@ Tigran Najaryan 00:10:44 If you only have 140 responses, that's probably not eno
 To make them in the right channels meaningful statistically.
 Severin Neumann 00:10:59 Yeah.
 Tigran Najaryan 00:11:03 Awesome. Well, I guess anyway, the numbers make me happy. We're doing something right.
-Severin Neumann 00:11:12 That's also… so something happy to start on. Then maybe… maybe we can move on to the… to the project proposals. I just wanted to see, like, if we can spend…
-in this group, a few minutes on a few of them. I don't know if this is a good use of our time, let me know if not.
+Severin Neumann 00:11:12 That's also… so something happy to start on. Then maybe… maybe we can move on to the… to the project proposals. I just wanted to see, like, if we can spend… in this group, a few minutes on a few of them. I don't know if this is a good use of our time, let me know if not.
 We have 4 open project proposals, MCP, system packages.
 My all-time favorite by name is the SigSig. SigSig, whatever, and the DartSig. I don't know if we want to dive into any one of them. So the MCP one is very far. I think the only thing remaining is that, like.
 there would be a need for a TC sponsor, and the other ones are still early.
 And especially looking for contributors.
 Ted Young 00:11:58 I think we need to, get some attention paid to the, system packaging, SIG.
-Because that's one where the mandate for what it does
-Doing is pretty clear, but it does touch quite a lot of open telemetry.
-So we're looking for not just TC sponsors, but to also kind of identify a liaison, at least with each language SIG, for the languages that we want
-to be available in sort of the first round, so that's, like, Java.net, Node.js, Python,
-go, at least those languages.
+Because that's one where the mandate for what it does Doing is pretty clear, but it does touch quite a lot of open telemetry.
+So we're looking for not just TC sponsors, but to also kind of identify a liaison, at least with each language SIG, for the languages that we want to be available in sort of the first round, so that's, like, Java.net, Node.js, Python, go, at least those languages.
 Jack Berg 00:12:43 Also, the collector and OBI, the other components that would be a part of this packaging effort.
 Ted Young 00:12:49 Yeah, exactly.
 So we're curious who on the TC, has some availability to… to pay attention to this.
 Tigran Najaryan 00:13:01 What kind of engagement do we expect from the TCE on this one? I'm not envisioning any new designs here happening, really. This is more about packaging what exists already in most of the cases.
-Ted Young 00:13:13 So I actually added this as another, agenda item, because one question is how many of these decisions get made through the Linux packaging SIG versus our, like, more broad things we have to sort out, and because
-Linux packaging just happens to be the first place where we're bundling all of this stuff up, the questions are gonna land there. If we really leaned into the operator and started bundling everything up there, all the questions would emerge there, and we'd be
-doing some of this work out of the operator SIGs. So, questions around,
-what actually gets installed by default? What are the defaults? What gets turned on? When there's overlap between different tools, you know, which one
-But, you know, for example, you can enable tracing with OB and with the SDK, and you can have all of these things installed at the same time.
-So…
-sorting out some of that stuff. I mean, we could sort it out through that SIG, but these seem like, like, broader concerns that we want to be bringing back to the wider community somehow.
-Jack Berg 00:14:22 Also, I think there's sort of project-level policy,
-Decisions that need to be made around things like, you know, backwards compatibility.
-and any thresholds for inclusion. I've seen the operator SIG struggle with this. You know, they, you know, try to be a sort of gatekeeper, or make stability guarantees around the instrumentation that they're installing, and, you know, but they're not, like, kind of involved in the SIGs that are publishing the instrumentation they're installing, so they're sort of making promises they can't realistically
-keep.
-And so…
-how does… how does that work when we have sort of this component which delegates to other SIGs and groups in the project in, you know, this component? It ends up… might end up being sort of a main user touchpoint.
+Ted Young 00:13:13 So I actually added this as another, agenda item, because one question is how many of these decisions get made through the Linux packaging SIG versus our, like, more broad things we have to sort out, and because Linux packaging just happens to be the first place where we're bundling all of this stuff up, the questions are gonna land there. If we really leaned into the operator and started bundling everything up there, all the questions would emerge there, and we'd be doing some of this work out of the operator SIGs. So, questions around, what actually gets installed by default? What are the defaults? What gets turned on? When there's overlap between different tools, you know, which one But, you know, for example, you can enable tracing with OB and with the SDK, and you can have all of these things installed at the same time.
+So… sorting out some of that stuff. I mean, we could sort it out through that SIG, but these seem like, like, broader concerns that we want to be bringing back to the wider community somehow.
+Jack Berg 00:14:22 Also, I think there's sort of project-level policy, Decisions that need to be made around things like, you know, backwards compatibility.
+and any thresholds for inclusion. I've seen the operator SIG struggle with this. You know, they, you know, try to be a sort of gatekeeper, or make stability guarantees around the instrumentation that they're installing, and, you know, but they're not, like, kind of involved in the SIGs that are publishing the instrumentation they're installing, so they're sort of making promises they can't realistically keep.
+And so… how does… how does that work when we have sort of this component which delegates to other SIGs and groups in the project in, you know, this component? It ends up… might end up being sort of a main user touchpoint.
 Of… with users interacting with OpenTelemetry, and so, that group will be, exposed to all these questions about breakages and stability and things like that.
 Yeah. And they can't realistically, underwrite all of that risk.
 Ted Young 00:15:31 Yeah.
-So I think those are good examples for, you know, why having some TC sponsorship that's actually paying attention here. That would be kind of my request, would be to…
-to have the TC have enough of this state of this stuff loaded across the TC that, you know, when it comes to answering these questions, we're making sure they're just getting addressed, and…
-It's not some weird squiggle within the operator SIG or the Linux sig making the decision for everybody else that they're gonna have to live with.
+So I think those are good examples for, you know, why having some TC sponsorship that's actually paying attention here. That would be kind of my request, would be to… to have the TC have enough of this state of this stuff loaded across the TC that, you know, when it comes to answering these questions, we're making sure they're just getting addressed, and… It's not some weird squiggle within the operator SIG or the Linux sig making the decision for everybody else that they're gonna have to live with.
 Yeah.
-maybe another request would be, you know, we're not trying to invent something that new, right? Like, these kinds of systems have been around for a long time, like Dynatrace and other places, so…
-You know, people who have experience working on other agents wanting to give us advice so we don't just stub our toes on the exact same things would be helpful.
-Austin Parker 00:16:40 To the point… the… you made, Jack, about…
-I guess I was gonna summarize that, you know, the SIG can't really make unfunded mandates about other SIG behaviors. It feels like it is…
-Sort of the same… one of the…
-One of the problems that we… that kind of is cropping up with this… with the, you know…
-stability, OTEP in general?
-And…
-I don't have a solution for it, other than to identify, other than to say, like.
+maybe another request would be, you know, we're not trying to invent something that new, right? Like, these kinds of systems have been around for a long time, like Dynatrace and other places, so… You know, people who have experience working on other agents wanting to give us advice so we don't just stub our toes on the exact same things would be helpful.
+Austin Parker 00:16:40 To the point… the… you made, Jack, about… I guess I was gonna summarize that, you know, the SIG can't really make unfunded mandates about other SIG behaviors. It feels like it is… Sort of the same… one of the… One of the problems that we… that kind of is cropping up with this… with the, you know… stability, OTEP in general?
+And… I don't have a solution for it, other than to identify, other than to say, like.
 This keeps kind of coming up.
-And it feels like we need some way
-Like, the only mechanism we have right now to sort of create cross-project guidance is through the spec.
+And it feels like we need some way Like, the only mechanism we have right now to sort of create cross-project guidance is through the spec.
 Is that the right place for it? Is that the right level for it?
-Jack Berg 00:17:53 It's good… this type of project is sort of, as Ted phrased it, I think, in a comment, system-wide hotel, where Linux is an example of it, but Kubernetes and the operator would be another example. Could be, could be a place where,
-We… we do gatekeeping around those types of policies that we create that incentivizes groups to, you know, follow these recommendations in order to get their components included.
-Right, so if we say
-Something like, hey, you have to have… adopt this type of policy about instrumentation stability to be included in, you know, the OpenTelemetry Linux package, then it's like a carrot to go and do that thing that we want groups to do.
-Austin Parker 00:18:38 Yes, I think there's a… I think what would concern me is that…
-It's sort of the same pattern that we've had before, which is that
-what do you do, you know, hypothetical, what do you do when you're in a situation where it's like, okay, well, we've got this packaging thing that solves XYZ problems, and…
-Vendor X really wants this… You know, because of…
-It solves some business problem for them, but nothing…
-actually meets these requirements that we've created, right? Like, what's the, sort of.
-Forcing function to keep everyone honest, and…
-Other than, like, you know, just hope that everyone does the right thing.
+Jack Berg 00:17:53 It's good… this type of project is sort of, as Ted phrased it, I think, in a comment, system-wide hotel, where Linux is an example of it, but Kubernetes and the operator would be another example. Could be, could be a place where, We… we do gatekeeping around those types of policies that we create that incentivizes groups to, you know, follow these recommendations in order to get their components included.
+Right, so if we say Something like, hey, you have to have… adopt this type of policy about instrumentation stability to be included in, you know, the OpenTelemetry Linux package, then it's like a carrot to go and do that thing that we want groups to do.
+Austin Parker 00:18:38 Yes, I think there's a… I think what would concern me is that… It's sort of the same pattern that we've had before, which is that what do you do, you know, hypothetical, what do you do when you're in a situation where it's like, okay, well, we've got this packaging thing that solves XYZ problems, and… Vendor X really wants this… You know, because of… It solves some business problem for them, but nothing… actually meets these requirements that we've created, right? Like, what's the, sort of.
+Forcing function to keep everyone honest, and… Other than, like, you know, just hope that everyone does the right thing.
 Jack Berg 00:19:39 I think that's where TC involvement could be really important, because, you know, the TC sort of underwrites these types of things project-wide, and so the expectation could be that they are enforcing this discipline that we want.
 Austin Parker 00:19:54 Yeah.
 There's other hands, so…
 Liudmila Molkova 00:20:00 Just a quick point. What we're discussing is essentially the Workstream 3 distribution and component definition from Data.
 And if we support this project, this essentially becomes the project.
 That contributes to the ATEP.
-Ted Young 00:20:21 Yeah, I was gonna propose, you know, something that we have on our website under status, is we've got all the different languages and components and tracing metrics, logs, and what its status is there. We could add…
-one or two more columns as part of this, you know, Linux… Kubernetes, and… have, like…
-That language or that ecosystem becoming available through these system-wide installers as part of the stabilization cleanup.
-So I do think that's a place where we could… we could have it be…
-a bit of a forcing function, to say that those things only install stable things, and so you're only going to get the portion of those ecosystems currently marked stable, and now we have an incentive as a community in each one of those language ecosystems to go back through and do the stabilization work.
+Ted Young 00:20:21 Yeah, I was gonna propose, you know, something that we have on our website under status, is we've got all the different languages and components and tracing metrics, logs, and what its status is there. We could add… one or two more columns as part of this, you know, Linux… Kubernetes, and… have, like… That language or that ecosystem becoming available through these system-wide installers as part of the stabilization cleanup.
+So I do think that's a place where we could… we could have it be… a bit of a forcing function, to say that those things only install stable things, and so you're only going to get the portion of those ecosystems currently marked stable, and now we have an incentive as a community in each one of those language ecosystems to go back through and do the stabilization work.
 Because now there's at least a concrete thing you get out of it, which is those packages included in the new Linux installers and operator and things like that.
 So, that could be a way to… to just naturally drive Community interest and stability.
-Pablo Baeyens 00:21:43 I was going to say… just a…
-I think this kind of, carrots and then sticks are important, but one basic thing that I think maybe we haven't done enough is, like, just…
-go and talk with the SIG directly under meetings, or whatever.
+Pablo Baeyens 00:21:43 I was going to say… just a… I think this kind of, carrots and then sticks are important, but one basic thing that I think maybe we haven't done enough is, like, just… go and talk with the SIG directly under meetings, or whatever.
 And ask them, and have a conversation with them on, like.
 Sort of including, more actively, the 6 that we want.
-to do something for us on the conversation, I think that's, like…
-Something we haven't done enough of in some cases, and that… Would help getting… buying.
-Josh Suereth 00:22:28 So, to that point, Pablo, like, we have tried, and I don't think we've done the best job of when we… like, the theory behind these project proposals is we want to make sure the staffing part
-ensures communication will happen. So, that means someone from that SIG who regularly attends and does communication should be participating in this new effort, so the communication naturally happens with someone who's already plugged in. Like, that's one of the things we're trying to guarantee, is who's going to be that person that does that?
+to do something for us on the conversation, I think that's, like… Something we haven't done enough of in some cases, and that… Would help getting… buying.
+Josh Suereth 00:22:28 So, to that point, Pablo, like, we have tried, and I don't think we've done the best job of when we… like, the theory behind these project proposals is we want to make sure the staffing part ensures communication will happen. So, that means someone from that SIG who regularly attends and does communication should be participating in this new effort, so the communication naturally happens with someone who's already plugged in. Like, that's one of the things we're trying to guarantee, is who's going to be that person that does that?
 like, to your point, we could say, if someone's willing to regularly go to the SIGs that will be impacted.
 And do the communication. The communication's the important part of our process.
 So when we're asking for these things, and we say, like, who, you know, do we have staffing to make sure that, you know, the collector SIG's represented, what we really mean is, is this SIG gonna work well with collector?
-And I think that's the thing we need to focus on. I… I do…
-with all the projects that are going on right now, and everything in OpenTelemetry, I still think we're a bit overloaded, and we need to be careful
-About how much we sign up for, and make sure that that communication is happening, and we might need to…
-when we can't find sponsorships from across SIGs, we might need to put that burden on the person running the SIG with some trust. That's fine.
+And I think that's the thing we need to focus on. I… I do… with all the projects that are going on right now, and everything in OpenTelemetry, I still think we're a bit overloaded, and we need to be careful About how much we sign up for, and make sure that that communication is happening, and we might need to… when we can't find sponsorships from across SIGs, we might need to put that burden on the person running the SIG with some trust. That's fine.
 But, like, the key thing here is we need to make sure the communication's happening, and one reason the TC is supposed to be involved is we're supposed to have our hands a little bit everywhere, and be able to coordinate and know when to talk to other people.
-So that's… I… I… just looking at these, a set of these projects that are coming in, the MCP one, and the,
-the packaging one, I do think this is a guiding sponsorship. That's my intuition. We haven't talked about this across the TC, but I think that this is going to be a significant level of investment from a TC member, and I think we need to account for that.
-And we need to figure out, like, with stable… is this part of stable by default? Is this a piece of stable by default? Like, what… how do we want to think about this overall in the strategy? Because, you know, someone's gonna have to sign up for a good bit of work here. I…
-I don't think this is one where we could say, oh yeah, TC will watch it. I don't think that's gonna work out in practice. This is a big one, right?
+So that's… I… I… just looking at these, a set of these projects that are coming in, the MCP one, and the, the packaging one, I do think this is a guiding sponsorship. That's my intuition. We haven't talked about this across the TC, but I think that this is going to be a significant level of investment from a TC member, and I think we need to account for that.
+And we need to figure out, like, with stable… is this part of stable by default? Is this a piece of stable by default? Like, what… how do we want to think about this overall in the strategy? Because, you know, someone's gonna have to sign up for a good bit of work here. I… I don't think this is one where we could say, oh yeah, TC will watch it. I don't think that's gonna work out in practice. This is a big one, right?
 Ted Young 00:24:53 And so to get this back to concrete next steps, like, what I would propose is we have to run this sort of stability, system-wide hotel effort from somewhere.
-I think the best place to do it would be the Linux Package Managing SIG. The other option would be Operator SIG, but there's enough of, like, a technical overhaul that needs to happen in that SIG that I kind of feel like they would benefit from not
-having to have their SIG meetings Full of both things.
+I think the best place to do it would be the Linux Package Managing SIG. The other option would be Operator SIG, but there's enough of, like, a technical overhaul that needs to happen in that SIG that I kind of feel like they would benefit from not having to have their SIG meetings Full of both things.
 And we've got to run it out of somewhere. And we have to go to the other language SIGs and say, we want you to get involved in something. And so I think the Linux package management SIG should be that something.
 That's where we will figure out all this stuff around stability and what it means to get stable hotel. Also, like, when you want to flag, give me the unstable stuff, or I want to be able to pin certain things in certain places, like, some of that feedback, you know, we'll be working that stuff out of this group.
-If that feels fine to people, if people don't feel like that's a mismatch, I can go ahead and drive involvement in that SIG as part of that project proposal, making sure that we've got
-Buy-in from everybody.
+If that feels fine to people, if people don't feel like that's a mismatch, I can go ahead and drive involvement in that SIG as part of that project proposal, making sure that we've got Buy-in from everybody.
 And if a language doesn't have the time to be bought in to this, then maybe they're just not part of the initial push, even though we would like them to be. We'll just get it all sorted out through that SIG.
 Liudmila Molkova 00:26:28 Okay, so I guess…
 Tigran Najaryan 00:26:31 Sorry, just very quickly, I'm a bit worried, Ted, that what you're suggesting is more than this folks signed up for.
 they… I'm not sure if they simply wanted to just package what exists versus drive stability across open telemetry, which is a lot more work to do. I don't know if they are willing to do that work, right?
 Ted Young 00:26:55 What I would suggest would be less like, oh, you have to do all of this work, it's more like, this thing only installs stable stuff, so we're gonna go to the Node.js ecosystem, we're gonna get it all stood up. But then, on the other end of that, it'll, like.
 what about all of these things I want it to install? I'm like, well, those things aren't marked stable yet. Someone has to do the work.
-Of going… but now you have, like, a reason to want to bother marking that stable, because you then…
-get it in this, like, installer. So it would be less about, like, trying to force everyone to do the work, and more just… maybe set it up so that open source can do its thing.
+Of going… but now you have, like, a reason to want to bother marking that stable, because you then… get it in this, like, installer. So it would be less about, like, trying to force everyone to do the work, and more just… maybe set it up so that open source can do its thing.
 Jack Berg 00:27:37 Yeah, it's, the, like, implicit in packaging up stuff that already exists.
-I think is,
-is the need to come up with policies that don't over-promise what we can do from a packaging standpoint, and so these policies
-Around what's enabled by default, how these components interact with each other. They are kind of working towards the stability, effort in terms of creating the incentives for what we want.
-And so, hopefully that does mean that the people signing up for this work
-Are not signing up to…
-do all the stability work around OTEL, just creating the policies that create those incentives.
+I think is, is the need to come up with policies that don't over-promise what we can do from a packaging standpoint, and so these policies Around what's enabled by default, how these components interact with each other. They are kind of working towards the stability, effort in terms of creating the incentives for what we want.
+And so, hopefully that does mean that the people signing up for this work Are not signing up to… do all the stability work around OTEL, just creating the policies that create those incentives.
 Tigran Najaryan 00:28:20 So I guess you're saying, at most, these people will be responsible for defining the bar?
 To enter the package, but not necessarily drive the stability for the components that are not meeting the bar.
 That's a bit different. That's a lot more work, right? So, yes, they can say, we're accepting components which meet criteria X, Y, and Z. If they don't meet, then it's not my job to go and fix that, right? If you, as a seed, want to fix it, go and do that, right? And then I'll include it.
@@ -187,8 +130,7 @@ You know, because even the ones that are unstable, it's like, for many of them, 
 as well.
 But there's just no incentive to, like, do it. It's such a broad, last-mile effort. We've been struggling to organize it.
 Jack Berg 00:29:39 And we also don't have an inventory.
-of, like, what all the components are, and which ones are stable and can be used. And so this could provide that type of, sort of, side benefit as well. Like, you know, in the process of evaluating these components and seeing which ones exceed this threshold, we can kind of have some intuition, gain some intuition about, like, what it really means to say that, hey, I want to use OpenTelemetry and only stable things at OpenT
-OpenTelemetry. We can see how good or bad of a story that is.
+of, like, what all the components are, and which ones are stable and can be used. And so this could provide that type of, sort of, side benefit as well. Like, you know, in the process of evaluating these components and seeing which ones exceed this threshold, we can kind of have some intuition, gain some intuition about, like, what it really means to say that, hey, I want to use OpenTelemetry and only stable things at OpenT OpenTelemetry. We can see how good or bad of a story that is.
 Tigran Najaryan 00:30:11 If you look at the project proposal, Jack, they list very specific components, though.
 They are not looking at doing the full discovery of our inventory and decide whether it needs to be included or no. What you guys are suggesting makes total sense to me, but it extends the scope of the project significantly. I'm just worried that that's not what they are willing to do, that's just more work than they are signing up for.
 Jack Berg 00:30:36 Yeah, yeah, you're right. It's like a subset of components, because, like,
@@ -207,66 +149,44 @@ Severin Neumann 00:32:27 It means what? Like… We are not doing it, or…
 Liudmila Molkova 00:32:35 I'm not ready to support it, and I think I agree with Josh, it needs more guidance, because the people who participate in it don't go, let's say, to Weaver, don't work in semantic conventions or instrumentations.
 And, it would be, impossible for the SIG to deliver something without connection to other SIGs. It also doesn't need a new SIG.
 Severin Neumann 00:32:59 Yeah, they wanted to line into DEFX, so… just to add that, so yeah.
-Josh Suereth 00:33:04 I think… so I'm gonna agree with Lumila here. I think that is a clear example. The MCP one, I think they need to fragment what they're planning to do, and they tried to de-scope, and I think this is the feedback we're giving them. I would rather see an MCP in the collector SIG,
-Where we meet with the collector, and they have contributions about MCP for the collector, and they're part of the collector SIG, meeting with them, talking about them, asking, how do people use it?
+Josh Suereth 00:33:04 I think… so I'm gonna agree with Lumila here. I think that is a clear example. The MCP one, I think they need to fragment what they're planning to do, and they tried to de-scope, and I think this is the feedback we're giving them. I would rather see an MCP in the collector SIG, Where we meet with the collector, and they have contributions about MCP for the collector, and they're part of the collector SIG, meeting with them, talking about them, asking, how do people use it?
 We have folks in Weaver already building MCP, so there's a Weaver MCP server that's gotten contributed, and that's been a discussion that's going on, and the maintainers are already sorting out how to do MCP.
 Right? The issue… the thing that I'm not sure with this proposal, like, my problem with it right now is, I think to be successful, it has to be something across OpenTelemetry that can pull in the pieces and make a cohesive whole.
 Right? But to de-scope it so they can be effective independently.
-It is a… it's a little piece, right? And so, I think it would be okay if we evolve little MCPs
-and let them go. Like, to Ted's point, just let them open source it for a bit, right? Of, like, let's have some disjoint MCPs that we will pull together eventually, but I don't know if we're ready to pay attention to the pulling it together just yet.
+It is a… it's a little piece, right? And so, I think it would be okay if we evolve little MCPs and let them go. Like, to Ted's point, just let them open source it for a bit, right? Of, like, let's have some disjoint MCPs that we will pull together eventually, but I don't know if we're ready to pay attention to the pulling it together just yet.
 And I'm fine letting people experiment. Like, I think we should continue that. But in terms of dedicated effort and, like, investment, it seems like the people making this proposal, they're not the same people that are doing MCP and Weaver today.
 But they are people who are interested in doing a bunch of collector-related work when you look at the proposal. That's the most fleshed out. So I think, cool.
 Greenlight the charter for Phase 1 only, where we say, cool, you guys join the collector, work with the collector, do this DevRel sig here.
 The Weaver work will continue. If you want to participate, come to the Semantic Convention Tooling SIG and do Weaver-related things. That's where that work can continue, and we don't need a dedicated project because it's part of tooling, and it's already happening.
 what's weird here is then the aspect around, like, SDK and instrumentation and auto instrumentation, I don't know where that fits, right? Because again, that's lots of SIGs.
-And that's lots of communication. And so, we need to make sure that the communication
-is there. And I… I…
-Yeah, I think that's a lot of coordination headwinds, and that needs more dedicated effort. That's why I think this is going to be a large… this should have somebody paying a lot of attention to it, if that's the scope of what they're doing.
+And that's lots of communication. And so, we need to make sure that the communication is there. And I… I… Yeah, I think that's a lot of coordination headwinds, and that needs more dedicated effort. That's why I think this is going to be a large… this should have somebody paying a lot of attention to it, if that's the scope of what they're doing.
 And I'll… Yeah, anyway, I'll let the floor to sum it up.
-Austin Parker 00:35:43 I mean, I tend to agree, like, I, I…
-I guess I fundamentally, at some level, don't understand why this Needs to be…
-its own thing, versus if you would like to go contribute an MCP to the collector, start showing up to collector meetings?
+Austin Parker 00:35:43 I mean, I tend to agree, like, I, I… I guess I fundamentally, at some level, don't understand why this Needs to be… its own thing, versus if you would like to go contribute an MCP to the collector, start showing up to collector meetings?
 Start writing code.
-And I'm also a little, like…
-Like, if people would like to improve the ability of AI agents to work with
-OpenTelemetry, there are, like, things that could be done right now in docs.
+And I'm also a little, like… Like, if people would like to improve the ability of AI agents to work with OpenTelemetry, there are, like, things that could be done right now in docs.
 To… make… you know.
-LLMs.txt, or have a open page in Markdown…
-Or have opinionated guidance in the documentation.
-And… Like, I just… I'm kind of… with…
-with what Josh is saying, that, like, Ultimately.
-If they want to go build… if there's not… if the…
-If there's not, like, this big, you know, font of interest, or, like…
-burning need, or people aren't coming in, beating down the doors of the collector, saying, like, well, we really, really, we need this. We need XYZ, then the answer isn't to say, like, okay, well, we're gonna…
-Send a bunch of people off to…
-to figure it out, it's like, go… you think people need something, go build something.
+LLMs.txt, or have a open page in Markdown… Or have opinionated guidance in the documentation.
+And… Like, I just… I'm kind of… with… with what Josh is saying, that, like, Ultimately.
+If they want to go build… if there's not… if the… If there's not, like, this big, you know, font of interest, or, like… burning need, or people aren't coming in, beating down the doors of the collector, saying, like, well, we really, really, we need this. We need XYZ, then the answer isn't to say, like, okay, well, we're gonna… Send a bunch of people off to… to figure it out, it's like, go… you think people need something, go build something.
 Put it over here, there's a bunch of experimentation that's happening, and then when the community coalesces around what is actually useful, then we will pull something together.
-Like, I just…
-I don't know, like, it concerns me that we've… that it feels like we're in a place where there are people who want to do everything sort of through the processes, and then there are people who just, like, go do stuff, and I feel like this is more of a go-do stuff versus a go-process stuff.
+Like, I just… I don't know, like, it concerns me that we've… that it feels like we're in a place where there are people who want to do everything sort of through the processes, and then there are people who just, like, go do stuff, and I feel like this is more of a go-do stuff versus a go-process stuff.
 Kind of thing, and I wish people would just… to Josh's point, like.
 people in Weaver are just doing stuff.
 Severin Neumann 00:38:06 Oof.
 Austin Parker 00:38:06 Maybe they should just do stuff.
-Severin Neumann 00:38:11 I mean, they do stuff, right? I mean, there is a bunch of…
-MCP servers that people have created, and I think…
-Part of this proposal was to get everybody, like, on one page.
-which I think is overall a good idea, and to what Tad said in the chat, like, I mean…
-we worked with Pavel to say, like, hey, narrow the scope down to specific things, and I think it's in the proposal now. And it's also in the proposal that they say, like, hey, this is kind of a research project where we try to figure things out.
-which, from my point of view, is part of the developer experience, right? And maybe we need to make this a little bit clearer in this proposal, or they need to make this clearer in the proposal. The goal of this is not to say, like, hey, this is how MCP works, and more like, hey, we…
-We figure something out, we maybe create some prototypes, some sandbox, and at some point, we bring this back for a
-For a bigger project.
+Severin Neumann 00:38:11 I mean, they do stuff, right? I mean, there is a bunch of… MCP servers that people have created, and I think… Part of this proposal was to get everybody, like, on one page.
+which I think is overall a good idea, and to what Tad said in the chat, like, I mean… we worked with Pavel to say, like, hey, narrow the scope down to specific things, and I think it's in the proposal now. And it's also in the proposal that they say, like, hey, this is kind of a research project where we try to figure things out.
+which, from my point of view, is part of the developer experience, right? And maybe we need to make this a little bit clearer in this proposal, or they need to make this clearer in the proposal. The goal of this is not to say, like, hey, this is how MCP works, and more like, hey, we… We figure something out, we maybe create some prototypes, some sandbox, and at some point, we bring this back for a For a bigger project.
 Because the other problem is that we have right now, there's a bunch of people that want to build something, right? And they want to get together and build that thing, and not everybody wants to build it in their own thing.
 So yeah, and I thought we'd tell them, like, okay, go somewhere else and do it there, but we said, like, okay, you can do it here, but here's the constraints, and call it a sandbox, or whatever.
 Austin Parker 00:39:31 I just feel like… why do they need permission? Like, if a bunch of people want to go off and build something, then go build something. Like, if they want to make a docs page that's like, here's all the MCPs from the community.
-then do that! Like, put it in the registry! PR's fucking welcome! Like, I…
-I don't want everything in this project, especially things that… like, I don't want to say MCP doesn't matter, or whatever.
+then do that! Like, put it in the registry! PR's fucking welcome! Like, I… I don't want everything in this project, especially things that… like, I don't want to say MCP doesn't matter, or whatever.
 But, like, it's open source, just fucking go do it!
 Severin Neumann 00:40:01 Yeah, but… but they raised this proposal 3 months ago, why… why did you tell them that?
 Austin Parker 00:40:07 It's doing stuff, rather than, like, waiting for us to… to bless their work, then…
 Ted Young 00:40:14 Maybe our fault, though. That's maybe our fault.
 Austin Parker 00:40:16 Sure, and I think it… and maybe it sucks for us to come in at the 11th hour and say, like, hey, sorry, it actually turns out you should have just been doing stuff rather than, like, mediating this through this process. That's our bad.
-But I would, you know…
-it sounds like there's no appetite for us to bless this as an official thing. If there was, we would have already done it.
+But I would, you know… it sounds like there's no appetite for us to bless this as an official thing. If there was, we would have already done it.
 Juraci Paixão Kröhling 00:40:37 The problem, though, is Pavel does have an MCP server already. It is there. It has a feature, it has a purpose, it has, like, it… the purpose of Pavel's MCP is to configure collectors.
 he built it, he ran it, he made blog posts, he's talking about that. And then, what we were seeing, and what we talked before, is there are a lot of MCP servers for OpenTelemetry right now out there.
 And our concern at the GC is.
@@ -309,11 +229,9 @@ Austin Parker 00:46:45 I mean, they are, but somebody just got $60 million in se
 Tigran Najaryan 00:46:59 Can I comment quickly to… on what Pat was suggesting? Set aside the MCP thing, right? I think I've seen a few times now that people want to do something that we do not necessarily want to spend resources on.
 We do not want to allocate GC person or a TC person. They still want to have that place to… to do a work of some sort that is related to open telemetry.
 I think I would like to see that to be possible for people to do that work. My fear here is that by giving them a space in OpenTelemetry, you're automatically sort of blessing that work, right? The optics are at least there. So if we were to do that.
-We need to have some clear…
-Guidelines around how do we publicize the work that is happening such that it is not an officially blessed work, at least not yet.
+We need to have some clear… Guidelines around how do we publicize the work that is happening such that it is not an officially blessed work, at least not yet.
 Right? So it's some sort of a sandbox, or whatever you want to call it. It's an experiment which may go away. We need to make that part very clear. If we do that.
-I think there's no… there's nothing wrong with telling people, okay, you want to work on that, you go ahead and work on it, we'll create a repo for you, you'll be an admin on the repo, and that's it, right? We'll make it very clear that this is not
-blessed open telemetry work, right? This is an experiment.
+I think there's no… there's nothing wrong with telling people, okay, you want to work on that, you go ahead and work on it, we'll create a repo for you, you'll be an admin on the repo, and that's it, right? We'll make it very clear that this is not blessed open telemetry work, right? This is an experiment.
 So, if we can have rules like that, then why not? Maybe we allow that to happen.
 Ted Young 00:48:29 I would really want to keep it restricted to DevTools, though. That would be my… my bright line.
 Tigran Najaryan 00:48:34 Yeah.
@@ -323,14 +241,10 @@ Austin Parker 00:48:58 I…
 Ted Young 00:49:00 They didn't necessarily… they were gonna… they were a SIG for, like, surveys and, like, figuring out what it's like to contribute to OTEL. That's the only thing I'm flagging, right? Like, that SIG wasn't spun up to do dev tools.
 Austin Parker 00:49:13 There's also a…
 Ted Young 00:49:14 Gun up to do, like, product design.
-Austin Parker 00:49:16 Technical, sort of, There's, like, a very practical sort of, like, GitHubby, repo-y problem with that, right? Like…
-You need a place for the code to live.
+Austin Parker 00:49:16 Technical, sort of, There's, like, a very practical sort of, like, GitHubby, repo-y problem with that, right? Like… You need a place for the code to live.
 Needed a repo, and…
 Trask Stalnaker 00:49:29 They have a SIG developer experience repo.
-Austin Parker 00:49:33 Yeah, but, like, we would be making new repos under the OAT, like…
-Presumably, we would want this to… them to not have a monorepo for that, plus other random shit, and…
-If we gave them another repo, then it would be under the OTEL org, which would give it the sort of Blessed-by-OTEL appearance, so I…
-I think a sandbox org is fine.
+Austin Parker 00:49:33 Yeah, but, like, we would be making new repos under the OAT, like… Presumably, we would want this to… them to not have a monorepo for that, plus other random shit, and… If we gave them another repo, then it would be under the OTEL org, which would give it the sort of Blessed-by-OTEL appearance, so I… I think a sandbox org is fine.
 Trask Stalnaker 00:49:58 I don't want to be a maintain… I mean, I don't want to maintain that sandbox org.
 Austin Parker 00:50:03 I mean, I don't…
 Trask Stalnaker 00:50:05 Spend enough time maintaining this order.
@@ -339,8 +253,7 @@ Juraci Paixão Kröhling 00:50:11 Does it have to be as maintained as the curren
 Trask Stalnaker 00:50:21 Chaos!
 Juraci Paixão Kröhling 00:50:23 It's only one repository for now, let's deal with chaos when we have the problem.
 Ted Young 00:50:28 Yeah, let… can we just not create an org for the time being? We only have one of these. Can we just…
-Austin Parker 00:50:35 Yeah, we could just give them a repo and just say, like, hey, this is…
-You know what'd be great?
+Austin Parker 00:50:35 Yeah, we could just give them a repo and just say, like, hey, this is… You know what'd be great?
 Ted Young 00:50:40 We're trying to get work off of our plate, right? We're trying to tell them, go… go have your MCP thing in a corner so that you don't have a meltdown, because they're gonna have a meltdown if we tell them no, right? People really want to work on this in OTEL, and I think we should accommodate them to some degree.
 Mainly because they seem to be people who aren't interested in working on anything else.
 author.
@@ -357,26 +270,16 @@ If you get it wrong, the world won't end.
 Austin Parker 00:52:15 So I…
 Ted Young 00:52:16 Oh.
 Austin Parker 00:52:17 My point is that if we give them a repo under the OTel org, and so we create OpenTelemetry slash OMCP, that is a signal.
-That… and that signal is precisely the thing that we have… that this entire conversation… that… that is the…
-the head of the pen upon which the angels are dancing. If we do that, then that sends a signal to, like, everyone else that, like, oh no, now it should all go in here, and it's one thing, and I think that's the wrong outcome.
-And so I'm very opposed to there being a OpenTelemetry slash MCP repo. I would be okay with an OpenTelemetry hotel-sandbox slash MCP
-That's different.
-Trask Stalnaker 00:52:59 We're saying architecturally… I mean, it feels like there's an architectural
-Decision here that needs to be made of whether we think that these should be
-decentralized… there shouldn't be a mono MCP server.
+That… and that signal is precisely the thing that we have… that this entire conversation… that… that is the… the head of the pen upon which the angels are dancing. If we do that, then that sends a signal to, like, everyone else that, like, oh no, now it should all go in here, and it's one thing, and I think that's the wrong outcome.
+And so I'm very opposed to there being a OpenTelemetry slash MCP repo. I would be okay with an OpenTelemetry hotel-sandbox slash MCP That's different.
+Trask Stalnaker 00:52:59 We're saying architecturally… I mean, it feels like there's an architectural Decision here that needs to be made of whether we think that these should be decentralized… there shouldn't be a mono MCP server.
 And in that case.
-we tell them to go, you know, in the collector, in the Java repo, in, you know, for those specific
-use cases.
+we tell them to go, you know, in the collector, in the Java repo, in, you know, for those specific use cases.
 Austin Parker 00:53:29 I feel like we've been saying that, though, like… I feel like.
-Trask Stalnaker 00:53:33 But no, I mean, we can come back… we haven't been clear, like, I mean, and this would be some… something that I think we would lean on the TC for, is a architectural decision that says that we believe that MCP servers should be, should not be
-There shouldn't be a single mono MCP server.
-And then that naturally then lends, I think… and apologies, I have not been following
-this proposal super closely, so I'm not sure what all the different things they wanted to build are.
-Austin Parker 00:54:18 I… I mean…
-I don't think we're gonna get to consensus on this, and we have other things on the agenda. Can we move on?
-I… I… I wanna just briefly chat about the ZIG thing. Is there someone in the TC that would have…
-I know that I don't think anyone in the TC is… has domain expertise there, but I do think it would be good for us to support that, because
-I think it's good for us generally to support, new languages?
+Trask Stalnaker 00:53:33 But no, I mean, we can come back… we haven't been clear, like, I mean, and this would be some… something that I think we would lean on the TC for, is a architectural decision that says that we believe that MCP servers should be, should not be There shouldn't be a single mono MCP server.
+And then that naturally then lends, I think… and apologies, I have not been following this proposal super closely, so I'm not sure what all the different things they wanted to build are.
+Austin Parker 00:54:18 I… I mean… I don't think we're gonna get to consensus on this, and we have other things on the agenda. Can we move on?
+I… I… I wanna just briefly chat about the ZIG thing. Is there someone in the TC that would have… I know that I don't think anyone in the TC is… has domain expertise there, but I do think it would be good for us to support that, because I think it's good for us generally to support, new languages?
 Trask Stalnaker 00:54:58 Do we have enough, people to form a SIG yet?
 I mean, how's.
 Austin Parker 00:55:04 Fair enough.
@@ -388,10 +291,7 @@ Ted Young 00:55:19 How many of those people are interested in also.
 Austin Parker 00:55:22 There's… Interesting.
 1, 2, 3, 4… there's 4 people on the leads right now.
 I mean, I think Zig is small.
-Trask Stalnaker 00:55:37 just from our experience with the Kotlin SIG, you know, it did take
-quite a while to drum up enough to actually staff it, as I had to go, you know, behind the scenes to ask people, because we only had a single
-company behind it, and Kotlin is…
-I think a lot bigger than Zig.
+Trask Stalnaker 00:55:37 just from our experience with the Kotlin SIG, you know, it did take quite a while to drum up enough to actually staff it, as I had to go, you know, behind the scenes to ask people, because we only had a single company behind it, and Kotlin is… I think a lot bigger than Zig.
 Austin Parker 00:56:01 Yeah, right now, at least.
 Trask Stalnaker 00:56:02 So I worried that I would start with the staffing question first before we do any technical due diligence.
 Jack Berg 00:56:11 I just did a little analysis, the four people that have put their names on the staffing list are representing three different companies, IBM, Datadog, and Elastic, so…
@@ -402,29 +302,22 @@ is… is the key, right? Like, that's…
 Austin Parker 00:56:52 Yeah. As with all the new languages.
 jmacdonald 00:56:54 I would second that. Jacob and I spoke about his prototypes for that proposal, and I know he knows Zig really well, and I also want to learn Zig. If I can help, I would be glad to.
 Austin Parker 00:57:06 Okay.
-Yeah, I only said my… I think that…
-My opinion on this is mostly that I do see more ZIG kind of coming up as, like, a systems language, and I think that from a project sustainability perspective.
-the earlier we can kind of be in those language communities, the better it is for hotel long-term, so…
-Yeah, for us, for good developers is a good way to describe it.
-I also think that there's…
-things are weird right now in the world, but I think, give it a couple years, once we've figured out all the other geopolitics, and I think we'll get the,
-There's gonna be a whole lot of memory-safe language by default happening.
+Yeah, I only said my… I think that… My opinion on this is mostly that I do see more ZIG kind of coming up as, like, a systems language, and I think that from a project sustainability perspective.
+the earlier we can kind of be in those language communities, the better it is for hotel long-term, so… Yeah, for us, for good developers is a good way to describe it.
+I also think that there's… things are weird right now in the world, but I think, give it a couple years, once we've figured out all the other geopolitics, and I think we'll get the, There's gonna be a whole lot of memory-safe language by default happening.
 And I believe Zig is memory safe in the same way that… Rust is?
 Ted Young 00:58:10 Yeah, that's the idea.
 Austin Parker 00:58:13 Yeah, so… Because, Lord knows C++ isn't gonna do it.
 Yeah.
 Ted Young 00:58:23 Okay.
-Austin Parker 00:58:25 So we just need to go back and ask for more civic… more…
-For them to be like, hey, we would like this, we just need some… More peeps.
+Austin Parker 00:58:25 So we just need to go back and ask for more civic… more… For them to be like, hey, we would like this, we just need some… More peeps.
 Trask Stalnaker 00:58:33 List of names.
 Austin Parker 00:58:35 Damn.
 I can comment on it if people would, like…
 Josh Suereth 00:58:41 We should get those names to also approve the proposal, so we know that they're… they know what they're up for, yeah.
 Ted Young 00:59:16 Was that everything on the agenda?
 Tigran Najaryan 00:59:23 But I don't know if we have time to discuss.
-Austin Parker 00:59:26 Yeah. One…
-Quick point around the stability, stable by default OTEP, I did push updates that we talked about in the spec call yesterday, so if people could re-review…
-And hopefully we can get that.
+Austin Parker 00:59:26 Yeah. One… Quick point around the stability, stable by default OTEP, I did push updates that we talked about in the spec call yesterday, so if people could re-review… And hopefully we can get that.
 Where it needed to be…
 Trask Stalnaker 01:00:01 Thank y'all.
 Austin Parker 01:00:02 Cool.

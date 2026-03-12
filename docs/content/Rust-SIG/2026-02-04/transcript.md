@@ -24,8 +24,7 @@ I requested Lalit's help to look at all the OTLP-related PRs, which he started l
 Yeah, other than that, not much update from my side. I expect to be looking at pending PRs sooner.
 Beyond, anything you want to bring up?
 **Björn Antonsson** 02:41 Mmm.
-No, I mean, not much on my side either, it's, I think the contributor PR,
-That you still have… I mean, that's still on your table, the fixes for… Or.
+No, I mean, not much on my side either, it's, I think the contributor PR, That you still have… I mean, that's still on your table, the fixes for… Or.
 **Cijo Thomas (Microsoft)** 02:59 I think the context one is the most pending one.
 **Björn Antonsson** 03:04 Who knew?
 **Cijo Thomas (Microsoft)** 03:04 I'm also wondering if we should revive,
@@ -33,17 +32,14 @@ That you still have… I mean, that's still on your table, the fixes for… Or.
 At one point, and I think there's still an open discussion slash experiment.
 From his side.
 **Cijo Thomas (Microsoft)** 03:28 I mean, it's not urgent, but…
-**Björn Antonsson** 03:30 Okay, yeah, no, I think it's important for us to solve that soon. Do you know if it's still in a issue or PR, so I can start taking a look? Yeah, I can… I can…
-look it up, but maybe I should… should… I can ask Paul, about the state of that, because I… I know there were discussions, and then it sort of,
-Halted, and we… focused on writing our exporter, the Datadog side, so, yeah.
+**Björn Antonsson** 03:30 Okay, yeah, no, I think it's important for us to solve that soon. Do you know if it's still in a issue or PR, so I can start taking a look? Yeah, I can… I can… look it up, but maybe I should… should… I can ask Paul, about the state of that, because I… I know there were discussions, and then it sort of, Halted, and we… focused on writing our exporter, the Datadog side, so, yeah.
 **Cijo Thomas (Microsoft)** 04:00 Okay, yeah, that would help us, because that's definitely required us to declare SDK aside as stability, so we definitely need to block the processor interface, yeah.
 Franco, anything from your side? I know there are some activity in the tower instrumentation, but anything you want to bring up?
 **Franco Posa** 04:20 No, I'm gonna keep working down the list of things we want to do to stabilize. One thing we haven't listed yet is the… technically, we're supposed to try to extract, like, the original client IP of the request.
 From some headers, for semantic conventions, so that's kind of like the… I believe the last, like, non-trivial thing we have there to look to stabilize that, so I'll be looking into that.
 **Cijo Thomas (Microsoft)** 04:47 Okay, yeah, thanks. I have, like, a couple of suggestions also to, do before we stabilize. One is adding a benchmark to see, like, how much overhead are we adding.
 For the tower instrumentation, and ideally, we would want to have a CI check using Weaver to confirm that we are really compliant.
-with the, semantic convention. There aren't many people who are
-doing, like, such, solid validation. They're mostly relying on unit tests, but Weaver has the, like, mechanisms to set up an OTLP endpoint, and it can live validate that you are following the conventions.
+with the, semantic convention. There aren't many people who are doing, like, such, solid validation. They're mostly relying on unit tests, but Weaver has the, like, mechanisms to set up an OTLP endpoint, and it can live validate that you are following the conventions.
 It's more like a stretch goal, like, I don't want to, like, push anyone, but if you have some exploratory time, then that will be a good thing to try out.
 That will also help other Open Elementary ecosystems, because once a couple of languages implement Weaver-based live checks, then others are more inclined to use it, which would help stabilize the overall things.
 So if you have some…
@@ -53,15 +49,11 @@ So if you have some…
 **Cijo Thomas (Microsoft)** 06:01 Yeah, yeah, it's quite limited. We are trying to use that in other reports right now.
 So there is always, like, some friction, like, who goes first? Because once it's there, then it's easy to copy to other repos.
 **Franco Posa** 06:14 Alrighty, sounds good.
-**Cijo Thomas (Microsoft)** 06:16 And also on the benchmarks, I… I've been, like, playing with some performance tests in Trust overall, and it would be good if you know, like, how much
-overheard the instrumentation would enable, like, when we enable matrix alone, then traces alone, and then both metrics and tracers, so how much we add to the overall latency when we incorporate
-this. It'll be good to have a benchmark, so we at least know what's the baseline, and if we do some improvements, we'll know, like, are we doing better or not?
+**Cijo Thomas (Microsoft)** 06:16 And also on the benchmarks, I… I've been, like, playing with some performance tests in Trust overall, and it would be good if you know, like, how much overheard the instrumentation would enable, like, when we enable matrix alone, then traces alone, and then both metrics and tracers, so how much we add to the overall latency when we incorporate this. It'll be good to have a benchmark, so we at least know what's the baseline, and if we do some improvements, we'll know, like, are we doing better or not?
 **Franco Posa** 06:49 Yep, sounds good.
 **Cijo Thomas (Microsoft)** 06:51 Yeah, there are a lot of allocations. I think I left some comments, like, in instrumentation, we are doing, like, a lot of string allocations. It's inevitable, but yeah, yeah, good to measure it.
 **Franco Posa** 07:02 Yeah, sounds good.
-**Cijo Thomas (Microsoft)** 07:05 Okay, I don't have anything else I need to… I mean, I haven't been preparing, so I don't really have much context on any recent developments, but it looks like…
-Most of the issues are at least…
-Week plus old, so we just need to… Go ahead and start reviewing.
+**Cijo Thomas (Microsoft)** 07:05 Okay, I don't have anything else I need to… I mean, I haven't been preparing, so I don't really have much context on any recent developments, but it looks like… Most of the issues are at least… Week plus old, so we just need to… Go ahead and start reviewing.
 Alright, yeah, if that's the case, I will end the call early, and see you all later.
 Okay.
 **Franco Posa** 07:37 Alright, thank you.

@@ -23,8 +23,7 @@ And also feel free to add any topic you want to discuss.
 Lucas, I think you wrote your name, but you didn't add a topic yet?
 **Lukas** 06:36 Sorry, yeah, I'm getting to that, sorry.
 **Riccardo Magliocchetti** 06:39 Yeah, sure.
-Let me add myself…
-Okay.
+Let me add myself… Okay.
 Okay, the first topic is from me.
 And… It's kind of… proposal.
 like, we have a PR.
@@ -34,53 +33,36 @@ We're not filtering the metrics received.
 And so we added, A way to filter that?
 like, we added the ASCO attribute to, the Get Sorted mathematics, I think it's named, helper in the test-based class.
 And so, now the instrumentations should be fine.
-Doing that, like…
-I think Lucas suggested to, like, add the instrumentation scope of the instrumentation as a variable.
+Doing that, like… I think Lucas suggested to, like, add the instrumentation scope of the instrumentation as a variable.
 And… Probably, like, instead of having it as a global variable in the test.
-It would be nice to have it as,
-As a variable in the instrumentation itself.
+It would be nice to have it as, As a variable in the instrumentation itself.
 Bang.
-The problem, but we have now
-Well, not a problem. The situation is that all the instrumentation I've…
-I can remember, use the dunder name variable in order to get the disorientation name automatically.
+The problem, but we have now Well, not a problem. The situation is that all the instrumentation I've… I can remember, use the dunder name variable in order to get the disorientation name automatically.
 And, coincidentally, we have this PR.
-But is, updating some,
-Documentation we have, for, when deciding, like, to pass the instrumentation… instrumentation, model name.
+But is, updating some, Documentation we have, for, when deciding, like, to pass the instrumentation… instrumentation, model name.
 And this documentation say that, like.
 This PR changes from may not be used to should be avoided.
-But… This is, like, the current state of affairs, so… First thing… We should probably, like,
-Discuss, how we want to handle that.
+But… This is, like, the current state of affairs, so… First thing… We should probably, like, Discuss, how we want to handle that.
 Because, like, I think that the current code probably is, more important than some recommendations we have here.
 And the other thing is when, like, a proposal on where to put this instrumentation name.
 And so, like, moving from the automatic, vendor name from someone more, Stable.
 And so, like, a proposal could be to put this one into the every instrumentation Package PI.
-Because I think at the moment, most of them…
-Of the tracer meters, logos are initialized in the…
-Then the unit of the instrumentation module.
-But, for example, the… I think the Pyramid 1, is, some,
-Mustelization are done under the,
-module called Callbacks, and so the instrumentation name is OpenTelemetry Instrumentation Pyramid Callbacks, but it's different than the others.
+Because I think at the moment, most of them… Of the tracer meters, logos are initialized in the… Then the unit of the instrumentation module.
+But, for example, the… I think the Pyramid 1, is, some, Mustelization are done under the, module called Callbacks, and so the instrumentation name is OpenTelemetry Instrumentation Pyramid Callbacks, but it's different than the others.
 Like, this is just an example, and since we discussed it, like, a couple of weeks ago, that pyramid is abandoned, and probably we can drop the instrumentation.
-But, like… The… the issue may…
-Like, irrelevant for also other instrumentation.
+But, like… The… the issue may… Like, irrelevant for also other instrumentation.
 I'm not sure I was… I have been clear, but anyone has an opinion on that?
-**Liudmila Molkova** 11:27 So, Ricard, you're saying that the name is the name of the file, effectively, and then if we use it
-In the tracer, when we request tracer, we kind of hide that,
-We can miss, like, we can break somebody, or also we'll have multiple tracers from the same library. It's usually not the case, though, right? And it's just that.
+**Liudmila Molkova** 11:27 So, Ricard, you're saying that the name is the name of the file, effectively, and then if we use it In the tracer, when we request tracer, we kind of hide that, We can miss, like, we can break somebody, or also we'll have multiple tracers from the same library. It's usually not the case, though, right? And it's just that.
 **Riccardo Magliocchetti** 11:50 Yeah.
 **Liudmila Molkova** 11:50 Ray Tracer in one place, but then it's inconsistent across different instrumentations.
-**Riccardo Magliocchetti** 11:59 like…
-I think that, out, like, most of the time, this is fine.
+**Riccardo Magliocchetti** 11:59 like… I think that, out, like, most of the time, this is fine.
 But, like, Say, like, you refactor some code, and you move… This, name.
 a coal?
 like, maybe, like, he moves, like, the creation of the tracer to, an LTEF module or something like that, and this changes.
 And, like, the code will be the same.
-But the output will be different, and so…
-Probably is a good idea to, like, make this explicit.
-And say, this is opentelemetry.instrumentation.asgi, And it does not depend on…
-Where the tracer or meter are initialized.
-**Liudmila Molkova** 12:54 Yeah, I think it makes sense. What could also make sense is to add
-Some validation for the thing.
+But the output will be different, and so… Probably is a good idea to, like, make this explicit.
+And say, this is opentelemetry.instrumentation.asgi, And it does not depend on… Where the tracer or meter are initialized.
+**Liudmila Molkova** 12:54 Yeah, I think it makes sense. What could also make sense is to add Some validation for the thing.
 And… Don't require… don't allow to change it.
 And then it does… it is not effective, it doesn't matter.
 Right? What is used here, if we validate that it's the same thing?
@@ -88,24 +70,19 @@ But also, having it as a variable.
 Makes total sense.
 **Riccardo Magliocchetti** 13:27 Yeah, like, with validation, you mean, like, adding tests, or something else? Okay.
 **Liudmila Molkova** 13:32 Yeah.
-**Lukas** 13:38 Is the… is the idea that we want to just…
-Define the tracer names to be whatever the root module is for the instrumentation library, or…
-Is there another convention?
+**Lukas** 13:38 Is the… is the idea that we want to just… Define the tracer names to be whatever the root module is for the instrumentation library, or… Is there another convention?
 Because that would kind of solve the ambiguity, right?
 **Liudmila Molkova** 13:57 Yeah, the convention is the library name.
 But it seems we don't follow the convention here.
 Or it's accidental when we follow it.
 **Riccardo Magliocchetti** 14:16 Yeah, exactly.
-**Liudmila Molkova** 14:24 And it would be a trivial change to, I don't know, ask AI to Do the stuff where if…
-It makes sense, and it's not harmful in any way, right?
+**Liudmila Molkova** 14:24 And it would be a trivial change to, I don't know, ask AI to Do the stuff where if… It makes sense, and it's not harmful in any way, right?
 **Riccardo Magliocchetti** 14:40 Quite the opposite, I think. Yeah.
 **Lukas** 15:06 Do we want to create independent YouTube?
-Track, just to kind of…
-Make sure all of the instrumentations are consistent then.
+Track, just to kind of… Make sure all of the instrumentations are consistent then.
 For this?
 **Riccardo Magliocchetti** 15:16 Yeah, I think I can create the issue, yeah.
-I think I had that in mind, but…
-Okay.
+I think I had that in mind, but… Okay.
 Thank you for discussion.
 Next topic is also from me.
 That is… a ping we received from Trask.
@@ -115,21 +92,15 @@ But then, the follow-up question is, what's the plan to move, like, to emit a st
 And so… Yeah, the question is, do we have a plan? Do we want to make a plan?
 **Lukas** 16:28 I think the specs, like they say, I think it's somewhere in spec.
 **Riccardo Magliocchetti** 16:42 I think I lost you, Lucas?
-**Lukas** 16:45 So I think… I think Tammy has something, but I was just saying that the spec, I think, says… the spec has guidance on this. It should maintain… or…
-Yeah, I can just send it.
-**Tammy Baylis** 17:03 I just wanted to mention… thank you, Lucas. I just wanted to mention, I also posted in the notes there our, old project board for the whole SEMCOM migration thing, and, a comment about…
-how the SEMCOM environment variable might not actually be documented for users right now, so…
-Like, Keeners can come in and look at the code and know what it's for, but it's not, in plain sight, the opt-in. So I… I don't think we came up with an official plan.
-Previously to… Make the opt-in the default, and…
-If spec has a plan we can follow, I think that'd be great, and we could create our own tickets for it.
+**Lukas** 16:45 So I think… I think Tammy has something, but I was just saying that the spec, I think, says… the spec has guidance on this. It should maintain… or… Yeah, I can just send it.
+**Tammy Baylis** 17:03 I just wanted to mention… thank you, Lucas. I just wanted to mention, I also posted in the notes there our, old project board for the whole SEMCOM migration thing, and, a comment about… how the SEMCOM environment variable might not actually be documented for users right now, so… Like, Keeners can come in and look at the code and know what it's for, but it's not, in plain sight, the opt-in. So I… I don't think we came up with an official plan.
+Previously to… Make the opt-in the default, and… If spec has a plan we can follow, I think that'd be great, and we could create our own tickets for it.
 **Liudmila Molkova** 17:51 This pack plan is effectively a major version bump.
 Right? So… You opt in in the current major version.
 And… New… in new major version, we're allowed to make breaking changes.
 It's probably a question of, okay, when do we think we can stabilize up and telemetry disturb some parts of it?
 Or, Lucas, you talked about some other plan, I… I might not have got your…
-**Lukas** 18:33 Alright, yeah, I'm just reading. It doesn't actually seem to…
-The specs don't seem to indicate, like, when we can switch the default, but… It does say that…
-We may… we may drop the… that opt-in environment variable in the next major version. That's all it pretty much states.
+**Lukas** 18:33 Alright, yeah, I'm just reading. It doesn't actually seem to… The specs don't seem to indicate, like, when we can switch the default, but… It does say that… We may… we may drop the… that opt-in environment variable in the next major version. That's all it pretty much states.
 **Liudmila Molkova** 18:55 Yeah.
 **Lukas** 18:56 Which isn't really what we're… Asking about.
 **Riccardo Magliocchetti** 19:08 Yeah, like, as Aaron shared in the chat.
@@ -137,48 +108,33 @@ They're also required to, like, maintain security patches for the old code.
 But the problem with the version bump we have right now.
 Is that, like, I see, like, two issues?
 One is that we are still, not, one dot, something?
-And so… It doesn't mean, like,
-Kinda assume that we can break stuff.
+And so… It doesn't mean, like, Kinda assume that we can break stuff.
 Also, like, all the packages are marked as beta.
 And the second thing is that we are bumping all the instrumentation packages at the same time.
-And so, yeah, like…
-If you want to bump only the HTTP packages, we are not able to do so at the moment.
+And so, yeah, like… If you want to bump only the HTTP packages, we are not able to do so at the moment.
 So, like, it's… more complicated, I think.
-**Liudmila Molkova** 20:13 So you're, you're saying that… It could mean… that…
-We just make breaking change because it's all… Not stable yet.
+**Liudmila Molkova** 20:13 So you're, you're saying that… It could mean… that… We just make breaking change because it's all… Not stable yet.
 And… just switch to the stable conventions in HTTP.
 **Riccardo Magliocchetti** 20:40 Well, like I'm saying, but, we lose some freedom.
 If we bump, to 1.2, I think, and mark this… Instrumentation on a stable.
 **Liudmila Molkova** 20:55 Yeah, so… go ahead, Darren.
 **Riccardo Magliocchetti** 20:58 Petal?
-**Aaron Abbott** 20:59 Yeah, maybe, Lyudmila, you were about to say what I was thinking, but,
-I think there's, like, a kind of wider thing in OTEL about
-You know, going for stable and then using semantic versioning.
-Where possible to kind of communicate this stuff, so…
-I was just gonna throw out the, you know, possibility that we do
-You know, maybe we do a 1.x with the new stable convention in.
-And in the future, like, we could be a little bit less shy about
-You know, doing major version bumps if we need, especially for, kind of, individual instrumentations.
+**Aaron Abbott** 20:59 Yeah, maybe, Lyudmila, you were about to say what I was thinking, but, I think there's, like, a kind of wider thing in OTEL about You know, going for stable and then using semantic versioning.
+Where possible to kind of communicate this stuff, so… I was just gonna throw out the, you know, possibility that we do You know, maybe we do a 1.x with the new stable convention in.
+And in the future, like, we could be a little bit less shy about You know, doing major version bumps if we need, especially for, kind of, individual instrumentations.
 **Liudmila Molkova** 21:36 Yeah, that's exactly what I was going to say.
-**Riccardo Magliocchetti** 21:43 Yeah, like, so the idea is to move from the…
-Relays everything, every instrumentation, at the time to the individual relays,
-Workflow we have right now.
+**Riccardo Magliocchetti** 21:43 Yeah, like, so the idea is to move from the… Relays everything, every instrumentation, at the time to the individual relays, Workflow we have right now.
 **Aaron Abbott** 22:01 Maybe. I mean, I think it's… it would still be okay to do… Keep some of the tooling we have, but yeah, the packages could be kind of individually versioned, I think.
-**Liudmila Molkova** 22:13 Or it could… there could be two flavors of the distro, and… One does not…
-imply anything for another. So, like, there could be a distro that, by default, only meets table things, and you enable all the experimental things at once.
+**Liudmila Molkova** 22:13 Or it could… there could be two flavors of the distro, and… One does not… imply anything for another. So, like, there could be a distro that, by default, only meets table things, and you enable all the experimental things at once.
 And it could be the same binary.
-It could be versioned…
-independently of the leaps under. This is all in the OTAP, it's the… these are all the discussions. This is where the
-Communities trying to figure out where we should go.
-The question here is, do we want to tie the HTTP
-to this effort? Or do we want to make some decisions before this stable by default effort?
+It could be versioned… independently of the leaps under. This is all in the OTAP, it's the… these are all the discussions. This is where the Communities trying to figure out where we should go.
+The question here is, do we want to tie the HTTP to this effort? Or do we want to make some decisions before this stable by default effort?
 materializes.
 **Riccardo Magliocchetti** 23:19 I don't think I understood your question, Dmita.
 Could you please… Reash that, please.
 **Liudmila Molkova** 23:29 Yeah, so let's say we forget about HTTP for a second.
 **Riccardo Magliocchetti** 23:33 There is an ATAP, stable by default, which suggests.
-**Liudmila Molkova** 23:38 That the distrobi ship Should be…
-Like, clearly indicate the stability, and then if it's stable, it should only produce stable things.
+**Liudmila Molkova** 23:38 That the distrobi ship Should be… Like, clearly indicate the stability, and then if it's stable, it should only produce stable things.
 And then you can opt in into experimental things.
 And let's say we've done that.
 Right?
@@ -190,8 +146,7 @@ Because it's the OTAB that is being discussed.
 Do you see what I mean?
 So we're not too far.
 I'm just looking for the link to that.
-Sorry, I am probably moving you in the wrong direction. Maybe you folks want to discuss about HTTP, I'm sorry for…
-therapy in the F.
+Sorry, I am probably moving you in the wrong direction. Maybe you folks want to discuss about HTTP, I'm sorry for… therapy in the F.
 **Riccardo Magliocchetti** 24:58 No problem.
 **Liudmila Molkova** 25:20 You were thinking of just stabilizing?
 Sorry.
@@ -200,26 +155,19 @@ Major version… oh, sorry, break and change in existing packages, right?
 **Riccardo Magliocchetti** 25:39 Yeah. Like, I was thinking only about that, yeah.
 **Liudmila Molkova** 25:51 Are there any concerns with it?
 **Lukas** 26:04 We'd still be keeping the old code to allow people to… on opt-in, right? This would just be a default.
-**Riccardo Magliocchetti** 26:14 Yeah, but, like, the environment variables only permit to
-Send both, or send a new?
-somatic conversion. If we switch something, we…
-We look, like, if we change the default, we lose the ability to send the old one alone.
-**Liudmila Molkova** 26:49 So it will be breaking,
-And there is no way back. Like, you can use old versions, but that's only last that long.
-the… Argument that it could be fine is because there are a lot of
-Languages that are already switched to new conventions by default.
+**Riccardo Magliocchetti** 26:14 Yeah, but, like, the environment variables only permit to Send both, or send a new?
+somatic conversion. If we switch something, we… We look, like, if we change the default, we lose the ability to send the old one alone.
+**Liudmila Molkova** 26:49 So it will be breaking, And there is no way back. Like, you can use old versions, but that's only last that long.
+the… Argument that it could be fine is because there are a lot of Languages that are already switched to new conventions by default.
 And all the major vendors should Supported fine.
 So even though it's breaking, It might be fine.
-**Riccardo Magliocchetti** 27:40 Yeah, so… like… As I said, like, if you are able to…
-Like, not required to, rewrite all our tooling, and just, like, pump,
-the HTP instrumentation and move them to stable semantic convention.
+**Riccardo Magliocchetti** 27:40 Yeah, so… like… As I said, like, if you are able to… Like, not required to, rewrite all our tooling, and just, like, pump, the HTP instrumentation and move them to stable semantic convention.
 Like, to me, that would be, like, the… the best plan?
 Yeah, also, like, before bumping to one dot something, we should probably be really sure that we are sending the proper stable semantic convention.
 **Liudmila Molkova** 28:25 I can see some of the languages, like Go and .NET, provide a HTTP dupe option.
 We provide stable conventions and the duplication. This we can do. It would also be a backward for people who want to keep old stuff.
 **Riccardo Magliocchetti** 28:45 Yeah.
-like, I think very comments, but…
-I think a girl dropped, HSP… dump.
+like, I think very comments, but… I think a girl dropped, HSP… dump.
 Well, yeah.
 Godropettit, and also .NET.
 **Liudmila Molkova** 29:06 Also, goal removed.NET removed duplication, Ruby is going to remove duplication very soon.
@@ -237,53 +185,39 @@ A fire, something like that.
 **Liudmila Molkova** 30:10 Yeah, you don't have any means to maintain two versions.
 Or do you? You… you can maintain the patch, the security patching, where… The, let's say, current version.
 In theory.
-**Riccardo Magliocchetti** 30:27 Yeah, like…
-I'm not sure our tooling supports releasing two major versions, like, yeah, like, from a branch, of course.
+**Riccardo Magliocchetti** 30:27 Yeah, like… I'm not sure our tooling supports releasing two major versions, like, yeah, like, from a branch, of course.
 So…
-**Liudmila Molkova** 30:40 I don't even mean major versions, so let's say…
-You could patch the version 0.850 something.
+**Liudmila Molkova** 30:40 I don't even mean major versions, so let's say… You could patch the version 0.850 something.
 Is you can't security patch it without major version bump at all.
-**Riccardo Magliocchetti** 30:56 Like, yeah, like, I don't know if…
-We can create a branch, like.
+**Riccardo Magliocchetti** 30:56 Like, yeah, like, I don't know if… We can create a branch, like.
 We should probably create a branch before we bump to one.omething.
-And yeah, and then, like, we should be able to…
-200, 200 lecture version, yeah.
-So, yeah, probably, like, what I get from these discussions, that we should probably take a look of the…
-Of the tooling, and make it possible to… To have independent, you know, version for the instrumentation.
+And yeah, and then, like, we should be able to… 200, 200 lecture version, yeah.
+So, yeah, probably, like, what I get from these discussions, that we should probably take a look of the… Of the tooling, and make it possible to… To have independent, you know, version for the instrumentation.
 And after that, like, we can probably implement.
 Something that I have, like, more clear vision of.
 What you're missing.
-**Liudmila Molkova** 31:52 So there… there is a patchwork flow, there is a version for each release, right? It's the…
-It's created by the automation. So, in theory, you could take that version, you could check it out.
+**Liudmila Molkova** 31:52 So there… there is a patchwork flow, there is a version for each release, right? It's the… It's created by the automation. So, in theory, you could take that version, you could check it out.
 And the patch release workflow should be able to… Or at least a patch.
 The… it might not work because nobody ever tried.
 But it, it should, it should, in general work.
 **Riccardo Magliocchetti** 32:22 Like, we… we really never tried.
 to create, I think, a patch release.
-from a different major version. Like, if you bump in main,
-Like, I don't know if that will work out of the box, but, like, we can try that, of course.
+from a different major version. Like, if you bump in main, Like, I don't know if that will work out of the box, but, like, we can try that, of course.
 Okay.
-So, yeah, I think we have…
-Get with enough feedback for this.
+So, yeah, I think we have… Get with enough feedback for this.
 Any other comments?
 Okay?
 And then, let's move to the next, topic from Manny.
 Are you a reminder?
 **Yazdankhah, Mani** 33:17 So, I think Aaron promised to take a look at this last week.
-I've made the changes that Lucas originally asked for, and I think all the
-pipeline are passing, except for the API changes, public API changes, which is part of the scope of this.
-And…
-Something I couldn't figure out was access to private members, because the same file uses other private members. Do I just need to add pylon to disable?
+I've made the changes that Lucas originally asked for, and I think all the pipeline are passing, except for the API changes, public API changes, which is part of the scope of this.
+And… Something I couldn't figure out was access to private members, because the same file uses other private members. Do I just need to add pylon to disable?
 Or is there an allow list that I need to update somewhere?
 **Aaron Abbott** 33:55 Yeah, there's a label that can be put on the PR to ignore the new symbols.
-If they're absolutely needed. So, oh yeah, which, yeah, we're adding to the public API, so we can just…
-Add that to the… to the PR.
-I was gonna say, I took a pass just now, sorry for the delay. My… I think I've mentioned this before, but there's a lot of places that
-the SDK kind of assumes that the metric readers are immutable right now.
-So I flagged one such place, and I was hoping that you could, walk me through what the consequences of
-things being mutable are now. There might be, like, a couple bugs that need to be fixed.
-I imagine at… at…
-a minimum, we would either have to add, like, a global lock for the entire meter provider, which I prefer not to do.
+If they're absolutely needed. So, oh yeah, which, yeah, we're adding to the public API, so we can just… Add that to the… to the PR.
+I was gonna say, I took a pass just now, sorry for the delay. My… I think I've mentioned this before, but there's a lot of places that the SDK kind of assumes that the metric readers are immutable right now.
+So I flagged one such place, and I was hoping that you could, walk me through what the consequences of things being mutable are now. There might be, like, a couple bugs that need to be fixed.
+I imagine at… at… a minimum, we would either have to add, like, a global lock for the entire meter provider, which I prefer not to do.
 Or, you know, some measurements would be dropped under certain circumstances, which I think is reasonable if people are adding and removing metric readers.
 **Yazdankhah, Mani** 34:55 Yeah, at least for our specific use case, we're fine with stuff being dropped if we remove the metric reader beforehand, but I'll check their review comments, and I'll get back to you on that.
 **Aaron Abbott** 35:08 Okay.
@@ -293,38 +227,20 @@ Anything else on this one, or…
 **Aaron Abbott** 35:16 Great. Thank you.
 **Riccardo Magliocchetti** 35:22 Thank you.
 And then… Lucas?
-**Lukas** 35:28 Hi, yeah, I know this was discussed last week, and I unfortunately wasn't able to attend, but,
-I know, Aaron mentioned that…
-So yeah, just for context, this is to add, support for the, for OTLP JSON protocol.
-There was… there's a discussion in one of the open PRs for adding the JSON exporter, and…
-It sounds like most people are in favor of not adding protobuf as a dependency instead of… and instead just
-Either writing a… custom proto… protobuf plugin.
+**Lukas** 35:28 Hi, yeah, I know this was discussed last week, and I unfortunately wasn't able to attend, but, I know, Aaron mentioned that… So yeah, just for context, this is to add, support for the, for OTLP JSON protocol.
+There was… there's a discussion in one of the open PRs for adding the JSON exporter, and… It sounds like most people are in favor of not adding protobuf as a dependency instead of… and instead just Either writing a… custom proto… protobuf plugin.
 to automatically generate the JSON for us?
-I was able to play around with it a little bit, and I was able to get something kind of working, so I don't know if we want to…
-I don't want to keep going down this route until…
-people, like, until we're kind of aligned on what we want to do here. I think the major concern is just that the…
-You can do this directly with Protobuf, but the protobuf dependency is…
-Pretty large, so we'd like to avoid it if possible.
-**Aaron Abbott** 36:50 Yeah, plus one, I was literally just writing a comment here to that effect, I think…
-if you're in a situation where you have protobuf, like, yeah, maybe it's nice to dump JSON sometimes. You could also use text format if you just want to see what the stuff looks like in a human-readable way, but I don't see a reason that, in production, someone would want to use, like, the…
-the JSON export with the protobuf dependency when they could just use the binary encoding and do HTTP if they don't want gRPC.
+I was able to play around with it a little bit, and I was able to get something kind of working, so I don't know if we want to… I don't want to keep going down this route until… people, like, until we're kind of aligned on what we want to do here. I think the major concern is just that the… You can do this directly with Protobuf, but the protobuf dependency is… Pretty large, so we'd like to avoid it if possible.
+**Aaron Abbott** 36:50 Yeah, plus one, I was literally just writing a comment here to that effect, I think… if you're in a situation where you have protobuf, like, yeah, maybe it's nice to dump JSON sometimes. You could also use text format if you just want to see what the stuff looks like in a human-readable way, but I don't see a reason that, in production, someone would want to use, like, the… the JSON export with the protobuf dependency when they could just use the binary encoding and do HTTP if they don't want gRPC.
 **Lukas** 37:19 Okay, yeah, I can, if someone's not already working on this.
 I can put out a draft, just showing the Protobuff plugin, and then we can go from there. It sounds like that's what we want to do, then?
 That was…
-**Aaron Abbott** 37:37 Yeah, that was my preference, although I don't… I would like to hear from, like, Ricardo, I don't know if we have Leighton on the call, or, you know, just some other people in the SIG,
-That's definitely my…
-preference, and if you… if you want to, like, kind of share something to walk… walk us through what it looks like, that would be helpful, too.
-**Lukas** 37:57 Yeah, it was a lot of, I had limited time, so admittedly, most of it was Gemini-generated, but, it seems pretty straightforward. There's also,
-the MyPi…
-Plugin is also… is also, like, a good reference for creating that, but it's, yeah, it's nowhere near…
-anywhere that I want to show it with people, but…
+**Aaron Abbott** 37:37 Yeah, that was my preference, although I don't… I would like to hear from, like, Ricardo, I don't know if we have Leighton on the call, or, you know, just some other people in the SIG, That's definitely my… preference, and if you… if you want to, like, kind of share something to walk… walk us through what it looks like, that would be helpful, too.
+**Lukas** 37:57 Yeah, it was a lot of, I had limited time, so admittedly, most of it was Gemini-generated, but, it seems pretty straightforward. There's also, the MyPi… Plugin is also… is also, like, a good reference for creating that, but it's, yeah, it's nowhere near… anywhere that I want to show it with people, but…
 **Aaron Abbott** 38:19 Okay.
-No worries, yeah, I… I think…
-That's my preference, like, if we could generate the code, that's pretty much what we already are doing for the,
-the protobuf… the protobuf version, except it has the protobuf C dependency, which is not great.
+No worries, yeah, I… I think… That's my preference, like, if we could generate the code, that's pretty much what we already are doing for the, the protobuf… the protobuf version, except it has the protobuf C dependency, which is not great.
 Yeah, anybody have thoughts on it?
-**Riccardo Magliocchetti** 38:43 Yeah, like, I think, like, it's already been mentioned, but…
-a protobuf, less exportable, like, we appreciate it.
+**Riccardo Magliocchetti** 38:43 Yeah, like, I think, like, it's already been mentioned, but… a protobuf, less exportable, like, we appreciate it.
 In operator and injector use cases.
 And also, like, I spoke with, Gregor, that is the author of VetPool Request, like, Monday.
 and shared with me, with him, I think yesterday, the Better Proto, repo you shared with me around some times ago, when…
@@ -332,13 +248,11 @@ and shared with me, with him, I think yesterday, the Better Proto, repo you shar
 **Riccardo Magliocchetti** 39:19 Yeah, he said that he'll probably take a look.
 Yeah, like, I think… But it's… Like, kind of agreement, but… We would like.
 To have this with code generation instead of protobuf dependency.
-**Lukas** 39:38 Yeah, agreed. Actually, do you mind if I share quick? I just have one last question on, maybe how we want to align, or how we want to have the…
-the package structure… .
+**Lukas** 39:38 Yeah, agreed. Actually, do you mind if I share quick? I just have one last question on, maybe how we want to align, or how we want to have the… the package structure… .
 **Aaron Abbott** 39:51 Yeah, like, let's do that. Just one second first, because I want to make sure… it sounds like there's a lot of people who are interested in working on this right now.
 it sounds like… so we have the 1PR open.
 I think, Pablo, you mentioned you were interested in working on this, too.
-And then…
-Yeah, I don't know, like, if everybody's coming from the same company, and they're talking about it, but I just want to make sure that people aren't doing duplicate work, like.
+And then… Yeah, I don't know, like, if everybody's coming from the same company, and they're talking about it, but I just want to make sure that people aren't doing duplicate work, like.
 **Lukas** 40:18 Yeah, yeah, that makes sense.
 **Aaron Abbott** 40:20 Okay. Yeah, Pablo, I don't know if… what do you think?
 **pabcolli** 40:23 The PR that's out there is fine, as far as I'm concerned, I just think it needs to be split up.
@@ -347,125 +261,81 @@ Yeah, I don't know, like, if everybody's coming from the same company, and they'
 Which is… sounds like what we'd want to do, right?
 **pabcolli** 40:44 Yep.
 **Aaron Abbott** 40:45 Yes, plus one, that's my preference.
-Okay, let's make sure, like, let's just, you know, we could do it offline, the kind of bookkeeping makes this one issue, and…
-That everybody knows who's working on it.
+Okay, let's make sure, like, let's just, you know, we could do it offline, the kind of bookkeeping makes this one issue, and… That everybody knows who's working on it.
 **Lukas** 40:59 Okay, yeah.
 **Aaron Abbott** 41:01 Okay.
 **Lukas** 41:01 Yes, we can keep it offline.
 **Aaron Abbott** 41:04 Yeah, yeah, if you want to walk through what you were saying, though, the code structure, please do.
-**Lukas** 41:07 Oh, I was just… yeah, if… I can't share, but,
-Do you mind handing them over a screen share?
+**Lukas** 41:07 Oh, I was just… yeah, if… I can't share, but, Do you mind handing them over a screen share?
 Thanks.
-So,
-So, yeah, the only question I really have is, so we have this, this proto, OpenSelemetry Proto, package, so the… kind of the idea that I'm following is that we can just have another one here, because
-The whole idea is that we don't want to have the protocol dependency here.
-do we…
-Is this kind of how… how we kind of think we should go about doing it, or…
-In terms of separating the, the different proto… These different packages out.
+So, So, yeah, the only question I really have is, so we have this, this proto, OpenSelemetry Proto, package, so the… kind of the idea that I'm following is that we can just have another one here, because The whole idea is that we don't want to have the protocol dependency here.
+do we… Is this kind of how… how we kind of think we should go about doing it, or… In terms of separating the, the different proto… These different packages out.
 But the genera… this is, like, the generated… this is the actual generated, code.
-**Aaron Abbott** 42:19 Yeah, good question. So there's, there's also, like, an encoder package,
-Which does, like, the… it does, like, the transformation to these…
-well, in the normal case, the protobuf-generated code from the OTEL SDK data structures.
+**Aaron Abbott** 42:19 Yeah, good question. So there's, there's also, like, an encoder package, Which does, like, the… it does, like, the transformation to these… well, in the normal case, the protobuf-generated code from the OTEL SDK data structures.
 Oh yeah, I see what you're saying.
 **Lukas** 42:41 Yeah, yeah, that's kind of, this might be stale, but… yeah, well, I do… I did create, like, another generator, package that's just for the code generation itself, which is the actual Protobuff plugin.
 That would live, like, somewhere else in here. Yeah.
 But honestly, yeah, that would just be… that would be nothing we'd even need to publish.
-**Aaron Abbott** 43:09 Yeah, I think we can… so one of the comments on the other PR was that
-The fewer dependencies, the better.
-So I'm… I'm honestly, you know, maybe inclined to say if it was…
-a single package with everything kind of vendered into it. That would be pretty helpful, just to…
-for, like, the use case of this package. So, if you wanted to dump it all into, like, an exporter package to start, we could always break it out later. So, like, if we have, you know, OpenTelemetry.
+**Aaron Abbott** 43:09 Yeah, I think we can… so one of the comments on the other PR was that The fewer dependencies, the better.
+So I'm… I'm honestly, you know, maybe inclined to say if it was… a single package with everything kind of vendered into it. That would be pretty helpful, just to… for, like, the use case of this package. So, if you wanted to dump it all into, like, an exporter package to start, we could always break it out later. So, like, if we have, you know, OpenTelemetry.
 exporter… OTLP JSON, and then this is just, like, a… some submodules within there, I think.
 That would probably be…
 **Lukas** 43:46 I'm just trying to think of, like, other use cases where maybe you wouldn't even… you would literally just want this, and maybe, like, writing JSON to a file or something. Not sure. But yeah, I can definitely go with that as well.
-**Aaron Abbott** 44:01 Okay, I mean, I think that's good to start, we can kind of put off the decision, and yeah, I do think that would be another use case, like,
-Writing to a file or whatever, but…
+**Aaron Abbott** 44:01 Okay, I mean, I think that's good to start, we can kind of put off the decision, and yeah, I do think that would be another use case, like, Writing to a file or whatever, but…
 **Lukas** 44:12 Okay.
 **Aaron Abbott** 44:15 Okay.
 **Lukas** 44:16 It's…
 **Aaron Abbott** 44:16 Awesome, thanks for telling us, Lucas.
 **Lukas** 44:18 Yeah.
 And, yeah, Ricardo, you can share again. I just have one last quick… Questionable.
-Which is… let me link the…
-Let me link the issue.
-So, just, for more context here,
-At my employer, we use a lot of AWS Lambda, so, we want to eliminate the, like, cold start time as much as possible. And it looks like, the… just the basic
-OTLP HTTP span exporter is, like…
-introduces quite a bit of ORIA, primarily due to requests.
-So, at the very bottom, I just kind of brought up, so obviously we don't want to break the backwards compatibility here, but as an option, we could, provide some sort of an opt-in where, users could,
-specify that they want to use URL3 instead of requests to kind of reduce the package size?
+Which is… let me link the… Let me link the issue.
+So, just, for more context here, At my employer, we use a lot of AWS Lambda, so, we want to eliminate the, like, cold start time as much as possible. And it looks like, the… just the basic OTLP HTTP span exporter is, like… introduces quite a bit of ORIA, primarily due to requests.
+So, at the very bottom, I just kind of brought up, so obviously we don't want to break the backwards compatibility here, but as an option, we could, provide some sort of an opt-in where, users could, specify that they want to use URL3 instead of requests to kind of reduce the package size?
 I don't know if… do we want it, like, is this a viable route, or would we rather just create a separate, like, URL of 3 exporter?
-**Riccardo Magliocchetti** 45:55 if I remember correctly, I think we have something… Index portal API that…
-take a request-specific parameter? Maybe I'm… I'm confusing with… An old PR way around.
-But, like… If from outside the… the calendar does not…
-Like, if changing the backend would not change the… Export a behavioral code.
-I think we… we are fine. But, by the way, like, Is it, like…
-Is the request adding a huge overhead on top of your lib-free?
-**Lukas** 46:44 Yeah, I mean, you can read Serkin, he mentioned that literally just replacing it with URL of 3, like, increased or reduce the…
-The startup time by, like, 150 milliseconds, something like that.
+**Riccardo Magliocchetti** 45:55 if I remember correctly, I think we have something… Index portal API that… take a request-specific parameter? Maybe I'm… I'm confusing with… An old PR way around.
+But, like… If from outside the… the calendar does not… Like, if changing the backend would not change the… Export a behavioral code.
+I think we… we are fine. But, by the way, like, Is it, like… Is the request adding a huge overhead on top of your lib-free?
+**Lukas** 46:44 Yeah, I mean, you can read Serkin, he mentioned that literally just replacing it with URL of 3, like, increased or reduce the… The startup time by, like, 150 milliseconds, something like that.
 **Riccardo Magliocchetti** 46:58 Okay. Yeah, like, I…
 **Lukas** 47:00 really significant.
-So, yeah, yeah, well, the request itself is 236 milliseconds,
-I did look at the implementation, and I think that we actually should probably be fine replacing it with… and it shouldn't impact the API at all.
+So, yeah, yeah, well, the request itself is 236 milliseconds, I did look at the implementation, and I think that we actually should probably be fine replacing it with… and it shouldn't impact the API at all.
 So, assuming that's the case, then I can actually, work on just swapping it out.
-But if it's… yeah, I guess if it's… if it still has those request-specific parameters being passed in, we might need to rethink
-What we want to do.
+But if it's… yeah, I guess if it's… if it still has those request-specific parameters being passed in, we might need to rethink What we want to do.
 **Riccardo Magliocchetti** 47:42 Yeah, like, I'm really not sure, but I have this, like, I'm remembering this, but I'm not sure, and I need to recheck.
-Well, if that's not the case,
-And, like, we don't lose any… picture, or…
-brake compatibility, I think it's fine. Like, no… I think nobody will…
-Will be, I guess, like, dropping a dependency.
+Well, if that's not the case, And, like, we don't lose any… picture, or… brake compatibility, I think it's fine. Like, no… I think nobody will… Will be, I guess, like, dropping a dependency.
 **Lukas** 48:20 Okay, yeah.
 **Dylan Russell** 48:22 Are you saying to replace it completely with the URL lib, or, like, provide an option to, like, switch?
-**Lukas** 48:28 I was originally… my original comment was we could provide an opt-in option, or… yeah, something of that sort, or make the dependency optional, and then it would just kind of resolve whichever one is installed, but…
-It sounds like we might be able to just completely replace it, as long as it doesn't impact the…
-As long as it is not a breaking change.
-**Dylan Russell** 49:01 Yeah, I'm not sure. I can think of one thing that…
-would maybe break, or, like, wouldn't be possible to do with URLib.
+**Lukas** 48:28 I was originally… my original comment was we could provide an opt-in option, or… yeah, something of that sort, or make the dependency optional, and then it would just kind of resolve whichever one is installed, but… It sounds like we might be able to just completely replace it, as long as it doesn't impact the… As long as it is not a breaking change.
+**Dylan Russell** 49:01 Yeah, I'm not sure. I can think of one thing that… would maybe break, or, like, wouldn't be possible to do with URLib.
 **Lukas** 49:16 Aaron, you had your hand up.
 **Aaron Abbott** 49:20 I was gonna, I was gonna ask Dylan if he had any thoughts, so…
 **Dylan Russell** 49:25 Yeah.
-I don't know, maybe just try and do it and see what… Like, what… if it…
-the works, I guess?
+I don't know, maybe just try and do it and see what… Like, what… if it… the works, I guess?
 **Lukas** 49:37 Yeah, I'll take a deeper… I'll take a deeper look and, like.
-Make sure, or scrutinize it, and make sure that there's no… there wouldn't be any implementation-defined behavior that would
-Great issues, but…
-Yeah, the other option would be the other one that I suggested, which is that we could, like, provide an option to use URLib3 instead.
+Make sure, or scrutinize it, and make sure that there's no… there wouldn't be any implementation-defined behavior that would Great issues, but… Yeah, the other option would be the other one that I suggested, which is that we could, like, provide an option to use URLib3 instead.
 And make that opt-in.
-**Aaron Abbott** 50:11 Yeah, I think… I think it's pretty much… would be, like, an opaque change. The main issue is…
-And, don't keep me honest, the constructor lets you inject, like, a requests object,
-Other than that, I don't think people would… would care, right?
-**Dylan Russell** 50:30 Yeah, that, like, credential provider thing that was…
-Just on the screen. That's something that… I think… Only works with session.
+**Aaron Abbott** 50:11 Yeah, I think… I think it's pretty much… would be, like, an opaque change. The main issue is… And, don't keep me honest, the constructor lets you inject, like, a requests object, Other than that, I don't think people would… would care, right?
+**Dylan Russell** 50:30 Yeah, that, like, credential provider thing that was… Just on the screen. That's something that… I think… Only works with session.
 I don't know how critical that is.
 That… I added that so you could, like.
-We would… we could inject a session, which…
-has, like, GCP auth, like, built into it.
+We would… we could inject a session, which… has, like, GCP auth, like, built into it.
 So people wouldn't have to configure auth.
-But if that's, like, the only thing blocking this, then…
-I would say it's probably not a big deal. We can…
-Can get rid of that, maybe.
+But if that's, like, the only thing blocking this, then… I would say it's probably not a big deal. We can… Can get rid of that, maybe.
 But… Yeah.
 **Aaron Abbott** 51:16 I mean.
 **Lukas** 51:17 Thanks for the feedback.
-**Aaron Abbott** 51:19 Yeah, yeah. Plus one, I think we would have to change the signature, technically, so there's not…
-You know, like, we could ignore the session parameter that's passed in, but… You know.
-Maybe back to, like…
-back to the whole breaking change thing, like, instead of trying to get fancy with it, we could, you know, rev the version. I think there's some other OTLP-related issues, like there was, I think, that environment variable.
-Which is kind of a… actually a really bad issue, like…
-Maybe we consider just doing a… 2.0 release, of the OTLB exporter.
+**Aaron Abbott** 51:19 Yeah, yeah. Plus one, I think we would have to change the signature, technically, so there's not… You know, like, we could ignore the session parameter that's passed in, but… You know.
+Maybe back to, like… back to the whole breaking change thing, like, instead of trying to get fancy with it, we could, you know, rev the version. I think there's some other OTLP-related issues, like there was, I think, that environment variable.
+Which is kind of a… actually a really bad issue, like… Maybe we consider just doing a… 2.0 release, of the OTLB exporter.
 Yeah, otherwise, I think if we want to keep the signature compatible, there's not really any way besides changing the behavior or breaking the signature, so…
 **Lukas** 52:21 Got it, thanks.
-**Aaron Abbott** 52:29 Yep. One other thought on this, sorry,
-there was, for a while, like, an OTLP Rust-based, like, C extent, or not C, a native extension floating around. It wasn't in our repo. I think the use case was pretty much exactly.
-they found that the import speed was really fast if it's just, you know, doing a deal open, compared to having any Python code at all, so…
-You know, hopefully this makes a big dent, and I think we don't need the complexity of requests for the most part, since we've, like, done our own retries, for example.
+**Aaron Abbott** 52:29 Yep. One other thought on this, sorry, there was, for a while, like, an OTLP Rust-based, like, C extent, or not C, a native extension floating around. It wasn't in our repo. I think the use case was pretty much exactly.
+they found that the import speed was really fast if it's just, you know, doing a deal open, compared to having any Python code at all, so… You know, hopefully this makes a big dent, and I think we don't need the complexity of requests for the most part, since we've, like, done our own retries, for example.
 But yeah, I don't know, that's something that… that's something that came up with Lambda before.
 **Lukas** 53:07 Yeah, I'll make sure to… yeah, I wasn't aware that something like that existed, but yeah, I'll take a look. Thanks.
 **Riccardo Magliocchetti** 53:35 Okay.
 This was the last topic for today.
-Any lasting your topic, or…
-Any other comment?
+Any lasting your topic, or… Any other comment?
 Okay.
 And Ben, thank you, everyone.
 And you have 8 minutes back.

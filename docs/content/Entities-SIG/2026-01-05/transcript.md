@@ -10,8 +10,7 @@ Zoom Recording URL: https://zoom.us/rec/share/SbVnoWhuhSBAkjlWG5fPWuWCjogyHKW7kM
 **Nathan Smith @ Elastic Observability** 03:05 Happy New Year!
 **Josh Suereth** 03:07 Happy New Year, how you doing?
 **Nathan Smith @ Elastic Observability** 03:10 Oh, good, my laptop, I was… I've been on PTO since, you know.
-Since before… week before Christmas, and
-I was getting caught up on stuff last night, and my laptop screen died, so…
+Since before… week before Christmas, and I was getting caught up on stuff last night, and my laptop screen died, so…
 **Josh Suereth** 03:29 Oh, no.
 **Nathan Smith @ Elastic Observability** 03:30 Boom.
 **Josh Suereth** 03:32 I, actually, I.
@@ -20,8 +19,7 @@ I was getting caught up on stuff last night, and my laptop screen died, so…
 Because it can't find its hard drive.
 **Nathan Smith @ Elastic Observability** 03:46 There you go. See?
 **Josh Suereth** 03:48 It's true.
-**Nathan Smith @ Elastic Observability** 03:48 I think,
-Oh, sorry, I gotta…
+**Nathan Smith @ Elastic Observability** 03:48 I think, Oh, sorry, I gotta…
 **Josh Suereth** 03:56 Yeah, absolutely.
 Okay.
 **Nathan Smith @ Elastic Observability** 04:50 Boarding in progress.
