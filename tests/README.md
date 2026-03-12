@@ -7,7 +7,7 @@ Test suite for the project. Run with `make test` or `uv run --group dev pytest t
 | File | Covers |
 |------|--------|
 | `test_build_manifest.py` | `build_site.py` — manifest generation from the content tree (including `trivial` flag) |
-| `test_cleanup.py` | `scripts/cleanup_trivial_meetings.py` — trivial summary deletion logic |
+| `test_transcript.py` | `scraper/transcript.py` — HTML parsing and mid-sentence continuation-line merging |
 | `test_transcript_io.py` | `scraper/transcript_io.py` — `count_transcript_lines()` and related helpers |
 | `test_community.py` | `scraper/community.py` — community README parsing and metadata bootstrapping |
 | `test_gdoc.py` | `scraper/gdoc.py` — Google Doc fetching and meeting-notes extraction |
