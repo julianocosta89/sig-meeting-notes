@@ -28,8 +28,7 @@ So it was like a Sig issue in.
 **Pablo Baeyens** 09:07 Or semantic conventions.
 **Severin Neumann** 09:10 It's the system metrics system, semantic conventions, working group.
 **Pablo Baeyens** 09:19 Yeah, yeah, I guess that's that would be the the one.
-yeah, I would add the label for Sig issue on the
-maybe you can ping us, ping systems.
+yeah, I would add the label for Sig issue on the maybe you can ping us, ping systems.
 **Severin Neumann** 09:34 Yeah, I pinged.
 But worse, yeah.
 **Pablo Baeyens** 09:40 Cool.
@@ -38,13 +37,10 @@ But worse, yeah.
 **Severin Neumann** 09:58 Sampling sake.
 I'm playing stick, and you know oh.
 allow adding new attribute types.
-**Pablo Baeyens** 10:29 Probably accepted
-since it comes from.
+**Pablo Baeyens** 10:29 Probably accepted since it comes from.
 And maybe if you click on the on the comment there, let's see.
-**Severin Neumann** 10:42 As discussed in the segmenting. We are great to reintroduce this node
-agent for tracking.
-Then I can. Yeah, I would say it's accepted, and then
-did I assign it to Robert? It sounds like.
+**Severin Neumann** 10:42 As discussed in the segmenting. We are great to reintroduce this node agent for tracking.
+Then I can. Yeah, I would say it's accepted, and then did I assign it to Robert? It sounds like.
 **Pablo Baeyens** 11:09 He did open up Pr. Or well mentioned up here is that pr
 **Severin Neumann** 11:14 No, no! This is the other one that you linked.
 **Pablo Baeyens** 11:17 Oh, okay, yeah.
@@ -52,15 +48,12 @@ I think we can assign it to him.
 **Severin Neumann** 11:24 Yeah, it looks like he's the sponsor.
 And then it's like, accepted.
 But I do a sponsor right.
-added a tiny comment. There
-guidance against using metrics, api and client side instrumentation.
+added a tiny comment. There guidance against using metrics, api and client side instrumentation.
 And just to it looks like a client instrumentation, sick.
 **Pablo Baeyens** 12:51 Yeah.
 **Severin Neumann** 12:52 Thing, or is it for the browser stick? I'm not, or for where does this go?
 **Pablo Baeyens** 13:04 Seems more generic like it does mention Android.
-**Severin Neumann** 13:07 Yeah. Yeah. And then like it, it? No, exactly. It's
-but we don't. Do. We have blind
-area client definitely, we have that.
+**Severin Neumann** 13:07 Yeah. Yeah. And then like it, it? No, exactly. It's but we don't. Do. We have blind area client definitely, we have that.
 I think this is then community feedback still, because it looks like nobody from.
 And I would attack the
 **Pablo Baeyens** 13:52 Oh, sorry!
@@ -71,14 +64,9 @@ And I would attack the
 **Severin Neumann** 14:12 Can you take? I had these experiences. Can you take outlook, please.
 and how to move this forward? Something like that?
 Keep it neutral? I mean, I agree with the sentiment of that sing right? I mean.
-Santos definitely is right here, that it totally makes no sense to have the metric Api used in
-in a real client. Right?
-I guess you could probably send
-metric events kind of yeah data points.
-But
-yeah, but I I think it's they. They are the experts on that. But but I think it would be good to have someone from
-back sponsors to review that and take
-leadership on there. Did I not add community feedback.
+Santos definitely is right here, that it totally makes no sense to have the metric Api used in in a real client. Right?
+I guess you could probably send metric events kind of yeah data points.
+But yeah, but I I think it's they. They are the experts on that. But but I think it would be good to have someone from back sponsors to review that and take leadership on there. Did I not add community feedback.
 **Pablo Baeyens** 15:09 Awesome.
 No, I did.
 Thank you.
@@ -102,8 +90,7 @@ It seems to be host or.
 **Severin Neumann** 16:54 There seems to be, maybe even something that clarifies the language already. Right.
 Special handling made.
 But could maybe copy that.
-And
-And say, this is this fixed?
+And And say, this is this fixed?
 Because it looks like that. Pr, does exactly that right?
 There's something around.
 0.
@@ -113,8 +100,7 @@ Oh, okay, wait a minute.
 Oh, okay.
 I think both of them don't know.
 Yeah, it looks like that one is closed already.
-or maybe not, but that way it at least
-not sure what the right triage label is. Should we keep it on? Follow up, and maybe take another look next week.
+or maybe not, but that way it at least not sure what the right triage label is. Should we keep it on? Follow up, and maybe take another look next week.
 Let's remove it. They'll come back.
 Tim. Tim. Tim done done cool.
 I don't think yeah. They're done with the spec.
@@ -124,8 +110,7 @@ There's a new membership codespace, pre-builds.
 But the DC.
 **Severin Neumann** 19:27 On Wednesday, right.
 **Pablo Baeyens** 19:29 Yeah.
-**Severin Neumann** 19:30 Maybe on the Prs. Anything that needs approvals my seek onboarding issue template need one or 2 more
-archive feature. Select, go check.
+**Severin Neumann** 19:30 Maybe on the Prs. Anything that needs approvals my seek onboarding issue template need one or 2 more archive feature. Select, go check.
 **Pablo Baeyens** 19:47 Yeah, that one.
 Do we need gc, majority for this.
 **Severin Neumann** 19:54 I mean it doesn't hurt right. Let me do it as well.
@@ -134,8 +119,7 @@ Do we need gc, majority for this.
 **Juraci Paixão Kröhling** 20:12 Yeah, yeah, they if- if it needs, I mean, you can approve it.
 1, 2, 3.
 **Severin Neumann** 20:19 Or.
-**Juraci Paixão Kröhling** 20:20 Yeah. Let me, 2, 8, 7, 7,
-okay.
+**Juraci Paixão Kröhling** 20:20 Yeah. Let me, 2, 8, 7, 7, okay.
 **Severin Neumann** 20:46 Right.
 **Juraci Paixão Kröhling** 20:54 Also, yeah.
 **Severin Neumann** 20:56 I think.
@@ -166,14 +150,12 @@ and I'm right for your approval as well, Pablo, and then I merge it in.
 hey?
 Anything else that stands out?
 I mean, if you few minutes this week you can take a look at this sick onboarding issue. Template.
-But beyond that I don't think there's any. What about the Github admin process that like
-too controversial?
+But beyond that I don't think there's any. What about the Github admin process that like too controversial?
 Yeah, that lacks a few more approvals.
 anyways anything else. I think we we are doing good on time.
 **Pablo Baeyens** 25:24 Nothing from my side.
 **Juraci Paixão Kröhling** 25:29 Same for me. 7. If you have time, have a blog post, or pr open.
-**Severin Neumann** 25:35 Yeah, I saw that. I will see that I
-not sure if I find time today. But I will definitely take a look this week.
+**Severin Neumann** 25:35 Yeah, I saw that. I will see that I not sure if I find time today. But I will definitely take a look this week.
 **Juraci Paixão Kröhling** 25:42 Sorry.
 **Severin Neumann** 25:43 Or maybe Tiffany or someone else. But yeah, I saw it. I I skim through it. I liked it really very much, but I need to like.
 **Juraci Paixão Kröhling** 25:50 Cool.

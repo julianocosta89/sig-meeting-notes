@@ -24,15 +24,12 @@ neil yashinsky 00:03:58 If it's like…
 Josh Suereth 00:03:58 When you start thinking about buying a heater to put under the engine of your car.
 I know it's a little too cold.
 neil yashinsky 00:04:05 Yeah, exactly.
-Josh Suereth 00:04:09 Yeah, alright, I'm just checking the chat,
-Jeremy said he's running a little bit late,
-kind of was hoping Lyudmila would be here, because there was something that she said she wanted to discuss, and so… She's there.
+Josh Suereth 00:04:09 Yeah, alright, I'm just checking the chat, Jeremy said he's running a little bit late, kind of was hoping Lyudmila would be here, because there was something that she said she wanted to discuss, and so… She's there.
 Oh, she's here?
 Am I… I'm just… I can't see, apparently.
 neil yashinsky 00:04:31 She just popped into the…
 Josh Suereth 00:04:33 Right.
-Welcome, Linmella. I was gonna wait for you until we start, because the first topics,
-From our discussion on the PR.
+Welcome, Linmella. I was gonna wait for you until we start, because the first topics, From our discussion on the PR.
 If you remember this one.
 Are you able to hear us?
 Okay, I will open this up for the discussion.
@@ -41,8 +38,7 @@ Josh Suereth 00:05:09 Yes.
 Liudmila Molkova 00:05:10 Awesome.
 ariannavespri 00:05:12 Yes.
 Josh Suereth 00:05:12 tools.
-So, this is on the Manifest Renames PR, which,
-I think I asked a bunch… did I approve this one, Luna? I forget.
+So, this is on the Manifest Renames PR, which, I think I asked a bunch… did I approve this one, Luna? I forget.
 Liudmila Molkova 00:05:22 I don't think so.
 Josh Suereth 00:05:23 Okay, I think I had a couple questions. Right, oh, right.
 You added a bunch of changes.
@@ -59,9 +55,7 @@ That's exactly what my thinking is. Like, you saw the message from, what's his n
 Alex.
 Liudmila Molkova 00:06:22 Where he… they have that really cool-looking, you know, auto-generated.
 Josh Suereth 00:06:28 documentation diagram from Weaver with, like, how things are depending on that they're using in their, yeah, in Calibra, it looks like is the name.
-a data AI governance platform, right? They're using V1 syntax, for sure. And so what I want to do is make sure those folks don't get broken, and we give them a transition period. So that's why I love that you added the future. We should probably tie…
-a lot of things we're doing in the future. So, like…
-We can add warnings if you're using V1 that show up, and, like, if you're using future, the warnings about using V2 could disappear, potentially, once we're happy with it. Yeah, I like that.
+a data AI governance platform, right? They're using V1 syntax, for sure. And so what I want to do is make sure those folks don't get broken, and we give them a transition period. So that's why I love that you added the future. We should probably tie… a lot of things we're doing in the future. So, like… We can add warnings if you're using V1 that show up, and, like, if you're using future, the warnings about using V2 could disappear, potentially, once we're happy with it. Yeah, I like that.
 Liudmila Molkova 00:07:11 Okay, so then there is nothing in particular, it's just the general tracker for V1.
 Josh Suereth 00:07:17 Yeah. Okay. We could probably even start in the thing, having a V1 tracker of things we want to get done before we mark V1.
 Liudmila Molkova 00:07:28 Oh, I see.
@@ -69,22 +63,19 @@ Josh Suereth 00:07:29 For weavers.
 Liudmila Molkova 00:07:30 Yeah.
 Josh Suereth 00:07:30 Sorry, before we mark Weaver 1.0, which is V2 of our schema.
 Liudmila Molkova 00:07:36 Maybe we should jump to V2 right away.
-Josh Suereth 00:07:40 What… what? Crap, what was the one,
-I think it was… was it Java that just suddenly went? They were, like, 6, or 1.6 forever, and then they just jumped to, like, 10, 12, 13, all the way up to 22 now, or something?
+Josh Suereth 00:07:40 What… what? Crap, what was the one, I think it was… was it Java that just suddenly went? They were, like, 6, or 1.6 forever, and then they just jumped to, like, 10, 12, 13, all the way up to 22 now, or something?
 neil yashinsky 00:07:56 Yeah.
 Liudmila Molkova 00:07:57 basics.
 Josh Suereth 00:07:58 26? Yeah, yeah. Okay, we could just do that, like, skip straight to 33.
 Liudmila Molkova 00:08:06 I mean, more like from the, like, you mentioned Python, maybe last time. Python, sorry, is the syntax, Python, sorry, 14 is the tooling version, right?
 Josh Suereth 00:08:17 Yeah. And…
-Liudmila Molkova 00:08:18 Well, we probably won't be as successful as Python, so we probably don't need to…
-Work hard to solve this problem, but yeah.
+Liudmila Molkova 00:08:18 Well, we probably won't be as successful as Python, so we probably don't need to… Work hard to solve this problem, but yeah.
 neil yashinsky 00:08:28 I think we could be more, bigger than Python, but that's just…
 Josh Suereth 00:08:33 Alright, I need to re-review this for the warnings. Sorry, I'm getting distracted. We could be bigger than Python.
 We need to re-review this for the warnings, but this looked good to me. I just had… it was just a mudge of, like, productionization things, was what I was waiting for. So, cool.
 Liudmila Molkova 00:08:50 Yeah, thanks, appreciate the review, and yeah, take your time.
 Josh Suereth 00:08:55 There is…
-Liudmila Molkova 00:08:56 Another one,
-for the definition, and I think it's ready for the final review, and maybe we can merge it.
+Liudmila Molkova 00:08:56 Another one, for the definition, and I think it's ready for the final review, and maybe we can merge it.
 Josh Suereth 00:09:07 I don't know when…
 Liudmila Molkova 00:09:08 Oh.
 Josh Suereth 00:09:08 Oh, the definition, I think I missed that. Start looking for Rwanda and Alvin.
@@ -94,15 +85,12 @@ Compatibility and baseline.
 Let's move on. B1 for now. It means hash dash bash future.
 Let's turn with warnings into errors. Okay, cool.
 This might be the easiest way for me to find it.
-Liudmila Molkova 00:09:40 I'm pa… I'm pasting it here, we… we can…
-We can get to it after other topics, I think it's minor, just call for review.
+Liudmila Molkova 00:09:40 I'm pa… I'm pasting it here, we… we can… We can get to it after other topics, I think it's minor, just call for review.
 Josh Suereth 00:09:50 Okay, one thing I just want to make a note, James Thompson had a cool PR that actually gets cargo dissed, version pinned.
 for different artifacts, which brings us back into SALSA compliance level 2 or something. I forget what the… I gotta remember what the versions are, but version pinning is one of them.
-And, the problem is, there's…
-Anytime we change cargo discs, all of these PRs will be broken.
+And, the problem is, there's… Anytime we change cargo discs, all of these PRs will be broken.
 Because you have to… it'll change the cargo disk format, and then someone has to run cargo disk init to change all of the generated code so they're aligned, which is kind of a pain in the butt. I'm planning to put together maybe a GitHub Copilot agent file that can take these renovate files and fix them.
-I'm also thinking of doing the same for when we have stuff like this, where it's literally a syntax change, and try to get a bot that will actually go
-look at… look at how the version… or how the functions have changed and try to fix it for us. Just as a, like, okay, by default, throw it at the bot. If the bot screws up, go do it by hand.
+I'm also thinking of doing the same for when we have stuff like this, where it's literally a syntax change, and try to get a bot that will actually go look at… look at how the version… or how the functions have changed and try to fix it for us. Just as a, like, okay, by default, throw it at the bot. If the bot screws up, go do it by hand.
 What do we think of that?
 Liudmila Molkova 00:11:01 That would be cool. Can't we do it right now? Like, can we just assign the co-pilot?
 Josh Suereth 00:11:07 Like, just to try it? Okay.
@@ -125,8 +113,7 @@ Liudmila Molkova 00:12:09 your work… On… Are you doing that?
 Josh Suereth 00:12:13 Okay.
 I will let you make a comment, we'll try it out.
 Liudmila Molkova 00:12:17 Shin…
-Josh Suereth 00:12:20 Basically, I think all it needs to do…
-is, run cargo dist in knit.
+Josh Suereth 00:12:20 Basically, I think all it needs to do… is, run cargo dist in knit.
 and then create a new PR with this change after running cargo distinit, and that should fix cargo dist.
 Which is the failure. If we look at the checks, I think cargo dist is the failure.
 Liudmila Molkova 00:12:43 Shit. It opened the PR in, like, seconds.
@@ -137,9 +124,7 @@ I'll just put this as an aside, minor tingent.
 using Copilot's, scripts.
 Liudmila Molkova 00:13:17 I've seen there is some new Copilot GitHub workflows, so we could potentially have it automated, but I didn't play with them yet.
 Josh Suereth 00:13:27 Okay.
-This… this… at this point, I'm just trying to alleviate friction on us for a little bit. Okay, so next up, I want to talk about Weaver packages, because, this is part of the V2 syntax, and there's some evolving stuff here, and I think we're… we're literally, there's an open telemetry,
-what do you call them? Recording video thing going on later, where we're going to be talking about Weaver, and advertising to the OpenTelemetry ecosystem of, like, the packaging stuff, and what we're doing here, what we're building, and why. And so…
-I have… I just have a few things to kind of, like, understand. I didn't… I didn't really flesh out all my thoughts, so this is just top of mind. First is, Ariana's PR here.
+This… this… at this point, I'm just trying to alleviate friction on us for a little bit. Okay, so next up, I want to talk about Weaver packages, because, this is part of the V2 syntax, and there's some evolving stuff here, and I think we're… we're literally, there's an open telemetry, what do you call them? Recording video thing going on later, where we're going to be talking about Weaver, and advertising to the OpenTelemetry ecosystem of, like, the packaging stuff, and what we're doing here, what we're building, and why. And so… I have… I just have a few things to kind of, like, understand. I didn't… I didn't really flesh out all my thoughts, so this is just top of mind. First is, Ariana's PR here.
 Just, were there any remaining block… like, I didn't see any blockers here, Ludmela, but I was waiting for you to give a final… oh, you did? Okay, cool. I think this is now mergeable, so I'm gonna merge this now.
 If there are no complaints.
 ariannavespri 00:14:25 Yay!
@@ -149,17 +134,14 @@ ariannavespri 00:14:39 No, it didn't happen because I was waiting for a first PR
 Josh Suereth 00:14:51 Yeah, yeah.
 Liudmila Molkova 00:14:51 You didn't need to wait for it, you could call before it, but…
 ariannavespri 00:14:56 Yeah, you know, like… Looks better. Thank you so much.
-Because I have other… I have another one open, but it's taken, on… on… but not on Weaver. It's on, Hotel, hotel collector country repo, but basically,
-there is a big block, because then I was told to use a kind of a tool in which I, you know, there's a bug in it, so I have to realize if I'm supposed to, or if I can fix it or not, or… yeah, but that's another story. So yeah, and I'm also working on something else, but this is very cool that the first one is in Weaver. Thank you so much.
+Because I have other… I have another one open, but it's taken, on… on… but not on Weaver. It's on, Hotel, hotel collector country repo, but basically, there is a big block, because then I was told to use a kind of a tool in which I, you know, there's a bug in it, so I have to realize if I'm supposed to, or if I can fix it or not, or… yeah, but that's another story. So yeah, and I'm also working on something else, but this is very cool that the first one is in Weaver. Thank you so much.
 Josh Suereth 00:15:32 Yeah.
 Liudmila Molkova 00:15:33 Thank you.
 Josh Suereth 00:15:34 Awesome. And thanks for the contribution.
 Look forward to more.
 Okay, related.
-one of the things we're going to be advertising is this Weaver packages thing, and trying to get Weaver packages going. I don't know if you saw, we,
-did a bit of work on the build, test script and things. I actually used an agent to port over some of the policies. So, under policies check, we now have stability, which is ported from semantic conventions. I used an agent to help me, I should say, it needed a bit of help.
-Wha…
-It wasn't seamless, but it was nice that I could have it work during meetings when I was otherwise unoccupied, and then check up on it every once in a while. I think that… that was perfect because the code already existed and worked correctly, so it was easy to verify if it did the right thing. I don't know…
+one of the things we're going to be advertising is this Weaver packages thing, and trying to get Weaver packages going. I don't know if you saw, we, did a bit of work on the build, test script and things. I actually used an agent to port over some of the policies. So, under policies check, we now have stability, which is ported from semantic conventions. I used an agent to help me, I should say, it needed a bit of help.
+Wha… It wasn't seamless, but it was nice that I could have it work during meetings when I was otherwise unoccupied, and then check up on it every once in a while. I think that… that was perfect because the code already existed and worked correctly, so it was easy to verify if it did the right thing. I don't know…
 neil yashinsky 00:16:24 Yeah.
 Josh Suereth 00:16:24 We'll have to see how it does with new stuff. Anyway, related, right now, this is what the docs look like for running, one of these policies, is you can use Weaver Registry check, you put the V2 syntax in there, and then you can just point at the policy.
 Right? Few things to think of… that I'm thinking about. One is, given all the Salsa compliance stuff, or, like, build chain security that we have in CNCF, I would like to be able to version lock these in some fashion, make it renovate compatible.
@@ -167,8 +149,7 @@ Right? So, there's a PR at Weaver that we can talk about in a bit that is, addin
 But I think we actually want to put pound in a commit hash, and then have some way of also putting the tag.
 So people know what tag the commit hash is supposed to be, so it's not just arbitrary commit hashes that you never know what they are.
 If that's… anyway.
-So that's… that's thought number one. And thought number two is, you know, I… I did want to make this be…
-easier.
+So that's… that's thought number one. And thought number two is, you know, I… I did want to make this be… easier.
 But is that a priority right now for us? Like, is it worth me spending time on turning this from this giant long string to just, you know.
 p-packageCheckstability or something, as a optimization that we have in Weaver, where we can say, hey, here's the, like, baked-in packages that you access, and we turn it into the URL.
 neil yashinsky 00:17:54 I could be wrong, but I think there's other higher-value things. That seems kind of lower level.
@@ -187,21 +168,16 @@ Jeremy Blythe 00:19:35 Of course.
 Josh Suereth 00:19:37 Yeah.
 So, I might switch to that, but just, just for context, I wanted to call that out. And then, if you want to see what the output looks like of these checks, I'm actually kind of happy. So, we actually have, a, yeah, policy packages.
 The way the test package works, when it does verification, it actually tells you all the tests that pass and what they are meant for.
-So, it will tell you I'm testing this policy, and then every test, it will tell you whether it passed or failed. And we support arguments on the test thing, so you can actually do coverage reports and crap like that. What I'm wondering…
-Last thing before I end my, word vomit,
-I had an agent help me with policy checks, and there's a set of instructions I gave that agent to migrate from
-Semantic conventions into here.
+So, it will tell you I'm testing this policy, and then every test, it will tell you whether it passed or failed. And we support arguments on the test thing, so you can actually do coverage reports and crap like that. What I'm wondering… Last thing before I end my, word vomit, I had an agent help me with policy checks, and there's a set of instructions I gave that agent to migrate from Semantic conventions into here.
 is it worth it for me to put those instructions in this repo? Like, would you guys want to see that to reuse them? Or are we gonna wait on that and figure out what actually is reusable here?
 neil yashinsky 00:20:48 I guess if you're not sure if it's reusable or not, I'm not sure if it's worth including, but I'm also willing to follow your… your intuition, I feel like, is the best judge right now. Whatever you said, vomit word thing aside, which I didn't think it was very vomity word thingy, but yeah.
-Josh Suereth 00:21:06 Okay, okay. Yeah, the,
-I can clean it up and send it and see if folks want to try it out, but it's just a… if you wanted to have an agent work in here, it kind of tells the agent how to run the build script and the tools.
+Josh Suereth 00:21:06 Okay, okay. Yeah, the, I can clean it up and send it and see if folks want to try it out, but it's just a… if you wanted to have an agent work in here, it kind of tells the agent how to run the build script and the tools.
 And where to look… like, it basically… thank you for fixing, Weaver, by the way, Jeremy, because it tells the agent to use the Weaver JSON schema command to look at what the JSON schema will be.
 Jeremy Blythe 00:21:34 So, are you saying you've got an agent's MD file?
 Josh Suereth 00:21:38 Yeah.
 Jeremy Blythe 00:21:39 I think it… I think it makes sense to include it. I think we should be… we should be including AgentsMD, like, in all the projects where we're using agents, which is, like, everything now, probably.
 Josh Suereth 00:21:49 Which will probably start to be everything. Okay, I can, I can throw that in there. Cool.
-I think that was it for talking about Weaver packages. I want to make sure that this is to the point where… oh,
-I think… oh, it got merged, good, good, good.
+I think that was it for talking about Weaver packages. I want to make sure that this is to the point where… oh, I think… oh, it got merged, good, good, good.
 There was a… there was a PR that got… just got merged while we're talking that added a contributing MD in addition to the REAPE, and thank you for that, because that was the other thing I wanted to have, before we started advertising this repo for more folks. It splits this into explaining how to use these things, and then, you know, what they are.
 Cool.
 I think that's it for Weaver packages, so thanks, folks, and just a reminder to pay attention to that, because it's yet another source of PRs.
@@ -209,8 +185,7 @@ We have to look at… at issues.
 Cool. Until, until we get code owners for each individual package. Let's move on.
 Jeremy Blythe 00:22:42 Isn't.
 Josh Suereth 00:22:42 I just found.
-Jeremy Blythe 00:22:43 Is there a way to set up…
-I need to look at Renovate more closely, but is there a way to set Renovate up so that if it's successful with the build, it will just merge it?
+Jeremy Blythe 00:22:43 Is there a way to set up… I need to look at Renovate more closely, but is there a way to set Renovate up so that if it's successful with the build, it will just merge it?
 Josh Suereth 00:22:56 By policy, we… you need to have a human reviewer.
 That is… so, if you're familiar… have you… are you familiar with SALSA compliance? I've been reading up on this.
 So CNCF is, like, loosely salsa compliant, but it's a CNCF rule as well. There needs to be… any PR from anyone, including a bot, has to have a human reviewer.
@@ -246,18 +221,15 @@ Jeremy Blythe 00:25:45 Nope.
 Josh Suereth 00:25:46 No. Okay. It immediately resolved all the problems I was having. Like, from day one, which is awesome.
 However, We no longer build the UI.
 in cargo.
-So you manually need to do it. What we have in cargo
-is… and we had… we also can't fill the build if the UI isn't made, because that breaks Renovate and all these bots that need to do cargo dependency management.
+So you manually need to do it. What we have in cargo is… and we had… we also can't fill the build if the UI isn't made, because that breaks Renovate and all these bots that need to do cargo dependency management.
 In our BuildRS, so we can't build and build.rs.
 So what we do here is, we have a bunch of things to check to see if the package log is stale, to see if the UI is stale and needs to get rebuilt, and then we just issue warnings. But do not fail.
 That is currently the state of the build.
 I am not happy with where we wound up.
 I'm happier than previously, because I can now build successfully on my work machine without shenanigans.
 And without throwing everything through Docker.
-But I wanted to check with everyone, like, just a pulse check. Should we pause trying to make improvements to this for now? Are we happy with where it is? And when we get really annoyed, we'll fix it? Or do we want to continue to make progress on figuring out the build situation with NPM? Like, should we look at maybe having NPM
-UI get distributed as a bundle, and then we download it or something.
-Jeremy Blythe 00:27:18 I'm… I'm wondering whether we should get the PR that, Nikola's system, which is to…
-convert all this to React instead of Svelte.
+But I wanted to check with everyone, like, just a pulse check. Should we pause trying to make improvements to this for now? Are we happy with where it is? And when we get really annoyed, we'll fix it? Or do we want to continue to make progress on figuring out the build situation with NPM? Like, should we look at maybe having NPM UI get distributed as a bundle, and then we download it or something.
+Jeremy Blythe 00:27:18 I'm… I'm wondering whether we should get the PR that, Nikola's system, which is to… convert all this to React instead of Svelte.
 Josh Suereth 00:27:34 Yeah.
 Jeremy Blythe 00:27:34 for reasons.
 And get that under our belt.
@@ -277,33 +249,22 @@ JS, then just sort out next steps. Alright, cool.
 Awesome.
 Alright.
 Next topic is the Git Ref thing. I mentioned this briefly before, around the ability to have Renovate automatically update, like, Weaver package references at some point is something I'd like to get to.
-where, we can advertise these things in some fashion and all that, like, that's… that's a to-do. I don't know if it's as important as just having ref name, like, I want… I want to make sure this gets through. This is a PR, it's currently blocked by Laurent, unfortunately he's not here, but he had a few…
-concerns…
-that needed to be addressed. I think they might be addressed. This is probably worth reviewing a second time. For context, what this does is we actually had
-Code in place to support, and parse
-let me open the issue, because I think it's described here, to parse Git URLs that have a pound after it, that describe
-like, either a Shah or a TAG.
-And then this is just… the PR is just using… oh, I'm not even… I'm not showing the right thing. Yeah, so we had a,
-Okay, here we go. Come on, computer.
+where, we can advertise these things in some fashion and all that, like, that's… that's a to-do. I don't know if it's as important as just having ref name, like, I want… I want to make sure this gets through. This is a PR, it's currently blocked by Laurent, unfortunately he's not here, but he had a few… concerns… that needed to be addressed. I think they might be addressed. This is probably worth reviewing a second time. For context, what this does is we actually had Code in place to support, and parse let me open the issue, because I think it's described here, to parse Git URLs that have a pound after it, that describe like, either a Shah or a TAG.
+And then this is just… the PR is just using… oh, I'm not even… I'm not showing the right thing. Yeah, so we had a, Okay, here we go. Come on, computer.
 But if you have a pound after the git tag, it would resolve the git tag or the SHA, it just wasn't implemented.
 And I'm not sure why it wasn't implemented. Lawrence has context on that, so I'm waiting on him for this PR, but I think this is absolutely necessary to get in.
-Quickly, yeah, so…
-Here's an example where we have the code in place for the ref spec, but a note that we never used it.
+Quickly, yeah, so… Here's an example where we have the code in place for the ref spec, but a note that we never used it.
 And now, it will get filled out.
-And then,
-in… in Try New, we're effectively just deferring to… where is it? Wait, yeah. This with ref spec here.
+And then, in… in Try New, we're effectively just deferring to… where is it? Wait, yeah. This with ref spec here.
 with refName, is a GIX API, G-I-X, the Rust Git library that we're using.
-So, that is all this is really doing. I think this is probably good to go with documentation,
-Is there… The only concern I have is, if you've seen how we do Docker Git URLs in,
-with Renovate, it includes the Shaw, and it includes the version in, like, a comment at the same time.
+So, that is all this is really doing. I think this is probably good to go with documentation, Is there… The only concern I have is, if you've seen how we do Docker Git URLs in, with Renovate, it includes the Shaw, and it includes the version in, like, a comment at the same time.
 I would like to find a way for us to do that conventionally with Weaver. I think we can do that with SPR as is, but I just want to call it out.
 Okay, anyway, if folks could review this, that'd be good. Go ahead, Jeremy.
 Jeremy Blythe 00:31:21 I think I'm just… wanted him to update the docs, which I think he did.
 Josh Suereth 00:31:28 Yep.
 Jeremy Blythe 00:31:28 I think he.
 Josh Suereth 00:31:29 Yeah.
-Jeremy Blythe 00:31:30 Yeah, he did have a question as to whether he should update the
-History checks, remember that thing I did about a year ago?
+Jeremy Blythe 00:31:30 Yeah, he did have a question as to whether he should update the History checks, remember that thing I did about a year ago?
 Josh Suereth 00:31:38 Yeah.
 Jeremy Blythe 00:31:39 For it to… for it to use the ref spec rather than, download all the different archives.
 Josh Suereth 00:31:47 That actually might…
@@ -327,38 +288,28 @@ Josh Suereth 00:32:57 I mean, you are downloading the archive right now in this.
 Jeremy Blythe 00:33:03 It does.
 Josh Suereth 00:33:05 That might be why we're spending all of our cash.
 Jeremy Blythe 00:33:08 Take a B.
-Well, I think we also… we don't move that C, the 1.26, we haven't moved that forwards for quite a while, so…
-And we're up to, like, what, 1 to 39 now? So we're pulling in… A lot every time.
+Well, I think we also… we don't move that C, the 1.26, we haven't moved that forwards for quite a while, so… And we're up to, like, what, 1 to 39 now? So we're pulling in… A lot every time.
 Josh Suereth 00:33:26 Yeah.
-We could probably optimize this. I… I…
-think for his PR, we don't need to make that change now.
-I do wonder if maybe we should…
-because we don't really have a test whether the Git URL thing is working at all.
+We could probably optimize this. I… I… think for his PR, we don't need to make that change now.
+I do wonder if maybe we should… because we don't really have a test whether the Git URL thing is working at all.
 Because we don't have a Git repo that we hit.
 Right?
 Like, the one thing about his PR is I literally downloaded it and built it and tried it to make sure it worked.
 Jeremy Blythe 00:34:04 Yep.
-Josh Suereth 00:34:04 Because, the tests and things, you know, we… I don't really…
-I was personally trying to limit the amount of things we have to reach out to the internet for, and I remember this, and this was okay.
+Josh Suereth 00:34:04 Because, the tests and things, you know, we… I don't really… I was personally trying to limit the amount of things we have to reach out to the internet for, and I remember this, and this was okay.
 The way this is designed.
 Hmm.
 Anyway, okay, that's… it's a good question.
 Where do you stand on it, Jeremy?
-Jeremy Blythe 00:34:37 I mean, I feel like using the ref spec's more elegant than pulling down the archives, but…
-It's achieving the same thing.
-I… I would switch it to RevSpec, but I didn't…
-Realized there might have been… that might be…
-An attack vector, but isn't it the same…
+Jeremy Blythe 00:34:37 I mean, I feel like using the ref spec's more elegant than pulling down the archives, but… It's achieving the same thing.
+I… I would switch it to RevSpec, but I didn't… Realized there might have been… that might be… An attack vector, but isn't it the same…
 Josh Suereth 00:34:58 It's the same as the art…
 Jeremy Blythe 00:34:59 Absolutely.
 Josh Suereth 00:35:00 Yeah, if we don't actually do a validation that the archive meets a manifest, then it's the same.
 So, it's no different. It's just, I want to get to the point where we actually have those.
 Yeah, you're… we're just resolving with "-r", this is… okay.
 let's… let's move forward of just moving in ref, and I think it's fine to move this to ref spec.
-The other thing is, it's possible…
-I can check the code,
-We might be able to actually cache…
-the same Git repo? No, we can't. We actually pull it into different virtual directories, because it'd be unsafe otherwise, yeah. Okay.
+The other thing is, it's possible… I can check the code, We might be able to actually cache… the same Git repo? No, we can't. We actually pull it into different virtual directories, because it'd be unsafe otherwise, yeah. Okay.
 We can look at our size problems later.
 But yeah, let's move this to RefSpec. I think that that should be the plan.
 Jeremy Blythe 00:35:53 Okay, I think that's the only question that… was outstanding on that PR.
@@ -388,48 +339,34 @@ Josh Suereth 00:37:36 Oh, no, because you were updating my code, where I did som
 Liudmila Molkova 00:37:54 It was… I think Claudapos 4.5, right?
 neil yashinsky 00:38:00 I promise.
 Liudmila Molkova 00:38:01 prompted it. I needed to prompt it a lot of times before I get something I liked. This is my impact, yeah.
-neil yashinsky 00:38:09 Yeah, yeah, I love it. I think that's a very wise, performance, enhancing, or a resource optimization,
-You know, thing you're obviously good at.
+neil yashinsky 00:38:09 Yeah, yeah, I love it. I think that's a very wise, performance, enhancing, or a resource optimization, You know, thing you're obviously good at.
 Josh Suereth 00:38:20 Yeah.
 Liudmila Molkova 00:38:22 Thank you.
-Josh Suereth 00:38:23 Yeah, cool, we can take a look at this then. But yeah, looks good. Mapping removed, so…
-Interesting.
+Josh Suereth 00:38:23 Yeah, cool, we can take a look at this then. But yeah, looks good. Mapping removed, so… Interesting.
 Th-this, this I do, yeah.
 I'm not…
-Liudmila Molkova 00:38:42 Yeah, I… I haven't…
-I can take another look, maybe I can improve something here, but essentially, I think we need to clean it, because…
-It's the same, it's just not a struct, right? It's, it's a, YAML value.
-Josh Suereth 00:38:59 No, it, it, the, the thing that's going on here is, is you're, you're,
-we're wrapping things into a YAML, so that we can…
-fling it down further into CERD to do further serialization. That's okay, it's just then the errors get all funky, so you actually lose any specific error, like line of code where something happened.
-Because…
-Because of the translation between the two. So that… that would… my concern would actually not be… like, I don't mind if you move it to YAML and back, that's just making it work. My concern is… is this here, of, like, are we losing fidelity of errors? Because, again, for any developer tooling.
+Liudmila Molkova 00:38:42 Yeah, I… I haven't… I can take another look, maybe I can improve something here, but essentially, I think we need to clean it, because… It's the same, it's just not a struct, right? It's, it's a, YAML value.
+Josh Suereth 00:38:59 No, it, it, the, the thing that's going on here is, is you're, you're, we're wrapping things into a YAML, so that we can… fling it down further into CERD to do further serialization. That's okay, it's just then the errors get all funky, so you actually lose any specific error, like line of code where something happened.
+Because… Because of the translation between the two. So that… that would… my concern would actually not be… like, I don't mind if you move it to YAML and back, that's just making it work. My concern is… is this here, of, like, are we losing fidelity of errors? Because, again, for any developer tooling.
 90% of our time should be spent on errors, and that means we have succeeded.
 Like, when the biggest priority we have is… so, first of all, we should be focusing on errors and making them good and good for people. That's, like, predominantly what you want. Sorry, good for AI, too, so AI can fix its own mistakes.
 But, rule of thumb is, if we're not to the point where 80% of our time is spent on making good errors, we haven't really landed.
-We haven't really, like, launched something. Right. And yeah, that's kind of my own experience with, like, doing build tool stuff. You know, there's…
-a lot of hard stuff to do, but your error reporting is real big. So that's my only concern.
+We haven't really, like, launched something. Right. And yeah, that's kind of my own experience with, like, doing build tool stuff. You know, there's… a lot of hard stuff to do, but your error reporting is real big. So that's my only concern.
 Liudmila Molkova 00:40:23 But I… Yeah, can you drop a comment? I'll try it out, and I'll make sure it's meaningful.
 Josh Suereth 00:40:29 Yeah.
-Should be… I'm still…
-Okay, cool. It's possible CERD errors are also useless in general, I don't know, like, it's been a while. The other thing we have, and for your reference, if a lot of this, when there's an error from CERG, we back off.
+Should be… I'm still… Okay, cool. It's possible CERD errors are also useless in general, I don't know, like, it's been a while. The other thing we have, and for your reference, if a lot of this, when there's an error from CERG, we back off.
 we convert everything to JSON, and then we run it through the JSON schema validation and get JSON schema errors. So it could be we're completely ignoring those errors, too, for better ones.
 Like, legitimately, that's… Laurent did this whole shenanigan thing where the errors were bad, so we wanted to make them better, so we used the JSON schema to get better errors.
 And so, as long as Ski Mars is okay, You should be fine.
-And I think, are you…
-The main thing would be, since you are doing JSON schema here.
+And I think, are you… The main thing would be, since you are doing JSON schema here.
 and you're not changing JSON schema, it's possible the JSON schema errors will be whacked up as well. So, like, we would successfully parse, but we wouldn't… we wouldn't parse the JSON schema.
 Yay, is all I'll say.
-If it gets to be super crazy, since version is still part of,
-since it's still part of the V2 thing, and we're still in a prototypical state, if you wanted to break the world, I… I'm fine. So if you go down this error thing, and you find that the errors are really bad and you can't fix them.
-Because version is brand new and we're trying it out, I'm okay making a breaking change there, because again, it's behind a flag, it tells you it's unstable, it tells you it could break at any moment. We could even have a thing… we could write a parser in front of your parser that looks for version 2,
-And then just changes it?
+If it gets to be super crazy, since version is still part of, since it's still part of the V2 thing, and we're still in a prototypical state, if you wanted to break the world, I… I'm fine. So if you go down this error thing, and you find that the errors are really bad and you can't fix them.
+Because version is brand new and we're trying it out, I'm okay making a breaking change there, because again, it's behind a flag, it tells you it's unstable, it tells you it could break at any moment. We could even have a thing… we could write a parser in front of your parser that looks for version 2, And then just changes it?
 Liudmila Molkova 00:42:26 Yeah.
-Josh Suereth 00:42:26 If I was doing it where you're doing it, we could put it somewhere else. Yeah, like, I think we have options here, but…
-If the errors are bad, the errors are bad, and we… I think that's a higher priority.
+Josh Suereth 00:42:26 If I was doing it where you're doing it, we could put it somewhere else. Yeah, like, I think we have options here, but… If the errors are bad, the errors are bad, and we… I think that's a higher priority.
 Liudmila Molkova 00:42:38 Sounds good.
-Josh Suereth 00:42:41 And yeah, thanks for that, man. That's gonna be… it'll be nice to have consistently…
-File format mean the file format, and consistent names for what the files are.
+Josh Suereth 00:42:41 And yeah, thanks for that, man. That's gonna be… it'll be nice to have consistently… File format mean the file format, and consistent names for what the files are.
 Okay, we're out of topics. I think there's a few random loose threads that I want to pull on before we get to the project board, if that's okay. We have 15 minutes. One loose thread, and I don't remember if this was… I think, Jeremy, you mentioned this.
 on, convert JSON schema… default output for Weaver.
 resolved. So when we were doing, oh, it's registry, so I forgot to put the registry in front.
@@ -446,52 +383,39 @@ We return this.
 Jeremy Blythe 00:44:24 Yes.
 Josh Suereth 00:44:25 Should we return this?
 Jeremy Blythe 00:44:28 I think?
-I think we should by default, because…
-That's the format that we want to publish.
+I think we should by default, because… That's the format that we want to publish.
 Josh Suereth 00:44:37 So.
 Jeremy Blythe 00:44:37 And that's then this whole thing of being able to read published things.
 Josh Suereth 00:44:42 So, I agree with you, we need the ability to publish it.
 The question is, so we also need the ability to debug templates.
-And the reason we use Forge today
-is because, the only… the only way you would see what is going into the templates right now is you could run Weaver Registry Resolve.
-you can take the output and put it into your Jinja playground, or your Rego play… or your, Rego playground, or your,
-what's the other one? JQ Playground? And you can, like, do work with it, right? So that's why Resolve is forged today.
+And the reason we use Forge today is because, the only… the only way you would see what is going into the templates right now is you could run Weaver Registry Resolve.
+you can take the output and put it into your Jinja playground, or your Rego play… or your, Rego playground, or your, what's the other one? JQ Playground? And you can, like, do work with it, right? So that's why Resolve is forged today.
 Bob.
 So, I'm gonna put together… A few paths forward for us.
 One is, Weaver Registry Resolve will have options, where you can pick the Resolve or the Forge registry as output.
 And I'm fine if you want to default it to resolve, but you'd be able to pick.
 Second option, which is one I prefer, is I'd like to have a Weaver registry published.
 And publish would make the resolve schema and the manifest next to it.
-Because when we publish, what I want to avoid
-is an issue where, right now, I think the manifest and the resolves file have to go beside each other.
+Because when we publish, what I want to avoid is an issue where, right now, I think the manifest and the resolves file have to go beside each other.
 when we publish. And I want to avoid an issue where we're not publishing the directory, where we're publishing, like, one file, and then another file, and they don't actually line up, and you have to manually do it. I'd like to kind of bundle that together.
 It could be that we should, for now, just expand Resolve to do both of these, and then we can add publish later. I'm fine with that as well, but I just wanted to run it by everyone. How are we feeling? What are we thinking?
-Liudmila Molkova 00:46:27 I… I think we… we have it in the tab, and it was the Laurent, suggestion that we have
-Viva Registry Package.
-publish package, right? It would create…
-a common thing, and it needs…
-we need to think about it, because we are packaging something that's before it's published, but we are providing the URL it's going to be published at. This is fun.
+Liudmila Molkova 00:46:27 I… I think we… we have it in the tab, and it was the Laurent, suggestion that we have Viva Registry Package.
+publish package, right? It would create… a common thing, and it needs… we need to think about it, because we are packaging something that's before it's published, but we are providing the URL it's going to be published at. This is fun.
 Do we need the resolve after?
-I don't know, what if we…
-repurpose Resolve to be more than just Resolve. If you don't provide templates, it gives you the resolved schema. If you provide templates, then it uses forge schema, and then it applies the templates to
-forage data.
+I don't know, what if we… repurpose Resolve to be more than just Resolve. If you don't provide templates, it gives you the resolved schema. If you provide templates, then it uses forge schema, and then it applies the templates to forage data.
 Josh Suereth 00:47:33 So, what… if we provide forged templates, though, what's the difference between that and Weaver Registry Generate?
 Liudmila Molkova 00:47:40 We were registered. No difference!
 Josh Suereth 00:47:43 Yeah, that's why, like, I'm wondering if we need Resolve.
-Outside of, like, debugging, like, Now that we have MCP and the UI,
-I do think we need the ability to get, the resolved registry in some fashion. Like, we still need the capability to do that. Feed that into, like, a playground to toy around with stuff. Feed that into the MCP so the MCP server can say, hey, tell me what the resolved looks like for this so I can
-do whatever I'm doing.
+Outside of, like, debugging, like, Now that we have MCP and the UI, I do think we need the ability to get, the resolved registry in some fashion. Like, we still need the capability to do that. Feed that into, like, a playground to toy around with stuff. Feed that into the MCP so the MCP server can say, hey, tell me what the resolved looks like for this so I can do whatever I'm doing.
 Right.
 But do we need the resolve command?
 I… you know, I wish we could actually track usage.
 To make that… to make that guess of, like, are people using it? I think today they are, but in the future, maybe they're more doing… they're gonna be doing package, they're gonna be doing Weaver Check, and they're gonna be doing Weaver Generate, but they might not be doing Resolve.
-It's just Resolve is part of the debugging flow. So I would say my straw man for now,
-would be… Let's focus on getting Weaver Registry Package right.
+It's just Resolve is part of the debugging flow. So I would say my straw man for now, would be… Let's focus on getting Weaver Registry Package right.
 We can move Resolve to default to resolve schema, but, let's have a flag.
 To have it output… Forge schema?
 And update debugging.
-docs to use this flag, because I think we put together some, like, how to use Weaver docs that show,
-how to, like, generate the schema and then put it into, like, the JQ playground, the Rego playground, that kind of thing. And we can… I don't want to break those, so I think we still need to output the Ford schema somewhere. And if we move away from Resolve, you actually can't get it out easily.
+docs to use this flag, because I think we put together some, like, how to use Weaver docs that show, how to, like, generate the schema and then put it into, like, the JQ playground, the Rego playground, that kind of thing. And we can… I don't want to break those, so I think we still need to output the Ford schema somewhere. And if we move away from Resolve, you actually can't get it out easily.
 So, how's that sound?
 Liudmila Molkova 00:49:33 I… I… I support deprecating the result, because it produces forged schema.
 And it's, exciting. I was not able to produce resolved schema today at all.
@@ -500,12 +424,9 @@ Who is deprecated.
 Jeremy Blythe 00:49:55 It makes sense to me that… Generate is about Forge.
 And package is about… The other format.
 Josh Suereth 00:50:08 Result, yeah, yeah.
-Jeremy Blythe 00:50:09 the result… the package is about the resolve format. It was generators about the…
-forge format. And in actual fact, I think maybe I need to do a bit more work, but if we go down that route, if we use the output processor in generate, which it does…
-And you just choose YAML.
+Jeremy Blythe 00:50:09 the result… the package is about the resolve format. It was generators about the… forge format. And in actual fact, I think maybe I need to do a bit more work, but if we go down that route, if we use the output processor in generate, which it does… And you just choose YAML.
 you'll get forged.
-Josh Suereth 00:50:36 Okay, that makes sense. So I think…
-Alright, so instead of that, let's just deprecate Resolve.
+Josh Suereth 00:50:36 Okay, that makes sense. So I think… Alright, so instead of that, let's just deprecate Resolve.
 And add a flag… for now.
 To output, resolved schema.
 Not Forbes. So, we're not gonna break users now.
@@ -543,16 +464,13 @@ ariannavespri 00:53:34 Oh, that's a… I mean, that's good news on the… on the
 Josh Suereth 00:53:42 Yeah, native TLS was not able to be compiled under code coverage because of some shenanigans they have in their code. Not… that's not totally unrelated to your PR, that's something we'll have to investigate.
 ariannavespri 00:53:57 Okay, that's great.
 Josh Suereth 00:53:59 Yeah.
-ariannavespri 00:54:00 I'm not so great, but I mean, it's like…
-yeah, I feel relieved, at least on my part of responsibility.
+ariannavespri 00:54:00 I'm not so great, but I mean, it's like… yeah, I feel relieved, at least on my part of responsibility.
 Josh Suereth 00:54:08 Yeah, in fact, if we look at, it's not just your commits.
-whatever you ask Copilot to do, I mean, look, every… everyone's failing. That particular check, it's… it's…
-Starting to fail, so there must have been some change that broke recently.
+whatever you ask Copilot to do, I mean, look, every… everyone's failing. That particular check, it's… it's… Starting to fail, so there must have been some change that broke recently.
 Yay!
 Liudmila Molkova 00:54:28 Cool.
 Josh Suereth 00:54:30 Alright.
-where did I have the project plan? Here we go. So, I think to consider for next release,
-I want to add the things that we just talked about. So, first off, I'm going to make, just an item, which was, deprecate.
+where did I have the project plan? Here we go. So, I think to consider for next release, I want to add the things that we just talked about. So, first off, I'm going to make, just an item, which was, deprecate.
 Weaver result.
 Right?
 Oh, God.
@@ -582,21 +500,17 @@ Yeah, do you want to tag me on that one while you've got the mouse?
 Josh Suereth 00:57:09 Yep.
 Assign myself, assign co-pilot, assign… Jere… Bam.
 Okay.
-And then…
-Yeah, those, those are all not it. I want to get your PRs, Lyudmila, into here for next week.
+And then… Yeah, those, those are all not it. I want to get your PRs, Lyudmila, into here for next week.
 Liudmila Molkova 00:57:31 I'm letting them.
-Josh Suereth 00:57:32 Okay, good. And then, if there's anything else we want to make sure that we have, let's get it on here, because I think the next release is going to be a pretty good one. Not quite ready to market a full preview of V2, because we don't have this ref stuff, so I think what…
-I'm gonna assign this to myself, but if somebody else wants to work on it, feel free to take it. This is just… we need to get, refinements in the V2 syntax.
-And,
-Yeah, I started working on it, but I haven't had a chance to finish. There's a lot more craziness than I expected there.
+Josh Suereth 00:57:32 Okay, good. And then, if there's anything else we want to make sure that we have, let's get it on here, because I think the next release is going to be a pretty good one. Not quite ready to market a full preview of V2, because we don't have this ref stuff, so I think what… I'm gonna assign this to myself, but if somebody else wants to work on it, feel free to take it. This is just… we need to get, refinements in the V2 syntax.
+And, Yeah, I started working on it, but I haven't had a chance to finish. There's a lot more craziness than I expected there.
 Manifest renames. I'm gonna move this just into next release, Lyudmilla.
 Liudmila Molkova 00:58:13 Oh, okay.
 Josh Suereth 00:58:14 Yeah. Same with this one.
 Because I think we're going to block the release until those are merged. This one is a maybe. Anything else in the last 2 minutes that we think we absolutely need for the next release here?
 Jeremy Blythe 00:58:27 What are we doing about publishing… Schemas. JSON schemas.
 Josh Suereth 00:58:35 I haven't…
-Liudmila Molkova 00:58:35 PR for it, with Docs, Docs updates,
-They are stacked on top of my changes in these PRs.
+Liudmila Molkova 00:58:35 PR for it, with Docs, Docs updates, They are stacked on top of my changes in these PRs.
 So it would be once they are merged, it would be trivial to just document the schemas.
 Jeremy Blythe 00:58:51 So that… are we going to keep them in the schemas directory in Weaver, where we have… SimConf.
 Are we gonna put them all in there?
@@ -607,17 +521,14 @@ Jeremy Blythe 00:59:20 What do you think?
 Josh Suereth 00:59:21 I think that's what you were getting at, Jeremy.
 Jeremy Blythe 00:59:23 Yep.
 Josh Suereth 00:59:24 Yeah.
-Jeremy Blythe 00:59:25 Yeah, I was doing some stuff with V2,
-I mean, I can't make my VS Code draw squiggly lines when I get it wrong.
+Jeremy Blythe 00:59:25 Yeah, I was doing some stuff with V2, I mean, I can't make my VS Code draw squiggly lines when I get it wrong.
 Because I don't have the… DENCOM Group.
 JSON schema, because I wanted the version thing, so you have to have some kind of group.
 Josh Suereth 00:59:43 Yeah.
 Jeremy Blythe 00:59:44 So I made one, and I tagged it in the file, and then it's… and then I get a squibbly line, so it's great.
 So that workflow is actually really nice.
 Josh Suereth 00:59:55 Yeah.
-Okay, I think… I think that should be an item. Do you… I'm gonna put that into consider for next release, just because I don't know…
-If we'll be able to get to it. So that would be, Figure…
-add CI CD slash postmit up to regenerate.
+Okay, I think… I think that should be an item. Do you… I'm gonna put that into consider for next release, just because I don't know… If we'll be able to get to it. So that would be, Figure… add CI CD slash postmit up to regenerate.
 published JSON's emails using the latest Weaver.
 And I'm gonna make that be a draft. Okay.
 All right. I'm going to… remember, we had multi-registry documentation with Schema V2 format, I'm going to also put it into consider for next release.

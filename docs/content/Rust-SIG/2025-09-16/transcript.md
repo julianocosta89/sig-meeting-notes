@@ -15,14 +15,9 @@ Which one of you was that?
 **BA Björn Antonsson** 05:35 That's me. Of course.
 **Scott Gerring** 05:37 It's always you.
 **BA Björn Antonsson** 05:39 Yes, when it's tracing open telemetry, it's always me. So I'm trying to clean up the fields and the methods in the span builder.
-And, of course,
-I can't run LIN, because the, the OpenTelemetry appended Tracing is including the old…
-tracing OpenTelemetry Create, which uses fields which don't exist, because I just removed them.
-Even though I can…
-I can compile the main branch of that project with my changes, because, yeah, that works.
-So, I mean, I don't know how to proceed. I can't open a PR,
-Because I can't depend on, on, on, the bike…
-the OpenTelemetry appended Tracing Create can't depend on anything that's not been released yet.
+And, of course, I can't run LIN, because the, the OpenTelemetry appended Tracing is including the old… tracing OpenTelemetry Create, which uses fields which don't exist, because I just removed them.
+Even though I can… I can compile the main branch of that project with my changes, because, yeah, that works.
+So, I mean, I don't know how to proceed. I can't open a PR, Because I can't depend on, on, on, the bike… the OpenTelemetry appended Tracing Create can't depend on anything that's not been released yet.
 when we do a release. I mean, I don't know why it's in there. I said that before. It shouldn't be.
 Or we should just have a tracing OpenTelemetry bridge inside OpenTelemetry as well, so we can do all the changes ourselves.
 At the same time, but… Yeah, that's where I'm at.
@@ -38,14 +33,11 @@ I guess they're waiting for a new.
 **Scott Gerring** 07:45 OpenTelemetry release.
 **BA Björn Antonsson** 07:47 Yeah.
 **Scott Gerring** 07:49 Yeah, and you're trying to do the interface cleanup on the span builder, hey, that's got that long-running ticket open?
-**BA Björn Antonsson** 07:54 Yes, exactly. And it's also interesting because, I mean, there are things being done in the appender that won't… that you can't do anymore, since some of the data it's pulling out is now…
-Not public.
+**BA Björn Antonsson** 07:54 Yes, exactly. And it's also interesting because, I mean, there are things being done in the appender that won't… that you can't do anymore, since some of the data it's pulling out is now… Not public.
 After the changes that… that I did.
 And the changes that, blood I wanted.
-**Scott Gerring** 08:24 I'm still…
-and this is probably just because I've lost context a lot, the existence of the two different bridges still confuses me a bit.
-**BA Björn Antonsson** 08:35 Yeah, I think so as well. I think there should be one…
-one layer with features for all the different things. You can turn on and off whatever you want.
+**Scott Gerring** 08:24 I'm still… and this is probably just because I've lost context a lot, the existence of the two different bridges still confuses me a bit.
+**BA Björn Antonsson** 08:35 Yeah, I think so as well. I think there should be one… one layer with features for all the different things. You can turn on and off whatever you want.
 **Scott Gerring** 08:47 That would certainly be a bit more intuitive.
 And it would be easier if it had the same release lifecycle as OpenTelemetry itself, huh?
 **BA Björn Antonsson** 08:56 Yeah.
@@ -68,11 +60,8 @@ Probably worth flagging it there and hoping that we end up with him on one of th
 1988 to 6.
 I'll write something.
 **Scott Gerring** 10:03 Cool.
-Well, that's that one not dealt with. The thing I wanted to speak about briefly was that
-we probably should do a better job at issue and PR triage, I think. There's just a lot that is open effectively forever, and hasn't even really had, kind of, like, basic tag.
-triage done over the top of it, I think it would probably be in everyone's interests, including the communities
-to kind of burn through all of that as a priority, but I think it's probably also something that needs a bit of buy-in from
-the Microsoft folk.
+Well, that's that one not dealt with. The thing I wanted to speak about briefly was that we probably should do a better job at issue and PR triage, I think. There's just a lot that is open effectively forever, and hasn't even really had, kind of, like, basic tag.
+triage done over the top of it, I think it would probably be in everyone's interests, including the communities to kind of burn through all of that as a priority, but I think it's probably also something that needs a bit of buy-in from the Microsoft folk.
 What do you all think about that?
 I take silence to mean everyone feels not very strongly about triaging things.
 **Paul Le Grand des Cloizeaux** 11:02 Honestly, as someone who opens issues.
@@ -81,10 +70,8 @@ Or an approver, or anything. Probably that would be a good idea.
 But, yeah.
 I don't have any strong opinion.
 **Scott Gerring** 11:23 Yeah, fair enough.
-it's very hard for me to see the wood for the trees, like, there's a lot of stuff that ends up left open because of some kind of implicit context, like, oh yeah, Scott will actually
-pick this up again in the future for whatnot. But again, yeah, there's probably not much to be done with it, apart from talking to CJO and the Microsoft folks and working out.
-What their mental model is in trying to…
-Kind of hone in on that.
+it's very hard for me to see the wood for the trees, like, there's a lot of stuff that ends up left open because of some kind of implicit context, like, oh yeah, Scott will actually pick this up again in the future for whatnot. But again, yeah, there's probably not much to be done with it, apart from talking to CJO and the Microsoft folks and working out.
+What their mental model is in trying to… Kind of hone in on that.
 **Paul Le Grand des Cloizeaux** 11:50 Yep.
 **Scott Gerring** 11:58 Oops.
 **Paul Le Grand des Cloizeaux** 11:59 Hmm…
@@ -104,14 +91,11 @@ And then those of us in the maintenance group can think a bit about what's curre
 **Scott Gerring** 13:36 Paul, how are you going these days?
 **Paul Le Grand des Cloizeaux** 13:38 Good, good, good, good.
 I haven't come in a while. I still… I think I still have some PRs open, right? The span processor reflector.
-I guess, know that the minor release
-Has been done, right? The 0.30.1.
+I guess, know that the minor release Has been done, right? The 0.30.1.
 I've seen tags… Things being tagged, no?
 **Scott Gerring** 14:04 I am a bit out of touch with the last release, to be honest. I've started missing these because of, family things, so I'm not quite sure.
 **Paul Le Grand des Cloizeaux** 14:11 Yeah, you've got two that have been opened for Yonks.
-Yeah, yeah, no, actually, the old 13th one hasn't been released. Well, anyway…
-What we said about them was that we would wait for the next breaking…
-release, the next, major release to merge them, and so, yeah.
+Yeah, yeah, no, actually, the old 13th one hasn't been released. Well, anyway… What we said about them was that we would wait for the next breaking… release, the next, major release to merge them, and so, yeah.
 **Scott Gerring** 14:36 I think they both need rebasing at this point. The second one certainly does.
 **Paul Le Grand des Cloizeaux** 14:43 Mostly. Of course, of course.
 But, but yeah, honestly… I am neutron.
@@ -121,14 +105,9 @@ Release 2025, September 11. Oh, actually, they only released OpenTelemetry Proto
 Interesting.
 But yeah, it's been a while since I've been here, since I've come to the Sikh, so… I'm not up to date with it.
 Thanks.
-**Scott Gerring** 15:34 Yeah. Yeah, let's…
-maybe worth raising it in the meeting notes as well, and then we can ping it up to CJ so that he's kind of aware that there's a bunch of stuff that's…
-Open, that would be good to get in.
-**Paul Le Grand des Cloizeaux** 15:49 Mmm… I think… I think so…
-Tell me, Bjorn, I think Igor also opened…
-a PR or an issue recently.
-**BA Björn Antonsson** 16:04 Yes, he opened a pretty small PR to be able to…
-Iterate over parts of the tray state.
+**Scott Gerring** 15:34 Yeah. Yeah, let's… maybe worth raising it in the meeting notes as well, and then we can ping it up to CJ so that he's kind of aware that there's a bunch of stuff that's… Open, that would be good to get in.
+**Paul Le Grand des Cloizeaux** 15:49 Mmm… I think… I think so… Tell me, Bjorn, I think Igor also opened… a PR or an issue recently.
+**BA Björn Antonsson** 16:04 Yes, he opened a pretty small PR to be able to… Iterate over parts of the tray state.
 We're not doing copies, I think, so…
 **Paul Le Grand des Cloizeaux** 16:20 And I, like… Us to be able to get, keys and resources without having to copy them.
 I mean, to copy them, so that's, like, two small API changes or additions.

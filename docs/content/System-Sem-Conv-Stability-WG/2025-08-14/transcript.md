@@ -14,52 +14,35 @@ Hello.
 Alright, I guess we can get started.
 **Roger Coll** 03:46 Yeah.
 I'll say that.
-I think I just added one topic. It will be very quick, but I…
-Start working on some of the…
-issues, or PRs blocking the GA, and just created a PR for, …
-for this issue, that it was to rename the system network drop to SystemNetwork.packet.dropped, and I think that…
-A few months ago, we agreed on…
-Not having it, in the system. namespace, sorry.
-But, as I was mentioning in this
-commit, I think that, … okay, I see that Pablo meant it out, but, that we reverted that decision of having, let's say, non-white
-area metrics, for example, we did that for the CPU, that we reverted the….
+I think I just added one topic. It will be very quick, but I… Start working on some of the… issues, or PRs blocking the GA, and just created a PR for, … for this issue, that it was to rename the system network drop to SystemNetwork.packet.dropped, and I think that… A few months ago, we agreed on… Not having it, in the system. namespace, sorry.
+But, as I was mentioning in this commit, I think that, … okay, I see that Pablo meant it out, but, that we reverted that decision of having, let's say, non-white area metrics, for example, we did that for the CPU, that we reverted the….
 **Braydon Kains** 04:46 Oh, yeah.
-**Roger Coll** 04:47 Moving from CPU to system, so…
-Yeah, in the PR that I just made, I kept the system namespace.
-So, if you agree, please… Take a look…
-And another comment that I wanted to do… Is that also you?
+**Roger Coll** 04:47 Moving from CPU to system, so… Yeah, in the PR that I just made, I kept the system namespace.
+So, if you agree, please… Take a look… And another comment that I wanted to do… Is that also you?
 We're, let's say, suggesting Moving the metric system.network.packets to, packets.received.
 And it looks like it has an attribute, this metric, that is the network I.O. direction.
 That actually defines if it's either, let's say, received or transmit.
 **Braydon Kains** 05:34 Right. So….
 **Roger Coll** 05:35 I don't know if this affects anymore, you remember the context of that, or….
-**Braydon Kains** 05:42 It's coming back to me now, and I think… …
-I think you're right that the… Packets.received.
-is probably not the right choice because of that. The main thing I was trying to…
-Figure out is this whole, like, clash of… of, …
-metric namespaces to metric names, where, like, if we have… if we have packets.dro… or, sorry, we… you don't pluralize namespaces, so if it was packet.dropped.
+**Braydon Kains** 05:42 It's coming back to me now, and I think… … I think you're right that the… Packets.received.
+is probably not the right choice because of that. The main thing I was trying to… Figure out is this whole, like, clash of… of, … metric namespaces to metric names, where, like, if we have… if we have packets.dro… or, sorry, we… you don't pluralize namespaces, so if it was packet.dropped.
 And then you also had system.network.packet. I guess you'd need it to be count, or something.
 This is .network.packet.count.
 **Roger Coll** 06:22 I see. Yeah.
 I see. Let me check the metrics, because maybe we'll have something similar already.
-Yeah, so we have system.network packets that it's, as you mentioned, a counter, it's not count, but I think this is still valid, right, with the…
-Definition having the plural for counters.
+Yeah, so we have system.network packets that it's, as you mentioned, a counter, it's not count, but I think this is still valid, right, with the… Definition having the plural for counters.
 Yeah.
 **Braydon Kains** 06:49 Wait.
 **Roger Coll** 06:49 Yep.
-**Braydon Kains** 06:50 I think they… I think we've, like, changed the guidance recently to be more specific, like, just don't pluralize metric names in general, so maybe we need to…
-Re-evaluate some of these.
-**Roger Coll** 07:03 Yes, I think I read it a few hours ago, and my understanding was that, seeing it…
-It's visible, it's visible, this thing, but I… Can take a look.
+**Braydon Kains** 06:50 I think they… I think we've, like, changed the guidance recently to be more specific, like, just don't pluralize metric names in general, so maybe we need to… Re-evaluate some of these.
+**Roger Coll** 07:03 Yes, I think I read it a few hours ago, and my understanding was that, seeing it… It's visible, it's visible, this thing, but I… Can take a look.
 We can take a look at the guides. Yeah, this one.
 **Braydon Kains** 07:24 Yep.
-**Roger Coll** 07:26 You know, guidance…
-So yeah, here it basically says system network packets should be parallelized, even if there's just a single data point is recorded.
+**Roger Coll** 07:26 You know, guidance… So yeah, here it basically says system network packets should be parallelized, even if there's just a single data point is recorded.
 So it looks like this one is….
 **Braydon Kains** 07:42 Oh, okay, yeah, in this case, yeah, yeah.
 **Roger Coll** 07:45 Or at least we are recommending it here.
-**Braydon Kains** 07:47 So, I think the only way to…
-to name it around this guidance would be system.network.dropped underscore packets, maybe? But that feels bad, too.
+**Braydon Kains** 07:47 So, I think the only way to… to name it around this guidance would be system.network.dropped underscore packets, maybe? But that feels bad, too.
 Oh, good.
 **Roger Coll** 08:02 I see, yeah.
 That's right.
@@ -77,8 +60,7 @@ which… I don't know what's the difference at the moment, because.
 Yeah, yeah, yeah.
 **Braydon Kains** 09:01 wisdom.network.io.
 **Roger Coll** 09:04 Yeah.
-**Braydon Kains** 09:04 I think both of these… accounts come from the ProcNet
-whatever the file entry for the device in ProcFS, if I remember correctly.
+**Braydon Kains** 09:04 I think both of these… accounts come from the ProcNet whatever the file entry for the device in ProcFS, if I remember correctly.
 **Roger Coll** 09:14 Okay.
 Okay.
 **Braydon Kains** 09:16 I might not be remembering correctly, I haven't looked at this in a while.
@@ -91,18 +73,13 @@ And be part of system.network of packets.
 Maybe.
 **Roger Coll** 09:59 Yeah.
 **Braydon Kains** 10:00 It's like, we would have to make the metric harder to use just to follow the naming rule.
-**Roger Coll** 10:13 Yeah, the good thing is that with the… if it's an attribute, then we could make…
-Make it opt-in, the attribute, and by default, just provide the…
-Aggregated of dropped plus accepted, that it would be the current System.network.packets, and then you could…
-just opt in to enable the, I don't know, system.network.
+**Roger Coll** 10:13 Yeah, the good thing is that with the… if it's an attribute, then we could make… Make it opt-in, the attribute, and by default, just provide the… Aggregated of dropped plus accepted, that it would be the current System.network.packets, and then you could… just opt in to enable the, I don't know, system.network.
 **Braydon Kains** 10:39 Hmm.
 **Roger Coll** 10:40 Packet state, or… Something like that.
-**Braydon Kains** 10:44 I… I don't remember if… this value from…
-from Proc DevNet is including the dropped packets or not.
+**Braydon Kains** 10:44 I… I don't remember if… this value from… from Proc DevNet is including the dropped packets or not.
 I need to look at the main page again.
 **Pablo Baeyens** 11:03 Wait, not proc pin.
-**Braydon Kains** 11:15 Network to… So… I… aw, man, I can't… this doesn't say…
-packet, what the packets column means in the man page.
+**Braydon Kains** 11:15 Network to… So… I… aw, man, I can't… this doesn't say… packet, what the packets column means in the man page.
 **Pablo Baeyens** 11:28 And you click on the… there was a link, next to the… prop.net, or maybe there.
 **Braydon Kains** 11:35 Oh, yeah, actually there was in the drop column in Proc DevNet.
 Of course, sir.
@@ -124,8 +101,7 @@ It's… some, like, blog post.
 **Roger Coll** 12:53 Yeah, so you have multiple… Multiple states, you have errors dropped.
 **Braydon Kains** 13:04 Yeah, and it's… it's not quite….
 **Roger Coll** 13:07 comparisons.
-**Braydon Kains** 13:08 Not quite clear to me, …
-whether packets is… because for one thing, packets is also… … Sent and received?
+**Braydon Kains** 13:08 Not quite clear to me, … whether packets is… because for one thing, packets is also… … Sent and received?
 Or, no, okay, sorry, there's two sections. There's a receive and.
 **Roger Coll** 13:23 Yeah, exactly.
 **Braydon Kains** 13:24 Okay, I, okay, okay.
@@ -153,9 +129,7 @@ Hmm.
 **Roger Coll** 14:45 Huh.
 But what I think is that we also have a metric for network errors, so probably it should be… look really similar to the dropped one.
 **Braydon Kains** 14:56 Yeah. Yeah, I think I… it seems like it's mostly because, like, these are just, like, mapping directly to what's in this file.
-Error… errors, and dropped, and… …
-It doesn't look like we take frame, compressed, and multicast, but the other ones are, like…
-I see.
+Error… errors, and dropped, and… … It doesn't look like we take frame, compressed, and multicast, but the other ones are, like… I see.
 **Roger Coll** 15:23 Hmm.
 **Braydon Kains** 15:27 Mmm, I might… we might need to think about this one a bit.
 **Roger Coll** 15:30 Yeah.
@@ -177,57 +151,37 @@ Sounds good.
 Yeah, well….
 **Braydon Kains** 16:15 Excuse me.
 **Roger Coll** 16:18 Nope.
-**Braydon Kains** 16:21 My topic is about the…
-the PRs that James Thompson posted in our…
-in our channel, the OS property one.
+**Braydon Kains** 16:21 My topic is about the… the PRs that James Thompson posted in our… in our channel, the OS property one.
 … At the moment, I'm kinda skeptical.
-One of the main changes… That he's proposing, is that… the OS type is… like…
-essentially merged into just, like, being, like, Windows Unix.
-Or whatever the last one is, and then, like, that means…
-like, Linux and macOS and BSD and all these ones are now just, like, the Unix OS type.
+One of the main changes… That he's proposing, is that… the OS type is… like… essentially merged into just, like, being, like, Windows Unix.
+Or whatever the last one is, and then, like, that means… like, Linux and macOS and BSD and all these ones are now just, like, the Unix OS type.
 **Roger Coll** 17:08 Hmm. ….
 **Braydon Kains** 17:10 I don't agree with that, because it doesn't feel… it feels way too restrictive. Like, even if… it's one of those things where, like, yes, it's technically correct that Linux and BSD and whatever, they're all Unixes.
 But if I'm talking about, like, is this attribute useful?
-Not… not really. Not if all of my… all of these would be the same OS type of Unix. Like, if you have to look at the family to get any useful information, then why does this attribute exist? That's…
-Like, just to differentiate Unix from Windows, I guess.
+Not… not really. Not if all of my… all of these would be the same OS type of Unix. Like, if you have to look at the family to get any useful information, then why does this attribute exist? That's… Like, just to differentiate Unix from Windows, I guess.
 **Roger Coll** 17:48 I agree, I think, on this.
 statement about… Whoop.
 actual value groups. Yeah, Unix for macOS and all the other stuff.
-**Braydon Kains** 17:59 Yeah. I think, like, part of what the PR does is, like, get rid of all the different BSD variants and just…
-We could… but I think, like, and just call them all BSD, I think that's fine. And then the os.family would be where you'd get, like, is it FreeBSD, or Dragonfly, or whatever the fuck?
+**Braydon Kains** 17:59 Yeah. I think, like, part of what the PR does is, like, get rid of all the different BSD variants and just… We could… but I think, like, and just call them all BSD, I think that's fine. And then the os.family would be where you'd get, like, is it FreeBSD, or Dragonfly, or whatever the fuck?
 **Roger Coll** 18:18 Okay… And then what do you have for OS type is just Unix… and Windows, or….
-**Braydon Kains** 18:28 Like, the way I think it should be is, like, the OS type should be, like, Windows, Darwin, Linux, BSD,
-And, like, mainframe, or whatever, ZOS, whatever it's called.
-And then…
-the OS family would have, like… is it… if it's… you see the OS type of Linux, and then you see it's, like, Ubuntu and the OS. family.
+**Braydon Kains** 18:28 Like, the way I think it should be is, like, the OS type should be, like, Windows, Darwin, Linux, BSD, And, like, mainframe, or whatever, ZOS, whatever it's called.
+And then… the OS family would have, like… is it… if it's… you see the OS type of Linux, and then you see it's, like, Ubuntu and the OS. family.
 **Roger Coll** 18:51 I see.
 **Braydon Kains** 18:52 Or fedora, or rail, or….
 **Roger Coll** 18:56 Yeah.
 Okay.
-**Braydon Kains** 18:59 I think that's more useful, like…
-I, I also am not sure I… understand…
-like, I guess for OS type.
-like, logically, if you… you would aggregate OS type if, like, you had a bunch of VMs and you wanted to
-get all of your Linux VMs.
-Or all of your Windows VMs, and so you'd use OS type to figure that out. But in that case, like, I think…
-The logical way most users would think about it is that
-like, Linux is distinct from BST, and thus the os.type
-becomes less useful because of how many things are squashed into Unix.
-**Pablo Baeyens** 19:48 Yeah, I also feel like we should be conservative with the values that we add, like…
-I don't see the point of using… of adding Wasam if there's…
-I'm even skeptical that it wasn't concept internal as an operating system, but, like, I wouldn't add it if there's no concrete use case of, like, we're going to use it for this.
-**Braydon Kains** 20:08 Yeah, like, that one, I could… I could maybe… I see WASM as, like, a runtime, like, if a WASM process was running on a VM, you wouldn't…
-Or, like, think of, like, a Java process. You'd call it a Java process running on a Windows machine, not a Java process running on the JVM.
+**Braydon Kains** 18:59 I think that's more useful, like… I, I also am not sure I… understand… like, I guess for OS type.
+like, logically, if you… you would aggregate OS type if, like, you had a bunch of VMs and you wanted to get all of your Linux VMs.
+Or all of your Windows VMs, and so you'd use OS type to figure that out. But in that case, like, I think… The logical way most users would think about it is that like, Linux is distinct from BST, and thus the os.type becomes less useful because of how many things are squashed into Unix.
+**Pablo Baeyens** 19:48 Yeah, I also feel like we should be conservative with the values that we add, like… I don't see the point of using… of adding Wasam if there's… I'm even skeptical that it wasn't concept internal as an operating system, but, like, I wouldn't add it if there's no concrete use case of, like, we're going to use it for this.
+**Braydon Kains** 20:08 Yeah, like, that one, I could… I could maybe… I see WASM as, like, a runtime, like, if a WASM process was running on a VM, you wouldn't… Or, like, think of, like, a Java process. You'd call it a Java process running on a Windows machine, not a Java process running on the JVM.
 That's kind of the relationship I see.
 I guess there's these, like, WASM platforms, like this Hyperlite one that he linked.
 In that case.
-**Pablo Baeyens** 20:37 But is that a… I'm… Establishing op thing for us to…
-commit to supporting this forever? I don't know.
+**Pablo Baeyens** 20:37 But is that a… I'm… Establishing op thing for us to… commit to supporting this forever? I don't know.
 **Braydon Kains** 20:45 That's a… that's, like, a good point. I would, like, I would wager probably not.
 **Pablo Baeyens** 20:52 I also… I don't know what… industrial training.
-**Braydon Kains** 20:55 I've never heard of it in my life. But it also looks like, …
-And maybe this is… maybe this is telling in some way, but, like, it looks like, …
-they matched the values to basically exactly what comes out of this Rust standard library thing.
+**Braydon Kains** 20:55 I've never heard of it in my life. But it also looks like, … And maybe this is… maybe this is telling in some way, but, like, it looks like, … they matched the values to basically exactly what comes out of this Rust standard library thing.
 Which I don't think is a definitive enough reason for us to… to choose it. Like… like, he also wants to change Windows NT… Windows to Windows NT.
 But… why? Like, Windows… Gives you the same information.
 **Pablo Baeyens** 21:33 Yeah.
@@ -249,21 +203,15 @@ So yeah, I think I'm gonna… I'm gonna put my foot down about the Windows and U
 **Braydon Kains** 22:49 I think… and then the other one was adding more OS attributes based on the OS release file.
 Which… I agree with in principle, but the thing I'm worried about is that, like.
 some of these things, like, if you're on Linux, these things are very obviously pulled from very specific things in OS release, but then getting the same information on a non-Linux platform is kind of unclear. Like, what should OS.ID actually be on Windows?
-or ID, like, ID-like, like, these things don't have, like, exact equivalents in other platforms, and…
-the instructions only… in the PR only say how to get it on Linux.
-so I'd be a bit confused if I, like, if I was a resource detection implementer trying to…
-do OS resource detection and using these conventions, I would be very confused on what to say if I was in another platform.
-So that was… that was mostly what my review said, and… … I would recommend
-looking at the PR as well, since…
-it's… it's a pretty major shake-up. I think the OS attributes actually does need it, so we can work with what… what's there, but I think we should.
+or ID, like, ID-like, like, these things don't have, like, exact equivalents in other platforms, and… the instructions only… in the PR only say how to get it on Linux.
+so I'd be a bit confused if I, like, if I was a resource detection implementer trying to… do OS resource detection and using these conventions, I would be very confused on what to say if I was in another platform.
+So that was… that was mostly what my review said, and… … I would recommend looking at the PR as well, since… it's… it's a pretty major shake-up. I think the OS attributes actually does need it, so we can work with what… what's there, but I think we should.
 Refine it a fair bit more.
 **Pablo Baeyens** 24:15 I'll… Leave something in support of what you're saying.
 **Braydon Kains** 24:20 Sounds good.
-that was the only topic I had. Since I've been… I've been out for a while, I haven't…
-Had much progress on other system stuff.
+that was the only topic I had. Since I've been… I've been out for a while, I haven't… Had much progress on other system stuff.
 **Roger Coll** 24:40 Okay, thank you.
-**Braydon Kains** 24:43 Maybe worth noting as well that I just entered a double on-call shift, so I'm also, like…
-reduced… reduced capacity, like, I'll basically only be taking, like, reviews, like.
+**Braydon Kains** 24:43 Maybe worth noting as well that I just entered a double on-call shift, so I'm also, like… reduced… reduced capacity, like, I'll basically only be taking, like, reviews, like.
 collector reviews and SEMCOMF reviews for the next, probably, couple weeks.
 **Pablo Baeyens** 25:02 Good luck with that.
 **Roger Coll** 25:03 Yeah, thank you.

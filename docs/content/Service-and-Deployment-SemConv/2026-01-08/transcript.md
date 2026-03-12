@@ -32,39 +32,30 @@ I hope you can see the screen, right?
 **Yoshi Yamaguchi** 06:42 Yeah, makes sense. That sounds good.
 **Janhvi** 06:44 Okay, okay, sounds good. So, December 4th is when I met, the US folks, last time. After that, even they went on vacation, so we didn't have, any meetings. The next meeting with them is going to have next week, so this is the first meeting for this year that we are having.
 Broadly, I think we discussed about criticality. I don't know if you've gotten a chance to look at this PR or not. If not, please do take a look at it. Okay, you did.
-**Yoshi Yamaguchi** 07:12 Yeah, I did it, and I did it, and I, I agree with the opinion to put the criticality under… directly under the service, because it's a kind of logical… so the criticality itself is the logical…
-like…
-it's tied to the logical component, so it should… it doesn't… I believe it doesn't fit to,
-service.instances, because instances is just a female, part of, the service. So, yeah, so I, I, I, I think I should… we should put, a critical directory under the service.
+**Yoshi Yamaguchi** 07:12 Yeah, I did it, and I did it, and I, I agree with the opinion to put the criticality under… directly under the service, because it's a kind of logical… so the criticality itself is the logical… like… it's tied to the logical component, so it should… it doesn't… I believe it doesn't fit to, service.instances, because instances is just a female, part of, the service. So, yeah, so I, I, I, I think I should… we should put, a critical directory under the service.
 **Janhvi** 07:54 Yeah, I agree too. This is what we also discussed, that this makes sense, to have it in this namespace, and it goes with that logical overall, component, not just one specific instance or live running instance of that service or resource.
 I'm just taking a quick look at the PR to see where we are at.
 **Yoshi Yamaguchi** 08:15 Yeah, I think, as far as I read the PL, so the request, there, the request made here is to eliminate the unnecessary content that is not relevant to the… this issue itself, so…
 **Janhvi** 08:30 Yeah.
 **Yoshi Yamaguchi** 08:31 And then that is… yeah, and then the review is blocked because of the vacation season, so… yeah.
-**Janhvi** 08:37 Makes sense. I think I'll, ping Bhaktia again, who's the author of the CL on Slack. I think most probably they'd be out because of the vacations. If they're back, I'll ask them to see if they can kind of resolve the comments, and we can take it from there. I think one more thing that we did was…
-So if you see, Ayushi, she's from Google itself, she works with me. I think Josh and Trask had asked to go through
-all the other open source stuff and see if criticality is being used anywhere, what is the naming convention like, what is the usage like, what all definitions are there. So I think she came up with, like, a document for that, just so that we can kind of compare it with other, let's say if it's there in Kubernetes, or any other component, we can just compare it with Hotel and see if what we are doing kind of aligns with that or not.
+**Janhvi** 08:37 Makes sense. I think I'll, ping Bhaktia again, who's the author of the CL on Slack. I think most probably they'd be out because of the vacations. If they're back, I'll ask them to see if they can kind of resolve the comments, and we can take it from there. I think one more thing that we did was… So if you see, Ayushi, she's from Google itself, she works with me. I think Josh and Trask had asked to go through all the other open source stuff and see if criticality is being used anywhere, what is the naming convention like, what is the usage like, what all definitions are there. So I think she came up with, like, a document for that, just so that we can kind of compare it with other, let's say if it's there in Kubernetes, or any other component, we can just compare it with Hotel and see if what we are doing kind of aligns with that or not.
 So, I think in general, criticality… I don't think we were able to find any references in Kubernetes, though, but in general, other than that, there were references in other vendors where criticality is being used, and there are definitive use cases that people have built on criticality. So, definitely makes sense to add criticality there.
 In terms of naming conventions and definitions, I think we can debate if we want the wording to be a bit different. I think every vendor or every downstream service or cloud has their own thing.
 But on a use case basis, I think the TLDR from the doc that she's added here was that this makes sense to have it in hotel as well.
-**Yoshi Yamaguchi** 10:04 Yeah, I agree. As far as I know, the…
-Kubernetes only has the priority to the service, and that is not the… that does not directly express the criticality of the service itself, so I don't know if they have…
-Similar attributes inside a, like, definition of the services, or deployment, or, like, parts, and so on.
+**Yoshi Yamaguchi** 10:04 Yeah, I agree. As far as I know, the… Kubernetes only has the priority to the service, and that is not the… that does not directly express the criticality of the service itself, so I don't know if they have… Similar attributes inside a, like, definition of the services, or deployment, or, like, parts, and so on.
 But, yeah, I agree upon the direction to collect the similar terminologies from other services or products.
 **Janhvi** 10:37 Yeah, yeah. Yeah, I mean, Kubernetes even, we couldn't find anything. We did a lot of research, so we left it there.
 But yeah, yeah, do take a look at the POC doc as well, if you want to just see how is it being used in other places. It's attached in one of the comments in here.
 Alright, okay. So I think an AI on me, I'll ping Waktar and see if we can get this resolved. I think once this is done, then we'll have to see… I see there's already a demo for this in this PR.
 I'm not sure, then, what is… By the way, would you know what is the process of then stabilizing it? Is it, like, a time duration we have to wait for, or is it just getting more prototypes, for this?
-**Yoshi Yamaguchi** 11:23 I'm looking at the… The PR, and then…
-I think the demo is closed.
+**Yoshi Yamaguchi** 11:23 I'm looking at the… The PR, and then… I think the demo is closed.
 **Janhvi** 11:46 Yeah, I think he had created…
 **Yoshi Yamaguchi** 11:50 Yeah, he created it, but because the discussion had stared for a while, it was closed.
 Automatically by the… by the bot, so we need to reopen the…
 **Janhvi** 11:59 reopen it.
 **Yoshi Yamaguchi** 12:00 Reopen it, yeah.
 **Janhvi** 12:02 Yeah, yeah, got it.
-**Yoshi Yamaguchi** 12:04 Yeah, but, yeah, this, yeah, this sounds great. I, I just took a look at the, the, the DR, and then…
-Yeah.
+**Yoshi Yamaguchi** 12:04 Yeah, but, yeah, this, yeah, this sounds great. I, I just took a look at the, the, the DR, and then… Yeah.
 This is really… on fire.
 **Janhvi** 12:17 Would you, I'll also… yeah, I'll also review and approve the PR. If you are good with it, can you also go ahead and please approve it? I think that'll also show that from the SIG, we have alignment.
 I'll just take an AI for both of us to review and approve the PR if you guys… before, obviously, I'll ask Bhaktia to reopen it, but if you guys are good, we can go ahead and approve it.
@@ -78,9 +69,7 @@ All right. Yeah, I think, what I was asking Yoshi, was once this is, let's say, 
 **Yoshi Yamaguchi** 13:52 You know…
 **Janhvi** 13:54 And is there, like, a time window that, we usually wait for?
 To see how is it being used before taking it into the stable mode.
-**Yoshi Yamaguchi** 14:06 Well, the, so… As far as I know, the… the… the status change…
-is made by the, who, the tech… the lead, the governor… not the governance committee, but,
-I forgot the name of the role, but some role has the rights to, yeah, privilege to change the status, so… as long as we don't get the approval from that person, then we don't get the stability key.
+**Yoshi Yamaguchi** 14:06 Well, the, so… As far as I know, the… the… the status change… is made by the, who, the tech… the lead, the governor… not the governance committee, but, I forgot the name of the role, but some role has the rights to, yeah, privilege to change the status, so… as long as we don't get the approval from that person, then we don't get the stability key.
 **Janhvi** 14:40 Okay, okay, sounds.
 **Yoshi Yamaguchi** 14:41 Yeah.
 **Janhvi** 14:42 I'll check.
@@ -89,12 +78,10 @@ I forgot the name of the role, but some role has the rights to, yeah, privilege 
 All right, anything else? Any thoughts, comments on the criticality one? If not, we can move on to the next one.
 **Yoshi Yamaguchi** 14:55 No, I totally agree with the direction.
 **Janhvi** 14:59 Okay.
-Next we were… we had discussed about, service.namespace. So, if you remember, Josh had a PR earlier to kind of change the definitions and some naming for the service.namespace and service.instance.id. That PR, got merged earlier, and then I think last time we discussed how do we…
-stabilize the rest of the stuff, in service, entity. One was service.instance.id, and the other was service.namespace.
+Next we were… we had discussed about, service.namespace. So, if you remember, Josh had a PR earlier to kind of change the definitions and some naming for the service.namespace and service.instance.id. That PR, got merged earlier, and then I think last time we discussed how do we… stabilize the rest of the stuff, in service, entity. One was service.instance.id, and the other was service.namespace.
 So the direction from both, Josh and Chask was, given there is no pushback in general, and this is, like, something that's widely used.
 Let's just go ahead and raise PRs for both of them to stabilize them. We'll keep that open for some time, we'll see how folks feel. If there is no genuine pushback, we can go ahead and stabilize both of them. And if there is a pushback, we'll hear it on the comments itself. So for that, for both of them, so Anav, he's again, he's, he works with me, he's from Google.
-He's raised two PRs. I don't know if he's sent them on Slack or not. Let me just add them in here so that you can also…
-Take a quick look, just give me a sec.
+He's raised two PRs. I don't know if he's sent them on Slack or not. Let me just add them in here so that you can also… Take a quick look, just give me a sec.
 **Yoshi Yamaguchi** 16:15 Yeah, I haven't… I haven't looked at the PL that are made for that.
 **Janhvi** 16:22 Yeah, let me just put them here.
 Again, I should have it.
@@ -114,8 +101,7 @@ When we get that on the comments. But I wanted to hear from you if you have any 
 Sounds good. Yeah, please do review them offline whenever you get time. I'll also review the last to post this on the Slack channel, so that it gets more traction, in the SIG channel that we have on Slack.
 I think more people would be able to see it from there.
 **Yoshi Yamaguchi** 18:45 Is it okay for me to, like, make a comment on draft PRs?
-Or do I, do I, do I… should I, should I wait for… the…
-Like, for it to be, like.
+Or do I, do I, do I… should I, should I wait for… the… Like, for it to be, like.
 **Janhvi** 18:58 No, no, it's okay. I think this is the first time he was doing it. I'll ask him to create, like, a formal PR on the same thing, but go ahead, please add any feedback that you have.
 **Yoshi Yamaguchi** 19:09 Okay.
 **Janhvi** 19:11 Sweet.
@@ -124,20 +110,13 @@ We were discussing, so even, this is, again, one of the attributes that we want 
 and we were trying to see how do we stabilize this. As of now, this is in a development mode, but environment is something that is heavily used across clouds and, across downstreams like Rifana, Datadog, stuff like that. So, I think it makes sense to stabilize it.
 But what, we're trying to see is if we can come up with, like, a one-pager where we write down all the usages of deployment.environment.name, how is it being used, let's say, in Cuban, it is the same thing that we did for criticality, basically. Follow the same process, have a doc, look into usages.
 And then form up a proposal on how we stabilize it. That's the AI we have. I have that, I've not done it, but hopefully in a day or two, I should have that proposal, and I'll send it out for review. And then we'll follow the same process here.
-**Yoshi Yamaguchi** 20:26 Should we reach out to the… the folks,
-in, like, deployment service software communities, such as IowaCD or, like, speedmakers, or any other…
-these type of… Like, these type of services that are directly
-Connected to a deployment process itself.
+**Yoshi Yamaguchi** 20:26 Should we reach out to the… the folks, in, like, deployment service software communities, such as IowaCD or, like, speedmakers, or any other… these type of… Like, these type of services that are directly Connected to a deployment process itself.
 like a CICD.
 **Janhvi** 20:57 Yeah.
 **Yoshi Yamaguchi** 20:58 community people.
 **Janhvi** 21:01 I see. Just to hear feedback from them on how they use it, and the way we've modeled in OTEL, is that the right way of modeling it? Around that, are you saying?
-**Yoshi Yamaguchi** 21:12 Yeah, so the reason why I ask this is because the Kubernetes or other runtime services are just the result of the deployment, and then…
-I… I'm sure… I'm not sure if…
-Kubernetes or other runtime services are aware of these type of standardization much.
-So, and then DevOps people are always about… they are always talking about deployment, a lot. Like, CICD, and then…
-Yeah, it would be great if he can…
-Get the insights from those, kind of.
+**Yoshi Yamaguchi** 21:12 Yeah, so the reason why I ask this is because the Kubernetes or other runtime services are just the result of the deployment, and then… I… I'm sure… I'm not sure if… Kubernetes or other runtime services are aware of these type of standardization much.
+So, and then DevOps people are always about… they are always talking about deployment, a lot. Like, CICD, and then… Yeah, it would be great if he can… Get the insights from those, kind of.
 **Janhvi** 21:49 Bye.
 **Yoshi Yamaguchi** 21:52 From people who are… Focusing on the process of deployment.
 **Janhvi** 21:57 Hmm.
@@ -149,29 +128,21 @@ About these kind of topics.
 **Janhvi** 22:16 I see. Would you, by any chance, have, like, contacts of them? Who should we reach out to? Who should be the first point of contact?
 **Yoshi Yamaguchi** 22:24 Yes. Well, the problem here is that, as you are aware of, except for Kubernetes, we don't have much contributors to the, the project themselves, like.
 **Janhvi** 22:36 Hmm.
-**Yoshi Yamaguchi** 22:37 So we… so most of the Japanese developers are just the use…
-just users of these OSS. So, yeah, so I know some folks who are really, who are really good at
-using… Those kind of.
+**Yoshi Yamaguchi** 22:37 So we… so most of the Japanese developers are just the use… just users of these OSS. So, yeah, so I know some folks who are really, who are really good at using… Those kind of.
 **Janhvi** 22:53 Yeah.
-**Yoshi Yamaguchi** 22:53 you know, CICD drug OSS, but they're not contributors, so…
-Yeah, I can reach out to them, but I'm not sure if that kind of…
-That kind of opinions are well considered.
+**Yoshi Yamaguchi** 22:53 you know, CICD drug OSS, but they're not contributors, so… Yeah, I can reach out to them, but I'm not sure if that kind of… That kind of opinions are well considered.
 In the discussion or not.
 **Janhvi** 23:12 Yeah, yeah, no, I agree. Even I don't think I know… I mean, I know the consumers of it, though, but I don't know, again, if we get a lot of help from them.
-I mean, I know at least, on our end in GCP, right? So, the team that I work in, it's like a platform team, and the product manager here, they reached out to, like, a couple of,
-end users who actually use GCP in their whole organizations, right? There are a couple of clients who use it. So we know how they use environment, and how they build automation on top of environment, so that they can view their resources. Let's say, they can view, dashboards saying, hey, give me all the resources which have production tag associated with it.
+I mean, I know at least, on our end in GCP, right? So, the team that I work in, it's like a platform team, and the product manager here, they reached out to, like, a couple of, end users who actually use GCP in their whole organizations, right? There are a couple of clients who use it. So we know how they use environment, and how they build automation on top of environment, so that they can view their resources. Let's say, they can view, dashboards saying, hey, give me all the resources which have production tag associated with it.
 Right? They do all of that stuff today manually, but again, they're like the consumers, end users of it, right? They're not the ones who are deploying stuff.
 So, yeah, again, I can also see if I have somebody, but I don't know if we'll be… if I'll be able to get the right POCs for this.
-**Yoshi Yamaguchi** 24:17 So,
-Well, I have… so if… I'm not sure if this helps, but I have conducted the personal survey to the… to the community… community about a deployment environment name.
-And then…
-So this is the result. I think you have the access. Though… though it's all written, like, the columns are written in Japanese, you can tell the labels used for the deployment name, environment name, so if it helps, yeah, that'd be great.
+**Yoshi Yamaguchi** 24:17 So, Well, I have… so if… I'm not sure if this helps, but I have conducted the personal survey to the… to the community… community about a deployment environment name.
+And then… So this is the result. I think you have the access. Though… though it's all written, like, the columns are written in Japanese, you can tell the labels used for the deployment name, environment name, so if it helps, yeah, that'd be great.
 **Janhvi** 24:52 Oh, this actually helps. And this tells you that we are on the right track. Like, if you see, right, most of them are production, development, staging.
 **Yoshi Yamaguchi** 25:01 Yeah, yeah.
 **Janhvi** 25:02 Yeah… Okay, so this is a survey that you conducted.
 **Yoshi Yamaguchi** 25:09 Yeah, yeah, I, I conducted throughout the, yeah, my, my, my, my timeline.
-I see. Let me, yeah, let, the, the original…
-form for this is, how can I get the form? Blink of form.
+I see. Let me, yeah, let, the, the original… form for this is, how can I get the form? Blink of form.
 I think this is the one.
 No, not this… not this one.
 How can… so do you have the, Google account?
@@ -190,13 +161,11 @@ And then…
 **Janhvi** 26:47 I see, let me… Oh yeah, I can see it now. Okay.
 **Yoshi Yamaguchi** 26:52 So, I…
 **Janhvi** 26:54 So I…
-**Yoshi Yamaguchi** 26:55 picked a couple of famous, production names, environment names, but I asked the… the…
-Other possible name for the environment.
+**Yoshi Yamaguchi** 26:55 picked a couple of famous, production names, environment names, but I asked the… the… Other possible name for the environment.
 **Janhvi** 27:08 I see.
 **Yoshi Yamaguchi** 27:09 Oh, yep.
 **Janhvi** 27:11 Got it. And there's a…
-**Yoshi Yamaguchi** 27:13 issue here for this? Is this referring to a similar…
-Yeah, I think this is the original… Discussion we made.
+**Yoshi Yamaguchi** 27:13 issue here for this? Is this referring to a similar… Yeah, I think this is the original… Discussion we made.
 **Janhvi** 27:24 I see. Should this be an enum or not? Okay, got it.
 **Yoshi Yamaguchi** 27:28 Yeah, yeah, yeah.
 **Janhvi** 27:32 Okay.
@@ -212,8 +181,7 @@ So at least they're bringing that POV that we were discussing, right?
 Yeah, okay.
 Yeah, I mean, I… in general, I think I'm aligned with the fact that it could be, like, an open enum, where you at least give them 3 to 4 well-known properties, like development.
 **Yoshi Yamaguchi** 28:24 Productions here.
-**Janhvi** 28:25 And then…
-I don't know, in Hotel, can you do, like, a fourth place to say others, where you can have freeform text also? Like, three we've already defined, and if somebody wants to use more values, they can do that. That should be possible, right?
+**Janhvi** 28:25 And then… I don't know, in Hotel, can you do, like, a fourth place to say others, where you can have freeform text also? Like, three we've already defined, and if somebody wants to use more values, they can do that. That should be possible, right?
 **Yoshi Yamaguchi** 28:41 Yeah.
 **Janhvi** 28:43 Yeah, so I think I am… Lind, yeah.
 **Yoshi Yamaguchi** 28:45 In order to reduce the, reduce the… the cardinality.
@@ -222,8 +190,7 @@ I don't know, in Hotel, can you do, like, a fourth place to say others, where yo
 **Janhvi** 28:58 Provide the… the options to cover 90% of the use case.
 **Yoshi Yamaguchi** 29:03 And then for the list of the 10%, we can… still, they can use the… others… Or other…
 **Janhvi** 29:12 Hog, and then…
-**Yoshi Yamaguchi** 29:13 Put their own… I, I, or I… we can, we can, we can provide the, recommended
-Name of the labels.
+**Yoshi Yamaguchi** 29:13 Put their own… I, I, or I… we can, we can, we can provide the, recommended Name of the labels.
 **Janhvi** 29:24 Got it.
 **Yoshi Yamaguchi** 29:24 The attribute for, for, for the, for the, for the… the label.
 **Janhvi** 29:30 Because.
@@ -232,12 +199,9 @@ Name of the labels.
 who's coming to it and seeing the standard for the first time, they kind of know what is already recommended by the society, by the open source community, right? And they kind of choose from there. If you don't give them anything, then even if they want production, they may use it as prod, production, or something else, even though they mean the same thing. So at least you give them some standard that they can use from, and that kind of handles majority of your use cases.
 That's true and true.
 Yeah.
-**Yoshi Yamaguchi** 30:09 Yeah, and also if we… yeah, and also, if we provide the, the standard option for them, then we can…
-Could… we can…
-offer the extra, like, linter or formatter to, to… or validation tools to find if they're using in recommended.
+**Yoshi Yamaguchi** 30:09 Yeah, and also if we… yeah, and also, if we provide the, the standard option for them, then we can… Could… we can… offer the extra, like, linter or formatter to, to… or validation tools to find if they're using in recommended.
 **Janhvi** 30:32 The value for the, for the label.
-**Yoshi Yamaguchi** 30:35 Or not later, anyway. So, yeah, at least we should provide us a couple of recommendations
-For the… for the environment name, and then…
+**Yoshi Yamaguchi** 30:35 Or not later, anyway. So, yeah, at least we should provide us a couple of recommendations For the… for the environment name, and then…
 **Janhvi** 30:47 Yeah.
 **Yoshi Yamaguchi** 30:48 And then we can discuss about, like, putting those labels, all mandatory or not.
 **Janhvi** 30:54 Yeah, yeah, I totally agree.

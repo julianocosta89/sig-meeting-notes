@@ -13,8 +13,7 @@ I think Khalid will not join, because I saw he's in a way different time zone, I
 **Tom Tan** 01:27 Yeah, that's true.
 **malff** 01:29 Okay.
 Okay, do you have any items you want to discuss?
-**Tom Tan** 01:40 No, no specific item from my side, and yeah, so we just released the new
-new version in the weekend, and I saw there's someone who contributed the VC package update this morning, so that should be fine.
+**Tom Tan** 01:40 No, no specific item from my side, and yeah, so we just released the new new version in the weekend, and I saw there's someone who contributed the VC package update this morning, so that should be fine.
 Should be cool.
 **malff** 01:58 Visit? Oh, visit.
 **Tom Tan** 01:59 DC package, yeah.
@@ -40,37 +39,30 @@ So there is still a plus-plus module there.
 **Tom Tan** 03:32 Alright.
 **malff** 03:33 Yeah, it's yet another package.
 **Tom Tan** 03:36 Yeah, okay, I see.
-**malff** 03:38 Well, basically what it does, it takes the… this file that we have, and makes a copy of it, and it just…
-points to our repo, where is that?
+**malff** 03:38 Well, basically what it does, it takes the… this file that we have, and makes a copy of it, and it just… points to our repo, where is that?
 It points to our rapport with a tag.
 **Tom Tan** 03:54 Is that, kind of the module.piesel, that's… that, are the dependencies from our repo?
 **malff** 04:00 Well, it's a copy of it.
 Copy, okay, we have it, I think.
 Yes.
 **Tom Tan** 04:06 Okay.
-**malff** 04:08 So, yeah, I will probably need to…
-either ping key, or make, make a PR there to, to adopt OpenTermetry CPP.
+**malff** 04:08 So, yeah, I will probably need to… either ping key, or make, make a PR there to, to adopt OpenTermetry CPP.
 **Tom Tan** 04:20 Okay, okay, thanks.
 **malff** 04:22 Okay.
-One thing I wanted to discuss… so, in the last release, there was this thing about warnings for the deprecation warnings of event logger, and Orwent did a PR to add a bunch of,
-Pragma all over the place to basically ignore the warning itself.
+One thing I wanted to discuss… so, in the last release, there was this thing about warnings for the deprecation warnings of event logger, and Orwent did a PR to add a bunch of, Pragma all over the place to basically ignore the warning itself.
 Hi, son.
 So, so I… I know that you… you depend on that for Geneva, so I just took the PR.
 To make the release, but I think we can do better and have some cleanup.
-So, yeah, so this is what I,
-Yeah, it's this item. So, I'm working on a PR to actually, Clean that up, and…
-And document things better, so it will be this one.
+So, yeah, so this is what I, Yeah, it's this item. So, I'm working on a PR to actually, Clean that up, and… And document things better, so it will be this one.
 **Tom Tan** 05:17 Okay, great.
 I think Lalit, and I will take a look. Yeah, and thanks.
 **malff** 05:28 Yeah, so, yeah, it's nothing urgent, but I will do that, and we can discuss it during the review.
 **Tom Tan** 05:36 Okay, yeah, that's true.
 **malff** 05:43 Otherwise, so, I just noticed that we had a GitHub outage today, breaking CNI and different things, but it looks like it is resolved now, so we can merge.
 again, and have the CI working again, so nothing to worry about. It was… Only for a short time.
-**Tom Tan** 06:04 Yeah, thanks for the heads up. I noticed that I can't push my changes to DHAB on it for…
-10 minutes or so, yeah.
+**Tom Tan** 06:04 Yeah, thanks for the heads up. I noticed that I can't push my changes to DHAB on it for… 10 minutes or so, yeah.
 A few hours ago.
-**malff** 06:16 It was a weird failure, like,
-We just had the contribution, and you see that everything is failing all over the place.
+**malff** 06:16 It was a weird failure, like, We just had the contribution, and you see that everything is failing all over the place.
 And it is failing because it cannot fetch from our repo.
 So, CI cannot get the CPP code.
 **Tom Tan** 06:33 I see. So, we're all CA?
@@ -93,40 +85,31 @@ Yeah, two months. Well, there's the winter vacation in the middle, but still.
 **Tom Tan** 07:52 Okay, yeah.
 Yeah, we'll see. I think the new version is on, like, at least based on my observation, it is on high demand, so we'll see, yeah, the transition of the new version in the following, I think, a few days.
 **malff** 08:10 Yeah.
-Oh, another thing I wanted to discuss also,
-I don't know if you noticed, but we have a lot of issues related to the ETW exporter recently.
-Because someone, Vagdi actually, is obviously trying to use it and doing a lot of…
-Building an application with it.
+Oh, another thing I wanted to discuss also, I don't know if you noticed, but we have a lot of issues related to the ETW exporter recently.
+Because someone, Vagdi actually, is obviously trying to use it and doing a lot of… Building an application with it.
 And so we had a couple of issues. One of them is, basically.
 **Tom Tan** 08:40 an issue with something that should be a shared pointer, but which is only a reference, causing a crash there, things like that.
-**malff** 08:48 So, I'm… It's good that we have new usage of that, but,
-I think we can expect more issues in ETW in general.
+**malff** 08:48 So, I'm… It's good that we have new usage of that, but, I think we can expect more issues in ETW in general.
 Because that… obviously, that code has not been, stressed a lot yet.
 **Tom Tan** 09:07 Okay, yeah.
 Yeah, for this specific issue, I think maybe… at least this is not blocking, I think user can work around this, right? Like, destruct this one earlier than Shrezer, but we need a better way, like, to fix this one.
 Yeah, so, yeah, why does it work off.
-**malff** 09:31 Yeah, there is a workaround, but it needs to be more robust, otherwise people will…
-We'll get into that, again.
+**malff** 09:31 Yeah, there is a workaround, but it needs to be more robust, otherwise people will… We'll get into that, again.
 **Tom Tan** 09:39 Yeah.
 We could have it here, and here we can.
-I think someone… I'm gonna lose some…
-Some contributor, right? Who wants to…
-upload the PR for the fleets, I think that would be good.
+I think someone… I'm gonna lose some… Some contributor, right? Who wants to… upload the PR for the fleets, I think that would be good.
 **malff** 09:56 Yeah.
-This one, I cannot, I cannot work on it, because it's,
-Well, I don't have a way to reproduce it, I don't have Windows on my machine.
+This one, I cannot, I cannot work on it, because it's, Well, I don't have a way to reproduce it, I don't have Windows on my machine.
 **Tom Tan** 10:06 Yeah, sure.
 I think some external, other contributors already commented on this one, or…
 **malff** 10:13 I think so.
 **Tom Tan** 10:15 Yeah, so, let's see…
 **malff** 10:18 Yeah, so, well, this is my analysis with… where I think it's crashing, and yes, someone else also commented.
-Okay, well, you're aware of it, obviously, so…
-So yeah, this is… this was it for me. Ehsan, do you have anything to discuss?
+Okay, well, you're aware of it, obviously, so… So yeah, this is… this was it for me. Ehsan, do you have anything to discuss?
 **Ehsan** 10:45 Oh, hey, no, no, no.
 **malff** 10:48 Yeah, so I don't know if you noticed, we have a new release done yesterday.
 **Ehsan** 10:53 Yep, thank you.
-**malff** 11:03 Okay, well, in that case, it's getting airier because it's,
-Well, it's 10 p.m. Well, you can see my time, I guess. It's 10 p.m. for me.
+**malff** 11:03 Okay, well, in that case, it's getting airier because it's, Well, it's 10 p.m. Well, you can see my time, I guess. It's 10 p.m. for me.
 So, let's make it a short meeting if we don't have any other things.
 **Tom Tan** 11:19 Okay, sure, yeah.
 **malff** 11:21 Yep.

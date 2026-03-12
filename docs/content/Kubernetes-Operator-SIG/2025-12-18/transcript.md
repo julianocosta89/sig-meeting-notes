@@ -7,8 +7,7 @@ Duration: 20 minutes
 
 **jea** 01:18 Hey.
 I don't know how… I don't know if we have anything… Today, too much.
-It's, like, end of year, and…
-I don't know, I don't know who else is gonna join, basically.
+It's, like, end of year, and… I don't know, I don't know who else is gonna join, basically.
 **Mikołaj Świątek** 01:33 That's some pull requests.
 That…
 **jea** 01:36 Yes.
@@ -24,8 +23,7 @@ I'm just gonna approve it and merge it.
 **Mikołaj Świątek** 02:30 Because that's what's been waiting for a while, so I don't know how… It is, yeah. I'm just gonna…
 **jea** 02:35 I'll approve and merge, like, right now.
 And so…
-**Mikołaj Świątek** 02:39 The host PID one might need, like, a rebase because of the release, because it modifies the…
-The release manifest?
+**Mikołaj Świątek** 02:39 The host PID one might need, like, a rebase because of the release, because it modifies the… The release manifest?
 But… Other than that, nothing very interesting happens in it.
 **jea** 02:58 Should I wait for Benny to read this, or should I just merge it?
 **Mikołaj Świątek** 03:02 I want it. But if he's not here today, then I would just go.
@@ -89,9 +87,7 @@ And I'm gonna have some.
 Yeah?
 **PL Pavol Loffay** 08:44 I started looking into it, and I created a CR based on the JSON schema.
 I'm not sure I like that structure, to be honest.
-It's…
-it's way more complicated to what we have. I'm not saying it's bad. Maybe it's not bad, because if people are kind of comfortable with the schema already, it's gonna be a good thing, but…
-It's not an easy one, I would say.
+It's… it's way more complicated to what we have. I'm not saying it's bad. Maybe it's not bad, because if people are kind of comfortable with the schema already, it's gonna be a good thing, but… It's not an easy one, I would say.
 **Mikołaj Świątek** 09:17 I actually have a problem, maybe you guys can advise me.
 So the problem is, I wanna… there's actually… I have a draft pull request, which actually passes. It passes all the tests, and it's fine.
 In this respect. Right now, I might think it might also have, like, some conflict in Go mods and stuff, but that's whatever. Basically, I'm updating Prometheus from Prometheus operator.
@@ -106,13 +102,9 @@ But there's one problem with this. So this passes tests just fine, and everythin
 **Mikołaj Świątek** 10:35 I mean, okay, so they have 3 different ones, and it's based on a build tag, okay?
 The problem is, are, like, performance-optimized, like, relabeling, for example.
 Kind of implicitly relied on the label just being a slice, and the label structure just being the slice.
-And now it's not a slice, now it's, like, a single string. And there is no, like, public API,
-to do what we've currently been doing, and I've tried, like, 5 different things, and none of them have, like, have recovered the performance that we used to have.
-Like, some of them are, like…
-plus 30% CPU usage on non-relabeled, for example. And I'm wondering…
-Like, basically, I wanna… I wanna try some… a few more things. It's probably still gonna reduce the performance, even if we, like, build tag ourselves into the old structure.
-Hmm… but…
-I don't know, like, I was wondering what you think. Like, is it worth keeping back this whole upgrade of several versions for this? Like, how important are performance regressions for us?
+And now it's not a slice, now it's, like, a single string. And there is no, like, public API, to do what we've currently been doing, and I've tried, like, 5 different things, and none of them have, like, have recovered the performance that we used to have.
+Like, some of them are, like… plus 30% CPU usage on non-relabeled, for example. And I'm wondering… Like, basically, I wanna… I wanna try some… a few more things. It's probably still gonna reduce the performance, even if we, like, build tag ourselves into the old structure.
+Hmm… but… I don't know, like, I was wondering what you think. Like, is it worth keeping back this whole upgrade of several versions for this? Like, how important are performance regressions for us?
 in this.
 **jea** 11:50 I think, I would rather us update so that we don't continue to fall behind. Are we able to do this without a breaking change, or is this, like, de facto a breaking change?
 **Mikołaj Świątek** 12:00 It's not a breaking change at all.
@@ -125,9 +117,7 @@ If it becomes, like, A massive problem.
 We can re-optimize if we need to.
 **Mikołaj Świątek** 12:37 I'll try a little bit over the holidays as well. This has waited for, like, 3 months, it can wait for, like, 3 more weeks.
 **jea** 12:44 Yeah.
-**Mikołaj Świątek** 12:45 And I'll try to get… I'll try to get the best… the best that we can, like, with this, structure. And… and then…
-I don't know, probably we'll just have to kind of…
-Do the, like, bite the bullet and implement the relabeling inside.
+**Mikołaj Świątek** 12:45 And I'll try to get… I'll try to get the best… the best that we can, like, with this, structure. And… and then… I don't know, probably we'll just have to kind of… Do the, like, bite the bullet and implement the relabeling inside.
 Complete full target relabeling inside the target allocator, and that's gonna improve performance a lot.
 Overall?
 It's just gonna be, like, a pretty big change.
@@ -166,21 +156,16 @@ And then it'll be like, oh, I already know how to use this codebase, or whatever
 like, whether there should be, like, an architecture.nd file, and then agentsnd is just a link to that. That's kind of what I was wondering. Because if it's agentsnd, then people are not going to read it, and I think it's useful to people, too, not just my agent, not just agents. That's, like, my, like…
 **PL Pavol Loffay** 16:34 I think we should just… the agent's ID should probably just point to the contributing MD.
 And it's duplication, like, the purpose of the agent MD is to tell the AI agent, like, how to execute the test, where are the packages, what is in the packages, which is essentially a contributing document.
-So I think what we should do is to test,
-How to, kind of, cross-link these documents, and if the agent will properly
-Consider the links in the doc.
+So I think what we should do is to test, How to, kind of, cross-link these documents, and if the agent will properly Consider the links in the doc.
 **jea** 17:08 I think as long as you do just a soft link, it works.
 Because that's what he's doing already.
 **PL Pavol Loffay** 17:17 It's better.
 **jea** 17:17 Claude, clod.md file.
 **PL Pavol Loffay** 17:21 So, I mean, maybe I just wonder if you are fine with adding the cloud MDNA just into the repo?
 And then we can figure out, like, what is the… what is the most… what is the best way to, kind of, maintain these files, because we have edited in different repositories, and it can become quickly unmaintained.
-**Mikołaj Świątek** 17:46 Mmm…
-I am very, very fine with just updating ContributingMD with the stuff that's in the AgentsMD as far as proposing, and then, like you said, linking AgentsMD to Contributing MD. Like, I am… I'm very… I'd be very happy.
+**Mikołaj Świątek** 17:46 Mmm… I am very, very fine with just updating ContributingMD with the stuff that's in the AgentsMD as far as proposing, and then, like you said, linking AgentsMD to Contributing MD. Like, I am… I'm very… I'd be very happy.
 **PL Pavol Loffay** 18:09 Yeah, I liked it the most.
-**Mikołaj Świątek** 18:11 I, I am, I, I am definitely not against putting, like, you know…
-instructions for AI agents and the thing. Like, we already have… I've already committed some code written by Cloud to the operator repository. It was, like, a bunch of unit tests, but…
-You know?
+**Mikołaj Świątek** 18:11 I, I am, I, I am definitely not against putting, like, you know… instructions for AI agents and the thing. Like, we already have… I've already committed some code written by Cloud to the operator repository. It was, like, a bunch of unit tests, but… You know?
 **PL Pavol Loffay** 18:35 D… the PRI emerge today, the removal of the KubeRB proxy.
 **Mikołaj Świątek** 18:43 That's all prompted.
 **jea** 18:46 Oh, yeah, I'm really excited about that, Pavel. That's… that's gonna be a great change.

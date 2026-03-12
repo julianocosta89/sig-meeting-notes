@@ -21,19 +21,16 @@ Actually, looking forward to going down to the office in, two weeks' time now, s
 **Chris Lightfoot-Wild** 01:13 Yeah, I've not been since October.
 It's last April, so…
 **Bob Strecansky** 01:19 Where's your headquarters?
-**Chris Lightfoot-Wild** 01:22 Near Cambridge, in the south, so…
-Yes, about 3-4 hours away from where I'm at.
+**Chris Lightfoot-Wild** 01:22 Near Cambridge, in the south, so… Yes, about 3-4 hours away from where I'm at.
 **Bob Strecansky** 01:30 Do you drive there?
 **Chris Lightfoot-Wild** 01:32 Yeah, yeah.
-It's a pretty easy drive,
-Just, obviously, painful having to do it at the back end of a day, after…
+It's a pretty easy drive, Just, obviously, painful having to do it at the back end of a day, after…
 **Bob Strecansky** 01:41 Yeah, oh.
 **Chris Lightfoot-Wild** 01:42 shenanigans.
 **Bob Strecansky** 01:44 You have to go for a whole day?
 **Chris Lightfoot-Wild** 01:46 We're going down for a couple of days this time, having a sort of team meetup, so that'll be cool.
 **Bob Strecansky** 01:51 Nice. Do you have a car? Do you own a car?
-**Chris Lightfoot-Wild** 01:54 Yeah, yeah, I've got a car. Although…
-My wife's car is kind of out of action, so she was like, I don't want you to take your car, because I want it, so I've got to carpool with someone else, she'll have to drop me off, but…
+**Chris Lightfoot-Wild** 01:54 Yeah, yeah, I've got a car. Although… My wife's car is kind of out of action, so she was like, I don't want you to take your car, because I want it, so I've got to carpool with someone else, she'll have to drop me off, but…
 **Bob Strecansky** 02:08 Nice.
 **Chris Lightfoot-Wild** 02:09 So, yeah, I kind of own a car, but inasmuch as I pay the installments, and you know, then she controls it, so…
 **Bob Strecansky** 02:17 See, you have to be smart like me and get a car that your wife is afraid to drive, and then she won't drive it.
@@ -62,26 +59,16 @@ to every day, or driving every day. But I'm… I'm not driving too… too much, 
 I rebuilt… I rebuilt a 5 Series BMW from the ground up, like, a couple years ago. That was a fun project.
 And now I drive an electric truck, so… I'm all over the place.
 Right.
-Let's… let's get rockin'. I don't have a…
-A ton of stuff to talk about today.
-But…
-Do either of you have agenda items that you'd like to talk through before we take a look at the boards?
-**Pawel Filipczak** 03:57 I can just give you a short update. So, I'm working on the contribution, and now I'm…
-I… today I created a pull request with the…
-vendor customization plugin, so it will allow us, I mean, Elastic, to… to use the upstream.
-OpenTelemetry code as an elastic distribution, and also other vendors can make use of that, and…
-And that's mainly it, so we are still missing the… the component tests.
-So, Sergey is working on that, and when we will finish, then…
-I guess it will be ready for a release, and…
-And then I will ask you for a review of the… of the whole.
+Let's… let's get rockin'. I don't have a… A ton of stuff to talk about today.
+But… Do either of you have agenda items that you'd like to talk through before we take a look at the boards?
+**Pawel Filipczak** 03:57 I can just give you a short update. So, I'm working on the contribution, and now I'm… I… today I created a pull request with the… vendor customization plugin, so it will allow us, I mean, Elastic, to… to use the upstream.
+OpenTelemetry code as an elastic distribution, and also other vendors can make use of that, and… And that's mainly it, so we are still missing the… the component tests.
+So, Sergey is working on that, and when we will finish, then… I guess it will be ready for a release, and… And then I will ask you for a review of the… of the whole.
 Codebase, and of course, give it a try.
 So, yeah.
 That's… that's the progress.
-So, I think next week we'll focus on the… on the testing, and… and…
-I would like to finish it, early… early March, I mean, the contribution, so… That's my hope.
-If there would be no, you know…
-issues, and if everything will work, then…
-I would like to push it forward and release. Make the first release.
+So, I think next week we'll focus on the… on the testing, and… and… I would like to finish it, early… early March, I mean, the contribution, so… That's my hope.
+If there would be no, you know… issues, and if everything will work, then… I would like to push it forward and release. Make the first release.
 **Bob Strecansky** 05:29 Why does that get so small?
 Alright, cool.
 Thanks for the update. It sounds like y'all are making really good progress.
@@ -99,8 +86,7 @@ Chris, anything?
 **Chris Lightfoot-Wild** 06:55 Well, only then if you are going to look at those PRs. I approve some, but…
 **Bob Strecansky** 06:59 Okay.
 Is there a particular one?
-**Chris Lightfoot-Wild** 07:01 Do you want me to, like, re-add…
-like, you guys to be able to merge them in down the line, if, because if I approve it, it dismisses the group, so then I guess it just drops off other people's radar.
+**Chris Lightfoot-Wild** 07:01 Do you want me to, like, re-add… like, you guys to be able to merge them in down the line, if, because if I approve it, it dismisses the group, so then I guess it just drops off other people's radar.
 **Bob Strecansky** 07:14 Wait, show me, do you have a specific one, an example?
 **Chris Lightfoot-Wild** 07:17 If you just go back to the contrib trip, the one at the.
 **Bob Strecansky** 07:18 Oh, shit.

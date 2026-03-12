@@ -9,14 +9,11 @@ Duration: 50 minutes
 Oh, yeah.
 yeah, right. That's worth checking. I'll have to call someone else, though. But okay. But now I know what what the issue is.
 So it is more.
-Yeah, I'll try a different HDMI first.st
-It's going.
+Yeah, I'll try a different HDMI first.st It's going.
 Oh.
 was it immediately doing? It was pretty frequently like, let's give it like a minute. It took it like a minute like it. It.
 Yeah, it started pretty quickly. Okay, yeah. It might might just have been that port.
-Seems like it's fine. Yeah. But as soon as you walk, as soon as you step out the door, yeah, as soon as you step out the door. It's gonna
-the other thing I'm noticing is like the over scan or whatever. Yeah. But
-actually let me start the text first.st Oh, yeah, sure. Sure.
+Seems like it's fine. Yeah. But as soon as you walk, as soon as you step out the door, yeah, as soon as you step out the door. It's gonna the other thing I'm noticing is like the over scan or whatever. Yeah. But actually let me start the text first.st Oh, yeah, sure. Sure.
 Oh, yeah, that's better.
 Do you prefer a little warmer or a little cooler? A little warmer, probably.
 Oops. Now.
@@ -29,10 +26,8 @@ we have a break from like 1045 to 11.
 Yeah, okay, so they could. I mean, if they like to get it done for you beforehand. Yeah. So like.
 yeah, if they can come to your 1st thing, it should be okay, because, like, it's just like people will be.
 I'm sure people will be filing in late. Okay, I'll do that because we've got a union building. So I can't. Okay, I can't actually just change it. Yeah, yeah, no, I get it. Yeah, not not my 1st rodeo. Yeah, exactly. So at 9 o'clock I'll have something, not my 1st rodeo.
-You're good. So
-I'm remote as well, because volume down, at least, if it does the static, it won't do that.
-Yeah, it was weird. I noticed it only has the little
-Samsung. It's the same. It's Samsung. It'll be another one. They usually do. Yeah, I think it's probably so that we don't get it. Yeah, it's been a week.
+You're good. So I'm remote as well, because volume down, at least, if it does the static, it won't do that.
+Yeah, it was weird. I noticed it only has the little Samsung. It's the same. It's Samsung. It'll be another one. They usually do. Yeah, I think it's probably so that we don't get it. Yeah, it's been a week.
 Okay? Great. Yeah. I'll have the text on standby for you, and if it comes up we can just quickly throw it. We don't run it through, probably the cable, because it seemed like it.
 Hello! Actually.
 you don't have to.
@@ -44,15 +39,12 @@ Let's try that, but don't suggest it could get worse.
 Oh, so you can.
 Well, that's just in case it was the portable.
 That's twice that one.
-So are you on the zoom call already
-alright, because it's not one page here.
+So are you on the zoom call already alright, because it's not one page here.
 Smart.
 Yep, got it?
 Very good.
 Yeah, it's twisted with that.
-And so I would love to work
-straight off the table. There you go
-alright. Let's give it a shot.
+And so I would love to work straight off the table. There you go alright. Let's give it a shot.
 I think, he he said in Joseph.
 I don't believe.
 Good.
@@ -63,9 +55,7 @@ moving it like, yeah, yeah, we didn't. Really. It didn't seem like movement was 
 I think it was actually doing it even before I plugged in. That's what Andy was saying, so, yeah, so I think the cable was in. So it might be the port. It might be the cave that cable like, yeah. What end of it was upgraded.
 Hey? You know what? I'll leave this table with you and Andrew.
 So this is a there's a Dbi input so if- if needed.
-if there's anything, if there's any problems, I'll and Andrew's around on this floor. Okay? So he's either in the 700 or 700. Okay? And then you could just
-find him. And yeah, then
-we want to tape down here. Don't worry about that. I mean, it's notable. I sent some down alright. Yeah, okay, yeah. Just feel free to come in and tape it down like I said, we'll it'll probably take like, 1015 min for people to actually get in here. So thanks, no problem.
+if there's anything, if there's any problems, I'll and Andrew's around on this floor. Okay? So he's either in the 700 or 700. Okay? And then you could just find him. And yeah, then we want to tape down here. Don't worry about that. I mean, it's notable. I sent some down alright. Yeah, okay, yeah. Just feel free to come in and tape it down like I said, we'll it'll probably take like, 1015 min for people to actually get in here. So thanks, no problem.
 Yeah.
 Hey, can you hear me.
 **SN Severin Neumann** 33:35 Yep. Hey, there! Can you see me?
@@ -73,8 +63,7 @@ Hey, can you hear me.
 **SN Severin Neumann** 33:45 So audio and and video are not like at the same place.
 **Austin Parker** 33:52 Yeah, no. There's a the camera above here.
 **SN Severin Neumann** 34:00 Okay, that's odd.
-So how's the how's the
-the conference place? How is everything that the open telemetry community is tomorrow? Right? So like we are before that.
+So how's the how's the the conference place? How is everything that the open telemetry community is tomorrow? Right? So like we are before that.
 **Austin Parker** 34:12 Yeah, we're before that.
 **SN Severin Neumann** 34:14 Yeah.
 Hey? Trosk.
@@ -119,16 +108,13 @@ at 6, 45.
 What can you just put the email you want it shared with in the Zoom chat for me.
 **Tigran Najaryan** 37:28 Sure. Yeah, let me do that.
 **Austin Parker** 37:42 Okay, it is actually shared with your split your Cisco email. I believe.
-**Tigran Najaryan** 37:50 Cisco, yeah, we we okay, I don't think we have Google Docs access from our Cisco emails. So please
-on email.
+**Tigran Najaryan** 37:50 Cisco, yeah, we we okay, I don't think we have Google Docs access from our Cisco emails. So please on email.
 **Austin Parker** 38:01 Alright! You should have access now.
 **SN Severin Neumann** 38:04 One of the things that we.
 **Tigran Najaryan** 38:05 A lot of fun here.
 **SN Severin Neumann** 38:07 Yeah, I I, we we needed like with my previous team, we really needed Google Google account with our Cisco email address. And it was like.
-I don't know we we got to that point, but it was harder than
-a lot of other things. So yeah, don't.
-**Austin Parker** 38:26 Yeah, I was. I was when I was put together, the Google group with everyone's names on it. I noticed that, like Morgan
-had requested for Stuff to go to his Cisco account.
+I don't know we we got to that point, but it was harder than a lot of other things. So yeah, don't.
+**Austin Parker** 38:26 Yeah, I was. I was when I was put together, the Google group with everyone's names on it. I noticed that, like Morgan had requested for Stuff to go to his Cisco account.
 and so I just assumed that everyone that was part of this blunk thing now needed it to go to their Cisco account. But yeah.
 it's fine.
 **Tigran Najaryan** 38:47 Company merger funds. So I have. I don't know how many accounts I have of everything emails, slacks and webex and and all the stuff. Yeah.
@@ -141,35 +127,26 @@ it's fine.
 **SN Severin Neumann** 39:39 Okay. But but you don't have like be because, like I, I'm just considering when when it's the best time for me to to drop, I guess, at lunch, because it's like 9 Pm. Or something like that for me. So yeah. But let's see, I will figure out.
 **Pablo Baeyens** 39:53 So yeah, I I'll have to drop at like the sword analysis one like, bit before break. But yeah.
 I'll join later. This is.
-**Austin Parker** 40:08 Yeah, I would like, I tried to get this to the point where the stuff that
-the part where we all at least air out. What we think needs to happen is earlier.
+**Austin Parker** 40:08 Yeah, I would like, I tried to get this to the point where the stuff that the part where we all at least air out. What we think needs to happen is earlier.
 I do not know where all of our in person people are.
 I actually do not know we're missing a bunch of people.
 **Pablo Baeyens** 40:35 Yep, who's joining in person.
 **Austin Parker** 40:41 Ted's supposed to be here. Ted's said he was.
-Let me look at
-the Rsvp. Let's go to find it
-so it might just be me Ted and the miller.
+Let me look at the Rsvp. Let's go to find it so it might just be me Ted and the miller.
 but Laudmila also rsvp'd for virtual.
-I definitely know Ted's here because he said he was here and maybe
-Hallelujah.
+I definitely know Ted's here because he said he was here and maybe Hallelujah.
 Ed said. He will be here soon.
 I think people are getting lost.
-There's also like 2 separate conferences in here. There's like
-the open source summit is on the top level. But then
-on the other 2 levels, there's like a health finance thing that's happening. And
-if you walk into the building without a badge. The very helpful breeders try to direct you to something.
+There's also like 2 separate conferences in here. There's like the open source summit is on the top level. But then on the other 2 levels, there's like a health finance thing that's happening. And if you walk into the building without a badge. The very helpful breeders try to direct you to something.
 Hello, Carlos!
 I'll stick my head out and see if I see people wandering around, looking what else?
 I did not see anyone from lost.
-**Pablo Baeyens** 46:18 I think there's been some sort of confusion with the zoom links, because juicy
-Aloita, Dan, and Jack are in a different zoom. I just send them.
+**Pablo Baeyens** 46:18 I think there's been some sort of confusion with the zoom links, because juicy Aloita, Dan, and Jack are in a different zoom. I just send them.
 **Austin Parker** 46:27 I didn't.
 **Pablo Baeyens** 46:28 To Link.
 I guess.
 **Austin Parker** 46:31 You know.
-Wait which link we were joining the link from the from the meeting notes. Document
-I I think this is the wrong. Okay, I think you all were in the right one. Then.
+Wait which link we were joining the link from the from the meeting notes. Document I I think this is the wrong. Okay, I think you all were in the right one. Then.
 **Juraci Paixão Kröhling** 46:44 We were on the right one, right? I mean I'm on 2 zoom links now. Oh, let me close the other one.
 **Austin Parker** 46:50 Oh, okay. Okay. No. No. No.
 **Juraci Paixão Kröhling** 46:52 Coming!

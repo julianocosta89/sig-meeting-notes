@@ -16,19 +16,13 @@ You want… you wanted to chat about spun lifecycle.
 Basically, it's about, so, you may remember this, this, issue is regard, regarding adding events.
 Or span lifecycle, which could be 3 for now.
 using an event when the Spanish started, when the span ended, and a hoard beat, which would be, like, an fixing terrible.
-So the thing is that, of course, we are trying to send information… I mean, this is, like, for long-running spans, so in theory, you want to have as much as information as possible. And the thing is that we are essentially resending basically everything
-that you could be sending over Proto, or OTLP, sorry, sorry, over OTLP, both using semantic conventions.
-And I was wondering whether there's some prior art
-on this one, I was… I did a quick look and didn't find anything. Like, for example, how do you…
-how do you set the attributes, you know? Like, go JSON? Like, what do you do there, you know? And if there's any guidance.
+So the thing is that, of course, we are trying to send information… I mean, this is, like, for long-running spans, so in theory, you want to have as much as information as possible. And the thing is that we are essentially resending basically everything that you could be sending over Proto, or OTLP, sorry, sorry, over OTLP, both using semantic conventions.
+And I was wondering whether there's some prior art on this one, I was… I did a quick look and didn't find anything. Like, for example, how do you… how do you set the attributes, you know? Like, go JSON? Like, what do you do there, you know? And if there's any guidance.
 That exists already, yeah.
 **Liudmila Molkova** 07:19 I don't think there is a guidance.
-But… Let's say if you record… spend started, there would be…
-On event spawn Start, you would provide attributes.
+But… Let's say if you record… spend started, there would be… On event spawn Start, you would provide attributes.
 the tube.
-That you had at the start time, right? And… the…
-The… we would need to find means to record, let's say, parent
-spend ID, right? Because it's not on the events otherwise.
+That you had at the start time, right? And… the… The… we would need to find means to record, let's say, parent spend ID, right? Because it's not on the events otherwise.
 **Carlos Alberto Cortez** 07:53 That's correct, yeah. I mean, you can link the span context of the span that the log… the event belongs to, as part of, you know, a normal log… log record, but the parent, you need to specify everything, you know?
 **Liudmila Molkova** 08:07 Yeah.
 Then… The span name is another one, right? The span name cannot be event name.
@@ -37,12 +31,9 @@ Then… The span name is another one, right? The span name cannot be event name.
 **Carlos Alberto Cortez** 08:22 Yeah, I would say… I was thinking of adding an actual… the event name would be something like Hotel SDK Span Only Start, something like that. Yeah, the actual span name would be something else, like, I don't know, like, it could be in the attributes, you know?
 **Liudmila Molkova** 08:39 Yeah, so, you know, we're working on something similar. Maybe I can share and walk you through.
 Yep. Not similar, but related.
-So, it says this, she talked about,
-We are, trained to represent are…
-Span exception events as logs because of span events deprecation.
+So, it says this, she talked about, We are, trained to represent are… Span exception events as logs because of span events deprecation.
 And… what it means… That we need to find a good event name.
-And we're calling it, let's say, if we are…
-emitting it around HTTP client request, their client request exception.
+And we're calling it, let's say, if we are… emitting it around HTTP client request, their client request exception.
 And it would be… more interesting.
 Maybe, I don't know.
 To call it spend client request.
@@ -69,9 +60,7 @@ Yeah, correct, absolutely. Yeah. And yeah, the other thing that I have in mind a
 You need to put those attributes, or it could be useful to report that, to report them as part of the event.
 Yeah. But you want to separate them from any attributes, like, you yourselves and the event want to put.
 **Liudmila Molkova** 12:04 Why?
-**Carlos Alberto Cortez** 12:07 So, for example, let's say that as part of the bench, you add an attribute called parent, I mean, just…
-Let's sake, for the sake of simplicity, parent…
-span.parent, and that is a map that includes, trace ID, trace flags, trace state, everything from the parent. So basically, you don't want… the LEA would say.
+**Carlos Alberto Cortez** 12:07 So, for example, let's say that as part of the bench, you add an attribute called parent, I mean, just… Let's sake, for the sake of simplicity, parent… span.parent, and that is a map that includes, trace ID, trace flags, trace state, everything from the parent. So basically, you don't want… the LEA would say.
 You want to separate that from the attributes that the user has, you know?
 **Liudmila Molkova** 12:36 Oh, this… oh, but you… the span itself doesn't have any information about parent except parent ID.
 It's just one…
@@ -81,10 +70,8 @@ you will get the span info… and I don't know if this is what you meant, like, 
 **Carlos Alberto Cortez** 13:11 Yes, correct. No, actually, you're getting the, well, the readable span, yeah.
 **Liudmila Molkova** 13:15 Oh, readable, right.
 **Carlos Alberto Cortez** 13:23 So it's easy.
-**Liudmila Molkova** 13:24 you wouldn't need the whole parent anyway, because you'd never export anything on the span. Like, why would you export something on the span event that's
-Sorry, why would you export something on the event if you never exported on this path?
-**Carlos Alberto Cortez** 13:40 Yeah, actually, that was the third big question, like, why, like, what kind of information do you… you don't actually need to be sending, because…
-You know that the Spanish started, and all that, and it's still working, but… Not exported, you know?
+**Liudmila Molkova** 13:24 you wouldn't need the whole parent anyway, because you'd never export anything on the span. Like, why would you export something on the span event that's Sorry, why would you export something on the event if you never exported on this path?
+**Carlos Alberto Cortez** 13:40 Yeah, actually, that was the third big question, like, why, like, what kind of information do you… you don't actually need to be sending, because… You know that the Spanish started, and all that, and it's still working, but… Not exported, you know?
 Yeah.
 Yup.
 One of the things that I briefly discussed with the guys at the CICD group is that we could start with sending the most, like, the bare-bones information, you know?
@@ -95,26 +82,21 @@ Sand, if it was a span.
 **Liudmila Molkova** 14:36 So maybe, okay, there are edge cases when somebody sets an attribute and then sets this attribute to null , effectively removing it, but that… that's an edge case, and you just get multiple states for the same thing.
 **Carlos Alberto Cortez** 14:51 Yeah, great.
 That way, yeah.
-**Liudmila Molkova** 14:55 It will save a ton of…
-effort, I think, for this case.
+**Liudmila Molkova** 14:55 It will save a ton of… effort, I think, for this case.
 **Carlos Alberto Cortez** 15:03 Yep.
 Yeah, totally.
 Okay, yeah, I think that's good feedback. Yeah, I think I will stick to then, for now at least, for the minimum information we need.
 We can add more information as we go. And of course, this could be experimental at first, so I think we are safe.
 **Liudmila Molkova** 15:22 Yeah, is it the… it's part of CICD, right?
 **Carlos Alberto Cortez** 15:26 Yes.
-**Liudmila Molkova** 15:27 Oh, cool. Yeah, so because we are kind of… we're… Becoming very,
-aggressive on prioritizing and scoping things out, and we need a SIG for
-to drive anything reasonably big, and since it's parts of CICD, it's great.
+**Liudmila Molkova** 15:27 Oh, cool. Yeah, so because we are kind of… we're… Becoming very, aggressive on prioritizing and scoping things out, and we need a SIG for to drive anything reasonably big, and since it's parts of CICD, it's great.
 **Carlos Alberto Cortez** 15:47 Yeah, to be honest, I think this is something that, if I remember correctly, that the CACD group mark as something to have, good to have, so it's not super part. I know, we know it's a risk, not… there's a big risk about not having this in the current, roadmap stage.
 But, yeah, we would like to work on that.
-I don't know if… yeah, so…
-Yeah, so it can be, like, medium priority or something like that. Like, we need people to actually review that, but yeah, we don't… well, as of the time being, we don't have any rush, let's say, you know.
+I don't know if… yeah, so… Yeah, so it can be, like, medium priority or something like that. Like, we need people to actually review that, but yeah, we don't… well, as of the time being, we don't have any rush, let's say, you know.
 **Liudmila Molkova** 16:22 Yeah, I would be interested in reviewing it, I think it's great.
 **Carlos Alberto Cortez** 16:26 Perfect.
 Okay, perfect, yeah, that's good information. Yeah, thank you for… so much for the feedback. Yeah, I think we can call it a day, then.
 **Liudmila Molkova** 16:36 Yeah, thanks. Enjoy the day without U.S.
-**Carlos Alberto Cortez** 16:41 Yeah, actually, that would be funny, so, yeah. Actually, I have one more call, but it's, with…
-people from UK, so probably didn't show up.
+**Carlos Alberto Cortez** 16:41 Yeah, actually, that would be funny, so, yeah. Actually, I have one more call, but it's, with… people from UK, so probably didn't show up.
 So yeah, let's see how that goes. Otherwise, yeah, see you, see you around. Thank you so much for coming back.
 **Liudmila Molkova** 16:57 Bye.

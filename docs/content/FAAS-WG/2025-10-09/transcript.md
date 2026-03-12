@@ -7,8 +7,7 @@ Duration: 8 minutes
 
 **Serkan Ozal** 04:13 Well… Seems that no one is… Attending the meeting.
 So… I'm gonna end the meeting.
-And as the release notes… I will put two items. First, the last release was…
-August 20, so we should… Publish the next release.
+And as the release notes… I will put two items. First, the last release was… August 20, so we should… Publish the next release.
 As soon as possible, and there are some, dependable pull requests.
 And we should preview and merge.
 Them, if there is no blocker.

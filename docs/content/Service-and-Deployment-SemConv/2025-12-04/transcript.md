@@ -14,11 +14,9 @@ I have a two-week timer here, and I, am counting down.
 the vacation, but I have so much to do before then, you know?
 **Trask Stalnaker** 02:53 Ugh.
 **Josh Suereth** 02:54 Yeah.
-It is what it is, and I'm completely distracted by Weaver v2 schema, so…
-We're very, very close to having, the, like, release candidate ready.
+It is what it is, and I'm completely distracted by Weaver v2 schema, so… We're very, very close to having, the, like, release candidate ready.
 **Trask Stalnaker** 03:11 Nice!
-**Josh Suereth** 03:13 Yeah, I have to solve some of, Lyudmila's issues with, attribute refs, though. We, hmm… Anyway…
-I can get into details of the shenanigans of how we model data, but it's probably not that exciting for most people.
+**Josh Suereth** 03:13 Yeah, I have to solve some of, Lyudmila's issues with, attribute refs, though. We, hmm… Anyway… I can get into details of the shenanigans of how we model data, but it's probably not that exciting for most people.
 **Janhvi** 03:34 Hey, guys.
 **Trask Stalnaker** 03:36 Hey, John V.
 **Janhvi** 03:37 Hello.
@@ -29,11 +27,9 @@ How do I remove the note-taker? I think that's something you mentioned last time
 **Janhvi** 04:09 Can you share that doc with me? I'll look at it.
 **Trask Stalnaker** 04:13 But you won't have access…
 **Janhvi** 04:15 A lot of the access. Oh, okay.
-**Trask Stalnaker** 04:18 Let me see, I think as a SIG…
-Yeah, I think I can give you access, and actually, that will also give you access to update the calendar.
+**Trask Stalnaker** 04:18 Let me see, I think as a SIG… Yeah, I think I can give you access, and actually, that will also give you access to update the calendar.
 **Janhvi** 04:35 Okay, got it.
-**Trask Stalnaker** 04:37 On your own. So yeah, let me… I'll get you the instructions, and I'll…
-ping you on Slack.
+**Trask Stalnaker** 04:37 On your own. So yeah, let me… I'll get you the instructions, and I'll… ping you on Slack.
 **Janhvi** 04:44 Sounds good.
 Thank you. Yeah, we anyways have to change the time slot for the other meeting that we have with the Asia-friendly time. I'll then do that.
 **Trask Stalnaker** 04:55 Yeah.
@@ -47,17 +43,14 @@ And so I have, I think, 2 weeks to get everything done, and I keep seeing that t
 So, during that time, I think after 15 December or so, I'm assuming most of the folks are going to be out, right? Should we then skip the sick meeting during those two weeks, the last two weeks of December?
 **Josh Suereth** 05:52 Give your address.
 **Trask Stalnaker** 05:54 Yeah, we… Can't… we already canceled… OpenTelemetry takes a two-week holiday.
-And so we already canceled all the meetings, for those last two
-weeks. So the 25th and the 1st.
+And so we already canceled all the meetings, for those last two weeks. So the 25th and the 1st.
 Are both canceled for this meeting.
 **Janhvi** 06:17 Do the same thing here.
 **Trask Stalnaker** 06:21 Yeah, yeah, they're already canceled, so, we just need to not show up to those.
-But we can choose to,
-you know, take the 18th off, for example, if folks are gonna be out. Sounds like, Josh, you're gonna be out, that week.
+But we can choose to, you know, take the 18th off, for example, if folks are gonna be out. Sounds like, Josh, you're gonna be out, that week.
 **Josh Suereth** 06:45 Yeah, so I'm trying to figure out how to do the, claim host thing.
 **Trask Stalnaker** 06:51 Sorry.
-**Josh Suereth** 06:52 Do you know what, what,
-Do you know what? How do I find out what account ID this one's made with, by the way?
+**Josh Suereth** 06:52 Do you know what, what, Do you know what? How do I find out what account ID this one's made with, by the way?
 **Trask Stalnaker** 06:58 Yeah. Oh, you go to the… click on the meeting security, shield icon at the top of the meeting.
 And… why does it… it used to…
 **Josh Suereth** 07:12 There's a shield at the top of it?
@@ -90,9 +83,7 @@ Even though.
 I think one more thing that we tried to do, and Ayushi's also here from my team, I think last time we discussed, right, we wanted to see how is criticality used in other observability, places, Kubernetes or stuff like that. Ayushi, do you quickly want to go through the doc that you have, where you found, how is criticality and similar attributes being used?
 **Ayushi Asthana** 09:41 Yeah, sure, I think, so…
 **Janhvi** 09:46 I'll just quickly.
-**Ayushi Asthana** 09:47 Yeah, yeah, after I went through the PR that, Josh had shared, I kind of…
-stopped working towards a demo, because, I'm assuming this is already under the works, and this will get approved in the next 1-2 weeks at max, right? So…
-Yeah.
+**Ayushi Asthana** 09:47 Yeah, yeah, after I went through the PR that, Josh had shared, I kind of… stopped working towards a demo, because, I'm assuming this is already under the works, and this will get approved in the next 1-2 weeks at max, right? So… Yeah.
 **Trask Stalnaker** 10:08 The… the PR?
 **Janhvi** 10:11 Yeah, yeah, the PR.
 **Trask Stalnaker** 10:13 I mean, I think that the understanding how this interplays with existing systems will help the PR to get merged.
@@ -101,9 +92,7 @@ So if you go to the observability section, it's at the bottom. So right now, so 
 And then some analysis of, what different observability platforms are doing with that criticality, attribute.
 So, there is some analysis of how Datadog processes criticality. For example, they have, special, filtering on dashboards by criticality, so we can probably create, like, a small demo with observability.
 like, plugging in, maybe, like, a Kubernetes, cluster, and generating some metrics, and plugging it into Datadog or Splunk.
-**Trask Stalnaker** 11:18 So, I don't… I don't think you need to…
-Do go that far as actually
-implement, you know, show it in Datadog, but if you can add links to their documentation, is what would be helpful.
+**Trask Stalnaker** 11:18 So, I don't… I don't think you need to… Do go that far as actually implement, you know, show it in Datadog, but if you can add links to their documentation, is what would be helpful.
 **Ayushi Asthana** 11:36 Okay.
 **Janhvi** 11:38 Even links to how Grafana Radiadog, uses these, attributes, right?
 **Trask Stalnaker** 11:44 Yeah, yeah, links to their documentation about these is what would be helpful.
@@ -114,8 +103,7 @@ implement, you know, show it in Datadog, but if you can add links to their docum
 **Ayushi Asthana** 12:13 Yeah, so right now, I think… so, in Kubernetes, there is a couple of different ways that this plays out.
 You can go to Kubernetes, right? It has different ways that it exposes criticality, in terms of scheduling and storage classification, but these more or less have, like, the same meaning as criticality, they are named differently.
 Similar to, I think AWS, how AWS does it and how GCP does it, they both have, criticality in security use cases, as well as, like, user tagging.
-So, for these as well, I think the same thing goes, that we might… it might be helpful to attach, some doc links
-And, I think forums where these things are discussed.
+So, for these as well, I think the same thing goes, that we might… it might be helpful to attach, some doc links And, I think forums where these things are discussed.
 Oh… Janvi, can I share my screen? It'd be helpful.
 **Janhvi** 13:15 Joshua, go ahead.
 **Ayushi Asthana** 13:22 Do I have access to shares?

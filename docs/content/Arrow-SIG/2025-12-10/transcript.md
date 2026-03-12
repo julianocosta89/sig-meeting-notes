@@ -11,10 +11,7 @@ Duration: 8 minutes
 **Andres Borja** 07:08 Thank you, thanks for… for taking a look at my PRs, thank you.
 **Albert Lockett** 07:12 Oh, no problem.
 Yeah.
-I was just,
-I don't know if you had anything for the agenda. I was just about to drop a note in…
-the Hotel Arrow channel to say that we might,
-Cancel this call, because, no one else is joining.
+I was just, I don't know if you had anything for the agenda. I was just about to drop a note in… the Hotel Arrow channel to say that we might, Cancel this call, because, no one else is joining.
 **Andres Borja** 07:32 Wow!
 **Albert Lockett** 07:32 But if you had something for you, the agenda, then, you know…
 **Andres Borja** 07:35 No, no, I don't. This is supposed to be the query transform, so…

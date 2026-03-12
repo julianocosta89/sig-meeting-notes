@@ -10,8 +10,7 @@ Duration: 9 minutes
 **Marc Alff [MySQL]** 03:17 Do you know if, Lalit or Tom or, Duke are joining today?
 **Ehsan** 03:24 No idea.
 **Marc Alff [MySQL]** 03:26 Okay.
-just to let you know, Duke has a PR, but, approved and merged to…
-improve ceiling tidy. So, in CI, we have a much better CI now that reports a lot of things.
+just to let you know, Duke has a PR, but, approved and merged to… improve ceiling tidy. So, in CI, we have a much better CI now that reports a lot of things.
 So, there will be probably a lot of, cleanup to do in this area.
 **Ehsan** 04:03 Yeah, nice.
 **Marc Alff [MySQL]** 04:07 And… Just to show you how it works.
@@ -25,8 +24,7 @@ And then you have… Of course, each, each channel.
 **Marc Alff [MySQL]** 04:58 It's… I didn't look at the detail, but it's a huge Python script, which is running in CI.
 Scrape the logs from ceiling tidy.
 And make a report out of it.
-So, just so you know, some nice features, and…
-No, of course, we have some cleanup to do.
+So, just so you know, some nice features, and… No, of course, we have some cleanup to do.
 **Ehsan** 05:29 Yeah, it sounds like a lot.
 **Marc Alff [MySQL]** 05:32 Yep.
 I'm assuming there will be nobody around for Christmas, so the next two meetings are canceled.
@@ -37,25 +35,20 @@ I'm not sure if you saw that earlier or not.
 Okay, looks… I'm not sure if the others are coming. Do you have anything to discuss in particular?
 Not really, okay.
 I looked… I looked a bit… I mean, there is only two new issues and nothing much going on.
-And we had a lot of PRs, but most of those were…
-the Renovate CI that just upgrade,
-versions to use in CI with, tags, so those have been…
-Merge to trunk… to… to remain vitality.
+And we had a lot of PRs, but most of those were… the Renovate CI that just upgrade, versions to use in CI with, tags, so those have been… Merge to trunk… to… to remain vitality.
 Nothing new beside that.
 **Ehsan** 07:03 Okay, thanks.
 **Marc Alff [MySQL]** 07:19 Are you going to be around for… in December or not?
 **Ehsan** 07:23 Yeah, this, I'm, I'm, I'm gold this year.
 **Marc Alff [MySQL]** 07:30 Okay.
 **Ehsan** 07:32 It'll be…
-**Marc Alff [MySQL]** 07:34 Okay. I will probably do some, small cleanup,
-Either in the Yaval area, or in the Silentadi area, with small piers once in a while.
+**Marc Alff [MySQL]** 07:34 Okay. I will probably do some, small cleanup, Either in the Yaval area, or in the Silentadi area, with small piers once in a while.
 So, if you're enrolled, if you could take a look and approve them. I mean, review them when they come back.
 **Ehsan** 07:54 Sure, sure.
 **Marc Alff [MySQL]** 07:56 True.
 **Ehsan** 07:56 In case I didn't react, it would be nice if you write me on the stack.
 **Marc Alff [MySQL]** 08:01 Cool.
-I mean, if you're… if you're not available, I mean, it's… it's not urgent either, it's,
-Just trying to keep myself busy a bit.
+I mean, if you're… if you're not available, I mean, it's… it's not urgent either, it's, Just trying to keep myself busy a bit.
 **Ehsan** 08:15 Yeah, I'll be available.
 **Marc Alff [MySQL]** 08:18 Okay.
 **Ehsan** 08:22 Hopefully everything went a little bit quiet.

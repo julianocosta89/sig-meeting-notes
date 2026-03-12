@@ -40,12 +40,9 @@ I did, a few years ago, a few years, like, it's already been, like.
 almost 15 years. Time flies.
 I did a holiday like this in… in Nepal, and it was like… I strongly recommend.
 **Juraci Paixão Kröhling** 03:44 Nice. Yeah, and the place looks beautiful, the one that you sent me, it's…
-**Dan Gomez Blanco** 03:48 It's really…
-Really looking forward to it. And then I'll come back, and then it's all, like, you know,
-Conference season.
+**Dan Gomez Blanco** 03:48 It's really… Really looking forward to it. And then I'll come back, and then it's all, like, you know, Conference season.
 **Juraci Paixão Kröhling** 03:59 Yep, there's a lot of bad telemetry out there. I heard that from someone very smart.
-**Dan Gomez Blanco** 04:05 Yeah, it's, actually, I know none of you is… you're…
-you're in Berlin, Jurassi, and you're… I'll be in Germany in October, but in Munich.
+**Dan Gomez Blanco** 04:05 Yeah, it's, actually, I know none of you is… you're… you're in Berlin, Jurassi, and you're… I'll be in Germany in October, but in Munich.
 **Juraci Paixão Kröhling** 04:20 I mean, I can be in Munich, when in October?
 **Severin Neumann** 04:25 military in Munich, from Con…
 **Dan Gomez Blanco** 04:27 No, it's the, InfoQ Dev Summit.
@@ -64,9 +61,7 @@ So the week… I think there is, like, also, like, a lot of KCDs happening at th
 **Juraci Paixão Kröhling** 05:02 first.
 Yeah. So PromCon is on 21st of October. 21st and 22nd.
 So the week after.
-**Dan Gomez Blanco** 05:12 That's when, KCD Edinburgh that's happening as well. So I think there's a KCD Warsaw…
-The week before? I think that weakest, I think, the…
-Or the week after, or something like that.
+**Dan Gomez Blanco** 05:12 That's when, KCD Edinburgh that's happening as well. So I think there's a KCD Warsaw… The week before? I think that weakest, I think, the… Or the week after, or something like that.
 Anyway, lots of conferences.
 **Juraci Paixão Kröhling** 05:27 Yep.
 Yeah.
@@ -78,8 +73,7 @@ I don't have anything open, but…
 **Severin Neumann** 05:56 Let me… That's the wrong link.
 If there's anything on the spec…
 **Juraci Paixão Kröhling** 06:01 It looks very…
-**Severin Neumann** 06:07 Is the US team doing triage again? Like, because it's…
-For the last few weeks, it has been… Fairly.
+**Severin Neumann** 06:07 Is the US team doing triage again? Like, because it's… For the last few weeks, it has been… Fairly.
 required.
 **Dan Gomez Blanco** 06:16 Maybe he's, like… Holiday season, well…
 **Severin Neumann** 06:19 That's maybe the other reason.
@@ -89,15 +83,12 @@ required.
 **Dan Gomez Blanco** 06:31 I think that would be useful.
 **Severin Neumann** 06:33 Let me share my screen on that.
 I still have not figured out the best way how to share my browser.
-Because if I do it in…
-private mode, then I cannot do a lot of things.
+Because if I do it in… private mode, then I cannot do a lot of things.
 **Dan Gomez Blanco** 06:50 Yet.
-**Severin Neumann** 06:50 And the biggest concern I have is, like, if I click on the address bar, like, it exposes anyways all the Google Docs and whatever, so there should be, like, a…
-I should probably figure out how I can quickly turn that off.
+**Severin Neumann** 06:50 And the biggest concern I have is, like, if I click on the address bar, like, it exposes anyways all the Google Docs and whatever, so there should be, like, a… I should probably figure out how I can quickly turn that off.
 **Dan Gomez Blanco** 07:06 They tried to do that.
 **Severin Neumann** 07:08 custom browser only for that.
-**Dan Gomez Blanco** 07:10 I tried to, like, do that in Firefox, and I couldn't, you know…
-couldn't find a way, as I use Firefox, and I couldn't find a way to do it.
+**Dan Gomez Blanco** 07:10 I tried to, like, do that in Firefox, and I couldn't, you know… couldn't find a way, as I use Firefox, and I couldn't find a way to do it.
 **Severin Neumann** 07:16 What happened?
 So what I try to avoid now is just not clicking into the address bar, or just.
 **Juraci Paixão Kröhling** 07:23 Okay.
@@ -134,8 +125,7 @@ Memberships…
 **Dan Gomez Blanco** 09:11 Yeah, it's fine.
 **Severin Neumann** 09:12 I think that's fine. I think, yeah, I commented on that one.
 I will close that one now, because, like, they have no sponsors.
-I mean, what we should do at some point is maybe turn this new membership thing into a…
-Into a form.
+I mean, what we should do at some point is maybe turn this new membership thing into a… Into a form.
 and then make the sponsors mandatory, so they cannot just open it without… or at least the first one, right? Sometimes it's like, hey, they open it because one of us told them, like, hey, open it, and then I help you to find another sponsor or something like that, but I think especially those situations where someone just opens it without.
 **Dan Gomez Blanco** 09:50 Yeah.
 **Severin Neumann** 09:51 Without death.
@@ -163,23 +153,18 @@ and then make the sponsors mandatory, so they cannot just open it without… or 
 There's a donation proposal, we probably should put that on the…
 **Dan Gomez Blanco** 11:01 Yeah, so.
 **Severin Neumann** 11:03 Did you label that?
-**Dan Gomez Blanco** 11:04 So I was ac- I was ac- I was… asked by…
-Hanson about this, see if we… if we have a timeline, basically, and I think, you know, I'll get back to them.
-**Severin Neumann** 11:16 I put it on the,
-Is it… what is it? Koplin something something?
+**Dan Gomez Blanco** 11:04 So I was ac- I was ac- I was… asked by… Hanson about this, see if we… if we have a timeline, basically, and I think, you know, I'll get back to them.
+**Severin Neumann** 11:16 I put it on the, Is it… what is it? Koplin something something?
 **Dan Gomez Blanco** 11:25 Yeah.
 **Severin Neumann** 11:26 I put it on the agenda.
 **Dan Gomez Blanco** 11:29 Awesome.
-you know, we can discuss it. I think the first step, even if it's, like, you know, the first step being
-we, as a GC.
+you know, we can discuss it. I think the first step, even if it's, like, you know, the first step being we, as a GC.
 **Severin Neumann** 11:38 Yeah.
 **Dan Gomez Blanco** 11:38 if it… the… A thumbs up.
 **Severin Neumann** 11:42 Yeah.
-Okay, I think everything else is…
-How many open donations do we have right now?
+Okay, I think everything else is… How many open donations do we have right now?
 **Dan Gomez Blanco** 11:52 I was gonna ask that.
-what's… I mean, the only one…
-so there are a few that I don't know if it could be, you know, if an issue could be closed. If a donation's been approved, and there is, like, a project already in…
+what's… I mean, the only one… so there are a few that I don't know if it could be, you know, if an issue could be closed. If a donation's been approved, and there is, like, a project already in…
 **Severin Neumann** 12:05 Yeah, I'm not sure about especially those two, right? Did we not, like… .
 **Dan Gomez Blanco** 12:11 Yeah, I actually reached out to Huxing on the compile instrumentation one.
 I mean, they've got a project, the project seems a bit empty, so I'm not sure what the status is yet.
@@ -193,9 +178,7 @@ But one thing that I saw the other day, and it's not here, is they had a preview
 **Dan Gomez Blanco** 13:07 They can be closed because they are…
 **Juraci Paixão Kröhling** 13:09 Like, they're not relevant anymore, so for one, like, they're not individual donations, and the way that the donation is happening is.
 **Severin Neumann** 13:18 is as individual PR has been sent to the new SIG. Okay, so… so should we… or should we do this on the GCM thing, and say, like.
-**Juraci Paixão Kröhling** 13:29 Yeah, so perhaps just give a comment there saying,
-We believe that this issue should be closed. We, perhaps, name me and Dan, perhaps, as well, saying that we believe this issue should be closed, because, it is… this proposal, this… this project is… has a new life under the…
-Or this has evolved into the SIG Go compile instrumentation.
+**Juraci Paixão Kröhling** 13:29 Yeah, so perhaps just give a comment there saying, We believe that this issue should be closed. We, perhaps, name me and Dan, perhaps, as well, saying that we believe this issue should be closed, because, it is… this proposal, this… this project is… has a new life under the… Or this has evolved into the SIG Go compile instrumentation.
 **Dan Gomez Blanco** 13:52 And.
 **Juraci Paixão Kröhling** 13:53 And, the donation has been done, like, piecemeal.
 **Dan Gomez Blanco** 13:57 I mean, it has been… Yeah.
@@ -224,25 +207,21 @@ Let's do that on Wednesday.
 **Juraci Paixão Kröhling** 15:34 Is that an extension that you have for your browser to show the profile pictures of people?
 **Severin Neumann** 15:40 I guess so, I have to think it's called Advanced GitHub.
 **Juraci Paixão Kröhling** 15:44 Wow.
-**Severin Neumann** 15:45 We find GitHub. And the funny thing is, I sometimes forget what is…
-And then sometimes I'm sitting in another laptop, and I'm like.
+**Severin Neumann** 15:45 We find GitHub. And the funny thing is, I sometimes forget what is… And then sometimes I'm sitting in another laptop, and I'm like.
 You ask, and you're like, oh yeah, that's… for example, there's, with the inbox, there's, like, things like open unread notifications, and you can open your, like, 300 tabs, and then you can just…
 **Juraci Paixão Kröhling** 16:07 Look for those tabs.
 **Severin Neumann** 16:09 So yeah, I can highly recommend that, so it's called Refined GitHub, and it's really…
 **Juraci Paixão Kröhling** 16:13 Nice.
 **Severin Neumann** 16:14 Wonderful.
 **Dan Gomez Blanco** 16:15 If you open that link, that's in Zoom.
-I see that the… the… I think Hu Xing, probably, or someone in the Gold Compile Instrumentation already added a…
-Where is that there?
+I see that the… the… I think Hu Xing, probably, or someone in the Gold Compile Instrumentation already added a… Where is that there?
 **Juraci Paixão Kröhling** 16:29 Yeah. So I reached out if they could add some dates.
 **Dan Gomez Blanco** 16:33 target dates, and I think they probably have already.
-So if you click on that, I think you'll be able to see…
-Yeah, so, and then, this is the issue, right? So then you have to click on the project itself in the title?
+So if you click on that, I think you'll be able to see… Yeah, so, and then, this is the issue, right? So then you have to click on the project itself in the title?
 **Severin Neumann** 16:47 Just one.
 **Dan Gomez Blanco** 16:48 Man.
 **Severin Neumann** 16:48 Okay. Yeah.
-**Dan Gomez Blanco** 16:50 The top right. Oh, yeah, okay, so…
-I think they… this was almost, like, empty.
+**Dan Gomez Blanco** 16:50 The top right. Oh, yeah, okay, so… I think they… this was almost, like, empty.
 Last week, and it seems that they've added some of the stuff that they've been working on.
 **Severin Neumann** 17:01 Yeah.
 Okay.
@@ -256,54 +235,39 @@ stop as well.
 I think we have not, like.
 **Juraci Paixão Kröhling** 17:32 Full con…
 **Severin Neumann** 17:33 So to speak, so the current mod is still, like, the Super Admin or something like that.
-But you might have seen it, I already set up some
-visual improvements. And I also created this OpenTelemetry user and put the credentials into… Into… into our…
-Passport manager, so you could… we could use that for any official stuff we want to do there.
+But you might have seen it, I already set up some visual improvements. And I also created this OpenTelemetry user and put the credentials into… Into… into our… Passport manager, so you could… we could use that for any official stuff we want to do there.
 **Juraci Paixão Kröhling** 17:59 Let's see how valuable already it is going to turn out at some point.
 **Dan Gomez Blanco** 18:05 Yeah, I think the person that is, like, the mod there said that they've not been working on OpenTelemetry directly for a while, so maybe…
-**Severin Neumann** 18:12 Yeah, exactly, you said, like, hey, there's no issue, but the permissions we got are not, like… for example, I tried to add you, URC, as, like, an additional
-modern, and I don't think we have that privileges, so I can do a lot of things, but not that.
+**Severin Neumann** 18:12 Yeah, exactly, you said, like, hey, there's no issue, but the permissions we got are not, like… for example, I tried to add you, URC, as, like, an additional modern, and I don't think we have that privileges, so I can do a lot of things, but not that.
 So yeah.
 **Dan Gomez Blanco** 18:30 We're good to discuss that, you know, what we… you know, what level of involvement we want to have in that.
-**Juraci Paixão Kröhling** 18:36 Yeah, I mean, as I mentioned on Slack, I'm more than happy to take a look and see, and I don't know, be a moderator on my free time, whatever free time means, but…
-Commit on doing, like, in being really a commission member, or a commission moderator there.
+**Juraci Paixão Kröhling** 18:36 Yeah, I mean, as I mentioned on Slack, I'm more than happy to take a look and see, and I don't know, be a moderator on my free time, whatever free time means, but… Commit on doing, like, in being really a commission member, or a commission moderator there.
 **Dan Gomez Blanco** 18:55 Like, not the active monitoring, but more like…
 **Juraci Paixão Kröhling** 18:59 And I think… yeah. And it was so funny, because I was looking at that community, and on the same day that it sent a message, and…
 **Dan Gomez Blanco** 19:09 Oh yeah, I can see.
-**Juraci Paixão Kröhling** 19:10 something that…
-What is it? I can see your message, yeah, there. Yeah, and I… yeah, and I was kind of bothered that there are a lot of… like, there are waves, suddenly a specific vendor is shipping LLM-ridden articles, like, every day, and you see the quality of them, and then suddenly it stops, and then another one picks up, and…
-So, and I don't think…
-I don't know, I have some strange feelings about that.
+**Juraci Paixão Kröhling** 19:10 something that… What is it? I can see your message, yeah, there. Yeah, and I… yeah, and I was kind of bothered that there are a lot of… like, there are waves, suddenly a specific vendor is shipping LLM-ridden articles, like, every day, and you see the quality of them, and then suddenly it stops, and then another one picks up, and… So, and I don't think… I don't know, I have some strange feelings about that.
 **Severin Neumann** 19:38 My… my pipe sense to that is, like.
 I think Reddit could be the place where we are okay with a little bit more.
 **Juraci Paixão Kröhling** 19:47 Yeah.
 **Severin Neumann** 19:48 content, because we're already regulating it heavily on Slack, right? We tell people, like, we gotta wait, don't post it here, go to OTL Social. But OTIL Social is not really, like, that active place. They're saying, like, hey.
 you can post your vendor-specific stuff here, which, like, I think we can even do some kind of, like, flares that you say, like, hey, this is promotional, or something like that.
 I mean, on Reddit. I know, like, like, for example, some other subreddits, they're very, very quickly offended by that.
-even if you are not posting a…
-a blog post, but something like a question that sounds to them not like, hey, I'm a part of your
-your gang, they get really angry really quickly.
-But at the end, let's figure it out. But I think the good news is that we have some…
-ways to manage that thing now, and then maybe even do some mod announcements, and whatever, and see what goes from there. But to answer your question, and I can also comment on that, I think most of the things you do on the Ollie Garden blog.
+even if you are not posting a… a blog post, but something like a question that sounds to them not like, hey, I'm a part of your your gang, they get really angry really quickly.
+But at the end, let's figure it out. But I think the good news is that we have some… ways to manage that thing now, and then maybe even do some mod announcements, and whatever, and see what goes from there. But to answer your question, and I can also comment on that, I think most of the things you do on the Ollie Garden blog.
 as long as it's not like, hey, look at this cool feature Oli Garden has, and it's more like, hey, here's how you name a span. And by the way, we have a feature in Ollie Garden that helps you to find spans that are not named. I'm not doing that.
 **Juraci Paixão Kröhling** 21:11 Yeah, no, it's fine, yeah. I mean, I guess it's more like, so Oli Garden, I think it's okay. I mean, for the content that I'm producing for Oldie Garden, that, I think it is vendor neutral, I try to push to Hotel Blog as well.
-Especially because, like, as a message, Etsy is not…
-about AudiGarden, really. It is, of course, I want to be known for Audigarden, and I want people to know about AudiGarden, but this content really applies to everybody. Yeah. The one that I'm… that I was more concerned about is the ones for telemetry drops. Like, I have this live stream running every Friday now.
-For trampty drops, and I don't know if I, I could, I could send a link to that on, on, on, on the…
-On the Reddit.
+Especially because, like, as a message, Etsy is not… about AudiGarden, really. It is, of course, I want to be known for Audigarden, and I want people to know about AudiGarden, but this content really applies to everybody. Yeah. The one that I'm… that I was more concerned about is the ones for telemetry drops. Like, I have this live stream running every Friday now.
+For trampty drops, and I don't know if I, I could, I could send a link to that on, on, on, on the… On the Reddit.
 Perhaps, perhaps not, I don't know. I think I'll try.
 And, let's see, I forgot… I'd forgotten about the Hotel Social, I can try that as well.
 Yeah.
-**Severin Neumann** 22:06 I mean, give it… give it a try also branded, I think. In a sense, I mean…
-I think that the thing that people are always worried about is that it turns into a dumpster fire where only people
-But that's the situation that we have already, right? I mean, it's just like…
+**Severin Neumann** 22:06 I mean, give it… give it a try also branded, I think. In a sense, I mean… I think that the thing that people are always worried about is that it turns into a dumpster fire where only people But that's the situation that we have already, right? I mean, it's just like…
 **Juraci Paixão Kröhling** 22:22 Right, that's true.
 **Severin Neumann** 22:24 That there's nothing happening.
 And should we can tell people, like, hey, the nothing that's happening is bad, or we can just try to work from there and say, like, hey, please.
 **Dan Gomez Blanco** 22:35 Please, post your content, but…
 **Severin Neumann** 22:38 like…
-**Dan Gomez Blanco** 22:39 I mean, that's what I was saying, like… Yeah, we can… we can keep it, like, a little bit light touch for us, and… and sort of say, here's… here's the marketing guidelines in the website, and like, you know… and then rely on the community. I think in… in…
-in, Reddit, the community can mark things as spam, and then…
+**Dan Gomez Blanco** 22:39 I mean, that's what I was saying, like… Yeah, we can… we can keep it, like, a little bit light touch for us, and… and sort of say, here's… here's the marketing guidelines in the website, and like, you know… and then rely on the community. I think in… in… in, Reddit, the community can mark things as spam, and then…
 **Juraci Paixão Kröhling** 22:58 People can just downvote, right? So I think that's… that's what I think it's okay for…
 **Severin Neumann** 23:03 Yeah.
 **Juraci Paixão Kröhling** 23:04 People can just downvote, and if people don't like it, I get the message right away, because it's negative votes, or I don't know.

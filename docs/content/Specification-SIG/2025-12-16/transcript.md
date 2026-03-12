@@ -24,25 +24,21 @@ And that's all, yeah, I think we can merge that.
 **Liudmila Molkova** 03:32 Yay! So let's… let's consider it to be the announcement.
 Let me do the honors.
 Craig, so, sorry for jumping in front.
-Let's get started! Do we have quorum? We have…
-Quite a few folks here now.
+Let's get started! Do we have quorum? We have… Quite a few folks here now.
 Robert, let's talk about stabilizing complex attributes.
 Do you want to present? Do you want me to present?
 **Pellared** 04:13 I can try, and you can just… you can just add any additional comments, which I… if I miss anything. So, this is just the PR, which… about stabilizing the attribute… any complex attributes, and also the any… the empty, attribute as well.
 And this isn't just about making this stuff stable, also cleaning up a few things which are redundant, as this is going stable.
 And we have 3 prototypes. These are only prototypes because this is, like, all of these types are in common packages, and I think doing it in some experimental stuff is very problematic.
 At least we have a kind of a branching go. In Python, there will also protected. In Java, I see it's already merged into incubated, because Java has an incubating.
-So,
-I was considering adding it to spec-compliant metrics, but I saw that I haven't found any good place to do it, so if the TC or anyone want to add it, I just… I'm just fine doing it as a separate PR, I just had no idea where to put it in the spec-compliant metrics, or if we have even needed there.
+So, I was considering adding it to spec-compliant metrics, but I saw that I haven't found any good place to do it, so if the TC or anyone want to add it, I just… I'm just fine doing it as a separate PR, I just had no idea where to put it in the spec-compliant metrics, or if we have even needed there.
 And yeah, we wanted to have the merged in, kind of, beginning or at least mid-January, because we said in the… in the blog post that we want to basically have supported in 3… in about 3 months.
 So, that's it from my side. Ludemua, do you want to add anything from your side? We also get no feedback against going further.
 any issue, we haven't got any issue, any comment. We haven't received any comment that this is a bad decision.
 or… Apart from the comments that were before, of course.
 **Trask Stalnaker** 06:03 Just a clarification, it was 6 months from the… when the OTEP was merged.
 **Pellared** 06:10 I thought it was free, but time is going fast.
-**Trask Stalnaker** 06:13 And, we are… we've… we have, we are chomping at the bit in Java for it for two reasons. One is, to stabilize
-To stabilize the complex attributes in logs, which we could have done already, but… or actually, I guess we did… did we do…
-Jack… No, we never stabilized complex attributes in logs, because we were waiting…
+**Trask Stalnaker** 06:13 And, we are… we've… we have, we are chomping at the bit in Java for it for two reasons. One is, to stabilize To stabilize the complex attributes in logs, which we could have done already, but… or actually, I guess we did… did we do… Jack… No, we never stabilized complex attributes in logs, because we were waiting…
 **Jack Berg** 06:45 It's for the log body, not the actual.
 **Trask Stalnaker** 06:46 Yeah.
 Yeah, so that's one reason, and the other reason is, the GenAI instrumentation folks want to… are asking to start using this on spans. So we do have a span use case that people are… are waiting on.
@@ -79,21 +75,17 @@ being on, so we can be in a good position to merge it. Maybe it's not urgent, be
 That would be awesome.
 **Ted Young** 10:19 be a great.
 **Trask Stalnaker** 10:19 That will, I think… I always forget what we say, if it's official, once it's merged, or once it's released, but just to give us the go-ahead in the languages to, to stabilize.
-**Jack Berg** 10:36 probably, official once it's released, but I know at least some of the time in Java, we've…
-We've kind of merged things, dependent on
-The stable spec before the spec was released, so… it's good to have both.
+**Jack Berg** 10:36 probably, official once it's released, but I know at least some of the time in Java, we've… We've kind of merged things, dependent on The stable spec before the spec was released, so… it's good to have both.
 **Liudmila Molkova** 10:55 Usually, it's Carlos who releases, I don't know why, but if he's not available, I can release.
 **Trask Stalnaker** 11:07 Whoa.
 **Liudmila Molkova** 11:10 Cool.
 Then let's move on. Robert, you're still on stage, optional ergonomic API, and I think we have some approvals here, quite a few. Is there anything to call out?
-**Pellared** 11:25 just an important fact that this is not stable, so it's not that dangerous, and I think I even…
-I'm not sure if I did to the spec compliance matrix or not.
+**Pellared** 11:25 just an important fact that this is not stable, so it's not that dangerous, and I think I even… I'm not sure if I did to the spec compliance matrix or not.
 I am not sure, but also, I think I did add it.
 Still, it's a May, so yeah, I added it as well.
 So, yeah, a lot of approvals, so just asking for reviews if someone is interested, if someone to check the language, etc, if everything here is clear.
 That's all from my side.
-**Jack Berg** 11:59 Before we move on to the next topic, I'm just… I'm just checking that…
-we have a change log entry and a spec compliance matrix entry, and we do, because this has plenty of approvals and has been open for a long time without dissent, so I don't see any reason why we shouldn't just merge this.
+**Jack Berg** 11:59 Before we move on to the next topic, I'm just… I'm just checking that… we have a change log entry and a spec compliance matrix entry, and we do, because this has plenty of approvals and has been open for a long time without dissent, so I don't see any reason why we shouldn't just merge this.
 **Carlos Alberto Cortez** 12:19 Yeah, especially…
 **Jack Berg** 12:21 The build is failing because of a link check, but, like, you know, there's been plenty of time to, you know, disagree with this.
 **Carlos Alberto Cortez** 12:30 Yeah, also, it's in development, so I think it's totally fine for now. Once we want to go stable, we will have to make some hard calls, probably, but in the meantime, I think it's fine.
@@ -106,32 +98,22 @@ So this means we'll be spending the day, basically doing Birds of a Feather brea
 A conference track where we all have to sit there and not talk to each other while somebody gives a lecture on something we may or may not be interested in. We're just picking the topics and, having communication between us and our end users.
 We're also going to run, like, a project planning session to try to get, like, roadmap ideas from our community, try to get a sense of, like, what people, think is important.
 We threw one of these a couple of years ago, before the pandemic in Detroit, or maybe that was after the pandemic, I can't remember anymore, but it was in Detroit, and it was a really good time.
-And these things work best if we have maintainers, you know, TC people, GC people, attending. So…
-If you can come, it would be awesome, and if you're thinking about coming, my request is that you buy a ticket. It's 20 bucks, and
-buying a ticket will let us know, who's coming, and whether or not we need to, like, freak out about attendance. So…
-If you're thinking about coming, please buy a ticket. I'm actually curious who here on the call
-Is thinking they'll be able to… to go.
+And these things work best if we have maintainers, you know, TC people, GC people, attending. So… If you can come, it would be awesome, and if you're thinking about coming, my request is that you buy a ticket. It's 20 bucks, and buying a ticket will let us know, who's coming, and whether or not we need to, like, freak out about attendance. So… If you're thinking about coming, please buy a ticket. I'm actually curious who here on the call Is thinking they'll be able to… to go.
 I know, I'll be there.
 Maybe nobody?
-Well…
-Anyways, for people who, have, European wings of their operation and their SIGs, please, please put a shout out.
+Well… Anyways, for people who, have, European wings of their operation and their SIGs, please, please put a shout out.
 That's all I got.
 **Liudmila Molkova** 15:05 Yay, thank you! It's exciting. I wish I could come.
-**Ted Young** 15:09 Yeah, I hope it'll be exciting, but also, like, yeah, a little bit worried that, yeah, I've never been to Foston, but February in Brussels, you know, so…
-I do feel like we need to make some noise to get people to come. Especially because, weirdly, this is the one year there's always, like, an observability dev room at Fostum.
+**Ted Young** 15:09 Yeah, I hope it'll be exciting, but also, like, yeah, a little bit worried that, yeah, I've never been to Foston, but February in Brussels, you know, so… I do feel like we need to make some noise to get people to come. Especially because, weirdly, this is the one year there's always, like, an observability dev room at Fostum.
 And due to just, like, mistakes-were-made kind of tragedy, there's no observability dev room at Fostom this year. So I am a little worried that people are gonna, like, hear that, and not hear about OTEL Unplugged, and then think, like, there isn't a lot of observability stuff happening at Fostom.
 So, double reason to, like, spread the word about this, because it'll be, like, our dev room alternative.
 Cool. That's all I got, for real.
 **Liudmila Molkova** 16:01 Yeah, nice. Thank you. David, let's talk about metric start time.
-**David Ashpole (dashpole)** 16:07 Woohoo. Yeah, so I'm trying to help unblock the remove API effort that, Antoine is working on, and so one of the things that I think needs to happen
-before we can really talk about a remove API is,
-Improving the spec around, start time.
+**David Ashpole (dashpole)** 16:07 Woohoo. Yeah, so I'm trying to help unblock the remove API effort that, Antoine is working on, and so one of the things that I think needs to happen before we can really talk about a remove API is, Improving the spec around, start time.
 And in particular, for cumulative metrics, a lot of SDKs today will use the process start times, the start time for all metrics, and if you can remove series and restart them, then that becomes problematic. So, this is an effort to, first, for this page that we're looking at, I think.
-I'm just unifying the language, so we had a few different ways that we described the start timestamp in this document. I've just changed them all to use the same language, which is,
-that one that's used there for synchronous gauge. Start time is the timestamp that best represents the first possible moment.
+I'm just unifying the language, so we had a few different ways that we described the start timestamp in this document. I've just changed them all to use the same language, which is, that one that's used there for synchronous gauge. Start time is the timestamp that best represents the first possible moment.
 a measurement for this time series could have been recorded. So I'm sticking to that language throughout.
-And then in the SDK section, I've added a new development start time section, and…
-It all builds off of that language from the existing data model, which is that it's the first possible moment something could have been observed, and then adds some additional requirements.
+And then in the SDK section, I've added a new development start time section, and… It all builds off of that language from the existing data model, which is that it's the first possible moment something could have been observed, and then adds some additional requirements.
 My question for this group, well, of course, I appreciate reviews, but the main question I have today is.
 I assume that we… that all this new language has to be a should, because we're not going to be requiring SDKs to implement a remove API, right?
 I see maybe some nodding.
@@ -145,16 +127,12 @@ We can add that language once the remove API exists, I think.
 **Jack Berg** 18:50 Do you think this is, like, I haven't been following the remove stuff very closely. I'm supportive of it, I just haven't had a chance to engage in it.
 **David Ashpole (dashpole)** 18:57 Do you think this is strictly a blocker? Because, like.
 **Jack Berg** 19:00 Is there anything in the SDK spec that would suggest that, you know, an SDK can't, you know, produce start timestamps like this? It seems to conform to the data model.
-**David Ashpole (dashpole)** 19:12 There's… there's nothing there. I think it's…
-I just think it's helpful to talk about and write down…
-How you should handle start time.
-before we talk about the remove API. Otherwise, it's, like, a lot in…
-1PR, conceptually. So, that's my intent here.
+**David Ashpole (dashpole)** 19:12 There's… there's nothing there. I think it's… I just think it's helpful to talk about and write down… How you should handle start time.
+before we talk about the remove API. Otherwise, it's, like, a lot in… 1PR, conceptually. So, that's my intent here.
 **Jack Berg** 19:29 Yeah, yeah, that's… that's fine.
 it's like, yes, sometimes there's a lot of implicit context in, you know, inspect PRs, and I guess what you're doing here is making it more obvious how to implement this thing when the remove API comes around.
 **David Ashpole (dashpole)** 19:46 Yes, so then it'll be obvious, like.
-oh, we see a new series. Well, actually, if you implement it this way, then remove becomes Like, not…
-Really easy, right? So that's the goal, is make the hard thing a little easier, yeah.
+oh, we see a new series. Well, actually, if you implement it this way, then remove becomes Like, not… Really easy, right? So that's the goal, is make the hard thing a little easier, yeah.
 Josh?
 **Liudmila Molkova** 20:06 Oh, you're muted, Josh.
 **David Ashpole (dashpole)** 20:09 Or we're listening to… His ceiling. No, we're…
@@ -166,16 +144,13 @@ we've needed this for a long time. I also sort of think that the words best repr
 **Jack Berg** 21:06 That was just the simplest thing to do, because there weren't requirements that suggested any other implementation.
 **Joshua MacDonald** 21:12 Right.
 **Jack Berg** 21:21 I'll take a look at this, David, and you know, likely just approve this.
-**David Ashpole (dashpole)** 21:25 Okay, I will be working on a prototype in Go, but of course I would welcome any
-Help from people who work in other languages to make sure that this makes sense there, too.
+**David Ashpole (dashpole)** 21:25 Okay, I will be working on a prototype in Go, but of course I would welcome any Help from people who work in other languages to make sure that this makes sense there, too.
 Cool, that's all from me.
 **Liudmila Molkova** 21:42 Wonderful.
 So, if there is nothing else, Done?
-Happy holidays! It's the last meeting of the year, we will have a break till January 2nd, or…
-I think even later than that, no?
+Happy holidays! It's the last meeting of the year, we will have a break till January 2nd, or… I think even later than that, no?
 January 2nd, okay.
-**Trask Stalnaker** 22:03 It's at the top of the screen now. I just post… I just put up the,
-What do you call them? Notification.
+**Trask Stalnaker** 22:03 It's at the top of the screen now. I just post… I just put up the, What do you call them? Notification.
 **Daniel Dyla (Dynatrace)** 22:13 This meeting will be on January 6th.
 **Liudmila Molkova** 22:16 Yes.
 And yay, it was a great year!

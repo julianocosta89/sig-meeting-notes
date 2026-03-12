@@ -11,8 +11,7 @@ Duration: 37 minutes
 **martinkuba** 01:10 Hi, SRB.
 You're making your rounds around all the sigs, aren't you?
 Okay.
-**Surbhi Agarwal** 01:20 There are some different opinions on how this data should be modeled, so gathering all the feedback, finally, hopefully we can come to a unified…
-Semantics around both mobile and browser for this.
+**Surbhi Agarwal** 01:20 There are some different opinions on how this data should be modeled, so gathering all the feedback, finally, hopefully we can come to a unified… Semantics around both mobile and browser for this.
 **martinkuba** 01:35 Yeah.
 Yeah, thanks for working on that, that's, that's great.
 **Surbhi Agarwal** 01:41 Yo.
@@ -24,8 +23,7 @@ Hi, Joaquin.
 **martinkuba** 02:22 How are you?
 **Joaquín Díaz** 02:24 Goodbye.
 **martinkuba** 03:14 Okay, let's just get started.
-The first topic is David. He's not here, so let's…
-Let's see if he joins, we can come back to it.
+The first topic is David. He's not here, so let's… Let's see if he joins, we can come back to it.
 So, let me, I have the next two topics, the one… the first one is about resource timing, semantic conventions.
 Serbi, do you want to start with that, or do you want me to…
 **Surbhi Agarwal** 03:50 Yo.
@@ -34,94 +32,62 @@ Serbi, do you want to start with that, or do you want me to…
 Are you able to see my screen now?
 **martinkuba** 04:01 Yep.
 **Surbhi Agarwal** 04:03 Awesome.
-So… Like, we prep for the network timing data, similar to the resource
-timing API in browser. We have a similar requirement in mobile as well to generate all these metrics at the backend.
+So… Like, we prep for the network timing data, similar to the resource timing API in browser. We have a similar requirement in mobile as well to generate all these metrics at the backend.
 We proposed this, like.
-as there is a need in both browser and mobile, we can as well have a unified semantics around it. So this was the proposal in the cementing conventions, repo. So basically, having a signal type of event
-Generic naming.
+as there is a need in both browser and mobile, we can as well have a unified semantics around it. So this was the proposal in the cementing conventions, repo. So basically, having a signal type of event Generic naming.
 context to the original HTTP span, and then all the different set of attributes, out of which only the call start and end time are required. Others are opt-in based on the platform.
 And for this, Martin as well, created this mapping, from the browser timing API to the proposed semantic attributes. Some of these are browser-specific.
 And then… Browser doesn't have such a breakdown.
 So, just the head… the starting attribute can be used as a request start.
-And… then there is conditional…
-optional partial copying of the original span attributes here that is required for if you were to create metric charts in the backend, you might need to filter them or aggregate them based on some of the original HTTP span attributes.
+And… then there is conditional… optional partial copying of the original span attributes here that is required for if you were to create metric charts in the backend, you might need to filter them or aggregate them based on some of the original HTTP span attributes.
 So, these were some of them which made sense for the metrics that could be derived out of this data.
 So these are also opt-in.
 Instrumentations can probably have a configuration Boolean, which decides whether these would be added or not.
-Yeah. So, some of the questions here are…
-Martin did mention that in case of browsers, these are
-these… this data is received after the HTTP call, or the span is ended, right? After the fact it is received. So it is not really possible to add this timing to the original span itself.
+Yeah. So, some of the questions here are… Martin did mention that in case of browsers, these are these… this data is received after the HTTP call, or the span is ended, right? After the fact it is received. So it is not really possible to add this timing to the original span itself.
 And it also, like, sort of mimics the resource timing, API that is there for browser.
-So, like, for the, like, the Android SIG is sort of leaning towards
-Adding it to the span itself.
-But if we were to unify things, this is a stronger reason that it can't be in the original span itself. I do know, currently, in… like, you guys can correct me on this, but…
-Currently, the implementation in browser is such that the span waits
-to be ended after this is received, and it, like, there could be downsides to it, but is that the case? I'm looking for a stronger argument to justify that, hey, we need an event, and a span won't do.
+So, like, for the, like, the Android SIG is sort of leaning towards Adding it to the span itself.
+But if we were to unify things, this is a stronger reason that it can't be in the original span itself. I do know, currently, in… like, you guys can correct me on this, but… Currently, the implementation in browser is such that the span waits to be ended after this is received, and it, like, there could be downsides to it, but is that the case? I'm looking for a stronger argument to justify that, hey, we need an event, and a span won't do.
 **martinkuba** 07:33 Yes, sir, like, so this, so there are two instrumentations, actually, and so one is the… the… actually, three. So one is the, ones that generate spans.
 That's for the, like, the fetch and XML HTTP request calls.
-But there's a separate API in the browser that gives you this data for all different kinds of network calls, including, like, CSS,
-you know, JavaScript, files.
+But there's a separate API in the browser that gives you this data for all different kinds of network calls, including, like, CSS, you know, JavaScript, files.
 Images, things like that.
-That, like, we don't… we can't…
-We can't instrument in a way to generate a span.
+That, like, we don't… we can't… We can't instrument in a way to generate a span.
 So yeah, for those… for those who would definitely, I think, want to just generate an event.
 **Surbhi Agarwal** 08:25 Okay.
 Yo.
 That makes sense, yeah.
-And there is a problem in the…
-Mobile side as well, like, some of the ending attributes are probably not being… like, the existing instrumentations will need to change to capture the response body end and the call end.
+And there is a problem in the… Mobile side as well, like, some of the ending attributes are probably not being… like, the existing instrumentations will need to change to capture the response body end and the call end.
 Martin, would you be able to, like, what you mentioned to me, would you be able to add that as well as a pro for the…
 **martinkuba** 08:56 Young.
 **Surbhi Agarwal** 08:56 Going with the event, yeah.
 **martinkuba** 08:59 Okay, yeah, I will add another comment.
-**Surbhi Agarwal** 09:02 Yeah, that would be very helpful. And then Martin also added this question, right, for the browser sig, like, are we good with these proposed naming, or would we want to go with what the dedicated naming, was suggested in the…
-browser, PR… For semantic convention.
+**Surbhi Agarwal** 09:02 Yeah, that would be very helpful. And then Martin also added this question, right, for the browser sig, like, are we good with these proposed naming, or would we want to go with what the dedicated naming, was suggested in the… browser, PR… For semantic convention.
 Are there any thoughts on this?
-**martinkuba** 09:37 So I would… I would just, like, from my perspective, like, my… just to…
-Add some… a little bit more to that question, is…
-If you look at that mapping, It's not… Like, some of them…
-Some of them, like, line up okay, but some of them are completely different. Like…
-You know, like, request start, for example, like, is mapping to header start time.
-Which, I mean, does make sense, but…
-Is it gonna be confusing to, like, to the consumers of that event, if they're ex… if they're…
-Ingest, they're consuming, like, the, browser resource timing event, and…
-looking, maybe, like, looking for, like, which field represents this from the API.
-So they would need to…
-you know, look at the mapping, or, like, the definition, like, to find that out. So it's not gonna be, like, intuitive.
+**martinkuba** 09:37 So I would… I would just, like, from my perspective, like, my… just to… Add some… a little bit more to that question, is… If you look at that mapping, It's not… Like, some of them… Some of them, like, line up okay, but some of them are completely different. Like… You know, like, request start, for example, like, is mapping to header start time.
+Which, I mean, does make sense, but… Is it gonna be confusing to, like, to the consumers of that event, if they're ex… if they're… Ingest, they're consuming, like, the, browser resource timing event, and… looking, maybe, like, looking for, like, which field represents this from the API.
+So they would need to… you know, look at the mapping, or, like, the definition, like, to find that out. So it's not gonna be, like, intuitive.
 So that's my… that's my one comment.
-And then some of them… Ocelona are not…
-I wasn't even sure about some of them, like…
-I think… I think there's the response, and…
-Would make sense to map to call end time, but it also wouldn't make sense to map to response body end time.
-**Surbhi Agarwal** 11:03 One suggestion… one solution, like, for this, if people think that this is prob- this is not intuitive in the browser use cases, we could perhaps add
-http.request.startTime as an additional semantic convention that browser can use.
+And then some of them… Ocelona are not… I wasn't even sure about some of them, like… I think… I think there's the response, and… Would make sense to map to call end time, but it also wouldn't make sense to map to response body end time.
+**Surbhi Agarwal** 11:03 One suggestion… one solution, like, for this, if people think that this is prob- this is not intuitive in the browser use cases, we could perhaps add http.request.startTime as an additional semantic convention that browser can use.
 And not use these ones.
 **martinkuba** 11:28 Yeah.
 **Joaquín Díaz** 11:29 I think there is a trade-off here where you can either make it easy for people, like, reading browser metrics, and then make it easy for people reading mobile metrics.
-By having the specific names, but if you have someone who is reading from both
-Then you are making those people's life more complicated, because, like, if they want to have metrics.
+By having the specific names, but if you have someone who is reading from both Then you are making those people's life more complicated, because, like, if they want to have metrics.
 let's say they have an app, and they have a website consuming the same API, and they want to know metrics around how those are behaving.
 They cannot do it if they are named differently.
 But also, like, I understand the point that it makes it harder, if you are only browser, to having to understand, like, how it translates.
 From the roster API to the semantic measure naming.
-So I guess… That's a question that you may want to answer, is whether you prefer
-Helping browser people, or if you want to make it easy for someone who is trying to read from both places.
+So I guess… That's a question that you may want to answer, is whether you prefer Helping browser people, or if you want to make it easy for someone who is trying to read from both places.
 **Surbhi Agarwal** 12:29 Yeah.
 **Benoît Zugmeyer** 12:34 Could we have, an http.request.startTime, and… htp.respond.tartTime.
-And, and then…
-Other, attributes for the headers.
+And, and then… Other, attributes for the headers.
 Like, we… Like, we would have htp.request.headers.startTime and http.request.startTime.
-So… In the Bozel case, we just send
-The request does start, and in the…
-When we have the headers, we also send the headers the start time.
+So… In the Bozel case, we just send The request does start, and in the… When we have the headers, we also send the headers the start time.
 Does that make sense?
 **martinkuba** 13:27 So you mean send both, both attributes with the same value?
 **Benoît Zugmeyer** 13:32 Yeah, yeah, maybe.
 **martinkuba** 13:33 Yeah.
-Yeah, I guess, would that be, like…
-I mean, from the browser perspective, like, we don't need that, right? We just need the one…
-But, like, I don't know if there's a use case for…
-Like, looking at HTTP requests across browser and other platforms.
+Yeah, I guess, would that be, like… I mean, from the browser perspective, like, we don't need that, right? We just need the one… But, like, I don't know if there's a use case for… Like, looking at HTTP requests across browser and other platforms.
 Like, where you would need both values.
 **Surbhi Agarwal** 14:00 I'm also thinking, like, these are pretty descriptive, right?
 So, like, and if we were to add a request start time.
@@ -138,23 +104,17 @@ Or… is…
 HTV request, start time, and then for mobile, you have HTV request header start time.
 **Surbhi Agarwal** 15:22 Yeah. But it's the same…
 **Joaquín Díaz** 15:23 like, is it the same information about the request, or is it different? That's my question, like, does it mean the same?
-**Surbhi Agarwal** 15:33 It is the same as this, right? Like, when the request
-Starts in the browser is same as this for mobile.
-**Joaquín Díaz** 15:43 Yeah, I… I wouldn't use different names,
-I think it's… the name is clear enough for me, at least.
+**Surbhi Agarwal** 15:33 It is the same as this, right? Like, when the request Starts in the browser is same as this for mobile.
+**Joaquín Díaz** 15:43 Yeah, I… I wouldn't use different names, I think it's… the name is clear enough for me, at least.
 if I'm looking at it, like, if I say request start, and then I say… I see that name, I think it's fine.
 like, it's not the case where we have, like, totally different API… process API names and semantic information saying that these are similar enough for you to understand, I think.
-And I wouldn't go with the option of having
-Two different things for mobile, and…
-browser, because I think it's important to be able to see
-things from different platforms at the same time, but that's my opinion.
+And I wouldn't go with the option of having Two different things for mobile, and… browser, because I think it's important to be able to see things from different platforms at the same time, but that's my opinion.
 **Surbhi Agarwal** 16:26 Okay.
 So, like, using this for browser use case, or renaming it to start time.
 That could be confusing, like, if mobile were to use http request.startTime for header start time, that would be confusing for mobile use case.
 But probably this works for browser use case, as the request start time.
 **martinkuba** 17:05 Marco?
-**Marco Schäfer** 17:07 Yeah, like, what speaks against… really against having two different things? I found it, for a browser use case, I find headers.star time very, like, uncommon, so if I would use it, I…
-wouldn't even know, like, what to do with it. Like, I would expect, like, just request.startTime, instead of the headers part. So, I'm not sure, like, what is the problem if browser and mobile diverge for the things which are different?
+**Marco Schäfer** 17:07 Yeah, like, what speaks against… really against having two different things? I found it, for a browser use case, I find headers.star time very, like, uncommon, so if I would use it, I… wouldn't even know, like, what to do with it. Like, I would expect, like, just request.startTime, instead of the headers part. So, I'm not sure, like, what is the problem if browser and mobile diverge for the things which are different?
 **Joaquín Díaz** 17:43 But my understanding is that it means the same.
 But… in the browser API, it's not named.
 like, it will be named header request start, but instead it's just request start.
@@ -164,8 +124,7 @@ On someone…
 **Marco Schäfer** 18:03 Oh, sorry, please go ahead.
 **Joaquín Díaz** 18:05 Yeah, so even, like, either us, In-browser or the mobile.
 SIG has to make the compromise of having something that is slightly different than the… API name.
-But I don't think we should have…
-things named differently, but they mean the same, because that is, I think, more confusing than having to know that… what it means for the API, like, the translation between the API as a multi-convention.
+But I don't think we should have… things named differently, but they mean the same, because that is, I think, more confusing than having to know that… what it means for the API, like, the translation between the API as a multi-convention.
 **Surbhi Agarwal** 18:39 Could we name this better such that it works for both mobile and browser, if we were, let's say, to use the same naming?
 **Joaquín Díaz** 18:50 Yeah, that outsource.
 **Surbhi Agarwal** 18:54 Yo.
@@ -174,94 +133,61 @@ Or is it the same value?
 **Surbhi Agarwal** 19:09 It's different. First headers are sent, and then body is sent.
 **Benoît Zugmeyer** 19:15 Okay, it's not… like, chained.
 Okay.
-**martinkuba** 19:20 Serby also didn't… I also didn't actually… Include that the…
-There's potentially, like, other attributes in…
-in the navigation… the resource timing in web, there is… there's one, I think, called…
-Like, first interim response start?
+**martinkuba** 19:20 Serby also didn't… I also didn't actually… Include that the… There's potentially, like, other attributes in… in the navigation… the resource timing in web, there is… there's one, I think, called… Like, first interim response start?
 And then final response header start.
-So that those might be…
-Also, I have to add it, be added,
-I'll make a comment on this, too.
+So that those might be… Also, I have to add it, be added, I'll make a comment on this, too.
 **Surbhi Agarwal** 19:53 Okay, yeah.
-**martinkuba** 19:56 And also, just one more thing really quick, there is, you have, like, at the top in the description, you have some additional, like, context attributes, like the size, the body size, connection type, and things like that. I think these are…
-on… That makes sense, and we also have some…
-There are some additional ones, also, for me, resource timing, like,
-Like, content type, or delivery type, or initiator type.
+**martinkuba** 19:56 And also, just one more thing really quick, there is, you have, like, at the top in the description, you have some additional, like, context attributes, like the size, the body size, connection type, and things like that. I think these are… on… That makes sense, and we also have some… There are some additional ones, also, for me, resource timing, like, Like, content type, or delivery type, or initiator type.
 there's a bunch of them, like, that are specific to the resource, like, what the browser API provides.
 So I guess my question would be, like.
 Let me actually give you the link to that.
 **Surbhi Agarwal** 20:41 Yo.
 **martinkuba** 20:53 Just put it in the notes, hold on.
 **Surbhi Agarwal** 20:55 Okay.
-**martinkuba** 21:07 So my question on those would be…
-Like, would they be part of this? Would it make sense to make them part of this as well, or…
-Define them as a separate, in separate namespace that's browser-specific.
+**martinkuba** 21:07 So my question on those would be… Like, would they be part of this? Would it make sense to make them part of this as well, or… Define them as a separate, in separate namespace that's browser-specific.
 **Surbhi Agarwal** 21:23 Oh…
 **martinkuba** 21:24 Yeah, these, these, like, under additional resource information.
 **Surbhi Agarwal** 21:28 Yo.
 **martinkuba** 21:29 Yeah.
 **Surbhi Agarwal** 21:39 We do have similar stuff in HTTP semantics, right? Like, there is something for payload as well. That is http.request.size, or body size, and http.response.body size.
-So, like… Because this sort of is, like, capturing the original…
-HTTP attributes, so, like, if we can… can we name them similar to that?
-For this, there is… headers.contenttype. Like, you can,
-like, in HTTP span, you can mention this.
+So, like… Because this sort of is, like, capturing the original… HTTP attributes, so, like, if we can… can we name them similar to that?
+For this, there is… headers.contenttype. Like, you can, like, in HTTP span, you can mention this.
 In particular attributes as well.
 This is not there.
-**martinkuba** 22:36 Yeah, why don't I, why don't I add,
-Like, another table to map these additional attributes. See how far… How close we are.
+**martinkuba** 22:36 Yeah, why don't I, why don't I add, Like, another table to map these additional attributes. See how far… How close we are.
 Yeah. And we can, we can just continue the discussion on that issue.
 **Surbhi Agarwal** 22:52 That sounds good, yeah. And if anything is missing, we can see what to do about that.
 Yeah, and whether these would be opt-in or always recommended for the browser use case?
-**martinkuba** 23:11 Yeah, I'm not… so I… still, like, I think the biggest question
-For me, for this group, would be…
-Are we okay, like, with different names?
+**martinkuba** 23:11 Yeah, I'm not… so I… still, like, I think the biggest question For me, for this group, would be… Are we okay, like, with different names?
 As far as consuming the data.
 Because it's not gonna be… I think it's nice to consolidate these attributes, but at the same time, like, it's not gonna be intuitive.
 So, maybe it's… that's okay.
 **Surbhi Agarwal** 23:47 two options I think we discovered. Yeah, go ahead, please.
-**Benoît Zugmeyer** 23:53 Sorry, just my opinion, but I think being consistent with mobile is more important than having a…
-Using the same, naming than the browser.
+**Benoît Zugmeyer** 23:53 Sorry, just my opinion, but I think being consistent with mobile is more important than having a… Using the same, naming than the browser.
 Yep.
-**martinkuba** 24:15 Yeah, so we… I would think…
-Then we can work out all the details. This probably sounds like it's gonna take some time.
-**Surbhi Agarwal** 24:25 like…
-I can ex… like, we are saying that, having the unified semantics works for us, right?
+**martinkuba** 24:15 Yeah, so we… I would think… Then we can work out all the details. This probably sounds like it's gonna take some time.
+**Surbhi Agarwal** 24:25 like… I can ex… like, we are saying that, having the unified semantics works for us, right?
 **martinkuba** 24:39 It doesn't sound like there's anyone with strong opinion against it.
 **Surbhi Agarwal** 24:44 Yo.
 I can explore if this can be named better, so it fits both.
-Otherwise, there would be an additional… like… learning…
-Gap for browser use case, wherein people understand that this is what's used for response start time.
+Otherwise, there would be an additional… like… learning… Gap for browser use case, wherein people understand that this is what's used for response start time.
 **Joaquín Díaz** 25:12 I think that's fine, like, it's not bad, but they did… the name is almost the same, so I think it's fine.
 We can… we can make it better with documentation and… Whatever, but… I think that's preferable.
 **Surbhi Agarwal** 25:28 Yeah.
-Another thing was, like,
-from what I understood, like, there is a fetch start time, which is in,
-like, an instant in time, maybe system.milliseconds, which is the time from the Unix epoch.
-And then all these timestamps and browser use case are deltas from that time. Is that the case? Like, there is a debate around…
-adding all the timestamps as milliseconds since epoch, or… because that is not monotonic, there is no monotonic source. There are open telemetry
-clock… That is being implemented that offers a monotonic
-time, but that is not, fetchable from all the instrumentations, that's not exposed. So…
-Like, is delta time better, or is absolute time?
+Another thing was, like, from what I understood, like, there is a fetch start time, which is in, like, an instant in time, maybe system.milliseconds, which is the time from the Unix epoch.
+And then all these timestamps and browser use case are deltas from that time. Is that the case? Like, there is a debate around… adding all the timestamps as milliseconds since epoch, or… because that is not monotonic, there is no monotonic source. There are open telemetry clock… That is being implemented that offers a monotonic time, but that is not, fetchable from all the instrumentations, that's not exposed. So… Like, is delta time better, or is absolute time?
 possible. Are there any opinions on that?
-**martinkuba** 26:48 What I would… I mean…
-I would prefer staying consistent with the API, and also the,
-There's… there's… there's an issue with, with client…
-As far as, like, timestamps with client devices, they're not always synchronized, or…
-With, you know, with, the epoch time?
-So I guess I would… my preference would be to… to continue sending deltas, but…
-Then cult… then calculating.
+**martinkuba** 26:48 What I would… I mean… I would prefer staying consistent with the API, and also the, There's… there's… there's an issue with, with client… As far as, like, timestamps with client devices, they're not always synchronized, or… With, you know, with, the epoch time?
+So I guess I would… my preference would be to… to continue sending deltas, but… Then cult… then calculating.
 An actual timestamp.
 **Joaquín Díaz** 27:25 Do you know if more at all?
 If MOIL also has deltas, or they have time zones.
-**Surbhi Agarwal** 27:35 We, like, sort of… Get callbacks for each event, so we can choose
-Whether to use timestamp or a delta time.
+**Surbhi Agarwal** 27:35 We, like, sort of… Get callbacks for each event, so we can choose Whether to use timestamp or a delta time.
 **martinkuba** 27:53 Did the… did the brows… did the mobile SIG, or did, like, the Android SIG have opinions on this?
 **Surbhi Agarwal** 28:00 Yeah, there are actually differing opinions. So, some people don't like the Delta time. They have some reasons for it, which I did not comprehend fully yet.
 But then the JavaSig, where I'm doing my implementation, they prefer a delta time.
-And browser also,
-prefers delta time, right? So maybe we can make an argument for delta time, and see… try to answer any opposite arguments.
-There is no need for…
-a point in time, because anyway, we need to calculate durations, right? So this works.
+And browser also, prefers delta time, right? So maybe we can make an argument for delta time, and see… try to answer any opposite arguments.
+There is no need for… a point in time, because anyway, we need to calculate durations, right? So this works.
 And we are not… Yo.
 **Joaquín Díaz** 28:56 Sorry, continue.
 **Surbhi Agarwal** 28:57 This also, like, helps with the concern that JavaSig had, which is that we don't have a monotonic source to capture the exact timestamp, so this is better.
@@ -269,17 +195,12 @@ And we are not… Yo.
 If you have timestamps, then you have to do the math, whenever you're querying the metrics.
 So… big.
 I'll… say, I prefer deltas, but I haven't really looked deeply into this, so, like, Bye.
-like, right now, if you ask me, I prefer deltas. I don't know… I don't have a specific reason to not have deltas, but I don't know,
-I'm just looking at this, so…
+like, right now, if you ask me, I prefer deltas. I don't know… I don't have a specific reason to not have deltas, but I don't know, I'm just looking at this, so…
 **Surbhi Agarwal** 29:50 Yeah.
 **Benoît Zugmeyer** 29:52 But the… the timestamp of the event will be the… Equivalent to Fetch stuff, no?
-**Surbhi Agarwal** 30:04 That is a good question. So, like…
-In mobile use case, what was happening was the timestamp of the event was when it was
-either created, or it was being… like, it was irrelevant. It wasn't really set to the fetch start, so is there any take there?
-In, like, we have all these timestamps on the event as an attribute, so we don't really care about the…
-top-level event timestamp or observe timestamp field. Do we care about that?
-**Benoît Zugmeyer** 30:42 But,
-in a UI, when you want to see the, kind of, the list of all the resources, the HTTP calls that happen.
+**Surbhi Agarwal** 30:04 That is a good question. So, like… In mobile use case, what was happening was the timestamp of the event was when it was either created, or it was being… like, it was irrelevant. It wasn't really set to the fetch start, so is there any take there?
+In, like, we have all these timestamps on the event as an attribute, so we don't really care about the… top-level event timestamp or observe timestamp field. Do we care about that?
+**Benoît Zugmeyer** 30:42 But, in a UI, when you want to see the, kind of, the list of all the resources, the HTTP calls that happen.
 Like, over time?
 You kind of need to order.
 The events by, by timestamp.
@@ -289,37 +210,27 @@ Things will be weird, I think.
 No?
 **Benoît Zugmeyer** 31:15 Yep.
 **martinkuba** 31:16 Yeah.
-**Surbhi Agarwal** 31:18 So…
-In the… like, here, we receive an object, which contains all the data, and at that point, we create an event. So, we can, like, it's an… a point in time where the event is created, right? When this
-But in mobile use case, How, like, these are different callbacks.
+**Surbhi Agarwal** 31:18 So… In the… like, here, we receive an object, which contains all the data, and at that point, we create an event. So, we can, like, it's an… a point in time where the event is created, right? When this But in mobile use case, How, like, these are different callbacks.
 So, we can, like… We can either choose the start.
 to set as the timestamp of the event, or when we finally emit it. Like, we create the log midway somewhere, where we have the context of the span. Like, these are separate… it's not an event in time, per se, for mobile use case. These are different callbacks.
 So, we… should we set it to this?
 Or, like, have different definitions a little bit for both the use cases.
-**martinkuba** 32:22 Before we continue, just a really quick time check, it's for overtime,
-we can… we can… if everyone's okay, we can continue talking about this, but we can also move to… move to Slack or the issue.
+**martinkuba** 32:22 Before we continue, just a really quick time check, it's for overtime, we can… we can… if everyone's okay, we can continue talking about this, but we can also move to… move to Slack or the issue.
 **Surbhi Agarwal** 32:35 Yo.
 That sounds good. I think we can… like, this was the only question that I had.
 Yeah, should we continue, or should we drop off?
 **martinkuba** 32:54 I'm okay staying a little bit longer, yep.
 **Benoît Zugmeyer** 32:59 Nope, I'm okay.
-**Surbhi Agarwal** 33:03 Okay Sounds good. I was thinking maybe…
-like, for browser use case, because when all of these things are done, after that we receive, right? So maybe the call end time would be, similar if we were both to use call end time for the event time.
+**Surbhi Agarwal** 33:03 Okay Sounds good. I was thinking maybe… like, for browser use case, because when all of these things are done, after that we receive, right? So maybe the call end time would be, similar if we were both to use call end time for the event time.
 But ideally, should it be start time?
-**Benoît Zugmeyer** 33:40 I don't know if there is a convention or something in a hotel, but…
-Can we set an arbitrary timestamp to the logs?
+**Benoît Zugmeyer** 33:40 I don't know if there is a convention or something in a hotel, but… Can we set an arbitrary timestamp to the logs?
 Like, if we want to say, okay, the log timestamp is the start time, can we just set it?
 **martinkuba** 33:58 Yeah, you can, you can.
 **Benoît Zugmeyer** 34:01 So, it's up to us, really, to choose the… What we do here.
 It doesn't matter if it's… If we are aware of the resource after the fact, or… At the beginning.
-So…
-I… so one possibility for… to… to… to go back to the delta versus absolute timestamp is, like, okay, we have the…
-The log timestamp… Which is an absolute, by definition.
-But then, all the fetch starts…
-The rest of the times are relative to the logs timestamp.
-So, fetch start would be zero, maybe it's…
-It could be a bit irrelevant, but
-V could make more sense, like this.
+So… I… so one possibility for… to… to… to go back to the delta versus absolute timestamp is, like, okay, we have the… The log timestamp… Which is an absolute, by definition.
+But then, all the fetch starts… The rest of the times are relative to the logs timestamp.
+So, fetch start would be zero, maybe it's… It could be a bit irrelevant, but V could make more sense, like this.
 **Surbhi Agarwal** 35:09 There is also two fields, right, in the event. There is a timestamp, and there is an observed timestamp.
 So probably in browser use case, if we were to think about the general definitions of these two fields.
 Timestamp could be when the log is created and emitted.
@@ -334,8 +245,7 @@ I think we… this sort of makes sense, right?
 **martinkuba** 36:23 I don't, so I… I will update or add some more comments.
 About how to… the browser API works.
 And also add a table.
-Maybe, maybe, like, if you can…
-If you can add, like, a summary of what we discussed on this issue as well, that would be helpful.
+Maybe, maybe, like, if you can… If you can add, like, a summary of what we discussed on this issue as well, that would be helpful.
 **Surbhi Agarwal** 36:48 That sounds great, yeah. It will help us steer the conversation in the right direction. I will do that.
 **martinkuba** 36:55 Okay. Thank you, Sir B.
 **Surbhi Agarwal** 36:57 Thank you so much, and others also feel free to, whatever you prefer, to comment about that.

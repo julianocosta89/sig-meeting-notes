@@ -10,8 +10,7 @@ Duration: 14 minutes
 **Ruediger Schulze (IBM)** 00:24 Boom.
 Can be that it's only the two of us today, and… I don't know.
 Wow.
-Let's see if somebody else is joining, but
-That's maybe… that's maybe a chance to consolidate on things.
+Let's see if somebody else is joining, but That's maybe… that's maybe a chance to consolidate on things.
 **Greg Shriver** 00:41 Yeah.
 **Ruediger Schulze (IBM)** 00:42 Seth has been very busy times, obviously.
 **Greg Shriver** 00:45 Yeah.
@@ -37,22 +36,18 @@ It looks like that the installation process did not completely go through.
 **Ruediger Schulze (IBM)** 02:22 Yeah, they, they, they did it. Hey, hey, Antoine.
 They don't see the request cleanly going through in terms of the association with the IBM ID.
 **atoulme** 02:34 Yep.
-**Ruediger Schulze (IBM)** 02:34 And,
-this is more probably a suspect, but it might be that I have not sufficient authority on the…
-This was for the OpenTelemetry Collector repository.
+**Ruediger Schulze (IBM)** 02:34 And, this is more probably a suspect, but it might be that I have not sufficient authority on the… This was for the OpenTelemetry Collector repository.
 That I might actually have to have administrative authorization on the repository.
 **atoulme** 02:56 That's pretty exciting.
 **Ruediger Schulze (IBM)** 02:58 That puts me to this point we had earlier, this idea of having a call once together.
 Maybe this is really what we need to do once to get this moving.
 **atoulme** 03:13 Yeah, so we're now in a Plan B, where things didn't work, and we need to get you in the same room as Trask to do something really in the open source office.
-Folks to do something in simultaneously where
-Yeah. Everybody lined up and agreeing on the permissions, and maybe even elevating your permissions during the time of install.
+Folks to do something in simultaneously where Yeah. Everybody lined up and agreeing on the permissions, and maybe even elevating your permissions during the time of install.
 **Ruediger Schulze (IBM)** 03:34 That might be required. I mean, first step is probably to really reconfirm that that's the cause of the issue, and I think I also need to go back to our folks on this one.
 But then, sounds like we… we probably need to do this in a coordinated way to, you know, like I say, potentially elevating access, doing the installation.
 Verifying… You know, decreasing access again.
 **atoulme** 04:05 Yeah, no, no, that's going to work all the way.
-So, anywho,
-can't really help with that in this meeting. I can ping Trask on it if he hasn't.
+So, anywho, can't really help with that in this meeting. I can ping Trask on it if he hasn't.
 **Ruediger Schulze (IBM)** 04:17 I saw that you discussed that with me, but Trask was in the thread, so I was hoping it would… Yeah.
 **atoulme** 04:22 But he did not.
 Right.
@@ -69,9 +64,7 @@ Anytime soon.
 **Ruediger Schulze (IBM)** 05:38 Anyway.
 Okay.
 Okay, that's this topic.
-Right, so,
-Craig, don't want to put you on the spot, but I think at some point, we discussed about pulling together
-The different documents that we had.
+Right, so, Craig, don't want to put you on the spot, but I think at some point, we discussed about pulling together The different documents that we had.
 **Greg Shriver** 06:15 We did. We did discuss that, yeah.
 I have not made any progress on that, and I will try and make that more of a priority.
 **Ruediger Schulze (IBM)** 06:26 Mmm.
@@ -86,51 +79,37 @@ Yeah, this was from the fifths.
 Okay, good.
 Right.
 So I know, also, somewhat, Delaying activities here.
-But it's not off my agenda, not the PRs for the CUS subsystems and the related spans, it's just that they're…
-There were very busy times recently.
+But it's not off my agenda, not the PRs for the CUS subsystems and the related spans, it's just that they're… There were very busy times recently.
 And the same for… for the… all the metric discussion. I mean, this relates to this, right, Craig? So, there's a related topic is the… get… topic is the… get the metric discussion going.
 Yeah. I'll continue this.
 And, enable us, or enable folks to get, get related PRs out there.
 Whoa.
 initial metrics.
 Right.
-Yeah, so in this sense, there's not much update, Morgan and Antoine, but, you know, it's…
-You know,
-Anyway, the… as we discussed last time, actually, the hotel train for the mainframe is… is… is going.
-I think we need to put a couple of contributions back to the community with respect to semantic conventions at ATC, but
-you know, the… the, you know, implementations by the ISVs is actually happening.
+Yeah, so in this sense, there's not much update, Morgan and Antoine, but, you know, it's… You know, Anyway, the… as we discussed last time, actually, the hotel train for the mainframe is… is… is going.
+I think we need to put a couple of contributions back to the community with respect to semantic conventions at ATC, but you know, the… the, you know, implementations by the ISVs is actually happening.
 **Morgan McLean** 08:53 Where are we right now in terms of capabilities? Like, one of the Wells Fargo people who's joined about a month or two ago had asked me privately, like.
 what works right now? Like, what sort of mainframe data can they get?
 Like, at this moment, using this. I think the answer is the collector runs on most mainframe systems and can capture a variety of host metrics, even though the semantics aren't finished yet. Is that accurate?
-**Ruediger Schulze (IBM)** 09:18 No, this is, so the… okay, first of all, you need to distinguish between
-Do you look at Linux on C, or do you look at COS?
+**Ruediger Schulze (IBM)** 09:18 No, this is, so the… okay, first of all, you need to distinguish between Do you look at Linux on C, or do you look at COS?
 **Morgan McLean** 09:29 Yes.
 Both.
-**Ruediger Schulze (IBM)** 09:32 There are… there are two different…
-Of course. You know, operating systems, and COS obviously is, you know, from historically a complete different architecture than Linux.
-Yep. The collector, as we said, is ported over to Linux on C. There's also this effort around the Digitub action runner to now elevate the support,
-to Tier 2, so that would be part of the CI pipeline. Yep. Once we get over this hurdle, that should also be straightforward, and…
-Then…
-from a mainframe point of view, so what is available from the CUS subsystem, so there are these transaction processing systems, think of KICS, IMS, DB2, MQ.
+**Ruediger Schulze (IBM)** 09:32 There are… there are two different… Of course. You know, operating systems, and COS obviously is, you know, from historically a complete different architecture than Linux.
+Yep. The collector, as we said, is ported over to Linux on C. There's also this effort around the Digitub action runner to now elevate the support, to Tier 2, so that would be part of the CI pipeline. Yep. Once we get over this hurdle, that should also be straightforward, and… Then… from a mainframe point of view, so what is available from the CUS subsystem, so there are these transaction processing systems, think of KICS, IMS, DB2, MQ.
 If you look at, current documentation, latest releases of those, They support native distributed tracing.
 through telemetry, so you can get spans… Oh, wow, okay. …in a non-code… So, no code…
 **Morgan McLean** 10:35 Right out of the system, through kicks and everything else, yeah.
 **Ruediger Schulze (IBM)** 10:37 Right, not, requiring changes to your application, or to your program.
 Having said that, when it comes to metrics and logs, there are different vendor implementations out there.
-So, the, obviously, metric data, gathered in the system measurement facility, as it's being called SMF,
-And then, you know, these different ISV vendors have solutions on top of this. Building on existing products, obviously, but enabling them, having them enabled to support the OpenTelemetry protocol.
+So, the, obviously, metric data, gathered in the system measurement facility, as it's being called SMF, And then, you know, these different ISV vendors have solutions on top of this. Building on existing products, obviously, but enabling them, having them enabled to support the OpenTelemetry protocol.
 Des.
-not specifically semantic conventions for this data that is being exported. Yeah. And this is what we are aiming for here from a metric point of view, to…
-what we always say, kind of like to have the base set of metrics being part of the semantic conventions. At some point, this obviously, you know, will then go into vendor-specific metrics, because everybody has its own mechanism to
-aggregate to process the data that you get from the system, which I think is a fair way still. The data is being sent over OpenTelemetry.
+not specifically semantic conventions for this data that is being exported. Yeah. And this is what we are aiming for here from a metric point of view, to… what we always say, kind of like to have the base set of metrics being part of the semantic conventions. At some point, this obviously, you know, will then go into vendor-specific metrics, because everybody has its own mechanism to aggregate to process the data that you get from the system, which I think is a fair way still. The data is being sent over OpenTelemetry.
 And if there is a, you know, a core set of these metrics, portable.
 **Morgan McLean** 11:56 semantic conventions, all this, what we discussed. All of that'll come through OTEL, yeah.
-**Ruediger Schulze (IBM)** 12:00 Yeah, that, that's, that's all very good, and…
-If then, you know, it goes into, let's say, ISV-specific metrics, as long as they come via OpenTelemetry, you know, this is still good, because you can then have your custom dashboards or custom analytics built on top of this.
+**Ruediger Schulze (IBM)** 12:00 Yeah, that, that's, that's all very good, and… If then, you know, it goes into, let's say, ISV-specific metrics, as long as they come via OpenTelemetry, you know, this is still good, because you can then have your custom dashboards or custom analytics built on top of this.
 **Morgan McLean** 12:18 Sure. Okay.
 **Ruediger Schulze (IBM)** 12:19 That's actually more progress than I realized we'd made. That's actually quite impressive.
-So, there is functionality there, it's more now about to retrofit span attributes, like I said, right? It's, something…
-That needs to be done.
+So, there is functionality there, it's more now about to retrofit span attributes, like I said, right? It's, something… That needs to be done.
 **Morgan McLean** 12:34 Okay This is a great river.
 **Ruediger Schulze (IBM)** 12:37 Yeah.
 Okay, I don't have much else to share today, maybe, Craig, the next thing is maybe, really, let's work on a block there, and let's really focus on maybe building some small PRs for the metric discussion.
@@ -149,8 +128,7 @@ Because if the Kubernetes people are talking about it, obviously it's probably e
 And, yeah, so it makes perfect sense.
 Right.
 **Morgan McLean** 14:19 Cool.
-**Ruediger Schulze (IBM)** 14:20 Okay, yeah, and yeah, let's… let's… let me work internally to understand this GitHub action challenge a little bit better, and then we need to reconvene on this one, and…
-Yeah, let's… let's check next week.
+**Ruediger Schulze (IBM)** 14:20 Okay, yeah, and yeah, let's… let's… let me work internally to understand this GitHub action challenge a little bit better, and then we need to reconvene on this one, and… Yeah, let's… let's check next week.
 **Morgan McLean** 14:35 Okay.
 **Greg Shriver** 14:36 Okay.
 **Morgan McLean** 14:37 Thanks, folks. Okay, thank you. Catch you later!

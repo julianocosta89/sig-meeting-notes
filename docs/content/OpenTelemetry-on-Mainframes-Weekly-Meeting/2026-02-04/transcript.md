@@ -18,33 +18,20 @@ And there's… it says that it expires in 7 days.
 **Ruediger Schulze (IBM)** 01:45 Okay.
 **Greg Shriver** 01:46 So, I mean, I tried to accept the invite again. I thought again. I don't know 100% if I accepted it originally, I thought I did.
 But…
-**Ruediger Schulze (IBM)** 01:59 Yeah,
-it's… I don't know. I mean, the PR itself from that time to the community is closed, obviously. Maybe there's a way to… to reinitiate that the invitation is being sent.
-the…
-Let's just take a different perspective on this. It's obviously crucial that we have at least two who can approve, who act as maintainers, and so on. Sure.
-And,
-obviously, you know, you and I, we are also the one who are contributing to this code or with this text, you know, whatever pull requests to…
-the community work, but, we need at least always one other person to approve the work, as part of the SIG, so we need to get you, and if somebody wants to volunteer, maybe another person even, to act as a…
-Somebody being part of the community and then taking on also those roles, so that we don't, you know, we know all about traveling and all the other activities that everybody is driving, that we don't get…
-You know, our bottleneck on some of these activities.
+**Ruediger Schulze (IBM)** 01:59 Yeah, it's… I don't know. I mean, the PR itself from that time to the community is closed, obviously. Maybe there's a way to… to reinitiate that the invitation is being sent.
+the… Let's just take a different perspective on this. It's obviously crucial that we have at least two who can approve, who act as maintainers, and so on. Sure.
+And, obviously, you know, you and I, we are also the one who are contributing to this code or with this text, you know, whatever pull requests to… the community work, but, we need at least always one other person to approve the work, as part of the SIG, so we need to get you, and if somebody wants to volunteer, maybe another person even, to act as a… Somebody being part of the community and then taking on also those roles, so that we don't, you know, we know all about traveling and all the other activities that everybody is driving, that we don't get… You know, our bottleneck on some of these activities.
 So… Sure.
 And as we are today, only the two of us, probably, it's first of all on us to solve this.
-But, I think, I don't know, actually, I was looking at the PR earlier today. Maybe it's possible to… to…
-to ping this person that I… I think I had sent a screenshot, this is visible.
-On the screenshot…
-So there's this Armin. Armin, who's kind of like sentient, right? Maybe it's possible to ping Armin if there's a way to find out his Slack name, or maybe ping on the PR itself, if…
-He could resent this.
+But, I think, I don't know, actually, I was looking at the PR earlier today. Maybe it's possible to… to… to ping this person that I… I think I had sent a screenshot, this is visible.
+On the screenshot… So there's this Armin. Armin, who's kind of like sentient, right? Maybe it's possible to ping Armin if there's a way to find out his Slack name, or maybe ping on the PR itself, if… He could resent this.
 **Greg Shriver** 04:08 this invitation, if it doesn't work, I think. Yeah.
-**Ruediger Schulze (IBM)** 04:11 something like this we need to do. Worst case, just open another PR. We try to take it one more time through to…
-To… or re… can you… no, probably reopen is not possible of the PR itself.
+**Ruediger Schulze (IBM)** 04:11 something like this we need to do. Worst case, just open another PR. We try to take it one more time through to… To… or re… can you… no, probably reopen is not possible of the PR itself.
 **Greg Shriver** 04:29 Yeah, Probably not.
-Doc, PR…
-Okay, well, that PR's still… I mean, the dock PR is still open.
+Doc, PR… Okay, well, that PR's still… I mean, the dock PR is still open.
 **Ruediger Schulze (IBM)** 05:03 Yes.
 **Greg Shriver** 05:03 I don't know about the… I don't know about the PR that… the screenshot that you sent.
-**Ruediger Schulze (IBM)** 05:09 Hmm… This was… this one here, can I…
-I would just send it to you, or maybe can I add this to the…
-to the Zoom chat, just out of curiosity, yeah, I think I can add it here.
+**Ruediger Schulze (IBM)** 05:09 Hmm… This was… this one here, can I… I would just send it to you, or maybe can I add this to the… to the Zoom chat, just out of curiosity, yeah, I think I can add it here.
 That's the PR for… Updated the project leads, I think.
 **Greg Shriver** 05:28 961.
 Okay.
@@ -52,74 +39,51 @@ Okay.
 **Greg Shriver** 05:36 Okay.
 Okay.
 **Ruediger Schulze (IBM)** 05:38 the issue, I think.
-To…
-This is… this is the… This is the issue, sorry.
+To… This is… this is the… This is the issue, sorry.
 I just was pasting the wrong words.
 That's the issue, which I think…
 **Greg Shriver** 06:00 Okay.
-**Ruediger Schulze (IBM)** 06:02 Yeah… I was looking at, but we can't…
-That we can just copy it to… that we can… Oh.
+**Ruediger Schulze (IBM)** 06:02 Yeah… I was looking at, but we can't… That we can just copy it to… that we can… Oh.
 I think none of us probably can reopen this.
-So, if… Maybe just…
-Yeah, I will comment on the PR itself, sorry, on the issue itself, or maybe open another issue just to…
-To ask for… Resending this if this doesn't work.
+So, if… Maybe just… Yeah, I will comment on the PR itself, sorry, on the issue itself, or maybe open another issue just to… To ask for… Resending this if this doesn't work.
 **Greg Shriver** 06:42 Okay.
 **Ruediger Schulze (IBM)** 06:56 Okay.
-And once this is done, I added the link to the…
-meeting notes, I think then we can add your…
-to the approvals, maintainers, and triagers. Obviously, Aaron is still on there. We need to update that, but, yeah. Yeah, maybe we do this once we…
-We got you on here.
+And once this is done, I added the link to the… meeting notes, I think then we can add your… to the approvals, maintainers, and triagers. Obviously, Aaron is still on there. We need to update that, but, yeah. Yeah, maybe we do this once we… We got you on here.
 **Greg Shriver** 07:29 Once we square me away, yeah.
 And then, like, as you said, it would probably help to have Jeez.
 It would probably help to have… well, almost required to have Someone else.
 **Ruediger Schulze (IBM)** 07:44 Right.
 **Greg Shriver** 07:45 from us.
-**Ruediger Schulze (IBM)** 07:47 That at least would give a little bit more…
-You know, flexibility if somebody is not available.
+**Ruediger Schulze (IBM)** 07:47 That at least would give a little bit more… You know, flexibility if somebody is not available.
 **Greg Shriver** 07:57 You're right.
-**Ruediger Schulze (IBM)** 08:01 Okay, that was the one topic, that I wanted to discuss,
-then I added the input that we gathered the last week,
-And if you follow the, the update that I put there.
+**Ruediger Schulze (IBM)** 08:01 Okay, that was the one topic, that I wanted to discuss, then I added the input that we gathered the last week, And if you follow the, the update that I put there.
 Maybe we can briefly look at this. Potentially, I can share my screen, just… Sure.
 So, yeah, so… Sure.
 If I don't think.
 I'm sharing now. Can you see my screen?
 **Greg Shriver** 08:59 I can.
-**Ruediger Schulze (IBM)** 09:00 Okay, yeah, right. So I just, based on what we discussed last week, I ordered…
-this statement here in terms of what we plan to contribute. So, mainframe-specific entities and related metrics created lists for transaction job processing. I took job processing in…
-Because that's what we said based on the survey, so I think we at least, maybe, again, correlated list, have maybe at least a few things covering this. Databases, messaging, and API.
+**Ruediger Schulze (IBM)** 09:00 Okay, yeah, right. So I just, based on what we discussed last week, I ordered… this statement here in terms of what we plan to contribute. So, mainframe-specific entities and related metrics created lists for transaction job processing. I took job processing in… Because that's what we said based on the survey, so I think we at least, maybe, again, correlated list, have maybe at least a few things covering this. Databases, messaging, and API.
 Then, infrastructure-related entities and metrics for virtualization and said AHMC API. This is what we already started to discuss in the last year.
-And then, server spans for COS system software, MQ, Kicks, IMS, and DB2. So I, by the way, I, crushed up the TPS,
-server spend, PR that, it's now in a good state from my perspective, but I think I need to see that semantic convention takes this forward. And then, in terms of asking for support from other
-or from the community, and also as a 6th, and…
-Virtualization concepts, I think, is important to have this being included, and then also relationships, as we discussed, would have to be there.
+And then, server spans for COS system software, MQ, Kicks, IMS, and DB2. So I, by the way, I, crushed up the TPS, server spend, PR that, it's now in a good state from my perspective, but I think I need to see that semantic convention takes this forward. And then, in terms of asking for support from other or from the community, and also as a 6th, and… Virtualization concepts, I think, is important to have this being included, and then also relationships, as we discussed, would have to be there.
 **Greg Shriver** 10:31 Yeah.
-**Ruediger Schulze (IBM)** 10:32 And, I think that covers what we discussed in the previous meeting. Please feel free to
-to either comment or, you know, let me… let me know, and I can add it here, obviously, to… to add…
-more content, but I… Yeah, right.
+**Ruediger Schulze (IBM)** 10:32 And, I think that covers what we discussed in the previous meeting. Please feel free to to either comment or, you know, let me… let me know, and I can add it here, obviously, to… to add… more content, but I… Yeah, right.
 **Greg Shriver** 10:57 Sorry, I'm reading.
 **Ruediger Schulze (IBM)** 10:58 Oh, okay, okay. That's good.
-**Greg Shriver** 11:11 Yeah, it looks… I mean, it looks good to me. So…
-One of the things that I did do was… I floated, I think the TPS PR?
+**Greg Shriver** 11:11 Yeah, it looks… I mean, it looks good to me. So… One of the things that I did do was… I floated, I think the TPS PR?
 **Ruediger Schulze (IBM)** 11:28 Death?
 **Greg Shriver** 11:29 Across internally here.
 **Ruediger Schulze (IBM)** 11:32 Okay.
-**Greg Shriver** 11:33 And I did actually get some feedback, but not necessarily about the TPS PR. I got some feedback about
-About… The sysplex initialization time.
+**Greg Shriver** 11:33 And I did actually get some feedback, but not necessarily about the TPS PR. I got some feedback about About… The sysplex initialization time.
 **Ruediger Schulze (IBM)** 11:47 Okay.
 **Greg Shriver** 11:48 not being an attribute. And we're currently actually discussing internally whether, you know, whether it should be a descriptive attribute or an identifying attribute.
-**Ruediger Schulze (IBM)** 12:03 Oh, that's an interesting one. So, yeah, and this goes back to Sysplex being an entity, right? So you would see Sysplex as an entity, and how do you identify the Sysplex, by…
-That's a good question. So, this goes back probably also to the discussion that, okay, Susplex has a name, but is the name unique? And to make it unique, presumably you would add an additional…
+**Ruediger Schulze (IBM)** 12:03 Oh, that's an interesting one. So, yeah, and this goes back to Sysplex being an entity, right? So you would see Sysplex as an entity, and how do you identify the Sysplex, by… That's a good question. So, this goes back probably also to the discussion that, okay, Susplex has a name, but is the name unique? And to make it unique, presumably you would add an additional…
 **Greg Shriver** 12:31 Correct.
 **Ruediger Schulze (IBM)** 12:32 Identifying attribute.
-**Greg Shriver** 12:34 Yeah, and the argument… not the argument, but the discussion is about…
-You know, it's possible that
-You know, you can have a cysplex, that… Never goes away, right?
+**Greg Shriver** 12:34 Yeah, and the argument… not the argument, but the discussion is about… You know, it's possible that You know, you can have a cysplex, that… Never goes away, right?
 **Ruediger Schulze (IBM)** 12:52 Yeah.
 **Greg Shriver** 12:53 In which case, the initialization time is the initial… the original initialization time.
 And… and for some production cisplexes, that may never change.
-If you bring the entire Cysplex down, and…
-bring that same Cysplex back up.
+If you bring the entire Cysplex down, and… bring that same Cysplex back up.
 The initialization time gets updated.
 Which is technically a new sysplex.
 **Ruediger Schulze (IBM)** 13:20 Yeah, okay, I assume.
@@ -129,76 +93,52 @@ So, which takes us to this, I think we had touched on this a few times already, 
 **Greg Shriver** 13:43 Right.
 **Ruediger Schulze (IBM)** 13:43 Supposedly, you could even make the same argument, you know, with this initialization time with an LPAR, so…
 **Greg Shriver** 13:51 Yeah, you're right.
-**Ruediger Schulze (IBM)** 13:52 A power, you know, or a VM, right, lifetime of a virtual machine is probably…
-Can be generalized from a conceptual perspective.
+**Ruediger Schulze (IBM)** 13:52 A power, you know, or a VM, right, lifetime of a virtual machine is probably… Can be generalized from a conceptual perspective.
 **Greg Shriver** 14:03 Or a pod, or a container, or a…
 **Ruediger Schulze (IBM)** 14:05 Yeah, any of these. Just by chance, did you maybe look at Kubernetes definitions, if they consider anything as part of entity definitions already?
-**Greg Shriver** 14:19 Well, it's interesting that you mention that, because in the… in the documentation that talks about
-You know, identifying versus descriptive attributes.
+**Greg Shriver** 14:19 Well, it's interesting that you mention that, because in the… in the documentation that talks about You know, identifying versus descriptive attributes.
 they use some of those, some, you know, very Kubernetes-like examples.
-to be able to describe the difference between identifying and descriptive attributes. So, now, of course, there's no mainframe terminology in there, so we probably need to think about that, right, from…
-you know, I guess from the Kubernetes standpoint, and then, you know, see if we can map that
-To mainframe, and see if we can be consistent there.
-**Ruediger Schulze (IBM)** 15:05 That's actually an interesting… so, obviously, you know, with anything that we want to do, even if we start small PRs, I think this…
-This question for entities becomes more and more important, so…
+to be able to describe the difference between identifying and descriptive attributes. So, now, of course, there's no mainframe terminology in there, so we probably need to think about that, right, from… you know, I guess from the Kubernetes standpoint, and then, you know, see if we can map that To mainframe, and see if we can be consistent there.
+**Ruediger Schulze (IBM)** 15:05 That's actually an interesting… so, obviously, you know, with anything that we want to do, even if we start small PRs, I think this… This question for entities becomes more and more important, so…
 **Greg Shriver** 15:20 Yeah, it does.
 Let me just…
 **Ruediger Schulze (IBM)** 15:24 you know, I add this here as a discussion point that we had.
-I think, let's discuss the…
-representation of the Syslex entity.
-Identifying… attributes, besides the name…
-And, then I make another bullet here to compare to… K8… Entity…
-Definition. That's something to look… take a look at. I think this is a good question.
+I think, let's discuss the… representation of the Syslex entity.
+Identifying… attributes, besides the name… And, then I make another bullet here to compare to… K8… Entity… Definition. That's something to look… take a look at. I think this is a good question.
 Wow. That.
-**Greg Shriver** 16:23 I think I said this, I think, was it from COS Software, where we started last year on, I think? Yeah, we did. We did. And we had host.id, and we thought we had… so we had hostname, which I think we all agreed…
-That it has to be the fully qualified… fully qualified, DNS.
+**Greg Shriver** 16:23 I think I said this, I think, was it from COS Software, where we started last year on, I think? Yeah, we did. We did. And we had host.id, and we thought we had… so we had hostname, which I think we all agreed… That it has to be the fully qualified… fully qualified, DNS.
 name, right?
 **Ruediger Schulze (IBM)** 16:48 Yeah.
 **Greg Shriver** 16:48 And then host ID was the thing that would conform to the, I guess, what they're calling the minimally identifying criteria.
 And I think we suggested something in there, like, you know, like the LPAR name, and the system name, and the sysplex name. I don't believe we included the sysplex initialization time, and maybe that's where it needs to go.
 **Ruediger Schulze (IBM)** 17:16 Yeah, it didn't do it, at least at that time.
-So, I've… I think one of the next discussions that we will have is actually, so,
-I will put… so I will write two issues, for the…
-DB2 and also the MQ, spend attributes.
+So, I've… I think one of the next discussions that we will have is actually, so, I will put… so I will write two issues, for the… DB2 and also the MQ, spend attributes.
 But again, then, you know, we also need to look at the related entity definition there again. I think where this takes us is probably in one of the next meetings to once look at the entities. I haven't submitted the issues yet, but I will do that.
-And I get to the other topic around these issues in a minute, but…
-let's assume, you know, we have this definition out there, we can look at what the entities should be, and kind of, like, can agree on these entities, but I think it takes us to a discussion where we generally need to look at what entities
-would look like for the platform, because as we step in also into the metric discussion, I think we will have similar questions.
+And I get to the other topic around these issues in a minute, but… let's assume, you know, we have this definition out there, we can look at what the entities should be, and kind of, like, can agree on these entities, but I think it takes us to a discussion where we generally need to look at what entities would look like for the platform, because as we step in also into the metric discussion, I think we will have similar questions.
 Yeah.
-with the…
-issues that I will be creating, there are… you know, if you look at the Semantic conventions, there's this concept of areas, and essentially the areas is what you see if you look at the documentation.
+with the… issues that I will be creating, there are… you know, if you look at the Semantic conventions, there's this concept of areas, and essentially the areas is what you see if you look at the documentation.
 You have, like, messaging, you have databases. Now, these two examples, these areas, the respective six are currently inactive.
-And, what I, anyway, would suggest we do is, as a SIG, we now issue these SPAN descriptions, we look at them from
-perspective of Allah's sake.
-And then bring them forward and see how they progress, or what kind of…
-support the community would be asking for, but I think,
-It's one of the things that we probably more easily can also work on and complete, and then we can take on these… these metric discussions that we just also put out for this year.
-And I know, you also, Angelica, had also some points on messaging, so it's maybe also something that we can bring together, so…
-Merge, merge your perspective into this. And,
-then let's see, in terms of, you know, that the messaging sick currently is inactive, if the, you know, what the process is to take this forward.
+And, what I, anyway, would suggest we do is, as a SIG, we now issue these SPAN descriptions, we look at them from perspective of Allah's sake.
+And then bring them forward and see how they progress, or what kind of… support the community would be asking for, but I think, It's one of the things that we probably more easily can also work on and complete, and then we can take on these… these metric discussions that we just also put out for this year.
+And I know, you also, Angelica, had also some points on messaging, so it's maybe also something that we can bring together, so… Merge, merge your perspective into this. And, then let's see, in terms of, you know, that the messaging sick currently is inactive, if the, you know, what the process is to take this forward.
 Yeah, and same for database, obviously, and I think, it both concerns area where we want to put things forward, so I think it's good if you understand.
-What the process would be, or if he…
-You know, who and how we need to work with the community to make that happen.
+What the process would be, or if he… You know, who and how we need to work with the community to make that happen.
 **Greg Shriver** 20:25 Yeah. Yeah.
 **Ruediger Schulze (IBM)** 20:28 Okay, that has been the topics that I had. Now you mentioned the documentation PR.
 Is this… I think you… this is… we had this here somewhere.
 **Greg Shriver** 20:44 Yeah, I… I… I think the next action on that was mine.
-Because you… you… you went through and provided feedback, and I saw that, but I think I need to…
-I'm not sure exactly… I think I need to, you know, incorporate that feedback Right?
+Because you… you… you went through and provided feedback, and I saw that, but I think I need to… I'm not sure exactly… I think I need to, you know, incorporate that feedback Right?
 Or did you already updated?
 **Ruediger Schulze (IBM)** 21:08 Yeah, let me, let me just go there, just give me one second. Need to go to the right project.
 Alright, this is here, right?
-Let me share my screen again, just to…
-briefly expose us.
+Let me share my screen again, just to… briefly expose us.
 This is here.
 Okay.
 Yeah, so, there are a couple of… Suggestions here on these, and…
 **Greg Shriver** 21:53 Yeah.
 **Ruediger Schulze (IBM)** 21:57 I probably don't see this because I'm not the owner of the PR, but if you go here, I think you can see that there's an additional button where you can say, accept the change, or accept the proposed change.
 **Greg Shriver** 22:10 Okay.
-**Ruediger Schulze (IBM)** 22:12 And then you can take that in, and…
-I think then after that, you still have to…
-you get, I think, another button where you can say, commit all these changes that were just applied as one commit.
+**Ruediger Schulze (IBM)** 22:12 And then you can take that in, and… I think then after that, you still have to… you get, I think, another button where you can say, commit all these changes that were just applied as one commit.
 **Greg Shriver** 22:28 Yeah.
 **Ruediger Schulze (IBM)** 22:29 And, push this into the… Into the PR.
 **Greg Shriver** 22:35 Let me… let me shi… let me share my screen for a second.
@@ -212,49 +152,35 @@ So you're saying here, I can just commit the suggestion?
 **Ruediger Schulze (IBM)** 23:02 Right, exactly. It's very small, I almost can't read it. Yeah, but yeah, exactly, you can say here, commit this suggestion.
 And, then it will go in.
 And I think, overall, it's more minor changes, a little bit about rolling. I added one sentence and a link.
-There's some documentation outside, from our company that actually talks about what a mainframe is, so…
-Wow. Maybe a good link to just supply us in addition to, you know, what is being displayed. Oh, right here.
+There's some documentation outside, from our company that actually talks about what a mainframe is, so… Wow. Maybe a good link to just supply us in addition to, you know, what is being displayed. Oh, right here.
 **Greg Shriver** 23:44 Yeah.
-**Ruediger Schulze (IBM)** 23:46 Yeah, so have a look on these if they work, and…
-Once… maybe as you have the screen open, can you go back to the main page of this pull request? Also, there might be a couple of checks still failing, if you go back…
-on the conversation, and then, okay, the CLA is in place, this is already good.
+**Ruediger Schulze (IBM)** 23:46 Yeah, so have a look on these if they work, and… Once… maybe as you have the screen open, can you go back to the main page of this pull request? Also, there might be a couple of checks still failing, if you go back… on the conversation, and then, okay, the CLA is in place, this is already good.
 **Greg Shriver** 24:12 Yep.
-**Ruediger Schulze (IBM)** 24:13 And,
-Yeah, here are all the proposed changes, obviously. And then, at the very bottom, there are probably still a couple of these checks are failing. Yeah, right. So,
-There is, I think it's in… when you look at the contribution MD file, there's written what type of tooling you can use to check
-Also, if you follow here these reports and these workflows, these JITAP action workflows, and then look at what is failing, usually the error messages.
-Self-explaining, and… This is probably all minor, you know…
-Sometimes it's just a space which shouldn't be there.
+**Ruediger Schulze (IBM)** 24:13 And, Yeah, here are all the proposed changes, obviously. And then, at the very bottom, there are probably still a couple of these checks are failing. Yeah, right. So, There is, I think it's in… when you look at the contribution MD file, there's written what type of tooling you can use to check Also, if you follow here these reports and these workflows, these JITAP action workflows, and then look at what is failing, usually the error messages.
+Self-explaining, and… This is probably all minor, you know… Sometimes it's just a space which shouldn't be there.
 formatting issues.
 **Greg Shriver** 25:12 Okay.
 So, if I go here…
 **Ruediger Schulze (IBM)** 25:18 What does it say here?
-Mmm… which one is this? This is… yeah…
-God, it's tired.
+Mmm… which one is this? This is… yeah… God, it's tired.
 Completed with how long? Oh, here, I don't see the message, what is it?
 **Greg Shriver** 25:43 process completed with Exacode 1.
 **Ruediger Schulze (IBM)** 25:45 But it doesn't say exactly what formatting issue it had.
 **Greg Shriver** 25:51 No, code style issues found in the above file run prettier with the right… run prettier with write to fix.
 NPM run fixed format, run npm run fixed format.
 **Ruediger Schulze (IBM)** 26:05 Yeah.
-So that might be already the resolution. So, and what you can do is,
-if you… so the good thing here about GitHub is you can run these commands in the code space, just if you… if you go back to the file view, you can actually open and…
-or to the code view, you can open a Codespace.
+So that might be already the resolution. So, and what you can do is, if you… so the good thing here about GitHub is you can run these commands in the code space, just if you… if you go back to the file view, you can actually open and… or to the code view, you can open a Codespace.
 And then you get a command line where you can, if you go a little bit to the top.
-If you're here on the right side, look at, up there, there's code,
-When you click on the code button, there is.
+If you're here on the right side, look at, up there, there's code, When you click on the code button, there is.
 **Greg Shriver** 26:53 Oh, here.
-**Ruediger Schulze (IBM)** 26:54 Yes, you can run this locally, or you can run Codespaces, and…
-Specifically for these documentation style of,
-Can you create a Codespace, or is this disabled for you?
+**Ruediger Schulze (IBM)** 26:54 Yes, you can run this locally, or you can run Codespaces, and… Specifically for these documentation style of, Can you create a Codespace, or is this disabled for you?
 **Greg Shriver** 27:10 Oh, I can't.
 **Ruediger Schulze (IBM)** 27:11 Oh, okay, that's interesting. So, in my case, it's possible. Don't know what the… This might be related because of this organizational membership.
 Potentially, the moment when you are part of the organization, you might be able to…
 **Greg Shriver** 27:25 To create a code space. Man.
 **Ruediger Schulze (IBM)** 27:30 Okay.
 **Greg Shriver** 27:33 Okay.
-**Ruediger Schulze (IBM)** 27:34 But what I'm…
-What I'm saying is, once you have a Codespace, you can actually do everything in the browser. You get, like, a VS Code.
+**Ruediger Schulze (IBM)** 27:34 But what I'm… What I'm saying is, once you have a Codespace, you can actually do everything in the browser. You get, like, a VS Code.
 Or you get a VS Code instance running in this code space.
 Okay.
 You get the… You get the branch that you're working off on.
@@ -283,9 +209,7 @@ That's, steps for… I think I have it here, so let me put the link here.
 **Ruediger Schulze (IBM)** 29:49 It's just getting the link.
 Good.
 **Greg Shriver** 29:59 Oh, there we go.
-**Ruediger Schulze (IBM)** 30:01 So, as I said, I will create these two issues for next week. Maybe I will draft already some,
-some initial PR for this, if I manage with my time, and then we… we can have something to…
-In a disgusty… Supposedly the entities that we wanna… wanna include there and focus on.
+**Ruediger Schulze (IBM)** 30:01 So, as I said, I will create these two issues for next week. Maybe I will draft already some, some initial PR for this, if I manage with my time, and then we… we can have something to… In a disgusty… Supposedly the entities that we wanna… wanna include there and focus on.
 **Greg Shriver** 30:25 Yeah.
 Okay.
 **Ruediger Schulze (IBM)** 30:27 Okay, Greg, have a good one.

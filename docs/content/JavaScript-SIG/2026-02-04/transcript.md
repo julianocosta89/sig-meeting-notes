@@ -45,10 +45,8 @@ Yeah, I don't know, maybe he's currently maybe in something else.
 Cool.
 Alright, well, might as well kick on. Alright, let me share.
 Okay, just one topic, as ever. Feel free to add topics when you want. So Andrea, last I spoke to Mark.
-Or, I mean, not the last time I spoke with him, but he said he has a working prototype of something that he thinks
-Good work for this.
-But given that he's out this week, I think we're…
-you know, unfortunately, I have to say wait for a week until He's back.
+Or, I mean, not the last time I spoke with him, but he said he has a working prototype of something that he thinks Good work for this.
+But given that he's out this week, I think we're… you know, unfortunately, I have to say wait for a week until He's back.
 **Andrei Borza (Sentry)** 03:01 Yeah.
 **Trent Mick** 03:02 He… I think he was still, like, not totally happy with it, because he hasn't published it to… he just mentioned it and hasn't even pushed a branch yet, so… But something's happening there, so he was playing with that, so…
 **Andrei Borza (Sentry)** 03:15 Okay, cool. Yeah, I can bring it up next… next time.
@@ -61,15 +59,12 @@ Cool. Okay, cool, so…
 **Andrei Borza (Sentry)** 03:35 Basically.
 No, no, yeah, that one was accidental, yeah.
 **Trent Mick** 03:40 Yeah, on JS…
-**Andrei Borza (Sentry)** 03:43 Yeah, basically we're trying to get people to adopt tracing channels,
-Oh, upstream? Yeah, upstream in libraries. We think it's just way, way easier from library maintainers to adopt this rather than add more dependencies.
+**Andrei Borza (Sentry)** 03:43 Yeah, basically we're trying to get people to adopt tracing channels, Oh, upstream? Yeah, upstream in libraries. We think it's just way, way easier from library maintainers to adopt this rather than add more dependencies.
 **Trent Mick** 04:02 Yeah, absolutely, and then you would just have… so, actually.
 **Andrei Borza (Sentry)** 04:07 I mean, you still need an instrumentation, right?
 **Trent Mick** 04:09 Maybe I don't know the issues as well. So, like, there's the Ndichi… did you just say the Ndichi instrumentation?
-That is not based on tracing channel, but it's based on diagnostic channels being emitted by the NDC library. I was wondering if that would end up being similar then, or if there's…
-A more fundamental thing to be following through with the tracer.
-**Andrei Borza (Sentry)** 04:28 Yeah, it's pretty similar, yeah. I mean, literally, we just need to be able to bind the local storage so that we can maintain the…
-Parent-child spend relationship.
+That is not based on tracing channel, but it's based on diagnostic channels being emitted by the NDC library. I was wondering if that would end up being similar then, or if there's… A more fundamental thing to be following through with the tracer.
+**Andrei Borza (Sentry)** 04:28 Yeah, it's pretty similar, yeah. I mean, literally, we just need to be able to bind the local storage so that we can maintain the… Parent-child spend relationship.
 **Trent Mick** 04:42 Okay.
 **Andrei Borza (Sentry)** 04:43 Yep.
 My colleague made a pretty good point.
@@ -85,8 +80,7 @@ Just a couple issues people have brought up separately. I suppose I could put th
 David, I looked at this, I proved this, I think it's probably good to go, maybe we'll give it a day to see if one of the other approvers maintainers wants to take a look.
 This is… that issue.
 Other one, Jared had remind… overbalance. His GitHub handle, it reminded me of this one.
-I'll take a look after this meeting if someone else wants to take a look, too, that would be good. The fetch instrumentation is…
-doing a bad job. This is a P1 issue. It's breaking, usage of some attributes of that request object, I think, that comes back, so .type and .url are basically blown away by the wrapping that's being done.
+I'll take a look after this meeting if someone else wants to take a look, too, that would be good. The fetch instrumentation is… doing a bad job. This is a P1 issue. It's breaking, usage of some attributes of that request object, I think, that comes back, so .type and .url are basically blown away by the wrapping that's being done.
 So that's worth looking at and getting fixed soon.
 Oh, no, I just… yeah.
 take a look at that one later, David, because we'd already been discussing that one.
@@ -95,40 +89,23 @@ When Jared reminded me of this one, I was taking a look at a couple of the other
 **Trent Mick** 06:42 I guess you've been having some discussion with Mark, or that was… A while ago.
 And then… This had been an older P1 issue.
 That tweaked my interest, because I've been playing with import in the middle, and this was an import in the middle excitement thing.
-I think this one will probably get resolved, but I'll…
-Well, no one else needs to look at this one. This is an older P14…
-a library that import in the middle would get stuck on, so basically things would break. We tried to do it. And the issue was that the library being hooked
-In this case, it was…
-this platform out of Kafka, they had a circular import in their thing, and import in the middle basically chokes.
-On that, my guess is the first time it goes through, it… basically…
-when it comes around for the circular import, it doesn't have a result module, so something happens to get stuck in there, but they've removed the circular import. In the meantime, import in the middle also had
-Pull requests go through… I don't lost that one.
-this change, it was fairly recently released that handles circular dependencies and laziness prioritization, so I wonder if this also would have worked around that particular issue. I was going to follow up and…
-Checked out.
+I think this one will probably get resolved, but I'll… Well, no one else needs to look at this one. This is an older P14… a library that import in the middle would get stuck on, so basically things would break. We tried to do it. And the issue was that the library being hooked In this case, it was… this platform out of Kafka, they had a circular import in their thing, and import in the middle basically chokes.
+On that, my guess is the first time it goes through, it… basically… when it comes around for the circular import, it doesn't have a result module, so something happens to get stuck in there, but they've removed the circular import. In the meantime, import in the middle also had Pull requests go through… I don't lost that one.
+this change, it was fairly recently released that handles circular dependencies and laziness prioritization, so I wonder if this also would have worked around that particular issue. I was going to follow up and… Checked out.
 **Raphaël Thériault** 08:20 I know we've had the same issue brought up by a customer, and another fix was to, enable the thing that makes it so important in the middle only runs on stuff that you actually.
-**Trent Mick** 08:32 Right, yeah, if… I'm hoping to get some changes that… I don't know if it's just to the docs, but also to,
-OpenTelemetry usage, so not…
-the various vendors with their own SDKs, but to be able to use that functionality, maybe.
+**Trent Mick** 08:32 Right, yeah, if… I'm hoping to get some changes that… I don't know if it's just to the docs, but also to, OpenTelemetry usage, so not… the various vendors with their own SDKs, but to be able to use that functionality, maybe.
 because hotels… Vanilla hotel libraries are not using that functionality at all right now.
 **Raphaël Thériault** 08:55 I mean, is there even anything that, like, we provide to Patchy SM now?
 **Trent Mick** 09:02 Sagan?
 **Raphaël Thériault** 09:03 As in, like, does the, like, auto-instrumentation package even instrument ESM at the moment?
 **Trent Mick** 09:09 you have to go find… I'm not even sure where the dock is, but you have to go find the recommendation that you do the…
 **Raphaël Thériault** 09:16 It's still recommending using the experimental loader.
-**Trent Mick** 09:20 to do the hotelinstrumentationhook.mjs, which is just re-exporting the importingthemdlehook.js. So yeah, it's not using module.register at all yet in the docs. We have a… there's an issue open on…
-This is a hotel contrib, I think. Issues… yeah.
-I've had an issue for, like, it's probably a year old at this point, so…
-switch to module.register. And then the next step is…
-Maybe it was in the other crypto.
+**Trent Mick** 09:20 to do the hotelinstrumentationhook.mjs, which is just re-exporting the importingthemdlehook.js. So yeah, it's not using module.register at all yet in the docs. We have a… there's an issue open on… This is a hotel contrib, I think. Issues… yeah.
+I've had an issue for, like, it's probably a year old at this point, so… switch to module.register. And then the next step is… Maybe it was in the other crypto.
 Yeah, so there's that from 2024, wow, they suck.
-Then the next step is actually to use the,
-that ability to pass down the modules to register at all. Though that…
-I don't know if that's going to require some more significant changes to how instrumentations are registered and started, in OTEL, because right now.
-You can just create instrumentations that are subclass of instrumentation bass, and… It just…
-throws in the hooks at that point, instead of all collecting it and adding the hooks at a single point when register instrumentations is called. So that would be the place to collect all the modules that you're going to be registering, create the hook at one point, and pass down those,
-those hook names that you're gonna do. You might… we might be able to do it the current way, but I haven't spent the time to look into it yet. But anyway, yeah, you're right.
-Only hooking the modules that are only having
-import in the middle, shim the modules that are gonna be hooked, would have fixed that as well, I assume.
+Then the next step is actually to use the, that ability to pass down the modules to register at all. Though that… I don't know if that's going to require some more significant changes to how instrumentations are registered and started, in OTEL, because right now.
+You can just create instrumentations that are subclass of instrumentation bass, and… It just… throws in the hooks at that point, instead of all collecting it and adding the hooks at a single point when register instrumentations is called. So that would be the place to collect all the modules that you're going to be registering, create the hook at one point, and pass down those, those hook names that you're gonna do. You might… we might be able to do it the current way, but I haven't spent the time to look into it yet. But anyway, yeah, you're right.
+Only hooking the modules that are only having import in the middle, shim the modules that are gonna be hooked, would have fixed that as well, I assume.
 Which issue was that? That was this one.
 So, yeah.
 Okay, that was my digression. I can write up links to that.
@@ -140,24 +117,18 @@ Trip has a few. Some of these we've been push-bumping down the road, but this on
 I'm assuming no one else has looked at this.
 Okay, I don't know that we have a maintainer for… instrumentation we're just doing.
 Want to look.
-Yeah, so it's a mirror, and he hasn't had…
-Hasn't been around for a while.
+Yeah, so it's a mirror, and he hasn't had… Hasn't been around for a while.
 I had been taking a look from time to time.
-Just gonna see what…
-Actually does get shimmed in Redis here.
-Okay
-I just strongly assume that
-Great cluster is doing something slightly different pre-claim. We don't actually capture some of those things, or it could be the transaction.
+Just gonna see what… Actually does get shimmed in Redis here.
+Okay I just strongly assume that Great cluster is doing something slightly different pre-claim. We don't actually capture some of those things, or it could be the transaction.
 In the multi.
 You know, we have another PR, but Redis.
 penalty.
 Could be related to this.
 There was meant to be a fix recently.
-Or is that just about not marking them as being…
-Okay, so priority for this one… P2, I think?
+Or is that just about not marking them as being… Okay, so priority for this one… P2, I think?
 And I will try to take a look later, but if someone else uses Redis at all, I'd appreciate help.
-Next up…
-Okay, so we had asked for a needs author response.
+Next up… Okay, so we had asked for a needs author response.
 Yeah, I think we need to wait for that one. I don't know what their architecture was to know it there.
 Unless someone else has a comment on it. Anyone on this call use Lambda?
 Yeah, me neither.
@@ -167,12 +138,10 @@ We're not using layers, and what's the state we left in? Okay, so…
 **Raphaël Thériault** 16:28 I think the word balance is a draft PR for that one.
 **Trent Mick** 16:36 You rightly did.
 Without Bayster, just playing with this stuff.
-proactively patch, we have that. Is that in his…
-Singh, or is that an existing code?
+proactively patch, we have that. Is that in his… Singh, or is that an existing code?
 **Raphaël Thériault** 17:14 That's his name.
 **Trent Mick** 17:16 Is that… okay.
-Oh…
-Where's… there it is, okay.
+Oh… Where's… there it is, okay.
 Okay, so hopefully Jared can pick this up again. You had a question from there.
 Did he mention if he's… Hit a wall.
 Or if he was planning to come back.
@@ -180,8 +149,7 @@ Okay.
 I'm gonna mark… I'll see if I have a chance to take a look at this later, as well.
 I'm useless live thinking on a call, so I have to get off the call and just think about it coyly.
 Okay.
-Okay, I don't want to go look at those PRs in reverse order right yet. I want to go see what the current state of…
-issues and PRs that came in are looking at recent ones, other than depths.
+Okay, I don't want to go look at those PRs in reverse order right yet. I want to go see what the current state of… issues and PRs that came in are looking at recent ones, other than depths.
 Did this one get approved?
 If someone has a chance to take a look at that one, I would appreciate it.
 That one is just a small fix for environment names were wrong in the change that Mark did a couple of days ago.
@@ -198,29 +166,19 @@ Some of the entities work.
 Oh, is Mark ready for review on this one?
 Okay, I'm not sure I'll have time to look at it.
 Right away.
-Okay, as ever, there are a lot of PRs here for… if people have…
-Some bandwidth to be looking at.
+Okay, as ever, there are a lot of PRs here for… if people have… Some bandwidth to be looking at.
 Oh, is this… David, you looked and approved this one? I wonder if we should wait for other maintainers to have and take a look.
 **David Luna Bistuer** 21:08 Yeah, I have a couple of questions.
 Although, so it looks good? Yeah.
-**Trent Mick** 21:16 For other people, this is… So…
-A while ago, there was a lot of work on the,
-sampler specs, so if I go… sorry, give some background for other people.
+**Trent Mick** 21:16 For other people, this is… So… A while ago, there was a lot of work on the, sampler specs, so if I go… sorry, give some background for other people.
 We go look at the spec.
 Or… Tracing… Probability sampling spec was rewritten.
-to…
-provide a better story for probability sampling, and it was… it came up with a new set of classes called composable samplers, so that you could write more complex
-Samplers, and the idea was you would build a composite sampler that was built of a number of composable samplers that you could compose together that talk to the existing
-Or that implemented the existing sampling API.
+to… provide a better story for probability sampling, and it was… it came up with a new set of classes called composable samplers, so that you could write more complex Samplers, and the idea was you would build a composite sampler that was built of a number of composable samplers that you could compose together that talk to the existing Or that implemented the existing sampling API.
 And… Sorry, I think the link is better from here.
-So, part of that… is we have…
-So, built-in samplers, these are the old ones.
-that just implement the sampling APIs defined by the spec. But they're all also now this new set, which I think eventually will
-Obviously, the old ones.
-Is these composable samplers, and the spec defined a number of Built-in composable samplers, which… Have been implemented
-And are currently in the OTel.js implementation.
-for most of them, but not all of them. So all of them to handle this better…
-sampling story are implemented in there, but there are a couple that weren't added because they weren't needed for the… the initial run, so the composable rule base and composable annotating samplers from the spec. So I added the implementation for those two.
+So, part of that… is we have… So, built-in samplers, these are the old ones.
+that just implement the sampling APIs defined by the spec. But they're all also now this new set, which I think eventually will Obviously, the old ones.
+Is these composable samplers, and the spec defined a number of Built-in composable samplers, which… Have been implemented And are currently in the OTel.js implementation.
+for most of them, but not all of them. So all of them to handle this better… sampling story are implemented in there, but there are a couple that weren't added because they weren't needed for the… the initial run, so the composable rule base and composable annotating samplers from the spec. So I added the implementation for those two.
 That's what this PR is about.
 I don't know.
 Anyway, so David, you had a couple questions.
@@ -235,36 +193,20 @@ God, we have 3 pages of PRs now.
 Crazy. We almost had it down to one page at one point.
 Oh, Hector, seeing as you're here, I think you're just being a good person in implementing this.
 I just noticed the latest one.
-the long-suffering delegating no-op meter provider. I was playing with the… this is not even proof-of-concept stuff, but…
-switching around all the instrumentation work that we do, and I… I have the suspicion that the reason we have these delegating
-providers, is because we… Set the global providers before we…
-No, sorry, we changed… like, 3 years ago, there was a change in the SDK setup to…
-Create instrumentations and pass the providers to them before…
-We register the global provider so that they automatically get old ones, and we needed the delegating
-providers for all of the instrumentations, because we hadn't actually registered the proper ones that we wanted to do yet. I wasn't even sure if this delegating
-behavior was a necessary part of the spec, so anyway, I wanted to go look at that. I had this…
-little brief moment where I was wondering if we could just do away with needing these delegating providers if we changed the order of setup of things, but I might be…
-The reason I couldn't exchange it was because of…
-**Hector Hernandez** 25:37 Yeah, a very old issue. Some customer was complaining about meter providers not being registered after
-Our distro was initialized, something like that, so… Yeah, if this is not…
-what we want now is also good, right? Just take a look, you know.
+the long-suffering delegating no-op meter provider. I was playing with the… this is not even proof-of-concept stuff, but… switching around all the instrumentation work that we do, and I… I have the suspicion that the reason we have these delegating providers, is because we… Set the global providers before we… No, sorry, we changed… like, 3 years ago, there was a change in the SDK setup to… Create instrumentations and pass the providers to them before… We register the global provider so that they automatically get old ones, and we needed the delegating providers for all of the instrumentations, because we hadn't actually registered the proper ones that we wanted to do yet. I wasn't even sure if this delegating behavior was a necessary part of the spec, so anyway, I wanted to go look at that. I had this… little brief moment where I was wondering if we could just do away with needing these delegating providers if we changed the order of setup of things, but I might be… The reason I couldn't exchange it was because of…
+**Hector Hernandez** 25:37 Yeah, a very old issue. Some customer was complaining about meter providers not being registered after Our distro was initialized, something like that, so… Yeah, if this is not… what we want now is also good, right? Just take a look, you know.
 **Trent Mick** 25:59 Yeah. Are you… are you personally blocked on something because of this, or not?
-**Hector Hernandez** 26:03 We added a workaround immediately, right? It's just, like,
-We wanted to fix this upstream, open television, so everyone got the benefit, but… It didn't went through.
+**Hector Hernandez** 26:03 We added a workaround immediately, right? It's just, like, We wanted to fix this upstream, open television, so everyone got the benefit, but… It didn't went through.
 **Trent Mick** 26:16 Yeah, Marketa Block, I can't remember what it is, huh?
 Have to go look at that.
 Man, 2023.
-Yeah, so for my little hope dream of not even needing these, I'd have to go verify that we don't need the requirement where
-Someone is allowed to register a global meter or tracer provider or whatever after the system's already set up and instrumentation's already have their hooks on it.
+Yeah, so for my little hope dream of not even needing these, I'd have to go verify that we don't need the requirement where Someone is allowed to register a global meter or tracer provider or whatever after the system's already set up and instrumentation's already have their hooks on it.
 If that is a requirement, then we do need to delegating things.
-I don't know what the other languages do, but…
-Sorry, that's just me throwing out unhelpful ideas at this point.
-My plan was to go until about 9.30 until about 10, so that we don't spend another half an hour of me looking and reading issues, but
-You guys can vote me down if you prefer.
+I don't know what the other languages do, but… Sorry, that's just me throwing out unhelpful ideas at this point.
+My plan was to go until about 9.30 until about 10, so that we don't spend another half an hour of me looking and reading issues, but You guys can vote me down if you prefer.
 Okay.
 It's look at Contrip.
-Nope, sorry, I'm like…
-That was that one that kind of touches on that thing that we were talking before, though this is IO Redis.
+Nope, sorry, I'm like… That was that one that kind of touches on that thing that we were talking before, though this is IO Redis.
 Okay, I'm gonna go to the more recent ones.
 Just to look back.
 There's a security issue with Fastify that we maybe need to update.
@@ -278,18 +220,12 @@ Did anyone have V9 mongoose support in their… on… Downstream packages.
 If so, your help would be appreciated on this one.
 Alright, something worth taking a look at.
 It's in draft, so… Oh, that's right.
-So we'd had this bug, Yeah, anyway, there is a bug there, if… instrumentation PG, if you…
-Actually, I want to see if I got a response on this one.
-No, I didn't. Okay, so… There's a bug that was opened that…
-if you use Instrumentation PG and…
-Do you happen to have two pools?
-Evan for Fendt. The instrumentation PG was… it's cool support for its metrics tracking for…
-Pool usage only worked with a single pool.
+So we'd had this bug, Yeah, anyway, there is a bug there, if… instrumentation PG, if you… Actually, I want to see if I got a response on this one.
+No, I didn't. Okay, so… There's a bug that was opened that… if you use Instrumentation PG and… Do you happen to have two pools?
+Evan for Fendt. The instrumentation PG was… it's cool support for its metrics tracking for… Pool usage only worked with a single pool.
 used at a time, which is kind of silly, but anyway. This is in draft only, because I haven't added tests.
 And mostly, I was waiting for some feedback from someone who actually uses PG.
-Let's see if we get…
-Answer a couple of questions I had there, but…
-If that's you, if you use PG, I had a couple PG-related questions, not necessarily getting into the instrumentation.
+Let's see if we get… Answer a couple of questions I had there, but… If that's you, if you use PG, I had a couple PG-related questions, not necessarily getting into the instrumentation.
 I'd appreciate a hand there.
 And… another PG-related one.
 It's our ET maintainer.
@@ -299,21 +235,16 @@ I don't know what the, specs have to say about that, but I'll wait on Marilla fo
 She's already assigned as a reviewer.
 A.
 The last one, or is there anything anyone else wanted to discuss?
-I wonder if these are in the…
-There was a Semantic convention for this, too, wasn't there?
+I wonder if these are in the… There was a Semantic convention for this, too, wasn't there?
 And it's begin.
-And…
-I got too many tabs open.
+And… I got too many tabs open.
 And it was looking for active resource.
 Which is not defined in this, so…
 **Raphaël Thériault** 31:56 I mean, I think those are, like, entirely based on the instrumentation, though.
 **Trent Mick** 32:04 Witcher.
-**Raphaël Thériault** 32:05 Where, like, those… those semantic conventions are basically just… the instrumentation was doing those, and we…
-Added them to CENCOM.
+**Raphaël Thériault** 32:05 Where, like, those… those semantic conventions are basically just… the instrumentation was doing those, and we… Added them to CENCOM.
 **Trent Mick** 32:17 Okay.
-So, yeah, like… I wasn't gonna say that this is a reason to not do this, but… it might…
-I don't know, I'm not comfortable always with what the process should be on this one. Do we say you gotta go upstream and get a spec change before we add these things, or…
-Yeah, I don't know.
+So, yeah, like… I wasn't gonna say that this is a reason to not do this, but… it might… I don't know, I'm not comfortable always with what the process should be on this one. Do we say you gotta go upstream and get a spec change before we add these things, or… Yeah, I don't know.
 **Raphaël Thériault** 32:42 Yeah, me neither.
 **Trent Mick** 32:43 transactive resource.
 I'm gonna… lean on.

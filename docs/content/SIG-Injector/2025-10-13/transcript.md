@@ -10,16 +10,13 @@ Duration: 40 minutes
 **Bastian Krol** 02:02 I'm fine, how are you?
 **Antoine Toulme** 02:04 Looks like I'm missing a major holiday.
 **Bastian Krol** 02:07 Yeah, I was about to ask, you, you have a public holiday today that you didn't notice, or what's the story?
-**Antoine Toulme** 02:15 Holidays in the US is a complex story. The holiday in person is Columbus Day, which is celebrated by most of the East Coast. Really, the West Coast does not like the idea that Columbus was the…
-the main action?
+**Antoine Toulme** 02:15 Holidays in the US is a complex story. The holiday in person is Columbus Day, which is celebrated by most of the East Coast. Really, the West Coast does not like the idea that Columbus was the… the main action?
 And in general, we have rebranded it to Engineers Celebration Day.
 **Bastian Krol** 02:36 Engineer Celebration Day!
 **Antoine Toulme** 02:37 Indigenous, like.
 **Bastian Krol** 02:39 Indigenous, okay, yeah, sorry. Yeah, that makes much more sense.
 **Antoine Toulme** 02:43 Yeah.
-And I am pretty certain that we stopped celebrating it as a result, because, frankly, It's just…
-I mean, during…
-Let me check, though. I don't know if you have Veterans Day, it's coming up in November, but that would be neat. I'll be thinking.
+And I am pretty certain that we stopped celebrating it as a result, because, frankly, It's just… I mean, during… Let me check, though. I don't know if you have Veterans Day, it's coming up in November, but that would be neat. I'll be thinking.
 Sometimes kids…
 **Bastian Krol** 03:02 Okay.
 **Antoine Toulme** 03:03 But anywho, I'm here. That's the important part.
@@ -49,20 +46,16 @@ day, and no longer celebrated that genocide to Indigenous Day, it stopped being 
 And I will start, hearing from people if it explodes or not.
 **Bastian Krol** 04:48 So that one has been out for, like, half a week, maybe, or so, and so far nothing exploded, so I'm… somewhat?
 **Michele Mancioppi** 04:58 Most people do not update the operator very often.
-**Bastian Krol** 05:00 Yeah, yeah, that's right. I mean, some have already rolled it out in production, I know that, but, sure, that…
-Wow. I mean, that was what I wrote about in Slack last week, that relatively lengthy post.
+**Bastian Krol** 05:00 Yeah, yeah, that's right. I mean, some have already rolled it out in production, I know that, but, sure, that… Wow. I mean, that was what I wrote about in Slack last week, that relatively lengthy post.
 About that update.
-**Antoine Toulme** 05:18 Yeah, I appreciate that. Thank you for being…
-for sharing all those good news. This is good to see in terms of maturation.
+**Antoine Toulme** 05:18 Yeah, I appreciate that. Thank you for being… for sharing all those good news. This is good to see in terms of maturation.
 **Bastian Krol** 05:25 Yep.
-**Antoine Toulme** 05:26 Yeah, I don't have anything to report on our side. We…
-We're starting to shore up a bit more, but the injector is not on the critical list of things that we need to deliver soonish. I do have it on my to-do list that we need to make that release, because it's ridiculous why.
+**Antoine Toulme** 05:26 Yeah, I don't have anything to report on our side. We… We're starting to shore up a bit more, but the injector is not on the critical list of things that we need to deliver soonish. I do have it on my to-do list that we need to make that release, because it's ridiculous why.
 **Michele Mancioppi** 05:42 Oh, let me, I'm hacking away at the packages in my spare time.
 **Antoine Toulme** 05:46 Okay, thank you. I appreciate that.
 I think it's great to have some strongly.
 held opinions for first release, because… what does it matter?
-So, you know, I trust you folks to do the right thing. If you have a specific choice you need to make, let me know, but if it's…
-If it… let me… hey, let me be super clear, if in case that wasn't clear before, if this release doesn't work, that's fine, because we're not trying to do a good job, we're trying to make a release, and we're an open source project, so we need help.
+So, you know, I trust you folks to do the right thing. If you have a specific choice you need to make, let me know, but if it's… If it… let me… hey, let me be super clear, if in case that wasn't clear before, if this release doesn't work, that's fine, because we're not trying to do a good job, we're trying to make a release, and we're an open source project, so we need help.
 **Bastian Krol** 06:19 Why not both? No, but you made that point before, I know.
 **Michele Mancioppi** 06:24 Yep.
 We also know, Antoine, that you say that, and I'm here… Sure.
@@ -123,8 +116,7 @@ Because.
 **Antoine Toulme** 09:22 previous fiscal year.
 **Michele Mancioppi** 09:24 We should not… we should not automatically inject Python until there is an exporter without dependencies.
 We just shouldn't.
-**Antoine Toulme** 09:34 Alright, let me… let me bring it up to the attention of…
-My very select number of Pythonistas, but… I… I find this interesting.
+**Antoine Toulme** 09:34 Alright, let me… let me bring it up to the attention of… My very select number of Pythonistas, but… I… I find this interesting.
 I'm not responsible for Python too much.
 In my job, but I'm starting to be.
 So maybe I'll bring it up.
@@ -136,32 +128,24 @@ They just wash out maintainers being entirely unresponsive.
 So, OTRP protobuf works over OHCP.
 **Michele Mancioppi** 10:13 No, yes, but the point is, you cannot have protobuf as a dependency.
 **Antoine Toulme** 10:18 Okay, we're back on that. Okay, alright, so… You…
-**Michele Mancioppi** 10:23 In a language that actually figured out that maybe not all the packages should live
-should see each other all the time, then you can use Protobuf, sure. Not in Python.
+**Michele Mancioppi** 10:23 In a language that actually figured out that maybe not all the packages should live should see each other all the time, then you can use Protobuf, sure. Not in Python.
 **Antoine Toulme** 10:37 Ooze.
 HTTP, JSON over HTTP… 4… Python SDK.
 Exports, exporter, and… It's not landed quite a bit.
 Here is the PR.
 Would you know… Anything about this?
 The… Would like to avoid… the port above dependencies.
-**Bastian Krol** 11:11 That brings… now that you mention that, I mean, we talked about that a bunch, but I only now realize that that brings up an interesting point. So, I think the SDKs are slowly moving towards using HTTP
-proto, I think, as a default, but of course, they can have other defaults that's still allowed, and of course, there's also OTLP exporter protocol or something to…
-what… should the injector have any business of selecting the protocol? I mean, if you say Python should always go without a prototy dependency, that would also mean by extension that the injector should maybe override the
-Prod… the protocol, and,
-Or should that happen on a higher level? Because just from the perspective of how we use it in the dash zero operator right now, we set the exporter endpoint and the matching protocol already in the Kubernetes level, and not… and the recovery does not have any business determining that.
+**Bastian Krol** 11:11 That brings… now that you mention that, I mean, we talked about that a bunch, but I only now realize that that brings up an interesting point. So, I think the SDKs are slowly moving towards using HTTP proto, I think, as a default, but of course, they can have other defaults that's still allowed, and of course, there's also OTLP exporter protocol or something to… what… should the injector have any business of selecting the protocol? I mean, if you say Python should always go without a prototy dependency, that would also mean by extension that the injector should maybe override the Prod… the protocol, and, Or should that happen on a higher level? Because just from the perspective of how we use it in the dash zero operator right now, we set the exporter endpoint and the matching protocol already in the Kubernetes level, and not… and the recovery does not have any business determining that.
 **Michele Mancioppi** 12:23 Exactly. That is actually one of the things that Eric brought in us, giving up the get time override.
 Because the catam override was the most, the most sure way of figuring out which runtime it was.
 And then that would happen before the SDK was loaded.
-Which means before, the SDK would look up the environment variables for the…
-the encoding, and that we don't have anymore. Because, for example, Java is perfectly happy having gRPC as the default.
+Which means before, the SDK would look up the environment variables for the… the encoding, and that we don't have anymore. Because, for example, Java is perfectly happy having gRPC as the default.
 Node is perfectly happy with HCP Proto.
 Python, God forbid we do something out of the box that is not HTTP JSON, or PHP, same story, right?
-**Bastian Krol** 13:05 Yeah, so that's another complication that we somehow need to solve, I guess. I mean, that's kind of…
-orthogonal to the Python dependency stuff, that needs to be solved anyway, but then we still have to figure that one out, I guess.
+**Bastian Krol** 13:05 Yeah, so that's another complication that we somehow need to solve, I guess. I mean, that's kind of… orthogonal to the Python dependency stuff, that needs to be solved anyway, but then we still have to figure that one out, I guess.
 **Michele Mancioppi** 13:23 But I have a solution for that, for Python.
 **Bastian Krol** 13:27 I think we need a solution for, globally, or runtimes, right?
-**Michele Mancioppi** 13:34 No, in reality, no. It's, this particular one…
-is, mostly about languages that have a package model with a faculty leader, the social boundaries of an earth.
+**Michele Mancioppi** 13:34 No, in reality, no. It's, this particular one… is, mostly about languages that have a package model with a faculty leader, the social boundaries of an earth.
 That's Python, yeah, let's be particular, it's Python.
 For Python, what you would do for injection is to add, append to the Python path.
 **Bastian Krol** 14:00 Yes.
@@ -171,21 +155,17 @@ For Python, what you would do for injection is to add, append to the Python path
 Python path has the same.
 With Python, you can put, at one specific location, a specific file of the directory in the Python path, a user site script.
 **Bastian Krol** 14:37 Yeah, you mentioned that before.
-**Michele Mancioppi** 14:38 The user-side script allows you to do a lot of things. If you actually make it in the subset of Python that is both 2X and 3, you actually can do things like checking the Python version, and then…
-inject if the version doesn't match. You can look up
-Through codes that I know where to find.
+**Michele Mancioppi** 14:38 The user-side script allows you to do a lot of things. If you actually make it in the subset of Python that is both 2X and 3, you actually can do things like checking the Python version, and then… inject if the version doesn't match. You can look up Through codes that I know where to find.
 Locations, like, which dependencies are in other places.
 And, you would also be able to create a marker for the injector to say, hey, override this one as well, please.
-So we could make it so…
-That the injector, when it has a way.
+So we could make it so… That the injector, when it has a way.
 to check whether Python loaded it or not.
 **Bastian Krol** 15:25 So that's… that's basically the injector being able to figure out, okay, this is Python, and I need to do something differently with the protocol and the endpoint. Okay, got it. Okay, yeah, that… that could, good.
 solves it. I still am a bit skeptical that, I mean, wouldn't the injector code run completely, even before this user-side script? Because it's before the Python runtime actually starts?
 **Michele Mancioppi** 15:54 But paste. Who says?
 **Bastian Krol** 15:56 Mikido.
 **Michele Mancioppi** 15:57 That, that is, that is the injector to do all the work.
-Because technically, So we don't even need the injector to know it. The, the user site script
-can modify the process.
+Because technically, So we don't even need the injector to know it. The, the user site script can modify the process.
 the Python environment.
 **Bastian Krol** 16:12 Yeah, yeah, okay, that makes more sense.
 **Michele Mancioppi** 16:15 It is a bit a convoluted way, but that's Python for you.
@@ -197,12 +177,10 @@ the Python environment.
 But I think, I think, I think we… the default should probably be HTTP Proto…
 **Bastian Krol** 16:48 And then we need…
 **Antoine Toulme** 16:50 But he was phenomenal.
-**Bastian Krol** 16:50 There's a fallout for the cases where that doesn't work, but…
-Maybe we try to stay out of the exporter endpoint and protocol business, except for Python.
+**Bastian Krol** 16:50 There's a fallout for the cases where that doesn't work, but… Maybe we try to stay out of the exporter endpoint and protocol business, except for Python.
 **Antoine Toulme** 17:02 He'll…
 **Michele Mancioppi** 17:03 Yes. Yeah, that'd be the healthier way to do it.
-Although, although, although, although… Within the…
-In containers, fine. You expect to have something put from the outside.
+Although, although, although, although… Within the… In containers, fine. You expect to have something put from the outside.
 on a VM, very doable APT minus i open telemetry.
 No, you don't.
 So there, we need to find a way for people to set which endpoint they want.
@@ -212,10 +190,7 @@ Considering shipping, the configuration file format.
 That is something that could be vended.
 In different languages.
 Although, I'm not entirely sure how we would achieve it yet.
-**Bastian Krol** 17:54 Although, for, I mean, for… if you would do some… install something with…
-apt or… or whatever package manager, couldn't we just then… I mean…
-First, we could also say, let the user just…
-set the endpoint and the protocol as environment variable. Very simply, we still stay out of that business, and that is a responsibility of the one installing the package, or the package could set stuff up.
+**Bastian Krol** 17:54 Although, for, I mean, for… if you would do some… install something with… apt or… or whatever package manager, couldn't we just then… I mean… First, we could also say, let the user just… set the endpoint and the protocol as environment variable. Very simply, we still stay out of that business, and that is a responsibility of the one installing the package, or the package could set stuff up.
 **Michele Mancioppi** 18:23 I find that that completely defeats the experience of APT manufacturer. Yeah, to some degree.
 **Bastian Krol** 18:28 But we don't install the collector, right? So…
 **Michele Mancioppi** 18:32 No, we don't.
@@ -233,8 +208,7 @@ Okay, we will cross that bridge when we get there, I guess.
 **Michele Mancioppi** 19:22 This is the OpenTelementary configuration file.
 **Antoine Toulme** 19:24 Let me show you something. There is a blog post in the making around those configuration files from Grafana.
 Which, a member of our team was posting.
-It's called a declarative config, so it's a very slanted approach,
-All right, we're not trying to solve everything. Put it in the chat here.
+It's called a declarative config, so it's a very slanted approach, All right, we're not trying to solve everything. Put it in the chat here.
 So it's gonna come up later this week, apparently.
 **Michele Mancioppi** 19:53 Yeah.
 **Antoine Toulme** 19:54 your configuration in Java, how you do it, what it looks like.
@@ -263,10 +237,8 @@ You said PHP SDK.
 **Michele Mancioppi** 21:21 We could technically support that as well in the injector with some dirty, dirty, dirty things.
 **Antoine Toulme** 21:31 Sure.
 **Michele Mancioppi** 21:33 It's going to be dirty.
-**Antoine Toulme** 21:36 I find that it would be great if Python kind of owned its own journey on that one, because they would be giving them a bit more…
-Respite, but it's true that why would they do this work if we can help them?
-Anyway, they're not in that list, which is interesting, right, on its own. And Java is always first, which is…
-The Java guys are more mature…
+**Antoine Toulme** 21:36 I find that it would be great if Python kind of owned its own journey on that one, because they would be giving them a bit more… Respite, but it's true that why would they do this work if we can help them?
+Anyway, they're not in that list, which is interesting, right, on its own. And Java is always first, which is… The Java guys are more mature…
 **Michele Mancioppi** 21:58 Jack Burke was pushing the declarative configuration language. Of course Java works.
 **Antoine Toulme** 22:03 I would say, I mean, I have a lot of respect for Jack. I also think that, Trask, Jason, they're all really good at what they do.
 They also are trying to be very grounded in the truth, and there's a lot of insanity.
@@ -288,20 +260,15 @@ But that is, if you install it in not minus i, minus Y, so…
 **Antoine Toulme** 23:18 Yeah, yeah, yeah.
 **Michele Mancioppi** 23:19 Interactive mode.
 **Antoine Toulme** 23:20 Well, anyway.
-**Michele Mancioppi** 23:22 Which…
-That could be a first way to go. In interactive mode, then we print out, hey, go and modify the configurations here.
+**Michele Mancioppi** 23:22 Which… That could be a first way to go. In interactive mode, then we print out, hey, go and modify the configurations here.
 And then it's going to work whether it is SystemD or… or something else, because the injector is going to read it and say, this is what I set as OTLP endpoint.
 **Antoine Toulme** 23:50 Okay.
-**Michele Mancioppi** 23:51 And it's actually compatible with,
-the configuration file, because the, if I recall correctly, the spec says that the configuration file trumps all environment variables.
+**Michele Mancioppi** 23:51 And it's actually compatible with, the configuration file, because the, if I recall correctly, the spec says that the configuration file trumps all environment variables.
 So, if the SDK is using the configuration file.
 Because the user set it somewhere.
 Our modifications don't matter, and that's… Let's go to Twitter.
-**Antoine Toulme** 24:23 So…
-I think we have lofty dreams. Let's get that resolved by KubeCon. Have a good discussion. At KubeCon, I want to make sure we get to talk with SDK people.
-It's not so innocent that I involved
-a Java maintainer into my talk. I'm gonna make him demo stuff, but also, I'm going to invite him to the next couple meetings and see if he can help me
-Kind of level up on the injectors, you approach, meet your.
+**Antoine Toulme** 24:23 So… I think we have lofty dreams. Let's get that resolved by KubeCon. Have a good discussion. At KubeCon, I want to make sure we get to talk with SDK people.
+It's not so innocent that I involved a Java maintainer into my talk. I'm gonna make him demo stuff, but also, I'm going to invite him to the next couple meetings and see if he can help me Kind of level up on the injectors, you approach, meet your.
 **Michele Mancioppi** 24:59 Let's see, he, by the way, he also invited me for the talk.
 When do you prefer different?
 **Antoine Toulme** 25:06 Well, I have not done anything, so I need to get on that.
@@ -322,9 +289,7 @@ And… there it is, showing up in your collector.
 Right?
 **Michele Mancioppi** 26:15 Yep.
 **Antoine Toulme** 26:17 I'm not sure how much I'm gonna be able to nail, but we need to get on that.
-Too many things going on,
-Anyway, I'll… I'll make sure to involve Jason more into our next two sessions, because the other thing we need to start to have is all those discussions we're having in the Injector SDK. We should have them with every SDK
-maintainers. So, I'm trying to find budget to go to Belgium at the DevOx.
+Too many things going on, Anyway, I'll… I'll make sure to involve Jason more into our next two sessions, because the other thing we need to start to have is all those discussions we're having in the Injector SDK. We should have them with every SDK maintainers. So, I'm trying to find budget to go to Belgium at the DevOx.
 Because I like the idea of showing up there, and maybe having a part of the OTL Unplugged discussion to be about that.
 **Michele Mancioppi** 26:53 I intend to be there as well.
 **Antoine Toulme** 26:55 I will… I will try. It might not be me, but, worst case, we have a early, a PM out of Poland who can be there.
@@ -334,51 +299,37 @@ Because I like the idea of showing up there, and maybe having a part of the OTL 
 **Antoine Toulme** 27:12 NJ Cubic.
 **Michele Mancioppi** 27:14 Yes, yes.
 **Antoine Toulme** 27:15 He'll be at CubeCon NA as well.
-So, there's plenty of good discussions we can have together. It's, it's gonna be very, rich. Also, NJ is responsible for instrumentation, so he's responsible for everything related to Java SDK, he's got some Pythonistas under him, this type of stuff, right? So, he's my…
-Pier slash bus, given the structure we're in. So, he's, he's working.
+So, there's plenty of good discussions we can have together. It's, it's gonna be very, rich. Also, NJ is responsible for instrumentation, so he's responsible for everything related to Java SDK, he's got some Pythonistas under him, this type of stuff, right? So, he's my… Pier slash bus, given the structure we're in. So, he's, he's working.
 **Michele Mancioppi** 27:40 Can you spell me, please, the name in the chat?
 **Antoine Toulme** 27:42 Because I don't remember how to spell it.
 There you go.
-So, we'll see if we can participate in some session. We have…
-Some other people can help out, but he is kind of the main person for now, until he…
-He's gonna, at some point, he's gonna, like, you know, put the car on automatic, and then give the wheel to the next person.
+So, we'll see if we can participate in some session. We have… Some other people can help out, but he is kind of the main person for now, until he… He's gonna, at some point, he's gonna, like, you know, put the car on automatic, and then give the wheel to the next person.
 Maybe me.
 Or maybe someone else.
-So, yeah, he's a good guy to work with. Let's see if we can do this. I think having a conference-driven schedule is better than nothing, so…
-Let's use that as a motivator.
+So, yeah, he's a good guy to work with. Let's see if we can do this. I think having a conference-driven schedule is better than nothing, so… Let's use that as a motivator.
 **Michele Mancioppi** 28:37 Yeah, because otherwise, we would have set deadlines after KubeCon, and then there's Christmas, and nothing happens. I mean, it'd be like… Back in February, oh my god, KubeCon is happening again.
 **Antoine Toulme** 28:47 Yeah.
-But I'm on a treadmill, because I have KubeCon twice, then I have,
-Cisco Live, and I have Planck.com. So, I have a… I have a conference every 3 months right now, like…
-Mute.
+But I'm on a treadmill, because I have KubeCon twice, then I have, Cisco Live, and I have Planck.com. So, I have a… I have a conference every 3 months right now, like… Mute.
 Hey, let's, I think I need to get back to work. Thank you so much.
 **Michele Mancioppi** 29:16 Get somebody to fix the bloody HTTP Python exporter, please.
-**Antoine Toulme** 29:21 The message is out to the people who might know, and
-I just don't understand, because we have a lot of pythonistas on the team who are working on AI.
+**Antoine Toulme** 29:21 The message is out to the people who might know, and I just don't understand, because we have a lot of pythonistas on the team who are working on AI.
 But they're not working on financial, like, type of features like this that would actually help them. I'm actually not happy not to see the configuration file in their work.
 Because if there's one place where that would help, it's Python.
 **Michele Mancioppi** 29:48 Yep.
-**Bastian Krol** 29:49 Before we close the meeting, can I quickly bring up a nitty-gritty detail? I… Talks about the,
-GitHub Actions, the Renovate, actions, like, two weeks ago or so in Slack, and we said, yeah, let's discuss it in the meeting. We didn't last time.
-I'm not… I don't exactly remember how the discussion…
-when… I think you said something there, it's not… not so straightforward, we can… we can do it… yeah, the, the, SHA versus version thing, you said that's…
+**Bastian Krol** 29:49 Before we close the meeting, can I quickly bring up a nitty-gritty detail? I… Talks about the, GitHub Actions, the Renovate, actions, like, two weeks ago or so in Slack, and we said, yeah, let's discuss it in the meeting. We didn't last time.
+I'm not… I don't exactly remember how the discussion… when… I think you said something there, it's not… not so straightforward, we can… we can do it… yeah, the, the, SHA versus version thing, you said that's…
 **Antoine Toulme** 30:33 I know nothing.
 **Bastian Krol** 30:34 some… What?
-**Antoine Toulme** 30:37 I know nothing, I'm just…
-you know, I know how code looks like, but I'm mostly just… I know there's a way for you to group updates together, which is your ask, right? I want… I wanted this to be a bit better.
-So, the only thing I have for you is what I can pick up and paste from some other repository, because I haven't been given time to do any of that, but if you look at Contrib, they've done this type of work, where they have a…
-Set of things that, like, ignore some path, pin together some changes, make it only happen on one day.
+**Antoine Toulme** 30:37 I know nothing, I'm just… you know, I know how code looks like, but I'm mostly just… I know there's a way for you to group updates together, which is your ask, right? I want… I wanted this to be a bit better.
+So, the only thing I have for you is what I can pick up and paste from some other repository, because I haven't been given time to do any of that, but if you look at Contrib, they've done this type of work, where they have a… Set of things that, like, ignore some path, pin together some changes, make it only happen on one day.
 **Bastian Krol** 31:13 Yeah, no, that's fine. I was more interested in, like, it sounded like you have some more context on why we specifically need to use a.
 **Antoine Toulme** 31:22 Precious.
-**Bastian Krol** 31:23 the hashes, instead of the versions that might be a little bit less PRs, but implicit updates under the hood. So,
-Do you… do you have opinions on that? Okay.
+**Bastian Krol** 31:23 the hashes, instead of the versions that might be a little bit less PRs, but implicit updates under the hood. So, Do you… do you have opinions on that? Okay.
 **Antoine Toulme** 31:37 It's you.
-It's a stupid opinion. It's… I got screwed a couple times by…
-random automatic checks that will be telling you that if you use V5, for example, you may get hacked, and that has happened, actually, because that's a great factor of social attacks.
+It's a stupid opinion. It's… I got screwed a couple times by… random automatic checks that will be telling you that if you use V5, for example, you may get hacked, and that has happened, actually, because that's a great factor of social attacks.
 **Bastian Krol** 31:53 Yeah, that's totally okay.
 **Antoine Toulme** 31:55 And so someone's going to try to inject a bad… I mean, let's be clear, right? This is not a foolproof thing at all. What's gonna happen is, if they say you just put V5, whatever minor release underneath will be picked up by the next one, and then you.
-**Bastian Krol** 32:08 No, I know that Attack Vecor, I'm familiar with that,
-That's… that's okay, then I'll just group them.
+**Bastian Krol** 32:08 No, I know that Attack Vecor, I'm familiar with that, That's… that's okay, then I'll just group them.
 **Antoine Toulme** 32:19 To be clear, right? Just because you get… doesn't actually mean that you're safe, because it's going to update you to a new hash, and you'll be like, okay.
 What do I do with that, right?
 **Bastian Krol** 32:28 I mean, you could always go to all the commits and check if it's from the right contributor, but who does that?
@@ -397,8 +348,7 @@ What do I do with that, right?
 **Bastian Krol** 33:28 Yeah.
 **Antoine Toulme** 33:28 The rest of it.
 **Bastian Krol** 33:29 Sounds good.
-**Antoine Toulme** 33:30 Loosely held opinions based on being, you know,
-slapped on the head a couple times by some stupid thing. It's like, you can't just put V5 in here. I'm like, oh, fine.
+**Antoine Toulme** 33:30 Loosely held opinions based on being, you know, slapped on the head a couple times by some stupid thing. It's like, you can't just put V5 in here. I'm like, oh, fine.
 **Bastian Krol** 33:39 Yeah, yeah, no, no, we had the… we had the same thing before, yeah, yeah. True, okay.
 **Michele Mancioppi** 33:44 Antoine, are you married to the deal of using this weird Python FPM package to create a deb and RPM?
 **Antoine Toulme** 33:52 No, I'm not married to any of that. But do you have a better solution?
@@ -420,20 +370,16 @@ I know what it takes to do packages, I'm not doing that by hand.
 Okay.
 I have no idea.
 **Michele Mancioppi** 35:13 To be perfectly clear on the matter. I don't think anybody looked at that front even says, this, this is the best tool to package.
-**Antoine Toulme** 35:21 I…
-The problem is, I think the conjunction of finding something that works for both RPM and Debian, there must be a very small intersection of those tools, right? And that's probably what happened.
+**Antoine Toulme** 35:21 I… The problem is, I think the conjunction of finding something that works for both RPM and Debian, there must be a very small intersection of those tools, right? And that's probably what happened.
 **Michele Mancioppi** 35:31 It is… no, I mean, if you do run-of-the-mill packages, the intersection is not that small.
-If you go into meta territory, I think that meta packages and RPM work Quite differently, but…
-I never built them, so I don't know.
+If you go into meta territory, I think that meta packages and RPM work Quite differently, but… I never built them, so I don't know.
 **Antoine Toulme** 35:48 I'm also not gonna build them, because I'm going to stick to Debian.
 **Michele Mancioppi** 35:51 This time around.
 **Antoine Toulme** 35:52 Let's just do that, yep.
 Yeah, let's… let's go for that. I think our friends at Red Hat will get some really healthy for me.
-**Michele Mancioppi** 36:00 Yeah, I expect Pavel to join this,
-Highly honored SIG very soon, and then fix it.
+**Michele Mancioppi** 36:00 Yeah, I expect Pavel to join this, Highly honored SIG very soon, and then fix it.
 **Antoine Toulme** 36:07 So, a thought for that is that Red Hat is very much on the hunt to… for relevance, and they really want to have as much help as possible to bring up their empire around Ansible.
-So, an approach that we could take is that we make an Ansible playbook, or collection, sorry, out of this, that would
-please, maybe install the RPM or something.
+So, an approach that we could take is that we make an Ansible playbook, or collection, sorry, out of this, that would please, maybe install the RPM or something.
 Why are you having a bad time with this, huh?
 **Michele Mancioppi** 36:35 sensible.
 Are you using the A word with me?
@@ -444,10 +390,8 @@ Are you using the A word with me?
 **Antoine Toulme** 36:57 but the truth is.
 **Michele Mancioppi** 37:00 every single time you drop the A word, Red Hat shows up in your recordings, and they start to watch it, and then, they show up… Ansible! It's great.
 **Antoine Toulme** 37:11 They will then tell you that they'd love to host it on their official certified platform for which they actually offer QA and testing, and agree.
-**Michele Mancioppi** 37:19 In reality, what I would like them to do is Ansible, I…
-The amount of facts given is negative.
-where I would like these packages to land is there,
-What is the name? The UBI?
+**Michele Mancioppi** 37:19 In reality, what I would like them to do is Ansible, I… The amount of facts given is negative.
+where I would like these packages to land is there, What is the name? The UBI?
 Try the QBIs? Universal Bayesian?
 **Antoine Toulme** 37:36 Okay, oh man.
 **Michele Mancioppi** 37:37 Oh, that, that is… that would be a… that would be good stuff. I mean, I want this to be upstreamed in Ubuntu.
@@ -471,8 +415,7 @@ An APK.
 **Antoine Toulme** 39:05 No, it's just, between, what's the thing? Bitnami just went, completely AWOL.
 **Michele Mancioppi** 39:11 Bin Nami said, hey, we would like you to pay us.
 So they, they retired, they moved all the… they broke the helm ecosystem.
-**Antoine Toulme** 39:21 Yeah, the broker, but it's… It's like, there's this concentration and kind of,
-People will say incidentification is not that. It's more like they're turning from the R&D, VC-funded approach to, let's make some money.
+**Antoine Toulme** 39:21 Yeah, the broker, but it's… It's like, there's this concentration and kind of, People will say incidentification is not that. It's more like they're turning from the R&D, VC-funded approach to, let's make some money.
 next 6 months.
 **Michele Mancioppi** 39:39 Yeah, that's the monetization lever.
 **Antoine Toulme** 39:40 monetization.

@@ -20,19 +20,16 @@ You got it right?
 You won.
 **Bob Strecansky** 01:20 No, I do.
 **Sergey** 01:21 Wow, okay.
-No, I don't know, for some reason I thought that Chris mentioned that you had to be at some kind of… and for some reason in my mind…
-I…
+No, I don't know, for some reason I thought that Chris mentioned that you had to be at some kind of… and for some reason in my mind… I…
 **Bob Strecansky** 01:31 But that's probably not relevant to the United States, now thinking about it. I don't know if you know, but in Israel, you have a reserve duty, and it's almost all the men.
 **Sergey** 01:39 So a lot of times, when you speak to somebody from IT, they will just tell you, oh yeah, that guy's on reserve duty. So it's normal. But now, thinking about it, you have professional army, so it's fucking likely that you will have somebody in states to be in high tech and, you know, reserve duty, right?
 **Bob Strecansky** 01:53 Last week, I was not doing military duty, but I was camping.
-**Sergey** 01:59 Right, okay, I guess he said camping, but for some reason in my mind, it transformed to…
-Some kind of, like, gathering. So it's just camping with kids?
+**Sergey** 01:59 Right, okay, I guess he said camping, but for some reason in my mind, it transformed to… Some kind of, like, gathering. So it's just camping with kids?
 **Bob Strecansky** 02:09 Yeah, my daughter… my daughter turned, she turned 6 this week, and so I took her camping here, I'll share.
 **Sergey** 02:15 Like, multi-day with, with spending the night?
 **Bob Strecansky** 02:18 Yeah, Thursday to Friday, so, let's see…
 **Sergey** 02:22 Okay.
-**Bob Strecansky** 02:22 I will… I will share a picture with you. This is where my daughter and I went camping this past week. This is in,
-It's actually my alma mater, Clemson, and this is, this is a view from our tent.
+**Bob Strecansky** 02:22 I will… I will share a picture with you. This is where my daughter and I went camping this past week. This is in, It's actually my alma mater, Clemson, and this is, this is a view from our tent.
 And there's my daughter camping with me, eating a marshmallow. She forgot a bunch of her clothes.
 **Sergey** 02:40 So you didn't stray far, so you stayed with the parking, so you could reach there with your car.
 Yeah, yeah, so this is…
@@ -58,10 +55,8 @@ Yeah, yeah, so this is…
 So you got those…
 **Sergey** 04:01 They're also tents, but they somehow have a platform that you install on your roof or something?
 **Bob Strecansky** 04:05 Yeah, you, like, you… they sort of, like, fold into themselves, and they're, like, pretty high… like, high-grade steel and fabric and stuff, and I think that, a lot of people that camp very frequently really like that.
-**Sergey** 04:19 So who will buy that? Is that for cars that don't have a truck bed, so they suit it for those kinds of cars that you…
-blood.
-**Bob Strecansky** 04:26 You can get those for… you can buy those both for,
-you can buy those both for truck beds and for roofs. Like, they make them for car… like, for… that you can put on the roof of a car.
+**Sergey** 04:19 So who will buy that? Is that for cars that don't have a truck bed, so they suit it for those kinds of cars that you… blood.
+**Bob Strecansky** 04:26 You can get those for… you can buy those both for, you can buy those both for truck beds and for roofs. Like, they make them for car… like, for… that you can put on the roof of a car.
 **Sergey** 04:40 Got it.
 **Bob Strecansky** 04:41 Yeah, so…
 **Sergey** 04:43 Multiple days, so you stayed… so did you do, like, day hikes? Like, you went out, then you came back to the tent?
@@ -74,15 +69,12 @@ you can buy those both for truck beds and for roofs. Like, they make them for ca
 **Pawel Filipczak** 05:27 So…
 **Bob Strecansky** 05:28 That's what we do.
 **Pawel Filipczak** 05:29 Good enough for camping?
-**Bob Strecansky** 05:31 So, this past weekend, our weather has been…
-We've had days that are, like, when we went camping last Thursday, it was 22 Celsius.
+**Bob Strecansky** 05:31 So, this past weekend, our weather has been… We've had days that are, like, when we went camping last Thursday, it was 22 Celsius.
 And yesterday, it was minus 5 Celsius.
 **Pawel Filipczak** 05:46 Oh, wow.
 **Bob Strecansky** 05:47 We've had, like, we've had these, like, really, really big shifts. It's been… my, like, skin starts to get dry from, like, the delta in the temperature. It's terrible.
-Anywho, anywho,
-I think that this… I don't know if Chris is gonna show up today, but we can… we can get rolling on our discussion. Let's see, so I can… I can start. So, there are two important things to talk… that I had to talk about this week.
-Chris and I merged a logging PR that, we decided would have breaking functionality, so we reverted it, and that never got pushed to a release, so it's not really…
-not really super impacting, I just wanted to make sure that y'all were aware of that. Eventually, we're gonna work towards using something more along the lines of PSR3, but I wanted to make sure that everybody knew about that.
+Anywho, anywho, I think that this… I don't know if Chris is gonna show up today, but we can… we can get rolling on our discussion. Let's see, so I can… I can start. So, there are two important things to talk… that I had to talk about this week.
+Chris and I merged a logging PR that, we decided would have breaking functionality, so we reverted it, and that never got pushed to a release, so it's not really… not really super impacting, I just wanted to make sure that y'all were aware of that. Eventually, we're gonna work towards using something more along the lines of PSR3, but I wanted to make sure that everybody knew about that.
 **Sergey** 06:40 Is that related to that trace ID, spun ID changes, something like that?
 **Bob Strecansky** 06:45 No, I can find… I'll find it for you later, but…
 **Sergey** 06:49 bro.
@@ -91,52 +83,35 @@ not really super impacting, I just wanted to make sure that y'all were aware of 
 **Bob Strecansky** 07:04 Yeah.
 **Sergey** 07:04 mentioned that?
 **Bob Strecansky** 07:06 Yeah, so I started investigating this. We were investigating this at MailChimp. This is a new Rust toolchain that does a lot of, like, static analysis and code formatting and linting for PHP, and it's really, really, really fast. Like, when I was doing it, I thought that the GitHub actions were broken because they were so quick.
-But it's just very, very, very fast. So, I did a little bit of investigation with this. I think we would have to fine-tune the rules of it a little bit, to make it production-ready. And it's… this is still in beta, so I am…
-expecting us to wait for a little bit, and then when this becomes more generally available, to use it, but it's… I wanted to make sure that y'all were aware of it, because it's pretty cool, like, it does a really good job of finding things, and it's very, blazing.
+But it's just very, very, very fast. So, I did a little bit of investigation with this. I think we would have to fine-tune the rules of it a little bit, to make it production-ready. And it's… this is still in beta, so I am… expecting us to wait for a little bit, and then when this becomes more generally available, to use it, but it's… I wanted to make sure that y'all were aware of it, because it's pretty cool, like, it does a really good job of finding things, and it's very, blazing.
 **Sergey** 07:55 what is its use case, like, to replace tools like HP Statical Analysis done, or…
 **Bob Strecansky** 08:02 Yeah, I think it replaces PHPStan, and some, like, PHP CS Fixer, and some of the other linting tools.
-I think… I think their goal, long-term is to be, like, the…
-you know, central… the centralized tool for all… because, you know, there… in PHP, there are so many of these tools. You have, like, Psalm, Stan, PHP, Stan, FAN,
-you know.
+I think… I think their goal, long-term is to be, like, the… you know, central… the centralized tool for all… because, you know, there… in PHP, there are so many of these tools. You have, like, Psalm, Stan, PHP, Stan, FAN, you know.
 **Sergey** 08:23 I think they probably took the hint from this ban, from Node.js, right?
 **Bob Strecansky** 08:28 Yeah. Yeah, Bunn has… Bun has also been really cool. I'm hoping that we get to use that at some point, too, in some other pro… like, some other personal projects. But, yeah, just wanted to make sure that y'all knew about this, because it's pretty…
 **Sergey** 08:40 I think it's ready, like, it has enough on Shadow. This is what I will find quite interesting, because most of the people… you need to find interesting intersection of people for it to be, you know, like, live project, because essentially, people that develop PHP stand, they're most knowledgeable in PHP.
 Now, they know how to implement those rules and everything. Now, to go and port them to Rust, you will need an additional skill. I don't know, maybe you can.
 **Bob Strecansky** 09:03 Yeah.
 **Sergey** 09:03 for that.
-**Bob Strecansky** 09:05 Yeah, I'm…
-I think that, like, me testing it was mostly an exercise to see if it was possible, and I think it… I think the answer is it is possible. I think we have to… I think we should wait for it to be… I'm not really interested in supporting beta software in our project, but I think… I just thought it was a neat thing to…
-Sort of learn a little bit.
+**Bob Strecansky** 09:05 Yeah, I'm… I think that, like, me testing it was mostly an exercise to see if it was possible, and I think it… I think the answer is it is possible. I think we have to… I think we should wait for it to be… I'm not really interested in supporting beta software in our project, but I think… I just thought it was a neat thing to… Sort of learn a little bit.
 **Sergey** 09:25 But I wonder, like, how easy it's going to be to evaluate if it's capable as much as PHP Stan and can be replaced, right? Because essentially, you need to make sure that it can discover all the issues that PHP Stan can discover.
 **Bob Strecansky** 09:38 Yeah, I agree with you. The nice thing is you can run them side by side and see if they come up with, you know, relatively similar outputs.
-I think that's sort of like what happened with
-sort of what happened with Renovate and, dependabot, right? Like, you can see both of them running and say, oh, they come up with the same things, and one does it a little bit better than the other one, so we can make an informed decision about which one we use.
+I think that's sort of like what happened with sort of what happened with Renovate and, dependabot, right? Like, you can see both of them running and say, oh, they come up with the same things, and one does it a little bit better than the other one, so we can make an informed decision about which one we use.
 **Sergey** 10:04 Yeah, okay, interesting.
 **Bob Strecansky** 10:06 Yeah, I'm gonna put that lady here.
 **Sergey** 10:10 But for now, you're not planning to do it in, like, in short term, like, only when they will declare that they have, stable release?
 **Bob Strecansky** 10:18 Yeah, I think that that's the right thing to do.
 **Sergey** 10:23 I mean, technically, we can run them in parallel. The question is, should we make it kind of, like, fail in the build or not? If they're fast, and if you run them in parallel, I guess it's possible. But yes, you will take hits on… if it's not stable, yeah.
-**Bob Strecansky** 10:38 Right, and, you know, there's always the…
-The additional overhead of running those tests, even if they don't
-Even if they don't… even if they don't block the build, like, there's still cognitive overhead in parsing, like, mentally parsing them when you're looking at the output. There's, you know, we are already in the state where we have a lot of failing
-things that don't… that don't block, but it's like, people, you know, new contributors, or contributors that haven't contributed in a while, or whatever, will just look and be like, oh, this is failing, why is it failing? And there's, you know, that cognitive overhead, too, but anyway.
+**Bob Strecansky** 10:38 Right, and, you know, there's always the… The additional overhead of running those tests, even if they don't Even if they don't… even if they don't block the build, like, there's still cognitive overhead in parsing, like, mentally parsing them when you're looking at the output. There's, you know, we are already in the state where we have a lot of failing things that don't… that don't block, but it's like, people, you know, new contributors, or contributors that haven't contributed in a while, or whatever, will just look and be like, oh, this is failing, why is it failing? And there's, you know, that cognitive overhead, too, but anyway.
 Okay.
 **Sergey** 11:10 Sounds good.
 **Bob Strecansky** 11:11 Alright, is there any other updates y'all want to give before I start walking through the board?
 **Sergey** 11:19 Paul, do you think it's worth updating on the progress with Distro?
 **Pawel Filipczak** 11:23 Oh, yeah, yeah, of course.
-So, from the, from the last week, we…
-He was working on… mostly on the unit, so he…
-enabled the static analysis, we enable the unit testing, and we enabled the component tests. Currently, we are…
-We are fixing the flakiness in one of the tests, but other… all of… hundreds of other tests are stable, and they are passing, but one is flaky from time to time, so…
-We want to fix that before merging.
-And, I also, enable the… the…
-possibility to add vendor-depending code. On the native side, the PHP part will be… will be…
-Implemented later after a donation.
-When we finish the donation, so the whole project is close to… to finish, close to…
-Close to pass it, and ask for your review.
-And,
-If… if it will be okay, then we will make our first release, so we are very close to… to… to finish, and… and make it official.
+So, from the, from the last week, we… He was working on… mostly on the unit, so he… enabled the static analysis, we enable the unit testing, and we enabled the component tests. Currently, we are… We are fixing the flakiness in one of the tests, but other… all of… hundreds of other tests are stable, and they are passing, but one is flaky from time to time, so… We want to fix that before merging.
+And, I also, enable the… the… possibility to add vendor-depending code. On the native side, the PHP part will be… will be… Implemented later after a donation.
+When we finish the donation, so the whole project is close to… to finish, close to… Close to pass it, and ask for your review.
+And, If… if it will be okay, then we will make our first release, so we are very close to… to… to finish, and… and make it official.
 **Bob Strecansky** 12:48 Excellent. Good update.
 Alright, let's… Walk the board.
 I need…
@@ -176,27 +151,19 @@ You get your… you get your package syndicated. Alright, so congratulations, we
 **Bob Strecansky** 15:55 Yeah.
 **Sergey** 15:56 Alright…
 **Bob Strecansky** 15:58 I think that's… that's all we have on the agenda. Do y'all have anything else you want to talk about today?
-**Sergey** 16:03 No, I will probably see, I need to get back… I saw that Brett responded, with, his, arguments regarding the break-in changes in 2-0, why it released to zero. We had our discussion, and probably
-if it looks better to you guys, then probably we'll be okay with it, because for some reason, we thought that it might be harder for us to support distro with both versions, because… but I guess we'll probably release then a major version for the distro as well.
+**Sergey** 16:03 No, I will probably see, I need to get back… I saw that Brett responded, with, his, arguments regarding the break-in changes in 2-0, why it released to zero. We had our discussion, and probably if it looks better to you guys, then probably we'll be okay with it, because for some reason, we thought that it might be harder for us to support distro with both versions, because… but I guess we'll probably release then a major version for the distro as well.
 So they will.
 **Bob Strecansky** 16:39 Okay.
 **Sergey** 16:39 be aligned with SDK, we'll be fine, so… so there are arguments to do it, then let's do it. So I will… I will read what Brett wrote, and I'll respond to him, but I don't think we have a strong objection anymore to that, because we thought it will be… will make it harder on us on that end, but probably not.
 **Bob Strecansky** 16:59 Sounds like a penny.
-**Sergey** 17:00 We also wanted to ask you guys something, but paul, do you remember what we wanted to ask,
-We thought we want to dedicate, after we're done with the nation, our next big thing would be to start doing something that we as a community find the most important. So we thought, for example, that we want to stabilize the tests.
-Especially in Contrib, to make sure that everything passes, or at least have some kind of control over, if there are issues that we need to, you know, to fix immediately, or as soon as possible. So, essentially, to… to have tests that we can rely on, right? So, the fact that they are…
-failing will be something that we need to handle, not just… essentially, now that we ignore the failures, we don't have any use out of that, because they are just… all of them fail, right? So… or a lot of them.
-**Bob Strecansky** 17:49 So, I have… I have visited that in the past, like, coming up with a better test plan, and I think
-fortunately, AI can definitely help us with that quite a bit. I think that it can probably help us to remediate some of the issues that we have with tests, and, like, at least come up with a stable baseline so that as we move forward, we can be a little bit more confident in the test. I… to me, again, I haven't… I feel like I'm slightly biased, but I feel like that's…
-One of the most important things to me in our project right now is, like.
-we want to make sure that we have that kind of stability so we can gain confidence from end users. Like, obviously, we have a lot of end users already, but I think the more… the more things we have like that, the better off we're going. Like, I am a new contributor, I want to contribute something
-if I contribute at README, it should be green. If I contribute, you know, some new package, and I don't have any failing tests, then I shouldn't have to, like, question whether or not the… I wonder how many forks have been made, and then people, like, just give up, because they're like, oh, the tests are failing on me, and so this project probably isn't maintained very well, and stuff like that. So, I agree with you, I think that that's… that should probably be pretty high priority. I think we just haven't had anybody.
+**Sergey** 17:00 We also wanted to ask you guys something, but paul, do you remember what we wanted to ask, We thought we want to dedicate, after we're done with the nation, our next big thing would be to start doing something that we as a community find the most important. So we thought, for example, that we want to stabilize the tests.
+Especially in Contrib, to make sure that everything passes, or at least have some kind of control over, if there are issues that we need to, you know, to fix immediately, or as soon as possible. So, essentially, to… to have tests that we can rely on, right? So, the fact that they are… failing will be something that we need to handle, not just… essentially, now that we ignore the failures, we don't have any use out of that, because they are just… all of them fail, right? So… or a lot of them.
+**Bob Strecansky** 17:49 So, I have… I have visited that in the past, like, coming up with a better test plan, and I think fortunately, AI can definitely help us with that quite a bit. I think that it can probably help us to remediate some of the issues that we have with tests, and, like, at least come up with a stable baseline so that as we move forward, we can be a little bit more confident in the test. I… to me, again, I haven't… I feel like I'm slightly biased, but I feel like that's… One of the most important things to me in our project right now is, like.
+we want to make sure that we have that kind of stability so we can gain confidence from end users. Like, obviously, we have a lot of end users already, but I think the more… the more things we have like that, the better off we're going. Like, I am a new contributor, I want to contribute something if I contribute at README, it should be green. If I contribute, you know, some new package, and I don't have any failing tests, then I shouldn't have to, like, question whether or not the… I wonder how many forks have been made, and then people, like, just give up, because they're like, oh, the tests are failing on me, and so this project probably isn't maintained very well, and stuff like that. So, I agree with you, I think that that's… that should probably be pretty high priority. I think we just haven't had anybody.
 **Sergey** 18:55 Do you have other things that you think Justice Io may be higher than that?
 **Bob Strecansky** 19:01 No, I would argue that that would be… like, if I were king for a day, I would say that that's the thing we should probably focus on the most.
 **Sergey** 19:09 Okay, okay, then we will, we will analyze the situation, we'll present what we think are the best next steps, and then we will decide together what we want to spend time on. Okay.
-**Bob Strecansky** 19:19 Yeah, and I think we have, you know, we have the main repo, contribib, and instrumentation, and we…
-I don't want to say we can experiment, but, like, instrumentation probably is the best place to start, because it's the smallest, and then main is probably,
-like, contrib probably is… that's going to be the most work, but it's the one that has the… it… it probably has the biggest impact, too. And the main repo, I feel like, is not very far off currently. So I… to me, it would be like…
+**Bob Strecansky** 19:19 Yeah, and I think we have, you know, we have the main repo, contribib, and instrumentation, and we… I don't want to say we can experiment, but, like, instrumentation probably is the best place to start, because it's the smallest, and then main is probably, like, contrib probably is… that's going to be the most work, but it's the one that has the… it… it probably has the biggest impact, too. And the main repo, I feel like, is not very far off currently. So I… to me, it would be like…
 **Sergey** 19:49 We have… but we have problem with the… I thought that MandRepo is… it also has some test failures as well.
 **Bob Strecansky** 19:54 There's a couple very small ones right now, I believe.
 I would say.
@@ -208,13 +175,9 @@ Wonderful. Thank you.
 Okay, that's it from us, I think. Unless, Paul, do you have anything else that I missed?
 **Pawel Filipczak** 20:29 No, no.
 Shadowing, maybe, shadowing, we have to also finish shadowing for the distro.
-**Sergey** 20:36 Right, right, right, yeah, we have, I mentioned in the past, we want to finish the…
-the step… I don't remember if you saw that there was this similar issue for even for the SDK itself, when it was loaded by Composer, I think? Or one of the tools, when suddenly the SDK was loaded in the context, and some of the third-party dependencies clashed.
-Because they were of different versions. So, there was some trick implemented, I don't remember, I think, Chris, or maybe Neveh, they implemented some trick to work around it, but for distro, we needed to work in all the circumstances, right? Because we…
-We don't require applications to put the requirement at SDK, and then Composer will…
-calculate correctly what are the shared versions that can be, you know, put into vendor. We already bring our own vendor with the distro, so we need to make sure that our vendor doesn't clutch with the application's vendor.
-So we need to… so essentially what we're going to do, I mentioned in the past, we're going to shade our vendor, essentially move it to some kind of, like, random namespace, or kind of, like, prefix namespace that will not clash with the namespace, even though those will be exactly the same packages, but…
-Yeah, we will… so that's something that we still need to do. That will be the last thing that we'll implement.
+**Sergey** 20:36 Right, right, right, yeah, we have, I mentioned in the past, we want to finish the… the step… I don't remember if you saw that there was this similar issue for even for the SDK itself, when it was loaded by Composer, I think? Or one of the tools, when suddenly the SDK was loaded in the context, and some of the third-party dependencies clashed.
+Because they were of different versions. So, there was some trick implemented, I don't remember, I think, Chris, or maybe Neveh, they implemented some trick to work around it, but for distro, we needed to work in all the circumstances, right? Because we… We don't require applications to put the requirement at SDK, and then Composer will… calculate correctly what are the shared versions that can be, you know, put into vendor. We already bring our own vendor with the distro, so we need to make sure that our vendor doesn't clutch with the application's vendor.
+So we need to… so essentially what we're going to do, I mentioned in the past, we're going to shade our vendor, essentially move it to some kind of, like, random namespace, or kind of, like, prefix namespace that will not clash with the namespace, even though those will be exactly the same packages, but… Yeah, we will… so that's something that we still need to do. That will be the last thing that we'll implement.
 Before asking for review for donation.
 **Bob Strecansky** 21:55 Sounds good to me.
 **Sergey** 21:57 That's it.

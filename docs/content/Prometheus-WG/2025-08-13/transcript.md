@@ -33,8 +33,7 @@ I… I don't mean that this is your obligation.
 **Arthur Silva Sens** 04:37 At the time.
 **Juraj Michalek** 04:37 It's just I do feel bad for, like, not being as active as I was before.
 Still need to finish my stuff, too.
-Yeah, there's, like, if you look at the doc, there's Prometheus-related issues in Opal Contriblink. You can look… use that to find, like…
-Prometheus-related, issues that need the edge. They usually also have that label.
+Yeah, there's, like, if you look at the doc, there's Prometheus-related issues in Opal Contriblink. You can look… use that to find, like… Prometheus-related, issues that need the edge. They usually also have that label.
 **krajo Krajcsovits** 05:01 Yeah, I feel the same as you, Ryan.
 And also, I basically have tomorrow.
 to do something, and then I'm off for 2 weeks.
@@ -47,19 +46,14 @@ No, not when I'm off, but this week, so, ….
 Unless there's some other topics?
 **Arthur Silva Sens** 05:42 I know Owen has an open PR in the Hotel Go SDK.
 This one is kind of urgent, actually.
-we need to get this done ASAP, so if people have…
-I don't need, actually, expertise in Go or the SDK, just try things out, and if things make sense, just leave a comment and be out.
-**Owen Williams (he/she)** 06:06 Although, if somebody… Let me actually link this thing. If somebody, … has…
-experience with scope metrics. I cannot figure out how to make them in the SDK. …
-Basically, the main sticking point right now, other than any notes that somebody might come up with, is the code coverage requirement. There's some error cases that are not covered with tests, and I cannot figure out how to
-make those lines happen. So if….
+we need to get this done ASAP, so if people have… I don't need, actually, expertise in Go or the SDK, just try things out, and if things make sense, just leave a comment and be out.
+**Owen Williams (he/she)** 06:06 Although, if somebody… Let me actually link this thing. If somebody, … has… experience with scope metrics. I cannot figure out how to make them in the SDK. … Basically, the main sticking point right now, other than any notes that somebody might come up with, is the code coverage requirement. There's some error cases that are not covered with tests, and I cannot figure out how to make those lines happen. So if….
 **Arthur Silva Sens** 06:38 I… I know how to do scope mat… scope attributes, I'll give you a comment in the PR. Great.
 **Owen Williams (he/she)** 06:45 B.
 **Arthur Silva Sens** 06:46 landed.
 **Owen Williams (he/she)** 06:46 I have a….
 **Arthur Silva Sens** 06:48 Code coverage is not a required CI.
-**Owen Williams (he/she)** 06:52 Okay, well, …
-then if people are fine with the coverage as it is, then a stamp is good. Yeah, David Ashpepull was reviewing it, but he's out until September 8th.
+**Owen Williams (he/she)** 06:52 Okay, well, … then if people are fine with the coverage as it is, then a stamp is good. Yeah, David Ashpepull was reviewing it, but he's out until September 8th.
 He said I could ping him, so I did, but I would, you know, I think it's also better if we let people be on PTO.
 **Juraj Michalek** 07:10 there was the person from OTL SDK, right, that was willing to review things.
 Forgot his name, but he… there is some questions in the Auto Parameters channel. Maybe you can… maybe you could ping him instead?
@@ -79,8 +73,7 @@ We're talking about you, actually.
 **David Ashpole** 07:59 I work when baby sleeps, so….
 **Arthur Silva Sens** 08:03 So, like, if you're offline, who should we reach out on Go SDK stuff?
 **David Ashpole** 08:12 I mean, the maintainers… I would reach out to Robert.
-Tyler can also review, but he tends to be very busy, and then, … Damien also occasionally reviews
-That sort of thing.
+Tyler can also review, but he tends to be very busy, and then, … Damien also occasionally reviews That sort of thing.
 Robert reviews a lot.
 **Juraj Michalek** 08:35 Yeah, he was….
 **David Ashpole** 08:36 That I have.
@@ -93,8 +86,7 @@ Robert reviews a lot.
 Oops, nice.
 **Owen Williams (he/she)** 08:57 Sweet.
 **Juraj Michalek** 08:59 Arthur, I also saw your PR on the improved logging.
-I got, I got pinked in one of the issues, …
-And when there was a person that had an issue where, like, they removed that exporter would just stop sending data after 15 minutes, they can no longer reproduce it in newer versions, which is good, but they… so I told them, like, you're already adding some extra log lines if they… I told them to look at your PR to add some feedback if they feel like there's a log line, you should be adding to.
+I got, I got pinked in one of the issues, … And when there was a person that had an issue where, like, they removed that exporter would just stop sending data after 15 minutes, they can no longer reproduce it in newer versions, which is good, but they… so I told them, like, you're already adding some extra log lines if they… I told them to look at your PR to add some feedback if they feel like there's a log line, you should be adding to.
 And I'll try to review your worst case over the weekend, and the other one too, if it's still open by that point.
 **Arthur Silva Sens** 09:33 Yeah, the PR is very simple, it's just literally just adding a logline.
 **Juraj Michalek** 09:37 Okay.
@@ -104,12 +96,8 @@ But that's fine.
 **krajo Krajcsovits** 09:44 Also… I finished with the topic?
 **Juraj Michalek** 09:50 Yeah, yeah. Okay, so, yeah, there's a… there's an issue that we came across during the Prometus Box Scrum.
 **krajo Krajcsovits** 09:56 Actually, this Tuesday.
-Where somebody's complaining that,
-Kubernetes container name that they get from the Prometheus receiver is not consistent, and it seems like it's an issue in Prometheus, so I…
-I plan to reply to that.
-… I'm not sure how easily we can fix that, because…
-My gut feeling is that when you query Kubernetes, and the init container is running, it will just say that the container is init container, and it will not give you the
-Like, the container name that you… Expect, which is some application.
+Where somebody's complaining that, Kubernetes container name that they get from the Prometheus receiver is not consistent, and it seems like it's an issue in Prometheus, so I… I plan to reply to that.
+… I'm not sure how easily we can fix that, because… My gut feeling is that when you query Kubernetes, and the init container is running, it will just say that the container is init container, and it will not give you the Like, the container name that you… Expect, which is some application.
 So I… I might… I would probably suggest a workaround to base it on a label instead.
 For now, … But again, I have to find the time to….
 **Juraj Michalek** 10:48 Do you want to drop a link for the issue in the doc or the Zoom chat?

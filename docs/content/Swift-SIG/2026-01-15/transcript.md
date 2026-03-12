@@ -15,15 +15,13 @@ Because I got nothing, too. I was just gonna be a fly on the wall or whatever.
 **Vinod Vydier** 05:54 Oh.
 Yeah, it was actually…
 **Arri Blais** 05:58 Okay, my, my apologies. Yeah, yeah. I did see you join Vinod, my, my bad.
-**Vinod Vydier** 06:04 No problem, no problem. I was actually gonna wait for Ari, because he was gonna run the meeting today, but I didn't think he's joining, so… I can run it, or…
-Yeah, let's, let's discuss what are the PRs that are… been submitted, let's…
+**Vinod Vydier** 06:04 No problem, no problem. I was actually gonna wait for Ari, because he was gonna run the meeting today, but I didn't think he's joining, so… I can run it, or… Yeah, let's, let's discuss what are the PRs that are… been submitted, let's…
 **Billy Zhou** 06:24 Yeah, I think Billy… Billy's already sharing, right? Yeah.
 Yeah, it seems like it was having some availability issues, actually. It's kind of weird.
 Okay.
 Well, for current state, immersed in, Swift V6, upgrading core.
 Man, GitHub's really sucking today.
-Yeah, so I had some weird…
-I don't know what this is, Vino, do you have any context on this?
+Yeah, so I had some weird… I don't know what this is, Vino, do you have any context on this?
 **Vinod Vydier** 06:57 Hold on, hold on, let me, let me actually get on the computer.
 **Billy Zhou** 07:01 sure.
 **Vinod Vydier** 07:02 Yeah.
@@ -32,22 +30,17 @@ And, yeah, I can take a look at this later, but, we should be getting ready to r
 Probably as a major version upgrade.
 Yeah, in the meantime, I don't think there are any open issues against, the court.
 repository.
-Yeah, just some stuff, did, and…
-As soon as it's done loading, we can take a look at what these are.
+Yeah, just some stuff, did, and… As soon as it's done loading, we can take a look at what these are.
 Okay?
 **Vinod Vydier** 07:45 Okay, I'm also, yeah, so…
 **Billy Zhou** 07:48 Oh, yeah, okay, do you know what this, OSSF scorecard is?
 **Vinod Vydier** 07:57 Is that… I think it's, again, automated thing, right? Yeah.
-**Billy Zhou** 08:02 Okay, yeah, I'll take a look at it later. Okay. But I guess it's,
-Yeah, it didn't surface until we merged.
+**Billy Zhou** 08:02 Okay, yeah, I'll take a look at it later. Okay. But I guess it's, Yeah, it didn't surface until we merged.
 And then… There's, like, all this stuff that Bryce did. Async OA APIs for exporters.
-**Vinod Vydier** 08:23 Yeah, this is something that, we discussed last time, where…
-I don't know, has anyone picked this up?
-So the exporters…
-Or, I think we were talking about having a sync a bit, because, currently, I think.
+**Vinod Vydier** 08:23 Yeah, this is something that, we discussed last time, where… I don't know, has anyone picked this up?
+So the exporters… Or, I think we were talking about having a sync a bit, because, currently, I think.
 It is waiting, right, for it to export, and if it doesn't, it times out.
-**Billy Zhou** 08:51 Oh, I see. Yeah, I actually did notice this,
-When I used it for ADOT, Okay.
+**Billy Zhou** 08:51 Oh, I see. Yeah, I actually did notice this, When I used it for ADOT, Okay.
 But I didn't… I didn't fix it, obviously.
 Okay, take a look at that. Man, GitHub, maybe, maybe they're either getting paged because of some issue.
 **Vinod Vydier** 09:17 No.
@@ -68,18 +61,13 @@ Configuration for metric yet… Okay, it's merged.
 monotonic clock… Yeah, I think all these issues are resolved.
 **Vinod Vydier** 11:00 This is from the last week right here.
 **Billy Zhou** 11:06 Okay, that's, that's good.
-**Vinod Vydier** 11:08 So the only thing that is, this is the one that… with a Swift 6…
-That is just about…
-Oh, you were looking at this, okay.
-**Billy Zhou** 11:31 Yeah, I just, I'll just add some more bullet points, so, ex…
-OSR, whatever that thing is called. What's it called?
+**Vinod Vydier** 11:08 So the only thing that is, this is the one that… with a Swift 6… That is just about… Oh, you were looking at this, okay.
+**Billy Zhou** 11:31 Yeah, I just, I'll just add some more bullet points, so, ex… OSR, whatever that thing is called. What's it called?
 **Vinod Vydier** 11:43 Oh, sweet.
 **Billy Zhou** 11:44 OSSF card.
 **Vinod Vydier** 11:48 Okay, so this is also unknown, okay.
 **Billy Zhou** 11:51 And, rebase me…
-**Vinod Vydier** 12:10 Actually, you should probably… let me copy this over, you can…
-Because, we are putting it on the…
-Oh, yeah, sure. Yeah, you can type in, and then you can, yeah, copy it over to the top.
+**Vinod Vydier** 12:10 Actually, you should probably… let me copy this over, you can… Because, we are putting it on the… Oh, yeah, sure. Yeah, you can type in, and then you can, yeah, copy it over to the top.
 **Billy Zhou** 12:24 Very cool.
 I already made it, thanks.
 **Vinod Vydier** 12:36 Okay, perfect. Actually, you can put the other, the monotonic call as well, because, we can keep that as pending for next week.
@@ -102,17 +90,13 @@ That's just a bot, okay. Okay, no escalations, since early December.
 **Vinod Vydier** 14:28 What is this one? I don't know if I remember what Bryce did on this.
 Let's…
 **Billy Zhou** 14:35 Oh, yeah, I meant to take a look at that earlier, but… Post loading.
-**Vinod Vydier** 14:41 No, he's assigned it himself, but I think this is where…
-Seems, good.
-Was it the version…
-100 version 1.3.
+**Vinod Vydier** 14:41 No, he's assigned it himself, but I think this is where… Seems, good.
+Was it the version… 100 version 1.3.
 **Billy Zhou** 15:06 Sure.
-**Vinod Vydier** 15:12 Okay, I think we can wait for…
-Anyway, I think Bryce has responded, so we can wait for Bryce to come back on this.
+**Vinod Vydier** 15:12 Okay, I think we can wait for… Anyway, I think Bryce has responded, so we can wait for Bryce to come back on this.
 **Billy Zhou** 15:21 Yeah, I haven't caught up to speed on metrics stuff.
 Seems like he did a breaking change to how you record raw histogram.
-Let's see…
-And he's doing, metric and stuff, but it's, he's using the Metrics API, so it's unfortunately…
+Let's see… And he's doing, metric and stuff, but it's, he's using the Metrics API, so it's unfortunately…
 **Vinod Vydier** 15:47 Unrelated to Bea's work.
 Okay.
 **Billy Zhou** 16:00 Okay, yeah.

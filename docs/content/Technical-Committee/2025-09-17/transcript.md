@@ -22,8 +22,7 @@ I don't see any meeting notes.
 **Armin (Dynatrace)** 02:06 Or with the…
 **Tigran Najaryan** 02:08 With the GC, okay.
 **Josh Suereth** 02:14 By the way, you feel better, too.
-**Tigran Najaryan** 02:15 We… So, sorry, I think we didn't do the…
-New member election stuff, anything related to that last week?
+**Tigran Najaryan** 02:15 We… So, sorry, I think we didn't do the… New member election stuff, anything related to that last week?
 **Josh Suereth** 02:25 It was in a private call.
 **Tigran Najaryan** 02:30 Okay.
 **Josh Suereth** 02:31 Yeah, I think we have a private topic today related to that, unless you want to talk about it publicly?
@@ -42,21 +41,17 @@ But I wanted to confirm with everyone.
 **Armin (Dynatrace)** 03:55 That's very reasonable, I think.
 **Tigran Najaryan** 03:59 Yeah, sounds good to me. I think… is the plan that there will be new attributes introduced? That's what I see there.
 **Josh Suereth** 04:07 there are… there's plans to add a few new attributes and to stabilize the concepts, totally. So the, you know, understanding the ownership of a service, understanding the criticality, that's two that they want to add, but also just getting, like, right now, instance ID isn't stabilized.
-but service name is, so it's kind of awkward where the ID isn't stabilized, but the grouping is, so that's one thing. And then deployment environment name, we know a lot of people use this, and so what we want to do is stabilize it, which means taking a look at it, taking a look at what it needs to model, what it needs to look like, getting it up to date, and stabilizing,
-Either stabilizing it as is, or making changes based on what the group decides the model should be overall, for what deployment means.
+but service name is, so it's kind of awkward where the ID isn't stabilized, but the grouping is, so that's one thing. And then deployment environment name, we know a lot of people use this, and so what we want to do is stabilize it, which means taking a look at it, taking a look at what it needs to model, what it needs to look like, getting it up to date, and stabilizing, Either stabilizing it as is, or making changes based on what the group decides the model should be overall, for what deployment means.
 **Tigran Najaryan** 04:58 Okay, sounds good.
-The service owner thing… Isn't… if that's the theme…
-That's… there's an overlap with the… I think we say namespace can be the theme, right?
+The service owner thing… Isn't… if that's the theme… That's… there's an overlap with the… I think we say namespace can be the theme, right?
 It's probably not the place to discuss it, just a quick comment.
 **Josh Suereth** 05:16 Yeah, yeah, we can discuss it there. Namespace is also not stable. So we need to stabilize it. So if owner belongs in namespace, great, but let's make sure that's clear and stabilize it. It could be that owner is actually something orthogonal to namespace as well.
-So, that's… anyway. I will update the thread and declare that. Second thing I wanted to talk about briefly, just because I think we need to talk about this in the specification meeting, complex attributes and empty values. So, when we added complex values or attributes to the SDK,
-We… Have in the specification, a thing that says, basically.
+So, that's… anyway. I will update the thread and declare that. Second thing I wanted to talk about briefly, just because I think we need to talk about this in the specification meeting, complex attributes and empty values. So, when we added complex values or attributes to the SDK, We… Have in the specification, a thing that says, basically.
 If you express a numerical value, like an empty string, an empty array.
 or zero. These are meaningful and have to be stored and passed to processors and exporters. The problem with this is.
 You should not do this in protocol buffers, and more importantly, the default protocol buffer libraries will not do this.
 And so Java ran into a problem where they were using the protocol buffer library to serialize something between a processor and an exporter.
-and deserialize it, and the attribute value was getting lost. In the proto-definition of the specification, we actually say that,
-the empty value is meaningful if something doesn't exist, but we also say that, like, you know, we don't serialize empty strings, basically implicitly by using Proto.
+and deserialize it, and the attribute value was getting lost. In the proto-definition of the specification, we actually say that, the empty value is meaningful if something doesn't exist, but we also say that, like, you know, we don't serialize empty strings, basically implicitly by using Proto.
 So, in Proto, an empty string is not serialized. But we call out this special thing called empty.
 Of an any value that doesn't have a field filled.
 **Tigran Najaryan** 07:02 So… Empty any value is not the same thing as an empty string. I'm surprised that people actually chose to implement it that way.
@@ -112,13 +107,11 @@ The way that we have allowed the data model to evolve, if we think the type is i
 **Tigran Najaryan** 12:32 I disagree with the formulation that you have. You don't lose the type tag on empty values. Empty value is its own type.
 It's a type. The emptiness is the type.
 **Josh Suereth** 12:43 Sure. But that means, like, if I provide an empty string, what I'm really doing is I'm providing the empty value.
-**Tigran Najaryan** 12:52 No. The empty string should be encoded as an empty string. I think what you're saying is that the…
-the regular protobot implementations just make it hard to do, which, okay, that I understand.
+**Tigran Najaryan** 12:52 No. The empty string should be encoded as an empty string. I think what you're saying is that the… the regular protobot implementations just make it hard to do, which, okay, that I understand.
 **Josh Suereth** 13:05 It's… it's not… yeah, it's… you could say it makes it hard to do, or you could say the way we design our protocol buffers, what you're saying isn't true in the way we design our protocol buffers.
 And empty… because by default, right, empty things are not passed around, so our one of… we no longer know what the 1 of is in the protocol buffer, the way it's designed.
 And so, initially, when I came into OpenTelemetry, I thought that was by intention. And when I read this phrase here in the proto-definition, I thought that was also by intention. Of, okay, cool, we just have this special thing called empty.
-Because of how we've defined this. It could be… it could be that that wasn't the intention at all in the protocol, in which case we'd have to restructure OTLP foundationally to change that, so that it works with native protocol buffer instrumentation. But I, you know…
-I… what I want to understand is… is… is this… this tight… like, what do we want to do now, given the scenario we're in?
+Because of how we've defined this. It could be… it could be that that wasn't the intention at all in the protocol, in which case we'd have to restructure OTLP foundationally to change that, so that it works with native protocol buffer instrumentation. But I, you know… I… what I want to understand is… is… is this… this tight… like, what do we want to do now, given the scenario we're in?
 **Tigran Najaryan** 14:02 Yeah.
 Okay.
 Yeah, this leads a bit… a bit… a bit of thought, I guess.

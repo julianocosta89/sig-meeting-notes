@@ -26,29 +26,22 @@ Zoom.
 **Josh Suereth** 02:33 I'm gonna ask, because given Ludmela's thing came out yesterday, and I don't think we have any writing, I'll ask if I want to push back a week.
 How's that sound?
 **Jack Berg** 02:43 Tigran already asked a question if we're meeting today, so maybe you can just jump on that.
-**Josh Suereth** 02:51 I'm trying to optimize my own time a bit, so, like, that's why I really wanted the pre-reads, but…
-Oh, I need to add something to the agenda.
+**Josh Suereth** 02:51 I'm trying to optimize my own time a bit, so, like, that's why I really wanted the pre-reads, but… Oh, I need to add something to the agenda.
 **Jack Berg** 03:32 And I am on… duty today to run this meeting, so I'll share my screen.
 **Josh Suereth** 03:38 Okay.
 Oh, we don't have an agenda yet, do we?
 **Carlos Alberto Cortez** 03:44 No.
-**Josh Suereth** 03:46 Okay. I have one thing,
-Alright, I'll put a thing for triage… And then… Gosh.
+**Josh Suereth** 03:46 Okay. I have one thing, Alright, I'll put a thing for triage… And then… Gosh.
 **Jack Berg** 04:32 Alright, while you're typing out your item, I'm gonna quickly go through some of the triage links. There's nothing in the TC inbox.
 There's nothing in the community inbox.
-And then, unassigned… spec PRs for…
-And we're applying our own filters for…
-Excluding OTEPs, excluding PRs by ITC members.
+And then, unassigned… spec PRs for… And we're applying our own filters for… Excluding OTEPs, excluding PRs by ITC members.
 And what do we got? This one seems new.
 And drafts, exclude drafts.
 Alright, so there's two new ones that need to be… Assigned.
 **Reiley** 05:27 assignment.
-**Carlos Alberto Cortez** 05:33 Yeah, you can assign that to me. Yeah,
-basically, this is a very rough, you may remember we had a few different PRs,
-trying to add Kotlin features to the matrix, but there was one for logs, one for metrics… no, for metrics, no. Anyway, they were splits, now we have one. So, I just need to check something that I asked Jamie to do for this PR, but yeah, I will try this.
+**Carlos Alberto Cortez** 05:33 Yeah, you can assign that to me. Yeah, basically, this is a very rough, you may remember we had a few different PRs, trying to add Kotlin features to the matrix, but there was one for logs, one for metrics… no, for metrics, no. Anyway, they were splits, now we have one. So, I just need to check something that I asked Jamie to do for this PR, but yeah, I will try this.
 **Jack Berg** 06:04 Sounds good.
-And then this other one is…
-this is about entities, so I'm going to assign Josh.
+And then this other one is… this is about entities, so I'm going to assign Josh.
 Or maybe it's… is it a combination of entities.
 **Josh Suereth** 06:29 No, sorry, I was talking. Yeah, you can assign this to me. I already was talking to him in chat about this and made a few comments that he addressed.
 There was one comment I forgot to actually put on the PR that I need to make. I need… so that just got dropped, but yeah, sign it to me.
@@ -58,31 +51,24 @@ We talked about OTEP Backlog with Timebox.
 So, trying to move forward some of these OTEPs that have been sitting for a while.
 Let's timebox this until… 10.15?
 Or 10.15 my… no, my time. 15 after the hour, let's say.
-Okay, which one do we want to focus on? If I search for OTEP…
-We have a lot open
-A lot by Josh about entities.
+Okay, which one do we want to focus on? If I search for OTEP… We have a lot open A lot by Josh about entities.
 Stable by default, which is…
 **Josh Suereth** 07:36 Do you wanna… do you wanna just start at the… the… the oldest one and move up?
 **Jack Berg** 07:42 Sounds fair to me.
-**Josh Suereth** 07:44 Yeah, I wish… I wish that when you have something open for a draft for 3 months, that it changes the timestamp to be when you take it out of draft, so that they're ordered by, like, when they've been in review, you know what I mean? Anyway, this one, I think, is the longest open one. This one is,
-We have prototypes for this. This is around handling, multiple different resources within an SDK.
+**Josh Suereth** 07:44 Yeah, I wish… I wish that when you have something open for a draft for 3 months, that it changes the timestamp to be when you take it out of draft, so that they're ordered by, like, when they've been in review, you know what I mean? Anyway, this one, I think, is the longest open one. This one is, We have prototypes for this. This is around handling, multiple different resources within an SDK.
 Oh yeah, that'll be easier to read.
-There's a lot of motivation here. I don't know, David, you helped implement one of the prototypes, I don't know if you can speak to this. Carlos, you reviewed it and approved it. I can let other folks defend it, but the problem we're trying to solve here is…
-I'm an SDK, but I might be observing something that either has a different lifetime than myself, or that is, like, remote to me.
+There's a lot of motivation here. I don't know, David, you helped implement one of the prototypes, I don't know if you can speak to this. Carlos, you reviewed it and approved it. I can let other folks defend it, but the problem we're trying to solve here is… I'm an SDK, but I might be observing something that either has a different lifetime than myself, or that is, like, remote to me.
 or, like, somehow has a different, like, tendency than the SDK itself. So the idea is that I can construct a new signal provider where I say, here is the thing I'm gonna look at now, in addition to the raw SDK, and I get a new resource that I can report data against. And then all of the complicated scenarios for handling metric.
 Memory management, and making sure that traces and spans are allocated against that resource.
 Oh, I will caveat that the entity SIG is not planning to drive this through.
 our APIs quickly, or, like, in the near term, because we still have a lot of other things to do. This is kind of a directional PR for how we want to handle the scenario, so that we all agree to the design and the shape of the design.
-**Jack Berg** 09:37 And would you… when you say you're not trying to drive it through quickly,
-would you all still try to get at least the skeleton of an API added within development status, or would you punt on that as well?
+**Jack Berg** 09:37 And would you… when you say you're not trying to drive it through quickly, would you all still try to get at least the skeleton of an API added within development status, or would you punt on that as well?
 **Josh Suereth** 09:53 What we're trying to do right now is get the SDK to be entity-aware first, and get that to the point where that is stable, alpha, beta, whatever. And then this will be layered in later.
 So basically…
 **Jack Berg** 10:05 I suppose this depends on that, right? You can't exactly have entity-specific providers until the SDK itself is entity aware.
 **Josh Suereth** 10:14 Yeah.
-**David Ashpole (dashpole)** 10:21 What do you think this needs to move forward? Is it just…
-Raise it at the spec sig again and get more reviews, or…
-**Josh Suereth** 10:27 just review… we've wasted, like, 5 times in the spec's sake. Yeah. I, like, from my perspective, I…
-you know, if people don't care enough to click merge, then whatever. But, yeah, I.
+**David Ashpole (dashpole)** 10:21 What do you think this needs to move forward? Is it just… Raise it at the spec sig again and get more reviews, or…
+**Josh Suereth** 10:27 just review… we've wasted, like, 5 times in the spec's sake. Yeah. I, like, from my perspective, I… you know, if people don't care enough to click merge, then whatever. But, yeah, I.
 **David Ashpole (dashpole)** 10:40 I think I still have a comment thread open. That's the only reason I hit the merge button, yeah.
 **Josh Suereth** 10:46 I might have missed that. If you ping me what that is, I can take a look.
 **Jack Berg** 10:50 So this, like, I don't have any issue with this. I think this is, like, looks good to me conceptually as an API. My understanding, based on previous conversations, is that this OTEP is specifically for the client-side folks.
@@ -96,20 +82,17 @@ But the client-side SIG doesn't even need a metrics API the way we've defined it
 I think they, like, I think it fundamentally is different, where, like, things that live in a browser on a phone.
 need a different API than things that live in a server where we have access to long-term memory, we expect lots of things, we don't have to bundle stuff into one little packet that has to get out when I'm still aware of… like, there's a separate set of problems for clients, and I think they need to address that.
 This is no longer blocked by them, because they're not going to use it.
-**Jack Berg** 12:31 So, so, okay, this…
-This is metric-oriented, like how you framed this in the description, but it's not unique to metrics, because it describes these same APIs for tracers and logger provider as well.
+**Jack Berg** 12:31 So, so, okay, this… This is metric-oriented, like how you framed this in the description, but it's not unique to metrics, because it describes these same APIs for tracers and logger provider as well.
 Are they not planning on using those? Do they not plan on, like, having… wanting to get this, like, this mutable entities piece for the purpose of spans and logs?
 **Josh Suereth** 12:55 they need a mutable entities piece, but the form factor of this is not what they need. They actually still need higher contextual… like, they actually need to reboot their SDK every time session changes, apparently.
-So this is not working out for them. Like, the way this works is the SDK still remains immutable, and you construct a new OpenTelemetry API surface, right? Anytime you want to say, I'm reporting against something else. For them, that means they literally have to have some sort of,
-Tracker, mutational state.
+So this is not working out for them. Like, the way this works is the SDK still remains immutable, and you construct a new OpenTelemetry API surface, right? Anytime you want to say, I'm reporting against something else. For them, that means they literally have to have some sort of, Tracker, mutational state.
 For instrumentation, where it's actually against a pointer, and they swap the pointer out to the latest thing every time.
 This was the assumption, that, like, okay, we can ahead of time say.
 When session changes, we'll construct our instrumentation and then register it.
 Right? This is… this is more of, like, a, I know about things ahead of time. I know what I'm reporting against ahead of time.
 So this is… this actually would probably benefit, like, the collector better, if the collector wanted to… would ever use something. I think there's instances in, like, the JVM world with different, you know.
 Things where this would make sense.
-**Jack Berg** 14:05 Yeah, it's like application servers, right? Where you want to create a different,
-a different provider with a different entity per application instance within the server. But, like, you know, we've gotten by this far without there being a lot of discussion about this. So, in terms of priority around this, like, if it's not solving the browser SIG's specific problems, like, I'm not interested in spending effort.
+**Jack Berg** 14:05 Yeah, it's like application servers, right? Where you want to create a different, a different provider with a different entity per application instance within the server. But, like, you know, we've gotten by this far without there being a lot of discussion about this. So, in terms of priority around this, like, if it's not solving the browser SIG's specific problems, like, I'm not interested in spending effort.
 Like, to drive this through, just because of the things we've talked about, about how, you know, it's a zero-sum game, and attention is scarce.
 **Josh Suereth** 14:37 Yeah, the thing is, though, I think this does solve a problem, and I think this is the right design.
 And so the question is, are we okay saying, cool, we like this design.
@@ -121,8 +104,7 @@ And so this, this somewhat matches, like, needs that we would have. So…
 **Tigran Najaryan** 15:28 Whiz, whiz, sorry, I'm not… I…
 **Josh Suereth** 15:30 We use Google.
 Okay. So even if we… even if we don't execute on it now, which again, it… we might not, this will probably get revitalized by, like, myself or David to push through when we're ready to. But this is… this is actually a major issue for us with OpenTelemetry APIs in this case, internally, that we don't support this.
-**Tigran Najaryan** 15:51 Can you,
-Are the use cases described in the OTEP? I'm forgetting, it's been a while now. If it's use cases other than the client… client-seq use cases.
+**Tigran Najaryan** 15:51 Can you, Are the use cases described in the OTEP? I'm forgetting, it's been a while now. If it's use cases other than the client… client-seq use cases.
 If you're saying they don't want it, then in that case, we need other use cases to be described here.
 **Josh Suereth** 16:11 Yeah, the general shape of the use case stays the same, it's just replace session with something else, and you're fine. And I can do that if you want. Like, I can update it to have that.
 **Tigran Najaryan** 16:20 I think it would be useful, because you're saying you have the need for that at Google.
@@ -140,30 +122,24 @@ But, okay.
 That's a real use case today, because they're trying to write to Pdata, to be a collector-receiver.
 **Jack Berg** 17:53 Right, so they're not using the APIs, they're not using meter provider, tracer provider, logger provider, they're emitting the raw telemetry to PData.
 **David Ashpole (dashpole)** 18:01 Those APIs may also not be performant enough for their use case today.
-**Tigran Najaryan** 18:07 So this isn't… so this isn't essentially for regular applications or regular services, this is for people who are building…
-Other interesting types of agents, essentially, other types of collectors.
+**Tigran Najaryan** 18:07 So this isn't… so this isn't essentially for regular applications or regular services, this is for people who are building… Other interesting types of agents, essentially, other types of collectors.
 who collect data on behalf of other things, essentially, and those other things can be numerous. There may be more than one of those things. That's when you hit this problem with our SDK.
 **Josh Suereth** 18:33 Yeah, I think, basically, OpenTelemetry has an issue with any software as a service.
 Any software as a service is actually really hard to do in Hotel well.
 And we're running into lots of friction with it. And so, this is one of, like, a set of solutions that we're probably gonna propose to start addressing that.
-**Tigran Najaryan** 18:54 I'm not sure I understand what you're saying, Josh. When you're saying software as a service, you mean there's some sort of multi-tenancy involved there, and
-and you want to have the tenant ID, whatever that ID is, to be recorded in the resource, essentially. That's what you're saying, instead of it being an attribute of a span or of a metric.
+**Tigran Najaryan** 18:54 I'm not sure I understand what you're saying, Josh. When you're saying software as a service, you mean there's some sort of multi-tenancy involved there, and and you want to have the tenant ID, whatever that ID is, to be recorded in the resource, essentially. That's what you're saying, instead of it being an attribute of a span or of a metric.
 **Josh Suereth** 19:16 In this case, that's what this proposal's about. When the multi-tenancy and the resource are aligned, this is a solution for that case. There are other problems with multi-tenancy that need to get addressed where that's not true. This doesn't solve all of the problems, this is just one of the problems. Yes?
 **Tigran Najaryan** 19:32 Yeah, but today, the way that we solve it is by essentially saying, record your tenant ID as a SPAN attribute. That's how it works today, right? It's not that it's impossible, it's just that the shape is slightly different than maybe you would want it to be.
 **Jack Berg** 19:50 to be more, more fipping if it's in the resource.
-It's impractical to record it at the record level right now, because we don't have good mechanisms to store bits of data like the tenant ID in context, and have those stamped on every bit of telemetry within that context. So that's the missing piece Josh is referring to, is some sort of mechanism that's signal agnostic that allows you to select bits of data out of context and stamp them on metrics, logs, and
-from an SDK config standpoint.
+It's impractical to record it at the record level right now, because we don't have good mechanisms to store bits of data like the tenant ID in context, and have those stamped on every bit of telemetry within that context. So that's the missing piece Josh is referring to, is some sort of mechanism that's signal agnostic that allows you to select bits of data out of context and stamp them on metrics, logs, and from an SDK config standpoint.
 **Tigran Najaryan** 20:28 Okay.
 **Josh Suereth** 20:29 But this is also, like, what if I instrument my… I have, like, a gateway, right? And the gateway owns a database and owns something else. And I have… that's the only thing I'm gonna have emit telemetry.
 And so, I want a resource that represents the database and a resource that represents something else, but the gateway's the thing providing it. That is what this OTEP provides, and Jack is right. The overall problem that we have to resolve as well.
-is that issue. Like, that… that is… that is…
-Yeah, we don't have a good solution there.
+is that issue. Like, that… that is… that is… Yeah, we don't have a good solution there.
 **Carlos Alberto Cortez** 21:01 Don't want to interrupt too much, but is that something that the context scope attributes could help with?
-Because you may remember, and I had a prototype since last month, but I wanted to go and remassage the OTEP, and…
-So I can put that in my priority list.
+Because you may remember, and I had a prototype since last month, but I wanted to go and remassage the OTEP, and… So I can put that in my priority list.
 **Josh Suereth** 21:17 Yeah, yeah, I think that is the foundation of how to solve that problem, yeah, exactly.
-**Jack Berg** 21:21 Exactly. We've talked about this in the past, but, like, we've talked about how the solution needs to be twofold. This, this, like, entity-scoped providers piece that Josh is talking about solves, sort of, one category of problems with multi-tenancy, and then this context-scoped attributes bit that, Carlos, you've been talking about reprioritizing is a different level of granularity, and probably the more useful
-And the piece that will be more widely adopted.
+**Jack Berg** 21:21 Exactly. We've talked about this in the past, but, like, we've talked about how the solution needs to be twofold. This, this, like, entity-scoped providers piece that Josh is talking about solves, sort of, one category of problems with multi-tenancy, and then this context-scoped attributes bit that, Carlos, you've been talking about reprioritizing is a different level of granularity, and probably the more useful And the piece that will be more widely adopted.
 If… if we're honest. Okay.
 **Carlos Alberto Cortez** 21:51 Yeah, good to know. Okay.
 **Josh Suereth** 21:53 Yeah, and what you're doing, Carlos, I would argue, is high priority. This is, like, moderate priority, or low. Like, again, if we were to say, like, I still think the shape of this is right, and we will need this. If you want me to close this and not merge it now, and not worry about it, great, I'm just gonna reopen it later when it becomes a higher priority, fine.
@@ -173,8 +149,7 @@ And if we agree on all of this, we can just document this decision by approving,
 **Carlos Alberto Cortez** 22:50 Yeah, that's a good one. Actually, I wanted to say that. We could do that, and in one year, if this wasn't implemented, we just had a note in the tab, like, this was never implemented.
 **Reiley** 22:58 Oh my gosh.
 **Carlos Alberto Cortez** 22:59 Or something like that.
-**Tigran Najaryan** 23:01 So, I'm not… I'm not entirely convinced that this is the right approach, particularly in situations when you have
-a huge number of tenants. This may be fine when you have hundreds or thousands of those. If you have millions or billions of tenants, you don't want to create billions of instances of resources and keep in memory.
+**Tigran Najaryan** 23:01 So, I'm not… I'm not entirely convinced that this is the right approach, particularly in situations when you have a huge number of tenants. This may be fine when you have hundreds or thousands of those. If you have millions or billions of tenants, you don't want to create billions of instances of resources and keep in memory.
 **Josh Suereth** 23:22 Tigran, that's in the OTEP. This is designed for low tenancy. Specifically, it's called out. This is not for high tenancy. That's why I'm saying they're complementary.
 **Jack Berg** 23:33 That's Carlos' bet.
 **Josh Suereth** 23:34 Yeah. The context bid is what solves high tenancy, this solves low tenancy. You still need this. This is still necessary. We still need a solution for this.
@@ -193,16 +168,14 @@ What I mean complementary is I think there's a set of problems around this. This
 Tenancy is a very, very, very vague term.
 So, first, we probably have to agree what we mean by tenancy.
 But again, this is where I have one SDK managing multiple resources and reporting data about them.
-And that cannot handle thousands of different resources. We don't want to model, like, users
-But that doesn't mean it's not a multi-tenancy thing where I'm managing multiple things from one process. It's just maybe, like, maybe I need to take out the word tenants and just say it is multiple resources in an SDK.
+And that cannot handle thousands of different resources. We don't want to model, like, users But that doesn't mean it's not a multi-tenancy thing where I'm managing multiple things from one process. It's just maybe, like, maybe I need to take out the word tenants and just say it is multiple resources in an SDK.
 **Tigran Najaryan** 25:44 Yeah, yeah.
 **Josh Suereth** 25:46 But it's, like, one… instead of having money.
 **Tigran Najaryan** 25:48 But that's very different, George. This is not tenants, what you're describing. These are things that you're observing, and you want to report telemetry about those things, and those things, naturally, what you're observing is a resource, right? And the attributes should be in the resource, obviously. You can't just move them to a spam.
 **Josh Suereth** 26:06 Yes, exactly.
 So that's what this is about. But it's like, maybe management's a better way to do it, of like, I need an SDK that is managing a couple resources. Multi-observer SDK? Sure. We can get a different name. I called it multiple resource and SDK to be that, but then when you're asking for use cases, and I'm trying to, like, explain to you why.
 Sure, I don't want to confuse you with that.
-**Tigran Najaryan** 26:31 So I guess a better example would be, if I wanted to use the Autel SDK as a means to generate telemetry inside the collector, I don't have a good way to do that today. If I want to use Autel Go SDK,
-in the collector to generate telemetry about, let's say, for example, I have a Kubernetes receiver which observes Kubernetes nodes and pods, and then emits telemetry using Go SDK. You can't do that today. There's no good way to do that. This would enable that, essentially.
+**Tigran Najaryan** 26:31 So I guess a better example would be, if I wanted to use the Autel SDK as a means to generate telemetry inside the collector, I don't have a good way to do that today. If I want to use Autel Go SDK, in the collector to generate telemetry about, let's say, for example, I have a Kubernetes receiver which observes Kubernetes nodes and pods, and then emits telemetry using Go SDK. You can't do that today. There's no good way to do that. This would enable that, essentially.
 And those are not tenants, those are… Observed resources, essentially.
 **Josh Suereth** 27:14 Sure, I'll stop using the word tenant.
 **Tigran Najaryan** 27:18 Okay.
@@ -217,8 +190,7 @@ Can… Riley, do you have, do you want to wrap us up on this? I have to call tim
 And, so first, I… I suggest we keep the tenant name, but we should write some supplementary guidelines to tell people a tenant can mean 100 different things, and what exactly are we talking about? Avoiding that term is not going to help, because that's a common term that everyone uses.
 And then the second one is, depending on what tenant you're dealing with, like, in either host, there's many different teams in Microsoft running service, like either storage, networking, so they, they think this is a tenant. But when you take storage as a particular service.
 they're handling requests from whatever user, right? So over, like, one hour, they could be handling 1 million users, and they have audit logs. They don't want to send user A's audit log to user B.
-So you can imagine, there's a busy stream, they have all the audit logs, and each one will have the user's resource ID or something, tenant ID. They have to roll the data to a particular user, and mixing that would be a disaster. So this is also tenant, and you can imagine in one single application, there's a mixture of
-which team in Microsoft owns this data? This is tenant. And then for that team, which customer is, you know, that's tenant? So there's also a tenant inside tenant, like, let's say, like, 3 layers of tenant. So.
+So you can imagine, there's a busy stream, they have all the audit logs, and each one will have the user's resource ID or something, tenant ID. They have to roll the data to a particular user, and mixing that would be a disaster. So this is also tenant, and you can imagine in one single application, there's a mixture of which team in Microsoft owns this data? This is tenant. And then for that team, which customer is, you know, that's tenant? So there's also a tenant inside tenant, like, let's say, like, 3 layers of tenant. So.
 Tigran's concern, I think, can be solved by, we clarify what tenant means, and we give clear recommendation. Like, we gave examples. In this case, you should go and put resource. In that case, you don't use resource, you should use contacts. Otherwise, we give people a gut feeling, like, we have three solutions for the same problem, and they always misuse that.
 That's the last time I heard in two years. Total, total.
 **Jack Berg** 30:34 Totally, like, there's zero mechanisms to solve this problem today. When multiple mechanisms exist to solve the problem, we need to provide guidance on which to use and when.
@@ -226,43 +198,31 @@ That's the last time I heard in two years. Total, total.
 **Jack Berg** 30:57 It's not practical because the users rely on library instrumentation and auto instrumentation.
 **Tigran Najaryan** 31:04 I get it, yes, yes.
 **Jack Berg** 31:05 So, practically speaking, you'd have to rewrite all the instrumentation to make this happen.
-Alright,
-Please go leave your thoughts on that, OTEP. Let's try to make progress one way or the other. If you think that we should reject it and reopen it when it becomes a bigger issue, reflect that in a comment. Let's try to make progress on these things instead of letting them languish.
+Alright, Please go leave your thoughts on that, OTEP. Let's try to make progress one way or the other. If you think that we should reject it and reopen it when it becomes a bigger issue, reflect that in a comment. Let's try to make progress on these things instead of letting them languish.
 Okay, moving on in the agenda. Josh, you've got the topic.
-**Josh Suereth** 31:38 Yeah, Profiling wants to go to Alpha. We had a side… we have, like, a… Tigran and I are their, sponsors, so there's a sidebar about this, about how we should probably be doing a technical review, of what they're doing. They will be at the SIG presenting next week, so I just want to give everyone a heads up, please attend that. They're gonna walk through what they did, and just…
-Briefly, for folks to bone up.
+**Josh Suereth** 31:38 Yeah, Profiling wants to go to Alpha. We had a side… we have, like, a… Tigran and I are their, sponsors, so there's a sidebar about this, about how we should probably be doing a technical review, of what they're doing. They will be at the SIG presenting next week, so I just want to give everyone a heads up, please attend that. They're gonna walk through what they did, and just… Briefly, for folks to bone up.
 I think the big thing is actually that the protocol wants to move to alpha.
-The protocol, currently adds dictionary support. They have very large data demands. There was a lot of investigation done into how to do this in a non-breaking way, and how to make it work in the collector efficiently, all that. The TLDR is
-Probably, if we could go back in time and have dictionaries from the get-go, given what we learned, maybe that would have been a good idea.
+The protocol, currently adds dictionary support. They have very large data demands. There was a lot of investigation done into how to do this in a non-breaking way, and how to make it work in the collector efficiently, all that. The TLDR is Probably, if we could go back in time and have dictionaries from the get-go, given what we learned, maybe that would have been a good idea.
 But for now, we're allowing that for profiling. It will be in some of the, core OTLP things as optional, where it's only used for profiling, and other signals need to ignore it.
-And then there's one last kind of blocking decision that Bogdan raised that I wanted to have a discussion here briefly on, that I think this might need to get escalated to the whole TC if we can't resolve the issue. But this is basically, they're adding units
-For, attribute key-value pairs,
-as part of PPROF compatibility. You can read Bogdan's concern, you can read Tigran's answer and my answer here, but effectively, this is something that we've been asked to do already in semantic conventions, to, like, have units, defined on attributes, and have a way to communicate this with people.
-This is like,
-effectively, if we have attributes that are values, like ints and doubles, people are reporting values that have units to them, and they want a way to communicate that. And so, the future that I see is, I would love if we could have a way for schema URL to encode that, so you don't have to send it over the wire.
-for compatibility with protocols where you have to send it over the wire, or where there's, like, a need to do so, you know, in a hard-coded way, or you're not using schema URL,
-Having an optional ability to encode unit makes sense. We absolutely need it for PPROF compatibility. If we want to be able to send a PPROF over OTLP and reconstitute it, it has to be in the protocol.
+And then there's one last kind of blocking decision that Bogdan raised that I wanted to have a discussion here briefly on, that I think this might need to get escalated to the whole TC if we can't resolve the issue. But this is basically, they're adding units For, attribute key-value pairs, as part of PPROF compatibility. You can read Bogdan's concern, you can read Tigran's answer and my answer here, but effectively, this is something that we've been asked to do already in semantic conventions, to, like, have units, defined on attributes, and have a way to communicate this with people.
+This is like, effectively, if we have attributes that are values, like ints and doubles, people are reporting values that have units to them, and they want a way to communicate that. And so, the future that I see is, I would love if we could have a way for schema URL to encode that, so you don't have to send it over the wire.
+for compatibility with protocols where you have to send it over the wire, or where there's, like, a need to do so, you know, in a hard-coded way, or you're not using schema URL, Having an optional ability to encode unit makes sense. We absolutely need it for PPROF compatibility. If we want to be able to send a PPROF over OTLP and reconstitute it, it has to be in the protocol.
 So, from my… my opinion is, long term, it'd be nice if we support this across OTLP everywhere. In the short term, I'd like to get it into schema URL.
 And make sure that we can transmit it that way, and I think that alleviates a lot of the friction for hotel, but I don't think this is a blocking change. Tigrin, I don't know if you want to add to that.
 **Tigran Najaryan** 34:27 Yeah, I agree with that. I don't think this is a blocking change. I don't think it should be a blocking change. If we make every single issue like this a blocking change, then we won't be able to make progress on new signals, right? It's just, philosophically, I think it's the wrong approach to try to block everything there. Now.
 Do we need units elsewhere? I think they would be very useful if there is anybody who is willing to spend time on figuring out how do we bring them to other signals.
 in a non-breaking way, that would be great. If there is no one willing to do that, then profiling should be able to still make progress. I suggested that before they go stable.
 we… we give it a last chance, I guess, for people to say if they want to add units to… to… to prop to… sorry, to trace it, or to… to… to map… to… to… to logs, primarily, I guess. We could make that happen, and then eliminate this key value and unit, right, in that case.
-If that doesn't happen, this should go as it is, in my opinion. And the main argument why it should be in the protocol and not just in the semantic conventions, to me, is that idea that we always had for OTLP that
-OTLP should be expressive enough that you can convert from other formats into OTLP without losing data. And in this case, PProve being an important profiling format requires that.
+If that doesn't happen, this should go as it is, in my opinion. And the main argument why it should be in the protocol and not just in the semantic conventions, to me, is that idea that we always had for OTLP that OTLP should be expressive enough that you can convert from other formats into OTLP without losing data. And in this case, PProve being an important profiling format requires that.
 you can have units in PProf, and when you convert to OTLP, there's no place to put that data. This creates that place for that data. This, to me, would be the main argument in favor of having it for profiles.
 Consistency, sure, good to have. If we… if we can't have it, then so be it. It doesn't have to be a 100% consistency principle.
-**Jack Berg** 36:36 And so…
-failure to do this. So, like, I… there's some good arguments for why we should do this. It's, you know, compatibility with BPRO,
-And even if this information can be communicated in semantic conventions, it's good to have OTLP be as expressive as possible, even if it doesn't need to be used, even if that expressiveness doesn't need to be leveraged.
+**Jack Berg** 36:36 And so… failure to do this. So, like, I… there's some good arguments for why we should do this. It's, you know, compatibility with BPRO, And even if this information can be communicated in semantic conventions, it's good to have OTLP be as expressive as possible, even if it doesn't need to be used, even if that expressiveness doesn't need to be leveraged.
 And on the other side of things, like, if we fail to do this, we… we lose? We lose compatibility with PPROF? What's the impact of that?
-**Tigran Najaryan** 37:20 Yes, I think we'll lose that, right? We lose the ability to receive PPROF payloads
-And transmit them using the collector without essentially losing some of the original meaning of the data.
+**Tigran Najaryan** 37:20 Yes, I think we'll lose that, right? We lose the ability to receive PPROF payloads And transmit them using the collector without essentially losing some of the original meaning of the data.
 **Josh Suereth** 37:33 Well, this is like Jack saying, we don't want Prometheus compatibility.
 or we don't give a crap about open tracing, or, you know, like, that's how important PPROF is to profiling right now.
 **Jack Berg** 37:47 Yeah, like, you lose the lossless translation, and… and when you lose the lossless translation, it's sort of like a, even though it may seem like a small part of PPRO, it, like, it… it creates a bigger issue, because it creates this, like, sort of cultural clash.
-That, and…
-Prometheus and OpenTelemetry have had this as well. Like, you… the optics are important, even if that information can be… isn't absolutely critical to the, even if it's not critical to have a lossless translation and round trip, and you can make up for it in other ways, the optics still matter.
+That, and… Prometheus and OpenTelemetry have had this as well. Like, you… the optics are important, even if that information can be… isn't absolutely critical to the, even if it's not critical to have a lossless translation and round trip, and you can make up for it in other ways, the optics still matter.
 **Tigran Najaryan** 38:29 Yo.
 At the same time, Jack, I think the… that principle of lossless translation was one of the reasons why the collector is successful.
 If we… if we didn't have that.
@@ -276,8 +236,7 @@ We added an additional place to store metadata, which is not part of, like, you 
 And this seems like a similar thing, and I think that was good to do in the metrics case for Prometheus compatibility.
 So what do we do? Okay, we, like, we can go forward with this, because profiles is just alpha for now, and you know, we can have this conversation about whether we want to bring this everywhere, or just limit it to profiles.
 later, because it's not like it's stable yet, but there's… there's benefit of getting it right now, because even when stuff is experimental in Protobus, we have to… we have to stick with that forever, so it's not like that type can ever go away.
-**Josh Suereth** 40:14 Yeah, so I'll call out, like, high level, because Profile wants to go to Alpha, what we need to do is collect a list of decisions that were made, and again, I want… if everyone is able to attend or watch the recording of next week's
-profiling, like, demonstration, I want us to collect a list of concerns we have for them going alpha.
+**Josh Suereth** 40:14 Yeah, so I'll call out, like, high level, because Profile wants to go to Alpha, what we need to do is collect a list of decisions that were made, and again, I want… if everyone is able to attend or watch the recording of next week's profiling, like, demonstration, I want us to collect a list of concerns we have for them going alpha.
 And, more importantly.
 what is our bar for them going release? Because again, as soon as they're alpha, they're going to be pushing for release later, and there's a set of things that we want to learn and discover. So this here might be a non-blocker for alpha, it might be we want a decision by the time they release, and I want us to be very clear about those decisions with them.
 Right now.
@@ -291,8 +250,7 @@ Right? That's exactly what happened here, is they want to get this alpha for Kub
 Great.
 Well, guess when the next cube come in? November.
 Cool. Let's get everything resolved for Alpha, but then let's also understand that they're gonna try to do something for November, and let's give them a list ahead of time that they can churn through, because they're good about it.
-**Jack Berg** 42:37 Yeah, I have some ideas already, but,
-We'll… we'll create a list and discuss that list separately.
+**Jack Berg** 42:37 Yeah, I have some ideas already, but, We'll… we'll create a list and discuss that list separately.
 **Josh Suereth** 42:45 Yeah, maybe, Tigran, you and I can put together a document, and people can throw in concerns there? Does that sound reasonable?
 **Tigran Najaryan** 42:53 Or maybe profiling should do that?
 Do you want, like, document… doing what? Listing things that we think may be concerns, potential concerns?
@@ -301,38 +259,29 @@ where hopefully all those questions come, right? Because again, they're going to
 So I would want to put it together after that meeting, effectively.
 **Tigran Najaryan** 43:37 Okay.
 I'll need to go and read everything they have so far.
-Maybe, sort of… Who has the…
-full picture in my mind, so that we can do that document. But if we want to start something, I cannot do it.
+Maybe, sort of… Who has the… full picture in my mind, so that we can do that document. But if we want to start something, I cannot do it.
 **Josh Suereth** 43:51 I was literally just gonna make an empty document, people can throw questions in for now.
 **Tigran Najaryan** 43:55 Yeah, do that, yeah, that works, yeah.
 **Josh Suereth** 43:58 I will… I will do that and make a shareable document.
-That's it for the topic, Jack. Like, I think, I think that's what we needed to say. If no one has any major concerns with the,
-the current dictionary key value thing, great. We're… we'll move forward with that.
+That's it for the topic, Jack. Like, I think, I think that's what we needed to say. If no one has any major concerns with the, the current dictionary key value thing, great. We're… we'll move forward with that.
 And then, when we listen on Tuesday, I'd like to know if we have any blocking alpha at the end of that. So, our next meeting, I'll put on the agenda to, like, discuss if we have any blocking concerns around profiling alpha. Does that sound reasonable?
 **Jack Berg** 44:32 Yep.
 **Josh Suereth** 44:33 Cool.
 **Jack Berg** 44:36 Next topic, Carlos, do you want to take us away? Do you want me to share my screen?
 **Carlos Alberto Cortez** 44:40 Yeah, if you could share, that would be good. It's mostly just, for your information, situation regarding that, out-of-the-box support for OpenTelemetry nodes is probably happening.
 This is an ongoing discussion, and we, well, the seed, the JavaScript seed, managed to, have initial conversations. So, long story short, there were… it was a, you know, like, ongoing discussion about what approach should be taking, and this… this one that you are seeing.
-What it's doing is that they are having their minimalistic
-SDK, let's say, so the user can get, like, spans and probably logs using, what UP JSON, but the user cannot consume that. Like, if the user wants to use that, they just have to bring
-like, the official SDK and API.
+What it's doing is that they are having their minimalistic SDK, let's say, so the user can get, like, spans and probably logs using, what UP JSON, but the user cannot consume that. Like, if the user wants to use that, they just have to bring like, the official SDK and API.
 So we are trying to disclose that so at least hotel, you know, instead of whatever they use inside, they expose the API.
 You know? So, it's a hot topic.
-And as you… and it's, like, if you want to go and read what's happening there, it's super long. There are so many details, I put some notes in the doc. One of them is that, for example, they are complaining that,
-the SDKs, like, the JavaScript SDK is to… it's too big, but probably many users don't need those many, like.
+And as you… and it's, like, if you want to go and read what's happening there, it's super long. There are so many details, I put some notes in the doc. One of them is that, for example, they are complaining that, the SDKs, like, the JavaScript SDK is to… it's too big, but probably many users don't need those many, like.
 many details, they just want an opinionated default, like, they don't want… in theory, like, according to some people think here, like, maintainers of nodes, that, people… most people don't want… don't need to use custom processors or samplers, etc.
 And then DiNetella was showing a potential… well, she has a prototype implementation, of ADPI investigators.
 Minimalistic, and that could be used.
 For example, maybe. But yeah, this is an ongoing discussion. The GC is aware of this as well?
-And yeah, and, I think that, yes, as I said before, we are trying to, to make some,
-They just think that maintainers are trying to make a push on, you know, opening the discussion, so hopefully it's a way saying at the start.
+And yeah, and, I think that, yes, as I said before, we are trying to, to make some, They just think that maintainers are trying to make a push on, you know, opening the discussion, so hopefully it's a way saying at the start.
 Instead of, well, independent of whether there's an alternative SDK implementation, at least the API is available to users, you know?
 **Jack Berg** 47:04 Good Miller?
-**Liudmila Molkova** 47:06 I think every runtime would have concerns with
-hotel, just because runtimes are very picky, but I wonder if maybe, Riley, maybe somebody from .NET could come
-And share, like, how this…
-happened to be, and the… how the separation works between the .NET and OpenTelemetry .NET, I think it's super successful. Like, if the API is embedded in the runtime, well, in Node.
+**Liudmila Molkova** 47:06 I think every runtime would have concerns with hotel, just because runtimes are very picky, but I wonder if maybe, Riley, maybe somebody from .NET could come And share, like, how this… happened to be, and the… how the separation works between the .NET and OpenTelemetry .NET, I think it's super successful. Like, if the API is embedded in the runtime, well, in Node.
 not the JavaScript, but the Node, it's very good for users.
 Thanks.
 **Reiley** 47:48 Yeah, so if, I… I have a meeting with Donald folks today. If they agree, what should be the next step?
@@ -344,8 +293,7 @@ To the public? Like, and… or, you know, or write a summary of… like, summari
 **Reiley** 48:37 Yeah, is there something, like, from the OpenTelemetry TC or GC that we can do?
 **Carlos Alberto Cortez** 48:43 Did you see…
 **Reiley** 48:45 like, in the future, what we envision is we want each language and language runtime to do as much as possible to make telemetry API a first-class citizen, so the runtime, for example, if you have a garbage collector, I think the garbage collector also uses OpenTelemetry, and the garbage collector, of course, cannot take a third-party dependency.
-Right, so…
-So, like, we never had… had this position from OpenTelemetry. Well, like, internally inside Microsoft, like, I think that Mila and I worked… we had this direction for .NET.
+Right, so… So, like, we never had… had this position from OpenTelemetry. Well, like, internally inside Microsoft, like, I think that Mila and I worked… we had this direction for .NET.
 And then we learn from that, then when folks work on Rust, we work with the Rust community, set the same direction. But I think given we learned, like, good practice is there, and we're seeing, like, good success, maybe, like, we can write some article there.
 **Carlos Alberto Cortez** 49:33 Yeah, that would be great.
 **Jack Berg** 49:37 Bye.
@@ -363,11 +311,7 @@ And you give the same example with .NET, like, the garbage collector wants to em
 **Jack Berg** 51:34 Right, exactly. So it's like, you know, if the API already exists, if there's already an OpenTelemetry API, and then because of OpenTelemetry's success, the runtime wants to adopt it, like, what does that process look like?
 And what does it look like from, like, a governance standpoint and a backwards compatibility standpoint? It's a… it's a good problem to have, but it is a problem, and there are, like, open questions about how you actually execute that.
 **Liudmila Molkova** 52:00 So, speaking on users' behalf, what it brings you?
-and Java ecosystem first, and Java ecosystem context propagation sucks tremendously. If JVM supported proper context propagation, it would be
-You would remove a lot of…
-thread locals and, I don't know, propagations racing frameworks, right? Second part, Spring, you have this broken ecosystem. Everybody has broken ecosystem. The Spring, is like a separate API, right? If…
-the API came from the runtime, from JVM, Spring would not write one. In Azure SDK, we created yet another API
-abstraction, just because this is… we don't take dependencies, right? If there was part of the platform, we would not bother creating this abstraction.
+and Java ecosystem first, and Java ecosystem context propagation sucks tremendously. If JVM supported proper context propagation, it would be You would remove a lot of… thread locals and, I don't know, propagations racing frameworks, right? Second part, Spring, you have this broken ecosystem. Everybody has broken ecosystem. The Spring, is like a separate API, right? If… the API came from the runtime, from JVM, Spring would not write one. In Azure SDK, we created yet another API abstraction, just because this is… we don't take dependencies, right? If there was part of the platform, we would not bother creating this abstraction.
 So it's hard for us, better for users.
 **Jack Berg** 52:59 Yeah, and a messy transition, too, if it is going to happen, and, like, you know, fraught with, like, governance issues. Like, what… I think .NET has solved these problems by having a relationship between open telemetry and the runtime.
 And, like, basically, for any other ecosystem where this type of thing would happen, you need to have a similar relationship, where it's just not like… it's not like the framework just decides to go out of spec for no reason. Like, the spec still needs to dictate the design and the shape of the API, even though it's maintained by other people.
@@ -391,20 +335,17 @@ This is why we don't see any C++ as standard libraries that supports OpenTelemet
 That's not a win.
 **Reiley** 56:01 It's not.
 **Jack Berg** 56:02 Right? So it's not just that the runtime needs to adopt OpenTelemetry and just start using that word, and just say, like, hey, we have OpenTelemetry API. It's like, it has to be done in a way that, like, matches the expectations of our API users across other languages.
-**Reiley** 56:16 There's compliance, and also there will be people coming and say, but I'm using this old version of Java, and I don't have that, so what should I use? And I build a library that's targeting a range of GVM versions. So for the old ones that don't have this API, but for new ones, I have this API, what should I do? Do I have a…
-like, a conditional dependency, so if it's a newer version, it depends on runtime. So all these problems that we've seen from .NET before.
+**Reiley** 56:16 There's compliance, and also there will be people coming and say, but I'm using this old version of Java, and I don't have that, so what should I use? And I build a library that's targeting a range of GVM versions. So for the old ones that don't have this API, but for new ones, I have this API, what should I do? Do I have a… like, a conditional dependency, so if it's a newer version, it depends on runtime. So all these problems that we've seen from .NET before.
 **Jack Berg** 56:43 Exactly. Exactly.
 **Reiley** 56:50 Okay, so I'll…
 **Carlos Alberto Cortez** 56:51 Cheers.
 **Reiley** 56:52 Alright, folks, we got back here, and we have to decide whether this is something we want to spend energy, because I feel like having a reasonable response is not a simple thing. It requires us to, like, do a reflection on what we learned in the past four years.
-**Liudmila Molkova** 57:07 Having some support is better than having none, so if we don't have the energy for full…
-exhaustive and everything response, maybe we can just leave a quick comment saying, okay, we actually have done through this in .NET, and we are kind of happy. Our users are super happy, the ecosystem is much better.
+**Liudmila Molkova** 57:07 Having some support is better than having none, so if we don't have the energy for full… exhaustive and everything response, maybe we can just leave a quick comment saying, okay, we actually have done through this in .NET, and we are kind of happy. Our users are super happy, the ecosystem is much better.
 **Reiley** 57:30 I'll see, but I suspect if .NET folks will have energy for Node.js, I'll give it a try.
 **Carlos Alberto Cortez** 57:38 Okay, thank you, yeah, I'm looking forward to that. That's it from my topic, sorry that it took longer than expected, but I think it was a good discussion.
 Figure, I'm sorry.
 **Reiley** 57:47 That's right.
-**Tigran Najaryan** 57:50 Yeah, I don't, I don't…
-Maybe we should move this to the next time, we only have a couple minutes.
+**Tigran Najaryan** 57:50 Yeah, I don't, I don't… Maybe we should move this to the next time, we only have a couple minutes.
 I want to start the discussion now.
 **Jack Berg** 57:58 That sounds good with me.
 **Tigran Najaryan** 58:00 Yeah, yeah.

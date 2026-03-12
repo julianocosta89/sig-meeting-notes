@@ -38,8 +38,7 @@ Yes, it's a good bunch.
 **Juraci Paixão Kröhling** 02:23 21st and 20 second. So not October first.st
 **Alolita Sharma** 02:27 I know I know it's 1 month off.
 Ted, have you? Have you been already?
-Have you visited the
-I guess there's a European? Is there a London office for Grafana Labs.
+Have you visited the I guess there's a European? Is there a London office for Grafana Labs.
 **Juraci Paixão Kröhling** 02:49 There are no offices at all.
 **Alolita Sharma** 02:51 I think there is New York. They have a New York office. They don't have it anymore.
 **Juraci Paixão Kröhling** 02:55 Seems cool.
@@ -54,8 +53,7 @@ I guess it's gone away now.
 **Alolita Sharma** 03:17 Oh, interesting!
 **Ted Young** 03:18 There might be some sales, outposts.
 **Austin Parker** 03:21 Sure there's no sales office, or something like a sales. We work.
-**Ted Young** 03:26 No
-is that they just have like a membership at like Soho House, and stuff like that, and just like, take people.
+**Ted Young** 03:26 No is that they just have like a membership at like Soho House, and stuff like that, and just like, take people.
 **Juraci Paixão Kröhling** 03:33 Yeah. Grafana pays a a some amount like 150 bucks or so, whatever a month for Co. Working spaces. But no offices at all. Nowhere.
 No, thank you.
 **Austin Parker** 03:44 You know we work counts as an office.
@@ -75,8 +73,7 @@ I mean, there's advantages to it being distributed also.
 **Juraci Paixão Kröhling** 04:27 The garden. We are using the term Post Geographic Company, not remote company. So we are post.
 **Austin Parker** 04:32 It's geographic.
 **Alolita Sharma** 04:35 First, st geographic.
-**Morgan McLean** 04:38 All that from Grafana. Actually. So when the
-global earthquake destroys everything, you'll still be.
+**Morgan McLean** 04:38 All that from Grafana. Actually. So when the global earthquake destroys everything, you'll still be.
 **Austin Parker** 04:43 Or when and or when we recombine to Pangea.
 **Morgan McLean** 04:47 Pangea, 2.
 **Alolita Sharma** 04:48 Sex.

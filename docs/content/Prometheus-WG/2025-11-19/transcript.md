@@ -22,8 +22,7 @@ But…
 **Owen Williams (he/she)** 03:42 Let me just working refresh. Yeah, I don't have any real… Topics for this.
 **krajo Krajcsovits** 03:50 Yeah, I mean, I have one.
 Small tidbit that… I know I got the time.
-You know, we'll be putting the…
-making the Prometus universe stable, entire project planning.
+You know, we'll be putting the… making the Prometus universe stable, entire project planning.
 So, basically, it's going to be a project for me.
 And for our team. But, like, I haven't been able to start on it yet, actually. But I did review what I think is AI-generated.
 Bests.
@@ -33,24 +32,16 @@ PR… Yes.
 a pain.
 **krajo Krajcsovits** 04:38 Yeah.
 I made them throw out half of it.
-No point in those tests, and at the wrong place, and…
-But yeah, some of it is…
-Kind of useful in increasing the coverage.
-That's covered, so… I mean, I'm fine. I mean, if they…
-They seem to understand and, like, able to follow
-my kind of instructions, which is a good sign, so, like, I'm not against merging it. I mean, I'm not able to merge it, but, like, I'm not against proving it if they fix the issues that I told them to fix.
-**Owen Williams (he/she)** 05:17 Yeah, I feel like they're often not wrong, but it's just like… what I… what I really hate is when you ask for notes, and then the reply is, like, the bullet list that looks like the AI generated the reply, and then you don't know
-it's sometimes hard to tell if you're just talking to the LLM, or if you're talking to somebody for whom English is not their first language, and they're having the LLM, like, write up the response.
+No point in those tests, and at the wrong place, and… But yeah, some of it is… Kind of useful in increasing the coverage.
+That's covered, so… I mean, I'm fine. I mean, if they… They seem to understand and, like, able to follow my kind of instructions, which is a good sign, so, like, I'm not against merging it. I mean, I'm not able to merge it, but, like, I'm not against proving it if they fix the issues that I told them to fix.
+**Owen Williams (he/she)** 05:17 Yeah, I feel like they're often not wrong, but it's just like… what I… what I really hate is when you ask for notes, and then the reply is, like, the bullet list that looks like the AI generated the reply, and then you don't know it's sometimes hard to tell if you're just talking to the LLM, or if you're talking to somebody for whom English is not their first language, and they're having the LLM, like, write up the response.
 Yeah. And sometimes it takes a couple cycles before it's like.
 the changes you're making are, like, kind of what we said, but not really, okay, this is just talking to an LLM, we're gonna close this. Or, if it's like, okay, there's actually a human back here.
 Who kind of knows how to program.
-**krajo Krajcsovits** 06:03 I think this person seems to know a little bit, and they have good intentions, and like I said, it does…
-Increase the coverage.
-On the other hand, I'm reviewing another PR about… Processing the created
-Did series in the receiver directly.
+**krajo Krajcsovits** 06:03 I think this person seems to know a little bit, and they have good intentions, and like I said, it does… Increase the coverage.
+On the other hand, I'm reviewing another PR about… Processing the created Did series in the receiver directly.
 Where I think I might have scared away the person, because it takes me too long to reply, and I… maybe they got fed up, which is kind of sad.
-Which is why I should need… I really need more time for OSS, but…
-Like, one day with all the meetings I have, it's not… it seems like not enough, but that's going to be a negotiation.
+Which is why I should need… I really need more time for OSS, but… Like, one day with all the meetings I have, it's not… it seems like not enough, but that's going to be a negotiation.
 Yeah.
 **Owen Williams (he/she)** 06:45 Yeah.
 Yeah, I've just been doing these… this Lyft deploy, so I just…
@@ -62,8 +53,7 @@ Let's forget the name of any company I might have mentioned. It's an appliance.
 It's a, it's, an exercise company.
 **krajo Krajcsovits** 07:26 Oh, yeah, yeah, right, right.
 **Owen Williams (he/she)** 07:27 Yup.
-whatever. But anyway, yeah, I just need a big empty day where, like, I can concentrate on doing a new thing from scratch, and it's just…
-Yeah, there's too many distractions.
+whatever. But anyway, yeah, I just need a big empty day where, like, I can concentrate on doing a new thing from scratch, and it's just… Yeah, there's too many distractions.
 **krajo Krajcsovits** 07:43 Yeah, yeah, yeah.
 **Owen Williams (he/she)** 07:46 Oh well.
 Where do the recordings even go?

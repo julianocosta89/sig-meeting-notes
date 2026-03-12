@@ -13,8 +13,7 @@ Duration: 3 minutes
 **Jim Porell** 01:33 said he couldn't make it last week… this week either.
 **Morgan McLean** 01:36 Oh, okay. Alright.
 **Jim Porell** 01:42 Let me go look at the meeting minutes from last week, and just double check.
-Nothing there, but I'm pretty sure…
-that both Greg and Rudiger said they weren't making it this week.
+Nothing there, but I'm pretty sure… that both Greg and Rudiger said they weren't making it this week.
 Yeah, Rudiger's on vacation, so… Just confirmed that.
 **Morgan McLean** 02:51 Okay. Do people have any topics today, or do we want to wrap it up?
 **Jim Porell** 02:58 I've got nothing new, so… yeah.

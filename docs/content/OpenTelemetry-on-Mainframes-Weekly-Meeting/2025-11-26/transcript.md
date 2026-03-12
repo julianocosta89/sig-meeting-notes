@@ -24,28 +24,22 @@ Yeah, I don't know if he's planning on… I didn't see anything in the chat that
 **Greg Shriver** 01:19 Jim's out.
 **Morgan McLean** 01:20 Yeah.
 **Greg Shriver** 01:26 Yeah.
-So, I have… I guess an update, let's see…
-Where'd I leave my stuff here?
-So, I think last meeting, and the meeting before that, we had talked about, I have an action item to trying to get together, some… some documentation. So I guess some overview documentation for…
-mainframe. And, I started working on that. I am not in… I'm not really in a place to… to be ready to share it quite yet. So I have something, and I can…
-Show…
+So, I have… I guess an update, let's see… Where'd I leave my stuff here?
+So, I think last meeting, and the meeting before that, we had talked about, I have an action item to trying to get together, some… some documentation. So I guess some overview documentation for… mainframe. And, I started working on that. I am not in… I'm not really in a place to… to be ready to share it quite yet. So I have something, and I can… Show…
 **Morgan McLean** 02:33 Yeah, sure.
 **Greg Shriver** 02:34 Actually, why don't I just share real quick?
 So, here's kind of where I started.
 First of all, can you all see… Yes. …my VS Code? Okay.
 So, I don't know anything about Yugo, right?
-But I looked at some of the other stuff that was in here, some of the other, like, under platforms, so it looked like…
-It looks like the best place to start, like, with a really high level, hey, here's a mainframe.
+But I looked at some of the other stuff that was in here, some of the other, like, under platforms, so it looked like… It looks like the best place to start, like, with a really high level, hey, here's a mainframe.
 is kind of under this, content, en, docs platforms, and then we've got client apps, function as a service, and Kubernetes. And I kind of modeled, I was looking at what they do with the index.underscore index.md.
-And I'm thinking that, you know, maybe that, you know, following that sort of,
-Following that sort of convention makes some sense.
+And I'm thinking that, you know, maybe that, you know, following that sort of, Following that sort of convention makes some sense.
 And so, I… copied… I created a branch called Add Mainframe Overview.
 And I added this mainframe folder under Platforms, and I took a stab at creating the… at least the index, right?
 some of this, I don't… I'm not really… I'm less familiar with… well, I'm not familiar at all with Yugo, but, I'm not horribly familiar with, like, all of the mechanics of… of, providing, you know, I guess, open telemetry contributions.
 I'm assuming here that if I can, you know, take this and… Committed to my local branch.
 And at that point, do I… would I then push it up and then have us review it on a SIG… a future SIG call, or how would that kind of work?
-**Morgan McLean** 04:41 Yeah, so… I think…
-So, what I would typically do is then put in the PR… this is in the mainframe SIG itself, right?
+**Morgan McLean** 04:41 Yeah, so… I think… So, what I would typically do is then put in the PR… this is in the mainframe SIG itself, right?
 **Greg Shriver** 04:53 Damn.
 **Morgan McLean** 04:53 docs.
 **Greg Shriver** 04:54 No, this is in Docs.
@@ -67,11 +61,9 @@ Alright, well then, so I assume that, provided I'm in EZCLA and all that stuff, 
 **Morgan McLean** 06:43 So typically you would open a PR from a fork of the repo that you have under your own name, or in some other organization that isn't OTEL.
 **Greg Shriver** 06:54 Okay, that's helpful to know. I did not fork it, all I did was clone it.
 And now we're pushing up against the edge of my GitKnowledge. Don't do that. Okay.
-**Morgan McLean** 07:05 I think that's okay…
-Basically, what you won't… typically what you… what you will not do is, like, contribute your fork, and then do a PR against that. You would usually do a PR from another repo that's typically a fork.
+**Morgan McLean** 07:05 I think that's okay… Basically, what you won't… typically what you… what you will not do is, like, contribute your fork, and then do a PR against that. You would usually do a PR from another repo that's typically a fork.
 Right, so, like, like, you would not contribute your branch.
-to the upstream repo, and then do a PR from their main branch against your branch, all within that repo. Typically, it's from…
-A repo in your own organization.
+to the upstream repo, and then do a PR from their main branch against your branch, all within that repo. Typically, it's from… A repo in your own organization.
 **Greg Shriver** 07:39 I think that's correct.
 **Morgan McLean** 07:40 Yes.
 I'm pretty sure what I said is right. Yes.
@@ -89,11 +81,9 @@ Because, so, when I… if I tried to push this branch directly up to the main re
 **Greg Shriver** 08:34 Okay, cool. Well, thank you, that's helpful.
 like I said, I don't have it… I mean, I could share the file that I intend to put up through this thing, but…
 **Morgan McLean** 08:44 That's fine.
-**Greg Shriver** 08:45 But… but I don't… it's probably premature to do that at this point, and I'll… I'll… I'll,
-I'll do the other thing. I've never forked before, so I'll… I'll fork it and see, and maybe I'll come back, you know…
+**Greg Shriver** 08:45 But… but I don't… it's probably premature to do that at this point, and I'll… I'll… I'll, I'll do the other thing. I've never forked before, so I'll… I'll fork it and see, and maybe I'll come back, you know…
 **Morgan McLean** 09:02 If you want to be lazy, you could just do it all in the GitHub UI. That's… for docs, I usually just do it in the UI, where just, like, go to… and I might be using the wrong words, let me just pull up GitHub on my own.
-For docks, what I usually do… Pulling it up…
-Yeah, what I usually do is fork it into my own, you know, GitHub org that belongs to my account.
+For docks, what I usually do… Pulling it up… Yeah, what I usually do is fork it into my own, you know, GitHub org that belongs to my account.
 go into a different branch, and then if you're just adding a file, you could literally just go in the GitHub UI in that branch, and add a file. Like, just copy-paste whatever you have, just blindly into a new file, give the file a name, and then GitHub will prompt you to be like, oh, do you want to open a PR against the original repo with this fork?
 **Greg Shriver** 09:54 Okay.
 **Morgan McLean** 09:55 Makes sense. Yeah, super easy. But that's nice for a PM like me who struggles with Git commands.
@@ -113,28 +103,16 @@ Thank you.
 **Ruediger Schulze (IBM)** 10:44 Thanks, Greg. I think this is good. Just FYI, if you have the PR, there are also a couple of tasks running, so Lint and a few other checks.
 Maybe you've seen it already, so you, you need to, you know.
 be… be… yeah, just look at this. It's often just a space, or a new line, or something that, you know, these tasks are complaining about when they fail.
-Sometimes it's also words that they don't know. There's a couple of rules of how to add them then. I guess, you know, as you go through this, you will see this and figure it out. This is the things that I came across
-Writing the blog, so it, you know, it's something to learn as you go.
-**Greg Shriver** 11:33 Yeah, yeah, well, I appreciate that. I saw some of that stuff in the contributing documentation, and ways to get around it, like, they have, you know, like, they have, like, fixers. I don't know what you call them, but, like, NPM fix, you know, if you want to just…
-fix spelling errors that get caught by C-Spell and things like that. So, that… yeah, and that's helpful to know, thank you.
+Sometimes it's also words that they don't know. There's a couple of rules of how to add them then. I guess, you know, as you go through this, you will see this and figure it out. This is the things that I came across Writing the blog, so it, you know, it's something to learn as you go.
+**Greg Shriver** 11:33 Yeah, yeah, well, I appreciate that. I saw some of that stuff in the contributing documentation, and ways to get around it, like, they have, you know, like, they have, like, fixers. I don't know what you call them, but, like, NPM fix, you know, if you want to just… fix spelling errors that get caught by C-Spell and things like that. So, that… yeah, and that's helpful to know, thank you.
 **Ruediger Schulze (IBM)** 11:57 Yeah, right.
 Maybe one update for me, so we have this discussion around the GitHub Action Runner, and obviously we, you know, why we have been able to install the app, the GitHub Action Runner for the Linux S390.
-platform. We had… we seem to still have issues with, properly authorizing this, and this might be related to
-requiring admin rights on the repo itself. Now, we didn't investigate this further, but our open source office actually informed me that the CNCF is now looking at also having their own GitHub Action Runner for
-Linux on C, or the Linux on S390 platform.
+platform. We had… we seem to still have issues with, properly authorizing this, and this might be related to requiring admin rights on the repo itself. Now, we didn't investigate this further, but our open source office actually informed me that the CNCF is now looking at also having their own GitHub Action Runner for Linux on C, or the Linux on S390 platform.
 **Morgan McLean** 12:45 Nice.
-**Ruediger Schulze (IBM)** 12:45 Which… which is maybe…
-the better way, then. It's still, you know, work that the CNCF team obviously needs to move forward with, or the organization, but they got the…
-the patch, which I think refers to the JITAB Action Router app that we be using, and I think this has been shared with the CNCF org.
-And, obviously, our contact or our, you know, open source office is hopeful that, CNCF will make progress there. Just FYI, this is obviously going with… together with the Marist, college, so the…
-That's an… that's an organization, I think it's close to Poughkeepsie. Poughkeepsie is an IBM location where, you know, lots of mainframe development has been done in the past and still is occurring.
+**Ruediger Schulze (IBM)** 12:45 Which… which is maybe… the better way, then. It's still, you know, work that the CNCF team obviously needs to move forward with, or the organization, but they got the… the patch, which I think refers to the JITAB Action Router app that we be using, and I think this has been shared with the CNCF org.
+And, obviously, our contact or our, you know, open source office is hopeful that, CNCF will make progress there. Just FYI, this is obviously going with… together with the Marist, college, so the… That's an… that's an organization, I think it's close to Poughkeepsie. Poughkeepsie is an IBM location where, you know, lots of mainframe development has been done in the past and still is occurring.
 But that would be then a more, community-driven approach.
-And maybe, and this is the question that I can't answer, but maybe it will simplify the way of how then these…
-administrative tasks around installing, you know, GitHub Action… self-hosted GitHub Action Runner apps would be maybe simplified, and maybe then more from an OpenTelemetry project perspective, maybe this becomes easier than, you know, what we discussed around
-the… having a, you know, somebody with an IBM ID doing this, having, you know, a respective email associated with this ID, and then obviously also running into these challenges with the…
-With the authorization, as we understood the problem right now. So,
-So maybe it's reasonable, and I don't know, I can ask who the contact from a CNCF side is, but maybe it would be of interest if CNCF and OpenTelemetry project
-Have a… have an exchange on that, and maybe then we can also understand the timeline, and maybe this is the better way to move forward in this…
+And maybe, and this is the question that I can't answer, but maybe it will simplify the way of how then these… administrative tasks around installing, you know, GitHub Action… self-hosted GitHub Action Runner apps would be maybe simplified, and maybe then more from an OpenTelemetry project perspective, maybe this becomes easier than, you know, what we discussed around the… having a, you know, somebody with an IBM ID doing this, having, you know, a respective email associated with this ID, and then obviously also running into these challenges with the… With the authorization, as we understood the problem right now. So, So maybe it's reasonable, and I don't know, I can ask who the contact from a CNCF side is, but maybe it would be of interest if CNCF and OpenTelemetry project Have a… have an exchange on that, and maybe then we can also understand the timeline, and maybe this is the better way to move forward in this…
 **Morgan McLean** 14:50 That would be excellent, like, I know Antoine's not here today, but this is actually something he and I were discussing, which was, like, how do we improve automated testing for any of the mainframe components?
 **Ruediger Schulze (IBM)** 15:01 Yeah.
 **Morgan McLean** 15:01 So, this would be excellent.
@@ -148,8 +126,7 @@ Maybe could… could have a discussion with CNCF team.
 And then we were chatting to some people at IBM who offered to give us time on one, but it was for, like, 6 months or something, right? Like, we need perpetual testing, the ability to test things perpetually. So if the CNCF has GitHub Actions, like, access to GitHub Actions that can run on a mainframe, that would be amazing.
 **Ruediger Schulze (IBM)** 15:57 Right. Yeah, so I get back to you on that one, or to… Awesome. …the group here.
 Okay, good.
-I also don't have any other updates, but I think, I think this was,
-One of the points to share today.
+I also don't have any other updates, but I think, I think this was, One of the points to share today.
 **Morgan McLean** 16:17 Okay, well, this is all great.
 Alright. I don't have anything else from my end. But yeah, Greg, send a message on Slack once you get the PR submitted to Docs. I can take a look as well.
 **Greg Shriver** 16:31 Sure.

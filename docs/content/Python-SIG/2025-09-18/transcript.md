@@ -17,70 +17,46 @@ I've shared the link in the chat.
 And… Also, like, please add any last-minute topic, if you have one.
 Okay, so the first topping is from me.
 And it is the… An overview of the log stabilization PR we are currently open.
-I opened up this issue, and I created a vis table listing all the PRO issues, but it may break,
-the… API or the SDK, and a brack for users or downstream users.
-And yeah, I also shared in a comment, like, a possible plan on how to… No, the, the…
-Serialization, as in the order in which… Applying these changes.
+I opened up this issue, and I created a vis table listing all the PRO issues, but it may break, the… API or the SDK, and a brack for users or downstream users.
+And yeah, I also shared in a comment, like, a possible plan on how to… No, the, the… Serialization, as in the order in which… Applying these changes.
 So, yeah, please take a look.
 And any comments?
 If anyone has already read it and does… Some comments?
-We can discuss right now. Otherwise, we can just…
-Interact, in the… in the issue until we have some… Conclusional.
+We can discuss right now. Otherwise, we can just… Interact, in the… in the issue until we have some… Conclusional.
 or agreement.
 Okay, so no comments?
 And… okay, so we can move to the… Next, topic from Keith.
 Other days?
 JAI, yeah.
 **Keith Decker** 09:57 Hey guys, so this is a cleaned up PR of the other one we've been working on over the last couple of weeks. Went ahead and just kind of compressed our Git history and cleaned up a few of the things from Dialin. Looking for additional feedback on this, as well as, getting this thing moving.
-So this is for… creating spans around, LLM invocations. We have…
-PR is coming as fast follows for doing metrics and events, and… Yeah.
+So this is for… creating spans around, LLM invocations. We have… PR is coming as fast follows for doing metrics and events, and… Yeah.
 **Aaron Abbott** 10:36 Dylan, you around?
 **Dylan Russell** 10:38 Yep.
 Yeah, I'll take another look at this.
-Yeah, when I looked at it, like, yesterday, I think, it looked like the
-the Git history was, like, screwed up.
-**Keith Decker** 10:51 Yeah, there was a merge that happened on our end that…
-blew it up, so this is a new clean one to get rid of that, so… I did link them between each other so we can go back and forth for comments if we need to.
+Yeah, when I looked at it, like, yesterday, I think, it looked like the the Git history was, like, screwed up.
+**Keith Decker** 10:51 Yeah, there was a merge that happened on our end that… blew it up, so this is a new clean one to get rid of that, so… I did link them between each other so we can go back and forth for comments if we need to.
 Enclosed the old one.
 **Dylan Russell** 11:07 Okay, nice.
 Yep.
 We'll take another look.
 **Aaron Abbott** 11:14 Can I… I was just, I haven't taken a look at this one, but, actually, Ricardo, maybe you could click on the code, the file's changed.
-I know that there was some, like, overlap with some of the stuff that
-Dylan was working on, so, like, the types, I think, were, like, slightly different.
+I know that there was some, like, overlap with some of the stuff that Dylan was working on, so, like, the types, I think, were, like, slightly different.
 We merged that other PR in already, which I'm assuming that we rebased these together, but…
 **Keith Decker** 11:42 Yeah, I just repased this from Maine this morning, so it has the updates you pushed.
 So Should be up to date.
-**Aaron Abbott** 11:52 Okay, and then there's some, like, link chain kind of specific stuff with UUIDs,
-I think we… do we…
-**Keith Decker** 11:59 So we…
-We took the run IDs out of being required, and now it'll generate a internal UUID if one's not provided in order to reference the span token, so that we can end the
-span later on. So it's not required, but we do still keep one on the LLM indication, just as an internal identification.
-**Aaron Abbott** 12:26 Yeah, I mean, this…
-feels kind of, like, I don't know of any… anybody besides Blankchain using UUIDs like this. Like, we have…
-It's pretty much the same purpose as the trace ID, spend ID, right?
-**Sergey Sergeev** 12:47 Yeah, in general, it's just asynchronous callbacks in a link chain, so…
-When you get Quebec to start a warming vacation, you need some identifier to basically to end it, and one chain maintains it.
+**Aaron Abbott** 11:52 Okay, and then there's some, like, link chain kind of specific stuff with UUIDs, I think we… do we…
+**Keith Decker** 11:59 So we… We took the run IDs out of being required, and now it'll generate a internal UUID if one's not provided in order to reference the span token, so that we can end the span later on. So it's not required, but we do still keep one on the LLM indication, just as an internal identification.
+**Aaron Abbott** 12:26 Yeah, I mean, this… feels kind of, like, I don't know of any… anybody besides Blankchain using UUIDs like this. Like, we have… It's pretty much the same purpose as the trace ID, spend ID, right?
+**Sergey Sergeev** 12:47 Yeah, in general, it's just asynchronous callbacks in a link chain, so… When you get Quebec to start a warming vacation, you need some identifier to basically to end it, and one chain maintains it.
 That's the one very use case, but we started from it.
-**Aaron Abbott** 13:09 Yeah, yeah. Like, I was wondering, because I think the lane chain VR is, I approved it at least, I think it's pretty much ready to go, and it has some of the same code. So I guess I was wondering, could we refactor
-those parts into the Langchain one, and then keep this one pretty much, like, pure Botel.
+**Aaron Abbott** 13:09 Yeah, yeah. Like, I was wondering, because I think the lane chain VR is, I approved it at least, I think it's pretty much ready to go, and it has some of the same code. So I guess I was wondering, could we refactor those parts into the Langchain one, and then keep this one pretty much, like, pure Botel.
 That makes sense.
-**Keith Decker** 13:29 Yeah, I can take a stab at removing…
-all UUIDs, and what, we're just pulling the trace ID off of the context, then, to return as a… as…
-**Aaron Abbott** 13:41 Yeah, yeah, so, like, most,
-since this is, like, an instrumentation API,
-the kind of usual thing in OTEL is there's the implicit context, which you can get, so you could call, getSpan from context, or you could pass the context object, which contains, in addition to the actual active span.
-you know, like, whatever other context keys people have said. So, you know, for example, if you do logging underneath, it would make sure that the log,
-The log span correlation works correctly.
-Okay. Yeah, so basically what I'm proposing is, if you move this…
-The mapping stuff to kind of manage the context into…
-whatever is calling this, and then you reconstruct the context before you call it, I think it would be a little more reusable.
+**Keith Decker** 13:29 Yeah, I can take a stab at removing… all UUIDs, and what, we're just pulling the trace ID off of the context, then, to return as a… as…
+**Aaron Abbott** 13:41 Yeah, yeah, so, like, most, since this is, like, an instrumentation API, the kind of usual thing in OTEL is there's the implicit context, which you can get, so you could call, getSpan from context, or you could pass the context object, which contains, in addition to the actual active span.
+you know, like, whatever other context keys people have said. So, you know, for example, if you do logging underneath, it would make sure that the log, The log span correlation works correctly.
+Okay. Yeah, so basically what I'm proposing is, if you move this… The mapping stuff to kind of manage the context into… whatever is calling this, and then you reconstruct the context before you call it, I think it would be a little more reusable.
 **Keith Decker** 14:26 Okay, I think I'm already doing a good portion of that, I'm just abstracting it behind a UUID that the instrumentation would call, so I'll pull that abstraction out and just directly return the context token.
-**Aaron Abbott** 14:40 Okay, cool, and
-Yeah, the only other thing I would… I would point to, and I can leave a comment on the PR, is we have something pretty similar in, one of the Vertex instrumentations, which… which we can…
-hopefully kind of inspire the design, like, it's actually pretty similar, so I think maybe you looked at it. There's, like, this context manager, and the sort of benefit with that is that you can use it for
-You know, all four variants of…
-Synchronous calls, asynchronous calls, and then synchronous streaming, asynchronous streaming.
+**Aaron Abbott** 14:40 Okay, cool, and Yeah, the only other thing I would… I would point to, and I can leave a comment on the PR, is we have something pretty similar in, one of the Vertex instrumentations, which… which we can… hopefully kind of inspire the design, like, it's actually pretty similar, so I think maybe you looked at it. There's, like, this context manager, and the sort of benefit with that is that you can use it for You know, all four variants of… Synchronous calls, asynchronous calls, and then synchronous streaming, asynchronous streaming.
 So, which, which it looks like we're doing here, so… Cool.
 **Keith Decker** 15:17 Okay, yeah, yeah, definitely sending a link over on that would…
 **Aaron Abbott** 15:20 Be helpful, too.
@@ -95,18 +71,15 @@ Or if you want to bring some ideas.
 **Dylan Russell** 16:08 It helps.
 **Sergey Sergeev** 16:09 It is mountain time, I believe.
 **Keith Decker** 16:11 Yep, Mountain Time.
-**Dylan Russell** 16:18 Yeah, I'll take another look and, yeah, add some comments, and reach out if I…
-Yeah, need help with anything?
+**Dylan Russell** 16:18 Yeah, I'll take another look and, yeah, add some comments, and reach out if I… Yeah, need help with anything?
 Okay.
 **Keith Decker** 16:29 Thank you, yes.
 **Riccardo Magliocchetti** 16:32 Thank you.
 And are related to the code.
 I think we need to update also the code owner.
-File to delegate, to generate people, right? Because I expected to see…
-Or maybe not, or maybe it's working. Anyway, I'll take a look.
+File to delegate, to generate people, right? Because I expected to see… Or maybe not, or maybe it's working. Anyway, I'll take a look.
 Okay, this was the last topic.
-For today, so… Daniel, do you want to discuss the log stabilization stuff, or we can just…
-Very quick today.
+For today, so… Daniel, do you want to discuss the log stabilization stuff, or we can just… Very quick today.
 **Aaron Abbott** 17:23 What did you want to discuss, Ricardo? Just, like, the plan you put together?
 **Riccardo Magliocchetti** 17:28 Yeah, like…
 **Aaron Abbott** 17:30 Yeah.
@@ -115,18 +88,13 @@ Very quick today.
 **Riccardo Magliocchetti** 17:43 Like, and the user doesn't have much choice, because, like, it's all in the hands of people writing instrumentation.
 And I just checked, and OpenLelementary is using the Events API.
 So probably, like, deprec… deprecating that right now.
-We'll probably be pretty annoying for…
-At least OpenLelementary users, I think.
+We'll probably be pretty annoying for… At least OpenLelementary users, I think.
 **Aaron Abbott** 18:14 So you mean not deprecating until the thing to use instead is ready?
-**Riccardo Magliocchetti** 18:21 Well, I think at least we can ask the OpenLelementary people to…
-Try to rebase and add,
-latest SDK as baseline, and try to use the…
-the log API, so at least we have the… One of the biggest users.
+**Riccardo Magliocchetti** 18:21 Well, I think at least we can ask the OpenLelementary people to… Try to rebase and add, latest SDK as baseline, and try to use the… the log API, so at least we have the… One of the biggest users.
 COVID, yeah.
 **Aaron Abbott** 18:46 That sounds… yeah, sounds good, as long as we're not gonna break the logs API.
 **Dylan Russell** 18:55 Yeah, I think logs should be usable now, in place of events.
-Because Ricardo had a change, like…
-That I think will help with that.
+Because Ricardo had a change, like… That I think will help with that.
 **Riccardo Magliocchetti** 19:13 Yep.
 **Aaron Abbott** 19:14 Yeah.
 I just, I think we also had some bugs that were, like.
@@ -153,24 +121,18 @@ It's easier for you. And… As far as I understand from the spec.
 And not take a look record as input, but…
 **Dylan Russell** 20:29 Oh, they have a lot of choice here.
 Okay, cool.
-**Aaron Abbott** 20:38 I mean, sometimes we play, like, 4D chess with the spec, and we're like…
-Dylan, you got some background noise.
+**Aaron Abbott** 20:38 I mean, sometimes we play, like, 4D chess with the spec, and we're like… Dylan, you got some background noise.
 **Dylan Russell** 20:47 Oh, sorry.
 **Aaron Abbott** 20:48 We're good.
-No, I was gonna say, sometimes we…
-Really try to interpret the spec.
-in a way we want, so I don't know if we've done that and squinted at it, like, we just need to weigh the cost-benefit of changing stuff, so…
-I know you have it here, and it's, like, decide.
+No, I was gonna say, sometimes we… Really try to interpret the spec.
+in a way we want, so I don't know if we've done that and squinted at it, like, we just need to weigh the cost-benefit of changing stuff, so… I know you have it here, and it's, like, decide.
 That seems maybe, like, the first step is before we move over people to the… off of the events.
 **Riccardo Magliocchetti** 21:25 Yep.
 **Dylan Russell** 21:25 So, do we have PRs that are out for this stuff, or we just have the bug?
 But what is that?
 Like…
-**Riccardo Magliocchetti** 21:38 You have a draft PR, but…
-It's missing tests and stuff like that, so…
-Considering we just have the issue.
-**Dylan Russell** 21:57 Yeah, I kinda like… Leaving that interface as it is, but…
-Yeah, I know the spec obviously says not to, or… Yeah, the spec is different.
+**Riccardo Magliocchetti** 21:38 You have a draft PR, but… It's missing tests and stuff like that, so… Considering we just have the issue.
+**Dylan Russell** 21:57 Yeah, I kinda like… Leaving that interface as it is, but… Yeah, I know the spec obviously says not to, or… Yeah, the spec is different.
 Yeah, I like that it just takes a log record.
 And the log record has everything.
 That the Logs API needs.
@@ -178,34 +140,23 @@ Instead of, like… yeah, you… Pass it, like, 9 different arguments.
 I think that's what this one is about.
 **Aaron Abbott** 22:42 Yep.
 **Dylan Russell** 22:43 I haven't.
-**Aaron Abbott** 22:44 I'm taking a really good look at the spec, but…
-Or, like, the spirit is the same, like…
-It's just a calling convention for the most part, except that the thing that you pass is mutable.
-I mean, one thing to definitely consider is, like, I know this is…
-This has been a big topic in other SIGs regarding logging, but, like, performance, so…
-We only have this variant, and I have to… every time… every time you log, there's no…
-way to avoid, like, garbage collection costs, but I think we would be just constructing this thing behind the hood, but in terms of the API, like, we're shutting ourselves out to different
-options if we do that. Unless we added, like, a separate overload variant to…
-You know, call it with just the arguments.
+**Aaron Abbott** 22:44 I'm taking a really good look at the spec, but… Or, like, the spirit is the same, like… It's just a calling convention for the most part, except that the thing that you pass is mutable.
+I mean, one thing to definitely consider is, like, I know this is… This has been a big topic in other SIGs regarding logging, but, like, performance, so… We only have this variant, and I have to… every time… every time you log, there's no… way to avoid, like, garbage collection costs, but I think we would be just constructing this thing behind the hood, but in terms of the API, like, we're shutting ourselves out to different options if we do that. Unless we added, like, a separate overload variant to… You know, call it with just the arguments.
 **Dylan Russell** 23:53 Right.
-That seems like a good compromise, like, just…
-Yeah, have a few variants of the method.
+That seems like a good compromise, like, just… Yeah, have a few variants of the method.
 **Aaron Abbott** 24:06 Yeah.
 And I think that would be the first step regardless, because.
-**Dylan Russell** 24:29 Yeah, so if we agree on that, then…
-That means we won't… at least this issue, we won't be breaking people if… if they migrate to logs now.
+**Dylan Russell** 24:29 Yeah, so if we agree on that, then… That means we won't… at least this issue, we won't be breaking people if… if they migrate to logs now.
 Although, I guess maybe we would want this ahead of time.
 So they're overloaded.
 Yeah.
 **Aaron Abbott** 25:07 So, I mean, it sounds like somebody needs to get through the spec decide this.
 It's important to us, or not.
 Does that… like, part of easing… You can take that.
-**Riccardo Magliocchetti** 25:32 Yeah, probably, I've taken on…
-Maybe next week, yeah.
+**Riccardo Magliocchetti** 25:32 Yeah, probably, I've taken on… Maybe next week, yeah.
 **Aaron Abbott** 25:42 Okay.
 **Riccardo Magliocchetti** 25:44 How about, Rost Fingh?
-Probably at least, like, to start moving things forward, we can just start merging the…
-Like, start to imagine that.
+Probably at least, like, to start moving things forward, we can just start merging the… Like, start to imagine that.
 **Dylan Russell** 26:04 Yeah.
 **Riccardo Magliocchetti** 26:06 So at least we reduce a bit the stuff we have open.
 **Dylan Russell** 26:17 Sounds good to me.

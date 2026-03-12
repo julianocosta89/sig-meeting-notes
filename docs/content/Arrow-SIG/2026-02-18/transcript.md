@@ -12,48 +12,27 @@ Duration: 25 minutes
 **Albert Lockett** 00:38 Thanks, dude.
 **Mike "Blanch" Blanchard** 00:40 I saw some OPL PR.
 **Albert Lockett** 00:44 Yeah, I… it's unfortunate, because I, like, the columnar query engine stuff and the OPL are the things that, like.
-I'm more interested, and I really want to work on, but I've been, like, kind of pulled off for the last,
-4 or 5 weeks?
+I'm more interested, and I really want to work on, but I've been, like, kind of pulled off for the last, 4 or 5 weeks?
 **Mike "Blanch" Blanchard** 01:02 I think, at least since Christmas.
 **Albert Lockett** 01:05 on, on different stuff.
-But, like, it's… it's… that work is still interesting and important, so I'm, you know, not complaining too bad. But yeah, so, I only had one OPL PR this week, and it was just to add,
-It was a small one, just to add, datetime, support to the parser, so basically just,
-like, used KQL parser as an example.
-Use the exact same syntax, use the same underlying,
-utility function that, that KQL… Uses…
-from the, I think it was from the parser abstraction crate, or from the expressions crate.
-And, yeah, that was… that was my big addition this week, was, was that. So…
-Yeah, and I did,
-I actually, when I was working on that, I did find…
-one small issue in our date parsing, which, like, it's, it's, it's definitely not, like, a huge deal, but I did, I documented it for later. It's, GitHub issue 2047, I'll drop it here in the chat, and it's basically when we use the,
-I think it's the RFC822 regex?
-It has, It only supports the, GMT…
-what do you call it? Time zone name. So you can imagine that, like, someone might write, instead of GMT, they might write EST, or…
-PST or something, and then it wouldn't, it wouldn't parse correctly. But, again, that's, it's not a huge issue, and it's not, like, blocking for us. I just kind of, like, documented it for posterity.
-**Mike "Blanch" Blanchard** 03:08 Yeah, I'd have to go double check, I think I was…
-I think I got that right from KQL, but… I'll go mess with it and see what it does.
-**Albert Lockett** 03:18 It's… yeah, and, like, this is, like, this is totally, not something that's, like, urgent either, so… I actually did have a question about… that's interesting that you say you got that straight from,
-from KQL. So I did have a question, because, like, I was…
-we had someone here at F5 who was, like, looking at KQL and trying to figure out, like, like, what are the actual rules for,
-For, like, what date formats it supports, and we couldn't, we couldn't,
-find, like, the actual, the actual, like, rules, or, like, any kind of specification. I'm not sure if it's out there, but so, like, I was just saying, well, it looks like in our code, we support ISO 8601, I think, and RFC822.
+But, like, it's… it's… that work is still interesting and important, so I'm, you know, not complaining too bad. But yeah, so, I only had one OPL PR this week, and it was just to add, It was a small one, just to add, datetime, support to the parser, so basically just, like, used KQL parser as an example.
+Use the exact same syntax, use the same underlying, utility function that, that KQL… Uses… from the, I think it was from the parser abstraction crate, or from the expressions crate.
+And, yeah, that was… that was my big addition this week, was, was that. So… Yeah, and I did, I actually, when I was working on that, I did find… one small issue in our date parsing, which, like, it's, it's, it's definitely not, like, a huge deal, but I did, I documented it for later. It's, GitHub issue 2047, I'll drop it here in the chat, and it's basically when we use the, I think it's the RFC822 regex?
+It has, It only supports the, GMT… what do you call it? Time zone name. So you can imagine that, like, someone might write, instead of GMT, they might write EST, or… PST or something, and then it wouldn't, it wouldn't parse correctly. But, again, that's, it's not a huge issue, and it's not, like, blocking for us. I just kind of, like, documented it for posterity.
+**Mike "Blanch" Blanchard** 03:08 Yeah, I'd have to go double check, I think I was… I think I got that right from KQL, but… I'll go mess with it and see what it does.
+**Albert Lockett** 03:18 It's… yeah, and, like, this is, like, this is totally, not something that's, like, urgent either, so… I actually did have a question about… that's interesting that you say you got that straight from, from KQL. So I did have a question, because, like, I was… we had someone here at F5 who was, like, looking at KQL and trying to figure out, like, like, what are the actual rules for, For, like, what date formats it supports, and we couldn't, we couldn't, find, like, the actual, the actual, like, rules, or, like, any kind of specification. I'm not sure if it's out there, but so, like, I was just saying, well, it looks like in our code, we support ISO 8601, I think, and RFC822.
 And we also support, like, the American date format, like, month-month slash day-day slash year, year, year, year.
 And, I was wondering, like, and I guess, like, you kind of answered my question, but I'll ask it more directly, like, are the date times that we support, like, those are driven by what KQL supports, I assume?
 **Mike "Blanch" Blanchard** 04:32 It should be.
 **Albert Lockett** 04:33 Okay.
 **Mike "Blanch" Blanchard** 04:34 I'll show you how I… Come to my conclusions, for whatever they're worth.
 **Albert Lockett** 04:40 Sure, sounds good.
-**Mike "Blanch" Blanchard** 04:42 I can tell you… I don't know what is documented or published, but the…
-the main engine that is running in here, and, like, everywhere in Microsoft that I've found, it's, like, it's a Csharp.net engine.
+**Mike "Blanch" Blanchard** 04:42 I can tell you… I don't know what is documented or published, but the… the main engine that is running in here, and, like, everywhere in Microsoft that I've found, it's, like, it's a Csharp.net engine.
 So you'll see certain places in KQL, like .NET behaviors, leak into the language.
-It seems… Just playing with this, that, like…
-daytime, time span, they're just basically calling into the .NET runtime.
+It seems… Just playing with this, that, like… daytime, time span, they're just basically calling into the .NET runtime.
 So, it's really not documented in KQL, it's documented via, like.NET.
 **Albert Lockett** 05:24 Interesting. Okay, cool. That's, that's, okay, that's, that's, that's super interesting to know.
-**Mike "Blanch" Blanchard** 05:30 It's kind of also the reason why…
-this thing that we're doing is interesting to a lot of people at Microsoft in particular, because the KQL engine in .NET
-Relies heavily on, like, reflection and dynamic code generation, and a lot of features that…
-they don't work with, like, the native AoT, so there's, like… the main version, I think the thing that's powering this is, like, old-school .NET framework.
+**Mike "Blanch" Blanchard** 05:30 It's kind of also the reason why… this thing that we're doing is interesting to a lot of people at Microsoft in particular, because the KQL engine in .NET Relies heavily on, like, reflection and dynamic code generation, and a lot of features that… they don't work with, like, the native AoT, so there's, like… the main version, I think the thing that's powering this is, like, old-school .NET framework.
 Some teams have tried to make it like core, and have failed, or have had partial success.
 So a lot of people are interested in, like, a Rust engine that implements all this nonsense, but…
 **Albert Lockett** 06:15 Cool.
@@ -66,108 +45,63 @@ Let's try, let's just see what happens here.
 It's not liking that, let's see what happens.
 **Albert Lockett** 06:55 Here, I had an example I can paste in the chat of one that parsed Here, like, for example.
 This one… So… Okay, yeah, and then if you… So that…
-**Mike "Blanch" Blanchard** 07:18 Accelerate,
-Doesn't like that one, but it should, like, if I do… what's the… if I do, like, the offset stuff…
-I don't know.
-I did my best to cover, like, even in the docs, here, It, like, tells you something…
-That's not true. Like, it says all dates must follow, like, a certain format, but when you actually play with it, like, it's way more forgiving of a lot other formats.
+**Mike "Blanch" Blanchard** 07:18 Accelerate, Doesn't like that one, but it should, like, if I do… what's the… if I do, like, the offset stuff… I don't know.
+I did my best to cover, like, even in the docs, here, It, like, tells you something… That's not true. Like, it says all dates must follow, like, a certain format, but when you actually play with it, like, it's way more forgiving of a lot other formats.
 **Albert Lockett** 07:58 Interesting.
-**Mike "Blanch" Blanchard** 07:59 Just by way of it calling into, like, it's probably… calling into…
-On the date time, there's, like, some kind of parse.
+**Mike "Blanch" Blanchard** 07:59 Just by way of it calling into, like, it's probably… calling into… On the date time, there's, like, some kind of parse.
 There's, like, a string parse… And this thing… Does a lot of magic.
-supports a bunch of… but the .mint one has proper time zones, so I don't know where the disconnect is, but…
-I'm happy to support it, like, I don't really care either way, as long as we, like, cover
-You know, as long as what is supposed to work in KQL works, if we have a superset of that.
-it doesn't really bother me, like, I'm trying to be…
-as compliant with KQL as we can be, but it's not, like, mission critical for me. Like, I've already kind of allowed it to do some other things, and…
-To me, if we allow you to do proper time zone, that's a feature.
+supports a bunch of… but the .mint one has proper time zones, so I don't know where the disconnect is, but… I'm happy to support it, like, I don't really care either way, as long as we, like, cover You know, as long as what is supposed to work in KQL works, if we have a superset of that.
+it doesn't really bother me, like, I'm trying to be… as compliant with KQL as we can be, but it's not, like, mission critical for me. Like, I've already kind of allowed it to do some other things, and… To me, if we allow you to do proper time zone, that's a feature.
 People will appreciate.
 **Albert Lockett** 09:01 Okay, yeah, that's… that's… so that's interesting that… it's interesting that KQL here says, like… like, this doc that we're looking at says it supports A601, and it's a superset.
-It's… Oh, interrupt, like… The thing I'm a…
-Okay, the thing I'm, like, a little bit…
-the kid I'm kind of thinking about for… OPL… is I wonder if, like… like…
-maybe for OPL, it should be more strict, just so, like… because I feel like, like, like, what… I'm worried that, like, if we accidentally support a…
-superset.
-Then, then,
-then we just end up having to, like, support, these, these extra date parsings forever, so… But anyway, like, what I would say is, like, like.
+It's… Oh, interrupt, like… The thing I'm a… Okay, the thing I'm, like, a little bit… the kid I'm kind of thinking about for… OPL… is I wonder if, like… like… maybe for OPL, it should be more strict, just so, like… because I feel like, like, like, what… I'm worried that, like, if we accidentally support a… superset.
+Then, then, then we just end up having to, like, support, these, these extra date parsings forever, so… But anyway, like, what I would say is, like, like.
 if that… if that does become, like, a direction that we want to go with OPL, I'm… I'm, like… I'm just mentioning it, but I'm by no means trying to, like, prescribe that behavior onto KQL, because I know that, like.
 I know that, like, you have, like, a bunch of use cases, like, internally at Microsoft that, like, clearly people, like, already have programs written, so, like, we don't want to, like, break those.
-But,
-Yeah, maybe I'll think about KQL if it should be more prescribed, just so there's, there's,
-Not any ambiguity.
+But, Yeah, maybe I'll think about KQL if it should be more prescribed, just so there's, there's, Not any ambiguity.
 **Mike "Blanch" Blanchard** 10:39 Yep, I'm sure you've noticed, just looking at the code, what you'll see on the tree is, like.
 I store all day times with A time zone.
 **Albert Lockett** 10:53 Quick. Yeah.
-**Mike "Blanch" Blanchard** 10:54 the engine is ready to go. It's just the parser and how you build those things, but…
-Yeah, I tried to set it up so that…
-you could do proper time zone aware comparison and stuff like that, you know, assuming you can parse it into the right structures, but you shouldn't be blocked by the expression tree, but yeah, the KQL parsers
-And it's kind of wild. It took a long time to get all the gate stuff working.
+**Mike "Blanch" Blanchard** 10:54 the engine is ready to go. It's just the parser and how you build those things, but… Yeah, I tried to set it up so that… you could do proper time zone aware comparison and stuff like that, you know, assuming you can parse it into the right structures, but you shouldn't be blocked by the expression tree, but yeah, the KQL parsers And it's kind of wild. It took a long time to get all the gate stuff working.
 **Albert Lockett** 11:24 Yeah, hey, it's a… Okay, yeah, no, that's a…
-**Mike "Blanch" Blanchard** 11:28 And you'll notice that, like, this… what is this, chrono, whatever that package is? Yep. Like, it has some parse functions, but it's… it's even more limited. Like, it's just expecting the ISO whatever format. That's why I had to do all that regex code, because
-There just wasn't a lot in the library for handling really perverse strings.
+**Mike "Blanch" Blanchard** 11:28 And you'll notice that, like, this… what is this, chrono, whatever that package is? Yep. Like, it has some parse functions, but it's… it's even more limited. Like, it's just expecting the ISO whatever format. That's why I had to do all that regex code, because There just wasn't a lot in the library for handling really perverse strings.
 **Albert Lockett** 11:51 Gotcha, gotcha. Interesting. Okay, cool. Yeah, that's, that's… that's super interesting context as well. Yeah, and like you said, I, like, the way the expression tree is set up with the daytime fixed offset, like, I think that's, like.
 That's perfect. That's a… That's, that's exactly what we need.
 **Mike "Blanch" Blanchard** 12:10 Cool.
 **Albert Lockett** 12:11 Yeah.
-Yeah, so other than that, from my side,
-I haven't been working too much on OPL or the Qualm Requery Engine, I'm gonna try to come back to it hopefully next week.
-And, the thing that I was gonna start trying to figure out how we do in that engine is,
-Like, actual expression evaluation, which,
-seems like something that, like, we should just be able to use, like, data fusion for. Like, we can just translate our expression tree into the data fusion expression tree, but there's just a bunch of little gotchas,
-Like, for example, if you wanted to say, like, I don't know, like, like, log.attributes… X…
-concatenated, like, plus or string concat with resource at attributes Y. Datafusion obviously has a string concat.
-operator, but, like, those… in OTAP's data model, those two record batches are, like, like, different lengths, and,
-And also, they're, like, they might be, like, sorted differently by the ID of the actual, like, log record, so it's not just as simple as, like, using DataFusion's, like, CONCAT expression. We actually need to, like, join the dataset first, and then CONCAT, and so…
-Just trying to, like, figure out…
-how we actually do that, but anyway, I guess that's more of an implementation detail, and… but, yeah, I'm gonna, like, hopefully gonna be starting to work on that next week. And I don't… like, I don't think that, as I step into that, there will be any…
-There will be any, like.
+Yeah, so other than that, from my side, I haven't been working too much on OPL or the Qualm Requery Engine, I'm gonna try to come back to it hopefully next week.
+And, the thing that I was gonna start trying to figure out how we do in that engine is, Like, actual expression evaluation, which, seems like something that, like, we should just be able to use, like, data fusion for. Like, we can just translate our expression tree into the data fusion expression tree, but there's just a bunch of little gotchas, Like, for example, if you wanted to say, like, I don't know, like, like, log.attributes… X… concatenated, like, plus or string concat with resource at attributes Y. Datafusion obviously has a string concat.
+operator, but, like, those… in OTAP's data model, those two record batches are, like, like, different lengths, and, And also, they're, like, they might be, like, sorted differently by the ID of the actual, like, log record, so it's not just as simple as, like, using DataFusion's, like, CONCAT expression. We actually need to, like, join the dataset first, and then CONCAT, and so… Just trying to, like, figure out… how we actually do that, but anyway, I guess that's more of an implementation detail, and… but, yeah, I'm gonna, like, hopefully gonna be starting to work on that next week. And I don't… like, I don't think that, as I step into that, there will be any… There will be any, like.
 impactful changes to anything, like the expression tree or any of our shared parsing stuff. I think that, like, like, all the expression tree and the expressions that we have, like, are exactly what we need, and, like, it's really just, like.
-like, implementation work in, like, the columnar, the OTAP query engine code, so…
-That's, yeah, that's, that's kind of my plan for the, for the near term.
+like, implementation work in, like, the columnar, the OTAP query engine code, so… That's, yeah, that's, that's kind of my plan for the, for the near term.
 **Mike "Blanch" Blanchard** 14:38 Oof.
 **Albert Lockett** 14:39 Sounds good.
 Yeah.
-**Mike "Blanch" Blanchard** 14:42 We're kind of working on… There's… So we have this product…
-That's built on the Go Collector.
+**Mike "Blanch" Blanchard** 14:42 We're kind of working on… There's… So we have this product… That's built on the Go Collector.
 And we're trying, I think, internally to get parity on the Aero Rust Collector.
 So a lot of people from my team and, like, greater teams are all, like, heads down on that stuff, so I'm getting pulled into, like.
-you know, like, hardening, like, logging, and metrics, and making sure everything is supportable, so I'm…
-Probably be doing that for the next week or two.
+you know, like, hardening, like, logging, and metrics, and making sure everything is supportable, so I'm… Probably be doing that for the next week or two.
 I've made a little bit of work on my own, column R, column R, And Jim.
-Kind of what you were just saying about joining the tables, like, man, it is…
-It is complicated. The whole attributes…
-Structure, child table, whatever you want to call it.
-I've got some cool stuff working, like, I've…
-I'm trying to build it sort of like how Record Set is done, where it's…
-you know, it's give me the arrow record, and I will push it through all the expressions, and…
-give you back something. So I got, like, a basic scalar engine working, where I have, like.
-the source expression…
-today, you can use that source expression to, like, select from the map deeply. So, like, you could take source, attribute, sub-attribute, array index 3, like, you can treat the whole thing as a giant map.
+Kind of what you were just saying about joining the tables, like, man, it is… It is complicated. The whole attributes… Structure, child table, whatever you want to call it.
+I've got some cool stuff working, like, I've… I'm trying to build it sort of like how Record Set is done, where it's… you know, it's give me the arrow record, and I will push it through all the expressions, and… give you back something. So I got, like, a basic scalar engine working, where I have, like.
+the source expression… today, you can use that source expression to, like, select from the map deeply. So, like, you could take source, attribute, sub-attribute, array index 3, like, you can treat the whole thing as a giant map.
 I haven't got that far, but I can select, you know.
 from the arrow structure, you could take the top-level stuff, severity text, severity number, or you can take some attribute, that's all working. I can pipe that through subsequent scalars, like I have the length.
 thing working. That's all really great.
 you can chain them into logicals, so I can do, like, you know, the whole set of ANDs, ORs, and all that stuff.
-It's just like, man, the second…
-I try to do something else always, like…
-Right now, I have it all kind of working, it's kind of naive, it just assumes, like, simple selection, like, you're taking an attribute, or you're… you're looking for some string attribute.
-But the way the tree is built, like, you could say source.attributes, you know, open bracket, and then you could say source.attributes
-Value 1.
+It's just like, man, the second… I try to do something else always, like… Right now, I have it all kind of working, it's kind of naive, it just assumes, like, simple selection, like, you're taking an attribute, or you're… you're looking for some string attribute.
+But the way the tree is built, like, you could say source.attributes, you know, open bracket, and then you could say source.attributes Value 1.
 So…
 **Albert Lockett** 17:16 That's written.
 **Mike "Blanch" Blanchard** 17:17 It has, like, go find attribute value 1, and then whatever its value is, use that to look up and give me its value.
 So now you're, like, joining two tables, like, as soon as I, like, tried to build that, like, all my lifetimes fell apart, all my Rust code was like, nope. So it's just…
 **Albert Lockett** 17:38 Oh my god.
-**Mike "Blanch" Blanchard** 17:39 it's really agonizingly slow, but I'm hoping to, like, crack it in a way that will be very maintainable, I don't know, it's just…
-it's massively proof of concept at this point, so I don't know what will come of it, but I'm trying. We'll see.
-**Albert Lockett** 17:55 Yeah, geez, I didn't even think about that. The…
-the attribute of attribute thing. That's complicated.
-**Mike "Blanch" Blanchard** 18:07 I don't know how to really do that type of thing, like, it's not the most, like, practical…
-So here, I'm just trying to find that little scratch pad.
-Here's kind of what I've been playing with, trying…
-Oh, where's the share button? There it is.
+**Mike "Blanch" Blanchard** 17:39 it's really agonizingly slow, but I'm hoping to, like, crack it in a way that will be very maintainable, I don't know, it's just… it's massively proof of concept at this point, so I don't know what will come of it, but I'm trying. We'll see.
+**Albert Lockett** 17:55 Yeah, geez, I didn't even think about that. The… the attribute of attribute thing. That's complicated.
+**Mike "Blanch" Blanchard** 18:07 I don't know how to really do that type of thing, like, it's not the most, like, practical… So here, I'm just trying to find that little scratch pad.
+Here's kind of what I've been playing with, trying… Oh, where's the share button? There it is.
 Sweet.
-This is just kind of what I'm talking about. It's like…
-I have this first one going.
+This is just kind of what I'm talking about. It's like… I have this first one going.
 But yeah, the second one is a whole different can of worms. I have this working, but…
 **Albert Lockett** 18:47 Cool.
 That's a… That's super interesting. Cool, yeah.
@@ -176,62 +110,41 @@ Which is fine in the record set, because everything is just, like, a map.
 But in Era, this is a whole different universe, because you basically have, like.
 You know this is, like, what, some serialized field.
 **Albert Lockett** 19:26 Oh, yeah, the, yeah, that's, that's the tough thing about those deeply nested attributes that, like.
-I've just kind of been,
-ignoring, for the time being, how they're, like… Basically, every attribute
-If it's a scalar, they have their own columns. But if it's a,
-If it's, like, a list or a map, then we serialize it using… This seabor…
-December resolution.
+I've just kind of been, ignoring, for the time being, how they're, like… Basically, every attribute If it's a scalar, they have their own columns. But if it's a, If it's, like, a list or a map, then we serialize it using… This seabor… December resolution.
 That's a… that's a pain.
 **Mike "Blanch" Blanchard** 20:09 what?
 So it's, like, for body… Body's an interesting one because it has, like.
 A bunch of different types broken out, but then for the attributes, yeah, you just have the…
-**Albert Lockett** 20:23 the,
-Yeah, so the, yeah, that's right. So, like, if the attribute type is, like, string or map, it will be CBOR serialized in that… in that sir column.
+**Albert Lockett** 20:23 the, Yeah, so the, yeah, that's right. So, like, if the attribute type is, like, string or map, it will be CBOR serialized in that… in that sir column.
 But, like, other… like, if it's a scalar type, like, if the attribute is, like, a string or an int, it's gonna be in that, it's gonna be in, like, the str column or the int column, and then we have, like, that type column.
 It's essentially an enum that identifies which column to read the value out of for that row.
 Is how that… is how that works.
-And actually, one thing I would say… Is that… this, this…
-Image we're looking at is a little bit…
-out of date. For the log body specifically.
+And actually, one thing I would say… Is that… this, this… Image we're looking at is a little bit… out of date. For the log body specifically.
 Where it has body underscore type.
 That's actually an arrow struct array now.
 So, like.
-like, there will be, like, a field on the log record batch called body, and that'll be a struct array, and then inside that struct array, it will have,
-the…
-the columns for the different value types. There will be, like, a type column, and a string column, and an int column, and a double column.
+like, there will be, like, a field on the log record batch called body, and that'll be a struct array, and then inside that struct array, it will have, the… the columns for the different value types. There will be, like, a type column, and a string column, and an int column, and a double column.
 BoolBytes, sir, all within that struct column on, on, on logs.
 So, yeah, just, like… It… it's… hopefully it doesn't change, like.
-the… the implementation too much. It's just, like, a different way of accessing the, the…
-the column, and, so, anyway, hopefully that doesn't, like, really screw up your implementation. But, but yeah, and then we're… we are working on a spec that, like, is gonna be more up-to-date, so just, like, you know.
+the… the implementation too much. It's just, like, a different way of accessing the, the… the column, and, so, anyway, hopefully that doesn't, like, really screw up your implementation. But, but yeah, and then we're… we are working on a spec that, like, is gonna be more up-to-date, so just, like, you know.
 So, sorry, sorry this image you're working from is at a date, but we are working on a spec that will help.
 **Mike "Blanch" Blanchard** 22:40 You know, I haven't got really into body yet at all, so it hasn't… hasn't killed me, but…
 **Albert Lockett** 22:45 Okay.
 **Mike "Blanch" Blanchard** 22:46 it was useful to get started, and now that I have, like, the code, I'm just like, you know, I'll just debug, print the things, and look at all the data, and try to make sense of it all.
 **Albert Lockett** 22:55 Oh, yeah.
 Yeah, that's a… That's a… that's a good way to do it, too, for sure.
-Yeah, cause, cause, yeah, you're right, like, trying to…
-Trying to, like, figure out, like, what the OTAP Blake… structure is, is,
-it's… it just sucks it's not written down anywhere. That's why… that's why we're writing the spec, because you kind of have to reverse engineer it.
+Yeah, cause, cause, yeah, you're right, like, trying to… Trying to, like, figure out, like, what the OTAP Blake… structure is, is, it's… it just sucks it's not written down anywhere. That's why… that's why we're writing the spec, because you kind of have to reverse engineer it.
 **Mike "Blanch" Blanchard** 23:22 No, excellent.
 **Albert Lockett** 23:25 Yeah.
 **Mike "Blanch" Blanchard** 23:25 Cool.
 If anything, I've learned a lot about Arrow doing this.
 **Albert Lockett** 23:31 That's awesome.
-Yeah, it can definitely be a bit of a learning curve, but
-like, if you have any questions, I'm happy to help answer it. I think I know Arrow decently well at this point, too. And
-Late.
-If you're ever…
-looking to learn more about the arrow, like, like, how each type is laid out and stuff. I don't know if, like, at Microsoft, do you guys have,
-like, an O'Reilly subscription, or… or, like…
-Subscription to, like, some… some of those, like, publisher…
-websites, but there's a book that came out last year, I think, In-memory Analytics… zero…
-By… it's this book here.
+Yeah, it can definitely be a bit of a learning curve, but like, if you have any questions, I'm happy to help answer it. I think I know Arrow decently well at this point, too. And Late.
+If you're ever… looking to learn more about the arrow, like, like, how each type is laid out and stuff. I don't know if, like, at Microsoft, do you guys have, like, an O'Reilly subscription, or… or, like… Subscription to, like, some… some of those, like, publisher… websites, but there's a book that came out last year, I think, In-memory Analytics… zero… By… it's this book here.
 Oops, not that one.
 Matt Topol.
 This book, the first chapter in it has, like, a bunch of pictures about, like.
-How all the aero, Arrays are laid out and stuff,
-So anyway, I don't know if it's…
-Yeah. I won't say, like, go spend the money and buy the book. I don't know if it's, like, that useful, but, but if you guys have, like, a… I don't know, some kind of, like, subscription to O'Reilly through Microsoft, it's an interesting resource.
+How all the aero, Arrays are laid out and stuff, So anyway, I don't know if it's… Yeah. I won't say, like, go spend the money and buy the book. I don't know if it's, like, that useful, but, but if you guys have, like, a… I don't know, some kind of, like, subscription to O'Reilly through Microsoft, it's an interesting resource.
 **Mike "Blanch" Blanchard** 25:03 Cool, check it out, thank you.
 **Albert Lockett** 25:04 Yeah, no problem.
 Great. Well, yeah, I didn't have anything else.

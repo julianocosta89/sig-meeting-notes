@@ -25,27 +25,21 @@ But now I suppose the thing to do is to look at all these issues here.
 2 out of 6 done.
 Okay… 6 out of 9, 0 out of 5…
 **jmacdonald** 05:57 Okay.
-And so these have sub-issues. I see, I see… I know that,
-that Arthur has been working on this,
+And so these have sub-issues. I see, I see… I know that, that Arthur has been working on this,
 **atoulme** 06:10 Yeah.
 **jmacdonald** 06:11 And has come to both collector and spec meetings.
-And I think it's moving, but…
-Without him here, I'm not sure…
-And, Anton, we're down to two of us.
+And I think it's moving, but… Without him here, I'm not sure… And, Anton, we're down to two of us.
 It's good, we can do it, but I don't… I don't think I, I mean…
 **atoulme** 06:36 Yep.
 **jmacdonald** 06:36 Here's the whole list, okay?
 **atoulme** 06:39 Luke, I don't have any updates on this, any of that stuff, I just haven't worked on any of that.
-**jmacdonald** 06:44 It's too much. It's too much. I don't…
-Yeah, I'm… I'm not… not gonna disagree. I…
-And the thing is, I only have some… I could imagine speaking to Prometheus and helping Arthur with that.
+**jmacdonald** 06:44 It's too much. It's too much. I don't… Yeah, I'm… I'm not… not gonna disagree. I… And the thing is, I only have some… I could imagine speaking to Prometheus and helping Arthur with that.
 I suppose each one of these has a kind of, like, ownership problem.
 What should we do then, right now?
 **atoulme** 07:15 If we don't have any items, we can… we can stop here and go…
 **jmacdonald** 07:20 Okay.
 Well, I'm not super eager. Usually, I like this meeting for running into the people in the time zones that don't get to go to the other meetings.
-And I think you and I have plenty of chances to talk when it's not after 5pm, so…
-You know.
+And I think you and I have plenty of chances to talk when it's not after 5pm, so… You know.
 I'd be glad to call it, Ben.
 **atoulme** 07:43 Let's do it. We got lives and things to do. Let's get back to you.
 **jmacdonald** 07:47 Go Collector! Alright, thank you.

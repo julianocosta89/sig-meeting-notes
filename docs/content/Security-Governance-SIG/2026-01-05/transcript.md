@@ -9,19 +9,12 @@ Duration: 8 minutes
 **Trask Stalnaker** 01:08 Hey, Riley!
 Happy New Year!
 **Reiley** 01:11 In a year.
-Yeah, I think this meeting will be very lightweight, like, I… I…
-I've expired my token for GitHub, I have to…
-I have to re-enter my password.
+Yeah, I think this meeting will be very lightweight, like, I… I… I've expired my token for GitHub, I have to… I have to re-enter my password.
 **Trask Stalnaker** 01:28 Oh, no.
-**Reiley** 01:29 So I'll just, come back today, and…
-I noticed there are a couple, PRs I'm going to review, and also,
-Previously, I have a agenda item,
-I, I was told that,
-Antithus is offering the free usage of a… for the CNCF incubation for fast testing, so this is something, folks pinged me and suggest that we take a look and see if that's something we should recommend.
+**Reiley** 01:29 So I'll just, come back today, and… I noticed there are a couple, PRs I'm going to review, and also, Previously, I have a agenda item, I, I was told that, Antithus is offering the free usage of a… for the CNCF incubation for fast testing, so this is something, folks pinged me and suggest that we take a look and see if that's something we should recommend.
 And… There are already a couple projects under CNCF that are using it.
 So that's all I have.
-**Trask Stalnaker** 02:06 Okay, let's see… I'll pull that down
-Can you put a li- can you put a link to…
+**Trask Stalnaker** 02:06 Okay, let's see… I'll pull that down Can you put a li- can you put a link to…
 **Reiley** 02:13 I don't have the link.
 **Trask Stalnaker** 02:15 Oh.
 **Reiley** 02:15 Okay, buzz…

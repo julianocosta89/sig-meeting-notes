@@ -15,21 +15,43 @@ def parse_transcript_html(outer_html: str) -> list[str]:
       - One or more text/paragraph elements with the spoken words
 
     Falls back to treating the first non-empty text node as the speaker label.
+
+    Continuation <li>s (no speaker prefix) are merged into the previous line
+    when the break is mid-sentence (previous line does not end with `.`, `?`, or `!`).
     """
     soup = BeautifulSoup(outer_html, "html.parser")
     ul = soup.find("ul")
     if ul is None:
         return []
 
-    lines: list[str] = []
+    raw: list[tuple[bool, str]] = []
     for li in ul.find_all("li", recursive=False):
         speaker, text = _extract_speaker_and_text(li)
         if text:
             if speaker:
-                lines.append(f"{speaker}: {text}")
+                raw.append((True, f"{speaker}: {text}"))
             else:
-                lines.append(text)
-    return lines
+                raw.append((False, text))
+    return _merge_continuation_lines(raw)
+
+
+def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
+    """Merge continuation <li>s into previous line when break is mid-sentence.
+
+    Rule: join when previous line does NOT end with '.', '?', or '!'.
+    Speaker lines always start a new entry.
+    """
+    # ASCII and full-width/CJK sentence-ending punctuation.
+    sentence_ends = {".", "?", "!", "。", "？", "！"}
+    if not raw:
+        return []
+    result = [raw[0][1]]
+    for has_speaker, text in raw[1:]:
+        if has_speaker or result[-1][-1] in sentence_ends:
+            result.append(text)
+        else:
+            result[-1] += " " + text
+    return result
 
 
 def _extract_speaker_and_text(li: Tag) -> tuple[str, str]:

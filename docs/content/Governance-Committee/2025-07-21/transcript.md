@@ -7,16 +7,14 @@ Duration: 26 minutes
 
 **Dan Gomez Blanco** 04:36 Good morning!
 **Severin Neumann** 04:39 And good morning.
-Just give me a sec
-yeah, a little bit. We'll see you in a minute.
+Just give me a sec yeah, a little bit. We'll see you in a minute.
 **Dan Gomez Blanco** 04:53 Yeah. No worries.
 **Severin Neumann** 05:12 Okay, I'm back.
 Oh, cool! It's only me and you now or.
 **Dan Gomez Blanco** 05:20 Yeah, Robert was gonna join.
 and I'm bet I think he said, that he was there at the start, and then he said, oh, I'll join in the second.
 **Severin Neumann** 05:27 Yeah, yeah, it's still something like that.
-The
-so I was not sure, like Pablo and I earlier today also chatted about it. How we are now doing this like, are we continuing this triage or not? Or like.
+The so I was not sure, like Pablo and I earlier today also chatted about it. How we are now doing this like, are we continuing this triage or not? Or like.
 Yeah.
 **Dan Gomez Blanco** 05:43 That is a.
 **Severin Neumann** 05:48 How do you?
@@ -28,32 +26,26 @@ How did we decide during the.
 but we did not write that down during the meeting
 **Dan Gomez Blanco** 06:17 I think the problem also was a little bit that, like I think.
 **Severin Neumann** 06:21 Austin was the one who had the strongest opinion on not doing it anymore. But he had some audio issues.
-Yeah. So maybe we can follow up on, on
-on slack, or something like that, and say, like, Hey, do we want to
-do that differently, or something like that? So yeah, anyways, let's do it today. And then.
+Yeah. So maybe we can follow up on, on on slack, or something like that, and say, like, Hey, do we want to do that differently, or something like that? So yeah, anyways, let's do it today. And then.
 **Dan Gomez Blanco** 06:43 Yeah, let's just do it today. Start from the one at the bottom. The follow ups.
 **Severin Neumann** 06:48 Yeah.
 **Dan Gomez Blanco** 06:52 Right. So this one is.
 **Severin Neumann** 06:56 And amazed.
 **Dan Gomez Blanco** 06:58 And 2024 and.
 **Severin Neumann** 07:03 Looks a little bit older.
-**Dan Gomez Blanco** 07:19 So there was a call out to Latvina, here,
-What are some of the concrete follow-ups that we could take?
+**Dan Gomez Blanco** 07:19 So there was a call out to Latvina, here, What are some of the concrete follow-ups that we could take?
 Does this sound like, you know, this is maintainers, basically.
 I guess escalating something to the Tc like this. Seems like, you know, looking for advice on.
 There was a comment from Neila.
 **Severin Neumann** 08:02 It's older, right?
 **Dan Gomez Blanco** 08:04 It's 2024. Yes, you're right.
-**Severin Neumann** 08:06 Yeah, so there's like color
-then maybe we tag Claude Miller. And so, okay.
+**Severin Neumann** 08:06 Yeah, so there's like color then maybe we tag Claude Miller. And so, okay.
 like, it was last week, right? So maybe like, what does last week mean? Is it really like a week, or is it.
 **Dan Gomez Blanco** 08:24 Yeah.
 July 15.th So yeah, almost a week.
-**Severin Neumann** 08:30 Yeah, maybe we can re-ping her. And so like, and then maybe, or also so like, Hey, maybe
-possible, they should attend spec meeting to.
+**Severin Neumann** 08:30 Yeah, maybe we can re-ping her. And so like, and then maybe, or also so like, Hey, maybe possible, they should attend spec meeting to.
 if possible, right? I mean that of this line.
-**Dan Gomez Blanco** 08:45 Yeah, so this is the ruby. Right? So who's the
-would this be something that the Tc sponsor for Ruby would Tc sponsor for ruby.
+**Dan Gomez Blanco** 08:45 Yeah, so this is the ruby. Right? So who's the would this be something that the Tc sponsor for Ruby would Tc sponsor for ruby.
 I just basically don't know if you know, made a comic here. But like, if we should bring in like in these cases.
 more like, you know, clearly asking about, like some guidance.
 **Severin Neumann** 09:11 Yeah.
@@ -76,8 +68,7 @@ This is from Lutmilla.
 According details as log span events span attributes fairly recent.
 long response seems to be some.
 This is, I remember this one, I think.
-A
-will this keep?
+A will this keep?
 Add in the follow up? I'm not sure.
 Why was the follow up? Added, here.
 **Severin Neumann** 10:57 But removed him, and then some stuff.
@@ -88,22 +79,16 @@ May 5th is a Monday, so I'm guessing we discussed it. I just remember.
 **Pablo Baeyens** 11:15 Test.
 **Dan Gomez Blanco** 11:16 Maybe I can make a comment and think if we if we put a comment here, if I make a comment, it will probably make it not pop up again. Maybe I don't know.
 **Severin Neumann** 11:25 No? Then it will like, Yeah, pop up again in like, just 7 days, or whatever we have configured. So yeah.
-**Dan Gomez Blanco** 11:33 I guess the long discussion here was before the otap on mate
-span, the duplication of span event right?
-And
-and everyone's like been tagging this issue in
-Spi, for example, or.
-**Pablo Baeyens** 12:25 Is, it wouldn't hurt to have an explicit comment on
-like, well, we merge the complex values.
+**Dan Gomez Blanco** 11:33 I guess the long discussion here was before the otap on mate span, the duplication of span event right?
+And and everyone's like been tagging this issue in Spi, for example, or.
+**Pablo Baeyens** 12:25 Is, it wouldn't hurt to have an explicit comment on like, well, we merge the complex values.
 What would tip?
 How's the how does that affect these.
 **Dan Gomez Blanco** 12:38 Yeah, I like, I mean, I don't want to make any assumptions here as well. I'll add a comment and say.
 I will remove the triage.
-otherwise, you know, we'll get by. Why did we remove it? I will remove it, because
-remove the triage. Follow up label as I assume that the Prs Nope tab.
+otherwise, you know, we'll get by. Why did we remove it? I will remove it, because remove the triage. Follow up label as I assume that the Prs Nope tab.
 is there an Otep? There was an Otep yeah.
-linked above are related to this
-and other, and there's no other current.
+linked above are related to this and other, and there's no other current.
 and discussion is still ongoing, I guess.
 Did you say that?
 Has this been accepted? I mean, this is a good question. Actually.
@@ -117,22 +102,18 @@ And an absolute miller like originally created this.
 **Severin Neumann** 15:12 Man.
 **Dan Gomez Blanco** 15:14 I think there is a lot of discussion here.
 so I will remove the triage follow-up label, and and there's still there's still discussion in this issue.
-and I can ask Ludmilla
-as the author.
+and I can ask Ludmilla as the author.
 **Severin Neumann** 15:52 Yeah.
-**Dan Gomez Blanco** 15:53 M,
-which is the digits above.
+**Dan Gomez Blanco** 15:53 M, which is the digits above.
 I would go on to say early morning.
 There's the changes above. That solves it. Well, I guess. Address, address the issue.
 **Severin Neumann** 16:21 Yeah.
-**Dan Gomez Blanco** 16:31 And then I move it to
-author.
+**Dan Gomez Blanco** 16:31 And then I move it to author.
 It's helpful. Yeah, there we go.
 right.
 It's good.
 Then we've got SDK, startup specification is this for.
-**Severin Neumann** 17:09 It's entity. So it's a sick issue already. So I think you can just label it a sick issue, and then
-and then move on with our light.
+**Severin Neumann** 17:09 It's entity. So it's a sick issue already. So I think you can just label it a sick issue, and then and then move on with our light.
 Yeah.
 **Dan Gomez Blanco** 17:18 Cool and improve documentation, consistency.
 **Severin Neumann** 17:29 Wait a minute. Currently the documentation and a couple.
@@ -143,8 +124,7 @@ No buff tentors.
 yeah, click on that.
 And it's more like a.
 **Dan Gomez Blanco** 18:12 Right? So this is some.
-**Severin Neumann** 18:14 Yeah, that's for for the open telemetry website like that. When you, when you look at the spec there, like the order, is sometimes, indeed! A little bit
-one key.
+**Severin Neumann** 18:14 Yeah, that's for for the open telemetry website like that. When you, when you look at the spec there, like the order, is sometimes, indeed! A little bit one key.
 **Dan Gomez Blanco** 18:24 Yeah, see? So there's yeah.
 **Severin Neumann** 18:26 Yeah.
 **Dan Gomez Blanco** 18:26 More to format it, like the the.
@@ -154,8 +134,7 @@ one key.
 Okay?
 Think, okay, this slide.
 I think the key point is that somewhere it, like you feel like it, adds a propagators folder with the readme.
-It's just changing. Links is is an important part, is later that, like it, it takes out some stuff
-and moves it into a dedicated file.
+It's just changing. Links is is an important part, is later that, like it, it takes out some stuff and moves it into a dedicated file.
 **Dan Gomez Blanco** 19:15 The contact. Yeah, the context and propagators.
 M.
 **Severin Neumann** 19:28 Can you tag, or can you.
@@ -167,11 +146,9 @@ Did you take a look? Something like that? Yeah, Patrice is back, I think.
 Sometimes end of this week. I will.
 I will get it.
 Chance to talk with them about that. That's more like, yeah, how? How does it show up on open telemetry website? So that's more like something we need to look into.
-**Dan Gomez Blanco** 20:24 Yeah, do we want to triage this as accepted or
-and it's like we're not. It's not like we're accepting the change that we're accepting the.
+**Dan Gomez Blanco** 20:24 Yeah, do we want to triage this as accepted or and it's like we're not. It's not like we're accepting the change that we're accepting the.
 **Severin Neumann** 20:34 Not exactly sure yet. So so if you like to triage it and say, like, just and yeah, community.
-yeah, technically, this is sick issue. It's hard to say,
-yeah, label it a sick issue to make it disappear then like we can.
+yeah, technically, this is sick issue. It's hard to say, yeah, label it a sick issue to make it disappear then like we can.
 But then maybe tag instead of or like, yeah, I can.
 I mean, then it makes maybe more sense to tag docs.
 Ubers.
@@ -218,24 +195,16 @@ we have like 5 more minutes. So yeah, I I think we did good, awesome.
 Because of the split. Mind.
 **Severin Neumann** 24:23 Yeah, I mean, my my point of view is that, like at least for triage, it it makes no.
 especially for spec triage.
-I do not mind about a split might be because we triage right? We we don't take any decisions right? It's very different to the Gc. Work, and it totally makes sense that, like the community stuff and the Gc. Stuff
-stays in the Tc. Meeting. And I think it's really good if we work towards working off a board versus like
-just doing random thing in a Google, Doc.
-but I think for triage, I don't think we really need
-everyone around right, I mean, now we are 3 people, and just looked at a few things and said like.
+I do not mind about a split might be because we triage right? We we don't take any decisions right? It's very different to the Gc. Work, and it totally makes sense that, like the community stuff and the Gc. Stuff stays in the Tc. Meeting. And I think it's really good if we work towards working off a board versus like just doing random thing in a Google, Doc.
+but I think for triage, I don't think we really need everyone around right, I mean, now we are 3 people, and just looked at a few things and said like.
 packed a bunch of people, and then added a bunch of labels. We we did not really decide on anything. Right? So yeah.
 **Dan Gomez Blanco** 25:12 Yeah.
-**Pablo Baeyens** 25:14 I agree. Yeah, maybe we can make this half an hour like, that's the only thing that I would maybe change just so that
-we split the load a bit better between us on us meeting.
-**Dan Gomez Blanco** 25:28 Yeah North America meeting, but also, like, you know, if we always, I think it's the
-they didn't see it
-as in like they were seeing like the the board is empty for them, right for the triage, because.
+**Pablo Baeyens** 25:14 I agree. Yeah, maybe we can make this half an hour like, that's the only thing that I would maybe change just so that we split the load a bit better between us on us meeting.
+**Dan Gomez Blanco** 25:28 Yeah North America meeting, but also, like, you know, if we always, I think it's the they didn't see it as in like they were seeing like the the board is empty for them, right for the triage, because.
 **Severin Neumann** 25:40 Yeah.
-**Dan Gomez Blanco** 25:41 Always so even now I'm not sure if this would also be the case. And then we, what we need to do is like one week each, but
-it's like overlap.
+**Dan Gomez Blanco** 25:41 Always so even now I'm not sure if this would also be the case. And then we, what we need to do is like one week each, but it's like overlap.
 **Pablo Baeyens** 25:49 Yeah, or one week each. No.
-yeah. Yeah. Well, I guess we'll have to discuss it again on the next meeting. I I think they discussed it on the
-like Tcg. Summit. But it was very late in the day, and there was nobody from Europe
+yeah. Yeah. Well, I guess we'll have to discuss it again on the next meeting. I I think they discussed it on the like Tcg. Summit. But it was very late in the day, and there was nobody from Europe
 **Dan Gomez Blanco** 26:07 That's right.
 **Pablo Baeyens** 26:07 So yeah, so we don't port today.
 **Dan Gomez Blanco** 26:09 Yeah, all right.

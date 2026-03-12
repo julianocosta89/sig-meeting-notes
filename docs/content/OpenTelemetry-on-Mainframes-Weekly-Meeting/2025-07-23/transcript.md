@@ -15,8 +15,7 @@ I'm just trying to catch up here on slack.
 **Jim Porell** 01:24 I figured if you and I wanna just go over it. We can.
 Yeah.
 **Greg Shriver** 01:29 Sure.
-**Jim Porell** 01:30 Idea. So I'll share the screen
-accessing your screen. Yeah, that's all right. Share and go to Google.
+**Jim Porell** 01:30 Idea. So I'll share the screen accessing your screen. Yeah, that's all right. Share and go to Google.
 Yeah, see? I already guessed it would just be you and I.
 **Greg Shriver** 01:50 Guessed you guessed we were it. Yeah.
 **Jim Porell** 01:52 Yeah.
@@ -45,23 +44,18 @@ They're way more focused on traces.
 **Jim Porell** 03:42 When you name something.
 Okay.
 **Greg Shriver** 03:47 That's interesting.
-Java and Python sdks develop a cobol. SDK,
-I you know I I'm surprised at that cause. I just can't imagine anybody actually
-taking advantage of that.
+Java and Python sdks develop a cobol. SDK, I you know I I'm surprised at that cause. I just can't imagine anybody actually taking advantage of that.
 **Jim Porell** 04:03 I've heard just the opposite, but.
 **Greg Shriver** 04:06 Really oh, good!
 **Jim Porell** 04:07 And and the reason is.
 I'm gonna call it there's probably 10 customers in the world that want it, and their finance industry customers whose bread and butter is on cobol kicks or ims applications.
-I believe. And and I know Ruger presents it this way is that
-we're trying to get the subsystems to do it transparently, you know, on the applications behalf. But there's some bleeding edge guys that you know, on this particular application. They want to be able to trace it earlier than the subsystems can do it themselves.
+I believe. And and I know Ruger presents it this way is that we're trying to get the subsystems to do it transparently, you know, on the applications behalf. But there's some bleeding edge guys that you know, on this particular application. They want to be able to trace it earlier than the subsystems can do it themselves.
 so that makes sense.
 **Greg Shriver** 04:48 But they could do that, I mean, but they would be into it for developing their own. I mean they. They could emit metric spans and.
 **Jim Porell** 04:57 Oh, yeah, yeah, but they'd like, but they'd like a A an SDK to just bury it into their code. So.
 **Greg Shriver** 05:03 Sure. Yeah, no, I guess I guess that makes sense.
 I mean in easier.
-**Jim Porell** 05:10 My bet is, though, my bet is, though, people don't understand
-that. Unlike distributed environments, it's the system that's gonna take responsibility here. And so
-you probably don't need it as much on the Z side as you would on a Linux unix windows side.
+**Jim Porell** 05:10 My bet is, though, my bet is, though, people don't understand that. Unlike distributed environments, it's the system that's gonna take responsibility here. And so you probably don't need it as much on the Z side as you would on a Linux unix windows side.
 **Greg Shriver** 05:28 Hmm, that may be true.
 **Jim Porell** 05:29 I don't know but we'll see.
 **Greg Shriver** 05:33 I mean in Java, I mean, Java has its own runtime environment, so that makes it kind of easier.
@@ -82,14 +76,12 @@ But I do think Ibm is working on a cobalt one. So.
 **Greg Shriver** 06:31 Okay. Alright. Well, hey?
 **Jim Porell** 06:34 That's that's great.
 Hello!
-**Greg Shriver** 06:37 That's great. I mean to the extent that people the extent that
-people will consume that will be interesting to see.
+**Greg Shriver** 06:37 That's great. I mean to the extent that people the extent that people will consume that will be interesting to see.
 **Jim Porell** 06:47 Oh!
 **Greg Shriver** 06:50 You know, like you, said the bleeding edge.
 The small 10 customers that you know absolutely want this. They'll probably adopt it.
 **Jim Porell** 07:00 Right.
-I don't know the rest of this. I
-oh, here's comprehensive responses coming up, but ways to contribute whatever you know.
+I don't know the rest of this. I oh, here's comprehensive responses coming up, but ways to contribute whatever you know.
 Yeah, you can go help build one. Yeah, so.
 But I guess you tell me when and I'll shoot down.
 **Greg Shriver** 07:25 Yeah, I'm good.
@@ -215,20 +207,14 @@ because if you know how much is management by magazine of executives, where? Whe
 **Jim Porell** 13:39 Well, go ahead!
 **Greg Shriver** 13:40 I agree with you.
 **Jim Porell** 13:41 Yeah.
-**Greg Shriver** 13:42 I think this is really big in that regard, and
-I 100 agree with you. In fact, I think that you know we I mean, people have been talking about the death on Mainframe, as since I've as long as I've been on the platform.
+**Greg Shriver** 13:42 I think this is really big in that regard, and I 100 agree with you. In fact, I think that you know we I mean, people have been talking about the death on Mainframe, as since I've as long as I've been on the platform.
 you know, and and I have a lot of gray hair. So you know, people have been talking about this for years and years, and.
 **Jim Porell** 14:02 Yeah.
-**Greg Shriver** 14:03 And
-you know it's it's still there. I get it that people want, you know, are are interested in moving things off. But you know I I get that. But
-I think that the single biggest thing that we can do to
-prolong the life of the mainframe is embrace open telemetry.
+**Greg Shriver** 14:03 And you know it's it's still there. I get it that people want, you know, are are interested in moving things off. But you know I I get that. But I think that the single biggest thing that we can do to prolong the life of the mainframe is embrace open telemetry.
 **Jim Porell** 14:26 Yeah, I really do.
 **Greg Shriver** 14:28 And that's why I'm that's why I'm here.
 **Jim Porell** 14:31 Yeah.
-now, that was a revelation I actually had. It came out of my mouth. And I'm like, Oh, my God, that's right. And
-this could really preserve mainframes forever. I I don't. I don't particularly agree with the way Ibm's implementing it with their native emissions. I think that's gonna
-throw the meter off, but I think between us as vendors, we can really make this awesome. So.
+now, that was a revelation I actually had. It came out of my mouth. And I'm like, Oh, my God, that's right. And this could really preserve mainframes forever. I I don't. I don't particularly agree with the way Ibm's implementing it with their native emissions. I think that's gonna throw the meter off, but I think between us as vendors, we can really make this awesome. So.
 **Greg Shriver** 14:56 Alright. Yeah. Yeah.
 **Jim Porell** 14:59 Alright!
 **Greg Shriver** 15:02 What do you look at this 1st metrics?
@@ -250,8 +236,7 @@ Yeah. That's.
 **Greg Shriver** 16:21 Okay.
 **Jim Porell** 16:22 That's not bad. Yeah. Security.
 **Greg Shriver** 16:24 Sense, though.
-**Jim Porell** 16:25 Yeah, I'm surprised. Business stakeholders wasn't higher, but because I could. To me, business stakeholders is an executive
-and and all they're interested. They want to see green, no red, no yellow, just green, so.
+**Jim Porell** 16:25 Yeah, I'm surprised. Business stakeholders wasn't higher, but because I could. To me, business stakeholders is an executive and and all they're interested. They want to see green, no red, no yellow, just green, so.
 **Greg Shriver** 16:36 Right, which, which, for multi-platform applications, open telemetry feed, you know.
 **Jim Porell** 16:42 Yeah.
 **Greg Shriver** 16:42 Facilitates that.
@@ -261,16 +246,14 @@ and and all they're interested. They want to see green, no red, no yellow, just 
 They probably lowballed it.
 **Greg Shriver** 16:56 I'm surprised to see mainframe option so high, I mean, but I think that's probably going up.
 **Jim Porell** 17:03 And I think again, it's catering to who who took the survey. There's not a lot of people that took the survey so.
-**Greg Shriver** 17:10 That's true
-performance. Metrics, too.
+**Greg Shriver** 17:10 That's true performance. Metrics, too.
 **Jim Porell** 17:18 Oh, this is what what Rudiger summarized up above in the questions.
 **Greg Shriver** 17:23 Okay.
 **Jim Porell** 17:25 That makes sense.
 **Greg Shriver** 17:27 Database. Metrics make sense application. Metrics, I think, is the.
 **Jim Porell** 17:31 That's an interesting one.
 That's the one that everybody wants. I would think like you said everybody wants to manage by application.
-But I think that's really where it comes down to traces is the means to that end. So
-not necessarily metrics. But we'll see.
+But I think that's really where it comes down to traces is the means to that end. So not necessarily metrics. But we'll see.
 **Greg Shriver** 17:46 Sure. But if there are metrics that are specific to an application, I think.
 **Jim Porell** 17:50 Oh, yeah, no. True. True. Yep, yep, yep.
 yeah. I can give you a graph on any app you know, inside of kicks region that would be very interesting. Yeah.
@@ -300,13 +283,11 @@ carbon accounting in terms of environmental.
 **Jim Porell** 19:03 And energy.
 Oh, yeah.
 **Greg Shriver** 19:11 I mean, there's a whole. There's a whole when I went to Cubecon last year.
-no, not last year it was 20,
-anyway. I went to Kubecon. There's a whole project.
+no, not last year it was 20, anyway. I went to Kubecon. There's a whole project.
 **Jim Porell** 19:21 Yeah, yeah, yeah.
 **Greg Shriver** 19:22 In Cncf. That's that's talking about. You know the.
 **Jim Porell** 19:25 And credits and stuff.
-**Greg Shriver** 19:26 The carbon credits. And and you know, being able to
-being able to demonstrate that your your electricity footprint is smaller.
+**Greg Shriver** 19:26 The carbon credits. And and you know, being able to being able to demonstrate that your your electricity footprint is smaller.
 You know all of that stuff. So.
 **Jim Porell** 19:41 Okay, that's probably I think you just nailed it. That's what it is.
 Okay, go back to it.
@@ -327,27 +308,22 @@ None of them. Javascript, swift.
 **Greg Shriver** 20:40 Yeah.
 **Jim Porell** 20:42 Okay, interesting.
 **Greg Shriver** 20:44 For the open telemetry Sdks, does your organization require mainframe support?
-Okay? So these are all of the existing open telemetry sdks. This is not, hey? There's there's no cobal. There's no
-bulb.
+Okay? So these are all of the existing open telemetry sdks. This is not, hey? There's there's no cobal. There's no bulb.
 That's gonna be the next while we're there. Yeah.
 **Jim Porell** 21:00 Yeah, okay, here you go.
 **Greg Shriver** 21:04 Additional Languages.
 **Jim Porell** 21:05 Yeah. Rex. Oh, Jcl, nice.
 Your batch jobs.
-**Greg Shriver** 21:12 You know, Rex
-would be possible, because Rex is I mean it is, it can be compiled. But most of the stuff that we vendors pump out is interpreted. Rex.
+**Greg Shriver** 21:12 You know, Rex would be possible, because Rex is I mean it is, it can be compiled. But most of the stuff that we vendors pump out is interpreted. Rex.
 **Jim Porell** 21:24 Yeah, agreed. So I think that is definitely possible. And like all the automation scripts, that kind of stuff that's all written in Rex. You might want to see that be instrumented. So.
 **Greg Shriver** 21:34 For sure. Yeah.
 **Jim Porell** 21:36 Alright, Jcl, that's to me is a bunch of batch jobs that you wanna measure.
 **Greg Shriver** 21:42 Yeah.
-**Jim Porell** 21:43 But I was again existing. Tools do that, but
-I don't see that included in a span, for example.
+**Jim Porell** 21:43 But I was again existing. Tools do that, but I don't see that included in a span, for example.
 **Greg Shriver** 21:53 Mainframe operating systems, us Linux on Z Zptf, and yeah.
 **Jim Porell** 21:57 That's interesting. Vsc. Came up as one before. Not anything this time.
 **Greg Shriver** 22:02 Yeah.
-Collector is most important for your to enable the process distribution of mainframe telemetry data collection at this
-local to the source. Oh, that's interesting
-data aggregation that makes sense data collection from any system, data export filtering, batching, processing.
+Collector is most important for your to enable the process distribution of mainframe telemetry data collection at this local to the source. Oh, that's interesting data aggregation that makes sense data collection from any system, data export filtering, batching, processing.
 **Jim Porell** 22:32 This is true, this is.
 **Greg Shriver** 22:34 Sampling! Oh, boy!
 **Jim Porell** 22:35 If I go back to, and I've got it. Here, hold on! Let me just find it.
@@ -356,23 +332,16 @@ You know, this is the collector. It's basically who sends it to off to.
 you know, wherever observability platform, you're doing so again. Their goal, you know.
 part of Ibm's goal is this native emissions that goes out through the protocol.
 **Greg Shriver** 23:09 Sure.
-**Jim Porell** 23:10 But this is, they're kind of thinking of this as Z. Linux right now. I think I don't. I don't think they're doing a native collector on zos, because the MIPS
-I I know we do ours. We do this all in Java.
+**Jim Porell** 23:10 But this is, they're kind of thinking of this as Z. Linux right now. I think I don't. I don't think they're doing a native collector on zos, because the MIPS I I know we do ours. We do this all in Java.
 so that way at least, we're zip eligible.
-**Greg Shriver** 23:26 That makes sense. And and we're doing something similar, right? So
-so. And and and I don't think the native running a native collector on on z
-I mean, I don't. I don't want to say it doesn't make sense. But you know, I I agree. I think
-you know you're probably gonna want that that 1st open telemetry collector hop to be close.
+**Greg Shriver** 23:26 That makes sense. And and we're doing something similar, right? So so. And and and I don't think the native running a native collector on on z I mean, I don't. I don't want to say it doesn't make sense. But you know, I I agree. I think you know you're probably gonna want that that 1st open telemetry collector hop to be close.
 **Jim Porell** 23:52 Yeah.
-**Greg Shriver** 23:52 You know. And the the one thing we've learned is that, like the open telemetry collector
-is not just a 1 thing. There's a there's a, there's a big.
+**Greg Shriver** 23:52 You know. And the the one thing we've learned is that, like the open telemetry collector is not just a 1 thing. There's a there's a, there's a big.
 there's a there's a whole chain upstream right yep.
 **Jim Porell** 24:10 Alright.
 Well, there's so many different sources. That's the problem. So.
-**Greg Shriver** 24:15 And so many different places where you can, where you can deploy the open telemetry collector like if I want it. If I want it deployed close to my source. I might wanna I might want that to be doing local collection, but I might be doing a whole lot more. I might be doing a whole lot more
-transformation downstream, you know.
-**Jim Porell** 24:39 Oh, that
-100% agree with you. Collection has to be local transformation. Yeah, I don't want to burn a lot of mainframe MIPS doing that unless unless they're free. MIPS. No, but you have no choice but to collect it. Local.
+**Greg Shriver** 24:15 And so many different places where you can, where you can deploy the open telemetry collector like if I want it. If I want it deployed close to my source. I might wanna I might want that to be doing local collection, but I might be doing a whole lot more. I might be doing a whole lot more transformation downstream, you know.
+**Jim Porell** 24:39 Oh, that 100% agree with you. Collection has to be local transformation. Yeah, I don't want to burn a lot of mainframe MIPS doing that unless unless they're free. MIPS. No, but you have no choice but to collect it. Local.
 **Greg Shriver** 24:54 Right. Yeah, there's some things you can't collect if it's not local.
 **Jim Porell** 24:57 Right, right.
 **Greg Shriver** 24:59 Yeah.
@@ -382,11 +351,8 @@ transformation downstream, you know.
 Okay.
 **Greg Shriver** 25:13 12 reflector on the mainframe for some platform system. Logs wow, mainframe support resources.
 **Jim Porell** 25:22 Kubernetes, and trend.
-**Greg Shriver** 25:25 Okay? Well, I guess that that makes
-that makes sense. If your if your Kubernetes is running on Mainframe, I guess.
-**Jim Porell** 25:34 Yeah. But yeah, I mean, if you've got Kubernetes, remember, there was a bunch of people that
-spoke for Linux. Obviously. So that's true. That would be
-key to them, and this can hit Zcx as well as Kubernetes. Openshift stuff.
+**Greg Shriver** 25:25 Okay? Well, I guess that that makes that makes sense. If your if your Kubernetes is running on Mainframe, I guess.
+**Jim Porell** 25:34 Yeah. But yeah, I mean, if you've got Kubernetes, remember, there was a bunch of people that spoke for Linux. Obviously. So that's true. That would be key to them, and this can hit Zcx as well as Kubernetes. Openshift stuff.
 **Greg Shriver** 25:48 Sure, sure.
 **Jim Porell** 25:52 That's it.
 **Greg Shriver** 25:53 That's it.
@@ -398,8 +364,7 @@ Been a while since I looked at the spreadsheet, but that's good. I'm glad he rep
 So.
 **Greg Shriver** 26:18 I don't remember ever seeing this.
 **Jim Porell** 26:20 I remember seeing something like this.
-I'll just look at an example. Yeah. So
-again, I wasn't in the last call. I think you were with Rudiger last week.
+I'll just look at an example. Yeah. So again, I wasn't in the last call. I think you were with Rudiger last week.
 **Greg Shriver** 26:33 Yeah.
 **Jim Porell** 26:34 Where he said they wanted proof.
 The they didn't want to just have these new names identified. But they wanted proof and examples. And I think that's where he's trying to get to. Here.

@@ -26,10 +26,8 @@ Nice. I'm trying to catch all the people I haven't talked with yet. I don't thin
 **Marylia Gutierrez** 01:50 Yeah, they're…
 **Kayla Reopelle** 01:51 I know it's postmarked yesterday, but don't…
 **Marylia Gutierrez** 01:54 No, no, they put it wrong.
-**Amy Super** 01:58 I'm pretty sure the US Postal Service just lost one of my packages, so I think that's a completely valid
-situation to just be like, it's clearly their fault.
-**Marylia Gutierrez** 02:11 One thing that I find, like, really fun, because on, like, the postal code, like, in Canada is… so, letter number, letter number, letter number, so, like, 6 digits, and then you can send to, like, ho ho, ho, like, H0, H0, and…
-Letters to Santa.
+**Amy Super** 01:58 I'm pretty sure the US Postal Service just lost one of my packages, so I think that's a completely valid situation to just be like, it's clearly their fault.
+**Marylia Gutierrez** 02:11 One thing that I find, like, really fun, because on, like, the postal code, like, in Canada is… so, letter number, letter number, letter number, so, like, 6 digits, and then you can send to, like, ho ho, ho, like, H0, H0, and… Letters to Santa.
 **Kayla Reopelle** 02:29 Oh, cute!
 **Marylia Gutierrez** 02:31 That is adorable. That is so cute.
 **Amy Super** 02:33 Dude.
@@ -37,38 +35,28 @@ Letters to Santa.
 Post office.
 **Amy Super** 02:41 Just never really put that all together. Huh.
 Who knew? I guess I didn't realize Santa's Canadian. Nice.
-Ugh, so…
-We've nothing on the agenda. I guess I can give a little bit of an update on how the research project is going.
+Ugh, so… We've nothing on the agenda. I guess I can give a little bit of an update on how the research project is going.
 **Marylia Gutierrez** 03:00 Yeah, I was gonna ask, How are the interviews going?
 **Amy Super** 03:03 Yeah, let me just… I'm gonna pull up a, like, reference a couple of notes while we talk.
 So… so all in, there were 36 participants who showed up. We have about 10 interviews to go.
 Or 10 scheduled interviews to go.
-I'm getting, I think I mentioned this in Slack, about a 50% no-show rate, which I expect because it was free to sign up, and also,
-there's, like, no incentive for them to… you know, like, I'm not giving them a gift card for talking with me, right? So it's a very easy thing.
+I'm getting, I think I mentioned this in Slack, about a 50% no-show rate, which I expect because it was free to sign up, and also, there's, like, no incentive for them to… you know, like, I'm not giving them a gift card for talking with me, right? So it's a very easy thing.
 **Marylia Gutierrez** 03:40 It's a holiday.
-**Amy Super** 03:41 Yeah, yeah, totally. Interestingly, one of the things that I'm learning, when some people join is that
-they only read the first sentence of the description, and so they think that… so the blog post begins with, like, we want to make the new contributor experience better, so talk with us. So they're actually joining, thinking that I am going to make their experience better.
+**Amy Super** 03:41 Yeah, yeah, totally. Interestingly, one of the things that I'm learning, when some people join is that they only read the first sentence of the description, and so they think that… so the blog post begins with, like, we want to make the new contributor experience better, so talk with us. So they're actually joining, thinking that I am going to make their experience better.
 in the meeting, right? So they think it's, like, a tutorial session or, like, a mentoring session, and then they're sort of surprised when I'm like, nope.
 You know, I do try to help, like, if they really don't know what's going on, I always tell them, like, I'll answer as many of your questions as I can at the end, but first I want to hear about your experience.
-But this is one of the ideas that, like, you know, obviously I want to, like, finish the study before I come up with, like, official kind of recommendations, but one of the things that there seems to be interest for is some sort of, like, office hours type
-place where people can drop in and either… and what, you know, we would kind of need to figure out exactly how this would run, but either have it be, like, this is where you go to get started.
+But this is one of the ideas that, like, you know, obviously I want to, like, finish the study before I come up with, like, official kind of recommendations, but one of the things that there seems to be interest for is some sort of, like, office hours type place where people can drop in and either… and what, you know, we would kind of need to figure out exactly how this would run, but either have it be, like, this is where you go to get started.
 Or have people be able to come with, like, a Q&A, kind of like, hey, I went to this place, this didn't make sense to me, what do I do? Obviously, that's very high touch. I don't know what appetite or ability we have to sort of staff that type of thing.
 But that's been one of the ideas that has come out so far. Other than that, you know, people are running the range from, like.
 don't know what a PR is, and don't even know where to begin.
-all the way to people who are like, I contribute all the time, everything's totally fine, you guys are doing great, this is the most organized open source, like, community that there is. So… and then there's in between. So yeah, so that's how it's going. I think going well so far, and
-What I need to figure out is once these interviews wrap up, the last one is on…
-Tuesday of next week. And once they wrap up.
-what I need to decide is how I want to synthesize the…
-results. I can either do it alone, or I have also run workshops where I do this with other people, and some other people who have,
+all the way to people who are like, I contribute all the time, everything's totally fine, you guys are doing great, this is the most organized open source, like, community that there is. So… and then there's in between. So yeah, so that's how it's going. I think going well so far, and What I need to figure out is once these interviews wrap up, the last one is on… Tuesday of next week. And once they wrap up.
+what I need to decide is how I want to synthesize the… results. I can either do it alone, or I have also run workshops where I do this with other people, and some other people who have,
 **Marylia Gutierrez** 06:06 Hmm.
 **Amy Super** 06:07 signed up as observers and note-takers have expressed interest in kind of being involved in that, so I just need to kind of, like, think through how best to do that across time zones and availability and everything, so…
 **Marylia Gutierrez** 06:20 Yeah, that's a challenge for us.
 If you need help as well, I can definitely help out. Thank you, yeah.
-**Amy Super** 06:26 I mean, it's always faster if I just do it myself, but obviously, like, if I did it myself, we wouldn't be a community, so, so that's, you know, what I'm playing with right now. But yeah, so that's how it's going. I'm actually really happy with the progress, and
-It's been a busy couple of weeks for me, but, you know, these types of things are always fun. It's always really interesting meeting people from all over who are doing this stuff.
-**Marylia Gutierrez** 06:50 Yeah, one of the things that you mentioned that is a challenge, but it's…
-There is not much that you can do and tell people, like, just read, for example, your blog post. We got people commenting, because the…
-like, I think that sounds like, looking for, like, new contributors kind of thing, like, on that line.
+**Amy Super** 06:26 I mean, it's always faster if I just do it myself, but obviously, like, if I did it myself, we wouldn't be a community, so, so that's, you know, what I'm playing with right now. But yeah, so that's how it's going. I'm actually really happy with the progress, and It's been a busy couple of weeks for me, but, you know, these types of things are always fun. It's always really interesting meeting people from all over who are doing this stuff.
+**Marylia Gutierrez** 06:50 Yeah, one of the things that you mentioned that is a challenge, but it's… There is not much that you can do and tell people, like, just read, for example, your blog post. We got people commenting, because the… like, I think that sounds like, looking for, like, new contributors kind of thing, like, on that line.
 and then the first, okay, we updated to the node, like, hey, we are… we are, like, we had enough, we don't need it for the interviews. So people were like, oh, you don't need more new contributors. I was hoping to be a contributor, so it means that you don't need… I'm like, no, that is not what it's about. So there was even this conversation, like, no, just actually.
 **Amy Super** 07:29 Wow.
 **Marylia Gutierrez** 07:29 Read the… the actual.
@@ -79,29 +67,20 @@ I'm like, oh, no, yeah, it was like, so that is the first step, read the post. I
 **Amy Super** 08:04 Yeah, this is always, like, why… when it… how it's tricky to, like, recruit for any type of research or activities, right, is that people really do… I think it's, like, a good reminder for me that, like, the first sentence is the most important sentence, and not to take it for granted, right?
 **Marylia Gutierrez** 08:21 The title, like, this is a research, not the…
 **Amy Super** 08:25 Right, right, exactly.
-Yeah, I mean, I had somebody actually, like, cancel on me, because when the reminder came up, they were like, oh, I read it, and I didn't realize that you had questions for me. And so they actually, like, I… they didn't no-show on me, they canceled on me, but it was because, like, they realized… and I was like, we could still talk, and he was like,
-completely uninterested unless I was going to help him, so… Yeah.
+Yeah, I mean, I had somebody actually, like, cancel on me, because when the reminder came up, they were like, oh, I read it, and I didn't realize that you had questions for me. And so they actually, like, I… they didn't no-show on me, they canceled on me, but it was because, like, they realized… and I was like, we could still talk, and he was like, completely uninterested unless I was going to help him, so… Yeah.
 But yeah.
-**Marylia Gutierrez** 08:56 Do you think we would need more people? Like, you got enough? Because then we can, like…
-Have another be a very, like, small text asking people, but…
-very focused, like, this is for us to ask you questions type of thing. Do you think you need more, or…
-**Amy Super** 09:12 I don't think so. I mean, I was… I mean, optimistically, I wanted, like, between 5 and 8 people, and so even with the no-shows, I've had… let me see…
-Risks.
+**Marylia Gutierrez** 08:56 Do you think we would need more people? Like, you got enough? Because then we can, like… Have another be a very, like, small text asking people, but… very focused, like, this is for us to ask you questions type of thing. Do you think you need more, or…
+**Amy Super** 09:12 I don't think so. I mean, I was… I mean, optimistically, I wanted, like, between 5 and 8 people, and so even with the no-shows, I've had… let me see… Risks.
 I'm already at 8, and I still have 10 more that are scheduled. Or actually, there's 11 more that are scheduled.
 And one of them actually is a colleague of mine, so I know she will show up. Or she better. So either way, I'm over my goal, and I'm happy with that, so I don't think there's any need to kind of go back out. I think it's just a good reminder for anything we might do similarly in the future, so…
-**Marylia Gutierrez** 09:50 Okay
-Anything in the… that they already got, like, some idea that you think we should do it now, before, or…
-**Amy Super** 10:01 Not yet,
-I do sort of… well, there's something, like, incubating in the back of my head right now, and it's that, like.
+**Marylia Gutierrez** 09:50 Okay Anything in the… that they already got, like, some idea that you think we should do it now, before, or…
+**Amy Super** 10:01 Not yet, I do sort of… well, there's something, like, incubating in the back of my head right now, and it's that, like.
 People who are successfully engaging Point to the fact that there is a lot of really good documentation.
 People who have not yet successfully engaged are mentioning that if they have looked at the docs, they feel overwhelmed by them.
-And so, I almost wonder if there's, like, a…
-Some sort of artifact that's just, like, a one-page…
-You know, and we have… so, like, there's the community page on the website that lists all the places you could reach out. There's the contributor guide that's, like, how you get started.
+And so, I almost wonder if there's, like, a… Some sort of artifact that's just, like, a one-page… You know, and we have… so, like, there's the community page on the website that lists all the places you could reach out. There's the contributor guide that's, like, how you get started.
 But even finding the contributor guide, I think, is not always super easy for people who are coming to it completely cold.
 And so, I almost wonder if there's some sort of artifact that's almost like an index for new contributors that's just, like, most important links that could be useful, but… I don't know. Let me think about it more. Let me see what… what these last few people say, and then we'll go from there.
-Other than that, like I said, there definitely seems to be interest in people having some way to, like, ask
-Particular questions that are, like, for their thing.
+Other than that, like I said, there definitely seems to be interest in people having some way to, like, ask Particular questions that are, like, for their thing.
 Not everybody that I've talked to who wants this has even found Slack yet.
 Right, like, it's actually…
 **Marylia Gutierrez** 11:26 I'm gonna ask that.
@@ -121,42 +100,34 @@ And I can also take a look at, since I'm also part of the communications seg, I 
 **Amy Super** 12:43 Okay.
 **Marylia Gutierrez** 12:43 Distributing, maybe, yeah, already make some, changes there?
 **Amy Super** 12:49 Yep.
-Yep, definitely, we'll have some…
-kind of some easy things we can fix, and then some harder things we might want to try to do, so…
+Yep, definitely, we'll have some… kind of some easy things we can fix, and then some harder things we might want to try to do, so…
 **Marylia Gutierrez** 13:00 And they are, is the majority of people, like, their first language is English, or no?
-**Amy Super** 13:07 No, I would say most of them, majority of them,
-English is not their first language. Just judging from accents, you know.
+**Amy Super** 13:07 No, I would say most of them, majority of them, English is not their first language. Just judging from accents, you know.
 **Marylia Gutierrez** 13:16 Yeah, I was gonna ask that… I don't know if that is one of your questions, but if having, like, the localization page has been helpful or not.
 If they notice that there is…
 **Amy Super** 13:26 about that, yeah.
 I will say that anyone who has signed up, their English has been quite fluent.
-And so, you know, that might just be because, I don't know, like, by default, that's what the site is in, that's what the blog post was in, you know what I mean, that kind of thing. So,
-Yeah, I actually suspect that it is more of a… like, the people who haven't, like, managed to successfully contribute seem like they are either brand new to open source overall.
+And so, you know, that might just be because, I don't know, like, by default, that's what the site is in, that's what the blog post was in, you know what I mean, that kind of thing. So, Yeah, I actually suspect that it is more of a… like, the people who haven't, like, managed to successfully contribute seem like they are either brand new to open source overall.
 They're… maybe they're students, maybe they, are just kind of, like, looking around, they haven't really tried yet, you know.
 But it seems to me that they are just sort of… and again, like, I'm asking how long they've been working with technology of any type as well, and so I want to go through the data and actually count, but my gut feeling is that they are newer to technology as a whole, and so something like READMEs and GitHub are a little bit intimidating and hard to find.
 Because they're not, accustomed to the way that, like, GitHub has everything laid out.
 So, like, for example, with, like, even RSEG, you know, it's like, the README is, like, below the list of files, and so they might not… since they didn't even read the second sentence of the blog post, maybe they're also not scrolling, right? Yeah. And so… so that's why I'm almost thinking some sort of just, like, quick index page for, like.
-Or, like, a video for, like, this is what it looks like, you know, this is how to get started. Because people, you know, some people are visual learners, some people are, you know, learn by reading, and so, there was one person that said that they had been watching
-Like, our YouTube videos and stuff like that, so…
-But we don't have any that are targeted towards, contributors.
+Or, like, a video for, like, this is what it looks like, you know, this is how to get started. Because people, you know, some people are visual learners, some people are, you know, learn by reading, and so, there was one person that said that they had been watching Like, our YouTube videos and stuff like that, so… But we don't have any that are targeted towards, contributors.
 **Marylia Gutierrez** 15:17 Yeah, the majority is also RSP users, yeah.
 **Amy Super** 15:21 So that might be something worth playing with, too.
 So…
 **Marylia Gutierrez** 15:30 Thank you.
 Good points.
-But yeah, thanks for…
-working on this one other was a lot of fun.
+But yeah, thanks for… working on this one other was a lot of fun.
 **Amy Super** 15:36 Yeah, sure. A lot of things.
 **Kayla Reopelle** 15:37 Yeah.
 **Amy Super** 15:39 Yeah, it was… it was more response than I expected, but I would always rather have that than be, like, begging people to talk with me, you know?
 **Marylia Gutierrez** 15:47 Yeah, because you know you're gonna have the no-shows there, things like that, so yeah, it's always good to have a little… little extra.
 **Amy Super** 15:54 Exactly, so… So yeah, so that's all of my updates, that's all I got.
-**Marylia Gutierrez** 16:00 I was gonna say, I know the feeling when I did the outreach mentorship. They told me, like, oh, last year we had, like, close to, like, 5 people applying. I was like, okay, I can do that. And then I…
-turn, like, made to be a mentor, and 97 people show up.
+**Marylia Gutierrez** 16:00 I was gonna say, I know the feeling when I did the outreach mentorship. They told me, like, oh, last year we had, like, close to, like, 5 people applying. I was like, okay, I can do that. And then I… turn, like, made to be a mentor, and 97 people show up.
 **Amy Super** 16:19 Oh my gosh!
 We had, for the two that I've done through the CNCF one, is… I think we've had about 45 people apply each time.
-So…
-Which is still a lot. It's a lot to go through, because the… between… the time between application and choosing someone is very short, it's only, like, 2 weeks.
+So… Which is still a lot. It's a lot to go through, because the… between… the time between application and choosing someone is very short, it's only, like, 2 weeks.
 **Marylia Gutierrez** 16:44 Yeah, for the outreach, it's a month. So, for that… during that month, the 97 people were contributing and asking questions, and I was the only mentor.
 **Amy Super** 16:54 Gosh.
 **Marylia Gutierrez** 16:55 What is this?
@@ -164,10 +135,8 @@ Which is still a lot. It's a lot to go through, because the… between… the ti
 **Marylia Gutierrez** 17:04 Yeah, I don't think we have any other topics.
 **Amy Super** 17:08 Grow.
 I'll fill in some notes when we're done talking to recap.
-**Marylia Gutierrez** 17:12 So, I'm gonna, yeah, I'm gonna take the action item, I'm gonna look at the community page, just to see if I have ideas of
-very, like.
-this is… you do this. If you want to read more for each topic, then you go to the thing. But have, like, a very…
-In your face kind of thing for people to read.
+**Marylia Gutierrez** 17:12 So, I'm gonna, yeah, I'm gonna take the action item, I'm gonna look at the community page, just to see if I have ideas of very, like.
+this is… you do this. If you want to read more for each topic, then you go to the thing. But have, like, a very… In your face kind of thing for people to read.
 **Amy Super** 17:31 Yeah.
 **Marylia Gutierrez** 17:32 But, yeah, I can take a look at that.
 **Amy Super** 17:34 Okay.

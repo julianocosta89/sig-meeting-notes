@@ -25,9 +25,7 @@ I want to share.
 Oh, that's right here.
 So can you see my screen.
 **Anand Somasundaram** 01:25 Yeah, I can.
-**Greg Shriver** 01:26 So. Yeah, he he said that he was still working on the the Survey. Blog the draft for the Survey blog. So
-I wasn't sure. I mean, I know, he said, we would post a spreadsheet
-to help our discussion on the semantic conventions for metrics. I I wonder if that maybe was a follow on to the conversation we had about the different process models last week.
+**Greg Shriver** 01:26 So. Yeah, he he said that he was still working on the the Survey. Blog the draft for the Survey blog. So I wasn't sure. I mean, I know, he said, we would post a spreadsheet to help our discussion on the semantic conventions for metrics. I I wonder if that maybe was a follow on to the conversation we had about the different process models last week.
 and so so that, looking forward to that this 3rd comment from him. I don't know exactly what that means.
 so I guess he attended the semantic convention, Sig.
 And.
@@ -38,9 +36,7 @@ And.
 **Anand Somasundaram** 02:28 Oh, maybe not sorry. I'm.
 **Greg Shriver** 02:30 Yeah.
 **Anand Somasundaram** 02:30 I misspoke.
-**Greg Shriver** 02:33 So yeah, I haven't seen Morgan, but so maybe maybe Rudiga
-maybe Rudiga attended this. The semantic convention. Sig, I'm not sure I I wasn't aware that they even that they needed a prototype implementation to
-you know, to approve the Prs. I that's first.st I've heard of it, so we'll probably have to get, you know, more, more information from from Rudiga when he shows up.
+**Greg Shriver** 02:33 So yeah, I haven't seen Morgan, but so maybe maybe Rudiga maybe Rudiga attended this. The semantic convention. Sig, I'm not sure I I wasn't aware that they even that they needed a prototype implementation to you know, to approve the Prs. I that's first.st I've heard of it, so we'll probably have to get, you know, more, more information from from Rudiga when he shows up.
 **Anand Somasundaram** 03:02 Yeah.
 **Greg Shriver** 03:03 Next week.
 **Anand Somasundaram** 03:03 I I agree.
@@ -52,12 +48,10 @@ Yeah.
 So I mean other than that I don't have anything new for this week. Do you have anything.
 **Anand Somasundaram** 03:29 No, I don't have anything else.
 **Greg Shriver** 03:31 Okay.
-**Anand Somasundaram** 03:32 Once Rodriga comes in. Probably I need to get more hands on and involved in some of this, because I have a
-a lot of prism experience.
+**Anand Somasundaram** 03:32 Once Rodriga comes in. Probably I need to get more hands on and involved in some of this, because I have a a lot of prism experience.
 **Greg Shriver** 03:42 Yeah.
 **Anand Somasundaram** 03:43 So I'll jump in and provide some value.
-**Greg Shriver** 03:47 Yeah, for sure. I mean, yeah, yeah, this is, this is all good. So
-so well, so we're 5 min in. I I don't know. Do you wanna call it a wrap for this week?
+**Greg Shriver** 03:47 Yeah, for sure. I mean, yeah, yeah, this is, this is all good. So so well, so we're 5 min in. I I don't know. Do you wanna call it a wrap for this week?
 **Anand Somasundaram** 04:01 Yeah. Sure. Are you? A long time, broadcom?
 **Greg Shriver** 04:05 I am. I've been well, I've been with the combined. I started out with Legion.
 So that was a long, long time ago, back in 94, and then Legion became Ca.
@@ -77,8 +71,7 @@ dB, 2 tools. Yeah, he's in a different value stream. So we they have us all spli
 **Anand Somasundaram** 05:09 But yeah, so how were you?
 **Greg Shriver** 05:11 Oh, for sure, for sure!
 And what did you do?
-**Anand Somasundaram** 05:16 I was a senior architect working on the dB. 2 tools
-to modernize those dB, 2 tool set right. It was from the Rcq. Rcms. Of the world.
+**Anand Somasundaram** 05:16 I was a senior architect working on the dB. 2 tools to modernize those dB, 2 tool set right. It was from the Rcq. Rcms. Of the world.
 **Greg Shriver** 05:30 Yeah.
 **Anand Somasundaram** 05:31 C plus plus.
 **Greg Shriver** 05:32 Oh, wow! Wow!

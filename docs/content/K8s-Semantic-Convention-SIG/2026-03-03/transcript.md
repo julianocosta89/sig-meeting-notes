@@ -10,22 +10,16 @@ Duration: 36 minutes
 **David Ashpole (dashpole)** 02:59 Thank you.
 **Dmitrii Anoshin** 03:18 Hi, everyone.
 **Christos Markou** 03:20 Hello.
-I guess we can start, have good…
-They didn't show far. I, I have only added one…
-item for today in the agenda, which is about the PR that I send to promote.
+I guess we can start, have good… They didn't show far. I, I have only added one… item for today in the agenda, which is about the PR that I send to promote.
 The… the Kubernetes attributes and contain… and container attributes to release candidate in semantic conventions.
 So, I saw that, this got approved… several approvals already, so thank you, folks.
 Yeah.
-If you… yeah, if anybody else wants to…
-have a look as well. I guess we should wait a little bit also from…
-the maintainers of Shamata conventions do.
+If you… yeah, if anybody else wants to… have a look as well. I guess we should wait a little bit also from… the maintainers of Shamata conventions do.
 Oh, GIF.
 another approval.
-But other than this, we should be good to go. I think after this, we will need to wait for, the KH attributes processor to actually, make use of them, and follow the,
-the migration plan that we have, which means that we will need to wait anyways, in the processor until we switch the feature gates from alpha to beta. And yeah.
+But other than this, we should be good to go. I think after this, we will need to wait for, the KH attributes processor to actually, make use of them, and follow the, the migration plan that we have, which means that we will need to wait anyways, in the processor until we switch the feature gates from alpha to beta. And yeah.
 this will allow us, after a while, to also consider changing from release counted to stable. But this will be a long process, so for now, we should be good.
-Yeah. Any concerns on this, or…
-Comments.
+Yeah. Any concerns on this, or… Comments.
 One weird, let's say, one issue is that, once… once cement conventions are released.
 we rely on the Go SDK to, generate the new Samad Conventions package.
 Until we are able to actually use those in… in the collector components, and I think there was an issue, la- this week.
@@ -33,8 +27,7 @@ and they had to revert this… the generation of this new package. Yeah, it's no
 Yeah, I'm not sure if we can do anything there.
 **David Ashpole (dashpole)** 05:58 I think the revert has been reverted, so if you're willing to depend on non-tagged versions, you should be able to still use them.
 **Christos Markou** 06:06 Oh, so it is on latest main, okay, good to know.
-**David Ashpole (dashpole)** 06:09 I don't know if the PR has been merged yet, I'll have to look, but the idea was to merge it right after the release, just because it breaks some resource detectors that people use to have a…
-If you generate the next version right after.
+**David Ashpole (dashpole)** 06:09 I don't know if the PR has been merged yet, I'll have to look, but the idea was to merge it right after the release, just because it breaks some resource detectors that people use to have a… If you generate the next version right after.
 Or right before.
 **Christos Markou** 06:24 release.
 So the problem was that it was merged before the planned release, and the release was, quite soon, right?
@@ -42,42 +35,25 @@ So the problem was that it was merged before the planned release, and the releas
 **Christos Markou** 06:35 Okay, okay.
 **David Ashpole (dashpole)** 06:37 So, yeah, that's it.
 **Christos Markou** 06:40 Good to know, thanks.
-Okay, yeah, that's all I had, then we can…
-Move on to the next one. Dimitri, you're next.
-**Dmitrii Anoshin** 06:51 Yeah, I just wanna ask for reviews, it's a work towards entity, and so, the first phrase of entity is setting
-energy references in the resource,
-So, like, instead of, like, just a bag of, different attributes from different entities, we at least now can…
-like, distinguish between which attributes are identified and which are not. And in mDataGen, we have this problem when, like, builder itself has a set of metrics and set of resource attributes, and you can mix them together as you want. So…
-now metadata YAML.
+Okay, yeah, that's all I had, then we can… Move on to the next one. Dimitri, you're next.
+**Dmitrii Anoshin** 06:51 Yeah, I just wanna ask for reviews, it's a work towards entity, and so, the first phrase of entity is setting energy references in the resource, So, like, instead of, like, just a bag of, different attributes from different entities, we at least now can… like, distinguish between which attributes are identified and which are not. And in mDataGen, we have this problem when, like, builder itself has a set of metrics and set of resource attributes, and you can mix them together as you want. So… now metadata YAML.
 has entities that you can define. They are already defined in Kubernetes Cluster Receiver, and the new metrics builder that I'm asking for review is the one that introduces new API which attaches to particular entities, so you will not be able to, let's say.
-emit container metrics with, I'm not talking to you, like, for example, replica said…
-Sorry, demand set metrics with a deployment entity, for example, because they are not tied together anymore.
+emit container metrics with, I'm not talking to you, like, for example, replica said… Sorry, demand set metrics with a deployment entity, for example, because they are not tied together anymore.
 So yeah, that's the metrics builder change, and I have the first PR in the core, and the second PR is just draft how it's gonna be applied to a cluster receiver.
-It's not… it's in draft for now, but you can see how it's gonna…
-How it'll look like. And this is, like, the first step.
+It's not… it's in draft for now, but you can see how it's gonna… How it'll look like. And this is, like, the first step.
 Later… further steps would be… Exposing the entity, kind of.
 reconfiguration to the user interface. So, for example, if users don't want to emit anything related to containers, any container metrics, they would disable container entity, essentially, in the user configuration. It will be also generated by mdata Gem.
 And, yeah, more receivers would need to be migrated to this model.
 And once it's merged.
 Kubernetes Cluster Receal will be producing those, like, additional entity references within the results. They, supported by Protobuff, and by PData, but, typically, they're still not being used by any other companies or backends, so we're, like, are gonna expand the support and the processes as well.
 One more thing is that MDataGen configuration interface is also being used in the processors.
-And I think, like, resource detection process, so… This work kind of…
-will affect those in some way. We'll need to figure out how to
-introduce the interface… entity-centric interface for the processor as well. Specifically for the source detection processor, it's pretty, very important, and Kubernetes Attributes Processor. And it's still to be designed.
-like, how's it gonna look like? And that's why I'm a bit hesitant about, like, promoting Kubernetes clusters here, because currently it has, like, all of this…
-As pod association and, like, Container Association, they are, still, like, significantly
-complicated first, and then they don't have any notion of entities. But once we introduce entities, like, all those
-concepts will be much cleaner, from my… point…
-And, did you make them…
+And I think, like, resource detection process, so… This work kind of… will affect those in some way. We'll need to figure out how to introduce the interface… entity-centric interface for the processor as well. Specifically for the source detection processor, it's pretty, very important, and Kubernetes Attributes Processor. And it's still to be designed.
+like, how's it gonna look like? And that's why I'm a bit hesitant about, like, promoting Kubernetes clusters here, because currently it has, like, all of this… As pod association and, like, Container Association, they are, still, like, significantly complicated first, and then they don't have any notion of entities. But once we introduce entities, like, all those concepts will be much cleaner, from my… point… And, did you make them…
 **Christos Markou** 10:32 processor, right? Not the cage cluster receiver.
 **Dmitrii Anoshin** 10:36 Yeah, at-risk process, sorry. So, the configuration interface will be, like, entity-centric, and it'll be cleaner, I believe.
-So, yeah, that's why I'm a bit hesitant in,
-right now to market as stable, because… I'm not saying that we have to have entities by… for the stabilization. I'm just, like, at least want to, like, figure out how it's gonna look like, and at least, like, providing, let's say, additional
-interface, and maybe, potentially, even after we stabilize Kubernetes attributes processor, we can
-deprecate the old one and move to the entities interface.
+So, yeah, that's why I'm a bit hesitant in, right now to market as stable, because… I'm not saying that we have to have entities by… for the stabilization. I'm just, like, at least want to, like, figure out how it's gonna look like, and at least, like, providing, let's say, additional interface, and maybe, potentially, even after we stabilize Kubernetes attributes processor, we can deprecate the old one and move to the entities interface.
 And then we, like, we can wait for 2.0 or whatever, and to remove the old interface.
-If you have any ideas, and…
-discuss it more, I'm happy to.
+If you have any ideas, and… discuss it more, I'm happy to.
 Thank you.
 Yeah, for now, if you can… if someone can help with the reviews, that would be perfect.
 So, yeah, if no feedback at this point, we can proceed, I guess, Steven?
@@ -87,145 +63,100 @@ So I just wanted… I noticed for these two metrics, K8 container restart count 
 the implementation on K8ClusterReceiver doesn't match the conventions.
 And I'm wondering how we can contribute to bringing these two in line.
 And I wondered if, in fact, kx.container.restart.count is, you know, the desired one, or if it should be restart underscore count, because I know that we've done that for some other metrics.
-So I wondered if,
-You know, the current conventions is the desired status, and it's the implementation that's behind.
+So I wondered if, You know, the current conventions is the desired status, and it's the implementation that's behind.
 I don't know if there was any… I couldn't find any existing work on these two metrics, but there are two that are of interest to me, and I wondered if anybody had any ideas.
-You know, are the conventions okay as they are? Should, should I suggest…
-Combining restart.count to restart underscore count, same condition status.
-Or should I just go ahead and take convention as it is, and, you know…
-Update the implementation and get its cluster receiver to match the current convention.
+You know, are the conventions okay as they are? Should, should I suggest… Combining restart.count to restart underscore count, same condition status.
+Or should I just go ahead and take convention as it is, and, you know… Update the implementation and get its cluster receiver to match the current convention.
 Daniel's got any… Opinions on that?
 **Christos Markou** 13:19 These conventions, I think they are, pretty… they're quite new, and they are not ported to the receiver implementation yet.
-We don't really know when this will happen, but usually, we have been avoiding doing individual changes
-And we would be trying to do all the changes, this kind of changes for semantic conventions, in one bot, using the feature gates and everything to avoid breaking the users multiple times. So, that's why you see this, divergence there.
+We don't really know when this will happen, but usually, we have been avoiding doing individual changes And we would be trying to do all the changes, this kind of changes for semantic conventions, in one bot, using the feature gates and everything to avoid breaking the users multiple times. So, that's why you see this, divergence there.
 **Stephen Lang** 14:00 Okay, so, I guess just wait and see on this one.
 **Christos Markou** 14:04 I think the way forward would be we leave the implementation as… the implementation as is now.
 And we… if we want to proceed with the metrics, we should start, stabilizing… not stabilizing, but, working on metric stability. And this is also what we shared with some ad conventions maintainers as part of the roadmap for this group.
 Yeah.
-**Stephen Lang** 14:33 Okay, so if I maybe, have a think about these…
-Conventions, and submit something around there.
+**Stephen Lang** 14:33 Okay, so if I maybe, have a think about these… Conventions, and submit something around there.
 **Christos Markou** 14:41 Yeah, that would be great, starting the conversation about, this, as Samantha mentioned, how this… what is missing, essentially, for this to, like, start proceeding through the stability levels and targeting stability at some point. It's not going to be something super fast, I can say.
 **Stephen Lang** 14:58 enlightenment.
 **Christos Markou** 14:58 At least that's how we should approach this.
 **Stephen Lang** 15:03 Okay, great, thank you.
 **Jina** 15:12 I just added an item.
-So,
-There is, a PR open right now, for adding Kubernetes persistent volume and persistent volume claim stuff to semantic convention, and,
-There is, like… I don't know. I guess I'm a bit stuck on how I show…
-the mapping between, kdes.persistentVolume and kdes.persistentVolumeClaim.
+So, There is, a PR open right now, for adding Kubernetes persistent volume and persistent volume claim stuff to semantic convention, and, There is, like… I don't know. I guess I'm a bit stuck on how I show… the mapping between, kdes.persistentVolume and kdes.persistentVolumeClaim.
 Maybe I should share my screen.
-Okay,
-Anyways, so… I guess… I think we've had some conversation internally also about Prometheus-style, you know, informatrics, where literally the metric value means nothing, it's really just the metadata on the metric which is, like, useful.
+Okay, Anyways, so… I guess… I think we've had some conversation internally also about Prometheus-style, you know, informatrics, where literally the metric value means nothing, it's really just the metadata on the metric which is, like, useful.
 And then I was looking at, like.
-recent discussions about this, and I found, like, entities…
-does, like, in the future entities, there'll be, like, there's supposed to be some sort of, like, way to extract infrastyle Prometheus metric directly from…
-Entity relations?
+recent discussions about this, and I found, like, entities… does, like, in the future entities, there'll be, like, there's supposed to be some sort of, like, way to extract infrastyle Prometheus metric directly from… Entity relations?
 And I'm wondering, like, to bridge the gap for now.
 would we be open to adding infer-style Prometheus metrics with the understanding that in the future, when entity can do this?
 You know, these… these metrics can then be dropped and moved to entity.
 **Dmitrii Anoshin** 17:04 We already do that, Gina, for any, several other metrics in Kubernetes cluster receiver, like, put phrase and everything. They even… if they don't represent relationships, they represent the state which is supposed to be passed within the entities, right?
-**Jina** 17:22 So, I think… The phase stuff that we do in Kubernetes actually has
-You know, the value of the metric is meaningful, because you are able to track when the phase change happens with the metric value.
+**Jina** 17:22 So, I think… The phase stuff that we do in Kubernetes actually has You know, the value of the metric is meaningful, because you are able to track when the phase change happens with the metric value.
 Whereas the infer style metric, the value is always just going to be 1. There is nothing you are tracking through the metric value itself.
-**David Ashpole (dashpole)** 17:45 I'd like to just clarify, like, the value 1 is a count of…
-things with that attribute set. Like, you can sum them to get the number of pods that are pending, for example. So…
+**David Ashpole (dashpole)** 17:45 I'd like to just clarify, like, the value 1 is a count of… things with that attribute set. Like, you can sum them to get the number of pods that are pending, for example. So…
 **Jina** 17:58 Usually people do…
 **David Ashpole (dashpole)** 18:00 Like, it is helpful to have a value 1.
 For, query purposes.
 **Jina** 18:05 Okay.
 But… I guess my distinction here is that the phase is actually tracking some change in state.
-Whereas what I… I'm trying to understand if we are okay with InfoStylemetrics is, like, it is literally…
-Going to tell us, like, the value's never going to change, and it'll only show up when that mapping does happen.
+Whereas what I… I'm trying to understand if we are okay with InfoStylemetrics is, like, it is literally… Going to tell us, like, the value's never going to change, and it'll only show up when that mapping does happen.
 Does that make sense? Because, like, there is a possibility a PVC and a PV become, like, unbound at some point, and the metric…
 **Dmitrii Anoshin** 18:37 So this entity event's supposed to, carry… supposed to provide entity lifecycle information as well. So, if anything changes, new entity state is being sent.
-and it's pretty much similar to what we do with the metric. So you can still, like, you… on every change, you send an event, so you'll be able to distinguish when something got… when something got changed. And here, it's still, like, relationship…
-Existing relationship and, like, type of the relation, whether it's bound, it's still kind of similar to the state.
-And as David said, you can also…
-Aggregate over those and say, like, how many…
-claims we have bound to volumes at all, or, like, particular volume.
+and it's pretty much similar to what we do with the metric. So you can still, like, you… on every change, you send an event, so you'll be able to distinguish when something got… when something got changed. And here, it's still, like, relationship… Existing relationship and, like, type of the relation, whether it's bound, it's still kind of similar to the state.
+And as David said, you can also… Aggregate over those and say, like, how many… claims we have bound to volumes at all, or, like, particular volume.
 Does that make sense?
 **Jina** 19:33 That won't work for this one.
-But what I'm understanding is it's okay if I start adding
-Like, metrics like that, where the value is not really changing or meaningful, but…
-Basically, we are okay with, like, info-style metrics from… state metrics, like…
-**Dmitrii Anoshin** 19:54 My point is that there is no significant difference between what we already have for the Kubernetes info metrics and the, like…
-relationship representation. So, for example, when we model these entity events, relationship is actually part of, like, similar to the entity description.
-like, both… status, or, like, it's a description. Pod…
-Association with a particular replica set, whether it's controlled by replica sets, is awesome.
+But what I'm understanding is it's okay if I start adding Like, metrics like that, where the value is not really changing or meaningful, but… Basically, we are okay with, like, info-style metrics from… state metrics, like…
+**Dmitrii Anoshin** 19:54 My point is that there is no significant difference between what we already have for the Kubernetes info metrics and the, like… relationship representation. So, for example, when we model these entity events, relationship is actually part of, like, similar to the entity description.
+like, both… status, or, like, it's a description. Pod… Association with a particular replica set, whether it's controlled by replica sets, is awesome.
 kind of a description. It doesn't… it doesn't identify entity itself.
 So, like, keeping that in mind, I think there is no… significant difference.
 **Jina** 20:40 Okay.
 Okay.
 **Dmitrii Anoshin** 20:41 I'm happy to discuss if any others have other opinions.
-**Christos Markou** 20:51 I think one tricky part there is, how to handle, let's say, within the same time series, you should always emit, the metric, even if that, that is zero, to avoid having missing,
-breaking the time series, essentially. I don't remember exactly the terminology there, but I think in some other similar metrics, there was this requirement that you should always emit this, even if that's zero.
+**Christos Markou** 20:51 I think one tricky part there is, how to handle, let's say, within the same time series, you should always emit, the metric, even if that, that is zero, to avoid having missing, breaking the time series, essentially. I don't remember exactly the terminology there, but I think in some other similar metrics, there was this requirement that you should always emit this, even if that's zero.
 So this is something that, we should also take into account about this.
-**Jina** 21:29 I think… but that's my issue, I…
-what I'm trying to, like, do is… Indicate through a metric that
-You know, these two things, persistent volume and a persistent volume claim, at some point have bound.
-And…
-I mean, I'm not gonna… we cannot send, like, zero value for all combinations of PVCs not bound and PV not bound, right? So…
-Also, at the same time, it feels like I cannot suddenly just add extra data point attributes to something I was already sending. I just changed the time series altogether.
+**Jina** 21:29 I think… but that's my issue, I… what I'm trying to, like, do is… Indicate through a metric that You know, these two things, persistent volume and a persistent volume claim, at some point have bound.
+And… I mean, I'm not gonna… we cannot send, like, zero value for all combinations of PVCs not bound and PV not bound, right? So… Also, at the same time, it feels like I cannot suddenly just add extra data point attributes to something I was already sending. I just changed the time series altogether.
 **David Ashpole (dashpole)** 22:09 I think for the zero-valued ones, that's when you have a fixed set of… like, that's more akin to the Prometheus state set, so if you have a fixed set of states…
 **Jina** 22:18 Yeah. Like.
 **David Ashpole (dashpole)** 22:19 bound or pending, I don't remember what they are, right? Then you could have 1 for pending, 0 for bound.
 for some time, and then emit 0 for pending, 1 for bound when it switches, right? So if you have a fixed set of states, then you can use the state set approach.
-And that can work just fine. But then it… then it wouldn't be, like, an info-style metric, it would be a state-set style metric, if you wanna…
-I guess.
+And that can work just fine. But then it… then it wouldn't be, like, an info-style metric, it would be a state-set style metric, if you wanna… I guess.
 **Jina** 22:45 Yeah, so.
 **David Ashpole (dashpole)** 22:45 They're technically, like, a little bit different in Prometheus.
-**Jina** 22:49 So my current PR has that state-style metric to show the change in phase from available to bound, or release, or whatever. My…
-current issue is that, you know, when it does get bound, it gets bound to, another entity.
+**Jina** 22:49 So my current PR has that state-style metric to show the change in phase from available to bound, or release, or whatever. My… current issue is that, you know, when it does get bound, it gets bound to, another entity.
 **Dmitrii Anoshin** 23:07 And I cannot, like…
-**Jina** 23:09 change the…
-identity of the time series in the middle by adding extra data point attributes. So I have to now put it outside, but when I put it outside, it becomes like another metric, which is going to be literally, you know, okay, this binding has happened, and now this metric is omitted to show that these two are now bound.
-**Dmitrii Anoshin** 23:31 Yeah, I guess, you know, there was one attribute with, Like, defined set of…
-values, enum style, and another one is open-ended attribute value set. And we already have those kind of attributes, and, like, I don't remember exactly, but…
-for the nodes, node condition, probably. The condition can be defined by cloud providers or anything like that. Anyway, it's… I'm sure there are attributes that are not…
-**Jina** 24:02 So, I looked… yeah, I looked exactly for this, right? What is happening is, for condition type metrics, is we are always starting. Like, we are going to read all the conditions which are…
-and send whatever value it is. So, from the beginning, the condition is there.
+**Jina** 23:09 change the… identity of the time series in the middle by adding extra data point attributes. So I have to now put it outside, but when I put it outside, it becomes like another metric, which is going to be literally, you know, okay, this binding has happened, and now this metric is omitted to show that these two are now bound.
+**Dmitrii Anoshin** 23:31 Yeah, I guess, you know, there was one attribute with, Like, defined set of… values, enum style, and another one is open-ended attribute value set. And we already have those kind of attributes, and, like, I don't remember exactly, but… for the nodes, node condition, probably. The condition can be defined by cloud providers or anything like that. Anyway, it's… I'm sure there are attributes that are not…
+**Jina** 24:02 So, I looked… yeah, I looked exactly for this, right? What is happening is, for condition type metrics, is we are always starting. Like, we are going to read all the conditions which are… and send whatever value it is. So, from the beginning, the condition is there.
 Our current struggle is that this is not from the beginning of these two entities' life cycle, in the middle of something happening.
 **Dmitrii Anoshin** 24:26 I understand, but still, like, I'm pretty sure in collector country, we do have attributes that are not enums, that they have open-ended set. I'm, I remember something, and it's okay to have them.
 I don't believe we… we can actually make, like, with this new reaggregation feature that we have, we don't… we haven't applied it to Kubernetes Cluster Receiver yet.
-we should do that, and in that case, we can make this attribute opt-in. It will not be enabled by default, and by default, you would always have, like,
-non-interrupted MTASs. But if you enable that attribute, that open-ended attribute.
+we should do that, and in that case, we can make this attribute opt-in. It will not be enabled by default, and by default, you would always have, like, non-interrupted MTASs. But if you enable that attribute, that open-ended attribute.
 you'll get additional MTSs, and they can appear and disappear based on the presence of that related entity.
 Does make sense?
 If we… if we really worry about, like, number of MTSs being, like, strict and… Constant over time.
-**Jina** 25:35 Okay, but, I mean…
-I guess what you're suggesting will still be, like, basically, it's okay if I add this metric, which is
-You know, literally going to show up only under certain condition, and it'll have that value 1.
+**Jina** 25:35 Okay, but, I mean… I guess what you're suggesting will still be, like, basically, it's okay if I add this metric, which is You know, literally going to show up only under certain condition, and it'll have that value 1.
 **Dmitrii Anoshin** 25:52 Why metric? Why do we have to make it a separate metric? My point is that we can have the same metric, and it'll be attribute.
-**Jina** 25:59 I don't think that should be the way we should go about it. I feel like that's fundamentally changing…
-the time series. And I have not seen that happen. Like, okay, I guess, like, my question now is.
-Do we expect data point attributes to suddenly show up on a…
-time series, in the middle of the time series, like, start… because the time series changed in most backends at this point.
+**Jina** 25:59 I don't think that should be the way we should go about it. I feel like that's fundamentally changing… the time series. And I have not seen that happen. Like, okay, I guess, like, my question now is.
+Do we expect data point attributes to suddenly show up on a… time series, in the middle of the time series, like, start… because the time series changed in most backends at this point.
 **Dmitrii Anoshin** 26:28 Yeah, and I don't… I personally don't see a problem in that, and especially if we make it opt-in.
 That's, like, not gonna change anyway.
 **David Ashpole (dashpole)** 26:40 This… we do use this pattern for, like, error.type pretty frequently.
 Or if you're, like, successfully exporting using OTLP exporter, you'll get a bunch of self-observability metrics that just have, like, status code 200.
 But then if you get a status code 400 or something, you might also get an error.type attribute attached.
-Right, so it's…
-sometimes we have those sort of conditional attributes. It's kind of weird from, like, Prometheus' point of view, so,
-I don't know if your backend is more Prometheus-esque, but, it's like, it is a thing that…
-for better or worse, that OpenTelemetry, I think, like, does in some cases.
+Right, so it's… sometimes we have those sort of conditional attributes. It's kind of weird from, like, Prometheus' point of view, so, I don't know if your backend is more Prometheus-esque, but, it's like, it is a thing that… for better or worse, that OpenTelemetry, I think, like, does in some cases.
 **Jina** 27:24 Okay, because, like, I'm worried that adding it in the middle is, like, For most backends, at least.
 for Prometheus and Abek in Italy. You know, the time series had changed, and you can't use that same time series to actually track when it went from 0 bound to 1 bound.
 **David Ashpole (dashpole)** 27:44 Really?
 **Jina** 27:45 I mean…
 **David Ashpole (dashpole)** 27:47 Is this pizza?
-**Jina** 27:49 You could basically do some aggregation or some or something, I guess, but it's not the same time series in…
-At least in our backend. I don't know about…
+**Jina** 27:49 You could basically do some aggregation or some or something, I guess, but it's not the same time series in… At least in our backend. I don't know about…
 **David Ashpole (dashpole)** 27:58 If it… if it goes from… Like, pending to bound.
 Like, then it's definitely not the same time series, right? No matter what.
 Because the pending…
-**Jina** 28:08 So, pending and bound are two different time series already, because we are…
-A time series per, state it can be in, per phase it can be in.
-And at some point, it'll go from, let's say, available to bound, and there will be, like, two metrics coming in. So, the available went from 1 to 0, and then bound, which I want the same metric, like, same MTS ID to go from 0 to 1, has now…
-done this thing where it went from, you know, it went from, like, MTS1 sending 0 to MTS…
-Two, sending one with new data point attributes.
-**David Ashpole (dashpole)** 28:48 It…
-Have you looked at what CubeState Metrics does for this? Do they have… I know it's a pretty common thing to have sometimes one state set.
+**Jina** 28:08 So, pending and bound are two different time series already, because we are… A time series per, state it can be in, per phase it can be in.
+And at some point, it'll go from, let's say, available to bound, and there will be, like, two metrics coming in. So, the available went from 1 to 0, and then bound, which I want the same metric, like, same MTS ID to go from 0 to 1, has now… done this thing where it went from, you know, it went from, like, MTS1 sending 0 to MTS… Two, sending one with new data point attributes.
+**David Ashpole (dashpole)** 28:48 It… Have you looked at what CubeState Metrics does for this? Do they have… I know it's a pretty common thing to have sometimes one state set.
 **Jina** 28:57 And…
 **David Ashpole (dashpole)** 28:58 One infometric, where the state set is just for tracking states, and the infometric is, like.
 a giant bucket of metadata. I don't know if that's the other option we should look at here.
@@ -236,8 +167,7 @@ Because, like, I know we have tried pushing back on those infostile metrics befo
 **Jina** 29:45 Yeah, the presence of that metric is meaningful in the sense that this ping exists.
 But, yeah.
 **Dmitrii Anoshin** 29:53 Jenna, I don't understand how introducing a new metric will change the… would resolve the problem of MTS appearing in the middle… in the middle of the lifetime. It's still gonna be the same, right?
-**Jina** 30:06 So, I think it's okay if the…
-Metric just shows up when it gets bound.
+**Jina** 30:06 So, I think it's okay if the… Metric just shows up when it gets bound.
 Good luck.
 Yeah, I don't have an issue with that. Like, I don't have an issue with making this infestile metric at all, I just want to know that we are okay with it.
 **Dmitrii Anoshin** 30:23 Why can't we make that attribute, like, have one metric, which will be bound and, like, not bound, or whatever, and then have an opt-in attribute for, like, which… for the relationship?
@@ -245,62 +175,45 @@ And if users want that information, which, like, volume it's bound to, they enab
 **David Ashpole (dashpole)** 30:55 I think, so if… I'll try and explain, and we'll see if this makes sense, but basically.
 The whole promise of the state-set style metrics, where you have zeros and ones representing all the states.
 Is that you have a bunch of continuous time series, so you can point at any one of them and, like.
-query… is this zero right now, for example? Like, am I…
-am I not bound, is a question you might want to answer. So you can query for the bound series and get zero back, right?
+query… is this zero right now, for example? Like, am I… am I not bound, is a question you might want to answer. So you can query for the bound series and get zero back, right?
 But if… if what we're saying is that the bound series is going to have additional attributes on it.
-Then it gets harder to query for it, because it… when it's zero, it'll show up without
-a pod that it's bound to, right? Or whatever it's bound to, right? And then when it switches to one, the series changes. So it's not that you have all the states represented as zeros and ones, or, like, all the series represented as zeros and ones.
-It's that you have… When something switches from 0 to 1,
-it actually changes and becomes a new series when it gets the one value, so you don't get this, like… you lose the property that you're looking for of the state set where all the states are represented, like, all the series are represented and are continuous, right? So that's the, I think, the…
-the reason why at least CubeStatemetrics does things the way that they usually do.
+Then it gets harder to query for it, because it… when it's zero, it'll show up without a pod that it's bound to, right? Or whatever it's bound to, right? And then when it switches to one, the series changes. So it's not that you have all the states represented as zeros and ones, or, like, all the series represented as zeros and ones.
+It's that you have… When something switches from 0 to 1, it actually changes and becomes a new series when it gets the one value, so you don't get this, like… you lose the property that you're looking for of the state set where all the states are represented, like, all the series are represented and are continuous, right? So that's the, I think, the… the reason why at least CubeStatemetrics does things the way that they usually do.
 **Dmitrii Anoshin** 32:22 Okay, but if we keep that attribute optional, that's not gonna change. What you described would work as is.
-**David Ashpole (dashpole)** 32:29 It… well, so the… so the ideal thing that we would want, like, let's say that we have
-a PVC, and we know that it's going to be bound to… sorry, I forget how the binding works, it's been, like.
+**David Ashpole (dashpole)** 32:29 It… well, so the… so the ideal thing that we would want, like, let's say that we have a PVC, and we know that it's going to be bound to… sorry, I forget how the binding works, it's been, like.
 four years. What is a PVC bound? No, the PVC is the thing that binds.
 **Jina** 32:46 Probably.
 **David Ashpole (dashpole)** 32:46 PV to a pod, right?
 **Jina** 32:48 Yeah.
 **David Ashpole (dashpole)** 32:49 Okay.
 And it starts out in a state that's essentially pending, or, like, unbound.
-So it's unbound, and then… you would have… you want to represent all your states, right? So you have…
-Time series for…
-Unbound, right? And you have a time series for bound, and it starts out as 1 for unbound and 0 for bound.
+So it's unbound, and then… you would have… you want to represent all your states, right? So you have… Time series for… Unbound, right? And you have a time series for bound, and it starts out as 1 for unbound and 0 for bound.
 But ideally, That time series that's currently zero for bound.
 Should have the same set of labels that it's going to have once it transitions to one.
 So…
 **Dmitrii Anoshin** 33:24 Yeah.
 **David Ashpole (dashpole)** 33:24 In order to properly implement the metric.
-You would actually want
-to be able to see the future and add the pod and the persistent volume that it's going to be bound to in the future, but have it be zero currently, right? So you see how there's, like.
-**Dmitrii Anoshin** 33:39 Yeah, I understand that, but if…
-But it'll be the same if we… if we don't emit that attribute at all.
+You would actually want to be able to see the future and add the pod and the persistent volume that it's going to be bound to in the future, but have it be zero currently, right? So you see how there's, like.
+**Dmitrii Anoshin** 33:39 Yeah, I understand that, but if… But it'll be the same if we… if we don't emit that attribute at all.
 By default.
 **David Ashpole (dashpole)** 33:47 Yes, right. But I guess then…
 **Jina** 33:53 I… I guess I just want to give…
 **David Ashpole (dashpole)** 33:55 Sorry.
-**Jina** 33:56 consumers an actually usable option. I feel like if it is done in this manner, even with the knowledge that this is going to change your
-MTS in the middle somewhere, and you have to do some extra weird aggregation to make sure your dashboards work correctly.
-I… I feel like, why should we do this if…
-You know, if we are open to the infer style metric.
+**Jina** 33:56 consumers an actually usable option. I feel like if it is done in this manner, even with the knowledge that this is going to change your MTS in the middle somewhere, and you have to do some extra weird aggregation to make sure your dashboards work correctly.
+I… I feel like, why should we do this if… You know, if we are open to the infer style metric.
 Or if we… like, if we have a better option, why are we… why do this, is my, I guess, question.
 **Dmitrii Anoshin** 34:30 I'm not sure why importing would be a better option, that's my…
 **David Ashpole (dashpole)** 34:33 So…
 **Dmitrii Anoshin** 34:34 So basically.
-**David Ashpole (dashpole)** 34:35 If I can summarize, it's like…
-If you turn on the thing that gives you the extra attributes.
+**David Ashpole (dashpole)** 34:35 If I can summarize, it's like… If you turn on the thing that gives you the extra attributes.
 **Dmitrii Anoshin** 34:41 Yeah.
 **David Ashpole (dashpole)** 34:42 Then, the properties that you're looking for from the state set, essentially, like, having all the zeros and ones.
-like, breaks, so you… you're basically…
-You would be giving users the option of having one
-or the other. You can either…
-Like, have all the states represented properly. Or you can get
-The information about who's bound to who. But because you have to toggle this thing on and off, you have to choose one or the other, is essentially the issue.
+like, breaks, so you… you're basically… You would be giving users the option of having one or the other. You can either… Like, have all the states represented properly. Or you can get The information about who's bound to who. But because you have to toggle this thing on and off, you have to choose one or the other, is essentially the issue.
 **Dmitrii Anoshin** 35:11 Okay, I think I don't understand why it breaks, because the aggregation on the backend would actually take care of that additional attribute if your query doesn't care about it.
 That's my understanding, but I might be wrong, I don't understand how additional attribute breaks the query.
 for the query that doesn't, like, that uses some over that attribute, for example, or, like, some… if you specify particular attributes that you're looking for, and you, let's say, if it's, like, counter, right, you sum by default everything else.
 It should work as this, even if there are additional attributors present.
-**Jina** 35:50 okay, so let's… I'll talk specifically about our backend, and then…
-let's say I send an MTS, like, in my chart, I have, like, the… the phase metric, right? And I sum it by the PVC name.
+**Jina** 35:50 okay, so let's… I'll talk specifically about our backend, and then… let's say I send an MTS, like, in my chart, I have, like, the… the phase metric, right? And I sum it by the PVC name.
 **Dmitrii Anoshin** 36:10 Yeah.
 **Jina** 36:10 for the bound phase only, and I have bought some on the, you know, persistent volume name. So, this chart will only show me once the binding actually happens. It'll never show me any unbound, like, PVC, which will stay in non-bound state.
 Does that… does that make sense?

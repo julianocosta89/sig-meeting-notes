@@ -22,33 +22,21 @@ Of course. But I can't share my screen because I joined this meeting with my pho
 **Trask Stalnaker** 02:17 No problem. I'll share.
 **Minghui Zhang** 02:19 Yeah, so, let me open this link.
 Give me a second.
-So basically, we… I want to, discuss about the…
-the PR, you, you could just, yes.
+So basically, we… I want to, discuss about the… the PR, you, you could just, yes.
 Yeah.
 Basically, we just have, concern about the complex attributes that we have, discussed before.
-I, I tried to use the, extend data instrument, no, extend data to the provider to capture the, complex attributes, but I think it's not a good idea because, we have two,
-Modify many, many scenes in our, in our codes, and it looks like, Not… not so cheap.
-So, sorry, so let me, give a, background about that. In the hotel 1.37,
-We have to capture the input and output messages of the generative AI instrumentation in span or in
-Log, and it depends on people's, users, users' config… config… configs.
+I, I tried to use the, extend data instrument, no, extend data to the provider to capture the, complex attributes, but I think it's not a good idea because, we have two, Modify many, many scenes in our, in our codes, and it looks like, Not… not so cheap.
+So, sorry, so let me, give a, background about that. In the hotel 1.37, We have to capture the input and output messages of the generative AI instrumentation in span or in Log, and it depends on people's, users, users' config… config… configs.
 If they want to, capture them.
-in, span. So we just, we just record them, as, string, or,
-structure, structure object in the attribute. But now we can't… we are not support… supporting for the, com… Com…
-complex attributes yet. So we, how to, capture them as, as a JSON string.
+in, span. So we just, we just record them, as, string, or, structure, structure object in the attribute. But now we can't… we are not support… supporting for the, com… Com… complex attributes yet. So we, how to, capture them as, as a JSON string.
 In span. And if people want to capture them in log, we have… we could send the.
-We could emit the, input and output messages, in log with, complex attributes, and it's, kind of, easier than,
-capture them in span, and that's the background. So, now I want to solve, resolve the, problem to capture them in span in a JSON stream. And that means I have to,
-In my before, solution, I had to, import the, Jackson library to…
-To finish the serialization while we, set the attribute to the spec.
-And that's our, solution. But this solution have a,
-have a shortcut. We have to import an external library, and it's not allowable… it's not allowed by instrument… instrumentation API module, and that's the problem.
-**Trask Stalnaker** 06:10 Okay, so… The… let's see, we have,
-So… Eventually, you're going to need to store them as complex attributes, right?
+We could emit the, input and output messages, in log with, complex attributes, and it's, kind of, easier than, capture them in span, and that's the background. So, now I want to solve, resolve the, problem to capture them in span in a JSON stream. And that means I have to, In my before, solution, I had to, import the, Jackson library to… To finish the serialization while we, set the attribute to the spec.
+And that's our, solution. But this solution have a, have a shortcut. We have to import an external library, and it's not allowable… it's not allowed by instrument… instrumentation API module, and that's the problem.
+**Trask Stalnaker** 06:10 Okay, so… The… let's see, we have, So… Eventually, you're going to need to store them as complex attributes, right?
 **Minghui Zhang** 06:34 Yeah.
 **Trask Stalnaker** 06:35 Based on the semantic conventions.
 This PR, that adds the incubating implementation, so this supports complex attributes on, spans and logs.
-So this… This has been merged and will be in…
-The release at the end of next week.
+So this… This has been merged and will be in… The release at the end of next week.
 **Minghui Zhang** 07:02 Oh, okay, I got that. So, at the end of next week, we could… so when will you replace the SDK library in the newest version in Java Instrumentations?
 **Trask Stalnaker** 07:21 Generally within a couple of days after… The release, the core release.
 **Minghui Zhang** 07:31 Okay, so… Pretty much.
@@ -63,25 +51,18 @@ If you want to get your PR ready for once that lands.
 The first week of the month, and then the instrumentation repo will release the week after that.
 So…
 **Minghui Zhang** 08:31 Yeah.
-**Trask Stalnaker** 08:32 It's a… are you trying to get this into the next… Instrumentation release… Or is it…
-Or do you care if it goes for a month after that?
+**Trask Stalnaker** 08:32 It's a… are you trying to get this into the next… Instrumentation release… Or is it… Or do you care if it goes for a month after that?
 **Minghui Zhang** 08:46 Yeah, we, we sure. Yeah, sure, we want to merge it before the next release, Okay.
-**Trask Stalnaker** 08:53 So, so then I would, Just locally build… This… We have a snapshot
-Repo, but it's actually… we just… it's not working right now.
+**Trask Stalnaker** 08:53 So, so then I would, Just locally build… This… We have a snapshot Repo, but it's actually… we just… it's not working right now.
 It's failing our snapshot builds.
 So, what you'll need to do is build this locally.
 And then… Yeah.
 Yeah.
 **Minghui Zhang** 09:28 It's not a problem. I will do that. Cool.
-**Trask Stalnaker** 09:31 Yeah, and you can get… you can basically do the PR, you know, and it's… Gonna probably be…
-Like, just ignore the failures, but you can get it ready and… and… presumably reviewed…
+**Trask Stalnaker** 09:31 Yeah, and you can get… you can basically do the PR, you know, and it's… Gonna probably be… Like, just ignore the failures, but you can get it ready and… and… presumably reviewed…
 **Minghui Zhang** 09:51 Yes, looks like that the figures is not… import by my PR.
 **Trask Stalnaker** 10:00 Oh, okay, yeah, what are… I didn't see these, oh, yeah, yeah.
-**Minghui Zhang** 10:08 sorry, I have a concern about the…
-the complex attributes PR, food. I want to confirm that, could we use the…
-extended attributes, or create extended attributes in to our,
-normal tracer? I mean, could we just set attribute… set extended attributes into the normal span
-Rather than extended span.
+**Minghui Zhang** 10:08 sorry, I have a concern about the… the complex attributes PR, food. I want to confirm that, could we use the… extended attributes, or create extended attributes in to our, normal tracer? I mean, could we just set attribute… set extended attributes into the normal span Rather than extended span.
 **Trask Stalnaker** 10:51 You will be able to, after January 15th.
 Oh, yeah. We're not allowed to stabilize it until then.
 When… when we mark… when it's stable, then we will put it, on the normal tracer.
@@ -89,60 +70,40 @@ And the normal logger.
 **Minghui Zhang** 11:15 Yes, but I think that's, that's a problem.
 is. So, if we… we have, so now we have, we have to, set the… set the extended attributes into, extended span, right?
 **Trask Stalnaker** 11:37 Right.
-**Minghui Zhang** 11:39 That… that means we have… we couldn't, I mean, we couldn't emit the span…
-leads, that was, instrument in Java instrumentation, right?
+**Minghui Zhang** 11:39 That… that means we have… we couldn't, I mean, we couldn't emit the span… leads, that was, instrument in Java instrumentation, right?
 **Trask Stalnaker** 11:56 I… you should be able to.
 I'll show you an example. Like, we are using, Extended Log Record Builder.
 In multiple places.
 **Minghui Zhang** 12:12 Yes?
 Oh, I know.
 That means I have to, create, something like an extended twister provider in, our instrumentation, right?
-**Trask Stalnaker** 12:32 No, it's already… you should be able to, so if we look… The tests here…
-Let me find an example…
-Oh, that's not a good example, let's find out.
-Excited, I will share…
-So, you just get your normal logger provider and your normal logger.
+**Trask Stalnaker** 12:32 No, it's already… you should be able to, so if we look… The tests here… Let me find an example… Oh, that's not a good example, let's find out.
+Excited, I will share… So, you just get your normal logger provider and your normal logger.
 and you call log record builder, so you… and then you can cast it to this.
 Same first.
 **Minghui Zhang** 13:54 I mean, how could I, emit the attributes if we want to set them into span?
-**Trask Stalnaker** 14:06 Yeah, so Span should… let's see, we've got…
-So, extended… What did we do? I forget.
-So…
-Yeah, that's a… maybe I might have missed… Something… maybe I only…
-Added this, let's see, log record…
-We've got extended attributes. I see. I think…
-Okay, good point. So this… only… adds… that to extended…
-attributes, it only adds it to the logger. Okay.
+**Trask Stalnaker** 14:06 Yeah, so Span should… let's see, we've got… So, extended… What did we do? I forget.
+So… Yeah, that's a… maybe I might have missed… Something… maybe I only… Added this, let's see, log record… We've got extended attributes. I see. I think… Okay, good point. So this… only… adds… that to extended… attributes, it only adds it to the logger. Okay.
 **Minghui Zhang** 15:52 Yes.
 **Trask Stalnaker** 15:55 Okay.
 Okay.
-Let's see… I know that…
-Jack was kind of hoping not to create a bunch of incubating stuff, unnecessarily.
-But I think this is a good reason. I think that if we add… That adding it to…
-Bands will unlock this.
-So… and we do want usage and user feedback So…
-Will you do me a favor, and will you open an issue Here.
+Let's see… I know that… Jack was kind of hoping not to create a bunch of incubating stuff, unnecessarily.
+But I think this is a good reason. I think that if we add… That adding it to… Bands will unlock this.
+So… and we do want usage and user feedback So… Will you do me a favor, and will you open an issue Here.
 **Minghui Zhang** 16:49 He asked?
 **Trask Stalnaker** 16:50 about extended attribute support on spans, and mentioned that you need it for this PR.
 **Minghui Zhang** 17:01 Of course.
-**Trask Stalnaker** 17:02 And then I will… yeah, and then I will… I will, I will take a look at that and,
-should be able to get that into this upcoming release, because we do… I think this would be a good thing.
+**Trask Stalnaker** 17:02 And then I will… yeah, and then I will… I will, I will take a look at that and, should be able to get that into this upcoming release, because we do… I think this would be a good thing.
 Good usage and feedback for us.
 **Minghui Zhang** 17:22 Yes. Cool.
-**Trask Stalnaker** 17:24 Thank you for… thank you for explaining that to me. I was… I completely… I don't know how I'm…
-Forgot or missed that.
-**Minghui Zhang** 17:37 Yes, thanks, thanks for your help,
-That… and that's important for me.
-What more I want to, I want to, give a, give an additional point is that, if, I, I, I see…
-If we just, allow… allowed to, capture the complex attributes in span, we, even do… we… we will come to do better.
+**Trask Stalnaker** 17:24 Thank you for… thank you for explaining that to me. I was… I completely… I don't know how I'm… Forgot or missed that.
+**Minghui Zhang** 17:37 Yes, thanks, thanks for your help, That… and that's important for me.
+What more I want to, I want to, give a, give an additional point is that, if, I, I, I see… If we just, allow… allowed to, capture the complex attributes in span, we, even do… we… we will come to do better.
 Before our normal choice provider or our normal spend, allowed the extended attributes to be set.
-Because our spend is created by Instrumenter, and the chaser is,
-great, or is created in the generalization of the Java agent. So we couldn't… we can't modify it into the extended tracer.
+Because our spend is created by Instrumenter, and the chaser is, great, or is created in the generalization of the Java agent. So we couldn't… we can't modify it into the extended tracer.
 And that means we couldn't…
-**Trask Stalnaker** 18:53 So, it will be, it will be an extended,
-Logger and extended tracer, no matter what.
-So, if you look at,
-It's… if the SDK sees the incubator on the path, it will build the extended version automatically.
+**Trask Stalnaker** 18:53 So, it will be, it will be an extended, Logger and extended tracer, no matter what.
+So, if you look at, It's… if the SDK sees the incubator on the path, it will build the extended version automatically.
 **Minghui Zhang** 19:24 Mmm… do mean that if the, for the Java agent, when we, neutralization.
 When we're… when we utilize it… initializing it.
 The feature will be the extended feature.
@@ -160,15 +121,12 @@ But this is always… in the Java agent, this is always going to be true.
 **Trask Stalnaker** 20:21 Yeah.
 **Minghui Zhang** 20:21 Thank you.
 **Trask Stalnaker** 20:22 Yeah.
-**Minghui Zhang** 20:24 So let me have a try. I will create a… I will send an issue in the Java repository, and I will do some…
-Have, have, have, have a try about the… With a snapshot.
+**Minghui Zhang** 20:24 So let me have a try. I will create a… I will send an issue in the Java repository, and I will do some… Have, have, have, have a try about the… With a snapshot.
 **Trask Stalnaker** 20:42 Yeah, try it out with the log… on the log side.
 And I will work on getting the span side, To the same place.
 **Minghui Zhang** 20:53 Yeah, cool, thank you very much.
 **Trask Stalnaker** 20:54 Yeah.
-I do need to drop in 10 minutes. Huxing…
-no, no, sorry,
-Do we have Zooming? No, we don't have zooming.
+I do need to drop in 10 minutes. Huxing… no, no, sorry, Do we have Zooming? No, we don't have zooming.
 Anybody want… To chat about this topic.
 **Huxing Zhang** 21:24 I think Sumi is not in the meeting. Maybe we can discuss this next time.
 **Trask Stalnaker** 21:34 Sure.
@@ -186,8 +144,7 @@ They don't know about each other, but let's say that they trace all the messages
 And now, let's say that there is one consumer that consumes all the messages of all those producers that don't know each other, and they apply some business logic. Here, like, is the green part, which is, let's say, like, they do, like, an uppercase, business transformation. They text the messages, just do the uppercase operation.
 And then it inserts it inside, like, a database. Let's say, like, for example, Redis, like, for the… using the latest API.
 or anything from the incubate… or from the OpenTelemetry instrumentation, like Cassandra, etc. And this flow will work as of today, meaning that from this, we will be able to see the trace.
-From all those producers, which they have their own trace, and they don't know about each other, and the consumer who takes all of them is able to create those trace and this path
-all the way from the producers, all the way from consuming, as well as inserting to the database. And we can see, like, even, like, the insert statement, the SQL, or the insert operation.
+From all those producers, which they have their own trace, and they don't know about each other, and the consumer who takes all of them is able to create those trace and this path all the way from the producers, all the way from consuming, as well as inserting to the database. And we can see, like, even, like, the insert statement, the SQL, or the insert operation.
 And that is very clear, like, we can see those. Unfortunately, if the problem is, if we show this to any, like, database expert, they will say, this is not… this is very beautiful in a tracing point of view.
 But this is not good in terms of the database point of view, because you are making one insert, or, like, one connection, or whatever, and one write operation into the database. So, they obviously ask the producer to, at some point, batch all those messages, and write one insert statement.
 So, in which case, and which is absolutely possible from the code point of view, but in terms of the design, and in terms of the tracing and the observability, and this is where we'd like to ask you guys for advice.
@@ -201,11 +158,9 @@ And if you look at the messaging, there's… if you look at the messaging semant
 Is the one place where… Spam links are used heavily.
 Already.
 And, they're specifically because of the, kind of batching nature of a lot of messaging systems.
-So… I think you'll find…
-Kind of the modeling there, but briefly…
+So… I think you'll find… Kind of the modeling there, but briefly…
 **patrickpok** 25:33 Let me read.
-**Trask Stalnaker** 25:35 Briefly, what I would do is the insert batch span, Ideally, would have spanned links, to the other…
-The places where it kind of got merged in from, so it can have a one-to-many relationship there.
+**Trask Stalnaker** 25:35 Briefly, what I would do is the insert batch span, Ideally, would have spanned links, to the other… The places where it kind of got merged in from, so it can have a one-to-many relationship there.
 **patrickpok** 25:54 Okay, okay. And the trace of this batch insert itself will be a new trace, but it has the links to all the one-too-many messages, am I correct?
 **Trask Stalnaker** 26:07 You could model it that way, yeah, you could, yeah.
 Yeah, if you look at the messaging, that's sort of what is happening with messaging batches also.

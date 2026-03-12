@@ -14,25 +14,13 @@ Duration: 38 minutes
 **Pablo Baeyens** 04:23 Okay, I can… Low from the…
 **neil yashinsky** 04:29 ironically, if test audio is failing, they won't know they're about to be kicked until they're kicked, but, you know, they'll figure it out hopefully soon enough. That test failed.
 **Pablo Baeyens** 04:42 I'll take care of it.
-Feel free to start, I may need to,
-go away and log in with the Autel account.
-**Christos Markou** 05:22 Okay, sorry, maybe I can…
-Can share my screen, if that helps, because,
-two items are from my side. So… Yeah, I tried to…
-check out what's the, what's the situation, and what we have open, or how we could proceed with the work, both on the semantic, but also on the process… on the…
-cost metric receiver. So, probably you saw already, my comments, and…
-Yeah, just to confirm this, with this group,
-Yeah, I saw that Brydon commented here as well.
-Seems that we have agreement. Anything that we would like to discuss, further with, yeah, regarding this, or…
-any concern, or should we just comment that, we're fine with this approach, and we can maybe, try an implementation to change M.Gen and see how this will work out?
+Feel free to start, I may need to, go away and log in with the Autel account.
+**Christos Markou** 05:22 Okay, sorry, maybe I can… Can share my screen, if that helps, because, two items are from my side. So… Yeah, I tried to… check out what's the, what's the situation, and what we have open, or how we could proceed with the work, both on the semantic, but also on the process… on the… cost metric receiver. So, probably you saw already, my comments, and… Yeah, just to confirm this, with this group, Yeah, I saw that Brydon commented here as well.
+Seems that we have agreement. Anything that we would like to discuss, further with, yeah, regarding this, or… any concern, or should we just comment that, we're fine with this approach, and we can maybe, try an implementation to change M.Gen and see how this will work out?
 What do we think?
-**Braydon Kains (Google)** 06:37 The only question in the implementation that I have is, if we're specifying through gates,
-We need to, like, those gates…
-probably need to exist, right? So…
+**Braydon Kains (Google)** 06:37 The only question in the implementation that I have is, if we're specifying through gates, We need to, like, those gates… probably need to exist, right? So…
 **Christos Markou** 06:51 Yep.
-**Braydon Kains (Google)** 06:52 We're gonna be…
-I assume we'll be validating the presence of those, but, like, we might not be ready to test this with
-actual, like, Yet.
+**Braydon Kains (Google)** 06:52 We're gonna be… I assume we'll be validating the presence of those, but, like, we might not be ready to test this with actual, like, Yet.
 Unless we are at that point, and I just haven't been keeping track.
 **Christos Markou** 07:10 Do you mean if, if we have support in mdata gen to define feature gates? Because right now, we define feature gates in Metadata yummy file.
 **Braydon Kains (Google)** 07:23 Oh, we… wait, we defined the feature gates in the…
@@ -40,85 +28,49 @@ Unless we are at that point, and I just haven't been keeping track.
 **Braydon Kains (Google)** 07:26 normal file, okay.
 **Christos Markou** 07:27 Yeah, that's new, and yeah, so a full example looks like this. You have first this section, which indicates, and then you can reference them down there, the metrics directly.
 **Braydon Kains (Google)** 07:39 Okay, yeah, that makes sense. I missed that part.
-**Christos Markou** 07:42 And I think, I mean, the reason that I'm, in favor of this approach is that I found out that, for example, in the CH attributes processor,
-It… yeah, we don't…
-Yeah, there we don't use the metadata YAML file, we don't… we only add attributes, and for various reasons, we don't enable them through the generated code or whatever, but
-something that I noticed is that we didn't have a nice way to, like, display the documentation
-how the transition is going to happen, and how the metrics… how the attributes are migrated, through which gates they are controlled. So, I like the idea of having something
-Like this, for example, where you have a migration section, and you say… you explicitly define or you document that this metric, is
-controlled through these gates, and this is, for example, the… the old metric, and in order to achieve the migration, you… you can use these gates. And…
-The other…
-The other thing that, sounds very helpful to me is that, if we solve this within the M.Logen tool.
-then Google fixes it once and for all, which means that we will not have to go on every single receiver or scraper that will need to do a similar migration in the future, and adding manually the feature gates, controlling everything, because it's like, it's… it's…
-It's extra work, and it's annoying, because you need to be very careful on,
-what feature gates you add there, and do everything manually. But if you do it inside the generated code, then, yeah, everything is handled.
+**Christos Markou** 07:42 And I think, I mean, the reason that I'm, in favor of this approach is that I found out that, for example, in the CH attributes processor, It… yeah, we don't… Yeah, there we don't use the metadata YAML file, we don't… we only add attributes, and for various reasons, we don't enable them through the generated code or whatever, but something that I noticed is that we didn't have a nice way to, like, display the documentation how the transition is going to happen, and how the metrics… how the attributes are migrated, through which gates they are controlled. So, I like the idea of having something Like this, for example, where you have a migration section, and you say… you explicitly define or you document that this metric, is controlled through these gates, and this is, for example, the… the old metric, and in order to achieve the migration, you… you can use these gates. And… The other… The other thing that, sounds very helpful to me is that, if we solve this within the M.Logen tool.
+then Google fixes it once and for all, which means that we will not have to go on every single receiver or scraper that will need to do a similar migration in the future, and adding manually the feature gates, controlling everything, because it's like, it's… it's… It's extra work, and it's annoying, because you need to be very careful on, what feature gates you add there, and do everything manually. But if you do it inside the generated code, then, yeah, everything is handled.
 Automatically. Yeah, Donald?
-**Donal O'Sullivan** 09:43 Yeah, no, Christos, it's, I, I, I, I support this idea, it's a great idea. I, I just wanted to understand this portion, so…
-what we're saying here is the actual mdataGen tool will generate the feature gate code as well. We just put that spec into the…
-Into the metadata file, is it? So we specify what we want the feature gate to be.
+**Donal O'Sullivan** 09:43 Yeah, no, Christos, it's, I, I, I, I support this idea, it's a great idea. I, I just wanted to understand this portion, so… what we're saying here is the actual mdataGen tool will generate the feature gate code as well. We just put that spec into the… Into the metadata file, is it? So we specify what we want the feature gate to be.
 then M dot, then M dot.
-**Christos Markou** 10:07 This is already… this is already supported, yes. So, right now, we have support to define feature gates there, inside the YAML file, and the generated… the tool takes care of gen… of generating, actually, documentation, and…
-Putting… defining inside the code the feature gates, and then you can use them from, either manually or inside, the generated code.
+**Christos Markou** 10:07 This is already… this is already supported, yes. So, right now, we have support to define feature gates there, inside the YAML file, and the generated… the tool takes care of gen… of generating, actually, documentation, and… Putting… defining inside the code the feature gates, and then you can use them from, either manually or inside, the generated code.
 **Donal O'Sullivan** 10:33 Cool, nice.
 **Christos Markou** 10:34 should be smooth, and I, I tried something like putting some AI thing there, and it seems that the code is, like, it's actually doable to change the code, it's not, like, crazy change.
 Yeah, okay.
-Okay, so if that sounds good, yeah, can comment on this issue later, and…
-summarize the situation that we agree on this, and we can try this, I guess, soon.
-Okay, so…
-Yeah, about the second one, I know we'll have discussed it, like, recently, again, but…
-yeah, I was checking the open issues that we have and everything, and I saw that, initially we…
-it was this one or another one, I don't remember, that we had this target for KubeCon.
-To have a list candidate, at least, so I was wondering if we're still, like, supporting this idea, or if we think
-That's not realistic. And yeah, it seems that we still have to discuss these two issues that we have done in the past.
-I would be fine if we just skip this one, at least for now, because it's an addition, and at least for the release candidate, it's not a blocker. But then we have this one, which is…
-I'll show what Pablo highlighted, and it's actually…
-this issue here, and I was confused. Maybe, Braden, you can help me here, because the original issue was about this.
-Attributes that were… Like… defined as…
-Conditionally required, or something like this.
+Okay, so if that sounds good, yeah, can comment on this issue later, and… summarize the situation that we agree on this, and we can try this, I guess, soon.
+Okay, so… Yeah, about the second one, I know we'll have discussed it, like, recently, again, but… yeah, I was checking the open issues that we have and everything, and I saw that, initially we… it was this one or another one, I don't remember, that we had this target for KubeCon.
+To have a list candidate, at least, so I was wondering if we're still, like, supporting this idea, or if we think That's not realistic. And yeah, it seems that we still have to discuss these two issues that we have done in the past.
+I would be fine if we just skip this one, at least for now, because it's an addition, and at least for the release candidate, it's not a blocker. But then we have this one, which is… I'll show what Pablo highlighted, and it's actually… this issue here, and I was confused. Maybe, Braden, you can help me here, because the original issue was about this.
+Attributes that were… Like… defined as… Conditionally required, or something like this.
 And then there was a PR that was closed.
-But, this one was about…
-defining a requirement level for other attributes, right? Or I missed something there.
-**Braydon Kains (Google)** 12:49 I was pretty sure this… Issue was for us to…
-To add requirement levels, because we didn't have requirement levels specified on anything before.
+But, this one was about… defining a requirement level for other attributes, right? Or I missed something there.
+**Braydon Kains (Google)** 12:49 I was pretty sure this… Issue was for us to… To add requirement levels, because we didn't have requirement levels specified on anything before.
 So I thought that was what this issue was about, or at least that's the PR I opened, was to do that.
 **Christos Markou** 13:09 Alright.
-**Braydon Kains (Google)** 13:10 So…
-It's really weird.
-**Donal O'Sullivan** 13:12 I… I was just… Chris, I had a similar question. I was just wondering, because the…
-The original issue does talk about on the resource process, so was it… was it talking about making a resource required?
+**Braydon Kains (Google)** 13:10 So… It's really weird.
+**Donal O'Sullivan** 13:12 I… I was just… Chris, I had a similar question. I was just wondering, because the… The original issue does talk about on the resource process, so was it… was it talking about making a resource required?
 or is… Braden, is it back to you? Is it just any… any attribute, is it?
 Or does it matter?
-Because I know here it does talk about its resource process, right? So…
-I was just wondering about that as well.
+Because I know here it does talk about its resource process, right? So… I was just wondering about that as well.
 **Christos Markou** 13:49 I think those, at some point were conditionally required.
-Saying that,
-at least one of those should be defined, and I think the complaint here is that users might get inconsistent data, because if you have all of those as conditional required, one system can use this one, another one could use something else, so it's not really consistent, and maybe the request was to
-Revisitation, make it more… Like… more well-defined, I would say.
+Saying that, at least one of those should be defined, and I think the complaint here is that users might get inconsistent data, because if you have all of those as conditional required, one system can use this one, another one could use something else, so it's not really consistent, and maybe the request was to Revisitation, make it more… Like… more well-defined, I would say.
 So, yeah, I think find one or two required attributes, which are available everywhere.
-But yeah, if we think that we need to define the requirement levels
-For all of the process attributes, then that sounds reasonable to me as well.
+But yeah, if we think that we need to define the requirement levels For all of the process attributes, then that sounds reasonable to me as well.
 **Braydon Kains (Google)** 14:49 I can't remember, unfortunately.
 what… like, prompt it, but I thought there was a discussion that actually prompted me doing.
-like, adding the requirement level to all the attributes. So, either I…
-misunderstood what the request was, or we had a discussion and I didn't.
+like, adding the requirement level to all the attributes. So, either I… misunderstood what the request was, or we had a discussion and I didn't.
 Write it down.
-but I think we… have…
-changed how this works anyway, like, we're defining a process entity now, so I think
-Maybe this issue got outdated, and we just changed it to being… We need to…
-Specify requirement levels for everything.
+but I think we… have… changed how this works anyway, like, we're defining a process entity now, so I think Maybe this issue got outdated, and we just changed it to being… We need to… Specify requirement levels for everything.
 I, like, in the entity, we say the process ID and the creation time are the only, like.
 required, because they're the identifying attributes, so they are required. You cannot have a valid process entity without those two things.
-And then the other stuff is all descriptive, so it's optional. So, I don't know if the original meaning of that… of the issue description
-Still… still applies.
+And then the other stuff is all descriptive, so it's optional. So, I don't know if the original meaning of that… of the issue description Still… still applies.
 **Christos Markou** 16:14 Yeah, you're right.
 **Dmitrii Anoshin** 16:17 Can you repeat that? I'm sorry, I think, I just, I just missed the question. So, the question is that why do we have conditional, in some…
 **Christos Markou** 16:25 No, the question is, what is ac- what is actually this issue about right now?
 **Dmitrii Anoshin** 16:31 Oh, shit.
-**Christos Markou** 16:32 If this… this is still valid. I think… I remember there were discussions about this conditionally required,
-attributes here, and it seems to me that at least the suggestion was to, yeah, let's define two attributes, or one attribute that should be emitted always, so as to have consistent data. And it still seems that for the entity.
+**Christos Markou** 16:32 If this… this is still valid. I think… I remember there were discussions about this conditionally required, attributes here, and it seems to me that at least the suggestion was to, yeah, let's define two attributes, or one attribute that should be emitted always, so as to have consistent data. And it still seems that for the entity.
 those are still conditionally required, but I'm not sure if that's an issue or not. If we think that it's not an issue anymore, we can comment back and say that, anyway, update the issue and say what we're thinking, and probably ask Lyudmila to verify this or not.
-**Braydon Kains (Google)** 17:18 I don't know what the condition is for these things. Like, on the surface, it feels weird for process.command to be optionally
-required.
+**Braydon Kains (Google)** 17:18 I don't know what the condition is for these things. Like, on the surface, it feels weird for process.command to be optionally required.
 **Dmitrii Anoshin** 17:31 So it's not optionally required, conditionally required.
 **Braydon Kains (Google)** 17:34 conditionally required. Like, I don't know what condition.
 **Christos Markou** 17:37 Under what conditions we would require it.
@@ -128,42 +80,25 @@ required.
 **Christos Markou** 18:03 Yeah, selecting process attributes. So, one system can use this one, another one, something else, so the complaint is that this is inconsistent, might be inconsistent, eventually.
 **Braydon Kains (Google)** 18:18 So, like, we could… Come up with, like, an alias attribute that's, like, human-readable process line.
 I guess. Like, that's an option.
-like, I assume…
-like, I… so I didn't write this part. I don't know how this… how this part works, or what the goal was. I assumed the goal was…
-To have a human-readable identification of the process, short of… Just something like PID.
-but… I don't know if,
-Like, we can't… like, the reason they're conditionally required is that you can't always get the executable name, you can't always get…
-a command. Like, it depends on your… the instrumentation's permissions, it depends on what the platform you're instrumenting for provides.
-And also, I don't know if…
-we necessarily need to say that this descriptive attribute about the process is required, per se. Like, we have a valid
-Process entity, from a data perspective.
+like, I assume… like, I… so I didn't write this part. I don't know how this… how this part works, or what the goal was. I assumed the goal was… To have a human-readable identification of the process, short of… Just something like PID.
+but… I don't know if, Like, we can't… like, the reason they're conditionally required is that you can't always get the executable name, you can't always get… a command. Like, it depends on your… the instrumentation's permissions, it depends on what the platform you're instrumenting for provides.
+And also, I don't know if… we necessarily need to say that this descriptive attribute about the process is required, per se. Like, we have a valid Process entity, from a data perspective.
 If you have the PID and the creation time.
 Like, it's not helpful to not have one of these things.
 But… What that actually, like, Why we say we require it.
-isn't for…
-isn't for… it's for user convenience, which doesn't feel like a requirement to me. It feels like a recommendation.
+isn't for… isn't for… it's for user convenience, which doesn't feel like a requirement to me. It feels like a recommendation.
 **Christos Markou** 19:54 So probably all of those should be opt-in, maybe?
 **Braydon Kains (Google)** 19:57 That's my… my guess, or at least, like, recommended being, like.
-Like, this should be, like, you should have this, like…
-It's gonna… it's gonna suck for you if you don't have a command, because you're not gonna know
-you're not going to know what a process is just by PID and creation time, but on a, like, a data level.
-an entity is valid, and data can be reported against it if we have a PID and creation time. None of this other stuff is
-required for… Any of our metrics to be valid.
-So I don't know what the…
-SEMCOMF maintainer perspective would be on that.
-like… We think… we think your data will suck if you don't have one of these, but… like…
-That sounds… that still sounds like a recommendation to me.
-Like, maybe on by default, depending on the platform, but…
-So it might also be that there is no such thing as conditionally recommended. Is that the case?
-Because we don't… we don't blanket recommend command, because you can't really get that on…
-Well, I guess you can get it on Windows, at least.
+Like, this should be, like, you should have this, like… It's gonna… it's gonna suck for you if you don't have a command, because you're not gonna know you're not going to know what a process is just by PID and creation time, but on a, like, a data level.
+an entity is valid, and data can be reported against it if we have a PID and creation time. None of this other stuff is required for… Any of our metrics to be valid.
+So I don't know what the… SEMCOMF maintainer perspective would be on that.
+like… We think… we think your data will suck if you don't have one of these, but… like… That sounds… that still sounds like a recommendation to me.
+Like, maybe on by default, depending on the platform, but… So it might also be that there is no such thing as conditionally recommended. Is that the case?
+Because we don't… we don't blanket recommend command, because you can't really get that on… Well, I guess you can get it on Windows, at least.
 **Dmitrii Anoshin** 21:14 Yeah, that's…
-**Braydon Kains (Google)** 21:14 Actually, wait, is there any platform where you can't get command? Maybe we should just say, like, that's the…
-That's the one that we recommend, and then you can get one of these other ones if you want.
-**Christos Markou** 21:25 Yeah, I guess we could choose, like, either executable name, or…
-Executable path, and have them as recommended.
-**Dmitrii Anoshin** 21:37 Yeah, that's… I also wanted to highlight. There is… there looks like some of them can actually be applied to all of the…
-Platforms, and we can just change it to…
+**Braydon Kains (Google)** 21:14 Actually, wait, is there any platform where you can't get command? Maybe we should just say, like, that's the… That's the one that we recommend, and then you can get one of these other ones if you want.
+**Christos Markou** 21:25 Yeah, I guess we could choose, like, either executable name, or… Executable path, and have them as recommended.
+**Dmitrii Anoshin** 21:37 Yeah, that's… I also wanted to highlight. There is… there looks like some of them can actually be applied to all of the… Platforms, and we can just change it to…
 **Braydon Kains (Google)** 21:50 Yeah, I don't know about… Mac. Mac is always my blind spot.
 **Dmitrii Anoshin** 21:56 Mark is, like, it… I believe it just follows the same Unix, whatever we have.
 **Braydon Kains (Google)** 22:02 Does… does that have Rocket Fest?
@@ -175,8 +110,7 @@ Why… what is the argument for not using that?
 **Braydon Kains (Google)** 22:17 Well, the argument… we're saying that we're… we are using that. The question is, like.
 All of these descriptive attributes, we have them all down as conditionally required, and that strikes me as… as strange.
 And I think that's the purpose of the issue.
-**Pablo Baeyens** 22:37 Right, my…
-My assumption would be that we would mark PID and creation time as required, and the ones that are conditionally required now, we mark them as recommended.
+**Pablo Baeyens** 22:37 Right, my… My assumption would be that we would mark PID and creation time as required, and the ones that are conditionally required now, we mark them as recommended.
 **Braydon Kains (Google)** 22:50 That is what I thought.
 That's… like, I'll… My perspective is that, like, none of these are required from a data model perspective.
 We can uniquely identify the process and report data against it without the process command.
@@ -189,44 +123,32 @@ Clear to me, like, require those two, unrecommended, the rest works.
 There should be no such thing as a recommended identifying attribute, that's…
 **Christos Markou** 23:55 Yeah, yeah.
 **Braydon Kains (Google)** 23:56 By default.
-**Christos Markou** 23:59 Sounds weird. Okay, so should we just say that the goal of this one is to, like, revisit
-The requirement levels actually here, and figure out what we feel, that should be.
+**Christos Markou** 23:59 Sounds weird. Okay, so should we just say that the goal of this one is to, like, revisit The requirement levels actually here, and figure out what we feel, that should be.
 Seems that we need to do it, before the release candidate, at least.
 Yeah, we also have a few others.
 That are also.
-**Braydon Kains (Google)** 24:30 Even then, like, I… I don't know…
-what to say about recommendation for any of this stuff, like, do we actually recommend Sea Group? I don't know.
+**Braydon Kains (Google)** 24:30 Even then, like, I… I don't know… what to say about recommendation for any of this stuff, like, do we actually recommend Sea Group? I don't know.
 **Christos Markou** 24:40 Yeah.
 **Braydon Kains (Google)** 24:43 Do we recommend working directory? I wouldn't.
-like… A lot of this stuff feels like…
-If you're… if you're monitoring a process directly, like, for profiling, like, profiling probably wants to produce a lot of this stuff, but, like, if we're…
-reporting data about processes at scale on an entire system, on a fleet of systems, a lot of this stuff is actually not all that exciting.
+like… A lot of this stuff feels like… If you're… if you're monitoring a process directly, like, for profiling, like, profiling probably wants to produce a lot of this stuff, but, like, if we're… reporting data about processes at scale on an entire system, on a fleet of systems, a lot of this stuff is actually not all that exciting.
 And would just be a waste of data, most likely.
-So, maybe we need to… Revisit what we say for… For…
-I don't know, I lost my train of thought.
+So, maybe we need to… Revisit what we say for… For… I don't know, I lost my train of thought.
 Sorry, I'm getting sick today.
 **Dmitrii Anoshin** 25:35 I think we should revisit that and potentially just move a few of them to opt-in.
 Because there is…
 **Braydon Kains (Google)** 25:43 Yeah.
-I think… Like, a lot of those ones that, like, like, command, like, things that, like…
-Human-readably identify the process should be recommended, for sure.
+I think… Like, a lot of those ones that, like, like, command, like, things that, like… Human-readably identify the process should be recommended, for sure.
 And then the others can be opt-in based on how much detail you want.
-**Christos Markou** 26:01 Okay, so I see two things here. One is, to revisit the, process entity, and,
-come with a plan about the requirement levels of the attributes, and now I realize that your PR broaden was about, metrics attributes, right? Because I see CPR.
+**Christos Markou** 26:01 Okay, so I see two things here. One is, to revisit the, process entity, and, come with a plan about the requirement levels of the attributes, and now I realize that your PR broaden was about, metrics attributes, right? Because I see CPR.
 **Braydon Kains (Google)** 26:22 Yeah.
 **Christos Markou** 26:23 So, two… yeah, we have two things here.
 Oh.
-**Braydon Kains (Google)** 26:27 I can't recall offhand, like, if…
-I did this as part of this issue because, like, we talked about it in a SEMCOM, like, a general SEMCOM meeting.
+**Braydon Kains (Google)** 26:27 I can't recall offhand, like, if… I did this as part of this issue because, like, we talked about it in a SEMCOM, like, a general SEMCOM meeting.
 Or if I just, like, totally misunderstood what the point was, but…
-**Christos Markou** 26:45 Okay, yeah, no words. Yeah, I think at least that's clear to me,
-Now, I can, like, comment back on the issue, just to, provide this information, and we can take it from there, I guess.
+**Christos Markou** 26:45 Okay, yeah, no words. Yeah, I think at least that's clear to me, Now, I can, like, comment back on the issue, just to, provide this information, and we can take it from there, I guess.
 Okay. And then back to the initial question.
-I guess, yeah, I'm not sure if we can have an answer right now about…
-If that's still realistic, I think that will… Depend on… However, we'll proceed with the…
-From the discussion.
-**Pablo Baeyens** 27:23 Keep on using the meetings to work on… this? On…
-that's the best we can do. I mean, the people can, confed time outside a meeting?
+I guess, yeah, I'm not sure if we can have an answer right now about… If that's still realistic, I think that will… Depend on… However, we'll proceed with the… From the discussion.
+**Pablo Baeyens** 27:23 Keep on using the meetings to work on… this? On… that's the best we can do. I mean, the people can, confed time outside a meeting?
 May as well put.
 **Christos Markou** 27:39 Yeah, yeah, sure. It seems to me that this is something that we should do in any case, like, before the release candidate, like, revisiting the requirement levels, or revisiting the definition in general. We should do it, yeah.
 Anyways… So, sounds good.
@@ -240,5 +162,4 @@ We should be done for today.
 **Pablo Baeyens** 28:27 Thank you.
 **Braydon Kains (Google)** 28:28 Thank you all. Bye-bye. Thanks, everyone.
 **neil yashinsky** 32:10 Hey, we've… Oh my god.
-But the rest were just like…
-Oh, yeah… Right.
+But the rest were just like… Oh, yeah… Right.

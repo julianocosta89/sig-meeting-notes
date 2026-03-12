@@ -9,9 +9,7 @@ Duration: 26 minutes
 **Ani ( Opensearch )** 00:38 Hello! Hey! There! How are you?
 **Juliano Costa | Datadog** 00:40 I'm good. How are you?
 **Ani ( Opensearch )** 00:41 Good morning. I have multiple conflicts today. I might stay for some time, but might need to drop.
-**Juliano Costa | Datadog** 00:50 Yeah, no worries. I just
-Ju, just one thing that I want to to to ask you. Have you seen the
-the message that I tagged you. I was trying to add you and.
+**Juliano Costa | Datadog** 00:50 Yeah, no worries. I just Ju, just one thing that I want to to to ask you. Have you seen the the message that I tagged you. I was trying to add you and.
 **Ani ( Opensearch )** 01:04 Yes, I need to add, do the hotel approval thing. Yes, this week I'll wrap it up.
 yes.
 **Juliano Costa | Datadog** 01:16 Awesome.
@@ -32,9 +30,7 @@ Everyone. Yeah, that's true.
 **Juliano Costa | Datadog** 01:58 It's awesome and yeah, cool. Well, well, I think it's your 1st time joining the this. This thing right?
 **Alessio** 02:06 Yeah, it's actually my 1st time I actually like I started like I knew open telemetry for from like since ages, basically. But I never like leverage that in in like very deeply.
 especially from the you know, from the receiver point of view, like usually you just collect of internal imagery things, and you send them over to tool tools like Datadog, for example. And instead, now I'm working at Suzy at the in the observability team. And so I wanted to learn. Actually, like I get my as dirty.
-And basically the the 1st thing that I noticed when I when I read like the news. The blogs and the stuff like that
-was that you deprecated the elixir service. But you were interested in bringing some elixir back and
-been like an alchemist in the past. And I still.
+And basically the the 1st thing that I noticed when I when I read like the news. The blogs and the stuff like that was that you deprecated the elixir service. But you were interested in bringing some elixir back and been like an alchemist in the past. And I still.
 I'm I'm very fond of elixir, actually. So yeah, I I'm that guy actually, that asked you.
 **Juliano Costa | Datadog** 03:13 Yeah, we've we've been looking for you. Awesome.
 **Alessio** 03:16 Lately.
@@ -52,23 +48,18 @@ Hello! Hello!
 **Alessio** 03:47 Okay.
 Hi, everybody.
 **Juliano Costa | Datadog** 03:51 So I think that the the main concern here is adding an extra service.
-And
-That that was the 1st suggestion from Pierre, and I was like, come on, Pierre, you are the the 1st one that
-we would have had the Gym service.
+And That that was the 1st suggestion from Pierre, and I was like, come on, Pierre, you are the the 1st one that we would have had the Gym service.
 **Pierre Tessier** 04:12 Can we replace one then? But, like my, my sense is just, hang it off of Casco.
 **Juliano Costa | Datadog** 04:18 Well, this is the easiest way to plug and unplug things.
 So I would say, if we do not have any other choice. Yes, but I was checking the the architecture.
-and we have so we have checkout and product catalog. Both are in go, and
-I feel that in the future. We may need to showcase, auto instrumentation and manual instrumentation.
+and we have so we have checkout and product catalog. Both are in go, and I feel that in the future. We may need to showcase, auto instrumentation and manual instrumentation.
 **Alessio** 04:53 Okay.
 **Juliano Costa | Datadog** 04:53 The alto instrumentation is not there yet.
 so maybe we could replace one, and whenever all the instrumentation comes, we think about it.
 **Ani ( Opensearch )** 05:03 On Saturday would be my last.
 **Pierre Tessier** 05:04 I just want to call out the history of elixir with the optometry demo, and why? It's not in the demo today.
-And that reason why was lack of elixir talent on the demo sick team
-and back. Then we had it as a feature flag service. And so it was.
-you know it was called almost all the time, and the lack of any skill set there meant that a critical component of the demo
-was highly at risk, and it. It often caused us pain. And eventually we just said, Let's rip it out and replace it with open feature, because open feature built like flag. D something that we could use.
+And that reason why was lack of elixir talent on the demo sick team and back. Then we had it as a feature flag service. And so it was.
+you know it was called almost all the time, and the lack of any skill set there meant that a critical component of the demo was highly at risk, and it. It often caused us pain. And eventually we just said, Let's rip it out and replace it with open feature, because open feature built like flag. D something that we could use.
 **Alessio** 05:44 Yeah.
 **Pierre Tessier** 05:45 So we ripped it out, and and that's my hesitation on saying, Let's put elixir to replace like product catalog, for example.
 because it's called so often.
@@ -94,14 +85,11 @@ But you need to navigate to slash feature, and then you get traces from from it.
 But then, yeah, but.
 **Alessio** 07:11 Yeah.
 **Juliano Costa | Datadog** 07:11 It's like.
-**Alessio** 07:12 I actually asked you
-like for for that specific reason, because actually like you, you just remove that. And now you wanna like, bring it back, basically. But yeah.
+**Alessio** 07:12 I actually asked you like for for that specific reason, because actually like you, you just remove that. And now you wanna like, bring it back, basically. But yeah.
 **Pierre Tessier** 07:23 Well, because if Flag D is a part of the critical path.
 the ui was not, and back. Then, when when we had it in elixir. We use Phoenix to build a ui.
-and then we we had all the Api calls still in there as well. So it is interesting because
-we're keeping the critical thing being its own self and and the ui in this case here, it just modifies a Json file. If I'm mistaken, that's all it does.
-and and it just rewrites and resaves it, and then Flag D picks up, changes to that Json file and works with it. For what it's worth flag. The Ui does it do
-ice.
+and then we we had all the Api calls still in there as well. So it is interesting because we're keeping the critical thing being its own self and and the ui in this case here, it just modifies a Json file. If I'm mistaken, that's all it does.
+and and it just rewrites and resaves it, and then Flag D picks up, changes to that Json file and works with it. For what it's worth flag. The Ui does it do ice.
 I know. Actually, yeah, I take all that back. Yeah. So yes, that would be it. That would be its use. Case.
 **Alessio** 08:09 Okay. Cool.
 Go with that.
@@ -111,16 +99,12 @@ Because you're right. Why do we want a vercel flavor and a next Js opentelometry
 **Alessio** 08:32 Oh, my God!
 **Pierre Tessier** 08:32 Right.
 **Alessio** 08:33 Right.
-**Pierre Tessier** 08:34 We have the act native as well, for the mobile tier, like like we've got Js instrumented 12 different ways in here, and we probably
-not that many, but we. We don't need that level of repetition, repetition almost.
+**Pierre Tessier** 08:34 We have the act native as well, for the mobile tier, like like we've got Js instrumented 12 different ways in here, and we probably not that many, but we. We don't need that level of repetition, repetition almost.
 **Alessio** 08:49 Yeah, thank you. Very.
 Cool thanks, everybody like.
-**Pierre Tessier** 08:54 Yeah, if you want to try going navigating the feature, you'll see. It's a very simple Ui, it reads
-so A. Json file. It just renders it. I don't care if the new ui looks the same or not.
+**Pierre Tessier** 08:54 Yeah, if you want to try going navigating the feature, you'll see. It's a very simple Ui, it reads so A. Json file. It just renders it. I don't care if the new ui looks the same or not.
 Capability wise. All we really care about super simple interface where you click on a flag and easily change it from on or off.
-There are some flags that support a set of numbers as well, so we'd have to be able to support that
-and the ability to input those those separate numbers. I think right now it's all just dropdown
-but that would be, that's all we need.
+There are some flags that support a set of numbers as well, so we'd have to be able to support that and the ability to input those those separate numbers. I think right now it's all just dropdown but that would be, that's all we need.
 **Alessio** 09:28 Cool. Thanks. Yeah. It looks feasible. By the way, you know, like.
 **Juliano Costa | Datadog** 09:34 Awesome. Yeah, I'm excited.
 **Pierre Tessier** 09:37 Yeah, okay.
@@ -145,8 +129,7 @@ I don't know how much time I have right now, but I can for sure deliver results.
 No, the question wasn't too much to to put a pressure on you. So actually, maybe we could go and release a new version. Because, if we take a look at the unreleased change log, it's
 **Alessio** 12:03 A lot of stuff. Yeah.
 **Juliano Costa | Datadog** 12:04 A lot of things, and then, whenever a new service lands, we we can ship a new one.
-**Alessio** 12:10 Yeah, sure I can. I can just like do a draft pr and keep that updated like on by like from my fork, right
-okay, cool.
+**Alessio** 12:10 Yeah, sure I can. I can just like do a draft pr and keep that updated like on by like from my fork, right okay, cool.
 **Pierre Tessier** 12:21 Yeah, and just make sure your fork is your personal fork, not a company fork. So it's
 **Alessio** 12:25 No, no, no, yeah.
 **Pierre Tessier** 12:26 We could, we could merge from Maine against it, that's all.
@@ -158,20 +141,17 @@ Julia, did you take these notes in the meeting, Doc?
 **Juliano Costa | Datadog** 12:48 No.
 **Pierre Tessier** 12:49 We should do that.
 **Juliano Costa | Datadog** 12:50 Should do that. Yeah.
-**Alessio** 12:52 Yeah. Actually, the the way I like stepped on this is because we have 2 demo environments for observability. One is the auto environment. And I don't know if we actually have one public, because I saw you also showcase like public environments. But
-with the like, the the demo deployed publicly.
+**Alessio** 12:52 Yeah. Actually, the the way I like stepped on this is because we have 2 demo environments for observability. One is the auto environment. And I don't know if we actually have one public, because I saw you also showcase like public environments. But with the like, the the demo deployed publicly.
 and the other one is like a bespoke demo that we that we energe over time. It's very legacy.
 and I just wanted to to give contributions to the auto demo. And I saw like.
 there's this elixir service we would like. And I was like, Oh, okay.
 **Juliano Costa | Datadog** 13:40 Cool, cool, cool.
-I think we have also something from from Jonathan. Jonathan. Did you have the chance to to take a look at that. I I think you, replied the comment. Right? But you
-I I saw that to take a look.
+I think we have also something from from Jonathan. Jonathan. Did you have the chance to to take a look at that. I I think you, replied the comment. Right? But you I I saw that to take a look.
 **Jonathan Munz** 13:58 Yeah, I saw the comment. I haven't had a chance to take a look yet. I think it should be a pretty small change. I just needed to get back.
 get everything like set up and running again.
 **Juliano Costa | Datadog** 14:07 Wish I had.
 **Jonathan Munz** 14:08 And in a little bit. But yes, that's still on my radar to to take a look at.
-**Juliano Costa | Datadog** 14:13 Cool
-and I think Shana, you you got approved as member. So I I'll open up here.
+**Juliano Costa | Datadog** 14:13 Cool and I think Shana, you you got approved as member. So I I'll open up here.
 **Shenoy Pratik** 14:24 So much for the support.
 Yeah, no worries.
 **Juliano Costa | Datadog** 14:29 I let let me check one thing here on the on the notes.
@@ -181,66 +161,46 @@ I think you don't need to do anything. But yeah.
 **Pierre Tessier** 14:56 No, we just need to merge it. We're good.
 **Juliano Costa | Datadog** 14:58 Yeah, okay, cool. And Roger, you have all the permissions. Right, I think you already immersed stuff. So very good.
 awesome.
-Cool, okay, do we have anything pending? I think the last week was busy. But
-the the Prs were flowing through. So
-yeah, I think we have the dopper thing that we need to decide.
-I I worked a bit on it, but it's really difficult to
-to make it work. So I I
-I actually will try to get
-a meeting with Henrik, and we go together
-through the through his Pr. And and see what what is going on there.
+Cool, okay, do we have anything pending? I think the last week was busy. But the the Prs were flowing through. So yeah, I think we have the dopper thing that we need to decide.
+I I worked a bit on it, but it's really difficult to to make it work. So I I I actually will try to get a meeting with Henrik, and we go together through the through his Pr. And and see what what is going on there.
 **Pierre Tessier** 16:01 I mean, we have this duplicate spam thing.
-It's actually 2 spans with span kind server
-that show up in the front end that Cedric Diesel mentioned.
+It's actually 2 spans with span kind server that show up in the front end that Cedric Diesel mentioned.
 It makes sense like we. We should not have that.
-I think what's happening is the Htp. Instrumentation is saying, hey, I'm getting a request in span server span kind server, and Nextjs is saying, Hey, I got a request coming in. Spend that kind server
-and they're both right, but they both can't be right at the same time.
+I think what's happening is the Htp. Instrumentation is saying, hey, I'm getting a request in span server span kind server, and Nextjs is saying, Hey, I got a request coming in. Spend that kind server and they're both right, but they both can't be right at the same time.
 Or it's not for proper semantics, should we? And and the information capture on each fan is different.
-So I think you know, we should probably make a decision. Do we want to disable
-Http, Http, in auto instrumentation
-on the front end, and just depend on nextjs auto instrumentation?
-Or do we want to do something in the collector
-where we changed span kind to internal for the next js, where it's in that path.
+So I think you know, we should probably make a decision. Do we want to disable Http, Http, in auto instrumentation on the front end, and just depend on nextjs auto instrumentation?
+Or do we want to do something in the collector where we changed span kind to internal for the next js, where it's in that path.
 **Juliano Costa | Datadog** 17:19 I will give the question back to you. If we were using auto instrumentation.
 both instrumentation would be added right.
 **Pierre Tessier** 17:31 Yes, and it would both be set to server.
 **Juliano Costa | Datadog** 17:33 So we would need to on the auto instrumentation configuration disable. One of them.
 Yeah.
-**Pierre Tessier** 17:40 Or in the collect, but the the span attributes collected by each one are different. And there's
-I could see that being useful on on either case.
+**Pierre Tessier** 17:40 Or in the collect, but the the span attributes collected by each one are different. And there's I could see that being useful on on either case.
 **Juliano Costa | Datadog** 17:56 What a what do you think about maybe raising this to the Js. Sig.
 and see what they think, because.
 honestly, I don't know if that should happen.
-I know that they are different instrumentation libraries. But
-I guess one is relying on the other. No.
+I know that they are different instrumentation libraries. But I guess one is relying on the other. No.
 but they are totally different. And then.
 **Pierre Tessier** 18:27 But it it like.
 Can you use nextjs without an Http.
 **Juliano Costa | Datadog** 18:33 Exactly.
 **Pierre Tessier** 18:33 Javascript, right.
-**Juliano Costa | Datadog** 18:35 That that's the that's the point. So like
-Nextjs should capture everything that it should be captures and then surprise it, or I don't know.
+**Juliano Costa | Datadog** 18:35 That that's the that's the point. So like Nextjs should capture everything that it should be captures and then surprise it, or I don't know.
 because having 2 server is wrong. 2 servers.
-**Pierre Tessier** 18:54 Okay, so let's just say, we're not gonna do anything for now pending
-outcome from what the js sig thinks, we should do.
+**Pierre Tessier** 18:54 Okay, so let's just say, we're not gonna do anything for now pending outcome from what the js sig thinks, we should do.
 Yeah, I think next year I should change their stuff to not be server, I guess.
-**Juliano Costa | Datadog** 19:15 I, I remember from my previous employer
-that I will not say the name, but
-that when you when you have like.
+**Juliano Costa | Datadog** 19:15 I, I remember from my previous employer that I will not say the name, but that when you when you have like.
 When you define instrumentation, they require a specific order of declaration, otherwise the instrumentation wouldn't work.
 **Alessio** 19:40 Conflicted.
 **Juliano Costa | Datadog** 19:42 Yeah, something like that.
-So like, I think this the the 1st Instrumentation library
-should be I I don't remember. But like Http. And then the second one, whatever other was, because the second one was relying on the Http instrumentation.
+So like, I think this the the 1st Instrumentation library should be I I don't remember. But like Http. And then the second one, whatever other was, because the second one was relying on the Http instrumentation.
 So I don't know if this is the same for Nextjs.
 **Pierre Tessier** 20:12 Next Gen. Still has a bug where they're still adding.
 I car. Now, the Urls to span names.
 I'm gonna I'm gonna assume we need to get Nextjs instrumentation cleaned up.
-and there's probably a greater need and push for that at this point, and maybe we should go back to the jsig and saying, Hey, can you like
-clean this up? Because it's it's it's out of its back, and it's breaking things, and it's causing pain.
+and there's probably a greater need and push for that at this point, and maybe we should go back to the jsig and saying, Hey, can you like clean this up? Because it's it's it's out of its back, and it's breaking things, and it's causing pain.
 **Juliano Costa | Datadog** 20:42 Yep.
-**Pierre Tessier** 20:44 Right? Because without if you, if you have nextjs auto instrumentation
-and you have a span metrics connector, which is a common configuration, you will break your Prometheus.
+**Pierre Tessier** 20:44 Right? Because without if you, if you have nextjs auto instrumentation and you have a span metrics connector, which is a common configuration, you will break your Prometheus.
 which is also a common configuration.
 Okay?
 Well, let's take a note that then we should go to the Sig. Js team.
@@ -250,46 +210,34 @@ Anybody at your company works on 6 as Juliano.
 **Juliano Costa | Datadog** 21:29 Hey? Yes.
 yeah, we can, but and most probably they, they will say, Hey, you are welcome to contribute it.
 **Alessio** 21:36 Oh, okay.
-**Juliano Costa | Datadog** 21:39 Yeah, I I they did the a lot of rework on the SDK 2 dot. O,
-so I know that they they've been busy. And now there is the browser seat also being started, so that will also divide like developers into.
+**Juliano Costa | Datadog** 21:39 Yeah, I I they did the a lot of rework on the SDK 2 dot. O, so I know that they they've been busy. And now there is the browser seat also being started, so that will also divide like developers into.
 So I don't know if they have.
 Well, I don't think they are splitting. They are just creating a new Sig focused on on browser instrumentation.
 What I was. What I meant is actually that.
 **Alessio** 22:19 The Js developers that were working on one may now focus on the other, and then the the workforce on the sync reduces.
 **Juliano Costa | Datadog** 22:28 So.
-**Pierre Tessier** 22:32 Okay,
-is our efforts for the Js, I think we're loosely part of the Js honeycomb, but we're pretty heavy on the new web, Sig, though.
-but I'll see if I could just bug Jamie on our side. I think she may
-be able to like. Help me usher this with some additional urgency, but I will see
-or or tell me how to navigate it to netsake.
+**Pierre Tessier** 22:32 Okay, is our efforts for the Js, I think we're loosely part of the Js honeycomb, but we're pretty heavy on the new web, Sig, though.
+but I'll see if I could just bug Jamie on our side. I think she may be able to like. Help me usher this with some additional urgency, but I will see or or tell me how to navigate it to netsake.
 Okay.
 Alessia, just for tracking. Did you say you were part of seuss.
 **Alessio** 23:06 Exactly.
 **Pierre Tessier** 23:08 Okay. Thank you.
 **Alessio** 23:10 Yeah.
 **Pierre Tessier** 23:14 Yeah, Julia, I think we're better shape now, and we got in.
-We're adding an approver. We got a maintainer. We're
-we're adding humans which I think we needed.
+We're adding an approver. We got a maintainer. We're we're adding humans which I think we needed.
 **Juliano Costa | Datadog** 23:30 Yup!
 **Pierre Tessier** 23:31 Okay.
-**Juliano Costa | Datadog** 23:32 Yeah, okay, any anything else? I don't. I don't think we have any
-any pending stuff. I'm open. Just so. So you all know I'm opening a Pr that adds the nginx metrics receiver to the collector, and also adding a dashboard in
-Grafana. But yeah, not being that
-like like, not a big change. Just the new.
+**Juliano Costa | Datadog** 23:32 Yeah, okay, any anything else? I don't. I don't think we have any any pending stuff. I'm open. Just so. So you all know I'm opening a Pr that adds the nginx metrics receiver to the collector, and also adding a dashboard in Grafana. But yeah, not being that like like, not a big change. Just the new.
 **Pierre Tessier** 24:00 Does that mean? We need to open up a port on a services or to capture this data.
-**Juliano Costa | Datadog** 24:06 No, we have. We already have nginx service, that is the
-where's my Pr. Oh, too many tabs.
+**Juliano Costa | Datadog** 24:06 No, we have. We already have nginx service, that is the where's my Pr. Oh, too many tabs.
 **Pierre Tessier** 24:15 Does? Does nginx just expose them on a standard port?
-**Juliano Costa | Datadog** 24:20 I just had to configure the
-as soon as I find it I'll let you know.
+**Juliano Costa | Datadog** 24:20 I just had to configure the as soon as I find it I'll let you know.
 **Pierre Tessier** 24:25 Sure. Okay, I'm thinking Kubernetes is really where I'm thinking of, because then we have to do some fancy stuff to add the port there as well.
 **Juliano Costa | Datadog** 24:32 Yeah, no, no, no need to. No need to to open a port.
-It's just an extra configuration that I add to the
-to to the.
+It's just an extra configuration that I add to the to to the.
 **Pierre Tessier** 24:47 Your next call.
 **Juliano Costa | Datadog** 24:48 Provider. Yep. So I just had a new location slash status.
-and then the the nginx receiver queries that
-so perfect we we will need to change the the yamo files. But just adding extra environment variables.
+and then the the nginx receiver queries that so perfect we we will need to change the the yamo files. But just adding extra environment variables.
 Yeah, this. This is easy, I think.
 Oh, cool. Okay.
 **Pierre Tessier** 25:20 Amazing.
