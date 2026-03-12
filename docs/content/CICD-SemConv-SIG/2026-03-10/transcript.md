@@ -11,22 +11,18 @@ Zoom Recording URL: https://zoom.us/rec/share/O7yrQVuDfRr59d_9mV7kQrlnufKmX35Ar8
 **Adriel Perkins** 00:53 How's it going?
 **Alan Clucas** 00:54 Alright, how are you?
 **Adriel Perkins** 00:57 Doing okay, thank you.
-I only have a few minutes,
-Today, got a few conflicts that I've got to go take care of, but
-Was there anything in particular that I missed or needed to talk about or discuss while I'm here?
+I only have a few minutes, Today, got a few conflicts that I've got to go take care of, but Was there anything in particular that I missed or needed to talk about or discuss while I'm here?
 **Alan Clucas** 01:20 Nothing I'm aware of, I'm not necessarily good at… remembering this stuff.
 We didn't have a big meeting last week, it was only Christoph and I.
 So… Somebody didn't.
 discussed that much.
-I guess the question I would have asked you if we had more time is,
-What you wanted to do about, the environment variable spec changes that were proposed?
+I guess the question I would have asked you if we had more time is, What you wanted to do about, the environment variable spec changes that were proposed?
 **Adriel Perkins** 02:05 What, what exactly… the proposal?
 **Alan Clucas** 02:08 The proposal was basically anything that's not, alphanumeric gets converted to an underscore.
 **Adriel Perkins** 02:19 Mmm.
 **Alan Clucas** 02:19 But that was, Let me bring it up.
 Gone.
-There's no formal… Spec change here. It's just,
-No, no formal proposal yet, I don't think.
+There's no formal… Spec change here. It's just, No, no formal proposal yet, I don't think.
 Or was there?
 So…
 **Adriel Perkins** 02:51 I think there's an issue, right?
@@ -37,13 +33,10 @@ Yeah.
 So that's something we probably… should discuss At some point.
 Have you got a link? What do you want me to share?
 **Adriel Perkins** 03:17 Yep, I put it in the doc, too.
-Cool. Yeah, I mean… when I think about the history of this, like, they did not want to…
-We didn't want to just accept any and all environment variables, but we didn't want to predefine them either. So, the gist, the intent was that…
-You know, environment variables have to be, or they're highly recommended that they're uppercase underscored.
+Cool. Yeah, I mean… when I think about the history of this, like, they did not want to… We didn't want to just accept any and all environment variables, but we didn't want to predefine them either. So, the gist, the intent was that… You know, environment variables have to be, or they're highly recommended that they're uppercase underscored.
 **Alan Clucas** 03:52 Yeah.
 **Adriel Perkins** 03:54 That makes sense from the environment variable perspective, when it lives in the environment. But once it's in code.
-it doesn't… it doesn't really matter. The… well, it does matter when it's in code, because the text map propagator
-Does not respect uppercase underscores.
+it doesn't… it doesn't really matter. The… well, it does matter when it's in code, because the text map propagator Does not respect uppercase underscores.
 It only expects whatever Actual specifications for propagator keys exist.
 **Alan Clucas** 04:28 Yeah.
 **Adriel Perkins** 04:28 So for W3C, it's trace parent, trace state. For B3, it's, I don't know, X whatever, X hyphen whatever, which I guess we didn't normalize for that occurrence.
@@ -57,10 +50,8 @@ So that was the intent, and the reason why we didn't get overzealous, or… .
 But I do think that there's probably a little adjustment for sure.
 **Alan Clucas** 05:43 Yeah, my feeling was that… The carrier should… always successfully carry the things.
 That was my concern over the current… the proposal was, like, we're just… we're making all this stuff up that says.
-About rules for mapping from some undefined set of
-words, the keys that we might have in B3, and… W3.
-And that sometimes they might clash if you went through some normalization process, and then we would lose one of them, and that felt wrong. I want… from my point of view, the carrier should always
-If you put stuff into the carrier and then pull it out again later, you should get the stuff that you put in.
+About rules for mapping from some undefined set of words, the keys that we might have in B3, and… W3.
+And that sometimes they might clash if you went through some normalization process, and then we would lose one of them, and that felt wrong. I want… from my point of view, the carrier should always If you put stuff into the carrier and then pull it out again later, you should get the stuff that you put in.
 And we don't seem to be… that didn't seem to be a particular concern, so.
 **Adriel Perkins** 06:45 Well, once it goes into the carrier, it has to go through the text map propagator.
 **Alan Clucas** 06:49 Yeah.
@@ -79,28 +70,21 @@ It's… at the moment.
 It'll just It allows you to put stuff in that's not valid.
 I don't know.
 **Adriel Perkins** 08:03 I mean, that's… I think that's also the way the other carriers operate, yeah?
-**Alan Clucas** 08:08 Maybe, it's just… it feels weird that we're…
-We've got this thing, and we're trying to define a bunch of rules around it, one of which is not a rule that it should tell you when it's not going to work.
+**Alan Clucas** 08:08 Maybe, it's just… it feels weird that we're… We've got this thing, and we're trying to define a bunch of rules around it, one of which is not a rule that it should tell you when it's not going to work.
 I don't know.
 **Adriel Perkins** 08:23 It's not the carrier's job to do that, though, I don't think. I think it's the text propagator's job to do that, and I don't think the text propagator was intended to do that. I'm not… I'm not unsure why… why they don't do it now, but, like, when I send headers to it, I don't know if it's getting propagated or not until I look at the spans.
 And it's like, you could put anything in environment variables inside of the environment, but not all of them are context-related.
 In fact, most of them probably aren't, right?
 **Alan Clucas** 08:50 Yeah.
 **Adriel Perkins** 08:51 And that's why, like, we don't want the… we don't want every single thing to be considered carryable.
-We really actually only care that, like, if it… once it's normalized, if it's been…
-Translated to what a real specification allows for.
+We really actually only care that, like, if it… once it's normalized, if it's been… Translated to what a real specification allows for.
 which would be W3CB3, and I think maybe there's, like, one other one.
-And that's what I think matters, because it's whatever the text map… like, I don't want to own…
-I don't want to own mapping. They didn't want us to own mapping. Anyway, they didn't want to own mapping. They just wanted to, like, use the text map propagator. It was like, alright, well, I mean, this does… this does work effectively, and there is a spec… specification for…
-Those things. So this is kind of like a…
-Like, part… well, also, part of that… that specification is specification, part of it is supplementary guidance, which is not.
+And that's what I think matters, because it's whatever the text map… like, I don't want to own… I don't want to own mapping. They didn't want us to own mapping. Anyway, they didn't want to own mapping. They just wanted to, like, use the text map propagator. It was like, alright, well, I mean, this does… this does work effectively, and there is a spec… specification for… Those things. So this is kind of like a… Like, part… well, also, part of that… that specification is specification, part of it is supplementary guidance, which is not.
 a specification, which is… so, like, you know, the way that I originally did it was defining an ENV propagator, not carrier. But then we got asked, like, carrier is the better option. I was like, okay, but in the propagator, I would map them.
 I would just… I just included a map of trace parent to trace parent, trace state to trace state, baggage to baggage, B3 to B3, and it just became part of the propagator, which was very explicit.
 Yeah. So you could see it, but, you know, they wanted carriers, so… It's like, like, I get it, but, like.
 I almost feel like it's, like, not my problem. You know what I mean? It's like, like, look, you guys got what you asked for, now you don't like it. Part of it is, like, you know, in the specification, what concessions do you want to make? So, that's my hot take for today.
-because I'm uncaffeinated, and I should be caffeinated, and I'm not, so that's my excuse. But yeah, like, I can write this up on the issue. I just… I don't…
-I don't fully, like… maybe it's that I just don't fully understand
-What the real problem is here, like, what the real problem's trying to be solved is.
+because I'm uncaffeinated, and I should be caffeinated, and I'm not, so that's my excuse. But yeah, like, I can write this up on the issue. I just… I don't… I don't fully, like… maybe it's that I just don't fully understand What the real problem is here, like, what the real problem's trying to be solved is.
 **Alan Clucas** 11:02 Follow that, I agree. That's why I was a bit surprised there was so much pushback on it.
 **Adriel Perkins** 11:10 Yeah.
 I'm gonna say no comment to your last statement, and I'll just leave it at that, and you could infer all you want to. I'll put this on my schedule of commenting on this.

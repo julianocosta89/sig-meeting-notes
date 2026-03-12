@@ -39,16 +39,13 @@ I think… I think I'm the only person without a headset in this meeting.
 **Andrej Kiripolsky** 02:28 Yeah, you are the only one.
 So you have your answer as well.
 **Victoria Nduka** 02:35 Yay.
-**Andrej Kiripolsky** 02:36 Yeah, I started using this one because,
-Yeah, I gave my airports to my grandmother.
+**Andrej Kiripolsky** 02:36 Yeah, I started using this one because, Yeah, I gave my airports to my grandmother.
 So I have to now use something, something else. I'm actually more used to using the, like, tiny ones.
-But…
-grandma needed to watch her, evening television, and not… and I… we did… we cannot let her watch it out loud, because she would wake up the kids. She's… she's visiting. Anyway, yeah, too much personal information.
+But… grandma needed to watch her, evening television, and not… and I… we did… we cannot let her watch it out loud, because she would wake up the kids. She's… she's visiting. Anyway, yeah, too much personal information.
 **Lisa Jung** 03:08 I was like, she knows how to use AirPods? Dang!
 **Sophia Solomon** 03:11 I know, that's so sweet, though.
 **Lisa Jung** 03:13 Yeah.
-**Andrej Kiripolsky** 03:13 It's not that complicated, like, once you connect them, you usually just, like, put them into your ears, and that's it, but… she's…
-quite good with technology, I have to say.
+**Andrej Kiripolsky** 03:13 It's not that complicated, like, once you connect them, you usually just, like, put them into your ears, and that's it, but… she's… quite good with technology, I have to say.
 **Victoria Nduka** 03:23 Cute, cute.
 **Lisa Jung** 03:24 Would you use it as a hearing aid?
 I heard that song.
@@ -56,8 +53,7 @@ I heard that song.
 **Lisa Jung** 03:29 Yeah.
 **Sophia Solomon** 03:30 The first edition, you can. But yeah, it works. It's pretty good. It's pretty… I have… I used to listen to really loud music, so I use them sometimes.
 **Andrej Kiripolsky** 03:43 Interesting, didn't know what it is.
-Yeah. So…
-Harice mentioned in Slack that she has a conflict today.
+Yeah. So… Harice mentioned in Slack that she has a conflict today.
 **Lisa Jung** 04:09 I wonder if Dan's coming?
 **Andrej Kiripolsky** 04:11 I don't know, I don't know. I know that Adriana might be traveling, but I'm not sure if I got it correctly. Ernest, do I remember?
 **Lisa Jung** 04:17 remember correctly?
@@ -76,11 +72,7 @@ So yeah, I think we have no adults in the room today.
 **Lisa Jung** 04:58 Cool.
 **Andrej Kiripolsky** 05:00 Alrighty.
 So, I have the first thing.
-And it's more for, actually, Dan, Reese, and Adriana, but…
-And it's also just to follow up on something I already mentioned last week, so I have the PR,
-for the update of, end user section on the main web… on the main website, and then provided some feedback. Reece, Adriana provided feedback, but none of them actually gave me a thumbs up and approved the PR, so I just wanted to, like, ask if, like, if any… if everything is okay, like, if they could approve. But yeah, if you folks are interested, or if you'd like to…
-provide feedback, I would very much appreciate that, so… Yeah
-If you want, take a look, it's still, still up there.
+And it's more for, actually, Dan, Reese, and Adriana, but… And it's also just to follow up on something I already mentioned last week, so I have the PR, for the update of, end user section on the main web… on the main website, and then provided some feedback. Reece, Adriana provided feedback, but none of them actually gave me a thumbs up and approved the PR, so I just wanted to, like, ask if, like, if any… if everything is okay, like, if they could approve. But yeah, if you folks are interested, or if you'd like to… provide feedback, I would very much appreciate that, so… Yeah If you want, take a look, it's still, still up there.
 And Victoria is next.
 **Victoria Nduka** 05:53 Oh, yeah. I think which I can close up.
 the collector flow survey, because right now we are at 120 responses.
@@ -88,13 +80,11 @@ which was… I think our target number of responses for the survey.
 So, we are just at exactly 120 responses.
 I think that's enough for… for a pretty good analysis.
 Follow-up analysis on the experience.
-So the next step is to analyze the responses, which I believe will be done by the Collector 6, so that we can have to hand over
-the results.
+So the next step is to analyze the responses, which I believe will be done by the Collector 6, so that we can have to hand over the results.
 To them, and let them know indeed.
 in the Slack channel.
 That's… The ball is in your court, and have a blog post written on it.
-But in the meantime, we may have to update the GitHub issue. The issue…
-For this particular, yeah, for this particular task on detail.
+But in the meantime, we may have to update the GitHub issue. The issue… For this particular, yeah, for this particular task on detail.
 I think it was Rhys that opened it, so she… I don't know. I can't edit it in my end, so she may have to be the one to edit it.
 That's O.
 **Andrej Kiripolsky** 07:08 Yeah, I think you… so, it's awesome that we have the… all the responses, that's amazing. I think… you said it's 100 now?
@@ -107,8 +97,7 @@ That's O.
 **Victoria Nduka** 07:31 Okay.
 **Andrej Kiripolsky** 07:32 It's done. And one thing you might do as well is to create a PR.
 To the repository.
-Although, maybe this is something we would do at the end, because I think for other surveys, this was always done as the last step, like, when data was cleaned, and…
-Perhaps also when the blog post was ready. So, yeah. So, this might be done as well later, but it depends on you. You can also just create, like, a placeholder page in the… or, like, placeholder folder in the repo with some, like, short reading.
+Although, maybe this is something we would do at the end, because I think for other surveys, this was always done as the last step, like, when data was cleaned, and… Perhaps also when the blog post was ready. So, yeah. So, this might be done as well later, but it depends on you. You can also just create, like, a placeholder page in the… or, like, placeholder folder in the repo with some, like, short reading.
 And add all the stuff later on.
 Yeah, and I think it's a good idea to share it with the collector's sake, but I think Ernest might be doing the analysis here, or, like.
 Okay, yeah. It's something we discussed.
@@ -122,8 +111,7 @@ Hi, Adriana. I just now noticed that you joined. Hello.
 **Adriana Villela** 08:54 Hey, hey.
 **Victoria Nduka** 08:56 Welcome.
 **Adriana Villela** 08:57 Thanks.
-Yeah, I… I'm happy that we got the, the survey numbers up. Good job with that final push. I think the…
-the social… the social push helped, and I… again, I have to, like, give mega kudos to Victoria, because you're right, good social copy. Like, for real. It's always, like, fun and whimsical, so… kudos.
+Yeah, I… I'm happy that we got the, the survey numbers up. Good job with that final push. I think the… the social… the social push helped, and I… again, I have to, like, give mega kudos to Victoria, because you're right, good social copy. Like, for real. It's always, like, fun and whimsical, so… kudos.
 **Victoria Nduka** 09:24 Thank you, thank you very much.
 **Ernest Owojori** 09:26 Sorry, Andrea, do I need to reach out to anyone in the collector's seat, just for them to be aware I'm doing the analysis?
 **Adriana Villela** 09:33 You know what? It's probably a good idea.
@@ -147,11 +135,8 @@ Well, can someone put the agenda on the screen?
 **Andrej Kiripolsky** 10:37 Yeah, so I have the next one as well, and yeah, I was checking the… the… project board.
 of the SIG, and we have a couple of things in progress, and one of them is maintainers… not maintainers, mainframe survey.
 And there was no… it wasn't really executed by us. Folks from the SIG did it by themselves. And, Reece reached out to them, like, 2 months ago.
-And they shared that they are in pro… like, they have a blog post in progress. And the pro… like, it didn't… it's based on the document, it seems that the progress wasn't, like,
-that visible in the last, two months, so I just want to mention that if anyone would like to
-help with that, I think that would be… to be awesome, and yeah, you can perhaps reach out to… if anyone would be interested, they can reach out to… to the mainframes folks and ask if they would need any help with writing the blog.
-**Adriana Villela** 11:41 Yeah, that would… that would probably be helpful to remind them that we're here, because we do want to remind the SIGs that, like, they can partner with us to run
-to run the surveys. Yeah, is there anyone who wants to take a crack at it?
+And they shared that they are in pro… like, they have a blog post in progress. And the pro… like, it didn't… it's based on the document, it seems that the progress wasn't, like, that visible in the last, two months, so I just want to mention that if anyone would like to help with that, I think that would be… to be awesome, and yeah, you can perhaps reach out to… if anyone would be interested, they can reach out to… to the mainframes folks and ask if they would need any help with writing the blog.
+**Adriana Villela** 11:41 Yeah, that would… that would probably be helpful to remind them that we're here, because we do want to remind the SIGs that, like, they can partner with us to run to run the surveys. Yeah, is there anyone who wants to take a crack at it?
 **Sophia Solomon** 12:01 I could take a crack at it.
 **Adriana Villela** 12:03 Oh, that would be amazing, thank you.
 **Sophia Solomon** 12:05 Yeah, so, just, like, reach out to the…
@@ -184,16 +169,14 @@ Yeah, yeah, it was haunting me since April, and I'm really glad that it's done n
 **Adriana Villela** 14:00 I, I get it, I get it. Yeah, I have a PR that I have to tend to that I haven't had a chance to, update, so…
 **Andrej Kiripolsky** 14:08 Feel your pain.
 **Adriana Villela** 14:09 Yeah, yeah.
-**Andrej Kiripolsky** 14:10 Adriana, so I think now I just need to…
-approval from someone, some of you folks, like you, Dan, or Rhys,
+**Andrej Kiripolsky** 14:10 Adriana, so I think now I just need to… approval from someone, some of you folks, like you, Dan, or Rhys,
 **Adriana Villela** 14:22 Oh yeah, have you made, have you made the, the suggestion, made the update to this? Oh, okay, let me…
 **Andrej Kiripolsky** 14:27 refresh.
 Oh, I hope I did.
 And we can also wait for the other folks as well, but…
 **Adriana Villela** 14:41 new stuff.
 I know Dan's out for the next couple weeks.
-**Andrej Kiripolsky** 14:48 Yeah, yeah, then Sarat, and I don't know how it's free is with, with her availability, so…
-kind of…
+**Andrej Kiripolsky** 14:48 Yeah, yeah, then Sarat, and I don't know how it's free is with, with her availability, so… kind of…
 **Adriana Villela** 15:03 Figure out…
 **Andrej Kiripolsky** 15:10 No, can't…
 **Adriana Villela** 15:12 find my suggestion, where'd it go?
@@ -213,11 +196,8 @@ Just so that we get this moving, I don't want to leave you hanging.
 **Adriana Villela** 16:19 Okay, good.
 **Andrej Kiripolsky** 16:20 The next point.
 Perfect. Thank you.
-**Ernest Owojori** 16:27 Oh, yeah, so, from my hint, I've…
-crafted a few questions. I think I just have a section left before I now move to…
-how I want to approach it. I mean, the survey for the Japanese community.
-I don't think I should share my screen for that now, until I'm done. So, it's just a quick update on that. Then I found a way… this is for Lisa, I found a way to… I think I showed Andrea this… I found a way to translate, any kind of form to…
-Japanese or any other language, so we will not be having the issue of language any longer.
+**Ernest Owojori** 16:27 Oh, yeah, so, from my hint, I've… crafted a few questions. I think I just have a section left before I now move to… how I want to approach it. I mean, the survey for the Japanese community.
+I don't think I should share my screen for that now, until I'm done. So, it's just a quick update on that. Then I found a way… this is for Lisa, I found a way to… I think I showed Andrea this… I found a way to translate, any kind of form to… Japanese or any other language, so we will not be having the issue of language any longer.
 **Lisa Jung** 17:04 What was the last part?
 **Andrej Kiripolsky** 17:05 How do you only get?
 **Ernest Owojori** 17:07 I said I found a way to translate a form to Japanese, and when I get the response, I get it in English.
@@ -237,8 +217,7 @@ Where, where are you now, Lisa? I know you're, like, you're globetrotting.
 **Adriana Villela** 18:19 Amazing.
 I've got an off-site.
 **Lisa Jung** 18:21 Wait, what kind of like, Deanna? Yeah.
-**Adriana Villela** 18:24 I'm… I'm home, but on Sunday, I travel to Vienna, I'll be there for a week and a half for an off-site, and then cloud-native days Austria, and then Warsaw for…
-Couple of days for…
+**Adriana Villela** 18:24 I'm… I'm home, but on Sunday, I travel to Vienna, I'll be there for a week and a half for an off-site, and then cloud-native days Austria, and then Warsaw for… Couple of days for…
 **Lisa Jung** 18:37 Bye!
 **Adriana Villela** 18:37 ACD Warsaw.
 **Lisa Jung** 18:39 Road Warrior.
@@ -248,8 +227,7 @@ It's… yeah.
 Cool.
 **Adriana Villela** 18:56 So are we… okay, so we've got a plan then for the… the Japan, stuff?
 And we, did we nail down a date also? Like, I know it's, like, semi-adjacent, did we nail down also a date for the folks?
-for, for running, like, an O-Tell Me…
-Or, hotel and practice with the folks from Japan.
+for, for running, like, an O-Tell Me… Or, hotel and practice with the folks from Japan.
 **Lisa Jung** 19:24 Not yet. So, we're.
 **Adriana Villela** 19:25 It's not yet, okay.
 **Lisa Jung** 19:26 nail down a time. The leave from the Japanese localization sake, he's at an off-site in Sydney this week, so we're, like, trying to… yeah.
@@ -260,28 +238,17 @@ I'll just wait for the notes to finish.
 **Lisa Jung** 20:03 Is that done by AI? We're like, who's doing this?
 Oh.
 **Adriana Villela** 20:07 Sorry, Andre. Andre is just very, I think, very good at, like, keeping up. Magic, magic.
-**Andrej Kiripolsky** 20:16 And if you try to, like, update them, I don't always, like, capture the…
-The essence of what you are trying to say, so yeah, please.
+**Andrej Kiripolsky** 20:16 And if you try to, like, update them, I don't always, like, capture the… The essence of what you are trying to say, so yeah, please.
 **Adriana Villela** 20:26 Yo, note-taking is an art.
 Your brains are AI, yes.
 plus one to that. Okay, so we can, I guess, move on to the next agenda item.
-So I… I forget what we called our series, where we're going to do… oh yeah, it was the What's New in a hotel, I could not… I, like, totally brain farted on that. I know we put… we kind of parked that
-We don't have anything planned for October. I'm trying to get, someone from my company
-to do an hotel… either hotel in practice or hotel Q&A, but, this… not someone from my company, but one of our customers, they have a really, really cool story of, like, hotel in the mainframe.
-But…
-because they need to ask permission from their employer before they can do that, because I told them it's a live stream, so, you know, gotta take all the necessary precautions, so I gotta wait on… on that, so this could be a good opportunity for,
-you know, launching a What's New in OTEL.
-In which case… I guess the question is, do we have the bandwidth for it? And…
-can we find some… because I think it… I do think it would be relatively straightforward. I think we can, like, ask either Austin or Ted…
-Or even Alolita. Alolita's, I know, a little harder to pin down, but, when you pin her down, you get, like, lots of great information.
-So we could, we could see if there's someone on the governance committee, or even, even Severin,
-who can give us, like, a what's new in OTEL. Maybe we can,
-Reached out to one of those folks.
+So I… I forget what we called our series, where we're going to do… oh yeah, it was the What's New in a hotel, I could not… I, like, totally brain farted on that. I know we put… we kind of parked that We don't have anything planned for October. I'm trying to get, someone from my company to do an hotel… either hotel in practice or hotel Q&A, but, this… not someone from my company, but one of our customers, they have a really, really cool story of, like, hotel in the mainframe.
+But… because they need to ask permission from their employer before they can do that, because I told them it's a live stream, so, you know, gotta take all the necessary precautions, so I gotta wait on… on that, so this could be a good opportunity for, you know, launching a What's New in OTEL.
+In which case… I guess the question is, do we have the bandwidth for it? And… can we find some… because I think it… I do think it would be relatively straightforward. I think we can, like, ask either Austin or Ted… Or even Alolita. Alolita's, I know, a little harder to pin down, but, when you pin her down, you get, like, lots of great information.
+So we could, we could see if there's someone on the governance committee, or even, even Severin, who can give us, like, a what's new in OTEL. Maybe we can, Reached out to one of those folks.
 And then just schedule… we can schedule a stream.
 For sometime in October, like, maybe mid-October?
-And so the question is,
-who should we target? On… on folks' wish list, is there someone that you would like
-To hear from.
+And so the question is, who should we target? On… on folks' wish list, is there someone that you would like To hear from.
 on this.
 **Lisa Jung** 23:01 You know Marillia from OTEL JavaScript SDK? Yeah, yeah, yeah, she's working on declarative configuration, yeah.
 **Adriana Villela** 23:09 So I think she's in…
@@ -317,17 +284,14 @@ So…
 **Lisa Jung** 25:19 present.
 **Adriana Villela** 25:20 And I think if we just make sure that we do it towards the end of, yeah.
 Actually, even… ideally, I would say, like, the week of the 20th, of October.
-Or… or even the week after. I won't be… I won't be around for the week after to assist, because I'll… I'll be on another… on another work trip, but I can… if it's the week of the 20th or the week of the 13th, I can definitely
-assist with anything.
+Or… or even the week after. I won't be… I won't be around for the week after to assist, because I'll… I'll be on another… on another work trip, but I can… if it's the week of the 20th or the week of the 13th, I can definitely assist with anything.
 But yeah, so we want to… we usually block out an hour for these things. We also want to do a tech check for a half hour, usually the day before, because, Henrik usually runs behind the scenes for this stuff, like, does the production.
 stuff, so he runs the show on StreamYard, er, sorry, Restream. And he just makes sure that everyone knows the drill, and makes sure that if we have anything, any links that we want to promote, then he can share those.
 As well, so that, that's usually how it would work.
 **Lisa Jung** 26:27 Cool.
 **Adriana Villela** 26:29 Yeah, -
 **Lisa Jung** 26:30 Yeah, I'll ping her and see, like, when she's available, or if she has the bandwidth to do it, yeah.
-**Adriana Villela** 26:35 Okay, okay. It might be also useful
-to… for this one, because it's the inaugural one, also have someone from the governance committee
-Because, here's my thought, where leading up to KubeCon, it might be cool to have someone from the GC, speak for, like, 15 minutes on, like, hey, what's something that we can look forward to in OTEL?
+**Adriana Villela** 26:35 Okay, okay. It might be also useful to… for this one, because it's the inaugural one, also have someone from the governance committee Because, here's my thought, where leading up to KubeCon, it might be cool to have someone from the GC, speak for, like, 15 minutes on, like, hey, what's something that we can look forward to in OTEL?
 So that could be… Could be a good one.
 **Lisa Jung** 27:08 Gotcha. So, are you thinking this for, like, the first, very first one, just featuring the GC about.
 **Adriana Villela** 27:15 No, we can have both, we can have both.
@@ -335,8 +299,7 @@ So that could be… Could be a good one.
 **Adriana Villela** 27:17 Yeah, yeah, yeah, we can have both. So, 15 for the GC member, and then 15 for Maridya.
 **Lisa Jung** 27:24 Perfect.
 **Adriana Villela** 27:26 Yeah, yeah.
-And let's get, I would… I would have suggested TED, but I want to make sure that we have representation across orgs, so we can see if we can get, like, Austin, or Severin, or… or one of those other folks you would ask me, maybe, to… to kind of tell… give us a… what's…
-What's cookin'?
+And let's get, I would… I would have suggested TED, but I want to make sure that we have representation across orgs, so we can see if we can get, like, Austin, or Severin, or… or one of those other folks you would ask me, maybe, to… to kind of tell… give us a… what's… What's cookin'?
 **Lisa Jung** 27:49 Totally. I could ping Saffron.
 **Adriana Villela** 27:52 Okay, perfect, yeah.
 **Lisa Jung** 27:54 Amazing.
@@ -349,18 +312,14 @@ Alright, I'll do that today and keep you posted.
 Awesome.
 Super, thank you for that.
 **Lisa Jung** 28:24 Corpse.
-**Adriana Villela** 28:39 Okay, cool. I guess we can…
-If we're done this topic, then we can talk about the last topic.
+**Adriana Villela** 28:39 Okay, cool. I guess we can… If we're done this topic, then we can talk about the last topic.
 Humans at Votel, we've typically done it for KubeCon. I'm not going to this KubeCon, but if, I know Henrik's gonna be there.
 Reece is gonna be there. I don't know who from this group is gonna be at KubeCon North America. Oh, awesome, awesome.
-So, there's always the option of, like, if there's still an appetite for running a Humans of OTL,
-for this conference, and I'll… I'll leave it up to… This group.
-If we do, then we would probably want to start planning sooner rather than later, just to make sure
-that we have, I think we want to at least have, like, 5 interviewees.
+So, there's always the option of, like, if there's still an appetite for running a Humans of OTL, for this conference, and I'll… I'll leave it up to… This group.
+If we do, then we would probably want to start planning sooner rather than later, just to make sure that we have, I think we want to at least have, like, 5 interviewees.
 We want to make sure that we have, a mix of people.
 Cause… sorry, not sorry, I don't want a bunch of white dudes on there. I want to make sure it's a diverse crew.
-And… and then also the other one that we've done with Henrik, I think, the last few times, is a Humans of OTEL livestream, where it's similar to the What's New in OTEL, where we get, usually someone from GC,
-Coming in to just give a what's new, and then, ideally, it'd be cool to get an end user, as the second interview, so we keep, again, that to, like.
+And… and then also the other one that we've done with Henrik, I think, the last few times, is a Humans of OTEL livestream, where it's similar to the What's New in OTEL, where we get, usually someone from GC, Coming in to just give a what's new, and then, ideally, it'd be cool to get an end user, as the second interview, so we keep, again, that to, like.
 30 to 45 minutes. And the good news is Henrik now has a place where he can actually set up and do recordings, because that was, at least from the livestream, that was challenging in the past, always tricky. So, so yeah.
 **Sophia Solomon** 30:37 Sorry, can I, I'm fairly new to this space. What is the Humans of OTEL, at KubeCon? Like, what?
 **Adriana Villela** 30:44 Oh, well, I… yeah, so Humans of Hotel is a… it's a… and… and I can… let me share also, we have… we have a YouTube playlist.
@@ -373,44 +332,32 @@ Did you share the video or the whole playlist?
 courses, like… Yeah, I'll include that also in there.
 In the chat, one sec.
 It's just in the Zoom chat.
-So, anyway, yeah, so basically, Humans at Motel, started in Chicago a couple years ago, and basically sit down and interview
-folks who have been involved in OpenTelemetry in some form or another, either as a contributor or a practitioner. The goal is to get
-about 5 people to be interviewed, and we ask, I think, 4 questions.
+So, anyway, yeah, so basically, Humans at Motel, started in Chicago a couple years ago, and basically sit down and interview folks who have been involved in OpenTelemetry in some form or another, either as a contributor or a practitioner. The goal is to get about 5 people to be interviewed, and we ask, I think, 4 questions.
 what's your name? What do you do? How did you get into OpenTelemetry?
 like, as a contributor or whatever. What does observability mean to you personally? What does OpenTelemetry mean to you personally? And what's your favorite OpenTelemetry signal?
-And so we, we just basically,
-splice together the responses into, like, a fun video, and then we do a… the blog post is basically a cheat where we just take the transcript.
+And so we, we just basically, splice together the responses into, like, a fun video, and then we do a… the blog post is basically a cheat where we just take the transcript.
 **Sophia Solomon** 32:31 Yes.
-**Adriana Villela** 32:32 put onto a blog post, which… good enough. And include a link to the video. So, yeah, we've been doing that, I think. I've done it a bunch of times now. We've done one, two…
-3.
+**Adriana Villela** 32:32 put onto a blog post, which… good enough. And include a link to the video. So, yeah, we've been doing that, I think. I've done it a bunch of times now. We've done one, two… 3.
 done it 3 times. They've gotten better with time. The first one was, like, on my rinky-dink.
 crappy Amazon mic and my iPhone, and then Henrik stepped in, and he was like, I can help you producing, and his equipment is, like, next level good. So I'm like, oh, thank you for, like, being so polite and telling me we need to level up our game. But his equipment is so good, and he, like, he knows what he's doing.
-So, very much appreciate the help, so he's helped us out with the last few ones, and
-Yeah, so… so that's… that's, like, the humans of hotel recorded interviews, and then, I think two KubeCons ago, we started the livestream.
+So, very much appreciate the help, so he's helped us out with the last few ones, and Yeah, so… so that's… that's, like, the humans of hotel recorded interviews, and then, I think two KubeCons ago, we started the livestream.
 Where it's basically, we… we have someone from the GC, and then an end user, talk about, and, like, in the past, it's been Reese and me interviewing on the livestream.
 interviewing these folks about, like, just, you know, like, what's new in OTEL? What do we… what can we expect? And then end users talking about, like, whatever, something that tickles their fancy. So, we've had Ked on there, we've had Kizzle Weekly, we've had Austin, we've had Maria.
-For the last couple ones, so I was looking… always looking for a variety of folks, like, I…
-try to not want to repeat the same people, and again, I do want to get, like, a nice mix of, you know.
+For the last couple ones, so I was looking… always looking for a variety of folks, like, I… try to not want to repeat the same people, and again, I do want to get, like, a nice mix of, you know.
 I don't want just a white guy. So, yeah.
-So if that's something that tickles your fancy that you'd be interested in spearheading, then let me know. We just need to make sure that we coordinate with… with Henrik and Reese on… on that to make sure, and that we… we… we get people
-We identify people ahead of time.
+So if that's something that tickles your fancy that you'd be interested in spearheading, then let me know. We just need to make sure that we coordinate with… with Henrik and Reese on… on that to make sure, and that we… we… we get people We identify people ahead of time.
 **Sophia Solomon** 34:42 Mmm.
-**Adriana Villela** 34:43 And make sure we book, like, interview slots,
-Yeah, so that… yeah, we… the first time we did it was very ad hoc. It was like, hey, come over here. But now we… we try to, like, keep it to a schedule,
-Keeping in mind, like, we want to make sure we don't schedule it if someone has a talk, or if it's during the hotel, community updates, or whatever.
+**Adriana Villela** 34:43 And make sure we book, like, interview slots, Yeah, so that… yeah, we… the first time we did it was very ad hoc. It was like, hey, come over here. But now we… we try to, like, keep it to a schedule, Keeping in mind, like, we want to make sure we don't schedule it if someone has a talk, or if it's during the hotel, community updates, or whatever.
 So, yeah.
 **Sophia Solomon** 35:11 Yeah, I mean, I'll be attending. I don't know if anyone else raised their hand, but… so, I know, so I could help, Reese.
 I don't know, the interview. I don't know. I'd like to.
 **Adriana Villela** 35:22 Awesome, awesome. Yeah, and if you can, like, round up some folks, if there's anyone that you know of.
-Who will be attending. We can put out a call, also,
-both on our SIG channel, but also on socials, to see if anyone's interested in attending.
+Who will be attending. We can put out a call, also, both on our SIG channel, but also on socials, to see if anyone's interested in attending.
 In participating.
-And… and then go from there. So, if you can…
-If you can get that going, then that would be awesome.
+And… and then go from there. So, if you can… If you can get that going, then that would be awesome.
 **Sophia Solomon** 35:56 Yeah, awesome.
 **Adriana Villela** 35:58 Cool.
-Yeah, and if you want, you can, like, we can start a chat with you, me, Reese, and Henrik, and I can provide, you know, whatever support from…
-You know, if you need me to nudge a person, and whatever, or need some guidance on, like, hey, what do we need? What do we need to do?
+Yeah, and if you want, you can, like, we can start a chat with you, me, Reese, and Henrik, and I can provide, you know, whatever support from… You know, if you need me to nudge a person, and whatever, or need some guidance on, like, hey, what do we need? What do we need to do?
 **Sophia Solomon** 36:18 Yeah, no, I really love that. Thank you.
 **Adriana Villela** 36:21 Okay, cool, cool.
 I just sat it then.
@@ -449,8 +396,7 @@ But I don't know, like, I think there's a process to register to participate in 
 **Adriana Villela** 38:41 Okay, yeah, that'd be great if… yeah, yeah, if you can get that going, and create an issue on it as well, so that we can…
 **Andrej Kiripolsky** 38:48 So, it doesn't.
 **Adriana Villela** 38:49 It doesn't get forgotten. And then just put whatever details in the issue, so then we can hopefully be prepared next year.
-There's also, another
-I don't know if it's… to be honest, I have no idea if it's relevant, but I think they have one called Advent of Code that's later in the year.
+There's also, another I don't know if it's… to be honest, I have no idea if it's relevant, but I think they have one called Advent of Code that's later in the year.
 **Victoria Nduka** 39:08 I have… I haven't heard of it, like, I'm just hearing about this for the first time now.
 Yeah, I am.
 **Andrej Kiripolsky** 39:12 But yeah, you know what, let's tackle one thing.
@@ -478,8 +424,7 @@ So you can't see.
 **Andrej Kiripolsky** 40:39 I… I can't. But you have…
 **Adriana Villela** 40:46 But you have edit access, or you do not?
 **Ernest Owojori** 40:48 No, no, no, no, I do not, I do not.
-**Adriana Villela** 40:50 Oh, okay, okay, hang on, let me give you access, then. For starters…
-Give me one sec, sorry.
+**Adriana Villela** 40:50 Oh, okay, okay, hang on, let me give you access, then. For starters… Give me one sec, sorry.
 I'm setting up the edit access for you.
 **Andrej Kiripolsky** 41:54 Okay, yeah.
 **Adriana Villela** 41:55 Edit, edit access now.
@@ -487,10 +432,8 @@ You should be able to see the version history now.
 **Ernest Owojori** 42:02 Yeah.
 I can't now, thank you so much.
 **Adriana Villela** 42:06 Amazing.
-**Lisa Jung** 42:10 One last question, sorry. So for… what is new in OTAL? So that's featuring…
-like, what would be the word to describe it? Would it be, like, hotel contributors, hotel leaders, or… like, how would you describe it? I'm just thinking about it as far as.
-**Adriana Villela** 42:26 Oh, yeah, I would say, like,
-just hearing from, yeah, hotel… hotel leaders, I guess.
+**Lisa Jung** 42:10 One last question, sorry. So for… what is new in OTAL? So that's featuring… like, what would be the word to describe it? Would it be, like, hotel contributors, hotel leaders, or… like, how would you describe it? I'm just thinking about it as far as.
+**Adriana Villela** 42:26 Oh, yeah, I would say, like, just hearing from, yeah, hotel… hotel leaders, I guess.
 **Lisa Jung** 42:34 meters.
 **Adriana Villela** 42:35 Leaders and contributors, how about? Let's put it that way.
 Yeah, yeah, yeah.

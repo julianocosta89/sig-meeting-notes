@@ -10,14 +10,12 @@ Zoom Recording URL: https://zoom.us/rec/share/fPYknKiH7mVISDLhJgITug6E8W5z2i2Bot
 **Daniel Dyla (Dynatrace)** 01:04 Morning.
 **Josh Suereth** 01:05 How's it going, man?
 **Daniel Dyla (Dynatrace)** 01:07 Good, you?
-**Josh Suereth** 01:08 Not bad, not bad. I,
-It's been a busy time here.
+**Josh Suereth** 01:08 Not bad, not bad. I, It's been a busy time here.
 So… I'm still…
 **Daniel Dyla (Dynatrace)** 01:17 Hopefully busy in a good way.
 **Josh Suereth** 01:19 I… I would… I would always rather be busy than bored.
 **Daniel Dyla (Dynatrace)** 01:23 Huh.
-**Josh Suereth** 01:28 So…
-Yeah. I have a little bit of travel coming up, and then, KubeCon. I was booking travel for that.
+**Josh Suereth** 01:28 So… Yeah. I have a little bit of travel coming up, and then, KubeCon. I was booking travel for that.
 So…
 **Daniel Dyla (Dynatrace)** 01:35 Oh, you are going to KubeCon. I'm not going this time.
 **Josh Suereth** 01:41 Oh, I'm sorry, I have family down there, so, like, it's a short hop, and then I get to actually see some of my extended cousins and things that I haven't seen in a while.
@@ -40,8 +38,7 @@ That's why I decided to raise it. So let's talk a little bit about the OTEP.
 **Daniel Dyla (Dynatrace)** 02:51 Okay.
 **Josh Suereth** 02:51 And then when people join, we can dive into more things, so…
 **Daniel Dyla (Dynatrace)** 02:55 Alright.
-**Josh Suereth** 02:56 Yeah, let's cover what was changed in some of the open comments. So, first off…
-Oh, this is the change about how things are fundamental with trade-off and mitigation. I left this open for us to talk about today. I added some backwards compatibility stuff, we'll talk about that.
+**Josh Suereth** 02:56 Yeah, let's cover what was changed in some of the open comments. So, first off… Oh, this is the change about how things are fundamental with trade-off and mitigation. I left this open for us to talk about today. I added some backwards compatibility stuff, we'll talk about that.
 Why is locking… oh, there's an example implementation in the spec. I'm thinking about just getting rid of it.
 But I can leave it there. It talks a lot about how to do synchronization and primitives, and I think all of it is now in the description above.
 But… and I'd rather link to real prototypes than, like, the pseudocode? I don't know.
@@ -58,21 +55,13 @@ Especially real use amount of analytics, this proposal.
 And its analysis mixes to potentially several different things. Truly immutable resources, and mutable states of the device.
 Making resources mutable does not solve the inadequacy of the OpenTelemetry model for ROM and analytics Realm.
 Mutable state requires different handling than resources on several levels.
-Does the state mutate? But it can also be different for different concurrently running bits of code, background thread, yes. This, this actually goes into some of the discussion you and I had,
-This is why I'm actually thinking…
-I'm starting to really question… I still think we want resource and entities together, but mutable resource, I'm starting to question whether we want to go a different route with entities and scope.
-**Daniel Dyla (Dynatrace)** 05:09 Yeah, I've been thinking about it a little bit more over the last week, and, like, more people have been raising the… the braking,
-You know, the idea that this is a breaking change,
-to allow resource to be mutable. If we…
-Like, the resource as it is defined today.
+Does the state mutate? But it can also be different for different concurrently running bits of code, background thread, yes. This, this actually goes into some of the discussion you and I had, This is why I'm actually thinking… I'm starting to really question… I still think we want resource and entities together, but mutable resource, I'm starting to question whether we want to go a different route with entities and scope.
+**Daniel Dyla (Dynatrace)** 05:09 Yeah, I've been thinking about it a little bit more over the last week, and, like, more people have been raising the… the braking, You know, the idea that this is a breaking change, to allow resource to be mutable. If we… Like, the resource as it is defined today.
 What we were trying to capture is essentially what we are now trying to capture as identifying entity attributes.
 **Josh Suereth** 05:44 Yep.
-**Daniel Dyla (Dynatrace)** 05:46 which shouldn't mutate. I guess maybe you could add or remove an entity, But…
-Generally, they should be stable over the lifetime of the entity.
+**Daniel Dyla (Dynatrace)** 05:46 which shouldn't mutate. I guess maybe you could add or remove an entity, But… Generally, they should be stable over the lifetime of the entity.
 **Josh Suereth** 06:01 Well, and it doesn't solve… like, to this… to this question here, this doesn't solve the need of, like, oh, I have a background thread that's running with resource A, and then I have something else which is actually activity, you know, A and activity B, and I want to report them both from the same frickin' SDK. How do I do that? Like, it doesn't actually solve that.
-So, the more… the more I've gotten into this, and I hate to do this again, I… I actually think that we should…
-I'm okay spending more time on the entity provider. I… you can look at my… my, PR on…
-mutable resource. I… I think I'm changing my opinion here.
+So, the more… the more I've gotten into this, and I hate to do this again, I… I actually think that we should… I'm okay spending more time on the entity provider. I… you can look at my… my, PR on… mutable resource. I… I think I'm changing my opinion here.
 we can… we can… I'll walk through… I'll walk through some of the stuff I wrote.
 But yeah, we'll walk through the counterproposal in my straw man, and we can discuss what we think. So if we look here at what was changed, some of this might be the same no matter what, but effectively, where do we have? That's the API for entity things. Okay.
 Entity provider creation, right? We have this explicit notion of creation of an entity provider. You give it a set of resource detectors, and you give it an initialization timeout for when to abandon and say, cool, I need a resource no matter what. I'm done figuring out who I am.
@@ -84,26 +73,20 @@ Get resource operations must be unblocked, and onResourceInitializationEvent mus
 The call must provide the failure status of, like, what happened.
 So that you know that, that, like, entity or resource wasn't fully initialized, here's why.
 That would be an update, I think, to JS, but I'm guessing you already have something like that?
-**Daniel Dyla (Dynatrace)** 08:17 Yeah, I mean, yes, it's… we have a similar mechanism,
-I wish I could share the prototype. I haven't pushed it any… I haven't pushed the latest version anywhere. I'll… I'll do that today, so that we can talk about it more intelligently. But, sure. Yeah, that's not… that's not all that different than what I have.
+**Daniel Dyla (Dynatrace)** 08:17 Yeah, I mean, yes, it's… we have a similar mechanism, I wish I could share the prototype. I haven't pushed it any… I haven't pushed the latest version anywhere. I'll… I'll do that today, so that we can talk about it more intelligently. But, sure. Yeah, that's not… that's not all that different than what I have.
 **Josh Suereth** 08:38 Let me grab, then, the entity listener, wherever I defined that. We have onResourceInitialize, onEntityState, onEntityDelete, right?
 If we were to get rid of mutable resources, I think this would be the only message that gets sent.
-In the prototype, if we keep things the way they are now, but we might not…
-We… anyway, we might be able to do something different, too. The difference that I added here is onResourceInitialize sends the resource and a status.
+In the prototype, if we keep things the way they are now, but we might not… We… anyway, we might be able to do something different, too. The difference that I added here is onResourceInitialize sends the resource and a status.
 Of resource initialization.
 **Daniel Dyla (Dynatrace)** 09:08 So… The status would essentially be success, failure…
 **Josh Suereth** 09:12 Yeah. Time.
 **Daniel Dyla (Dynatrace)** 09:13 Yeah, okay.
 **Josh Suereth** 09:14 What I did for the Java prototype, because sending status is annoying.
 And they don't have, like, a status type I could just reuse. I have two methods. One that sends the resource, one that's… I have onResourceInitialized and onResourceInitialized with failure.
-as, like, two separate methods in JavaScript, and I feel like that still abides by the spec and is not a problem, right? It's… because it's the…
-Spirit of the spec.
+as, like, two separate methods in JavaScript, and I feel like that still abides by the spec and is not a problem, right? It's… because it's the… Spirit of the spec.
 **Daniel Dyla (Dynatrace)** 09:43 Yeah, I think it's fine.
-**Josh Suereth** 09:45 Yeah, but just, just if you were… oh, shoot, you know what, I didn't push that either. That's in my local…
-That's in my local changes. I should push that publicly so you can look at it, but that's how I implemented this when I went to do it.
-Alright, other things that were added, so we call out the two states of entity provider, and then on creation…
-That was all this…
-Calls to get resources are blocked until it's completed with the timeout. We have add or update, what else do we add? It is down further.
+**Josh Suereth** 09:45 Yeah, but just, just if you were… oh, shoot, you know what, I didn't push that either. That's in my local… That's in my local changes. I should push that publicly so you can look at it, but that's how I implemented this when I went to do it.
+Alright, other things that were added, so we call out the two states of entity provider, and then on creation… That was all this… Calls to get resources are blocked until it's completed with the timeout. We have add or update, what else do we add? It is down further.
 the SDK changes. We have the open question on how to deal with metrics on mutation, and honestly, that has been a quagmire of hell.
 I think that I… I want to put the straw man proposal up before we go into details of what that looks like, because I didn't update the spec at all, it's really ugly, what I've implemented.
 But the thing I want to talk about is this trade-offs and mitigations, right?
@@ -133,8 +116,7 @@ We have to control, you know, the braking change, essentially, to make sure we d
 **Daniel Dyla (Dynatrace)** 13:24 And allow them to… Choose when they take that on.
 **Josh Suereth** 13:29 Yeah.
 Alright.
-Let's…
-Let's go to your straw man.
+Let's… Let's go to your straw man.
 Alright, so here's the fundamental things, right? Resource… remains immutable.
 After initialization. So we keep the initialization stuff we had before, okay?
 **Daniel Dyla (Dynatrace)** 14:01 Okay.
@@ -155,33 +137,25 @@ And then I would have entity.
 Session, you know?
 **Daniel Dyla (Dynatrace)** 15:30 Yeah. Okay.
 **Josh Suereth** 15:31 Try to avoid using real syntax there? Yep, I gotcha.
-Yeah, this register, or this, obtains…
-A scope that will report against a mutable entity.
-That entity is considered bound… Internal…
-scoped to the immutable resource entities. Okay.
+Yeah, this register, or this, obtains… A scope that will report against a mutable entity.
+That entity is considered bound… Internal… scoped to the immutable resource entities. Okay.
 Yeah, so something like that. So the… basically, you know, if I'm reporting against a session, I can get a meter… if I just get meter, it's against the baseline resource. If I say get meter 4, or whatever the hell we want to call this, it would be a meter against a specific entity, like a session.
 And I would have that for Tracer, I would have that for Logger, it would just be consistent everywhere. So this, this expands instrumentation scope to include entity ref.
-And it gives us the capability where now, the user
-is kind of telling us about these things. We already have dynamic allocation in our spec around, scope.
-Right? So, for meter, for example, if I pull a different scope, I get a different area of memory where I record metrics, and I report against that scope, and there's a set of attributes for them, right? So…
-if I have a mutating entity, I would have a scope that has that entity in it that I would report metrics against, and have another scope where I report metrics against it. The problem we have here is we don't have scope cleanup.
-So the last thing would be…
-We need a way to allow scope cleanup.
+And it gives us the capability where now, the user is kind of telling us about these things. We already have dynamic allocation in our spec around, scope.
+Right? So, for meter, for example, if I pull a different scope, I get a different area of memory where I record metrics, and I report against that scope, and there's a set of attributes for them, right? So… if I have a mutating entity, I would have a scope that has that entity in it that I would report metrics against, and have another scope where I report metrics against it. The problem we have here is we don't have scope cleanup.
+So the last thing would be… We need a way to allow scope cleanup.
 When… An entity is killed.
 The instrumentation scope.
 Needs to be cleaned.
 For example, flushing.
-Or, yeah, removing… in memory storage metrics. I feel like for…
-Traces and logs, because we're using a, a buffer pattern, generally.
+Or, yeah, removing… in memory storage metrics. I feel like for… Traces and logs, because we're using a, a buffer pattern, generally.
 With our processing pipeline, there isn't really anything to clean up.
 **Daniel Dyla (Dynatrace)** 17:58 Yeah.
 stateless.
 **Josh Suereth** 18:01 Yeah.
 **Daniel Dyla (Dynatrace)** 18:02 There's another problem here, which is that when the instrumentation gets the meter for the session.
 Now the instrumentation needs to… Pass an entity, where does it get that entity?
-Like, that it has to either construct its own entity, or…
-We need a way to query the entity…
-Provider for a particular entity by its name or type.
+Like, that it has to either construct its own entity, or… We need a way to query the entity… Provider for a particular entity by its name or type.
 Yeah. And… I think that… and, you know, what if it's not resolved yet?
 I think there's complexity there, especially since none of our other APIs, you know.
 We typically don't have the ability to read data back out via the API and instrumentation.
@@ -202,9 +176,7 @@ And so they want its resource to be the thing that's reported, but then when the
 And they want to share information in their batch.
 Kind of aggregate.
 So this actually gives them a way forward as well.
-**Daniel Dyla (Dynatrace)** 20:53 There are details we would need to worry about, like what happens if… You get a meter for…
-An entity that already exists in the resource, versus…
-doesn't exist in the resource? Like, do those behave differently, or do they… we just pretend it's okay and report them in both places, and let the backend deal with it?
+**Daniel Dyla (Dynatrace)** 20:53 There are details we would need to worry about, like what happens if… You get a meter for… An entity that already exists in the resource, versus… doesn't exist in the resource? Like, do those behave differently, or do they… we just pretend it's okay and report them in both places, and let the backend deal with it?
 **Josh Suereth** 21:21 Yeah, let me add that as another thing to talk about problem.
 What if the scope wants to record a human resource, or an entity?
 That is already in the resource.
@@ -212,8 +184,7 @@ Yep.
 **Daniel Dyla (Dynatrace)** 21:38 The instrumentation scope… currently does not have resource, right? It only has attributes?
 **Josh Suereth** 21:46 It only has… it doesn't have entity, it only has attributes, yeah.
 **Daniel Dyla (Dynatrace)** 21:50 And it also does not have its own resource, though.
-**Josh Suereth** 21:54 Instrumentation scope is attached to resource, so if we look at,
-Here. I… I don't know if this works for other people, maybe I'm too deep in the weeds, but I think in terms of our proto.
+**Josh Suereth** 21:54 Instrumentation scope is attached to resource, so if we look at, Here. I… I don't know if this works for other people, maybe I'm too deep in the weeds, but I think in terms of our proto.
 So, if we look at, you know, let's pick Trace.
 The way… the way everything works is trace data is a set of resource spans, resource spans is a resource, and then scope spans.
 And then instrumentation scope is in scope spans, where it's a set of spans attached to a scope.
@@ -239,9 +210,7 @@ So I'll have to figure out how to make them support it, but if I support it via�
 Where's the blame button? Let's take a look.
 **Daniel Dyla (Dynatrace)** 24:14 Dude, that had it a long time ago.
 **Josh Suereth** 24:16 Yeah.
-This is the OTEP. This is what I was looking for, so…
-You know, short name. Oh, this… that was… that was the one. Oh, God. Yeah, I remember that. Okay. Differentiating the type of data emitted from scopes that belongs to different data domains. For example, profile and data emitted as log records, or client-side data emitted as log records needs to be differentiated. So you can be routed and processed differently in the backends. That is…
-Make scope consistent with other things. ResourcePan, yeah.
+This is the OTEP. This is what I was looking for, so… You know, short name. Oh, this… that was… that was the one. Oh, God. Yeah, I remember that. Okay. Differentiating the type of data emitted from scopes that belongs to different data domains. For example, profile and data emitted as log records, or client-side data emitted as log records needs to be differentiated. So you can be routed and processed differently in the backends. That is… Make scope consistent with other things. ResourcePan, yeah.
 This is not quite the use case that we have in mind here.
 I feel like it's in line with it slightly, though.
 **Daniel Dyla (Dynatrace)** 25:10 Yeah, it's… it's at least related.
@@ -251,8 +220,7 @@ I feel like it's in line with it slightly, though.
 **Daniel Dyla (Dynatrace)** 25:30 It was 3 years ago.
 **Josh Suereth** 25:33 Oh, win rate.
 **Daniel Dyla (Dynatrace)** 25:34 is just a warning. It was 3 years ago.
-**Josh Suereth** 25:37 Yeah So, I think, I think that this, this,
-This predates when we force prototypes.
+**Josh Suereth** 25:37 Yeah So, I think, I think that this, this, This predates when we force prototypes.
 **Daniel Dyla (Dynatrace)** 25:46 Yeah, so the reason I'm asking is because I know this isn't implemented in JavaScript, you just said it's not implemented in Java.
 I… I don't know if there are any SDKs that have actually implemented this.
 **Josh Suereth** 25:58 I should say, I think it's partially implemented in Java, it's not implemented in some key things, yeah.
@@ -264,10 +232,7 @@ I… I don't know if there are any SDKs that have actually implemented this.
 Yes. So we could just have an entities, like a repeated entities field, and call it a day.
 **Josh Suereth** 26:25 That's actually kind of what I'm thinking, too. Like, just, literally, we could put straight-up entities on there, yeah.
 should I put this together as an actual OTEP? What do you think?
-**Daniel Dyla (Dynatrace)** 26:45 I… Think that this…
-that it would be a good idea. I guess the question is, is this more work Versus just…
-Convincing people that mutable resource is okay, or that the level of mutation we have in resource is okay, and are the use cases that this unlocks worth
-The pain of going, not all the way back to the beginning, but certainly back a couple of steps.
+**Daniel Dyla (Dynatrace)** 26:45 I… Think that this… that it would be a good idea. I guess the question is, is this more work Versus just… Convincing people that mutable resource is okay, or that the level of mutation we have in resource is okay, and are the use cases that this unlocks worth The pain of going, not all the way back to the beginning, but certainly back a couple of steps.
 **Josh Suereth** 27:14 True.
 **Daniel Dyla (Dynatrace)** 27:15 I would say yes, but I'm not the one that is writing this OTEP and doing a lot of… you've done most of the work that would be backtracked on, so…
 **Josh Suereth** 27:24 Yeah, no, so, from my perspective, what this might do, this might delay our ability to support the browser, but it does, it does three things that I like. One is, we could implement the SDK with entities.
@@ -276,9 +241,7 @@ If we keep things immutable, right? We're just adding the boundaries with entiti
 The second thing I like is the work… the hard, unanswered question in the OTEP today is what to do when a resource mutates with metrics.
 Doesn't have that problem.
 Yeah, it has a GC cleanup problem.
-which, honestly, entity, you know, mutation had that problem too, but this unlocks a new set of use cases that I think are super valuable. It answers a lot of feedback on the OTEP with people who have legit concerns, and…
-It…
-It gives us kind of a first-class mechanism for understanding if someone is trying to store data separately for different… like, it gives us a multi-tenancy story, basically.
+which, honestly, entity, you know, mutation had that problem too, but this unlocks a new set of use cases that I think are super valuable. It answers a lot of feedback on the OTEP with people who have legit concerns, and… It… It gives us kind of a first-class mechanism for understanding if someone is trying to store data separately for different… like, it gives us a multi-tenancy story, basically.
 Where we can have… I'm collecting data on behalf of A, and on behalf of B.
 And I can do that in the API.
 That is something previously only the collector could do.
@@ -286,20 +249,16 @@ Or, sorry, I guess the API and SDK could do it, you just had to reinstantiate th
 **Daniel Dyla (Dynatrace)** 29:02 Yeah, it just sucks to do.
 **Josh Suereth** 29:04 Yeah.
 **Daniel Dyla (Dynatrace)** 29:05 I'm sure there are people doing it, but I wouldn't want to.
-I… Yeah, there are details to work out, but I think… Until we have an OTEP we probably…
-can't really talk too much about them. Like, one of… one would be… what then goes in the top-level resource? Do we… do we…
-put only… Like, the initialization attributes, or the initialization entities in there, and… Leave everything else off.
+I… Yeah, there are details to work out, but I think… Until we have an OTEP we probably… can't really talk too much about them. Like, one of… one would be… what then goes in the top-level resource? Do we… do we… put only… Like, the initialization attributes, or the initialization entities in there, and… Leave everything else off.
 And maybe only the identifying attributes of the initialization attributes, making it, like, you know, moving us back to, this is immutable again.
-**Josh Suereth** 29:49 I think… I think we can move back to Immutable. By the way, we're… we're out of time. I have another, like, 2 minutes, but,
-I'll put… I'll put together my thoughts in the notes up. I think that's a good question. My… my straw man is still, resource actually remains immutable post-initialization, because keeping the identity stable is important for things like op-amp.
+**Josh Suereth** 29:49 I think… I think we can move back to Immutable. By the way, we're… we're out of time. I have another, like, 2 minutes, but, I'll put… I'll put together my thoughts in the notes up. I think that's a good question. My… my straw man is still, resource actually remains immutable post-initialization, because keeping the identity stable is important for things like op-amp.
 Or, like, the control of that resource. So, like, we need a stable ID that represents this thing. And so, resource is the stable ID, and we're creating this scope entity that can be for things that could mutate. And so, if I'm in, say, a phone.
 The identifier of the phone itself might be my stable ID.
 And then the session can be, you know, my, my mutating ID.
 And that's how.
 **Daniel Dyla (Dynatrace)** 30:38 They're…
 **Josh Suereth** 30:38 Following these things.
-**Daniel Dyla (Dynatrace)** 30:40 There are still… we still have to determine where to put things like…
-the IP address, which is mutable, but it is not, like.
+**Daniel Dyla (Dynatrace)** 30:40 There are still… we still have to determine where to put things like… the IP address, which is mutable, but it is not, like.
 you know, your instrumentation isn't going to be reporting mutations of an IP address, it's going to assume that that's handled somewhere else.
 **Josh Suereth** 30:57 Yeah, I think we can actually… that's why I think we can allow descriptive attributes and entities on resource.
 Like, I think that's actually fine.

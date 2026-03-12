@@ -28,9 +28,7 @@ But I'm going to do that at the end.
 Okay.
 Alright, let's get started. Let's talk about multi-registry manifests, dependency conflicts, and naming.
 Alright.
-So, Ludmila and I had a bit of a discussion on this issue. I didn't see if anyone else commented, but I'm gonna walk through the set of principles I put to see if we all agree to those first, before we go into the discussion. Because I think, Lyudmila, there's a principle I didn't write that you called out later and needs to get added to this. Alright. First…
-I think we need to migrate from registry underscore manifest to just manifest. I think, like…
-We don't have to.
+So, Ludmila and I had a bit of a discussion on this issue. I didn't see if anyone else commented, but I'm gonna walk through the set of principles I put to see if we all agree to those first, before we go into the discussion. Because I think, Lyudmila, there's a principle I didn't write that you called out later and needs to get added to this. Alright. First… I think we need to migrate from registry underscore manifest to just manifest. I think, like… We don't have to.
 It's like a convenience thing, but we should do it now or never.
 You know.
 Okay.
@@ -70,8 +68,7 @@ Josh Suereth 00:08:55 Yes.
 Laurent Querel 00:08:57 Okay.
 Because I don't think we use the actual directory anywhere except in the code.
 Okay, I'm fine with that.
-Josh Suereth 00:09:07 Well, we use… we use that URI for… Weaver URIs are used for the package argument, and they're used… er, policy argument, I should say. I think for template package as well, and then for,
-the registry. So it's used in, like, 3 different places, which is why I think it just deserves a name, and we can talk about.
+Josh Suereth 00:09:07 Well, we use… we use that URI for… Weaver URIs are used for the package argument, and they're used… er, policy argument, I should say. I think for template package as well, and then for, the registry. So it's used in, like, 3 different places, which is why I think it just deserves a name, and we can talk about.
 Laurent Querel 00:09:29 Absolutely.
 Josh Suereth 00:09:30 Go ahead, Lumbo.
 Liudmila Molkova 00:09:31 Should Weaver be part of the name?
@@ -79,8 +76,7 @@ It's… it's the name of… sorry, the… the URI.
 I think it should be a registry, you're right?
 Josh Suereth 00:09:42 It's… so we use it for more than registries, we use it for packages, too.
 It's because… yeah, like, if you, if you specify a policy package.
-you do it in a special syntax, where we… I'm calling it a Weaver URI, because it's not a URI,
-it's a reference to something that can be, like, inside of a zip file, or inside of a Git repo.
+you do it in a special syntax, where we… I'm calling it a Weaver URI, because it's not a URI, it's a reference to something that can be, like, inside of a zip file, or inside of a Git repo.
 Liudmila Molkova 00:10:05 Yeah, but this is the same as registry URI, because registry URI can point to anything.
 It's just from the principles of decoupling.
 in my mental model, there is a SimConf problem, and there is a tool weaver.
@@ -92,24 +88,20 @@ And we can get in the details about why, because I think we have some brief disc
 Liudmila Molkova 00:10:53 Okay.
 but…
 Josh Suereth 00:10:55 Yeah.
-But the… okay, so this one has contention, so we can move on, but… but let's note that it's contention. The idea here is we need… I just want a name
-That is, I can look up…
-a thing that could be in a zip file, a Git URL, or an HTTP address, or a local directory. That's what Weaver URI means, that's all it is.
+But the… okay, so this one has contention, so we can move on, but… but let's note that it's contention. The idea here is we need… I just want a name That is, I can look up… a thing that could be in a zip file, a Git URL, or an HTTP address, or a local directory. That's what Weaver URI means, that's all it is.
 Laurent Querel 00:11:22 But what was the registry pass, initially?
 Josh Suereth 00:11:25 Yes.
 But when we started using it in policy, it became policy path. When we started using it in, in templates, it's now, like, the template path. So, like, I…
 Laurent Querel 00:11:37 But with a different, with a different way of behaving.
 We don't support, everything that we support.
 For registry, for example, with templates, the… this, bracket blah.
-was the… I don't think, was part of the…
-a template pass, for example. So they were different, both in terminology and, in the code, I think.
+was the… I don't think, was part of the… a template pass, for example. So they were different, both in terminology and, in the code, I think.
 Josh Suereth 00:12:05 Okay, I'll have to take a look. I thought you were using virtual directory ref everywhere now.
 Laurent Querel 00:12:09 No, I don't see so.
 Josh Suereth 00:12:11 Okay.
 Right.
 Laurent Querel 00:12:12 Maybe a lot of things change in between, and for the good, definitively, thank you very much, but I don't think that was the case. I don't think it's the case now.
-Josh Suereth 00:12:23 If that's not the case, I'll look into making that the case, because I… what… I like the idea
-And again, this might… this might be too much, just having… so having that syntax documented once in our documentation, so users know what it is, and then, the command line arguments at Weaver consistently use that when you have to specify things.
+Josh Suereth 00:12:23 If that's not the case, I'll look into making that the case, because I… what… I like the idea And again, this might… this might be too much, just having… so having that syntax documented once in our documentation, so users know what it is, and then, the command line arguments at Weaver consistently use that when you have to specify things.
 Whether or not that shows up in the manifest URL.
 is an alter… like, that's a separate discussion, right? That might never… that syntax might never be used to manifest, and I think we can make that decision independently. And Ludmil, I think you're pushing for that, and I am with you on that.
 Okay.
@@ -129,9 +121,7 @@ The first bit should be a domain that you own.
 All the slashes don't matter, but kind of are your name, of some fashion. And then the last bit is a version string.
 So the idea would be, we can use the first bit to uniquely identify your registry as a name.
 that will be consistent across all versions, and we can use to determine if two things are the same, right? And if there's a version conflict. And the last bit will be your version. So this schema URL provides double doot. That's the idea. Go ahead, Linmilla.
-Liudmila Molkova 00:15:17 I see it could work, but I really don't like the assumption that the schema URL will have a certain
-Format, and you can never change it, and… Unless you want to…
-change your registry. I want people to be able to use schemas from GitHub.
+Liudmila Molkova 00:15:17 I see it could work, but I really don't like the assumption that the schema URL will have a certain Format, and you can never change it, and… Unless you want to… change your registry. I want people to be able to use schemas from GitHub.
 And this will break this assumption of the format.
 And I think we can't… we don't have…
 Josh Suereth 00:15:49 Do you mean, like, in… in the OTLP that they write?
@@ -142,12 +132,10 @@ somebody didn't publish their schema. They have it on GitHub, but they didn't pu
 Josh Suereth 00:16:11 Yep.
 Liudmila Molkova 00:16:11 Right?
 Josh Suereth 00:16:12 Yeah, exactly. That would still be the case here.
-Liudmila Molkova 00:16:15 Yeah, but, we'll… at some point, we'll get to my proposal, and you'll see what I mean. I… I…
-thing.
+Liudmila Molkova 00:16:15 Yeah, but, we'll… at some point, we'll get to my proposal, and you'll see what I mean. I… I… thing.
 We are putting too much into the schema URL format. It probably will work within OTL, but outside of the hotel, it would be hard.
 Josh Suereth 00:16:40 Okay.
-I will call out that telemetry schema's the stable part of it, actually specifies
-like, a URI. It doesn't specify the open telemetry… well, it does specify an open telemetry, at a well-known URL.
+I will call out that telemetry schema's the stable part of it, actually specifies like, a URI. It doesn't specify the open telemetry… well, it does specify an open telemetry, at a well-known URL.
 Liudmila Molkova 00:16:57 I mean, that the version is the last bid. Yeah, no, that's literally specified here.
 Josh Suereth 00:17:08 And this is marked as stable.
 So, we already require this across OpenTelemetry. And if we don't think that that's gonna work, we're going to have to, like, actually push on the spec itself.
@@ -163,8 +151,7 @@ I do think it'd be better if we do the whole thing.
 But think of, like, when I declare a package in Cargo, when I declare a package in Python, when I declare a package in Java, or Maven, when I declare a package anywhere, I say, here's my name and here's my version.
 Exactly.
 Liudmila Molkova 00:18:22 You don't say where to get it from. In our case, we need both.
-Josh Suereth 00:18:27 Well, we're… okay, but, but, but, here, we're…
-There is a default there. I mean, ignoring the fact, like, in my opinion, the schema URL is the name and the version in one string, and I don't care if the URL is legit, I'm still gonna work.
+Josh Suereth 00:18:27 Well, we're… okay, but, but, but, here, we're… There is a default there. I mean, ignoring the fact, like, in my opinion, the schema URL is the name and the version in one string, and I don't care if the URL is legit, I'm still gonna work.
 In my world.
 It's ideal if the URL is legit and that's where you publish, and that's kind of the intention of schema URL, but pretend that it's not. Pretend it's just, like, a string that's the name.
 Liudmila Molkova 00:18:52 Oh, then everything falls apart. Nobody can use your schema, right? You… we can still work with… no, we cannot work with it, because we cannot resolve it.
@@ -175,21 +162,18 @@ Liudmila Molkova 00:19:21 Yeah, I think we… this debate is not important. I th
 Josh Suereth 00:19:34 That… that sounds fun. Yeah, that's… because this… this is the… this is probably the big thing for us to discuss. Let's go through your proposal now, of, like, what… what we're looking at.
 Liudmila Molkova 00:19:44 Can you scroll down to my last comment? It's actually… I've… I've made a long way.
 Josh Suereth 00:19:50 This one here.
-Liudmila Molkova 00:19:51 Yeah, so I think the key part, my proposal is different from yours, is that I…
-as a part of the resolution process, we would need to go and download all the dependencies, all the transitive dependencies, and we will go to manifest file anyway. We need to manifest file anyway, and the name and the version could be there.
+Liudmila Molkova 00:19:51 Yeah, so I think the key part, my proposal is different from yours, is that I… as a part of the resolution process, we would need to go and download all the dependencies, all the transitive dependencies, and we will go to manifest file anyway. We need to manifest file anyway, and the name and the version could be there.
 Josh Suereth 00:20:19 Yeah, yeah.
 Liudmila Molkova 00:20:21 But I… I mean, I'm not married to it, it doesn't matter.
 What I'm suggesting that we use this whatever term we have, in dependencies, we drop the name.
 From it, it's just a list of dependencies.
 And then, we put the same information inside the resolve schema, so we know what to resolve.
-And then we essentially reference these dependencies, when we…
-when we have attributes, signals, definition, and refinements. If it… oh, sorry, if it comes from the dependency, we reference the dependency. If it… it's part of this registry, then the top-level thing is the… the dependency. Whether we have name or version, I… okay, we can drop it.
+And then we essentially reference these dependencies, when we… when we have attributes, signals, definition, and refinements. If it… oh, sorry, if it comes from the dependency, we reference the dependency. If it… it's part of this registry, then the top-level thing is the… the dependency. Whether we have name or version, I… okay, we can drop it.
 Josh Suereth 00:21:12 Well, I like this, by the way, of, like, okay, so let me put a straw man out there. This I love, like, okay, so, right, dependencies is just a list of schema URLs.
 Liudmila Molkova 00:21:24 Or GitHub, or whatever.
 Josh Suereth 00:21:26 place you can…
 Liudmila Molkova 00:21:27 get the manifest from.
-Josh Suereth 00:21:28 Let's say it's just schema URLs, only schema URLs. Now, we have a separate mechanism. Most dependency systems have this as well. We have a separate mechanism where you can say, this schema URL is located at this
-Weaver or I.
+Josh Suereth 00:21:28 Let's say it's just schema URLs, only schema URLs. Now, we have a separate mechanism. Most dependency systems have this as well. We have a separate mechanism where you can say, this schema URL is located at this Weaver or I.
 Like, when you see the schema URL, here's where you resolve it from. And we can have a config file where you can put that in. Or, like, this is where you can provide your own registry of things, if you have, like, private… right? Like, imagine that world now. This simplifies everything so much, because I get my identifier right here. I know the version, I know the name.
 And if I need to resolve, from GitHub in various ways, and this isn't currently published, I have something that tells me how to get access to it somewhere else. So maybe we could even have that in our manifest as, like, a private thing that doesn't get published, maybe we have it somewhere else, but, like, I can see that totally working, and I really like the simplification.
 Oh, go ahead, Lawrence, sorry, I didn't see your hand.
@@ -198,21 +182,14 @@ The initial intent there was to… optionally specify, an alias.
 For, conflict resolution.
 We don't need that right now, but at some point, I think we will have to reintroduce it.
 Maybe not like a name, I agree, maybe like an alias, so it's explicit, but at least we could use this, the syntax that we propose at some point. When we have a conflict detected by Weaver, then we can use the alias to specify which registry explicitly we want to target.
-An example of that could be…
-I don't think there is any option to prevent someone using a signal exactly the same than another library order.
-So we… we need this, conflict, resolution with an alias to let the, let's say, the person,
-Making a dependence to these two libraries, specifying which one they want,
-When there is a search complete.
+An example of that could be… I don't think there is any option to prevent someone using a signal exactly the same than another library order.
+So we… we need this, conflict, resolution with an alias to let the, let's say, the person, Making a dependence to these two libraries, specifying which one they want, When there is a search complete.
 Liudmila Molkova 00:23:48 Yeah, I think what Josh is suggesting, that it's, in fact, a part of this URL, it's everything before version.
-Laurent Querel 00:23:55 Yeah, but it's too long, that's why, yeah. I think that the alias is there to avoid this gigantic,
-Pass plus surname, in every place where you want to remove the conflict.
+Laurent Querel 00:23:55 Yeah, but it's too long, that's why, yeah. I think that the alias is there to avoid this gigantic, Pass plus surname, in every place where you want to remove the conflict.
 I mean, it's like the an alias for a use or an import in languages, it's nothing different.
 Liudmila Molkova 00:24:19 And we can… there are ways we can work with it, but it's the schema URL, and if you intend to publish it, it should be short.
 You wouldn't put a gigantic string in your schema URL anyway.
-Laurent Querel 00:24:33 I mean, you… If you have the domain name plus the pass, I mean, it's…
-I don't see why it's,
-how that could be enforced to be small. I mean, for me, it's,
-So, what is the problem with an alias, just to understand your point, Vimilia?
+Laurent Querel 00:24:33 I mean, you… If you have the domain name plus the pass, I mean, it's… I don't see why it's, how that could be enforced to be small. I mean, for me, it's, So, what is the problem with an alias, just to understand your point, Vimilia?
 Liudmila Molkova 00:24:58 My main…
 Laurent Querel 00:24:59 Fits of children, easily.
 Liudmila Molkova 00:25:01 My main problem with Zalia is that it doesn't guarantee any uniqueness, especially global uniqueness.
@@ -235,39 +212,28 @@ Josh Suereth 00:27:15 Yeah, if you want to be really convoluted, we just say as.
 Liudmila Molkova 00:27:20 S.
 Laurent Querel 00:27:22 Yeah, that's also, okay.
 Josh Suereth 00:27:24 No, no, I hate as. I was gonna, I was gonna say thingy as, like, another option to be terrible. That's worse than ID, right?
-Anyway, let's, let's, let's move on. I think,
-I really like what you're doing here, Lyudmila, and this does make me think that there will be a version of Manifest that is published, and a version of Manifest that is used for, like, resolution, possibly, where there might be some extra things that I use locally, like alias, that I would never put into published.
-Liudmila Molkova 00:27:59 Yeah, I think that's what Lauren suggested in the Whatab, that we have a definition manifest and resolved manifest, and they are
-different. So then, in this proposal, if we marry it with yours, instead of name and version, we would have schema URL as the
-First, thing.
-And then, for dependencies, we would repeat it, we would not have…
-Anything like that. Okay, I'll, I'll update it. I think I, I, yeah, we can leave it.
+Anyway, let's, let's, let's move on. I think, I really like what you're doing here, Lyudmila, and this does make me think that there will be a version of Manifest that is published, and a version of Manifest that is used for, like, resolution, possibly, where there might be some extra things that I use locally, like alias, that I would never put into published.
+Liudmila Molkova 00:27:59 Yeah, I think that's what Lauren suggested in the Whatab, that we have a definition manifest and resolved manifest, and they are different. So then, in this proposal, if we marry it with yours, instead of name and version, we would have schema URL as the First, thing.
+And then, for dependencies, we would repeat it, we would not have… Anything like that. Okay, I'll, I'll update it. I think I, I, yeah, we can leave it.
 Josh Suereth 00:28:33 Yeah, I… okay, I think that resolves this topic. That was good discussion.
 Alright, do we have… are we gonna run out of time for everything else? Alright, cool. Next, file format definition 2 versus version 2.
 Give up…
 Liudmila Molkova 00:28:50 Yeah.
 Josh Suereth 00:28:50 December here, not helpful.
-Liudmila Molkova 00:28:52 Yeah, you… you reviewed my PR, and yeah, it's a… I used to have
-somewhere there, and I think you're right, it's not… helping. It creates so much…
-problems, that it's not worth it, and it's not common for definition languages to have… to support somber.
+Liudmila Molkova 00:28:52 Yeah, you… you reviewed my PR, and yeah, it's a… I used to have somewhere there, and I think you're right, it's not… helping. It creates so much… problems, that it's not worth it, and it's not common for definition languages to have… to support somber.
 Josh Suereth 00:29:14 It's hella rare to change the version of your syntax, honestly, in a language. Like, think of Python 2 versus 3.
 Liudmila Molkova 00:29:22 Yeah, and even when it's configurable, the Python 2 versus 3, yeah, but if you look into, let's say, C Sharp, it's just the major version. They never mentioned the… there is nothing like intermediary version. There is no patch you would send.
-So… Let's just…
-make the practical thing, let's call it definition slash 2. My main concern is around version, because version is ambiguous, we've used version everywhere.
+So… Let's just… make the practical thing, let's call it definition slash 2. My main concern is around version, because version is ambiguous, we've used version everywhere.
 We call it follow file format in different places, so let's use definition slash 2, and eventually it will become a default.
 So nobody would need to write it.
-Josh Suereth 00:29:59 That, okay, I'm fine with that. The only thing… the only caveat I'll have is,
-How breaking do we want to make this?
+Josh Suereth 00:29:59 That, okay, I'm fine with that. The only thing… the only caveat I'll have is, How breaking do we want to make this?
 Right? Do you think people are using version 2 syntax today? I know Weaver Packages is.
 So, do you want to just, like, crack the world and say version is now definition slash? Or are we going to be flexible and say, if you see version of 2, we're gonna handle it for a while, and we're gonna have a migration period, all that kind of crap, right?
-Liudmila Molkova 00:30:31 Okay, if you think it's important, let's… Here's,
-Let's have the graceful period and support version as well.
-Josh Suereth 00:30:43 Okay. Yeah, I'm just thinking we, for,
-We should just be more sensitive, because we're starting to get usage, that's all.
+Liudmila Molkova 00:30:31 Okay, if you think it's important, let's… Here's, Let's have the graceful period and support version as well.
+Josh Suereth 00:30:43 Okay. Yeah, I'm just thinking we, for, We should just be more sensitive, because we're starting to get usage, that's all.
 Liudmila Molkova 00:30:54 It's an alpha, but okay.
 Josh Suereth 00:30:56 I know it's an alpha, and I would be okay if you said, you know what, it's not worth it, let's just crack the world and break it, that's fine.
-Like, I'd be behind that. We'll just announce it as a big breaking change. I think it's more important we get to the point where people can depend on V2 than anything else. So…
-Thoughtfulness at work, really? Okay.
+Like, I'd be behind that. We'll just announce it as a big breaking change. I think it's more important we get to the point where people can depend on V2 than anything else. So… Thoughtfulness at work, really? Okay.
 Yeah. Anyway, cool, I like this. This works for me.
 Let's move forward.
 Oh, next steps on V2 syntax. I want to have a brief discussion. Doesn't have to be terribly complicated. In the original proposal for V2 syntax, so I can wait for your change here, Lydmela, before I work on this, but, I'd like to change imports to be able to import spans, now that we have a span type we can rely on.
@@ -281,16 +247,13 @@ And then attribute groups cannot be imported.
 So, I don't think it's hard to add all 3 of those, and thank you, Jeremy, for your review. I didn't realize I left a bunch of to-dos in there, that is now cleaned up, so it's less ugly. But I think, like, adding those imports shouldn't be too hard.
 we have the notion of public attribute groups, we can import those. I think that I'd like to add that in the syntax.
 Just for consistency. When Jem and I wrote those docs that ended up derailing real far, the initial ones made me realize that the only way to include, like, SEMCOM in your registry today is by using the include all unreferenced flag.
-that… I'm not super happy with that going forward. I kind of don't…
-I want to talk about that flag later, not today, but I would like to get rid of that flag at some point.
+that… I'm not super happy with that going forward. I kind of don't… I want to talk about that flag later, not today, but I would like to get rid of that flag at some point.
 So… okay.
 Refinements. Any… go ahead.
 Liudmila Molkova 00:33:34 We've had some concerns about attribute groups in general.
-And I think we're…
-if we still have these concerns, we might not need to import them, but I think they were important to Jeremy, if I remember correctly, for the importing purposes.
+And I think we're… if we still have these concerns, we might not need to import them, but I think they were important to Jeremy, if I remember correctly, for the importing purposes.
 Jeremy, are you… are you here? Sorry.
-Jeremy Blythe 00:34:00 I was… I was just about to type in the chat, got to go. But,
-Sorry, what were you saying?
+Jeremy Blythe 00:34:00 I was… I was just about to type in the chat, got to go. But, Sorry, what were you saying?
 what…
 Liudmila Molkova 00:34:10 We can talk about that, bud.
 Josh Suereth 00:34:12 We can talk about it later, it's fine. I'll tell you what, for now.
@@ -306,9 +269,7 @@ Cool. There's a syntax, I think, in the original proposal you had with Melan, fo
 I think we need it.
 to actually mark V2 done.
 Liudmila Molkova 00:34:56 Yeah, probably.
-Josh Suereth 00:34:58 Okay. At least I'll open a ticket about it. I don't know if somebody else has time, feel free. But I think…
-Currently refinements don't work, and importing
-refinements, is the next question, but I… anyway, let's hold off on that. We'll move on to the next set of topics quick.
+Josh Suereth 00:34:58 Okay. At least I'll open a ticket about it. I don't know if somebody else has time, feel free. But I think… Currently refinements don't work, and importing refinements, is the next question, but I… anyway, let's hold off on that. We'll move on to the next set of topics quick.
 How do we feel about the DocBot?
 I don't know if you were here when I was saying this, Lydmella, but I was saying… I asked it to go generate docs for multi-registry, and I think it did a good job for V1.
 And then you asked it to do V2, and it just went off the rails.
@@ -316,22 +277,18 @@ Liudmila Molkova 00:35:39 Okay.
 Josh Suereth 00:35:40 Like, just so… I love… I think you were asking us this question?
 And I love that it gave you some random answer.
 Yeah, like, do we… so I just wanted to ask, like, with this and how it went off the rails.
-I could… there's… I could hold off the CL until schema V2 is better, and then we can ask it, like, re-prompt it to do docs for V2 and multi-registry, because I think it did a decent job with V2. And I think, you know, some of this…
-this kind of change is important for us to do with V2, but just since V2 isn't stable, I think it's having trouble, and it's matching the rest of the docs and stuff.
+I could… there's… I could hold off the CL until schema V2 is better, and then we can ask it, like, re-prompt it to do docs for V2 and multi-registry, because I think it did a decent job with V2. And I think, you know, some of this… this kind of change is important for us to do with V2, but just since V2 isn't stable, I think it's having trouble, and it's matching the rest of the docs and stuff.
 Overall, though, Is this wasting our time, or is this helping?
 Liudmila Molkova 00:36:34 I think this is helping, in a way that you initiated.
 And I'm forced to correct its stupid mistakes.
 Josh Suereth 00:36:45 Hopefully, I, I would do that. Where did spans come from? It's not quite useful here, right?
-Liudmila Molkova 00:36:54 So, it was some iteration. I asked it to do some examples. Oh, actually, I wanted it to…
-maybe we don't support it yet, that's why. I wanted to import the metric and refine it, and because we don't support it, it tried all the different things and tried to gaslight me that it did all the job.
-Josh Suereth 00:37:17 Yeah, and it can't, because it's not actually supported yet. Yeah. The gaslighting it does is awesome. I don't know if you saw, the,
-The files changed, but my favorite was you'd ask it to do something, and it would, like, modify something here, and just delete this entire section by accident.
+Liudmila Molkova 00:36:54 So, it was some iteration. I asked it to do some examples. Oh, actually, I wanted it to… maybe we don't support it yet, that's why. I wanted to import the metric and refine it, and because we don't support it, it tried all the different things and tried to gaslight me that it did all the job.
+Josh Suereth 00:37:17 Yeah, and it can't, because it's not actually supported yet. Yeah. The gaslighting it does is awesome. I don't know if you saw, the, The files changed, but my favorite was you'd ask it to do something, and it would, like, modify something here, and just delete this entire section by accident.
 And then you're like, hey, bring that section back. It's like, okay, sure. So, like.
 What I don't want to do is turn our project into, playing with the bot.
 What I want this to be is, like, okay, we find value in it, and I know that we have documentation gaps. Oh, I'm not… I'm not showing what I was rendering. Yeah, yeah. So it'd be like… I forget, I think it might have been this one, where, like, you made a change here, you asked for a change here, and it just deleted this for some reason.
 So toying with the bot, I think, is fun, but the real need is we need better docs.
-And what I'd love to do is have us focus on writing really good unit tests and really good features, and see if this can help us
-you know, fix specific doc sections, right? Of, like, we're missing documentation on this thing, go write this, and it accelerates us. If it's not doing that, I will stop making PRs and sending them for review.
+And what I'd love to do is have us focus on writing really good unit tests and really good features, and see if this can help us you know, fix specific doc sections, right? Of, like, we're missing documentation on this thing, go write this, and it accelerates us. If it's not doing that, I will stop making PRs and sending them for review.
 Oh, God.
 Liudmila Molkova 00:38:37 I think we have actually… we will have actually good tests in the Weaver packages, where we have cleaner data, and it's end-to-end.
 I would… you would run the actual CLI.
@@ -339,16 +296,12 @@ Josh Suereth 00:38:51 Yeah.
 Liudmila Molkova 00:38:52 Today, we test Rust against Rust, right? And we miss, like, the end user part of it.
 We don't even see the generated resolve schema. We don't even generate the resolve schema, we generate the materialized schema.
 Josh Suereth 00:39:12 Or the bots.
-Gotcha. So, that actually seems like this is a thing we could do…
-just as a development practice, is basically, start making better end-to-end tests in Weaver. I think Jeremy mentioned this as well, the…
-resolved manifest thing, where we're resolving V2 schema.
-There is no way for you to use Weaver
-And have a V2 dependency in real life. I manually wrote that file.
+Gotcha. So, that actually seems like this is a thing we could do… just as a development practice, is basically, start making better end-to-end tests in Weaver. I think Jeremy mentioned this as well, the… resolved manifest thing, where we're resolving V2 schema.
+There is no way for you to use Weaver And have a V2 dependency in real life. I manually wrote that file.
 Myself, for the test.
 Because we don't have the published pieces of done, so the whole end-to-end story.
 That's why it was gaslighting you, because it literally can't verify.
-Yeah, me… okay, I'm gonna… I'm gonna take that as a note. I… I still think we're finding valuable lessons when it hallucinates of things where our documentation's unclear, so I'd like to continue using it. I just wanted to do a quick vibe check of,
-Do we hate it?
+Yeah, me… okay, I'm gonna… I'm gonna take that as a note. I… I still think we're finding valuable lessons when it hallucinates of things where our documentation's unclear, so I'd like to continue using it. I just wanted to do a quick vibe check of, Do we hate it?
 Liudmila Molkova 00:40:14 Or… Maybe we could… Yeah.
 Josh Suereth 00:40:17 Go ahead.
 Liudmila Molkova 00:40:17 Maybe, maybe we could, update the docsAgent file to tell it to document V2 schema only?
@@ -359,13 +312,10 @@ Rust memes things. What was the other one? Don't, use V2 syntax.
 Liudmila Molkova 00:40:50 Yeah.
 Josh Suereth 00:40:55 Yeah, I think that'd be good. So let's… let's update those instructions then and try again. Cool.
 I… for this PR specifically, should we give up on it?
-Or should we… I was thinking just…
-Update instructions, give up on it, retry.
-Liudmila Molkova 00:41:12 Maybe we should do your thi- the- the…
-The manifest things we discussed today first, because it will be a big change for it anyway.
+Or should we… I was thinking just… Update instructions, give up on it, retry.
+Liudmila Molkova 00:41:12 Maybe we should do your thi- the- the… The manifest things we discussed today first, because it will be a big change for it anyway.
 Josh Suereth 00:41:22 Okay.
-Alright, so I will close that query. Close the current… PR,
-Reopen with saved prompt once manifest changes land.
+Alright, so I will close that query. Close the current… PR, Reopen with saved prompt once manifest changes land.
 with better… End-to-end integration tests. Okay, cool.
 That sounds like a plan.
 I saw a hand there, but .
@@ -391,17 +341,14 @@ Josh Suereth 00:43:43 Yeah.
 This is in error messages, right? Like, you want the provenance to list out the full URL?
 Liudmila Molkova 00:43:49 Oh, no, this is in the markdown, so when we run their markdown.
 Josh Suereth 00:43:54 Definitely.
-Liudmila Molkova 00:43:54 pass. We need the… Maybe we should have a policy that we overwrite this, to…
-To the fuller result URL, right?
-Josh Suereth 00:44:08 Yeah, I think we could have a policy there. What we need is… I remember this now. Our Markdown renderer is… is…
-fun. We probably need some kind of configuration to say, I want my URLs to be, absolute, and here's the configuration for how to do it.
+Liudmila Molkova 00:43:54 pass. We need the… Maybe we should have a policy that we overwrite this, to… To the fuller result URL, right?
+Josh Suereth 00:44:08 Yeah, I think we could have a policy there. What we need is… I remember this now. Our Markdown renderer is… is… fun. We probably need some kind of configuration to say, I want my URLs to be, absolute, and here's the configuration for how to do it.
 Liudmila Molkova 00:44:33 We have this configuration for… Generate Markdown.
 Or for update markdown.
 Josh Suereth 00:44:44 It… it's… it's… it's hacked in.
 like, I did that. It is… there is a command line flag that you pass for what the base URL should be, and then all of our templates know to use that flag and do it.
 What it doesn't do is when you get a URL in Markdown, like, like, nested, it does not change those. It only changes the absolute URL of things that it is creating in Jinja.
-So we need something where when we say, here is a crap ton of markdown coming out of…
-the YAML file, We need to parse through it and change all the links to be absolute, right?
+So we need something where when we say, here is a crap ton of markdown coming out of… the YAML file, We need to parse through it and change all the links to be absolute, right?
 We don't expose a way to do that in Jinja today.
 Liudmila Molkova 00:45:31 Well, I'm in uke.
 Someone can probably write the ginger helper, but should it be a ginger, or should it be a rust?
@@ -409,14 +356,11 @@ I think it's… So we shouldn't be arrested.
 Josh Suereth 00:45:42 Rust, yeah. And it can be a Jinja filter, but it probably needs to be, Rust code that does that. It's gonna be… we have a… for context, we have a Rust library that does a crap ton of Markdown parsing today for the comment filter.
 Do you remember the… all the bugs we had with Java comment formatting back in the day?
 Liudmila Molkova 00:46:09 Yeah.
-Josh Suereth 00:46:10 So legit… that was so annoying to fix. Legitimately…
-we are… I think it's under extensions. I'll see if I can show this to you.
+Josh Suereth 00:46:10 So legit… that was so annoying to fix. Legitimately… we are… I think it's under extensions. I'll see if I can show this to you.
 Is it under code?
 Yeah.
-Where is this? So there is a…
-Let's test, let's comment, let's HTML.
-Might be under…
-Here it is.
+Where is this? So there is a… Let's test, let's comment, let's HTML.
+Might be under… Here it is.
 Okay, so we have this Markdown render thing.
 And what this actually does… We have one for HTML as well.
 Where is the thing I'm looking for?
@@ -425,8 +369,7 @@ to Markdown AST. So, we get a markdown AST.
 And then we take that and we fire it through a listener.
 That will look at each possible node and render it back to a string.
 And so, this is, like, some of the most insane things. Like, oh, if it's HTML, we do this. If it's inline code, we do this. If it's code, we do this, right? And there's… if it's a link, here's how we render links.
-And so we have the capability here, where if we get a URL,
-We have this shortcut reference links, which we support today.
+And so we have the capability here, where if we get a URL, We have this shortcut reference links, which we support today.
 We have the capability here to say, cool, We can change the link.
 but the problem is, you know, right now.
 This method and mechanism is only used in the comment filter.
@@ -440,8 +383,7 @@ Yeah, go ahead.
 neil yashinsky 00:48:52 Did somebody say rote and dumb?
 Josh Suereth 00:48:55 Yes.
 neil yashinsky 00:48:56 My ears perked up! Yes! I really wasn't looking to do too much contributions here, but I feel like this one might be, if you guys are okay with me helping out on this one.
-Josh Suereth 00:49:10 Yeah, I'll tell you what, I don't know if I'll be able to do this right now, but,
-we… We have a straw man to… this, this is not it. New proposal.
+Josh Suereth 00:49:10 Yeah, I'll tell you what, I don't know if I'll be able to do this right now, but, we… We have a straw man to… this, this is not it. New proposal.
 We should provide a Jinja template.
 Virginia filter function.
 I can take in Markdown.
@@ -462,8 +404,7 @@ But, next.
 Winter.
 Something like this, right?
 Yeah. Right. And so, if you want to look inside of, inside of Weaver, there's a Crates Weaver Forge.
-And inside of We Reforged, there's this extension source, and a form… That's where we put all of our…
-Rust code that does fancy things for Jinja, and that's how we expose templates. Yeah, if you wanted to expose a Jinja template that basically takes in Markdown, parses it, converts all the links, and then spits it back out, that's kind of what I'm thinking would solve this.
+And inside of We Reforged, there's this extension source, and a form… That's where we put all of our… Rust code that does fancy things for Jinja, and that's how we expose templates. Yeah, if you wanted to expose a Jinja template that basically takes in Markdown, parses it, converts all the links, and then spits it back out, that's kind of what I'm thinking would solve this.
 neil yashinsky 00:51:10 Yeah, makes sense. I've done something similar, I think.
 Josh Suereth 00:51:13 Yeah. Yeah, so this is, $7.56, if you want to take it.
 neil yashinsky 00:51:18 Sure, I will take it. It would be easier for me if you assigned it to me, but I can figure out how to do it myself if you need me.
@@ -480,8 +421,7 @@ Cool.
 neil yashinsky 00:52:06 Yeah, that's, that's, perfect.
 Josh Suereth 00:52:10 Alright, what else do we have here? Weaver should resolve. Weaver, registry diff, template extension, weirdness. This one, I think we figured out, Ludmela, do you know what the issue was?
 Liudmila Molkova 00:52:24 No… Tell me.
-Josh Suereth 00:52:27 Don't have a fix yet. When we render YAML,
-We're using the Jinja template for YAML, which renders YAML that can render in HTML, not just pure YAML. So we're removing Jinja from YAML.
+Josh Suereth 00:52:27 Don't have a fix yet. When we render YAML, We're using the Jinja template for YAML, which renders YAML that can render in HTML, not just pure YAML. So we're removing Jinja from YAML.
 So that it goes not through Jinja.
 Liudmila Molkova 00:52:45 I see, yeah, it makes sense now.
 Josh Suereth 00:52:48 So Jeremy's working on that. So that, that will get resolved. Alright, strict mode for Jinja 2 behind CLI option. I think this, this was a great contribution. I don't remember what happened to this.
@@ -500,18 +440,15 @@ Liudmila Molkova 00:54:05 Yeah, we could do this.
 Josh Suereth 00:54:06 Yeah, and then we can have a relaxed mode instead of a strict mode.
 Liudmila Molkova 00:54:10 Yeah, good point.
 Josh Suereth 00:54:11 Okay.
-Cool. Weaver cannot load registry directory beginning with dot. This one…
-Oh, this is about hidden directories, where we don't search through hidden directories.
-Because we're actually pretty aggressive with hitting your…
-File system, and so we don't want to overwhelm you.
+Cool. Weaver cannot load registry directory beginning with dot. This one… Oh, this is about hidden directories, where we don't search through hidden directories.
+Because we're actually pretty aggressive with hitting your… File system, and so we don't want to overwhelm you.
 Alright, that's gonna be a bug. I don't think that relates to V2 in any way, that's just a… that's a TBD.
 Authenticate when using remote, again, not really to V2. Alright, figure out extends feature in V2 spec. I think this is the refinement stuff, and this is what I'm planning to work on next.
 Where we were talking about having metric refinements.
 So here's the strawman proposal. I was thinking that this might be a next good step outside of the resolution dependency stuff.
 But I think this has to get in before V2 could be done.
 Liudmila Molkova 00:55:15 Yeah, otherwise we cannot produce a good schema we would preserve, right?
-Josh Suereth 00:55:22 Okay. So, Ludmila, if you're working on the,
-manifest stuff, I'll work on this for now, because I think that doesn't conflict at all.
+Josh Suereth 00:55:22 Okay. So, Ludmila, if you're working on the, manifest stuff, I'll work on this for now, because I think that doesn't conflict at all.
 Liudmila Molkova 00:55:31 And then, when you're finished with manifest, I'll switch back onto dependencies.
 Sounds good.
 Josh Suereth 00:55:37 Great.
@@ -519,8 +456,7 @@ Okay, what else do we have?
 Alright, so the… I wanted to do a brief… we have a couple things. We have to consider for next release. We have things that are no status, which have come in, that we can look at.
 We have V2 schema-related work, which, obviously, I want to get this prioritized.
 For V2, we only have 5 minutes, so we're not gonna do that right now. We have ease of use things. Go ahead.
-Liudmila Molkova 00:56:05 Can we come back for a second to the multi-registry manifest? I wanted to…
-Ask your opinion on something.
+Liudmila Molkova 00:56:05 Can we come back for a second to the multi-registry manifest? I wanted to… Ask your opinion on something.
 I updated the comment.
 It's, 11, 97.
 Josh Suereth 00:56:22 1197… is that in here?
@@ -531,13 +467,10 @@ Liudmila Molkova 00:56:32 Yeah, this one.
 So, can you scroll down?
 So I posted the comment as the outcome of our discussion.
 So, what it would mean, initially.
-That we also need the config to…
-Say where the schema comes from.
-Just for the development, because… Where…
-won't be able… so if, let's say, if we use something as a dependency, we need it to be published before we can even test anything. So, like, for our current local and testing goals.
+That we also need the config to… Say where the schema comes from.
+Just for the development, because… Where… won't be able… so if, let's say, if we use something as a dependency, we need it to be published before we can even test anything. So, like, for our current local and testing goals.
 We need to… Developed this custom repository mechanism already.
-Josh Suereth 00:57:22 Yeah, I think that's fine. You've seen how,
-how that's done for, like, Rust crates, where you can say, cool, I depend on this crate, but by the way, grab it from this good repo instead of where you normally get it.
+Josh Suereth 00:57:22 Yeah, I think that's fine. You've seen how, how that's done for, like, Rust crates, where you can say, cool, I depend on this crate, but by the way, grab it from this good repo instead of where you normally get it.
 I'm fine… I'm fine with that. So basically, we'd have schema URL, and then we would have something that's like a… a definition time override of grab it from here right now.
 Yeah.
 Liudmila Molkova 00:57:48 Yeah.
@@ -547,25 +480,20 @@ Josh Suereth 00:57:56 Yeah.
 Liudmila Molkova 00:57:57 Yeah, that sounds good.
 Josh Suereth 00:57:59 Cool.
 I like it.
-So, I think this one's higher priority than at the bottom, and I think I want to get this…
-V2 schema stuff sorted by priority of, like, what we consider
-blocking, stabilizing V2, and what we consider something we can add on later in non-breaking ways. I… I still think ease of use needs to be highly prioritized across Weaver.
+So, I think this one's higher priority than at the bottom, and I think I want to get this… V2 schema stuff sorted by priority of, like, what we consider blocking, stabilizing V2, and what we consider something we can add on later in non-breaking ways. I… I still think ease of use needs to be highly prioritized across Weaver.
 And, like, we need to make fixes, we need to get better docs, that sort of thing. So, I want to keep this here, but I'm curious how folks feel about, right now, the way we run the project is we have things that come in that need to be triaged, and we haven't triaged in a little bit, so there's a lot here.
 We have things we're gonna consider to release next, and then when we do a release planning session, which we'll probably do in about a week or two.
 We'll throw things that are still in progress into next release, so we can block the release until they're done.
 And then we have these grab bag of, like, high priority, you know, our current efforts. And I think our major efforts are getting V2 schema out the door, and ease of use.
 Are we happy with this, is how we run the project?
-Like, I still feel like…
-I feel like a failure as a product manager, generally, in open source. Because there's so many things here that, you know, don't make progress, but I do feel like we are making progress as a project.
+Like, I still feel like… I feel like a failure as a product manager, generally, in open source. Because there's so many things here that, you know, don't make progress, but I do feel like we are making progress as a project.
 And I do want to track this and keep this as our roadmap to, like, tell people what we care about, what we're interested in as a project. When you come in, I'd love for this to be, come in, look at the top priority things, grab one without a name, and work on it, right?
-Liudmila Molkova 00:59:51 I feel like once we do the V2 and Federation, we'll spend the rest of the year
-fixing issues and the usability problems of this. So, like, we are more reactive than strategic.
+Liudmila Molkova 00:59:51 I feel like once we do the V2 and Federation, we'll spend the rest of the year fixing issues and the usability problems of this. So, like, we are more reactive than strategic.
 And it's probably fine, at least now.
 Josh Suereth 01:00:08 Okay, okay.
 Cool. Well, I… I do think I'm gonna propose at some point that we put a block here behind V2 for, MCP and the UI.
 Because at least the current UI PR is huge.
-And I think the MCP stuff will actually be pretty cool to flesh out, like, what we can do with it, and what,
-What use cases we want.
+And I think the MCP stuff will actually be pretty cool to flesh out, like, what we can do with it, and what, What use cases we want.
 Liudmila Molkova 01:00:40 I'm jealous. I want to play with MCP and UI.
 But I don't get to.
 Josh Suereth 01:00:46 To be fair, if you ask Jeremy and, and I think the contributor, they've been viboding the whole thing, so is that them playing with the UI, or, like, playing… playing with the code for the UI, or playing with the UI?

@@ -35,9 +35,7 @@ Have you been with HP. For a long time?
 **Peter Findeisen** 02:38 Which was.
 **Yuanyuan Zhao** 02:40 Google.
 **Peter Findeisen** 02:41 Oh, okay. Yeah. Yeah.
-**Yuanyuan Zhao** 02:43 And
-it's a yeah. It's you know, when the place you stayed for so long, it's
-like leaving became a bit sentimental.
+**Yuanyuan Zhao** 02:43 And it's a yeah. It's you know, when the place you stayed for so long, it's like leaving became a bit sentimental.
 **Peter Findeisen** 03:04 Right?
 Yeah, it's yeah, long time.
 **Yuanyuan Zhao** 03:13 Is everyone else joining.
@@ -49,28 +47,17 @@ I want mute or a while.
 No, they are not showing they are not showing as participants, so they haven't joined.
 **Peter Findeisen** 04:00 Okay.
 **Yuanyuan Zhao** 04:12 Do we have a set topic for the next set of things to work on.
-**Peter Findeisen** 04:18 So I added 2 items to the agenda. They are both related to what I have been working on. One is
-So there. There is a change to the Otep, 2 50, which talks about composite samplers. The I made the clarification and a small fix really.
+**Peter Findeisen** 04:18 So I added 2 items to the agenda. They are both related to what I have been working on. One is So there. There is a change to the Otep, 2 50, which talks about composite samplers. The I made the clarification and a small fix really.
 It.
-It was debated whether it's appropriate to change an autop. I
-I think it's it's it is right. So it is a small change, not not
-changing the idea. It's it's just clarification. And Josh.
-I think, he said, that he would be supporting this change, but unfortunately
-this pull request got expired. It got it got
-Well, I don't know. I'm not sure what the right term is. It's frozen, not frozen. Something else
-it can be reopened, apparently, but I do not have any way to do this on my my page doesn't show any option to reopen
-this pull request. Oh, Carlos, thanks for for joining I'm discussing
-my pull request, which got closed because of inactivity, and we would like to reopen it and.
-**Carlos Alberto Cortez** 05:59 Let's do that. Yeah, give me a second
-to check which one it was.
+It was debated whether it's appropriate to change an autop. I I think it's it's it is right. So it is a small change, not not changing the idea. It's it's just clarification. And Josh.
+I think, he said, that he would be supporting this change, but unfortunately this pull request got expired. It got it got Well, I don't know. I'm not sure what the right term is. It's frozen, not frozen. Something else it can be reopened, apparently, but I do not have any way to do this on my my page doesn't show any option to reopen this pull request. Oh, Carlos, thanks for for joining I'm discussing my pull request, which got closed because of inactivity, and we would like to reopen it and.
+**Carlos Alberto Cortez** 05:59 Let's do that. Yeah, give me a second to check which one it was.
 **Peter Findeisen** 06:11 It. It was open telemetry. Specification, pull, request 4, 5, 6, 9.
 **Carlos Alberto Cortez** 06:21 Yeah, correct.
 Okay, it reopened us.
 **Peter Findeisen** 06:27 Okay. Great, thank you.
-Yeah. Josh hasn't joined yet. But during the previous meeting he was saying that he would support merging it
-because it it is a small change. Small clarification doesn't change the whole idea. It is. It just makes things a little more clear.
-**Carlos Alberto Cortez** 06:49 Yeah, I guess that the obvious question, if we merge this tab or this amendment to the tab is whether we will need to also update something in the specification itself
-is that something required there or.
+Yeah. Josh hasn't joined yet. But during the previous meeting he was saying that he would support merging it because it it is a small change. Small clarification doesn't change the whole idea. It is. It just makes things a little more clear.
+**Carlos Alberto Cortez** 06:49 Yeah, I guess that the obvious question, if we merge this tab or this amendment to the tab is whether we will need to also update something in the specification itself is that something required there or.
 **Peter Findeisen** 07:07 Yes, I think this this should proliferate to the specification. But so far we haven't, really.
 I completed our work on the specification. So it it's still work in progress.
 **Carlos Alberto Cortez** 07:24 I see. Okay, yeah, okay, that makes sense.
@@ -83,10 +70,8 @@ He showed up for a minute.
 **Yuanyuan Zhao** 07:54 Oh, I'm fairly familiar with the sampling topic in general. Is there anything I can help.
 **Peter Findeisen** 08:03 Well, there is another pull request which.
 **Yuanyuan Zhao** 08:07 Help review that one.
-**Peter Findeisen** 08:08 Okay, okay, yeah, this is this is actually the prototype which which I modified to reflect the
-clarification and small change that was required.
-Yeah. So I I think I got already approval from Jason. Plump
-we need more approvals. There.
+**Peter Findeisen** 08:08 Okay, okay, yeah, this is this is actually the prototype which which I modified to reflect the clarification and small change that was required.
+Yeah. So I I think I got already approval from Jason. Plump we need more approvals. There.
 **Carlos Alberto Cortez** 08:31 Yeah, I see to approval. By the way.
 **Peter Findeisen** 08:34 Oh!
 **Carlos Alberto Cortez** 08:34 No sorry. 1. 1. Sorry. Yeah.
@@ -97,13 +82,8 @@ Yes, yes, that code would change.
 I can help take a look at this one.
 **Peter Findeisen** 08:48 Thank you.
 **Yuanyuan Zhao** 08:49 Okay.
-**Peter Findeisen** 08:55 So most of the changes adding a test
-which, which which is a kind of corner case, right? But but so the test is a little bit elaborate because it needs to simulate
-inter process behavior.
-So we we have a parent span which is sampled with specific conditions. And then we have a child span which takes
-input from the trace state and the sampled flag. So the test is a little bit long, but that it. It tests exactly the scenario that is discussed
-in in the 1st pull request for the clarification. And there is also an issue
-filed for that which is linked just just to follow the the regular process.
+**Peter Findeisen** 08:55 So most of the changes adding a test which, which which is a kind of corner case, right? But but so the test is a little bit elaborate because it needs to simulate inter process behavior.
+So we we have a parent span which is sampled with specific conditions. And then we have a child span which takes input from the trace state and the sampled flag. So the test is a little bit long, but that it. It tests exactly the scenario that is discussed in in the 1st pull request for the clarification. And there is also an issue filed for that which is linked just just to follow the the regular process.
 Usually we want to have an issue open for any change that follows.
 So I try to be compliant with this.
 **Yuanyuan Zhao** 10:12 I'll take it over after this meeting.

@@ -27,8 +27,7 @@ Should we start.
 **SN Severin Neumann** 03:42 I think so. Yeah.
 **Dan Gomez Blanco** 03:45 This may be a quick one.
 Composite samples proposal. Seems to be assigned this issue to me.
-**SN Severin Neumann** 03:57 So Peter is part of the sampling Sig, as far as I know. So he's from Cisco. I worked with him in the past
-these
+**SN Severin Neumann** 03:57 So Peter is part of the sampling Sig, as far as I know. So he's from Cisco. I worked with him in the past these
 **Dan Gomez Blanco** 04:10 Seems.
 **SN Severin Neumann** 04:11 A sick issue.
 **Dan Gomez Blanco** 04:13 Yeah, this is a Sig issue.
@@ -40,26 +39,21 @@ these
 **Pablo Baeyens** 04:42 Yeah, yeah. So that we assign the sponsor.
 **Dan Gomez Blanco** 04:50 M.
 I just respond and say that.
-and we'll come in with that. And I think and we'll say that
-I don't know if we need to assign it.
+and we'll come in with that. And I think and we'll say that I don't know if we need to assign it.
 **SN Severin Neumann** 05:44 Yeah, I don't. So so that's that's maybe something I would leave to this sick. So.
 **Dan Gomez Blanco** 05:49 Yeah.
 **SN Severin Neumann** 05:50 If they want to do it that way. I mean, they need to. Yeah.
 **Dan Gomez Blanco** 05:55 I say, I don't think this is something we need to assign this.
 **Pablo Baeyens** 06:03 Makes sense.
 **Dan Gomez Blanco** 06:15 I just comment that.
-So it's okay. As long as it's in their board and label appropriately,
-okay, that was the only one and we have a follow up.
-Oh, by the way, do you see a
-I'm gonna give it a thumbs up just because, like it's got the new subtext that I've been adding.
+So it's okay. As long as it's in their board and label appropriately, okay, that was the only one and we have a follow up.
+Oh, by the way, do you see a I'm gonna give it a thumbs up just because, like it's got the new subtext that I've been adding.
 **Pablo Baeyens** 06:47 I just merged the the Prs on on the collector as well.
 **Dan Gomez Blanco** 06:51 Oh, awesome!
 That'll be good to see.
 Okay, so follow up lockdown. I did receive. It was 8,200 and Mtc.
-There is
-Whoa, the last one to come in here was Trask, so.
-**SN Severin Neumann** 07:22 Last week. But why did it
-do a follow up if he answered last week? Shouldn't that like.
+There is Whoa, the last one to come in here was Trask, so.
+**SN Severin Neumann** 07:22 Last week. But why did it do a follow up if he answered last week? Shouldn't that like.
 **Dan Gomez Blanco** 07:36 20.th That was 10 days ago. And then, yeah.
 **SN Severin Neumann** 07:40 Okay. Yeah. Okay.
 **Dan Gomez Blanco** 07:43 But I guess maybe.
@@ -70,14 +64,12 @@ do a follow up if he answered last week? Shouldn't that like.
 no. I mean, yeah.
 Typical use case. I will say like, do you need a more guidance? I guess.
 **SN Severin Neumann** 08:35 Yeah, it's good. Yeah.
-**Dan Gomez Blanco** 08:42 And remove for follow up
-as another one or actually, should that be in needs author info rather than deciding.
+**Dan Gomez Blanco** 08:42 And remove for follow up as another one or actually, should that be in needs author info rather than deciding.
 **SN Severin Neumann** 09:03 Yeah, yeah, move it to.
 Oh, no, it's ready.
 It has already. Yeah.
 **Dan Gomez Blanco** 09:07 Okay?
-Okay. So that's the spec part. I wanted to
-go back here to the community. Pull requests. We've got also.
+Okay. So that's the spec part. I wanted to go back here to the community. Pull requests. We've got also.
 **SN Severin Neumann** 09:22 I will be back in a minute.
 **Dan Gomez Blanco** 09:25 I will just label this as.
 **Pablo Baeyens** 09:28 Project proposal.
@@ -91,8 +83,7 @@ And.
 **Dan Gomez Blanco** 09:57 Oh, I think I saw this in slack person.
 Hey?
 Right? Okay, I will comment on. This is like this, seems like too general resource tax working group.
-We would have to scope it down to it. Looks like they're yeah
-without going into the the full description. It does look like they're trying to. Basically.
+We would have to scope it down to it. Looks like they're yeah without going into the the full description. It does look like they're trying to. Basically.
 it's about ownership, I guess, of
 **Pablo Baeyens** 10:50 Yeah.
 **Dan Gomez Blanco** 10:50 Yeah, should I? Just CC.
@@ -109,23 +100,18 @@ Send it that way.
 **Dan Gomez Blanco** 11:40 And so I just label that.
 **SN Severin Neumann** 11:43 Hmm.
 **Dan Gomez Blanco** 11:43 M.
-And the other stuff. I don't think it needs to be labeled, and
-it's just things that we need to review, I guess.
-in here. There are some that are not. I think you you created an issue to track the ones that are not labeled right? Or the labeling
-policy. Yeah.
+And the other stuff. I don't think it needs to be labeled, and it's just things that we need to review, I guess.
+in here. There are some that are not. I think you you created an issue to track the ones that are not labeled right? Or the labeling policy. Yeah.
 Some of them like.
 **Pablo Baeyens** 12:16 Just look at Author Mxpsi, and should be one of the few ones that I've opened.
 Not the only one.
 **Dan Gomez Blanco** 12:29 Yeah, triaging document.
 And so I don't know if Security Response Committee current status, future plan.
 This is this is related to their graduation.
-**SN Severin Neumann** 12:57 Yeah, that's
-I don't know. Do we have some kind of Gc inbox? I think we should talk about this on
-Thursday, so maybe we should just put it on the agenda if Austin has not yet put it on the agenda.
+**SN Severin Neumann** 12:57 Yeah, that's I don't know. Do we have some kind of Gc inbox? I think we should talk about this on Thursday, so maybe we should just put it on the agenda if Austin has not yet put it on the agenda.
 **Dan Gomez Blanco** 13:11 Yeah, I mean, Austin tagged here, Traskin, really, and I'll audit.
 **Pablo Baeyens** 13:21 And do we have a joint one? No, okay, I'll just to the agenda.
-**Dan Gomez Blanco** 13:30 Yeah, I don't think this is
-don't know if we need to label this area security.
+**Dan Gomez Blanco** 13:30 Yeah, I don't think this is don't know if we need to label this area security.
 **Pablo Baeyens** 13:40 Talked about right?
 Yeah. Area security zones.
 Right to me.
@@ -133,31 +119,24 @@ Right to me.
 And and this is from time this is related to the to another graduation issue.
 And it seems to be ongoing. Yeah, in case this is not sure. If can label that.
 I'll be up for this actually moving things into a policies directory.
-And
-but again, is this.
+And but again, is this.
 **Pablo Baeyens** 14:39 Feel like there's no right label to apply to this. We can.
 **Dan Gomez Blanco** 14:44 Yeah, this would feel something like, I don't know. Almost like governance. Right?
-**SN Severin Neumann** 14:51 Yeah, maybe we should add an area governance or something like that. And then, especially like the stuff that
-that we need to do needs to be labeled like that.
+**SN Severin Neumann** 14:51 Yeah, maybe we should add an area governance or something like that. And then, especially like the stuff that that we need to do needs to be labeled like that.
 **Dan Gomez Blanco** 15:07 Add a new label.
 should we? So this is Hmm.
 Terminator.
 **SN Severin Neumann** 15:40 And a little bit broad. But yeah, it's.
 **Dan Gomez Blanco** 15:46 Give it up, Bro.
-My room
-and then go back
-doesn't appear
-reload.
+My room and then go back doesn't appear reload.
 There you go.
 This feels like that as well.
-Then, if we're going to play that
-because this is about like.
+Then, if we're going to play that because this is about like.
 **SN Severin Neumann** 16:25 Yeah.
 **Dan Gomez Blanco** 16:42 Right?
 I think we're done.
 Not sure.
-So yeah, in this whole
-was a quick one.
+So yeah, in this whole was a quick one.
 Well, I will see you during the week.
 **SN Severin Neumann** 17:00 Yeah, I will not be here next week. I will be traveling, I think, already in the morning.
 Yeah, I will not be here next week.

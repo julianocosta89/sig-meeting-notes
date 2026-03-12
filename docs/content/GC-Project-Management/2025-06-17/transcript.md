@@ -6,16 +6,14 @@ Zoom Recording URL: https://zoom.us/rec/share/xNhb2DDqsHPZoNosorYu1JGWmSpXa6Xrsa
 
 ## Zoom Recording Transcript
 
-**Trask Stalnaker** 00:01 But
-I haven't, retried the slack dump with the Channel ids.
+**Trask Stalnaker** 00:01 But I haven't, retried the slack dump with the Channel ids.
 **Austin Parker** 02:16 I am trying it again. It just keeps getting rate limited.
 **Morgan McLean** 02:22 Did we find out.
 **Trask Stalnaker** 02:22 Doesn't it.
 **Morgan McLean** 02:24 Did we find out why it was so sudden? I'm not looking at cast the person I'm morbidly curious like what led to this.
 **Austin Parker** 02:30 I'm I'm desperately curious as well, but nobody's telling me shit. The only thing I've heard that it's not is that it's not just Kate's and Cncf.
 **Morgan McLean** 02:41 Oh, like, it's all like, because I know that Slack had some deals for large oss organizations, so they're doing them all at once.
-**Austin Parker** 02:48 Apparently the the scuttle bird I heard this morning was, every
-community handshake deal over about 250 users is getting this same treatment.
+**Austin Parker** 02:48 Apparently the the scuttle bird I heard this morning was, every community handshake deal over about 250 users is getting this same treatment.
 **Morgan McLean** 03:02 Wow! With one week's notice as well.
 **Austin Parker** 03:05 Apparently.
 **Morgan McLean** 03:09 So it really is like someone in slack sales or executive office woke up in the morning, was like.
@@ -25,8 +23,7 @@ community handshake deal over about 250 users is getting this same treatment.
 **Morgan McLean** 03:26 Correct. Yeah.
 **Austin Parker** 03:28 Like? Is it.
 **Morgan McLean** 03:29 The only other reason would be if they're trying to like, jam them all into like sales deals, except like oss communities. Don't have much.
-**Austin Parker** 03:35 But yeah, it's like nobody has nobody's gonna pay like there's there is no
-like maybe a dollar a head.
+**Austin Parker** 03:35 But yeah, it's like nobody has nobody's gonna pay like there's there is no like maybe a dollar a head.
 **Morgan McLean** 03:42 Because that was what Broadcom did of a lot of Vmware customers was like. Everyone thought they were going to.
 **Austin Parker** 03:46 Yeah.
 **Morgan McLean** 03:46 Squeeze them instead. It was like, you've got one week to migrate off or pay us triple right? And it was just sort of.
@@ -40,20 +37,16 @@ like maybe a dollar a head.
 **Morgan McLean** 04:01 Yeah. You know who has money, open source foundations.
 **Austin Parker** 04:06 Well, that's the thing is like I mean, I would, I would tell to be charitable like, let's even assume that they did play ball and get it down to like. I don't know 5 bucks, a head, or something, or 3 bucks a head like it's not that Cncf. Couldn't pay that it's that like that's, you know, several $100,000 that they wouldn't be able to spend on something else.
 **Morgan McLean** 04:27 Correct.
-**Austin Parker** 04:28 Which, you know I'm
-I think it's a lot, you know, I'm in favor of like not paying if you don't have to right
-like, because they.
+**Austin Parker** 04:28 Which, you know I'm I think it's a lot, you know, I'm in favor of like not paying if you don't have to right like, because they.
 **Trask Stalnaker** 04:37 Use that volume better.
 **Austin Parker** 04:38 Things.
 **Morgan McLean** 04:39 Is the plan move to discord, or just live with the.
 **Austin Parker** 04:44 I mean, I we're almost certainly going to move to discord, but like they're in.
 they're not in like figure out. The next thing mode. They are in preserve history, mode.
 **Morgan McLean** 04:55 Yeah, fair. Enough. Yeah.
-**Austin Parker** 04:57 So I just find it like it's just such a strange and like
-it feels like such a strange move on Salesforce's part, because it's like.
+**Austin Parker** 04:57 So I just find it like it's just such a strange and like it feels like such a strange move on Salesforce's part, because it's like.
 Surely they knew that people would be mad.
-**Morgan McLean** 05:20 They must be in a big
-something in the. There's something about salesforce in the news this week about salesforce jacking up all their prices on their core products, claiming that. Oh, it's because of all the AI innovations we've done.
+**Morgan McLean** 05:20 They must be in a big something in the. There's something about salesforce in the news this week about salesforce jacking up all their prices on their core products, claiming that. Oh, it's because of all the AI innovations we've done.
 **Austin Parker** 05:32 I did.
 **Morgan McLean** 05:32 Okay.
 **Austin Parker** 05:33 Yeah.
@@ -64,13 +57,9 @@ something in the. There's something about salesforce in the news this week about
 **Morgan McLean** 05:45 Yes.
 **Austin Parker** 05:45 Something.
 **Morgan McLean** 05:46 I think both.
-**Austin Parker** 05:47 Because it's the only possible justification I can see is why you would hurt by
-a why you would do this at all, and B. Do it so fast, and C like
-all at once to all oss projects, I'd.
+**Austin Parker** 05:47 Because it's the only possible justification I can see is why you would hurt by a why you would do this at all, and B. Do it so fast, and C like all at once to all oss projects, I'd.
 **Morgan McLean** 05:58 Yeah.
-**Austin Parker** 05:59 Like, and I'm I'm confident there's probably
-like, and I will say, like, it's not like these are small instances, like, I'm sure that you know, keeping 10 plus years of history, for
-you know 300,000 plus member or.
+**Austin Parker** 05:59 Like, and I'm I'm confident there's probably like, and I will say, like, it's not like these are small instances, like, I'm sure that you know, keeping 10 plus years of history, for you know 300,000 plus member or.
 **Morgan McLean** 06:16 La. Cnc.
 **Austin Parker** 06:17 Yes, so.
 **Morgan McLean** 06:17 Pretty active. Yeah.
@@ -82,10 +71,8 @@ Yeah, I'm sure it wasn't like it probably wasn't even necessarily cheap for them
 **Austin Parker** 06:39 If they're if they're going to the trouble of.
 **Morgan McLean** 06:42 Or things are going very badly.
 **Austin Parker** 06:44 Yeah, as I say, we are buying stock, or we buy calls or whatever.
-**Morgan McLean** 06:49 There's a great thing of research done years ago by Matt Levine, who's a famous Bloomberg reporter, was looking into insider trading, and he's like
-he's like he was either quoting someone else's paper or he did his own research. And he's like.
-even for people with inside information, it turns out like 45% of the time. They're wrong about the direction that a stock is going to move
-like they hear something they're like, Oh, this! It'll totally go up. I'm going to buy a bunch of options or buy a bunch of stock, goes down on the same news.
+**Morgan McLean** 06:49 There's a great thing of research done years ago by Matt Levine, who's a famous Bloomberg reporter, was looking into insider trading, and he's like he's like he was either quoting someone else's paper or he did his own research. And he's like.
+even for people with inside information, it turns out like 45% of the time. They're wrong about the direction that a stock is going to move like they hear something they're like, Oh, this! It'll totally go up. I'm going to buy a bunch of options or buy a bunch of stock, goes down on the same news.
 **Austin Parker** 07:17 Yeah. The market can stay.
 **Morgan McLean** 07:22 Irrational or just.
 **Austin Parker** 07:23 Irrational longer than you can stay solvent.
@@ -109,15 +96,12 @@ Yeah, where large projects are on their own self, managed.
 **Morgan McLean** 08:05 Slack struggles with.
 **Austin Parker** 08:07 Right like we'll be able to have our own all of our own shit and do our own thing, and we'll have like a Cncf Bot that manages syncing up like.
 **Morgan McLean** 08:16 Yeah.
-**Austin Parker** 08:17 Like the nice thing is, we'll be able to say like, Oh,
-Everything flows from your github, org your github status. So you connect your Github
-to discord, and then you join.
+**Austin Parker** 08:17 Like the nice thing is, we'll be able to say like, Oh, Everything flows from your github, org your github status. So you connect your Github to discord, and then you join.
 and then you get put into the right channels you get put into like the private channel. With other maintainers, you become like a MoD, or whatever like we give you your your hat.
 **Morgan McLean** 08:43 My only fear is that discord is also preparing for an Ipo, and at some point.
 **Austin Parker** 08:49 Yeah, the rug may get pulled.
 Business model, at least is the thing is.
-**Morgan McLean** 08:53 Yeah, it's less on. It's less on
-price subscriptions. Yeah, it's more unlike.
+**Morgan McLean** 08:53 Yeah, it's less on. It's less on price subscriptions. Yeah, it's more unlike.
 **Trask Stalnaker** 08:58 Yeah.
 **Morgan McLean** 09:00 Yes.
 **Trask Stalnaker** 09:01 Yeah.
@@ -143,29 +127,24 @@ They definitely don't want to move to self hosted.
 **Austin Parker** 09:44 Don't think so.
 That's interesting.
 I mean, not for work work.
-And also like this is, I think, this only applies. This one applies like the community one, right? Like the
-the work work one is still.
+And also like this is, I think, this only applies. This one applies like the community one, right? Like the the work work one is still.
 **Morgan McLean** 09:58 So just. Probably her irs.
 **Austin Parker** 09:59 A regular at slack.
 **Morgan McLean** 10:01 Yeah, yeah, okay.
-**Austin Parker** 10:03 Because you imagine you have to for
-You want to have shared channels and shit like that.
+**Austin Parker** 10:03 Because you imagine you have to for You want to have shared channels and shit like that.
 **Morgan McLean** 10:10 Yeah.
 **Austin Parker** 10:12 But I think what would be really, I think what would be nice about a discord is not only like the virtual hat shit, but also.
 **Morgan McLean** 10:20 Like it's.
-**Austin Parker** 10:21 Becoming pretty common, especially for like
-like I'm seeing not only like, certainly, for, like earlier career, devs are more familiar with discord.
+**Austin Parker** 10:21 Becoming pretty common, especially for like like I'm seeing not only like, certainly, for, like earlier career, devs are more familiar with discord.
 **Morgan McLean** 10:31 A lot of reddit communities have, like.
-**Austin Parker** 10:33 A lot of like Reddit. Yeah, a lot of went there. And the other thing that's nice is
-like a lot. I'm starting to see. More companies have, like discord as sort of their primary community thing.
+**Austin Parker** 10:33 A lot of like Reddit. Yeah, a lot of went there. And the other thing that's nice is like a lot. I'm starting to see. More companies have, like discord as sort of their primary community thing.
 **Morgan McLean** 10:47 Like a.
 **Austin Parker** 10:48 Don't worry.
 **Morgan McLean** 10:48 Yeah.
 **Austin Parker** 10:49 Yeah, like, or even companies like where there's like, Zed is on a discord and shit like that, like, maybe the work work stuff happens on a slack. But there's a discord that is active and like.
 I think it's generally good, because, like, there's the thing that seems like this, you know.
 where does this core go? In terms of like increasing monetization is more towards like events and other premium stuff and things where and ecosystem things? Right?
-So I I can very much see there being a nice
-like that work, that that being that working out well.
+So I I can very much see there being a nice like that work, that that being that working out well.
 **Morgan McLean** 11:28 We could use it instead of zoom.
 Technically, I don't know if we actually want to do that, but.
 **Austin Parker** 11:34 I mean, I think, but I think for some things like if we want to have like a Gc. Call.
@@ -183,8 +162,7 @@ we should consider that once once the migrations, once we migrate over chat, yea
 **Morgan McLean** 12:16 Like this.
 **Austin Parker** 12:16 One-to-many events, and like we can do more shit through discord, which I think will be good.
 **Morgan McLean** 12:23 Cool.
-Oh, one thing before we dive into Github, the there's like Gc. Meetings and stuff happening at the hotel day next week, correct
-or something.
+Oh, one thing before we dive into Github, the there's like Gc. Meetings and stuff happening at the hotel day next week, correct or something.
 **Austin Parker** 12:36 Yes, on Wednesday.
 **Morgan McLean** 12:38 On Wednesday. Cool?
 Is it remote, friendly.
@@ -238,16 +216,13 @@ Okay, anything else we want to look at.
 **Austin Parker** 15:57 No, I'm just.
 **Trask Stalnaker** 16:04 I'm not sure what the Us. I don't have any great idea. On the release manager.
 **Austin Parker** 16:11 No, I still have to.
-I have not gotten to that. I
-I'm gonna have to do it tomorrow or tonight. I guess I've been caught.
+I have not gotten to that. I I'm gonna have to do it tomorrow or tonight. I guess I've been caught.
 **Trask Stalnaker** 16:23 Kind of like.
 **Austin Parker** 16:23 Other things.
-**Trask Stalnaker** 16:25 I kind of think it's okay to put the team, alias there, even if it's not
-accessible. Externally, I mean cause.
+**Trask Stalnaker** 16:25 I kind of think it's okay to put the team, alias there, even if it's not accessible. Externally, I mean cause.
 **Austin Parker** 16:35 Yeah, who needs to contact.
 **Trask Stalnaker** 16:38 Like. It's just to show that we.
-**Austin Parker** 16:41 Yeah. I mean, I again, like the
-yeah, I'll just put the team, alias there, like.
+**Austin Parker** 16:41 Yeah. I mean, I again, like the yeah, I'll just put the team, alias there, like.
 **Trask Stalnaker** 16:51 If they want more I'll I'll look at yeah, like generating something.
 **Austin Parker** 16:57 I mean, the thing is, I mean, part of the thing is, I actually do feel like it should be like the code owner should be the source of truth here.
 **Trask Stalnaker** 17:06 The color nurse.
@@ -258,21 +233,15 @@ Don't.
 **Trask Stalnaker** 17:17 They're not about maintaining acts. Maintainer.
 **Austin Parker** 17:21 Shouldn't you have like different.
 **Trask Stalnaker** 17:25 Roles.
-**Austin Parker** 17:26 Yeah, no
-right marks. Code is file size syntax.
+**Austin Parker** 17:26 Yeah, no right marks. Code is file size syntax.
 I mean, you can't add comments.
 **Trask Stalnaker** 17:54 Yeah, yeah, yeah.
-**Austin Parker** 17:55 Like we could just have it, I mean, because, Maintainer
-do you get double mentioned if you you wouldn't get double mentioned right like, if.
+**Austin Parker** 17:55 Like we could just have it, I mean, because, Maintainer do you get double mentioned if you you wouldn't get double mentioned right like, if.
 **Trask Stalnaker** 18:13 No, if you're in 2 different teams.
-**Austin Parker** 18:16 Yeah, I think I I think this is one of those things where it's like we're the only ones that are doing it. We're we're the only people
-using
-teams the way we are. Because when Kate's did all this Github support for this stuff wasn't as good, and also they kind of
-they don't just have. They don't assume everyone is part of the org.
+**Austin Parker** 18:16 Yeah, I think I I think this is one of those things where it's like we're the only ones that are doing it. We're we're the only people using teams the way we are. Because when Kate's did all this Github support for this stuff wasn't as good, and also they kind of they don't just have. They don't assume everyone is part of the org.
 And since we can assume that everyone that we care about is part of the org.
 And we've known that from the jump we use teams. So I think, yeah, like.
-I think, for now we can update it and just be like
-release manager will be the maintainers for that repo.
+I think, for now we can update it and just be like release manager will be the maintainers for that repo.
 and if they want something else, then they can ask.
 But.
 **Trask Stalnaker** 19:16 Yeah, if they want, if they want something more, what I would probably look at doing is
@@ -282,34 +251,27 @@ And yeah.
 **Austin Parker** 19:35 I mean.
 **Trask Stalnaker** 19:35 Some kind of.
 **Austin Parker** 19:36 I kind of feel like everyone should.
-I feel like everybody should
-like in my mind. The bigger problem here is that not everyone is using the template.
+I feel like everybody should like in my mind. The bigger problem here is that not everyone is using the template.
 **Trask Stalnaker** 19:49 Most people are.
 **Austin Parker** 19:50 Most people are, but a few aren't, and it's the.
 **Trask Stalnaker** 19:57 We don't. The you can't link to this, which is part of the problem.
 **Austin Parker** 20:02 Well, we could, but that's easy enough to change. That's just change it to a H. 4 or whatever.
 **Trask Stalnaker** 20:07 Yeah, across, 80.
-**Austin Parker** 20:10 Cross. Yes, which that part sucks. But
-no, I can just go in, and I'll
+**Austin Parker** 20:10 Cross. Yes, which that part sucks. But no, I can just go in, and I'll
 **Trask Stalnaker** 20:21 Do the teams if they ask for.
 **Austin Parker** 20:24 Want more than.
 **Trask Stalnaker** 20:25 I will look at auto me automatically up.
 **Austin Parker** 20:29 I think you can probably use all of this.
-I think we can probably just say like, Hey, you go and you look at you look at the bottom of the thing, and there it is
-like, it's not that we're hiding it.
-**Trask Stalnaker** 20:43 Yeah, I mean, you could link to
-these. I do think everybody is supposed to have this. It's just that.
+I think we can probably just say like, Hey, you go and you look at you look at the bottom of the thing, and there it is like, it's not that we're hiding it.
+**Trask Stalnaker** 20:43 Yeah, I mean, you could link to these. I do think everybody is supposed to have this. It's just that.
 **Austin Parker** 20:50 But everyone is supposed to have it, but not everyone does go go. I think.
 **Trask Stalnaker** 20:56 I do, though it's just in a different place.
 Yeah, contributing.
 **Austin Parker** 21:01 But it needs to be in the readme. But maybe they aren't doing it because of like, go reasons.
-**Trask Stalnaker** 21:07 I think it was just. There was some like question of like whether that needs to be front and center. For you know, you wanna like limit. How much is on your read me? And so
-I'm not opposed to it, being somewhere else.
+**Trask Stalnaker** 21:07 I think it was just. There was some like question of like whether that needs to be front and center. For you know, you wanna like limit. How much is on your read me? And so I'm not opposed to it, being somewhere else.
 **Austin Parker** 21:24 I think it's pretty conventional that it's on the readme, though.
-but I mean, I don't know, like whatever
-I'll update it just team names, and we'll go from there.
-**Trask Stalnaker** 21:37 Sounds, good
-cool.
+but I mean, I don't know, like whatever I'll update it just team names, and we'll go from there.
+**Trask Stalnaker** 21:37 Sounds, good cool.
 **Austin Parker** 21:42 Alright! Well, those.
 **Trask Stalnaker** 21:44 See you tomorrow.
 **Austin Parker** 21:46 Homes.

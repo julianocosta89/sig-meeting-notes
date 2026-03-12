@@ -12,71 +12,52 @@ Zoom Recording URL: https://zoom.us/rec/share/riyOIAZKi4S7bxw7kQtRYVVM2vyX8L4DLG
 **Christos Markou** 03:42 Probably checking the board if there is anything… no, if there is nothing else.
 **Pablo Baeyens** 03:58 Back on TikToks.
 Huh.
-Yeah, and I also wanted to know if there's any…
-guidance from above in terms of the…
+Yeah, and I also wanted to know if there's any… guidance from above in terms of the…
 **Braydon Kains (Google)** 04:13 Okay, good to you.
 **Pablo Baeyens** 04:14 I see recommendations, or… How does that affect semantic conventions? I don't know if that's something… Josh, maybe new.
 Thought about, or… Or not.
 We can do that after taking the board.
 **Josh Suereth** 04:30 Can you say that again? Sorry, I'm on my… on my phone, my computer audio is having trouble today.
-**Pablo Baeyens** 04:36 Yeah, no, I was wondering if the…
-semantic conventioners have thought about the TOC recommendations, and if there's anything that is going to change, or, like, that we should focus on.
+**Pablo Baeyens** 04:36 Yeah, no, I was wondering if the… semantic conventioners have thought about the TOC recommendations, and if there's anything that is going to change, or, like, that we should focus on.
 **Josh Suereth** 04:54 Yeah, I don't think we've discussed it specifically. I can tell you my own thoughts are, I've been going through a list of all the areas of OpenTelemetry.
 that a reasonable adopter of OpenTelemetry needs.
 And… and looking through, do we have something in place to stabilize that area or those needs for a reasonable adopter of OpenTelemetry as quickly as possible? We do… we have been on a journey with semantic conventions to make sure it's very clear what's stable and what's not.
-But I don't think it's really clear to downstream consumers, and so, yeah, there's work to do there as the TLDR. So, this is an example, SIG, of, I think we need to get to a point where things are stable, and we need to ask ourselves, like, okay, of the work that y'all have done, right,
-how much of that board is really necessary to unblock an average adopter of OpenTelemetry?
+But I don't think it's really clear to downstream consumers, and so, yeah, there's work to do there as the TLDR. So, this is an example, SIG, of, I think we need to get to a point where things are stable, and we need to ask ourselves, like, okay, of the work that y'all have done, right, how much of that board is really necessary to unblock an average adopter of OpenTelemetry?
 And let's nail that as quickly as we can, and then… and then have a clear, okay, here's what's stable. And then we can work on the rest over time. But from my perspective, we have way too much that is considered unstable that people depend on, and we have to start addressing that as quickly as possible.
 I haven't really thought through other alternatives besides just collecting the list for now.
 **Pablo Baeyens** 06:18 Okay. I mean, I guess we can check the board on, like, seed with this new perspective.
-I don't know, I can share my screen if…
-Actually, if somebody else can share the screen and share the board, I would appreciate it.
+I don't know, I can share my screen if… Actually, if somebody else can share the screen and share the board, I would appreciate it.
 **Dmitrii Anoshin** 06:44 I can do that.
 Systematic conventions, right?
 Systematic Convention's one, yeah.
-**Pablo Baeyens** 07:11 And we can look at the… the GA…
-So if you… See the tabs, below the…
-the board name. There's one that says GA Board.
+**Pablo Baeyens** 07:11 And we can look at the… the GA… So if you… See the tabs, below the… the board name. There's one that says GA Board.
 **Dmitrii Anoshin** 07:33 Okay.
 **Pablo Baeyens** 07:37 And I guess we can start with the ones in review, and then… Will… Look at the others.
 Does this one have a PR open?
-**Braydon Kains (Google)** 08:00 The… the paging…
-Paging one is done, the process state one, I don't think it's a PR yet.
+**Braydon Kains (Google)** 08:00 The… the paging… Paging one is done, the process state one, I don't think it's a PR yet.
 **Pablo Baeyens** 08:12 Huh, okay.
 **Christos Markou** 08:13 Is this ready?
-state… I believe there was something missing, or at least, that's what the…
-Issue was stating some time ago.
+state… I believe there was something missing, or at least, that's what the… Issue was stating some time ago.
 **Dmitrii Anoshin** 08:27 There is a PR to rename process state attributes.
 **Braydon Kains (Google)** 08:30 Oh, yeah.
 **Dmitrii Anoshin** 08:32 Okay.
-**Braydon Kains (Google)** 08:35 Oh, and I… we're trying to…
-Get them not to do the briefs, because…
-The briefs are explaining something that's obvious from the Value.
+**Braydon Kains (Google)** 08:35 Oh, and I… we're trying to… Get them not to do the briefs, because… The briefs are explaining something that's obvious from the Value.
 ends.
 **Dmitrii Anoshin** 08:48 Yeah, and I think that's addressed. So, Chris just can take another look, and we can do that as well, I guess.
 I'll put it on my queue.
 **Christos Markou** 09:01 I will check.
 **Dmitrii Anoshin** 09:05 So, yeah, this one is clear. There is work that we can do.
 On this one.
-And, this one…
-Memory… rename… Okay, I'm not sure we've been through a lot of discussions about this one. Are we, like, aligned now that Linux goes after?
+And, this one… Memory… rename… Okay, I'm not sure we've been through a lot of discussions about this one. Are we, like, aligned now that Linux goes after?
 **Braydon Kains (Google)** 09:29 Yeah, I think so.
-**Dmitrii Anoshin** 09:30 Okay, cool. So, there is PR…
-With this one, that we need to…
+**Dmitrii Anoshin** 09:30 Okay, cool. So, there is PR… With this one, that we need to…
 **Pablo Baeyens** 09:37 Yeah. The other one night.
-**Braydon Kains (Google)** 09:39 Oh yeah, I guess we could probably…
-I'll probably close this issue, I get… I don't know if I…
-If we ever specifically, like, decided that, like, oh, now, like, we've officially, like, said that the OS comes second, it's just, like, the discussion kind of stopped, I guess.
-**Dmitrii Anoshin** 09:58 Okay, can we maybe summarize that semantic? I remember that we, like, at least within this group, we decided that,
-Oh, we… Like, operation system goes second, so maybe we can just…
-State our decision here, and
-Close it, what do you think?
+**Braydon Kains (Google)** 09:39 Oh yeah, I guess we could probably… I'll probably close this issue, I get… I don't know if I… If we ever specifically, like, decided that, like, oh, now, like, we've officially, like, said that the OS comes second, it's just, like, the discussion kind of stopped, I guess.
+**Dmitrii Anoshin** 09:58 Okay, can we maybe summarize that semantic? I remember that we, like, at least within this group, we decided that, Oh, we… Like, operation system goes second, so maybe we can just… State our decision here, and Close it, what do you think?
 **Braydon Kains (Google)** 10:18 Yeah, sure.
 **Christos Markou** 10:20 Covered by guidance, Brighton, that you created.
 Oh, I remember.
-**Braydon Kains (Google)** 10:27 Yeah, in our non-normative guidance, I think I did write
-I wrote the reasoning that I thought it should be that way, but people didn't, like…
-super agree with me, I think?
+**Braydon Kains (Google)** 10:27 Yeah, in our non-normative guidance, I think I did write I wrote the reasoning that I thought it should be that way, but people didn't, like… super agree with me, I think?
 In the maintainers group.
 **Dmitrii Anoshin** 10:40 Did you merge that?
 **Braydon Kains (Google)** 10:42 Yeah, it's in docs slash non-normative, Slash… Group slash system.
@@ -102,8 +83,7 @@ But, yeah, it's not super explicit.
 **Dmitrii Anoshin** 12:34 That's cool.
 Okay, in this note.
 **Braydon Kains (Google)** 12:40 And the reason for that was that we didn't… want.
-Like, the root namespace… You still want it to be…
-if it's a memory metric, but there's some Linux-exclusive.
+Like, the root namespace… You still want it to be… if it's a memory metric, but there's some Linux-exclusive.
 **Dmitrii Anoshin** 12:55 Okay. Special thing, like, the memory available.
 Okay.
 **Braydon Kains (Google)** 12:59 want to have to look in the Linux namespace to find that information. That's basically…
@@ -111,9 +91,7 @@ Okay.
 **Braydon Kains (Google)** 13:10 Yeah, I guess so.
 **Dmitrii Anoshin** 13:12 Okay.
 SSS.
-This is absolved by…
-And now we are…
-Okay, any doubt about this one?
+This is absolved by… And now we are… Okay, any doubt about this one?
 It's still… Okay, we have a guidance in place, but we still don't have…
 **Braydon Kains (Google)** 13:43 But I guess this… this rename still needs to be…
 **Dmitrii Anoshin** 13:47 Still in place?
@@ -131,8 +109,7 @@ VR again… Another major guidance.
 Just mentioning here.
 **Braydon Kains (Google)** 15:03 this…
 **Dmitrii Anoshin** 15:05 Pass.
-There's no… And be renamed… Yeah, and that we have the… guidance…
-So… Is Roger on the call?
+There's no… And be renamed… Yeah, and that we have the… guidance… So… Is Roger on the call?
 **Roger Coll** 15:32 Yeah, I can… I can work on that one.
 **Dmitrii Anoshin** 15:34 Okay, awesome, thank you.
 Nice.
@@ -165,8 +142,7 @@ some work…
 **Dmitrii Anoshin** 17:42 like, guiding him and everything, but I believe she's now on PTO.
 So… Let me see… oh, look, I have it referenced in my PRs.
 And.
-**Christos Markou** 18:00 an issue for SamConf, or…
-Do we need anything on SEMCON's side to do?
+**Christos Markou** 18:00 an issue for SamConf, or… Do we need anything on SEMCON's side to do?
 **Dmitrii Anoshin** 18:06 No, we don't think… actually, you're right, it's like, it's something that would block collector migration, but it's not… it doesn't have to do anything with the sameconf itself, so…
 **Christos Markou** 18:16 Right.
 **Dmitrii Anoshin** 18:17 Yeah, anyway, I'm on it, probably.
@@ -179,13 +155,9 @@ Maybe.
 **Dmitrii Anoshin** 18:38 I'm, like, this issue is big, I'm, like, I'm not sure if utilization of opt-in completely covers it. Roger, what do you think?
 **Roger Coll** 18:50 I think so, but probably I can double-check it with the PR that we have in the collector, and then cross it.
 Okay. So, results.
-**Braydon Kains (Google)** 19:01 I also had a…
-a gist that I wrote up related to this, and I haven't gone back to fix the feedback on it, but…
+**Braydon Kains (Google)** 19:01 I also had a… a gist that I wrote up related to this, and I haven't gone back to fix the feedback on it, but…
 **Dmitrii Anoshin** 19:09 Okay.
-**Braydon Kains (Google)** 19:10 It was… it was the, sort of, explaining…
-like, here's how utilization is calculated. You should use CPU time if you can, but if you really need to graph CPU utilization…
-you have to do a moving average over a window that aligns with the sampler rate. There's a few things in there. I'll link it here, but I will…
-try and get to fixing up that gist, so that maybe we can include the guidance somewhere in our…
+**Braydon Kains (Google)** 19:10 It was… it was the, sort of, explaining… like, here's how utilization is calculated. You should use CPU time if you can, but if you really need to graph CPU utilization… you have to do a moving average over a window that aligns with the sampler rate. There's a few things in there. I'll link it here, but I will… try and get to fixing up that gist, so that maybe we can include the guidance somewhere in our…
 **Christos Markou** 19:38 Yeah.
 **Braydon Kains (Google)** 19:38 too.
 **Christos Markou** 19:39 There is guidance for this, by the way, not for this specific one, but for, the CPU usage, CPU time, CPU utilization one, and yeah, Brighton, I… when I sent the PR, I also included some of your parts.
@@ -220,8 +192,7 @@ Okay, both. Thank you.
 **Braydon Kains (Google)** 21:20 Quickly submit that fix to the dock, but…
 **Dmitrii Anoshin** 21:22 I like this. This is what we're discussing, and what we decided to do, because this one is, like, the raw metric code, you can do anything with that. You can aggregate temporarily, spatially, whatever you want, but this one is complicated, this one is complicated, this one is complicated, this one.
 easier, but… but, Christos, question to you. I believe in Kubernetes, we have only this one, we don't have time.
-**Christos Markou** 21:48 We'll have time in Kubernetes, we also…
-But, with there is that it's coming directly from Kubelet.
+**Christos Markou** 21:48 We'll have time in Kubernetes, we also… But, with there is that it's coming directly from Kubelet.
 stats API, and it is calculated in a very good way, but with namespace, so it's quite straightforward that we are deriving it from this API, so we don't calculate anything on our side to make a.
 **Dmitrii Anoshin** 22:13 Okay.
 **Christos Markou** 22:13 complicated.
@@ -232,28 +203,20 @@ stats API, and it is calculated in a very good way, but with namespace, so it's 
 **Christos Markou** 22:25 I think they are open.
 Yeah, we will need to change them, to revisit them and fix them accordingly. This specific… Sure, go ahead.
 **Dmitrii Anoshin** 22:36 I won't say, at least on the collector, I'm pretty sure we emit both by default, so we would need to update semantic conventions and update the collector code in that case.
-**Christos Markou** 22:47 You mean, yeah, in the collector, that usage is…
-Is this by default? Probably, yeah, I will check.
-**Dmitrii Anoshin** 22:55 I remember they're both by default, enabled by default, so it's probably maybe aligned with…
-With the transition to new semantic conventions, or we can do it quickly, sooner, that should be fine as well.
+**Christos Markou** 22:47 You mean, yeah, in the collector, that usage is… Is this by default? Probably, yeah, I will check.
+**Dmitrii Anoshin** 22:55 I remember they're both by default, enabled by default, so it's probably maybe aligned with… With the transition to new semantic conventions, or we can do it quickly, sooner, that should be fine as well.
 Okay. Okay. Thank you.
-**Braydon Kains (Google)** 23:09 Yeah. Does… so does this document end up saying that? I actually forget, but it says, like, because CPU usage in Kubernetes is just a pass-through from Kubelet, it's, like…
-It's… better than… When you aggregate it in your own instrumentation or something.
+**Braydon Kains (Google)** 23:09 Yeah. Does… so does this document end up saying that? I actually forget, but it says, like, because CPU usage in Kubernetes is just a pass-through from Kubelet, it's, like… It's… better than… When you aggregate it in your own instrumentation or something.
 **Christos Markou** 23:27 I tried to cover this… I tried to cover this in the doc there, so this, Kubernetes-specific one was explicitly mentioned as an exit.
-The thing is that, the kubelet itself, does the aggregation, based on a specific interval, 10 seconds or something like this, so it's safe to just…
-collect this directly. And since this is prefixed with a Kubernetes namespace, it…
-But for system, for example, because we would need to decide on the interval and all that stuff, so…
-It's better if we skip this.
+The thing is that, the kubelet itself, does the aggregation, based on a specific interval, 10 seconds or something like this, so it's safe to just… collect this directly. And since this is prefixed with a Kubernetes namespace, it… But for system, for example, because we would need to decide on the interval and all that stuff, so… It's better if we skip this.
 **Braydon Kains (Google)** 24:12 Yeah.
 **Christos Markou** 24:12 So, the rationale is that if something can drive from an API directly, then that's fine to have… to have this. If not, then it's, up to users to calculate this on their balance or whatever.
 **Dmitrii Anoshin** 24:26 Makes sense.
 But still… Cool. So I guess, yeah, this is… This is good.
 We would need to… Yeah, we'll follow up on this one, I believe, and can close it.
-**Braydon Kains (Google)** 24:44 Probably just to, like, make the change based on the
-the guidance suite ended up merging.
+**Braydon Kains (Google)** 24:44 Probably just to, like, make the change based on the the guidance suite ended up merging.
 **Dmitrii Anoshin** 24:51 Sounds good.
-And,
-What is this one? Why is it locked?
+And, What is this one? Why is it locked?
 Bullard by entities. Ross of entities. Okay, it's on me.
 Yes.
 **Pablo Baeyens** 25:19 I think we had a rough idea, though, of what we wanted to do here. Like, we knew the required attributes.
@@ -261,16 +224,14 @@ The PID and the timestamp?
 **Dmitrii Anoshin** 25:32 Yeah.
 So, identifying attributes, we have them, we decided on them.
 So… Define common attributes and requirement levels.
-But this one is specifically about requirement levels. Is that… this is actually a question that is still confusing to me. Maybe, Josh, you can help answering. Do we say that required resource attributes
-are the same as identifying attributes of the entity, and the recommended attributes are descriptive.
+But this one is specifically about requirement levels. Is that… this is actually a question that is still confusing to me. Maybe, Josh, you can help answering. Do we say that required resource attributes are the same as identifying attributes of the entity, and the recommended attributes are descriptive.
 **Josh Suereth** 26:09 This is a good question. We… we have toyed with that notion, but we haven't pulled the trigger on it. So, I… I am not convinced that required has to be identifying. I think it's possible we could require descriptive attributes.
 That are important for you to do navigational.
 things that are not the identifying attribute. I think that might be a thing that we do. So, I do think that right now, all identifying attributes have to be required.
 So, like, if you're gonna take that dance, I would focus on the required recommended opt-in level for descriptive attributes, and then all identifying should be required, and that's what I would do.
 **Dmitrii Anoshin** 26:49 I actually, working on metadata gen, you know that, in the collector, and introducing entities there, and I'm following the same idea, that at least all identifying attributes has to be required.
 Okay.
-Cool, but in that case, this one isn't blocked by entities. At least we… we have to make…
-timestamp and PID required, and then we can decide what else is required, recommended, or optional.
+Cool, but in that case, this one isn't blocked by entities. At least we… we have to make… timestamp and PID required, and then we can decide what else is required, recommended, or optional.
 **Braydon Kains (Google)** 27:22 You can… you can assign this one to me. I'll… I'll look over it.
 **Dmitrii Anoshin** 27:27 Awesome, thank you.
 Cool, thank you.
@@ -288,8 +249,7 @@ That is… that is what it looks like now. In… in… we're making a new syntax
 So, we're fixing this over time, but V2 is not out for the YAML.
 And for now, they're compatible. So that's where you want to do it.
 **Dmitrii Anoshin** 29:07 Okay, so a role would be a key on top of all of the attributes, replace the attributes here, right?
-**Josh Suereth** 29:15 In, in, in the entity, right? Yeah, a role isn't…
-Yeah, yeah, a role… so you can put a role on an attribute anywhere, it's just only paid attention to for entities.
+**Josh Suereth** 29:15 In, in, in the entity, right? Yeah, a role isn't… Yeah, yeah, a role… so you can put a role on an attribute anywhere, it's just only paid attention to for entities.
 In fact, we might actually crash if you put it anywhere but on entities, on purpose.
 **Dmitrii Anoshin** 29:30 Mexico.
 **Josh Suereth** 29:30 because you're only supposed to use it here. But it's a new, you know, how attributes have an ID, a name, a description, that kind of stuff. Role is one of those things that we have to support entities right now.

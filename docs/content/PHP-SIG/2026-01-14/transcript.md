@@ -34,9 +34,7 @@ Everything, you know, trees, cars, roads, everything is covered with ice, so it'
 **Pawel Filipczak** 03:07 Yeah.
 I was driving today, and it was, you know, very fun, too.
 I was waiting a bit to get rid of that ice from my car.
-**Bob Strecansky** 03:24 Let's see… yeah, I'm going…
-I'm going to a friend's bachelor party this weekend, and the low is 13 degrees, so that's like…
-It's 13 Celsius, I'm trying to think. I don't do well with the negative numbers.
+**Bob Strecansky** 03:24 Let's see… yeah, I'm going… I'm going to a friend's bachelor party this weekend, and the low is 13 degrees, so that's like… It's 13 Celsius, I'm trying to think. I don't do well with the negative numbers.
 **Chris Lightfoot-Wild** 03:40 The 13 Fahrenheit?
 Yeah. Well, because 30… 34 is zero, isn't it?
 **Bob Strecansky** 03:46 Yeah, it'd be minus 10.
@@ -45,14 +43,12 @@ on Monday for us.
 **Bob Strecansky** 03:51 Too cold. Don't like it.
 **Chris Lightfoot-Wild** 03:54 We're cooler than we are.
 **Bob Strecansky** 03:56 Way colder than the air.
-Alright, well, let's get rockin'. I don't have a ton to talk about today, let's see…
-There's the three of us going.
+Alright, well, let's get rockin'. I don't have a ton to talk about today, let's see… There's the three of us going.
 Today's the 14th.
 Can you all stream my screen, okay?
 **Chris Lightfoot-Wild** 04:22 Yep.
 **Bob Strecansky** 04:25 Alright, and this is Chrisley for a while, let me copy your name.
-Agenda…
-I'm keeping my same agenda topic, because I have not had a chance to turn off Dependabot. I think that I have to go and open a ticket with somebody, because we don't have access to that anymore.
+Agenda… I'm keeping my same agenda topic, because I have not had a chance to turn off Dependabot. I think that I have to go and open a ticket with somebody, because we don't have access to that anymore.
 So I got back on.
 Kyle, how are things going with the distribution?
 **Pawel Filipczak** 05:02 So… Maybe, maybe, like, I'll share the window, let me…
@@ -65,64 +61,50 @@ Walk towards my window.
 **Bob Strecansky** 05:29 Yes, we can.
 **Pawel Filipczak** 05:32 Oh, now it's bigger for you, right?
 **Bob Strecansky** 05:35 It looks good, yeah.
-**Pawel Filipczak** 05:36 Yeah, you're so… Actually, the… This is the… I'm… now I'm working on, removing dependencies for the elastic…
-Elastic, Docker… Images, which we are using to build the native parts.
-So, I'm preparing the build, and… which will push the…
-the built images to the Docker Hub in the OpenTelemetry namespace.
+**Pawel Filipczak** 05:36 Yeah, you're so… Actually, the… This is the… I'm… now I'm working on, removing dependencies for the elastic… Elastic, Docker… Images, which we are using to build the native parts.
+So, I'm preparing the build, and… which will push the… the built images to the Docker Hub in the OpenTelemetry namespace.
 So, it's taking a bit of time to build, but it will only trigger if someone will change the images, the Docker files.
-And, I have some issues with bidding on ARM. I successfully enabled the ARM runner, so we have available arm runners, but they are based on the Oracle system, and it's a bit out of date, and I have some issues with
-with running CMake on… on… inside the docker, on the master, so I have to figure out what's going on. Most probably, I will set up today the VM on ARM.
+And, I have some issues with bidding on ARM. I successfully enabled the ARM runner, so we have available arm runners, but they are based on the Oracle system, and it's a bit out of date, and I have some issues with with running CMake on… on… inside the docker, on the master, so I have to figure out what's going on. Most probably, I will set up today the VM on ARM.
 So we have some… some resources in our company, so we can do that, then I will… I will investigate it faster.
 But anyway, going back to top, to the OpenTelemetry distro, so… everything is almost done. So, I pushed the native part, I pushed the PHP part, responsible for the instrumentation.
-and it builds, it produces the packages, but it does… I didn't do any release, because we have to…
-contribute the tests?
+and it builds, it produces the packages, but it does… I didn't do any release, because we have to… contribute the tests?
 Which are testing the installation and how the agent behaves with the… in the real-world applications, or let's say it's a bit of real-world app tests.
 So we want to contribute that.
 Let's say that it's almost end-to-end test.
-And, and that's it, so…
-It's very close to… to finish.
+And, and that's it, so… It's very close to… to finish.
 And I would like to make a first release end of February.
 Maybe beginning of the March, who knows?
 It depends, because next week I'm on vacation, so it slows down at work a bit, and the Christmas time, it slows down me a bit.
 And, yeah, maybe I can show you some of the… some successful builds from the past. So, yep, here.
 We have a successful build, so it passes. We are testing with the PHPT tests.
-So we are testing two extensions. One is the agent extension, the second one is the
-Artificial extension, which is testing the layer which is responsible for the communication with the PHP engine.
+So we are testing two extensions. One is the agent extension, the second one is the Artificial extension, which is testing the layer which is responsible for the communication with the PHP engine.
 And, yep, we are also running the OpenTelemetry tests from the country repository.
 So, if we are including some contract package into the distro, then we are running executing tests.
 From the… from the conflict?
 together with the agent installed, so not… it's not running in the PHP unit with the… with the classic extension, but it's running with the full instrumentation based on the… on… on… on this distro, so automatic instrumentation.
 The tests are not passing, because they are flaky, and they are not passing… not all of the tests are passing on the… in the contributor, so we have to clean it up.
-And, give me one second, I have the results in the summary, but…
-I'm not… I don't know why I can't scroll it down.
+And, give me one second, I have the results in the summary, but… I'm not… I don't know why I can't scroll it down.
 Oh, here I can.
-So, this is the test summary for,
-for the PHP 8.1, because the destroyer supports the PHPA.1 too.
+So, this is the test summary for, for the PHP 8.1, because the destroyer supports the PHPA.1 too.
 For all of the supported versions, we have the results, so they are a bit different between the versions, but yeah.
-Not, not all of the tests are passing, and, and,
-We have to figure out why, but…
-I tested it manually, and there, mostly because of the flakiness of the test, and some… let's say, minor issues in the test, but not in the instrumentation itself.
-So, yeah, those tests are not breaking the build, they are just for…
-Checking the regression, and so on.
+Not, not all of the tests are passing, and, and, We have to figure out why, but… I tested it manually, and there, mostly because of the flakiness of the test, and some… let's say, minor issues in the test, but not in the instrumentation itself.
+So, yeah, those tests are not breaking the build, they are just for… Checking the regression, and so on.
 So, that's it from me, and of course, you can download the packages from the build.
 So it's still not released, but if someone wants to test it, then the packages are here in the… for the x86 and for the ARM architecture.
-And also for the, Alpine Linux, they are available here in the, in the second repository, Arctic. So…
-This is how it… How it looks.
+And also for the, Alpine Linux, they are available here in the, in the second repository, Arctic. So… This is how it… How it looks.
 Today.
 **Chris Lightfoot-Wild** 11:09 Awesome.
 **Bob Strecansky** 11:09 Excellent, excellent progress.
 **Pawel Filipczak** 11:12 Yeah.
 **Bob Strecansky** 11:12 Thank you for all your hard work. I know that must have not been easy.
 **Pawel Filipczak** 11:16 Huh.
-You know, almost 95% was easy, but…
-Those 5% hours blocking you for hours.
+You know, almost 95% was easy, but… Those 5% hours blocking you for hours.
 **Bob Strecansky** 11:27 Yes, and…
 **Pawel Filipczak** 11:28 4 hours, you know, trying to figure out some small issue, it was so basic mistake, and it happens.
 **Bob Strecansky** 11:37 It's sort of like moving… it's sort of like moving, too. The last 5% always takes just as long as the first 95%.
 **Pawel Filipczak** 11:43 Yeah.
 **Bob Strecansky** 11:45 Cool.
-Alright,
-Chris, did you have anything you wanted to bring up, or we can walk through the repos real quick?
+Alright, Chris, did you have anything you wanted to bring up, or we can walk through the repos real quick?
 **Chris Lightfoot-Wild** 11:53 No, I didn't reach out to Sergey. We mentioned last week we were gonna maybe have a catch-up. I don't know if he's, around this week, Paul, if you know, but I might reach out to him and…
 **Pawel Filipczak** 12:05 No, no, he's… he's off from the beginning of the week, so I… I don't have any, you know, news from him.
 **Chris Lightfoot-Wild** 12:13 He's off this week, okay.
@@ -139,8 +121,7 @@ Chris, did you have anything you wanted to bring up, or we can walk through the 
 **Bob Strecansky** 12:50 I thought…
 **Pawel Filipczak** 12:51 It won't be rainy, so… but anyway, even if it will be then, it's easier to, you know, visit some of these fancy places, because during the winter, it's not so heavy crowded.
 **Bob Strecansky** 13:05 Yeah, that's true. The place where I'm going this weekend… I always love telling non-Americans this one, because they just, like, always laugh at it. Nashville is very famous for something called chicken and waffles. Have you all… are you familiar with this?
-So that we'll take…
-So chicken and waffles, pal, is a dish that you can get. It's mostly a Southeastern cuisine, and it's, like, a waffle with a piece of fried chicken on top of it, and then syrup on top of that.
+So that we'll take… So chicken and waffles, pal, is a dish that you can get. It's mostly a Southeastern cuisine, and it's, like, a waffle with a piece of fried chicken on top of it, and then syrup on top of that.
 It's, like, one of the most… it's like one of the most American things I could possibly think of. It's real good. It tastes so good. You wouldn't expect it to taste good, but…
 **Pawel Filipczak** 13:45 So, yeah, next time, in, in States, I will order it.
 And try.
@@ -166,21 +147,18 @@ I reviewed it, and then I made some changes after holiday, but there was a bit o
 **Bob Strecansky** 15:10 Sure, no problem, happy to do it.
 **Chris Lightfoot-Wild** 15:12 Thank you.
 **Bob Strecansky** 15:12 And these… and these mostly look like… Same thing… rings.
-Instrumentation just has a lot of the same thing. Cool. Alright, I will… I'm excited to get,
-I'm excited to get that dependent bot thing out. I'm gonna try to get that done today, because I really have just been procrastinating opening this ticket, because I don't want to, but I will.
+Instrumentation just has a lot of the same thing. Cool. Alright, I will… I'm excited to get, I'm excited to get that dependent bot thing out. I'm gonna try to get that done today, because I really have just been procrastinating opening this ticket, because I don't want to, but I will.
 **Chris Lightfoot-Wild** 15:39 Did we look at new issues, then? Sorry, was there any… has anyone raised an issue on that?
 **Bob Strecansky** 15:44 You know, my man puck.
 **Chris Lightfoot-Wild** 15:46 You might have to… I didn't see, sorry, I wasn't…
 **Bob Strecansky** 15:49 I don't… I think… I think I just skipped it.
 Let's see… Zend interim heap corrupted with using span hook.
-**Chris Lightfoot-Wild** 16:00 Oh, I think I'd actually seen this one and, like, buried my head, because I'm not sure anything about…
-this.
+**Chris Lightfoot-Wild** 16:00 Oh, I think I'd actually seen this one and, like, buried my head, because I'm not sure anything about… this.
 **Bob Strecansky** 16:09 Looks like Brett responded.
 Okay, so a little latency.
 Alright.
 Good enough.
-Okay, well,
-That's all for today. We'll see you all on the internet. Paul, we'll see you in two weeks, I guess. Enjoy your vacation. Have an espresso for me.
+Okay, well, That's all for today. We'll see you all on the internet. Paul, we'll see you in two weeks, I guess. Enjoy your vacation. Have an espresso for me.
 **Chris Lightfoot-Wild** 16:36 Did you have a great time.
 **Pawel Filipczak** 16:37 Thank you, guys, and see you. Bye-bye.
 **Chris Lightfoot-Wild** 16:40 Feel that over.

@@ -20,8 +20,7 @@ De negocio total.
 **krol3** 06:36 Las diferencias de Time son, hay un Suma Bypaje.
 **Imma Valls** 06:41 Luego es un poco pero bueno.
 **DT Diana Todea** 06:46 ¿qué tal? ¿cómo fue la la vuelta de Cup Conan Carol? Todo bien.
-**krol3** 06:53 Sí. Bueno, una me quedé una semanita con mi mami. Entonces más trabajo, porque hay que cuidar de mami haciendo las cosas, entonces ahí fue una correría. Pero fue. Pero y después, por eso es que
-recién llegué y también ya tenía las cosas acumuladas de del trabajo. Y eso, y ya siempre es corriendo.
+**krol3** 06:53 Sí. Bueno, una me quedé una semanita con mi mami. Entonces más trabajo, porque hay que cuidar de mami haciendo las cosas, entonces ahí fue una correría. Pero fue. Pero y después, por eso es que recién llegué y también ya tenía las cosas acumuladas de del trabajo. Y eso, y ya siempre es corriendo.
 Mhm.
 **DT Diana Todea** 07:12 No, claro.
 pues nada. No todo Ahora, un poco más tranquilo de mi lado. También hemos vuelto. Bueno, he encontrado con Ima la semana pasada.
@@ -29,8 +28,7 @@ Fue después de cu con, no sé cuántas conferencias, y ya ya me ya ya está. Ya
 Pero bueno, un poco más de esfuerzo. Y tenemos un poco de vacaciones, creo, bueno, y vosotros tenéis algo de vacaciones o.
 **krol3** 07:48 Y ahí van las communities. Ya eres miembro honorario.
 **DT Diana Todea** 07:52 No, no. ¿qué va me han dicho de esperar. Me han sacado de todas las cosas. Y ahora, cuando se pronuncia la mayoría.
-La la encuentro física con ellos. Fue muy fría. O sea, no hemos es como
-aquí está fotos hablando así caras de estas y.
+La la encuentro física con ellos. Fue muy fría. O sea, no hemos es como aquí está fotos hablando así caras de estas y.
 **krol3** 08:16 Yo pensé de que estaba mejor, porque después vi en el Linkedin, una entrevista tuya todavía a.
 **Imma Valls** 08:22 Es. Las redes sociales son Fake.
 **krol3** 08:27 Las redes sociales. Toda esa alegría.
@@ -41,13 +39,11 @@ aquí está fotos hablando así caras de estas y.
 Ya tiene. Ya puede organizar el Grupo y Barcelona. Aquí estamos encantadas que venga.
 Tenemos que.
 **krol3** 08:52 También me quiero ir a España. Me voy a ir.
-**Imma Valls** 08:54 Veniros a Barcelona a todas y ya está y punto
-y listo, no hay problema aquí. Parece que no sé que ser organizadora de comunidad, te de, no sé, un un de por vida.
+**Imma Valls** 08:54 Veniros a Barcelona a todas y ya está y punto y listo, no hay problema aquí. Parece que no sé que ser organizadora de comunidad, te de, no sé, un un de por vida.
 **DT Diana Todea** 09:10 Sí. Bueno, de verdad es que me ha gustado mucho la cómo es la atmósfera de de Barcelona? Es que la gente era más simpática, como hablando y cosas aquí.
 Bueno, he conocido un un chico porque siempre iba bueno. Siempre iba de las del evento pasado. Pero es que hay siempre gente nueva, ¿sabes?
 Y todos ahí hablando un poco. Pero ni hablan entre ellos, o sea, como se ha hecho la hora de se ha acabado. Las últimas charlas se han ido todos.
-que Joder no puedes hacer nada. Es como
-quédate un poco ahí para fichar. Sabes, el evento y se han ido todos.
+que Joder no puedes hacer nada. Es como quédate un poco ahí para fichar. Sabes, el evento y se han ido todos.
 **Imma Valls** 09:51 Nosotros es, al contrario, ya viste que no había forma de irnos.
 nos quedábamos en la calle ahí hablando. No hay forma de irse.
 **DT Diana Todea** 10:01 Un poco.
@@ -59,27 +55,20 @@ Bueno, me sale algo de no sé qué algo raro que nunca le he visto.
 **krol3** 10:43 Pasado por aquí, y lo voy a.
 **DT Diana Todea** 10:45 Sí en E en el ishou inicial.
 ¿qué? Bueno, he acabado desde la Old de las de desde la última vez una otra página de miembros Members.
-Y ahora estoy haciendo marketing. Galance Bueno, es de pillar, así que quedará index
-que casi estamos con esto ahora.
+Y ahora estoy haciendo marketing. Galance Bueno, es de pillar, así que quedará index que casi estamos con esto ahora.
 **krol3** 11:12 Hotel doble que se Review Review.
 **Imma Valls** 11:18 Te lo miro hoy o mañana, si no te lo ha mirado alguien.
-**DT Diana Todea** 11:22 Sí una pregunta Carl: ¿Por qué has puesto aquí relacionado al mismo
-folder la esa página de ecosistema user
-index? Es como relacionado a estas páginas de comunidad o.
+**DT Diana Todea** 11:22 Sí una pregunta Carl: ¿Por qué has puesto aquí relacionado al mismo folder la esa página de ecosistema user index? Es como relacionado a estas páginas de comunidad o.
 **krol3** 11:42 No en no entendí, será que puedes compartir lo que estás dic lo donde estás viendo eso. ¿dónde está esa parte de comunidad. Tú has entendido imán.
 **Imma Valls** 11:50 No he puesto el ishiu en el chat.
 **krol3** 11:53 Lo abierto que dice, create community.
-**DT Diana Todea** 11:59 Original son varias páginas. El Members ya está hecho, se puede sacar
-marketing guilines, es es de pillar de ahora y el otro es ecosistema user index, que no no sé por qué está relacionado con comuni comunidad Community.
+**DT Diana Todea** 11:59 Original son varias páginas. El Members ya está hecho, se puede sacar marketing guilines, es es de pillar de ahora y el otro es ecosistema user index, que no no sé por qué está relacionado con comuni comunidad Community.
 **krol3** 12:22 No sé qué es loca ya. Y la pregunta era.
 **DT Diana Todea** 12:30 ¿por qué ecosistem.
 **krol3** 12:32 La última página en Index. Está relacionado con Community.
 ¿cuál es esa página ecosistem que ¿Dices yo solamente estoy viendo en Eliseo que tú has abierto un público. Eso relacionado a marketing.
-**DT Diana Todea** 12:54 Nunca
-en la descripción. Es Lady Too, 7, 5, 1, 6, y en el 7, 5, 1, 6, hay 3 páginas pending
-de cuál la página Members ya está hecha. Se puede cerrar.
-La página de marketings es esta de stepear y se quedará una que sí que consisten en user index. Y mi pregunta era: ¿qué tiene que haber ecosistema en user index con estas páginas de comunidad
-que si hay una relación, lo voy a hacer, que puede estar quejando.
+**DT Diana Todea** 12:54 Nunca en la descripción. Es Lady Too, 7, 5, 1, 6, y en el 7, 5, 1, 6, hay 3 páginas pending de cuál la página Members ya está hecha. Se puede cerrar.
+La página de marketings es esta de stepear y se quedará una que sí que consisten en user index. Y mi pregunta era: ¿qué tiene que haber ecosistema en user index con estas páginas de comunidad que si hay una relación, lo voy a hacer, que puede estar quejando.
 **krol3** 13:33 Puede ser un error mío de de que lo cuando coppypase se fue ahí, ya ni me acordabas Community.
 **DT Diana Todea** 13:44 Vale, No, no pasa nada, que ahora lo voy a mirar, porque si el contenido está puede ser relacionado y Puede que por eso da un error.
 **krol3** 13:51 Generalmente los pongo por Folders, entonces debe de haber un folder ecosistem o no.
@@ -93,8 +82,7 @@ Sí, ese pull recuesto, Tengo que revisar cosas.
 **Imma Valls** 14:38 Estamos añadiendo palabras que no son palabras. Déjame echarle un vistazo.
 **DT Diana Todea** 14:45 No hay ninguna prisa.
 **Imma Valls** 14:46 Y el de los links. También hay que ver por qué se queja de links, porque.
-**DT Diana Todea** 14:50 Algo. Puede ser que son de esos que
-que hacen el Drift. Sabes, como se llama.
+**DT Diana Todea** 14:50 Algo. Puede ser que son de esos que que hacen el Drift. Sabes, como se llama.
 **Imma Valls** 14:56 No los links. A veces a mí, como veo que en las cabeceras no has puesto los links. No sé Si se queja de eso o de que se queja, habrá que co probar de que se está quejando.
 porque nunca sabes de qué se queja exactamente.
 **krol3** 15:09 Lo que sí. Ahora tengo otra reunión. Voy a tener que salir, pero me avisan en el grupo. Si quedaron en algo.
@@ -116,8 +104,7 @@ porque nunca sabes de qué se queja exactamente.
 y le he dicho, mira, mira, haz algo, no que.
 **Imma Valls** 16:09 Haz alguna cosa.
 **krol3** 16:10 Ponnos a trabajar, los zapatos.
-**Imma Valls** 16:14 Es que es algo que no has entendido Cuando llegas a envasador, ya no trabajas, ya trabaja otra gente carol porque tampoco lo ha entendido. Sigue trabajando, pero ya no deberías trabajar
-cuando llegas a embassador. Ya está ya.
+**Imma Valls** 16:14 Es que es algo que no has entendido Cuando llegas a envasador, ya no trabajas, ya trabaja otra gente carol porque tampoco lo ha entendido. Sigue trabajando, pero ya no deberías trabajar cuando llegas a embassador. Ya está ya.
 **DT Diana Todea** 16:26 ¿cómo es la la política? Sí.
 **Imma Valls** 16:28 Pero es que hay que hacer política, pero Carol no lo hace bien y no. Y sigue trabajando. Es un error.
 **DT Diana Todea** 16:37 Sí decirle que sí, que podéis hacer que queréis, pero hazlo de una vez. Básicamente es que.

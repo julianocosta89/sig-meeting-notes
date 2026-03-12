@@ -19,19 +19,15 @@ Oh, Robart said he can't join.
 **Pablo Baeyens** 03:12 Okay.
 **Severin Neumann** 03:13 Spec issue.
 **Pablo Baeyens** 03:16 Oh, whoa, there's a lot of them.
-**Severin Neumann** 03:18 There's… A few, seven, and then we can look at the follow-ups, so let me see…
-Can you see my screen?
+**Severin Neumann** 03:18 There's… A few, seven, and then we can look at the follow-ups, so let me see… Can you see my screen?
 **Pablo Baeyens** 03:28 Yep. Oh, I can see.
 **Severin Neumann** 03:30 Hey, Robert, good morning.
 **Pellared** 03:31 Hello, sorry for being late.
 **Severin Neumann** 03:33 No worries.
-Yeah, let's jump straight into it. So we have 7 open… Issues…
-I just go through them one by one. Oh, is it sorted?
+Yeah, let's jump straight into it. So we have 7 open… Issues… I just go through them one by one. Oh, is it sorted?
 Let's go drop it, this way.
 Provide a way for knowing when a context is made current.
-Okay, the only thing that has changed is that Ludmilla… Removed some labels…
-Beyond that, this is…
-Still… Let's triage it anyways. Let's maybe put it into a needs info.
+Okay, the only thing that has changed is that Ludmilla… Removed some labels… Beyond that, this is… Still… Let's triage it anyways. Let's maybe put it into a needs info.
 And see if this is still relevant, right?
 **Pablo Baeyens** 04:34 Yep.
 **Severin Neumann** 04:35 What do you think?
@@ -44,8 +40,7 @@ So, I remove that one and do the triage needs info.
 Like that.
 Ta-da!
 define a clock interface for the API exposed to instrumentation 3 weeks ago.
-Alright, then, to community feedback…
-Community feedback, and then I say…
+Alright, then, to community feedback… Community feedback, and then I say…
 **Pablo Baeyens** 06:15 Makes sense.
 **Severin Neumann** 06:18 Stabilize Instrumentation Configuration API…
 **Pellared** 06:26 speak.
@@ -61,9 +56,7 @@ No? Okay.
 **Severin Neumann** 07:03 Yeah.
 **Pablo Baeyens** 07:04 Oh, there was one… it was… closed.
 **Severin Neumann** 07:07 Yeah, because they're stable now, right? So… And it seems also like.
-I mean, at the end, it's more a stability thing, so I'm not sure if this is something that TC should…
-But since Jack and Carlos already… I did, maybe they…
-Yeah, I don't know, I would not worry too much about that one, because it's probably getting the attention that it needs.
+I mean, at the end, it's more a stability thing, so I'm not sure if this is something that TC should… But since Jack and Carlos already… I did, maybe they… Yeah, I don't know, I would not worry too much about that one, because it's probably getting the attention that it needs.
 If you don't mind.
 What do you think? Can we just leave it like that?
 **Pablo Baeyens** 07:44 I think we can live it like that, it seems He's aware of it, so…
@@ -71,8 +64,7 @@ What do you think? Can we just leave it like that?
 Define config provider, change listener API for runtime config updates.
 That's technically also config.
 **Pellared** 08:01 Yes.
-**Severin Neumann** 08:02 Should we also put it under sick issues, or is not…
-Like, issue, area, config. I can also tag, isn't there, like, config?
+**Severin Neumann** 08:02 Should we also put it under sick issues, or is not… Like, issue, area, config. I can also tag, isn't there, like, config?
 config maintainers, approvers, please take a look.
 And we have it done like that.
 Clarify resource definition for auto-instrumentation.
@@ -80,15 +72,13 @@ Okay, that's an interesting one.
 Community feedback, for sure.
 **Pellared** 08:55 I think it's more about clarification.
 I'm not sure, just if we have labels for issues for calculations, the phone for PR.
-**Severin Neumann** 09:03 Yeah…
-Is this something worthwhile to bring to this back meeting to quickly.
+**Severin Neumann** 09:03 Yeah… Is this something worthwhile to bring to this back meeting to quickly.
 **Pellared** 09:13 Yep.
 **Severin Neumann** 09:14 Have it resold.
 **Pellared** 09:15 I would accept it, I'm not sure.
 like, deciding community feedback, which is regarding, I think, how to fix it.
 Or, not that it needs… I think it needs to be solved. I think it's just about, you know, the terminology that needs to be used, and how to make it clear.
-**Severin Neumann** 09:34 So you think we could accept it as ready, and then say, like…
-But, but, yeah. I mean, I would just say, like, hey, can you attend the meeting? And then, I think it's tomorrow.
+**Severin Neumann** 09:34 So you think we could accept it as ready, and then say, like… But, but, yeah. I mean, I would just say, like, hey, can you attend the meeting? And then, I think it's tomorrow.
 **Pellared** 09:45 Yep.
 **Severin Neumann** 09:46 Yeah.
 Attempt a spec meeting.
@@ -96,20 +86,16 @@ Tomorrow?
 2…
 **Pellared** 09:58 I think it was even discussed during OP.
 Sign reading?
-And I think… If I remember correctly, the conclusion was that
-What we are doing now, or is, like, correct?
+And I think… If I remember correctly, the conclusion was that What we are doing now, or is, like, correct?
 And it's not an issue, but yeah.
-**Severin Neumann** 10:17 Like that? That we think that this could be done with a chat, so…
-And if they cannot come, then we can still see, like, hey, we can… Tank it from there.
-Hotel exporter Prometheus Default Histogram Aggregation…
-Add a new environment variable. That's definitely configuration.
+**Severin Neumann** 10:17 Like that? That we think that this could be done with a chat, so… And if they cannot come, then we can still see, like, hey, we can… Tank it from there.
+Hotel exporter Prometheus Default Histogram Aggregation… Add a new environment variable. That's definitely configuration.
 But it's also… Prometheus, right, so there's no question who…
 **Pellared** 10:56 I suggest… bringing David as Paul here.
 I'm not sure if it's not a CQ issue or not, but…
 **Severin Neumann** 11:09 So that also.
 **Pablo Baeyens** 11:10 It's not to say it's a SIG issue, but yeah, that's been debated on… Let's see what happens.
-**Severin Neumann** 11:15 Did we also tag, check and see, like, where this, like, sits, or if, like…
-Or can… I can… can you take a look, right? So, something like that. Yeah.
+**Severin Neumann** 11:15 Did we also tag, check and see, like, where this, like, sits, or if, like… Or can… I can… can you take a look, right? So, something like that. Yeah.
 Should I label it? Nevertheless, somehow? Should we have it… off.
 our… So that just…
 **Pellared** 11:38 feedback?
@@ -135,13 +121,10 @@ There was first a discussion about this, and that's a creation of blah blah blah
 I'm not sure what to do here next. I mean, we can put it Maybe it's…
 **Pellared** 13:52 is that I see, I see that, bad sport car.
 who is from Google, and he's also on the, like, Premiere 6, etc.
-is working on it. I'm not sure if…
-it's not also something that the metric is already looking at. Oh, Art ForSense as well, is working on Oprah Telemetric and compatibility.
-So…
-It looks like we can already assign to this, because there's a SIG, like, for the premium to use and auto compatibility, right?
+is working on it. I'm not sure if… it's not also something that the metric is already looking at. Oh, Art ForSense as well, is working on Oprah Telemetric and compatibility.
+So… It looks like we can already assign to this, because there's a SIG, like, for the premium to use and auto compatibility, right?
 **Severin Neumann** 14:24 Yeah, but, like, because it's enum for metric type, but, but, okay.
-But is it really a sick issue for Prometheus? Like, I…
-I mean, at the end, it…
+But is it really a sick issue for Prometheus? Like, I… I mean, at the end, it…
 **Pellared** 14:36 I think they are the… they have the most, domain experts here, as you know.
 It needs to play well for both ecosystems, both auto and premieres, if we want to be successful.
 **Severin Neumann** 14:50 Okay, so you would suggest we put it on their board?
@@ -152,9 +135,7 @@ It needs to play well for both ecosystems, both auto and premieres, if we want t
 And should I also make it then a sick issue for them?
 **Pablo Baeyens** 15:06 Yep. Yep.
 **Severin Neumann** 15:08 And then let's write a message on it.
-During triage, we…
-this…
-Since this is mainly about… Compatibility between I'll tell him.
+During triage, we… this… Since this is mainly about… Compatibility between I'll tell him.
 **Pellared** 15:45 I will say that it needs to work Well, for both ecosystems.
 Yep.
 **Severin Neumann** 15:58 Something like that?
@@ -175,35 +156,29 @@ Disable Boolean flags… sorry.
 **Pablo Baeyens** 16:59 Yep, it looks like it.
 **Severin Neumann** 17:01 reverse.
 Accurate and efficient approach for calculating… oh, I remember that one.
-Okay, I think the initial author… Okay…
-Let me tag them again and say, like… And…
+Okay, I think the initial author… Okay… Let me tag them again and say, like… And…
 **Pellared** 17:21 We have a related issue in the spec.
-Which is about having limits on log record. Maybe I should comment here. Can you say…
-Could you send me hyperlink on Slack?
+Which is about having limits on log record. Maybe I should comment here. Can you say… Could you send me hyperlink on Slack?
 So I will not forget about it.
 **Severin Neumann** 17:38 Yep, I can send it to you, or I send it in our…
 **Pellared** 17:42 Like, I… we think that the problem is not actually that we need a Precise, you know, efficient.
 a precise way to calculate the record size about having some limit. Because right now, there's, for instance, no limit for the body.
-So, it's easy that someone produces a big body, and it will be, for instance, just, you know,
-the exporters may, or the ingress can say, oh, this payload is too big. This is what.
+So, it's easy that someone produces a big body, and it will be, for instance, just, you know, the exporters may, or the ingress can say, oh, this payload is too big. This is what.
 **Severin Neumann** 18:11 Okay, so should I just leave it like that, and you follow up on it, or should I write a comment? Is it like that you… okay.
 **Pellared** 18:18 I'll follow up on it.
 **Severin Neumann** 18:19 Okay.
 Add guidance against using Metrix API and mobile whatever. Oh yeah, I remember that one.
-**Pellared** 18:42 What's… what are you showing right now? Are you sure it's on my end, or…
-your end?
+**Pellared** 18:42 What's… what are you showing right now? Are you sure it's on my end, or… your end?
 Oh, I had to go.
 Oh, okay.
 **Pablo Baeyens** 18:52 Okay, no, yep.
-**Severin Neumann** 18:53 I just paused it for a minute in between, so…
-This is about adding guidance against using Matrix API and WAP mobile client-side instrumentation.
+**Severin Neumann** 18:53 I just paused it for a minute in between, so… This is about adding guidance against using Matrix API and WAP mobile client-side instrumentation.
 I can tack… Hansen… And Santosh here.
 Any updates?
 And remove the follow-up for now.
 We were dumb.
 Span status description field unnecessarily restrictive.
-I think,
-I'm happy with your closing, Ed, if we don't feel it's necessary to prevent this.
+I think, I'm happy with your closing, Ed, if we don't feel it's necessary to prevent this.
 whom should I tag for closing it, like… Feels like… Huh?
 **Pellared** 20:03 cozy.
 **Severin Neumann** 20:04 Yeah.
@@ -230,16 +205,12 @@ should I tag both again and, like, say, like, hey, do you have any…
 **Severin Neumann** 21:49 Introduction of metric links.
 Oh, I remember that one.
 Okay.
-Nuh-
-Hey, I think… We're done.
+Nuh- Hey, I think… We're done.
 Anything else you want to look into, or should we just call it a day?
 Anything in the community repo?
 **Pablo Baeyens** 22:57 Yeah, if anything, we can check out the community before.
 **Severin Neumann** 23:00 Let's go here real quick.
-Well, let's maybe do the pull request first, but there's…
-Update README to remove configuration working group, yeah, that's…
-Okay…
-Okay, that still has some… okay.
+Well, let's maybe do the pull request first, but there's… Update README to remove configuration working group, yeah, that's… Okay… Okay, that still has some… okay.
 That's not… I… Pablo, you and I, we should probably also take a look into that one.
 6, I was just there.
 **Pablo Baeyens** 23:34 Taking a look at the…

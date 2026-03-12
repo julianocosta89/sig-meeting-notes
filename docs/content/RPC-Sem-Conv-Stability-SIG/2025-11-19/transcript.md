@@ -24,41 +24,32 @@ Looking forward to the, I've been on their YouTube page, refreshing, waiting for
 **Steve Rao** 03:20 Okay, yeah, yeah, me too, yeah.
 **Trask Stalnaker** 03:33 We'll get a… minute, if Lydmilla is able to make it.
 **Steve Rao** 03:41 Okay.
-**Trask Stalnaker** 04:22 Actually, I will put in our channel…
-Oh, no, let's see, when's… no, that was…
+**Trask Stalnaker** 04:22 Actually, I will put in our channel… Oh, no, let's see, when's… no, that was…
 **Steve Rao** 05:10 Yeah, I'm not sure whether they remember, yeah, this time we changed the time.
 **Trask Stalnaker** 05:16 Yeah.
 Daylight savings is confusing.
 Yeah, I just pinged with Mila on… Slack, so… We got a minute.
 **Steve Rao** 05:35 Okay.
-**Trask Stalnaker** 05:36 But then… If we don't meet today, I won't be sad, because I've been in meetings…
-So much today.
+**Trask Stalnaker** 05:36 But then… If we don't meet today, I won't be sad, because I've been in meetings… So much today.
 So many meetings today.
 **Steve Rao** 05:49 Okay, okay.
 Yeah, if we have time, today, yeah, maybe, we can also discard a problem about the semantic convention, yeah.
-In, in, Java, instrumentation project, yeah, last week, we, I discussed with Laurie. It's about,
-Once band, they, connect with several nodes. In that case, we don't know how to collect the server address.
+In, in, Java, instrumentation project, yeah, last week, we, I discussed with Laurie. It's about, Once band, they, connect with several nodes. In that case, we don't know how to collect the server address.
 **Trask Stalnaker** 06:35 Yeah, I remember this.
 Okay.
-Yes, so, my proposal was… If there's only one…
-Serv- like, server in the list?
+Yes, so, my proposal was… If there's only one… Serv- like, server in the list?
 Then go ahead and use that.
 If there's more than one server in the list?
 Then… leave it empty.
 **Steve Rao** 07:03 Oh, okay, yeah.
 Okay, makes sense. Yeah.
-**Trask Stalnaker** 07:09 And what you could do is…
-you could open a semantic invention issue, this was for Redis?
+**Trask Stalnaker** 07:09 And what you could do is… you could open a semantic invention issue, this was for Redis?
 **Steve Rao** 07:20 Yeah.
 **Trask Stalnaker** 07:22 Or no, memcached.
 **Steve Rao** 07:24 Yeah, memo cache.
 **Trask Stalnaker** 07:26 Okay.
-So, yeah, we don't… I don't think we have a…
-I don't think it's come up before…
-like, what to do. If we're capturing a logical span.
-And that logical span…
-Is… all we know is it might connect to, you know, it may connect… may make multiple calls and may…
-Hmm.
+So, yeah, we don't… I don't think we have a… I don't think it's come up before… like, what to do. If we're capturing a logical span.
+And that logical span… Is… all we know is it might connect to, you know, it may connect… may make multiple calls and may… Hmm.
 Yeah, so with the bulk, and it's memcached, it's a bulk operation, so it's, like, multiple operations, yeah.
 Can we capture it at the lower level when it's only sending to one each?
 what is it doing? Oh, it's shard… you said it's sharding.

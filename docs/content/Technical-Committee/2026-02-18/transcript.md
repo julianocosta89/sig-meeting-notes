@@ -29,30 +29,22 @@ This is one we probably should discuss.
 Do we have… how many people do we have? We don't have quorum yet.
 Right.
 We can at least sort of get started, but I would like to have, do we know if Carlos is coming?
-I was hoping we could get some more folks from Open Tracing Community here for this discussion, but it's,
-Yeah, someone asked for us to deprecate the open tracing compatibility requirements.
+I was hoping we could get some more folks from Open Tracing Community here for this discussion, but it's, Yeah, someone asked for us to deprecate the open tracing compatibility requirements.
 So, for context.NET wants to deprecate their open tracing compatibility layer.
-Opentracing has an… The last release of OpenTracing was in 2019. The organization's archived,
-Can we start, getting rid of the… our shim packages to open tracing?
+Opentracing has an… The last release of OpenTracing was in 2019. The organization's archived, Can we start, getting rid of the… our shim packages to open tracing?
 **Tigran Najaryan** 04:53 I… I don't see any reason why not, but we'll probably need to move a bit slowly here, make an announcement. Like, we're planning to do something like that.
 And ask for… for… Feedback or opinions?
 on Slack channels, here and there.
-let it boil, I guess, for a while, and if…
-And if there's no, like, specific feedback that it is being still used.
+let it boil, I guess, for a while, and if… And if there's no, like, specific feedback that it is being still used.
 Then probably should go ahead, but let's not too abruptly.
 **Jack Berg** 05:26 Yeah.
 **Josh Suereth** 05:26 Absolutely agree. Go ahead, Jack.
-**Jack Berg** 05:28 I think we follow the path that we've followed recently with deprecating things like,
-the Jaeger Exporter, Zipkin Exporter, OT, Trace Propagator, Jaeger Propagator,
-I think those are kind of similar in terms of, their kind of status in… in…
-how often they're used to this open tracing shim. Just, you know, I'm going to comment on this issue, but speaking as a maintainer for OpenTelemetry Java, we virtually never get issues related to the shims, either open metrics or open tracing, so I'm just not sure these things are used.
+**Jack Berg** 05:28 I think we follow the path that we've followed recently with deprecating things like, the Jaeger Exporter, Zipkin Exporter, OT, Trace Propagator, Jaeger Propagator, I think those are kind of similar in terms of, their kind of status in… in… how often they're used to this open tracing shim. Just, you know, I'm going to comment on this issue, but speaking as a maintainer for OpenTelemetry Java, we virtually never get issues related to the shims, either open metrics or open tracing, so I'm just not sure these things are used.
 I would like to deprecate them.
-And also, with AI, come on, like…
-You want to migrate your open tracing code to open telemetry code? It's never been easier.
+And also, with AI, come on, like… You want to migrate your open tracing code to open telemetry code? It's never been easier.
 **Josh Suereth** 06:27 Is that an advertisement there, Dad? I think so.
 Cool.
-I, I think in terms of the triage process, we just have to mark this as whether we're accepting, and whether it's accepting needs sponsor, accepting the sponsor. So I guess the question would be,
-Would someone want to sponsor this issue?
+I, I think in terms of the triage process, we just have to mark this as whether we're accepting, and whether it's accepting needs sponsor, accepting the sponsor. So I guess the question would be, Would someone want to sponsor this issue?
 here, like, now. Or should I say, accepting a need sponsor?
 like, I don't hear any concerns about accepting it. It's more about how we do it, and probably needs a sponsor, right?
 I don't know.
@@ -86,14 +78,12 @@ And I'll make a comment of, okay.
 We discussed this.
 I'd like to check on current building tracing.
 Ecosystem and research vendors.
-Here, but we have a potential
-TC, or sorry, I'll say spec sponsor.
+Here, but we have a potential TC, or sorry, I'll say spec sponsor.
 Right.
 **Liudmila Molkova** 10:36 Because it's a good opportunity for other spec maintainers that are not us, spec sponsors, to… to help.
 **Josh Suereth** 10:45 And then just put this going forward.
 Should I say, generally, we're, like, like, what are the criteria we're looking for here?
-I want to phrase this like, can you… by the way, my cat is jumping on my hand right now as I type, so apologies. Alright, here we go, she's gone. Unless we see a major usage…
-major… usage.
+I want to phrase this like, can you… by the way, my cat is jumping on my hand right now as I type, so apologies. Alright, here we go, she's gone. Unless we see a major usage… major… usage.
 Patterns not represented.
 in the description.
 of this PR, quite likely.
@@ -120,25 +110,21 @@ Another aspect of the conversation was, like, we used to do automated round robi
 And yeah, so, you know, just while we were looking at that last issue, I was assigning some people to PRs that are open in the spec repo. Do we want to do that? Does the assignee actually mean anything?
 Open for discussion.
 **Tigran Najaryan** 13:34 I mean, I don't mind if… if we're seeing that the PRs are getting stale.
-But they could be progress. If there was somebody who would push them through, then…
-It's, yeah, it's something that Wood could definitely do.
+But they could be progress. If there was somebody who would push them through, then… It's, yeah, it's something that Wood could definitely do.
 Jaeger Shane.
 **Liudmila Molkova** 13:51 Go ahead.
-I'm sorry, my impression was that it's essentially the iSignee is the person who has the context, and is the first line of review. It's not… it does not put
-any responsibility to merge this PR, but it puts responsibility to keep track of what's going on.
+I'm sorry, my impression was that it's essentially the iSignee is the person who has the context, and is the first line of review. It's not… it does not put any responsibility to merge this PR, but it puts responsibility to keep track of what's going on.
 **Jack Berg** 14:15 Right. Yep.
 **Carlos Alberto Cortez** 14:18 And I wanted to say that I suggest we try this at least a couple of weeks.
 See how it goes, how it feels.
 If that's…
-**Tigran Najaryan** 14:26 Sorry, if that's the only responsibility, wouldn't that just…
-Be reflected if you… if you up the person as a reviewer.
+**Tigran Najaryan** 14:26 Sorry, if that's the only responsibility, wouldn't that just… Be reflected if you… if you up the person as a reviewer.
 Because that's a feature on PRs, right? You add the person as a reviewer, you request a review, essentially.
 If that's what we expect from that person, so that they have to review and provide feedback.
 if there is… if there is more than that, then… than we expect, then… then perhaps that is being reflected by the assignment to the issue… sorry, to the… to the PR.
 **Jack Berg** 14:57 I think so.
 **Tigran Najaryan** 14:57 I just wanted to understand better what's the expectation, really, here.
-**Jack Berg** 15:01 Yeah, I think the expectation is not just, like… like, I think maybe we've all done this before, I know I have, but, like, maybe I'll provide, like, an initial review, and the author will respond to it, and it'll get lost in the noise, and I won't go and look at those again. And so, like, I think…
-Maybe that… maybe that is actually all bundled up in the reviewer. If you're reviewing it, you're not just, like, forgetting about it. You're gonna continue to, you know, shepherd it in one direction, either, like, towards merging or towards closing one of those two. Like, those are the outcomes we want.
+**Jack Berg** 15:01 Yeah, I think the expectation is not just, like… like, I think maybe we've all done this before, I know I have, but, like, maybe I'll provide, like, an initial review, and the author will respond to it, and it'll get lost in the noise, and I won't go and look at those again. And so, like, I think… Maybe that… maybe that is actually all bundled up in the reviewer. If you're reviewing it, you're not just, like, forgetting about it. You're gonna continue to, you know, shepherd it in one direction, either, like, towards merging or towards closing one of those two. Like, those are the outcomes we want.
 And, yeah, like, I guess the, you know, is there any special distinction for assignee versus reviewer? I'm not sure.
 I think yes, like, a little bit, but it's, they're not too different from each other.
 **Josh Suereth** 15:51 I… I will add a context of my GitHub notifications insane.
@@ -157,8 +143,7 @@ You know, another thing that I was thinking about as I was assigning some people
 **Tigran Najaryan** 18:10 Yeah, I don't think we need that.
 **Liudmila Molkova** 18:14 But there should be somebody else with the context to review.
 **Tigran Najaryan** 18:21 Yes, I agree, and we should probably expect the DC member to know how to push that through. Find the right person, make sure that the progress is being made.
-Sort of, we're… we're the ones who know
-The process, and even if we can't make it.
+Sort of, we're… we're the ones who know The process, and even if we can't make it.
 Go forward, then we probably have a bigger problem.
 **Liudmila Molkova** 18:42 But should we expand it to not just TC members, but all the SPAC sponsors?
 **Carlos Alberto Cortez** 18:51 I would suggest, this is a small suggestion, we keep it to the TC for now, while we figure out the details. Once we're confident, we can expand that to the spec approvers.
@@ -174,13 +159,11 @@ For… like, even if it's, like, a good idea, and the author is responsive, like
 **Jack Berg** 20:33 Go ahead. Did we do the same for the proto-repository?
 Yeah, the Preda repository, the way that I think about it is it's just, like, an extension of the spec in a different repo.
 Like, we… like, the TC are the maintainers of it, right? There's not a special group of people who are approvers or maintainers for the produce specifically. So, yeah, like, we wanted to split that resource out just for reasons, and, you know, but we have to treat it as an extension of the specs still.
-Okay, we're 20 minutes in,
-I think, I'm going to just, kind of, just to prevent spending more time on this, because there are topics, I'm going to sort of do a, like, a pass at assigning people, asynchronously.
+Okay, we're 20 minutes in, I think, I'm going to just, kind of, just to prevent spending more time on this, because there are topics, I'm going to sort of do a, like, a pass at assigning people, asynchronously.
 And, we can pick up next… in the triage section of the next TC meeting and see what the… what new issues or new PRs have come in that need triaging or assign… assignment.
 **Tigran Najaryan** 21:43 And the way that we'll be assigning is based by, yes, on the expertise, like, whatever is the area, whoever has the most experience with that.
 And if… if it's something that we don't necessarily have a subject matter expert, then we'll do round robin or something like that.
-**Jack Berg** 22:04 Yeah, I think so, exactly. And, load, I think, is another thing, so if one person is… is set as the assignee for
-too many issues relative to other TC members. I think load should be a consideration. And, yeah, if we're doing this synchronously at a meeting with each other, people can kind of make a comment and say, like, hey, look, I'm the assignee for too many things right now. Even though I'm the domain expert, somebody else has to do this.
+**Jack Berg** 22:04 Yeah, I think so, exactly. And, load, I think, is another thing, so if one person is… is set as the assignee for too many issues relative to other TC members. I think load should be a consideration. And, yeah, if we're doing this synchronously at a meeting with each other, people can kind of make a comment and say, like, hey, look, I'm the assignee for too many things right now. Even though I'm the domain expert, somebody else has to do this.
 Hopefully that will be rare.
 **Josh Suereth** 22:51 Cool.
 Let's… let's move on, because we… I don't want to run out of time. We have a private topic, and we have the packaging sake, so let's talk about the packaging sake.

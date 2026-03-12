@@ -17,8 +17,7 @@ Oh.
 **Josh Suereth** 01:29 Sounds good to me.
 **Liudmila Molkova** 03:15 Josh, did you bring mechanical keyboards with you?
 **Josh Suereth** 03:19 Where I am now, I'm at home.
-My flight's tomorrow, but, like, we're supposed to do, yeah, we,
-the Time Shift app, I don't know if you've seen this. It's like, I'm supposed to avoid bright light until noon.
+My flight's tomorrow, but, like, we're supposed to do, yeah, we, the Time Shift app, I don't know if you've seen this. It's like, I'm supposed to avoid bright light until noon.
 It tells you when you can have coffee and when you can be in the light, but, like, I'm supposed to be in bright light then until midnight tonight.
 To help with the transition. And then my flight tomorrow, basically I'm supposed to board the flight, immediately put on dark sunglasses, and go to sleep.
 **Liudmila Molkova** 03:54 I fly in business class?
@@ -41,31 +40,24 @@ Do we have an agenda?
 **Liudmila Molkova** 05:27 Markets.
 **Jack Berg** 05:50 What would it mean to deprecate Jaeger propagation in OpenTelemetry?
 in Java, we bundle all of our propagation formats, or propagators, in a single package.
-And so, where we could…
-end of life, the Jaeger exporter and the Zipkin exporter, because they have their own packages, and so while
-we don't delete any code ever, we can stop publishing a package ever. We can stop publishing a package. We're not obligated to keep… we've convinced ourselves that we're not obligated to keep publishing packages forever.
-But since the Jaeger propagator is bundled in with a bunch of other propagators, which are not
-Being deprecated.
+And so, where we could… end of life, the Jaeger exporter and the Zipkin exporter, because they have their own packages, and so while we don't delete any code ever, we can stop publishing a package ever. We can stop publishing a package. We're not obligated to keep… we've convinced ourselves that we're not obligated to keep publishing packages forever.
+But since the Jaeger propagator is bundled in with a bunch of other propagators, which are not Being deprecated.
 I think that we have no route forward to actually remove this.
 **Liudmila Molkova** 06:49 No, remember, but you can deprecate the API.
 **Jack Berg** 06:53 That's true.
 **Carlos Alberto Cortez** 07:03 Yeah, if I remember correctly, I think the organization you have in the Java repo, regarding the packages, one package having multiple propagators, it's something I saw in other repos, like Python, for example, you know.
 But yeah, they being able to… even if they cannot remove that propagator, being able to say.
 That, you know, these… don't use this, this deprecated products, good enough for them, so they don't have to implement new features or anything like that.
-**Jack Berg** 07:31 Yeah, and notably, Yuri has,
-no objections. He commented with no objections on the issue.
+**Jack Berg** 07:31 Yeah, and notably, Yuri has, no objections. He commented with no objections on the issue.
 **Liudmila Molkova** 07:45 Should we just mark it as accepted? Is there any… are there any objections?
-**Jack Berg** 07:59 No objections. Okay, we can…
-I mean, it's not merged until it's merged, right? So, like, we can proceed with opening the PR to deprecate it, and if anybody has objections, they can raise them at the PR. So it's not like this is set in stone. We're just telling them, giving them a soft approval to continue.
+**Jack Berg** 07:59 No objections. Okay, we can… I mean, it's not merged until it's merged, right? So, like, we can proceed with opening the PR to deprecate it, and if anybody has objections, they can raise them at the PR. So it's not like this is set in stone. We're just telling them, giving them a soft approval to continue.
 **Carlos Alberto Cortez** 08:20 Yep.
 By the way, probably the open tracing propagation should also be deprecated, you know?
 **Liudmila Molkova** 08:32 Mainly maintained.
 **Carlos Alberto Cortez** 08:35 Yet.
 OpenCensus, I'm not sure. So, long story… long story short, the open tracing propagation was something that we were trying to use, see how that would work, but that was before W3C came.
-that's from the, very early days from open tracing. I don't think many people are using that, and even when I was adding that,
-the, that support in the specification, Judy had opposed that, because he said he's not widely adopted.
-And I think we can do that now. Even if…
-Even if you don't remove it, also saying, like, don't use this one, you know? Or if you're using that, just move to W3C, there's no reason not to move there.
+that's from the, very early days from open tracing. I don't think many people are using that, and even when I was adding that, the, that support in the specification, Judy had opposed that, because he said he's not widely adopted.
+And I think we can do that now. Even if… Even if you don't remove it, also saying, like, don't use this one, you know? Or if you're using that, just move to W3C, there's no reason not to move there.
 **Liudmila Molkova** 09:25 Okay, yeah, this makes sense. What do we do here? Accepted needs sponsor, right?
 And it's probably Treyville enough.
 **Jack Berg** 09:39 Yeah, why don't we say accept a new sponsor, and then, I can assign Robert to be the sponsor, because he volunteered.
@@ -87,19 +79,15 @@ Am I right?
 You're already on mute.
 **Carlos Alberto Cortez** 11:04 Since… since we have all three.
 Oh, never mind. I thought it was a new issue, just the holidays, the January 7th. Notice.
-I have a small question, it's not super formal, since we have free time. Now that the Kotlin,
-Multi-platform codebase will be, donative, and we'll start working on that.
+I have a small question, it's not super formal, since we have free time. Now that the Kotlin, Multi-platform codebase will be, donative, and we'll start working on that.
 I wonder what's… how… I don't… I'm not familiar how eBPF did that, like, whether they could bring their entire history of the project.
 Or you would rather start fresh. I'm saying that because if you bring the entire history of the repo, that will include a lot of embrace stuff.
 I think it's okay, but I don't know if you, have an opinion about that.
-**Josh Suereth** 11:50 For, simplicity, when we did Weaver, we had everything from scratch. That was actually a…
-I don't remember if that was a formal donation or not. I think my concern here is just, if you force all of the people who
-had the original commits to sign the CLA, that could be awkward.
+**Josh Suereth** 11:50 For, simplicity, when we did Weaver, we had everything from scratch. That was actually a… I don't remember if that was a formal donation or not. I think my concern here is just, if you force all of the people who had the original commits to sign the CLA, that could be awkward.
 like, it might actually… you might run into tooling-related problems. So, like, if they want to do that with all that history, and say that code is now, like, copyright by CNCF because they've signed the CLA, and all the authors have done so, great.
 if they're not willing to do that, then having one person verify all the code is okay to sign over to CNCF, and have one person sign the CLA and send it in, like, a big commit that's, like, the initial import.
 From a tooling standpoint, that is easier.
-Right? But in terms of preference, like, you know, whatever works there. I…
-personally, I would, I'm kind of a, like, give up and don't fight the tools guy, so make one person from Embrace, look at everything and say, this is acceptable to give the CNCF, sign the CLA, and have one commit that brings it in without the history.
+Right? But in terms of preference, like, you know, whatever works there. I… personally, I would, I'm kind of a, like, give up and don't fight the tools guy, so make one person from Embrace, look at everything and say, this is acceptable to give the CNCF, sign the CLA, and have one commit that brings it in without the history.
 And then just… evolved from there in OTEL, but if we think the history is valuable to keep.
 for various reasons, or, like, there's justification in the Git commits that we're gonna want.
 Cool. That, you know, go with the harder option and try to make it work. It's possible to do so.

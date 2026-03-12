@@ -30,8 +30,7 @@ Glaube ich. Eh Nicht viel.
 die.
 **Severin Neumann** 03:06 Ach was?
 **Juraci Paixão Kröhling** 03:07 Okay, das ist ja, dann.
-**Severin Neumann** 03:11 Kurz gesagt, sagen Sie, das ist nicht unser Geschäft. Also
-also mein Verständnis ist ja einfach ein rejected.
+**Severin Neumann** 03:11 Kurz gesagt, sagen Sie, das ist nicht unser Geschäft. Also also mein Verständnis ist ja einfach ein rejected.
 **Juraci Paixão Kröhling** 03:28 Ja, ja, würde ich auch so sagen. Aber.
 **Severin Neumann** 03:37 Dass man.
 **Juraci Paixão Kröhling** 03:37 Heilen.
@@ -58,11 +57,8 @@ was sagen wir zu dieser Frage hier? Ich glaube kaum, dass irgendjemand bezüglic
 **Juraci Paixão Kröhling** 06:15 Das weiß ich nicht.
 **Severin Neumann** 06:17 Also, es ist ja 4 Jahre alt, das Ding, und da hat sich ja nicht viel getan, glaube ich.
 wurscht. Wir haben auch andere Donations gehabt, aber es ist ziemlich alt. Auf jeden Fall.
-und aber die Red Me lässt sich nicht mehr Updaten, weil
-weil die ist ja, Public Archived.
-Also müsste man im Prinzip das Ding öffnen. und wieder. Also nur um diese Frage zu beantworten, der Sql
-Frankreich das Snow
-am Ende, wenn jemand, der da was machen will?
+und aber die Red Me lässt sich nicht mehr Updaten, weil weil die ist ja, Public Archived.
+Also müsste man im Prinzip das Ding öffnen. und wieder. Also nur um diese Frage zu beantworten, der Sql Frankreich das Snow am Ende, wenn jemand, der da was machen will?
 Ja, soll doch bitte jemand?
 Oder Also wäre ja ein neues Project Proposal.
 **Juraci Paixão Kröhling** 07:44 Genau.
@@ -74,9 +70,7 @@ Oder Also wäre ja ein neues Project Proposal.
 Siehst du es jetzt wieder.
 **Juraci Paixão Kröhling** 08:29 Den Schirm, den ich gesehen habe.
 Okay.
-Das
-Convention for Cancel Spence
-ist ist Dc Inbox.
+Das Convention for Cancel Spence ist ist Dc Inbox.
 Das ist ja neu.
 Das sind.
 **Severin Neumann** 09:15 Die Inbox oder erst mal Community Discussion. und dann sehen.
@@ -86,12 +80,10 @@ Also, Tcm-box ist ja schon immer so ein bisschen eskaliert, aber
 **Juraci Paixão Kröhling** 09:41 Drauf?
 Ja.
 **Severin Neumann** 09:52 Dann hier handling non value in Hotel Propregator.
-Also das habe ich mir vorhin angeschaut. Im Prinzip geht es darum, was du machst, Wenn du zum Beispiel
-in Propagator setzt. Hier Backage Non: Was machst du.
+Also das habe ich mir vorhin angeschaut. Im Prinzip geht es darum, was du machst, Wenn du zum Beispiel in Propagator setzt. Hier Backage Non: Was machst du.
 **Juraci Paixão Kröhling** 10:10 Einen Name.
 **Severin Neumann** 10:11 Mit einem anderen zusammengesetzt ist, ignorierst du. Das ist das ein Fehler. Java scheint zu einem Fehler zu machen.
-Ist es
-ja.
+Ist es ja.
 **Juraci Paixão Kröhling** 10:31 Ja so ist.
 **Severin Neumann** 10:34 Ich denke, es braucht auch erst mal community Feedback. Also, ich meine, es sollen die.
 Es ist jetzt nichts, was Ich sage, das ist wirklich entscheidend. Aber es ist natürlich schön, wenn sich die Sdks da einheitlich verhalten.
@@ -104,15 +96,12 @@ das ist Editorial Accepted war es einfach.
 Also, es geht darum, dass irgendwie eine Seite verschoben worden ist und vergessen wurde, einen entry Direct zu machen.
 Patrice meinte: ja, das ist möglich, aber muss halt in die Seite, eingefügt werden.
 **Juraci Paixão Kröhling** 11:40 Ich weiß nicht.
-**Severin Neumann** 11:43 Patrice selber macht, oder irgendjemand anders? Aber
-ja.
+**Severin Neumann** 11:43 Patrice selber macht, oder irgendjemand anders? Aber ja.
 auch in in den Speckpages, die wir importieren, quasi. Also, die haben ja auch einen Hidden Frontmatter.
 Hier Specification schauen, ob ich Glück hab, nicht.
 Wir essen.
-Da könntest du halt auch Redirects oder Aliens. Das heißt, es, glaube ich, reinschreiben. und dann werden daraus automatisch die
-die Redirects generiert.
-Genau
-denke dann hier. Noch Follow up: Gar nichts.
+Da könntest du halt auch Redirects oder Aliens. Das heißt, es, glaube ich, reinschreiben. und dann werden daraus automatisch die die Redirects generiert.
+Genau denke dann hier. Noch Follow up: Gar nichts.
 Wunderbar.
 Okay.
 hast du noch Zeit? Dann können wir noch kurz ins Community Report gucken.
@@ -166,35 +155,28 @@ Wieso.
 **Juraci Paixão Kröhling** 17:52 Die.
 **Severin Neumann** 17:53 und.
 **Juraci Paixão Kröhling** 17:54 ja für.
-**Severin Neumann** 18:03 Ja, ich meine, die brauchen wahrscheinlich auch jemanden, der Ihnen sagt: Ja, mach das bitte. Also, Carlos hat ja irgendwie gevotet. Aber
-und.
+**Severin Neumann** 18:03 Ja, ich meine, die brauchen wahrscheinlich auch jemanden, der Ihnen sagt: Ja, mach das bitte. Also, Carlos hat ja irgendwie gevotet. Aber und.
 **Juraci Paixão Kröhling** 18:12 Josh ist auch ein Sohnes Bronze, glaube ich, George Zuletzt.
 **Severin Neumann** 18:21 Weiß ich jetzt ehrlich gesagt, gar nicht.
 Ja, das.
 Sie haben ja ein neues Projekt angelegt, quasi.
-**Juraci Paixão Kröhling** 18:34 Da. Ja, Also warten wir, bis die beide
-genehmigt haben. Also Chaos schon hat es schon getan, Ist.
+**Juraci Paixão Kröhling** 18:34 Da. Ja, Also warten wir, bis die beide genehmigt haben. Also Chaos schon hat es schon getan, Ist.
 **Severin Neumann** 18:51 Josh, fiel dem Präsidenten.
 **Juraci Paixão Kröhling** 18:52 Kannst du den beim Kommentar oder eher Niveau.
 **Severin Neumann** 19:00 Ja.
 **Juraci Paixão Kröhling** 19:02 Ja, genau.
 **Severin Neumann** 19:17 Gut.
-Diesen Pr habe ich auch noch nicht verstanden. Da will jemand
-ein bestehendes Project Proposal editieren und seine eigene Firma eintragen. Meiner Meinung nach machen wir das nicht, oder?
+Diesen Pr habe ich auch noch nicht verstanden. Da will jemand ein bestehendes Project Proposal editieren und seine eigene Firma eintragen. Meiner Meinung nach machen wir das nicht, oder?
 Also Project Proposal editieren, Ich würde den rejecten oder also.
 **Juraci Paixão Kröhling** 19:49 Ist das.
-**Severin Neumann** 19:51 und
-und ist hergegangen und hat halt Pr-gaben aufgemacht gegen das Genai Project Proposal und hat halt irgendwie seine Firma in diese Liste.
+**Severin Neumann** 19:51 und und ist hergegangen und hat halt Pr-gaben aufgemacht gegen das Genai Project Proposal und hat halt irgendwie seine Firma in diese Liste.
 **Juraci Paixão Kröhling** 20:07 Nein.
 **Severin Neumann** 20:11 Ja.
 mehr.
 **Juraci Paixão Kröhling** 20:21 und wenn ihr dann interessiert seid mit einem Gnai See.
-**Severin Neumann** 20:26 Weil er den list
-in the project document, die und die
-and not be extended oder.
+**Severin Neumann** 20:26 Weil er den list in the project document, die und die and not be extended oder.
 **Juraci Paixão Kröhling** 21:07 Punkt.
-**Severin Neumann** 21:11 Punkt
-ist das ein.
+**Severin Neumann** 21:11 Punkt ist das ein.
 dessen Simulation Wahnsinn genau mit Ja. Okay, Also Sie haben ja scheinbar schon, dann kann man sowas sagen wie.
 **Juraci Paixão Kröhling** 21:48 Was die Wände sind oder.
 **Severin Neumann** 21:50 Ja.
@@ -227,15 +209,13 @@ Also Die haben ein bisschen was die haben was gemacht. und ich glaube, ich meine
 Ich bin einfach immer noch nicht sicher, wie man die.
 wie man die unter Dach und Fach kriegt.
 Ja, keine Ahnung. Das können wir 2 Dinge nicht lösen.
-Ja, ich glaube, sonst ist da nicht mehr viel zu tun. Also, es ist viel zu tun, aber ich glaube, wer
-dann brauchen wir jetzt die nächsten 10 min da auch nicht endlos reinstecken.
+Ja, ich glaube, sonst ist da nicht mehr viel zu tun. Also, es ist viel zu tun, aber ich glaube, wer dann brauchen wir jetzt die nächsten 10 min da auch nicht endlos reinstecken.
 Gut.
 **Juraci Paixão Kröhling** 24:58 Ja.
 **Severin Neumann** 24:58 Brechen wir uns spätestens am Mittwoch.
 **Juraci Paixão Kröhling** 25:01 Ich dann komme ich nicht, und dann, leider werde ich auch nicht als.
 **Severin Neumann** 25:14 Des private Meeting sein. Okay.
-**Juraci Paixão Kröhling** 25:16 Ich wohnte wirklich, kann, aber nicht
-Ich hoffe nur, dass wir keine Entscheidung treffen, sodass ich dann nachher zirkulieren sehen kann, gute Sache.
+**Juraci Paixão Kröhling** 25:16 Ich wohnte wirklich, kann, aber nicht Ich hoffe nur, dass wir keine Entscheidung treffen, sodass ich dann nachher zirkulieren sehen kann, gute Sache.
 Wenn ich nicht da bin, dann bin ich ja nicht da.
 **Severin Neumann** 25:37 Ja. Gut.
 Ja.

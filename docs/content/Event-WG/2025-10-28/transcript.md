@@ -13,8 +13,7 @@ Okay, I'll see.
 **Trask Stalnaker** 02:41 The person with the power.
 **Liudmila Molkova** 02:44 Oh, yes.
 Give me a second. Person with the power, but not with a link.
-Okay, I think there is a discussion from…
-Carlos, we're going to resolve it.
+Okay, I think there is a discussion from… Carlos, we're going to resolve it.
 And Trask approved.
 **Trask Stalnaker** 03:37 Whee!
 **Liudmila Molkova** 03:41 Not yet.
@@ -28,24 +27,18 @@ Stand by patiently.
 **Austin Parker** 04:07 I don't think so.
 **Liudmila Molkova** 04:16 Mr. Cool.
 **Trask Stalnaker** 04:17 Pull up the agenda… no, we don't even have… nope, we've got nothing.
-Oh, your… so the next thing that, Robert was asking for was the… blog post…
-Let's see… okay, so I need to give that, another…
-Read and approval… oh, it looks like he left a couple of comments.
-**Liudmila Molkova** 04:56 Let's see, these are strings…
-Oh, I wanted to get your thoughts on this.
+Oh, your… so the next thing that, Robert was asking for was the… blog post… Let's see… okay, so I need to give that, another… Read and approval… oh, it looks like he left a couple of comments.
+**Liudmila Molkova** 04:56 Let's see, these are strings… Oh, I wanted to get your thoughts on this.
 So we're saying… just… We're suggesting to stick to primitives and arrays of primitives.
 I think this is a… This is a fair thing we can say in a blog post.
 just if you… if you can use primitive value as an attribute, use it. Like, arrays, don't make it… yeah.
-**Trask Stalnaker** 05:30 Yeah, I agree. We're, like…
-On metrics, especially, we've been avoiding Arrays, where possible.
+**Trask Stalnaker** 05:30 Yeah, I agree. We're, like… On metrics, especially, we've been avoiding Arrays, where possible.
 **Liudmila Molkova** 05:40 Yeah, so we've merged the product changes.
 We didn't release, Prota.
-We can probably…
-We're gonna lose it.
+We can probably… We're gonna lose it.
 **Trask Stalnaker** 05:58 Yeah.
 **Liudmila Molkova** 06:03 We can see connection item…
-**Trask Stalnaker** 06:07 And I think we wanted to do that in,
-Minor… not a patch bump, but a minor bump.
+**Trask Stalnaker** 06:07 And I think we wanted to do that in, Minor… not a patch bump, but a minor bump.
 **Liudmila Molkova** 06:17 All of them are minor bumps, we don't do patches, I think.
 But yeah.
 **Trask Stalnaker** 06:21 Okay, great.
@@ -55,11 +48,9 @@ Two weeks ago. Well, so we will release it around KubeCon.
 **Liudmila Molkova** 06:52 Okay.
 So, I'll release Prato, the spec changes have been merged.
 Let's go here.
-**Trask Stalnaker** 07:21 Yeah, because the proto version is really the… was the big…
-Sort of contention point, because of the consumer, the change of expectations for consumers.
+**Trask Stalnaker** 07:21 Yeah, because the proto version is really the… was the big… Sort of contention point, because of the consumer, the change of expectations for consumers.
 **Liudmila Molkova** 07:36 Right.
-Cool. So then, it seems,
-We have a plan for all Robert's comments. If you want to take a look at the blog, please go ahead.
+Cool. So then, it seems, We have a plan for all Robert's comments. If you want to take a look at the blog, please go ahead.
 As well. And it will take me a day or two to follow up on this anyway.
 **Trask Stalnaker** 07:59 Awesome.
 Wow.

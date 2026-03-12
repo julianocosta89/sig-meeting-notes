@@ -14,21 +14,16 @@ Zoom Recording URL: https://zoom.us/rec/share/LOmU57iXKcWaHLcPVMbo1jJQpsGoaI8-hX
 **Juraci Paixão Kröhling** 06:39 ja.
 **Severin Neumann** 06:41 Wollen noch schnell meine Kopfhörer.
 **Juraci Paixão Kröhling** 06:43 Jupp.
-**Severin Neumann** 06:48 Das
-ist das eigentlich? Wenn so ein meeting Recorded wird, müssen wir dann Englisch sprechen. Falls sich das jemand anguckt.
+**Severin Neumann** 06:48 Das ist das eigentlich? Wenn so ein meeting Recorded wird, müssen wir dann Englisch sprechen. Falls sich das jemand anguckt.
 weiß es nicht.
 **Juraci Paixão Kröhling** 07:01 Tut sich jemandes.
 **Severin Neumann** 07:05 Weiß ich nicht, vermutlich nicht.
-Jetzt ist es gleich. Gucken wir mal, ob uns sonst noch begleitet Warte mal
-ganz so lange mal alles vorbereiten. Ich weiß gar nicht, wie viel Triage überhaupt zu tun haben.
+Jetzt ist es gleich. Gucken wir mal, ob uns sonst noch begleitet Warte mal ganz so lange mal alles vorbereiten. Ich weiß gar nicht, wie viel Triage überhaupt zu tun haben.
 Also, Achso: Aber Dan ist eben Urlaub, glaube ich, für länger 13.
 **Juraci Paixão Kröhling** 07:29 Genau.
-**Severin Neumann** 07:29 Ober der
-Pablo ist auch im Urlaub, bis ein.
+**Severin Neumann** 07:29 Ober der Pablo ist auch im Urlaub, bis ein.
 **Juraci Paixão Kröhling** 07:39 Nicht.
-**Severin Neumann** 07:42 und
-Robert hat es in letzter Zeit eh selten geschafft, hier zu sein. Von daher sind es wahrscheinlich genug, wir 2
-gut.
+**Severin Neumann** 07:42 und Robert hat es in letzter Zeit eh selten geschafft, hier zu sein. Von daher sind es wahrscheinlich genug, wir 2 gut.
 **Juraci Paixão Kröhling** 07:51 Gucken Ja.
 **Severin Neumann** 07:53 Ist eh nicht viel da, aber im Speck, lass mich mal ein.
 Ich hoffe, du hattest ein gutes Wochenende.
@@ -49,20 +44,15 @@ Ich hoffe, du hattest ein gutes Wochenende.
 Mach die mal alle 3 auf Declarative Configuration.
 Ich werde einfach Sig Isshu hinmachen und fertig, weil ich glaube, das ist einfach.
 **Juraci Paixão Kröhling** 08:58 Wenn ich darüber letzte Woche schon gesprochen.
-**Severin Neumann** 09:02 Da, weil ich Geburtstag hatte und mir gedacht habe. Ich mache was anderes
-genau nee. Aber ich mach jetzt einfach Siq hin und fertig Ne, weil ich meine.
-am Ende müssen wir, da glaube ich, nicht mehr Triage machen. Die haben die Sache an Bord läuft
-die.
+**Severin Neumann** 09:02 Da, weil ich Geburtstag hatte und mir gedacht habe. Ich mache was anderes genau nee. Aber ich mach jetzt einfach Siq hin und fertig Ne, weil ich meine.
+am Ende müssen wir, da glaube ich, nicht mehr Triage machen. Die haben die Sache an Bord läuft die.
 Okay, das scheint, ich weiß jetzt mal was.
 Okay.
 So, gibt es ein Problem.
 Haben Sie schon eine conclusion? Oder ist das eine Ungiring.
-Ich würde sagen, das ist Community-feedback. Oder
-Oder was hat Josh hier gesagt?
-**Juraci Paixão Kröhling** 10:18 Ist und
-die.
-**Severin Neumann** 10:32 Ist
-die und.
+Ich würde sagen, das ist Community-feedback. Oder Oder was hat Josh hier gesagt?
+**Juraci Paixão Kröhling** 10:18 Ist und die.
+**Severin Neumann** 10:32 Ist die und.
 **Juraci Paixão Kröhling** 10:47 Genau. Ich glaube, das ist folgt schon.
 Also, das ist ja.
 **Severin Neumann** 10:55 Ja.
@@ -78,25 +68,18 @@ Defined context Propagation for.
 **Severin Neumann** 12:19 Nennst.
 Das ist aber ein Alter.
 Was ist hier passiert?
-Okay, Da hat wohl jemand der Docks for Sql Server
-Kontext Proct geh ich nicht. Hier
-solltestament Convention. Was zum Thema Kontext location haben.
+Okay, Da hat wohl jemand der Docks for Sql Server Kontext Proct geh ich nicht. Hier solltestament Convention. Was zum Thema Kontext location haben.
 Okay, das ist, Aber das ist ja Sql Service Pacific.
 **Juraci Paixão Kröhling** 13:07 Ja trotzdem, aber gut.
-**Severin Neumann** 13:14 Ja ist jetzt nicht nicht unsere Entscheidung, aber aber das scheint ja
-die
-Ja, da können wir. Jetzt sollten wir 2 jetzt nicht anfangen.
+**Severin Neumann** 13:14 Ja ist jetzt nicht nicht unsere Entscheidung, aber aber das scheint ja die Ja, da können wir. Jetzt sollten wir 2 jetzt nicht anfangen.
 Vielen Dank.
 **Juraci Paixão Kröhling** 13:38 Ja.
 **Severin Neumann** 13:39 Tiefere Diskussion einzusteigen.
-Samconf Database ja irgendwie, ja
-ist.
+Samconf Database ja irgendwie, ja ist.
 Okay, aber es scheint ja so zu sein, dass die verschiedenen Datenbanken ja durchaus mittlerweile ein Konzept dafür haben.
 **Juraci Paixão Kröhling** 14:47 Ich, was ist das? Kannst du das den Link da klicken? Was Budget Tracing ist oben oben.
-**Severin Neumann** 14:58 ja, aber das ist ja ein Datadogs spezifisches
-Projekt, wo die im Prinzip, das habe ich letztens gelesen. Du kannst im Prinzip in Database tracing machen.
-was cool ist, Aber das ist jetzt mal
-Plugins. Sag ich mal.
+**Severin Neumann** 14:58 ja, aber das ist ja ein Datadogs spezifisches Projekt, wo die im Prinzip, das habe ich letztens gelesen. Du kannst im Prinzip in Database tracing machen.
+was cool ist, Aber das ist jetzt mal Plugins. Sag ich mal.
 Aber es gibt ja scheinbar diesen Doc Parameter.
 **Juraci Paixão Kröhling** 15:36 Das ist ja bei dem, wenn du.
 **Severin Neumann** 15:43 Brand, Unified Configuration.
@@ -118,10 +101,8 @@ Das gehört zum Inbox.
 Soll ich dann irgendwas hinschreiben ans technical committee.
 **Juraci Paixão Kröhling** 17:09 Ja, so ist das.
 **Severin Neumann** 17:16 Oder.
-**Juraci Paixão Kröhling** 17:18 Das Oder
-genau.
-**Severin Neumann** 17:28 Gore. What
-ist Zeit.
+**Juraci Paixão Kröhling** 17:18 Das Oder genau.
+**Severin Neumann** 17:28 Gore. What ist Zeit.
 **Juraci Paixão Kröhling** 17:46 Ja.
 **Severin Neumann** 17:47 Messer.
 **Juraci Paixão Kröhling** 17:50 Songs.
@@ -140,8 +121,7 @@ Guidance, Or bei der.
 Okay. Also wenn ich Deinen Punkt richtig verstehe, ist ja eher die Frage: Naja, wenn die Datenbanken jetzt eh schon Lösungen haben.
 **Juraci Paixão Kröhling** 18:56 Genau.
 Es gibt dann vielleicht 2.
-Also, wir können es so sehen, von 2 verschiedenen Standpunkte. Eines ist
-Wenn Datenbanken das schon.
+Also, wir können es so sehen, von 2 verschiedenen Standpunkte. Eines ist Wenn Datenbanken das schon.
 Also, was machen wir denn? So machen wir das nur dann Trace, wo das Supported ist.
 oder brauchen wir noch was?
 und zweitens ist, wie sollen dann erzeugt werden, und wie sollen sie denn das genannt werden? Antisemiti Convention?
@@ -153,11 +133,9 @@ Ich glaube.
 **Severin Neumann** 20:13 Okay.
 **Juraci Paixão Kröhling** 20:13 Weil vielleicht es gehört, nicht alt zu sagen. Oder vielleicht doch. Ich glaube, das ist.
 **Severin Neumann** 20:30 Ziemlich hohe Komplexität auslösen. Wo du einfach sagst, Jo, vielleicht ist das okay, Verstehe ich ja.
-**Juraci Paixão Kröhling** 20:38 Ich kann schon den Wert sehen, wenn es
-für ein Debaltion ist, für ein Produktionssystem, das nicht.
+**Juraci Paixão Kröhling** 20:38 Ich kann schon den Wert sehen, wenn es für ein Debaltion ist, für ein Produktionssystem, das nicht.
 Ich glaube, es wird zu viele Daten erzeugt. Das ist ja nicht nutzbar.
-**Severin Neumann** 21:03 Ist sicherlich eine spannende Frage. Ich kann mich daran erinnern. Früher App die hatten wir diese Frage durchaus bei datenbankheftigen Firmen ab und zu
-von Wegen? Ja. Gibt es denn nicht irgendeine Möglichkeit, quasi eine Transaktion auch durch die Datenbank zu verfolgen, weil sie Halt irgendein Komplexes.
+**Severin Neumann** 21:03 Ist sicherlich eine spannende Frage. Ich kann mich daran erinnern. Früher App die hatten wir diese Frage durchaus bei datenbankheftigen Firmen ab und zu von Wegen? Ja. Gibt es denn nicht irgendeine Möglichkeit, quasi eine Transaktion auch durch die Datenbank zu verfolgen, weil sie Halt irgendein Komplexes.
 Es gibt ja durchaus die Datenbanken, wo du, ich sage mal, ziemlich viel Datenbanklogik Applikationslogik in die Datenbank ablegen kannst Aber Ich verstehe deinen Punkt, wo du halt einfach sagst.
 **Juraci Paixão Kröhling** 21:34 Ja.
 **Severin Neumann** 21:34 Bedingt, macht es vielleicht gar keinen.
@@ -170,13 +148,10 @@ Ja. Habe ich? Okay, ein paar.
 **Juraci Paixão Kröhling** 21:57 Ist.
 **Severin Neumann** 21:57 Als Community Report noch aufgemacht. Ich weiß nicht, ob wir hier kurz mal gucken wollen, irgendwelche Pole Quests.
 Da habe ich noch 2 aufgemacht.
-Das hier von Armin, Das kann ich Appproven, Ja, die so
-Checker wieder nicht gut
-irgendwas. Ecal system Explorer: Ja, da muss ich mit Mal reden.
+Das hier von Armin, Das kann ich Appproven, Ja, die so Checker wieder nicht gut irgendwas. Ecal system Explorer: Ja, da muss ich mit Mal reden.
 Das ist hier mit Face Two vom CiCD. Ist das irgendwas?
 Das sind irgendwie ein Haufen Commons Outstanding.
-Okay. Aber da scheint es ja eher so zu sein, dass vielleicht
-das.
+Okay. Aber da scheint es ja eher so zu sein, dass vielleicht das.
 **Juraci Paixão Kröhling** 23:10 Ich glaube, dass Adria auch ach so.
 **Severin Neumann** 23:16 Stimmt, das ist, aber es ist nur schon seit 3 Wochen Irgendwie.
 Ja.
@@ -207,9 +182,7 @@ ist im Deutschen noch schwieriger als im Englischen.
 **Juraci Paixão Kröhling** 25:59 Vielen Dank.
 Ja, aber das wusste ich auch nicht.
 **Severin Neumann** 26:06 Gut, aber da ist jetzt nichts drüber.
-irgendwas anderes, irgendwie Project Board, wo wir noch kurz Gc Work
-die sind. Halt immer noch beide
-wollten wir die nicht schließen. Sind wir da nicht irgendwo verblieben? Letzte Woche.
+irgendwas anderes, irgendwie Project Board, wo wir noch kurz Gc Work die sind. Halt immer noch beide wollten wir die nicht schließen. Sind wir da nicht irgendwo verblieben? Letzte Woche.
 **Juraci Paixão Kröhling** 26:27 Warte mal.
 **Severin Neumann** 26:30 Kann man.
 **Juraci Paixão Kröhling** 26:32 Ich glaube schon.
@@ -237,8 +210,7 @@ was habe ich jetzt gemacht?
 **Juraci Paixão Kröhling** 29:02 Also wenn du irgendetwas anderes sehen willst dein Instrumentation Score: Aber das ist ja überhaupt nicht Open Tour.
 **Severin Neumann** 29:09 Das können wir auch anderweitig besprechen. Ja.
 **Juraci Paixão Kröhling** 29:13 Ja.
-**Severin Neumann** 29:14 Müssen wir jetzt nicht auf diesen Call hier bauen. Also, Can
-Nee, ich habe jetzt gerade mal überlegt: wenn wir irgendwas triage-mäßig noch brauchen.
+**Severin Neumann** 29:14 Müssen wir jetzt nicht auf diesen Call hier bauen. Also, Can Nee, ich habe jetzt gerade mal überlegt: wenn wir irgendwas triage-mäßig noch brauchen.
 aber eigentlich nicht. Also ich denke.
 **Juraci Paixão Kröhling** 29:27 Uns dabei.
 **Severin Neumann** 29:29 Sein lassen oder.

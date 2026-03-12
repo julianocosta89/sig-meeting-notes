@@ -12,8 +12,7 @@ Zoom Recording URL: https://zoom.us/rec/share/3Xa1dNQ5EWaDuZUCk1ErAqZOFLPrNdC_eH
 Do you want to drive, or should I do this?
 **Zach Montoya** 04:35 Do you want to take it today?
 **Piotr Kiełkowicz** 04:36 No, but I will do that.
-So… Some heads up from my side, spark needs to release,
-new version of distribution shortly, kind of this month, and it is our plan. And we would like to include most of the changes from the upstream, so I would like to make a release of the instrumentation.
+So… Some heads up from my side, spark needs to release, new version of distribution shortly, kind of this month, and it is our plan. And we would like to include most of the changes from the upstream, so I would like to make a release of the instrumentation.
 Next week?
 I'm just after a short chat with Rash, and it will be great to include also a new version of the SDK.
 Here, but it will be confirmed on the… next Tuesday.
@@ -26,24 +25,19 @@ But I'm supporting.
 **Rajkumar Rangaraj** 06:19 Okay.
 **Piotr Kiełkowicz** 06:21 needs to… Need to log in.
 Okay, let's back, so… Puerto Ricquist.
-I'm not sure if you were able to…
-We review all notifications, kind of.
-If no, mapping kind of improved our…
-security, compilation security for Windows libraries. There is ongoing stuff also for Delinooks.
+I'm not sure if you were able to… We review all notifications, kind of.
+If no, mapping kind of improved our… security, compilation security for Windows libraries. There is ongoing stuff also for Delinooks.
 And we were able to… let's say, enable core WCF instrumentation with, kind of, big changes.
 And I think from the kind of feature perspective, we have only this one open right now.
 It is related to the MongoDB 3.5 support. Zach, if you will be able to review it, it will be great.
 I've looked into Datadoc code, and I know that you have it already, but…
 **Zach Montoya** 08:09 Yeah, I can… I can take a look. I'll… I'll have a review before the next time I meet.
 **Piotr Kiełkowicz** 08:14 Cool, thank you.
-What else? There is a lot of,
-Out of the… this one is related to flackiness of the core WCF test, unfortunately, but I'm not sure if it will go this way. I have other options on the plate.
+What else? There is a lot of, Out of the… this one is related to flackiness of the core WCF test, unfortunately, but I'm not sure if it will go this way. I have other options on the plate.
 That's all No, no, for now.
 new issues… Discussions.
 Non-discussions and issues.
-As I mentioned, Martin also is working on
-On this, it is kind of…
-Security fixes for all the library and memory management.
+As I mentioned, Martin also is working on On this, it is kind of… Security fixes for all the library and memory management.
 I think we can include into the next release.
 Based on what I see. If not, I will… Postpone to 1.15.
 I think, Alexei, we are still looking for the prototype, yes?
@@ -51,11 +45,8 @@ I think, Alexei, we are still looking for the prototype, yes?
 **Piotr Kiełkowicz** 09:55 Cool, thank you. So, I will put it to the release one… For the 115, hopefully.
 **Alexey Pukhov** 10:07 Hopefully…
 **Igor Kiselev** 10:12 Multiple.
-SV…
-earlier, it might be a good idea for that change to be released as a separate release, as a beta, to include all of the change and nothing else, as it would include a lot of change to
-Layout of files, and… Multiences included.
-**Piotr Kiełkowicz** 10:34 Sure. I agree that we can make the…
-Release, let's say, next week, and merge your… these changes to the… to the main branch, and make the follow-up with the beta.
+SV… earlier, it might be a good idea for that change to be released as a separate release, as a beta, to include all of the change and nothing else, as it would include a lot of change to Layout of files, and… Multiences included.
+**Piotr Kiełkowicz** 10:34 Sure. I agree that we can make the… Release, let's say, next week, and merge your… these changes to the… to the main branch, and make the follow-up with the beta.
 Especially if it is kind of crucial change, and it would be great to bottlene test that before February release.
 Yevgeny, do you think that we… Needs to do anything here.
 **Yevhenii Solomchenko** 11:10 I think not. We should wait for answer from customer.
@@ -64,13 +55,11 @@ Still waiting for the… Tips to reproduce.
 I think we should do the same queue.
 I will ping Steve in private channel also.
 And what else? I hope it's asking that this… It's all new issues… discussions already.
-Handbooks,
-Everything's fine, and I'm not sure if we need to make any changes here. I think this one is in progress.
+Handbooks, Everything's fine, and I'm not sure if we need to make any changes here. I think this one is in progress.
 I cannot hear offline, sorry, Evgeny.
 I think that… that's all what we have right now.
 And it got news, topics, Or bad news.
-**Chris Ventura** 14:23 I'm still in a very busy season, so…
-My… if you need something directly from me, just reach out directly.
+**Chris Ventura** 14:23 I'm still in a very busy season, so… My… if you need something directly from me, just reach out directly.
 **Piotr Kiełkowicz** 14:33 Sure.
 Thanks.
 So, see you next week. Thank you.

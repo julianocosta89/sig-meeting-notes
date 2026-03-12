@@ -26,25 +26,18 @@ Yeah, it's, it's starting to cool down here in Oregon, so it's kind of nice not 
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 01:23 Yeah, humans are funny in that way.
 **Tyler Yahn** 01:26 Right?
 So I'm looking at the agenda, I don't have too much, I just, have some common ones. I'll look at some PRs and the milestone, I want to talk about that, but if you guys have things you want to talk about, go ahead and add them there as well.
-If you, haven't yet, please go ahead and also add your name to the attendees list, and
-Yeah, we can jump in here in just a second. I'll start sharing my screen.
+If you, haven't yet, please go ahead and also add your name to the attendees list, and Yeah, we can jump in here in just a second. I'll start sharing my screen.
 Cool.
-Alright, well, I'm looking back over also the…
-past week that I wasn't able to attend, it doesn't look like there's anything carrying over, so we can probably just jump in here.
+Alright, well, I'm looking back over also the… past week that I wasn't able to attend, it doesn't look like there's anything carrying over, so we can probably just jump in here.
 Starts off, just looking at the open pull request, so there's a few.
-Going through some of the…
-Oh, excuse me, sorry about that. Gone through a few of the, open,
-Dependency updates right now, still working through those.
+Going through some of the… Oh, excuse me, sorry about that. Gone through a few of the, open, Dependency updates right now, still working through those.
 There's a few that require an update so that we don't support Go 123 anymore, so that's coming up. I think that that is kind of a question around the milestone, or I'm sorry, yeah, I guess the milestone, because it also requires a release.
 with this release being the last release that we would support Go 123, and then the next release, we would drop it.
-So, I think that that's kind of motivating us, looking into the milestone in just a second. I think the only other thing is this,
-testify, Lintz Rule here.
+So, I think that that's kind of motivating us, looking into the milestone in just a second. I think the only other thing is this, testify, Lintz Rule here.
 Oh, looks like I have a pending review that I haven't submitted.
-I don't think it's that critical. I can take another look at this. So, it looks like this just looks like it needs a review from me at this point, so…
-If you haven't yet, you're welcome to take a look, but, yeah, it's probably just on me, to address this.
+I don't think it's that critical. I can take another look at this. So, it looks like this just looks like it needs a review from me at this point, so… If you haven't yet, you're welcome to take a look, but, yeah, it's probably just on me, to address this.
 Okay, and then, yeah, these are the two that are blocked by CO123. These two are ready to merge, actually. So, deal with that after the meeting.
-Going to the milestone, though, so I wanted to take a look at this. This is the thing that we wanted to get done. I'm hoping we can get this done this,
-this week. I think that there is a reason to just bump these last two. There's things that are active, but they're not, I think, ready.
+Going to the milestone, though, so I wanted to take a look at this. This is the thing that we wanted to get done. I'm hoping we can get this done this, this week. I think that there is a reason to just bump these last two. There's things that are active, but they're not, I think, ready.
 Both of these issues, raphael, sorry, I see your hands up.
 **Rafael Roquetto** 04:07 yeah, I saw that it merged the claim format one. Apologies, I couldn't get to that yet, we were in between release.
 So it's been chaotic.
@@ -66,30 +59,22 @@ Back to this one, though, the fixed other arch stubs, I don't think anything's b
 **Ron Federman** 05:22 Yeah, sure.
 **Tyler Yahn** 05:23 Okay.
 Cool. This one is one that existed… Nicola was looking at it before he went on break, I was looking at it while he was on break.
-I've got this half PR started on this that I just haven't pushed and finished up yet,
-But I don't, think I'm gonna get this, addressed, or have a PR up, I think, in the next, you know, few days. So, I'm wondering, if we could just move this to the next milestone, if there's any opposition to that?
-I see Nicholas shaking his head, so…
-Yeah, I don't think it's too critical to get it out with this. It's not like a blocking bug would be great to fix it, but it's a rare bug, I think, so I think that we can probably try to…
-address this in the next one. So, like I said, I started working on it, I just, got 20 things going at the same time, so…
+I've got this half PR started on this that I just haven't pushed and finished up yet, But I don't, think I'm gonna get this, addressed, or have a PR up, I think, in the next, you know, few days. So, I'm wondering, if we could just move this to the next milestone, if there's any opposition to that?
+I see Nicholas shaking his head, so… Yeah, I don't think it's too critical to get it out with this. It's not like a blocking bug would be great to fix it, but it's a rare bug, I think, so I think that we can probably try to… address this in the next one. So, like I said, I started working on it, I just, got 20 things going at the same time, so…
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 06:14 You know?
 **Tyler Yahn** 06:15 Hopefully, hopefully get this fixed in the next iteration.
-Okay, cool. Alright, with that then, actually, Rafael, let me,
-track that, Docker issue as well.
+Okay, cool. Alright, with that then, actually, Rafael, let me, track that, Docker issue as well.
 Awesome.
 Yeah, because otherwise I will forget about this as well.
 Thanks for reminding me. Otherwise, I think that that's it, though, so this should be cleared. I think that we're good for the release. I've got a pull request that just merged for upgrading the semantic conventions, so we're on 1.37, which is the latest.
 Which is, great. I don't think there was actually any change, so it really is kind of a no-op, actually. So no problem there.
-I don't think there's anything else outstanding
-That's blocking this release, other than just…
-somebody going and doing it, so I'm happy to start working on that release, actually, after the meeting.
-It will… oh, that's probably what we need to do. We need to add support for Go 125, I think, prior to the release, and then after the release, we can drop 123, so…
-I… God, did I make an issue for this?
+I don't think there's anything else outstanding That's blocking this release, other than just… somebody going and doing it, so I'm happy to start working on that release, actually, after the meeting.
+It will… oh, that's probably what we need to do. We need to add support for Go 125, I think, prior to the release, and then after the release, we can drop 123, so… I… God, did I make an issue for this?
 Just dependencies or blocks. Okay.
 I will also make an issue for this.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 08:12 Is that just an update to the docs?
 **Tyler Yahn** 08:16 It's an update to the docs and the CI system. So yeah, it's very, very minor. Yeah, it essentially just starts running, actually.
-The CI system might not actually need updates. I'd have to go take a look. If you're running with the SetupGo, action, you can tell it to just use,
-stable, and then the old stable, and so they automatically update, so it may actually be done, yeah.
+The CI system might not actually need updates. I'd have to go take a look. If you're running with the SetupGo, action, you can tell it to just use, stable, and then the old stable, and so they automatically update, so it may actually be done, yeah.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 08:41 Okay. Yep.
 I'm just curious, nope.
 Not everywhere.
@@ -97,8 +82,7 @@ Not everywhere.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 08:53 Gotcha.
 **Tyler Yahn** 08:54 Yeah. But yeah, I'll… it's usually… I think what you just pointed out, like, the README is probably the only place that I would say.
 We need to address that.
-Okay, so I will fix that, and then try to do a release after the fact. So, yeah. It'll help, I think, also…
-all of our OpenSelemetry dependencies need to go get released, all of the, yeah, Go versions, so yeah, we're overdue for this, so, yeah.
+Okay, so I will fix that, and then try to do a release after the fact. So, yeah. It'll help, I think, also… all of our OpenSelemetry dependencies need to go get released, all of the, yeah, Go versions, so yeah, we're overdue for this, so, yeah.
 Okay.
 Alright, those are the only two, agenda items that I had here.
 I can stop sharing my screen. Any other topics people wanted to discuss, or things that they aren't on the agenda?
@@ -113,19 +97,16 @@ Yeah, I'm probably going to be dumb, yeah.
 **Tyler Yahn** 10:00 Are you gonna be at the Maintainers Summit, on Sunday?
 **Ron Federman** 10:05 I need to look it up, like, it's one day before the observability day, or one day before the day?
 Okay, I need to… to see.
-**Tyler Yahn** 10:16 Yeah, usually, if you're traveling internationally, likely you're flying in early enough, but,
-If you are, yeah, you should go for it. You just have to, like, it's free, but you have to be a maintainer. Register. And register, essentially. So, like, yeah, there's really no blockers, just other than you being there.
+**Tyler Yahn** 10:16 Yeah, usually, if you're traveling internationally, likely you're flying in early enough, but, If you are, yeah, you should go for it. You just have to, like, it's free, but you have to be a maintainer. Register. And register, essentially. So, like, yeah, there's really no blockers, just other than you being there.
 **Ron Federman** 10:35 Okay.
 **Tyler Yahn** 10:36 Yeah.
 But yeah, you know, I should be there as well. I will be there, that's my plan. And Nicholas, still a maybe on that one.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 10:46 No, no, I booked my tickets, sorry, yeah, I booked my tickets, I looked at the flights, and it was just like, no.
-Yeah, so I'm arriving actually late on Sunday, so if you guys are maintainers gathering for some dinner activity, I'll join you, but
-Yeah.
+Yeah, so I'm arriving actually late on Sunday, so if you guys are maintainers gathering for some dinner activity, I'll join you, but Yeah.
 **Tyler Yahn** 11:02 Okay.
 Fair enough.
 **Nikola Grcevski @ Grafana Beyla / OpenTelemetry** 11:04 But otherwise, I'll see you Monday morning, yeah.
-**Tyler Yahn** 11:06 Yeah, yeah, definitely be there for that as well, too, so…
-Okay, yeah, yeah. So otherwise, I don't know if… do you know if Mike, Dame is coming, Ron?
+**Tyler Yahn** 11:06 Yeah, yeah, definitely be there for that as well, too, so… Okay, yeah, yeah. So otherwise, I don't know if… do you know if Mike, Dame is coming, Ron?
 **Ron Federman** 11:17 Yeah, I think it would be the Russell.
 **Tyler Yahn** 11:19 Oh, okay, cool.
 **Ron Federman** 11:20 I'm not sure about the maintainers today, but in KubeCon it would be.

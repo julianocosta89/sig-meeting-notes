@@ -16,24 +16,16 @@ Zoom Recording URL: https://zoom.us/rec/share/vdTfuUwCVAcJtZLI4saUWumCGnDIQnqGeD
 **Jim Porell** 01:40 And Anand as well.
 Greg, I don't know if you saw the Slack, but I know Anand and Rudiger are not going to make it today.
 **Greg Shriver** 02:33 I just saw that. Thank you, Jim.
-So… Let's see…
-Okay.
+So… Let's see… Okay.
 Okay, I don't know if we're expecting… Morgan?
 **Jim Porell** 03:01 Yeah, I don't know.
 **Greg Shriver** 03:07 Okay.
-**Angelika Heinrich** 03:19 I saw his comment last week, he was able… Ridico was able to find out a little bit more about the CNCF,
-Plans, for collector support.
+**Angelika Heinrich** 03:19 I saw his comment last week, he was able… Ridico was able to find out a little bit more about the CNCF, Plans, for collector support.
 For mainframe.
-So… Hopefully we can get them to join a SIG and share some of their…
-Some of their plans there.
-**Greg Shriver** 03:48 Yeah, I, let's see, today…
-I don't have… so, last week,
-I had… we had done a little show and tell, and I had shared what I was trying to do to add a doc PR.
-And… and it turned out that I didn't do it correctly. And, last week, you guys provided, help
-for me to do it the right way. I… I did redo some of that, but I don't have a PR quite ready to share yet, so…
-So I did fork the repo.
-And, and I did, create a branch there, and what I… but I'm not ready to actually issue the PR quite yet, because I think the net-net from last week's discussion was that rather than have us
-you know, have this group go over, you know, the content before doing the PR, it would be much more efficient if we just did the PR so that everyone could see, you know, and participate.
+So… Hopefully we can get them to join a SIG and share some of their… Some of their plans there.
+**Greg Shriver** 03:48 Yeah, I, let's see, today… I don't have… so, last week, I had… we had done a little show and tell, and I had shared what I was trying to do to add a doc PR.
+And… and it turned out that I didn't do it correctly. And, last week, you guys provided, help for me to do it the right way. I… I did redo some of that, but I don't have a PR quite ready to share yet, so… So I did fork the repo.
+And, and I did, create a branch there, and what I… but I'm not ready to actually issue the PR quite yet, because I think the net-net from last week's discussion was that rather than have us you know, have this group go over, you know, the content before doing the PR, it would be much more efficient if we just did the PR so that everyone could see, you know, and participate.
 not only the people in this group, but anyone else who sees it, anyone could participate in the comments and review of that PR.
 So, I don't have that ready yet, I'm hoping to have that next week.
 So that's about the only update that I have to share.
@@ -46,34 +38,23 @@ And I know there are hotel semantic conventions, right, documented.
 But they are mostly regarding the tracing aspects of spans, and also more on the producer and consumer side.
 So, I was wondering, basically, if there is any… first of all, if anyone knows if there is a, messaging sick?
 Right, that is working on that.
-And the other question would be, basically, if there's any plans, right, regarding, semantic conventions for
-queue managers or brokers that provide a general approach to something, if anyone is aware, if there's some planning or documentation there.
+And the other question would be, basically, if there's any plans, right, regarding, semantic conventions for queue managers or brokers that provide a general approach to something, if anyone is aware, if there's some planning or documentation there.
 **Jim Porell** 06:44 No, I don't know.
-**Angelika Heinrich** 06:48 I think Morgan would have maybe been a good…
-contact for us to find out if there is a… an active messaging SIG.
-I had a look, and the last…
-meeting with the messaging SIG seems to have been scheduled in around May, but there's no updates on their meeting notes since February.
+**Angelika Heinrich** 06:48 I think Morgan would have maybe been a good… contact for us to find out if there is a… an active messaging SIG.
+I had a look, and the last… meeting with the messaging SIG seems to have been scheduled in around May, but there's no updates on their meeting notes since February.
 So, I couldn't really glean from that.
-Whether it's still active, or if…
-Maybe it's been merged into a different SIG.
-Not sure. So… Maybe,
-we can message, Morgan in the Slack to see if he's got any advice on that piece.
-I know for the pull requests so far, at least the resource attributes that we've spoken about, I don't believe…
-Which you guys can correct me if…
-If we discussed any messaging resources. I know TPS was one.
-But I don't believe we've discussed… Any,
-Attributes or, you know, naming standards around messaging it.
+Whether it's still active, or if… Maybe it's been merged into a different SIG.
+Not sure. So… Maybe, we can message, Morgan in the Slack to see if he's got any advice on that piece.
+I know for the pull requests so far, at least the resource attributes that we've spoken about, I don't believe… Which you guys can correct me if… If we discussed any messaging resources. I know TPS was one.
+But I don't believe we've discussed… Any, Attributes or, you know, naming standards around messaging it.
 **Jim Porell** 08:01 It's been basically the base operating system and hardware.
-you know, we didn't do anything with respect to any of the subsystem managers, like KICS, IMS, and DB2. A lot of the…
-like with MQ in particular, a lot of it will be common with distributed queue.
-things like unique display things I have to consider, you know. I'm a queue manager, so…
-But I don't think it's gonna be a huge difference.
+you know, we didn't do anything with respect to any of the subsystem managers, like KICS, IMS, and DB2. A lot of the… like with MQ in particular, a lot of it will be common with distributed queue.
+things like unique display things I have to consider, you know. I'm a queue manager, so… But I don't think it's gonna be a huge difference.
 **Angelika Heinrich** 08:36 Okay.
 **Jim Porell** 08:44 Wait, Morgan, you look as cold as I feel on your, on your…
 **Morgan McLean** 08:49 Yeah, it's an old photo.
 I'm sorry for joining late, did you guys already get started, or are we just starting now?
-**Greg Shriver** 08:59 Just getting started there, Morgan. And actually, we did have a question for you. The question was…
-What… what… and do we have a messaging SIG?
+**Greg Shriver** 08:59 Just getting started there, Morgan. And actually, we did have a question for you. The question was… What… what… and do we have a messaging SIG?
 A SIG that covers, like, the… like, RabbitMQ.
 **Morgan McLean** 09:18 Yes, I believe we do, actually.
 **Greg Shriver** 09:21 Okay.
@@ -86,15 +67,12 @@ I think last year they finished messaging and HTTP and possibly databases.
 So, I can put us in touch with, like, Trask. Trask Delnacher's probably the right person to contact and get connected. What do we have planned? Like, obviously we're asking this because… I'm being asked this because we have some things we need to add, like, what are we looking to do?
 **Kai Kirsch** 10:24 So, this is my basic question from my side. We're looking currently at messaging systems.
 And I've looked at the semantic conventions that are there already, but it looks like they are more focused on the producer and consumer side, and not so much on the actual brokers or queue managers.
-So, I was wondering whether SIG, if a SIG exists, already is working on that, and also whether they are already working on the… a generalization, approach, a general approach, right? Because I've seen there are
-changes there, to make the metrics more… more general, I would say. For example, right, we have, like, the reddish… reddish cash-hit ratio, and this is moving to cash-hit ratio, so I was wondering…
+So, I was wondering whether SIG, if a SIG exists, already is working on that, and also whether they are already working on the… a generalization, approach, a general approach, right? Because I've seen there are changes there, to make the metrics more… more general, I would say. For example, right, we have, like, the reddish… reddish cash-hit ratio, and this is moving to cash-hit ratio, so I was wondering…
 **Morgan McLean** 11:09 Let me message Trask and find out.
 I'll do it on the mainframes channel, so that other people can see it and can reply.
 **Kai Kirsch** 11:21 Perfect, thank you.
 **Greg Shriver** 11:21 Thank you.
-And I think from a, from a, from a, like, a planning and direction standpoint, I mean, I know…
-we had discussed on this SIG before about, you know, the desire to move forward with
-metrics, semantic conventions, including MQ. We just haven't had a whole lot of traction with that yet.
+And I think from a, from a, from a, like, a planning and direction standpoint, I mean, I know… we had discussed on this SIG before about, you know, the desire to move forward with metrics, semantic conventions, including MQ. We just haven't had a whole lot of traction with that yet.
 **Morgan McLean** 11:51 Yep, and I think for that one, like, Rudiger was working with Antoine and Trask to drive that forward. And when I chatted with Antoine, I mean, I work with him, so I chat with him a lot, but, like, we had a conversation about this two weeks ago at KubeCon. He mentioned something was coming up, but I haven't checked in with him on this specific topic.
 But I think… I think something's in motion for that.
 Let me… let me paint Trask here for the messaging one, and then… then we can sort of expand the conversation a bit.
@@ -107,16 +85,12 @@ Let me… let me paint Trask here for the messaging one, and then… then we can
 **Angelika Heinrich** 12:42 This is still waiting.
 **Greg Shriver** 12:44 TPS is still waiting, right? But…
 **Angelika Heinrich** 12:47 But we haven't talked about any messaging or anything like that yet, or any metrics, right, up until now.
-**Morgan McLean** 12:53 And for… for Trask, the question then is, like, who should you… like, we want… we have some…
-We have some early proposals for additions we want to make to messaging that we want to run past the people working on it to get their feedback.
+**Morgan McLean** 12:53 And for… for Trask, the question then is, like, who should you… like, we want… we have some… We have some early proposals for additions we want to make to messaging that we want to run past the people working on it to get their feedback.
 Great.
 **Greg Shriver** 13:05 Yeah.
-And one of the other discussions, just for everybody who's new and hasn't been on all the meetings,
-to try and attack all of the metrics across all these different little subdomains all at once is just too big. It's almost an intractable problem, and…
-And what we discussed in prior meetings was that it would be probably better if we could split it up and have smaller PRs.
+And one of the other discussions, just for everybody who's new and hasn't been on all the meetings, to try and attack all of the metrics across all these different little subdomains all at once is just too big. It's almost an intractable problem, and… And what we discussed in prior meetings was that it would be probably better if we could split it up and have smaller PRs.
 You know, so that a PR is very focused on, hey, we need to… we need to have… we have the need to… to have, you know, to have, certain metrics for MQ, for example, and these are the ones that we're proposing, what do you think?
-Because that will spark, you know, that would spark whatever additional, you know, thoughts need to happen, hopefully. But anyway, I'm not articulating myself well, but, I mean, if we have a focused PR that's specifically for the 3, 4, 5, 6,
-MQ metrics we want to add, that's at least a stake in the ground.
+Because that will spark, you know, that would spark whatever additional, you know, thoughts need to happen, hopefully. But anyway, I'm not articulating myself well, but, I mean, if we have a focused PR that's specifically for the 3, 4, 5, 6, MQ metrics we want to add, that's at least a stake in the ground.
 And it would probably be easier to make progress on something that has a smaller number of proposed metric names.
 **Morgan McLean** 14:27 Yep.
 **Angelika Heinrich** 14:27 Correct.
@@ -127,20 +101,14 @@ I'm just looking for the right thing to go.
 Sent.
 **Greg Shriver** 15:11 Very cool.
 Thank you so much.
-And one other thing, just another…
-I know, Angie, I know you and I have talked about this, but this call… is really late.
+And one other thing, just another… I know, Angie, I know you and I have talked about this, but this call… is really late.
 for everyone in EMEA.
 Including Rutica.
 **Morgan McLean** 15:32 Yes.
-**Greg Shriver** 15:33 I, I… Should we consider…
-maybe either an alternate… not an alternate, maybe an alternate time, or a duplicate, I don't know, maybe we… I don't know if we have enough…
-enough… enough volume to have, you know, multiple calls and multiple geos, but…
-What are your thoughts there, Morgan, on.
+**Greg Shriver** 15:33 I, I… Should we consider… maybe either an alternate… not an alternate, maybe an alternate time, or a duplicate, I don't know, maybe we… I don't know if we have enough… enough… enough volume to have, you know, multiple calls and multiple geos, but… What are your thoughts there, Morgan, on.
 **Morgan McLean** 15:56 I would suggest we stick to one, even if we move the time around. Okay. The project is small enough that I worry that fragmenting is just gonna kill all progress.
-And Ruger in particular is such a… is doing so much heavy lifting that I think it's important for us to find a time to meet with them. If the time for this is challenging, I mean, we have full flexibility to move it to any time that people want, so…
-You know, obviously, schedules permitting, but if people want to move this earlier, that's not a problem.
-**Greg Shriver** 16:26 I'm open to that. I'm sure…
-I expect that Rudigo would be open to that.
+And Ruger in particular is such a… is doing so much heavy lifting that I think it's important for us to find a time to meet with them. If the time for this is challenging, I mean, we have full flexibility to move it to any time that people want, so… You know, obviously, schedules permitting, but if people want to move this earlier, that's not a problem.
+**Greg Shriver** 16:26 I'm open to that. I'm sure… I expect that Rudigo would be open to that.
 **Morgan McLean** 16:30 Yeah.
 And Angelica, I imagine that would be…
 **Angelika Heinrich** 16:34 Yeah, and there's… yeah, Kai as well. Okay. And there's a… there were a couple of other folks I'd spoken to on the side of the ocean who were interested in joining.

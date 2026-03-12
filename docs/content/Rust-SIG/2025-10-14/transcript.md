@@ -10,8 +10,7 @@ Zoom Recording URL: https://zoom.us/rec/share/vfwdEgr5jx2sS1rlZZ7pljiuaRqnkP5S1g
 **Nikhil Bhatia** 06:12 Hi, Anson. Actually, I was, waiting for Lalit to join the meeting, which I wanted to talk to him.
 **BA Björn Antonsson** 06:22 Yeah.
 I have no idea if anybody's joining. Usually.
-yeah, roughly 5 minutes late because of something else, around 5 minutes late, but no, it's, it's, let's just check in the Slack if, if,
-Huh.
+yeah, roughly 5 minutes late because of something else, around 5 minutes late, but no, it's, it's, let's just check in the Slack if, if, Huh.
 **Nikhil Bhatia** 06:41 Yep.
 **BA Björn Antonsson** 08:27 I'm sorry. Doesn't look like anybody's gonna join.
 Got no response in the Slack.

@@ -31,11 +31,9 @@ Eisner, so nicht schnehr, so ein Schneider, jetzt schon eis geworten ist.
 So… of 3A arch-marted.
 gender olle.
 noch omen.
-Relax format accepted for hotel resource attributes, environment variables…
-Was resolved by updating this part of the spec.
+Relax format accepted for hotel resource attributes, environment variables… Was resolved by updating this part of the spec.
 Is this resolved, or… I don't know.
-**Juraci Paixão Kröhling** 15:55 I hate…
-So.
+**Juraci Paixão Kröhling** 15:55 I hate… So.
 **Severin Neumann** 16:00 847… I mean, this is a really old thing, right? I just recognized, like, so…
 **Juraci Paixão Kröhling** 16:10 I think we can close it, and if there is anything still pending for this, Then we can reopen.
 **Severin Neumann** 16:21 Causing this issue, because it's resolved, or…
@@ -52,8 +50,7 @@ I would really just… Ask the TC, let's do it.
 **Juraci Paixão Kröhling** 18:56 Is this… spec… Should it be the collector?
 Or is it about the… oh, is it about the OTLP?
 spec. No, it's not about the LTLP spec, it's really OpenTelemetry Collector.
-**Severin Neumann** 19:15 It's about… Yeah, but the idea is, like, that the exporter Respect something that… The collector or any other
-backend, sent back to say, like, shut up, right? That's kind of like… .
+**Severin Neumann** 19:15 It's about… Yeah, but the idea is, like, that the exporter Respect something that… The collector or any other backend, sent back to say, like, shut up, right? That's kind of like… .
 **Juraci Paixão Kröhling** 19:37 But is it… Should it be part of the OTLP stack?
 Or should it be part of the collector itself?
 Oh, come on.
@@ -63,17 +60,13 @@ Oh, come on.
 Oh, yeah.
 **Juraci Paixão Kröhling** 19:55 Got it, okay, so that's why, okay, it came from the collector, cool.
 **Severin Neumann** 19:58 Oh, yeah.
-**Juraci Paixão Kröhling** 20:00 Okay, cool. So, that means, this is then…
-it came from… from Pablo himself, so… I think.
+**Juraci Paixão Kröhling** 20:00 Okay, cool. So, that means, this is then… it came from… from Pablo himself, so… I think.
 **Severin Neumann** 20:10 No, Pablo moved it, but, like, This is fun.
 **Juraci Paixão Kröhling** 20:14 Yeah, so I think… but I think it should be to see inbox, right? I mean… Hmm.
-somebody… I mean, if the collector is asking to have this change as part of the spec, then,
-the owner of the OTL PSPAC and the TC shouldn't be taking a look at this.
-**Severin Neumann** 20:39 Okay, so… Let me do that, TC inbox…
-And you provide guidance.
+somebody… I mean, if the collector is asking to have this change as part of the spec, then, the owner of the OTL PSPAC and the TC shouldn't be taking a look at this.
+**Severin Neumann** 20:39 Okay, so… Let me do that, TC inbox… And you provide guidance.
 If this is something worth discussing.
-Or… out of… scope, something like that. Because, like, I don't want…
-the TC to say, like, yes or no, it's… I think it's more around, like, no, or let's look at it, right?
+Or… out of… scope, something like that. Because, like, I don't want… the TC to say, like, yes or no, it's… I think it's more around, like, no, or let's look at it, right?
 That's at least…
 **Juraci Paixão Kröhling** 21:22 It would have been…
 **Severin Neumann** 21:25 I mean, it feels like, still, there's still a little bit of a debate going on, right? So, and the TC could say, like, hey, we are not doing this at all because reasons, or they say, like, okay, let's look into it, but not necessarily.
@@ -87,19 +80,15 @@ Right, so community feedback would be the right one, then.
 Does this make more sense?
 **Juraci Paixão Kröhling** 22:28 Yeah.
 **Severin Neumann** 22:38 Okay… Support max batch size for push metrics exporters.
-Okay, it looks like… I would label it as community feedback, so it's, like, just an ongoing… thing…
-I'll leave it like that.
+Okay, it looks like… I would label it as community feedback, so it's, like, just an ongoing… thing… I'll leave it like that.
 metric links.
 Metric.
 **Juraci Paixão Kröhling** 24:15 This looks actually very interesting.
-**Severin Neumann** 24:18 I mean, my… I mean, I agree with that, like, I… it's interesting, because, like, I would have had a use case for this last week. But I wonder if this is really something that should be emitted
-And if it not… if it would not be enough just to have it in the spec.
-Okay, but if you emit metrics that are in the semconf… if you're emitting metrics that are not specified, how would someone know, right? So…
-Yeah, I don't know. I think, I mean, as you said, like, it's interesting. I will put it on community feedback.
+**Severin Neumann** 24:18 I mean, my… I mean, I agree with that, like, I… it's interesting, because, like, I would have had a use case for this last week. But I wonder if this is really something that should be emitted And if it not… if it would not be enough just to have it in the spec.
+Okay, but if you emit metrics that are in the semconf… if you're emitting metrics that are not specified, how would someone know, right? So… Yeah, I don't know. I think, I mean, as you said, like, it's interesting. I will put it on community feedback.
 Our oldest is now 2 weeks.
 Okay.
-I don't know, should we comment anything on it, or…
-Just leave it lying down for the time being.
+I don't know, should we comment anything on it, or… Just leave it lying down for the time being.
 **Juraci Paixão Kröhling** 25:18 It definitely needs more community feedback.
 **Severin Neumann** 25:21 Wow.
 **Juraci Paixão Kröhling** 25:22 This is a good idea, this is only the.
@@ -110,10 +99,8 @@ the community… Thank you.
 Have you… brought this to the SPAC meeting.
 Something like that?
 **Juraci Paixão Kröhling** 25:54 Yep.
-**Severin Neumann** 26:06 This is… stabilize something…
-It's David.
-Is this something that GC needs, like, to make something stable? Is there, like, Do we have, like, a…
-workflow for.
+**Severin Neumann** 26:06 This is… stabilize something… It's David.
+Is this something that GC needs, like, to make something stable? Is there, like, Do we have, like, a… workflow for.
 **Juraci Paixão Kröhling** 26:31 I mean, What is the state of this OTAP, OTAP4430?
 **Severin Neumann** 26:42 It's merged, right?
 **Juraci Paixão Kröhling** 26:44 Yeah, so I think…
@@ -127,18 +114,15 @@ Do we need more languages to implement it, or do we need…
 But I think the point here is to do it for the first two ones.
 **Severin Neumann** 27:20 Yeah. Isn't it?
 **Juraci Paixão Kröhling** 27:23 stabilize, I, I, okay, I don't know.
-**Severin Neumann** 27:27 The question is, like, how do we triage this, right? It's just like…
-It's just like… Do you see inbox? Is it… needs info, is it… .
+**Severin Neumann** 27:27 The question is, like, how do we triage this, right? It's just like… It's just like… Do you see inbox? Is it… needs info, is it… .
 **Juraci Paixão Kröhling** 27:37 You know, I think it is… It's ready, yeah.
 **Severin Neumann** 27:41 So do I say accepted, ready, right? Or…
-**Juraci Paixão Kröhling** 27:43 it is accepted ready, and then we can say the approval for the task itself has been done by OTAPS and other issues before, and this is just the implementation of the
-Of the… of the tasks.
+**Juraci Paixão Kröhling** 27:43 it is accepted ready, and then we can say the approval for the task itself has been done by OTAPS and other issues before, and this is just the implementation of the Of the… of the tasks.
 **Severin Neumann** 27:55 Okay, so, so… .
 **Juraci Paixão Kröhling** 28:00 triaging is…
 **Severin Neumann** 28:01 That's accepted.
 Raddy, since… what did you say, like…
-**Juraci Paixão Kröhling** 28:08 triaging as, since, the, the… oh, come on, let me think again. Triaging has accept, accepted already since, yeah, since the, the, the main, since the, the, the controversial part, or the, the, the main task has been accepted already as part of the OTAP430,
-And, 4824.
+**Juraci Paixão Kröhling** 28:08 triaging as, since, the, the… oh, come on, let me think again. Triaging has accept, accepted already since, yeah, since the, the, the main, since the, the, the controversial part, or the, the, the main task has been accepted already as part of the OTAP430, And, 4824.
 I think perhaps instead of main task is main change.
 Since the main change has been accepted, yeah.
 **Severin Neumann** 28:42 Something like that.
@@ -155,8 +139,7 @@ Let's maybe leave it like that, and if it's.
 Clarify instrument concuracy requirements.
 Oh.
 There's some work already done.
-The consideration of a major…
-That's the latest thing.
+The consideration of a major… That's the latest thing.
 I'm not opposed to this as well.
 **Juraci Paixão Kröhling** 30:53 So I think there has been enough community feedback, enough TC people, Giving their opinions.
 **Severin Neumann** 31:19 It's a massive, like, 44 reminding items. I think I haven't seen a debate like that in a long time.
@@ -164,8 +147,7 @@ But I feel like it's still… Being debated, right?
 Oh, I think we have consensus.
 **Juraci Paixão Kröhling** 31:52 Yeah.
 **Severin Neumann** 31:53 Okay.
-Then I do it as triage…
-Accept that, what is it? Ready? Need sponsor?
+Then I do it as triage… Accept that, what is it? Ready? Need sponsor?
 **Juraci Paixão Kröhling** 32:12 Who's the person who opened?
 **Severin Neumann** 32:14 kick it on, I think.
 **Juraci Paixão Kröhling** 32:16 I think he's the sponsor, then.
@@ -176,8 +158,7 @@ Accept that, what is it? Ready? Need sponsor?
 **Severin Neumann** 32:34 ERASI and ITACTSS.
 Exempt.
 Assumed… taken out… Being with us.
-sponsor… Just during… triage,
-If this is not… Correct place.
+sponsor… Just during… triage, If this is not… Correct place.
 Change.
 National… accordingly. Something like that, or do you want to say something… Additional.
 **Juraci Paixão Kröhling** 33:11 No, I think it's fine.
@@ -192,8 +173,7 @@ Let's see.
 **Juraci Paixão Kröhling** 34:08 Yes.
 **Severin Neumann** 34:09 Back to it later.
 **Juraci Paixão Kröhling** 34:10 So…
-**Severin Neumann** 34:12 OpenTelemetry Equivalent API Examples…
-This sounds like a sick issue.
+**Severin Neumann** 34:12 OpenTelemetry Equivalent API Examples… This sounds like a sick issue.
 Or… Isn't it like Prometheus Brooklyn Group?
 **Juraci Paixão Kröhling** 34:47 Yep.
 **Severin Neumann** 34:50 I put it on their board.
@@ -203,12 +183,10 @@ Okay…
 Oh, there's a few.
 Disabled… Boolean flags are inconsistent with other parts of the OpenTelemetry ecosystem.
 Oh, this is blocked. Okay.
-And I say it's still blocked, right? So I just removed the…
-There's a few that probably just need us to bump them up.
+And I say it's still blocked, right? So I just removed the… There's a few that probably just need us to bump them up.
 Expand status necessarily restrictive.
 Same here, like, it's stalled.
-So…
-empty string attributes and OTLP. Probably the same thing.
+So… empty string attributes and OTLP. Probably the same thing.
 No. Awesome.
 That's neat info then, right?
 We have, like, yeah.
@@ -218,13 +196,10 @@ Share, like, some old dashboards.
 then I leave it on needs info, right? So, yeah.
 Yeah.
 One more to go.
-**Juraci Paixão Kröhling** 39:50 It… so, it is true that the triple is required to be unique, but it doesn't imply it's sufficient to uniquely identify the resource, and consequently, it doesn't imply that all resource sets are… no,
-this… so, service instance ID, Should be enough to uniquely identify the resource.
+**Juraci Paixão Kröhling** 39:50 It… so, it is true that the triple is required to be unique, but it doesn't imply it's sufficient to uniquely identify the resource, and consequently, it doesn't imply that all resource sets are… no, this… so, service instance ID, Should be enough to uniquely identify the resource.
 Bye.
 This is the point of the service instance ID.
-**Severin Neumann** 40:14 Okay, is this something we can close? Like, there's an ongoing… Bait…
-Because there's two differences, now I appreciate that the solution of the problem is already in the way, and the best might…
-It'll be just a weight.
+**Severin Neumann** 40:14 Okay, is this something we can close? Like, there's an ongoing… Bait… Because there's two differences, now I appreciate that the solution of the problem is already in the way, and the best might… It'll be just a weight.
 **Juraci Paixão Kröhling** 40:37 Yeah.
 **Severin Neumann** 40:38 Okay.
 What's the solution?
@@ -233,9 +208,7 @@ Winter.
 **Severin Neumann** 40:54 entities, maybe.
 **Juraci Paixão Kröhling** 41:30 Yeah.
 Yeah.
-I mean…
-So, both ARVA and Artura are part of Prometheus and OpenTelemetry, and if they're saying, like, you know,
-There's nothing to do for now. I think we can… we can close it.
+I mean… So, both ARVA and Artura are part of Prometheus and OpenTelemetry, and if they're saying, like, you know, There's nothing to do for now. I think we can… we can close it.
 **Severin Neumann** 41:49 Okay.
 **Juraci Paixão Kröhling** 41:51 Perhaps you can tag Arva and Artur and say, we are closing this one, but if you think there is still something to be done here, we can reopen.
 **Severin Neumann** 42:00 We are housing this issue now.
@@ -249,14 +222,11 @@ be, but… Yeah, I just leave it like that, like, I don't know.
 Hope.
 That's everything.
 So, if you like, you can still go into the community repo.
-Let's see if there's anything… Pressing… Dependency, new membership…
-I support, I support, I support, so someone can send out the invite.
+Let's see if there's anything… Pressing… Dependency, new membership… I support, I support, I support, so someone can send out the invite.
 Sick, sick. Maybe something we should talk about during the GC call.
-Find policy around acceptable contribution guidelines…
-Oh yeah, we have talked about that.
+Find policy around acceptable contribution guidelines… Oh yeah, we have talked about that.
 I think, do we have… Wallet contributor guide.
-Samconf, instrumentation status, voting results…
-Yeah, your livestream, like, did… did anybody come… go back to you on that, or…
+Samconf, instrumentation status, voting results… Yeah, your livestream, like, did… did anybody come… go back to you on that, or…
 **Juraci Paixão Kröhling** 44:02 Oh, I'm still waiting for that.
 I had already mined at Alamte Drops last Friday.
 But, the official one within OTEL, I think there might… there was some comments on the thread.
@@ -265,25 +235,19 @@ But nothing here.
 **Juraci Paixão Kröhling** 44:26 I mean… Sometimes I get frustrated with the red tape.
 Bye.
 **Severin Neumann** 44:33 Yeah, I mean, what would you need? At the end, you would need access to YouTube, right? So…
-**Juraci Paixão Kröhling** 44:39 Or not even that, I mean, if people don't want to give me access to YouTube, that's fine, just,
-just open a session, and I join with Josh. If people don't want me even being the moderator, that's fine. I mean, just have Josh there, please.
+**Juraci Paixão Kröhling** 44:39 Or not even that, I mean, if people don't want to give me access to YouTube, that's fine, just, just open a session, and I join with Josh. If people don't want me even being the moderator, that's fine. I mean, just have Josh there, please.
 **Severin Neumann** 44:54 Yeah, yeah, yeah.
 **Juraci Paixão Kröhling** 44:55 to talk.
 **Severin Neumann** 45:00 Okay, let's… let's take this offline. I don't know as well, like, what to do with that, but, like, it's pending now for 3 weeks, so…
 **Juraci Paixão Kröhling** 45:09 If I had access to YouTube, and if people were okay with me just doing it, I would just have done it already.
-But, there needs to be a special logo, a special intro, special things, and I… I'm not…
-That's too much work for me.
+But, there needs to be a special logo, a special intro, special things, and I… I'm not… That's too much work for me.
 I have so many things on my plate right now.
-**Severin Neumann** 45:33 Yeah, I mean, and that's like…
-Yeah, I don't know, let's… I don't know, I can, I can right now also not really answer your question, so…
-Maybe we need to chase a few people to see, like, how we can make it happen.
+**Severin Neumann** 45:33 Yeah, I mean, and that's like… Yeah, I don't know, let's… I don't know, I can, I can right now also not really answer your question, so… Maybe we need to chase a few people to see, like, how we can make it happen.
 Yeah.
 Anything else that stands out?
-Yeah, there's another one, like…
-Yeah, I will… I will bring both of them to… the right people.
+Yeah, there's another one, like… Yeah, I will… I will bring both of them to… the right people.
 No, not really something that stands out right now.
-Have you seen my message around, like, the new contributors channel? I'm not sure if we should…
-Take a look into this also real quick.
+Have you seen my message around, like, the new contributors channel? I'm not sure if we should… Take a look into this also real quick.
 Goodness.
 **Juraci Paixão Kröhling** 46:49 Let's see… I have not seen it, but I can look into… oh. Oh, now it's okay, yeah.
 **Severin Neumann** 46:59 Because there's, like, a bunch of things that are open since, like, a month now.
@@ -299,8 +263,7 @@ Before.
 **Severin Neumann** 47:30 There's an issue for that, let me see if I can find it.
 And a few people volunteered to monitor it.
 So I maybe want to contact them.
-So we had somewhere a discussion, and a few people said, like, yeah, if we run such a channel, we…
-We are going to… handle that, but I cannot find it anymore.
+So we had somewhere a discussion, and a few people said, like, yeah, if we run such a channel, we… We are going to… handle that, but I cannot find it anymore.
 I thought it was a community issue.
 Dang.
 Oh yeah, there it is.
@@ -311,19 +274,14 @@ I see it now.
 **Severin Neumann** 50:09 I mean, I can just tag those people and say, like, hey, can you take a look at the outstanding.
 **Juraci Paixão Kröhling** 50:16 Yeah.
 Yeah, yeah, I was not aware of that one.
-**Severin Neumann** 50:24 Because there was, like, when… I remember that debate, and I said, like, hey, I have enough bandwidth for that, but, like, if you… if you want to do that, then, like, we… we need people to…
-Monitor this channel, so I will tag them and say, like, hey, can you…
-Can you take a look?
+**Severin Neumann** 50:24 Because there was, like, when… I remember that debate, and I said, like, hey, I have enough bandwidth for that, but, like, if you… if you want to do that, then, like, we… we need people to… Monitor this channel, so I will tag them and say, like, hey, can you… Can you take a look?
 **Juraci Paixão Kröhling** 50:43 So, can I suggest something here?
 **Severin Neumann** 50:46 Yeah.
 **Juraci Paixão Kröhling** 50:48 add the list of people in the, in the channel, like, in the channel description, or in the channel, like, as a pin, or whatever.
 And then… what we can do… what I can try to do is, with you, perhaps.
 Whenever there is somebody.
 I can go there, and I can ping the next one on the list. Yeah. Like, we can… we can rotate.
-**Severin Neumann** 51:11 Let me, first of all… So it's Gregor, it's Pablo… Damien… Who else? Antoine…
-40…
-Crystal announcement, Gianlotti…
-Okay, I think that's the best we can do right now, and then maybe, from time to time, remind them.
+**Severin Neumann** 51:11 Let me, first of all… So it's Gregor, it's Pablo… Damien… Who else? Antoine… 40… Crystal announcement, Gianlotti… Okay, I think that's the best we can do right now, and then maybe, from time to time, remind them.
 **Juraci Paixão Kröhling** 52:26 Yeah.
 **Severin Neumann** 52:27 about it.
 What day signed up for.

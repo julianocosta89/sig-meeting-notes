@@ -19,8 +19,7 @@ Did he have a good vacation?
 But Burke has me back already, so that's like…
 **Alolita Sharma** 01:00 I know, I know.
 No, we just, Trask, hopefully you had a nice long weekend.
-**Trask Stalnaker** 01:07 Yes, I did. Well…
-I actually got my, shingles, my first shingles vaccine shot on Saturday morning, so I was actually, pretty out of it on Sunday. Yeah.
+**Trask Stalnaker** 01:07 Yes, I did. Well… I actually got my, shingles, my first shingles vaccine shot on Saturday morning, so I was actually, pretty out of it on Sunday. Yeah.
 **Alolita Sharma** 01:26 Oh my gosh, it was… hopefully it wasn't too… too strong.
 **Trask Stalnaker** 01:31 Necessary, but yes.
 **Alolita Sharma** 01:36 Good to… good to be up-to-date on all your vaccines before this.
@@ -40,8 +39,7 @@ Only getting better.
 **Alolita Sharma** 02:36 Only.
 **Ted Young** 02:40 What I mean…
 **Alolita Sharma** 02:43 Jurassi, by the way, I have to compliment you on your, article on, you know, which you had written a while back on Medium.
-Which a couple of my engineers were reading through on,
-how to build custom processors for collectors, and I think that's the only documentation, literally, that exists on hotel custom processors.
+Which a couple of my engineers were reading through on, how to build custom processors for collectors, and I think that's the only documentation, literally, that exists on hotel custom processors.
 **Juraci Paixão Kröhling** 03:10 For custom processors, that might be true, yeah. I converted a few of…
 **Alolita Sharma** 03:15 It's really good. It's a very good article, so thanks.
 **Juraci Paixão Kröhling** 03:19 Thank you. Thank you. That's kind of old, so I'm surprised that they found it useful. But thank you. We converted a few of them to OpenTelemetry's website. I think Pablo just linked a couple of them.
@@ -100,8 +98,7 @@ I guess what we talked last time was, me or Dan can unofficially help in setting
 **Alolita Sharma** 06:59 To Morgan, Trask, and Pablo.
 **Trask Stalnaker** 07:03 Yeah… Awesome.
 Yeah, just copied in from our… previous notes.
-**Dan Gomez Blanco** 07:12 Let me share… I'll share some, like, the…
-let me see, the project from… so I created a project board for the last one, and it should have all the… all the different issues in it.
+**Dan Gomez Blanco** 07:12 Let me share… I'll share some, like, the… let me see, the project from… so I created a project board for the last one, and it should have all the… all the different issues in it.
 Mmm.
 Yeah, and then we can take it from there.
 **Alolita Sharma** 07:27 Cool.
@@ -165,12 +162,9 @@ Part…
 **Pablo Baeyens** 11:31 Sorry, there's… I can share my screen, but I need to move my tabs around, so if anybody else is ready…
 **Alolita Sharma** 11:43 You need the link.
 **Pablo Baeyens** 11:59 Good.
-So… Yeah, I don't know, like…
-Mmm…
-I mean, looking at this, the only one, maybe, is there anything about degradivation that we should talk about?
+So… Yeah, I don't know, like… Mmm… I mean, looking at this, the only one, maybe, is there anything about degradivation that we should talk about?
 I saw the… the TOC review, PR was approved, but I don't know if there's anything.
-**Austin Parker** 12:28 Yeah, so…
-Where are they at? I think they've been doing adopter interviews still. I think they're up to 3 or 4 that are done?
+**Austin Parker** 12:28 Yeah, so… Where are they at? I think they've been doing adopter interviews still. I think they're up to 3 or 4 that are done?
 **Alolita Sharma** 12:42 Yeah, they're doing adopter interviews still. That's my understanding from the TOC.
 And the tab is helping also there, so…
 **Austin Parker** 12:52 Yeah, so…
@@ -180,8 +174,7 @@ I assume… I think… so we're just in a holding period, as far as I can tell. 
 **Austin Parker** 13:05 And they finish their report.
 And then there's a public comment period.
 And then a vote.
-**Pablo Baeyens** 13:14 Okay, is the report just…
-This… is this one of the reports?
+**Pablo Baeyens** 13:14 Okay, is the report just… This… is this one of the reports?
 **Austin Parker** 13:21 I think the governance review is one of them. That's a part of the report.
 I think they basically do a recommend… there's basically a recommendation.
 If you look at TOC… Let me pull up the repo, I'll try to find an example.
@@ -190,17 +183,14 @@ If you look at TOC… Let me pull up the repo, I'll try to find an example.
 **Pablo Baeyens** 13:59 Any project that's going to be… In native, maybe?
 Okay, native?
 **Austin Parker** 14:04 There's like a… Public Institute for the PR News, draft TOC evaluation.
-Okay, so if you look…
-Ain't… Excuse me.
+Okay, so if you look… Ain't… Excuse me.
 I think it's a PR? Yeah, so it's a PR. If you look at, like, if you go to pull requests…
 **Pablo Baeyens** 14:34 And then, like, there should be a Knative one? Yeah.
 **Austin Parker** 14:38 And then you look at the files changed.
 **Pablo Baeyens** 14:47 Okay, and this is the doctor interview sent.
-**Austin Parker** 14:50 Yeah…
-So this is all what gets published.
+**Austin Parker** 14:50 Yeah… So this is all what gets published.
 I think once this is done, then it goes into public comment, and then… Voting?
-I really hope we're not gonna miss the…
-Okay, so… Generically irritated if we miss the…
+I really hope we're not gonna miss the… Okay, so… Generically irritated if we miss the…
 **Alolita Sharma** 15:28 Yeah, that's absolutely…
 **Austin Parker** 15:31 Atlanta.
 **Pablo Baeyens** 15:32 Is there anything we can do? I think we just have to wait, so…
@@ -234,18 +224,13 @@ Worth waiting.
 **Dan Gomez Blanco** 17:08 One thing that I would say related to that is, if you look at the… just post to the link there for the Old Tail Roadmap.
 M… Sorry, not in there.
 **Pablo Baeyens** 17:19 Yeah, on the chat, yeah.
-**Dan Gomez Blanco** 17:21 In the chat, yeah. So, this is now… yeah, this is looking good. The only thing that we're missing is those four…
-Projects, they're at the… at the bottom that don't have dates on the… You know,
-As in, like, timelines.
+**Dan Gomez Blanco** 17:21 In the chat, yeah. So, this is now… yeah, this is looking good. The only thing that we're missing is those four… Projects, they're at the… at the bottom that don't have dates on the… You know, As in, like, timelines.
 If we could. I think I've not reached out to… to these SIGs. I reached out to all the others, apart from those.
 **Pablo Baeyens** 17:51 I can handle the system semantical mentions one.
-**Dan Gomez Blanco** 17:55 But yeah, everything's working now as I'm… it's… Automatically synced from the…
-from the individual project boards. So as long as they update the dates, the… so, like, target dates in the project board, it should just come up in here.
+**Dan Gomez Blanco** 17:55 But yeah, everything's working now as I'm… it's… Automatically synced from the… from the individual project boards. So as long as they update the dates, the… so, like, target dates in the project board, it should just come up in here.
 **Pablo Baeyens** 18:12 Okay.
-Okay, anything else from any other issue in…
-To do or in progress that we should look at.
-**Severin Neumann** 18:27 Maybe assign the Create Slack channel to me and you, Pablo? I think since this is… Related to…
-contributor experience.
+Okay, anything else from any other issue in… To do or in progress that we should look at.
+**Severin Neumann** 18:27 Maybe assign the Create Slack channel to me and you, Pablo? I think since this is… Related to… contributor experience.
 At least you and I should have an eye on it.
 **Pablo Baeyens** 18:42 Okay, I'll keep it in to do on one number.
 **Severin Neumann** 18:45 Yeah, I would give it in to-do, but…
@@ -253,15 +238,12 @@ At least you and I should have an eye on it.
 **Severin Neumann** 18:49 Yeah.
 **Dan Gomez Blanco** 18:50 Just also a quick update on the Hotel.net contrib.
 license… I've not posted it there, but I reached out to Daniel.
-crook, and yeah, apparently this is waiting approval from the legal committee, but,
-Yeah, so, it should be… Approved soon.
+crook, and yeah, apparently this is waiting approval from the legal committee, but, Yeah, so, it should be… Approved soon.
 There's, exception.
 There's a license exception.
 **Pablo Baeyens** 19:17 Okay.
 Yep, I think… We can move into the private topic, then.
-I'll mention something I just thought about, which is, we can now…
-I don't know if that's important for the project board, probably not, but we can now mark things as blocked by,
-Or blocking other issues.
+I'll mention something I just thought about, which is, we can now… I don't know if that's important for the project board, probably not, but we can now mark things as blocked by, Or blocking other issues.
 So long as they are within the OpenTradio, so that's…
 **Ted Young** 19:45 Nice.
 **Pablo Baeyens** 19:46 pool, at least.
