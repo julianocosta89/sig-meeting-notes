@@ -12,7 +12,6 @@ Required env vars:
 
 from __future__ import annotations
 
-import base64
 import os
 import subprocess
 import sys
@@ -35,6 +34,7 @@ if TYPE_CHECKING:
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
+LOGO_URL = "https://raw.githubusercontent.com/julianocosta89/sig-meeting-notes/refs/heads/main/docs/OTelMinutes-logo.png"
 
 
 def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -195,14 +195,6 @@ def build_deep_link(slug: str, meeting_date: str) -> str:
     return f"{SITE_BASE_URL}?sig={slug}&date={meeting_date}"
 
 
-def _load_logo_b64() -> str:
-    """Read the PNG logo and return a base64 data URI string."""
-    logo_path = ROOT / "docs" / "OTelMinutes-logo.png"
-    png_bytes = logo_path.read_bytes()
-    encoded = base64.b64encode(png_bytes).decode("ascii")
-    return f"data:image/png;base64,{encoded}"
-
-
 def _render_html(template_vars: dict) -> str:  # pragma: no cover
     """Load and render the Jinja2 HTML email template with autoescaping enabled."""
     from jinja2 import (  # noqa: PLC0415 — deferred to avoid import error without summarize group
@@ -244,7 +236,7 @@ def build_email(
             "date": today,
             "count": count,
             "meetings": meetings,
-            "logo_b64": _load_logo_b64(),
+            "logo_url": LOGO_URL,
         }
     )
 
