@@ -19,7 +19,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
     _is_trivial_transcript,
-    _load_logo_b64,
     build_deep_link,
     build_email,
     generate_digest_narrative,
@@ -29,8 +28,6 @@ from send_digest import (  # noqa: E402
     parse_summary_sections,
     send_email,
 )
-
-FAKE_LOGO_B64 = "data:image/png;base64,iVBORw0KGgo="
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -246,7 +243,6 @@ class TestMain:
             patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
@@ -283,7 +279,6 @@ class TestMain:
             patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
@@ -316,7 +311,6 @@ class TestMain:
             patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
@@ -346,7 +340,6 @@ class TestMain:
             patch("send_digest._is_trivial_transcript", return_value=False),
             patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
             patch("send_digest.requests.post", return_value=mock_resp),
             pytest.raises(SystemExit) as exc_info,
         ):
@@ -382,10 +375,7 @@ class TestBuildEmail:
             {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
             {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
         ]
-        with (
-            patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
-        ):
+        with patch("send_digest._render_html", return_value="<html>mock</html>"):
             email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
         assert "2026-03-05" in email["subject"]
         assert "2 meetings" in email["subject"]
@@ -396,10 +386,7 @@ class TestBuildEmail:
             {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
             {"slug": "Collector-SIG", "date": "2026-03-06", "content": SAMPLE_SUMMARY},
         ]
-        with (
-            patch("send_digest._render_html", return_value="<html>mock</html>"),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
-        ):
+        with patch("send_digest._render_html", return_value="<html>mock</html>"):
             email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
         assert "?sig=Go-SIG&date=2026-03-05" in email["text"]
         assert "?sig=Collector-SIG&date=2026-03-06" in email["text"]
@@ -413,10 +400,7 @@ class TestBuildEmail:
             captured.append(template_vars)
             return "<html>mock</html>"
 
-        with (
-            patch("send_digest._render_html", side_effect=_capture_render),
-            patch("send_digest._load_logo_b64", return_value=FAKE_LOGO_B64),
-        ):
+        with patch("send_digest._render_html", side_effect=_capture_render):
             build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 1)
 
         meetings = captured[0]["meetings"]  # type: ignore[index]
@@ -564,24 +548,6 @@ class TestBuildDeepLink:
 
         url = build_deep_link("Java-SIG", "2026-02-10")
         assert url.startswith(SITE_BASE_URL)
-
-
-# ---------------------------------------------------------------------------
-# TestLoadLogob64
-# ---------------------------------------------------------------------------
-
-
-class TestLoadLogob64:
-    def test_returns_data_uri(self, tmp_path: Path) -> None:
-        import base64 as _b64
-
-        png = b"\x89PNG\r\n\x1a\n"
-        (tmp_path / "docs").mkdir()
-        (tmp_path / "docs" / "OTelMinutes-logo.png").write_bytes(png)
-        with patch("send_digest.ROOT", tmp_path):
-            result = _load_logo_b64()
-        assert result.startswith("data:image/png;base64,")
-        assert _b64.b64encode(png).decode("ascii") in result
 
 
 # ---------------------------------------------------------------------------
