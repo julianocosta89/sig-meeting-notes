@@ -1,0 +1,94 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- x
+
+### Agenda
+- Review action items
+  - Blog Post: @aalexand [https://github.com/open-telemetry/sig-profiling/issues/72](https://github.com/open-telemetry/sig-profiling/issues/72)
+    - Alexey: 70-80% ready. I hope to turn it into a PR early next week. Publishing it will just be merging the PR?
+    - Damien: It’s just merging the PR.
+    - Florian: Place for PR: [https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/blog/2026](https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/blog/2026)
+    - Alexey: Should the title be about “Profiling” or “Profiles”.
+    - Florian: We should use profiles.
+    - Christos: It’s also used in the docs.
+    - Alexey: I’ll update it accordingly.
+    - Alexey: On the screenshot, could we get something simpler?
+    - Florian: I suggested the newer screenshot that shows more than just Go and the Kernel.
+    - Christos: The blog post is not about devfiler, it’s on the alpha. Less visually complex would be better.
+    - Felix: +1 to keeping the simpler one.
+    - Florian: Ok, I’ll go back to the simpler one.
+    - Alexey: Would be great to get another review from Felix.
+    - Felix: Will do.
+    - Alexey: Should we leave the screenshot in the text or link to it?
+    - Christos/Felix: Leave it in the text.
+    - Felix: On publishing, I think it would be nice to press the button at kubecon during the talk.
+    - Damien: A comms maintainer (like Serverin) will be at KubeCon and we should sync with them to do it during the talk or a bit earlier.
+  - Documentation: @christos68k [https://github.com/open-telemetry/sig-profiling/issues/84](https://github.com/open-telemetry/sig-profiling/issues/84)
+    - Christos: Concepts PR is already merged. Specification has some approval. Last one is the data model, will probably have it ready by Wednesday.
+    - Christos: Other than that I want to clean up the devfiler docs, but that’s less work. Plan is to have it all wrapped up by middle of next week.
+    - Felix: Who is the target audience of the data model?
+    - Christos: I want it to be like logs and metrics docs. ASCII diagram in the proto would be the skeleton. We need to describe why we went with the custom attributes (KeyValueUnit). The dictionaries. Maybe I’ll also go back to some of the benchmarks.
+    - Felix: Sounds good, more is better, but we can cut scope if time runs out.
+    - Christos: I’m not going to cover API. But I’m probably not the right person for that.
+    - Florian: Jonathan had some docs on API.
+    - Jonathan: Yeah, the API is just for people making profilers.
+    - Felix: Maybe we need to write down something like Start/Stop for the profiler?
+    - Jonathan: Yeah, but this will be language specific. E.g. eBPF profiler won’t have an API. Java might inject an agent.
+    - Alexey: The talk is on the 26th?
+    - Felix: Yes, see roadmap links.
+  - [All] Review Process Context Propagation OTEP: [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Ivo: We have a PR for process context and another one for thread context stacked on top of it.
+    - Florian: I watched the GC/TC meeting last week (to look for alpha updates). But the workload of the GC/TC was a big topic, they are overwhelmed. Maybe we should land process context first and then build for the thread context.
+    - Christos: I think we should open the thread context one rather than wait. People who have bandwidth can look, it won’t overwhelm. Why wait?
+    - Florian: Ivo pushed the SIG and Spec meetings for feedback, but it’s not been coming in. The key people are missing.
+    - Alexey: When I was updating the blog post to mention process/thread context work, should we mention it as part of alpha? It’s work in progress. Maybe somebody could take a look.
+    - Felix: Maybe Ivo can take a look. We should also mention symbolication standardization as “what’s next”.
+    - Alexey: I’d prefer linking to GitHub PRs rather than google docs.
+    - Felix: Maybe Ivo can open the thread context PR as a draft?
+    - Alexey: Does it make more sense to merge the PRs than having them separately?
+    - Ivo: I guess it’s better to have them separately.
+    - Christos: Process context is already big enough.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - Alexey: no updates
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Alexey: no updates
+  - [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+    - Felix: Started thinking and discussions here: [https://github.com/open-telemetry/sig-profiling/issues/82](https://github.com/open-telemetry/sig-profiling/issues/82)
+    - Alexey: Maybe one challenge is thinking about the whole pipeline and how it would flow through.
+    - Felix: Yeah, I think only the receivers should look at the versions and do conversions if needed.
+    - Christos: The main problem is having older clients. We want to reject the payloads.
+- Frederic: Should line, start line, and column be unsigned integers? (and 32-bit?)
+  - Frederic: Column and line numbers are signed integers right now.
+  - Alexey: In pprof it’s 64bit, could be an issue for round trips.
+  - Frederic: Column can get long with minified JavaScript. But 4 GiB still seems a little crazy, but I could see it happening.
+  - Alexey: I think DWARF uses 64bit for these things.
+  - Frederic: I’m mostly worried about communicating to people when we say it’s signed.
+  - Felix: People can come up with exciting use cases for negative line numbers (joking).
+  - Alexey: Changing signed to unsigned makes sense.
+  - Christos: Didn’t we sign for Java SDK?
+  - Jonathan: Not this was for array indexes.
+  - Florian: In [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/LANGUAGE.md) every number is int64. If you use int8, it will be int64 anyway. It’s never unsigned in OTTL.
+  - Frederic: Do we need to review this for other things?
+  - Felix: I think we should look at using unsigned 64 ints.
+  - (there are several, including address)
+  - Felix: Let’s look into it after alpha, might indeed be an issue.
+- Florian: Should we talk context PR on ebpf-profiler from draft to review?
+  - Florian: I don’t expect the OTEP to change much anymore.
+  - Ivo: I think we’re in good shape, but I’ll double check with my colleague Nicholas.
+  - Felix: Merging this early might be useful to show that it’s working in practice.
+  - Christos: I might want to wait for the OTEP before merging, but we can start reviewing.
+- Alexey: Should we mark [this OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md) as deprecated or something like that? The schema there is obsolete.
+  - Christos: We have a link to it in the docs, but I’ll probably remove it once we have the new data model documentation.
+  - Felix: I think if you want you could try sending a PR.
+  - Jonathan: There is a lifecycle thing for withdrawing or rejecting.
+  - [https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#submitting-the-otep](https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#submitting-the-otep)
+  - Felix: The link above is in archived repo.
+  - Alexey: We can look at some older OTEPs.
+  - Felix: Maybe ping Tigran/Josh on slack.
