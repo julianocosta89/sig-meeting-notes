@@ -1,0 +1,41 @@
+## Meeting Notes
+
+### Agenda
+- [Andrej] Prometheus x OTel interoperability survey
+  - We have 3 research questions (exporter preference, SDK preference, query writing approach). Anything else popped up?
+    - Do users prefer to run **Prometheus exporters or OTel Collector receivers**? Why do people choose one over the other?
+      - David: Push via OTLP is another option.
+      - David: Depends if it is more OTel or Prom focused.
+      - Arthur: If prometheus exporter is more popular, we can push more
+      - David: Are Prom exporters and OTel Collector used together? Or people don’t do that?
+      - David: Is it a real user group who use Prom exporter and collector & OTel. If so, exporters as collector receivers would be helpful for them.
+    - Do users prefer to write instrumentation with the **Prometheus SDK or the OTel SDK**? Why do people choose one over the other?
+    - Do users prefer a **queryless experience**, or do they prefer to **write queries themselves**? Why do people choose one over the other?
+      - Arthur: In Prom, querying is required. In OTel, people might be more used to vendors pre-built dashboards.
+      - David: PromQL is the best OSS OTel query language, but it is not OTel query language.
+      - Arthur: We might be loosing adoption if we focus too much on making people write query by hand.
+      - David: Would be cool to have a Prom+OTel stack?
+      - David: Asking people about
+  - What are your hypotheses? What decisions do you want to make based on these data?
+  - Krajo: One area – what are the “top 3 things you would like to improve in interoperability?”
+  - Krajo: Naming conventions… I will have to think about this. It includes semantic conventions. Would you mind if SDK would lint for you your metric names?
+  - David: Would you like if exporter would use OTel schema format. It would be cool to have a signal around I would like to start with Prom metrics and end up with OTel one, or the other way around? E.g. Do you often find yourself in a need to translate Prom name of a metric to OTel metric.
+  - Arthur: How much of a pain it is for you that Prom and OTel semantic conventions are different.
+  - David: One area is type compatibility. Some types in OTel do not have representation in Prom and many types in Prom without representation in OTel:
+    - Should OTel have a stateset type?
+    - Should Prometheus have an updowncounter type?
+- [arthur] Jack Berg from the OTel Technical Committee has opened a PR to [OTel's website](https://github.com/open-telemetry/opentelemetry.io/pull/9263), where he explains how common things people do with SDKs are done in Prom or OTel. His intention is ***not*** to incentivize folks to migrate from one SDK to another, but this guide will be helpful for those who have already decided to migrate.
+  - The optics of this post are super important, though. Prometheus and OTel haven't started on the right foot; it's important that we don't trigger new emotions on either side.
+  - If you identify as emotionally invested in one of the communities, could you provide feedback to the PR, especially on phrasing, so that this new documentation lands in helpful ways?
+  - Another suggestion was opened here: [https://github.com/open-telemetry/opentelemetry.io/issues/9379](https://github.com/open-telemetry/opentelemetry.io/issues/9379)
+  - Owen volunteers to do a rewrite pass to frame it less as migration and more as comparison / compatibility / "intro for people familiar with prometheus"
+- [arthur] David and I (mostly David, I believe) will present to TC how things are progressing in our SIG, what our current ongoing projects are, what kind of help we need, and what we have accomplished lately. Anything you folks would like us to add/ask?
+  - From the Prometheus side, there's a lot going on lately:
+    - OM 2.0
+    - Persistent Metadata Storage
+    - Delta Support
+  - From compatibility side:
+    - Target_info <-> [service.instance.id](http://service.instance.id) translation is not really working well, and how to fix the problem isn't clear
+    - Entities seem like a good solution, but the technicalities aren't clear to the group.
+- [arthur] If you are going to the Maintainers Summit during KubeCon EU, please answer [this form](https://docs.google.com/forms/d/e/1FAIpQLSdhqIpyByyH7eEmjYrbUkt4aCskbxVCp0NsZhhf5xmk6nMxQg/viewform?usp=dialog)! If you have ideas to discuss, please share! If you don't have any ideas, just say “I don't have any ideas”; having the raw participant numbers is already good data for Pablo and me to organize the meeting.
+- Remaining time: going through our boards.
