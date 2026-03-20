@@ -1,0 +1,88 @@
+## Meeting Notes
+
+### Attendees
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog) - left at :31
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Jonathan Halliday (IBM)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- Josh Suereth (Google) [late]
+- .
+- .
+- .
+
+### Agenda
+- Review action items
+- Alpha Roadmap
+  - [@christos68k](https://github.com/christos68k) [Update documentation for Alpha #84](https://github.com/open-telemetry/sig-profiling/issues/84)
+    - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Data Model PR [https://github.com/open-telemetry/opentelemetry-specification/pull/4965](https://github.com/open-telemetry/opentelemetry-specification/pull/4965) Please review!
+    - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Specification PR [https://github.com/open-telemetry/opentelemetry-specification/pull/4932](https://github.com/open-telemetry/opentelemetry-specification/pull/4932) Please review!
+- [@aalexand](https://github.com/aalexand) [Profiling Alpha Release Blog Post #72](https://github.com/open-telemetry/sig-profiling/issues/72)
+  - Alexey: Blog post is reviewed and approved. Still unsure about timing the publication.
+    - Damien: We should probably not expect a narrow window to be hit.
+    - Felix: If we can get it published during the talk it would be great, if not auto-publishing it at midnight the day before would be fine.
+    - Alexey: Should we list all the backends (including oss / commercial) supporting profiling? We got async profiler listed.
+    - Felix: I’m fine either way, the companies are indirectly listed via the contributor list right now.
+    - Felix: Please ping me if you want your backend to be shown at KubeCon.
+- [@florianl](https://github.com/florianl) [reporter: refactor for reference based attributes opentelemetry-ebpf-profiler#1234](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1234)
+  - Florian: Pending on review.
+- [@florianl](https://github.com/florianl) [Release new ebpf profiler with support for OTLP v1.10.0 (Profiling Alpha) #86](https://github.com/open-telemetry/sig-profiling/issues/86)
+  - Florian: Will just be on my end.
+- [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+  - Alexey: no update
+- [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+  - Alexey: no update
+- [Alexey Alexandrov](mailto:aalexand@google.com) Figure out what to do with this [older Profiles OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md). See [this discussion below](#bookmark=id.mjn7dj4yyazk).
+  - Alexey: no update
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+  - Felix: No update. SIG-internal [issue](https://github.com/open-telemetry/sig-profiling/issues/82) exists.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Context sharing update
+  - Have 3 out of 4 needed approvals on process context OTEP [https://github.com/open-telemetry/opentelemetry-specification/pull/4719](https://github.com/open-telemetry/opentelemetry-specification/pull/4719)
+    - Protobuf package for `ProcessContext` message? [https://github.com/open-telemetry/opentelemetry-specification/pull/4719#discussion_r2945103065](https://github.com/open-telemetry/opentelemetry-specification/pull/4719#discussion_r2945103065)
+      - Florian: Curious what Josh/Tigran think about a separate package.
+      - Josh: I’m inclined to put it into the v1development package and reference common. This package could be about sharing context between processes using eBPF.
+      - Josh: Should we get the OBI folks approve this as well? People have commented, but we’d like to see their approval before merge.
+      - Florian: The OBI folks are not so interested in this part, but more on the eBPF maps. I can reach out to them. They’ll benefit from this, but it’s not their focus.
+      - Josh: I just want to make sure they know what’s going on and that they don’t build sth differently.
+      - Alexey: Should we get someone from OBI to this meeting going forward.
+      - Josh: That might be useful. I don’t care about the comms channel, but this SIG and OBI should have a good channel.
+      - Ivo: Do we want processcontext.v1development or sth else other than “processcontext”?
+      - Josh: Think a lot about it, have a rational behind it. Keep your v1development consistent on how it’s used elsewhere. And keep processcontext in the name.
+    - PR to add process context support to eBPF profiler, feedback welcome: [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1181](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1181)
+      - Ivo: PR has some feedback, more feedback amazing
+  - Thread context OTEP draft PR open [https://github.com/open-telemetry/opentelemetry-specification/pull/4947](https://github.com/open-telemetry/opentelemetry-specification/pull/4947)
+    - Alexey: Should naming be more generic for OTEP? Since we're including OBI folks, etc
+    - Josh: If this is just OBI/Profiling, no need specification/OTEP. Things in OTEP have ecosystem engagement (SDK). Frame it as a generic mechanism for observers, and eBPF is one use-case. Entities is a good example for talking about use-cases.
+    - Alexey: Framing too narrow means others may not realize they want this, broader engages more community
+    - Nayef: For process otep we say "external readers", we could do the same for thread context OTEP
+    - Ivo: Will look into title/framing it with use-cases
+  - Host fork of [https://github.com/polarsignals/custom-labels/](https://github.com/polarsignals/custom-labels/)	in [sig-profiling](https://github.com/open-telemetry/sig-profiling) repo to have reference implementation of thread context as well?
+    - Frederic: Fine with putting stuff in sig-profiling. Brennan and Tony should be added as codeowners if possible.
+    - Florian: At the moment there are 4 maintainers that can merge in that merge.
+    - Christos: sig-profiling is not an authoritative repo, mostly a place to put things being discussed in OTEPs.
+    - Frederic: Only care about where long-term thing lives.
+    - Ivo: Add it there, clarify in readme that this is just a temporary spot for while OTEP is development, and is expected to move out once we retire out of alpha, or similar.
+    - [JH] would just module linking it from where it currently is make more sense?
+    - Jonathan: Should we use a tag for this, rather than copying a fork into sig-profiling. To make it closer to the process we had for the ebpf-profiling.
+    - Christos: Version in sig-profiling is work-in-progress; donate repository to OTel once OTEP spec gets adopted
+    - Frederic: Happy with that, Datadog ok with that?
+    - Ivo: Datadog ok with that
+  - Draft PR for thread context support for eBPF profiler – stacked on #4719, still wip: [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1229](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1229)
+    - Ivo: In draft, feedback is welcome and trying it out is welcome
+- [suereth] Possibly raising TC [sponsorship level](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md#sponsorship-requirements) - Currently listed as 'escalating', believe we should improve to "Guiding"
+  - Josh: New concept (see doc). Want to make sure we have more active participation, by moving to Guiding. Josh would step down from his current role, Tigran would maybe be able to contribute in the new model. How much TC involvement does Profiling SIG need?
+  - Christos: We don't want to lose the momentum we have
+  - Alexey: How will this work? How would we work with the TC on this.
+  - Josh: Guiding doesn't mean every single meeting has a requirement to have someone from TC.
+  - Alexey: Needs to be effective, avoid blocking on single point of contact.
+  - Josh: We want feedback on how to do this. Context is TC was refreshed with a new charter ~1 year ago, we want to increase leadership through/across OTel. Trying to improve health of OTel leadership. Josh not sure if he can give profiling the attention it needs. Would like to kick it off if people are ok with going ahead.
+  - Florian: Good step forward for profiling. Having active guidance will help us keep momentum. Needed for process/thread context, symbolization, will be appreciated.
+  - Josh: This is first time doing this process, will kick it off.
+- Frederic: Are there more changes that will impact a backend after alpha?
+  - Florian: There's a breaking change between 1.09 and 1.10, if you're past it you're good
+  - Nayef: There might be breaking changes between alpha and beta, we'll bundle them together
+- Damien: Switch p-data in collector from development to alpha. Any concerns? Only documentation changes.
+  - Florian: Good to change to alpha, even though it's only docs. Alpha will motivate people to try it.
+  - Damien: This is only for the core collector, anything else is staying as it is.
