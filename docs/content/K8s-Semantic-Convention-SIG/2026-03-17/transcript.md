@@ -39,9 +39,11 @@ Because attributes not gonna change, it's just.
 **Christos Markou** 08:49 Yeah, it's not a blocker. It's just, like, how we want to progress there. Okay. What we think is, like, important for us in the following months.
 **Dmitrii Anoshin** 08:58 Yeah, well, let me focus on entities. I'll maybe submitting some PRs, but I don't… I would not require any help. Like, if you have more important things to focus on, for the stabilization, please go ahead.
 **Christos Markou** 09:16 Okay, okay, yeah, cool. Sounds good. So, then metrics is another thing, yeah.
-**Feel free to tell us if we need to… Dmitrii Anoshin** 09:25 The only thing I would ask is that, helping with this particular PR, because I'm like… I'm making some noise, even at Kipkon EU, about that, that KATS cluster. Receiver not gonna support… .
+Feel free to tell us if we need to…
+**Dmitrii Anoshin** 09:25 The only thing I would ask is that, helping with this particular PR, because I'm like… I'm making some noise, even at Kipkon EU, about that, that KATS cluster. Receiver not gonna support… .
 **Christos Markou** 09:41 Oh, so you want this in before KubeCon, right?
-**Dmitrii Anoshin** 09:43 I mean, yeah, ideally, because I was talking about that, so… it's like one week. It's just last… even if it's not part of the release, it's fine, at least it's on the main branch. I'm like, I'm gonna submit a fix to mdataGen quickly today, that should be merged Pretty quickly, and then this will unblock this PR, and we should be… Christos Markou 10:06 Okay.
+**Dmitrii Anoshin** 09:43 I mean, yeah, ideally, because I was talking about that, so… it's like one week. It's just last… even if it's not part of the release, it's fine, at least it's on the main branch. I'm like, I'm gonna submit a fix to mdataGen quickly today, that should be merged Pretty quickly, and then this will unblock this PR, and we should be…
+**Christos Markou** 10:06 Okay.
 Cool, cool, sounds good. I can check it, tomorrow then, or the day after. Cool, sounds good.
 Okay, anything else from your side?
 **Dmitrii Anoshin** 10:21 like, this work also would make a clear path to KTS Cluster Receiver, because in KTS Cluster Receiver, we still use mDataGen in some way, and there is… now, entities are part of mDataGen, and all this pod association interface is so complicated. I have… I'm struggling with that, and I'm struggling to make it cleaner, but entities would def… the entities would definitely help, so I would… give me some time this or next week to think about that, how we can make the interface cleaner with entities, because, yeah.
@@ -49,11 +51,13 @@ Okay, anything else from your side?
 processor, this processor, I think that's the only thing that… so there is one issue, that we need to tackle. It has to do with, it's an extra setting that you can… Retrieve the deployment name from the replica set name by using some pattern recognition… some pattern extraction.
 **Dmitrii Anoshin** 11:20 Yeah.
 **Christos Markou** 11:21 there, but it seems that it's kind of problematic. I was looking into this. So, that's one thing that we need to tackle. It's a standalone thing. Then the other thing that I want to discuss is… And the following, let's say, after KubeCon, is what you mentioned the other day about changing the configuration API. So, yeah, take your time, I think that would be the last thing. Maybe we can consider it, for V1, before V1, that would be great.
-**So, yeah, let's discuss about it when you have something to… Dmitrii Anoshin** 11:55 Sounds good. The one… the thing that you mentioned first, it's more like a performance improvement, and I think we merged that PR already, right?
+So, yeah, let's discuss about it when you have something to…
+**Dmitrii Anoshin** 11:55 Sounds good. The one… the thing that you mentioned first, it's more like a performance improvement, and I think we merged that PR already, right?
 **Christos Markou** 12:04 No, there is this thing for the performance improvement. The other thing is the, so, we have an extra setting, which says extract deployment name from replica set.
 **Dmitrii Anoshin** 12:15 Oh, yes.
 **Christos Markou** 12:16 Something like this.
-**Dmitrii Anoshin** 12:17 I wanted to… Christos Markou 12:17 You don't start… yeah, you don't start the informers, because you can use the replica set name, and trim the trim a suffix or something, and get the name, because usually the controllers, they generate the name, using a specific pattern, but this is not always accurate.
+**Dmitrii Anoshin** 12:17 I wanted to…
+**Christos Markou** 12:17 You don't start… yeah, you don't start the informers, because you can use the replica set name, and trim the trim a suffix or something, and get the name, because usually the controllers, they generate the name, using a specific pattern, but this is not always accurate.
 So… Yeah, there is an alternative to use a specific label on the… I think it's either on the pod or on the replica set that the controller adds, and it is actually the has, the suffix, so maybe this is a better heuristic mechanism.
 **Dmitrii Anoshin** 12:54 Yeah.
 **Christos Markou** 12:54 But we need to revisit this and see what is accurate or whatnot.
@@ -78,7 +82,8 @@ So, in that case, you will, get issues.
 we should be able to figure out whether it's, we can go away without Informer or not.
 by making some additional API calls just once.
 Instead of putting this on the end user. We need to fix that.
-**Christos Markou** 15:48 Yeah, yeah, I see… Dmitrii Anoshin 15:50 They don't.
+**Christos Markou** 15:48 Yeah, yeah, I see…
+**Dmitrii Anoshin** 15:50 They don't.
 **Christos Markou** 15:51 website.
 I think the reason for having this behind the setting was that it was controversial in terms that it might not be always correct, so users might need to be explicit about wanting to use it or not.
 **Dmitrii Anoshin** 16:09 Yes, so I would make it… I would make it, like, we add all the logic to figure out whether it's… whether we can go away without informers or not.
@@ -117,7 +122,8 @@ like, the spec can change, now we don't support that, but eventually we… like,
 But not the pot spec.
 **Dmitrii Anoshin** 21:34 Are you talking about, OpenTelemetry operator, or something.
 **João Marques Correia** 21:38 Oh, a bunch of… Oh, okay, where that value will be, I guess, propagated?
-**Dmitrii Anoshin** 21:43 Yeah, what changes that? Like, how can we change it? I missed that part. Like, is it an OpenTelemetry operator, or… Christos Markou 21:52 No, it's the controller.
+**Dmitrii Anoshin** 21:43 Yeah, what changes that? Like, how can we change it? I missed that part. Like, is it an OpenTelemetry operator, or…
+**Christos Markou** 21:52 No, it's the controller.
 **João Marques Correia** 21:54 It's the controller, yeah.
 **Dmitrii Anoshin** 21:55 The case controller, okay.
 So, is there new… something… new versions coming with?

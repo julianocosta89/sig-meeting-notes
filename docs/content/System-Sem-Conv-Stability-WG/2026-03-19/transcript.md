@@ -58,11 +58,13 @@ I guess, I don't know.
 **Christos Markou** 07:51 Beautiful.
 **Pablo Baeyens** 07:51 don't know, PR… then that is not a blocker, right? Is that the conclusion?
 **Braydon Kains (Google)** 08:03 I think it's not a blocker for a release candidate. Sorry I'm late, if that's what we're talking about.
-**Pablo Baeyens** 08:11 No, I was asking about the conversation that Dimitri and Christus were having. Sorry, I'm… Braydon Kains (Google) 08:15 Okay, sorry, I missed the start of that. The gRPC vulnerability blew up my morning, so I was late.
+**Pablo Baeyens** 08:11 No, I was asking about the conversation that Dimitri and Christus were having. Sorry, I'm…
+**Braydon Kains (Google)** 08:15 Okay, sorry, I missed the start of that. The gRPC vulnerability blew up my morning, so I was late.
 **Pablo Baeyens** 08:24 I'm a bit, of a new guy when it comes to entities, so I… I wanted to double-check that.
 **Donal O'Sullivan** 08:42 It was my understanding from the conversation that it won't be a blocker.
 Is that right, Chris?
-**I think… Dmitrii Anoshin** 08:50 It's not… As long as we have an idea, at least, of how the relations would be, and maybe… It would be good to put them.
+I think…
+**Dmitrii Anoshin** 08:50 It's not… As long as we have an idea, at least, of how the relations would be, and maybe… It would be good to put them.
 In the docs, at least How do they relate to each other?
 **Donal O'Sullivan** 09:10 Okay, cool. Yeah, I can probably… I can update the PR, I guess, and maybe add something along the lines of that somewhere.
 **Dmitrii Anoshin** 09:19 Thank you.

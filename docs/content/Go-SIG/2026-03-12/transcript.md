@@ -120,13 +120,15 @@ And I also said, like, David, like, the stuff you proposed, and I thought that m
 And then I can mark it done. But I might… I might be waiting for this podcast for 3 years, then.
 **Pellared** 17:06 Yes.
 **David Ashpole (dashpole)** 17:08 So, I… Yeah, I mean… You can put me in, or like, I don't know if you want to start a chat or something. Where did they reach out?
-**Tyler** 17:17 So it's in that form, that Robert has linked, in the doc, and then you just fill out the form for, I think, your… David Ashpole (dashpole) 17:25 And this isn't associated with, like, a company or something, this is, like, OTEL is doing a podcast.
+**Tyler** 17:17 So it's in that form, that Robert has linked, in the doc, and then you just fill out the form for, I think, your…
+**David Ashpole (dashpole)** 17:25 And this isn't associated with, like, a company or something, this is, like, OTEL is doing a podcast.
 **Tyler** 17:31 I think this is, yeah, Reese and, I can't remember the other community liaison, role.
 **David Ashpole (dashpole)** 17:36 Folks, yeah, they're the ones that are setting this up, if I remember. As long as it's, like, not… Not some random vendor, yeah.
 **Tyler** 17:46 Yeah.
 Yeah.
 Somebody… yeah. Wouldn't be the first time. Anyways, Yeah, no, I think that's great. I think also, like, any other things that we have, like major milestones or accomplishments like that, I think that'd be awesome to continue to do this.
-**But do you think, there's a lot of other… David Ashpole (dashpole)** 18:08 When logs graduates, you're gonna.
+But do you think, there's a lot of other…
+**David Ashpole (dashpole)** 18:08 When logs graduates, you're gonna.
 **Tyler** 18:09 Yeah, that's what I was thinking, too.
 I expect Robert to be the showcase of logs going forward, yeah.
 Yeah, I think that… I think there's other works in other SIGs as well we could try to popularize on this one. I think also stabilization of, you know, hotel HTTP or other things would be great to get people talking about that as well, just to kind of talk about the instrumentation. So, maybe this is something for Damien as well, we could ping, Damien there.
@@ -135,13 +137,15 @@ Okay, I can start sharing my screen again. Next, we want to talk about the… ad
 **Pellared** 19:05 Yeah, I saw that also David, like, kind of thumbs up… gave a thumbs up for the proposal to use this string method and make it compliant with the specification. So, probably just to… probably… I think everyone is on board.
 It's just about, you know, kind of… saying that I can probably work on it after KubeCon.
 **David Ashpole (dashpole)** 19:28 Did… did that spec go stable? Not that it should block this, but… Pellared 19:33 I think it is, but that's a good question. I'm not sure if I can… have I put the hyperlink here?
-**Tyler** 19:40 Yep. Yes, I think this is… David Ashpole (dashpole) 19:41 it, right? Yeah.
+**Tyler** 19:40 Yep. Yes, I think this is…
+**David Ashpole (dashpole)** 19:41 it, right? Yeah.
 **Tyler** 19:45 Well, it's stable.
 **David Ashpole (dashpole)** 19:46 3 months.
 **Tyler** 19:49 Yeah, right. Yeah, I think it is that. This is stable, except otherwise… Except… Pellared 19:53 Try to find the experimental, or development.
 **Tyler** 19:57 In development, yeah.
 **Pellared** 19:59 Where is it?
-**Tyler** 20:00 That's… David Ashpole (dashpole) 20:02 Just finding the… Pellared 20:02 No word.
+**Tyler** 20:00 That's…
+**David Ashpole (dashpole)** 20:02 Just finding the… Pellared 20:02 No word.
 **David Ashpole (dashpole)** 20:04 I think it might just be stable.
 **Tyler** 20:07 Yeah, I think I'm… I think you're right, yeah.
 **Pellared** 20:09 I think when I stabilized the stuff, I have forgotten to change this text.

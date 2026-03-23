@@ -13,18 +13,21 @@ Hey, what's up?
 Thank you.
 Hi, Dad.
 **Ted Young** 00:33 We have a Jared Freezing on the call? It's cold there.
-**Jared Freeze** 00:37 Yeah, so I've been trying to get used to Celsius. It was 30 yesterday, it is… Ted Young 00:41 That doesn't make it colder, because you switched to 16.
+**Jared Freeze** 00:37 Yeah, so I've been trying to get used to Celsius. It was 30 yesterday, it is…
+**Ted Young** 00:41 That doesn't make it colder, because you switched to 16.
 **Jared Freeze** 00:44 today.
 No, I know.
 Just irritating, more than anything.
 58, dude. Sucks.
-**I'm not into it, I know you live there, but… Ted Young** 00:58 - Yep.
+I'm not into it, I know you live there, but…
+**Ted Young** 00:58 - Yep.
 Where are you at again, Jared?
 **Jared Freeze** 01:06 New Orleans.
 **Ted Young** 01:07 Okay.
 **Jared Freeze** 01:08 Yeah.
 **Ted Young** 01:09 That is unusual.
-**Jared Freeze** 01:13 I was in Kahala for the last two and a half years, so… Ted Young 01:17 Nice.
+**Jared Freeze** 01:13 I was in Kahala for the last two and a half years, so…
+**Ted Young** 01:17 Nice.
 Hells yeah.
 **Martin Kuba** 01:31 Hello.
 **Jared Freeze** 01:46 Oh, you're on a vacation trip.
@@ -41,7 +44,8 @@ And I have opened… A pull request for adding the release workflow.
 release published workflow, so please take a look at it, let me know if you have any comments.
 Once that's merged… Trent, I might help… I might need either your help or Mark's help to do the first publish.
 to NPM.
-**I think you'll… Trent Mick** 03:47 I think you'll need Mark or Dan, I don't actually have perms on NPM, yeah, yeah. Yeah, I'll reach out to Mark about that.
+I think you'll…
+**Trent Mick** 03:47 I think you'll need Mark or Dan, I don't actually have perms on NPM, yeah, yeah. Yeah, I'll reach out to Mark about that.
 **Martin Kuba** 03:54 All that to say, I think we're getting closer to being able to do first release.
 The other thing that I wanted to bring up is we have… two instrumentations, two new instrumentations that got merged into GSContrib.
 I think a few months ago, and I would like to move them to this repo. That's the navigation and exceptions instrumentation. Are there any objections or any… they… so these… they were published, but they're not very… I don't think they have much usage at all, so… I think it's fine to move temple.
@@ -53,7 +57,8 @@ I guess we… it doesn't… it'll… it'll change no matter what. We don't even 
 **Trent Mick** 05:11 It's moving into the single browser instrumentations package, I assume, right? Or they are. Yeah, that's right. Yeah, okay, yeah. Or in the past, when we've removed ones, we've just replaced the directory with a README that points to the old version of the sources. If you want it, it points forward to where the new place is.
 So people don't break links, but yeah, cool.
 **Martin Kuba** 05:32 Yeah, so I'll create issues for these, with… checklist of things that need to happen to move those, including updating the README and… Doing last release for the old packages.
-**And… Jared Freeze** 05:47 So, I don't know if they got marked stable, but I know that there's semantic conventions, at least from some people on our side, at our company, for, like, Android, iOS, Kotlin, for exceptions that are getting updated, so it'd be cool if we could mark it as experimental on our side.
+And…
+**Jared Freeze** 05:47 So, I don't know if they got marked stable, but I know that there's semantic conventions, at least from some people on our side, at our company, for, like, Android, iOS, Kotlin, for exceptions that are getting updated, so it'd be cool if we could mark it as experimental on our side.
 Until that work is done, and that'd be really nice to have that be the first one that's stable, that includes crashes and exceptions with the finalized, like, stabilized, you know, conventions.
 So… Experimental, that's what I would say.
 **Martin Kuba** 06:21 Yeah, for sure. Experimental.
@@ -80,7 +85,8 @@ I think one thing that makes it hard is it feels like… different people caring
 So… Anyways, more long-winded way of saying it would be good for these sigs to be a little more, cross-pollinated, I think, until we get past the… Approving our prototypes and everybody feeling like we've figured the model out.
 But it's a good opportunity for other maintainers and approvers in the SIG to go do that, because I'm going on vacation for 3 weeks, so I shall not do it.
 There you are.
-**Martin Kuba** 11:04 But are these, are these roadmap updates kind of impromptu, or do they have to be scheduled, like, to reserve time for that, or… Ted Young 11:13 We're start… we're starting to schedule them out a little bit. We don't have a formal process for that yet, really. We've just been kind of doing it through the just through the SIG agenda.
+**Martin Kuba** 11:04 But are these, are these roadmap updates kind of impromptu, or do they have to be scheduled, like, to reserve time for that, or…
+**Ted Young** 11:13 We're start… we're starting to schedule them out a little bit. We don't have a formal process for that yet, really. We've just been kind of doing it through the just through the SIG agenda.
 But, you can talk to Ludmila, was… was helping to organize some of it. Like, the TC is in charge of the… the spec meeting.
 **Daniel Dyla (Dynatrace)** 11:45 I think they said all you have to do is add yourself to the… there should already be a schedule section for next week.
 And all you have to do is add yourself there to volunteer. I think it's pretty informal.
@@ -221,7 +227,8 @@ They do their… I think they have all of their own stuff, so they don't do hote
 Yeah.
 **Martin Kuba** 30:08 Yeah, I mean, microfinance is definitely a challenge, like, it's its own topic, I think, big topic.
 **Jared Freeze** 30:16 Well, that's why I just keep going back to the word app, because somebody brought it up once, and I was like, that's a really good point. Like, that's an app to them, and the thing next to it is also an app.
-**Martin Kuba** 30:26 So… Jared Freeze 30:28 That's why I hesitate to call, like, the whole thing. Like, for a lot of people, it'll just be one thing, but for others, it'll be siblings. Okay.
+**Martin Kuba** 30:26 So…
+**Jared Freeze** 30:28 That's why I hesitate to call, like, the whole thing. Like, for a lot of people, it'll just be one thing, but for others, it'll be siblings. Okay.
 **Martin Kuba** 30:36 I hadn't consider that.
 Okay, yeah, we're out of time, so thanks, everyone.
 See you next week.

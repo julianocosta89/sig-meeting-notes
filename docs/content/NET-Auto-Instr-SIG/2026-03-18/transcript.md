@@ -23,15 +23,19 @@ We'll click on the comments here.
 **Piotr Kiełkowicz** 04:51 Version management strategy.
 **Igor Kiselev** 04:54 Oh, yeah You can decide at any time, really.
 **Piotr Kiełkowicz** 05:00 Sure.
-**That's… Igor Kiselev** 05:07 We get a response here, so I believe that it is a confirmation that we can remove dependencies straight from default NuGet package. It means that if anybody needs it, they probably should install that specific package.
+That's…
+**Igor Kiselev** 05:07 We get a response here, so I believe that it is a confirmation that we can remove dependencies straight from default NuGet package. It means that if anybody needs it, they probably should install that specific package.
 **Rajkumar Rangaraj** 05:25 Just a question on this.
 Is it causing any issues? Because the way we have developed this is it should not conflict with each other. I know it's an additional enrollment variable, we could remove it. Has this caused any issues or anything?
 **Igor Kiselev** 05:42 So, it is not causing any issues directly, but indirectly, it is one of a step, to solve, a NuGet, installation for SDK pack… For, Microsoft Net SDK packages, because it brings, NetFrame, net, ISPANET As the key dependency.
 **Rajkumar Rangaraj** 06:04 Yeah.
-**Igor Kiselev** 06:05 So we break, applications, but it's not only one, so… Rajkumar Rangaraj 06:11 Yeah, as far as we have the ASP.NET Core Instrumentation library, that is also going to bring the same dependency. That's why this was not solved, and we were fine during that time to have it.
-**Igor Kiselev** 06:25 The separate sink itself would be… harder to understand what's the purpose of it, so we can just get some files that is never used, but we depend on, so… Rajkumar Rangaraj 06:37 Yeah, so if it's always a CLR profiler-based onboarding, yes, this can be removed, but if someone does not want to do anything with CLR profiler, the… This is needed, this is mandatory.
+**Igor Kiselev** 06:05 So we break, applications, but it's not only one, so…
+**Rajkumar Rangaraj** 06:11 Yeah, as far as we have the ASP.NET Core Instrumentation library, that is also going to bring the same dependency. That's why this was not solved, and we were fine during that time to have it.
+**Igor Kiselev** 06:25 The separate sink itself would be… harder to understand what's the purpose of it, so we can just get some files that is never used, but we depend on, so…
+**Rajkumar Rangaraj** 06:37 Yeah, so if it's always a CLR profiler-based onboarding, yes, this can be removed, but if someone does not want to do anything with CLR profiler, the… This is needed, this is mandatory.
 **Igor Kiselev** 06:51 But it's the same… but the script that, enable it is the same script that enables, ISPANET, that enables a profiler. So if they use instrument as such.
-**In that case, both profilers and that will be enabled. But there is not using instrument as such. Nobody would enable, environment, variable unless they would do it manually, but if they would do it it's manually why we bring it by default with our NuGet packages, so… Rajkumar Rangaraj** 07:22 Okay, got it.
+In that case, both profilers and that will be enabled. But there is not using instrument as such. Nobody would enable, environment, variable unless they would do it manually, but if they would do it it's manually why we bring it by default with our NuGet packages, so…
+**Rajkumar Rangaraj** 07:22 Okay, got it.
 As far as we are not removing for, like, the startup hook approach, I'm fine with this.
 Removing it from the profiler-based integration.
 **Piotr Kiełkowicz** 07:35 I have a question if you're speaking about this. Do you have any End users, Relying solely on… Startup Hook without, filer.
@@ -98,7 +102,8 @@ Except when .NET 11 will be released, and we're gonna be switching diagnostic so
 Same problem. The 11 will be loaded to… well, the 10 will be loaded to default ILC. We cannot load 11 into default ILC, and we just don't have any option.
 And at that point, the only thing we can really suggest to the customers on a startup hook-only solution is to force synchronization of the diagnostic source to the version that can satisfy open telemetry, which means you either reference a diagnostic source 11 in your projects directly.
 Or you go with the additional dependencies workflow. Alex?
-**Piotr Kiełkowicz** 19:59 Alexi, sorry for the… Alexey Pukhov 20:01 Sure.
+**Piotr Kiełkowicz** 19:59 Alexi, sorry for the…
+**Alexey Pukhov** 20:01 Sure.
 **Piotr Kiełkowicz** 20:02 It is not a regression against current state, not after your changes.
 **Alexey Pukhov** 20:07 Yep, this is… I didn't check what's happening right now. I filed that issue on top of the change that I'm.
 **Igor Kiselev** 20:14 So, it's a very tricky question. So, technically, it is a regression, but we would be affected by that regression only after, somebody would upgrade to… after hotel will upgrade to system diagnostics, source.
@@ -106,11 +111,13 @@ Or you go with the additional dependencies workflow. Alex?
 **Igor Kiselev** 20:35 11.
 **Alexey Pukhov** 20:36 No, what?
 **Piotr Kiełkowicz** 20:36 Against current state before merging it to… Before merging galaxy, it changes to domain.
-**if… Alexey Pukhov** 20:47 The answer, I didn't look, so I don't know what's gonna happen with this, given we are not making the change.
+if…
+**Alexey Pukhov** 20:47 The answer, I didn't look, so I don't know what's gonna happen with this, given we are not making the change.
 So, with the current state of.
 **Piotr Kiełkowicz** 21:00 Current state, auto-instrumentation is failing, for sure.
 If you require higher version, then… than previous… then it's loaded by .NET runtime itself.
-**Igor Kiselev** 21:14 But V… Alexey Pukhov 21:15 It's still a problem, no matter what.
+**Igor Kiselev** 21:14 But V…
+**Alexey Pukhov** 21:15 It's still a problem, no matter what.
 **Piotr Kiełkowicz** 21:18 Yes.
 **Alexey Pukhov** 21:19 Alright.
 **Igor Kiselev** 21:19 Aren't our additional depth solves it?
@@ -138,7 +145,8 @@ Ugh.
 When we were trying to figure out… how to manage all of our dependencies. And so, the first solution was about trying to be the first one to load that dependency, because the first one to load it wins for modern .NET apps.
 The second approach was to use, a separate assembly load context, and ensure that everything's using that separate assembly load context. So, if that… approach isn't viable, then I think it's a gap in the design of this feature.
 **Rajkumar Rangaraj** 25:14 The only challenge is, like, we cannot load in the separate assembly context. The reason is, diagnostic source has to be in the context running with the application.
-**Only then… Alexey Pukhov** 25:24 swan.
+Only then…
+**Alexey Pukhov** 25:24 swan.
 **Rajkumar Rangaraj** 25:25 When we… yeah.
 **Alexey Pukhov** 25:27 And you cannot load diagnostic source of a higher version if the lower version is in TPA.
 You will just figure out.
@@ -179,7 +187,8 @@ Because new features… because new features comes with new reviews.
 It is hard to explain customers that if you want new features, you need to upgrade your dependencies, your .NET, to If you are upgrading OpenTelemetry.
 **Alexey Pukhov** 31:55 Yeah, I mean, that's exactly what I'm suggesting. Like, if you want to use new features, don't go to .NET 8. Switch to .NET 10. Well, I know.
 This is a problematic topic, I know, I know. Well, I mean, that's kind of attention that I'm trying to bring in, that diagnostic source, which is a source of open telemetry, is .NET runtime, and that kind of… creates all the issues. Well, I mean, it's not… it doesn't create issues, it just brings the architecture.
-**Igor Kiselev** 32:26 So, oh, I… Rajkumar Rangaraj 32:28 I does recommend you to take a look at the other proposal. I don't know whether you had a time to look at it. At least the diagnostic source, whenever it creates a span, or logs, or a meter, logs it does not do. The span over a meter, it emits the signal that we can capture out of… from the out-of process, and we can observe that. So, I wrote up, like, a proof of concept, and we moved the proof of concept to a NuGet package and have it in the other branch. There are docs or issues also around that in this repo.
+**Igor Kiselev** 32:26 So, oh, I…
+**Rajkumar Rangaraj** 32:28 I does recommend you to take a look at the other proposal. I don't know whether you had a time to look at it. At least the diagnostic source, whenever it creates a span, or logs, or a meter, logs it does not do. The span over a meter, it emits the signal that we can capture out of… from the out-of process, and we can observe that. So, I wrote up, like, a proof of concept, and we moved the proof of concept to a NuGet package and have it in the other branch. There are docs or issues also around that in this repo.
 I'll definitely ask you to take a look at it. I think that's the recommendation when I went through the .NET, don't inject anything inside the customer process. We cannot survive through that approach for a very long time. That's why they asked me to stay out of it.
 **And that, and they gave… and the recommendation has come from them. This is an… Another approach, they are ready to support us, Alexey Pukhov** 33:27 Going forward.
 **Rajkumar Rangaraj** 33:28 Yeah, in the going forward, they can provide that kind of support, adding it in the runtime for us.
@@ -196,9 +205,11 @@ But we only need… to solve the problem, we only need, in one particular place,
 **Alexey Pukhov** 35:39 That will help.
 **Igor Kiselev** 35:40 It would be one small change to revert in one particular case, not using a fancy new API, but use an old API for compatibility without instrumentation.
 **Chris Ventura** 35:50 Well, at the same time, they could also just make it so that this new API doesn't bypass the assembly load notification.
-**Igor Kiselev** 35:59 So… Chris Ventura 35:59 And allow a change there.
+**Igor Kiselev** 35:59 So…
+**Chris Ventura** 35:59 And allow a change there.
 **Igor Kiselev** 36:00 It's a little bit bigger thing, because probably it would require some new design, because on some level, it's logical. So why is that, system, contextual?
-**was created, because in a contextual reflection, you are not always capable to track which assembly tries to load, a new assembly. That's why, you know, so it all comes from a score leap, so you lose information which assembly, comes, coming from. And that's why they created that reflect, contextual reflection API to give away for, an assembly that try to use a reflection say, okay, I'm currently the assembler on top of stack, so use my, my, assembly loading context. Right, I just… Chris Ventura** 36:50 I'm just saying that there are, there is precedence for changes like this. For example, tiered compilation.
+was created, because in a contextual reflection, you are not always capable to track which assembly tries to load, a new assembly. That's why, you know, so it all comes from a score leap, so you lose information which assembly, comes, coming from. And that's why they created that reflect, contextual reflection API to give away for, an assembly that try to use a reflection say, okay, I'm currently the assembler on top of stack, so use my, my, assembly loading context. Right, I just…
+**Chris Ventura** 36:50 I'm just saying that there are, there is precedence for changes like this. For example, tiered compilation.
 There are flags that can be passed that disables tiered compilation.
 To allow other things, Yep. Other things to work more smoothly. So… so it has been done before, So they do have more than one option.
 **Igor Kiselev** 37:16 Yeah, yeah, there are multiple options, that's why I will create an issue. I really hope that something would… will happen, but we need to understand that even if something will happen, it will help .NET 11 customers in .NET 12 timeframe, or .NET 12 customers in .NET 13 timeframe, but most probably for .NET 10 customers, it would be that use assembly hook only scenario.
@@ -211,7 +222,8 @@ It has its dependencies. Whenever we think about solving anything with that, we 
 Even a logger is an issue. Logging API is in the.
 **Alexey Pukhov** 38:34 Okay.
 **Rajkumar Rangaraj** 38:35 metric.
-**Alexey Pukhov** 38:37 Yeah, Microsoft… Rajkumar Rangaraj 38:38 Extension Library.
+**Alexey Pukhov** 38:37 Yeah, Microsoft…
+**Rajkumar Rangaraj** 38:38 Extension Library.
 **Alexey Pukhov** 38:39 Microsoft extension, we don't use the latest, latest. We stick to the… Okay. On .NET 8, we stick to 8, 9, 9, 10, 10.
 **Rajkumar Rangaraj** 38:50 Got it, got it.
 That's a big change we did.
@@ -261,7 +273,8 @@ our sites.
 that shows a failure, and one failure in particularly makes me uncomfortable, this is the .NET 9. If you look at the test, this is the assembly redirection that claims that The diagnostic source has been loaded twice.
 So… This is for isolation, by the way.
 So that I have to look. I think I missed something. So I have to investigate that one particular failure, but everything else, with all those changes that we did, looks solid.
-**So yeah, I'll keep you all posted. So hopefully it's something minor, but I'll have to… Igor Kiselev** 46:34 I'd like to… I'd like to ask an opinion here. So that is, we still need to understand why the issue happened.
+So yeah, I'll keep you all posted. So hopefully it's something minor, but I'll have to…
+**Igor Kiselev** 46:34 I'd like to… I'd like to ask an opinion here. So that is, we still need to understand why the issue happened.
 But if we will see some other blocker, that issue, that would require some move work to solve it. The issue happens only on macOS, and if we would prove that only Mac OS is affected by it. And the issue is on Mac OS specifically, affects only, startup hook-only solution.
 Canvy, in that case, just declare that startup cook-only solution on macOS, is not supported for now, and it would be a follow-up, solution, and… not increase work right now, because I believe we… previously, we have not, done the same, level of compatibility for Mac OS. For example, we, switched from x64… x64-bit ARMOS to ARM64, so we introduced some breaking change in macOS build.
 Previously. So maybe it would be also the case that, the feature that most probably would not be used a lot.
@@ -279,7 +292,8 @@ And I doubt that anybody is using it on the production side.
 **Alexey Pukhov** 49:12 Well, by the way, thank you for those who created this pipeline.
 Ye.
 It shows… Really interesting issues.
-**Piotr Kiełkowicz** 49:36 No… There is one… Question… Chris Ventura 49:55 I was wondering if this is something that needs to be forwarded to the, SDK SIG. It wasn't clear if this was… And.
+**Piotr Kiełkowicz** 49:36 No… There is one… Question…
+**Chris Ventura** 49:55 I was wondering if this is something that needs to be forwarded to the, SDK SIG. It wasn't clear if this was… And.
 **Piotr Kiełkowicz** 50:08 And… I agree that it is completely unrelated to all the instrumentation part, but in general, yes, it is working because we are deploying everything to GAG.
 **Igor Kiselev** 50:24 And right now, even without Docket.
 probably would also work, because I tried to fix all situations, and at least an hour end-to-end test, it proves that it works even without GOC.

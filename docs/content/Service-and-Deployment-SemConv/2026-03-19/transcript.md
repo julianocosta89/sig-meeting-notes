@@ -13,7 +13,8 @@ How are you?
 **Yoshi** 03:11 Doing good. I'm not taking the PTO today.
 **Ayushi Asthana** 03:16 Oh, shit.
 **Yoshi** 03:18 Yeah.
-**Yeah, I left AWS last week, so… Ayushi Asthana** 03:24 on your PTO?
+Yeah, I left AWS last week, so…
+**Ayushi Asthana** 03:24 on your PTO?
 **Yoshi** 03:26 What, what? Sorry?
 **Ayushi Asthana** 03:28 Yeah, I was saying you're on a call on your PTO, and you should be enjoying your time off today, isn't it?
 **Yoshi** 03:34 It's fine, it's fine. Anyway, I need to pick up my kid at, 3 o'clock, so… I had to be at home, and then I was just reading the draft of my… own book.
@@ -104,7 +105,8 @@ Data.what? Data.sensitivity.
 **Yoshi** 19:44 Yeah, yeah.
 **Ayushi Asthana** 19:46 Okay.
 I have added… I think this is the doc you're referring to, right? The syslog protocol?
-**Yoshi** 19:55 This is, yeah, this is… Ayushi Asthana 19:58 you just shared. Was this… Yoshi 20:01 Yes, yes, yes, so your commenter is right. I'm reading your comments, yeah, that's the point I wanted to say.
+**Yoshi** 19:55 This is, yeah, this is…
+**Ayushi Asthana** 19:58 you just shared. Was this… Yoshi 20:01 Yes, yes, yes, so your commenter is right. I'm reading your comments, yeah, that's the point I wanted to say.
 **Ayushi Asthana** 20:09 Okay, got it. I think that I have taken a note.
 We can… I think that's a good point. We can standardize at least this specific attribute.
 It makes sense to have more… You know?
@@ -144,7 +146,8 @@ I know.
 We… yeah.
 Does it represent… does it represent the owner?
 General was that business unit belongs to who owns the service, so owner.businessUnit was one of the proposals that came up that we should be sure.
-**Yoshi** 26:13 Oh… Ayushi Asthana 26:14 unit as a sub-attribute of uma.
+**Yoshi** 26:13 Oh…
+**Ayushi Asthana** 26:14 unit as a sub-attribute of uma.
 **Yoshi** 26:17 In that case, in that case, what kind of sum attributes does the owner attribute has?
 **Ayushi Asthana** 26:25 So I think… Aww, and I… Yoshi 26:29 Is it, is it written on, in, on a, on a PR?
 **Ayushi Asthana** 26:33 Yeah, yeah. Una… Yoshi 26:34 Oh, shit.

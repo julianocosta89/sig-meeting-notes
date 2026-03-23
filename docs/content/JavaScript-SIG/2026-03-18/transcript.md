@@ -51,7 +51,8 @@ And I think it should, like, from what, the profounding fig is saying, it should
 But, yeah, I think it's kind of very a recent, like, it's been in work only, like, for about a year, and it's, like, a recent promotion to being more stable.
 **Marc Pichler (Dynatrace)** 06:21 Yeah, I think… We'd probably be… interested in it, adding profiling, at some point. We are currently working on getting the logs signal stable, so that obviously is a priority first for us, but once we, actually have or the signers, stabil that we have been working on, this would be the logical next step, I think. So, from a priority standpoint, I think nothing speaks against, Starting to… to look into that.
 As for where the best place for it to live is, I would have to Look into it a bit more, and see, like, how these things are usually done, and then, basically working my way backwards from, like, which technology stack we're using to, figure out if the JS repos are a good place, or if there should be maybe another repo, or, should live somewhere. So these are kind of the concerns that I, that are floating around in my mind right now, but I don't have any… good initial answer to your question, I think, yet.
-**So… Nimrod Avni** 07:46 Like, I… I at least thought that the… like, the SDK, at least, for, like, how to, create and produce this, like, profiling telemetry. In my mind, it makes sense to leave.
+So…
+**Nimrod Avni** 07:46 Like, I… I at least thought that the… like, the SDK, at least, for, like, how to, create and produce this, like, profiling telemetry. In my mind, it makes sense to leave.
 in the, OpenTernalty.js, repo, because it's, like, kind of similar to all other signals of, like, how you produce it. And as far as, like, the profilers themselves, or, like, the equivalent of, like, instrumentations, maybe can live either in the JS contributory, or even other repos, But, like, I wanted to try to push it because I don't want to… like, if I say I want to start to implement, something that export these profiles.
 I would like to lean on, like, the official, implementation of the… of the signal instead of, like, kind of implementing something of my own.
 And as far as priority, I don't mind, like, taking it and working on it, but I guess you still need some, like, reviewing and priorities, but whatever you feel… makes sense if it's something that you say might not be the correct time, or you might need some more time to look at it, I'll… Fair enough.
@@ -71,12 +72,16 @@ Guess now would be a good time to… That's coolie.
 If not, then, yeah, if you have any, questions, Peace.
 Just put them on the, on the issue there, and we can… discuss further.
 Alright.
-**If there's no more comments, then we can move on to Marilla's topic, which is asking… Marylia Gutierrez** 13:43 I'll just ask you for a review on the… Marc Pichler (Dynatrace) 13:45 Oh.
-**Marylia Gutierrez** 13:46 Oh, wait, I guess you… Marc Pichler (Dynatrace) 13:49 I think she had the same idea there.
+If there's no more comments, then we can move on to Marilla's topic, which is asking…
+**Marylia Gutierrez** 13:43 I'll just ask you for a review on the…
+**Marc Pichler (Dynatrace)** 13:45 Oh.
+**Marylia Gutierrez** 13:46 Oh, wait, I guess you…
+**Marc Pichler (Dynatrace)** 13:49 I think she had the same idea there.
 I was just going through reviewing PRs earlier, so, looks like that is already done.
 **Marylia Gutierrez** 14:01 My job here is done. Next.
 What is this?
-**Marc Pichler (Dynatrace)** 14:08 And… Jan Peer 14:10 Yes.
+**Marc Pichler (Dynatrace)** 14:08 And…
+**Jan Peer** 14:10 Yes.
 **Marc Pichler (Dynatrace)** 14:10 one topic from Jan.
 **Jan Peer** 14:13 Yeah, it's more of, information now spreading, since we are keen on adopting the tracing channels, because they're out since, I don't know, version 14, I think, of Node.js.
 And there's… a lot of interest in different runtimes where the import module on the ESM doesn't work, like Cluster.
@@ -85,7 +90,8 @@ Which means, once this is released, we could theoretically update the… the con
 Adopting this one, which means we don't need to monkey patch anything anymore.
 And this way, we basically try to, you know, make Cloudflare runtimes more possible with OpenTelemetry. Also making it more aware for library maintainers, because I don't think that they know what this is about.
 So this is actually something we've tried to adopt a little bit more.
-**But I don't know if this is actually… I think these channels are here for exactly that thing, right? So… Marc Pichler (Dynatrace)** 15:22 Yeah, so, actually, there was an issue that was opened a while ago by, I think also somebody from Sentry.
+But I don't know if this is actually… I think these channels are here for exactly that thing, right? So…
+**Marc Pichler (Dynatrace)** 15:22 Yeah, so, actually, there was an issue that was opened a while ago by, I think also somebody from Sentry.
 **Jan Peer** 15:34 Okay.
 **Marc Pichler (Dynatrace)** 15:35 Who… so, because one of the issues that we were having was that, I don't know if you did die.
 Where is it? This one here. One of the issues that we were having is, that, we cannot… with the current context API, I just activate the context for that whole operation, because the tracing channel emits these events.
@@ -101,11 +107,14 @@ And that would then allow us to instrument tracing channels as well.
 **Jan Peer** 17:14 Okay, okay, got it. Which means, first, this has to land in OpenTelemetry at some point?
 And then we can adapt the… the country, you know, ice cream editions, right?
 Is there any way… is there any way on how we can help on this one? The prototype Context Attach, Detach?
-**It's just… Marc Pichler (Dynatrace)** 17:35 So… Jan Peer 17:35 Or no.
+It's just…
+**Marc Pichler (Dynatrace)** 17:35 So…
+**Jan Peer** 17:35 Or no.
 **Marc Pichler (Dynatrace)** 17:36 This is… this is a draft, the underlying functionality is actually very simple, so there's not a lot of work to be done. One of the things that we still need to figure out is how the shape of the API looks like, and how to move forward with that. I was actually planning to, Continue working on this soon, because it also kind of factors into the proposal on, the Node.js repo, where they were, thinking about adding an Oter module directly to Node.js.
 So having something like that, to show that, tracing channels can be used directly to generate spans, could also maybe influenced the discussion there a little bit, because it simplifies stuff a lot, as you said. Having tracing channels used everywhere, and then us just consuming that is way, way simpler than the monkey patching, and way less error-prone, so… I think there's definitely an appetite for this.
 **Jan Peer** 18:49 I mean, if you want, we can also brainstorm together at some point, if you want.
-**So… Marc Pichler (Dynatrace)** 18:56 Yeah.
+So…
+**Marc Pichler (Dynatrace)** 18:56 Yeah.
 So, to answer your question, is there anything you can help with? One of the things that are still open is, implementing this context attach and detach for the other context managers.
 We have two of them right now, that we haven't implemented that yet. This is the Stack Context Manager, and the Zone.js Context Manager. The Zone.js one will be Probably a lot more difficult to get right.
 But, yeah, if… There's, sometime… to look into that, that would be already very helpful.
@@ -113,7 +122,8 @@ But, yeah, if… There's, sometime… to look into that, that would be already v
 **Marc Pichler (Dynatrace)** 19:43 Because once we have prototypes for all three of these, we can… open the PR on the API, and then just merge these.
 things in.
 And then, it would be supported for all the context managers, and, we can easily then implement the proposed layoff here for the tracing channels.
-**And that will then unblock the whole chain of, things to… Jan Peer** 20:13 of awesomeness.
+And that will then unblock the whole chain of, things to…
+**Jan Peer** 20:13 of awesomeness.
 **Marc Pichler (Dynatrace)** 20:14 Yeah, exactly.
 **Jan Peer** 20:18 Okay.
 That sounds like a good, first step.
@@ -137,7 +147,8 @@ So you can go to PRs.
 That you can find here.
 So there's… Quite a few of these, that are waiting for… PR reviews as well, so if anybody has some time to Have a look into these, that would be very much appreciated.
 So… That's this here. Then the second one… I assigned myself to, Open Issue to discuss having API extension packages, to facilitate these sorts of, features for the API that, We still want to have, but, we're not sure of the exact shape yet, so we don't want to commit to it in the API.
-**Then, this one right here… Marylia Gutierrez** 23:39 So this one, I was thinking if we actually… if we should close it, because Mike picked up, and he has a PR… Yeah, continue, with that.
+Then, this one right here…
+**Marylia Gutierrez** 23:39 So this one, I was thinking if we actually… if we should close it, because Mike picked up, and he has a PR… Yeah, continue, with that.
 So I don't know if you want to just close that one.
 **Marc Pichler (Dynatrace)** 23:55 I will just close this one, closing in favor of… 6, 4, 9, 8… So, that's… one down?
 And, this one hasn't had any activity.
@@ -253,8 +264,10 @@ It's weekly.
 **David Luna Bistuer** 49:25 Aaron, we… miro.
 **Marc Pichler (Dynatrace)** 49:29 Yeah, we for sure can wait.
 **David Luna Bistuer** 49:32 No.
-**Marc Pichler (Dynatrace)** 49:33 I guess there's not a lot of change to the export pipeline or anything like that, so we shouldn't get any… David Luna Bistuer 49:41 No.
-**Marc Pichler (Dynatrace)** 49:42 Any conflicts on it, so… David Luna Bistuer 49:44 One thing that I… my… I don't know, maybe one question that the club's app is, it is much of the… more similar… it's a bit similar.
+**Marc Pichler (Dynatrace)** 49:33 I guess there's not a lot of change to the export pipeline or anything like that, so we shouldn't get any…
+**David Luna Bistuer** 49:41 No.
+**Marc Pichler (Dynatrace)** 49:42 Any conflicts on it, so…
+**David Luna Bistuer** 49:44 One thing that I… my… I don't know, maybe one question that the club's app is, it is much of the… more similar… it's a bit similar.
 quite similar to the emit method, so I think most of the logic… at the end, I finally implemented most of the logic following the same as the emit method, so I wonder if that's… Maybe it's better to have to kind of have a shared logic.
 And in the mid… and… and… And so we can keep it as is, but it seems like the code is being duplicated. So we have to say for… At least, to discard everything along record, or to return false in enabled.
 So I wonder if that… it makes sense to just have some, maybe, calling enabled first, or… You know, this shared logic.

@@ -11,7 +11,8 @@ We may have had some time zone confusion, so we'll give it another couple minute
 **Dan Gomez Blanco** 03:11 Hello, hello?
 **Tiffany Hrabusa** 03:12 Hello.
 **Dan Gomez Blanco** 03:22 I have reached out to Hope with a friendly message, but I think… It was not received. Or not our knowledge, actually, but… That's what I mean.
-**Tiffany Hrabusa** 03:30 It just… Dan Gomez Blanco 03:31 Login.
+**Tiffany Hrabusa** 03:30 It just…
+**Dan Gomez Blanco** 03:31 Login.
 Alright.
 I'll give, a couple minutes for people to join in, to put any topics on the agenda. I'll share the notes in the chat.
 Okay, we can probably start. I saw the message from Lukash, but Not sure if he's gonna be able to join… I wonder if that's related to… people… sink in there.
@@ -54,7 +55,8 @@ Alright, so that's, yeah, that's for review, I think we're still probably gonna 
 So, yeah, so I think, anything else that is… I think we have probably done this already, I'm just thinking, we have been doing this.
 For the initial scope, we have decided to… cover… Mmm… We talked about Kubernetes, We talked about… non-Kubernetes environments, and we talked about centralized telemetry platforms, so I guess… This could be… marked as done. I think we have.
 Agreed on the three blueprints that we want to cover.
-**Mmm… Tiffany Hrabusa** 13:14 Sounds good to me.
+Mmm…
+**Tiffany Hrabusa** 13:14 Sounds good to me.
 **Dan Gomez Blanco** 13:16 I'll make an update later, and call that as done.
 On the missing… on the reference architectures piece, yeah, we can probably… talk about that next week. So, there's emerging topics here, because I was gonna talk about KubeCon later, but, there will be folks on the DevEx SIG.
 But I, I keep calling, so I… Yeah, I think we should… have a chat together, see how they plan to… if they plan to have a… because I've read the blog post, the initial blog post that was pushed, and then, you know, if we're… if we're going to be asking folks to, hey, reach out to us.
@@ -66,7 +68,9 @@ Mmm… But not currently being worked on, I guess.
 And this one… well, I guess this one we can mark it as in progress, if we're talking about it now.
 Which is… probably related to your point, maybe, I think, and that's, yeah, you wanted to see if we should start the architecture setup in .io.
 Right.
-**Tiffany Hrabusa** 15:06 Yeah, we'll need… I think the idea was to have some kind of explanation about what these are, so we will have to write some content, it won't just be, creating the pages. But I can get a start on that so that, when I think, Lukash is… Blueprint is probably the furthest along, and it might be… Are we intending to publish one at a time, or do we want to publish all three at once? I'm not sure, but… Dan Gomez Blanco 15:37 I think we should publish one at a time, and… Tiffany Hrabusa 15:40 Okay.
+**Tiffany Hrabusa** 15:06 Yeah, we'll need… I think the idea was to have some kind of explanation about what these are, so we will have to write some content, it won't just be, creating the pages. But I can get a start on that so that, when I think, Lukash is… Blueprint is probably the furthest along, and it might be… Are we intending to publish one at a time, or do we want to publish all three at once? I'm not sure, but…
+**Dan Gomez Blanco** 15:37 I think we should publish one at a time, and…
+**Tiffany Hrabusa** 15:40 Okay.
 **Dan Gomez Blanco** 15:41 Yeah, thanks so much.
 **Tiffany Hrabusa** 15:42 then, yeah, it might be worth, starting that, and I can, I can open a Google Doc that, for drafting the explanation. Unless you have something already written, Dan, maybe.
 **Dan Gomez Blanco** 15:57 No, I think you can take, I guess, inspiration from the project, description, from the project template, if you want. Okay. But yeah, I think, Yeah. I guess, what do we want to cover? Like, we want to cover the… What do we mean by a reference architecture? What do we mean by a blueprint? And then… yeah.
@@ -75,11 +79,13 @@ how to propose one, but I think, you know, maybe that… that also needs… I gu
 Which… maybe, like, for now, we can just create that, and then we can add it later, too.
 The process to create one.
 **Tiffany Hrabusa** 16:50 Yeah, and if everything isn't ready.
-**in the explanations that we're putting on .io, we can hide the pages temporarily until we're ready to actually hit the button, but I think, It might… it might be a good idea to at least, Create the pages and get that started, but… Dan Gomez Blanco** 17:13 Yeah, I agree.
+in the explanations that we're putting on .io, we can hide the pages temporarily until we're ready to actually hit the button, but I think, It might… it might be a good idea to at least, Create the pages and get that started, but…
+**Dan Gomez Blanco** 17:13 Yeah, I agree.
 And then in the meantime, I mean, creating an issue template, it's fairly simple, right? So I can just create an issue template. I can focus on that first, before… And create an issue template on the… Say again, user repo.
 I will create one, but maybe next, maybe, like, I just wanted to chat to the DevEx.
 Folks first. Right.
-**Tiffany Hrabusa** 17:38 I mean, none of this is gonna happen in the next day, so… Dan Gomez Blanco 17:42 I mean, next week is KubeCon, right?
+**Tiffany Hrabusa** 17:38 I mean, none of this is gonna happen in the next day, so…
+**Dan Gomez Blanco** 17:42 I mean, next week is KubeCon, right?
 **Tiffany Hrabusa** 17:44 Yeah, yeah.
 **Dan Gomez Blanco** 17:46 Yeah.
 **Tiffany Hrabusa** 17:46 I'm on a plane tomorrow. You can assign 238 to me, and I will… take that on when I get back from the conference.
@@ -91,7 +97,8 @@ I guess that is.
 **Dan Gomez Blanco** 18:10 So there's a bit of an overlap here, right, because both of them would be under one. Right.
 **Tiffany Hrabusa** 18:15 Right. Yeah, you can do both, yeah.
 **Dan Gomez Blanco** 18:18 Yeah.
-**Yeah, I'll assign both to you, and then… yeah. So I think… Tiffany Hrabusa** 18:23 Yep.
+Yeah, I'll assign both to you, and then… yeah. So I think…
+**Tiffany Hrabusa** 18:23 Yep.
 **Dan Gomez Blanco** 18:23 They're almost, like, both can be done at the same time, I think, pretty much.
 Hmm.
 **Tiffany Hrabusa** 18:29 Yep.
@@ -99,7 +106,8 @@ Hmm.
 People that are not commenting on that?
 Do you need to comment on something to be able to… Second.
 **Tiffany Hrabusa** 18:46 comment.
-**We'll test it right now. This… I'm on 238, so… Dan Gomez Blanco** 19:06 Nope.
+We'll test it right now. This… I'm on 238, so…
+**Dan Gomez Blanco** 19:06 Nope.
 Right, okay.
 **Tiffany Hrabusa** 19:10 There we go. Let me do 2372. I might have already commented on 237.
 **Dan Gomez Blanco** 19:17 Yeah, I think I have, yeah.
@@ -150,8 +158,10 @@ The understanding of what a blueprint is, compared to, like, hey, here's a list 
 **Dan Gomez Blanco** 23:47 And then, yeah, sometimes it's not super understood what we mean by a blueprint, for example, right? So, I talk about that and the benefits that it can bring to the community would be… would be quite good.
 Yeah.
 I mean, that would be… Yeah, be happy to… to co-speak, if you… if you're willing to.
-**lciukaj@splunk.com** 24:08 Yeah, let's, let's work on that. But first, let's have a PR, and first… Dan Gomez Blanco 24:13 No, I mean, firstly.
-**lciukaj@splunk.com** 24:14 Yeah, that is real, we are… Dan Gomez Blanco 24:16 Point and stuff.
+**lciukaj@splunk.com** 24:08 Yeah, let's, let's work on that. But first, let's have a PR, and first…
+**Dan Gomez Blanco** 24:13 No, I mean, firstly.
+**lciukaj@splunk.com** 24:14 Yeah, that is real, we are…
+**Dan Gomez Blanco** 24:16 Point and stuff.
 **lciukaj@splunk.com** 24:17 Exactly, so then we will be in this real phase instead of, you know, pre… pre-GA, let's say. Let's make this GA, right? So I assume first blueprint will be… will be the GA for the project, so let's work on this.
 Awesome.
 **Dan Gomez Blanco** 24:32 Sorry, I was just reading the chat, welcome, Gloria.
@@ -196,7 +206,8 @@ Good to see you.
 **Dan Gomez Blanco** 30:31 Yeah, with that, anything else?
 I think we are… We've covered everything.
 Good stuff. Alright, well, See you in Amsterdam, Tiffany. Yep. And are you gonna be at the Maintainers Summit?
-**Tiffany Hrabusa** 30:50 I am, I'm speaking on a panel of documentarians, so… Dan Gomez Blanco 30:54 Nice.
+**Tiffany Hrabusa** 30:50 I am, I'm speaking on a panel of documentarians, so…
+**Dan Gomez Blanco** 30:54 Nice.
 **Tiffany Hrabusa** 30:55 Yeah.
 **Dan Gomez Blanco** 30:55 I'll be there.
 Okay, well, thanks all for joining, thanks Clara, for joining as well, and welcome, and, see you in two weeks.

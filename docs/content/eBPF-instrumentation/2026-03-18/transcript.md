@@ -57,7 +57,8 @@ I can add this afterwards, Robert, I'll take that as an action item. But did you
 **Pellared** 07:11 No, at least not from my side, at least Stephen had time to work on it.
 **Tyler** 07:17 Oh, okay.
 So, just still something that's a work in progress?
-**Pellared** 07:26 President… Stephen Lang 07:26 I haven't added anything to this.
+**Pellared** 07:26 President…
+**Stephen Lang** 07:26 I haven't added anything to this.
 **Tyler** 07:32 Okay, yeah, alright. Well then, cool. I will… I will leave this the way it is, and then we will try to add this after the call, so I don't have to flounder while we're on the call.
 **Stephen Lang** 07:43 There was, Tyler, I don't know if you want to discuss it now or, offline, but the last thing with this was, I think Rafael put a comment, so there was a bit of a discussion I don't know if you've discussed this whilst I've been away, either.
 But I don't know if this was… maybe something that we should, you know, discuss wider in the SIG around just the general approach of, you know, just how easy to use Docker Compose is versus the Docker test library. I know there's opinions on both sides, and it didn't feel to me last time that I looked at this that we had a, A consensus around this.
@@ -71,7 +72,8 @@ about… About that, or even you can even first try and have a first idea.
 We can get some… Feedback or some actions to… to do.
 **Tyler** 09:42 Yeah, I think, Mario, if you wouldn't mind also maybe just commenting in that issue, some of your findings would be great.
 **Mario Macias** 09:48 Okay.
-**Tyler** 09:49 So we capture them. Yeah, I think that would be… Mario Macias 09:51 Okay.
+**Tyler** 09:49 So we capture them. Yeah, I think that would be…
+**Mario Macias** 09:51 Okay.
 **Tyler** 09:52 So we'll probably lose it again if we don't, but yeah, I think that that's probably a good idea. And then Raphael is also gonna play with it, so yeah, we can probably try to move forward on that by doing something like this. That'd be great, if you could.
 **Mario Macias** 10:03 Okay.
 Yeah.
@@ -170,7 +172,8 @@ Yeah, so we're waiting on the Python async landing, before he was going to finis
 Blocked upgrades, this one for EVPF… actually, I don't know if there's a new status update on this. We're waiting on upstream changes, for this, If I remember correctly.
 Looks like this is still open. So, yeah, this is not a blocker on this release, and this might just get bumped to the next milestone, so there's not really much we can do on this upgrade path.
 The other one, though, is the upgrade of, oats. This is something that we could probably look at going through. I'm happy to take this on, I don't know if I'm the best person to take this on, but I think, Mark, I don't know if Mark's on the call, but Mark was looking at doing this in other places, how… challenging it would be. I'd love to get a… Yeah, I don't see Mark on the call. Okay.
-**So, okay, yeah, I can… Stephen Lang** 24:43 You too.
+So, okay, yeah, I can…
+**Stephen Lang** 24:43 You too.
 **Tyler** 24:45 Oh, he is.
 Oh, sorry, yeah, there he is.
 **Marc** 24:50 Yeah. Would you… you said I was looking at about… Tyler 24:54 I thought that you were… talked about this previously, talking about the Grafana Oats package upgrade, so we've tried doing this upgrade to the V061, and it breaks a bunch of, like, because the config file changed, and I thought I remember you saying that you had done a few of these before?
@@ -201,7 +204,8 @@ Node.js emulated.
 **Tyler** 28:30 Yeah, this looks great. It looks like it actually has the approvals. Are we waiting on anything? Oh.
 **Nimrod Avni** 28:36 I think just the… I think just the… this is, like, fixed. I don't know why it's… We… Tyler 28:43 This should be fixed.
 **Nimrod Avni** 28:44 I can resolve it, because I fixed it.
-**Tyler** 28:48 Okay, I will… Nimrod Avni 28:50 I think it's ready to go.
+**Tyler** 28:48 Okay, I will…
+**Nimrod Avni** 28:50 I think it's ready to go.
 **Tyler** 28:53 We can resolve it then, if you think it's fixed. Yeah, it looks like Rafael… Yeah, it does look ready to go. I don't know what's going on with the merge status here, looks like it needs to get updated. But, yeah, maybe we can get this merged, actually, today. So yeah, thanks, we'll add that to the milestone.
 Any other ones?
 Okay.
@@ -220,7 +224,8 @@ If, if everyone agrees.
 **Tyler** 30:50 I see a thumbs up from Florian.
 **Florian Lehner** 30:52 Sorry, but… just before KubeCon, a lot of stuff is happening. Sorry, yeah, for me, it sounds good to have it, in the OB repository. We have to figure out, on the profiling side, prioritization, when information comes in from SDK versus OB versus other places.
 I think this will be a blocker at some point, but other than this, yeah.
-**Mattia Meleleo** 31:23 Sorry, I just, I just chatted with Christos for that, and, we agreed that Obi should be the least prioritized one, so I can put this, this in the… In the spec, or the… Florian Lehner 31:36 contract.
+**Mattia Meleleo** 31:23 Sorry, I just, I just chatted with Christos for that, and, we agreed that Obi should be the least prioritized one, so I can put this, this in the… In the spec, or the…
+**Florian Lehner** 31:36 contract.
 **Mattia Meleleo** 31:36 or whatever, and we can unblock your PR.
 **Florian Lehner** 31:40 This sounds nice. So, yeah, I'm just learning about this now. Cool, thanks.
 **Tyler** 31:48 Awesome.
@@ -235,7 +240,8 @@ That we want to make sure that all of those are using, you know, patched version
 is a good idea. I would be surprised if Renvate hasn't done that one. I thought I saw, Oh, okay, so that's the second point. I think I did see them try to do that, and then Nikola pointed out that it actually caused, build fail… build failure, and there is a thing we need to look into, specifically around supporting this. I think there was, like, some… I'm guessing some details around… You know what, let's… maybe not… just come up with stuff, and we'll see if we can find it really quick.
 For some reason, I thought it was in the milestone, but, I guess it isn't.
 Support JSON RFC, no.
-**Man, hmm. I guess we can go about it another way and find it in the old… Stephen Lang** 34:39 So… Tyler 34:40 Maybe it is just a pull request, sorry.
+Man, hmm. I guess we can go about it another way and find it in the old…
+**Stephen Lang** 34:39 So… Tyler 34:40 Maybe it is just a pull request, sorry.
 **Stephen Lang** 34:42 Just in terms of, Renovate, I don't think it can handle the upgrade, because we use the OB generator image.
 And that we need… that image needs to have… The same version or greater.
 When it's… when it's building the repo. So the image needs to be updated first.
@@ -288,7 +294,8 @@ Hopefully with better understanding, and we can take it from there.
 **Tyler** 41:00 Alright, that sounds good.
 **Rafael Roquetto** 41:02 Thanks, though, for all the, feedback.
 **Tyler** 41:05 Yeah.
-**Okay, cool. Rafael, you also have to have the next item for the AI Contributions Guideline. I can start sharing my screen. Yeah, so… Rafael Roquetto** 41:12 last SIGA, you know, we talked on past days, we talked a little bit about it, and then, I thought I would put something up. It's an RFC.
+Okay, cool. Rafael, you also have to have the next item for the AI Contributions Guideline. I can start sharing my screen. Yeah, so…
+**Rafael Roquetto** 41:12 last SIGA, you know, we talked on past days, we talked a little bit about it, and then, I thought I would put something up. It's an RFC.
 So to take this as a starting point. Feel free to disagree, of course.
 Tater, and remember, like, at least from where… what I believe is, this is not… set in stone, this is a starting point. And, you know, we can iterate this as we go.
 But, yeah, please have a look, see what you think.
@@ -359,7 +366,8 @@ So I don't think we should increase it in CI just to make CI happy, because in p
 But I saw that we can, fix this by, splitting the… The socket filter program.
 With, with another additional telco.
 And, make it, Less big.
-**Marc** 49:32 Okay. Do you have a… Like… Rafael Roquetto 49:37 Yep, we can… I can help you with that if you want, Mark, too.
+**Marc** 49:32 Okay. Do you have a… Like…
+**Rafael Roquetto** 49:37 Yep, we can… I can help you with that if you want, Mark, too.
 **Marc** 49:41 Okay, let's do a fair name.
 **Rafael Roquetto** 49:43 Yeah, yeah, we can… we can do that.
 **Mattia Meleleo** 49:45 So, last time I solved this, I just asked Claude to split it, and it worked.
@@ -373,7 +381,8 @@ Awesome. Anything else on that one, Mark?
 Next up, this Node.js detector. This is, again, one that we… looks ready to merge.
 It's… What? I thought all the stuff was just resolved, what just happened?
 **Nimrod Avni** 50:42 It's outdated, because I… I don't know, it got… maybe… That's weird. I think, Raffle, you passed it, you passed on it again, right? It should be good to go.
-**Tyler** 50:58 Yeah, I… I mean, Raphael's… Rafael Roquetto 51:01 Y-ye.
+**Tyler** 50:58 Yeah, I… I mean, Raphael's…
+**Rafael Roquetto** 51:01 Y-ye.
 Sorry. Yeah, loose food to me, yeah.
 **Tyler** 51:05 I don't know why these… we just looked at this, and these were all resolved, so I'm gonna… I'm just gonna resolve these. I see a green box on there. Sometimes GitHub also is a little funky, so… Yeah, this is still resolved as well. Okay, cool. This looks good. Let's merge it.
 **Nimrod Avni** 51:25 Thank you.
@@ -410,15 +419,18 @@ Okay, well, cool, yeah.
 **Mattia Meleleo** 55:51 By the way, just one comment here. I know it's still a draft, but there is one function that checks the availability of the programs in Celium eBPF.
 It's the features package, and you can just.
 **Mario Macias** 56:08 Okay, okay, okay, thank you. So this… we don't need this tracing enabler… okay, okay.
-**Mattia Meleleo** 56:19 Yeah, maybe we can… Mario Macias 56:20 Thank you.
+**Mattia Meleleo** 56:19 Yeah, maybe we can…
+**Mario Macias** 56:20 Thank you.
 **Mattia Meleleo** 56:21 that function in here. And it's also cached.
 **Mario Macias** 56:24 Yeah.
-**Mattia Meleleo** 56:24 to… Mario Macias 56:25 Okay, great, great, thank you, I didn't, didn't know this.
+**Mattia Meleleo** 56:24 to…
+**Mario Macias** 56:25 Okay, great, great, thank you, I didn't, didn't know this.
 **Mattia Meleleo** 56:29 No problem.
 **Tyler** 56:34 Cool, alright.
 This one is also ready to go, removing some unused functions, and global variables, this is from Mario as well.
 It's got a bunch of approvals. Actually, I think this is probably ready to merge, unless people think otherwise. I think the… Main issue is that there's upstream dependencies on this one.
-**Which, I think the Bela folks are the ones… I see a thumbs up from Mattia as well, so… Mario Macias** 57:04 Yes, there is… please check this SQL… there is a function related to SQL. You recently added SQL, but I haven't found it… it is being used anywhere. I don't know if you plan to use it in the future, so I can just leave it.
+Which, I think the Bela folks are the ones… I see a thumbs up from Mattia as well, so…
+**Mario Macias** 57:04 Yes, there is… please check this SQL… there is a function related to SQL. You recently added SQL, but I haven't found it… it is being used anywhere. I don't know if you plan to use it in the future, so I can just leave it.
 **Mattia Meleleo** 57:25 No, it's actually hard, I tried to use it in the past when I added MySQL.
 But it had some issue, I didn't use it. I wanted to delete it, because I saw that it's unused, but I left it there.
 **Mario Macias** 57:37 Okay, so it's safe to… to delete. Okay, great.
@@ -434,7 +446,8 @@ Yeah, I'm guessing it's probably just a flake here, but yeah, we can double chec
 Okay, then last up, the RFC contributing, guidelines we talked about, and then the Enable Appali with, only Dynamics PID selector. This is something also Mike mentioned earlier. This is, to fix something, just came out. It looks like it just needs reviews.
 Looks like it's pretty short as well.
 Yeah. So yeah.
-**Mike, if you wanted to add… Mike Dame** 58:39 change.
+Mike, if you wanted to add…
+**Mike Dame** 58:39 change.
 Yeah. It's, basically just, you know, trying to test this out now and make sure that it works in code. I realized that the app OLLI instrumentation isn't actually, enabled unless you have, like, a broader selector that is passed to it, and that kind of defeats the point of the dynamic selector, of being able to say, I just want this PID. So, kind of explained it a little bit in there.
 I am testing this, and I'll try to add some tests to this PR too, but, any eyes that people have right now would be great.
 Not a huge rush.

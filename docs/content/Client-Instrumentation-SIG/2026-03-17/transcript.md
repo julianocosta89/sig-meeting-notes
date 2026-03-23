@@ -36,7 +36,8 @@ I mean, the instrumentations are the… 3 anyways.
 Yeah, it just… this just happened, like, last Thursday, so… Damn.
 **Santosh** 04:05 Yeah, yeah, yeah, yeah, I think, Do you guys also plan to… Update the documentation page.
 RR over time, once you have more usage.
-**At least between… among the, you know, guys who are actively participating, you guys can start using it, and… You know, make sure it is… Martin Kuba** 04:32 Yeah, you mean the documentation?
+At least between… among the, you know, guys who are actively participating, you guys can start using it, and… You know, make sure it is…
+**Martin Kuba** 04:32 Yeah, you mean the documentation?
 **Yeah, you mean, like, the documentation in… on the website, or on the… Santosh** 04:38 telemetry IO.
 **Martin Kuba** 04:39 Yeah.
 Yeah, we need to do that, yeah.
@@ -55,7 +56,8 @@ We have… we have the navigation timing.
 **Santosh** 05:42 Okay. Oh man, I think I remember we talking about these things with Nev.
 I don't know if it was a year ago or two years ago. It's.
 **Martin Kuba** 05:53 Yeah.
-**Santosh** 05:54 But, congratulations, I think your effort paid off. I think you are the only one who's, you know, who's sticking around from the original… Martin Kuba 06:02 Yeah.
+**Santosh** 05:54 But, congratulations, I think your effort paid off. I think you are the only one who's, you know, who's sticking around from the original…
+**Martin Kuba** 06:02 Yeah.
 **Santosh** 06:03 of people.
 **Martin Kuba** 06:05 Yeah, that's… this was, like, one of the… one of the reasons that I… that I switched, you know, I went to Grafana, because I could continue working on this. You know, Ted… Ted Young, who's… Santosh 06:18 Yeah.
 **Martin Kuba** 06:19 one of the GC, MGC, like, he also went to Grafana from… from Lightstep, and… And, he, like… like, he think, like… he really wants this to happen, like, he really wants the browser to be successful, so… Oh.
@@ -96,10 +98,13 @@ What about?
 **Santosh** 11:34 It's the same. So basically, it's the same. So, the… The intent is the same.
 You can either propagate the, trace context via a meta tag, R… Via the server timing header.
 **Martin Kuba** 11:51 Yeah.
-**Santosh** 11:52 And I think the server timing header was… Preferred for some reason, so that… Martin Kuba 11:59 Okay.
-**Santosh** 11:59 you know, it is not HTML-specific, you know, it can be used. Actually, that part, I should read more. I don't know the… full… context. Like, is this concept required for other situations, too? If it is only for the document load, you know, you're right, that meta tag Can be, a way to… Martin Kuba 12:24 Boom.
+**Santosh** 11:52 And I think the server timing header was… Preferred for some reason, so that…
+**Martin Kuba** 11:59 Okay.
+**Santosh** 11:59 you know, it is not HTML-specific, you know, it can be used. Actually, that part, I should read more. I don't know the… full… context. Like, is this concept required for other situations, too? If it is only for the document load, you know, you're right, that meta tag Can be, a way to…
+**Martin Kuba** 12:24 Boom.
 **Santosh** 12:25 But turns out that, you know, John, who opened this issue, he has linked a few links at the bottom.
-**where I see, you know, Grafana had donated you know… Martin Kuba** 12:40 Hmm.
+where I see, you know, Grafana had donated you know…
+**Martin Kuba** 12:40 Hmm.
 **Santosh** 12:41 A plugin kind of a thing to… the PHP instrumentations.
 Okay. You know, where you propagate the server timing as a header, the transparent in the server timing header.
 **Martin Kuba** 12:56 Okay.
@@ -149,7 +154,8 @@ Repo, or, like, open a new one.
 **Santosh** 18:17 It's up to you, I think.
 **Martin Kuba** 18:19 God, I, I… Santosh 18:22 put both the links here. The main issue… the reason it is in the spec is… This is… this indeed needs to go into the spec anyway, because we do want to standardize it so that everyone implements this.
 **Martin Kuba** 18:40 Right.
-**Okay, yeah, I'll… I'll have to think about it somewhere, to be honest. But yeah, it's, I just call it… Yeah. Okay. Yeah, I think… Santosh** 18:58 my… I would also recommend that you… Get a perspective from… you know, from Grafana as well, like, your internal teams, the browser teams, as to how they are handling this situation, because they, you know, they seem to have added this, this functionality, right, here in the PHP… Martin Kuba 19:23 Right. Yeah, I'm actually very curious about this, because, like, I don't know how that applies to back-end services.
+**Okay, yeah, I'll… I'll have to think about it somewhere, to be honest. But yeah, it's, I just call it… Yeah. Okay. Yeah, I think… Santosh** 18:58 my… I would also recommend that you… Get a perspective from… you know, from Grafana as well, like, your internal teams, the browser teams, as to how they are handling this situation, because they, you know, they seem to have added this, this functionality, right, here in the PHP…
+**Martin Kuba** 19:23 Right. Yeah, I'm actually very curious about this, because, like, I don't know how that applies to back-end services.
 **Santosh** 19:31 It doesn't, but it is the backend service that needs to, you know, inject that header.
 **Martin Kuba** 19:38 Oh, good.
 **Santosh** 19:39 So that the browser receives it.

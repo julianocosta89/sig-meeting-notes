@@ -24,7 +24,8 @@ And so, like, you can… This is all hooked up to the schema, so we have all the
 Could make different samplers, all that.
 And it will basically populate and build the schema for you, and then… With the instrumentation, we could say, like, add all to give us, like, a… Basically, a kitchen sink of all the existing configuration options, including their default values, so if we wanted to just Basically, have a starting point with all the… Everything mapped in, we could do that, or… you could just say, like, oh, I just want… the values for, like, the AWS… Instrumentations, or… Something like that. But yeah, just still playing with it, but if people have ideas of… Like, what this type of experience might benefit from.
 Feel free to let me know.
-**So I'll pause on that one before I show the second thing that I've been doing, but… Trask Stalnaker** 05:07 Any ideas, when the registry stuff would be on the website?
+So I'll pause on that one before I show the second thing that I've been doing, but…
+**Trask Stalnaker** 05:07 Any ideas, when the registry stuff would be on the website?
 **Jay DeLuca** 05:16 So, it… it… It is available now, sort of.
 **Trask Stalnaker** 05:22 Huh.
 **Jay DeLuca** 05:22 like, this subdomain, explore.opentelemetry.io, like, this is live. It just doesn't have… it just doesn't have the fully populated, like, I'm still working through the detail page.
@@ -47,7 +48,8 @@ No comments there, then.
 **Jay DeLuca** 07:57 Cool. Thanks for that feedback.
 **Trask Stalnaker** 08:01 How is the collector, Data being gathered.
 Is it the same, JSON file structure?
-**the Java agent has… Jay DeLuca** 08:20 It's a little different. So, within the collector, they already have, like.
+the Java agent has…
+**Jay DeLuca** 08:20 It's a little different. So, within the collector, they already have, like.
 metadata, files per component. And so what we've done is, on a nightly basis, this basically goes and aggregates all of them into these different So we have, for each version, we'll have a different folder of the different schema files.
 Now, we… and then for the actual use on the registry, we do convert that into a JSON Like, content address database that we then… I'm gonna load up into, like, a… Index DB on the front end, but, But yeah, so basically we're just scraping the metadata files directly from the repos.
 **Trask Stalnaker** 09:11 So the… the reason I ask is, actually, I am… I've been… Looking at all the different… telemetry emitted by all the different Gen AI instrumentations.
@@ -61,11 +63,13 @@ And that is… mostly in Python, or cross-language?
 **Trask Stalnaker** 11:38 It's… Across language, but mostly, mostly in… I mean, I'd be happy to only start in Python.
 **Jay DeLuca** 11:47 Yeah, I think that's… that seems like a reasonable… like, a reasonable use case for this, like, that… that is, like, an ecosystem component, and… I think it has a lot of similar characteristics, I can create an issue, and we can start… I can look into that a little bit, and see what that might look like.
 **Trask Stalnaker** 12:08 Yeah, are you thinking… I mean, I know with the Java instrumentation, you're capturing the telemetry from the tests themselves to create that. Yes.
-**The… is the collector doing that, or the collector is just a manually curated… Jay DeLuca** 12:29 The collector, yeah… They have, I don't know if it's Weaver specifically, but they use, like, a lot of the Weaver format to document.
+The… is the collector doing that, or the collector is just a manually curated…
+**Jay DeLuca** 12:29 The collector, yeah… They have, I don't know if it's Weaver specifically, but they use, like, a lot of the Weaver format to document.
 **Trask Stalnaker** 12:41 Oh… They generate… they auto-generate some code from that.
 **Jay DeLuca** 12:45 Yeah, so that's what… so I'm scraping their… their Weaver information, essentially.
 **Trask Stalnaker** 12:51 Nice.
-**Jay DeLuca** 12:52 But, yeah, we would probably need to look at those other… the Gen AI projects and see if there's… a source, or if we would need to infer them in some way. That's really the challenge. This took us a year to do Java, so… Trask Stalnaker 13:06 Cool, cool Thanks.
+**Jay DeLuca** 12:52 But, yeah, we would probably need to look at those other… the Gen AI projects and see if there's… a source, or if we would need to infer them in some way. That's really the challenge. This took us a year to do Java, so…
+**Trask Stalnaker** 13:06 Cool, cool Thanks.
 **Jay DeLuca** 13:09 Yeah, but so on that topic, this other thing that I've done, was I've taken all of the metadata, and I've built a system that transforms it into a Weaver-compliant format, and then runs the Weaver Live Check against each module, and then gives us, basically, any of the outputs, whether it's, like, an info or a violation.
 And then One thing that I'm… I'm still working on this, this is mostly a data quality issue, it's not necessarily this, but I'm trying to track the compliance against Semcov with So, like, if we look at the telemetry just with the SEMCOM opt-in enabled.
 just to make sure, you know, that we're not emitting other things. Like, these ones are still failing just because I don't think that we have the test cases annotated correctly, so I need to go back and, continue to kind of Massage those, but just gives us a way to kind of have a report card of… you can even switch between, like, different versions.
@@ -75,13 +79,15 @@ Cool, let me share back and see if our agenda has indeed grown a little bit.
 Gregor, speeding up the builds.
 **Gregor Zeitlinger** 15:04 But before we get to that, I realized that I wanted to add something But, traders, told about, because we also talked about it.
 And, I have added, a pull request for, Autel IO, where I have, First documented, the… Spring Boot, because I think now it's the first time that it's actually usable. And then, on top, that was Jay's idea, I have added an automatic converter for where you can plug in your environment variables, and then you get out the declarative configuration.
-**And, this is, split into two PRs, and this is… the second one, and I just thought about it, when, I think, Jack, you mentioned that there is something about, Sampler or something that I probably forgot about, and… That is in here. I wanted to show it, but you can actually… Trask Stalnaker** 16:08 Oh, yeah, yeah, you wanna share?
+And, this is, split into two PRs, and this is… the second one, and I just thought about it, when, I think, Jack, you mentioned that there is something about, Sampler or something that I probably forgot about, and… That is in here. I wanted to show it, but you can actually…
+**Trask Stalnaker** 16:08 Oh, yeah, yeah, you wanna share?
 **Gregor Zeitlinger** 16:10 No, if you have it running, even better. I didn't think about that option. That's great. It's in the zero instrumentation, I think you're in the wrong… a path… Yeah, it has two new sections in the agent and in the Spring Boot Starter, and if you go to declarative Configuration.
 Then you should have, below the getting started, a way where you can do the Right, the conversion.
 And, the conversion is interesting for, two things. First, it has all those nitty-gritty rules.
 That are hard to get right, and then it also has, something that is not dependent on what you put in, which is the getting started configuration. And this is where I'm probably forgetting about some things, so this is where it needs particularly good review. So I have added the propagators.
 Already, but I have forgotten about the samplers, and I think that's because it's also missing in the getting started above.
-**Yep, I think that's… Trask Stalnaker** 17:23 Nice, nice.
+Yep, I think that's…
+**Trask Stalnaker** 17:23 Nice, nice.
 **Jack Berg** 17:24 You and Janie to go to the spec meeting and show this stuff off, this is… This is very cool, like, an automatic translating mechanism for environment variables to declarative config, and I know there's a bunch of Java-specific stuff based on the agent conventions, but there's for sure things that are just related to the standard environment variables as well that would be Language independent.
 **Gregor Zeitlinger** 17:49 Yeah, it is, it is. Yeah, good idea. I'm on vacation next week, but, either you can take it there, or I can do it.
 The week after.
@@ -108,10 +114,12 @@ So it is technically not stable.
 No? No.
 **Trask Stalnaker** 22:06 That's why I've been pressing Jack. I'm like, don't forget about the instrumentation node with stability. I mean, I'm like, this is awesome that the SDK configuration is stable, but it honestly doesn't do a whole lot for us in the instrumentation repo.
 **Gregor Zeitlinger** 22:27 Well, to sum it up, it sounds like what we currently have on there is pretty close to what we want to convey.
-**Trask Stalnaker** 22:45 I mean, I'd be fine with saying that the SDK Configuration… you know, we could nuance it with slash development, but yeah, I mean… Gregor Zeitlinger 22:57 and one sentence. I want to really shrink it down to one sentence.
+**Trask Stalnaker** 22:45 I mean, I'd be fine with saying that the SDK Configuration… you know, we could nuance it with slash development, but yeah, I mean…
+**Gregor Zeitlinger** 22:57 and one sentence. I want to really shrink it down to one sentence.
 **Trask Stalnaker** 23:06 Yeah, I mean, it's gonna be hard from the Java agent perspective to say that declarative config Is stable until we have the instrumentation node is stable.
 **Jack Berg** 23:20 So, yeah, I agree with that. And, like, yeah, so basically, you know, something to the effect of, like, look for the presence of the slash development suffix. Anything with that is not stable, and, you know, you can specifically call out that at least all the core SDK configuration is stable. That's something.
-**Gregor Zeitlinger** 23:41 Okay, then I'm… Trask Stalnaker 23:42 Two sentences.
+**Gregor Zeitlinger** 23:41 Okay, then I'm…
+**Trask Stalnaker** 23:42 Two sentences.
 **Gregor Zeitlinger** 23:46 then I will make, like, another… a bit longer version, yeah. Okay.
 **Trask Stalnaker** 23:51 Give it a try, and tag… tag me and Jack on it, on your… on this… The change once you make it, and we'll… Look at that.
 **Gregor Zeitlinger** 24:03 Okay, I'll make a specific PR just for that, so that it's not intertwined with the other changes.
@@ -120,7 +128,8 @@ No? No.
 **Gregor Zeitlinger** 24:37 I like that, yeah, I'll take it, thanks.
 **Jack Berg** 24:40 Okay.
 And I had a second comment, too, which is, can you scroll down real quick on this page?
-**So, no, no, up to the, like, oh, no, this… I think somewhere you gave a demonstration output, so you had, like, a… Trask Stalnaker** 24:56 This guy?
+So, no, no, up to the, like, oh, no, this… I think somewhere you gave a demonstration output, so you had, like, a…
+**Trask Stalnaker** 24:56 This guy?
 **Jack Berg** 24:59 Yeah, where were we talking… yeah, is… Where is this source from? Like, what… Do you just have a, oh yeah, this is what I was talking about, this getting started here. So, what I was gonna say is I was gonna suggest adding a submodule to Opentelemetry.io, pointing at the OpenTelemetry configuration repository, so you can directly embed the, the… the snippet for the… Getting Started example file, rather than having to keep them in sync, you know, by convention and manually.
 **Gregor Zeitlinger** 25:35 I think this is gonna work for, what we see right here, but for the other one, which is in JavaScript, it's a little bit harder to do. Yeah. Maybe not impossible, but at least a bit harder.
 **Jack Berg** 25:47 Definitely, definitely harder.
@@ -129,7 +138,8 @@ And I had a second comment, too, which is, can you scroll down real quick on thi
 **Gregor Zeitlinger** 26:09 Yep.
 Good idea.
 **Trask Stalnaker** 26:12 Yeah, that would likely be pulled into other languages, docs as well.
-**Alright, speeding up builds… trigger… Gregor Zeitlinger** 26:27 Yeah, this, was an idea I had, and it seemed like a good idea, but then, Laurie pointed out that we should discuss if it's really worth the complexity. I thought, yeah, that's a good point before I continue on that. Let's discuss that first.
+Alright, speeding up builds… trigger…
+**Gregor Zeitlinger** 26:27 Yeah, this, was an idea I had, and it seemed like a good idea, but then, Laurie pointed out that we should discuss if it's really worth the complexity. I thought, yeah, that's a good point before I continue on that. Let's discuss that first.
 Is that really the right link? I think it has a link where I have… the interesting data, the impact that I'm estimating to see.
 If we, should, pay the complexity tax, or if we should just, Forget about this idea.
 **Trask Stalnaker** 27:14 So, I mean, I have… my, I still have, trauma from… dealing with Gradle dependency, not understanding all the implicate… all the up-to-date checks.
@@ -166,9 +176,11 @@ Or, like, What is the step that needs to be always run? Like, what's the minimum
 Is it CodeQL?
 **Jay DeLuca** 32:07 I think I have… Lauri 32:08 Like, 15 minutes?
 **Jay DeLuca** 32:11 I have a dashboard that shows this.
-**Trask Stalnaker** 32:17 Let's see, we've got… Because… Jay DeLuca 32:21 the Grail VM.
+**Trask Stalnaker** 32:17 Let's see, we've got… Because…
+**Jay DeLuca** 32:21 the Grail VM.
 **Trask Stalnaker** 32:27 Yeah, the smoke tests are pretty long there, definitely.
-**Most of the others… let's see, we've got some… Gregor Zeitlinger** 32:36 But, some of them, could be, made faster if you have more buckets that run in parallel. GraalVM is a candidate where it really, could hit a limit, because you have to do all those steps in sequence.
+Most of the others… let's see, we've got some…
+**Gregor Zeitlinger** 32:36 But, some of them, could be, made faster if you have more buckets that run in parallel. GraalVM is a candidate where it really, could hit a limit, because you have to do all those steps in sequence.
 Right. Can I share my screen for a second?
 **Trask Stalnaker** 32:59 Oh, yeah.
 **Lauri** 33:01 I was actually meaning, like, what's the minimum amount of time that we could, like, Get the bills, too.
@@ -181,7 +193,8 @@ like, if you always run the CodeQL step, then… It took 17 minutes from the pul
 And the smoke tests… You know.
 as Lori suggested, run a… run against… have a different profile to run against, maybe only run against the latest ones in PRs.
 **Gregor Zeitlinger** 34:17 What would also be interesting to know is, how effective the different test categories are, I mean, like.
-**Have we ever found a bug that Only occurred in one of the… observers… Trask Stalnaker** 34:37 That's why Lori is suggesting just, you know, we could reduce the number of App server versions that we run against.
+Have we ever found a bug that Only occurred in one of the… observers…
+**Trask Stalnaker** 34:37 That's why Lori is suggesting just, you know, we could reduce the number of App server versions that we run against.
 **Lauri** 34:46 Well, even not necessarily the app server versions, but, like, the app server and JDK combinations.
 Like, if you run something on JDK 8, 11, 17, and 21, Then we probably could just… Run it only on one of the versions.
 **Gregor Zeitlinger** 35:08 On one of the JDK versions.
@@ -219,7 +232,8 @@ So, I'm not sure whether you would agree with using it.
 So we are limited to 10 gigs in the cache.
 So storing… Docker images is gonna overflow, you know, could impact our Gradle caches, and… probably, you know, it's more… it's better to have all those Gradle artifacts downloaded, or build caches downloaded, then a Docker in a big Docker image, which can be… downloaded.
 faster.
-**Gregor Zeitlinger** 40:21 Oh, that's why… Trask Stalnaker 40:22 miscellaneous files.
+**Gregor Zeitlinger** 40:21 Oh, that's why…
+**Trask Stalnaker** 40:22 miscellaneous files.
 **Gregor Zeitlinger** 40:24 That's right, does it matter where the Docker image is stored?
 Maybe we are not using, one of the fast.
 Registries?
@@ -235,7 +249,8 @@ Would that be the idea?
 Anytime that I've dug into this stuff, I've spent, you know, weeks trying to make small improvements.
 **Gregor Zeitlinger** 41:58 Okay, yeah, that's also very good feedback. At least I've tried.
 Alright, let's go to the next topic.
-**Trask Stalnaker** 42:10 Cool. Alright, let me share back… And… Jack… Jack Berg 42:28 Yeah.
+**Trask Stalnaker** 42:10 Cool. Alright, let me share back… And… Jack…
+**Jack Berg** 42:28 Yeah.
 **Trask Stalnaker** 42:29 on pretty print to logging OTLP exporters.
 Alright.
 **Jack Berg** 42:37 Yeah, so a little bit of context, we have this, these long-existing exporters that are called, like, what are they called? OTLP JSON logging, span exporter, things like that, OTLP, JSON logging, metric exporter, and you know, we've had those for as long as I can remember, and maybe a year or two ago, somebody introduced a standard out exporter at the spec level, a standard out OTLP exporter, which was kind of standardizing the concept that we have long had, but used a different name.
@@ -267,21 +282,24 @@ Like, and, you know, if it doesn't land at this back then, you know, I think it'
 **Jack Berg** 47:44 what, what… I have a sentence here in my comment, so, you know, this should help confusion if users try to take this Java feature and use it in other languages. So, like.
 if you don't have the Java, the underscore Java suffix, you know, do you have some expectation that you could pick this up and use this in Go, and it's just, like, a matter of Go not having implemented this yet?
 **Gregor Zeitlinger** 48:07 So, the corollary would be that, currently, you can expect that all languages provide all the development features.
-**That's not, like… Jack Berg** 48:19 you can expect, like, it's a reasonable ask for them all to implement the development features. Where if I went and asked, you know, go, hey, what's the status on this pretty print feature? They would say, what pretty print feature? That's not even in development in the schema.
+That's not, like…
+**Jack Berg** 48:19 you can expect, like, it's a reasonable ask for them all to implement the development features. Where if I went and asked, you know, go, hey, what's the status on this pretty print feature? They would say, what pretty print feature? That's not even in development in the schema.
 **Gregor Zeitlinger** 48:36 Oh, so we have, like, more… 3 different, forms. We have stable development, and something… More development, experimental development, or whatever?
 **Jack Berg** 48:49 Language-specific development.
 That's how I'm framing it, because, like, I can only add properties to the schema, development properties to the schema, if there's a development property in the spec. So what do you do if you want to introduce something that's, like, even in excess of that, that hasn't even landed in the spec in development yet?
 **Gregor Zeitlinger** 49:08 Sounds like overcomplicating it.
 **Jack Berg** 49:12 So you would say block them until there's a feature in the spec.
 **Gregor Zeitlinger** 49:16 No, I would say development should not promise that it's available in all languages.
-**But… Jack Berg** 49:23 Okay.
+But…
+**Jack Berg** 49:23 Okay.
 **Gregor Zeitlinger** 49:23 That's… I don't know if that's too harsh, if we currently have a pretty good coverage of all the development things.
 **Jack Berg** 49:33 We do. We do, in Java, and… you know, Some languages more than others.
 **Gregor Zeitlinger** 49:41 Okay, so it's a tough decision, I get it.
 **Trask Stalnaker** 49:46 I have a question, Jack. You… would you take this… Bor, would you ever stabilize this without it being… Stabilized in the spec.
 **Jack Berg** 50:03 I don't know, that's uncharted waters. We have examples of Java-specific environment variables and system properties that we stabilized.
 And, you know, there is actually a naming convention for language-specific environment variables, right? There's a spec piece that says, like, hey, add, you know, underscore your language underscore in a particular place. I think it's, like, hotel underscore Java underscore, and then whatever your environment variable is.
-**And so, like, stabilizing this property without it landing in the spec would be some sort of analog to that. So, I don't think it's out of the question, but we haven't done it before, and I haven't… Trask Stalnaker** 50:43 So, yeah, where I'm getting with that question is that the underscore Java, like, if it's… if we're gonna do underscore Java, it seems like… This part should be the underscore Java.
+And so, like, stabilizing this property without it landing in the spec would be some sort of analog to that. So, I don't think it's out of the question, but we haven't done it before, and I haven't…
+**Trask Stalnaker** 50:43 So, yeah, where I'm getting with that question is that the underscore Java, like, if it's… if we're gonna do underscore Java, it seems like… This part should be the underscore Java.
 **Jack Berg** 50:57 Right.
 **Trask Stalnaker** 50:57 There's not really any… path to… I mean, if we're saying that this could be stabilized, You would then drop this.
 **Jack Berg** 51:10 That's a good point. So, Java underscore prettyprint, if, you know, to… something to that effect, or prettyprint underscore Java.

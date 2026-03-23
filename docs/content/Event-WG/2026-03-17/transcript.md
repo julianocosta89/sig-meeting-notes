@@ -52,7 +52,8 @@ To not use reflection, just, you know, like, type checking.
 To make it performant. So you would use, for the complex stuff, you would just, you know, use this log API or whatever structures.
 So that's what I shared.
 **Trask Stalnaker** 05:55 Okay, I think Jack has a prototype, a similar… prototype here… Where, yeah, it doesn't do the whole reflection… thing, it just does specific, like, lists, maps.
-**primitives, nestings… Liudmila Molkova** 06:24 I think the .NET logger already does it, but with some very limited set of things.
+primitives, nestings…
+**Liudmila Molkova** 06:24 I think the .NET logger already does it, but with some very limited set of things.
 And they… there is a… the issuing the runtime to support proper structured login. I'm trying to find it, but see Job.
 Leave the guy opened.
 **Trask Stalnaker** 06:42 Yeah.
@@ -61,7 +62,8 @@ Leave the guy opened.
 Do we want to try to… Resurrect context here… Where did we leave this the last time, Robert? Do you remember?
 **I think you were… Sort of agreeing that maybe we only need… Let's see… Pellared** 07:31 I just think we have a summary.
 Around the last discussion.
-**Example, yeah… Trask Stalnaker** 07:53 Fantastic notes here.
+Example, yeah…
+**Trask Stalnaker** 07:53 Fantastic notes here.
 **Pellared** 07:55 Yes.
 **Trask Stalnaker** 08:03 The instrumentation library… Yes.
 Log Bridge. Oh, yes, I think I remember the… The thing that we were getting at was… We would… ex… we wouldn't expect the instrumentation… I wasn't, at least, I wasn't expecting the instrumentation library to emit logs using Log4J.
@@ -74,7 +76,8 @@ Also, in the go.
 I think also people would rather use the logging API, which we are… which we are creating.
 But… there's also S-Log, which is part of the standard library, and we have a very good performance breach for it, so I also see possibilities that it could be used.
 But then, if they use the bridge, they have no way So… say what is the instrumentation library attribute, I think, in the scope.
-**What'd… Liudmila Molkova** 09:55 You even know it.
+What'd…
+**Liudmila Molkova** 09:55 You even know it.
 **Pellared** 09:56 At this point.
 It is possible, because we have an instrumentation attributes, scope attributes option to add… Like, handcrafted, so people could add it.
 On their own.
@@ -154,7 +157,8 @@ And it would need to be a log processor, and it would need to be a central compo
 This would be some state management, but I mean, yeah. I don't think it's a blocker, though, and… Someone could say that since we deprecated span events, we made it harder, that's true.
 **Pellared** 18:57 Oh, I'm muted.
 **Trask Stalnaker** 19:06 Yeah, I mean, it seems… Seems very possible. It's just, you know.
-**Pellared** 19:17 So I guess I would… Trask Stalnaker 19:19 Wait for feedback.
+**Pellared** 19:17 So I guess I would…
+**Trask Stalnaker** 19:19 Wait for feedback.
 **Pellared** 19:21 Yeah, so my… yes, that's exactly the question. Should we just create an issue or wait for feedback?
 Because… If nobody asks, then… It's a war, you've wasted effort.
 Maybe we're just guessing that it's an issue.
@@ -184,7 +188,8 @@ They depend on specific event names.
 And if we stabilize a couple of these event names for HTTP database as RPC, This would de facto mean stabilizing this guidance.
 **Trask Stalnaker** 24:06 Yeah, yeah, that's a good… Right.
 I see, so you're… you're… the point you're making here is that this Instrumentation really just depends on the… domain-specific semantic conventions, not… doesn't really depend on this. This is more, like.
-**Guidance for authoring semantic conventions, or people, kind of, Creating their own… Liudmila Molkova** 25:47 Yeah.
+Guidance for authoring semantic conventions, or people, kind of, Creating their own…
+**Liudmila Molkova** 25:47 Yeah.
 And technically, we can… Even… Move it away from this dock.
 Like, the normative guidance, it should have event came.
 Okay, pattern, I think, is necessary.
@@ -201,11 +206,14 @@ So I think we can find beans to stabilize this dog without controversial pieces.
 For me, the larger interesting question for this doc would be.
 the requirement levels, and I think there is an issue about it.
 **Trask Stalnaker** 27:46 Requirement lev… severity levels?
-**Liudmila Molkova** 27:50 Requirement levels and attributes, let me find… Trask Stalnaker 27:54 Oh… Liudmila Molkova 28:21 Surety for surety 1… Issues.
+**Liudmila Molkova** 27:50 Requirement levels and attributes, let me find…
+**Trask Stalnaker** 27:54 Oh…
+**Liudmila Molkova** 28:21 Surety for surety 1… Issues.
 Golly, it's either… Type.
 Or… message, and I'm… I think it should be both.
 Or at least one should be required all the time.
-**Trask Stalnaker** 29:04 Is it not already? Is this the proposal, or… Liudmila Molkova 29:09 It's what it looks like now, the proposal.
+**Trask Stalnaker** 29:04 Is it not already? Is this the proposal, or…
+**Liudmila Molkova** 29:09 It's what it looks like now, the proposal.
 is… Type and message.
 to be required.
 **Trask Stalnaker** 29:20 Oh, I see.
@@ -221,7 +229,8 @@ So there was no difference.
 **Liudmila Molkova** 30:30 Creative complex attributes.
 **Trask Stalnaker** 30:35 That one actually was… not caught by complex attributes, that was… That was just a bug that somebody… Finally noticed.
 **Liudmila Molkova** 30:50 Cool, yeah.
-**Trask Stalnaker** 31:07 Alright, well, at least we've got a tracking… issue, but yeah, I like, Yeah, so we need… prototypes… Liudmila Molkova 32:10 checked on GitHub of people using span events on tail-based sampler.
+**Trask Stalnaker** 31:07 Alright, well, at least we've got a tracking… issue, but yeah, I like, Yeah, so we need… prototypes…
+**Liudmila Molkova** 32:10 checked on GitHub of people using span events on tail-based sampler.
 In GitHub.
 I found only examples.
 And I found one… Repo that actually uses exception message and span event.

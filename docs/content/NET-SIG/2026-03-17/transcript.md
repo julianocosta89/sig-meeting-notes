@@ -16,7 +16,8 @@ So, first item on the agenda, Raj, did you have a chance to catch up on the issu
 **Rajkumar Rangaraj** 04:10 I did spend a lot of time on that.
 **Martin Costello** 04:15 Okay, cool. So I put a comment on here, I had a quick look into the YAML library.
 And put a few more comments. Anyone have any feedback?
-**Rajkumar Rangaraj** 04:26 So I… Martin Costello 04:27 so far?
+**Rajkumar Rangaraj** 04:26 So I…
+**Martin Costello** 04:27 so far?
 **Rajkumar Rangaraj** 04:28 Yeah, This is what I believe with all of my research on this one.
 or configure it, like, for example, this is what I think we should do, or if we take a configuration from Java and place it here, the same YAML, it should work for .NET 2. That's what our goal should be.
 And based on the design, I feel we have been… we have burnt our fingers so many times by using a vendor library.
@@ -90,7 +91,8 @@ And I guess it should also have observed timestamp, which it currently doesn't.
 **Julius Koval** 16:13 This would be another field.
 If that's… if that answers the question.
 So it shouldn't be breaking chains or anything.
-**Obviously, I'd love to look into it a bit more, but… Rajkumar Rangaraj** 16:35 I'm not able to hear, I believe.
+Obviously, I'd love to look into it a bit more, but…
+**Rajkumar Rangaraj** 16:35 I'm not able to hear, I believe.
 I have a weird issue, like, I changed my network, and… Headset, nothing works.
 **Julius Koval** 16:46 Sorry, is it better now?
 **Martin Costello** 16:51 I can hate it.
@@ -106,7 +108,8 @@ I'm not entirely sure if it's entirely Raja's fault, because I'm… getting that
 **Julius Koval** 17:36 Oh, well, can you hear me now?
 **Rajkumar Rangaraj** 17:39 Yeah, it's better now.
 **Julius Koval** 17:41 Yeah. Also, I guess to answer your question, observed timestamp would be another field.
-**Yeah, so… You know, it shouldn't be breaking change, I'll have to look into it more, but… Rajkumar Rangaraj** 17:55 Okay.
+Yeah, so… You know, it shouldn't be breaking change, I'll have to look into it more, but…
+**Rajkumar Rangaraj** 17:55 Okay.
 So, I would say we go incrementally on this. I know this PR was blocked with the log record to be, like, the object kind of data type and all that. So, if we have to wait on those kind of blocking changes, we need an OpenTelemetry 2.0.
 So, already Blanche joined, and he said that we already deviated from the spec when, even before the logs was, stable, log spec was stable.
 The .NET logs was made stable, so we all… we have that gap.
@@ -153,7 +156,8 @@ Okay, sure.
 **Rajkumar Rangaraj** 23:33 Okay.
 **Martin Costello** 23:35 Because, yeah, I was just trying to avoid, I guess doing, like, a patch release within, like, a day of each other, or something like that.
 **Rajkumar Rangaraj** 23:43 Good.
-**Julius Koval** 23:46 And, while I… Rajkumar Rangaraj 23:48 I'm sorry for both that. Thank you, guys.
+**Julius Koval** 23:46 And, while I…
+**Rajkumar Rangaraj** 23:48 I'm sorry for both that. Thank you, guys.
 **Julius Koval** 23:53 Sure.
 Thank you. Bye.
 And, so I had one last thing.

@@ -17,7 +17,8 @@ And also to see, like, if there's anything I can do to… Help with… Browser, 
 **Josh Suereth** 02:13 Yeah, yeah, I think the main thing we need to know is, like, for browser, we still have to solve a bunch of problems that, are kind of implicit to the SDK.
 We had a bunch of discussion about that last time, I think. I don't know if you saw.
 the, things we were talking about, anyway… Cool. I just saw that.
-**Martin Kuba** 02:37 I didn't see that, so… Josh Suereth 02:39 Yeah, we can dive into that again. I don't want to, rant early here, but welcome.
+**Martin Kuba** 02:37 I didn't see that, so…
+**Josh Suereth** 02:39 Yeah, we can dive into that again. I don't want to, rant early here, but welcome.
 We'll do a quick… Recap of browser.
 Okay, Dimitri, do you want to kick off the first discussion here?
 **Dmitrii Anoshin** 02:57 Yeah, so I just wanted to start at least, like.
@@ -45,12 +46,14 @@ So, so instead of the one way, have it go the other way. So, in service itself, 
 **Dmitrii Anoshin** 07:10 Right.
 **Josh Suereth** 07:11 So there's an observed by relationship, but the next thing is… does it need to have a different name, or does it only need to have a different name because we can't put them both in OTLP resource?
 **Dmitrii Anoshin** 07:22 Right, and not only on TLP resources. TLP resources, like, let's say.
-**The limitation that we introduced, but that limit… Josh Suereth** 07:34 Oh, did I lose internet?
+The limitation that we introduced, but that limit…
+**Josh Suereth** 07:34 Oh, did I lose internet?
 You're muted, everyone else.
 **Daniel Dyla (Dynatrace)** 07:39 Yeah. No. Okay. Dimitri, Dimitri froze.
 **Josh Suereth** 07:44 Okay, we have, crazy windstorms going on, and, like, our school district's out of power, so in case I drop, you know why.
 I did not think Pittsburgh would be a hotbed of wind.
-**But, you know, there was a tornado on Friday, but… Daniel Dyla (Dynatrace)** 08:01 I think you're… you're getting the same storm that we just got for the last two days that ripped a bunch of shingles off my neighbor's roof and the siding, and some stuff like that.
+But, you know, there was a tornado on Friday, but…
+**Daniel Dyla (Dynatrace)** 08:01 I think you're… you're getting the same storm that we just got for the last two days that ripped a bunch of shingles off my neighbor's roof and the siding, and some stuff like that.
 **Josh Suereth** 08:11 Yeah.
 You should keep that stuff on your side of Erie, okay? Don't… don't send it our way. Keep it up there.
 **Daniel Dyla (Dynatrace)** 08:21 It looks like he's gone.
@@ -158,7 +161,8 @@ And we can do a bit more in the backend.
 So, just things to think about.
 **Martin Kuba** 22:47 Well, this is great, I mean, this is… it's good to see that there's a precedent.
 For something like this. Like, we've been talking about Needing to optimize the protocol at some point.
-**Just because it's like, yeah, in browsers, like, obviously the payload side is a concern, so… Josh Suereth** 23:04 Yeah.
+Just because it's like, yeah, in browsers, like, obviously the payload side is a concern, so…
+**Josh Suereth** 23:04 Yeah.
 **Martin Kuba** 23:04 And the same for mobile.
 **Josh Suereth** 23:06 One thing I want to do.
 **Daniel Dyla (Dynatrace)** 23:07 only.
@@ -174,7 +178,8 @@ Is that what you're saying I don't believe you.
 **Josh Suereth** 24:26 Okay, okay. That was sarcasm, for anyone who doesn't… Yeah, yeah, okay. It's meant for other people that are on the call, yeah.
 **Daniel Dyla (Dynatrace)** 24:35 There is, somebody from Datadog, And we're way outside the scope of entities now, but somebody from Datadog, wrote a hand-rolled… protobuf serializer in JavaScript. I haven't really looked into it, very… in depth, like, specifically an OTLP protobuf serializer, in order to avoid the protobuf dependency.
 You know, you get other advantages, too. There's reasons some other languages have done similar stuff. And I haven't looked into it for, like, completeness and stuff like that, but I believe it's what Datadog is currently using.
-**And… Josh Suereth** 25:19 the Java one actually led to a bunch of performance gains because, Protobuf is optimal if you're using, like, the generated code as your data structures, but when you're not.
+And…
+**Josh Suereth** 25:19 the Java one actually led to a bunch of performance gains because, Protobuf is optimal if you're using, like, the generated code as your data structures, but when you're not.
 Doing that translation is actually somewhat expensive, and you can optimize the crap out of it if you do it manually.
 **Daniel Dyla (Dynatrace)** 25:37 Yeah, the generated code has to deal with a bunch of generalities that we just know… we know don't exist because we know the domain.
 **Josh Suereth** 25:45 Yep.
@@ -208,7 +213,8 @@ Yep, so with the… yeah, with meter provider, basically, you'd have to actually
 But for logs and traces, that's exactly what we were doing. You're totally fine.
 **Daniel Dyla (Dynatrace)** 29:36 Yeah, and this is why, Josh McDonald has been… I mean, for… More than a year now, possibly 2 years, he's been harping on metric resets and stuff like that for similar problems.
 **Josh Suereth** 29:53 Yep.
-**Martin Kuba** 29:55 So… so does… do we need to do anything, like, in the spec for this, or can we just have, like, our own… Daniel Dyla (Dynatrace) 30:01 We don't need metrics, and especially if we're gonna go to a, like, browser-optimized API, then maybe not.
+**Martin Kuba** 29:55 So… so does… do we need to do anything, like, in the spec for this, or can we just have, like, our own…
+**Daniel Dyla (Dynatrace)** 30:01 We don't need metrics, and especially if we're gonna go to a, like, browser-optimized API, then maybe not.
 or not, maybe, you know, client-optimized API that uses events Because the… both traces and metrics can be thought of as event aggregations. You're… it's a bandwidth optimization that you just don't need when you only have a single user at a time.
 Yeah, it's much… you could just scale your collectors and say, you know, we just accept this as… a trade-off.
 more work on the back end for less work on the front end, like Josh said.
@@ -226,7 +232,8 @@ Of these events, and I just fire them down.
 This might still be a little expensive for you, like this key value ref. This technically is a dictionary.
 You can't tell with the way the protobuf is written, but it's all working successfully. If you wanted an example of, like, some shenanigans I'm doing, or how to, like, write the SDK or whatever, feel free to look at this project. This is a prototype in protocol design and, like, SDK V2 things that I've been looking at.
 I think I've shared this a bunch of other places, but… Yeah.
-**Martin Kuba** 33:11 Anyway… Josh Suereth 33:12 It's fun. It's written in Rust, so if you hate Rust, apologies. If you like Rust, also apologies.
+**Martin Kuba** 33:11 Anyway…
+**Josh Suereth** 33:12 It's fun. It's written in Rust, so if you hate Rust, apologies. If you like Rust, also apologies.
 **Martin Kuba** 33:24 So, so I guess, just, like, just one more time, like.
 For my own clarity, like, so do we… like, it sounds like we could just implement this as… as part of, like.
 the browser-specific SDK, like, how we handle swapping out the entities, but it doesn't sound like it needs any, like, any changes in the spec, or… Necessarily.
@@ -284,9 +291,11 @@ reports telemetry, but forgets to annotate.
 service name equals A. Let's, let's say this. This means that the collector's gonna inadvertently put service D on service A's data.
 Right.
 Is that the problem?
-**Dmitrii Anoshin** 39:05 Yeah, I… I'm struggling to… like, really… Josh Suereth 39:13 Follow what I'm saying?
+**Dmitrii Anoshin** 39:05 Yeah, I… I'm struggling to… like, really…
+**Josh Suereth** 39:13 Follow what I'm saying?
 **Dmitrii Anoshin** 39:14 Yeah, like, I guess service name is fine. We can actually make sure that they are kind of synchronized, but service instance is gonna be always different. We will not be able to specify the same instance.
-**Unless we… Josh Suereth** 39:31 Oh, oh, oh, this is, this is about observing service instance, right? Alright, so collectors, right. So, service instance… Collector cannot… synthesize a valid sales instance.
+Unless we…
+**Josh Suereth** 39:31 Oh, oh, oh, this is, this is about observing service instance, right? Alright, so collectors, right. So, service instance… Collector cannot… synthesize a valid sales instance.
 **Dmitrii Anoshin** 39:50 Right, right.
 **Josh Suereth** 39:50 I think, has to come from the process.
 specification.
@@ -319,7 +328,9 @@ I'm not saying, that's actually… there's a note tab for it. You can take a loo
 **Dmitrii Anoshin** 43:49 application's gonna expose that information through the API.
 **Josh Suereth** 43:54 do you mean… do you… by API, you mean, like, an HTTP API?
 **Dmitrii Anoshin** 43:59 Any new API. Any API that collector would be able to use.
-**Josh Suereth** 44:03 Yeah, the collector will be able to use this, and it's… Dmitrii Anoshin 44:06 Okay, that's… Josh Suereth 44:07 Yeah, and they're planning to use it for, like, OB and for eBPF Profiler.
+**Josh Suereth** 44:03 Yeah, the collector will be able to use this, and it's…
+**Dmitrii Anoshin** 44:06 Okay, that's…
+**Josh Suereth** 44:07 Yeah, and they're planning to use it for, like, OB and for eBPF Profiler.
 **Dmitrii Anoshin** 44:12 Okay, cool, that's exactly what I was looking for at this call, actually, if there is something that people.
 **Josh Suereth** 44:17 Yeah, where is that?
 **Dmitrii Anoshin** 44:19 It's interesting.
@@ -329,8 +340,10 @@ Stable by default… I'm surprised that one's not merged yet.
 Exactly a fallback resolution process.
 For, let's say, If that information isn't available, collector will have to follow particular guidelines, particular logic, to get the ID.
 **Josh Suereth** 45:07 Yeah, this, this is the proposal here, if you wanted to see it. This is, for process context.
-**Dmitrii Anoshin** 45:17 That's cool. Yeah. Can you please edit it to the… Josh Suereth 45:22 Yep.
-**Dmitrii Anoshin** 45:23 to the doc, I should have, looked through the existing… Josh Suereth 45:27 No, that's fine. Honestly, though, I still think… I still think we have a problem after this, Dimitri, where, like, for Prometheus specifically, we need to… we need to basically say, look, when service instance ID exists, use it.
+**Dmitrii Anoshin** 45:17 That's cool. Yeah. Can you please edit it to the…
+**Josh Suereth** 45:22 Yep.
+**Dmitrii Anoshin** 45:23 to the doc, I should have, looked through the existing…
+**Josh Suereth** 45:27 No, that's fine. Honestly, though, I still think… I still think we have a problem after this, Dimitri, where, like, for Prometheus specifically, we need to… we need to basically say, look, when service instance ID exists, use it.
 When it doesn't exist, here is how you construct a stable identifier that's exactly like Service instance ID that you can use.
 **Dmitrii Anoshin** 45:48 Right.
 **Josh Suereth** 45:49 So this is the idea of, like, if service instance ID doesn't exist.
@@ -339,7 +352,8 @@ And you need a stable ID to represent the target info. Take all of the identifyi
 **Josh Suereth** 46:05 Like, I think we need to write that down somewhere, yeah.
 **Dmitrii Anoshin** 46:07 Yes, that was my, idea. I think we should have, like, combination of all entity types and their identifiers.
 entity type, but we shouldn't always assume that service as an entity must be present on all of the telemetry, that doesn't make sense.
-**Josh Suereth** 46:25 Yeah, yeah, I agree, I agree. We're gonna… Dmitrii Anoshin 46:27 I can look into that, and also I'll, look into this app, and I guess once this ATAP is merged, this is pretty cool. We don't need separate entity services.
+**Josh Suereth** 46:25 Yeah, yeah, I agree, I agree. We're gonna…
+**Dmitrii Anoshin** 46:27 I can look into that, and also I'll, look into this app, and I guess once this ATAP is merged, this is pretty cool. We don't need separate entity services.
 **Josh Suereth** 46:39 Yeah, I think… I'm kind of surprised. This one has been open for quite a while, and I think it has a lot of approvers from, like… these are all the profiling folks here, right?
 But it only has 2 of, like, the TC approving so far, and none of the spec approvers. So, I think it probably still needs a little bit of, attention.
 **Dmitrii Anoshin** 47:02 Okay.
@@ -356,7 +370,8 @@ I don't think this has any open comments left, so it'd be good to get one more, 
 **Dmitrii Anoshin** 48:30 Sure. Sounds good. Thank you.
 **Josh Suereth** 48:33 Are there any other active PRs? I think, Dimitri, you have… did yours get merged yet?
 **Dmitrii Anoshin** 48:43 Actually, yeah, my PR and the collector got merged, so collector now can define entities in the metadata YAML, and entities will be emitted.
-**So that's… that's… Josh Suereth** 48:54 That's awesome. Yep. Yeah, yeah.
+So that's… that's…
+**Josh Suereth** 48:54 That's awesome. Yep. Yeah, yeah.
 And then… This is the one I was thinking of.
 **Dmitrii Anoshin** 49:03 Oh, okay, not this one. This one is the specification, yeah.
 **Josh Suereth** 49:07 Tigger and I both approved this. I just wanted to check and see if there's… if there's any… I didn't see any status updates since this.
@@ -382,8 +397,10 @@ Daniel, are you interested in taking a crack at the SDK specification for entiti
 **Josh Suereth** 51:52 I'm a bit swamped right now, and mostly that is… I didn't show it, but the stable by default crap.
 **Daniel Dyla (Dynatrace)** 51:59 And this is not including the multi-entity stuff and the binding and all that, right? It's just the initial crack that we have already prototyped, and yeah, I'm happy to take that.
 **Josh Suereth** 52:11 Yeah, yeah, this is where I want to start getting resource detectors, including entities, and the merge algorithm, and the ability for SDKs to emit them. Yep.
-**Daniel Dyla (Dynatrace)** 52:20 Yep, works for me. Cool. And then I know I already said I would take the SDK startup specification, which I have started working on, but it's… that's part of it as well, so those are kind of… Josh Suereth 52:30 Yeah, that's why I mentioned it, because I think… I think doing both might be easier than doing just one.
-**Daniel Dyla (Dynatrace)** 52:36 Yep, and then again, the async resource strategy thing, like, you know, I think we're happy with what we have, But… Josh Suereth 52:44 I would actually almost move this to done. You weren't here the last time we talked about this one. Like, I felt like we could move this to done, but, like, feel free to do that whenever you feel like we're good.
+**Daniel Dyla (Dynatrace)** 52:20 Yep, works for me. Cool. And then I know I already said I would take the SDK startup specification, which I have started working on, but it's… that's part of it as well, so those are kind of…
+**Josh Suereth** 52:30 Yeah, that's why I mentioned it, because I think… I think doing both might be easier than doing just one.
+**Daniel Dyla (Dynatrace)** 52:36 Yep, and then again, the async resource strategy thing, like, you know, I think we're happy with what we have, But…
+**Josh Suereth** 52:44 I would actually almost move this to done. You weren't here the last time we talked about this one. Like, I felt like we could move this to done, but, like, feel free to do that whenever you feel like we're good.
 **Daniel Dyla (Dynatrace)** 52:56 Yeah, I would say develop a strategy, probably done, maybe we could document what the actual, strategy is in high level, and I'll close the issue today.
 It may change as we get into details of specification, but I think the overall strategy is unlikely to change.
 **Josh Suereth** 53:17 Yeah, that's… I'm totally in agreement. I think… I wasn't even looking at these, because A, I think the startup specification, you already had that mostly underway. This one, I feel like we have the strategy, we just need to write it down. This is still active. This one… This is about our Go implementation, and I think we're gonna work on this as we get through the spec. I'm not as worried about this as I was before.
@@ -402,14 +419,19 @@ Or actually, is next week KubeCon?
 **Josh Suereth** 55:18 You can, yeah.
 Should… we might cancel next week, then.
 **Daniel Dyla (Dynatrace)** 55:22 I'm not going to KubeCon. Is anybody here going to KubeCon?
-**Dmitrii Anoshin** 55:25 I'm going… Arve Knudsen 55:27 I'm going… Daniel Dyla (Dynatrace) 55:29 Yeah.
+**Dmitrii Anoshin** 55:25 I'm going…
+**Arve Knudsen** 55:27 I'm going…
+**Daniel Dyla (Dynatrace)** 55:29 Yeah.
 **Josh Suereth** 55:30 I'm not going, but I do need the break.
 **Daniel Dyla (Dynatrace)** 55:33 It's, it's good to have a break. Yeah. It's, it's, spring, Christmas.
 **Josh Suereth** 55:38 It's… During Christmas, should we get each other presents?
 **Daniel Dyla (Dynatrace)** 55:44 Yeah, I'll get you an SDK specification for Spring Christmas.
 **Josh Suereth** 55:48 Yeah, how about use the hour and write the specification? I'll use the hour to review it.
 **Daniel Dyla (Dynatrace)** 55:52 Yeah, that sounds good.
-**Josh Suereth** 55:52 I don't know if… Daniel Dyla (Dynatrace) 55:54 We can use the same hour to both write and review, but… Josh Suereth 55:58 Well… Yeah, we can shop it around. Anyway, I… Daniel Dyla (Dynatrace) 56:01 Happy canceling a week of meetings, that always feels good.
+**Josh Suereth** 55:52 I don't know if…
+**Daniel Dyla (Dynatrace)** 55:54 We can use the same hour to both write and review, but…
+**Josh Suereth** 55:58 Well… Yeah, we can shop it around. Anyway, I…
+**Daniel Dyla (Dynatrace)** 56:01 Happy canceling a week of meetings, that always feels good.
 **Josh Suereth** 56:05 Okay, so let's… we'll cancel next week. So we'll see y'all in 2 weeks.
 **Daniel Dyla (Dynatrace)** 56:09 Yep.
 **Josh Suereth** 56:10 Alright, see ya.

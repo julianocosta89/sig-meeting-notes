@@ -25,7 +25,8 @@ Can folks hear me and see my screen alright?
 So, can somebody remind me what we usually do here?
 I think this is a pretty new thing, and Tammy's been doing it. Should we just go through, the ones with no status?
 **lechen** 10:42 Yeah, does Tammy usually run these?
-**I haven't… Aaron Abbott** 10:45 I think this is, like, Second or third time we're doing it.
+I haven't…
+**Aaron Abbott** 10:45 I think this is, like, Second or third time we're doing it.
 **lechen** 10:48 Yeah, okay.
 **Aaron Abbott** 10:52 Yeah, what was… Okay.
 **lechen** 10:57 Filter for steel versus non-steel and burden.
@@ -33,7 +34,8 @@ I think this is a pretty new thing, and Tammy's been doing it. Should we just go
 That's weird.
 Refresh it.
 **lechen** 11:13 So, it's strictly for triaging, right? Not for, like, asking for reviews or anything?
-**this… Aaron Abbott** 11:20 Yeah, this is the triage.
+this…
+**Aaron Abbott** 11:20 Yeah, this is the triage.
 I don't know.
 Did they change this in GitHub, where it won't open on the side?
 Man, this UI got a lot more complicated. Alright, I guess I'll just open them and go like this. Alright, that's Dependabot. Let's just ignore that one for now.
@@ -147,7 +149,9 @@ Do you have, a link to the OpenAI kind of prototype where you integrate it? It w
 **Aaron Abbott** 22:02 Which is related to the, demo application clique.
 This one?
 **Erdenesaikhan Tserendavga** 22:07 No, it took.
-**Pulling up… Aaron Abbott** 22:11 I can go back to the main… Erdenesaikhan Tserendavga 22:13 I think… put in the interpret.
+Pulling up…
+**Aaron Abbott** 22:11 I can go back to the main…
+**Erdenesaikhan Tserendavga** 22:13 I think… put in the interpret.
 **If you… if you see the, Agency Nucretion PR, I have, Aaron Abbott** 22:21 In the dock, yeah, yeah. This one?
 **Erdenesaikhan Tserendavga** 22:25 Yes. If you go down, I have tested with the one I think… yeah, this one.
 **Aaron Abbott** 22:35 Which, demo… which demo app is this?
@@ -265,7 +269,8 @@ Leighton, I see you left a… you left a comment last night.
 I'm not saying that this is not a legitimate issue.
 **Aaron Abbott** 35:47 Yeah. But I think… lechen 35:48 This was just an observation by them.
 I went ahead and asked for, like, if they had any, like, benchmarks or anything, because the original issue is that they had… They found that it was larger than the memory of the… You know, of other components, like the spend. But… As well, the other language implementations do this differently as well, so I don't mind even just making this change, just wanted to see what… like, even if we made this change and, like.
-**they had some memory problems. It's like, it doesn't solve the original issue, so… Aaron Abbott** 36:27 Yeah, that's true.
+they had some memory problems. It's like, it doesn't solve the original issue, so…
+**Aaron Abbott** 36:27 Yeah, that's true.
 Yeah, I mean, I think their logic is sounding like, We could probably come up with a prototype that does.
 Prevent garbage collection with the current thing that we have.
 **lechen** 36:40 It'll be happy.
@@ -275,7 +280,8 @@ Yeah, it's most likely the contact.
 **lechen** 37:18 Yeah.
 That's true, yeah.
 **Aaron Abbott** 37:22 Yeah, I mean, I think the kind of classic thing that we… that we do is we do the suppressed instrumentation in the batch processor, like, around the, Around the call, so if somebody sets… For the synchronous one, if they set… You know, suppress context or whatever, and we'd throw it out.
-**lechen** 37:41 Then… Aaron Abbott 37:42 Yeah.
+**lechen** 37:41 Then…
+**Aaron Abbott** 37:42 Yeah.
 So yeah, I think, in terms of fixing this?
 **lechen** 37:48 We're depicting this?
 **Aaron Abbott** 37:52 Yeah, you could just go, probably, in here.
@@ -300,7 +306,8 @@ So yeah.
 **lechen** 40:12 Yeah.
 **Aaron Abbott** 40:15 Yes, I think we could. I think we could do that in a separate PR, or in a… could split it up into multiple PRs. I think you're doing about this one.
 **lechen** 40:23 Nope.
-**Thanks, thanks for doing this. The manual is very headache, so… Aaron Abbott** 40:29 Yeah, do you remember what the file is called that has the supports?
+Thanks, thanks for doing this. The manual is very headache, so…
+**Aaron Abbott** 40:29 Yeah, do you remember what the file is called that has the supports?
 Just look.
 **lechen** 40:35 Yeah, I'm gonna find it.
 **Aaron Abbott** 40:36 Yeah.

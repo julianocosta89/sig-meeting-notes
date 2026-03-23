@@ -27,7 +27,8 @@ How do you call it in UK?
 **Sergey** 01:57 Petrol. Okay.
 **Chris Lightfoot-Wild** 01:59 Yeah, so, yeah, I refueled last night, actually. Yeah, it's gone up.
 A little bit. Awesome.
-**Yeah, it's… Bob Strecansky** 02:07 What did it cost last night?
+Yeah, it's…
+**Bob Strecansky** 02:07 What did it cost last night?
 **Chris Lightfoot-Wild** 02:10 Is that £1.58 per liter or something?
 **We put Polita rather than going here, so… Sergey** 02:17 What was the jumbo?
 Relative to the last time.
@@ -41,12 +42,14 @@ It's, I drive an electric car, and my wife drives a gas car, so we, like, have t
 **Sergey** 02:57 Mmm, good.
 **Chris Lightfoot-Wild** 02:58 There's not very much you can do about it. If you don't… I guess if I don't have an EV car, then I'm stuck.
 **Bob Strecansky** 03:04 Say it again?
-**Chris Lightfoot-Wild** 03:05 kind of at the mercy of whatever the market price is, because I've got no alternative. I mean… Bob Strecansky 03:11 Go ahead.
+**Chris Lightfoot-Wild** 03:05 kind of at the mercy of whatever the market price is, because I've got no alternative. I mean…
+**Bob Strecansky** 03:11 Go ahead.
 **Sergey** 03:12 hedge your bets, right?
 You could have bought oil futures, right?
 **Bob Strecansky** 03:17 That's right.
 **Sergey** 03:18 Maybe even with, you know, I think there are different kinds of features, but you can buy features where they will… they will supply you oil, right?
-**If you have your own, kind of, like, what those factories are called, where you… Bob Strecansky** 03:32 Refiner. Refiners.
+If you have your own, kind of, like, what those factories are called, where you…
+**Bob Strecansky** 03:32 Refiner. Refiners.
 **Sergey** 03:34 refiners, yeah.
 That's beautiful.
 **Chris Lightfoot-Wild** 03:37 I was in the back garden, and I'm Market.
@@ -96,9 +99,11 @@ then this particular instrumentation will also kind of, like, say, yes, I am emi
 **Sergey** 10:27 But like I said, it can happen even without you even changing this instrumentation, right? You were not even aware, like, because some other component took dependency on a higher version of that package, and that constant got bumped up automatically, and this package didn't even do anything about it, right? So, it got kind of like… Chris Lightfoot-Wild 10:45 It reads like if… I think I've seen something, or verbiage that suggested that if you are explicitly saying the version, then… You shouldn't just drift it around like that. Versus you may not declare it, and then it's a bit more… It's kind of loose, but if we're trying to say we're emitting stable telemetry.
 To whatever version, and that… it's not… it doesn't feel like it's necessarily true if… If we're just hard-coding this value and then bumping it at will without checking. And I don't know what the process should be, like… Do we just have to be… kind of on it before deciding to bump it, and should there be warnings in place somehow, or… I don't know, it might just be me making noise or worrying over nothing.
 **Bob Strecansky** 11:32 I don't think… I don't think so. I'm looking here and seeing all the different places where this, schema version is defined, and this… like, this feels itchy to me, right? We probably don't want different… we probably don't want different… like, versions of semantic conventions being applied to different instrumentation and things, so that could get… I feel like that could get… Chris Lightfoot-Wild 11:52 I think, but… But he wasn't… Sergey 11:54 the original purpose of this. This was exactly for you to distinguish which… because if you didn't update Maybe I'm not following… sorry to interrupt me, Chris, can you please go ahead, what do you have to say?
-**Chris Lightfoot-Wild** 12:05 Well, I think that's the intent, though, is that, like, when you've built the instrumentation, and you've built it out to, like, 1.32, and you've said, right, what I'm just emitting now adheres to the spec at 1.32, and then… Bob Strecansky 12:18 I see.
+**Chris Lightfoot-Wild** 12:05 Well, I think that's the intent, though, is that, like, when you've built the instrumentation, and you've built it out to, like, 1.32, and you've said, right, what I'm just emitting now adheres to the spec at 1.32, and then…
+**Bob Strecansky** 12:18 I see.
 **Chris Lightfoot-Wild** 12:18 Let's a 135 is available, and some other instrumentation is built that emits telemetry that adheres to 135.
-**The 132 kilometry is still… Bob Strecansky** 12:29 valid.
+The 132 kilometry is still…
+**Bob Strecansky** 12:29 valid.
 **Chris Lightfoot-Wild** 12:30 And then if you want to update that in future, because there's new attributes or whatever, there's some kind of… I imagine in my head, there should be some process to go through and check.
 Rather than just bump the number up, that it adheres to the version we're about to bump it to, with the new.
 **Bob Strecansky** 12:44 I see.
@@ -171,7 +176,8 @@ just see if it does need to be a prompt, that the tool can't do it, so please, y
 That says it's been done.
 **Just… I don't know if there's a better language to use as, like, you know, a poster child for… following their lead. If Brett was here, I'm sure he'd probably say, lean on Java for that, so I could probably start with… with the… Sergey** 23:55 Cover cello.
 **Bob Strecansky** 23:56 Java or Go, because Tigwyn is one of the Semitic mentions people, and he works on the Java SIG, so I'm pretty sure that those would be a relatively good one-to-one mapping.
-**Chris Lightfoot-Wild** 24:06 Unless… Bob Strecansky 24:08 You're okay.
+**Chris Lightfoot-Wild** 24:06 Unless…
+**Bob Strecansky** 24:08 You're okay.
 Okay.
 So… The release today, I'm going to perform a release of our product today. We haven't done it in a little bit. Brett shared the release process with me, because I had not done the new release process with the Git Split, but I'm planning on doing that later today. I'll post on our channel when it's completed.
 **Sergey** 24:33 When you say release, you don't mean 2-0, you mean the new miner?
@@ -182,12 +188,14 @@ Okay.
 **Pawel Filipczak** 24:50 Yes, I created pull request and issue.
 So I would like to publish the blog post on the OpenTelemetra IO.
 **Bob Strecansky** 25:00 Got it.
-**Pawel Filipczak** 25:02 And, yeah, so… I added you as a SIG sponsor, or something like that, so… Bob Strecansky 25:09 Okay.
+**Pawel Filipczak** 25:02 And, yeah, so… I added you as a SIG sponsor, or something like that, so…
+**Bob Strecansky** 25:09 Okay.
 **Pawel Filipczak** 25:10 I'm not sure if you should click something or not, but at least you can make your… put your opinion on the… on the PR, or engage.
 **Bob Strecansky** 25:21 Alright, I will read through this later today.
 **Pawel Filipczak** 25:24 Yeah.
 **Bob Strecansky** 25:27 You're welcome.
-**Alright… Pawel Filipczak** 25:31 I mean, all of you, except Sergei, because Sergey is, of course, the.
+Alright…
+**Pawel Filipczak** 25:31 I mean, all of you, except Sergei, because Sergey is, of course, the.
 **Sergey** 25:35 Did you… do we want… do we have already a release? What is the order you want to deploy.
 **Pawel Filipczak** 25:41 So, I'm working on the release today, so… I guess that blog posts will take some time.
 Because of all of those stages, reviews, and all of those procedures, but anyway, I would like to make a technical preview today, or tomorrow, and… And, yeah, and I'm also working on the documentation, so we have the Markdown docs in the repo, but I talked with Savari Neumann.
@@ -222,11 +230,13 @@ Sounds good. I'll try and give that a go.
 Chris, Code Quality Tools.
 **Chris Lightfoot-Wild** 30:20 Sorry, I snuck that in. I know you're.
 **Bob Strecansky** 30:23 That's alright.
-**Chris Lightfoot-Wild** 30:23 Well, Mago, or Majo, or however you… Bob Strecansky 30:27 Yeah, yeah.
+**Chris Lightfoot-Wild** 30:23 Well, Mago, or Majo, or however you…
+**Bob Strecansky** 30:27 Yeah, yeah.
 **Chris Lightfoot-Wild** 30:28 But, sort of, in lieu of that being, you know, available or whatever, or any decision on that?
 The PR I've got with Laravel, I've, like, kind of got it there functionally, as a base point, then the CI just blows up with all the various… I think we've got 4 different cold calls tools, SAM, SAM, PHP Stan, and PHP CS Fixer.
 There's one of the packages, I think it was, like, a plugin that was tied to Pharma or something like that, and it's pinned at an older version, it doesn't recognize PHPA attributes on some of the tests, et cetera, and thought errors, but then there's no newer version of it.
-**I don't… Bob Strecansky** 31:14 Of course, there's not.
+I don't…
+**Bob Strecansky** 31:14 Of course, there's not.
 **Chris Lightfoot-Wild** 31:14 So, when I was like, oh, hey, ChatGBT, can you just decide if I can actually fix this with some odd, like, chain of dependencies?
 And it just made up a version that doesn't exist, to be like, hey, try this, and, you know, that'll do it. So, digging a bit further, the suggestion was, like, you've got a lot of code quality tools here that some of them overlap and conflict, and it's… it's obviously painful as a developer to just try and get it over the line with all the CI failures, already, so that's kind of been holding people back, and it's frustrating that like, even FAN, for example, I'm pinned on an older version because of that, and I wonder if… does it give us much? Like, we've got all the various tools there, can… can we drop FAN on one of them?
 **Sergey** 31:55 Well, first of all, pinning the versions of those tools is an absolute must. It's interesting.
@@ -237,7 +247,8 @@ You still don't have it? Like, in main, they're not pinned all the versions of a
 **Chris Lightfoot-Wild** 32:32 Yeah.
 **Sergey** 32:32 Because they're technically not backer compatible, right? They will discover additional things in newer versions, and that's it. Your build is not repeatable.
 So that's absolute must, but… but the second part that you… so that easily can be fixed, right? Obviously, you need to remember from time to time to upgrade that version, which… will involve also maybe fixing the failures that it will find. But the second part, what you mentioned, is that, okay, you're trying to use all the tools.
-**Maybe that's kind of, like, too much, right? So the question is… Pawel Filipczak** 33:03 once I tried to fix one issue with the CS fixer, and it led me to the… back in the second tool, so it was insane just to keep them work together, because for one, it was force positive, for second one, it's… it was… it was okay, so it's… Sergey 33:21 Well, actually, it's interesting, guys, that you didn't arrive to put in just ignore, right? So, almost all these tools should have ignore, kind of like.
+Maybe that's kind of, like, too much, right? So the question is…
+**Pawel Filipczak** 33:03 once I tried to fix one issue with the CS fixer, and it led me to the… back in the second tool, so it was insane just to keep them work together, because for one, it was force positive, for second one, it's… it was… it was okay, so it's… Sergey 33:21 Well, actually, it's interesting, guys, that you didn't arrive to put in just ignore, right? So, almost all these tools should have ignore, kind of like.
 Comment or thing, so you can just ignore stuff.
 **Chris Lightfoot-Wild** 33:33 Well, then that's what it feels like the majority of the pain is, I'm just going and adding ignores everywhere for all the various tools.
 **Sergey** 33:39 Yeah, so that's… sometimes you need to just say, okay, that's too much into… so if ignoring, and it just, you know, litters the code with all those ignores, okay, then it's too… So my question, essentially, to you guys is.
@@ -245,10 +256,12 @@ Do you think maybe we can let go of a couple? How many? But it's interesting, I'
 So Fixer for us was only to, to check, you know, like, code format and stuff. It only understands the formatting, new lines, what needs to be on what line, but just to satisfy the whatever SIG standard that we wanted to… not SIG, I don't remember, but FIG… Whatever standards that you have for code formatting.
 **Bob Strecansky** 34:34 Fig, Fig, Stan, Stan.
 **Sergey** 34:36 Yeah, whatever three-letters, thing that they have there. But, I didn't know that it can also kind of, like, compete with PHP Stan, like, for static analysis. But anyway, all I'm trying to say is that, Ken, maybe we can stay with one tool, select one tool, whatever is the… Maybe consensus is the best one?
-**Bob Strecansky** 34:56 Listen, so… Pawel Filipczak 34:57 Last time you mentioned the tool implemented in Go, right? Or in Rust.
+**Bob Strecansky** 34:56 Listen, so…
+**Pawel Filipczak** 34:57 Last time you mentioned the tool implemented in Go, right? Or in Rust.
 **Bob Strecansky** 35:02 Rust, yeah.
 **Pawel Filipczak** 35:04 Yeah.
-**So, like… Bob Strecansky** 35:05 It's… so my… my two cents here, I'd like to start a community discussion about this, because I don't think that one person should make this decision. I think that my… like, too long didn't read my opinion would be we should take this PR that I have with Mego, and either ignore all of the lint and formatting that it has, or apply it.
+So, like…
+**Bob Strecansky** 35:05 It's… so my… my two cents here, I'd like to start a community discussion about this, because I don't think that one person should make this decision. I think that my… like, too long didn't read my opinion would be we should take this PR that I have with Mego, and either ignore all of the lint and formatting that it has, or apply it.
 And both of them have positives and negatives. And then, from there, we can deprecate some of the other tools that duplicate it. But again, I would like to get feedback from the community before we just, you know, load that change.
 **I think we can put it… Sergey** 35:44 When you say lint, is it kind of, like, in the area of HP Stan? Is it… does it do kind of, like, static analysis of the… For example, can it understand, let's say, if you return the wrong type from function, is it capable of flagging that?
 **Bob Strecansky** 35:58 I think so.
@@ -322,7 +335,8 @@ Because they are… In the, in the each… each subdirectory, so it's also a pro
 **Bob Strecansky** 52:36 I think the important thing to remember about Contrib is it's, like, it's a best effort, right? There are specific subject matter experts for each of those Contrib things.
 That should, like, can be or should be maintaining them if they want to use them, and if not, then they die.
 What'd you think?
-**Chris Lightfoot-Wild** 52:54 You may be happy, then, if one of those things did get dropped from Laravel, Bob, you'd not be too devastated. Not for the PHP, the main OpenTelemetry repo, but the contrib one for Laravel, if it's… Bob Strecansky 53:08 I would… I would be… I would be a pig in mud. It'd be fine with me.
+**Chris Lightfoot-Wild** 52:54 You may be happy, then, if one of those things did get dropped from Laravel, Bob, you'd not be too devastated. Not for the PHP, the main OpenTelemetry repo, but the contrib one for Laravel, if it's…
+**Bob Strecansky** 53:08 I would… I would be… I would be a pig in mud. It'd be fine with me.
 **Chris Lightfoot-Wild** 53:12 Okay.
 **Sergey** 53:13 Yeah, I would definitely prefer to distinguish, right? There are stuff that we commit to support, because obviously, we should commit beyond SDK, right? Obviously, because SDK by itself really limited, really limited use cases. So I would have probably preferred maybe to have, contrib, and then something that tells… it's not exactly contribib, but it's part of the core thing, but it's not SDK.
 So, I don't know, maybe we'll… we're thinking about it. But I would not say that, for me, contributes the same. So, yes, I agree with you about that. Maybe some things that will be contributed there, that will say, okay, this is on the best effort basis, and if people that contributed initially, they decided to abandon it, then it's probably not that important to the community.

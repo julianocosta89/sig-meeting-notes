@@ -8,7 +8,8 @@ Zoom Recording URL: https://zoom.us/rec/share/rPmz09MFB_7MnrXIVno4wQ2sGu63F4hhzU
 
 **Marc Schäfer** 03:00 Hi.
 **Przemek Delewski** 03:01 Oh.
-**Marc Schäfer** 03:47 Will there be anyone else coming, or… Przemek Delewski 03:51 I'm not sure, I'm just looking at the channel, and it seems that no one will join, probably.
+**Marc Schäfer** 03:47 Will there be anyone else coming, or…
+**Przemek Delewski** 03:51 I'm not sure, I'm just looking at the channel, and it seems that no one will join, probably.
 And the meeting will be canceled, I think.
 Okay… I haven't spoken.
 **Marc Schäfer** 04:07 I'm… I'm new.
@@ -53,7 +54,8 @@ So that's the new thing, and here all people, you know, are interested in compil
 Instrumentation.
 So, basically, that's… that's the history of… of the… Of the second… tooling around Go. But there are, you know, as you mentioned, there are also other 6, Go-related, but this is mostly, I think, about SDK, so… OpenTelemetry SDK for Go.
 **Marc Schäfer** 10:04 Good to know. I did already some minor contributions, some cleanup, in a few of the OpenTelemetry projects.
-**some in the Java one, and recently some in the Go one, so… Przemek Delewski** 10:21 Oh, okay, okay.
+some in the Java one, and recently some in the Go one, so…
+**Przemek Delewski** 10:21 Oh, okay, okay.
 **Marc Schäfer** 10:23 But not… not much, maybe total of… 300, 400 lines, few, few pull… well, I think total 3 pull requests or so, cleaning some, some, or closing some, or letting the maintainer, know that some of them can be closed.
 Yep.
 **Przemek Delewski** 10:43 Yeah, that's… that's great.
@@ -81,7 +83,8 @@ Yeah.
 **Przemek Delewski** 14:48 Yep.
 **Marc Schäfer** 14:48 So, I will do that today or tomorrow, so… and then I can… can ask that in the… Auto… how did you call that? Auto? What was the name?
 **Przemek Delewski** 14:59 Auto instrumentation.
-**Marc Schäfer** 15:00 or to, so the channel where I should write the… Przemek Delewski 15:03 Sorry, the one about documentation.
+**Marc Schäfer** 15:00 or to, so the channel where I should write the…
+**Przemek Delewski** 15:03 Sorry, the one about documentation.
 **Marc Schäfer** 15:08 Yep.
 **Przemek Delewski** 15:08 So, so it is, sorry. Hotel, auto maintainers, but there is, I don't know, this sign between these two words, how to… Marc Schäfer 15:26 Yeah, I know what you mean. Okay, okay, yep.
 **Przemek Delewski** 15:28 Disconnector, but I, I… I don't know how to say that in English.
@@ -108,7 +111,8 @@ Oh, yeah.
 **Huxing Zhang** 19:25 have a specific topic, I think.
 **Kemal Akkoyun** 19:28 Yeah, we haven't met, but we also, like, figured out the way working efficiently, asynchronously, so I think… I can't complain. For the past few weeks, we are creating PRs, people reviewing PRs, and yeah, we have a good momentum.
 **Przemek Delewski** 19:47 Yeah, unfortunately, the problem for me is that I'm very busy recently, and I couldn't participate as I… as I would like to.
-**So… Kemal Akkoyun** 19:58 No worries, this is open source work, right? So, best effort.
+So…
+**Kemal Akkoyun** 19:58 No worries, this is open source work, right? So, best effort.
 Cool. So, do we have any particular, like, topic for today? I guess I have one. Apparently, I put it here.
 Besides that… Anyone else? Any… Any topics?
 **Przemek Delewski** 20:24 I think that I don't have… Topics.
@@ -191,16 +195,19 @@ I did, so I did some, some, some PRs, already on the, Go repository of OM teleme
 The big, the big yet.
 **Kemal Akkoyun** 31:56 We have a lot of things to work on, like, you can check our issues, Marc Schäfer 32:01 Yep.
 **Kemal Akkoyun** 32:02 Too many things to take care of.
-**Marc Schäfer** 32:04 I did already just a few seconds ago, so… Kemal Akkoyun 32:07 Yeah, some of them are, like, super, like, low-hanging fruit, so you can… I actually done this.
+**Marc Schäfer** 32:04 I did already just a few seconds ago, so…
+**Kemal Akkoyun** 32:07 Yeah, some of them are, like, super, like, low-hanging fruit, so you can… I actually done this.
 **Marc Schäfer** 32:17 Did I? Okay.
 **Kemal Akkoyun** 32:19 I should assign this myself. I thought I created a release MD file, and I don't know if I cover everything. So yeah, I checked the issues, and it should be, That would be a lot of, like, things to work on.
 But always, like, before starting, ping us, ask for more context, or whether, like, we actually done it, whatnot. Some of the issues can be stale.
 **Marc Schäfer** 32:43 Yeah, definitely. I did some cleanup in the… Go repository, go home telemetry one, I think I got to close, or not myself, but I got the maintainers to close about 11 issues, and 3 or 4 stale PRs.
 **Kemal Akkoyun** 33:01 Awesome.
-**Marc Schäfer** 33:01 did two or three APRs of my own already, so… Kemal Akkoyun 33:06 Awesome, awesome, great, great, great help.
+**Marc Schäfer** 33:01 did two or three APRs of my own already, so…
+**Kemal Akkoyun** 33:06 Awesome, awesome, great, great, great help.
 **Marc Schäfer** 33:11 There are much more issues and much more stable ones than you have in your repository.
 **Kemal Akkoyun** 33:17 DV, we are right now smaller.
-**Marc Schäfer** 33:19 Yeah, smaller, smaller one, definitely can't compare to the main GoAM telemetry repository, so… Kemal Akkoyun 33:26 We want to change that, though, so you want to be one of the popular protein.
+**Marc Schäfer** 33:19 Yeah, smaller, smaller one, definitely can't compare to the main GoAM telemetry repository, so…
+**Kemal Akkoyun** 33:26 We want to change that, though, so you want to be one of the popular protein.
 **Marc Schäfer** 33:30 Definitely, definitely.
 I can understand why.
 **Kemal Akkoyun** 33:33 Yes.
@@ -222,8 +229,10 @@ I think we should do it.
 cleaner than this OpenAI thing, we should merge that one first, and, like, rewrite the OpenAI one.
 **Przemek Delewski** 37:59 Probably, it would be simpler to do that this way.
 **Kemal Akkoyun** 38:04 Yeah, would be.
-**Is this one of the… Huxing Zhang** 38:10 Sorry.
-**Kemal Akkoyun** 38:11 Sorry, Miles, like… Huxing Zhang 38:15 I'm just saying that, according to our past experience, we… on Python, we write a lot of, instrumentations by our own self before this, general YouTube has, come out. But, We found it are very difficult, because different developers, they might not be aware of a lot of details of this.
+Is this one of the…
+**Huxing Zhang** 38:10 Sorry.
+**Kemal Akkoyun** 38:11 Sorry, Miles, like…
+**Huxing Zhang** 38:15 I'm just saying that, according to our past experience, we… on Python, we write a lot of, instrumentations by our own self before this, general YouTube has, come out. But, We found it are very difficult, because different developers, they might not be aware of a lot of details of this.
 **Kemal Akkoyun** 38:40 they.
 **Huxing Zhang** 38:41 I've made mistakes, or they're missing something. But if we use this, this is, like, tool, a standard, standard tool, they can avoid things like that, and we have already migrated our, past implementation, tool this.
 new sort of UTLs, you know, using this new one, and that makes us more… it's easier for us to, keep up with the semantic conventions, yeah.
@@ -245,7 +254,8 @@ Oh, yeah.
 **Kemal Akkoyun** 41:33 No, no, we have our instrumentations within our repo, right? That is how we use, Orchestrian, but we, like, for our, like, own library, right?
 And… Say that, like, but we don't wanna… keep maintaining two tools, right? That's why we wanted to have the donation. So our goal is the next quarter is, like, these YAML files that we have for Orchestrian. We will write equivalent OpenTelemetry compile time versions of it that injects our library.
 then, yeah, then we plan to eventually decommission the orchestrian and use everything from upstream. So, we really appreciate your reviews, so that we can have all the features.
-**Yeah, I don't know how Alibaba feels about it. I don't know if your… what is your plan for the long-suit, agent? Like, at least for the compile time version, we don't want to keep maintaining orchestrian, so… Huxing Zhang** 42:35 Yeah, we just have a short discussion about that before this meeting, and we actually are planning on that to migrate to the upstream one to, we, to, to migrate our internal repo from this, upstream one in IP next, semantic, maybe. I think in the late this year, I think we, we are.
+Yeah, I don't know how Alibaba feels about it. I don't know if your… what is your plan for the long-suit, agent? Like, at least for the compile time version, we don't want to keep maintaining orchestrian, so…
+**Huxing Zhang** 42:35 Yeah, we just have a short discussion about that before this meeting, and we actually are planning on that to migrate to the upstream one to, we, to, to migrate our internal repo from this, upstream one in IP next, semantic, maybe. I think in the late this year, I think we, we are.
 about that, and, we don't want to maintain this too, and we will, post a plan about the what we're gonna do next. And I think this community effort really helped us a lot, because we have a lot of more features that we didn't expect before, and we can't do it by ourself.
 But we, through this community effort, we can get a lot of features, for example, the co-site instrumentation and, other, very, very good, features. This is very useful for us, and we will, continue to invest on this project and, make it upstream to our of our repo, right? Yeah.
 **Kemal Akkoyun** 43:57 Awesome. I'm glad to hear that, like, and SIG is actually working, so we, like, we haven't bailed yet, and we will produce a state-of-art tool. I also believe that as well, especially when it comes to integrations and different type of instrumentations that you can have from community.
