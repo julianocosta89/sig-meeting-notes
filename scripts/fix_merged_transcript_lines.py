@@ -197,9 +197,10 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> int:
+def main(content_dir: Path | None = None) -> int:
     args = _parse_args()
-    content_dir = Path(__file__).parent.parent / "docs" / "content"
+    if content_dir is None:
+        content_dir = Path(__file__).parent.parent / "docs" / "content"
 
     transcript_files = sorted(content_dir.glob("**/transcript.md"))
     if args.sig:
@@ -237,4 +238,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main())  # pragma: no cover
