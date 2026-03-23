@@ -25,11 +25,23 @@ from pathlib import Path
 
 # ── Pattern matching ──────────────────────────────────────────────────────────
 
-# Matches "Name MM:SS " or "First Last (Org) MM:SS " within merged text.
+# Matches display-name variants followed by a timestamp within merged text, e.g.:
+#   "Name MM:SS "                      — single-word name
+#   "First Last MM:SS "                — multi-word name
+#   "Donal O'Sullivan MM:SS "          — apostrophe in name token
+#   "First Last [Org] MM:SS "          — bracket org tag
+#   "First Last | Org MM:SS "          — pipe-separated org
+#   "First Last (Org) MM:SS "          — parenthesised org
 # \w is Unicode-aware in Python 3 (covers diacritics, etc.).
 # Single-word names (e.g. "Andrej") are matched because the second word group is
 # optional (*).  The required timestamp keeps false positives low.
-_SPEAKER_TS_RE = re.compile(r"([A-Z]\w+(?:\s+[A-Z]\w+)*(?:\s+\([^)]+\))?)\s+(\d{1,2}:\d{2})\s+")
+_SPEAKER_TS_RE = re.compile(
+    r"([A-Z][\w']+(?:\s+[A-Z][\w']+)*"  # name tokens (apostrophes allowed)
+    r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
+    r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
+    r"(?:\s+\([^)]+\))?)"  # optional (Org) paren suffix (closes capture group)
+    r"\s+(\d{1,2}:\d{2})\s+"  # timestamp (captured as group 2)
+)
 
 # Matches a fully-formatted transcript speaker line: **Name** MM:SS rest
 _BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2})\s+(.*)$", re.DOTALL)

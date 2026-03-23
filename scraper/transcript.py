@@ -12,10 +12,22 @@ from bs4 import BeautifulSoup, Tag
 # as has_speaker=False.  Without this guard, any line following a "…"-terminated
 # utterance would be merged regardless of whether it belongs to a different speaker.
 #
-# Matches: "Name MM:SS " or "First Last (Org) MM:SS "
+# Matches display-name variants followed by a timestamp, e.g.:
+#   "Name MM:SS "                      — single-word name
+#   "First Last MM:SS "                — multi-word name
+#   "Donal O'Sullivan MM:SS "          — apostrophe in name token
+#   "First Last [Org] MM:SS "          — bracket org tag
+#   "First Last | Org MM:SS "          — pipe-separated org
+#   "First Last (Org) MM:SS "          — parenthesised org
 # \w is Unicode-aware in Python 3 (matches diacritics, etc.) and the trailing
 # timestamp makes single-word name matches specific enough to avoid false positives.
-_SPEAKER_LIKE_RE = re.compile(r"^[A-Z]\w+(?:\s+[A-Z]\w+)*(?:\s+\([^)]+\))?\s+\d{1,2}:\d{2}\s+")
+_SPEAKER_LIKE_RE = re.compile(
+    r"^[A-Z][\w']+(?:\s+[A-Z][\w']+)*"  # name tokens (apostrophes allowed)
+    r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
+    r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
+    r"(?:\s+\([^)]+\))?"  # optional (Org) paren suffix
+    r"\s+\d{1,2}:\d{2}\s+"  # timestamp
+)
 
 
 def parse_transcript_html(outer_html: str) -> list[str]:

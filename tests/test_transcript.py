@@ -141,6 +141,39 @@ class TestMergeContinuationLines:
             "Juraci Paixão Kröhling 08:13 I mean…",
         ]
 
+    def test_apostrophe_speaker_not_merged(self):
+        """A name token containing an apostrophe (e.g. O'Sullivan) starts a new entry."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Let me hand over to Donal…"),
+            _li(False, "Donal O'Sullivan 10:05 Thanks, yes."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Let me hand over to Donal…",
+            "Donal O'Sullivan 10:05 Thanks, yes.",
+        ]
+
+    def test_bracket_org_speaker_not_merged(self):
+        """A display name with a bracket org tag (e.g. 'Marc Alff [MySQL]') starts a new entry."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Great, over to Marc…"),
+            _li(False, "Marc Alff [MySQL] 10:03 Happy to share."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Great, over to Marc…",
+            "Marc Alff [MySQL] 10:03 Happy to share.",
+        ]
+
+    def test_pipe_org_speaker_not_merged(self):
+        """A display name with a pipe-separated org (e.g. 'Name | Org') starts a new entry."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Over to Giuseppe…"),
+            _li(False, "Giuseppe Ognibene | Coralogix 10:07 Sure."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Over to Giuseppe…",
+            "Giuseppe Ognibene | Coralogix 10:07 Sure.",
+        ]
+
     def test_speaker_like_continuation_no_timestamp_still_merged(self):
         """A capitalized word without a timestamp is not a speaker — still merged."""
         raw = [
