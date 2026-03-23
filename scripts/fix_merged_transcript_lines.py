@@ -32,11 +32,12 @@ from pathlib import Path
 #   "First Last [Org] MM:SS "          — bracket org tag
 #   "First Last | Org MM:SS "          — pipe-separated org
 #   "First Last (Org) MM:SS "          — parenthesised org
-# \w is Unicode-aware in Python 3 (covers diacritics, etc.).
-# Single-word names (e.g. "Andrej") are matched because the second word group is
-# optional (*).  The required timestamp keeps false positives low.
+# [^\W\d_] matches any Unicode letter (ASCII, accented, CJK, etc.) so names
+# like Élodie or 杉本浩平 are recognised.  Single-word names (e.g. "Andrej") are
+# matched because the second word group is optional (*).  The required timestamp
+# keeps false positives low.
 _SPEAKER_TS_RE = re.compile(
-    r"([A-Z][\w']+(?:\s+[A-Z][\w']+)*"  # name tokens (apostrophes allowed)
+    r"([^\W\d_][\w']+(?:\s+[^\W\d_][\w']+)*"  # name tokens (any Unicode letter, apostrophes ok)
     r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
     r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
     r"(?:\s+\([^)]+\))?)"  # optional (Org) paren suffix (closes capture group)

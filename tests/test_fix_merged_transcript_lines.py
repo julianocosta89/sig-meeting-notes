@@ -77,6 +77,18 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert matches[1].group(1) == "Andrej"
 
+    def test_cjk_name_detected(self):
+        pre = "Alice Fox 10:00 Over to our next speaker… 杉本浩平 10:05 よろしく。"
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert "杉本浩平" in matches[1].group(1)
+
+    def test_accented_uppercase_name_detected(self):
+        pre = "Alice Fox 10:00 Thanks, over to Élodie… Élodie Dupont 10:05 Merci."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert "Élodie" in matches[1].group(1)
+
 
 # ---------------------------------------------------------------------------
 # fix_line — no-op on clean lines

@@ -182,6 +182,28 @@ class TestMergeContinuationLines:
         ]
         assert _merge_continuation_lines(raw) == ["Alice: around summertime… And something more."]
 
+    def test_cjk_speaker_not_merged(self):
+        """A CJK name followed by a timestamp is recognised as a new speaker."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Over to our next speaker…"),
+            _li(False, "杉本浩平 10:05 よろしくお願いします。"),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Over to our next speaker…",
+            "杉本浩平 10:05 よろしくお願いします。",
+        ]
+
+    def test_accented_uppercase_speaker_not_merged(self):
+        """A name starting with a non-ASCII uppercase letter is recognised as a new speaker."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Thanks, over to Élodie…"),
+            _li(False, "Élodie Dupont 10:05 Merci."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Thanks, over to Élodie…",
+            "Élodie Dupont 10:05 Merci.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
