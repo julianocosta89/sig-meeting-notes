@@ -2,7 +2,20 @@
 
 from __future__ import annotations
 
+import re
+
 from bs4 import BeautifulSoup, Tag
+
+# Pattern that identifies a continuation line that actually starts a new speaker.
+# Zoom's HTML often wraps each <li> in a container div with no "speaker" class,
+# so _extract_speaker_and_text cannot detect the speaker and marks the whole line
+# as has_speaker=False.  Without this guard, any line following a "…"-terminated
+# utterance would be merged regardless of whether it belongs to a different speaker.
+#
+# Matches: "Firstname Lastname MM:SS " or "Firstname Lastname (Org) MM:SS "
+_SPEAKER_LIKE_RE = re.compile(
+    r"^[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)+(?:\s+\([^)]+\))?\s+\d{1,2}:\d{2}\s+"
+)
 
 
 def parse_transcript_html(outer_html: str) -> list[str]:
@@ -38,8 +51,13 @@ def parse_transcript_html(outer_html: str) -> list[str]:
 def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
     """Merge continuation <li>s into previous line when break is mid-sentence.
 
-    Rule: join when previous line does NOT end with '.', '?', or '!'.
-    Speaker lines always start a new entry.
+    Rule: join when ALL of the following hold:
+      - The line has no speaker element (has_speaker is False).
+      - The previous line does not end with a sentence terminator.
+      - The line does not start with a "Name Timestamp" pattern (i.e. it does
+        not look like a new speaker whose speaker element was not detected).
+
+    Speaker lines (has_speaker=True) always start a new entry.
     """
     # ASCII and full-width/CJK sentence-ending punctuation.
     sentence_ends = {".", "?", "!", "。", "？", "！"}
@@ -47,7 +65,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         return []
     result = [raw[0][1]]
     for has_speaker, text in raw[1:]:
-        if has_speaker or result[-1][-1] in sentence_ends:
+        if has_speaker or _SPEAKER_LIKE_RE.match(text) or result[-1][-1] in sentence_ends:
             result.append(text)
         else:
             result[-1] += " " + text

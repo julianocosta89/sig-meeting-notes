@@ -101,6 +101,32 @@ class TestMergeContinuationLines:
         ]
         assert _merge_continuation_lines(raw) == ["Alice: it was— unexpected."]
 
+    def test_speaker_like_continuation_not_merged(self):
+        """A no-speaker line that looks like 'Name Timestamp text' starts a new entry.
+
+        Zoom often wraps each <li> in a container div with no 'speaker' class, so
+        all lines arrive with has_speaker=False.  Without _SPEAKER_LIKE_RE the next
+        speaker's line would be merged into the previous one when it ends with '…'.
+        """
+        raw = [
+            _li(False, "Marc Pichler 13:40 If there's no more comments, which is asking…"),
+            _li(False, "Marylia Gutierrez 13:43 I'll just ask you for a review on the…"),
+            _li(False, "Marc Pichler (Dynatrace) 13:45 Oh."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Marc Pichler 13:40 If there's no more comments, which is asking…",
+            "Marylia Gutierrez 13:43 I'll just ask you for a review on the…",
+            "Marc Pichler (Dynatrace) 13:45 Oh.",
+        ]
+
+    def test_speaker_like_continuation_single_word_still_merged(self):
+        """A continuation line starting with a single capitalized word is still merged."""
+        raw = [
+            _li(False, "Alice: around summertime…"),
+            _li(False, "And something more."),
+        ]
+        assert _merge_continuation_lines(raw) == ["Alice: around summertime… And something more."]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
