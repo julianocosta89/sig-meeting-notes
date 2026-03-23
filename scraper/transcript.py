@@ -12,10 +12,10 @@ from bs4 import BeautifulSoup, Tag
 # as has_speaker=False.  Without this guard, any line following a "…"-terminated
 # utterance would be merged regardless of whether it belongs to a different speaker.
 #
-# Matches: "Firstname Lastname MM:SS " or "Firstname Lastname (Org) MM:SS "
-_SPEAKER_LIKE_RE = re.compile(
-    r"^[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)+(?:\s+\([^)]+\))?\s+\d{1,2}:\d{2}\s+"
-)
+# Matches: "Name MM:SS " or "First Last (Org) MM:SS "
+# \w is Unicode-aware in Python 3 (matches diacritics, etc.) and the trailing
+# timestamp makes single-word name matches specific enough to avoid false positives.
+_SPEAKER_LIKE_RE = re.compile(r"^[A-Z]\w+(?:\s+[A-Z]\w+)*(?:\s+\([^)]+\))?\s+\d{1,2}:\d{2}\s+")
 
 
 def parse_transcript_html(outer_html: str) -> list[str]:

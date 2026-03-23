@@ -25,11 +25,11 @@ from pathlib import Path
 
 # ── Pattern matching ──────────────────────────────────────────────────────────
 
-# Matches "Firstname Lastname MM:SS " or "Firstname Lastname (Org) MM:SS "
-# Used to find speaker-turn boundaries within merged text.
-_SPEAKER_TS_RE = re.compile(
-    r"([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)+(?:\s+\([^)]+\))?)\s+(\d{1,2}:\d{2})\s+"
-)
+# Matches "Name MM:SS " or "First Last (Org) MM:SS " within merged text.
+# \w is Unicode-aware in Python 3 (covers diacritics, etc.).
+# Single-word names (e.g. "Andrej") are matched because the second word group is
+# optional (*).  The required timestamp keeps false positives low.
+_SPEAKER_TS_RE = re.compile(r"([A-Z]\w+(?:\s+[A-Z]\w+)*(?:\s+\([^)]+\))?)\s+(\d{1,2}:\d{2})\s+")
 
 # Matches a fully-formatted transcript speaker line: **Name** MM:SS rest
 _BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2})\s+(.*)$", re.DOTALL)

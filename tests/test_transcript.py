@@ -119,8 +119,30 @@ class TestMergeContinuationLines:
             "Marc Pichler (Dynatrace) 13:45 Oh.",
         ]
 
-    def test_speaker_like_continuation_single_word_still_merged(self):
-        """A continuation line starting with a single capitalized word is still merged."""
+    def test_single_word_speaker_not_merged(self):
+        """A single-word name followed by a timestamp starts a new entry (e.g. 'Andrej 10:32 …')."""
+        raw = [
+            _li(False, "Dan Gomez Blanco 10:28 I know… was just another meeting, so…"),
+            _li(False, "Andrej 10:32 Oh, okay, so maybe she will join as well."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Dan Gomez Blanco 10:28 I know… was just another meeting, so…",
+            "Andrej 10:32 Oh, okay, so maybe she will join as well.",
+        ]
+
+    def test_unicode_speaker_not_merged(self):
+        """A name containing Unicode diacritics followed by a timestamp starts a new entry."""
+        raw = [
+            _li(False, "Marylia Gutierrez 08:07 Yeah, I have it easily here. Let me just…"),
+            _li(False, "Juraci Paixão Kröhling 08:13 I mean…"),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Marylia Gutierrez 08:07 Yeah, I have it easily here. Let me just…",
+            "Juraci Paixão Kröhling 08:13 I mean…",
+        ]
+
+    def test_speaker_like_continuation_no_timestamp_still_merged(self):
+        """A capitalized word without a timestamp is not a speaker — still merged."""
         raw = [
             _li(False, "Alice: around summertime…"),
             _li(False, "And something more."),
