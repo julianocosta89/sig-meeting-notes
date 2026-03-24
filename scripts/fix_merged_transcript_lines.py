@@ -151,16 +151,18 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
-                # After '.': reject names whose first token is in
-                # _SENTENCE_STARTERS; also reject single-token names shorter
-                # than 3 chars (e.g. "And 10:05", "Li 10:05" after a period).
+                # After '.': for single-token names, reject if < 3 chars or
+                # first token is in _SENTENCE_STARTERS.  For multi-token names,
+                # reject if any non-first name token starts with a lowercase
+                # letter (sentence phrase like "So far 10:05" vs real name like
+                # "So Koide 10:05" where "Koide" is title-cased).
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if len(name_tokens) == 1:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if name_first in _SENTENCE_STARTERS:
+                    if any(t[0].islower() for t in name_tokens[1:] if t and t[0].isalpha()):
                         continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
@@ -176,7 +178,7 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if name_first in _SENTENCE_STARTERS:
+                    if any(t[0].islower() for t in name_tokens[1:] if t and t[0].isalpha()):
                         continue
             valid.append(m)
     return valid

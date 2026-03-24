@@ -153,12 +153,18 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
             # Reject embedded matches that look like clock phrases rather than
-            # real speaker names.  For all sentence-ending punctuation, suppress
-            # when the first name token is in _SENTENCE_STARTERS.  Additionally,
-            # for single-token names, suppress if the name is shorter than 3
-            # characters (e.g. "Li 10:05", "At 10:05" after a period are not
-            # speakers).  Multi-token names (e.g. "So far 10:05") are suppressed
-            # by the _SENTENCE_STARTERS check on the first token.
+            # real speaker names.
+            #   After '…': suppress if first token is in _SENTENCE_STARTERS
+            #     (mid-sentence trailing — "Yeah… at 10:05 we begin." is not a
+            #     new speaker, but single-char initials like "Q" are kept).
+            #   After '.', '?', '!', or CJK equivalents:
+            #     - single-token names: suppress if < 3 chars or first token is
+            #       in _SENTENCE_STARTERS ("And 10:05", "Li 10:05" are not
+            #       speakers).
+            #     - multi-token names: suppress if any non-first name token
+            #       starts with a lowercase letter, distinguishing sentence
+            #       phrases ("So far 10:05") from real display names ("So Koide
+            #       10:05" where "Koide" is title-cased).
             first_token = remainder.split(None, 1)[0] if remainder else ""
             punct = text[m.start()]
             first_lower = first_token.lower()
@@ -170,7 +176,9 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                 if single_token_name:
                     suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                 else:
-                    suppress = first_lower in _SENTENCE_STARTERS
+                    suppress = any(
+                        t[0].islower() for t in full_name_tokens[1:] if t and t[0].isalpha()
+                    )
             else:
                 suppress = False
             if suppress:

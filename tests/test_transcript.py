@@ -328,6 +328,35 @@ class TestMergeContinuationLines:
             "Alice Fox 10:00 passing over… Yeah, so I think we can start.",
         ]
 
+    def test_multi_token_title_cased_name_after_period_splits(self):
+        """A title-cased multi-token name ('So Koide') after '.' is a new speaker.
+
+        The prefix before the embedded speaker ('I agree.') is appended to the
+        previous turn; the remainder starts a new speaker entry.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. So Koide 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point. I agree.",
+            "So Koide 10:05 Thanks.",
+        ]
+
+    def test_multi_token_lowercase_second_word_after_period_not_split(self):
+        """A phrase with lowercase second word ('So far 10:05') is NOT a new speaker.
+
+        The whole line is kept as a new entry (previous turn ended with '.').
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. So far 10:05 into the meeting."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point.",
+            "I agree. So far 10:05 into the meeting.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
