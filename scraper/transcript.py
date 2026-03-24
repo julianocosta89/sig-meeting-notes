@@ -35,6 +35,52 @@ _SPEAKER_LIKE_RE = re.compile(
 # Companion pattern (no ^ anchor) that detects a speaker-start embedded
 # inside a continuation line, e.g. "Yeah, so… Andrej 03:22 utterance".
 # The preceding sentence-end character keeps false positives low.
+# Common English words that can appear at the start of a sentence and superficially
+# match the Name+Timestamp pattern but are NOT speaker names.  When a continuation
+# line starts with one of these words (case-insensitive), _SPEAKER_LIKE_RE's match
+# is treated as a regular continuation rather than a new-speaker boundary.
+_SENTENCE_STARTERS = frozenset(
+    {
+        # Temporal prepositions / adverbs
+        "at",
+        "by",
+        "on",
+        "in",
+        "for",
+        "from",
+        "to",
+        "since",
+        "until",
+        "today",
+        "tomorrow",
+        "now",
+        "then",
+        "after",
+        "before",
+        # Pronouns
+        "i",
+        "we",
+        "he",
+        "she",
+        "it",
+        "they",
+        # Conjunctions / discourse markers
+        "so",
+        "but",
+        "and",
+        "or",
+        "if",
+        "as",
+        "that",
+        "this",
+        # Acknowledgements
+        "ok",
+        "okay",
+        "yes",
+        "no",
+    }
+)
+
 _EMBEDDED_SPEAKER_RE = re.compile(
     r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
     r"[^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens
@@ -92,7 +138,12 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         return []
     result = [raw[0][1]]
     for has_speaker, text in raw[1:]:
-        if has_speaker or _SPEAKER_LIKE_RE.match(text):
+        if has_speaker:
+            result.append(text)
+        elif (
+            _SPEAKER_LIKE_RE.match(text)
+            and text.split(None, 1)[0].lower() not in _SENTENCE_STARTERS
+        ):
             result.append(text)
         elif m := _EMBEDDED_SPEAKER_RE.search(text):
             # Split at the embedded boundary: the prefix (up to and including the

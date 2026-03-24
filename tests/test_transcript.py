@@ -270,6 +270,17 @@ class TestMergeContinuationLines:
             "Bob 00:13:34 Thanks.",
         ]
 
+    def test_sentence_starter_not_treated_as_speaker(self):
+        """Common sentence-starting words (e.g. 'At', 'Today') are not speaker names."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "At 10:05 we begin."),
+        ]
+        # 'At' is in _SENTENCE_STARTERS, so it should merge rather than start a new entry.
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… At 10:05 we begin.",
+        ]
+
     def test_short_name_after_period_not_split_as_embedded_speaker(self):
         """A 2-char word after '.' (e.g. 'At 10:01') is not treated as a speaker."""
         raw = [
