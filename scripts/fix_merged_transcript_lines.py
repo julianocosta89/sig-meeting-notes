@@ -50,8 +50,9 @@ _BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*
 # Used to reformat a raw segment as a bold speaker line
 _FORMAT_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)$", re.DOTALL)
 
-# Punctuation characters that legitimately end a speaker's turn
-_TURN_ENDS = frozenset(".?!…")
+# Punctuation characters that legitimately end a speaker's turn.
+# Includes CJK full-width forms to match the merge logic in transcript.py.
+_TURN_ENDS = frozenset(".?!…。？！")
 
 # Transcript header separator (same constant used by transcript_io.py)
 _SEPARATOR = "=" * 60

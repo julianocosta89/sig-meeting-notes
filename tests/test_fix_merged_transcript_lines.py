@@ -111,6 +111,13 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert "杉本浩平" in matches[1].group(1)
 
+    def test_cjk_full_width_punctuation_is_valid_turn_end(self):
+        # 。？！ must trigger a split just like their ASCII equivalents
+        pre = "Alice 10:00 こんにちは。 Bob 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Bob"
+
     def test_accented_uppercase_name_detected(self):
         pre = "Alice Fox 10:00 Thanks, over to Élodie… Élodie Dupont 10:05 Merci."
         matches = _valid_split_matches(pre)
