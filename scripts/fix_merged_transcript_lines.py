@@ -110,6 +110,12 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
+                # After a plain '.', reject very short names that are more likely
+                # to be prepositions before a clock reference (e.g. "At 10:05")
+                # than real speaker names.  Single/short names after '…', '?',
+                # '!' are less ambiguous and are allowed at any length.
+                if len(m.group(1)) < 3:
+                    continue
             valid.append(m)
     return valid
 

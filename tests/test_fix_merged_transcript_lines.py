@@ -79,6 +79,20 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_short_name_after_period_not_a_split_point(self):
+        # "At" (2 chars) after '.' must not be treated as a speaker (preposition guard).
+        pre = "Alice 10:00 We can restart. At 10:05 we begin."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_short_name_after_ellipsis_is_a_split_point(self):
+        # "Q" (1 char) after '…' IS a valid split (single-char speaker handle).
+        pre = "Alice Fox 10:00 over… Q 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Q"
+
     def test_dotted_handle_not_a_split_point(self):
         # "jomard" after "mackenzie." must not be treated as a speaker (dotted handle).
         # _SPEAKER_TS_RE can find "jomard 44:07" inside "mackenzie.jomard 44:07 ...",

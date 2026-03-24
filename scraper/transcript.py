@@ -101,10 +101,22 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             split_pos = m.start() + 1  # one past the sentence-end character
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
-            if prefix:
-                result[-1] += " " + prefix
-            if remainder:
-                result.append(remainder)
+            # After a plain '.' (period), reject very short names that are more
+            # likely to be prepositions before a clock reference (e.g. "At 10:05")
+            # than real speaker names.  After '…', '?', '!' the short-name risk
+            # is much lower (those typically end speaker turns mid-sentence), so
+            # any name length is accepted there.
+            first_token = remainder.split(None, 1)[0] if remainder else ""
+            if text[m.start()] == "." and len(first_token) < 3:
+                if result[-1][-1] in sentence_ends:
+                    result.append(text)
+                else:
+                    result[-1] += " " + text
+            else:
+                if prefix:
+                    result[-1] += " " + prefix
+                if remainder:
+                    result.append(remainder)
         elif result[-1][-1] in sentence_ends:
             result.append(text)
         else:

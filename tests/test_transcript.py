@@ -270,6 +270,30 @@ class TestMergeContinuationLines:
             "Bob 00:13:34 Thanks.",
         ]
 
+    def test_short_name_after_period_not_split_as_embedded_speaker(self):
+        """A 2-char word after '.' (e.g. 'At 10:01') is not treated as a speaker."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Let's restart."),
+            _li(False, "Okay. At 10:01 we begin."),
+        ]
+        # 'At' is 2 chars after '.', so it is NOT split as a new speaker.
+        # The previous line ends with '.', so the continuation starts a new entry.
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Let's restart.",
+            "Okay. At 10:01 we begin.",
+        ]
+
+    def test_short_name_after_ellipsis_still_split(self):
+        """A single-char name after '…' IS treated as a new speaker (not suppressed)."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "yeah… Q 10:05 Right."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… yeah…",
+            "Q 10:05 Right.",
+        ]
+
     def test_dotted_handle_not_split_as_embedded_speaker(self):
         """A dotted display name like 'foo.bar 10:01' is not split at the dot."""
         raw = [
