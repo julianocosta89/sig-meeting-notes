@@ -226,15 +226,26 @@ class TestMergeContinuationLines:
             "É 10:05 Merci.",
         ]
 
-    def test_embedded_speaker_after_sentence_end_not_merged(self):
-        """A continuation line containing 'prefix… Speaker MM:SS' is not merged."""
+    def test_embedded_speaker_splits_prefix_and_remainder(self):
+        """prefix before embedded Name MM:SS is appended to prior turn; remainder is a new entry."""
         raw = [
             _li(False, "Alice Fox 10:00 passing over…"),
             _li(False, "Yeah, so… Andrej 03:22 Thanks."),
         ]
         assert _merge_continuation_lines(raw) == [
-            "Alice Fox 10:00 passing over…",
-            "Yeah, so… Andrej 03:22 Thanks.",
+            "Alice Fox 10:00 passing over… Yeah, so…",
+            "Andrej 03:22 Thanks.",
+        ]
+
+    def test_embedded_speaker_no_prefix_starts_new_entry(self):
+        """When text starts at the sentence-end char, only a new entry is created."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "… Andrej 03:22 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… …",
+            "Andrej 03:22 Thanks.",
         ]
 
     def test_continuation_without_embedded_speaker_still_merged(self):

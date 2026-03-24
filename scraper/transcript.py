@@ -92,12 +92,20 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         return []
     result = [raw[0][1]]
     for has_speaker, text in raw[1:]:
-        if (
-            has_speaker
-            or _SPEAKER_LIKE_RE.match(text)
-            or _EMBEDDED_SPEAKER_RE.search(text)
-            or result[-1][-1] in sentence_ends
-        ):
+        if has_speaker or _SPEAKER_LIKE_RE.match(text):
+            result.append(text)
+        elif m := _EMBEDDED_SPEAKER_RE.search(text):
+            # Split at the embedded boundary: the prefix (up to and including the
+            # sentence-end punctuation) belongs to the prior turn; the remainder
+            # (Name MM:SS utterance) starts a new speaker entry.
+            split_pos = m.start() + 1  # one past the sentence-end character
+            prefix = text[:split_pos].rstrip()
+            remainder = text[split_pos:].lstrip()
+            if prefix:
+                result[-1] += " " + prefix
+            if remainder:
+                result.append(remainder)
+        elif result[-1][-1] in sentence_ends:
             result.append(text)
         else:
             result[-1] += " " + text
