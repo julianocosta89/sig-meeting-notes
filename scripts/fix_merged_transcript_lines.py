@@ -98,6 +98,30 @@ _SENTENCE_STARTERS = frozenset(
     }
 )
 
+# Narrower set used after a plain '.' — only temporal prepositions that
+# cannot plausibly be speaker display-name first tokens.  More ambiguous
+# words like "so" are excluded because real participants use them as first
+# names (e.g. "So Koide" in Collector-SIG transcripts).
+_PERIOD_CLOCK_WORDS = frozenset(
+    {
+        "at",
+        "by",
+        "on",
+        "in",
+        "for",
+        "from",
+        "to",
+        "since",
+        "until",
+        "today",
+        "tomorrow",
+        "now",
+        "then",
+        "after",
+        "before",
+    }
+)
+
 
 # ── Core split/fix logic ──────────────────────────────────────────────────────
 
@@ -151,13 +175,14 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
-                # After a plain '.', reject very short names or sentence-starter
-                # words that are more likely to be prepositions/conjunctions
-                # before a clock reference (e.g. "At 10:05", "Today 10:05")
-                # than real speaker names.
+                # After a plain '.', reject very short names or temporal
+                # prepositions that are more likely to be clock-phrase words
+                # (e.g. "At 10:05", "Today 10:05") than speaker names.
+                # Use the narrower _PERIOD_CLOCK_WORDS (not the full
+                # _SENTENCE_STARTERS) to preserve names like "So Koide".
                 if len(m.group(1)) < 3:
                     continue
-                if m.group(1).split(None, 1)[0].lower() in _SENTENCE_STARTERS:
+                if m.group(1).split(None, 1)[0].lower() in _PERIOD_CLOCK_WORDS:
                     continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches

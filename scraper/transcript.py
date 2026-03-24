@@ -81,6 +81,31 @@ _SENTENCE_STARTERS = frozenset(
     }
 )
 
+# Narrower set used after a plain '.' — only temporal prepositions that
+# cannot plausibly be speaker display-name first tokens (e.g. "Today 10:05
+# we begin." is a clock phrase, not a speaker named "Today").  More
+# ambiguous words like "so" are excluded because real participants use them
+# as first names (e.g. "So Koide").
+_PERIOD_CLOCK_WORDS = frozenset(
+    {
+        "at",
+        "by",
+        "on",
+        "in",
+        "for",
+        "from",
+        "to",
+        "since",
+        "until",
+        "today",
+        "tomorrow",
+        "now",
+        "then",
+        "after",
+        "before",
+    }
+)
+
 _EMBEDDED_SPEAKER_RE = re.compile(
     r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
     r"[^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens
@@ -153,20 +178,20 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
             # Reject embedded matches that look like clock phrases rather than
-            # real speaker names.  Two guards:
-            #   1. After '…' or '.': if the first token is a common sentence-
-            #      starter word (e.g. "at", "today", "so"), treat as a plain
-            #      continuation — "Okay. Today 10:05 we begin." and
-            #      "Yeah… at 10:05 we begin." are not speaker boundaries.
-            #      We do NOT apply this after '?' or '!' where genuine speaker
-            #      turns commonly start with such words.
-            #   2. After a plain '.' only: also reject very short names (< 3
-            #      chars) since abbreviation suffixes like "Dr." can precede
-            #      short prepositions.
+            # real speaker names.  Two guards applied depending on punctuation:
+            #   After '…': use _SENTENCE_STARTERS (mid-sentence trailing; any
+            #     common sentence-starting word is likely a continuation, not a
+            #     speaker — "Yeah… at 10:05 we begin." is not a new speaker).
+            #   After '.': use the narrower _PERIOD_CLOCK_WORDS (temporal
+            #     prepositions only) so that names like "So Koide" are not
+            #     suppressed, while "Today 10:05 we begin." still is.
+            #   After '?' / '!': no suppression — genuine speaker turns
+            #     commonly begin after those.
             first_token = remainder.split(None, 1)[0] if remainder else ""
             punct = text[m.start()]
-            if (punct in {"…", "."} and first_token.lower() in _SENTENCE_STARTERS) or (
-                punct == "." and len(first_token) < 3
+            first_lower = first_token.lower()
+            if (punct == "…" and first_lower in _SENTENCE_STARTERS) or (
+                punct == "." and first_lower in _PERIOD_CLOCK_WORDS
             ):
                 if result[-1][-1] in sentence_ends:
                     result.append(text)
