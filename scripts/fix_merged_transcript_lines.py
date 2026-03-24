@@ -84,7 +84,7 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
     """Return speaker-pattern matches that are valid split points.
 
     A match is valid when it is at the start of the text, or when the text
-    immediately before it ends with sentence-ending punctuation (`.?!…`).
+    immediately before it ends with sentence-ending punctuation (`.?!…。？！`).
     This prevents false positives where part of a speaker name (e.g. "Elastic
     Observability" in "Andrew Wilkins @ Elastic Observability 00:23 …")
     incorrectly looks like a new speaker.
