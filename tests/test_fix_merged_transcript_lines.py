@@ -79,6 +79,14 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_dotted_handle_not_a_split_point(self):
+        # "jomard" after "mackenzie." must not be treated as a speaker (dotted handle).
+        # _SPEAKER_TS_RE can find "jomard 44:07" inside "mackenzie.jomard 44:07 ...",
+        # but the '.' immediately preceding it must be rejected.
+        pre = "mackenzie.jomard 44:07 Just checking in."
+        matches = _valid_split_matches(pre)
+        assert matches == []
+
     def test_sentence_ending_dot_still_valid(self):
         # A genuine sentence end with '.' must still trigger a split.
         pre = "Dan Gomez 10:28 so… Andrej 10:32 Oh. Bob 10:40 Thanks."
@@ -186,6 +194,11 @@ class TestFixLineSplit:
         assert len(result) == 2
         assert result[0] == "continuation text."
         assert result[1] == "**Alice** 10:00 Hello world."
+
+    def test_dotted_handle_line_not_corrupted(self):
+        """A single-speaker line with a dotted handle is returned unchanged."""
+        line = "**mackenzie.jomard** 44:07 Just checking in."
+        assert fix_line(line) == [line]
 
     def test_hh_mm_ss_timestamp_detected(self):
         """A merged line with HH:MM:SS timestamps is split correctly."""

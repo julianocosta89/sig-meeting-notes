@@ -36,7 +36,7 @@ _SPEAKER_LIKE_RE = re.compile(
 # inside a continuation line, e.g. "Yeah, so… Andrej 03:22 utterance".
 # The preceding sentence-end character keeps false positives low.
 _EMBEDDED_SPEAKER_RE = re.compile(
-    r"[.?!…。？！]\s*"  # sentence-end punctuation immediately before
+    r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
     r"[^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens
     r"(?:\s+\[[^\]]+\])?"  # optional [Org]
     r"(?:\s+\|[^|]*?)?"  # optional | Org

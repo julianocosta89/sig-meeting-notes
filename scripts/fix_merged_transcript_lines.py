@@ -101,6 +101,11 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
             # "lciukaj@splunk." → stem "lciukaj@splunk" contains '@';
             # "sub.domain." → stem contains '.').
             if before[-1] == ".":
+                # Reject when the match is immediately preceded by '.' with no
+                # whitespace (dotted handle like "mackenzie.jomard" → stem
+                # "mackenzie" has no '@' or '.' but is still not a sentence end).
+                if m.start() > 0 and pre[m.start() - 1] == ".":
+                    continue
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue

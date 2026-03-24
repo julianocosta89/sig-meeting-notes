@@ -270,6 +270,19 @@ class TestMergeContinuationLines:
             "Bob 00:13:34 Thanks.",
         ]
 
+    def test_dotted_handle_not_split_as_embedded_speaker(self):
+        """A dotted display name like 'foo.bar 10:01' is not split at the dot."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "foo.bar 10:01 Sure."),
+        ]
+        # 'foo.bar 10:01' starts with a non-letter (would fail _SPEAKER_LIKE_RE)
+        # and the dot has no whitespace after it so _EMBEDDED_SPEAKER_RE won't match either.
+        # The previous line ends with '…' (not a sentence terminator), so it merges.
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… foo.bar 10:01 Sure.",
+        ]
+
     def test_continuation_without_embedded_speaker_still_merged(self):
         """A plain continuation line with no embedded speaker is still merged."""
         raw = [
