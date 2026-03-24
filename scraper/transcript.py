@@ -182,25 +182,26 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             #   After '…': use _SENTENCE_STARTERS (mid-sentence trailing; any
             #     common sentence-starting word is likely a continuation, not a
             #     speaker — "Yeah… at 10:05 we begin." is not a new speaker).
-            #   After '.': (a) use _PERIOD_CLOCK_WORDS for temporal
-            #     prepositions (e.g. "Today 10:05 we begin."); (b) also
-            #     suppress single-token short names (< 3 chars) like "Li" or
-            #     "Al" that are too ambiguous after a period — but multi-token
-            #     names ("So Koide") are allowed even when the first token is
-            #     short, since a second name token makes it unambiguously a
-            #     real person.
-            #   After '?' / '!': no suppression — genuine speaker turns
-            #     commonly begin after those.
+            #   After '.', '?', '!', or CJK equivalents: (a) use
+            #     _PERIOD_CLOCK_WORDS for temporal prepositions (e.g.
+            #     "Ready? At 10:05 we begin." or "Done. Today 10:05 …");
+            #     (b) also suppress single-token short names (< 3 chars) like
+            #     "Li" that are too ambiguous — but multi-token names ("So
+            #     Koide") are allowed even when the first token is short.
+            #     Full _SENTENCE_STARTERS is NOT used here to preserve names
+            #     like "So Koide" that start with discourse words.
             first_token = remainder.split(None, 1)[0] if remainder else ""
             punct = text[m.start()]
             first_lower = first_token.lower()
             # Short-name guard: only suppress single-token short names after
-            # '.'; multi-token names like "So Koide" are kept even when the
-            # first token is short (avoids suppressing real speaker names).
+            # sentence-end punctuation; multi-token names like "So Koide" are
+            # kept even when the first token is short (avoids suppressing real
+            # speaker names).
             full_name_tokens = m.group(1).split() if m.group(1) else []
             single_short = len(full_name_tokens) == 1 and len(first_token) < 3
             if (punct == "…" and first_lower in _SENTENCE_STARTERS) or (
-                punct == "." and (single_short or first_lower in _PERIOD_CLOCK_WORDS)
+                punct in {".", "?", "!", "。", "？", "！"}
+                and (single_short or first_lower in _PERIOD_CLOCK_WORDS)
             ):
                 if result[-1][-1] in sentence_ends:
                     result.append(text)

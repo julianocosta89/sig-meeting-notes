@@ -186,12 +186,17 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
-                # whose first token is a common sentence-starter word that is
-                # more likely a clock phrase (e.g. "… at 10:05 we begin") than
-                # a real speaker display name.  We do NOT apply this guard after
-                # '?' or '!' where genuine speaker turns commonly begin.
+                # whose first token is a common sentence-starter word.
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if name_first in _SENTENCE_STARTERS:
+                    continue
+            elif before[-1] in {"?", "!", "？", "！"}:
+                # After '?' or '!': apply the same temporal-preposition and
+                # short-name guards as for '.', but not the full
+                # _SENTENCE_STARTERS to preserve names like "So Koide".
+                if len(m.group(1)) < 3:
+                    continue
+                if m.group(1).split(None, 1)[0].lower() in _PERIOD_CLOCK_WORDS:
                     continue
             valid.append(m)
     return valid
