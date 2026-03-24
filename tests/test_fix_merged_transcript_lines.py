@@ -255,6 +255,23 @@ class TestFixTranscriptFile:
         changes, new_text = fix_transcript_file(f)
         assert len(changes) == 1
 
+    def test_prefix_fragment_appended_to_prior_line(self, tmp_path):
+        """Leading plain-text fragment is appended to the previous speaker line."""
+        content = (
+            f"SIG: Test\n{_SEP}\n"
+            "**Alice Fox** 10:00 Let me just…\n"
+            "**So, I'm on… Victoria Nduka** 04:45 Hello there.\n"
+        )
+        f = tmp_path / "transcript.md"
+        f.write_text(content, encoding="utf-8")
+        changes, new_text = fix_transcript_file(f)
+        assert len(changes) == 1
+        lines = new_text.splitlines()
+        # "So, I'm on…" must be appended to Alice's line, not standalone
+        assert any("So, I'm on…" in ln and "Alice Fox" in ln for ln in lines)
+        assert any("**Victoria Nduka**" in ln for ln in lines)
+        assert not any(ln.strip() == "So, I'm on…" for ln in lines)
+
 
 # ---------------------------------------------------------------------------
 # _parse_args

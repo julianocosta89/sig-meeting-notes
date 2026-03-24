@@ -32,6 +32,18 @@ _SPEAKER_LIKE_RE = re.compile(
     r"\s+\d{1,2}:\d{2}\s+"  # timestamp
 )
 
+# Companion pattern (no ^ anchor) that detects a speaker-start embedded
+# inside a continuation line, e.g. "Yeah, so… Andrej 03:22 utterance".
+# The preceding sentence-end character keeps false positives low.
+_EMBEDDED_SPEAKER_RE = re.compile(
+    r"[.?!…。？！]\s*"  # sentence-end punctuation immediately before
+    r"[^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens
+    r"(?:\s+\[[^\]]+\])?"  # optional [Org]
+    r"(?:\s+\|[^|]*?)?"  # optional | Org
+    r"(?:\s+\([^)]+\))?"  # optional (Org)
+    r"\s+\d{1,2}:\d{2}\s"  # timestamp
+)
+
 
 def parse_transcript_html(outer_html: str) -> list[str]:
     """
@@ -80,7 +92,12 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         return []
     result = [raw[0][1]]
     for has_speaker, text in raw[1:]:
-        if has_speaker or _SPEAKER_LIKE_RE.match(text) or result[-1][-1] in sentence_ends:
+        if (
+            has_speaker
+            or _SPEAKER_LIKE_RE.match(text)
+            or _EMBEDDED_SPEAKER_RE.search(text)
+            or result[-1][-1] in sentence_ends
+        ):
             result.append(text)
         else:
             result[-1] += " " + text

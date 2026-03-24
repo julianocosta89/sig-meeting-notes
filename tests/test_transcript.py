@@ -226,6 +226,27 @@ class TestMergeContinuationLines:
             "É 10:05 Merci.",
         ]
 
+    def test_embedded_speaker_after_sentence_end_not_merged(self):
+        """A continuation line containing 'prefix… Speaker MM:SS' is not merged."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "Yeah, so… Andrej 03:22 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over…",
+            "Yeah, so… Andrej 03:22 Thanks.",
+        ]
+
+    def test_continuation_without_embedded_speaker_still_merged(self):
+        """A plain continuation line with no embedded speaker is still merged."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "Yeah, so I think we can start."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… Yeah, so I think we can start.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)

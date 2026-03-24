@@ -179,7 +179,15 @@ def fix_transcript_file(path: Path) -> tuple[list[tuple[int, str, list[str]]], s
         replacement = fix_line(line)
         if len(replacement) != 1 or replacement[0] != line:
             changes.append((lineno, line, replacement))
-        new_body.extend(replacement)
+
+        # When fix_line splits a merged line and the leading fragment is plain
+        # text (no Name+Timestamp), it belongs to the preceding speaker's turn.
+        # Append it there instead of emitting it as a standalone orphan line.
+        if len(replacement) > 1 and new_body and not _FORMAT_RE.match(replacement[0]):
+            new_body[-1] = new_body[-1].rstrip() + " " + replacement[0].lstrip()
+            new_body.extend(replacement[1:])
+        else:
+            new_body.extend(replacement)
 
     if changes:
         new_text = header + "\n".join(new_body) + "\n"
