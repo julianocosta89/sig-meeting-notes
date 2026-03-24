@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-23T07:05:42Z",
+  "generated_at": "2026-03-24T07:01:13Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-03-19",
+  "max_date": "2026-03-23",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -4970,6 +4970,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-23",
+          "duration_minutes": 10,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 56,
           "has_summary": true,
@@ -5299,7 +5306,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 47
+      "meeting_count": 48
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -7930,6 +7937,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-23",
+          "duration_minutes": 25,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-03-16",
           "duration_minutes": 49,
           "has_summary": true,
@@ -8175,7 +8189,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 35
+      "meeting_count": 36
     },
     {
       "slug": "Semantic-Convention-Tooling",
