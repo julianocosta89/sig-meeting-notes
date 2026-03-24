@@ -176,9 +176,16 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                 if single_token_name:
                     suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                 else:
-                    suppress = any(
-                        t[0].islower() for t in full_name_tokens[1:] if t and t[0].isalpha()
-                    )
+                    # Only check the bare name tokens — stop before any org
+                    # suffix starting with '[', '|', or '(' to avoid treating
+                    # lowercase org words (e.g. "| openTelemetry") as evidence
+                    # that the match is not a speaker.
+                    name_only = []
+                    for t in full_name_tokens[1:]:
+                        if not t or t[0] in {"[", "|", "("}:
+                            break
+                        name_only.append(t)
+                    suppress = any(t[0].islower() for t in name_only if t[0].isalpha())
             else:
                 suppress = False
             if suppress:

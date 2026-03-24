@@ -153,16 +153,23 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     continue
                 # After '.': for single-token names, reject if < 3 chars or
                 # first token is in _SENTENCE_STARTERS.  For multi-token names,
-                # reject if any non-first name token starts with a lowercase
-                # letter (sentence phrase like "So far 10:05" vs real name like
-                # "So Koide 10:05" where "Koide" is title-cased).
+                # reject if any non-first bare name token starts with a
+                # lowercase letter (sentence phrase like "So far 10:05" vs a
+                # real name like "So Koide 10:05" where "Koide" is title-cased).
+                # Org suffix tokens starting with '[', '|', or '(' are excluded
+                # so that lowercase org words don't cause false suppression.
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if len(name_tokens) == 1:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if any(t[0].islower() for t in name_tokens[1:] if t and t[0].isalpha()):
+                    name_only = []
+                    for t in name_tokens[1:]:
+                        if not t or t[0] in {"[", "|", "("}:
+                            break
+                        name_only.append(t)
+                    if any(t[0].islower() for t in name_only if t[0].isalpha()):
                         continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
@@ -178,7 +185,12 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if any(t[0].islower() for t in name_tokens[1:] if t and t[0].isalpha()):
+                    name_only = []
+                    for t in name_tokens[1:]:
+                        if not t or t[0] in {"[", "|", "("}:
+                            break
+                        name_only.append(t)
+                    if any(t[0].islower() for t in name_only if t[0].isalpha()):
                         continue
             valid.append(m)
     return valid

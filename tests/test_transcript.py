@@ -357,6 +357,21 @@ class TestMergeContinuationLines:
             "I agree. So far 10:05 into the meeting.",
         ]
 
+    def test_multi_token_name_with_lowercase_org_suffix_splits(self):
+        """A name with a lowercase org suffix ('So Koide | openTelemetry') still splits.
+
+        Org suffix tokens (after '|', '[', '(') are excluded from the
+        title-case check so that lowercase org words don't suppress the split.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. So Koide | openTelemetry 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point. I agree.",
+            "So Koide | openTelemetry 10:05 Thanks.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
