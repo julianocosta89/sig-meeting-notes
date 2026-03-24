@@ -89,6 +89,18 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert "Élodie" in matches[1].group(1)
 
+    def test_single_char_name_detected(self):
+        pre = "Alice Fox 10:00 Passing to Q… Q 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Q"
+
+    def test_single_char_unicode_name_detected(self):
+        pre = "Alice Fox 10:00 Over to É… É 10:05 Merci."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "É"
+
 
 # ---------------------------------------------------------------------------
 # fix_line — no-op on clean lines

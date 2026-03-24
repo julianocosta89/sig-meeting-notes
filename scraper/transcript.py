@@ -19,11 +19,13 @@ from bs4 import BeautifulSoup, Tag
 #   "First Last [Org] MM:SS "          — bracket org tag
 #   "First Last | Org MM:SS "          — pipe-separated org
 #   "First Last (Org) MM:SS "          — parenthesised org
+#   "Q MM:SS "                         — single-character name/initial
 # [^\W\d_] matches any Unicode letter (ASCII, accented, CJK, etc.) without
 # requiring an ASCII uppercase initial, so names like Élodie or 杉本浩平 are
-# recognised.  The required timestamp keeps false positives low.
+# recognised.  [\w']* (not +) allows single-character tokens.  The required
+# timestamp keeps false positives low.
 _SPEAKER_LIKE_RE = re.compile(
-    r"^[^\W\d_][\w']+(?:\s+[^\W\d_][\w']+)*"  # name tokens (any Unicode letter, apostrophes ok)
+    r"^[^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens (any Unicode letter, apostrophes ok)
     r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
     r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
     r"(?:\s+\([^)]+\))?"  # optional (Org) paren suffix

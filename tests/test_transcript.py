@@ -204,6 +204,28 @@ class TestMergeContinuationLines:
             "Élodie Dupont 10:05 Merci.",
         ]
 
+    def test_single_char_speaker_not_merged(self):
+        """A single-character display name/initial is recognised as a new speaker."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Passing to Q…"),
+            _li(False, "Q 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Passing to Q…",
+            "Q 10:05 Thanks.",
+        ]
+
+    def test_single_char_unicode_speaker_not_merged(self):
+        """A single-character Unicode initial is recognised as a new speaker."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Over to Élodie…"),
+            _li(False, "É 10:05 Merci."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Over to Élodie…",
+            "É 10:05 Merci.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
