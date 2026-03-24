@@ -169,23 +169,24 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             punct = text[m.start()]
             first_lower = first_token.lower()
             full_name_tokens = m.group(1).split() if m.group(1) else []
-            single_token_name = len(full_name_tokens) == 1
             if punct == "…":
                 suppress = first_lower in _SENTENCE_STARTERS
             elif punct in {".", "?", "!", "。", "？", "！"}:
-                if single_token_name:
+                # Collect bare name tokens, stopping at the first org suffix
+                # marker ('[', '|', '(') so that lowercase org words like
+                # "| openTelemetry" or "(backend)" don't falsely suppress a
+                # real speaker boundary.  Treat the match as single-token when
+                # only one bare name token exists (e.g. "So | far" → name is
+                # "So" alone, so single-token rules apply).
+                name_only = []
+                for t in full_name_tokens:
+                    if not t or t[0] in {"[", "|", "("}:
+                        break
+                    name_only.append(t)
+                if len(name_only) <= 1:
                     suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                 else:
-                    # Only check the bare name tokens — stop before any org
-                    # suffix starting with '[', '|', or '(' to avoid treating
-                    # lowercase org words (e.g. "| openTelemetry") as evidence
-                    # that the match is not a speaker.
-                    name_only = []
-                    for t in full_name_tokens[1:]:
-                        if not t or t[0] in {"[", "|", "("}:
-                            break
-                        name_only.append(t)
-                    suppress = any(t[0].islower() for t in name_only if t[0].isalpha())
+                    suppress = any(t[0].islower() for t in name_only[1:] if t[0].isalpha())
             else:
                 suppress = False
             if suppress:

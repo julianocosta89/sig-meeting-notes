@@ -158,18 +158,22 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 # real name like "So Koide 10:05" where "Koide" is title-cased).
                 # Org suffix tokens starting with '[', '|', or '(' are excluded
                 # so that lowercase org words don't cause false suppression.
+                # Collect bare name tokens, stopping at the first org suffix
+                # marker so that lowercase org words don't falsely suppress a
+                # real speaker.  Treat as single-token when only one bare name
+                # token exists (e.g. "So | far" has one bare token: "So").
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
-                if len(name_tokens) == 1:
-                    if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
+                name_only = []
+                for t in name_tokens:
+                    if not t or t[0] in {"[", "|", "("}:
+                        break
+                    name_only.append(t)
+                if len(name_only) <= 1:
+                    if len(m.group(1).split(None, 1)[0]) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    name_only = []
-                    for t in name_tokens[1:]:
-                        if not t or t[0] in {"[", "|", "("}:
-                            break
-                        name_only.append(t)
-                    if any(t[0].islower() for t in name_only if t[0].isalpha()):
+                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
                         continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
@@ -181,16 +185,16 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 # After '?' or '!': same logic as '.'.
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
-                if len(name_tokens) == 1:
-                    if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
+                name_only = []
+                for t in name_tokens:
+                    if not t or t[0] in {"[", "|", "("}:
+                        break
+                    name_only.append(t)
+                if len(name_only) <= 1:
+                    if len(m.group(1).split(None, 1)[0]) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    name_only = []
-                    for t in name_tokens[1:]:
-                        if not t or t[0] in {"[", "|", "("}:
-                            break
-                        name_only.append(t)
-                    if any(t[0].islower() for t in name_only if t[0].isalpha()):
+                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
                         continue
             valid.append(m)
     return valid

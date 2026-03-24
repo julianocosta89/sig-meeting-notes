@@ -372,6 +372,21 @@ class TestMergeContinuationLines:
             "So Koide | openTelemetry 10:05 Thanks.",
         ]
 
+    def test_sentence_starter_with_pipe_suffix_not_split(self):
+        """A sentence-starter word followed immediately by a pipe org ('So | far') is not a speaker.
+
+        When only one bare name token exists before the org marker, single-token
+        rules apply and suppress the false split.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. So | far 10:05 into the meeting."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point.",
+            "I agree. So | far 10:05 into the meeting.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
