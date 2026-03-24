@@ -387,6 +387,21 @@ class TestMergeContinuationLines:
             "I agree. So | far 10:05 into the meeting.",
         ]
 
+    def test_short_initial_with_org_suffix_after_period_splits(self):
+        """A short initial with an org suffix ('Q | OpenAI') after '.' is a new speaker.
+
+        The org suffix is evidence of a real display name; the length guard is
+        skipped so that single-character initials are not suppressed.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. Q | OpenAI 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point. I agree.",
+            "Q | OpenAI 10:05 Thanks.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)

@@ -151,17 +151,9 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
-                # After '.': for single-token names, reject if < 3 chars or
-                # first token is in _SENTENCE_STARTERS.  For multi-token names,
-                # reject if any non-first bare name token starts with a
-                # lowercase letter (sentence phrase like "So far 10:05" vs a
-                # real name like "So Koide 10:05" where "Koide" is title-cased).
-                # Org suffix tokens starting with '[', '|', or '(' are excluded
-                # so that lowercase org words don't cause false suppression.
                 # Collect bare name tokens, stopping at the first org suffix
-                # marker so that lowercase org words don't falsely suppress a
-                # real speaker.  Treat as single-token when only one bare name
-                # token exists (e.g. "So | far" has one bare token: "So").
+                # marker ('[', '|', '(') so that lowercase org words like
+                # "| openTelemetry" don't falsely suppress a real speaker.
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 name_only = []
@@ -169,11 +161,17 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if not t or t[0] in {"[", "|", "("}:
                         break
                     name_only.append(t)
-                if len(name_only) <= 1:
-                    if len(m.group(1).split(None, 1)[0]) < 3 or name_first in _SENTENCE_STARTERS:
+                has_org = len(name_only) < len(name_tokens)
+                if len(name_only) > 1:
+                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
+                        continue
+                elif has_org:
+                    # Single bare token + org suffix (e.g. "Q | OpenAI"): skip
+                    # the length guard; only suppress sentence-starter words.
+                    if name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
+                    if len(name_first) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
@@ -190,11 +188,15 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if not t or t[0] in {"[", "|", "("}:
                         break
                     name_only.append(t)
-                if len(name_only) <= 1:
-                    if len(m.group(1).split(None, 1)[0]) < 3 or name_first in _SENTENCE_STARTERS:
+                has_org = len(name_only) < len(name_tokens)
+                if len(name_only) > 1:
+                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
+                        continue
+                elif has_org:
+                    if name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
+                    if len(name_first) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
             valid.append(m)
     return valid

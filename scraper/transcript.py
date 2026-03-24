@@ -175,18 +175,27 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                 # Collect bare name tokens, stopping at the first org suffix
                 # marker ('[', '|', '(') so that lowercase org words like
                 # "| openTelemetry" or "(backend)" don't falsely suppress a
-                # real speaker boundary.  Treat the match as single-token when
-                # only one bare name token exists (e.g. "So | far" → name is
-                # "So" alone, so single-token rules apply).
+                # real speaker boundary.
                 name_only = []
                 for t in full_name_tokens:
                     if not t or t[0] in {"[", "|", "("}:
                         break
                     name_only.append(t)
-                if len(name_only) <= 1:
-                    suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
-                else:
+                has_org_suffix = len(name_only) < len(full_name_tokens)
+                if len(name_only) > 1:
+                    # Multiple bare name tokens: suppress if any non-first
+                    # starts lowercase ("So far" → suppress, "So Koide" → keep).
                     suppress = any(t[0].islower() for t in name_only[1:] if t[0].isalpha())
+                elif has_org_suffix:
+                    # Single bare token + org suffix (e.g. "Q | OpenAI"): the
+                    # org suffix is strong evidence of a real display name, so
+                    # only suppress clear sentence-starter words; the length
+                    # guard is skipped (short initials are valid here).
+                    suppress = first_lower in _SENTENCE_STARTERS
+                else:
+                    # Pure single-token name (no org suffix): apply both the
+                    # length guard and the sentence-starter check.
+                    suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
             else:
                 suppress = False
             if suppress:
