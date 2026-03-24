@@ -81,31 +81,6 @@ _SENTENCE_STARTERS = frozenset(
     }
 )
 
-# Narrower set used after a plain '.' — only temporal prepositions that
-# cannot plausibly be speaker display-name first tokens (e.g. "Today 10:05
-# we begin." is a clock phrase, not a speaker named "Today").  More
-# ambiguous words like "so" are excluded because real participants use them
-# as first names (e.g. "So Koide").
-_PERIOD_CLOCK_WORDS = frozenset(
-    {
-        "at",
-        "by",
-        "on",
-        "in",
-        "for",
-        "from",
-        "to",
-        "since",
-        "until",
-        "today",
-        "tomorrow",
-        "now",
-        "then",
-        "after",
-        "before",
-    }
-)
-
 _EMBEDDED_SPEAKER_RE = re.compile(
     r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
     r"([^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # group 1: name tokens
@@ -178,19 +153,12 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
             # Reject embedded matches that look like clock phrases rather than
-            # real speaker names.  Two guards applied depending on punctuation:
-            #   After '…': use _SENTENCE_STARTERS (mid-sentence trailing; any
-            #     common sentence-starting word is likely a continuation, not a
-            #     speaker — "Yeah… at 10:05 we begin." is not a new speaker).
-            #   After '…': suppress if first token is in _SENTENCE_STARTERS.
-            #   After '.', '?', '!', or CJK equivalents:
-            #     - single-token names: suppress if first token is in
-            #       _SENTENCE_STARTERS or < 3 chars (e.g. "And 10:05",
-            #       "Li 10:05" after a period are not speakers).
-            #     - multi-token names ("So Koide", "Li Yan"): only suppress if
-            #       the first token is a temporal preposition (_PERIOD_CLOCK_WORDS)
-            #       since multi-word names starting with discourse words can be
-            #       real speaker display names.
+            # real speaker names.  For all sentence-ending punctuation, suppress
+            # when the first name token is in _SENTENCE_STARTERS.  Additionally,
+            # for single-token names, suppress if the name is shorter than 3
+            # characters (e.g. "Li 10:05", "At 10:05" after a period are not
+            # speakers).  Multi-token names (e.g. "So far 10:05") are suppressed
+            # by the _SENTENCE_STARTERS check on the first token.
             first_token = remainder.split(None, 1)[0] if remainder else ""
             punct = text[m.start()]
             first_lower = first_token.lower()
@@ -202,7 +170,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                 if single_token_name:
                     suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                 else:
-                    suppress = first_lower in _PERIOD_CLOCK_WORDS
+                    suppress = first_lower in _SENTENCE_STARTERS
             else:
                 suppress = False
             if suppress:

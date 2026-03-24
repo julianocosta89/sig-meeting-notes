@@ -98,30 +98,6 @@ _SENTENCE_STARTERS = frozenset(
     }
 )
 
-# Narrower set used after a plain '.' — only temporal prepositions that
-# cannot plausibly be speaker display-name first tokens.  More ambiguous
-# words like "so" are excluded because real participants use them as first
-# names (e.g. "So Koide" in Collector-SIG transcripts).
-_PERIOD_CLOCK_WORDS = frozenset(
-    {
-        "at",
-        "by",
-        "on",
-        "in",
-        "for",
-        "from",
-        "to",
-        "since",
-        "until",
-        "today",
-        "tomorrow",
-        "now",
-        "then",
-        "after",
-        "before",
-    }
-)
-
 
 # ── Core split/fix logic ──────────────────────────────────────────────────────
 
@@ -175,19 +151,16 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
-                # After '.': for single-token names apply the full
-                # _SENTENCE_STARTERS guard (e.g. "And 10:05", "Okay 10:05",
-                # "At 10:05" are not speakers) plus the short-name guard.
-                # For multi-token names ("So Koide"), only reject temporal
-                # prepositions (_PERIOD_CLOCK_WORDS) to allow names that
-                # start with discourse words.
+                # After '.': reject names whose first token is in
+                # _SENTENCE_STARTERS; also reject single-token names shorter
+                # than 3 chars (e.g. "And 10:05", "Li 10:05" after a period).
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if len(name_tokens) == 1:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if name_first in _PERIOD_CLOCK_WORDS:
+                    if name_first in _SENTENCE_STARTERS:
                         continue
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
@@ -196,14 +169,14 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 if name_first in _SENTENCE_STARTERS:
                     continue
             elif before[-1] in {"?", "!", "？", "！"}:
-                # After '?' or '!': same single/multi-token logic as '.'.
+                # After '?' or '!': same logic as '.'.
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if len(name_tokens) == 1:
                     if len(m.group(1)) < 3 or name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if name_first in _PERIOD_CLOCK_WORDS:
+                    if name_first in _SENTENCE_STARTERS:
                         continue
             valid.append(m)
     return valid
