@@ -57,6 +57,47 @@ _TURN_ENDS = frozenset(".?!…。？！")
 # Transcript header separator (same constant used by transcript_io.py)
 _SEPARATOR = "=" * 60
 
+# Common words that begin ordinary sentences and may superficially match the
+# Name+Timestamp pattern (e.g. "… at 10:05 we begin").  Reject any match whose
+# first name-token is one of these to avoid creating fake speaker lines.
+_SENTENCE_STARTERS = frozenset(
+    {
+        "at",
+        "by",
+        "on",
+        "in",
+        "for",
+        "from",
+        "to",
+        "since",
+        "until",
+        "today",
+        "tomorrow",
+        "now",
+        "then",
+        "after",
+        "before",
+        "i",
+        "we",
+        "he",
+        "she",
+        "it",
+        "they",
+        "so",
+        "but",
+        "and",
+        "or",
+        "if",
+        "as",
+        "that",
+        "this",
+        "ok",
+        "okay",
+        "yes",
+        "no",
+    }
+)
+
 
 # ── Core split/fix logic ──────────────────────────────────────────────────────
 
@@ -91,6 +132,11 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
     """
     valid = []
     for m in _SPEAKER_TS_RE.finditer(pre):
+        # Reject matches where the "speaker name" is a common sentence-starter
+        # word (e.g. "at 10:05 we begin" or "so 09:41 let me share").
+        name_first = m.group(1).split(None, 1)[0].lower()
+        if name_first in _SENTENCE_STARTERS:
+            continue
         if m.start() == 0:
             valid.append(m)
             continue

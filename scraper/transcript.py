@@ -152,13 +152,18 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             split_pos = m.start() + 1  # one past the sentence-end character
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
-            # After a plain '.' (period), reject very short names that are more
-            # likely to be prepositions before a clock reference (e.g. "At 10:05")
-            # than real speaker names.  After '…', '?', '!' the short-name risk
-            # is much lower (those typically end speaker turns mid-sentence), so
-            # any name length is accepted there.
+            # Reject embedded matches that look like clock phrases rather than
+            # real speaker names.  Two guards:
+            #   1. If the first token is a common sentence-starter word (e.g.
+            #      "at", "so", "we"), treat it as a continuation for all
+            #      punctuation types (not just '.').
+            #   2. After a plain '.' only: also reject very short names (< 3
+            #      chars) since abbreviation suffixes like "Dr." can precede
+            #      short prepositions.
             first_token = remainder.split(None, 1)[0] if remainder else ""
-            if text[m.start()] == "." and len(first_token) < 3:
+            if first_token.lower() in _SENTENCE_STARTERS or (
+                text[m.start()] == "." and len(first_token) < 3
+            ):
                 if result[-1][-1] in sentence_ends:
                     result.append(text)
                 else:
