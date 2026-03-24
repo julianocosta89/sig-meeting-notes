@@ -248,6 +248,28 @@ class TestMergeContinuationLines:
             "Andrej 03:22 Thanks.",
         ]
 
+    def test_hh_mm_ss_speaker_not_merged(self):
+        """A name followed by an HH:MM:SS timestamp starts a new entry."""
+        raw = [
+            _li(False, "Alice Fox 00:12:55 over to Bob…"),
+            _li(False, "Bob 00:13:34 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 00:12:55 over to Bob…",
+            "Bob 00:13:34 Thanks.",
+        ]
+
+    def test_embedded_hh_mm_ss_speaker_splits_prefix_and_remainder(self):
+        """An embedded HH:MM:SS boundary is also split correctly."""
+        raw = [
+            _li(False, "Alice Fox 00:12:55 let me hand over…"),
+            _li(False, "Yeah, so… Bob 00:13:34 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 00:12:55 let me hand over… Yeah, so…",
+            "Bob 00:13:34 Thanks.",
+        ]
+
     def test_continuation_without_embedded_speaker_still_merged(self):
         """A plain continuation line with no embedded speaker is still merged."""
         raw = [

@@ -41,14 +41,14 @@ _SPEAKER_TS_RE = re.compile(
     r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
     r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
     r"(?:\s+\([^)]+\))?)"  # optional (Org) paren suffix (closes capture group)
-    r"\s+(\d{1,2}:\d{2})\s+"  # timestamp (captured as group 2)
+    r"\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+"  # timestamp MM:SS or HH:MM:SS (captured as group 2)
 )
 
 # Matches a fully-formatted transcript speaker line: **Name** MM:SS rest
-_BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2})\s+(.*)$", re.DOTALL)
+_BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)$", re.DOTALL)
 
 # Used to reformat a raw segment as a bold speaker line
-_FORMAT_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2})\s+(.*)$", re.DOTALL)
+_FORMAT_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)$", re.DOTALL)
 
 # Punctuation characters that legitimately end a speaker's turn
 _TURN_ENDS = frozenset(".?!…")

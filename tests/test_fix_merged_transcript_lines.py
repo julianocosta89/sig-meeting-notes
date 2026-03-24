@@ -187,6 +187,15 @@ class TestFixLineSplit:
         assert result[0] == "continuation text."
         assert result[1] == "**Alice** 10:00 Hello world."
 
+    def test_hh_mm_ss_timestamp_detected(self):
+        """A merged line with HH:MM:SS timestamps is split correctly."""
+        line = "**Alice Fox** 00:12:55 first… Bob Smith 00:13:34 second."
+        result = fix_line(line)
+        assert len(result) == 2
+        assert "Alice Fox" in result[0]
+        assert "Bob Smith" in result[1]
+        assert "00:13:34" in result[1]
+
 
 # ---------------------------------------------------------------------------
 # _format_segment — fallback branch

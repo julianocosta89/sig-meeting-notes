@@ -29,7 +29,7 @@ _SPEAKER_LIKE_RE = re.compile(
     r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
     r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
     r"(?:\s+\([^)]+\))?"  # optional (Org) paren suffix
-    r"\s+\d{1,2}:\d{2}\s+"  # timestamp
+    r"\s+\d{1,2}:\d{2}(?::\d{2})?\s+"  # timestamp (MM:SS or HH:MM:SS)
 )
 
 # Companion pattern (no ^ anchor) that detects a speaker-start embedded
@@ -41,7 +41,7 @@ _EMBEDDED_SPEAKER_RE = re.compile(
     r"(?:\s+\[[^\]]+\])?"  # optional [Org]
     r"(?:\s+\|[^|]*?)?"  # optional | Org
     r"(?:\s+\([^)]+\))?"  # optional (Org)
-    r"\s+\d{1,2}:\d{2}\s"  # timestamp
+    r"\s+\d{1,2}:\d{2}(?::\d{2})?\s"  # timestamp (MM:SS or HH:MM:SS)
 )
 
 
