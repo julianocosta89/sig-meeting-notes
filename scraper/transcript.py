@@ -154,15 +154,18 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             remainder = text[split_pos:].lstrip()
             # Reject embedded matches that look like clock phrases rather than
             # real speaker names.  Two guards:
-            #   1. If the first token is a common sentence-starter word (e.g.
-            #      "at", "so", "we"), treat it as a continuation for all
-            #      punctuation types (not just '.').
+            #   1. After '…' only: if the first token is a common sentence-
+            #      starter word (e.g. "at", "so", "we"), treat as a plain
+            #      continuation — "Yeah… at 10:05 we begin." is not a speaker.
+            #      We do NOT apply this after '?' or '!' where genuine speaker
+            #      turns commonly start with such words.
             #   2. After a plain '.' only: also reject very short names (< 3
             #      chars) since abbreviation suffixes like "Dr." can precede
             #      short prepositions.
             first_token = remainder.split(None, 1)[0] if remainder else ""
-            if first_token.lower() in _SENTENCE_STARTERS or (
-                text[m.start()] == "." and len(first_token) < 3
+            punct = text[m.start()]
+            if (punct in {"…"} and first_token.lower() in _SENTENCE_STARTERS) or (
+                punct == "." and len(first_token) < 3
             ):
                 if result[-1][-1] in sentence_ends:
                     result.append(text)

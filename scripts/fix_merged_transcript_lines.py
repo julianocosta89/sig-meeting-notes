@@ -132,11 +132,6 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
     """
     valid = []
     for m in _SPEAKER_TS_RE.finditer(pre):
-        # Reject matches where the "speaker name" is a common sentence-starter
-        # word (e.g. "at 10:05 we begin" or "so 09:41 let me share").
-        name_first = m.group(1).split(None, 1)[0].lower()
-        if name_first in _SENTENCE_STARTERS:
-            continue
         if m.start() == 0:
             valid.append(m)
             continue
@@ -161,6 +156,15 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 # than real speaker names.  Single/short names after '…', '?',
                 # '!' are less ambiguous and are allowed at any length.
                 if len(m.group(1)) < 3:
+                    continue
+            elif before[-1] == "…":
+                # After an ellipsis (mid-sentence trailing), reject matches
+                # whose first token is a common sentence-starter word that is
+                # more likely a clock phrase (e.g. "… at 10:05 we begin") than
+                # a real speaker display name.  We do NOT apply this guard after
+                # '?' or '!' where genuine speaker turns commonly begin.
+                name_first = m.group(1).split(None, 1)[0].lower()
+                if name_first in _SENTENCE_STARTERS:
                     continue
             valid.append(m)
     return valid
