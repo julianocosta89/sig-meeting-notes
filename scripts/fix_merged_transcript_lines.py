@@ -95,6 +95,15 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
             continue
         before = pre[: m.start()].rstrip()
         if before and before[-1] in _TURN_ENDS:
+            # Guard against domain-suffix false positives: when the terminal
+            # character is '.', reject if the last whitespace-delimited token
+            # looks like part of an email address or dotted hostname (e.g.
+            # "lciukaj@splunk." → stem "lciukaj@splunk" contains '@';
+            # "sub.domain." → stem contains '.').
+            if before[-1] == ".":
+                stem = before.rsplit(None, 1)[-1].rstrip(".")
+                if "@" in stem or "." in stem:
+                    continue
             valid.append(m)
     return valid
 

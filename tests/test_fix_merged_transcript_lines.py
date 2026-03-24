@@ -65,6 +65,26 @@ class TestValidSplitMatches:
         # Only the first match at position 0 is valid.
         assert all(m.start() == 0 for m in matches)
 
+    def test_email_domain_suffix_not_a_split_point(self):
+        # "com" after "splunk." must not be treated as a speaker name.
+        pre = "Alice 10:00 email me at lciukaj@splunk.com 20:59 and I'll follow up."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_dotted_hostname_suffix_not_a_split_point(self):
+        # "com" after "sub.domain." must not be treated as a speaker name.
+        pre = "Alice 10:00 see sub.domain.com 20:59 for details."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_sentence_ending_dot_still_valid(self):
+        # A genuine sentence end with '.' must still trigger a split.
+        pre = "Dan Gomez 10:28 so… Andrej 10:32 Oh. Bob 10:40 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 3
+
     def test_unicode_name_detected(self):
         pre = "Alice 08:07 Let me just… Juraci Paixão Kröhling 08:13 I mean…"
         matches = _valid_split_matches(pre)

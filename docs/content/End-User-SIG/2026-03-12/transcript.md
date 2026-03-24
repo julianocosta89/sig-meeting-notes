@@ -107,7 +107,8 @@ So, yeah.
 But… Yeah, I think we can… we can start. I really hope to have at least… yeah.
 Either you or, Rhys and Andrea here.
 So, yeah, that's…
-**Dan Gomez Blanco** 10:28 I know… I was just another meeting with Reeds, so… Andrej 10:32 Oh, okay, so maybe she will join as well. Good. Someone… okay, let me… I think we can wait a moment.
+**Dan Gomez Blanco** 10:28 I know… I was just another meeting with Reeds, so…
+**Andrej** 10:32 Oh, okay, so maybe she will join as well. Good. Someone… okay, let me… I think we can wait a moment.
 **Dan Gomez Blanco** 10:51 Got his weight, pierre.
 talking about Nigeria, I'm not sure… I actually mentioned this In one of my talks, weirdly enough.
 When we were doing the, the… KCD, like the Community Days in Edinburgh.
