@@ -57,8 +57,6 @@ _SENTENCE_STARTERS = frozenset(
         "then",
         "after",
         "before",
-        # Articles
-        "a",
         # Pronouns
         "i",
         "we",
@@ -193,6 +191,10 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                     # org suffix is strong evidence of a real display name, so
                     # only suppress clear sentence-starter words; the length
                     # guard is skipped (short initials are valid here).
+                    # Known limitation: single-letter non-starter tokens with an
+                    # org suffix (e.g. "A | B") are treated as real speakers.
+                    # In practice these patterns are virtually absent in OTel
+                    # meeting transcripts, so the false-positive risk is minimal.
                     suppress = first_lower in _SENTENCE_STARTERS
                 else:
                     # Pure single-token name (no org suffix): apply both the

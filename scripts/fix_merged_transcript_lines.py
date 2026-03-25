@@ -77,7 +77,6 @@ _SENTENCE_STARTERS = frozenset(
         "then",
         "after",
         "before",
-        "a",
         "i",
         "we",
         "he",
