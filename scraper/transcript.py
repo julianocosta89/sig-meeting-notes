@@ -83,6 +83,38 @@ _SENTENCE_STARTERS = frozenset(
     }
 )
 
+
+def _is_new_speaker_start(text: str) -> bool:
+    """Return True when text (already matching _SPEAKER_LIKE_RE) starts a new-speaker turn.
+
+    Rejects common sentence-starter words unless the name is multi-token and
+    all non-first bare name tokens are title-cased.  This distinguishes real
+    multi-word display names like "So Koide 10:05" (first token "So" is a
+    sentence-starter, but "Koide" starts uppercase → new speaker) from
+    sentence continuations like "So far 10:05" ("far" starts lowercase →
+    continuation).
+    """
+    tokens = text.split()
+    first_lower = tokens[0].lower() if tokens else ""
+    if first_lower not in _SENTENCE_STARTERS:
+        return True
+    # First token is a sentence-starter word; collect bare name tokens up to
+    # the timestamp, stopping at org-suffix markers ('[', '|', '(') and the
+    # timestamp itself.
+    name_only: list[str] = []
+    for t in tokens:
+        if not t or t[0] in {"[", "|", "("}:
+            break
+        if re.match(r"\d{1,2}:\d{2}(?::\d{2})?$", t):
+            break
+        name_only.append(t)
+    if len(name_only) < 2:
+        return False
+    # Multi-token: accept only when every non-first bare token begins with a
+    # non-lowercase letter (title-case), e.g. "So Koide" → True; "so far" → False.
+    return not any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
+
+
 _EMBEDDED_SPEAKER_RE = re.compile(
     r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
     r"([^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # group 1: name tokens
@@ -142,10 +174,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
     for has_speaker, text in raw[1:]:
         if has_speaker:
             result.append(text)
-        elif (
-            _SPEAKER_LIKE_RE.match(text)
-            and text.split(None, 1)[0].lower() not in _SENTENCE_STARTERS
-        ):
+        elif _SPEAKER_LIKE_RE.match(text) and _is_new_speaker_start(text):
             result.append(text)
         elif m := _EMBEDDED_SPEAKER_RE.search(text):
             # Split at the embedded boundary: the prefix (up to and including the

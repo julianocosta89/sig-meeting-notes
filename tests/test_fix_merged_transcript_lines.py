@@ -135,6 +135,13 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_title_cased_multi_token_after_ellipsis_is_split_point(self):
+        # "So Koide" — "So" is a starter but "Koide" is title-cased → valid split.
+        pre = "Alice 10:00 passing… So Koide 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "So Koide"
+
     def test_article_a_after_ellipsis_not_a_split_point(self):
         # 'a' (English article) is in _SENTENCE_STARTERS → suppressed after '…'.
         pre = "Alice 10:00 passing… a 10:05 reminder was sent."

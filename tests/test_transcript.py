@@ -291,6 +291,22 @@ class TestMergeContinuationLines:
             "Alice Fox 10:00 passing over… At 10:05 we begin.",
         ]
 
+    def test_sentence_starter_first_token_title_cased_second_is_new_speaker(self):
+        """'So Koide 10:05' starts a new turn despite 'So' being a sentence-starter.
+
+        When the first token is in _SENTENCE_STARTERS but subsequent bare tokens
+        are title-cased, the line is treated as a new-speaker start rather than
+        merged into the previous utterance.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point…"),
+            _li(False, "So Koide 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point…",
+            "So Koide 10:05 Thanks.",
+        ]
+
     def test_short_name_after_period_not_split_as_embedded_speaker(self):
         """A 2-char word after '.' (e.g. 'At 10:01') is not treated as a speaker."""
         raw = [

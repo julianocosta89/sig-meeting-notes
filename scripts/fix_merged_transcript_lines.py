@@ -177,9 +177,20 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
             elif before[-1] == "…":
                 # After an ellipsis (mid-sentence trailing), reject matches
                 # whose first token is a common sentence-starter word.
+                # Exception: still accept if non-first bare name tokens are
+                # title-cased (e.g. "So Koide" — "Koide" starts uppercase).
                 name_first = m.group(1).split(None, 1)[0].lower()
                 if name_first in _SENTENCE_STARTERS:
-                    continue
+                    name_tokens = m.group(1).split()
+                    name_only: list[str] = []
+                    for t in name_tokens:
+                        if not t or t[0] in {"[", "|", "("}:
+                            break
+                        name_only.append(t)
+                    if len(name_only) < 2 or any(
+                        t[0].islower() for t in name_only[1:] if t and t[0].isalpha()
+                    ):
+                        continue
             elif before[-1] in {"?", "!", "？", "！"}:
                 # After '?' or '!': same multi-token / org-suffix logic as '.',
                 # but skip the length guard for pure single-token names so that
