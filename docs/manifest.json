@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-24T07:01:44Z",
+  "generated_at": "2026-03-25T07:00:56Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-03-23",
+  "max_date": "2026-03-25",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -364,6 +364,13 @@
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
         {
+          "date": "2026-03-24",
+          "duration_minutes": 63,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-19",
           "duration_minutes": 70,
           "has_summary": true,
@@ -672,7 +679,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 44
+      "meeting_count": 45
     },
     {
       "slug": "Browser-SIG",
@@ -1445,6 +1452,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 20,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-18",
           "duration_minutes": 11,
           "has_summary": true,
@@ -1697,7 +1711,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Communications-SIG",
@@ -5583,6 +5597,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet",
       "meetings": [
         {
+          "date": "2026-03-24",
+          "duration_minutes": 11,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5828,7 +5849,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 35
+      "meeting_count": 36
     },
     {
       "slug": "Network-SIG",
@@ -7136,6 +7157,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-ruby",
       "meetings": [
         {
+          "date": "2026-03-24",
+          "duration_minutes": 8,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 62,
           "has_summary": true,
@@ -7374,7 +7402,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 34
+      "meeting_count": 35
     },
     {
       "slug": "Rust-SIG",
