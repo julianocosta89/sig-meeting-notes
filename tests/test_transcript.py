@@ -484,6 +484,53 @@ class TestMergeContinuationLines:
             "Q | OpenAI 10:05 Thanks.",
         ]
 
+    def test_speaker_start_line_with_inner_embedded_boundary_is_split(self):
+        """A line that starts with Name+Timestamp AND contains a later embedded
+        boundary should be split at the inner boundary too.
+
+        This covers the case where Zoom emits a raw line like:
+          "Ernest Owojori 31:14 Great idea… Andrej 31:16 Agreed."
+        The outer _is_new_speaker_start branch must not swallow the whole
+        thing — it should split into two speaker entries.
+        """
+        raw = [
+            _li(True, "Alice: previous turn."),
+            _li(False, "Ernest Owojori 31:14 Great idea… Andrej 31:16 Agreed."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: previous turn.",
+            "Ernest Owojori 31:14 Great idea…",
+            "Andrej 31:16 Agreed.",
+        ]
+
+    def test_speaker_start_line_with_multiple_inner_boundaries_split_all(self):
+        """Three speakers packed into one raw line are all separated."""
+        raw = [
+            _li(True, "Alice: done."),
+            _li(False, "Bob Smith 10:00 First. Carol Jones 10:01 Second. Dave 10:02 Third."),
+        ]
+        result = _merge_continuation_lines(raw)
+        assert result == [
+            "Alice: done.",
+            "Bob Smith 10:00 First.",
+            "Carol Jones 10:01 Second.",
+            "Dave 10:02 Third.",
+        ]
+
+    def test_embedded_speaker_in_continuation_line_followed_by_further_boundary(self):
+        """A continuation line (no speaker start) with two embedded boundaries
+        is split at both points."""
+        raw = [
+            _li(True, "Alice: hmm"),
+            _li(False, "not sure. Bob Smith 10:00 I agree. Carol 10:01 Me too."),
+        ]
+        result = _merge_continuation_lines(raw)
+        assert result == [
+            "Alice: hmm not sure.",
+            "Bob Smith 10:00 I agree.",
+            "Carol 10:01 Me too.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)

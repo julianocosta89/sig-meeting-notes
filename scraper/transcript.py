@@ -115,6 +115,46 @@ def _is_new_speaker_start(text: str) -> bool:
     return not any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
 
 
+def _embedded_suppress(punct: str, first_lower: str, full_name_tokens: list[str]) -> bool:
+    """Return True when an _EMBEDDED_SPEAKER_RE match should be suppressed.
+
+    Prevents clock phrases, sentence-starter words, and sentence fragments
+    from being mistaken for new-speaker boundaries.
+
+    punct            — boundary character immediately before the match
+    first_lower      — lowercase first word of the text after the boundary
+    full_name_tokens — name tokens from _EMBEDDED_SPEAKER_RE group 1
+    """
+    if punct == "…":
+        return first_lower in _SENTENCE_STARTERS
+    if punct == ",":
+        name_only: list[str] = []
+        for t in full_name_tokens:
+            if not t or t[0] in {"[", "|", "("}:
+                break
+            name_only.append(t)
+        return (
+            len(name_only) < 2
+            or first_lower in _SENTENCE_STARTERS
+            or any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
+        )
+    # ".", "?", "!", "。", "？", "！"
+    name_only = []
+    for t in full_name_tokens:
+        if not t or t[0] in {"[", "|", "("}:
+            break
+        name_only.append(t)
+    has_org_suffix = len(name_only) < len(full_name_tokens)
+    if len(name_only) > 1:
+        return any(t[0].islower() for t in name_only[1:] if t[0].isalpha())
+    if has_org_suffix:
+        return first_lower in _SENTENCE_STARTERS
+    # Pure single-token name — apply length guard after "." / "。".
+    if punct in {".", "。"}:
+        return len(first_lower) < 3 or first_lower in _SENTENCE_STARTERS
+    return first_lower in _SENTENCE_STARTERS
+
+
 _EMBEDDED_SPEAKER_RE = re.compile(
     r"[.?!…。？！,]\s+"  # sentence-end punctuation or comma followed by whitespace
     r"([^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # group 1: name tokens
@@ -175,7 +215,19 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         if has_speaker:
             result.append(text)
         elif _SPEAKER_LIKE_RE.match(text) and _is_new_speaker_start(text):
-            result.append(text)
+            remaining = text
+            while em := _EMBEDDED_SPEAKER_RE.search(remaining):
+                split_pos = em.start() + 1
+                after = remaining[split_pos:].lstrip()
+                punct = remaining[em.start()]
+                first_lower = (after.split(None, 1)[0] if after else "").lower()
+                full_name_tokens = em.group(1).split() if em.group(1) else []
+                if not _embedded_suppress(punct, first_lower, full_name_tokens):
+                    result.append(remaining[:split_pos].rstrip())
+                    remaining = after
+                else:
+                    break
+            result.append(remaining)
         elif m := _EMBEDDED_SPEAKER_RE.search(text):
             # Split at the embedded boundary: the prefix (up to and including the
             # sentence-end punctuation) belongs to the prior turn; the remainder
@@ -183,78 +235,11 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             split_pos = m.start() + 1  # one past the sentence-end character
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
-            # Reject embedded matches that look like clock phrases rather than
-            # real speaker names.
-            #   After '…': suppress if first token is in _SENTENCE_STARTERS
-            #     (mid-sentence trailing — "Yeah… at 10:05 we begin." is not a
-            #     new speaker, but single-char initials like "Q" are kept).
-            #   After '.', '?', '!', or CJK equivalents:
-            #     - single-token names: suppress if < 3 chars or first token is
-            #       in _SENTENCE_STARTERS ("And 10:05", "Li 10:05" are not
-            #       speakers).
-            #     - multi-token names: suppress if any non-first name token
-            #       starts with a lowercase letter, distinguishing sentence
-            #       phrases ("So far 10:05") from real display names ("So Koide
-            #       10:05" where "Koide" is title-cased).
             first_token = remainder.split(None, 1)[0] if remainder else ""
             punct = text[m.start()]
             first_lower = first_token.lower()
             full_name_tokens = m.group(1).split() if m.group(1) else []
-            if punct == "…":
-                suppress = first_lower in _SENTENCE_STARTERS
-            elif punct == ",":
-                # After a comma: only split for multi-token names where the
-                # first token is not a sentence-starter and all non-first bare
-                # tokens are title-cased.  Single-token names are suppressed to
-                # avoid false positives (e.g. "probably 30:00" after a comma).
-                name_only = []
-                for t in full_name_tokens:
-                    if not t or t[0] in {"[", "|", "("}:
-                        break
-                    name_only.append(t)
-                suppress = (
-                    len(name_only) < 2
-                    or first_lower in _SENTENCE_STARTERS
-                    or any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
-                )
-            elif punct in {".", "?", "!", "。", "？", "！"}:
-                # Collect bare name tokens, stopping at the first org suffix
-                # marker ('[', '|', '(') so that lowercase org words like
-                # "| openTelemetry" or "(backend)" don't falsely suppress a
-                # real speaker boundary.
-                name_only = []
-                for t in full_name_tokens:
-                    if not t or t[0] in {"[", "|", "("}:
-                        break
-                    name_only.append(t)
-                has_org_suffix = len(name_only) < len(full_name_tokens)
-                if len(name_only) > 1:
-                    # Multiple bare name tokens: suppress if any non-first
-                    # starts lowercase ("So far" → suppress, "So Koide" → keep).
-                    suppress = any(t[0].islower() for t in name_only[1:] if t[0].isalpha())
-                elif has_org_suffix:
-                    # Single bare token + org suffix (e.g. "Q | OpenAI"): the
-                    # org suffix is strong evidence of a real display name, so
-                    # only suppress clear sentence-starter words; the length
-                    # guard is skipped (short initials are valid here).
-                    # Known limitation: single-letter non-starter tokens with an
-                    # org suffix (e.g. "A | B") are treated as real speakers.
-                    # In practice these patterns are virtually absent in OTel
-                    # meeting transcripts, so the false-positive risk is minimal.
-                    suppress = first_lower in _SENTENCE_STARTERS
-                else:
-                    # Pure single-token name (no org suffix).
-                    # After '.' or '。': apply a length guard — short tokens
-                    # like "Li" or "Al" are more likely abbreviations than
-                    # display-name initials.  After '?' or '!': skip the
-                    # length guard so that short names like "Q 10:05" are
-                    # still recognised as new speaker turns.
-                    if punct in {".", "。"}:
-                        suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
-                    else:
-                        suppress = first_lower in _SENTENCE_STARTERS
-            else:  # pragma: no cover  # _EMBEDDED_SPEAKER_RE only yields .?!…。？！,
-                suppress = False
+            suppress = _embedded_suppress(punct, first_lower, full_name_tokens)
             if suppress:
                 if result[-1][-1] in sentence_ends:
                     result.append(text)
@@ -263,8 +248,21 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             else:
                 if prefix:
                     result[-1] += " " + prefix
-                if remainder:
-                    result.append(remainder)
+                # Walk the remainder for further embedded boundaries.
+                remaining = remainder
+                while em2 := _EMBEDDED_SPEAKER_RE.search(remaining):
+                    sp2 = em2.start() + 1
+                    after2 = remaining[sp2:].lstrip()
+                    p2 = remaining[em2.start()]
+                    fl2 = (after2.split(None, 1)[0] if after2 else "").lower()
+                    fnt2 = em2.group(1).split() if em2.group(1) else []
+                    if not _embedded_suppress(p2, fl2, fnt2):
+                        result.append(remaining[:sp2].rstrip())
+                        remaining = after2
+                    else:
+                        break
+                if remaining:
+                    result.append(remaining)
         elif result[-1][-1] in sentence_ends:
             result.append(text)
         else:
