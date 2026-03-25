@@ -126,7 +126,8 @@ Right.
 **Dan Gomez Blanco** 20:40 Cool. Sounds good. Yeah, I think, Yeah, let's go… I mean, we don't need to go through the comments now, but, like, I just hope… I just, Mentioned that here, so others can also have a look at it.
 **lciukaj@splunk.com** 20:52 Yep.
 Yeah, okay.
-**Tiffany Hrabusa** 20:55 it a read-through for copy editing. I haven't looked at it yet, so… lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps about, like, opening PR, or we still, like, should continue working in the Google Doc now, as of now?
+**Tiffany Hrabusa** 20:55 it a read-through for copy editing. I haven't looked at it yet, so…
+**lciukaj@splunk.com** 20:59 Yeah, did you have plans to discuss next steps about, like, opening PR, or we still, like, should continue working in the Google Doc now, as of now?
 **Dan Gomez Blanco** 21:07 Yeah, so I guess, you know, there's… a little bit of a dependency change here, because, Tiffany's gonna be working on the, on creating the section, and open.
 So after we've got that, you can open the… the PR directly under that section. Yeah.
 **lciukaj@splunk.com** 21:24 Makes sense.
@@ -211,7 +212,7 @@ Good stuff. Alright, well, See you in Amsterdam, Tiffany. Yep. And are you gonna
 **Tiffany Hrabusa** 30:55 Yeah.
 **Dan Gomez Blanco** 30:55 I'll be there.
 Okay, well, thanks all for joining, thanks Clara, for joining as well, and welcome, and, see you in two weeks.
-Oh, by the way, Gloria, in case you were wondering.
-**there is no ups… there is not going to be any end-user SEG meeting next week, I believe. You know, most meetings in hotel tend to be canceled during Qubicon, because everyone's away, so I think they… Gloria** 31:20 Yeah, Andre mentioned that to me, so I'm probably gonna use that time to… Look into the documentation a little bit, and get up to speed.
+Oh, by the way, Gloria, in case you were wondering. there is no ups… there is not going to be any end-user SEG meeting next week, I believe. You know, most meetings in hotel tend to be canceled during Qubicon, because everyone's away, so I think they…
+**Gloria** 31:20 Yeah, Andre mentioned that to me, so I'm probably gonna use that time to… Look into the documentation a little bit, and get up to speed.
 **Dan Gomez Blanco** 31:31 Cool, awesome. Alright. Great. We'll see you in two weeks.
 Bye.

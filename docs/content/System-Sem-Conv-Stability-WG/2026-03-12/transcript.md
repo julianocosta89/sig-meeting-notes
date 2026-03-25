@@ -18,10 +18,12 @@ It goes to the whole thing.
 **Braydon Kains (Google)** 02:24 There is one where, like, if you type opt-out in the chat, it goes away. I tried that, it did not work.
 **neil yashinsky** 02:31 Oh.
 **Donal O'Sullivan** 02:38 I assume the individual is a… Is that the… is that the actual person, James Fellow, I wonder?
-**Braydon Kains (Google)** 02:44 No, I think this is, somewhat… because… Fellow… fellow note-taker is probably… And yeah, it's fellow.ai, it's… it's a… Donal O'Sullivan 02:55 Hmm…
-**Braydon Kains (Google)** 02:56 Natural, like, startup.
-**So… Donal O'Sullivan** 02:58 Okay.
-**Braydon Kains (Google)** 02:59 The person's name is James, but there's a few… Donal O'Sullivan 03:01 there's a.
+**Braydon Kains (Google)** 02:44 No, I think this is, somewhat… because… Fellow… fellow note-taker is probably… And yeah, it's fellow.ai, it's… it's a…
+**Donal O'Sullivan** 02:55 Hmm…
+**Braydon Kains (Google)** 02:56 Natural, like, startup. So…
+**Donal O'Sullivan** 02:58 Okay.
+**Braydon Kains (Google)** 02:59 The person's name is James, but there's a few…
+**Donal O'Sullivan** 03:01 there's a.
 **Braydon Kains (Google)** 03:02 Hugh James's.
 **Donal O'Sullivan** 03:04 Yep.
 **Braydon Kains (Google)** 03:04 So, I don't know who we're gonna… who we… who we talked to.

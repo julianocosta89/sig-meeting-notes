@@ -63,7 +63,8 @@ So, that's how high, how I'm trying to solve the thing, and I have a complete su
 2.
 NextGen is a folder name, Piotr, it's in the, nextGen.
 **Piotr Kiełkowicz** 13:16 Okay, it was merged to me?
-**Rajkumar Rangaraj** 13:18 Yeah, the next-gen folder is in the main, it will have some dock, but the… most of the work is in the out-of-process auto-instrumentation, so… Piotr Kiełkowicz 13:27 True.
+**Rajkumar Rangaraj** 13:18 Yeah, the next-gen folder is in the main, it will have some dock, but the… most of the work is in the out-of-process auto-instrumentation, so…
+**Piotr Kiełkowicz** 13:27 True.
 Sure, sure, I… I thought that it was in the separate browser, but I.
 **Rajkumar Rangaraj** 13:33 It's in a separate branch. It's still in a separate branch. This is the initial document we had put. In the out-of-process branch, we have it in the next-gen folder, all the implementation.
 **Piotr Kiełkowicz** 13:44 Okay. Out of process collection, yeah.
@@ -124,8 +125,8 @@ If you require higher version, then… than previous… then it's loaded by .NET
 sync.
 **Piotr Kiełkowicz** 21:24 Nope.
 Nope, it is not solving.
-**Alexey Pukhov** 21:27 Why?
-**Oh, oh, hold on, why? Because there is no direct dependency in the customer application to the diagnostic source, so… Piotr Kiełkowicz** 21:37 Yes.
+**Alexey Pukhov** 21:27 Why? Oh, oh, hold on, why? Because there is no direct dependency in the customer application to the diagnostic source, so…
+**Piotr Kiełkowicz** 21:37 Yes.
 **Alexey Pukhov** 21:38 Should additional… I mean, again, I didn't check it, but from my understanding, additional dependencies should affect the permission of the TPA list.
 I actually don't know.
 **Igor Kiselev** 21:50 I believe in a current state, it would be a problem if a customer have a direct dependency to SDM.
@@ -169,8 +170,8 @@ Yeah, the story, what you are explaining.
 is what we have been going through in this repo for every .NET release. You are saying if we release .NET 11, it may not work. This is… this was the last year conversation around this time. Hey.NET1 is getting released. It will come up with a new diagnostic source. And we always have been going through this challenge in this repo and updating, and at least we have a path how to solve that part. It's not something new to this repo. Theatrasmus may have a lot of, like.
 **Alexey Pukhov** 28:31 You keep solving this over and over again, yeah.
 **Rajkumar Rangaraj** 28:34 Yeah.
-**Alexey Pukhov** 28:35 You know, at this point, I really, at some point, I said, like, I mean, this is kind of a fundamental tension. I understand that the diagnostic source is coming from OpenTelemetry, it's not the auto-instrumentation dependency, it's coming from OpenTelemetry, but maybe we should top reference in the latest version of the diagnostic source, even in OpenTelemetry, and it's like.
-**I mean, I don't… Piotr Kiełkowicz** 29:00 Alexey, it is not possible, to be honest.
+**Alexey Pukhov** 28:35 You know, at this point, I really, at some point, I said, like, I mean, this is kind of a fundamental tension. I understand that the diagnostic source is coming from OpenTelemetry, it's not the auto-instrumentation dependency, it's coming from OpenTelemetry, but maybe we should top reference in the latest version of the diagnostic source, even in OpenTelemetry, and it's like. I mean, I don't…
+**Piotr Kiełkowicz** 29:00 Alexey, it is not possible, to be honest.
 I know. System diagnostic source.
 is… for .NET equivalent for OpenTelemetry API.
 I mean, all trace… Traces and metrics are handled by this packet, and… more or less, new.net brings new features. We expect new… I think, randomness flag related to Context propagation support.
@@ -189,8 +190,8 @@ It is hard to explain customers that if you want new features, you need to upgra
 This is a problematic topic, I know, I know. Well, I mean, that's kind of attention that I'm trying to bring in, that diagnostic source, which is a source of open telemetry, is .NET runtime, and that kind of… creates all the issues. Well, I mean, it's not… it doesn't create issues, it just brings the architecture.
 **Igor Kiselev** 32:26 So, oh, I…
 **Rajkumar Rangaraj** 32:28 I does recommend you to take a look at the other proposal. I don't know whether you had a time to look at it. At least the diagnostic source, whenever it creates a span, or logs, or a meter, logs it does not do. The span over a meter, it emits the signal that we can capture out of… from the out-of process, and we can observe that. So, I wrote up, like, a proof of concept, and we moved the proof of concept to a NuGet package and have it in the other branch. There are docs or issues also around that in this repo.
-I'll definitely ask you to take a look at it. I think that's the recommendation when I went through the .NET, don't inject anything inside the customer process. We cannot survive through that approach for a very long time. That's why they asked me to stay out of it.
-**And that, and they gave… and the recommendation has come from them. This is an… Another approach, they are ready to support us, Alexey Pukhov** 33:27 Going forward.
+I'll definitely ask you to take a look at it. I think that's the recommendation when I went through the .NET, don't inject anything inside the customer process. We cannot survive through that approach for a very long time. That's why they asked me to stay out of it. And that, and they gave… and the recommendation has come from them. This is an… Another approach, they are ready to support us,
+**Alexey Pukhov** 33:27 Going forward.
 **Rajkumar Rangaraj** 33:28 Yeah, in the going forward, they can provide that kind of support, adding it in the runtime for us.
 **Piotr Kiełkowicz** 33:37 One comment… sorry, one comment here to you guys. It will not solve all cases, because this approach supports only natively instrumented libraries, so no bytecode approach.
 Yeah.
@@ -216,8 +217,8 @@ To allow other things, Yep. Other things to work more smoothly. So… so it has 
 It would be a problem on, on .NET 11.
 **Rajkumar Rangaraj** 37:45 Yeah. The one thing which you need to also consider is Diagnostic Source is not a one single library.
 It has its dependencies. Whenever we think about solving anything with that, we need to take a look at the whole.
-**Igor Kiselev** 37:58 The reduction.
-**We already done… we already implemented a tool that do a static, scan of assembly and, fetch all the dependencies, so we already, looked into full graphs and, Alexey Pukhov** 38:13 Yeah, if we leak diagnostic source, we leak all other… all its dependencies, too.
+**Igor Kiselev** 37:58 The reduction. We already done… we already implemented a tool that do a static, scan of assembly and, fetch all the dependencies, so we already, looked into full graphs and,
+**Alexey Pukhov** 38:13 Yeah, if we leak diagnostic source, we leak all other… all its dependencies, too.
 **Rajkumar Rangaraj** 38:20 Yeah. I also have a question, like, the logging extensions also should have an issue. I'm wondering why that was not a topic. It's not only diagnostic source.
 Even a logger is an issue. Logging API is in the.
 **Alexey Pukhov** 38:34 Okay.
@@ -264,8 +265,8 @@ So, we'll close… This one, Alexier… We are looking for any changes here, or 
 Because I've seen a lot of discussion, Igor.
 **Alexey Pukhov** 44:47 I just… Yeah, I have a better proposal… I mean, since we extracted this to a separate pull request, I have a better proposal how we should handle the console buffers.
 **Piotr Kiełkowicz** 44:58 Interesting.
-**Alexey Pukhov** 44:59 doing anything right now, because I'm trying to finish the main pull request.
-**Okay, so… Piotr Kiełkowicz** 45:04 So, it is still waiting for some improvements on your side.
+**Alexey Pukhov** 44:59 doing anything right now, because I'm trying to finish the main pull request. Okay, so…
+**Piotr Kiełkowicz** 45:04 So, it is still waiting for some improvements on your side.
 **Alexey Pukhov** 45:09 Still waiting here.
 **Piotr Kiełkowicz** 45:12 And this one is still waiting for final changes.
 our sites.
@@ -317,8 +318,8 @@ Yesterday, that you are discussing, moving into OpenTelemetry SDK level.
 So… Yes, you can expect some changes to what needs to happen.
 But for now, I doubt that anybody is working on any improvements.
 In its part.
-**Matthew Hensley / Grafana Labs** 53:39 Okay. Well then, I will have a PR shortly.
-**It's hopefully safe. Definitely running into some flaky tests that I'm gonna have to fix first, so… Piotr Kiełkowicz** 53:51 Slacky test, do you mean in our pipeline, or new tests you have created?
+**Matthew Hensley / Grafana Labs** 53:39 Okay. Well then, I will have a PR shortly. It's hopefully safe. Definitely running into some flaky tests that I'm gonna have to fix first, so…
+**Piotr Kiełkowicz** 53:51 Slacky test, do you mean in our pipeline, or new tests you have created?
 **Matthew Hensley / Grafana Labs** 53:57 Existing ones, when running locally, there's environment variable leakage, It seems.
 **Piotr Kiełkowicz** 54:06 Oh, strange, because I told you that we already handle it on these cases, but yeah.
 We're looking for any improvements.

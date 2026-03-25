@@ -44,7 +44,8 @@ This one is implemented, this one is implemented, and so forth, so things that w
 So yeah, I'm… I'm thinking of just getting that list, shrinking at some point. And as far as, So, typically, either we have something to update in the matrix, in which case it's a PR in the spec repo itself.
 Or, if it's something missing, we should just create a niche event.
 Does that answer your question?
-**Doug Barker** 10:33 I think so. There's a few PRs specifically. I think one is, like, the, uniqueness of registering new instruments, or, meters in… Marc Alff [MySQL] 10:44 Okay.
+**Doug Barker** 10:33 I think so. There's a few PRs specifically. I think one is, like, the, uniqueness of registering new instruments, or, meters in…
+**Marc Alff [MySQL]** 10:44 Okay.
 **Doug Barker** 10:45 these are marked as, like, either question marks or minuses in this spec, so I could either just create a new issue or PR directly to the spec. I think… I think the question is, like, how do you want to manage that? Do you want to, like, create an issue.
 **Marc Alff [MySQL]** 10:58 Well, if you…
 **Doug Barker** 10:59 With everything that's been finished.

@@ -34,9 +34,10 @@ So, maybe… We can briefly discuss, we can talk a bit, what are we doing? So…
 **Marc Schäfer** 06:27 Yes, normally I'm a system administrator, but I started in IT with programming or developing code, but nowadays I'm at work, in my full-time job, I'm a system DevOps engineer.
 **Przemek Delewski** 06:45 Okay.
 **Marc Schäfer** 06:45 But I wanted to do more programming again, or going back to programming again, so I'm capable of Java and Go.
-**Przemek Delewski** 06:55 Okay.
-**And are you… Marc Schäfer** 06:57 So, yeah.
-**Przemek Delewski** 06:58 Are you interested in this specific topic, due to your personal, I don't know, preference, or, you are also… Marc Schäfer 07:07 both.
+**Przemek Delewski** 06:55 Okay. And are you…
+**Marc Schäfer** 06:57 So, yeah.
+**Przemek Delewski** 06:58 Are you interested in this specific topic, due to your personal, I don't know, preference, or, you are also…
+**Marc Schäfer** 07:07 both.
 **Przemek Delewski** 07:08 Oh, okay.
 **Marc Schäfer** 07:09 so I'm interested in open telemetry in general, because of personal projects, but also, open source projects I'm part of. For example, Pangolin, you maybe have heard of that.
 And, also at work. So at work, we do use open telemetry quite heavily.
@@ -86,7 +87,8 @@ Yeah.
 **Marc Schäfer** 15:00 or to, so the channel where I should write the…
 **Przemek Delewski** 15:03 Sorry, the one about documentation.
 **Marc Schäfer** 15:08 Yep.
-**Przemek Delewski** 15:08 So, so it is, sorry. Hotel, auto maintainers, but there is, I don't know, this sign between these two words, how to… Marc Schäfer 15:26 Yeah, I know what you mean. Okay, okay, yep.
+**Przemek Delewski** 15:08 So, so it is, sorry. Hotel, auto maintainers, but there is, I don't know, this sign between these two words, how to…
+**Marc Schäfer** 15:26 Yeah, I know what you mean. Okay, okay, yep.
 **Przemek Delewski** 15:28 Disconnector, but I, I… I don't know how to say that in English.
 **Marc Schäfer** 15:33 Me either, me either, but I know what you mean. So, yeah, okay.
 Good, good to know. Okay, then I'll… we'll try that.
@@ -187,13 +189,15 @@ I want to… I always… I already, pulled.
 Sorry if I pronounced your name wrong. I told him already that I'm more… well, nowadays, I'm more of a… DevOps system engineer, but I started in IT, with… within school. Maybe sounds, like, low, but I did many, many, applications and stuff for the school, like, a whole, school, plan.
 Where every student can view their exams and upcoming lessons and all that stuff.
 On mobile phone and also on web. I did that during school.
-And… but then I joined, my current company.
-**And got into more into the system administrator role, and since then, or about 2 or 3 years, I've almost coded nothing, only, like, maybe private side projects, but now I really want to get back into coding, and yeah, that's why I started, Kemal Akkoyun** 31:30 I'm super happy that you picked us. Yeah, this is the kind of a cool project, and, like, it's nice that… Marc Schäfer 31:37 Definitely is.
+And… but then I joined, my current company. And got into more into the system administrator role, and since then, or about 2 or 3 years, I've almost coded nothing, only, like, maybe private side projects, but now I really want to get back into coding, and yeah, that's why I started,
+**Kemal Akkoyun** 31:30 I'm super happy that you picked us. Yeah, this is the kind of a cool project, and, like, it's nice that…
+**Marc Schäfer** 31:37 Definitely is.
 **Kemal Akkoyun** 31:37 unbelievable.
 **Marc Schäfer** 31:38 Different issues.
 I did, so I did some, some, some PRs, already on the, Go repository of OM telemetry, but not on the compile instrument station yet.
 The big, the big yet.
-**Kemal Akkoyun** 31:56 We have a lot of things to work on, like, you can check our issues, Marc Schäfer 32:01 Yep.
+**Kemal Akkoyun** 31:56 We have a lot of things to work on, like, you can check our issues,
+**Marc Schäfer** 32:01 Yep.
 **Kemal Akkoyun** 32:02 Too many things to take care of.
 **Marc Schäfer** 32:04 I did already just a few seconds ago, so…
 **Kemal Akkoyun** 32:07 Yeah, some of them are, like, super, like, low-hanging fruit, so you can… I actually done this.

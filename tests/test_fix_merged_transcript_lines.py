@@ -46,6 +46,12 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert matches[1].group(1) == "Donal O'Sullivan"
 
+    def test_hyphenated_name_detected(self):
+        pre = "Sergey 10:27 It can drift… Chris Lightfoot-Wild 10:45 It reads like if…"
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Chris Lightfoot-Wild"
+
     def test_bracket_org_name_detected(self):
         pre = "Alice Fox 10:00 Over to Marc… Marc Alff [MySQL] 10:03 Happy."
         matches = _valid_split_matches(pre)
@@ -59,8 +65,8 @@ class TestValidSplitMatches:
         assert matches[1].group(1) == "Giuseppe Ognibene | Coralogix"
 
     def test_no_match_when_not_preceded_by_sentence_end(self):
-        # "Bob" appears after a comma — not a valid split point.
-        pre = "Alice 10:00 saying something, Bob 10:05 continues"
+        # A non-speaker clock phrase without sentence-ending punctuation is not a split point.
+        pre = "Alice 10:00 saying something, probably 10:05 continues"
         matches = _valid_split_matches(pre)
         # Only the first match at position 0 is valid.
         assert all(m.start() == 0 for m in matches)
@@ -142,6 +148,12 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert matches[1].group(1) == "Kemal Akkoyun"
 
+    def test_comma_before_capitalized_single_token_speaker_is_split_point(self):
+        pre = "Bob Strecansky 19:36 Yeah, Sergey 19:38 I mean, it sounds right."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Sergey"
+
     def test_comma_before_single_token_not_a_split_point(self):
         # Single-word name after ',' → not split to avoid false positives.
         pre = "Alice 10:00 Let me check, probably 30:00 we can start."
@@ -162,6 +174,12 @@ class TestValidSplitMatches:
         matches = _valid_split_matches(pre)
         assert len(matches) == 2
         assert matches[1].group(1) == "So Koide"
+
+    def test_email_handle_after_ellipsis_is_split_point(self):
+        pre = "Tiffany Hrabusa 20:55 I haven't looked at it yet… lciukaj@splunk.com 20:59 Yeah."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "lciukaj@splunk.com"
 
     def test_article_a_after_ellipsis_not_a_split_point(self):
         # 'a' (English article) is in _SENTENCE_STARTERS → suppressed after '…'.
@@ -210,12 +228,12 @@ class TestValidSplitMatches:
         assert len(matches) == 1
 
     def test_dotted_handle_not_a_split_point(self):
-        # "jomard" after "mackenzie." must not be treated as a speaker (dotted handle).
-        # _SPEAKER_TS_RE can find "jomard 44:07" inside "mackenzie.jomard 44:07 ...",
-        # but the '.' immediately preceding it must be rejected.
+        # The dotted handle itself is a valid start-of-line speaker, but the inner
+        # ".jomard 44:07" fragment must not become an extra split point.
         pre = "mackenzie.jomard 44:07 Just checking in."
         matches = _valid_split_matches(pre)
-        assert matches == []
+        assert len(matches) == 1
+        assert matches[0].start() == 0
 
     def test_sentence_ending_dot_still_valid(self):
         # A genuine sentence end with '.' must still trigger a split.
@@ -316,6 +334,20 @@ class TestFixLineSplit:
         assert len(result) == 2
         assert "Coralogix" in result[1]
 
+    def test_hyphenated_speaker_split(self):
+        line = (
+            "**Sergey** 10:27 It can drift over time… Chris Lightfoot-Wild 10:45 It reads like if…"
+        )
+        result = fix_line(line)
+        assert len(result) == 2
+        assert result[1] == "**Chris Lightfoot-Wild** 10:45 It reads like if…"
+
+    def test_email_handle_speaker_split(self):
+        line = "**Tiffany Hrabusa** 20:55 I haven't looked at it yet, so… lciukaj@splunk.com 20:59 Yeah."  # noqa: E501
+        result = fix_line(line)
+        assert len(result) == 2
+        assert result[1] == "**lciukaj@splunk.com** 20:59 Yeah."
+
     def test_three_speaker_merge_split(self):
         line = "**Alice Fox** 01:00 first… Bob Smith 02:00 second… Carol Wang 03:00 third."
         result = fix_line(line)
@@ -345,6 +377,25 @@ class TestFixLineSplit:
         assert "Alice Fox" in result[0]
         assert "Bob Smith" in result[1]
         assert "00:13:34" in result[1]
+
+    def test_comma_before_capitalized_single_token_speaker_split(self):
+        line = "**Bob Strecansky** 19:36 Yeah, Sergey 19:38 I mean, it sounds right."
+        result = fix_line(line)
+        assert result == [
+            "**Bob Strecansky** 19:36 Yeah,",
+            "**Sergey** 19:38 I mean, it sounds right.",
+        ]
+
+    def test_comma_before_email_handle_speaker_split(self):
+        line = (
+            "**Tiffany Hrabusa** 20:55 copy edit is done, "
+            "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?"
+        )
+        result = fix_line(line)
+        assert result == [
+            "**Tiffany Hrabusa** 20:55 copy edit is done,",
+            "**lciukaj@splunk.com** 20:59 Yeah, did you have plans to discuss next steps?",
+        ]
 
 
 # ---------------------------------------------------------------------------

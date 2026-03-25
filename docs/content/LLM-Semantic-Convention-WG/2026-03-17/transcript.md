@@ -186,9 +186,11 @@ And for A2A also, like, is it, like, different protocol altogether, or… Someth
 It's… I think it's HTTP or gRPC.
 But they don't… it's not transport agnostic, there's, like, a fixed list of transports that are supported.
 **anksing** 31:43 Got it, okay.
-**Liudmila Molkova** 31:46 And the product… anksing 31:48 So, similar thing would come up in MCP as well, right?
+**Liudmila Molkova** 31:46 And the product…
+**anksing** 31:48 So, similar thing would come up in MCP as well, right?
 I don't know.
-**Aaron Abbott** 31:54 Yeah, yeah, it's… neil yashinsky 31:55 I think so.
+**Aaron Abbott** 31:54 Yeah, yeah, it's…
+**neil yashinsky** 31:55 I think so.
 **Aaron Abbott** 31:57 Yeah, because MCP also supports, like, you know, standard I.O, which has no.
 **anksing** 32:02 Yeah.
 **Aaron Abbott** 32:09 Yeah, I feel like we're fighting the… way that hotel is designed to just kind of naturally compose, like, without you thinking about it.
@@ -234,7 +236,8 @@ Some kind of protocol span, and it does include some potentially interesting.
 Things.
 Gives you a place to put, like, Client.
 **anksing** 37:49 Yeah.
-**Trask Stalnaker** 37:50 IP… anksing 37:54 So, I think, like, this is, one of the case that we just looked at is, like, in case of ADK as well, and same is true with, foundry, like, hosted agents as well, where There's a bootstrapping web server that's provided, right, which right now is an HTTP server.
+**Trask Stalnaker** 37:50 IP…
+**anksing** 37:54 So, I think, like, this is, one of the case that we just looked at is, like, in case of ADK as well, and same is true with, foundry, like, hosted agents as well, where There's a bootstrapping web server that's provided, right, which right now is an HTTP server.
 web server, and that has the functionality that, that's just, like, a publicly available web server, and then you can enable HTTP Traces for that are optional if you want.
 By default, they're not enabled, at least in Foundry.
 So in that case, like, it will be onus on the customer if you have to capture that HTTP service number.
@@ -353,12 +356,13 @@ Okay, so then… Thanks for coming. And, oh, okay, we… I think Ivan will be he
 I think, Aaron, you're also coming to KubeCon and you won't be here.
 If you're one of folks, you… Oh, Jamie, you will be at KubeCon! Nice!
 Looking forward.
-to it, I don't know if you folks want to meet, the meeting is on the calendar. No, you don't.
-**Would anybody want to… neil yashinsky** 53:05 It's a good one to pass. I mean, I'm always up for meeting on this topic with these fun people, but it seems like if ever there was a time to pass, this would be it.
+to it, I don't know if you folks want to meet, the meeting is on the calendar. No, you don't. Would anybody want to…
+**neil yashinsky** 53:05 It's a good one to pass. I mean, I'm always up for meeting on this topic with these fun people, but it seems like if ever there was a time to pass, this would be it.
 CBD? Yeah, I feel like that's a balanced choice.
 Or maybe you could even say, because people… can people remotely connect on that office hours that you were mentioning?
 Or is that not, virtually possible? It's only… it's only in the meet space?
-**Liudmila Molkova** 53:35 It's intentionally not possible, but it's also very hectic there, so… neil yashinsky 53:40 Yeah, yeah.
+**Liudmila Molkova** 53:35 It's intentionally not possible, but it's also very hectic there, so…
+**neil yashinsky** 53:40 Yeah, yeah.
 **Liudmila Molkova** 53:40 It would be hard, even if it was possible, technically.
 **neil yashinsky** 53:42 hmm, hmm.
 Maybe, maybe next year we'll, or next one we can strive for a virtual one of sorts for people who can't make it.

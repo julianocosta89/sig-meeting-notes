@@ -31,7 +31,8 @@ For these efforts?
 **Warre Pessers** 05:29 That's, that would be nice, but, I think we are hopefully going to be good as is, with the CNCF-provided account, but yeah, we'll see about the specifics, and, I'll keep this in mind, so that's, Certainly good to know.
 Any other, remarks or questions?
 **Lukas** 05:53 Yeah, I was just.
-**Ritvick Paliwal** 05:54 I would like to introduce… Lukas 05:56 Oh, sorry. Go ahead.
+**Ritvick Paliwal** 05:54 I would like to introduce…
+**Lukas** 05:56 Oh, sorry. Go ahead.
 **Ritvick Paliwal** 05:58 Sorry. I would like to introduce myself.
 Yeah, so I'm new to this, FAST group. I have joined this for the first time.
 I'm coming from AppDynamics, transitioning to Splunk Lambda layers, so we directly consume the hotel lambda distributions, so I'd like to make some contributions here.
@@ -46,8 +47,8 @@ I don't know if we want to try to… because the integration test I had in mind 
 And then we would verify that the telemetry is present.
 **Warre Pessers** 07:24 Yeah, that's a good picture.
 **Lukas** 07:26 But unfortunately, yeah, that would maybe require running an EC2 container, or EC2 instance, which we probably want to avoid. So…
-**Raphael Manke** 07:36 what?
-**To collect the telemetry data, or… Lukas** 07:41 Yeah, I mean, we want to, like… like, we would probably want to actually verify that we're actually able to generate telemetry data, right, when we…
+**Raphael Manke** 07:36 what? To collect the telemetry data, or…
+**Lukas** 07:41 Yeah, I mean, we want to, like… like, we would probably want to actually verify that we're actually able to generate telemetry data, right, when we…
 **Raphael Manke** 07:50 I have an idea for that.
 **Lukas** 07:52 Yeah, I know, we could probably use, like, ngrok or something to, to, force.
 **Raphael Manke** 07:56 You can use AWS itself. AWS accepts, has an OTEL endpoint where you can send the data to, and if you enable transaction search, which is their OTEL version, then all this data will end up in a lock group, so you can actually query a lock group afterwards.

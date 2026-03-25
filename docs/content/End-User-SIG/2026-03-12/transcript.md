@@ -16,8 +16,8 @@ Hi.
 Good evening. Hi, Andre.
 Isaiah?
 **Ernest Owojori** 01:53 aye.
-**Victoria Nduka** 01:59 Yeah.
-**of, Ernest Owojori** 02:03 Oh, you're kidding.
+**Victoria Nduka** 01:59 Yeah. of,
+**Ernest Owojori** 02:03 Oh, you're kidding.
 **Victoria Nduka** 02:05 He's going well.
 **Andrej** 02:21 Is it still sunny in Nigeria? I thought you were, like, roughly in the same… Like, at the same time of the day.
 **Ernest Owojori** 02:31 It's always funny, yeah.
@@ -35,8 +35,8 @@ Is it dark in Nigeria now, or is it still light outside?
 **Andrej** 03:05 It's dark here, it's dark here, but maybe there's just, like… Yeah.
 Anyway, geographic question.
 I will shut up, and I will just Google this.
-**Ernest Owojori** 03:17 We're in GMT time zone now.
-**Yeah, so… Andrej** 03:22 Yeah…
+**Ernest Owojori** 03:17 We're in GMT time zone now. Yeah, so…
+**Andrej** 03:22 Yeah…
 **Ernest Owojori** 03:29 In Nigeria, the, What do we call this, Longer day, shorter night, it's not so… The VS is not so wide here, maybe it's just, like, one hour of reality for us.
 So, most days, we don't necessarily know.
 We just know that sometimes CCM is… gets brighter.
@@ -127,7 +127,8 @@ The instrument I could play with is the piano, I learned them in a religious set
 A long time ago, so… I don't… I don't even know how to build these local drugs, so if I see foreigners that… do know how to do that, I'm gonna swam it at their curiosity.
 **Dan Gomez Blanco** 12:51 I'll see if I can find a video, I'll send it to you.
 **Ernest Owojori** 12:53 Alright.
-**Dan Gomez Blanco** 12:56 Right, I don't know if Reece is gonna join, but… Andrej 12:59 So… we can start then, I guess, and… yeah. And if Reese joins, she will just… jump right in. So… with my agenda anxiety, I again filled it with things.
+**Dan Gomez Blanco** 12:56 Right, I don't know if Reece is gonna join, but…
+**Andrej** 12:59 So… we can start then, I guess, and… yeah. And if Reese joins, she will just… jump right in. So… with my agenda anxiety, I again filled it with things.
 So, first thing is that last time, we were thinking about announcing the new approvers, but we skipped the meeting, so, I think, like.
 We skipped the meeting because there were not, like, enough people. Now it's not, like, that many people either, but I think it doesn't make sense to, like, delay the approver announcement, so… Yeah.
 I will then announce that Sophia and Victoria, yeah… Drum roll. Drum roll.
@@ -168,7 +169,8 @@ Oh.
 **Andrej** 18:34 Yeah, so the README and the repo should list the approvers.
 **Dan Gomez Blanco** 18:38 And then we need to add them to the team, but everyone should be able to… well, not everyone, like, any maintainer should be able to add people to… to the GitHub teams.
 **Andrej** 18:49 Okay, okay, cool. So I will, I will… We'll check it out, and we'll try to do it.
-**Dan Gomez Blanco** 18:55 And yeah, I think that's… I think we need to… Andrej 18:59 Yeah.
+**Dan Gomez Blanco** 18:55 And yeah, I think that's… I think we need to…
+**Andrej** 18:59 Yeah.
 **Dan Gomez Blanco** 19:00 I guess… We've always been… Purple is one of the things to discuss with, With the rest of maintainers as well, maybe in the next… And the next call here is, was the division of labor?
 here, as in, like, you know, we used to be, pretty much, when we started this SIG.
 Just maintainers, so… We had the, you know, approvers and maintainers, so yeah, it's like, what is the responsibility of each?
@@ -219,15 +221,16 @@ Stuff on this, it says, like, We cannot publish non-anonymized things without co
 **Andrej** 25:21 I don't know.
 So… Yeah.
 Yeah, folks, do you have any thoughts about this?
-**Victoria Nduka** 25:34 The link… I don't… it's… it's not open… I don't know if it's correct.
-**I think it's… Andrej** 25:42 The link isn't… Okay.
+**Victoria Nduka** 25:34 The link… I don't… it's… it's not open… I don't know if it's correct. I think it's…
+**Andrej** 25:42 The link isn't… Okay.
 Yeah, I will… I'll fix that.
 **Reese Lee** 25:50 I'm getting caught up now…
 **Victoria Nduka** 25:55 Why do you do that?
 **Andrej** 25:57 Yeah, no.
 **Reese Lee** 25:57 Yeah, if it's anonymous, I don't understand.
 **Andrej** 26:05 Notice.
-**Sophia Solomon** 26:08 Just what, what data is being… I guess, publish, like, what is… Andrej 26:15 So, what is maybe specific for this Japanese survey, that it's only about, like, Japan?
+**Sophia Solomon** 26:08 Just what, what data is being… I guess, publish, like, what is…
+**Andrej** 26:15 So, what is maybe specific for this Japanese survey, that it's only about, like, Japan?
 And we are asking people for, like, specific location, like, specific island, I guess, or, like, area in Japan, and then I assume that this might be… The reason why folks got, worried about it, that we have, like, a specific island, plus the role, plus, I believe some, like, company size and these kind of things, and this could potentially, like, make the funnel Quite small.
 **Dan Gomez Blanco** 26:55 Right, I see what you mean.
 **Andrej** 26:57 But… Yeah, so that might be… so, I mean, this… for this particular survey, it makes sense, but I believe that if we remove this.
@@ -273,10 +276,12 @@ part…
 **Ernest Owojori** 30:57 Yeah.
 **Reese Lee** 30:59 Yeah.
 **Andrej** 31:02 Sorry, go ahead, Andre. I just wanted to say that one thing that we did for contributor experience survey a while ago is that we splitted the dataset into, like, multiple, so we had…
-**Ernest Owojori** 31:14 Because, like, what is… Andrej 31:16 Or what could be potentially, sensitive if we connect the… Like, who said what?
+**Ernest Owojori** 31:14 Because, like, what is…
+**Andrej** 31:16 Or what could be potentially, sensitive if we connect the… Like, who said what?
 if we just say that there is… like, so we… we disconnected the opinions from the demographics. There were… they were in different… files, or like, yeah, in different tables, and the tables were randomized, so it wasn't possible to connect these two things. And therefore, we just separately reported on… Yeah, on the demographics stuff. So, for example, we said that majority of… we could… here, we could say that majority of people are from the Kanto region.
 But, since we were disconnected from the opinions, it wouldn't be possible to tell, like, what kind of stuff do… like, who from… Chugoku region, said, or like, yeah, somebody from Chugoku Region said that they attended KubeCon, or that they did something, yeah, what is the hotel setup of something like this? I think this could work as well.
-**Ernest Owojori** 32:22 Sorry, Andrea, what would… what would be the plan to… Andrej 32:25 Reverse engineer the data if needed.
+**Ernest Owojori** 32:22 Sorry, Andrea, what would… what would be the plan to…
+**Andrej** 32:25 Reverse engineer the data if needed.
 **Ernest Owojori** 32:28 If we anticipate it that way.
 **Andrej** 32:30 Oh… I mean…
 **Ernest Owojori** 32:31 To get the data back to a form that we can analyze, perhaps we needed to do that.
@@ -288,7 +293,8 @@ Don wants to do that.
 **Andrej** 33:10 So… This is mostly a solution for publishing it on GitHub, so if we… like, the stuff that we publish on GitHub would not… it would not be possible to revert it back, but… Also, we don't have any, like, specific guidelines on what to do with the survey data that we have stored in spreadsheets, so if the data stays there… And it's not published anywhere, maybe that's… Okay, but… so, yeah, in this case, you, as a person who did the analysis, you would be able to go back to it.
 Not sure, though, if this is a good… Like, a move from the… from this, like, data protection.
 perspective, but this is something we do still, or at least this is something we did in the contributor experience survey, anyway.
-**Ernest Owojori** 34:09 Yeah, I would say we, we probably discussed with you or she that removing the region, does it help? If he says it does not, maybe we can now try to… Andrej 34:20 Just joins it, like you said.
+**Ernest Owojori** 34:09 Yeah, I would say we, we probably discussed with you or she that removing the region, does it help? If he says it does not, maybe we can now try to…
+**Andrej** 34:20 Just joins it, like you said.
 Okay.
 Okay, yeah, I'll do that. Folks, are you all okay with that, or do you have any concerns or suggestions?
 Alrighty.
@@ -441,7 +447,8 @@ People want to do their own market research, people are…
 **Dan Gomez Blanco** 53:09 Would it be okay to post the link here to gather some responses? I don't think that's okay, then.
 **Reese Lee** 53:16 Yeah… oh, yeah, that's… That's iffy. Mmm.
 **Dan Gomez Blanco** 53:25 Because I think, you know, we need to draw the line between, like, one doing a survey that is to benefit open telemetry, or a survey that is to gather some… Insights for your own benefit, right?
-**Reese Lee** 53:38 Yeah… Andrej 53:42 Makes sense to me.
+**Reese Lee** 53:38 Yeah…
+**Andrej** 53:42 Makes sense to me.
 **Reese Lee** 53:44 Yeah, like, it'd be one thing if it was a vendor, and they, you know, just sent the survey to their customers.
 **Dan Gomez Blanco** 53:53 What is the biggest pain point in your current hotel workflow? YAML or syntax indentation errors? Sorry, but… what?
 I don't know, I think I just… I don't want to say anything, but… It seems like the questions are perhaps not as thought out as the ones that we put together in the end user sync.

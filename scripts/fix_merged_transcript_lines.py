@@ -23,26 +23,17 @@ import re
 import sys
 from pathlib import Path
 
-# ── Pattern matching ──────────────────────────────────────────────────────────
-
-# Matches display-name variants followed by a timestamp within merged text, e.g.:
-#   "Name MM:SS "                      — single-word name
-#   "First Last MM:SS "                — multi-word name
-#   "Donal O'Sullivan MM:SS "          — apostrophe in name token
-#   "First Last [Org] MM:SS "          — bracket org tag
-#   "First Last | Org MM:SS "          — pipe-separated org
-#   "First Last (Org) MM:SS "          — parenthesised org
-#   "Q MM:SS "                         — single-character name/initial
-# [^\W\d_] matches any Unicode letter (ASCII, accented, CJK, etc.) so names
-# like Élodie or 杉本浩平 are recognised.  [\w']* (not +) allows single-character
-# tokens like Q or É.  The required timestamp keeps false positives low.
-_SPEAKER_TS_RE = re.compile(
-    r"([^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # name tokens (any Unicode letter, apostrophes ok)
-    r"(?:\s+\[[^\]]+\])?"  # optional [Org] bracket tag
-    r"(?:\s+\|[^|]*?)?"  # optional | Org pipe suffix
-    r"(?:\s+\([^)]+\))?)"  # optional (Org) paren suffix (closes capture group)
-    r"\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+"  # timestamp MM:SS or HH:MM:SS (captured as group 2)
+from scraper.speaker_boundaries import (
+    SPEAKER_TS_RE as _SPEAKER_TS_RE,
 )
+from scraper.speaker_boundaries import (
+    TURN_ENDS as _TURN_ENDS,
+)
+from scraper.speaker_boundaries import (
+    should_suppress_embedded_boundary,
+)
+
+# ── Pattern matching ──────────────────────────────────────────────────────────
 
 # Matches a fully-formatted transcript speaker line: **Name** MM:SS rest
 _BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)$", re.DOTALL)
@@ -50,54 +41,8 @@ _BOLD_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*
 # Used to reformat a raw segment as a bold speaker line
 _FORMAT_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)$", re.DOTALL)
 
-# Punctuation characters that legitimately end a speaker's turn.
-# Includes CJK full-width forms to match the merge logic in transcript.py.
-_TURN_ENDS = frozenset(".?!…。？！")
-
 # Transcript header separator (same constant used by transcript_io.py)
 _SEPARATOR = "=" * 60
-
-# Common words that begin ordinary sentences and may superficially match the
-# Name+Timestamp pattern (e.g. "… at 10:05 we begin").  Reject any match whose
-# first name-token is one of these to avoid creating fake speaker lines.
-_SENTENCE_STARTERS = frozenset(
-    {
-        "at",
-        "by",
-        "on",
-        "in",
-        "for",
-        "from",
-        "to",
-        "since",
-        "until",
-        "today",
-        "tomorrow",
-        "now",
-        "then",
-        "after",
-        "before",
-        "i",
-        "we",
-        "he",
-        "she",
-        "it",
-        "they",
-        "so",
-        "but",
-        "and",
-        "or",
-        "if",
-        "as",
-        "that",
-        "this",
-        "a",
-        "ok",
-        "okay",
-        "yes",
-        "no",
-    }
-)
 
 
 # ── Core split/fix logic ──────────────────────────────────────────────────────
@@ -137,13 +82,14 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
             valid.append(m)
             continue
         before = pre[: m.start()].rstrip()
+        punct = before[-1] if before else ""
         if before and before[-1] in _TURN_ENDS:
             # Guard against domain-suffix false positives: when the terminal
             # character is '.', reject if the last whitespace-delimited token
             # looks like part of an email address or dotted hostname (e.g.
             # "lciukaj@splunk." → stem "lciukaj@splunk" contains '@';
             # "sub.domain." → stem contains '.').
-            if before[-1] == ".":
+            if punct == ".":
                 # Reject when the match is immediately preceded by '.' with no
                 # whitespace (dotted handle like "mackenzie.jomard" → stem
                 # "mackenzie" has no '@' or '.' but is still not a sentence end).
@@ -152,85 +98,11 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 stem = before.rsplit(None, 1)[-1].rstrip(".")
                 if "@" in stem or "." in stem:
                     continue
-                # Collect bare name tokens, stopping at the first org suffix
-                # marker ('[', '|', '(') so that lowercase org words like
-                # "| openTelemetry" don't falsely suppress a real speaker.
-                name_tokens = m.group(1).split()
-                name_first = m.group(1).split(None, 1)[0].lower()
-                name_only = []
-                for t in name_tokens:
-                    if not t or t[0] in {"[", "|", "("}:
-                        break
-                    name_only.append(t)
-                has_org = len(name_only) < len(name_tokens)
-                if len(name_only) > 1:
-                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
-                        continue
-                elif has_org:
-                    # Single bare token + org suffix (e.g. "Q | OpenAI"): skip
-                    # the length guard; only suppress sentence-starter words.
-                    if name_first in _SENTENCE_STARTERS:
-                        continue
-                else:
-                    if len(name_first) < 3 or name_first in _SENTENCE_STARTERS:
-                        continue
-            elif before[-1] == "…":
-                # After an ellipsis (mid-sentence trailing), reject matches
-                # whose first token is a common sentence-starter word.
-                # Exception: still accept if non-first bare name tokens are
-                # title-cased (e.g. "So Koide" — "Koide" starts uppercase).
-                name_first = m.group(1).split(None, 1)[0].lower()
-                if name_first in _SENTENCE_STARTERS:
-                    name_tokens = m.group(1).split()
-                    name_only: list[str] = []
-                    for t in name_tokens:
-                        if not t or t[0] in {"[", "|", "("}:
-                            break
-                        name_only.append(t)
-                    if len(name_only) < 2 or any(
-                        t[0].islower() for t in name_only[1:] if t and t[0].isalpha()
-                    ):
-                        continue
-            elif before[-1] in {"?", "!", "？", "！"}:
-                # After '?' or '!': same multi-token / org-suffix logic as '.',
-                # but skip the length guard for pure single-token names so that
-                # short display-name initials like "Q" are not suppressed.
-                name_tokens = m.group(1).split()
-                name_first = m.group(1).split(None, 1)[0].lower()
-                name_only = []
-                for t in name_tokens:
-                    if not t or t[0] in {"[", "|", "("}:
-                        break
-                    name_only.append(t)
-                has_org = len(name_only) < len(name_tokens)
-                if len(name_only) > 1:
-                    if any(t[0].islower() for t in name_only[1:] if t[0].isalpha()):
-                        continue
-                elif has_org:
-                    if name_first in _SENTENCE_STARTERS:
-                        continue
-                else:
-                    # No length guard after '?'/'!' — only sentence-starters.
-                    if name_first in _SENTENCE_STARTERS:
-                        continue
+            if should_suppress_embedded_boundary(punct, m.group("name")):
+                continue
             valid.append(m)
-        elif before and before[-1] == ",":
-            # After a comma: only accept multi-token names where the first token
-            # is not a sentence-starter and all non-first bare tokens are title-
-            # cased.  Single-token names are suppressed to avoid false positives
-            # (e.g. "probably 30:00" or "Alice 10:05" after a comma).
-            name_tokens = m.group(1).split()
-            name_first = m.group(1).split(None, 1)[0].lower()
-            name_only: list[str] = []
-            for t in name_tokens:
-                if not t or t[0] in {"[", "|", "("}:
-                    break
-                name_only.append(t)
-            if (
-                len(name_only) < 2
-                or name_first in _SENTENCE_STARTERS
-                or any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
-            ):
+        elif punct == ",":
+            if should_suppress_embedded_boundary(punct, m.group("name")):
                 continue
             valid.append(m)
     return valid

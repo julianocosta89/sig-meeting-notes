@@ -39,8 +39,8 @@ And I miss Damien here.
 During school.
 Those are a few thoughts?
 So now, did you have a chance to discuss it with Damien?
-**Sonal Gaud** 04:49 Yeah, I asked him, and he had the same idea of having labeler for different instrumentations.
-**But he didn't briefly say it, so I told him that we will discuss in the meet, but, he didn't join, so… Pellared** 05:06 Missy.
+**Sonal Gaud** 04:49 Yeah, I asked him, and he had the same idea of having labeler for different instrumentations. But he didn't briefly say it, so I told him that we will discuss in the meet, but, he didn't join, so…
+**Pellared** 05:06 Missy.
 **Tyler** 05:09 Yeah, well, let's see if we can ping him here.
 Yeah, I mean, I think that all sounds good. I think I'd like to get Damien's, input on it as well, but yeah, I think that makes sense. So, Sanal, if you don't get any response from this.
 Maybe in, like, a few days? I think maybe it's just time to start working on a prototype, to address it.
@@ -73,7 +73,8 @@ that have that container name or something, right? Like… I think… or I guess
 To go delete it with something, right?
 **Tyler** 10:42 Yeah, no, OBI does exactly what this is saying, where it's, like, an exact list.
 Yeah.
-**David Ashpole (dashpole)** 10:53 Do you have to maintain that, or… Tyler 10:55 Yeah, I mean… Is that something you happen to have?
+**David Ashpole (dashpole)** 10:53 Do you have to maintain that, or…
+**Tyler** 10:55 Yeah, I mean… Is that something you happen to have?
 Yeah, we have it pretty easily. It's like, it's stored in a map, because essentially, like, we need some sort of identifier to, like, yeah, like, essentially return… we don't keep instruments, we keep, like.
 I mean, we do keep instruments, but we keep a separate map, essentially, of all the attributes that come in in OBI, or… now you got me saying it.
 It's an acronym, not initialism. Anyways, like, yeah, so, like, that isn't a big deal, but I think what you're saying is, yeah, I mean, I think that that's a great suggestion, like, having something like that.
@@ -91,8 +92,8 @@ We'll want to just mark the series as having been finished.
 **David Ashpole (dashpole)** 13:21 I think that's… yeah, that'll be interesting to see how that looks. And I think he'll… I think maybe it would be helpful to… one topic I didn't put on the agenda, but we could discuss here is, I added the new developmental, start time.
 A cumulative start time tracking spec.
 Do we want to make that change, and put it behind a feature gate, and then use it here? Because I assume this won't work properly unless we have Start time.
-You can still implement the prototype, probably, but it'll have bizarre start times.
-**When you finish in the… Tyler** 13:57 Exactly.
+You can still implement the prototype, probably, but it'll have bizarre start times. When you finish in the…
+**Tyler** 13:57 Exactly.
 **David Ashpole (dashpole)** 13:57 Thank you.
 **Tyler** 13:59 Okay. Yeah.
 **David Ashpole (dashpole)** 14:02 Behind a feature gate, then.
@@ -136,16 +137,19 @@ Cool.
 Okay, I can start sharing my screen again. Next, we want to talk about the… adding the string method to the key value and value, if I remember correctly. Pr, this is something that's being sprung on Brian, but… It's something Robert and I are really passionate about as well, so I'm super excited to talk about this one.
 **Pellared** 19:05 Yeah, I saw that also David, like, kind of thumbs up… gave a thumbs up for the proposal to use this string method and make it compliant with the specification. So, probably just to… probably… I think everyone is on board.
 It's just about, you know, kind of… saying that I can probably work on it after KubeCon.
-**David Ashpole (dashpole)** 19:28 Did… did that spec go stable? Not that it should block this, but… Pellared 19:33 I think it is, but that's a good question. I'm not sure if I can… have I put the hyperlink here?
+**David Ashpole (dashpole)** 19:28 Did… did that spec go stable? Not that it should block this, but…
+**Pellared** 19:33 I think it is, but that's a good question. I'm not sure if I can… have I put the hyperlink here?
 **Tyler** 19:40 Yep. Yes, I think this is…
 **David Ashpole (dashpole)** 19:41 it, right? Yeah.
 **Tyler** 19:45 Well, it's stable.
 **David Ashpole (dashpole)** 19:46 3 months.
-**Tyler** 19:49 Yeah, right. Yeah, I think it is that. This is stable, except otherwise… Except… Pellared 19:53 Try to find the experimental, or development.
+**Tyler** 19:49 Yeah, right. Yeah, I think it is that. This is stable, except otherwise… Except…
+**Pellared** 19:53 Try to find the experimental, or development.
 **Tyler** 19:57 In development, yeah.
 **Pellared** 19:59 Where is it?
 **Tyler** 20:00 That's…
-**David Ashpole (dashpole)** 20:02 Just finding the… Pellared 20:02 No word.
+**David Ashpole (dashpole)** 20:02 Just finding the…
+**Pellared** 20:02 No word.
 **David Ashpole (dashpole)** 20:04 I think it might just be stable.
 **Tyler** 20:07 Yeah, I think I'm… I think you're right, yeah.
 **Pellared** 20:09 I think when I stabilized the stuff, I have forgotten to change this text.
@@ -166,7 +170,8 @@ I… I don't know.
 **Tyler** 21:40 Yeah, no pressure. Why don't I add it to a milestone, so that we don't lose track of it? I'm guessing 43 or 44, Robert, which one are you thinking?
 **Pellared** 21:47 44.
 Okay.
-**Tyler** 21:49 Yeah, we'll do that. I think that gives us… Pellared 21:51 It doesn't… it's not… it should not block it in… Next race.
+**Tyler** 21:49 Yeah, we'll do that. I think that gives us…
+**Pellared** 21:51 It doesn't… it's not… it should not block it in… Next race.
 **Tyler** 21:56 Yeah, and then after the next release, we can reprioritize, and if you are still busy, Brian, we could try to find somebody else to pick this up. This is great, so yeah.
 Okay, cool.
 Next up, David, do you want to talk about update on metric SDK optimization, experimental histogram, or exponential histogram optimization for a small change?
@@ -207,7 +212,8 @@ With OTEL in mind, how's the Kubernetes space coming along, David?
 **David Ashpole (dashpole)** 26:20 I think I know what I want, I just… Yeah, we'll see. So I'll see if I can make progress. There's someone else from Netflix who's driving it right now.
 But it seems like a side project for them, so we'll see.
 **Tyler** 26:32 Yeah.
-**David Ashpole (dashpole)** 26:33 I'm… I am actually quite interested in the stable release of the… declarative schema package, because I want Kubernetes to use it to configure tracing in its components, rather than we have, like, a home… homemade You know, schema file that we use that doesn't support the vast majority of the features, so… Tyler 26:59 Yeah.
+**David Ashpole (dashpole)** 26:33 I'm… I am actually quite interested in the stable release of the… declarative schema package, because I want Kubernetes to use it to configure tracing in its components, rather than we have, like, a home… homemade You know, schema file that we use that doesn't support the vast majority of the features, so…
+**Tyler** 26:59 Yeah.
 **David Ashpole (dashpole)** 26:59 That would be pretty cool to see.
 **Tyler** 27:02 Okay, yeah, that's good feedback. That's great feedback.
 **Pellared** 27:10 And he said.
@@ -216,8 +222,8 @@ But it seems like a side project for them, so we'll see.
 compatibility.
 Anything you need there?
 **David Ashpole (dashpole)** 27:19 Hmm… let's see, Open Metrics 2 is gonna probably have a release candidate in the next… Few weeks.
-Bartek's gonna go out on leave in April, so we're trying to finish that up in March so that some of the Prometheus clients can actually start implementing it.
-**I still don't… Pellared** 27:40 I see that Bartek will have a talk also in KubeCon, on Thursday.
+Bartek's gonna go out on leave in April, so we're trying to finish that up in March so that some of the Prometheus clients can actually start implementing it. I still don't…
+**Pellared** 27:40 I see that Bartek will have a talk also in KubeCon, on Thursday.
 **David Ashpole (dashpole)** 27:44 Yep, yep.
 **Pellared** 27:45 Yeah, I already subscribed to it.
 **David Ashpole (dashpole)** 27:49 Anything else interesting?

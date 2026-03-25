@@ -188,8 +188,8 @@ Even though it's an iframe. I think with that extra window of context with… it
 I would probably still use browser URL full.
 **Benoît Zugmeyer** 25:31 Okay.
 Anywhere, let's think about something.
-**Martin Kuba** 25:41 Yeah, I mean, to me, to me, like, the page, like, having a separate namespace makes more sense, but yeah, like, if any, I would like to hear maybe from others.
-**But… But yeah, I don't want to hold this, hold this, hold this up, but we can, we can… We can… continue with browser URL full, and… Benoît Zugmeyer** 26:07 Okay.
+**Martin Kuba** 25:41 Yeah, I mean, to me, to me, like, the page, like, having a separate namespace makes more sense, but yeah, like, if any, I would like to hear maybe from others. But… But yeah, I don't want to hold this, hold this, hold this up, but we can, we can… We can… continue with browser URL full, and…
+**Benoît Zugmeyer** 26:07 Okay.
 **Jared Freeze** 26:09 I think one of the questions we keep running into is, like, do we need to share these across… like, how much do we want to, sort of.
 have keys that share with mobile, right? Because they are, like, different paradigms. Like, is that important? Like, do I ever want to run a query that's like, show me every screen size?
 Like, regardless of browser, app, you know, TV, kiosk, like, whatever it might, you know, something like that.

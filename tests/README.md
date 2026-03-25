@@ -7,6 +7,7 @@ Test suite for the project. Run with `make test` or `uv run --group dev pytest t
 | File | Covers |
 |------|--------|
 | `test_build_manifest.py` | `build_site.py` — manifest generation from the content tree (including `trivial` flag) |
+| `test_speaker_boundaries.py` | `scraper/speaker_boundaries.py` — `speaker_name_info`, `is_new_speaker_start`, `should_suppress_embedded_boundary`, and the shared regex patterns |
 | `test_transcript.py` | `scraper/transcript.py` — HTML parsing and mid-sentence continuation-line merging |
 | `test_transcript_io.py` | `scraper/transcript_io.py` — `count_transcript_lines()` and related helpers |
 | `test_community.py` | `scraper/community.py` — community README parsing and metadata bootstrapping |

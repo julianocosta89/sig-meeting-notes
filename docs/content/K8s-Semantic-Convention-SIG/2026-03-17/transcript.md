@@ -129,8 +129,8 @@ But not the pot spec.
 So, is there new… something… new versions coming with?
 Yes.
 **João Marques Correia** 22:02 It's for 136, from what I'm seeing, at least they are targeting 136 for this.
-**Dmitrii Anoshin** 22:08 I mean, yeah, we should… we should support that, eventually. It's just… like, the sooner we support that, the better.
-**Or your concern is that we might potentially want to introduce another metric for that, or… João Marques Correia** 22:26 Not the metric, it's just clarifying the definition, right?
+**Dmitrii Anoshin** 22:08 I mean, yeah, we should… we should support that, eventually. It's just… like, the sooner we support that, the better. Or your concern is that we might potentially want to introduce another metric for that, or…
+**João Marques Correia** 22:26 Not the metric, it's just clarifying the definition, right?
 **Dmitrii Anoshin** 22:29 Yeah, it's fine.
 **João Marques Correia** 22:30 They find the limit.
 was mostly a static thing. Now, basically, you can configure it, so that's also kind of the definition. If it's not configured, then it becomes, like, a sort of aggregation, but now it seems there will be, like, a third, I guess, component that will allow to modify that value on the fly. So basically, there are, like, multiple Cases where the value might change definition, if that makes sense.

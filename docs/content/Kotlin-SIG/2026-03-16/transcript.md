@@ -11,7 +11,8 @@ Zoom Recording URL: https://zoom.us/rec/share/xdHOFgA5_9gpQeAym83mST54OjrmaNyQCF
 **Jamie Lynch** 01:02 Oh, sweet.
 **Jason Plumb** 01:03 Very cool move, dude.
 **Hanson** 01:09 Hello?
-**Jason Plumb** 01:12 I… Hanson 01:16 You weren't around this week, Jason.
+**Jason Plumb** 01:12 I…
+**Hanson** 01:16 You weren't around this week, Jason.
 **Jason Plumb** 01:18 I'm not. I'm not here at all.
 **Hanson** 01:20 Okay.
 **Jason Plumb** 01:20 I mean, I'm flying to the Netherlands in 3 hours.
@@ -22,8 +23,8 @@ Shouldn't you be on your way to the airport, or… You're that confident that yo
 **Jason Plumb** 01:43 Mostly packed.
 **Jamie Lynch** 01:50 That's for KubeCon, is it?
 **Jason Plumb** 01:53 Yeah, but I'm extending it. KubeCon's not until next week, or technically it starts on Sunday, which is when the Maintainer Summit is.
-Which makes for a long conference, like… Maintainer Summit, then Observability Day, and then KubeCon?
-**So… Hanson** 02:10 Fantastic!
+Which makes for a long conference, like… Maintainer Summit, then Observability Day, and then KubeCon? So…
+**Hanson** 02:10 Fantastic!
 **Jason Plumb** 02:10 Yeah.
 **Francisco Prieto** 02:13 Hey, everyone.
 **Jason Plumb** 02:14 Ayy.
@@ -143,8 +144,8 @@ Also, I think it… it was… the bill was failing, no? Oh yeah, it's failing, y
 **Jason Plumb** 18:12 Sorry?
 **Jamie Lynch** 18:13 I wish DocsLink.
 **Jason Plumb** 18:15 Sorry, go to the, back to the link check failure.
-I think I'm lagged, like, a second here. Down at the very bottom, I gave a 404. Can you click… yeah, that docs link.
-**Is that working now? Oh… Hanson** 18:29 It doesn't exist?
+I think I'm lagged, like, a second here. Down at the very bottom, I gave a 404. Can you click… yeah, that docs link. Is that working now? Oh…
+**Hanson** 18:29 It doesn't exist?
 **Jason Plumb** 18:31 So that's the wrong dock.
 So, probably update the PR with the correct doc.
 **Jamie Lynch** 18:37 Okay.

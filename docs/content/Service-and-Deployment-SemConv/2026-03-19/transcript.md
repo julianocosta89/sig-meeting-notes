@@ -43,7 +43,8 @@ and then see what the community thinks about data versus data source. But, this 
 **Ayushi Asthana** 07:03 So, I would love to hear your thoughts on that. What do you think about, data versus data source, or if you have any, Good arguments that can make a faith for one or the other.
 **Yoshi** 07:15 So, is the, data source on the… Alternative candidates for the entity, or has anyone Raised any other possible candidates for the name?
 Of this entity.
-**Ayushi Asthana** 07:31 Except… Yoshi 07:32 Such as data… data characteristics, or the data attributes, or… anything. Data, like, I don't know, but data sounded… kind of… Too generic to me.
+**Ayushi Asthana** 07:31 Except…
+**Yoshi** 07:32 Such as data… data characteristics, or the data attributes, or… anything. Data, like, I don't know, but data sounded… kind of… Too generic to me.
 And then, I was wondering… F… Like, there were… there were any other possible… Candidate for the name.
 **Ayushi Asthana** 07:54 Yeah, so, there was one other, discussion that we had was around… Entities versus data group, attribute groups.
 Also, the question of whether data belongs in a separate entity, or as an attribute group in SEMCON.
@@ -75,8 +76,8 @@ So I am leaning towards not proposing this as an entity, and rather proposing th
 As of right now.
 So, maybe, maybe I'll rewrite the proposal a little bit, and instead of saying we should introduce this as an entity, maybe we can introduce this as an attribute group. But I agree to your point that probably this attribute group won't have, like, a lot of things.
 That we can see, right now.
-But, yeah, that's… that's where I'm at. From the entity standpoint, I align with you that it's too generic.
-**like, just data.category. As an entity, data is too generic, and probably, as an entity, data source makes more sense. But we don't have a proposal for data source either, just… Yoshi** 14:45 Yeah, yeah, I think, I think these labels as, like, standards.
+But, yeah, that's… that's where I'm at. From the entity standpoint, I align with you that it's too generic. like, just data.category. As an entity, data is too generic, and probably, as an entity, data source makes more sense. But we don't have a proposal for data source either, just…
+**Yoshi** 14:45 Yeah, yeah, I think, I think these labels as, like, standards.
 Attribute set.
 would be, would be, would be great. So, yeah, having, having the attribute itself is fine, totally fine to me.
 And also the things I wanted to know is that, is there any… conversation, regarding how the backend services utilize these these labels, in a consistent way.
@@ -106,7 +107,8 @@ Data.what? Data.sensitivity.
 **Ayushi Asthana** 19:46 Okay.
 I have added… I think this is the doc you're referring to, right? The syslog protocol?
 **Yoshi** 19:55 This is, yeah, this is…
-**Ayushi Asthana** 19:58 you just shared. Was this… Yoshi 20:01 Yes, yes, yes, so your commenter is right. I'm reading your comments, yeah, that's the point I wanted to say.
+**Ayushi Asthana** 19:58 you just shared. Was this…
+**Yoshi** 20:01 Yes, yes, yes, so your commenter is right. I'm reading your comments, yeah, that's the point I wanted to say.
 **Ayushi Asthana** 20:09 Okay, got it. I think that I have taken a note.
 We can… I think that's a good point. We can standardize at least this specific attribute.
 It makes sense to have more… You know?
@@ -149,8 +151,10 @@ General was that business unit belongs to who owns the service, so owner.busines
 **Yoshi** 26:13 Oh…
 **Ayushi Asthana** 26:14 unit as a sub-attribute of uma.
 **Yoshi** 26:17 In that case, in that case, what kind of sum attributes does the owner attribute has?
-**Ayushi Asthana** 26:25 So I think… Aww, and I… Yoshi 26:29 Is it, is it written on, in, on a, on a PR?
-**Ayushi Asthana** 26:33 Yeah, yeah. Una… Yoshi 26:34 Oh, shit.
+**Ayushi Asthana** 26:25 So I think… Aww, and I…
+**Yoshi** 26:29 Is it, is it written on, in, on a, on a PR?
+**Ayushi Asthana** 26:33 Yeah, yeah. Una…
+**Yoshi** 26:34 Oh, shit.
 **Ayushi Asthana** 26:35 Also, like, service.owner is also currently proposed.
 **Yoshi** 26:41 Right? Oh, okay.
 **Ayushi Asthana** 26:42 The lot owner has, like, name, URL, contact.
@@ -203,7 +207,8 @@ Yeah. Okay. Cool.
 Yes. And I also, just a heads up, but, I'm going to take… I won't be… I won't be able to join the next meeting, APAC time for endoing meeting, so two… two weeks after one.
 **Ayushi Asthana** 33:31 Right, the one on iTunes.
 **Yoshi** 33:33 One on… one on April… April 2nd.
-**Ayushi Asthana** 33:38 Second… Yoshi 33:40 Yeah.
+**Ayushi Asthana** 33:38 Second…
+**Yoshi** 33:40 Yeah.
 **Ayushi Asthana** 33:40 Oh, I… where am I?
 Yeah, April 2nd. Quarter 2.
 **Yoshi** 33:47 And then, from the next one after that, I will be a part of the Grafana Labs, so… I joined the… yeah, I joined the meeting as the person from Grafana.

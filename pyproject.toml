@@ -28,7 +28,8 @@ select = ["E", "F", "I", "UP", "S"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/test_community.py" = ["E501"]  # markdown table fixture strings cannot be split
-"tests/*.py" = ["S101", "S603", "S607"]  # assert is idiomatic in pytest; subprocess in test fixtures is trusted
+"tests/*.py" = ["S101", "S105", "S603", "S607"]  # assert is idiomatic in pytest; S105 false-positives on token/name equality checks; subprocess in test fixtures is trusted
+"scraper/speaker_boundaries.py" = ["S105"]  # regex pattern constants, not passwords
 
 [tool.hatch.build.targets.wheel]
 packages = ["scraper"]

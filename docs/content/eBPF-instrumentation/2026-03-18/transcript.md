@@ -15,7 +15,8 @@ palm trees.
 **Tyler** 01:38 Oh, nice. Are you back in Brazil?
 **Rafael Roquetto** 01:40 I'm in Brazil, yes, yes.
 **Tyler** 01:41 Yeah.
-**Rafael Roquetto** 01:42 For this and next week, so… Tyler 01:43 Oh, nice.
+**Rafael Roquetto** 01:42 For this and next week, so…
+**Tyler** 01:43 Oh, nice.
 Yeah, that's awesome.
 **Rafael Roquetto** 01:45 Yes, it is. It is. I have no idea how happy it feels to just be out, to walk on t-shirts outside. Yeah, it's good.
 **Tyler** 01:54 Yeah, that sounds great.
@@ -41,7 +42,8 @@ Let me… let me update this, then.
 Okay, cool. Yeah, thanks, Rob.
 Any others?
 **Pellared** 05:48 Thank you for that?
-**Mario Macias** 05:48 Oh… Pellared 05:50 I'm not sure how we can add things here to the goals.
+**Mario Macias** 05:48 Oh…
+**Pellared** 05:50 I'm not sure how we can add things here to the goals.
 **Tyler** 05:55 So the goal isn't really to add… To our 2026 goals.
 **Pellared** 06:01 There was one more epic, which we added together.
 **Tyler** 06:06 Okay.
@@ -100,8 +102,8 @@ Into the 11th century.
 it would try to import things that it shouldn't have imported. So, this next release is gonna have fix for the source code.
 I was gonna try to get that out this week, except KubeCon's next week, so I don't really wanna, cause some major disruptions by releasing, from Obi this week. But, yeah, it's looking really good. I've got something upstream in the, collector releaser that is primed to get this out, so this is actually going along pretty good. I guess I could… I have myself as an attendee here as well, or a signee, But yeah, this is… this is actually really close, so thanks for calling that out, Nimrod, yeah.
 **Nimrod Avni** 12:10 I wanted to ask, while we're on it, is the plan having the OB receiver inside the collector contrib, or having it As a different, a collector distribution, let's say, like, the profiler, has a separate distribution? Because I don't know, like, in my head, I thought it made sense maybe to have them both as a separate receiver that needs, like, elevated privileges, but maybe it's, like, just coupling without any reason, I don't know.
-**Tyler** 12:41 No, I wanted to put them all into the same distribution, or sorry, not at all. I wanted to put the OB collector, or the OB receiver into the distribution for the collector contribib. It's not going to be in the collector contribib rep repo, because it would just be this, like, extremely thin wrapper, which… We might have needed to do, or we might still need to do if the build tags don't work, but… Yeah, the idea is that, like, it's, it's, It's a tangled, tangled web for the collector builds, but essentially, this is the repo that actually does all the building, and this distribution is where this will be, and so in this collect… hotel collector contribib.
-**All it will do is it'll take a dependency on our, our repository, and in the process of taking dependency on our repository, it'll it… when it builds, it'll just be there. So it doesn't have to actually be in the repo, Nimrod Avni** 13:38 Yeah.
+**Tyler** 12:41 No, I wanted to put them all into the same distribution, or sorry, not at all. I wanted to put the OB collector, or the OB receiver into the distribution for the collector contribib. It's not going to be in the collector contribib rep repo, because it would just be this, like, extremely thin wrapper, which… We might have needed to do, or we might still need to do if the build tags don't work, but… Yeah, the idea is that, like, it's, it's, It's a tangled, tangled web for the collector builds, but essentially, this is the repo that actually does all the building, and this distribution is where this will be, and so in this collect… hotel collector contribib. All it will do is it'll take a dependency on our, our repository, and in the process of taking dependency on our repository, it'll it… when it builds, it'll just be there. So it doesn't have to actually be in the repo,
+**Nimrod Avni** 13:38 Yeah.
 **Tyler** 13:39 But it will… yeah, so, like, right now, what this is doing is it's downloading our binaries… I'm sorry, our source files.
 And since we have generated all the source files, this is great, and it's tying it in.
 the problem, obviously, is that, like, when it ties it in, it tries to then build it in all of its environments, so things like Windows, things like not our architectures, it's building, which it should, but then it… currently is not completely guarded, for the V06 release, so it's crashing on the build. So, yeah, this is how it should look, and essentially what the… deliverable, or the action… or, like, the way that you're actually gonna use this, just using the collector-contrib, binary or the Docker container in our receiver should be there, is my goal on that one.
@@ -141,13 +143,14 @@ We're coming up on… maybe a time block here. If there's anything else that nee
 Okay, yeah, so next up, I also wanted to talk about the next release milestone, so I did want to push this out till after KubeCon, so we're not in a huge rush, but I just wanted to call out, things that are existing in here.
 And maybe just go through a little run-through here?
 So, Rafael, you have this first one, it's document the new selective telemetry and Sampler. This is assigned to you. Is this something you're still working on? I can unassign you as well.
-**Rafael Roquetto** 19:50 No, I haven't done any work on that.
-**Okay. Couldn't find the time, so… Tyler** 19:57 That's… yeah, I… Welcome to the world of software development. I'm gonna unassign you here, so other people could jump in if they wanted to, but please feel free to keep working on it if you do find the time.
+**Rafael Roquetto** 19:50 No, I haven't done any work on that. Okay. Couldn't find the time, so…
+**Tyler** 19:57 That's… yeah, I… Welcome to the world of software development. I'm gonna unassign you here, so other people could jump in if they wanted to, but please feel free to keep working on it if you do find the time.
 **Rafael Roquetto** 20:07 Okay.
 **Tyler** 20:07 Yeah.
 Same here for the document application span, hotel, I think… I'm gonna… Yeah, this has been a while. Okay, so… I'm gonna unassign, Nicola, just in case other people wanna work on it.
 Okay, and then, Steven, you open this issue, find a way to use the latest run C in the VM workflows? Is… this is something… this looks interesting, This is an upgrade path issue, right? .
-**Stephen Lang** 21:20 Yeah, so… Tyler 21:20 See it then.
+**Stephen Lang** 21:20 Yeah, so…
+**Tyler** 21:20 See it then.
 **Stephen Lang** 21:21 I keep looking at this on and off, The… it seems to require potentially not using nested virtualization, so that would mean that we would need a, a GitHub Actions runner with KVM enabled.
 And I believe the only way to do this is to have a self-hosted runner.
 So, I played with the idea of using, some kind of AWS free tier or something like this, but I wondered, maybe, I believe OpenTelemetry has some self-hosted runners.
@@ -176,7 +179,8 @@ So, okay, yeah, I can…
 **Stephen Lang** 24:43 You too.
 **Tyler** 24:45 Oh, he is.
 Oh, sorry, yeah, there he is.
-**Marc** 24:50 Yeah. Would you… you said I was looking at about… Tyler 24:54 I thought that you were… talked about this previously, talking about the Grafana Oats package upgrade, so we've tried doing this upgrade to the V061, and it breaks a bunch of, like, because the config file changed, and I thought I remember you saying that you had done a few of these before?
+**Marc** 24:50 Yeah. Would you… you said I was looking at about…
+**Tyler** 24:54 I thought that you were… talked about this previously, talking about the Grafana Oats package upgrade, so we've tried doing this upgrade to the V061, and it breaks a bunch of, like, because the config file changed, and I thought I remember you saying that you had done a few of these before?
 **Marc** 25:07 No, but, I can take a look. What's… Yeah.
 **Tyler** 25:13 Oh, okay. Yeah, if you have time and you're able to take a look, yeah, just going through this upgrade, literally just upgrading the package, and then all of the, the modules that do these imports, we're gonna have to change the YAML file, configuration for it to match the new spec for the new one, but.
 **Marc** 25:30 Trent, would you like to take a look?
@@ -202,7 +206,8 @@ Node.js emulated.
 **Tyler** 28:26 Ugh.
 **Nimrod Avni** 28:27 The UV stuff.
 **Tyler** 28:30 Yeah, this looks great. It looks like it actually has the approvals. Are we waiting on anything? Oh.
-**Nimrod Avni** 28:36 I think just the… I think just the… this is, like, fixed. I don't know why it's… We… Tyler 28:43 This should be fixed.
+**Nimrod Avni** 28:36 I think just the… I think just the… this is, like, fixed. I don't know why it's… We…
+**Tyler** 28:43 This should be fixed.
 **Nimrod Avni** 28:44 I can resolve it, because I fixed it.
 **Tyler** 28:48 Okay, I will…
 **Nimrod Avni** 28:50 I think it's ready to go.
@@ -232,7 +237,8 @@ I think this will be a blocker at some point, but other than this, yeah.
 Yeah, alright, cool, so there you go. I think that sounds good, we'll work on it here. Thanks, Mattia, for pushing this forward, this is great. I'm super excited about it.
 **Mattia Meleleo** 31:57 Thank you.
 **Tyler** 31:58 Okay, next up, Rafael, you want to talk about upgrading the Go version?
-**Rafael Roquetto** 32:04 Yeah, so… Tyler 32:05 It's included.
+**Rafael Roquetto** 32:04 Yeah, so…
+**Tyler** 32:05 It's included.
 **Rafael Roquetto** 32:06 Steven… Steven pointed out to me this morning that, there's a CVE on, when the… Go 126.0, and 120… 5.7?
 So… our, like, kub cache, Kubernetes cache image is on… imports the Go, like, the actual image is a Go 126 image.0, but our project is in 125.7 in the Go mod. So my understanding was that's because of Renovate, so this… this drift, and I would like to update this to cover the CVE, And I was wondering if you could just bump everything to 1.26.1, or if there is, like… Printed our rumors that could be a… some sort of issue with 126.1, but I don't know, like, when Nikola… Should be no one who knows, but he's away, so I just wanted to ask if you guys know anything.
 **Tyler** 33:04 Yeah, so there's a few things here. So, the Go mod, I would not upgrade to 126. The Go mod is not necessarily the Go version that you use to run the application, it's the Go version that is supported by the application. So, leaving the GoMod actually where it is is probably fine. It's more about, like, how we distribute it, and, like, what we're using when we build it. So if you build it, you want to make sure you're building it with one that doesn't have a CDE. So this is going to be more in the CI system.
@@ -241,7 +247,8 @@ is a good idea. I would be surprised if Renvate hasn't done that one. I thought 
 For some reason, I thought it was in the milestone, but, I guess it isn't.
 Support JSON RFC, no.
 Man, hmm. I guess we can go about it another way and find it in the old…
-**Stephen Lang** 34:39 So… Tyler 34:40 Maybe it is just a pull request, sorry.
+**Stephen Lang** 34:39 So…
+**Tyler** 34:40 Maybe it is just a pull request, sorry.
 **Stephen Lang** 34:42 Just in terms of, Renovate, I don't think it can handle the upgrade, because we use the OB generator image.
 And that we need… that image needs to have… The same version or greater.
 When it's… when it's building the repo. So the image needs to be updated first.
@@ -286,8 +293,8 @@ if… if the 126 actually has, like… I mean, the thing is, is, like.
 there's nothing stopping it from breaking the internals of Go, in, like, the latest 126, so there may be something additional to what you're talking about. So we can patch the CVE one by just upgrading the latest, like, patch, the 125 patch.
 But the 126 upgrade and using that in our images is still something that… that issue that I linked from Nikola is probably something we need to look at.
 **Rafael Roquetto** 40:01 Okay, because, the cube… cube cache… image does use 126, like, it pulls the Go 126 builder and whatnot.
-So, do we want to… Just downgrade it to make everyone in 125.8.
-**Or… Tyler** 40:19 I can't… I'd have to look deeper into that issue. The thing that Nikola pointed out was that, like, it's… it's breaking, on one… like, the latest 126. So, if it's building, I don't think… yeah, I think it… I think it'll still build, which is kind of the problem, right? Because it's going to silently fail, because its offsets are going to be incorrect.
+So, do we want to… Just downgrade it to make everyone in 125.8. Or…
+**Tyler** 40:19 I can't… I'd have to look deeper into that issue. The thing that Nikola pointed out was that, like, it's… it's breaking, on one… like, the latest 126. So, if it's building, I don't think… yeah, I think it… I think it'll still build, which is kind of the problem, right? Because it's going to silently fail, because its offsets are going to be incorrect.
 **Rafael Roquetto** 40:36 Correct.
 I will… let's do it like this, because I just, like, found all this morning, so I haven't really looked into it. I briefly did, so it's not something I gotta fix overnight. I will research it in a couple of days, and then if I have questions, I'll reach out to you guys.
 Hopefully with better understanding, and we can take it from there.
@@ -308,7 +315,8 @@ I don't know if this is good or not, so yeah, feel free to rip it apart and… A
 We can iterate.
 **Tyler** 42:38 That's great. I'm glad to… glad to see a start on this. This is awesome, yeah.
 **Pellared** 42:43 Have you considered, adding to the pull request template something like, I understand this code, etc?
-**Rafael Roquetto** 42:50 Yes, it's… Pellared 42:52 I see the person.
+**Rafael Roquetto** 42:50 Yes, it's…
+**Pellared** 42:52 I see the person.
 **Rafael Roquetto** 42:53 Yeah, it's there. It's there.
 **Pellared** 42:54 I see it. Yeah, I must… Awesome.
 **Rafael Roquetto** 43:03 I mean, please read it, see if you agree, you know, give feedback, and then I can, iterate it and amend it.
@@ -395,7 +403,8 @@ This is from Nicola, fix missing requests on pipe splice. I think I approved thi
 Cool, alright. We'll wait on Nicole, he's out of office, so, yeah.
 Also, Giuseppe, introduced the stats, Ollie, I saw this come out yesterday, I think.
 **Giuseppe Ognibene | Coralogix** 52:21 Yo.
-**Tyler** 52:21 some reviews, yep. I have… Giuseppe Ognibene | Coralogix 52:23 That's basically the whole op network tracer, which should solve the, extend the network matrix.
+**Tyler** 52:21 some reviews, yep. I have…
+**Giuseppe Ognibene | Coralogix** 52:23 That's basically the whole op network tracer, which should solve the, extend the network matrix.
 Rafael left me some comments, I think, that I… Did everything just, like, 10 minutes ago.
 And Mario, the one question about the user configuration.
 Yeah, I think it's the last one, yeah, this one.

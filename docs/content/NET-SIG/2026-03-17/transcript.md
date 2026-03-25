@@ -87,7 +87,8 @@ So, it says that there's the missing field observed timestamp. I could try to ad
 Event name, and so on.
 And I guess it should also have observed timestamp, which it currently doesn't.
 **Rajkumar Rangaraj** 15:44 How does… all I wanted to, understand is how does it change, or, the current, or whatever the, public API surface that we have it now?
-**Julius Koval** 15:58 Well, it would add, Rajkumar Rangaraj 15:59 Where does it go, this observed timestamp, and is it going to have an impact in the output that we see? For example, in the console output, we see a few fields being emitted out. Would this be another one come and sit there?
+**Julius Koval** 15:58 Well, it would add,
+**Rajkumar Rangaraj** 15:59 Where does it go, this observed timestamp, and is it going to have an impact in the output that we see? For example, in the console output, we see a few fields being emitted out. Would this be another one come and sit there?
 **Julius Koval** 16:13 This would be another field.
 If that's… if that answers the question.
 So it shouldn't be breaking chains or anything.

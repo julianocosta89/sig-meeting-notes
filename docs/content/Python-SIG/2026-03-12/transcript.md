@@ -82,8 +82,8 @@ It doesn't look like we have a, blocked… Column in here, anyway.
 **Aaron Abbott** 15:36 Let me just leave a note here.
 Alright, maybe we'll just spend, like, another… Two minutes on this, see how many more we can get through.
 Right, this one has no reviews, checks billing, I think this is some self-observability metrics.
-Which is something we should definitely get in.
-**It's, like, 158 lines… lechen** 16:13 Yeah.
+Which is something we should definitely get in. It's, like, 158 lines…
+**lechen** 16:13 Yeah.
 I get to work.
 **Aaron Abbott** 16:17 Okay, I'm gonna put it as easy to review, maybe.
 looks relatively easy. I don't know if, The only thing here I'm not super sure about is, like, you know.
@@ -151,8 +151,8 @@ This one?
 **Erdenesaikhan Tserendavga** 22:07 No, it took.
 Pulling up…
 **Aaron Abbott** 22:11 I can go back to the main…
-**Erdenesaikhan Tserendavga** 22:13 I think… put in the interpret.
-**If you… if you see the, Agency Nucretion PR, I have, Aaron Abbott** 22:21 In the dock, yeah, yeah. This one?
+**Erdenesaikhan Tserendavga** 22:13 I think… put in the interpret. If you… if you see the, Agency Nucretion PR, I have,
+**Aaron Abbott** 22:21 In the dock, yeah, yeah. This one?
 **Erdenesaikhan Tserendavga** 22:25 Yes. If you go down, I have tested with the one I think… yeah, this one.
 **Aaron Abbott** 22:35 Which, demo… which demo app is this?
 **Erdenesaikhan Tserendavga** 22:37 It's, OpenAI, manual instrumentation, which near me the PRT, yeah.
@@ -213,7 +213,8 @@ And it kind of implies that, like.
 You know, say they revved the… The version in the trace parent header.
 It kind of implies that you would use an implementation for the version that you see in the header. So, like… if this becomes version 2, which supports this new trace flag, and you see version 1 on the wire, you would want to downgrade to the other implementation. And obviously, like, that's an implementation detail, but, like.
 **Lukas** 28:43 Yeah, yeah, in that case, yeah, that definitely makes sense. So yeah, I can update the implementation depending on… I can take another look.
-**Aaron Abbott** 28:53 Alright, Lucas, do you think you can make it to the Tuesday SIG, or… Lukas 28:58 Yeah.
+**Aaron Abbott** 28:53 Alright, Lucas, do you think you can make it to the Tuesday SIG, or…
+**Lukas** 28:58 Yeah.
 **Aaron Abbott** 28:59 Yeah.
 **Lukas** 28:59 Yeah, just need the… the meeting link. You can just kind of… Okay.
 **Aaron Abbott** 29:05 Okay.
@@ -265,9 +266,11 @@ all of the stuff in the context can't go… can't get… can't get garbage colle
 So, yeah, it seems like a valid issue to me.
 Leighton, I see you left a… you left a comment last night.
 **lechen** 35:28 Yeah, I originally thought this was, just an observation by the original Poster.
-**Aaron Abbott** 35:35 Yeah, I don't think they even… lechen 35:37 Confirmed whether or not this was the cause of the… Memory explosion.
+**Aaron Abbott** 35:35 Yeah, I don't think they even…
+**lechen** 35:37 Confirmed whether or not this was the cause of the… Memory explosion.
 I'm not saying that this is not a legitimate issue.
-**Aaron Abbott** 35:47 Yeah. But I think… lechen 35:48 This was just an observation by them.
+**Aaron Abbott** 35:47 Yeah. But I think…
+**lechen** 35:48 This was just an observation by them.
 I went ahead and asked for, like, if they had any, like, benchmarks or anything, because the original issue is that they had… They found that it was larger than the memory of the… You know, of other components, like the spend. But… As well, the other language implementations do this differently as well, so I don't mind even just making this change, just wanted to see what… like, even if we made this change and, like.
 they had some memory problems. It's like, it doesn't solve the original issue, so…
 **Aaron Abbott** 36:27 Yeah, that's true.
@@ -275,7 +278,8 @@ Yeah, I mean, I think their logic is sounding like, We could probably come up wi
 Prevent garbage collection with the current thing that we have.
 **lechen** 36:40 It'll be happy.
 Yeah, it's most likely the contact.
-**Aaron Abbott** 36:44 And that… lechen 36:47 Also, so the original reason why we changed the API from just passing in span context, or at least the fields of span context, was just for passing baggage explicitly, right?
+**Aaron Abbott** 36:44 And that…
+**lechen** 36:47 Also, so the original reason why we changed the API from just passing in span context, or at least the fields of span context, was just for passing baggage explicitly, right?
 **Aaron Abbott** 37:00 I mean, I don't remember the… spec super well by heart, but I think… generally, like, the API should always… all the APIs, like, public methods should accept the context. Like, the full context, so that, processors or whatever can do stuff with it.
 **lechen** 37:18 Yeah.
 That's true, yeah.

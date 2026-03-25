@@ -59,8 +59,8 @@ Leave the guy opened.
 **Trask Stalnaker** 06:42 Yeah.
 **Liudmila Molkova** 06:43 the issue on the .NET report, they will get help.
 **Trask Stalnaker** 06:50 Cool.
-Do we want to try to… Resurrect context here… Where did we leave this the last time, Robert? Do you remember?
-**I think you were… Sort of agreeing that maybe we only need… Let's see… Pellared** 07:31 I just think we have a summary.
+Do we want to try to… Resurrect context here… Where did we leave this the last time, Robert? Do you remember? I think you were… Sort of agreeing that maybe we only need… Let's see…
+**Pellared** 07:31 I just think we have a summary.
 Around the last discussion.
 Example, yeah…
 **Trask Stalnaker** 07:53 Fantastic notes here.
@@ -128,7 +128,8 @@ I think during the last discussion, but it was only, like, surfaced, could you s
 Yeah, the set exception for… add something like span and with exception to the trace API, but I'll post… I suggest postponing it as late as possible.
 **Liudmila Molkova** 15:31 It doesn't seem like a blocker for anything.
 **Pellared** 15:34 Yep.
-**Trask Stalnaker** 15:35 Yeah, it feels like… Pellared 15:36 Right.
+**Trask Stalnaker** 15:35 Yeah, it feels like…
+**Pellared** 15:36 Right.
 **Trask Stalnaker** 15:37 Convenience.
 **Pellared** 15:38 Yup.
 I would rather first work on stabilizing recording exceptions, whatever is there.
@@ -145,7 +146,8 @@ Right.
 **Pellared** 17:24 I'm not sure how… It will be performance-wise, because then you'll need to have a cache, you would not… Yeah, you'll just need to wait.
 Yeah, you're cold.
 Yes, you called.
-**Trask Stalnaker** 17:40 cost of, I mean, already tail-based sampling, you're… Pellared 17:44 Yes, same course, you just, you need to wait before you emit the events until the spend, yeah.
+**Trask Stalnaker** 17:40 cost of, I mean, already tail-based sampling, you're…
+**Pellared** 17:44 Yes, same course, you just, you need to wait before you emit the events until the spend, yeah.
 So yeah, possible.
 You're right.
 **Liudmila Molkova** 17:57 I mean, it would be a big change, because it's currently only a span processor.

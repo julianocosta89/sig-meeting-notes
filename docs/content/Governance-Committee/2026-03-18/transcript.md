@@ -106,7 +106,8 @@ So usually, I do, like, a line about, like, what are the big topics that we're g
 **Severin Neumann** 08:03 Marilia, maybe, or Yorasi.
 **Austin Parker** 08:05 Or whoever.
 **Severin Neumann** 08:06 I'm already, like…
-**Marylia Gutierrez** 08:07 Yeah, I have it easily here. Let me just… Juraci Paixão Kröhling 08:13 I mean…
+**Marylia Gutierrez** 08:07 Yeah, I have it easily here. Let me just…
+**Juraci Paixão Kröhling** 08:13 I mean…
 **Severin Neumann** 08:14 Checked on that as well, but.
 **Austin Parker** 08:18 Hello, Jurassi.
 **Severin Neumann** 08:19 I'll have.
@@ -189,7 +190,8 @@ And, you know, go from there.
 **Reese Lee** 15:08 Oh.
 **Austin Parker** 15:09 And Prometheus usually goes really long, too.
 **Juraci Paixão Kröhling** 15:11 But I'm not gonna be a very nice person this time.
-**Austin Parker** 15:14 Oh, are you gonna… are we actually gonna, like… Juraci Paixão Kröhling 15:17 I am, got an… yeah, I am, yes.
+**Austin Parker** 15:14 Oh, are you gonna… are we actually gonna, like…
+**Juraci Paixão Kröhling** 15:17 I am, got an… yeah, I am, yes.
 Yes.
 **Austin Parker** 15:20 Thank you!
 **Juraci Paixão Kröhling** 15:22 Of course.
@@ -366,8 +368,8 @@ So, I guess I'll get us started.
 So, hey everyone, my name is Matt, I work with Datadoc, and very recently, I was elected to the position of co-chair of the Agent AI Foundation's Observability Working Group.
 And I was speaking with Pablo earlier this week about potential collaborations between the Observability Working Group and the OTEL Foundation, and he suggested it would be a good idea to sort of introduce myself here and see, sort of.
 the prevailing trends of what was going on with the GenAI semantic conventions in OTEL, and if there's any opportunities for collaboration, or if I can help bring the voice of some of the folks in that observability Working Group to the table in conversation with, the OTEL standards as they develop.
-**Liudmila Molkova** 34:52 Yeah, it's awesome to, see you here, Matt, and great to meet you. I'm Ludmila, I work on OpenTelemetry, semantic conventions, and Instrumentation SIG.
-**we have… maybe we have some folks, from your group also participate. I think Pavan from Cisco, Matt Lee** 35:13 Yep.
+**Liudmila Molkova** 34:52 Yeah, it's awesome to, see you here, Matt, and great to meet you. I'm Ludmila, I work on OpenTelemetry, semantic conventions, and Instrumentation SIG. we have… maybe we have some folks, from your group also participate. I think Pavan from Cisco,
+**Matt Lee** 35:13 Yep.
 **Liudmila Molkova** 35:13 Yeah, so the things we are focusing on at the time, currently, is mostly the agentic stuff. I think we have a good foundation for the basic LLM calls.
 We are building this foundation for argentic scenarios. We try to describe all the conventions about… on how to record these different scenarios, and there is also interest in the, like, the server observability, but it's kind of tricky.
 We have some instrumentation libraries, and we have some people in the community working on, on bringing them, To follow the conventions, be consistent.

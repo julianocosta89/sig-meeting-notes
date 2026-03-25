@@ -152,6 +152,17 @@ class TestMergeContinuationLines:
             "Donal O'Sullivan 10:05 Thanks, yes.",
         ]
 
+    def test_hyphenated_speaker_not_merged(self):
+        """A hyphenated display name starts a new entry."""
+        raw = [
+            _li(False, "Sergey 10:27 It can drift over time…"),
+            _li(False, "Chris Lightfoot-Wild 10:45 It reads like if…"),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Sergey 10:27 It can drift over time…",
+            "Chris Lightfoot-Wild 10:45 It reads like if…",
+        ]
+
     def test_bracket_org_speaker_not_merged(self):
         """A display name with a bracket org tag (e.g. 'Marc Alff [MySQL]') starts a new entry."""
         raw = [
@@ -172,6 +183,17 @@ class TestMergeContinuationLines:
         assert _merge_continuation_lines(raw) == [
             "Alice Fox 10:00 Over to Giuseppe…",
             "Giuseppe Ognibene | Coralogix 10:07 Sure.",
+        ]
+
+    def test_email_handle_speaker_not_merged(self):
+        """An email-style display name starts a new entry."""
+        raw = [
+            _li(False, "Tiffany Hrabusa 20:55 I haven't looked at it yet, so…"),
+            _li(False, "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?"),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Tiffany Hrabusa 20:55 I haven't looked at it yet, so…",
+            "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?",
         ]
 
     def test_speaker_like_continuation_no_timestamp_still_merged(self):
@@ -331,17 +353,15 @@ class TestMergeContinuationLines:
             "Q 10:05 Right.",
         ]
 
-    def test_dotted_handle_not_split_as_embedded_speaker(self):
-        """A dotted display name like 'foo.bar 10:01' is not split at the dot."""
+    def test_dotted_handle_speaker_not_merged(self):
+        """A dotted handle at the start of the continuation is treated as a speaker."""
         raw = [
             _li(False, "Alice Fox 10:00 passing over…"),
             _li(False, "foo.bar 10:01 Sure."),
         ]
-        # 'foo.bar 10:01' starts with a non-letter (would fail _SPEAKER_LIKE_RE)
-        # and the dot has no whitespace after it so _EMBEDDED_SPEAKER_RE won't match either.
-        # The previous line ends with '…' (not a sentence terminator), so it merges.
         assert _merge_continuation_lines(raw) == [
-            "Alice Fox 10:00 passing over… foo.bar 10:01 Sure.",
+            "Alice Fox 10:00 passing over…",
+            "foo.bar 10:01 Sure.",
         ]
 
     def test_comma_before_multi_token_speaker_splits_embedded(self):
@@ -357,6 +377,17 @@ class TestMergeContinuationLines:
         assert _merge_continuation_lines(raw) == [
             "Alice Fox 10:00 let me pass the mic sure, thanks,",
             "Kemal Akkoyun 31:30 I'm super happy to be here.",
+        ]
+
+    def test_comma_before_single_token_speaker_splits_embedded(self):
+        """A capitalized single-token speaker after ',' is split as a real hand-off."""
+        raw = [
+            _li(False, "Bob Strecansky 19:36 Yeah"),
+            _li(False, "Yeah, Sergey 19:38 I mean, it sounds like they're placed correctly."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Bob Strecansky 19:36 Yeah Yeah,",
+            "Sergey 19:38 I mean, it sounds like they're placed correctly.",
         ]
 
     def test_comma_before_single_token_not_split_as_embedded_speaker(self):
@@ -377,6 +408,20 @@ class TestMergeContinuationLines:
         ]
         assert _merge_continuation_lines(raw) == [
             "Alice Fox 10:00 let me hand over yes, and Alice Smith 10:05 Thanks.",
+        ]
+
+    def test_comma_before_email_handle_speaker_splits_embedded(self):
+        """An email-style speaker after ',' is split even when the handle is lowercase."""
+        raw = [
+            _li(False, "Tiffany Hrabusa 20:55 I haven't looked at it yet"),
+            _li(
+                False,
+                "copy edit is done, lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?",  # noqa: E501
+            ),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Tiffany Hrabusa 20:55 I haven't looked at it yet copy edit is done,",
+            "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?",
         ]
 
     def test_continuation_without_embedded_speaker_still_merged(self):
@@ -529,6 +574,22 @@ class TestMergeContinuationLines:
             "Alice: hmm not sure.",
             "Bob Smith 10:00 I agree.",
             "Carol 10:01 Me too.",
+        ]
+
+    def test_speaker_start_line_with_hyphenated_and_email_boundaries_split_all(self):
+        """A speaker-start continuation should also split later hyphenated/email speaker turns."""
+        raw = [
+            _li(True, "Alice: done."),
+            _li(
+                False,
+                "Sergey 10:27 It can drift over time… Chris Lightfoot-Wild 10:45 It reads like if… lciukaj@splunk.com 10:59 Yep.",  # noqa: E501
+            ),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: done.",
+            "Sergey 10:27 It can drift over time…",
+            "Chris Lightfoot-Wild 10:45 It reads like if…",
+            "lciukaj@splunk.com 10:59 Yep.",
         ]
 
 

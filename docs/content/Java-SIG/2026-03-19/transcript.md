@@ -158,8 +158,8 @@ Or, like… the smoke tests?
 I, just add it as a comment, then I, And check it out.
 **Lauri** 29:40 The problem is that sometimes it's difficult to tell whether… Changing some module actually affects any smoke tests.
 **Gregor Zeitlinger** 29:51 In the dependency graph, Would not tell you?
-**Trask Stalnaker** 29:58 Well, if the dependency graph told you, then Gradle would know. I think with smoke tests, the problem is that it depends on the bundled Java agent.
-**So therefore, it depends on… Lauri** 30:09 I was actually thinking that maybe the easiest way to speed up the smoke tests would just be run… would just to be… run less smoke tests.
+**Trask Stalnaker** 29:58 Well, if the dependency graph told you, then Gradle would know. I think with smoke tests, the problem is that it depends on the bundled Java agent. So therefore, it depends on…
+**Lauri** 30:09 I was actually thinking that maybe the easiest way to speed up the smoke tests would just be run… would just to be… run less smoke tests.
 We run smoke tests on a ton of different versions, a ton of different JVMs.
 I'm pretty sure we could, at least for pull request builds.
 Come up with a smaller set of smoke tests to run.
@@ -174,7 +174,8 @@ So in other projects, 5 minutes is already very slow, and, We don't have that, o
 **Lauri** 31:52 What is currently the slowest step?
 Or, like, What is the step that needs to be always run? Like, what's the minimum amount of time that the pull request can take?
 Is it CodeQL?
-**Jay DeLuca** 32:07 I think I have… Lauri 32:08 Like, 15 minutes?
+**Jay DeLuca** 32:07 I think I have…
+**Lauri** 32:08 Like, 15 minutes?
 **Jay DeLuca** 32:11 I have a dashboard that shows this.
 **Trask Stalnaker** 32:17 Let's see, we've got… Because…
 **Jay DeLuca** 32:21 the Grail VM.
@@ -185,7 +186,8 @@ Right. Can I share my screen for a second?
 **Trask Stalnaker** 32:59 Oh, yeah.
 **Lauri** 33:01 I was actually meaning, like, what's the minimum amount of time that we could, like, Get the bills, too.
 like, if you always run the CodeQL step, then… It took 17 minutes from the pull request that Trask showed.
-**Jay DeLuca** 33:19 But here I have… Lauri 33:20 Any step that takes less time than that probably isn't going to affect the total time.
+**Jay DeLuca** 33:19 But here I have…
+**Lauri** 33:20 Any step that takes less time than that probably isn't going to affect the total time.
 **Jay DeLuca** 33:29 This is the list of jobs by average duration.
 **Trask Stalnaker** 33:34 Oh, that's nice.
 **Gregor Zeitlinger** 33:37 Like, GrowVM does not always run, so I think, We should ignore that for this purpose.
@@ -223,8 +225,8 @@ I think, actually, we probably only need, like, one job that, Like, if the main 
 And I think we also saw… Maybe enabled it for one of the test jobs, but it probably isn't necessary What might complicate things is that We have, like, some jobs that aren't, like, Strictly related to our main job.
 Like, the… Like, the overhead benchmark and stuff like that.
 Those could also end up messing with the caches, because I think that the setup Gradle plugin, it just, like, if it doesn't find, like, an exact key, it just uses some random one, or, like.
-**Trask Stalnaker** 38:31 There's some complicated, yeah, logic there that I agree that there's… I know we spent a lot of time trying with Nikita long ago, and then I made another pass after that at some point.
-**Trying to improve the situation, but… It is… Lauri** 38:52 When Nikita was working on it, we still… we were still using, like, the… The other plugin, like, the one that… where we had to manually manage the caching.
+**Trask Stalnaker** 38:31 There's some complicated, yeah, logic there that I agree that there's… I know we spent a lot of time trying with Nikita long ago, and then I made another pass after that at some point. Trying to improve the situation, but… It is…
+**Lauri** 38:52 When Nikita was working on it, we still… we were still using, like, the… The other plugin, like, the one that… where we had to manually manage the caching.
 But yeah, like, photographer images, I think there was, like, an… a GitHub Actions plugin that did it, but the problem was that it was written by some random dude.
 So, I'm not sure whether you would agree with using it.
 **Gregor Zeitlinger** 39:26 Well, maybe there is something new. If we haven't looked at it in a time, then maybe there's an easy win.

@@ -24,7 +24,8 @@ Well, folks, do we have anything new in the world of sampling?
 The notes don't have anything, but that's sort of normal.
 Since I see you here, Chris… Why don't we ask you if you maybe have an agenda item?
 Today.
-**Chris Marchbanks** 03:52 Yeah, I was… jmacdonald 03:54 I remember… yeah, let's go… what do I remember?
+**Chris Marchbanks** 03:52 Yeah, I was…
+**jmacdonald** 03:54 I remember… yeah, let's go… what do I remember?
 Actually, I don't remember what I remember. You were talking about partial trace sampling.
 **Chris Marchbanks** 04:02 I was a little curious about partial trace sampling. Really, the general idea is I'm very curious around… Having a little bit more… a little bit easier to configure sampling rates for services, which partial choice sampling was also… was one option. I was a little curious around… I know, like, Jaeger remote sampling is supported if you use the shim.
 I was curious if there's anything related to that.
@@ -146,8 +147,8 @@ I could be… I could have made so many lies just now, but this is an interestin
 Cool. This is a place to…
 **Chris Marchbanks** 29:39 go read more. Excellent, thank you. Yeah, yeah.
 **jmacdonald** 29:41 I appreciate it, and if you find anything out, brilliant, you should share it here.
-**Chris Marchbanks** 29:44 Yeah, for sure.
-**Thank you. Well, those are my topics, so… jmacdonald** 29:49 Cool. Still have the notes up. So, I didn't take notes on that. Josh talks about… Good… Turing, frequency, estimates, and CHOWs.
+**Chris Marchbanks** 29:44 Yeah, for sure. Thank you. Well, those are my topics, so…
+**jmacdonald** 29:49 Cool. Still have the notes up. So, I didn't take notes on that. Josh talks about… Good… Turing, frequency, estimates, and CHOWs.
 Research into frequency estimates, What else did I talk about? X spec… maximization algorithms? That's not how you spell that.
 **Chris Marchbanks** 30:18 And correspondence.
 **jmacdonald** 30:20 Remote Sampling, correspondence, analysis… It says, Chris will dig in.

@@ -11,7 +11,8 @@ Zoom Recording URL: https://zoom.us/rec/share/E_QuT7Wd1AVYKkl50h7O0rk6UXsUMNdRs2
 **Pablo Baeyens** 01:17 Will you be at CubeCon next week?
 **Donal O'Sullivan** 01:21 Yeah, I'll, I'll be attending.
 You going?
-**Pablo Baeyens** 01:26 Yep, yeah, I'm… Donal O'Sullivan 01:29 Cool.
+**Pablo Baeyens** 01:26 Yep, yeah, I'm…
+**Donal O'Sullivan** 01:29 Cool.
 **Pablo Baeyens** 01:31 I… Put something on the calendar for… this group to meet on Wednesday.
 So… Thanks.
 That'd be cool.
