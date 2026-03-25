@@ -270,6 +270,18 @@ class TestMergeContinuationLines:
             "Andrej 03:22 Thanks.",
         ]
 
+    def test_embedded_clock_phrase_does_not_block_later_real_speaker_split(self):
+        """Suppressed clock phrases should not prevent scanning to a later real hand-off."""
+        raw = [
+            _li(True, "Alice: previous turn."),
+            _li(False, "Bob 10:00 ... At 10:05 we begin. Carol 10:06 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: previous turn.",
+            "Bob 10:00 ... At 10:05 we begin.",
+            "Carol 10:06 Thanks.",
+        ]
+
     def test_hh_mm_ss_speaker_not_merged(self):
         """A name followed by an HH:MM:SS timestamp starts a new entry."""
         raw = [
@@ -423,6 +435,67 @@ class TestMergeContinuationLines:
             "Tiffany Hrabusa 20:55 I haven't looked at it yet copy edit is done,",
             "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?",
         ]
+
+    def test_suppressed_period_match_in_remainder_does_not_block_later_split(self):
+        """Continuation remainders should keep scanning after a suppressed sentence-starter."""
+        raw = [
+            _li(True, "Alice: previous turn"),
+            _li(False, "noted. At 10:05 we begin. Bob 10:06 Hi."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: previous turn noted. At 10:05 we begin.",
+            "Bob 10:06 Hi.",
+        ]
+
+    def test_suppressed_embedded_match_after_sentence_end_stays_new_entry(self):
+        """A suppressed embedded clock phrase stays as a new entry when the previous turn ended."""
+        raw = [
+            _li(True, "Alice: done."),
+            _li(False, "Okay. At 10:05 we begin."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: done.",
+            "Okay. At 10:05 we begin.",
+        ]
+
+    def test_suppressed_embedded_match_mid_sentence_merges_whole_line(self):
+        """A suppressed embedded clock phrase merges when the previous turn is mid-sentence."""
+        raw = [
+            _li(True, "Alice: still going"),
+            _li(False, "Okay. At 10:05 we begin."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: still going Okay. At 10:05 we begin.",
+        ]
+
+    def test_extract_speaker_skips_bare_text_nodes(self):
+        """Bare text children should not interfere with speaker/text extraction."""
+        html = (
+            '<ul class="transcript-list">'
+            '<li>  <span class="speaker">Alice</span> hello <p>world.</p> </li>'
+            "</ul>"
+        )
+        assert parse_transcript_html(html) == ["Alice: world."]
+
+    def test_extract_speaker_fallback_from_newline_text(self):
+        """When no child tags are present, newline-separated text falls back to speaker + body."""
+        html = "<ul><li>Alice\nhello world.</li></ul>"
+        assert parse_transcript_html(html) == ["Alice: hello world."]
+
+    def test_extract_text_fallback_without_newline(self):
+        """When no speaker is detectable and there is no newline, keep the full text as body."""
+        html = "<ul><li>just continuation text</li></ul>"
+        assert parse_transcript_html(html) == ["just continuation text"]
+
+    def test_extract_text_fallback_with_single_text_line(self):
+        """Single-line fallback text should not create a synthetic speaker."""
+        html = "<ul><li>plain fallback body</li></ul>"
+        assert parse_transcript_html(html) == ["plain fallback body"]
+
+    def test_extract_speaker_fallback_with_multiple_lines(self):
+        """Fallback newline parsing should join the remaining body lines."""
+        html = "<ul><li>Alice\nhello\nworld.</li></ul>"
+        assert parse_transcript_html(html) == ["Alice: hello world."]
 
     def test_continuation_without_embedded_speaker_still_merged(self):
         """A plain continuation line with no embedded speaker is still merged."""

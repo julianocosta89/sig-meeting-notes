@@ -33,6 +33,11 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_sentence_starter_at_start_not_accepted_as_speaker(self):
+        matches = _valid_split_matches("At 10:05 we begin. Bob 10:06 Hi.")
+        assert len(matches) == 1
+        assert matches[0].group(1) == "Bob"
+
     def test_merged_two_speakers(self):
         pre = "Marc Pichler 13:40 asking… Marylia Gutierrez 13:43 I'll just ask"
         matches = _valid_split_matches(pre)
@@ -181,6 +186,13 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert matches[1].group(1) == "lciukaj@splunk.com"
 
+    def test_suppressed_match_does_not_block_later_valid_match(self):
+        pre = "Bob 10:00 ... At 10:05 we begin. Carol 10:06 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[0].group(1) == "Bob"
+        assert matches[1].group(1) == "Carol"
+
     def test_article_a_after_ellipsis_not_a_split_point(self):
         # 'a' (English article) is in _SENTENCE_STARTERS → suppressed after '…'.
         pre = "Alice 10:00 passing… a 10:05 reminder was sent."
@@ -234,6 +246,13 @@ class TestValidSplitMatches:
         matches = _valid_split_matches(pre)
         assert len(matches) == 1
         assert matches[0].start() == 0
+
+    def test_dot_prefixed_fragment_after_sentence_end_is_not_treated_as_speaker(self):
+        pre = "Alice 10:00 Done. .jomard 44:07 Hi. Bob 44:10 Hi."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[0].group(1) == "Alice"
+        assert matches[1].group(1) == "Bob"
 
     def test_sentence_ending_dot_still_valid(self):
         # A genuine sentence end with '.' must still trigger a split.
@@ -364,6 +383,13 @@ class TestFixLineSplit:
         assert result[0] == "continuation text."
         assert result[1] == "**Alice** 10:00 Hello world."
 
+    def test_line_start_sentence_starter_not_formatted_as_speaker(self):
+        line = "At 10:05 we begin. Bob 10:06 Hi."
+        assert fix_line(line) == [
+            "At 10:05 we begin.",
+            "**Bob** 10:06 Hi.",
+        ]
+
     def test_dotted_handle_line_not_corrupted(self):
         """A single-speaker line with a dotted handle is returned unchanged."""
         line = "**mackenzie.jomard** 44:07 Just checking in."
@@ -377,6 +403,13 @@ class TestFixLineSplit:
         assert "Alice Fox" in result[0]
         assert "Bob Smith" in result[1]
         assert "00:13:34" in result[1]
+
+    def test_suppressed_mid_line_match_does_not_block_later_split(self):
+        line = "**Bob** 10:00 ... At 10:05 we begin. Carol 10:06 Thanks."
+        assert fix_line(line) == [
+            "**Bob** 10:00 ... At 10:05 we begin.",
+            "**Carol** 10:06 Thanks.",
+        ]
 
     def test_comma_before_capitalized_single_token_speaker_split(self):
         line = "**Bob Strecansky** 19:36 Yeah, Sergey 19:38 I mean, it sounds right."

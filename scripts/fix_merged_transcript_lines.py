@@ -24,13 +24,15 @@ import sys
 from pathlib import Path
 
 from scraper.speaker_boundaries import (
+    SPEAKER_LIKE_RE,
+    is_new_speaker_start,
+    should_suppress_embedded_boundary,
+)
+from scraper.speaker_boundaries import (
     SPEAKER_TS_RE as _SPEAKER_TS_RE,
 )
 from scraper.speaker_boundaries import (
     TURN_ENDS as _TURN_ENDS,
-)
-from scraper.speaker_boundaries import (
-    should_suppress_embedded_boundary,
 )
 
 # ── Pattern matching ──────────────────────────────────────────────────────────
@@ -62,7 +64,8 @@ def _pre_format_text(line: str) -> str:
 def _format_segment(segment: str) -> str:
     """Wrap a segment in bold speaker notation if it starts with Name+Timestamp."""
     m = _FORMAT_RE.match(segment)
-    if m:
+    speaker_match = SPEAKER_LIKE_RE.match(segment)
+    if m and speaker_match and is_new_speaker_start(speaker_match):
         return f"**{m.group(1)}** {m.group(2)} {m.group(3)}"
     return segment
 
@@ -79,6 +82,8 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
     valid = []
     for m in _SPEAKER_TS_RE.finditer(pre):
         if m.start() == 0:
+            if not is_new_speaker_start(m):
+                continue
             valid.append(m)
             continue
         before = pre[: m.start()].rstrip()

@@ -18,6 +18,36 @@ from scraper.speaker_boundaries import (
 )
 
 
+def _split_embedded_boundaries(text: str) -> list[str]:
+    """Split a raw transcript fragment at embedded speaker boundaries."""
+    segments: list[str] = []
+    remaining = text
+    search_pos = 0
+
+    while em := _EMBEDDED_SPEAKER_RE.search(remaining, search_pos):
+        split_pos = em.start("punct") + 1
+        if _embedded_suppress(em.group("punct"), em.group("name")):
+            search_pos = em.end("timestamp")
+            continue
+        segments.append(remaining[:split_pos].rstrip())
+        remaining = remaining[split_pos:].lstrip()
+        search_pos = 0
+
+    if remaining:
+        segments.append(remaining)
+    return segments
+
+
+def _first_embedded_boundary(text: str):
+    """Return the first non-suppressed embedded speaker boundary in text, if any."""
+    search_pos = 0
+    while em := _EMBEDDED_SPEAKER_RE.search(text, search_pos):
+        if not _embedded_suppress(em.group("punct"), em.group("name")):
+            return em
+        search_pos = em.end("timestamp")
+    return None
+
+
 def parse_transcript_html(outer_html: str) -> list[str]:
     """
     Parse the outerHTML of <ul class="transcript-list"> into lines of:
@@ -70,47 +100,17 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         elif (speaker_match := _SPEAKER_LIKE_RE.match(text)) and _is_new_speaker_start(
             speaker_match
         ):
-            remaining = text
-            while em := _EMBEDDED_SPEAKER_RE.search(remaining):
-                split_pos = em.start("punct") + 1
-                after = remaining[split_pos:].lstrip()
-                punct = em.group("punct")
-                if not _embedded_suppress(punct, em.group("name")):
-                    result.append(remaining[:split_pos].rstrip())
-                    remaining = after
-                else:
-                    break
-            result.append(remaining)
-        elif m := _EMBEDDED_SPEAKER_RE.search(text):
+            result.extend(_split_embedded_boundaries(text))
+        elif m := _first_embedded_boundary(text):
             # Split at the embedded boundary: the prefix (up to and including the
             # sentence-end punctuation) belongs to the prior turn; the remainder
             # (Name MM:SS utterance) starts a new speaker entry.
             split_pos = m.start("punct") + 1  # one past the sentence-end character
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
-            punct = m.group("punct")
-            suppress = _embedded_suppress(punct, m.group("name"))
-            if suppress:
-                if result[-1][-1] in sentence_ends:
-                    result.append(text)
-                else:
-                    result[-1] += " " + text
-            else:
-                if prefix:
-                    result[-1] += " " + prefix
-                # Walk the remainder for further embedded boundaries.
-                remaining = remainder
-                while em2 := _EMBEDDED_SPEAKER_RE.search(remaining):
-                    sp2 = em2.start("punct") + 1
-                    after2 = remaining[sp2:].lstrip()
-                    p2 = em2.group("punct")
-                    if not _embedded_suppress(p2, em2.group("name")):
-                        result.append(remaining[:sp2].rstrip())
-                        remaining = after2
-                    else:
-                        break
-                if remaining:
-                    result.append(remaining)
+            if prefix:
+                result[-1] += " " + prefix
+            result.extend(_split_embedded_boundaries(remainder))
         elif result[-1][-1] in sentence_ends:
             result.append(text)
         else:
