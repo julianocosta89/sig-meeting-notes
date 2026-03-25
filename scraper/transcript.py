@@ -57,6 +57,8 @@ _SENTENCE_STARTERS = frozenset(
         "then",
         "after",
         "before",
+        # Articles
+        "a",
         # Pronouns
         "i",
         "we",

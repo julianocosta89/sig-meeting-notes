@@ -402,6 +402,21 @@ class TestMergeContinuationLines:
             "Q | OpenAI 10:05 Thanks.",
         ]
 
+    def test_article_with_org_suffix_not_split(self):
+        """An article 'A' followed by an org-style suffix ('A | B 10:05') is NOT a speaker.
+
+        'a' is added to _SENTENCE_STARTERS to prevent sentences starting with
+        the article 'A' from being misidentified as speaker boundaries.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 Good point."),
+            _li(False, "I agree. A | B 10:05 into the rollout plan."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Good point.",
+            "I agree. A | B 10:05 into the rollout plan.",
+        ]
+
 
 # ---------------------------------------------------------------------------
 # parse_transcript_html integration tests (HTML → merged lines)
