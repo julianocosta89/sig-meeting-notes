@@ -207,7 +207,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                         suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                     else:
                         suppress = first_lower in _SENTENCE_STARTERS
-            else:
+            else:  # pragma: no cover  # _EMBEDDED_SPEAKER_RE only yields .?!…。？！
                 suppress = False
             if suppress:
                 if result[-1][-1] in sentence_ends:

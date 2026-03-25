@@ -387,6 +387,27 @@ class TestMergeContinuationLines:
             "I agree. So | far 10:05 into the meeting.",
         ]
 
+    def test_embedded_speaker_after_question_mark_splits(self):
+        """An embedded speaker after '?' is split as a new speaker turn (line 209)."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Is that right…"),
+            _li(False, "Yeah? Bob 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Is that right… Yeah?",
+            "Bob 10:05 Thanks.",
+        ]
+
+    def test_sentence_starter_after_exclamation_suppressed_merges_when_prev_no_sentence_end(self):
+        """suppress=True + prev line no sentence-end → merge whole line (line 216)."""
+        raw = [
+            _li(False, "Alice Fox 10:00 let me pass"),
+            _li(False, "yeah… at 10:05 we begin."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 let me pass yeah… at 10:05 we begin.",
+        ]
+
     def test_short_initial_with_org_suffix_after_period_splits(self):
         """A short initial with an org suffix ('Q | OpenAI') after '.' is a new speaker.
 

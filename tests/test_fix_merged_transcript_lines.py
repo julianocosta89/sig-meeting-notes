@@ -93,6 +93,87 @@ class TestValidSplitMatches:
         assert len(matches) == 2
         assert matches[1].group(1) == "Q"
 
+    def test_email_stem_after_period_not_a_split_point(self):
+        # 'alice@example.' ends with '.'; stem contains '@' → skip (line 153).
+        pre = "Alice 10:00 email alice@example. Bob 10:05 Hello."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_dotted_stem_after_period_not_a_split_point(self):
+        # 'config.example.' ends with '.'; stem contains '.' → skip (line 153).
+        pre = "Alice 10:00 see config.example. Bob 10:05 Hello."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_bracket_org_name_after_period_is_split_point(self):
+        # '[MySQL]' causes break in name_tokens loop (line 162).
+        pre = "Alice 10:00 Done. Marc Alff [MySQL] 10:03 Happy."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert "[MySQL]" in matches[1].group(1)
+
+    def test_multi_token_lowercase_second_word_after_period_not_a_split_point(self):
+        # 'far' is lowercase → suppressed (lines 166-167).
+        pre = "Alice 10:00 Done. So far 10:05 along."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_sentence_starter_with_org_suffix_after_period_not_a_split_point(self):
+        # 'So' is a sentence-starter; single-token + org suffix (lines 171-172).
+        pre = "Alice 10:00 Done. So | Org 10:05 Hello."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_sentence_starter_after_ellipsis_not_a_split_point(self):
+        # 'at' is in _SENTENCE_STARTERS → suppressed after '…' (line 181).
+        pre = "Alice 10:00 passing… at 10:05 we begin."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_speaker_after_question_mark_is_split_point(self):
+        # Single token, not a sentence-starter, after '?' → valid (lines 186-204).
+        pre = "Alice 10:00 Really? Bob 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Bob"
+
+    def test_multi_token_title_case_after_question_mark_is_split_point(self):
+        # Multi-token, all title-case after '?' → valid (lines 194-195, no suppress).
+        pre = "Alice 10:00 Really? Bob Smith 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Bob Smith"
+
+    def test_multi_token_lowercase_after_question_mark_not_a_split_point(self):
+        # 'far' is lowercase after '?' → suppressed (lines 195-196).
+        pre = "Alice 10:00 Really? So far 10:05 along."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+
+    def test_bracket_org_name_after_question_mark_is_split_point(self):
+        # '[MySQL]' breaks the loop (line 191); single bare token + org, not a starter.
+        pre = "Alice 10:00 Really? Marc [MySQL] 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert "[MySQL]" in matches[1].group(1)
+
+    def test_sentence_starter_with_org_after_question_mark_not_a_split_point(self):
+        # 'So' is a starter; single bare token + org suffix (lines 197-199).
+        pre = "Alice 10:00 Really? So | Org 10:05 Hello."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+
+    def test_sentence_starter_after_exclamation_not_a_split_point(self):
+        # 'So' is in _SENTENCE_STARTERS; single token, no org (lines 200-203).
+        pre = "Alice 10:00 Done! So 10:05 we continue."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+
     def test_dotted_handle_not_a_split_point(self):
         # "jomard" after "mackenzie." must not be treated as a speaker (dotted handle).
         # _SPEAKER_TS_RE can find "jomard 44:07" inside "mackenzie.jomard 44:07 ...",
