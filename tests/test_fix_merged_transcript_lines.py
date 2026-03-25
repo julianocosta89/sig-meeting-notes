@@ -33,14 +33,22 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
-    def test_sentence_starter_at_start_is_accepted_as_split_point(self):
-        # Position-0 matches are always accepted; _format_segment bolds them.
-        # "At" will be formatted as a speaker — that's acceptable given that
-        # real transcript lines with "At" as a display name are extremely rare.
+    def test_sentence_starter_at_start_suppressed_on_non_bold_line(self):
+        # By default (non-bold / orphan line), sentence-starter names at
+        # position 0 are suppressed to avoid fabricating clock phrases as speakers.
         matches = _valid_split_matches("At 10:05 we begin. Bob 10:06 Hi.")
+        assert len(matches) == 1
+        assert matches[0].group("name") == "Bob"
+
+    def test_sentence_starter_at_start_accepted_when_known_bold(self):
+        # When the caller signals the position-0 token is a known speaker
+        # (e.g. the line was originally bold-formatted), starters are accepted.
+        matches = _valid_split_matches(
+            "Okay 10:00 Intro. Bob 10:01 Hi.", known_speaker_at_start=True
+        )
         assert len(matches) == 2
-        assert matches[0].group(1) == "At"
-        assert matches[1].group(1) == "Bob"
+        assert matches[0].group("name") == "Okay"
+        assert matches[1].group("name") == "Bob"
 
     def test_merged_two_speakers(self):
         pre = "Marc Pichler 13:40 asking… Marylia Gutierrez 13:43 I'll just ask"
@@ -503,6 +511,20 @@ class TestFixTranscriptFile:
         f.write_text(content, encoding="utf-8")
         changes, new_text = fix_transcript_file(f)
         assert len(changes) == 1
+
+    def test_prefix_not_appended_to_separator_when_first_body_line_splits(self, tmp_path):
+        """Prefix must not be merged into the empty sentinel line after the separator."""
+        content = f"SIG: Test\n{_SEP}\n**So, I'm on… Victoria Nduka** 04:45 Hello there.\n"
+        f = tmp_path / "transcript.md"
+        f.write_text(content, encoding="utf-8")
+        changes, new_text = fix_transcript_file(f)
+        assert len(changes) == 1
+        lines = new_text.splitlines()
+        # Separator must be intact — not "====...So, I'm on…"
+        assert _SEP in lines
+        sep_idx = lines.index(_SEP)
+        assert lines[sep_idx] == _SEP
+        assert any("**Victoria Nduka**" in ln for ln in lines)
 
     def test_prefix_fragment_appended_to_prior_line(self, tmp_path):
         """Leading plain-text fragment is appended to the previous speaker line."""

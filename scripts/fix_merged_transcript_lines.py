@@ -30,6 +30,7 @@ from scraper.speaker_boundaries import (
     TURN_ENDS as _TURN_ENDS,
 )
 from scraper.speaker_boundaries import (
+    is_new_speaker_start,
     should_suppress_embedded_boundary,
 )
 
@@ -67,7 +68,7 @@ def _format_segment(segment: str) -> str:
     return segment
 
 
-def _valid_split_matches(pre: str) -> list[re.Match]:
+def _valid_split_matches(pre: str, known_speaker_at_start: bool = False) -> list[re.Match]:
     """Return speaker-pattern matches that are valid split points.
 
     A match is valid when it is at the start of the text, or when the text
@@ -75,11 +76,17 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
     This prevents false positives where part of a speaker name (e.g. "Elastic
     Observability" in "Andrew Wilkins @ Elastic Observability 00:23 …")
     incorrectly looks like a new speaker.
+
+    ``known_speaker_at_start`` should be True when the caller already knows the
+    position-0 token is a real speaker (e.g. the original line was bold-formatted).
+    When False, the same sentence-starter heuristics used for non-zero offsets are
+    applied at position 0 to avoid fabricating speakers from clock phrases.
     """
     valid = []
     for m in _SPEAKER_TS_RE.finditer(pre):
         if m.start() == 0:
-            valid.append(m)
+            if known_speaker_at_start or is_new_speaker_start(m):
+                valid.append(m)
             continue
         before = pre[: m.start()].rstrip()
         punct = before[-1] if before else ""
@@ -136,7 +143,9 @@ def fix_line(line: str) -> list[str]:
     formatted lines when a multi-speaker merge is detected.
     """
     pre = _pre_format_text(line)
-    matches = _valid_split_matches(pre)
+    matches = _valid_split_matches(
+        pre, known_speaker_at_start=_BOLD_LINE_RE.match(line) is not None
+    )
 
     # Not corrupted: zero patterns, or exactly one that starts at position 0
     if not matches:
@@ -182,8 +191,15 @@ def fix_transcript_file(path: Path) -> tuple[list[tuple[int, str, list[str]]], s
 
         # When fix_line splits a merged line and the leading fragment is plain
         # text (no Name+Timestamp), it belongs to the preceding speaker's turn.
-        # Append it there instead of emitting it as a standalone orphan line.
-        if len(replacement) > 1 and new_body and not _FORMAT_RE.match(replacement[0]):
+        # Append it there instead of emitting it as a standalone orphan line,
+        # but only when the previous line is itself a formatted speaker line —
+        # never mutate separator lines, section headings, or empty sentinels.
+        if (
+            len(replacement) > 1
+            and new_body
+            and not _FORMAT_RE.match(replacement[0])
+            and _BOLD_LINE_RE.match(new_body[-1])
+        ):
             new_body[-1] = new_body[-1].rstrip() + " " + replacement[0].lstrip()
             new_body.extend(replacement[1:])
         else:
