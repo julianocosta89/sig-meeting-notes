@@ -197,9 +197,16 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                     # meeting transcripts, so the false-positive risk is minimal.
                     suppress = first_lower in _SENTENCE_STARTERS
                 else:
-                    # Pure single-token name (no org suffix): apply both the
-                    # length guard and the sentence-starter check.
-                    suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
+                    # Pure single-token name (no org suffix).
+                    # After '.' or '。': apply a length guard — short tokens
+                    # like "Li" or "Al" are more likely abbreviations than
+                    # display-name initials.  After '?' or '!': skip the
+                    # length guard so that short names like "Q 10:05" are
+                    # still recognised as new speaker turns.
+                    if punct in {".", "。"}:
+                        suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
+                    else:
+                        suppress = first_lower in _SENTENCE_STARTERS
             else:
                 suppress = False
             if suppress:

@@ -180,7 +180,9 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                 if name_first in _SENTENCE_STARTERS:
                     continue
             elif before[-1] in {"?", "!", "？", "！"}:
-                # After '?' or '!': same logic as '.'.
+                # After '?' or '!': same multi-token / org-suffix logic as '.',
+                # but skip the length guard for pure single-token names so that
+                # short display-name initials like "Q" are not suppressed.
                 name_tokens = m.group(1).split()
                 name_first = m.group(1).split(None, 1)[0].lower()
                 name_only = []
@@ -196,7 +198,8 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if name_first in _SENTENCE_STARTERS:
                         continue
                 else:
-                    if len(name_first) < 3 or name_first in _SENTENCE_STARTERS:
+                    # No length guard after '?'/'!' — only sentence-starters.
+                    if name_first in _SENTENCE_STARTERS:
                         continue
             valid.append(m)
     return valid
