@@ -344,6 +344,41 @@ class TestMergeContinuationLines:
             "Alice Fox 10:00 passing over… foo.bar 10:01 Sure.",
         ]
 
+    def test_comma_before_multi_token_speaker_splits_embedded(self):
+        """A multi-word speaker name after ',' is split as an embedded boundary.
+
+        Zoom sometimes renders two consecutive speaker turns in a single <li>
+        where the boundary is a comma rather than sentence-ending punctuation.
+        """
+        raw = [
+            _li(False, "Alice Fox 10:00 let me pass the mic"),
+            _li(False, "sure, thanks, Kemal Akkoyun 31:30 I'm super happy to be here."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 let me pass the mic sure, thanks,",
+            "Kemal Akkoyun 31:30 I'm super happy to be here.",
+        ]
+
+    def test_comma_before_single_token_not_split_as_embedded_speaker(self):
+        """A single-word token after ',' is NOT split to avoid false positives."""
+        raw = [
+            _li(False, "Alice Fox 10:00 Let me check"),
+            _li(False, "probably, probably 30:00 we can start."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 Let me check probably, probably 30:00 we can start.",
+        ]
+
+    def test_comma_before_sentence_starter_not_split_as_embedded_speaker(self):
+        """A sentence-starter word after ',' is NOT split even as a multi-token."""
+        raw = [
+            _li(False, "Alice Fox 10:00 let me hand over"),
+            _li(False, "yes, and Alice Smith 10:05 Thanks."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 let me hand over yes, and Alice Smith 10:05 Thanks.",
+        ]
+
     def test_continuation_without_embedded_speaker_still_merged(self):
         """A plain continuation line with no embedded speaker is still merged."""
         raw = [

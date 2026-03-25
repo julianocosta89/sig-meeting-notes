@@ -135,6 +135,27 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_comma_before_multi_token_speaker_is_split_point(self):
+        # Multi-word name after ',' → valid split.
+        pre = "Alice 10:00 started, Kemal Akkoyun 31:30 Happy to be here."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 2
+        assert matches[1].group(1) == "Kemal Akkoyun"
+
+    def test_comma_before_single_token_not_a_split_point(self):
+        # Single-word name after ',' → not split to avoid false positives.
+        pre = "Alice 10:00 Let me check, probably 30:00 we can start."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
+    def test_comma_before_sentence_starter_not_a_split_point(self):
+        # Sentence-starter word after ',' → not split even in multi-token form.
+        pre = "Alice 10:00 hand over, and Bob Smith 10:05 Thanks."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
     def test_title_cased_multi_token_after_ellipsis_is_split_point(self):
         # "So Koide" — "So" is a starter but "Koide" is title-cased → valid split.
         pre = "Alice 10:00 passing… So Koide 10:05 Thanks."

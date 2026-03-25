@@ -116,7 +116,7 @@ def _is_new_speaker_start(text: str) -> bool:
 
 
 _EMBEDDED_SPEAKER_RE = re.compile(
-    r"[.?!…。？！]\s+"  # sentence-end punctuation followed by whitespace (guards dotted handles)
+    r"[.?!…。？！,]\s+"  # sentence-end punctuation or comma followed by whitespace
     r"([^\W\d_][\w']*(?:\s+[^\W\d_][\w']*)*"  # group 1: name tokens
     r"(?:\s+\[[^\]]+\])?"  # optional [Org]
     r"(?:\s+\|[^|]*?)?"  # optional | Org
@@ -202,6 +202,21 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             full_name_tokens = m.group(1).split() if m.group(1) else []
             if punct == "…":
                 suppress = first_lower in _SENTENCE_STARTERS
+            elif punct == ",":
+                # After a comma: only split for multi-token names where the
+                # first token is not a sentence-starter and all non-first bare
+                # tokens are title-cased.  Single-token names are suppressed to
+                # avoid false positives (e.g. "probably 30:00" after a comma).
+                name_only = []
+                for t in full_name_tokens:
+                    if not t or t[0] in {"[", "|", "("}:
+                        break
+                    name_only.append(t)
+                suppress = (
+                    len(name_only) < 2
+                    or first_lower in _SENTENCE_STARTERS
+                    or any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
+                )
             elif punct in {".", "?", "!", "。", "？", "！"}:
                 # Collect bare name tokens, stopping at the first org suffix
                 # marker ('[', '|', '(') so that lowercase org words like
@@ -238,7 +253,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
                         suppress = len(first_token) < 3 or first_lower in _SENTENCE_STARTERS
                     else:
                         suppress = first_lower in _SENTENCE_STARTERS
-            else:  # pragma: no cover  # _EMBEDDED_SPEAKER_RE only yields .?!…。？！
+            else:  # pragma: no cover  # _EMBEDDED_SPEAKER_RE only yields .?!…。？！,
                 suppress = False
             if suppress:
                 if result[-1][-1] in sentence_ends:

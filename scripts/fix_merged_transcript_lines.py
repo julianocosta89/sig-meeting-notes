@@ -214,6 +214,25 @@ def _valid_split_matches(pre: str) -> list[re.Match]:
                     if name_first in _SENTENCE_STARTERS:
                         continue
             valid.append(m)
+        elif before and before[-1] == ",":
+            # After a comma: only accept multi-token names where the first token
+            # is not a sentence-starter and all non-first bare tokens are title-
+            # cased.  Single-token names are suppressed to avoid false positives
+            # (e.g. "probably 30:00" or "Alice 10:05" after a comma).
+            name_tokens = m.group(1).split()
+            name_first = m.group(1).split(None, 1)[0].lower()
+            name_only: list[str] = []
+            for t in name_tokens:
+                if not t or t[0] in {"[", "|", "("}:
+                    break
+                name_only.append(t)
+            if (
+                len(name_only) < 2
+                or name_first in _SENTENCE_STARTERS
+                or any(t[0].islower() for t in name_only[1:] if t and t[0].isalpha())
+            ):
+                continue
+            valid.append(m)
     return valid
 
 
