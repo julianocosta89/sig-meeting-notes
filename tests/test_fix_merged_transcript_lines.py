@@ -33,10 +33,14 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
-    def test_sentence_starter_at_start_not_accepted_as_speaker(self):
+    def test_sentence_starter_at_start_is_accepted_as_split_point(self):
+        # Position-0 matches are always accepted; _format_segment bolds them.
+        # "At" will be formatted as a speaker — that's acceptable given that
+        # real transcript lines with "At" as a display name are extremely rare.
         matches = _valid_split_matches("At 10:05 we begin. Bob 10:06 Hi.")
-        assert len(matches) == 1
-        assert matches[0].group(1) == "Bob"
+        assert len(matches) == 2
+        assert matches[0].group(1) == "At"
+        assert matches[1].group(1) == "Bob"
 
     def test_merged_two_speakers(self):
         pre = "Marc Pichler 13:40 asking… Marylia Gutierrez 13:43 I'll just ask"
@@ -383,11 +387,13 @@ class TestFixLineSplit:
         assert result[0] == "continuation text."
         assert result[1] == "**Alice** 10:00 Hello world."
 
-    def test_line_start_sentence_starter_not_formatted_as_speaker(self):
-        line = "At 10:05 we begin. Bob 10:06 Hi."
+    def test_sentence_starter_display_name_bold_preserved(self):
+        # Speakers like "Okay", "No", "Yes" are in _SENTENCE_STARTERS but are
+        # valid display names — they must keep their bold formatting after repair.
+        line = "**Okay** 10:00 Intro. Bob 10:01 Hi."
         assert fix_line(line) == [
-            "At 10:05 we begin.",
-            "**Bob** 10:06 Hi.",
+            "**Okay** 10:00 Intro.",
+            "**Bob** 10:01 Hi.",
         ]
 
     def test_dotted_handle_line_not_corrupted(self):

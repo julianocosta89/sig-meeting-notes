@@ -109,7 +109,15 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
             prefix = text[:split_pos].rstrip()
             remainder = text[split_pos:].lstrip()
             if prefix:
-                result[-1] += " " + prefix
+                # When the line started with a suppressed speaker-like pattern
+                # (speaker_match is set but is_new_speaker_start returned False),
+                # the prefix is a clock-phrase fragment — start a new entry if
+                # the prior turn is already complete.  Otherwise (prefix is plain
+                # continuation text) always merge into the prior turn.
+                if speaker_match is not None and result[-1][-1] in sentence_ends:
+                    result.append(prefix)
+                else:
+                    result[-1] += " " + prefix
             result.extend(_split_embedded_boundaries(remainder))
         elif result[-1][-1] in sentence_ends:
             result.append(text)

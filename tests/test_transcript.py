@@ -436,6 +436,18 @@ class TestMergeContinuationLines:
             "lciukaj@splunk.com 20:59 Yeah, did you have plans to discuss next steps?",
         ]
 
+    def test_suppressed_prefix_after_sentence_end_becomes_new_entry(self):
+        """Suppressed clock phrase is a new entry, not merged, when prior turn is complete."""
+        raw = [
+            _li(True, "Alice: done."),
+            _li(False, "At 10:05 we begin. Bob 10:06 Hi."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice: done.",
+            "At 10:05 we begin.",
+            "Bob 10:06 Hi.",
+        ]
+
     def test_suppressed_period_match_in_remainder_does_not_block_later_split(self):
         """Continuation remainders should keep scanning after a suppressed sentence-starter."""
         raw = [
