@@ -127,6 +127,12 @@ class TestSpeakerLikeRe:
         # Lines starting with punctuation don't match
         assert SPEAKER_LIKE_RE.match("(Alice) 10:05 hello") is None
 
+    def test_unicode_apostrophe_in_name(self):
+        # Typographic apostrophe (U+2019) in device names like "Austin\u2019s iPhone"
+        m = SPEAKER_LIKE_RE.match("Austin\u2019s iPhone 10:05 hello")
+        assert m is not None
+        assert m.group("name") == "Austin\u2019s iPhone"
+
 
 class TestSpeakerTsRe:
     def test_finds_match_after_punctuation(self):
