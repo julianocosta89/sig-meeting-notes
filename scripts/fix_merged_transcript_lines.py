@@ -91,6 +91,7 @@ _SENTENCE_STARTERS = frozenset(
         "as",
         "that",
         "this",
+        "a",
         "ok",
         "okay",
         "yes",

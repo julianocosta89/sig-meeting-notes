@@ -270,6 +270,16 @@ class TestMergeContinuationLines:
             "Bob 00:13:34 Thanks.",
         ]
 
+    def test_article_a_after_ellipsis_not_treated_as_speaker(self):
+        """'a' (English article) after '…' is not a speaker name."""
+        raw = [
+            _li(False, "Alice Fox 10:00 passing over…"),
+            _li(False, "a 10:05 reminder was sent."),
+        ]
+        assert _merge_continuation_lines(raw) == [
+            "Alice Fox 10:00 passing over… a 10:05 reminder was sent.",
+        ]
+
     def test_sentence_starter_not_treated_as_speaker(self):
         """Common sentence-starting words (e.g. 'At', 'Today') are not speaker names."""
         raw = [

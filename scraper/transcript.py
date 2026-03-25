@@ -73,6 +73,8 @@ _SENTENCE_STARTERS = frozenset(
         "as",
         "that",
         "this",
+        # Articles
+        "a",
         # Acknowledgements
         "ok",
         "okay",

@@ -135,6 +135,13 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_article_a_after_ellipsis_not_a_split_point(self):
+        # 'a' (English article) is in _SENTENCE_STARTERS → suppressed after '…'.
+        pre = "Alice 10:00 passing… a 10:05 reminder was sent."
+        matches = _valid_split_matches(pre)
+        assert len(matches) == 1
+        assert matches[0].start() == 0
+
     def test_speaker_after_question_mark_is_split_point(self):
         # Single token, not a sentence-starter, after '?' → valid (lines 186-204).
         pre = "Alice 10:00 Really? Bob 10:05 Thanks."
