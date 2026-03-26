@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-26T07:07:48Z",
+  "generated_at": "2026-03-26T07:09:01Z",
   "min_date": "2025-06-16",
   "max_date": "2026-03-25",
   "sigs": [
@@ -366,7 +366,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 54,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -1850,7 +1850,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 30,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -4446,7 +4446,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 58,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -5352,7 +5352,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 21,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -5927,7 +5927,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 19,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -6132,7 +6132,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 19,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -9393,7 +9393,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 13,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
@@ -9591,7 +9591,7 @@
         {
           "date": "2026-03-25",
           "duration_minutes": 29,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
