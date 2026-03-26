@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T07:02:02Z",
+  "generated_at": "2026-03-26T07:07:48Z",
   "min_date": "2025-06-16",
   "max_date": "2026-03-25",
   "sigs": [
@@ -364,6 +364,13 @@
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 54,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-24",
           "duration_minutes": 63,
           "has_summary": true,
@@ -679,7 +686,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 45
+      "meeting_count": 46
     },
     {
       "slug": "Browser-SIG",
@@ -1841,6 +1848,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-11",
           "duration_minutes": 35,
           "has_summary": true,
@@ -1967,7 +1981,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 18
+      "meeting_count": 19
     },
     {
       "slug": "Configuration-WG",
@@ -4430,6 +4444,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 58,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-18",
           "duration_minutes": 58,
           "has_summary": true,
@@ -4696,7 +4717,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 38
+      "meeting_count": 39
     },
     {
       "slug": "K8s-Semantic-Convention-SIG",
@@ -5329,6 +5350,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 21,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-18",
           "duration_minutes": 54,
           "has_summary": true,
@@ -5588,7 +5616,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 37
+      "meeting_count": 38
     },
     {
       "slug": "NET-SIG",
@@ -5897,6 +5925,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-mainframe",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 19,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-11",
           "duration_minutes": 25,
           "has_summary": true,
@@ -6086,7 +6121,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 27
+      "meeting_count": 28
     },
     {
       "slug": "PHP-SIG",
@@ -6094,6 +6129,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1WLDZGLY24rk5fRudjdQAcx_u81ZQWCF3zxiNT-sz7DI",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-php",
       "meetings": [
+        {
+          "date": "2026-03-25",
+          "duration_minutes": 19,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-18",
           "duration_minutes": 59,
@@ -6361,7 +6403,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 38
+      "meeting_count": 39
     },
     {
       "slug": "Profiling-WG",
@@ -9349,6 +9391,13 @@
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
         {
+          "date": "2026-03-25",
+          "duration_minutes": 13,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-03-18",
           "duration_minutes": 37,
           "has_summary": true,
@@ -9531,7 +9580,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 26
+      "meeting_count": 27
     },
     {
       "slug": "eBPF-instrumentation",
@@ -9539,6 +9588,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1ZkmUT2EHKfgtLqrgx3WI8aBy2QNyZeTwSKXxe3DI6Pw",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation",
       "meetings": [
+        {
+          "date": "2026-03-25",
+          "duration_minutes": 29,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-18",
           "duration_minutes": 64,
@@ -9799,7 +9855,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 37
+      "meeting_count": 38
     },
     {
       "slug": "es-Localization-SIG-Communications",
