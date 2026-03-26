@@ -109,6 +109,14 @@ def _valid_split_matches(pre: str, known_speaker_at_start: bool = False) -> list
                 continue
             valid.append(m)
         elif punct == ",":
+            # Guard against "Last, First" speaker names (e.g. "Yazdankhah, Mani").
+            # When the caller asserts the line already has a known speaker at pos 0
+            # but no pos-0 match was found yet, this comma-preceded match is the
+            # first-name fragment of the speaker label, not a split boundary.
+            if known_speaker_at_start and not valid:
+                before_comma = before.rstrip(",")
+                if before_comma and " " not in before_comma and before_comma.isalpha():
+                    continue
             if should_suppress_embedded_boundary(punct, m.group("name")):
                 continue
             valid.append(m)

@@ -158,6 +158,21 @@ class TestValidSplitMatches:
         assert len(matches) == 1
         assert matches[0].start() == 0
 
+    def test_last_first_comma_name_with_known_speaker_not_a_split_point(self):
+        # "Last, First" format at the start of a known-speaker bold line: the comma
+        # is part of the speaker label, not a split boundary.
+        pre = "Yazdankhah, Mani 01:03:09 Hello everyone."
+        matches = _valid_split_matches(pre, known_speaker_at_start=True)
+        assert len(matches) == 0
+
+    def test_last_first_comma_name_unknown_speaker_is_split_point(self):
+        # Without known_speaker_at_start, the comma-preceded "Mani" is still
+        # treated as a potential split (behaviour unchanged for unknown context).
+        pre = "Yazdankhah, Mani 01:03:09 Hello everyone."
+        matches = _valid_split_matches(pre, known_speaker_at_start=False)
+        assert len(matches) == 1
+        assert matches[0].group(1) == "Mani"
+
     def test_comma_before_multi_token_speaker_is_split_point(self):
         # Multi-word name after ',' → valid split.
         pre = "Alice 10:00 started, Kemal Akkoyun 31:30 Happy to be here."
@@ -423,6 +438,20 @@ class TestFixLineSplit:
         assert fix_line(line) == [
             "**Bob** 10:00 ... At 10:05 we begin.",
             "**Carol** 10:06 Thanks.",
+        ]
+
+    def test_last_first_comma_name_not_corrupted(self):
+        # "Last, First" bold-formatted speaker line must not be split at the comma.
+        line = "**Yazdankhah, Mani** 01:03:09 Hello everyone."
+        assert fix_line(line) == [line]
+
+    def test_last_first_comma_name_split_at_later_boundary(self):
+        # "Last, First" speaker followed by a merged second speaker is split correctly.
+        line = "**Yazdankhah, Mani** 01:03:09 Intro. Alice 02:00:00 Thanks."
+        result = fix_line(line)
+        assert result == [
+            "**Yazdankhah, Mani** 01:03:09 Intro.",
+            "**Alice** 02:00:00 Thanks.",
         ]
 
     def test_comma_before_capitalized_single_token_speaker_split(self):
