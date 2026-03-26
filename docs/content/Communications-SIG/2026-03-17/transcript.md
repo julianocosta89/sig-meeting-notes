@@ -18,7 +18,8 @@ How is everyone?
 Huh.
 **Tiffany Hrabusa** 03:30 In fact, my bag is packed.
 and hidden from my dog, so that he won't see it before I leave. But… I messaged in, like, the group chat for this panel, and I'm like, I've never been on a panel before.
-**Marylia Gutierrez** 03:45 It's supposed to be… Tiffany Hrabusa 03:46 Doing something to prepare, and they're like, okay.
+**Marylia Gutierrez** 03:45 It's supposed to be…
+**Tiffany Hrabusa** 03:46 Doing something to prepare, and they're like, okay.
 I guess we're just gonna wing it.
 I think others are planning on joining, so we'll give it another minute or so.
 And I will post in the comms channel.
@@ -42,9 +43,11 @@ If he's going to.
 Nope.
 **Marylia Gutierrez** 05:47 Oh, you know that when you… people usually show up as, like, anonymous, and then some animal and stuff? I got jealous of somebody last week. The person was showing as anonymous young cat, and it was, like, Neon Cat and all the rainbows, so I'm just… I didn't know that was an option, and now I'm jealous.
 **Tiffany Hrabusa** 06:06 I did not know that was an option either.
-**Marylia Gutierrez** 06:09 Rosa, you know… Tiffany Hrabusa 06:09 multicolored… Whatever, icon?
+**Marylia Gutierrez** 06:09 Rosa, you know…
+**Tiffany Hrabusa** 06:09 multicolored… Whatever, icon?
 Really?
-**Marylia Gutierrez** 06:15 So yeah, it was, like, because it caught my attention, because all the other is just, like, one color, the thing, but that one was, like, very colorful, but things, like, I might be, and I would never know, because you never know which one you are, so… Tiffany Hrabusa 06:30 That is true.
+**Marylia Gutierrez** 06:15 So yeah, it was, like, because it caught my attention, because all the other is just, like, one color, the thing, but that one was, like, very colorful, but things, like, I might be, and I would never know, because you never know which one you are, so…
+**Tiffany Hrabusa** 06:30 That is true.
 That is true.
 When are you… Marilla, you're going to Kukan, right?
 **Marylia Gutierrez** 06:38 Yeah.
@@ -55,7 +58,9 @@ Because I'm also going to the maintainer summits, then I have a panel on Monday,
 Busy, busy, busy.
 Alright.
 Alright, I'm gonna give it one more minute, because I really want Severin to be here for… my topic.
-**I don't feel like I can… even though I'm a maintainer, I still don't feel like I can make decisions, so… Marylia Gutierrez** 07:22 And we can also… And this one should be… Tiffany Hrabusa 07:24 Be socialized.
+I don't feel like I can… even though I'm a maintainer, I still don't feel like I can make decisions, so…
+**Marylia Gutierrez** 07:22 And we can also… And this one should be…
+**Tiffany Hrabusa** 07:24 Be socialized.
 **Marylia Gutierrez** 07:25 Or we can also, like, skip yours and go to any of the following ones.
 **Tiffany Hrabusa** 07:30 Yeah, if, Diana's not here, so we can postpone hers.
 Victoria, if you want to, Cover any of yours, feel free to get started.
@@ -65,7 +70,8 @@ It was something that… I was talking to Tiffany.
 **Jay DeLuca** 08:03 Tons of things for you.
 **Marylia Gutierrez** 08:03 Sure, yeah, I'll do one to share there.
 **Tiffany Hrabusa** 08:10 Oh, yeah, yeah.
-**Vitor Vasconcellos** 08:12 I… Tiffany Hrabusa 08:13 That was my wild daydream.
+**Vitor Vasconcellos** 08:12 I…
+**Tiffany Hrabusa** 08:13 That was my wild daydream.
 **Vitor Vasconcellos** 08:17 Let me see if I can share my… Let me understand Joe… Never shared Google.
 Let me see.
 Is that working?
@@ -76,9 +82,11 @@ But… Yeah, we were talking about some way to… to integrate the blog posts, t
 With some kind of webhooks to remind us that we can merge a PR and… I mean, not only that, I can… I can see… a lot of… Things we can… We can do to… through that.
 But I've never seen any other integration like this.
 I'm not very sure.
-**I've already seen… Marylia Gutierrez** 09:41 In hotel? I don't think I remember seeing… Well, something like this.
+I've already seen…
+**Marylia Gutierrez** 09:41 In hotel? I don't think I remember seeing… Well, something like this.
 **Jay DeLuca** 09:51 I think it's a good idea But yeah, I don't know the logistics of… Would we need to get, like, an app made?
-**Or… Marylia Gutierrez** 10:02 Yeah, because that, it comes, like, for example, that is not something that we have, permissions to, like, change on Slack, so you have to, like, okay, talk made, like, a request or something, CNCF to get, kind of like an app or a bot created, and that, that one, maybe you can send?
+Or…
+**Marylia Gutierrez** 10:02 Yeah, because that, it comes, like, for example, that is not something that we have, permissions to, like, change on Slack, so you have to, like, okay, talk made, like, a request or something, CNCF to get, kind of like an app or a bot created, and that, that one, maybe you can send?
 **Vitor Vasconcellos** 10:25 Yeah… I'm gonna explore this a little bit, and… To let you know. But this… this would be great to have something like this.
 **Tiffany Hrabusa** 10:38 I agree.
 Right now, it's a very manual process.
@@ -92,11 +100,14 @@ And, Severin said that he got the time zone mixed up, but he'll be here in a sec
 **Tiffany Hrabusa** 11:52 Doesn't it usually make a noise when somebody joins?
 **Severin Neumann** 11:55 Dude.
 Yeah, we are… I mean, I shared it yesterday, I think, in the maintainers channel, like, we're right now, in this weird time where, like.
-**EU has not shifted their clocks, and you asked has, and I think since most of our meetings are in Pacific time, yeah, that's… Screwing… screwing up my schedule, so… Anyways… Tiffany Hrabusa** 12:20 Hi, how are you?
+EU has not shifted their clocks, and you asked has, and I think since most of our meetings are in Pacific time, yeah, that's… Screwing… screwing up my schedule, so… Anyways…
+**Tiffany Hrabusa** 12:20 Hi, how are you?
 **Severin Neumann** 12:23 It's, it's good, it's good.
 Just not well organized right now with my calendar, so… Just, just seeing the buffers thing, I think I have… Access to that, to give other people access.
-**Who… Tiffany Hrabusa** 12:44 We just need someone other than me.
-**Severin Neumann** 12:46 Yeah, let me, let me double-check on it, like, right now, so… Maybe I can… Tiffany Hrabusa 12:51 Like, a backup person.
+Who…
+**Tiffany Hrabusa** 12:44 We just need someone other than me.
+**Severin Neumann** 12:46 Yeah, let me, let me double-check on it, like, right now, so… Maybe I can…
+**Tiffany Hrabusa** 12:51 Like, a backup person.
 **Severin Neumann** 12:53 Yeah.
 I can do this on… just… just continue, I will… I'll let you know in a minute.
 **Tiffany Hrabusa** 13:01 Okay, the reason that came up, it was tangentially related to what Victoria was talking about before, which was my… Grand design for… Adding a bit of automation to the blog.
@@ -110,9 +121,11 @@ And initially, we were thinking about a top-level page, but now, the revised, Th
 I think that sounds fine, but I think we need a few more people to weigh in on the topic, but they would like to move forward, especially I am also motivated in this respect because the mentorship that I'm currently conducting is basically about interoperability documentation with Prometheus and OpenTelemetry.
 And we haven't decided exactly where the documentation changes will be made, whether that's on the Prometheus side, or the OpenTelemetry side, or both.
 But having that, having a dedicated home for that documentation If it doesn't fit well in other places, would be helpful for the mentorship as well.
-**Severin Neumann** 15:40 I mean, technically, we could also rename the migration section, I'm not sure if we… if we have talked about… thought about that, like, calling it Compatibility and migration or something like that, but… Yeah, I haven't looked into that, so I refrain from having a strong opinion on it, so if you have a good plan, then let's do it that way, so… Tiffany Hrabusa 16:09 Yeah, I mean, we can always, make changes.
+**Severin Neumann** 15:40 I mean, technically, we could also rename the migration section, I'm not sure if we… if we have talked about… thought about that, like, calling it Compatibility and migration or something like that, but… Yeah, I haven't looked into that, so I refrain from having a strong opinion on it, so if you have a good plan, then let's do it that way, so…
+**Tiffany Hrabusa** 16:09 Yeah, I mean, we can always, make changes.
 Later.
-**I think… I think the big concern right now there's two. One is optics, because, there's a sensitivity there on the Prometheus side of things, and two is just… being, like, unblocking things, basically. Unblocking Jack's PR and moving forward, in some way, so… Severin Neumann** 16:39 Yeah.
+I think… I think the big concern right now there's two. One is optics, because, there's a sensitivity there on the Prometheus side of things, and two is just… being, like, unblocking things, basically. Unblocking Jack's PR and moving forward, in some way, so…
+**Severin Neumann** 16:39 Yeah.
 **Tiffany Hrabusa** 16:46 If anybody, There's an issue, actually.
 Because my… my list… my bullet point on our agenda is from a few weeks ago, so let me find… the issue that Jack raised to discuss this, and… If you could… weigh in on it, anybody?
 Who has thoughts, just so we can then make a decision and move forward.
@@ -133,7 +146,8 @@ But what about… adding a compatibility section, right, it also mentions Jagger
 What about having a compatibility section?
 and then Prometheus and whatever, and then a migration section where we specifically talk about the things that are deprecated.
 Just to throw that in as an idea.
-**It would not make our… Top-level hierarchy longer, because we are not adding one more item, we just swap one out, so… Tiffany Hrabusa** 20:39 I missed the first part of your proposal, because I was responding to someone who wants to join the meeting, sorry.
+It would not make our… Top-level hierarchy longer, because we are not adding one more item, we just swap one out, so…
+**Tiffany Hrabusa** 20:39 I missed the first part of your proposal, because I was responding to someone who wants to join the meeting, sorry.
 **Severin Neumann** 20:45 My idea was, like, if we remove, or if we move the migration section into a new compatibility section.
 Like, we just call it compatibility, and then have migration below that, because my feeling is, like, this migration part and thing.
 becomes less and less important, right? I mean, there's still people out there that use OpenTracing and OpenCensus and JaegerClient and whatever.
@@ -144,7 +158,9 @@ But hopefully, like, the number gets smaller and smaller, so maybe we can even d
 **Severin Neumann** 21:32 I totally, I totally get that, because it's like, hey, we want you to migrate away from Prometheus, like, that's… It's the same with anything else, right? If we would do the same thing with Telegraph, or StatsD, or… whatever, right? If we would write there, like, hey, migration guide, and if this technology is not deprecated, we would, we would step on some people's toes.
 So, so I would then say, like, we have compatibility, and then we list all the technologies we are compatible with at some point. In migration, only contrarian things where we say, like, hey.
 this thing is deprecated, so let's say someone deprecated some other piece of technology in a few years from now.
-**and open telemetry would be a logical fallback, then we could say, like, okay, cool, let's… let's put it there versus… versus the other, so it's… At least something that sounds reasonable for me, but… Tiffany Hrabusa** 22:29 Yeah, I think… I think that sounds okay. Do you want to write that up on the issue, or I can summarize it and… Severin Neumann 22:35 I, I, I can, I, I can, I can make a comment on that.
+and open telemetry would be a logical fallback, then we could say, like, okay, cool, let's… let's put it there versus… versus the other, so it's… At least something that sounds reasonable for me, but…
+**Tiffany Hrabusa** 22:29 Yeah, I think… I think that sounds okay. Do you want to write that up on the issue, or I can summarize it and…
+**Severin Neumann** 22:35 I, I, I can, I, I can, I can make a comment on that.
 **Tiffany Hrabusa** 22:39 Okay.
 Okay, we can move on then. I think, Victor, you have the next ones.
 Oh, before we… before we go on, I think we have a new joiner, so I just wanted to say hello to Amarachi, and welcome to the meeting.
@@ -158,14 +174,16 @@ Otherwise, Vitor, I think it's over to you.
 **Vitor Vasconcellos** 23:48 Okay, I can… Do we have something?
 Extra on this one? The… the Mohtz?
 Owner.
-**Let me activate… Severin Neumann** 24:01 Actually, let me actually try something on the Slack. Let me make you a channel manager of comms.
+Let me activate…
+**Severin Neumann** 24:01 Actually, let me actually try something on the Slack. Let me make you a channel manager of comms.
 **Vitor Vasconcellos** 24:08 Oh.
 **Severin Neumann** 24:09 you can… maybe… because I can do workflows.
 Maybe it's a permission thing. I just made you a manager of comms.
 Let me see who else should be one.
 So, so if you now click on the plus icon in Slack, you… There's, like, You should be able to add a workflow, I think.
 **Vitor Vasconcellos** 24:39 No.
-**Severin Neumann** 24:42 It at least works at my end, so I'm not sure if I have anything different, but… Vitor Vasconcellos 24:48 Oh, from what? There it is.
+**Severin Neumann** 24:42 It at least works at my end, so I'm not sure if I have anything different, but…
+**Vitor Vasconcellos** 24:48 Oh, from what? There it is.
 **Severin Neumann** 24:51 Yeah, I think it's not working on the mobile app, that's something like… I think Diana mentioned this to me the other day, that this is not… of possible.
 so, sister, so maybe you, you tried from, from the… From the desktop client.
 **Vitor Vasconcellos** 25:12 That's interesting, I… Haven't seen that.
@@ -175,7 +193,8 @@ Okay, okay, I'm gonna explore this, and… Well, let's see what we can… What w
 Okay, the… this next item, I'm not sure if… If anyone has seen the issue for… Agent… Agentic skills.
 Not sure if we could create some… some skills or some… agents to… to work with, amps, especially for, I don't know, reviewing, and maybe… maybe writing some content. I was thinking about having something to… to help us on localization.
 And… I've just started using, I'm not a head user for that, so I'm not sure how people are using this. Fabricio seems to… to… to have a lot of context for that. Also, they have, and repo with their skills.
-**And I don't know if anyone has some thoughts on this, and… Or if anyone's using… Jay DeLuca** 26:49 In the Java instrumentation project, we've started introducing something like this, where… We have, basically, it's… it's… it's more geared towards Copilot, but, it runs like a GitHub action, like, every 15 minutes.
+And I don't know if anyone has some thoughts on this, and… Or if anyone's using…
+**Jay DeLuca** 26:49 In the Java instrumentation project, we've started introducing something like this, where… We have, basically, it's… it's… it's more geared towards Copilot, but, it runs like a GitHub action, like, every 15 minutes.
 And it will go through all of our various instruments and do, like, a code review, and do, like… we have basically, like, we've been building this library over the past couple weeks of… like, a knowledge base of, like, these are the things that we expect, and… and then it basically just goes through, and it… it throttles itself to only open 10 PRs at a time, but it just continually Monitors the… the code, and… and it's… It's required a lot of, nitpicky updates to the prompts and all that, but… It is super useful, and it's cool to see it as it's now, like, becoming more and more accurate.
 So, I don't know if we wanted to do something like that, where… whether it's code reviews, or just, like, periodic… audits of… of content or something. Just… just one idea.
 But I do think it's powerful, and I think it should… we should start to find uses for it, even if they're small at first.
@@ -213,7 +232,8 @@ Right, we should keep an eye on that.
 So… But yeah, good to hear.
 **Jay DeLuca** 34:00 Yeah, and as an aside on the… so the Ecosystem Explorer front, I did a Grafana community call, YouTube appearance.
 not last week, I think the week before. And I am working… I'm working on a blog post, too. I'm not sure where to publish that blog post, but as soon as it's, I think I'll… maybe I'll… I'll bombard Grafana about it first.
-**But… Marylia Gutierrez** 34:25 And then Tiffany can review from the other side.
+But…
+**Marylia Gutierrez** 34:25 And then Tiffany can review from the other side.
 **Tiffany Hrabusa** 34:28 It's like a trigger word now.
 **Jay DeLuca** 34:31 Maybe I'll, I'll park that for a little bit.
 **Tiffany Hrabusa** 34:36 No, it's fine.
@@ -226,7 +246,8 @@ not last week, I think the week before. And I am working… I'm working on a blo
 **Severin Neumann** 34:55 Thank you.
 **Vitor Vasconcellos** 34:56 Thank you.
 Yeah, I had… I had this other one, the spec compliance matrix, but I'm not sure if we have something to talk about this. I was thinking perhaps we should move to the next meeting.
-**Jay DeLuca** 35:15 My, my one thought about that… Vitor Vasconcellos 35:17 Oh, go ahead.
+**Jay DeLuca** 35:15 My, my one thought about that…
+**Vitor Vasconcellos** 35:17 Oh, go ahead.
 **Jay DeLuca** 35:19 That one feels very similar to what we're doing with the collector component stuff, except I think that one's, like, written in Perl or something. And I think they were trying to do… a more copy-paste as opposed to, like, just grabbing the raw data and then manipulating it, but, Yeah, I don't know, that one might be a candidate for just doing similarly to how we're doing.
 the collector component documentation, that was just one thought I had, but… Yeah, I don't know.
 **Severin Neumann** 35:50 Yeah, so my understanding is, like, it's… it's, like, reusing a lot of the work that Patrice did on, like, sinking speck, and website.
@@ -234,8 +255,10 @@ I mean, if it works, why not have it?
 I think the only thing is, like, I think Patrice should have a look into it.
 the one thing, I mean, I see why people need… see value in it. I just recognize that, like, hey, the contributor is someone who has not contributed that much to the project yet, if I'm not mistaken, but it just looks… decent, right? So I don't have the feeling like, hey, it's missing a lot of things. So, yeah, maybe… maybe we can… But maybe let's… let's talk with Patrice about it next time.
 **Jay DeLuca** 36:49 When is Patrice coming back, by the way?
-**Severin Neumann** 36:53 Let me see… Tiffany Hrabusa 36:56 His availability said he should be back now.
-**But… Severin Neumann** 37:02 Yeah, we, we should.
+**Severin Neumann** 36:53 Let me see…
+**Tiffany Hrabusa** 36:56 His availability said he should be back now.
+But…
+**Severin Neumann** 37:02 Yeah, we, we should.
 I can attack him on the issue.
 I mean, just to add this as a side note, I think within the SPAC, there's a long-standing issue to turn this table into… maybe they did it already, but they wanted to turn this into a YAML file to make it better to be managed, and then render the markdown from that, but I think we can work with both, right? So… I think that's… it's not a blocker.
 Yeah, let's maybe move on and down.
@@ -249,7 +272,8 @@ I'm still gonna use AI to analyze Slack and maybe do a gap analysis for certain 
 and have… ideally, more… more SMEs than Pablo and Jad, looking at that, and then, I'm gonna need their help, I guess, to create the content at that point, but… Yeah, it's just… it's slow going. Not a lot to… report.
 **Severin Neumann** 40:05 But I think it's an important experience and thing to recognize that, like, since we are the ones who write the OG content about OpenTelemetry, you cannot really rely on LLMs who, like, are self-referencing the things that we wrote in the past, so… yeah, maybe that's a reason why those things were happening that way.
 I don't know.
-**Tiffany Hrabusa** 40:29 Well, I mean, I think it was looking at the responses, so, you know, the collector, approvers and maintainers do respond to questions in Slack, so… Severin Neumann 40:37 Okay.
+**Tiffany Hrabusa** 40:29 Well, I mean, I think it was looking at the responses, so, you know, the collector, approvers and maintainers do respond to questions in Slack, so…
+**Severin Neumann** 40:37 Okay.
 **Tiffany Hrabusa** 40:37 And that… a lot of that information isn't necessarily captured in the docs, but for whatever reason, it focused heavily on Kubernetes, and Pablo was like, I don't want to rewrite the Kubernetes docs. Yeah.
 **Severin Neumann** 40:50 Yeah, yeah, yeah.
 **Tiffany Hrabusa** 40:52 Yeah.
@@ -262,7 +286,8 @@ We don't need to skip next week, because, like, we're scheduled for the week aft
 Yeah, and until then… Let's get some blog posts in.
 And work from there.
 **Tiffany Hrabusa** 42:09 Oh, yeah.
-**Marylia Gutierrez** 42:10 I mean, don't… Tiffany Hrabusa 42:11 Gio, go ahead.
+**Marylia Gutierrez** 42:10 I mean, don't…
+**Tiffany Hrabusa** 42:11 Gio, go ahead.
 Sorry, go ahead, Marilia.
 **Marylia Gutierrez** 42:14 And I was just gonna say, don't we have, like, some time, like, contribute fast? Let's just have one, like, everybody get together, you have to review a blog post. That is your contribution.
 **Tiffany Hrabusa** 42:26 Yeah.
@@ -289,5 +314,6 @@ as a newcomer, you have a big skill, right? You can ask the uncomfortable questi
 Alright, let's get 15 minutes.
 **Marylia Gutierrez** 45:30 Back.
 **Severin Neumann** 45:32 Awesome.
-**Oh, let's see… Tiffany Hrabusa** 45:35 Hey, y'all.
+Oh, let's see…
+**Tiffany Hrabusa** 45:35 Hey, y'all.
 **Vitor Vasconcellos** 45:36 See you, bye-bye.

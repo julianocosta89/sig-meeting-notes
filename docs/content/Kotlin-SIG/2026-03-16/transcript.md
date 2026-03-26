@@ -11,7 +11,8 @@ Zoom Recording URL: https://zoom.us/rec/share/xdHOFgA5_9gpQeAym83mST54OjrmaNyQCF
 **Jamie Lynch** 01:02 Oh, sweet.
 **Jason Plumb** 01:03 Very cool move, dude.
 **Hanson** 01:09 Hello?
-**Jason Plumb** 01:12 I… Hanson 01:16 You weren't around this week, Jason.
+**Jason Plumb** 01:12 I…
+**Hanson** 01:16 You weren't around this week, Jason.
 **Jason Plumb** 01:18 I'm not. I'm not here at all.
 **Hanson** 01:20 Okay.
 **Jason Plumb** 01:20 I mean, I'm flying to the Netherlands in 3 hours.
@@ -22,13 +23,14 @@ Shouldn't you be on your way to the airport, or… You're that confident that yo
 **Jason Plumb** 01:43 Mostly packed.
 **Jamie Lynch** 01:50 That's for KubeCon, is it?
 **Jason Plumb** 01:53 Yeah, but I'm extending it. KubeCon's not until next week, or technically it starts on Sunday, which is when the Maintainer Summit is.
-Which makes for a long conference, like… Maintainer Summit, then Observability Day, and then KubeCon?
-**So… Hanson** 02:10 Fantastic!
+Which makes for a long conference, like… Maintainer Summit, then Observability Day, and then KubeCon? So…
+**Hanson** 02:10 Fantastic!
 **Jason Plumb** 02:10 Yeah.
 **Francisco Prieto** 02:13 Hey, everyone.
 **Jason Plumb** 02:14 Ayy.
 **Francisco Prieto** 02:18 How's it going?
-**Hanson** 02:20 Good… Jason Plumb 02:22 Good.
+**Hanson** 02:20 Good…
+**Jason Plumb** 02:22 Good.
 **Hanson** 02:31 I saw Independiente go 4-4 last week.
 Was it last week, or was that the day before… week before?
 What a score!
@@ -57,7 +59,8 @@ And especially issues, because sometimes they're just really short, like, hey, I
 But have we had many external issues contributed yet?
 Very few, right, if any.
 **Jamie Lynch** 05:43 Perfect.
-**We've had a couple, but… Jason Plumb** 05:46 Yeah.
+We've had a couple, but…
+**Jason Plumb** 05:46 Yeah.
 **Jamie Lynch** 05:47 Probably I can count them on two hands.
 **Jason Plumb** 05:50 Yeah.
 Yeah, I feel like it's more of a, I feel like there's two good reasons why repos do it, and the first one is just because… the volume. Like, if you're getting… if your project is successful, you get so many issues that just, like.
@@ -89,7 +92,8 @@ this is discussing, is it talking about generating documentation for PRs, or, li
 **Hanson** 10:04 It's that last one. Sorry, the word documentation's probably confusing. It's like, I have a whole new feature, and, and, you know, AI helped me with XYZ, whatever. Do we need to, do we need to, like… have that expressed in any way, because I could see 6 months down the line, or whatever.
 most, you know, a lot of PRs will have been touched in some way, maybe even lightly. So if we start saying, hey, you have to add a checkbox, then the checkbox becomes irrelevant. If it's 95% has, you know, this checked.
 But at the same time, do we want anything?
-**the default answer, again, is probably… could just be no, unless we get a lot of slop. And we, you know, we treat ourselves with, a bit of… a trust to say, hey, we're gonna, you know, do the right thing, but sometimes that… that… sometimes that doesn't offer enough protection, especially in a public forum, so… Jason Plumb** 11:11 Yeah, I mean, that was the entire bulk of the discussion on my spec PR around this topic, was like.
+the default answer, again, is probably… could just be no, unless we get a lot of slop. And we, you know, we treat ourselves with, a bit of… a trust to say, hey, we're gonna, you know, do the right thing, but sometimes that… that… sometimes that doesn't offer enough protection, especially in a public forum, so…
+**Jason Plumb** 11:11 Yeah, I mean, that was the entire bulk of the discussion on my spec PR around this topic, was like.
 Really? You expect people to disclose this? And I'm like… Yes, I do.
 And… I don't know, I think the checkbox is fine. I think we also agreed in Android that it's a good idea, because we've had a number of large PRs that were very much slop, and I think it's at least good for reviewers to know that ahead of time, and not think that they've got a really ambitious person who requires a lot of, you know, help and hand-holding, versus, you know, just… just, like, spearing stuff at repos, because a lot of that is happening now. I think it's good to at least have something like, you know, I think… Java has two things now. It's like, did you… did you use AI tools in making this? And then, did you thoroughly… like, review the output, are you comfortable, you know, claiming this work as your own? And then, almost a third one that's like, are you really sure of that? Or are you just saying that?
 But, I think… I think the one in Java's pretty good.
@@ -102,7 +106,8 @@ See if I can find it. I'll look it up so we can link to it.
 **Jamie Lynch** 13:06 Cool.
 **Hanson** 13:08 I can take, I can take a look at it if I don't have, permission, then, and I will, I will, Ask for help.
 **Jamie Lynch** 13:17 Sounds good.
-**Okay… Francisco Prieto** 13:20 Feeling that this is going to become irrelevant in a few months.
+Okay…
+**Francisco Prieto** 13:20 Feeling that this is going to become irrelevant in a few months.
 Like, Not irrelevant, but a bit redundant, like… I expect a lot of people using AI, like, as the default, and I expect to see, like.
 few PRs without that checkbox.
 **Hanson** 13:39 Well, I mean, I expect that too, but I think the utility is… if you said you've reviewed this thoroughly, and we found that there are… that's evidence that it is not, or there are a lot of things about it, you know, that we can say, hey, why did you declare this? So it's almost like… it's almost like signing at the end of a thing. You kind of just do it anyway, because you just do it. But if you… if you are not confident in making those declarations, it gives people, hopefully, a bit of pause, and also gives us recourse to say, hey, you said you did… You vetted this, but you clearly didn't, kind of thing.
@@ -112,7 +117,8 @@ So, even if it's redundant, and maybe remove it in a year. But I still want peop
 **Hanson** 14:59 There were some… go ahead.
 **Jason Plumb** 15:01 These tools discourage thorough review, I'm sorry. It's just the way that it goes, and… It's accelerating.
 **Hanson** 15:11 some of the PRs we've seen in the Android repo is so obviously, either unreviewed or under-reviewed that you want to say.
-**Are you sure? And this, this checkbox is almost like… Yes, I am… we're asking everybody this question, and I would have no problem, like, checking a box, because I would review all my stuff, but I think other people, you know, may not. And if you look at it, not super carefully, but carefully enough, and you say, hey, this is good enough, sure, sign it. But then there are people who completely, or, you know, at least, didn't even take that step, so… Jamie Lynch** 16:00 Boom.
+Are you sure? And this, this checkbox is almost like… Yes, I am… we're asking everybody this question, and I would have no problem, like, checking a box, because I would review all my stuff, but I think other people, you know, may not. And if you look at it, not super carefully, but carefully enough, and you say, hey, this is good enough, sure, sign it. But then there are people who completely, or, you know, at least, didn't even take that step, so…
+**Jamie Lynch** 16:00 Boom.
 Yeah, so, Hanson, if you're okay to propose something, and then… Folks can chime in on that.
 **Hanson** 16:09 Sounds good?
 **Jamie Lynch** 16:10 Boop.
@@ -129,7 +135,8 @@ Which I guess isn't, like, a super big deal, but it'd be nice to… Kind of, lik
 **Carlos Alberto Cortez** 17:39 Yeah, for the record, I don't have permission to merge that. I confirmed sadly, so… Yeah.
 Also, I think it… it was… the bill was failing, no? Oh yeah, it's failing, yeah.
 **Jamie Lynch** 17:52 Yeah, I wonder if we can just check why it's failing.
-**Jason Plumb** 17:57 links, like… Carlos Alberto Cortez 17:59 laws.
+**Jason Plumb** 17:57 links, like…
+**Carlos Alberto Cortez** 17:59 laws.
 **Jason Plumb** 17:59 Yeah, markdown link check, always, everywhere.
 **Jamie Lynch** 18:02 Okay, that's flaky.
 **Jason Plumb** 18:04 If you click that docs link, does it work?
@@ -137,8 +144,8 @@ Also, I think it… it was… the bill was failing, no? Oh yeah, it's failing, y
 **Jason Plumb** 18:12 Sorry?
 **Jamie Lynch** 18:13 I wish DocsLink.
 **Jason Plumb** 18:15 Sorry, go to the, back to the link check failure.
-I think I'm lagged, like, a second here. Down at the very bottom, I gave a 404. Can you click… yeah, that docs link.
-**Is that working now? Oh… Hanson** 18:29 It doesn't exist?
+I think I'm lagged, like, a second here. Down at the very bottom, I gave a 404. Can you click… yeah, that docs link. Is that working now? Oh…
+**Hanson** 18:29 It doesn't exist?
 **Jason Plumb** 18:31 So that's the wrong dock.
 So, probably update the PR with the correct doc.
 **Jamie Lynch** 18:37 Okay.
@@ -226,13 +233,15 @@ I mean… I don't know, I could… I could see spending a few days, at least, pr
 **Jason Plumb** 30:37 Shocking. I'm… I'm astonished.
 **Hanson** 30:39 I was like, this is like college stuff, really? Oh, oh, right, JS.
 **Jamie Lynch** 30:47 Yeah, I… Well, I can take the initial, like, kind of attempt at it. I'm hopeful it's just gonna be a case of, like, bumping the dependency and seeing if that works.
-**Hanson** 30:57 There's sec… Jamie Lynch 30:58 Yeah.
+**Hanson** 30:57 There's sec…
+**Jamie Lynch** 30:58 Yeah.
 **Hanson** 30:59 there's 7 Dependabot ones, so I'm assuming we could just bump that.
 **Jason Plumb** 31:05 Yeah.
 Cool. Anyway, I just want to set that stage that, like, it's important for us to look at those when they show up, and… I'm also setting a bad example.
 Of not having touched these.
 I mean, literally, my thought process was, I see these and I'm like, oh shit, and then I look at it and I'm like, oh yeah, it's all JavaScript.
-**Hanson** 31:32 Yeah… Jason Plumb 31:33 But we… yeah, we should still… Get after it.
+**Hanson** 31:32 Yeah…
+**Jason Plumb** 31:33 But we… yeah, we should still… Get after it.
 **Hanson** 31:38 Yep, either we don't support JavaScript target, or we don't have vulnerabilities. We can't have both.
 **Jason Plumb** 31:44 Exactly, yeah.
 **Hanson** 31:47 Let me know if you need any help on this, Jamie. Oh, actually, I can't… I can't approve any of this, or I can't merge any of these anyway, so… But yeah, let me know if I can help.
@@ -243,14 +252,16 @@ Cool. Anything else anyone wants to chat about?
 **Hanson** 32:27 Scanned it, it doesn't… there's a lot of, like, test files and stuff. I think the code itself wasn't… but I don't know KTOR that well, so I… yeah.
 **Jamie Lynch** 32:40 Yeah, I guess the question… I had in mind at the time I wrote my comment.
 was… should instrumentation live in this repo, or should we be creating like, another repo, like, I know that Java has, like, Java contribs.
-**Hanson** 33:01 I… Jason Plumb 33:02 Copel.
+**Hanson** 33:01 I…
+**Jason Plumb** 33:02 Copel.
 Java also has Java instrumentation.
 **Hanson** 33:09 I… I would… I would like it to be more, at least at this point, a Contribs model, because I think instrumentation is centrally maintained, right?
 **Jason Plumb** 33:21 What do you mean?
 **Hanson** 33:23 like, if there's a vulnerability found, or, like, a bug, it's up to the repo maintainers to fix it, versus, I think, contribs is up to the… I think each package has, like, an owner.
 **Jason Plumb** 33:37 Yeah, in the contribib model for Java, each module has separate component owners.
 Whereas, yeah, instrumentation is… is just… Maintained by the maintainers and community-driven.
-**Hanson** 33:52 Yeah, I think at this point, I… I don't know if we want to take on instrumentation, essentially maintaining instrumentation that, you know, we didn't write. I would much rather have it as a buyer beware contribs model until we have the SDK and APIs all settled, and then we could basically expect… maybe we could think about expanding a scope. I mean, this would… this would… I would say this would… be something we want to probably eventually take on in the instrumentation repo, but I don't know if we want to do it now. If we do, then that's cool, but… I feel like there's a lot of work right now, just on the API and the SDK implementation, so… Jason Plumb 34:41 Yeah, I… so I'm gonna make a proposal here. I think that, I think that we should be welcoming of new instrumentation like this. I wish this PR wasn't 1600 lines, but I like the idea that this instrumentation exists, and that someone who is… experimenting or trying out the Kotlin SDK for the first time.
+**Hanson** 33:52 Yeah, I think at this point, I… I don't know if we want to take on instrumentation, essentially maintaining instrumentation that, you know, we didn't write. I would much rather have it as a buyer beware contribs model until we have the SDK and APIs all settled, and then we could basically expect… maybe we could think about expanding a scope. I mean, this would… this would… I would say this would… be something we want to probably eventually take on in the instrumentation repo, but I don't know if we want to do it now. If we do, then that's cool, but… I feel like there's a lot of work right now, just on the API and the SDK implementation, so…
+**Jason Plumb** 34:41 Yeah, I… so I'm gonna make a proposal here. I think that, I think that we should be welcoming of new instrumentation like this. I wish this PR wasn't 1600 lines, but I like the idea that this instrumentation exists, and that someone who is… experimenting or trying out the Kotlin SDK for the first time.
 could hook this up and actually use their HTTP client to get some tracing out, to get some data out, right? And… Right now, it's just one, and one can imagine that we get 2, 3, and 4. Like, someone's gonna do the same for OKHTTP.
 And someone's gonna do the same thing for something else. And maybe when we hit, you know, 5 or 10, then we split it off. But my proposal is, why don't we make an instrumentation package and throw everything in there, make it a subdirectory, a module.
 clearly marked experimental, or alpha, or something, like, and like a README that says, we're not giving this very much attention while we stabilize the SDK and API, and then, take those on, and if it starts ballooning, then we pull it out quicker.
@@ -269,7 +280,8 @@ But I think once we've got some critical mass, it would be the time to do it, an
 **Jason Plumb** 37:11 Where it's like, you should pretty much look the same if you're doing this stuff.
 And you're also an HTTP client.
 **Hanson** 37:20 Yeah, there's, I mean, there's two ways of doing this, right? You look at the JSON serialization, or you kind of have, like, a test that asserts things that are the same. I think a lot of this is probably not necessary, like, things like, you know, resource instrumentation scope, so things that the instrumentation really isn't responsible for. Like, I feel that's redundant, especially if all it's doing is creating spans when it goes through the lifecycle.
-**what's setting with the resource and the instrumentation scope, you know, would be something higher level. Instrumentation scope, maybe. Maybe it makes sense to have this. But, like, Some of the… Jason Plumb** 38:01 It's like Golden, so it's still pretty good.
+what's setting with the resource and the instrumentation scope, you know, would be something higher level. Instrumentation scope, maybe. Maybe it makes sense to have this. But, like, Some of the…
+**Jason Plumb** 38:01 It's like Golden, so it's still pretty good.
 **Hanson** 38:04 Nope.
 **Jason Plumb** 38:05 Yeah.
 Yeah, I think the root of the repo is pretty crowded already. It would be cool to have this in a sub… subdirectory called instrumentation.
@@ -301,7 +313,8 @@ ourselves, because we're a new SIG. So it sits in SIGs should add that, should k
 So we'll bring that with spec tomorrow and discuss that.
 Just green.
 **Jason Plumb** 40:47 I missed what the… sorry, Carlos, I missed what the subject was.
-**It was about the Spanish… Carlos Alberto Cortez** 40:52 world.
+It was about the Spanish…
+**Carlos Alberto Cortez** 40:52 world.
 Yeah, it's about the… so, the span has this operation called, report deception, or cell reception.
 Which, basically, you take an exception and create an event. Once these events are deprecated.
 This method is itself a deprecated.

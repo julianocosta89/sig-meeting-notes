@@ -16,7 +16,8 @@ And that's what the change is… I think the changes using this should.
 You heard instead of must.
 Does anyone have… other topics.
 **Raphael Menderico** 04:32 Rafael here. So, not a full topic, but I'm wondering if, who is gonna be on CubeCon, and if there is some meeting, someone… people meeting there, like, it's next week.
-**Michel Laterman** 04:50 Yeah, I… That wasn't… I don't know of anyone who's going. I'd drop a message in Slack to see if anyone response, but… Raphael Menderico 05:04 Yeah, not a lot of people here, but okay, yeah, well, I'm there, anyway.
+**Michel Laterman** 04:50 Yeah, I… That wasn't… I don't know of anyone who's going. I'd drop a message in Slack to see if anyone response, but…
+**Raphael Menderico** 05:04 Yeah, not a lot of people here, but okay, yeah, well, I'm there, anyway.
 **Douglas Camata** 05:09 I think if you… I will… I think there was a message in Slack… I will share the link here in the chat, and it seems like people are setting something up.
 Oh. In the hotel maintainer's channel.
 **Raphael Menderico** 05:25 Okay, I'm not there, I'm a hotel op-amp only. Okay, I'll take a look, thanks.

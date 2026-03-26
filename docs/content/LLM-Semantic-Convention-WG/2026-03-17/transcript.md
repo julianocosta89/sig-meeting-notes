@@ -57,7 +57,8 @@ You do!
 Sorry for spending… So much time on this. Let's take a look at this one as well.
 Kill Span.
 Dynamic loading of skill packages, skill fi… Filter and actual invocation Progress.
-**I'm… Aaron Abbott** 12:13 I wonder if, I can definitely see the value of seeing when the, like, the skills were loaded, so you could understand when they came into context, or when it decided to load them, but… This seems, like, pretty similar to skill… Sorry, to tool overall, right?
+I'm…
+**Aaron Abbott** 12:13 I wonder if, I can definitely see the value of seeing when the, like, the skills were loaded, so you could understand when they came into context, or when it decided to load them, but… This seems, like, pretty similar to skill… Sorry, to tool overall, right?
 **Liudmila Molkova** 12:34 Yeah.
 Is it… can skills be removed?
 **Aaron Abbott** 12:44 I don't… I don't see why not.
@@ -175,7 +176,8 @@ I am assuming if you… Ran that, it would probably… today capture an HTTP ser
 span underneath it, internal span underneath it, and is that… the preferred modeling I mean, because it is an HTTP server.
 **anksing** 30:54 Like… Can we call agents over a different protocol as well?
 I think that should be possible then.
-**Like, not just HTTP, like… Trask Stalnaker** 31:05 Sure.
+Like, not just HTTP, like…
+**Trask Stalnaker** 31:05 Sure.
 **anksing** 31:05 I'm the GRPCO, right?
 I mean, that's… I did this look possible?
 If you really need to.
@@ -184,9 +186,11 @@ And for A2A also, like, is it, like, different protocol altogether, or… Someth
 It's… I think it's HTTP or gRPC.
 But they don't… it's not transport agnostic, there's, like, a fixed list of transports that are supported.
 **anksing** 31:43 Got it, okay.
-**Liudmila Molkova** 31:46 And the product… anksing 31:48 So, similar thing would come up in MCP as well, right?
+**Liudmila Molkova** 31:46 And the product…
+**anksing** 31:48 So, similar thing would come up in MCP as well, right?
 I don't know.
-**Aaron Abbott** 31:54 Yeah, yeah, it's… neil yashinsky 31:55 I think so.
+**Aaron Abbott** 31:54 Yeah, yeah, it's…
+**neil yashinsky** 31:55 I think so.
 **Aaron Abbott** 31:57 Yeah, because MCP also supports, like, you know, standard I.O, which has no.
 **anksing** 32:02 Yeah.
 **Aaron Abbott** 32:09 Yeah, I feel like we're fighting the… way that hotel is designed to just kind of naturally compose, like, without you thinking about it.
@@ -222,7 +226,8 @@ It's not on the profile.
 workflows.
 would you… Still capture the protocol-level server span.
 Or would you… remove that.
-**anksing** 37:03 Okay, so when we say protocol levels, man, do we mean the transport protocol, or… Trask Stalnaker 37:09 The HTTP server. The HTTP server spanned.
+**anksing** 37:03 Okay, so when we say protocol levels, man, do we mean the transport protocol, or…
+**Trask Stalnaker** 37:09 The HTTP server. The HTTP server spanned.
 Essentially.
 **anksing** 37:15 Got it.
 I mean, hmm, that'll be interesting.
@@ -231,7 +236,8 @@ Some kind of protocol span, and it does include some potentially interesting.
 Things.
 Gives you a place to put, like, Client.
 **anksing** 37:49 Yeah.
-**Trask Stalnaker** 37:50 IP… anksing 37:54 So, I think, like, this is, one of the case that we just looked at is, like, in case of ADK as well, and same is true with, foundry, like, hosted agents as well, where There's a bootstrapping web server that's provided, right, which right now is an HTTP server.
+**Trask Stalnaker** 37:50 IP…
+**anksing** 37:54 So, I think, like, this is, one of the case that we just looked at is, like, in case of ADK as well, and same is true with, foundry, like, hosted agents as well, where There's a bootstrapping web server that's provided, right, which right now is an HTTP server.
 web server, and that has the functionality that, that's just, like, a publicly available web server, and then you can enable HTTP Traces for that are optional if you want.
 By default, they're not enabled, at least in Foundry.
 So in that case, like, it will be onus on the customer if you have to capture that HTTP service number.
@@ -248,7 +254,8 @@ We can get back to it.
 Yeah, I'm good.
 **anksing** 39:54 Just wanted to add this information. I was, checking out Agent Core as well, and I think which right now does what you are highlighting, Lumila Protocol plus internal, at this point.
 And in Foundry also, like, we want to kind of align with hotel recommendation, rather than, like, going and doing something which is not total recommended. So that's why I think we want to have this discussion, like.
-**And I don't know, like, how ADK handles that, or… He said… Trask Stalnaker** 40:26 I think this is interesting, the self-hosted agents… I mean, the… Since we kind of feel like that's gonna be protocol plus internal.
+And I don't know, like, how ADK handles that, or… He said…
+**Trask Stalnaker** 40:26 I think this is interesting, the self-hosted agents… I mean, the… Since we kind of feel like that's gonna be protocol plus internal.
 Then aligning, like, there's a lot of benefit to aligning with that, and just having one way.
 **Liudmila Molkova** 40:56 Assuming protocol assessed STDIO, Could be server, but yeah.
 I feel it's a caveat. It's, it's… Is it even important?
@@ -258,7 +265,8 @@ Okay, it could be server, in some edge cases.
 **anksing** 41:16 Sorry, what are those edge cases? Just want to understand more.
 **Liudmila Molkova** 41:19 The SDIO, the protocol without the protocol.
 **anksing** 41:24 Yo, yo.
-**Liudmila Molkova** 41:42 Great, so we… Trask Stalnaker 41:43 Yup.
+**Liudmila Molkova** 41:42 Great, so we…
+**Trask Stalnaker** 41:43 Yup.
 No, go ahead.
 **Liudmila Molkova** 41:46 third time… time boxing it, I think, From the prototype's perspective, the only reasonable prototype that's possible to get is this one.
 Today, at least.
@@ -295,7 +303,8 @@ So that's the small ask.
 Thank you.
 **Liudmila Molkova** 45:56 Thanks a lot for doing this.
 **Aaron Abbott** 45:58 I think I had the same question as Ricardo on this one, like, Most of these providers use Pydantic already. I was wondering, is OpenAI already using it?
-**like, the… Surya Teja** 46:12 Yes, sir.
+like, the…
+**Surya Teja** 46:12 Yes, sir.
 **Aaron Abbott** 46:13 Yeah, yeah, go ahead.
 **Surya Teja** 46:14 ESRN, it's using Pyreantic. I'm… It's, it's more or less, It's just for extracting out the attributes and creating some used classes that contain the attributes according to their grouping.
 **Aaron Abbott** 46:32 Right.
@@ -335,7 +344,8 @@ For him. I know a lot of them have conversations that are going through him, and
 **Keith Decker** 51:17 Sounds good.
 Yeah, I don't think any of them are ready for merge. I think we still need, multiple approvers on some of them.
 But yeah, we're making a push to try and get, any of the types from SEMCOMs into the Gen AI Utils.
-**Recently, so… Liudmila Molkova** 51:34 Nice.
+Recently, so…
+**Liudmila Molkova** 51:34 Nice.
 I'll… I'll probably bring it up on the Thursday call, again, that we… we want… we probably need to.
 start releasing… releasing things together. Otherwise, we would not be able to… like, nobody will be able to find the… list of compatible versions, for different AI instrumentations.
 **Keith Decker** 52:01 Yeah, they're starting to get intertwined, so it makes sense to kind of… Release them all together.
@@ -346,12 +356,13 @@ Okay, so then… Thanks for coming. And, oh, okay, we… I think Ivan will be he
 I think, Aaron, you're also coming to KubeCon and you won't be here.
 If you're one of folks, you… Oh, Jamie, you will be at KubeCon! Nice!
 Looking forward.
-to it, I don't know if you folks want to meet, the meeting is on the calendar. No, you don't.
-**Would anybody want to… neil yashinsky** 53:05 It's a good one to pass. I mean, I'm always up for meeting on this topic with these fun people, but it seems like if ever there was a time to pass, this would be it.
+to it, I don't know if you folks want to meet, the meeting is on the calendar. No, you don't. Would anybody want to…
+**neil yashinsky** 53:05 It's a good one to pass. I mean, I'm always up for meeting on this topic with these fun people, but it seems like if ever there was a time to pass, this would be it.
 CBD? Yeah, I feel like that's a balanced choice.
 Or maybe you could even say, because people… can people remotely connect on that office hours that you were mentioning?
 Or is that not, virtually possible? It's only… it's only in the meet space?
-**Liudmila Molkova** 53:35 It's intentionally not possible, but it's also very hectic there, so… neil yashinsky 53:40 Yeah, yeah.
+**Liudmila Molkova** 53:35 It's intentionally not possible, but it's also very hectic there, so…
+**neil yashinsky** 53:40 Yeah, yeah.
 **Liudmila Molkova** 53:40 It would be hard, even if it was possible, technically.
 **neil yashinsky** 53:42 hmm, hmm.
 Maybe, maybe next year we'll, or next one we can strive for a virtual one of sorts for people who can't make it.

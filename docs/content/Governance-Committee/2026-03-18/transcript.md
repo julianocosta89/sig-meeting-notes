@@ -6,7 +6,8 @@ Zoom Recording URL: https://zoom.us/rec/share/XEK9IuuUYbEU9CUptRBK3PYRQqG5ryAmrn
 
 ## Zoom Recording Transcript
 
-**Marylia Gutierrez** 01:40 So… Severin Neumann 01:50 Hello!
+**Marylia Gutierrez** 01:40 So…
+**Severin Neumann** 01:50 Hello!
 **Austin Parker** 01:53 Yo!
 **Trask** 01:59 Hey!
 **Austin Parker** 02:00 You're looking extremely teal.
@@ -15,20 +16,28 @@ Now my… my universal translator is failing.
 **Austin Parker** 02:12 Color?
 **Marylia Gutierrez** 02:13 The color's teal? This color, this color?
 **Austin Parker** 02:16 Yeah.
-**She's got kind of a whole… Marylia Gutierrez** 02:20 Theo?
+She's got kind of a whole…
+**Marylia Gutierrez** 02:20 Theo?
 **Austin Parker** 02:21 going on?
 **Severin Neumann** 02:22 Yeah, maybe I'm… I'm too slow today. Teal, yeah.
-**Austin Parker** 02:27 Is… Marylia Gutierrez 02:29 Is that… well, it's this color.
+**Austin Parker** 02:27 Is…
+**Marylia Gutierrez** 02:29 Is that… well, it's this color.
 **Austin Parker** 02:33 Literally the colors of her hair and shirt.
-**Severin Neumann** 02:36 Yeah, I would call this… Austin Parker 02:39 What would you… Severin Neumann 02:39 In German, no, no, I think in German it has a different… Oh, let me recall this just different.
+**Severin Neumann** 02:36 Yeah, I would call this…
+**Austin Parker** 02:39 What would you…
+**Severin Neumann** 02:39 In German, no, no, I think in German it has a different… Oh, let me recall this just different.
 **Austin Parker** 02:47 German is a different word for teal?
 **Severin Neumann** 02:48 Yeah, yeah, yeah.
 **Austin Parker** 02:49 steal.
-**Knowing German, it's something like… Marylia Gutierrez** 02:54 It has, like.
+Knowing German, it's something like…
+**Marylia Gutierrez** 02:54 It has, like.
 **Austin Parker** 02:55 Green, it's like, it's like the liter… well, it's literally, like, green-blue.
 **Marylia Gutierrez** 02:59 Yeah, bluish, green, greenish.
 Yes.
-**Severin Neumann** 03:03 Oh, no, it's… Marylia Gutierrez 03:05 Or is the actual… Austin Parker 03:06 I'm gonna ask… I'm gonna… Severin Neumann 03:09 There's a word, but it's not teal, it's… to Keys, which is close. Yeah. Of course.
+**Severin Neumann** 03:03 Oh, no, it's…
+**Marylia Gutierrez** 03:05 Or is the actual…
+**Austin Parker** 03:06 I'm gonna ask… I'm gonna…
+**Severin Neumann** 03:09 There's a word, but it's not teal, it's… to Keys, which is close. Yeah. Of course.
 **Marylia Gutierrez** 03:17 I'm gonna say the name is just… B.
 **Severin Neumann** 03:20 Yeah.
 **Marylia Gutierrez** 03:21 turquoise.
@@ -41,10 +50,13 @@ Common broad term for the blue-green color spectrum often used interchangeably w
 Duncled Turkis?
 And Tyndall.
 That's my bad German pronoun.
-**Marylia Gutierrez** 03:53 Yeah, I was gonna say, from, like, Severin's reaction on his laugh, you know, like, how bad… Austin Parker 03:58 Overall, really, really good, I'm sure.
+**Marylia Gutierrez** 03:53 Yeah, I was gonna say, from, like, Severin's reaction on his laugh, you know, like, how bad…
+**Austin Parker** 03:58 Overall, really, really good, I'm sure.
 **Severin Neumann** 04:00 I'm just like, I'm just like… it's weird, it's a, it's an attraction.
-**Austin Parker** 04:04 I look, I know I… I gotta brush up… Severin Neumann 04:07 I've said about open telemetry terms again, and not about colors, right?
-**Austin Parker** 04:12 I know, given how everything is over here right now, I should be brushing up on my German, but… Ted Young 04:16 Oh my god.
+**Austin Parker** 04:04 I look, I know I… I gotta brush up…
+**Severin Neumann** 04:07 I've said about open telemetry terms again, and not about colors, right?
+**Austin Parker** 04:12 I know, given how everything is over here right now, I should be brushing up on my German, but…
+**Ted Young** 04:16 Oh my god.
 **Severin Neumann** 04:19 Oh, that hurts.
 You get along here well with English. I know some folks living here that don't speak anywhere Germany, you would do fine.
 **Austin Parker** 04:29 I… I don't… I mean… I guess I get along pretty well with English.
@@ -53,9 +65,13 @@ You get along here well with English. I know some folks living here that don't s
 **Severin Neumann** 04:41 Yeah, yeah, just, just don't.
 **Austin Parker** 04:46 Hello, Reese.
 **Ted Young** 04:49 Yeah, hey, Reece.
-**Reese Lee** 04:50 any… Austin Parker 04:54 Good, another… Ted Young 04:55 minute?
-**Austin Parker** 04:56 to… what? I know we have the Agentic AI… Ted Young 05:03 That's in the second half.
-**Austin Parker** 05:04 have… Ted Young 05:06 You have a couple of topics.
+**Reese Lee** 04:50 any…
+**Austin Parker** 04:54 Good, another…
+**Ted Young** 04:55 minute?
+**Austin Parker** 04:56 to… what? I know we have the Agentic AI…
+**Ted Young** 05:03 That's in the second half.
+**Austin Parker** 05:04 have…
+**Ted Young** 05:06 You have a couple of topics.
 **Trask** 05:21 Apologies, I'm driving for at least the first half of the meeting, so just on the phone.
 **Austin Parker** 05:27 Oh, okay.
 Do we want to go ahead and start with… Community stuff, then, for… Ute County Ute?
@@ -63,7 +79,8 @@ Then we can go do the other stuff.
 **Severin Neumann** 05:55 Sounds good.
 **Austin Parker** 05:57 Yeah, so this is… so specifically, Reese… is it you and Adriana?
 Are all three of you doing the update at Observability Day?
-**Reese Lee** 06:09 No, cause, the person was like… Austin Parker 06:13 No.
+**Reese Lee** 06:09 No, cause, the person was like…
+**Austin Parker** 06:13 No.
 **Reese Lee** 06:13 We just need one, it's only 4 minutes, so… That's true. Adriana's gonna be doing it.
 **Austin Parker** 06:18 But, yeah, you also, you all are putting together the slides for that, and I just wanted for us all to make sure what should go in those update slides.
 **Reese Lee** 06:32 Yeah, how do you all usually decide what… What makes the cut?
@@ -75,19 +92,30 @@ Are all three of you doing the update at Observability Day?
 Pretending.
 So, again, we have 4 minutes.
 **Severin Neumann** 07:10 It's a lightning talk, so it's 5 minutes, right, or 4.
-**Austin Parker** 07:12 4… it's 4 minutes, we… yeah, it's like 4 minutes, oi… Severin Neumann 07:20 The updates? The updates would be anything, like… Austin Parker 07:24 I think… what are we gonna talk about during our talk? Or I think we should do… we should… What are the big things that have… Ted Young 07:32 Is this… this… should this overlap with the project update, or is this… Severin Neumann 07:36 There wasn't a thing I was wondering about right now.
+**Austin Parker** 07:12 4… it's 4 minutes, we… yeah, it's like 4 minutes, oi…
+**Severin Neumann** 07:20 The updates? The updates would be anything, like…
+**Austin Parker** 07:24 I think… what are we gonna talk about during our talk? Or I think we should do… we should… What are the big things that have…
+**Ted Young** 07:32 Is this… this… should this overlap with the project update, or is this…
+**Severin Neumann** 07:36 There wasn't a thing I was wondering about right now.
 **Austin Parker** 07:39 This is basically the 4-minute… this is basically the thing at Observability Day that's in the morning.
 **Ted Young** 07:45 The short characters.
 **Austin Parker** 07:46 So this is the short version, and then the pointers to what else are we gonna be doing this week.
-**So usually, I do, like, a line about, like, what are the big topics that we're gonna be talking about, so… Severin Neumann** 07:57 So we started to work on the other slide, so maybe I can quickly.
-**Austin Parker** 08:01 Maybe share those real quick, and then… Severin Neumann 08:03 Marilia, maybe, or Yorasi.
+So usually, I do, like, a line about, like, what are the big topics that we're gonna be talking about, so…
+**Severin Neumann** 07:57 So we started to work on the other slide, so maybe I can quickly.
+**Austin Parker** 08:01 Maybe share those real quick, and then…
+**Severin Neumann** 08:03 Marilia, maybe, or Yorasi.
 **Austin Parker** 08:05 Or whoever.
-**Severin Neumann** 08:06 I'm already, like… Marylia Gutierrez 08:07 Yeah, I have it easily here. Let me just… Juraci Paixão Kröhling 08:13 I mean… Severin Neumann 08:14 Checked on that as well, but.
+**Severin Neumann** 08:06 I'm already, like…
+**Marylia Gutierrez** 08:07 Yeah, I have it easily here. Let me just…
+**Juraci Paixão Kröhling** 08:13 I mean…
+**Severin Neumann** 08:14 Checked on that as well, but.
 **Austin Parker** 08:18 Hello, Jurassi.
 **Severin Neumann** 08:19 I'll have.
 **Juraci Paixão Kröhling** 08:19 I'm going, I'm listening.
-**Severin Neumann** 08:20 Also… Marylia Gutierrez 08:24 So yeah, because we have, like, the product updates, so we're gonna do, like… Deep dive?
-**Severin Neumann** 08:29 I'll share my screen real quick, so then we see… Austin Parker 08:32 That would be best, I think, yeah.
+**Severin Neumann** 08:20 Also…
+**Marylia Gutierrez** 08:24 So yeah, because we have, like, the product updates, so we're gonna do, like… Deep dive?
+**Severin Neumann** 08:29 I'll share my screen real quick, so then we see…
+**Austin Parker** 08:32 That would be best, I think, yeah.
 Oh, perfect.
 **Juraci Paixão Kröhling** 08:38 So, just a small comment, we have two project updates, right? So, one very short during Observability Day, and that's the one that commission managers are delivering, and then we have the.
 **Austin Parker** 08:48 Yeah.
@@ -100,29 +128,36 @@ Oh, perfect.
 **Severin Neumann** 09:12 I mean, there's probably more, but, like, we also started collecting on that.
 **Austin Parker** 09:20 I've definitely seen a lot of people talking about the span events deprecation, so that should probably be in there.
 **Severin Neumann** 09:25 Yep.
-**Ted Young** 09:26 That's important. The stability… Reese Lee 09:29 stuff.
+**Ted Young** 09:26 That's important. The stability…
+**Reese Lee** 09:29 stuff.
 **Austin Parker** 09:30 Stability, yeah, stable by default.
 **Severin Neumann** 09:34 So it's also, like, maybe to mention that, like, we have a lineup of blog posts coming out, like, I think one now every day until KubeCon, or, like, even through KubeCon.
 **Austin Parker** 09:44 Yeah.
 **Severin Neumann** 09:44 Most of those things will have a blog post as well, so that's even something we can… we can reference there and say, like, hey, if you want to know more.
 Here's a blog post or something like that.
 **Austin Parker** 09:55 Yeah, do I want to talk about… oh, other good stuff might be… Kotlin and Zig?
-**Ted Young** 10:07 I mean, there's also… Marylia Gutierrez 10:09 Oh yeah, because, yeah, if you go… so the way we did this talk, so we have a few.
+**Ted Young** 10:07 I mean, there's also…
+**Marylia Gutierrez** 10:09 Oh yeah, because, yeah, if you go… so the way we did this talk, so we have a few.
 **Austin Parker** 10:14 Oh my god.
 **Marylia Gutierrez** 10:14 And then we have, what, get involved, so it's, like, new six, or, like, project, like, prints is, like, a call-out for people to get involved. So yeah, we do have a slide about that.
 **Ted Young** 10:24 Yeah.
 **Juraci Paixão Kröhling** 10:26 And it would be nice to get the PR for Kotlin merged before?
 **Austin Parker** 10:30 Yeah.
-**Juraci Paixão Kröhling** 10:30 an actual… Severin Neumann 10:34 just… Ted Young 10:34 There's also the browser SIG. I think you should mention, encourage people to join the browser SIG as part of this, yeah.
-**Severin Neumann** 10:41 Should we mention GenAI as well? Because, like, there's, again, some people doing their own thing on the side because they think we are not doing anything there, so… Austin Parker 10:51 We should, probably?
-**Severin Neumann** 10:55 I put just some question marks there, just taking notes on that, so… not setting anything in stone, but… Ted Young 11:06 Why is there no tire fire emoji?
+**Juraci Paixão Kröhling** 10:30 an actual…
+**Severin Neumann** 10:34 just…
+**Ted Young** 10:34 There's also the browser SIG. I think you should mention, encourage people to join the browser SIG as part of this, yeah.
+**Severin Neumann** 10:41 Should we mention GenAI as well? Because, like, there's, again, some people doing their own thing on the side because they think we are not doing anything there, so…
+**Austin Parker** 10:51 We should, probably?
+**Severin Neumann** 10:55 I put just some question marks there, just taking notes on that, so… not setting anything in stone, but…
+**Ted Young** 11:06 Why is there no tire fire emoji?
 **Austin Parker** 11:10 We should probably ask Alita about that.
 She might have an inside line.
 **Ted Young** 11:21 I made a tire fire emoji, but I think it died with Lightstep.
 **Austin Parker** 11:26 I feel like everyone has their own… Speaking of AI, we are still waiting to hear back from our friends at Anthropic.
 And… What's stable by default doing… Only two approvals.
 **Severin Neumann** 12:01 Let me see what else… but I think… Like, the other thing, like, Pablo will talk about a little bit at the end is, like, our whole… policies around AI and, like, contributions and something like that, but I'm not sure if this is relevant for the community update.
-**Austin Parker** 12:17 I don't… yeah, I don't think… Severin Neumann 12:19 Like, this is here, like, a minute, and we thought, like, hey, this could be just interesting, assuming that other maintainers and contributors might attend this session. I think for a short session, this might not.
+**Austin Parker** 12:17 I don't… yeah, I don't think…
+**Severin Neumann** 12:19 Like, this is here, like, a minute, and we thought, like, hey, this could be just interesting, assuming that other maintainers and contributors might attend this session. I think for a short session, this might not.
 Yeah, I don't know.
 **Morgan McLean** 12:31 audience is going to care, and it's not super specific to hotel, just because we've seen the same pictures in every community.
 **Austin Parker** 12:37 Yeah, we should talk about the… we should definitely talk about, like, the Gen AI… DEMCOM stuff?
@@ -132,7 +167,8 @@ I don't know, does this give you enough to go on, Reece?
 **Austin Parker** 13:09 Would you like for us to share… I think… are those slides open?
 Earlier?
 **Marylia Gutierrez** 13:16 Hmm… I'm seeing a lot of… anonymous, so I'm assuming people can?
-**Austin Parker** 13:21 Yeah, anyone with a link. So, you know, what I would say, Reece, is take that project update slides, and just use that, and… You can ask me, or… Reese Lee 13:34 When is the, when's the project?
+**Austin Parker** 13:21 Yeah, anyone with a link. So, you know, what I would say, Reece, is take that project update slides, and just use that, and… You can ask me, or…
+**Reese Lee** 13:34 When is the, when's the project?
 Update that.
 **Marylia Gutierrez** 13:38 You can mention, you can mention, like, oh, I'm talking, like, very lightly, but we have a more deep.
 dive on some of the updates.
@@ -147,13 +183,15 @@ dive on some of the updates.
 whenever, wherever.
 talking more about all this stuff, and throw people to the observatory, and I guess to the Project Pavilion this year.
 And, you know, go from there.
-**Reese Lee** 14:27 Okie dokie? I… Austin Parker 14:29 Definitely try to keep these pretty brief, because we have all of the other, you know, we have the other talks, and also There's a lot of projects to get through, and… Yeah.
+**Reese Lee** 14:27 Okie dokie? I…
+**Austin Parker** 14:29 Definitely try to keep these pretty brief, because we have all of the other, you know, we have the other talks, and also There's a lot of projects to get through, and… Yeah.
 **Reese Lee** 14:42 Yeah… I know, I was curious, because I was looking at the… what's in there so far for the Ali… sorry, Ali Day updates, and Silium has, like… Like, are they gonna cover all that in 4 minutes? But, okay.
 **Austin Parker** 14:57 Yeah, everybody else… oh god, you haven't even seen the worst yet. Wait till… fuckin'… The Fluent bit ones always go super long.
 **Reese Lee** 15:08 Oh.
 **Austin Parker** 15:09 And Prometheus usually goes really long, too.
 **Juraci Paixão Kröhling** 15:11 But I'm not gonna be a very nice person this time.
-**Austin Parker** 15:14 Oh, are you gonna… are we actually gonna, like… Juraci Paixão Kröhling 15:17 I am, got an… yeah, I am, yes.
+**Austin Parker** 15:14 Oh, are you gonna… are we actually gonna, like…
+**Juraci Paixão Kröhling** 15:17 I am, got an… yeah, I am, yes.
 Yes.
 **Austin Parker** 15:20 Thank you!
 **Juraci Paixão Kröhling** 15:22 Of course.
@@ -173,21 +211,26 @@ more GC, bigger-out-stuff time. Let's… let's talk about it next week.
 **Austin Parker** 16:13 Or after KubeCon. I'm sure we'll have time to chat about it during KubeCon, but, yeah. Thank you.
 **Reese Lee** 16:18 Thank you! See y'all!
 **Severin Neumann** 16:20 Hi, Gene.
-**Austin Parker** 16:28 Okay… Severin… Severin Neumann 16:33 Yeah, I just went over the community board the other day and saw, like, we have a few things open.
+**Austin Parker** 16:28 Okay… Severin…
+**Severin Neumann** 16:33 Yeah, I just went over the community board the other day and saw, like, we have a few things open.
 I just collected them real quick and wanted to see, like, if… they can get some eyes to maybe make some progress. We don't have to go… For them right now.
 But, yeah, there was published GenAI policy updates, there's the Kotlin onboarding, and the bare metal runner documentation. I think we need one or two approvals per each, and then they're hopefully good. Maybe some of them are merged already.
 **Austin Parker** 17:09 We need approvals on the LLM, on the LLM, on the GenAI policy.
 I just approved that one.
 **Severin Neumann** 17:24 Oh yeah, the water is a merchant.
 **Austin Parker** 17:26 Right.
-**I don't think… Severin Neumann** 17:30 I think something was blocking that.
-**Austin Parker** 17:35 There's a… Linked… Severin Neumann 17:42 Oh, the sick tables, like, like, It needs to be rebuilt.
+I don't think…
+**Severin Neumann** 17:30 I think something was blocking that.
+**Austin Parker** 17:35 There's a… Linked…
+**Severin Neumann** 17:42 Oh, the sick tables, like, like, It needs to be rebuilt.
 **Austin Parker** 17:46 Cheese.
 Table checking, there's conflicts.
 I don't know what's up with that.
 **Severin Neumann** 17:55 Yeah, I think someone added something to the 6 file, and… Yeah.
 **Austin Parker** 18:01 Okay. I don't know.
-**Severin Neumann** 18:02 I thought Alolita can look into it herself, or… Austin Parker 18:05 Yeah, but that should be fine. I think we just… we should probably approve it, just to make sure we got… Severin Neumann 18:11 Yeah, I think it technically has enough approval, so the moment it's merged, it should, like.
+**Severin Neumann** 18:02 I thought Alolita can look into it herself, or…
+**Austin Parker** 18:05 Yeah, but that should be fine. I think we just… we should probably approve it, just to make sure we got…
+**Severin Neumann** 18:11 Yeah, I think it technically has enough approval, so the moment it's merged, it should, like.
 **Austin Parker** 18:17 Yeah.
 **Severin Neumann** 18:17 Maybe I pull it down and run the script and push it.
 **Austin Parker** 18:21 Yeah… Okay.
@@ -208,28 +251,35 @@ Yeah, we kind of have to move forward with it, because we're sort of… we're so
 It's like, okay, well, how do we… If we feel like, you know, we're already kind of committed to this work because it's in flight, like, how do we sort that out?
 And, again, medium term, I think, a way to visualize, you know, some tooling to help, like, visualize, like, time commitments, so, you know, it's more at a glance figuring out, like, how overloaded TC members are.
 we've put some amount of work into place to be able to do that, but that would be helpful.
-**Austin Parker** 21:43 Does… Ted Young 21:43 But I feel like that's a thing where I'm feeling right now, is like, I would like to figure out who I could make requests to, but I kind of have to paw through a lot of stuff to figure out, like, how committed different TC members are right now.
+**Austin Parker** 21:43 Does…
+**Ted Young** 21:43 But I feel like that's a thing where I'm feeling right now, is like, I would like to figure out who I could make requests to, but I kind of have to paw through a lot of stuff to figure out, like, how committed different TC members are right now.
 **Marylia Gutierrez** 21:55 So they started creating a doc precisely to do this, but they kind of, like.
 are not keeping up to date, because I've been talking with Dan about this, especially because the, like, the… the cleanup, like, scripts. I was like, I want, like, some place that I can actually check if people are actually assigned to a project and things like that. So that was one place that they suggested, but they say, like, oh, we need to probably keep an eye and keep up to date, because they haven't updated in a while.
 **Ted Young** 22:25 Yeah, I think they use this when they're thinking about it, and that's why, like, something that's automated. Likewise, I just started a jock with some checklists, you know, and some SLAs to go with those checklists, and I think… again, having some bots and automation to poke us, just so that these issues are not going stale just because we're not responding. Or if we can't make a decision, we at least need to come back to them and be like.
 We're thinking about this, but in this particular case, we do need to figure out how we make a decision on this. So I think my first question is, like, what is the actual ask from the TC?
 Because we could get non-TC sponsors, but it's more that, like, we generally need like, to be socializing this through the spec sig and stuff, because I think we want… we want wide feedback on this kind of packaging stuff. I mean, it could turn into a bike shed.
-**Which I'm not excited about, but… Austin Parker** 23:26 I think we need to just go and… Because… so question, do we know… does the injector SIG have a TC?
+Which I'm not excited about, but…
+**Austin Parker** 23:26 I think we need to just go and… Because… so question, do we know… does the injector SIG have a TC?
 Sponsor?
-**Ted Young** 23:38 Yeah, Jack, Jack works on… But Jack's over… he's already… Austin Parker 23:43 Drive.
+**Ted Young** 23:38 Yeah, Jack, Jack works on… But Jack's over… he's already…
+**Austin Parker** 23:43 Drive.
 **Ted Young** 23:43 He's oversubscribed, so he can't… he can't do it.
 **Austin Parker** 23:47 Thief.
 No, go on, Severn.
 **Severin Neumann** 23:51 I mean, the thing, like, my feeling is, like, we have a lot of people that know what they're doing on the sick, right? Like, even without C, right? So there's, like, if I just… Look who's, like, subscribed to that thing, like… And I mean, it's like, again, like this thing, like, we don't want to expand the TC, but at the same time, the TC and the TC are, like, limiting the things that we're able to do.
 So at what point are we saying, like, hey.
 Seeing who is working on that.
-**do they really need that much oversight from us? So, so, so that's like… I don't know, so it feels like… Yeah, I think they… Ted Young** 24:35 Yeah.
+do they really need that much oversight from us? So, so, so that's like… I don't know, so it feels like… Yeah, I think they…
+**Ted Young** 24:35 Yeah.
 **Severin Neumann** 24:35 they have everything they need, right? I mean, technically, and they could do it without even doing this project proposal, as you said, like, they just could go on and just do it, so… Yeah.
 **Trask** 24:48 I have a question. Have we made the… have we made a formal ask of the TC Yet?
-**Because, based on Tigrin's Slack message, I… Austin Parker** 25:00 I mean, there's a.
+Because, based on Tigrin's Slack message, I…
+**Austin Parker** 25:00 I mean, there's a.
 **Ted Young** 25:00 How do we make four?
-**Trask** 25:02 Aaron was… Ted Young 25:02 That's just it, right? Like, we've been asking, but we don't… like, what is a formal ask versus how we normally do it?
-**Austin Parker** 25:10 I… I mean, we ask them, right? Like… Ted Young 25:13 And they went through.
+**Trask** 25:02 Aaron was…
+**Ted Young** 25:02 That's just it, right? Like, we've been asking, but we don't… like, what is a formal ask versus how we normally do it?
+**Austin Parker** 25:10 I… I mean, we ask them, right? Like…
+**Ted Young** 25:13 And they went through.
 **Morgan McLean** 25:14 True. My understanding is… this was the answer, was they basically all said no, and Jack said, like, if absolutely no one else will do this, I will, but I'm already too busy.
 **Austin Parker** 25:23 I don't like… yeah, I mean, I respect that answer, but my question is, I guess… I feel like, at this point, we need to either have them say, okay, we're oversubscribed, but this is important, so we're gonna appoint someone… As the, like… special liaison.
 **Ted Young** 25:42 Right, but I think they're looking for us to sort out what we're trying to ask of them in that regard. So, it could be, like, our sponsorship levels is that we're saying that, you know, we want a lower sponsorship level.
@@ -246,11 +296,14 @@ on TC… you know, hand it to the TC, and I would like the TC to say, we cannot 
 **Trask** 27:55 And I haven't seen that happen.
 **Ted Young** 27:57 Yeah.
 **Austin Parker** 27:58 The proposal has a… I mean, like, 2 days ago? There was a… at technical committee, any update on this? I don't… see anything?
-**Or… Ted Young** 28:12 No, we've been.
+Or…
+**Ted Young** 28:12 No, we've been.
 **Austin Parker** 28:13 Josh approved it! Josh approved the PR.
 Like, in February.
-**Ted Young** 28:20 Right. Well, I mean, we've had some discussions about approvals and what we're looking for and all of this, so I think… Severin Neumann 28:27 One thing to say is, like, they're meeting right now, right? So if it happened two days ago.
-**And the TC meeting is right now, I didn't… Austin Parker** 28:36 Yeah, maybe they're talking about it, I don't.
+**Ted Young** 28:20 Right. Well, I mean, we've had some discussions about approvals and what we're looking for and all of this, so I think…
+**Severin Neumann** 28:27 One thing to say is, like, they're meeting right now, right? So if it happened two days ago.
+And the TC meeting is right now, I didn't…
+**Austin Parker** 28:36 Yeah, maybe they're talking about it, I don't.
 **Severin Neumann** 28:37 Yeah, I don't know if they have it on their agenda today. I mean, we can quickly glance over into their meeting notes.
 **Ted Young** 28:47 We can certainly go into the GCTC channel and say, hey, what kind of capacity do you think across the TC is there for this? You know, we think we should be socializing it, heavily, and maybe that means you know, the level of, like, commitment from the TC members is more like escalation with an expectation you're going to at least be reading and keeping track of the SIG.
 **Severin Neumann** 29:12 I mean, they will join us in 2 minutes, if I remember correctly, so we can even quickly chat about it, so… but yeah, we should flag that with them. Yeah.
@@ -266,13 +319,15 @@ But I'm gonna put a doc together about all of that stuff. I just don't want to k
 **Ted Young** 30:32 Having a better process.
 **Austin Parker** 30:33 To your point, Ted, though, I do think that it's probably good for us to ask… to specifically say, hey.
 I know you all don't want to grow the TC, or… but, like, You should strongly consider, like.
-**appointing someone for things like this, right? Like… Ted Young** 30:56 So we can delegate things, right? We know that. I think the issue that was raised when we discussed it is, like, this seems… like, broadly touching, right? Like, the other thing I want to do is have liaisons from the different SIGs, SDKs that we're going to be.
+appointing someone for things like this, right? Like…
+**Ted Young** 30:56 So we can delegate things, right? We know that. I think the issue that was raised when we discussed it is, like, this seems… like, broadly touching, right? Like, the other thing I want to do is have liaisons from the different SIGs, SDKs that we're going to be.
 **Austin Parker** 31:14 Yeah.
 **Ted Young** 31:15 getting in this thing, because they really need to know about it. But… so that's the thing that the TC said they felt was a little weird, right? Was saying, like, hey, we, you know, just delegate this to somebody else. But then we're also saying everyone should be kind of at least Paying a bit of attention about this, because it's going to be pretty public-facing in terms of kind of a new interface for a lot.
 **Austin Parker** 31:35 Yeah.
 **Ted Young** 31:36 selling OpenTelemetry, potentially.
 **Austin Parker** 31:39 Error.
-**I think we're at time on this, so… Ted Young** 31:44 I'll move it to the GCTC channel, that's the next step.
+I think we're at time on this, so…
+**Ted Young** 31:44 I'll move it to the GCTC channel, that's the next step.
 **Austin Parker** 31:50 Oh, Matt? Jillian?
 **Matt Lee** 31:56 Hey, folks.
 Hello!
@@ -294,7 +349,8 @@ I don't know if New York is easy for you or not.
 **Julien Le Dem** 32:53 I'm in California, so I won't.
 **Austin Parker** 32:54 Well.
 **Matt Lee** 32:56 Well, in that case, Austin, I'll look into it, and most likely my answer is yes, then.
-**Austin Parker** 33:01 Yeah, and even if you… yeah, I mean, it's at… it's at the Mark Marriott in Times Square, so, like… Matt Lee 33:09 We're pretty close.
+**Austin Parker** 33:01 Yeah, and even if you… yeah, I mean, it's at… it's at the Mark Marriott in Times Square, so, like…
+**Matt Lee** 33:09 We're pretty close.
 **Austin Parker** 33:10 Or, I mean, do you work at the, office right there?
 **Matt Lee** 33:15 I do, yes.
 **Austin Parker** 33:16 Oh, well, then I can also just, like, pop over and say hi.
@@ -312,8 +368,8 @@ So, I guess I'll get us started.
 So, hey everyone, my name is Matt, I work with Datadoc, and very recently, I was elected to the position of co-chair of the Agent AI Foundation's Observability Working Group.
 And I was speaking with Pablo earlier this week about potential collaborations between the Observability Working Group and the OTEL Foundation, and he suggested it would be a good idea to sort of introduce myself here and see, sort of.
 the prevailing trends of what was going on with the GenAI semantic conventions in OTEL, and if there's any opportunities for collaboration, or if I can help bring the voice of some of the folks in that observability Working Group to the table in conversation with, the OTEL standards as they develop.
-**Liudmila Molkova** 34:52 Yeah, it's awesome to, see you here, Matt, and great to meet you. I'm Ludmila, I work on OpenTelemetry, semantic conventions, and Instrumentation SIG.
-**we have… maybe we have some folks, from your group also participate. I think Pavan from Cisco, Matt Lee** 35:13 Yep.
+**Liudmila Molkova** 34:52 Yeah, it's awesome to, see you here, Matt, and great to meet you. I'm Ludmila, I work on OpenTelemetry, semantic conventions, and Instrumentation SIG. we have… maybe we have some folks, from your group also participate. I think Pavan from Cisco,
+**Matt Lee** 35:13 Yep.
 **Liudmila Molkova** 35:13 Yeah, so the things we are focusing on at the time, currently, is mostly the agentic stuff. I think we have a good foundation for the basic LLM calls.
 We are building this foundation for argentic scenarios. We try to describe all the conventions about… on how to record these different scenarios, and there is also interest in the, like, the server observability, but it's kind of tricky.
 We have some instrumentation libraries, and we have some people in the community working on, on bringing them, To follow the conventions, be consistent.
@@ -345,7 +401,8 @@ We are thinking of branching into subgroups as well to sort of discuss targeted 
 Maybe good to, like, put your meetings on our calendar as well.
 **Trask Stalnaker** 41:47 Yeah.
 That happened.
-**Yeah. Yeah, send us the, the link to… Matt Lee** 41:57 Absolutely.
+Yeah. Yeah, send us the, the link to…
+**Matt Lee** 41:57 Absolutely.
 **Trask Stalnaker** 41:57 of that.
 **Matt Lee** 42:01 In terms of other, sort of, ongoing conversation channels, it sounds like a good way to sort of get into, or to make sure that we're, staying Up to date with the current state of the conversations and the like.
 is to sort of plug into those, Slack channels and or wherever else the conversations are happening. The documents that Pablo is linking also has some details about the, observability Working Group's sort of setup and current structure. We're still very nascent here, so a lot of this is going to be built out in the next couple of weeks to months. So, this document should be a good source of truth for that as we sort of build out the scaffolding around everything that we're doing as a group.
@@ -415,4 +472,5 @@ In chat.
 **Armin (Dynatrace)** 54:25 See ya.
 **Austin Parker** 54:26 Alright, see you folks next week.
 **David Ashpole (dashpole)** 54:27 Bye, everyone.
-**Austin Parker** 54:28 I… Pablo Baeyens 54:28 Right.
+**Austin Parker** 54:28 I…
+**Pablo Baeyens** 54:28 Right.

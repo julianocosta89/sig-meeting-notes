@@ -44,9 +44,11 @@ This one is implemented, this one is implemented, and so forth, so things that w
 So yeah, I'm… I'm thinking of just getting that list, shrinking at some point. And as far as, So, typically, either we have something to update in the matrix, in which case it's a PR in the spec repo itself.
 Or, if it's something missing, we should just create a niche event.
 Does that answer your question?
-**Doug Barker** 10:33 I think so. There's a few PRs specifically. I think one is, like, the, uniqueness of registering new instruments, or, meters in… Marc Alff [MySQL] 10:44 Okay.
+**Doug Barker** 10:33 I think so. There's a few PRs specifically. I think one is, like, the, uniqueness of registering new instruments, or, meters in…
+**Marc Alff [MySQL]** 10:44 Okay.
 **Doug Barker** 10:45 these are marked as, like, either question marks or minuses in this spec, so I could either just create a new issue or PR directly to the spec. I think… I think the question is, like, how do you want to manage that? Do you want to, like, create an issue.
-**Marc Alff [MySQL]** 10:58 Well, if you… Doug Barker 10:59 With everything that's been finished.
+**Marc Alff [MySQL]** 10:58 Well, if you…
+**Doug Barker** 10:59 With everything that's been finished.
 **Marc Alff [MySQL]** 11:02 So, if you know the answer for a given entry, like a PR which is done already, feel free to file a PR in the spec itself.
 I can… I can show you an example.
 **Doug Barker** 11:16 Yeah, I saw the one that you did, yesterday.
@@ -123,7 +125,8 @@ But others, like engine mix and… Web server and things like that, they are jus
 It's, nobody's actually looking at that.
 **Doug Barker** 23:11 I was looking at the VC Package repository the other day and saw an issue where somebody was asking for a package in VC Package for OpenTelemetry CBP contribute. Specifically, they wanted to use the, spitty log, Instrumentation.
 So I think that there's probably some… at least one person's interested in.
-**Marc Alff [MySQL]** 23:34 Alright, so, you know… Doug Barker 23:35 It'd be like a formal package, but I think.
+**Marc Alff [MySQL]** 23:34 Alright, so, you know…
+**Doug Barker** 23:35 It'd be like a formal package, but I think.
 **Marc Alff [MySQL]** 23:39 Yeah, the different… the different loggers, they are fairly… fairly recent and fairly decent.
 So that, that can be maintained, I think, because the person who wrote that did a good job, and the code is clean there.
 We just need to to update CI and make sure that we have recent libraries for the dependencies.

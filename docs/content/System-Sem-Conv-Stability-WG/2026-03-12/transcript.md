@@ -18,9 +18,12 @@ It goes to the whole thing.
 **Braydon Kains (Google)** 02:24 There is one where, like, if you type opt-out in the chat, it goes away. I tried that, it did not work.
 **neil yashinsky** 02:31 Oh.
 **Donal O'Sullivan** 02:38 I assume the individual is a… Is that the… is that the actual person, James Fellow, I wonder?
-**Braydon Kains (Google)** 02:44 No, I think this is, somewhat… because… Fellow… fellow note-taker is probably… And yeah, it's fellow.ai, it's… it's a… Donal O'Sullivan 02:55 Hmm… Braydon Kains (Google) 02:56 Natural, like, startup.
-**So… Donal O'Sullivan** 02:58 Okay.
-**Braydon Kains (Google)** 02:59 The person's name is James, but there's a few… Donal O'Sullivan 03:01 there's a.
+**Braydon Kains (Google)** 02:44 No, I think this is, somewhat… because… Fellow… fellow note-taker is probably… And yeah, it's fellow.ai, it's… it's a…
+**Donal O'Sullivan** 02:55 Hmm…
+**Braydon Kains (Google)** 02:56 Natural, like, startup. So…
+**Donal O'Sullivan** 02:58 Okay.
+**Braydon Kains (Google)** 02:59 The person's name is James, but there's a few…
+**Donal O'Sullivan** 03:01 there's a.
 **Braydon Kains (Google)** 03:02 Hugh James's.
 **Donal O'Sullivan** 03:04 Yep.
 **Braydon Kains (Google)** 03:04 So, I don't know who we're gonna… who we… who we talked to.
@@ -45,7 +48,8 @@ And actually, there is another thing that came up recently that kind of needs th
 Like, right now, the file log receiver, attaches, like, log file path and file name and stuff, and it just sort of, like, invented those attributes the way they are, but, like.
 If we had file conventions, they could… they could attach themselves to those pretty easily.
 So, yeah, multiple… There's multiple things that would benefit from us introducing file conventions, so that's probably the next step.
-**Donal O'Sullivan** 06:41 Okay, interesting. So does that mean we won't be adding process executable as a separate entity then, right? It would be… Braydon Kains (Google) 06:47 We would… so we would still be adding it as an entity, but… Its attributes would come from a registry of, like, general file information, because, like.
+**Donal O'Sullivan** 06:41 Okay, interesting. So does that mean we won't be adding process executable as a separate entity then, right? It would be…
+**Braydon Kains (Google)** 06:47 We would… so we would still be adding it as an entity, but… Its attributes would come from a registry of, like, general file information, because, like.
 **Donal O'Sullivan** 06:57 Hmm.
 **Braydon Kains (Google)** 06:57 So some stuff about the executable might be specific, but most of the stuff that they want to know about process executable is just, like, what's the file's path and file's name, and, like.
 **Donal O'Sullivan** 07:08 It's sort of.
@@ -64,8 +68,10 @@ So either we'll need to have something centrally to get some, to see what commun
 **Dmitrii Anoshin** 08:56 Yeah, I mean, the observatory, no, but even the booth, we lost.
 **Christos Markou** 09:00 who lost the deadline, but they managed to secure one for one day, I think, something like that.
 **Dmitrii Anoshin** 09:06 Oh, okay.
-**Christos Markou** 09:06 So, yeah, we will have something only for one day, but in our case, yeah, we can find the time and, you know, make some… Braydon Kains (Google) 09:14 So we only… we only even have, like, in the CNCF pavilion, we only have a booth for one day.
-**Christos Markou** 09:18 For one day, yeah. Wow. That's… That's… Braydon Kains (Google) 09:23 That's gonna be interesting, because, like, the observatory was really popular with people, like, just coming and asking general questions about the project, and, like, it's… probably one of the most popular CNCF projects that people would want to come and talk about, so that's going to be interesting.
+**Christos Markou** 09:06 So, yeah, we will have something only for one day, but in our case, yeah, we can find the time and, you know, make some…
+**Braydon Kains (Google)** 09:14 So we only… we only even have, like, in the CNCF pavilion, we only have a booth for one day.
+**Christos Markou** 09:18 For one day, yeah. Wow. That's… That's…
+**Braydon Kains (Google)** 09:23 That's gonna be interesting, because, like, the observatory was really popular with people, like, just coming and asking general questions about the project, and, like, it's… probably one of the most popular CNCF projects that people would want to come and talk about, so that's going to be interesting.
 **Christos Markou** 09:40 We can occupy always a table at the lunch area or something, and put some hotel, yeah, brand stuff there.
 **Braydon Kains (Google)** 09:49 Buy some, like, some craft materials from a dollar store, and, like.
 cut out… cut out open telemetry on a Bristol board or something.
@@ -73,12 +79,14 @@ cut out… cut out open telemetry on a Bristol board or something.
 Anyways, yeah, I will, post later, maybe next week, so as we can coordinate once we know more and see what time is preferable for every one of us, so we can, schedule it then.
 **Braydon Kains (Google)** 10:16 Sounds good.
 And I think last time, I missed… I missed last week's, we had mentioned that, like, that requirement level on the… on the attributes was sort of the last thing we wanted for, cutting a process release candidate. Was that… Is that right?
-**Christos Markou** 10:36 So I think last… yeah, there was a one PR from Donald, and that was merged. That was the requirement level on… On the… Braydon Kains (Google) 10:45 the entity.
+**Christos Markou** 10:36 So I think last… yeah, there was a one PR from Donald, and that was merged. That was the requirement level on… On the…
+**Braydon Kains (Google)** 10:45 the entity.
 **Christos Markou** 10:46 On the entity attributes, yes. And then there is the requirement level on the metrics, the PR that you're trying to reopen, and Donald also sent an issue in the PR, I think, to, introduce the process executable, entity, so I think these two are the leftovers, and, maybe after this, we can consider the, the RC, I guess.
 If we can do it this week or next week, that would be great. If not, yeah, no worries.
 **Braydon Kains (Google)** 11:19 Yeah. It would be… it would be good to be able to do it before Roger's talk.
 **Christos Markou** 11:24 Yeah, yeah, sure.
-**We can even, like, yeah, we don't have permission to merge, but if we had, that would be cool to merge it, like, live, maybe, during the… Braydon Kains (Google)** 11:35 Yeah, that would be… that would be funny.
+We can even, like, yeah, we don't have permission to merge, but if we had, that would be cool to merge it, like, live, maybe, during the…
+**Braydon Kains (Google)** 11:35 Yeah, that would be… that would be funny.
 **Christos Markou** 11:36 Prometus folks do it, usually.
 **Braydon Kains (Google)** 11:39 Yeah.
 **Christos Markou** 11:39 Yeah, anyways.
@@ -98,13 +106,15 @@ If anybody disagrees on that, we can… we can discuss, or we can just merge it 
 And the CPU time, I'd want to… Get, like, number of… course.
 That would be the value right. Number of course… number of cores, times elapsed.
 **Braydon Kains (Google)** 14:07 The last time, yeah.
-**Dmitrii Anoshin** 14:09 So, like… Braydon Kains (Google) 14:11 I think we do provide a core count metric, though, right?
+**Dmitrii Anoshin** 14:09 So, like…
+**Braydon Kains (Google)** 14:11 I think we do provide a core count metric, though, right?
 **Dmitrii Anoshin** 14:14 Yeah, we do provide it, but, for example… I mean, it's just… we need to maybe clarify what's meaningful here, and if there is a meaning, we can find the meaning for that. I can even argue that we can find the meaning for the direction as well.
 someone can… Like, just worry about… Overall traffic over the particular… Particular host, for example, and don't care whether it's egress or ingress.
 **Braydon Kains (Google)** 14:48 Hmm.
 **Dmitrii Anoshin** 14:49 And, they would maybe potentially do some more average.
 I mean, it's useless, In practical way, But in technical… Way, it's kind of… can be considered as meaningful? So, I'm not sure where we draw the line.
-**It probably… Braydon Kains (Google)** 15:10 Yeah.
+It probably…
+**Braydon Kains (Google)** 15:10 Yeah.
 **Dmitrii Anoshin** 15:11 We do have it somewhere referencing Prometheus guidelines, when they say.
 Aggregation must be, like, meaningful. But what meaningful is, it's also questionable.
 So, I'm just… my point is that, yeah, it's not ideal, like, it doesn't make a lot of sense, but do we have to restrict users? Like, will the data that's… Produced by the… by the aggregation.
@@ -117,15 +127,18 @@ All the non-idle time, so any state that isn't idle, and then produce that as a 
 and, like, it becomes ambiguous what they mean if the attribute isn't there. But that is still a question of, like, whether that's our job to enforce, like.
 In fact, does required mean that, like.
 an aggregation would violate our conventions. Is that how that would work?
-**Dmitrii Anoshin** 16:55 Aggregation would violate the conventions, but what… Braydon Kains (Google) 16:59 I'm just… I'm just thinking, like.
+**Dmitrii Anoshin** 16:55 Aggregation would violate the conventions, but what…
+**Braydon Kains (Google)** 16:59 I'm just… I'm just thinking, like.
 in a future, like, there's talks of people, like, implementing Weaver on the server side.
 To, like, validate that data coming in adheres to whatever semantic conventions registry, and, like.
 if someone sent in… like, let's say CPU.mode is a required attribute, and someone sent data to the back end, and Weaver tried to validate it.
 I guess that would fail, because it's missing the CPU mode?
 **Dmitrii Anoshin** 17:32 If it's required.
-**Braydon Kains (Google)** 17:33 Yeah, if it's required, then… Dmitrii Anoshin 17:35 But here we're talking about whether making is required or not in semantic conventions. I don't… I'm not saying that we should violate whatever is defined in semantic conventions.
+**Braydon Kains (Google)** 17:33 Yeah, if it's required, then…
+**Dmitrii Anoshin** 17:35 But here we're talking about whether making is required or not in semantic conventions. I don't… I'm not saying that we should violate whatever is defined in semantic conventions.
 And now we are discussing semantic conventions, right?
-**Braydon Kains (Google)** 17:49 Yeah, right, well, this… that's what I mean, like, if we consider… Dmitrii Anoshin 17:55 Like, if it's useful to have it required specifically for the validation of the backend in that case.
+**Braydon Kains (Google)** 17:49 Yeah, right, well, this… that's what I mean, like, if we consider…
+**Dmitrii Anoshin** 17:55 Like, if it's useful to have it required specifically for the validation of the backend in that case.
 **Braydon Kains (Google)** 18:05 Yeah, I'm just trying to… I'm trying to make sure I don't, like.
 paint us in a corn… paint users in a corner by making a decision like this. So, like, if we… if we mark… It will, in that case, should we mark any attribute as truly required? Because we don't want to restrict them from being able to do Aggregations that they feel like doing.
 like… I think we're trying to only introduce attributes that, like, are… Are summable or aggregatable in some way.
@@ -133,7 +146,8 @@ And so, if they decide to do those aggregations at collection time, and then sen
 don't aggregate. Ever.
 on some… on some specific attributes, like, maybe that's… like, maybe we should just call them all recommended, or, like, recommend… recommended if we think they should be there, but, like, should… is… I… I'm now struggling to think if there's a case we should ever call anything required.
 **Dmitrii Anoshin** 19:10 I see what you mean. So, your point is that required, Potential purpose of required is the use case when they want to use it for validation of particular metrics.
-**So… Braydon Kains (Google)** 19:27 We've even been talking about it at Google, the possibility of, like, implementing Weaver in a backend to recognize when something is valid semconf before routing it somewhere.
+So…
+**Braydon Kains (Google)** 19:27 We've even been talking about it at Google, the possibility of, like, implementing Weaver in a backend to recognize when something is valid semconf before routing it somewhere.
 **Dmitrii Anoshin** 19:37 Yeah. I mean, okay, to… counter-argument, like, against what you originally said, if they don't have a full set of labels, and they aggregate a full set of states, and they aggregate over some of them, they will be having run metric. It's applicable to any recommended attribute, essentially. If we only aggregate over a set of CPU cores, it's gonna be incorrect metric. So, I think here we… let's just… don't bring that, at least. Here, we're thinking about aggregation over all all MTSs.
 we are not talking about subset. So, I guess that thing we should not consider. But, required to Using the required as a, like, extra validation, and on the backend.
 and, like, providing the best practices from our side, from OpenTelemetry, semantic conventions, I think that kind of makes sense.
@@ -144,12 +158,15 @@ Like, saying, hey, like, there are some attributes that are… Clearly good for 
 **Braydon Kains (Google)** 21:40 Yeah. Like, the best we'd be able to do would be just, like, in our, like, documentation, to say, like.
 you… you can do… you can do aggregation on this attribute, but we don't think it's gonna give you a good value, so we recommend you don't. But, like, that's not a… that's not a very… Aye.
 It's not a sh… not a strict enforcement.
-**Dmitrii Anoshin** 22:01 Okay. But… Braydon Kains (Google) 22:02 Like, the… but the… the… the straw man I'm thinking of is this… this… there's been this theoretical pitch I've heard of, like, you know, using Weaver to recognize something coming in as semantic conventions, and then automatically, like, populating dashboards or something based on that.
+**Dmitrii Anoshin** 22:01 Okay. But…
+**Braydon Kains (Google)** 22:02 Like, the… but the… the… the straw man I'm thinking of is this… this… there's been this theoretical pitch I've heard of, like, you know, using Weaver to recognize something coming in as semantic conventions, and then automatically, like, populating dashboards or something based on that.
 And, like, if someone has done aggregation on a required attribute, and then that attribute no longer goes there, and then that breaks Weaver's validation, it's like, okay, this is not semantic conventions, I'm not going to automatically populate this to some dashboard.
 **Dmitrii Anoshin** 22:36 No, I'm not saying that we should allow aggregation of the required attributes.
-**we should… we should stick to the conventions, and we should not allow… and currently, M-DataGen doesn't allow you to… Right. If you… I made something from the attributes list. Amid something required, it'll give you an error. So I… Braydon Kains (Google)** 23:00 I think that means, like, any time we're… any time we think someone could reasonably aggregate over something, we should just say recommended, even if our recommendation is to not aggregate.
+we should… we should stick to the conventions, and we should not allow… and currently, M-DataGen doesn't allow you to… Right. If you… I made something from the attributes list. Amid something required, it'll give you an error. So I…
+**Braydon Kains (Google)** 23:00 I think that means, like, any time we're… any time we think someone could reasonably aggregate over something, we should just say recommended, even if our recommendation is to not aggregate.
 It's like… Technically speaking, someone still could do… still could aggregate.
-**Dmitrii Anoshin** 23:22 Yeah, but at the same time, the validation part on the viewer, you… Braydon Kains (Google) 23:27 And so it's like, to counteract that, we just always say recommended, basically.
+**Dmitrii Anoshin** 23:22 Yeah, but at the same time, the validation part on the viewer, you…
+**Braydon Kains (Google)** 23:27 And so it's like, to counteract that, we just always say recommended, basically.
 **Dmitrii Anoshin** 23:33 No, no, I mean, I think we should… clearly identify which one… which attributes are, like, good for aggregation, which are not. So, yeah, probably, I would, I think we can go with more strict definitions of the required. So, for example, yeah, as you mentioned.
 Direction and state can be required just… not… just because Let's say, reaggregation over them.
 Provide some meaningful, Data, but we don't believe that data is useful.
