@@ -12,7 +12,8 @@ The idea is to… Be able to use this process in… Sure, medium term, with… F
 receiver on… Other components are… going through.
 An effort to be stable.
 Don't know if there are other topics for… the stability… Stuff.
-**Well, I'll talk about the… the Kipkon stuff, and if somebody thinks about it, you'll take… Andrzej Stencel** 05:05 Sorry, yeah, it's about KubeCon. Is there anything, we as CollectorSeek are going to announce at KubeCon?
+Well, I'll talk about the… the Kipkon stuff, and if somebody thinks about it, you'll take…
+**Andrzej Stencel** 05:05 Sorry, yeah, it's about KubeCon. Is there anything, we as CollectorSeek are going to announce at KubeCon?
 **Pablo Baeyens** 05:15 So, there will be a talk, happening on Tuesday, about the collector's sake, it's the first time This is Dawn.
 Put the link on.
 The meeting notes… second.

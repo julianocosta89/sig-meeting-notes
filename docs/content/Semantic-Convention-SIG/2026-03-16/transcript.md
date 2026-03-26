@@ -40,7 +40,8 @@ Alright, no camera, but I can share. Let's see… Wee… Have no agenda, but tha
 **Trask Stalnaker** 05:53 Hey, hey.
 Block… Did we… I don't think we talked about this in… Oh, wait, no, this is blocked on… yes, this is just blocked on the other PR.
 That's fine.
-**Browser URL… Liudmila Molkova** 06:36 Oh, I think I blocked it, and there is more details, seems… Somebody dismissed my review, and it's the right thing.
+Browser URL…
+**Liudmila Molkova** 06:36 Oh, I think I blocked it, and there is more details, seems… Somebody dismissed my review, and it's the right thing.
 Thing to do.
 **Trask Stalnaker** 06:49 Okay, cool.
 What, move it back to… waiting code owner approvers.
@@ -57,10 +58,13 @@ And not ping the internet for everything, like it's trawler.
 Over and over and over again.
 **Daniel Dyla (Dynatrace)** 08:12 Also, most of these links I'm looking at here, these are all in the repository you're actually checking. They're, like, local links. It may be possible to do these checks locally.
 **Trask Stalnaker** 08:30 These are tags, though.
-**I mean… Daniel Dyla (Dynatrace)** 08:35 Well… Josh Suereth 08:36 Yeah.
+I mean…
+**Daniel Dyla (Dynatrace)** 08:35 Well…
+**Josh Suereth** 08:36 Yeah.
 **Daniel Dyla (Dynatrace)** 08:36 It is, and it isn't. I mean, it's… it goes to the tag, but, like, in the, the document itself, it's just a, Alright.
 whatever not an absolute link is, sorry, it's a Monday, a relative link.
-**Trask Stalnaker** 09:03 Link check. Failures… Liudmila Molkova 09:09 One good way could be to run full-link check weekly, and I think we already have this job The… but the PR checks could run on the PR changes only. They don't need to check the rest.
+**Trask Stalnaker** 09:03 Link check. Failures…
+**Liudmila Molkova** 09:09 One good way could be to run full-link check weekly, and I think we already have this job The… but the PR checks could run on the PR changes only. They don't need to check the rest.
 **Trask Stalnaker** 09:33 Yeah, we actually did this in the Java repos recently.
 Gregor… and Gregor did some… Nice work around integrating into kind of a standard tool.
 Mize, niece, M-I-S-E… I could share that.
@@ -90,7 +94,8 @@ I will.
 Wait for that to finish.
 Let's see if we've gotten anything on the agenda… Weaver. Release… And, alright, it is… Happening.
 **Josh Suereth** 14:28 We got past our, our URL checker. That was literally why it failed.
-**Trask Stalnaker** 14:36 Let's see… Josh Suereth 14:40 Yeah, this is an FYI for folks, that the latest Weaver release has a bunch of cool stuff in it.
+**Trask Stalnaker** 14:36 Let's see…
+**Josh Suereth** 14:40 Yeah, this is an FYI for folks, that the latest Weaver release has a bunch of cool stuff in it.
 **Trask Stalnaker** 14:46 It actually has, just a heads up, it actually has not, oh, but it did get queued. Okay, so these are must not be required status checks.
 **Liudmila Molkova** 14:57 Yes, link checks are not required.
 **Josh Suereth** 15:01 Oh.
@@ -215,12 +220,14 @@ And as long as I find the attributes of one of them, everything should be valida
 **Michele Mancioppi** 32:23 That is also not a thing.
 **Josh Suereth** 32:26 We don't have extends for entities yet, because we're still sorting out the full data model. Entities are, like.
 The bits that are modeled are stable, but we haven't, like, finished the modeling. So, if you have, like, use cases, just open tickets and things for us so we can see what they are, so we can get a better idea for how to model this stuff.
-**Liudmila Molkova** 32:48 Are we even… Supposed, like, would one entity… is supposed to include a different one. My understanding that you had them independently most of the time were… Michele Mancioppi 33:01 It depends, right? So the, I think that here I'm trying to misuse entities. We're actually making, bags of, Or is those attributes defined somewhere else?
+**Liudmila Molkova** 32:48 Are we even… Supposed, like, would one entity… is supposed to include a different one. My understanding that you had them independently most of the time were…
+**Michele Mancioppi** 33:01 It depends, right? So the, I think that here I'm trying to misuse entities. We're actually making, bags of, Or is those attributes defined somewhere else?
 Because I cannot make the differentiation between log attributes So, log record attributes and resource attributes.
 I think that the concept of entity, I mean, that it's purely risk levels.
 It's hard for me to imagine a use case where I want to talk about a deployment without talking about a service in the deployment, but… Technically, in that case, the entity would be the service, not the deployment.
 **Josh Suereth** 33:44 Right, that's why, like, when there's a relationship between entities, like, pick the specific one. So pick… if service is a thing that you care about tagging to, tag to service, and then there should be a different way to say, hey, when I have service, I should see deployment.
-**Michele Mancioppi** 33:59 Yeah, but… Josh Suereth 34:00 That second part… yeah, that second part doesn't exist yet in SEMConf, but that's kind of, like, a way to think about that, of something that we want to figure out how to model. So basically, anytime you see a service, I also want to see a deployment, should be something I can define as a rule and enforce.
+**Michele Mancioppi** 33:59 Yeah, but…
+**Josh Suereth** 34:00 That second part… yeah, that second part doesn't exist yet in SEMConf, but that's kind of, like, a way to think about that, of something that we want to figure out how to model. So basically, anytime you see a service, I also want to see a deployment, should be something I can define as a rule and enforce.
 **Michele Mancioppi** 34:15 I believe that we came… we spoke about this a number of times in the past, because it keeps coming up, at least when I'm in the room.
 Yep.
 Which may be a Michele problem, to be honest, but… Why can't I say here at which OTLP level I want it?
@@ -246,7 +253,8 @@ And then you can define things about the resource and things that you need in, l
 We might not have gotten it 100% right.
 So, that's, like… the more you try this out, the more you run into problems, the more you report issues, the better we can make it. What you were saying with live check, where it was literally failing, though, or, like, allowing the attributes to be anywhere.
 in the signal and not just on the resource, that is legitimately just a bug that we should go fix, and I think I know why that's happening.
-**But… Michele Mancioppi** 37:59 exactly how it failed at this a few weeks ago. I'll check it out again.
+But…
+**Michele Mancioppi** 37:59 exactly how it failed at this a few weeks ago. I'll check it out again.
 **Josh Suereth** 38:04 Yeah. Yeah, if you could get us some test cases and things, just say, like, anytime you see, hey, this is weird, at least, at least bring it up for discussion with Weaver, or open bugs for us, because we'd love to fix it and get it, get it, like, corrected. It probably just is weird and not intended.
 **Michele Mancioppi** 38:21 Let me, let me run a thought experiment.
 Yeah. If I do not find an entity that I find descriptive enough, so it either has only the service or the deployment, I want both.
@@ -266,12 +274,15 @@ to be the mean requirement. Like, you must have both service.name, optionally se
 I gotcha. You're unioning the attributes, not the entities. I'm still thinking of type theory.
 **Michele Mancioppi** 39:54 Oh, we can talk about that. So, it's not a disjunction of types.
 **Josh Suereth** 39:58 Yeah, it's an intersection. Yeah. Yeah.
-**Yeah, that's… that's… that's what… you want an intersection of the types, and it… which would be un… Michele Mancioppi** 40:06 Types would actually be the minimum common denominator. I want the types to be merged.
+Yeah, that's… that's… that's what… you want an intersection of the types, and it… which would be un…
+**Michele Mancioppi** 40:06 Types would actually be the minimum common denominator. I want the types to be merged.
 **Josh Suereth** 40:12 Sure.
 Okay.
 **Liudmila Molkova** 40:15 Sorry for a stupid question, so why listing multiple entity associations doesn't work?
-**Because there is no… Michele Mancioppi** 40:25 I want all of the attributes.
-**this… Liudmila Molkova** 40:29 Do you want to see?
+Because there is no…
+**Michele Mancioppi** 40:25 I want all of the attributes.
+this…
+**Liudmila Molkova** 40:29 Do you want to see?
 **Michele Mancioppi** 40:29 pass… would pass the match if I have either service.name or deployment.environment.name, and I want to record both.
 **Josh Suereth** 40:38 Yeah, so Lydmillet, we define entity associations as one of, not all of.
 **Liudmila Molkova** 40:42 Oh, I see.
@@ -289,7 +300,8 @@ Yeah. What Mike Kelly's saying is he would like to have the ability to have all 
 And what I'm thinking is maybe we just change the syntax to support allof and one of together.
 **Michele Mancioppi** 42:03 I would also be fine by, by saying, by providing as a first-class citizen in the model, the fact that I want the entity that has all the requirements coming from these three.
 **Josh Suereth** 42:16 Yeah.
-**I mean, there's… Michele Mancioppi** 42:18 the model thing… I think that the key… reads wrong. I think the key needs some experimentation.
+I mean, there's…
+**Michele Mancioppi** 42:18 the model thing… I think that the key… reads wrong. I think the key needs some experimentation.
 Okay.
 **Josh Suereth** 42:27 the lady.
 **Michele Mancioppi** 42:27 entity association, like, I never would have read it as a disjunction.
@@ -343,7 +355,8 @@ Anyway, cool. I think that was it for the Weaver discussion. Was there anything 
 Should we do some office hours?
 For some conf… Weaver?
 **Michele Mancioppi** 47:46 I mean, there is going to be, the, observatory one day in the project pavilion.
-**Liudmila Molkova** 47:52 Turns out… Michele Mancioppi 47:54 In the Project Pavilion, there is one day there. This time, organizing the pavilion did not work, because… reasons.
+**Liudmila Molkova** 47:52 Turns out…
+**Michele Mancioppi** 47:54 In the Project Pavilion, there is one day there. This time, organizing the pavilion did not work, because… reasons.
 But there is going to be one booth one day.
 **Liudmila Molkova** 48:08 The booth, it's just two people, right? It's not the office hours. Office hours will be held somewhere at some tables, and somebody will reserve them.
 I'm going to put something on the agenda, but it sounds like nobody between you and Mikael and me are coming.

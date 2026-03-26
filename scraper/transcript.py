@@ -4,6 +4,49 @@ from __future__ import annotations
 
 from bs4 import BeautifulSoup, Tag
 
+from scraper.speaker_boundaries import (
+    EMBEDDED_SPEAKER_RE as _EMBEDDED_SPEAKER_RE,
+)
+from scraper.speaker_boundaries import (
+    SPEAKER_LIKE_RE as _SPEAKER_LIKE_RE,
+)
+from scraper.speaker_boundaries import (
+    is_new_speaker_start as _is_new_speaker_start,
+)
+from scraper.speaker_boundaries import (
+    should_suppress_embedded_boundary as _embedded_suppress,
+)
+
+
+def _split_embedded_boundaries(text: str) -> list[str]:
+    """Split a raw transcript fragment at embedded speaker boundaries."""
+    segments: list[str] = []
+    remaining = text
+    search_pos = 0
+
+    while em := _EMBEDDED_SPEAKER_RE.search(remaining, search_pos):
+        split_pos = em.start("punct") + 1
+        if _embedded_suppress(em.group("punct"), em.group("name")):
+            search_pos = em.end("timestamp")
+            continue
+        segments.append(remaining[:split_pos].rstrip())
+        remaining = remaining[split_pos:].lstrip()
+        search_pos = 0
+
+    if remaining:
+        segments.append(remaining)
+    return segments
+
+
+def _first_embedded_boundary(text: str):
+    """Return the first non-suppressed embedded speaker boundary in text, if any."""
+    search_pos = 0
+    while em := _EMBEDDED_SPEAKER_RE.search(text, search_pos):
+        if not _embedded_suppress(em.group("punct"), em.group("name")):
+            return em
+        search_pos = em.end("timestamp")
+    return None
+
 
 def parse_transcript_html(outer_html: str) -> list[str]:
     """
@@ -38,8 +81,13 @@ def parse_transcript_html(outer_html: str) -> list[str]:
 def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
     """Merge continuation <li>s into previous line when break is mid-sentence.
 
-    Rule: join when previous line does NOT end with '.', '?', or '!'.
-    Speaker lines always start a new entry.
+    Rule: join when ALL of the following hold:
+      - The line has no speaker element (has_speaker is False).
+      - The previous line does not end with a sentence terminator.
+      - The line does not start with a "Name Timestamp" pattern (i.e. it does
+        not look like a new speaker whose speaker element was not detected).
+
+    Speaker lines (has_speaker=True) always start a new entry.
     """
     # ASCII and full-width/CJK sentence-ending punctuation.
     sentence_ends = {".", "?", "!", "。", "？", "！"}
@@ -47,7 +95,31 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
         return []
     result = [raw[0][1]]
     for has_speaker, text in raw[1:]:
-        if has_speaker or result[-1][-1] in sentence_ends:
+        if has_speaker:
+            result.append(text)
+        elif (speaker_match := _SPEAKER_LIKE_RE.match(text)) and _is_new_speaker_start(
+            speaker_match
+        ):
+            result.extend(_split_embedded_boundaries(text))
+        elif m := _first_embedded_boundary(text):
+            # Split at the embedded boundary: the prefix (up to and including the
+            # sentence-end punctuation) belongs to the prior turn; the remainder
+            # (Name MM:SS utterance) starts a new speaker entry.
+            split_pos = m.start("punct") + 1  # one past the sentence-end character
+            prefix = text[:split_pos].rstrip()
+            remainder = text[split_pos:].lstrip()
+            if prefix:
+                # When the line started with a suppressed speaker-like pattern
+                # (speaker_match is set but is_new_speaker_start returned False),
+                # the prefix is a clock-phrase fragment — start a new entry if
+                # the prior turn is already complete.  Otherwise (prefix is plain
+                # continuation text) always merge into the prior turn.
+                if speaker_match is not None and result[-1][-1] in sentence_ends:
+                    result.append(prefix)
+                else:
+                    result[-1] += " " + prefix
+            result.extend(_split_embedded_boundaries(remainder))
+        elif result[-1][-1] in sentence_ends:
             result.append(text)
         else:
             result[-1] += " " + text

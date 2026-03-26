@@ -30,7 +30,8 @@ For these efforts?
 **Warre Pessers** 05:29 That's, that would be nice, but, I think we are hopefully going to be good as is, with the CNCF-provided account, but yeah, we'll see about the specifics, and, I'll keep this in mind, so that's, Certainly good to know.
 Any other, remarks or questions?
 **Lukas** 05:53 Yeah, I was just.
-**Ritvick Paliwal** 05:54 I would like to introduce… Lukas 05:56 Oh, sorry. Go ahead.
+**Ritvick Paliwal** 05:54 I would like to introduce…
+**Lukas** 05:56 Oh, sorry. Go ahead.
 **Ritvick Paliwal** 05:58 Sorry. I would like to introduce myself.
 Yeah, so I'm new to this, FAST group. I have joined this for the first time.
 I'm coming from AppDynamics, transitioning to Splunk Lambda layers, so we directly consume the hotel lambda distributions, so I'd like to make some contributions here.
@@ -44,11 +45,14 @@ And if anyone of you can help me with, getting started on the hotel side, if the
 I don't know if we want to try to… because the integration test I had in mind is that we would actually try to… have the Lambda export some telemetry.
 And then we would verify that the telemetry is present.
 **Warre Pessers** 07:24 Yeah, that's a good picture.
-**Lukas** 07:26 But unfortunately, yeah, that would maybe require running an EC2 container, or EC2 instance, which we probably want to avoid. So… Raphael Manke 07:36 what?
-**To collect the telemetry data, or… Lukas** 07:41 Yeah, I mean, we want to, like… like, we would probably want to actually verify that we're actually able to generate telemetry data, right, when we… Raphael Manke 07:50 I have an idea for that.
+**Lukas** 07:26 But unfortunately, yeah, that would maybe require running an EC2 container, or EC2 instance, which we probably want to avoid. So…
+**Raphael Manke** 07:36 what? To collect the telemetry data, or…
+**Lukas** 07:41 Yeah, I mean, we want to, like… like, we would probably want to actually verify that we're actually able to generate telemetry data, right, when we…
+**Raphael Manke** 07:50 I have an idea for that.
 **Lukas** 07:52 Yeah, I know, we could probably use, like, ngrok or something to, to, force.
 **Raphael Manke** 07:56 You can use AWS itself. AWS accepts, has an OTEL endpoint where you can send the data to, and if you enable transaction search, which is their OTEL version, then all this data will end up in a lock group, so you can actually query a lock group afterwards.
-**Lukas** 08:10 Oh, that's awesome. Yeah, and then we can… I'm assuming there's, like, free tiers on that, so… Warre Pessers 08:17 Yeah, okay, that sounds good. I was… personally, my initial idea was to simply use the console exporter and, just, like, base it on, on, the logs that come out of that, but I think this idea is a bit better to see, like.
+**Lukas** 08:10 Oh, that's awesome. Yeah, and then we can… I'm assuming there's, like, free tiers on that, so…
+**Warre Pessers** 08:17 Yeah, okay, that sounds good. I was… personally, my initial idea was to simply use the console exporter and, just, like, base it on, on, the logs that come out of that, but I think this idea is a bit better to see, like.
 that we are actually exporting it properly. So that sounds interesting, but I don't have any knowledge of how that works, but that's an interesting idea.
 So, yeah, if any of you want to, To engage on that issue, because there is an open issue for it.
 Or put your thoughts in there, that would be awesome as well.
@@ -64,7 +68,8 @@ When I last checked, there wasn't too many, except for, Rafael's.
 **Warre Pessers** 10:27 Yeah, no pressure. I think we are doing alright, and there's also some stuff I'll probably have to close some very old, still-opened PRs, and for the same reason, I'm going to go through all the issues again as well, hopefully this weekend.
 See what's still relevant and what isn't, just to clean up some of the… Some of the myths.
 I don't know if anyone else.
-**Raphael Manke** 10:55 Also… Warre Pessers 10:56 Boop, keep on.
+**Raphael Manke** 10:55 Also…
+**Warre Pessers** 10:56 Boop, keep on.
 **Raphael Manke** 10:56 quick update on the account ID PRs, that are spread across all the instrumentations.
 I got some valid feedback in regards of if we really should build up a dependency to the extension in the different languages, so I'm arguing there, and I also found out that it's possible to derive the account ID from the AWS credentials, so parsing the AWS access key ID would retrieve the account ID as well.
 So I'm thinking if, I'm adding a dissolution rather than parsing the sim link value, because then it will be more independent of the extension, and, yeah.

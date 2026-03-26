@@ -25,7 +25,8 @@ Actually, it's Alti902, I don't know.
 **Martin Kuba** 02:38 Yeah, it is. We're still kind of… It was the first reads we had to do manually because of NPM publishing.
 So, we don't have, like, a release in GitHub, but if you go to NPM… hold on… There's… I'll just, send you that link.
 **Santosh** 02:59 Okay, yeah.
-**Martin Kuba** 03:04 And so far, it's only instrumentations, like, like, we still… Need to work on… Santosh 03:12 the SDK.
+**Martin Kuba** 03:04 And so far, it's only instrumentations, like, like, we still… Need to work on…
+**Santosh** 03:12 the SDK.
 **Martin Kuba** 03:13 The SDK, yeah.
 **Santosh** 03:14 It's fine, yeah.
 I mean, the instrumentations are the… 3 anyways.
@@ -35,15 +36,17 @@ I mean, the instrumentations are the… 3 anyways.
 Yeah, it just… this just happened, like, last Thursday, so… Damn.
 **Santosh** 04:05 Yeah, yeah, yeah, yeah, I think, Do you guys also plan to… Update the documentation page.
 RR over time, once you have more usage.
-**At least between… among the, you know, guys who are actively participating, you guys can start using it, and… You know, make sure it is… Martin Kuba** 04:32 Yeah, you mean the documentation?
-**Yeah, you mean, like, the documentation in… on the website, or on the… Santosh** 04:38 telemetry IO.
+At least between… among the, you know, guys who are actively participating, you guys can start using it, and… You know, make sure it is…
+**Martin Kuba** 04:32 Yeah, you mean the documentation? Yeah, you mean, like, the documentation in… on the website, or on the…
+**Santosh** 04:38 telemetry IO.
 **Martin Kuba** 04:39 Yeah.
 Yeah, we need to do that, yeah.
 **Santosh** 04:43 Yeah. Basically, how should, developers consider… between the two options. Like, when should they use the current ones? When should they use the new ones? Is there anything they're going to miss with the new ones?
 is that any… Like, what are the list of semantic convention changes?
 **Martin Kuba** 05:05 Damn.
 **Santosh** 05:06 the event model, you know, document, like, what are the… and these are all event-based instrumentation, they all emit events, right? Right.
-**Martin Kuba** 05:15 Unlike… Santosh 05:16 you know, the previous ones.
+**Martin Kuba** 05:15 Unlike…
+**Santosh** 05:16 you know, the previous ones.
 **Martin Kuba** 05:19 That's right.
 **Santosh** 05:20 Okay.
 And you have also split between the XHR span versus the timing… event for the timing.
@@ -54,14 +57,17 @@ We have… we have the navigation timing.
 **Santosh** 05:42 Okay. Oh man, I think I remember we talking about these things with Nev.
 I don't know if it was a year ago or two years ago. It's.
 **Martin Kuba** 05:53 Yeah.
-**Santosh** 05:54 But, congratulations, I think your effort paid off. I think you are the only one who's, you know, who's sticking around from the original… Martin Kuba 06:02 Yeah.
+**Santosh** 05:54 But, congratulations, I think your effort paid off. I think you are the only one who's, you know, who's sticking around from the original…
+**Martin Kuba** 06:02 Yeah.
 **Santosh** 06:03 of people.
-**Martin Kuba** 06:05 Yeah, that's… this was, like, one of the… one of the reasons that I… that I switched, you know, I went to Grafana, because I could continue working on this. You know, Ted… Ted Young, who's… Santosh 06:18 Yeah.
+**Martin Kuba** 06:05 Yeah, that's… this was, like, one of the… one of the reasons that I… that I switched, you know, I went to Grafana, because I could continue working on this. You know, Ted… Ted Young, who's…
+**Santosh** 06:18 Yeah.
 **Martin Kuba** 06:19 one of the GC, MGC, like, he also went to Grafana from… from Lightstep, and… And, he, like… like, he think, like… he really wants this to happen, like, he really wants the browser to be successful, so… Oh.
 **Santosh** 06:37 No, that's really nice.
 **Martin Kuba** 06:38 Yeah.
 **Santosh** 06:39 Nice, yeah.
-**Martin Kuba** 06:43 I don't know if anybody else is joining, it seems… Santosh 06:47 Okay, let me get at least your thoughts on the server timing. Basically, what is happening is… let me share my screen… Okay, there is this, issue, that was opened, 2 years ago.
+**Martin Kuba** 06:43 I don't know if anybody else is joining, it seems…
+**Santosh** 06:47 Okay, let me get at least your thoughts on the server timing. Basically, what is happening is… let me share my screen… Okay, there is this, issue, that was opened, 2 years ago.
 Okay, two years now. Which talks about standardizing, you know, the server priming.
 based trace parent propagation in the reverse direction, from the backend to the clients. And the issue is, I think mostly with… just the initial browser navigation when you type the URL.
 Right? You… you don't have… You know, your instrumentation loaded in the browser yet, so you don't have the opportunity to inject your trace context in your request.
@@ -85,20 +91,26 @@ take the trace ID, generate another span with the same trace ID, There is a… T
 Unfortunately, that is not, possible. I, I think… I don't know, you know, that part very clearly, but… It's hard to make that, you know, your span's child, because that span needs to have your span as a parent, and… you have lost that opportunity as well during the process. So all you can do is at least keep the server-side span in, let's say, in the span link.
 **Martin Kuba** 10:58 So this, this applies only to the document… Correct. Document load span, right?
 **Santosh** 11:02 Correct, correct.
-**Martin Kuba** 11:04 So, like, the… Santosh 11:04 initial page navigation.
+**Martin Kuba** 11:04 So, like, the…
+**Santosh** 11:04 initial page navigation.
 **Martin Kuba** 11:06 So the thing is, like, with the document load span, like, we… we can't… You can't… that span is generated after.
 **Santosh** 11:14 Yeah.
-**Martin Kuba** 11:14 Anyway… Santosh 11:16 Yeah.
-**Martin Kuba** 11:16 And I think… Santosh 11:18 But now, it is orphan. It doesn't have any linkage to the backend spans. So we are trying to at least establish some form of linking.
+**Martin Kuba** 11:14 Anyway…
+**Santosh** 11:16 Yeah.
+**Martin Kuba** 11:16 And I think…
+**Santosh** 11:18 But now, it is orphan. It doesn't have any linkage to the backend spans. So we are trying to at least establish some form of linking.
 What about?
 **Martin Kuba** 11:29 What about the meta tag? Like, was… isn't that implemented?
 **Santosh** 11:34 It's the same. So basically, it's the same. So, the… The intent is the same.
 You can either propagate the, trace context via a meta tag, R… Via the server timing header.
 **Martin Kuba** 11:51 Yeah.
-**Santosh** 11:52 And I think the server timing header was… Preferred for some reason, so that… Martin Kuba 11:59 Okay.
-**Santosh** 11:59 you know, it is not HTML-specific, you know, it can be used. Actually, that part, I should read more. I don't know the… full… context. Like, is this concept required for other situations, too? If it is only for the document load, you know, you're right, that meta tag Can be, a way to… Martin Kuba 12:24 Boom.
+**Santosh** 11:52 And I think the server timing header was… Preferred for some reason, so that…
+**Martin Kuba** 11:59 Okay.
+**Santosh** 11:59 you know, it is not HTML-specific, you know, it can be used. Actually, that part, I should read more. I don't know the… full… context. Like, is this concept required for other situations, too? If it is only for the document load, you know, you're right, that meta tag Can be, a way to…
+**Martin Kuba** 12:24 Boom.
 **Santosh** 12:25 But turns out that, you know, John, who opened this issue, he has linked a few links at the bottom.
-**where I see, you know, Grafana had donated you know… Martin Kuba** 12:40 Hmm.
+where I see, you know, Grafana had donated you know…
+**Martin Kuba** 12:40 Hmm.
 **Santosh** 12:41 A plugin kind of a thing to… the PHP instrumentations.
 Okay. You know, where you propagate the server timing as a header, the transparent in the server timing header.
 **Martin Kuba** 12:56 Okay.
@@ -136,19 +148,23 @@ Right.
 **Santosh** 17:04 So, I think we need to get some advice from, Daniel… do. If we… so, one question is, does he join the browser sig? If so, I can… I can join and check with him, too, on what his latest thinking is.
 **Martin Kuba** 17:27 Yeah, you mean Daniel the tailor? Yeah, yeah.
 **Santosh** 17:30 Yeah.
-**Martin Kuba** 17:31 He, he, he comes there sometimes, yeah, like… Santosh 17:34 Okay.
+**Martin Kuba** 17:31 He, he, he comes there sometimes, yeah, like…
+**Santosh** 17:34 Okay.
 **Martin Kuba** 17:35 Yeah.
 He's not, like, actively… he's not that they're, like, actively involved in the SIG itself, but he comes there from, like, the JS perspective, because they overlap, yeah.
 **Santosh** 17:45 Okay, or I can join, the JSC too. I think the, it would be helpful if you get Caught up with this topic.
 **Martin Kuba** 17:55 Yeah.
 **Santosh** 17:55 And then, you know.
-**Martin Kuba** 18:02 I wonder if you are… Santosh 18:02 hold on to this thought too, then I think we could approach together.
+**Martin Kuba** 18:02 I wonder if you are…
+**Santosh** 18:02 hold on to this thought too, then I think we could approach together.
 **Martin Kuba** 18:07 Yeah, I wonder if… I wonder if it'd be… Goods open… either move this issue log to the browser.
 Repo, or, like, open a new one.
 **Santosh** 18:17 It's up to you, I think.
-**Martin Kuba** 18:19 God, I, I… Santosh 18:22 put both the links here. The main issue… the reason it is in the spec is… This is… this indeed needs to go into the spec anyway, because we do want to standardize it so that everyone implements this.
-**Martin Kuba** 18:40 Right.
-**Okay, yeah, I'll… I'll have to think about it somewhere, to be honest. But yeah, it's, I just call it… Yeah. Okay. Yeah, I think… Santosh** 18:58 my… I would also recommend that you… Get a perspective from… you know, from Grafana as well, like, your internal teams, the browser teams, as to how they are handling this situation, because they, you know, they seem to have added this, this functionality, right, here in the PHP… Martin Kuba 19:23 Right. Yeah, I'm actually very curious about this, because, like, I don't know how that applies to back-end services.
+**Martin Kuba** 18:19 God, I, I…
+**Santosh** 18:22 put both the links here. The main issue… the reason it is in the spec is… This is… this indeed needs to go into the spec anyway, because we do want to standardize it so that everyone implements this.
+**Martin Kuba** 18:40 Right. Okay, yeah, I'll… I'll have to think about it somewhere, to be honest. But yeah, it's, I just call it… Yeah. Okay. Yeah, I think…
+**Santosh** 18:58 my… I would also recommend that you… Get a perspective from… you know, from Grafana as well, like, your internal teams, the browser teams, as to how they are handling this situation, because they, you know, they seem to have added this, this functionality, right, here in the PHP…
+**Martin Kuba** 19:23 Right. Yeah, I'm actually very curious about this, because, like, I don't know how that applies to back-end services.
 **Santosh** 19:31 It doesn't, but it is the backend service that needs to, you know, inject that header.
 **Martin Kuba** 19:38 Oh, good.
 **Santosh** 19:39 So that the browser receives it.
@@ -159,7 +175,8 @@ Which is needed only when you're… You know, backend services responding to bro
 **Martin Kuba** 20:02 Okay, yeah, that makes sense. Yeah, I… I'll have to look into it, because, like, so I work on the browser SDK that Grafana has, Pharaoh.
 And I don't think that we handle that, but I'll have to double-check.
 **Santosh** 20:16 Yeah, yeah.
-**Martin Kuba** 20:20 Okay, yeah, thanks for bringing it up, bringing it up, so… Santosh 20:24 No problem.
+**Martin Kuba** 20:20 Okay, yeah, thanks for bringing it up, bringing it up, so…
+**Santosh** 20:24 No problem.
 **Martin Kuba** 20:30 Hansen's not here. I had, I had a topic, And maybe, like, I think I would like to… talk to the Android folks about this one, maybe next time, but I can… Just give you, like, a quick summary if you want.
 I don't know if you remember, there's, There's a… there's been a discussion about, using sessions or modeling sessions as resource attributes.
 **Santosh** 21:05 Right.
@@ -195,7 +212,8 @@ So… .
 And one of the suggestions, like, that, I think actually Daniel had… Was that if it's… if it's about, like, the… Like, the semantics, like, of the API.
 Then we could have, like, a… kind of a, like, a… And you could still have metrics API, but that would just generate events in the background.
 **Santosh** 25:08 Yeah, yeah, yeah. Yeah, so the API remains, but the SDK will change it to events, yeah.
-**Martin Kuba** 25:21 So I need to… yeah, I would like to discuss this with the… with the Android folks, because they… Santosh 25:26 Yeah, I think, what?
+**Martin Kuba** 25:21 So I need to… yeah, I would like to discuss this with the… with the Android folks, because they…
+**Santosh** 25:26 Yeah, I think, what?
 I think we need to couple this thought with your other idea.
 off… you know, there is a processor in the collector, right, which converts spans to metrics. If we are able to come up with conventions.
 Even if… it doesn't have to be a standard, but at least, you know, some… Briefly agreed conventions that, hey, if an event comes in this form.

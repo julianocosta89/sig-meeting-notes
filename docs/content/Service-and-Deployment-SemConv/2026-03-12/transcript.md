@@ -95,7 +95,8 @@ But, yeah, I, I think, I think, Ankit, can you, can you.
 **Ankit (Google)** 17:57 Yeah, I was saying that would open the question along the same lines for cost center as well. Should we include that as well in Owner?
 Instead of having a different one.
 Because if we are including business unit inside owner, then probably cost center would make sense inside owner as well.
-**I think the thing I'll pull out… Josh Suereth** 18:18 Yeah, the thing I'll call out, it's a good question. In practice, It's… it's… Big companies do stupid things.
+I think the thing I'll pull out…
+**Josh Suereth** 18:18 Yeah, the thing I'll call out, it's a good question. In practice, It's… it's… Big companies do stupid things.
 So, like… You would think that there would be a clear tie between an owner and a cost center.
 you would think there'd be a clear… and I actually want to find out if this is true for Owner to business unit as well.
 But there are times where that is not true. I think it's a simple model, and it's decent for us to look into and investigate it. For cost center specifically, man, there's shenanigans that go on, right? Where, like, one team could actually have multiple things that are paying for their stuff.
@@ -169,7 +170,8 @@ Both are valid, neither is wrong, or whatever, you know, good places to start. B
 **Ayushi Asthana** 32:43 Yeah, that's an interesting thought, actually. I was, thinking very binary, it's going to be either data or data source, but now that you've said it.
 I'm just thinking if… Like, both of them have their utility, and at some point in the future, we're seeing both of them existing in hotel, and so… Maybe we could think along those lines as well.
 **neil yashinsky** 33:06 Yeah, cause I feel like… Oh, sorry, I was just gonna say, I feel like there's probably A-to-A, like, agent-to-agent, implications of this as well.
-**But, again, not to boil the ocean, but just, like, consider how… The downstream consumers of this might… Ayushi Asthana** 33:23 Relate to the data.
+But, again, not to boil the ocean, but just, like, consider how… The downstream consumers of this might…
+**Ayushi Asthana** 33:23 Relate to the data.
 Right, right.
 I think for starters, Josh, what do you think about this, since you had proposed data source initially? What do you think if we propose it as data entity and see what the response from the group is about these use cases?
 And if we see people, like, leaning towards having it as data source instead of data.
@@ -213,7 +215,8 @@ Right? Or something that just sort of discloses some, Restricted attributes to t
 some personal information or something, right? And only that aspect of that service is sensitive. But other than that, you are just seeing your preferences and stuff, and it's just, like, fine, you can view it.
 So there is, there is also that.
 **Anthony Mirabella** 40:56 But if it only applies to some of the telemetry that's coming out of the service, because, say, it only applies to a login endpoint, or something like that, then it doesn't seem to fit into an entity or a resource, right?
-**Would that then be more… Ayushi Asthana** 41:11 Like, in metrics, a data point attribute, or a log record attribute.
+Would that then be more…
+**Ayushi Asthana** 41:11 Like, in metrics, a data point attribute, or a log record attribute.
 It does tie back to the data source itself, right? You can… you would be… so this… the way I sort of see this playing out is, people going ahead and tagging their, buckets and DBs as and propagating data.sensitivity or data.category at that point, and not at the service service Can sort of infer it from the data it receives from these endpoints.
 But not all of the service will have, or all of the telemetry that the service generates will have these attributes, or this specific label, so to speak.
 **Anthony Mirabella** 42:04 I guess maybe my mental model might be a little bit behind, because I'm… haven't had a lot of experience with entities. I'm still thinking of resource attributes as a fixed set of attributes you create at startup doesn't change over the lifetime of the SDK. And it seems like if these attributes, though, would only apply to some subset of The operations that a service performs, and thus only get added to telemetry that's coming out of those operations.

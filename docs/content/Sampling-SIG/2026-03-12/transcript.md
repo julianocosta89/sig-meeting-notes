@@ -23,7 +23,8 @@ Well, folks, do we have anything new in the world of sampling?
 The notes don't have anything, but that's sort of normal.
 Since I see you here, Chris… Why don't we ask you if you maybe have an agenda item?
 Today.
-**Chris Marchbanks** 03:52 Yeah, I was… jmacdonald 03:54 I remember… yeah, let's go… what do I remember?
+**Chris Marchbanks** 03:52 Yeah, I was…
+**jmacdonald** 03:54 I remember… yeah, let's go… what do I remember?
 Actually, I don't remember what I remember. You were talking about partial trace sampling.
 **Chris Marchbanks** 04:02 I was a little curious about partial trace sampling. Really, the general idea is I'm very curious around… Having a little bit more… a little bit easier to configure sampling rates for services, which partial choice sampling was also… was one option. I was a little curious around… I know, like, Jaeger remote sampling is supported if you use the shim.
 I was curious if there's anything related to that.
@@ -48,7 +49,8 @@ Yeah, it was… back then, it was, you know, more like, you know, a vision, how 
 So, this was also my motivation to also… you know, define… consistent sampling properly in OpenTelemetry.
 Yeah, and I think, how we've defined it, I think it's not possible. I mean, there's still a lot of things missing in open telemetry, because I think it only It really makes sense if you also ask, you know, like, throttling, automatic throttling, or, you know, the idea is that every… at every service, you can choose the sampling rate independently.
 According to the local… Constraints, resource constraints, whatever.
-**Chris Marchbanks** 08:39 Or… Otmar Ertl (Dynatrace) 08:40 Dependent on local properties, if it's locally considered as an important spend, or whatever.
+**Chris Marchbanks** 08:39 Or…
+**Otmar Ertl (Dynatrace)** 08:40 Dependent on local properties, if it's locally considered as an important spend, or whatever.
 And still, you can do unbiased estimation, not only on the span itself, but also across the trace.
 **Chris Marchbanks** 09:00 Yep.
 Okay.
@@ -64,7 +66,8 @@ But often is only true, like, some of the times, you're gonna need that if you h
 So that was what we… what was being done at Google, and and so… But… And then… And then Jaeger came around, and Zipkin came around, and OpenTelemetry came around, and we've been talking about sampling for years, and there's no, And we've only recently gotten to the point where we can at least count those things and encode the fact that this was probability. So we still have to follow those consumer and producer recommendations, which, the way I think of them, are to get what I call sub-trace completeness. So.
 The simple case is your parents are not always sampled, but if you're a rare child, you can sample yourself and get your children sampled, because you're rare. And as long as there's no rate limiter to turn the other… to, like, force the other direction, then you've got a simple case of a complete subtrace.
 **Chris Marchbanks** 12:24 And that was, yeah, that was some of my experiments when, like, okay, that seems valuable to me. Like, there's concrete use cases for that. I tried a little bit around, yeah, the other problem you mentioned, where you'll lose parentage, where you'll have, like, service A is sampled, service B isn't, service C is sampled again, and you lose that.
-**jmacdonald** 12:45 Tomorrow, at least I remember talking about this once, the idea of maybe… maybe using some sort of additional trace state field to, like, indicate how many parents were skipped, or how many descent… like, I don't know, this is so far into the, like… Otmar Ertl (Dynatrace) 12:59 And, also to have the direct connection to, you know, to your ancestor. So, it means… if, you know, one note is skipped in between, you do not have… you have lost that parent relationship, because usually you just have the parent.
+**jmacdonald** 12:45 Tomorrow, at least I remember talking about this once, the idea of maybe… maybe using some sort of additional trace state field to, like, indicate how many parents were skipped, or how many descent… like, I don't know, this is so far into the, like…
+**Otmar Ertl (Dynatrace)** 12:59 And, also to have the direct connection to, you know, to your ancestor. So, it means… if, you know, one note is skipped in between, you do not have… you have lost that parent relationship, because usually you just have the parent.
 a Spain ID.
 But, you know, if you skip the sampling of the parent, then it would be nice to have maybe the grandparent IDE instead to have this link, at least, and maybe in addition, the knowledge that, you know, there's one One span between this train.
 **Chris Marchbanks** 13:33 Yeah, I did kind of a hacky, like, played around with getting it working with basically unsampled spans in the middle. I collapsed all the information and just had, here's my parent, like… here's… so you could build it up afterward, because, like, our system, like, we're doing sampling, and then we're also doing tail sampling. So, like, I'll rebatch the spans, and I can delete all these intermediate spans.
@@ -92,7 +95,8 @@ It is not… full-blown, in a sense. Like, it doesn't send the data all the way 
 And that Datadog agent will return from you… like, you send me some traces, I will return you new sampling instructions. You send me traces, I will return you new sampling instructions. And that loop… is… that's what we're waiting for, on top of declarative configuration, is we want a collector component that's a processor sitting there, looking at all the traces, saying, we've got too many of this type, I'm going to turn down the sampling rate of that type. And… At that point, it becomes research, and not… there's not a well-known solution that's obviously going to work.
 But that's where the math gets really interesting for me.
 if we could only be talking about how to make the feedback loop really work in this room, I would be so happy, like, but we're years from there still.
-**I mean, I've looked at… Well, my… my… Peter Findeisen** 20:28 The term for this is inverse probability sampling.
+I mean, I've looked at… Well, my… my…
+**Peter Findeisen** 20:28 The term for this is inverse probability sampling.
 **Chris Marchbanks** 20:31 Yes.
 **jmacdonald** 20:32 We talk about it once in a while, but, like, when you have a set of data and you can categorize those sets of data, at least along one dimension, then you just apply inverse probability, and you come up with an expected value that's uniform. That's the basic math that, like, works until you have an open, like, an infinite set, or, like.
 unknown elements are arriving, so it's, like, not static anymore. So once it becomes dynamic, that's where it really is a hard math problem, but not so hard that we can't at least come up with good heuristics or works-most-of-the-time solutions.
@@ -139,10 +143,11 @@ So, where… where are we? Like, here's my Wikipedia page, right? And, Like, wha
 I found one that walked me through it, and I, at one point, proved to myself that I could do two-dimensional sampling, where I knew a latency bucket, and I knew a… well, latency is a continuous measurement. This is more for category variables, but waving my hands a little bit. Can I say tea digest one more time? Sorry.
 I had thought about what to do with latencies, and TDigest is one of my favorite algorithms, even if it's a heuristic and approximate, but So… If you have two category variables, and you have, build the correspondence analysis, compute the chi-square distance, use that as your inverse probability, it will lead you to the same place. You're maximizing your expectation, essentially.
 I could be… I could have made so many lies just now, but this is an interesting topic for me.
-**Cool. This is a place to… Chris Marchbanks** 29:39 go read more. Excellent, thank you. Yeah, yeah.
+Cool. This is a place to…
+**Chris Marchbanks** 29:39 go read more. Excellent, thank you. Yeah, yeah.
 **jmacdonald** 29:41 I appreciate it, and if you find anything out, brilliant, you should share it here.
-**Chris Marchbanks** 29:44 Yeah, for sure.
-**Thank you. Well, those are my topics, so… jmacdonald** 29:49 Cool. Still have the notes up. So, I didn't take notes on that. Josh talks about… Good… Turing, frequency, estimates, and CHOWs.
+**Chris Marchbanks** 29:44 Yeah, for sure. Thank you. Well, those are my topics, so…
+**jmacdonald** 29:49 Cool. Still have the notes up. So, I didn't take notes on that. Josh talks about… Good… Turing, frequency, estimates, and CHOWs.
 Research into frequency estimates, What else did I talk about? X spec… maximization algorithms? That's not how you spell that.
 **Chris Marchbanks** 30:18 And correspondence.
 **jmacdonald** 30:20 Remote Sampling, correspondence, analysis… It says, Chris will dig in.

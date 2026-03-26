@@ -17,7 +17,8 @@ Is it just… Because, I'm not an editor for some reason, that's why.
 So, maybe that was… yeah, maybe it wasn't my personal Google account.
 Do you want.
 **Jack Berg** 02:33 Is your personal Google account in the, the bookmarks of the OTELTC channel? I can go and invite it right now to that document.
-**Tigran Najaryan** 02:41 Let me see… Jack Berg 02:45 I just see a Cisco one and a… and a personal one, but not a second Google one.
+**Tigran Najaryan** 02:41 Let me see…
+**Jack Berg** 02:45 I just see a Cisco one and a… and a personal one, but not a second Google one.
 **Tigran Najaryan** 02:51 That's, you mean the… the… in the list of email addresses, or somewhere else?
 **Jack Berg** 02:56 List of email addresses.
 **Tigran Najaryan** 02:58 So the secondary email address is the… is my personal one. If you can add that, that would be great.
@@ -60,7 +61,8 @@ Do you want to drive it? I said, well, yeah.
 **Tigran Najaryan** 06:28 Can I put yours?
 **Reiley** 06:29 Yeah, so David and I are already there.
 **Tigran Najaryan** 06:46 What's this about?
-**Jack Berg** 06:49 I just, assigned myself access to this. This is related to declarative config, a capability that's needed, for the collector's usage, so… Tigran Najaryan 07:01 Thanks.
+**Jack Berg** 06:49 I just, assigned myself access to this. This is related to declarative config, a capability that's needed, for the collector's usage, so…
+**Tigran Najaryan** 07:01 Thanks.
 **Jack Berg** 07:11 It looks like this has a lot of consensus already. Maybe we can just assign, Josh or Riley, who have already approved it.
 But, you know, it seems like this will go through, so hopefully not a lot of work.
 **Tigran Najaryan** 07:24 Josh, can I assign it to you?
@@ -91,7 +93,8 @@ And draft, okay.
 **Tigran Najaryan** 09:19 We're done, we're done. Okay, good.
 What is this one? What did you want to do? All that backlog with timebox? You want to take a look at the alt apps as well?
 **Jack Berg** 09:32 That was the idea, just to get them, you know, unstuck, stop them from languishing.
-**Tigran Najaryan** 09:39 And I guess… Jack Berg 09:40 We were going in, reverse order, so, you know, oldest to newest? What was the last one we talked about last week?
+**Tigran Najaryan** 09:39 And I guess…
+**Jack Berg** 09:40 We were going in, reverse order, so, you know, oldest to newest? What was the last one we talked about last week?
 **Josh Suereth** 09:48 Multiple.
 **Jack Berg** 09:49 resources and an SDK?
 **Josh Suereth** 09:51 Yeah, that one has enough approvals to merge. I have to fix a typo, but that one, that one's gonna get merged shortly. It has enough approvals, we talked about it, I think we're good to go to the next one.
@@ -101,7 +104,8 @@ What is this one? What did you want to do? All that backlog with timebox? You wa
 With the same idea of driving it, essentially, one way or another.
 **Josh Suereth** 11:05 I, I think that makes sense. For this particular OTEP, I do want to check, who's the OB representative? I just want to make sure… I don't know who their GitHub names are, but I just want to make sure that they have… they're on here, too, because this is supposed to be eBPF and OB together. So… I just want to make sure that, like.
 Both communities have approved this and are paying attention. I see all the profiling folks.
-**I don't… David Ashpole (dashpole)** 11:32 I don't see struggles from OB folks.
+I don't…
+**David Ashpole (dashpole)** 11:32 I don't see struggles from OB folks.
 **Josh Suereth** 11:36 Okay.
 **David Ashpole (dashpole)** 11:36 Unless it's in the… no, no, yeah, I don't see them.
 **Tigran Najaryan** 11:41 Okay, you want to make that comment there, Josh? I remember the auto department find myself with the content.
@@ -111,10 +115,13 @@ Both communities have approved this and are paying attention. I see all the prof
 **David Ashpole (dashpole)** 12:10 No, so the SIG unfortunately conflicts with the TC meeting. So I haven't been able to attend the SIG at all.
 **Tigran Najaryan** 12:18 Okay, let's, josh, make that comment about OB, let's move on to the next one.
 I'm coming.
-**I was hoping… David Ashpole (dashpole)** 12:32 once we… I think we were gonna move the meeting once?
-**Or, like, every other, so I was hoping once that starts that I'll be able to… And then… Tigran Najaryan** 12:56 They do by default. We all know this one.
+I was hoping…
+**David Ashpole (dashpole)** 12:32 once we… I think we were gonna move the meeting once?
+Or, like, every other, so I was hoping once that starts that I'll be able to… And then…
+**Tigran Najaryan** 12:56 They do by default. We all know this one.
 Josh, I remember when we discussed it the first time, we wanted to see it broken down a bit more into smaller ones. That didn't happen, but I see your approval.
-**Josh Suereth** 13:25 It did happen, but… Tigran Najaryan 13:27 Is it? Okay.
+**Josh Suereth** 13:25 It did happen, but…
+**Tigran Najaryan** 13:27 Is it? Okay.
 **Josh Suereth** 13:28 how you read it. Yeah, if you read the OTEP, the way it's phrased is, here's the work streams. Like, again, it's to the point where it almost doesn't need to… We don't have a place to put something like this, but if you read it the way I read it is, it's saying, here are the set of work streams, that we have a set of goals, we have a set of work streams, these work streams will have OTEPs and owners.
 The only thing that I'm still not comfortable with is I think some of the owners are pretty nebulous.
 and not necessarily set up for success. That said, this is an OTEP. This is, like, a direction. So I think that comes on us actually defining a project or set of projects for this work.

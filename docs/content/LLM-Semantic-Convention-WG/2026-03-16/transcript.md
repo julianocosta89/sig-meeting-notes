@@ -17,7 +17,8 @@ So it will be, On the open telemetry side, it will be, some… Telep… Matrix f
 And then also mapped to OCSF, which will be an analytical matrix.
 So… At this point, the people who did the mapping from DFAN to OCSF, they do have experience.
 How to map it to, OpenTelemetry is yet to be discussed.
-**Sergey Sergeev** 04:38 What meeting is it, by the way? Is it something, or… Victor Lu 04:44 It's a COSI, Coalition for Secure AI.
+**Sergey Sergeev** 04:38 What meeting is it, by the way? Is it something, or…
+**Victor Lu** 04:44 It's a COSI, Coalition for Secure AI.
 So let's, I don't know who… Hmm… WHCK the website.
 **Sergey Sergeev** 05:00 this?
 **Victor Lu** 05:04 Yeah, yeah.
@@ -25,7 +26,8 @@ Yeah, so in here, there is, sub-working group called, work, it's under Workstrea
 2 for telemetry.
 So, yeah, that's where the discussion… Is right now.
 Not open telemetry, just telemetry.
-**Sergey Sergeev** 05:37 Yeah, interlink, so, people who read it, Can… Victor Lu 05:43 Yeah.
+**Sergey Sergeev** 05:37 Yeah, interlink, so, people who read it, Can…
+**Victor Lu** 05:43 Yeah.
 **Sergey Sergeev** 05:44 Get some context.
 **Victor Lu** 05:46 So, yeah.
 **Sergey Sergeev** 05:49 Yeah, if you can, if you can add here some link, what was the meeting, and what was the outcome, so I think it will help a lot.
@@ -52,7 +54,8 @@ In OpenTelemith specifically, and different standards. I think it's more in the 
 So, I would, search, maybe… What seem, standards we have.
 **Victor Lu** 11:49 Actually, there was actually a… in COSI, was there actually… there was a Cisco contribution? I think this is the one.
 It's cool. This one.
-**Sergey Sergeev** 12:00 Yeah, if you can, yeah, congruent… Victor Lu 12:06 Yeah, I think this is a Cisco contribution.
+**Sergey Sergeev** 12:00 Yeah, if you can, yeah, congruent…
+**Victor Lu** 12:06 Yeah, I think this is a Cisco contribution.
 So this is not for that working group. This is for a different workstream. The idea is to… For Agentic AI to kind of, make sure the code generated, satisfied many of the security requirements.
 So… Yeah, so, so, so, so, this is different.
 So that which… the reason I bring it up is, I mean, Cisco is active, COSI participant.
@@ -62,7 +65,8 @@ So that which… the reason I bring it up is, I mean, Cisco is active, COSI part
 And authentication. There is also a group, Cisco Outshift.
 **Victor Lu** 13:46 Yeah. Alright.
 **Sergey Sergeev** 13:47 And, they have a project, Agency?
-**Victor Lu** 13:55 Yeah, I know that, working through, I'm a journalist, I'm not expert, I'm just going everywhere and… Sergey Sergeev 14:02 I mean, in general, they, try to define, What is the inventory of different tools and agents, and.
+**Victor Lu** 13:55 Yeah, I know that, working through, I'm a journalist, I'm not expert, I'm just going everywhere and…
+**Sergey Sergeev** 14:02 I mean, in general, they, try to define, What is the inventory of different tools and agents, and.
 **Victor Lu** 14:12 and convinced.
 **Sergey Sergeev** 14:12 This will be a hot topic, in terms of, so agent, identity and agent discovery might be… Quite hot topics, and on your interest, for sure.
 **Victor Lu** 14:30 Yeah.
@@ -70,7 +74,8 @@ When it comes to OpenTelemetry, yeah, I think the… at least next, that he's, f
 **Sergey Sergeev** 15:04 Yeah, the hardest problem is to define what exactly is the problem we need to solve. So, again, an open telemet is a little bit, how to say, not necessarily Russian to approach, To adopt, some of, newer concepts, so… It will be helpful how to define those in generic terms.
 Yeah, if you can provide some links right to this document after the call, basically to the links of the discussion topics and etc, I think it will be really, really helpful.
 For the group to understand this problem domain.
-**Victor Lu** 15:52 Yeah, I put it… Sergey Sergeev 15:53 Near two of many people.
+**Victor Lu** 15:52 Yeah, I put it…
+**Sergey Sergeev** 15:53 Near two of many people.
 **Victor Lu** 15:55 Yeah, I put it in here, the discussion. I put it in the, In the COSI document. The actual COSI document, I'm not sure, is a reasonable… You may need to join before you can access the document.
 So, yeah, I can, I can put it in the, in the OpenTelemetry.
 Document as well.
@@ -97,7 +102,8 @@ In the security domain, usually the actor could mean a threat actor, right? It c
 For a movie director, when he reads an actor, that's an actor playing in a movie.
 So, so those kind… that's why having an accurate ontology, not only taxonomy, but ontology, that's universally accepted, is very important.
 And, yeah.
-**Sergey Sergeev** 21:04 So it's more focused on data access by different, AI components, or AI agents, or… Victor Lu 21:11 It, it, it is, airflow.
+**Sergey Sergeev** 21:04 So it's more focused on data access by different, AI components, or AI agents, or…
+**Victor Lu** 21:11 It, it, it is, airflow.
 to… the end result is LRN will be able to, do a lot of automations. Reading the log file, do thread modeling.
 To check whether it meets security requirements, create alerts, say is it compliant or not. All the… it will be, do reasoning, even, on top of it, find out, you know, what kind of problem it is. All that can be enabled, through that process. Have you heard a company called Palantir?
 **Sergey Sergeev** 21:47 Yeah, sure.
