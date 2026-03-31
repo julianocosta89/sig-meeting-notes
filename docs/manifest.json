@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-31T07:10:34Z",
+  "generated_at": "2026-03-31T07:11:08Z",
   "min_date": "2025-06-16",
   "max_date": "2026-03-30",
   "sigs": [
@@ -4856,7 +4856,7 @@
         {
           "date": "2026-03-30",
           "duration_minutes": 18,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
@@ -5035,7 +5035,7 @@
         {
           "date": "2026-03-30",
           "duration_minutes": 6,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -7674,7 +7674,7 @@
         {
           "date": "2026-03-30",
           "duration_minutes": 61,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
