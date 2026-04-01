@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-31T07:11:08Z",
+  "generated_at": "2026-04-01T07:23:26Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-03-30",
+  "max_date": "2026-03-31",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -95,6 +95,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1W72oElAJuYx3efM9wkH5l1iksdfwmTSkVl-H7KHTLnY",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-android",
       "meetings": [
+        {
+          "date": "2026-03-31",
+          "duration_minutes": 62,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-17",
           "duration_minutes": 66,
@@ -355,7 +362,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 37
+      "meeting_count": 38
     },
     {
       "slug": "Arrow-SIG",
@@ -1168,6 +1175,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 53,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-10",
           "duration_minutes": 15,
           "has_summary": true,
@@ -1336,7 +1350,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 24
+      "meeting_count": 25
     },
     {
       "slug": "Client-Instrumentation-SIG",
@@ -1344,6 +1358,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-browser",
       "meetings": [
+        {
+          "date": "2026-03-31",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-17",
           "duration_minutes": 29,
@@ -1457,7 +1478,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "Collector-SIG",
@@ -1734,6 +1755,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry.io",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 18,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 45,
           "has_summary": true,
@@ -1846,7 +1874,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "Community-Demo-App-SIG",
@@ -2823,6 +2851,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 46,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 37,
           "has_summary": true,
@@ -3026,7 +3061,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 29
+      "meeting_count": 30
     },
     {
       "slug": "FAAS-WG",
@@ -4747,6 +4782,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 23,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 26,
           "has_summary": true,
@@ -4845,7 +4887,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "Kotlin-SIG",
@@ -5032,6 +5074,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1EKIeDgBGXQPGehUigIRLwAUpRGa7-1kXB736EaYuJ2M",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-03-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-30",
           "duration_minutes": 6,
@@ -5376,7 +5425,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 49
+      "meeting_count": 50
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -5660,6 +5709,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 8,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-24",
           "duration_minutes": 11,
           "has_summary": true,
@@ -5912,7 +5968,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Network-SIG",
@@ -5937,6 +5993,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 46,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 6,
           "has_summary": true,
@@ -5951,7 +6014,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
@@ -7241,6 +7304,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-ruby",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 45,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-24",
           "duration_minutes": 8,
           "has_summary": true,
@@ -7486,7 +7556,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 35
+      "meeting_count": 36
     },
     {
       "slug": "Rust-SIG",
@@ -8699,6 +8769,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-specification",
       "meetings": [
         {
+          "date": "2026-03-31",
+          "duration_minutes": 67,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-03-17",
           "duration_minutes": 64,
           "has_summary": true,
@@ -8951,7 +9028,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Swift-SIG",

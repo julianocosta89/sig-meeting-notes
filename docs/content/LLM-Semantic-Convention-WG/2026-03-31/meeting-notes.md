@@ -1,0 +1,86 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova (Grafana Labs)
+- Sergey Sergeev (Cisco Splunk)
+- Keith Decker (Cisco/Splunk)
+- Aaron Abbott (Google)
+- Josh Bonczkowski (New Relic)
+- Jamie Danielson (Honeycomb)
+- Shuning Chen (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+- Ankit Singhal (Microsoft)
+- Tao Chen (Microsoft)
+- Josh Winerman (Cisco/Splunk)
+- Leighton Chen (Microsoft)
+- Pradeep Nair (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - [everyone, 5 min]  Intro for new members
+- Tokens on INTERNAL agents: [https://github.com/open-telemetry/semantic-conventions/pull/3514](https://github.com/open-telemetry/semantic-conventions/pull/3514)
+  - What if llm is not instrumented? Not known at agent layer
+  - Only one framework that has it available on the internal spans
+  - Let's put together a list of internal invoke_agent spans that can support capturing usage
+- Roadmap: would be helpful to have documented list of things we work on so we can reply to issues
+  - AI: Jamie to draft
+  - [https://docs.google.com/spreadsheets/d/17gqwboDQICa4jsmdaw8a4wOzLQCLHFnqOJ36Illdn6Q/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/17gqwboDQICa4jsmdaw8a4wOzLQCLHFnqOJ36Illdn6Q/edit?gid=0#gid=0)
+- [Liudmila, 20 min] KubeCon discussions:
+  - How do we move faster? Proposals:
+    - Separate repo for python ?
+      - Leadership bootstrapping, involve more companies, need more diverse set of maintainers
+        - Volunteer time - need to commit
+        - Jamie will check on the Honeycomb side
+        - Surya is interested in Java and Python
+        - Splunk / Cisco too
+      - does it make sense for other languages?
+        - Monorepo or python only
+          - Let's start with python
+          - Blocked on maintainers/ approvers
+          - Same set of people on semconv and instrs
+        - JS
+          - A few - openai, langchain
+          - Check with other maintainers
+          - Header to find codeowners, but AI things are now common
+          - To check if JS distro includes AI (openai is included, lanchgain not)
+        - Java
+          - Prefer to keep in Java repo, have all the infra setup
+          - Versioning bump - easier in separate repo
+          - Opt-in into version, won't make it a default until major version bump (maybe 2years)
+          - Would they go into default distro
+            - Yes, can also pull from another distro
+            - Bedrock - there are lib and agent
+        - .NET
+          - Probably mostly native instrumentations
+      - Python:
+        - [https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai)
+        - Shared code in py contrib, is it stable?
+          - General instrumentation package is stable enough, genai-utils would move to the new repo
+      - AI: ?
+    - Split GenAI semconv from the core set
+    - Version them separately
+    - Have 6-12 month major version release cadence
+      - Release stable every 6-12 months
+      - Breaking changes should be expected, but don't really expect drastic changes
+      - Can opt-in to bleeding edge - things that are likely to come in the next major version
+      - Can opt-in to prev stable version
+    - Speed up and prioritize instrumentations:
+      - Before sending semconv PR, send 1+ draft PRs for instrumentations
+      - Things that are not instrumentable are automatically de-prioritized
+    - Provide check-list for contributors:
+      - Require to analyze 2+ different AI libs / frameworks / providers
+      - Document mapping between generic concepts and specific framework / lib
+      - AI: Jamie to create an issue
+    - Automating everything:
+      - Unit testing: common unit test helpers validating AI spans
+        - AI: Surya
+      - Integration tests: weaver live-check conformance & Conformance report
+        - AI: tbd
+      - Skills / agents to help with review
+      - Alibaba generates instrumentations and updates them using AI, they are interested to share how they do it
+  - Time-zone issues with Alibaba - hard to collaborate - one call ever other week, but rarely happens due to quorum issues
+    - every other Tuesday at 9:00 UTC+8 (Monday 5pm PT)... looking for ideas on how to better collaborate synchronously. can anyone else make this call?
+- [Ankit/Trask, 5 min] [Invoke agent server span](https://github.com/open-telemetry/semantic-conventions/pull/3473)
