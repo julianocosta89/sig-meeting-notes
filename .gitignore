@@ -11,3 +11,6 @@ __pycache__/
 .claude/
 PLAN*
 TEAM*
+
+# Codex
+.codex/

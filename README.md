@@ -5,7 +5,7 @@
 [![Run Tests](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/test.yml/badge.svg)](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/test.yml)
 [![Refresh Transcripts](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/refresh.yml/badge.svg)](https://github.com/julianocosta89/sig-meeting-notes/actions/workflows/refresh.yml)
 
-<img src="docs/OTelMinutes-logo.svg" width="200" alt="OTel Minutes Logo" />
+<img src="docs/OTelMinutes-logo.png" width="200" alt="OTel Minutes Logo" />
 
 Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches them with meeting notes from Google Docs, generates AI summaries, and publishes everything as a searchable web UI on GitHub Pages.
 
