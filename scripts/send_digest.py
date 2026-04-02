@@ -35,6 +35,8 @@ if TYPE_CHECKING:
 ROOT = Path(__file__).resolve().parent.parent
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 LOGO_URL = "https://raw.githubusercontent.com/julianocosta89/sig-meeting-notes/refs/heads/main/docs/OTelMinutes-logo.png"
+DEFAULT_DIGEST_MODEL = "gpt-5-mini"
+DIGEST_MAX_OUTPUT_TOKENS = 400
 
 
 def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -152,42 +154,81 @@ def parse_summary_sections(content: str) -> dict:
     }
 
 
+def build_digest_source(summaries: list[dict[str, str]]) -> str:
+    """Render only digest-relevant summary sections for the model input."""
+    rendered: list[str] = []
+
+    for summary in summaries:
+        sections = parse_summary_sections(summary["content"])
+        lines = [f"### {summary['slug']} ({summary['date']})"]
+
+        if sections["highlights"]:
+            lines.append("Key topics:")
+            lines.extend(f"- {item}" for item in sections["highlights"])
+
+        if sections["action_items"]:
+            lines.append("Action items:")
+            lines.extend(f"- {item}" for item in sections["action_items"])
+
+        if len(lines) == 1:
+            lines.append(summary["content"].strip())
+
+        rendered.append("\n".join(lines))
+
+    return "\n\n".join(rendered)
+
+
 def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -> str:
     """Call OpenAI to produce a concise cross-SIG narrative."""
-    combined = "\n\n".join(f"### {s['slug']} ({s['date']})\n{s['content']}" for s in summaries)
-    if len(summaries) == 1:
-        user_prompt = (
-            "Write a concise 2–3 sentence summary of today's OpenTelemetry SIG meeting."
-            " Write plain prose with no markdown formatting.\n\n" + combined
-        )
-    else:
-        user_prompt = (
-            "Write a concise 2–4 sentence narrative connecting today's OpenTelemetry SIG"
-            " meetings. Identify cross-cutting themes, shared concerns, and correlations"
-            " across different SIGs — do not simply list each meeting. Write plain prose"
-            " with no markdown formatting.\n\n" + combined
-        )
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "You are an editor writing a concise daily digest"
-                    " for the OpenTelemetry community."
-                ),
-            },
-            {
-                "role": "user",
-                "content": user_prompt,
-            },
-        ],
-        temperature=0.3,
-        max_tokens=1024,
+    combined = build_digest_source(summaries)
+    model = os.environ.get("OPENAI_DIGEST_MODEL", DEFAULT_DIGEST_MODEL).strip() or (
+        DEFAULT_DIGEST_MODEL
     )
-    if not response.choices:
-        raise ValueError("OpenAI returned no choices")
-    return response.choices[0].message.content
+
+    if len(summaries) == 1:
+        user_prompt = """Write a 2-3 sentence email-ready digest paragraph
+about this OpenTelemetry SIG meeting.
+
+Focus on the most important themes, decisions, or follow-ups.
+Do not use markdown, bullets, or headings.
+Do not mention that you were given summaries.
+Do not invent details that are not present in the source material.
+
+Source material:
+"""
+    else:
+        user_prompt = """Write a single 3-4 sentence email-ready digest paragraph
+connecting these OpenTelemetry SIG meetings.
+
+Synthesize shared themes, dependencies, and action-oriented work across meetings.
+Do not turn the paragraph into a meeting-by-meeting list.
+Only mention SIG names when they materially help clarity.
+Do not use markdown, bullets, or headings.
+Do not mention that you were given summaries.
+Do not invent details that are not present in the source material.
+
+Source material:
+"""
+    response = client.responses.create(
+        model=model,
+        instructions=(
+            "You are an editor writing a concise daily digest for the OpenTelemetry"
+            " community. Prefer concrete, neutral prose over hype."
+        ),
+        input=f"{user_prompt}\n\n{combined}",
+        max_output_tokens=DIGEST_MAX_OUTPUT_TOKENS,
+    )
+    if response.status == "incomplete":
+        reason = None
+        if isinstance(response.incomplete_details, dict):
+            reason = response.incomplete_details.get("reason")
+        elif response.incomplete_details is not None:
+            reason = getattr(response.incomplete_details, "reason", None)
+        suffix = f": {reason}" if reason else ""
+        raise ValueError(f"OpenAI response incomplete{suffix}")
+    if not response.output_text:
+        raise ValueError("OpenAI returned no output text")
+    return response.output_text.strip()
 
 
 def build_deep_link(slug: str, meeting_date: str) -> str:

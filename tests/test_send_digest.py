@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 from send_digest import (  # noqa: E402
     _is_trivial_transcript,
     build_deep_link,
+    build_digest_source,
     build_email,
     generate_digest_narrative,
     get_new_summary_paths,
@@ -53,14 +54,12 @@ GIT_DIFF_OUTPUT = (
 
 
 def _mock_openai_client(response_text: str = FAKE_NARRATIVE) -> MagicMock:
-    mock_message = MagicMock()
-    mock_message.content = response_text
-    mock_choice = MagicMock()
-    mock_choice.message = mock_message
     mock_response = MagicMock()
-    mock_response.choices = [mock_choice]
+    mock_response.output_text = response_text
+    mock_response.status = "completed"
+    mock_response.incomplete_details = None
     mock_client = MagicMock()
-    mock_client.chat.completions.create.return_value = mock_response
+    mock_client.responses.create.return_value = mock_response
     return mock_client
 
 
@@ -247,7 +246,7 @@ class TestMain:
         ):
             main()
 
-        mock_client.chat.completions.create.assert_called_once()
+        mock_client.responses.create.assert_called_once()
         mock_post.assert_called_once()
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
         assert call_json["from"] == "digest@otelminutes.jcosta.dev"
@@ -417,17 +416,31 @@ class TestGenerateDigestNarrative:
         mock_client = _mock_openai_client()
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
         result = generate_digest_narrative(mock_client, summaries)
-        mock_client.chat.completions.create.assert_called_once()
+        mock_client.responses.create.assert_called_once()
         assert result == FAKE_NARRATIVE
 
-    def test_no_choices_raises_value_error(self) -> None:
-        """Empty choices list from OpenAI should raise ValueError."""
+    def test_missing_output_text_raises_value_error(self) -> None:
+        """Blank output_text from OpenAI should raise ValueError."""
         mock_client = MagicMock()
         mock_response = MagicMock()
-        mock_response.choices = []
-        mock_client.chat.completions.create.return_value = mock_response
+        mock_response.output_text = ""
+        mock_response.status = "completed"
+        mock_response.incomplete_details = None
+        mock_client.responses.create.return_value = mock_response
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
         with pytest.raises(ValueError):
+            generate_digest_narrative(mock_client, summaries)
+
+    def test_incomplete_response_raises_value_error(self) -> None:
+        """Incomplete responses should fail instead of silently truncating the digest."""
+        mock_client = MagicMock()
+        mock_response = MagicMock()
+        mock_response.output_text = "Partial digest"
+        mock_response.status = "incomplete"
+        mock_response.incomplete_details = {"reason": "max_output_tokens"}
+        mock_client.responses.create.return_value = mock_response
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        with pytest.raises(ValueError, match="max_output_tokens"):
             generate_digest_narrative(mock_client, summaries)
 
     def test_single_meeting_uses_summary_prompt(self) -> None:
@@ -435,10 +448,11 @@ class TestGenerateDigestNarrative:
         mock_client = _mock_openai_client()
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
         generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.chat.completions.create.call_args[1]
-        user_msg = next(m["content"] for m in call_kwargs["messages"] if m["role"] == "user")
-        assert "cross-cutting" not in user_msg
-        assert "correlations" not in user_msg
+        call_kwargs = mock_client.responses.create.call_args[1]
+        user_msg = call_kwargs["input"]
+        assert "shared themes" not in user_msg
+        assert "meeting-by-meeting list" not in user_msg
+        assert "2-3 sentence" in user_msg
 
     def test_multi_meeting_uses_cross_sig_prompt(self) -> None:
         """Multiple meetings should get the cross-SIG correlation prompt."""
@@ -448,9 +462,45 @@ class TestGenerateDigestNarrative:
             {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
         ]
         generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.chat.completions.create.call_args[1]
-        user_msg = next(m["content"] for m in call_kwargs["messages"] if m["role"] == "user")
-        assert "cross-cutting" in user_msg
+        call_kwargs = mock_client.responses.create.call_args[1]
+        user_msg = call_kwargs["input"]
+        assert "shared themes" in user_msg
+        assert "meeting-by-meeting list" in user_msg
+
+    def test_uses_current_digest_model_default(self) -> None:
+        """Digest generation should default to the current configured model constant."""
+        mock_client = _mock_openai_client()
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        generate_digest_narrative(mock_client, summaries)
+        call_kwargs = mock_client.responses.create.call_args[1]
+        assert call_kwargs["model"] == "gpt-5-mini"
+        assert "temperature" not in call_kwargs
+
+    def test_respects_digest_model_override(self) -> None:
+        """OPENAI_DIGEST_MODEL should override the default model alias."""
+        mock_client = _mock_openai_client()
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        with patch.dict("os.environ", {"OPENAI_DIGEST_MODEL": "gpt-5.4-mini"}):
+            generate_digest_narrative(mock_client, summaries)
+        call_kwargs = mock_client.responses.create.call_args[1]
+        assert call_kwargs["model"] == "gpt-5.4-mini"
+
+    def test_uses_larger_output_budget(self) -> None:
+        """The digest budget should leave room for a full paragraph."""
+        mock_client = _mock_openai_client()
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        generate_digest_narrative(mock_client, summaries)
+        call_kwargs = mock_client.responses.create.call_args[1]
+        assert call_kwargs["max_output_tokens"] == 400
+
+
+class TestBuildDigestSource:
+    def test_uses_only_digest_relevant_sections(self) -> None:
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        result = build_digest_source(summaries)
+        assert "Key topics:" in result
+        assert "Action items:" in result
+        assert "Participants" not in result
 
 
 # ---------------------------------------------------------------------------
