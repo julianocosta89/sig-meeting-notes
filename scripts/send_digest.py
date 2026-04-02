@@ -388,5 +388,5 @@ def main() -> None:
     print(f"Digest sent with {len(summaries)} meetings included.")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

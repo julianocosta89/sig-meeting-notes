@@ -443,6 +443,20 @@ class TestGenerateDigestNarrative:
         with pytest.raises(ValueError, match="max_output_tokens"):
             generate_digest_narrative(mock_client, summaries)
 
+    def test_incomplete_response_with_object_details(self) -> None:
+        """incomplete_details as an object (not dict) should still surface the reason."""
+        mock_client = MagicMock()
+        mock_response = MagicMock()
+        mock_response.output_text = "Partial digest"
+        mock_response.status = "incomplete"
+        details = MagicMock(spec=["reason"])
+        details.reason = "max_output_tokens"
+        mock_response.incomplete_details = details
+        mock_client.responses.create.return_value = mock_response
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        with pytest.raises(ValueError, match="max_output_tokens"):
+            generate_digest_narrative(mock_client, summaries)
+
     def test_single_meeting_uses_summary_prompt(self) -> None:
         """One-meeting input should not ask for cross-SIG correlations."""
         mock_client = _mock_openai_client()
@@ -501,6 +515,13 @@ class TestBuildDigestSource:
         assert "Key topics:" in result
         assert "Action items:" in result
         assert "Participants" not in result
+
+    def test_fallback_to_full_content_when_no_sections(self) -> None:
+        """When a summary has no highlights or action items, use the raw content."""
+        content = "Some freeform summary text with no structured sections."
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": content}]
+        result = build_digest_source(summaries)
+        assert content in result
 
 
 # ---------------------------------------------------------------------------
