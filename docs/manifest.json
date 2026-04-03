@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-02T07:18:04Z",
+  "generated_at": "2026-04-03T07:08:52Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-04-01",
+  "max_date": "2026-04-02",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -371,6 +371,13 @@
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 67,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-04-01",
           "duration_minutes": 29,
           "has_summary": true,
@@ -700,7 +707,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 47
+      "meeting_count": 48
     },
     {
       "slug": "Browser-SIG",
@@ -708,6 +715,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1G3yBAV5SzWBO3mmsBUos5bsn4yxsqkS1MLWl1urVojQ",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-browser",
       "meetings": [
+        {
+          "date": "2026-04-02",
+          "duration_minutes": 29,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-26",
           "duration_minutes": 32,
@@ -961,7 +975,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "CC-SIG",
@@ -2607,6 +2621,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 39,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-19",
           "duration_minutes": 31,
           "has_summary": true,
@@ -2642,7 +2663,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 5
+      "meeting_count": 6
     },
     {
       "slug": "Entities-SIG",
@@ -3484,6 +3505,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-go",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-19",
           "duration_minutes": 10,
           "has_summary": true,
@@ -3736,7 +3764,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Governance-Committee",
@@ -4125,6 +4153,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-java",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 40,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-02-05",
           "duration_minutes": 48,
           "has_summary": true,
@@ -4237,7 +4272,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "Java-SIG",
@@ -4245,6 +4280,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1D7ZD93LxSWexHeztHohRp5yeoTzsi9Dj1HRm7Tad-hM",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-java",
       "meetings": [
+        {
+          "date": "2026-04-02",
+          "duration_minutes": 29,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-03-26",
           "duration_minutes": 6,
@@ -4519,7 +4561,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 39
+      "meeting_count": 40
     },
     {
       "slug": "JavaScript-SIG",
@@ -6566,6 +6608,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-profiling",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 66,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-19",
           "duration_minutes": 60,
           "has_summary": true,
@@ -6685,7 +6734,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 17
+      "meeting_count": 18
     },
     {
       "slug": "Project-Tooling-SIG",

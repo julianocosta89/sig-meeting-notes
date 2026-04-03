@@ -1,0 +1,84 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- T
+- Frederic Branczyk (Polar Signals)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+
+### Agenda
+- Review action items
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - Not here
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Not here
+  - [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+    - Felix: No updates yet.
+    - Tigran: We said no more in the past, but we didn’t want people to make breaking changes. But for alpha we might revisit it.
+    - Christos: We don’t want implementers to support multiple versions. We just want to reject incompatible versions.
+    - Tigran: Once you’re stable, you don’t want to break things anymore and don’t need such a feature.
+    - Felix: Rejecting incompatible payloads is a common denominator. But some also want backends to support multiple alpha versions. And last but not least, existing signals should probably evolve in the future.
+    - Tigran: Yes, but stable versions are expected to evolve in compatible ways for a long time before jumping to a v2 at some point. For profiling we can have a specific mechanism.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Specification PR [https://github.com/open-telemetry/opentelemetry-specification/pull/4932](https://github.com/open-telemetry/opentelemetry-specification/pull/4932) Please review!
+    - Christos: Needs one more spec approver, Tigran already approved and asked Josh to take a look.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Data Format PR
+    - Christos: Same comment on needed reviewers as above.
+    - Felix: I’ll try to take a look.
+    - Felix: Do we have a list of things we need to change when making proto updates?
+    - Christos: Changes could go both directions. It feels redundant to have extensive descriptions in both places.
+    - Tigran: How do you feel about avoiding redundant info in the format, and just link to the proto when possible? E.g. remove the detailed description of each message with all the fields.
+    - Felix: I would move the diagram from proto to the spec doc, but remove the message tables from the spec doc.
+    - Christos: Ok, I’ll make the changes.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Figure out what to do with this [older Profiles OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md). See [this discussion below](#bookmark=id.mjn7dj4yyazk).
+    - Tigran: We don’t remove OTEPs, but they can become outdated and we can mark them as such via a comment on top of the file. We should do that. Add a link to the latest version.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Body size limitations and profiles (came up in OTel Specification SIG meeting): [https://github.com/open-telemetry/opentelemetry-proto/pull/781](https://github.com/open-telemetry/opentelemetry-proto/pull/781) / [https://github.com/open-telemetry/opentelemetry-proto/pull/782](https://github.com/open-telemetry/opentelemetry-proto/pull/782)
+  - Ivo: Limits of 4 MiB for gRPC or 20 MiB for HTTP are considered for OTLP payloads.
+  - Tigran: AFAIK there are already limits in the collectors, but the SDKs are missing the limits.
+  - Christos: It’s compressed?
+  - Tigran: It’s both. Uncompressed also has a 4 MiB.
+  - Felix: Seems weird to have both limits at the same level. Doesn’t offer much protection if the compression ratio is high.
+  - Flo: The limit is configurable: [https://github.com/open-telemetry/opentelemetry-collector/blob/d7541501648c13e83cefd0c572cbec91adc5e827/receiver/otlpreceiver/config.md?plain=1#L26](https://github.com/open-telemetry/opentelemetry-collector/blob/d7541501648c13e83cefd0c572cbec91adc5e827/receiver/otlpreceiver/config.md?plain=1#L26)
+  - Tigran: You need to make a suggestion for a default limit for profiling.
+  - Nayef: I checked, we use HTTP - p99 is 4 MiB, 99.9 is 5Mib, Max is 15Mib (uncompressed).
+  - Christos: Collector could add it as a sink.
+  - Tigran: Set the limit higher than what you see in production. So aim for Max rather than 99.9. 15 MiB doesn’t feel huge today. We have a 20 MiB limit for HTTP already today.
+  - Christos: The PR author suggests bumping the limit to 20 MiB for gRPC as well.
+  - Tigran: There might also be client side limits on gRPC.
+  - Felix: Double checking: We’re always talking protobuf, not JSON right?
+  - Tigran: Protobuf. Nobody uses JSON in prod. But we should check on the limits for JSON separately perhaps.
+  - Felix: Profiling volume scaled with numbers of CPU cores utilized. Our numbers above are for ~40 core machines. Somebody might run 100+ core machines, so they’ll need much higher limits.
+  - Tigran: Do we need different recommendations for different scenarios?
+  - Christos: Potentially yes.
+  - Tigran: Payloads could also be split, including on the sender side.
+  - Christos: Yes, especially if the sender knows what the limit is or knows if it is rejected b/c of a limit.
+  - Tigran: You could split based on the default known from the spec. Or we could have a specific error in the spec, but we don’t have it yet.
+  - Felix: I like 32 MiB as a limit. Should be a power of two. More importantly: If we pick a good default, and it’s configurable, we don’t need to worry about the error case too much - those users can solve it via configuration.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Process context OTEP "[will be merged at the end of this week if there are no additional reviews / feedback](https://github.com/open-telemetry/opentelemetry-specification/pull/4719#issuecomment-4163357261)"
+  - [https://github.com/open-telemetry/opentelemetry-proto/pull/783](https://github.com/open-telemetry/opentelemetry-proto/pull/783) adds process context proto to repo
+  - [https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1181](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1181) getting in good shape, next piece is to add this info to profiles (WIP)
+  - Plan to undraft and start asking for more feedback in thread context OTEP once process context lands
+  - Ivo: Progress is being made.
+  - Christos: There are some other PRs, Nicolas PR depends on those, but yes.
+- [Jonathan] original_payload is on profile, but e.g. JFR may contain multiple profiles (CPU, memory, …). Move to dictionary style to allow it to be shared rather than duplicated?
+  - Felix: Yeah, dictionaries make sense to me. Figuring out the right place in the hierarchy is tricky and might vary.
+  - Jonathan: I can make a draft PR, but mark it as “not merge” until we get to the end of the alpha phase.
+  - (also agreed that semantic conventions and attributes could help map Profile messages to JFR event types)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)Propose Unit for [KeyValue](https://github.com/open-telemetry/opentelemetry-proto/blob/7a9057485b350d3021400d4f1e60d768383ca42e/opentelemetry/proto/common/v1/common.proto#L77)
+  - Currently Profiles uses custom [KeyValueAndUnit](https://github.com/open-telemetry/opentelemetry-proto/blob/7a9057485b350d3021400d4f1e60d768383ca42e/opentelemetry/proto/profiles/v1development/profiles.proto#L517)
+  - Related issue: [https://github.com/open-telemetry/opentelemetry-proto/issues/766](https://github.com/open-telemetry/opentelemetry-proto/issues/766)
+  - Florian: KeyValue doesn’t have a concept of unit, but profiling has a need for unit (bytes, megabytes).
+  - Florian: Proposal would be to add a unit_stridx to KeyValue like we have already added before. It would be alpha / limited to the profiling signal.
+  - Tigran: It’s worth opening the discussion. I’m not sure where it will take us. The difference with the previous changes is that this is a functional difference, not just an optimization. Maybe we should add unit and unitstr_idx? But IDK we want to do this for all signals. Is there an appetite from other signals for using it.
+  - Florian: Ok. We could be the guinny pig for unitstr_idx. If other signals want it we can add unit_str later.
+  - Tigran: Looks like right now another 32bit int could be added to the struct right now from a struct layout perspective.
+  - Felix: We should write down why we can’t use attributes to indicate units in some way. Or sketch out how this would look.
+- Frederic: How do we go about encouraging SDKs to implement now, and/or how do we track that progress?
+  - Frederic: Should we encourage? Should we track?
+  - Florian: I had a quick convo with Tyler and Damien (Go SIG), they are interested. Also process context.
+  - Felix: We should have a tracking issue where we list all SDKs and their status and cross-link issues.
+  - Frederic: I’ll create the initial issue and ping a few SIGs I know folks on.
+  - Christos: We also need feedback on the alpha.
+  - Christos: Maybe we should write a message to all of them.
