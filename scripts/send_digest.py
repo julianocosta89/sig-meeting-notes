@@ -36,7 +36,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 LOGO_URL = "https://raw.githubusercontent.com/julianocosta89/sig-meeting-notes/refs/heads/main/docs/OTelMinutes-logo.png"
 DEFAULT_DIGEST_MODEL = "gpt-5-mini"
-DIGEST_MAX_OUTPUT_TOKENS = 400
+DIGEST_MAX_OUTPUT_TOKENS = 1024
 
 
 def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
