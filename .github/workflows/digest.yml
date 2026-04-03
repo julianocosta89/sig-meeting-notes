@@ -5,6 +5,11 @@ on:
     workflows: ["Generate Summaries"]
     types: [completed]
   workflow_dispatch:
+    inputs:
+      summarize_commit_sha:
+        description: "Commit SHA written by the summarize workflow (leave blank to diff HEAD~1..HEAD)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -39,10 +44,14 @@ jobs:
         id: read-sha
         env:
           EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_SHA: ${{ github.event.inputs.summarize_commit_sha }}
         run: |
           if [ "$EVENT_NAME" = "workflow_run" ]; then
             SHA=$(cat summarize-commit-sha.txt 2>/dev/null | tr -d '[:space:]')
             echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          elif [ -n "$DISPATCH_SHA" ]; then
+            echo "sha=$DISPATCH_SHA" >> "$GITHUB_OUTPUT"
             echo "found=true" >> "$GITHUB_OUTPUT"
           else
             echo "sha=" >> "$GITHUB_OUTPUT"
