@@ -267,18 +267,20 @@ Source material:
                     raise ValueError("OpenAI returned no output text")
                 return retry_response.output_text.strip()
 
-            salvaged = _trim_to_complete_sentences(retry_response.output_text) or (
-                _trim_to_complete_sentences(response.output_text)
-            )
-            if salvaged:
-                print(
-                    "WARNING: OpenAI digest response remained truncated; using completed"
-                    " sentences from the partial output."
+            retry_reason = _get_incomplete_reason(retry_response)
+            if retry_reason == "max_output_tokens":
+                salvaged = _trim_to_complete_sentences(retry_response.output_text) or (
+                    _trim_to_complete_sentences(response.output_text)
                 )
-                return salvaged
+                if salvaged:
+                    print(
+                        "WARNING: OpenAI digest response remained truncated; using completed"
+                        " sentences from the partial output."
+                    )
+                    return salvaged
 
             response = retry_response
-            reason = _get_incomplete_reason(response)
+            reason = retry_reason
 
         suffix = f": {reason}" if reason else ""
         raise ValueError(f"OpenAI response incomplete{suffix}")

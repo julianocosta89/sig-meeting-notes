@@ -20,7 +20,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 from send_digest import (  # noqa: E402
     DIGEST_MAX_OUTPUT_TOKENS,
     DIGEST_RETRY_MAX_OUTPUT_TOKENS,
+    _get_incomplete_reason,
     _is_trivial_transcript,
+    _trim_to_complete_sentences,
     build_deep_link,
     build_digest_source,
     build_email,
@@ -487,6 +489,57 @@ class TestGenerateDigestNarrative:
 
         assert result == "Sentence one."
 
+    def test_retry_completed_without_output_text_raises_value_error(self) -> None:
+        """A successful retry still needs output text."""
+        mock_client = MagicMock()
+        first = MagicMock()
+        first.output_text = "Partial digest"
+        first.status = "incomplete"
+        first.incomplete_details = {"reason": "max_output_tokens"}
+        second = MagicMock()
+        second.output_text = ""
+        second.status = "completed"
+        second.incomplete_details = None
+        mock_client.responses.create.side_effect = [first, second]
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+
+        with pytest.raises(ValueError, match="no output text"):
+            generate_digest_narrative(mock_client, summaries)
+
+    def test_retry_incomplete_without_salvage_raises_value_error(self) -> None:
+        """If both responses are truncated with no complete sentence, fail clearly."""
+        mock_client = MagicMock()
+        first = MagicMock()
+        first.output_text = "Partial"
+        first.status = "incomplete"
+        first.incomplete_details = {"reason": "max_output_tokens"}
+        second = MagicMock()
+        second.output_text = "Still partial"
+        second.status = "incomplete"
+        second.incomplete_details = {"reason": "max_output_tokens"}
+        mock_client.responses.create.side_effect = [first, second]
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+
+        with pytest.raises(ValueError, match="max_output_tokens"):
+            generate_digest_narrative(mock_client, summaries)
+
+    def test_retry_incomplete_for_non_token_reason_raises_not_salvages(self) -> None:
+        """Retry incomplete due to a non-token reason must raise, not salvage partial text."""
+        mock_client = MagicMock()
+        first = MagicMock()
+        first.output_text = "Partial digest"
+        first.status = "incomplete"
+        first.incomplete_details = {"reason": "max_output_tokens"}
+        second = MagicMock()
+        second.output_text = "Sentence one. Sentence two without ending"
+        second.status = "incomplete"
+        second.incomplete_details = {"reason": "content_filter"}
+        mock_client.responses.create.side_effect = [first, second]
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+
+        with pytest.raises(ValueError, match="content_filter"):
+            generate_digest_narrative(mock_client, summaries)
+
     def test_single_meeting_uses_summary_prompt(self) -> None:
         """One-meeting input should not ask for cross-SIG correlations."""
         mock_client = _mock_openai_client()
@@ -552,6 +605,19 @@ class TestBuildDigestSource:
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": content}]
         result = build_digest_source(summaries)
         assert content in result
+
+
+class TestDigestHelpers:
+    def test_get_incomplete_reason_returns_none_when_missing(self) -> None:
+        response = MagicMock()
+        response.incomplete_details = None
+        assert _get_incomplete_reason(response) is None
+
+    def test_trim_to_complete_sentences_empty_input(self) -> None:
+        assert _trim_to_complete_sentences("   ") == ""
+
+    def test_trim_to_complete_sentences_without_punctuation(self) -> None:
+        assert _trim_to_complete_sentences("unfinished sentence") == ""
 
 
 # ---------------------------------------------------------------------------
