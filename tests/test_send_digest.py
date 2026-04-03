@@ -18,6 +18,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
+    DIGEST_MAX_OUTPUT_TOKENS,
+    DIGEST_RETRY_MAX_OUTPUT_TOKENS,
     _is_trivial_transcript,
     build_deep_link,
     build_digest_source,
@@ -432,30 +434,58 @@ class TestGenerateDigestNarrative:
             generate_digest_narrative(mock_client, summaries)
 
     def test_incomplete_response_raises_value_error(self) -> None:
-        """Incomplete responses should fail instead of silently truncating the digest."""
+        """Non-token-limit incomplete responses should still fail."""
         mock_client = MagicMock()
         mock_response = MagicMock()
         mock_response.output_text = "Partial digest"
         mock_response.status = "incomplete"
-        mock_response.incomplete_details = {"reason": "max_output_tokens"}
+        mock_response.incomplete_details = {"reason": "content_filter"}
         mock_client.responses.create.return_value = mock_response
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        with pytest.raises(ValueError, match="max_output_tokens"):
+        with pytest.raises(ValueError, match="content_filter"):
             generate_digest_narrative(mock_client, summaries)
 
-    def test_incomplete_response_with_object_details(self) -> None:
-        """incomplete_details as an object (not dict) should still surface the reason."""
+    def test_incomplete_response_retries_when_limited_by_output_tokens(self) -> None:
+        """Token-limit truncation should retry with a larger output budget."""
         mock_client = MagicMock()
-        mock_response = MagicMock()
-        mock_response.output_text = "Partial digest"
-        mock_response.status = "incomplete"
+        first = MagicMock()
+        first.output_text = "Partial digest"
+        first.status = "incomplete"
+        first.incomplete_details = {"reason": "max_output_tokens"}
+        second = MagicMock()
+        second.output_text = FAKE_NARRATIVE
+        second.status = "completed"
+        second.incomplete_details = None
+        mock_client.responses.create.side_effect = [first, second]
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+
+        result = generate_digest_narrative(mock_client, summaries)
+
+        assert result == FAKE_NARRATIVE
+        first_call = mock_client.responses.create.call_args_list[0].kwargs
+        second_call = mock_client.responses.create.call_args_list[1].kwargs
+        assert first_call["max_output_tokens"] == DIGEST_MAX_OUTPUT_TOKENS
+        assert second_call["max_output_tokens"] == DIGEST_RETRY_MAX_OUTPUT_TOKENS
+
+    def test_incomplete_response_with_object_details_can_salvage_output(self) -> None:
+        """Object-style incomplete_details should still allow truncation recovery."""
+        mock_client = MagicMock()
+        first = MagicMock()
+        first.output_text = "Partial digest without punctuation"
+        first.status = "incomplete"
         details = MagicMock(spec=["reason"])
         details.reason = "max_output_tokens"
-        mock_response.incomplete_details = details
-        mock_client.responses.create.return_value = mock_response
+        first.incomplete_details = details
+        second = MagicMock()
+        second.output_text = "Sentence one. Sentence two without ending"
+        second.status = "incomplete"
+        second.incomplete_details = details
+        mock_client.responses.create.side_effect = [first, second]
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        with pytest.raises(ValueError, match="max_output_tokens"):
-            generate_digest_narrative(mock_client, summaries)
+
+        result = generate_digest_narrative(mock_client, summaries)
+
+        assert result == "Sentence one."
 
     def test_single_meeting_uses_summary_prompt(self) -> None:
         """One-meeting input should not ask for cross-SIG correlations."""
@@ -505,7 +535,7 @@ class TestGenerateDigestNarrative:
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
         generate_digest_narrative(mock_client, summaries)
         call_kwargs = mock_client.responses.create.call_args[1]
-        assert call_kwargs["max_output_tokens"] == 400
+        assert call_kwargs["max_output_tokens"] == DIGEST_MAX_OUTPUT_TOKENS
 
 
 class TestBuildDigestSource:
