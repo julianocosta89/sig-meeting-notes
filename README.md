@@ -167,6 +167,12 @@ Summaries are generated with OpenAI `gpt-4o-mini` and require an `OPENAI_API_KEY
 uv run python generate_summaries.py --since 2026-02-01
 ```
 
+## Daily Digest
+
+A daily email digest is sent after the summarize workflow runs. It uses OpenAI `gpt-5-mini` to produce a cross-SIG narrative and delivers it via the [Resend](https://resend.com) API. Requires `OPENAI_API_KEY`, `RESEND_API_KEY`, and `DIGEST_TO` secrets.
+
+The model can be overridden with the `OPENAI_DIGEST_MODEL` environment variable.
+
 ## CI / Automation
 
 | Workflow | Schedule | Description |
@@ -174,6 +180,7 @@ uv run python generate_summaries.py --since 2026-02-01
 | `refresh.yml` | Weekdays 06:00 UTC | Fetches new transcripts and rebuilds the manifest |
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
 | `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
+| `digest.yml` | After `summarize.yml` | Sends daily digest email (requires `RESEND_API_KEY` and `DIGEST_TO` secrets) |
 | `test.yml` | On every PR and push | Runs lint (`ruff`) and the full test suite |
 
 ## License
