@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-03T07:09:42Z",
+  "generated_at": "2026-04-06T07:26:47Z",
   "min_date": "2025-06-16",
   "max_date": "2026-04-02",
   "sigs": [
@@ -6950,6 +6950,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-python",
       "meetings": [
         {
+          "date": "2026-04-02",
+          "duration_minutes": 1661,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-26",
           "duration_minutes": 28,
           "has_summary": true,
@@ -7216,7 +7223,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 38
+      "meeting_count": 39
     },
     {
       "slug": "RPC-Sem-Conv-Stability-SIG",

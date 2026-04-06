@@ -1,0 +1,70 @@
+## Meeting Notes
+
+### Attendees
+- Tammy Baylis (SolarWinds)
+- Keith Decker (Cisco/Splunk)
+- Riccardo Magliocchetti (Elastic)
+- Paulo Vital (IBM)
+- Emídio
+- Liudmila Molkova (Grafana Labs)
+- Aaron Abbott (Google)
+- Dylan Russell (Google)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Surya
+- Mani Yazdankhah (JP Morgan)
+- Pablo Collins (Splunk/Cisco)
+- Hector Hernandez (Microsoft)
+- Mike Goldsmith (Honeycomb)
+- Josh Winerman (Cisco/Splunk)
+- https://github.com/orgs/open-telemetry/projects/88/views/1
+- Another trigger for PRs like this one? https://github.com/open-telemetry/opentelemetry-python/pull/3620
+  - Mike: I can take a look at it
+
+### Agenda
+- Riccardo: 1.40.0+ regressions / behavior changes in core packages
+  - https://github.com/open-telemetry/opentelemetry-python/issues/4993 looks invalid to me
+  - https://github.com/open-telemetry/opentelemetry-python/issues/5009 fixing api NoOpTracer context propagation raised issue:
+      - Broken tests in dynatrace instrumentation of the sdk “.... we will have to change to use API's NoopTracer in these cases, which would probably have been the better solution from the start anyways.”
+      - Don’t know if this is the commit that broke litestar opentelemetry tests but from my testing latest litestar works just fine with 1.40.0
+        - It’s something unrelated to the context propagation issue https://github.com/open-telemetry/opentelemetry-python/pull/5034
+      - A followup for https://github.com/open-telemetry/opentelemetry-python-contrib/blob/242cfe1c58d6896144d75c404a4784d4bd16cfed/opentelemetry-instrumentation/src/opentelemetry/instrumentation/utils.py#L152 ?
+  - https://github.com/open-telemetry/opentelemetry-python/issues/5016 memory usage increase when instantiating Tracers, expected I guess? Also assumption that get_tracer will not create a new tracer?
+      - I think it’s fixed by reuse of tracers https://github.com/open-telemetry/opentelemetry-python/pull/5007
+        - NoOpTracerProvider, ProxyTracerProvider, NoOpMeterProvider and ProxyMeterProvider get_* are unbounded as well (haven’t checked logs)
+            - Mike: we should probably check if these are getting garbage collected, if so we’re fine
+- Riccardo: time to really run typecheck in all core?
+  - re: https://github.com/open-telemetry/opentelemetry-python/pull/5015
+  - Typecheking for otlp-http https://github.com/open-telemetry/opentelemetry-python/pull/5028
+      - otlp-common more involved
+  - First batch for metrics sdk https://github.com/open-telemetry/opentelemetry-python/pull/5033
+  - Updated tracking issue for work https://github.com/open-telemetry/opentelemetry-python/issues/1608
+  - Aaron: I played a bit with basedpyright https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4195/changes
+- Riccardo: fine to merge all-greens in CI so we can simplify the list of required checks? https://github.com/open-telemetry/opentelemetry-python/pull/4988
+- Riccardo: What should we do with dropping context for exporters https://github.com/open-telemetry/opentelemetry-python/pull/4977 ?
+  - Maybe put this under an environment variable first?
+- Shuning: Embedding metrics PR for review https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4377/
+- Erden: AgentInvocation type PR for review https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274
+  - Liudmila: we’re changing related semconv atm https://github.com/open-telemetry/semantic-conventions/pull/3514
+  - Tool definition - https://github.com/open-telemetry/semantic-conventions/pull/3378
+      - Liudmila to push changes with minor feedback
+- [Liudmila] GenAI separate repo proposal pros and cons
+  - Pros:
+      - Bring more people to approvers/maintainers with the goal to give powers to companies building instrumentations outside of otel and create incentive to do it in otel. Have checks and balances in place
+      - Separate stability expectations: move faster, do stable releases, major version bumps
+      - Host GenAI specific semconv in this repo too
+      - ...
+  - Cons
+      - Fragmenting things and taking energy away from the rest of python contrib
+      - Would we still have one distro for genai and other stuff?
+      - ...
+  - Mixed feelings from maintainers
+      - Hard to know when pr is ready to merge
+      - Bot to merge PRs with criterias are met
+      - Reasons to hesitate:
+        - Green check mark for conformance testing
+        - Not enough context in GenAI efforts
+        - AI review and security bots
+- [Pablo] Simplification of log translation (breaking change) https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4372
+- [Surya] Copilot pr feedback proposal
+- [Jayesh] Enabled flake8-type-checking plugin rules for ruff linter. I had to format many files to satisfy this rule by moving imports to the type-checking block. So, getting more feedback would really help to reduce the errors.
