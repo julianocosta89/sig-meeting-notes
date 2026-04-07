@@ -226,6 +226,7 @@ def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -
 about this OpenTelemetry SIG meeting.
 
 Focus on the most important themes, decisions, or follow-ups.
+Do not mention any person's name or attribute anything to a specific individual.
 Do not use markdown, bullets, or headings.
 Do not mention that you were given summaries.
 Do not invent details that are not present in the source material.
@@ -239,6 +240,7 @@ connecting these OpenTelemetry SIG meetings.
 Synthesize shared themes, dependencies, and action-oriented work across meetings.
 Do not turn the paragraph into a meeting-by-meeting list.
 Only mention SIG names when they materially help clarity.
+Do not mention any person's name or attribute anything to a specific individual.
 Do not use markdown, bullets, or headings.
 Do not mention that you were given summaries.
 Do not invent details that are not present in the source material.
