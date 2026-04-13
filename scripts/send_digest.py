@@ -225,7 +225,9 @@ def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -
         user_prompt = """Write a 2-3 sentence email-ready digest paragraph
 about this OpenTelemetry SIG meeting.
 
-Focus on the most important themes, decisions, or follow-ups.
+Focus on the most important themes and decisions discussed.
+Use plain, direct language. Avoid fancy or unusual vocabulary.
+Do not use imperative language or tell the reader to do anything.
 Do not mention any person's name or attribute anything to a specific individual.
 Do not use markdown, bullets, or headings.
 Do not mention that you were given summaries.
@@ -237,9 +239,11 @@ Source material:
         user_prompt = """Write a single 3-4 sentence email-ready digest paragraph
 connecting these OpenTelemetry SIG meetings.
 
-Synthesize shared themes, dependencies, and action-oriented work across meetings.
+Synthesize shared themes, dependencies, and ongoing work across meetings.
 Do not turn the paragraph into a meeting-by-meeting list.
 Only mention SIG names when they materially help clarity.
+Use plain, direct language. Avoid fancy or unusual vocabulary.
+Do not use imperative language or tell the reader to do anything.
 Do not mention any person's name or attribute anything to a specific individual.
 Do not use markdown, bullets, or headings.
 Do not mention that you were given summaries.
