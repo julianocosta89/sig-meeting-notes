@@ -1,0 +1,77 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- Felix Geisendörfer (Datadog)
+- Marc Sanmiquel (Grafana Labs/Pyroscope)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- .Shivanshu (Odigos)
+
+### Agenda
+- Review action items
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Comment on [https://github.com/open-telemetry/opentelemetry-proto/pull/782](https://github.com/open-telemetry/opentelemetry-proto/pull/782) based on discussion on Apr 2.
+    - Felix: Initial comment for 32 MiB was well received, but still have to provide data.
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) / [florian.lehner@elastic.co](mailto:florian.lehner@elastic.co): Figure out KeyValueUnit proposal, see Apr 2 discussion.
+    - Florian: I created an early draft outlining how units could be added to the existing KeyValue message.
+    - Felix: I think we need to be clear on why we need it and why we can’t do sth hacky (e.g. attributes describing the units of other attributes)
+    - Alexey: Would we also support references?
+    - Florian: Yes, similar to how to do it for keys. You can only have a unit or unitidx set, not both.
+  - Frederic Brancyk: Create profiling-sig meta issue for tracking SDK implementation of the profiling signal.
+    - [https://github.com/open-telemetry/sig-profiling/issues/106](https://github.com/open-telemetry/sig-profiling/issues/106)
+    - Felix: Opening issues in the SDK repos seems fine. But encourage general discussion to be on the meta issue or SDK maintainers should join the profiling SIG meetings.
+    - Frederic: I’ll draft an issue text and share it in the slack and then open the issues.
+    - Frederic: We won’t need an OTel API for this as setting the span/trace id context is not user-facing API and just SDK-internal. We’ll only need an API for custom attributes/labels, but that’s not on the critical path for getting the profiles signal to stable as we have attributes on samples already.
+  - Jonathan: PR for moving original_payload to a dictionary. Done: [https://github.com/open-telemetry/opentelemetry-proto/pull/786](https://github.com/open-telemetry/opentelemetry-proto/pull/786)
+    - Jonathan: We should not merge now, but people are free to review (with low agency).
+    - Alexey: I noticed the payload is repeated now.
+    - Jonathan: I added it to make it more generic.
+    - Felix: Maybe a repeated message would make more sense. We could make it a message with the payload and repeated attributes, so stuff like format and filename can move to semantic conventions and get extended over time.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - Alexey: No updates.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Alexey: Not done yet, but will do it shortly.
+  - [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+    - Felix: No update yet.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Specification PR [https://github.com/open-telemetry/opentelemetry-specification/pull/4932](https://github.com/open-telemetry/opentelemetry-specification/pull/4932) Please review!
+    - Florian: We got Profiling SIG approvals, waiting for Spec approvals.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Data Format PR
+    - Florian: We got Profiling SIG approvals, waiting for Spec approvals.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Revise data format [PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4965) to remove redundancy (e.g. remove tables with field information and link to profiles.proto instead)
+    - Florian: This still needs to be done.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Figure out what to do with this [older Profiles OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md). See [this discussion below](#bookmark=id.mjn7dj4yyazk).
+    - Florian: This is blocked by christos PRs above. When they land, we can update the OTEP and point to these newer docs.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Where should the `ProcessContext` proto live [https://github.com/open-telemetry/opentelemetry-proto/pull/783](https://github.com/open-telemetry/opentelemetry-proto/pull/783)
+  - Ivo: Proto folks said the proto repo is only for OTLP, not any protobufs related to otel. I’m unsure how to proceed. We could put the proto on sig profiling.
+  - Felix: Did we consider having it in the spec?
+  - Ivo: It already is, but we have to copy & paste from there with no good distribution mechanism.
+  - Florian: If we move to profiling-sig we have to maintain the protobuf infrastructure.
+  - Decision: We think it’s still best getting this landed in the proto repo, so we should continue working towards that.
+  - Federic: Does this even have to be protobuf?
+  - Ivo: We considered not using protobuf in the past. But we were worried about maintainability and extensibility.
+  - Frederic: I’m worried about the ebpf profiler consuming this. We have limits on the eBPF verifier, so we can’t extend arbitrarily.
+  - Ivo: The proto is only used for the process context which is read from user space. The thread context stuff doesn’t use proto.
+  - Frederic: Makes sense.
+  - Felix: Reusing the Resource and KeyValue attribute concepts from OTel is very nice for process context.
+  - Frederic: If we hit a wall with hosting the proto definitions, we should be open to going back to a non-proto definition for the process context.
+  - Felix: Works for me.
+  - Decision: Let’s try to poke a bit more on the upstream proto effort, but if it becomes a big PITA, let’s drop the protobuf and go with a custom format.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) Next steps for thread context sharing [https://github.com/open-telemetry/opentelemetry-specification/pull/4947](https://github.com/open-telemetry/opentelemetry-specification/pull/4947)
+  - Ivo: Please review, we need green checks from the Profiling SIG to convince the Spec SIG. Of course also comment with any concerns you might have.
+- [Florian Lehner](mailto:florian.lehner@elastic.co)[[RFC] tracer: add interface for custom probes](https://github.com/open-telemetry/opentelemetry-ebpf-profiler/pull/1326)
+  - Florian: This proposal could enable memory profiling, GPU profiling and simplify contributions. Other use cases include limiting profiling to a certain PIDs/programs. People forking the ebpf profiler could also use this.
+  - Frederic: I haven’t looked at it, but Tommy has commented. We’ve started work on something like this. We did something similar for GPU profiling with USDT probes. We intend to contribute the cuda profiler back at some point, it’s just very fast moving right now. If we go down this path, let’s make sure we can support USDT probes.
+  - Florian: Yes, that should work under this proposal.
+  - Frederic: USDTs allow for parameter extraction, e.g. range read values.
+  - Florian: Yes, this is already implemented. I agree with the use case.
+  - Felix: I can review from the problem statement / use case perspective and ask my colleague nicolas to review the technical details.
+  - Frederic: Would this be low overhead for something like allocation profiling? Maybe there could be probes in the kernel that probabilistically fire. Even if it would require kernel contributions.
+  - Florian: I have some opinions on this. I suspect there will be no general memory profiling (Java, Go, Python).
+  - Frederic: Makes sense. But I don’t think the overhead of the probes will work.
+  - Florian: I think the overhead could be okay. Most languages allocate larger blocks, profiling those would not be enough detail.
+  - Ivo: We had an earlier full host profiler that had allocation profiling for malloc/free. But we relied on a component in the application. We’re thinking about how to make this work in the eBPF profiler in the future.
+  - Alexey: One thing we found with sampling is that it’s much better to sample in terms of weight rather than fraction of events. Sometimes it’s hard b/c you don’t know the weight until the contention finishes.
+  - Felix: I think even getting just the use case of C/Rust libraries would be great.
+  - Frederic: jemalloc can already do this. We’re working upstream with mimalloc on this. With heap profiling it’s tricky since you can’t miss events from the start of the program’s execution.
