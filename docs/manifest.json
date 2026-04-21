@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-20T08:01:29Z",
+  "generated_at": "2026-04-21T07:33:57Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-04-16",
+  "max_date": "2026-04-21",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -1021,10 +1021,17 @@
     },
     {
       "slug": "CC-SIG",
-      "name": "C/C++ SIG",
+      "name": "OpenTelemetry C/C++ SIG",
       "meeting_notes_url": "https://docs.google.com/document/d/1rdF6GZcCqH9huo3oqur5x_McsPS_qQ9OPSRFjIqndm8",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-cpp",
       "meetings": [
+        {
+          "date": "2026-04-20",
+          "duration_minutes": 13,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-04-15",
           "duration_minutes": 20,
@@ -1243,7 +1250,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 31
+      "meeting_count": 32
     },
     {
       "slug": "CICD-SemConv-SIG",
@@ -2279,6 +2286,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-04-20",
+          "duration_minutes": 28,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-03-09",
           "duration_minutes": 22,
           "has_summary": true,
@@ -2356,7 +2370,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 11
+      "meeting_count": 12
     },
     {
       "slug": "Developer-Experience-SIG-Meeting",
@@ -2798,6 +2812,13 @@
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
+          "date": "2026-04-20",
+          "duration_minutes": 65,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-04-13",
           "duration_minutes": 26,
           "has_summary": true,
@@ -3008,7 +3029,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 30
+      "meeting_count": 31
     },
     {
       "slug": "Erlang-SIG",
@@ -5197,6 +5218,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-04-20",
+          "duration_minutes": 37,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-04-13",
           "duration_minutes": 36,
           "has_summary": true,
@@ -5246,7 +5274,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 7
+      "meeting_count": 8
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -5396,6 +5424,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1EKIeDgBGXQPGehUigIRLwAUpRGa7-1kXB736EaYuJ2M",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-04-21",
+          "duration_minutes": 27,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-04-14",
           "duration_minutes": 63,
@@ -5768,7 +5803,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 53
+      "meeting_count": 54
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -8218,6 +8253,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-injector",
       "meetings": [
         {
+          "date": "2026-04-20",
+          "duration_minutes": 6,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-04-13",
           "duration_minutes": 63,
           "has_summary": true,
@@ -8379,7 +8421,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 23
+      "meeting_count": 24
     },
     {
       "slug": "Sampling-SIG",
@@ -8622,6 +8664,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/10xG7DNKWRhxNmFGt3yYd3980a9uwS8lMl2LvQL3VNK8",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-04-20",
+          "duration_minutes": 41,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-04-13",
           "duration_minutes": 45,
@@ -8889,7 +8938,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 38
+      "meeting_count": 39
     },
     {
       "slug": "Semantic-Convention-Tooling",
