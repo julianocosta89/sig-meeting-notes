@@ -1,0 +1,51 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Sublime Security)
+- Jonathan Halliday (IBM)
+- Jay DeLuca (Grafana Labs)
+- Jack Berg (Grafana Labs)
+- Trask Stalnaker (Microsoft)
+- Peter Findeisen (Cisco)
+- Jason (Splunk)
+- Pranav Sharma (Google)
+- Lauri Tulmin (Splunk)
+- Robert Niedziela (Splunk)
+- Jack Shirazi (Elastic)
+- Cleverchuk (Solarwinds)
+- Bruno Baptista (IBM)
+
+### Agenda
+- Standing topic: issue triage
+  - [is:open -label:"needs u feedback","needs repro","contribution welcome"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+-label%3A%22needs+author+feedback%22%2C%22needs+repro%22%2C%22contribution+welcome%22)
+  - [is:open label:"needs triage"](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22)
+- [Jay] FYI/Inform: Update on [https://explorer.opentelemetry.io/](https://explorer.opentelemetry.io/)
+  - Still a work in progress, but it’s usable. If anyone happens to use it and finds any problems or has any suggestions, please let me know
+  - Publishing a [blog post](https://github.com/open-telemetry/opentelemetry.io/pull/9690) next week on [opentelemetry.io](http://opentelemetry.io) publicising the project itself in order to try and attract more contributors and start expanding to other ecosystems
+  - [Java agent instrumentation browser](https://explorer.opentelemetry.io/java-agent/instrumentation/2.27.0) is making good progress
+  - Can diff telemetry across versions, [example](https://explorer.opentelemetry.io/java-agent/instrumentation/2.27.0/vertx-sql-client-5.0)
+  - ![][image1]
+  - Still working on adding the declarative configuration interactive builder UI
+  - Still need to port over standalone library readmes
+- [jack] Standardize guidance for null checking: [https://github.com/open-telemetry/opentelemetry-java/pull/8318](https://github.com/open-telemetry/opentelemetry-java/pull/8318)
+  - Love it? Hate it?
+  - Jack’s thoughts:
+    - Feels verbose to add null checks to all params of shouldSample implementations
+    - Like consistency and think the principles are defensible
+    - Probably won’t impact perf
+    - Like ApiUsageLogger pattern, and like stabilizing it (reduce internal shared code)
+  - Plan: atomic ref to log at warning level once details about how to turn on ApiUsageLogger to find more details
+  - Come up with plan to demarcate code with is internal, but which we give public API guarantees for
+- [jack] Need approval on build flake / low controversy Prs:
+  - PeriodicMetricReaderTest flake: [github.com/open-telemetry/opentelemetry-java/pull/8317](http://github.com/open-telemetry/opentelemetry-java/pull/8317)
+  - Tune benchmark params to reduce variance: [https://github.com/open-telemetry/opentelemetry-java/pull/8308](https://github.com/open-telemetry/opentelemetry-java/pull/8308)
+  - Make JMH params configurable via command line [https://github.com/open-telemetry/opentelemetry-java/pull/8305](https://github.com/open-telemetry/opentelemetry-java/pull/8305)
+  - Fix jaeger sampler test flake: [https://github.com/open-telemetry/opentelemetry-java/pull/8322](https://github.com/open-telemetry/opentelemetry-java/pull/8322)
+  - Still need a fix for graalvm config cache issues. This attempt didn’t fix it: [https://github.com/open-telemetry/opentelemetry-java/pull/8319](https://github.com/open-telemetry/opentelemetry-java/pull/8319)
+    - Side question: why is the configuration cache such a PIA?
+- [Jay] I am planning on doing the contrib release. Any objections?
+  - [jason] I would love to get [https://github.com/open-telemetry/opentelemetry-java-contrib/pull/2778](https://github.com/open-telemetry/opentelemetry-java-contrib/pull/2778) in there if possible.
+    - [jack s] I’ll review tomorrow
+      - [jason] Thanks Jack!
+- [jack] New `opentelemetry-sdk-extension-declarative-config` package. Planning on merging if no additional comments: [https://github.com/open-telemetry/opentelemetry-java/pull/8265](https://github.com/open-telemetry/opentelemetry-java/pull/8265)
+- [Pranav: Pending from last meeting]: [https://github.com/open-telemetry/opentelemetry-java/pull/8296](https://github.com/open-telemetry/opentelemetry-java/pull/8296)
