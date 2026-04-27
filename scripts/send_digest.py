@@ -21,6 +21,7 @@ from typing import TYPE_CHECKING
 
 import requests
 
+from scraper.otel_setup import StatusCode, configure_tracer
 from scraper.transcript_io import (
     MIN_TRANSCRIPT_LINES,
     count_transcript_lines,
@@ -407,6 +408,8 @@ def _create_openai_client(api_key: str) -> OpenAI:
 
 
 def main() -> None:
+    tracer = configure_tracer("otel-recordings-digest")
+
     summary_paths = get_new_summary_paths()
     if not summary_paths:
         print("No new summaries, skipping.")
@@ -442,12 +445,20 @@ def main() -> None:
 
     summaries = [parse_summary_info(p, commit_sha) for p in non_trivial_paths]
 
-    client = _create_openai_client(api_key)
-    narrative = generate_digest_narrative(client, summaries)
+    with tracer.start_as_current_span("send digest") as span:
+        span.set_attribute("digest.summary.count", len(summaries))
+        span.set_attribute("digest.recipient.count", len(recipients))
+        try:
+            client = _create_openai_client(api_key)
+            narrative = generate_digest_narrative(client, summaries)
 
-    today = date.today().isoformat()
-    email = build_email(narrative, summaries, today, len(summaries))
-    send_email(resend_key, recipients, email)
+            today = date.today().isoformat()
+            email = build_email(narrative, summaries, today, len(summaries))
+            send_email(resend_key, recipients, email)
+        except Exception as exc:  # noqa: BLE001
+            span.record_exception(exc)
+            span.set_status(StatusCode.ERROR, str(exc))
+            raise
 
     print(f"Digest sent with {len(summaries)} meetings included.")
 

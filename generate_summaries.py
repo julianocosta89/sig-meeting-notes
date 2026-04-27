@@ -16,6 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from scraper.otel_setup import StatusCode, _NoOpTracer, configure_tracer
 from scraper.transcript_io import (
     MIN_TRANSCRIPT_LINES,
     count_transcript_lines,
@@ -82,12 +83,16 @@ def process_transcripts(
     transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
     since: date | None = None,
     until: date | None = None,
+    tracer: object = None,
 ) -> tuple[int, int]:
     """Process transcripts in the given date range and generate missing summaries.
 
     When neither ``since`` nor ``until`` is provided, defaults to the last 2 weeks.
     Returns (generated_count, skipped_count).
     """
+    if tracer is None:
+        tracer = _NoOpTracer()
+
     generated = 0
     skipped = 0
 
@@ -131,14 +136,23 @@ def process_transcripts(
             continue
 
         print(f"  Generating summary for {slug}/{date_str}...")
-        summary_text = generate_summary(
-            client,
-            header["sig_name"],
-            header["date"],
-            str(header["duration_minutes"]),
-            header["source_url"],
-            body,
-        )
+        with tracer.start_as_current_span("generate summary") as span:
+            span.set_attribute("sig.slug", slug)
+            span.set_attribute("meeting.date", date_str)
+            span.set_attribute("transcript.lines", line_count)
+            try:
+                summary_text = generate_summary(
+                    client,
+                    header["sig_name"],
+                    header["date"],
+                    str(header["duration_minutes"]),
+                    header["source_url"],
+                    body,
+                )
+            except Exception as exc:  # noqa: BLE001
+                span.record_exception(exc)
+                span.set_status(StatusCode.ERROR, str(exc))
+                raise
 
         summary_path.write_text(summary_text + "\n", encoding="utf-8")
         generated += 1
@@ -166,10 +180,25 @@ def main() -> None:
         print("ERROR: OPENAI_API_KEY environment variable is not set")
         raise SystemExit(1)
 
-    from openai import OpenAI  # noqa: PLC0415 — deferred to avoid import error in dev envs
+    tracer = configure_tracer("otel-recordings-summarize")
+
+    from openai import (
+        OpenAI,  # noqa: PLC0415 — deferred; must come after configure_tracer so OpenAIInstrumentor patches first
+    )
 
     client = OpenAI(api_key=api_key)
-    generated, skipped = process_transcripts(client, since=since, until=until)
+
+    with tracer.start_as_current_span("generate summaries") as span:
+        if args.since:
+            span.set_attribute("filter.since_date", args.since)
+        if args.until:
+            span.set_attribute("filter.until_date", args.until)
+
+        generated, skipped = process_transcripts(client, since=since, until=until, tracer=tracer)
+
+        span.set_attribute("summaries.generated", generated)
+        span.set_attribute("summaries.skipped", skipped)
+
     print(f"Generated {generated} summaries, skipped {skipped} existing")
 
 

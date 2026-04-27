@@ -35,6 +35,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from scraper import community, gdoc
+from scraper.otel_setup import StatusCode, configure_tracer
 from scraper.sheet import Meeting, fetch_csv, filter_meetings
 from scraper.transcript_io import SEPARATOR, parse_reference
 from scraper.zoom import ZoomScrapeError, scrape_transcript
@@ -161,7 +162,7 @@ def write_transcript(
         logger.info("Saved %s", notes_path)
 
 
-def process_meetings(meetings: list[Meeting]) -> tuple[int, int, list[str]]:
+def process_meetings(meetings: list[Meeting], tracer: object) -> tuple[int, int, list[str]]:
     """
     Scrape transcripts for all meetings.
 
@@ -195,32 +196,40 @@ def process_meetings(meetings: list[Meeting]) -> tuple[int, int, list[str]]:
                     meeting.url,
                 )
 
-                # Ensure metadata.md exists; fetch meeting notes from Google Doc
-                notes_url = _ensure_metadata(meeting, out_path)
                 date_str = meeting.start_date.strftime("%Y-%m-%d")
-                notes = (
-                    gdoc.fetch_meeting_notes(notes_url, date_str)
-                    if notes_url
-                    else {"attendees": [], "agenda": []}
-                )
+                with tracer.start_as_current_span("process meeting") as span:
+                    span.set_attribute("sig.name", meeting.sig_name)
+                    span.set_attribute("meeting.date", date_str)
+                    span.set_attribute("meeting.url", meeting.url)
 
-                # Fresh context + page per recording to avoid state leakage
-                context = browser.new_context()
-                page = context.new_page()
-                try:
-                    lines = scrape_transcript(page, meeting.url)
-                    write_transcript(out_path, meeting, lines, notes)
-                except ZoomScrapeError as exc:
-                    logger.warning("Skipped — %s", exc)
-                    skipped_urls.append(meeting.url)
-                    skipped += 1
-                except Exception:  # noqa: BLE001
-                    logger.exception("Unexpected error for %s", meeting.url)
-                    skipped_urls.append(meeting.url)
-                    errors += 1
-                finally:
-                    page.close()
-                    context.close()
+                    notes_url = _ensure_metadata(meeting, out_path)
+                    notes = (
+                        gdoc.fetch_meeting_notes(notes_url, date_str)
+                        if notes_url
+                        else {"attendees": [], "agenda": []}
+                    )
+
+                    # Fresh context + page per recording to avoid state leakage
+                    context = browser.new_context()
+                    page = context.new_page()
+                    try:
+                        lines = scrape_transcript(page, meeting.url)
+                        write_transcript(out_path, meeting, lines, notes)
+                    except ZoomScrapeError as exc:
+                        logger.warning("Skipped — %s", exc)
+                        skipped_urls.append(meeting.url)
+                        skipped += 1
+                        span.set_attribute("meeting.skipped", True)
+                        span.set_attribute("meeting.skip.reason", str(exc))
+                    except Exception as exc:  # noqa: BLE001
+                        logger.exception("Unexpected error for %s", meeting.url)
+                        skipped_urls.append(meeting.url)
+                        errors += 1
+                        span.record_exception(exc)
+                        span.set_status(StatusCode.ERROR, str(exc))
+                    finally:
+                        page.close()
+                        context.close()
         finally:
             browser.close()
 
@@ -323,6 +332,7 @@ def main() -> int:
         datefmt="%H:%M:%S",
     )
     args = _parse_args()
+    tracer = configure_tracer("otel-recordings-refresh")
 
     since: datetime | None = None
     until: datetime | None = None
@@ -344,68 +354,86 @@ def main() -> int:
         if since is None:
             return 1
 
-    logger.info("Fetching Google Sheet …")
-    try:
-        rows = fetch_csv()
-    except Exception:  # noqa: BLE001
-        logger.exception("Failed to fetch sheet")
-        return 1
+    with tracer.start_as_current_span("fetch transcripts") as span:
+        if args.since:
+            span.set_attribute("filter.since_date", args.since)
+        if args.between:
+            span.set_attribute("filter.since_date", args.between[0])
+            span.set_attribute("filter.until_date", args.between[1])
+        if args.sig:
+            span.set_attribute("filter.sig", args.sig)
 
-    meetings = filter_meetings(rows, since=since, until=until)
-
-    if args.sig:
-        resolved_slug = _resolve_sig(meetings, args.sig)
-        if resolved_slug is None:
+        logger.info("Fetching Google Sheet …")
+        try:
+            rows = fetch_csv()
+        except Exception as exc:  # noqa: BLE001
+            logger.exception("Failed to fetch sheet")
+            span.record_exception(exc)
+            span.set_status(StatusCode.ERROR, str(exc))
             return 1
-        meetings = [m for m in meetings if m.sig_slug == resolved_slug]
 
-    if args.between:
-        range_label = f"{args.between[0]} → {args.between[1]}"
-    elif since:
-        range_label = f"since {since.strftime('%Y-%m-%d')}"
-    else:
-        range_label = "last 14 days"
-    logger.info("Found %d meetings with Zoom URLs (%s)", len(meetings), range_label)
+        meetings = filter_meetings(rows, since=since, until=until)
 
-    if not meetings:
-        logger.warning("No meetings found — check sheet URL and column names")
-        return 0
+        if args.sig:
+            resolved_slug = _resolve_sig(meetings, args.sig)
+            if resolved_slug is None:
+                return 1
+            meetings = [m for m in meetings if m.sig_slug == resolved_slug]
 
-    for m in meetings:
+        if args.between:
+            range_label = f"{args.between[0]} → {args.between[1]}"
+        elif since:
+            range_label = f"since {since.strftime('%Y-%m-%d')}"
+        else:
+            range_label = "last 14 days"
+        logger.info("Found %d meetings with Zoom URLs (%s)", len(meetings), range_label)
+
+        span.set_attribute("meetings.count", len(meetings))
+
+        if not meetings:
+            logger.warning("No meetings found — check sheet URL and column names")
+            return 0
+
+        for m in meetings:
+            logger.info(
+                "  • %s  %s  %s",
+                m.sig_name,
+                m.start_date.strftime("%Y-%m-%d"),
+                m.url,
+            )
+
+        errors, skipped, skipped_urls = process_meetings(meetings, tracer)
+
+        span.set_attribute("meetings.processed", len(meetings) - skipped - errors)
+        span.set_attribute("meetings.skipped", skipped)
+        span.set_attribute("meetings.errors", errors)
+
+        if skipped_urls:
+            print("\nSkipped recordings (no transcript available):")
+            for url in skipped_urls:
+                print(f"  {url}")
+
+        if skipped:
+            logger.warning(
+                "%d recording(s) had no transcript — skipped (not a failure)",
+                skipped,
+            )
+
+        if errors:
+            logger.error(
+                "Completed with %d unexpected error(s) out of %d meetings",
+                errors,
+                len(meetings),
+            )
+            span.set_status(StatusCode.ERROR, f"{errors} unexpected error(s)")
+            return 1
+
         logger.info(
-            "  • %s  %s  %s",
-            m.sig_name,
-            m.start_date.strftime("%Y-%m-%d"),
-            m.url,
-        )
-
-    errors, skipped, skipped_urls = process_meetings(meetings)
-
-    if skipped_urls:
-        print("\nSkipped recordings (no transcript available):")
-        for url in skipped_urls:
-            print(f"  {url}")
-
-    if skipped:
-        logger.warning(
-            "%d recording(s) had no transcript — skipped (not a failure)",
+            "Done: %d meeting(s) processed, %d skipped (no transcript)",
+            len(meetings) - skipped,
             skipped,
         )
-
-    if errors:
-        logger.error(
-            "Completed with %d unexpected error(s) out of %d meetings",
-            errors,
-            len(meetings),
-        )
-        return 1
-
-    logger.info(
-        "Done: %d meeting(s) processed, %d skipped (no transcript)",
-        len(meetings) - skipped,
-        skipped,
-    )
-    return 0
+        return 0
 
 
 if __name__ == "__main__":

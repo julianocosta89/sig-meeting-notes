@@ -21,6 +21,7 @@ import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 
+from scraper.otel_setup import StatusCode, configure_tracer
 from scraper.transcript_io import (
     MIN_TRANSCRIPT_LINES,
     count_transcript_lines,
@@ -118,17 +119,28 @@ def build_manifest() -> dict:
 
 
 def main() -> None:
+    tracer = configure_tracer("otel-recordings-build-site")
+
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
-    manifest = build_manifest()
+    with tracer.start_as_current_span("build site") as span:
+        try:
+            manifest = build_manifest()
 
-    MANIFEST_PATH.write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+            MANIFEST_PATH.write_text(
+                json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
 
-    total_sigs = len(manifest["sigs"])
-    total_meetings = sum(len(s["meetings"]) for s in manifest["sigs"])
+            total_sigs = len(manifest["sigs"])
+            total_meetings = sum(len(s["meetings"]) for s in manifest["sigs"])
+            span.set_attribute("manifest.sigs", total_sigs)
+            span.set_attribute("manifest.meetings", total_meetings)
+        except Exception as exc:
+            span.record_exception(exc)
+            span.set_status(StatusCode.ERROR, str(exc))
+            raise
+
     print(f"Built manifest: {total_sigs} SIGs, {total_meetings} meetings")
 
 

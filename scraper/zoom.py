@@ -72,18 +72,18 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=30_000)
     except PlaywrightTimeout as exc:
-        raise ZoomScrapeError(f"Timed out loading page: {url}") from exc
+        raise ZoomScrapeError("Timed out loading page") from exc
 
     # Brief pause then check for password prompt
     time.sleep(2)
     if page.query_selector("input[type='password']"):
-        raise ZoomScrapeError(f"Recording is password-protected: {url}")
+        raise ZoomScrapeError("Recording is password-protected")
 
     # Check for error text in page body
     body_text = page.inner_text("body") if page.query_selector("body") else ""
     for err in _ERROR_STRINGS:
         if err.lower() in body_text.lower():
-            raise ZoomScrapeError(f"Recording unavailable ({err!r}): {url}")
+            raise ZoomScrapeError(f"Recording unavailable ({err!r})")
 
     # Wait for all static resources to finish loading, then give Vue a fixed
     # window to render the transcript. If it's not in the DOM after that, skip.
@@ -100,8 +100,8 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
 
     if page.query_selector(TRANSCRIPT_LIST_SELECTOR) is None:
         if page.query_selector(TRANSCRIPT_WRAPPER_SELECTOR):
-            raise ZoomScrapeError(f"Transcript panel present but no content: {url}")
-        raise ZoomScrapeError(f"No transcript found: {url}")
+            raise ZoomScrapeError("Transcript panel present but no content")
+        raise ZoomScrapeError("No transcript found")
 
     # Defeat virtual-list windowing by scrolling the container top-to-bottom
     _scroll_transcript_into_view(page)
@@ -109,13 +109,13 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
     # Extract outerHTML of the transcript list
     ul_element = page.query_selector(TRANSCRIPT_LIST_SELECTOR)
     if ul_element is None:
-        raise ZoomScrapeError(f"Transcript list disappeared after scroll: {url}")
+        raise ZoomScrapeError("Transcript list disappeared after scroll")
 
     outer_html = ul_element.evaluate("el => el.outerHTML")
     lines = parse_transcript_html(outer_html)
 
     if not lines:
-        raise ZoomScrapeError(f"Transcript parsed to empty list: {url}")
+        raise ZoomScrapeError("Transcript parsed to empty list")
 
     logger.info("Extracted %d transcript lines", len(lines))
     return lines
