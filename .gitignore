@@ -6,6 +6,8 @@ __pycache__/
 *.py[cod]
 *.pyo
 .venv/
+.coverage
+coverage.xml
 
 # macOS
 .DS_Store
