@@ -31,6 +31,9 @@ class _Tracer(Protocol):
 
 
 class _NoOpSpan:
+    def __init__(self) -> None:
+        pass
+
     def set_attribute(self, key: str, value: object) -> None:  # noqa: ARG002
         pass
 
@@ -47,6 +50,9 @@ def _noop_ctx() -> Generator[_NoOpSpan]:
 
 
 class _NoOpTracer:
+    def __init__(self) -> None:
+        pass
+
     def start_as_current_span(  # noqa: ARG002
         self, name: str, **kwargs: object
     ) -> contextlib.AbstractContextManager[_NoOpSpan]:
