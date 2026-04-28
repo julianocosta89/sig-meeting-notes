@@ -28,7 +28,7 @@ telemetry = [
     # opentelemetry-instrumentation-openai-v2 calls wrap_function_wrapper(module=...) using
     # the wrapt 1.x keyword name; wrapt 2.x renamed it to `target=`, breaking instrumentation.
     # Pin to 1.x until upstream fixes the kwarg name.
-    "wrapt==1.17.3",
+    "wrapt==2.1.2",
 ]
 
 [tool.ruff]
