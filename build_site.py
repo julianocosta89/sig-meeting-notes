@@ -144,5 +144,5 @@ def main() -> None:
     print(f"Built manifest: {total_sigs} SIGs, {total_meetings} meetings")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

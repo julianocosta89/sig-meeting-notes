@@ -202,5 +202,5 @@ def main() -> None:
     print(f"Generated {generated} summaries, skipped {skipped} existing")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

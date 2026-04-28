@@ -70,3 +70,38 @@ def test_configure_tracer_returns_noop_for_any_service_name(service_name, monkey
     monkeypatch.delenv("OTEL_EXPORTER_OTLP_ENDPOINT", raising=False)
     tracer = configure_tracer(service_name)
     assert isinstance(tracer, _NoOpTracer)
+
+
+def test_configure_tracer_sdk_import_block_covered(monkeypatch):
+    """Cover the SDK import block by providing mock opentelemetry modules."""
+    monkeypatch.setenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://localhost:4318")
+
+    mock_otel = unittest.mock.MagicMock()
+    sdk_modules = {
+        "opentelemetry": mock_otel,
+        "opentelemetry.trace": mock_otel.trace,
+        "opentelemetry._logs": unittest.mock.MagicMock(),
+        "opentelemetry.exporter": unittest.mock.MagicMock(),
+        "opentelemetry.exporter.otlp": unittest.mock.MagicMock(),
+        "opentelemetry.exporter.otlp.proto": unittest.mock.MagicMock(),
+        "opentelemetry.exporter.otlp.proto.http": unittest.mock.MagicMock(),
+        "opentelemetry.exporter.otlp.proto.http._log_exporter": unittest.mock.MagicMock(),
+        "opentelemetry.exporter.otlp.proto.http.trace_exporter": unittest.mock.MagicMock(),
+        "opentelemetry.sdk": unittest.mock.MagicMock(),
+        "opentelemetry.sdk._logs": unittest.mock.MagicMock(),
+        "opentelemetry.sdk._logs.export": unittest.mock.MagicMock(),
+        "opentelemetry.sdk.resources": unittest.mock.MagicMock(),
+        "opentelemetry.sdk.trace": unittest.mock.MagicMock(),
+        "opentelemetry.sdk.trace.export": unittest.mock.MagicMock(),
+        "opentelemetry.instrumentation": None,
+        "opentelemetry.instrumentation.logging": None,
+        "opentelemetry.instrumentation.requests": None,
+        "opentelemetry.instrumentation.openai_v2": None,
+    }
+
+    with unittest.mock.patch.dict("sys.modules", sdk_modules):
+        tracer = configure_tracer("test-service")
+
+    # configure_tracer does `from opentelemetry import trace` which resolves to
+    # mock_otel.trace, then returns trace.get_tracer(service_name).
+    assert tracer is mock_otel.trace.get_tracer.return_value
