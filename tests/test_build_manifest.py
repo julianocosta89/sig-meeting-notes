@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
+
 from build_site import build_manifest
 from build_site import main as build_main
 from scraper.transcript_io import parse_header
@@ -473,6 +475,18 @@ class TestStaleFileRemoval:
         assert metadata_only.exists()
         assert (metadata_only / "metadata.md").exists()
 
+    def test_non_dir_entry_in_transcripts_src_is_skipped(self, tmp_path: Path) -> None:
+        """A file at the slug level (not a directory) should be silently skipped."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "some-file.txt").write_text("unexpected file", encoding="utf-8")
+
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+
+        assert len(manifest["sigs"]) == 1
+
 
 # ---------------------------------------------------------------------------
 # TestBuildSiteMain — the main() entry point
@@ -513,3 +527,16 @@ class TestBuildSiteMain:
             build_main()
 
         assert docs.exists()
+
+    def test_main_records_span_on_exception(self, tmp_path: Path) -> None:
+        """main() should record the exception on the span and re-raise it."""
+        docs = tmp_path / "docs"
+        manifest_path = docs / "manifest.json"
+
+        with (
+            patch("build_site.DOCS_DIR", docs),
+            patch("build_site.MANIFEST_PATH", manifest_path),
+            patch("build_site.build_manifest", side_effect=RuntimeError("build failed")),
+            pytest.raises(RuntimeError, match="build failed"),
+        ):
+            build_main()

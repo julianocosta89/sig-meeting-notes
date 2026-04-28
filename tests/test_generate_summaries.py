@@ -559,6 +559,50 @@ class TestProcessTranscriptsEdgeCases:
         assert generated == 0
         mock_client.chat.completions.create.assert_not_called()
 
+    def test_skips_transcripts_before_since(self, tmp_path: Path) -> None:
+        """Transcripts with dates before `since` should be skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        early = SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-01-15")
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-01-15.md", early)
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 2, 1)
+            )
+        assert generated == 0
+        assert skipped == 1
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_warns_on_unparseable_header_with_valid_date_dir(self, tmp_path: Path) -> None:
+        """A valid-date dir with an unparseable header should be warned and skipped."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        bad_dir = transcripts_dir / "Go-SIG" / "2026-02-05"
+        bad_dir.mkdir(parents=True)
+        (bad_dir / "transcript.md").write_text("garbage not a valid header\n", encoding="utf-8")
+
+        mock_client = _mock_openai_client()
+        with patch("generate_summaries.time.sleep"):
+            generated, skipped = process_transcripts(
+                mock_client, transcripts_dir, since=date(2026, 1, 1)
+            )
+        assert generated == 0
+        mock_client.chat.completions.create.assert_not_called()
+
+    def test_generate_summary_exception_is_reraised(self, tmp_path: Path) -> None:
+        """If generate_summary() raises, the exception is recorded on the span and re-raised."""
+        transcripts_dir = tmp_path / "docs" / "content"
+        _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+
+        mock_client = _mock_openai_client()
+        mock_client.chat.completions.create.side_effect = ValueError("API error")
+
+        with (
+            patch("generate_summaries.time.sleep"),
+            pytest.raises(ValueError, match="API error"),
+        ):
+            process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
+
 
 # ---------------------------------------------------------------------------
 # Tests: main()

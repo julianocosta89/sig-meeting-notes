@@ -64,7 +64,7 @@ jobs:
           enable-cache: true
 
       - name: Install Python dependencies
-        run: uv sync --frozen --group summarize
+        run: uv sync --frozen --group summarize --group telemetry
 
       - name: Send daily digest
         env:
@@ -75,4 +75,7 @@ jobs:
           # found=true means this is a workflow_run trigger; found=false means workflow_dispatch.
           SUMMARIZE_COMMIT_SHA: ${{ steps.read-sha.outputs.sha }}
           SUMMARIZE_COMMIT_FOUND: ${{ steps.read-sha.outputs.found }}
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_SERVICE_NAME: otel-minutes-digest
         run: uv run python scripts/send_digest.py

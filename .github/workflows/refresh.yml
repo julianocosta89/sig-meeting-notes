@@ -30,7 +30,7 @@ jobs:
           enable-cache: true
 
       - name: Install Python dependencies
-        run: uv sync --frozen
+        run: uv sync --frozen --group telemetry
 
       - name: Install Playwright browsers
         run: uv run playwright install chromium --with-deps
@@ -38,6 +38,9 @@ jobs:
       - name: Fetch new transcripts
         env:
           SINCE: ${{ github.event.inputs.since }}
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_SERVICE_NAME: otel-minutes-refresh
         run: |
           if [ -n "$SINCE" ]; then
             uv run python main.py --since "$SINCE"
@@ -46,6 +49,10 @@ jobs:
           fi
 
       - name: Build site
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_SERVICE_NAME: otel-minutes-build-site
         run: |
           if [ -f build_site.py ]; then
             uv run python build_site.py
