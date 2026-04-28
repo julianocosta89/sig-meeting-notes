@@ -368,6 +368,30 @@ class TestMain:
             main()
         assert exc_info.value.code == 1
 
+    def test_span_records_exception_on_error(self) -> None:
+        """When generate_digest_narrative raises, the exception is re-raised from main()."""
+        env = _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+
+        with (
+            patch(
+                "send_digest.subprocess.run",
+                side_effect=[
+                    _mock_subprocess_result(diff_output),
+                    _mock_subprocess_result(SAMPLE_SUMMARY),
+                ],
+            ),
+            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
+            patch("send_digest._create_openai_client", return_value=MagicMock()),
+            patch(
+                "send_digest.generate_digest_narrative",
+                side_effect=RuntimeError("OpenAI unavailable"),
+            ),
+            pytest.raises(RuntimeError, match="OpenAI unavailable"),
+        ):
+            main()
+
 
 class TestBuildEmail:
     """Tests for email construction."""

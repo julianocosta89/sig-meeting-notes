@@ -1,6 +1,6 @@
 [project]
 name = "otel-recordings"
-version = "0.1.0"
+version = "0.2.0"
 description = "Fetch OpenTelemetry SIG meeting transcripts from Zoom recordings"
 requires-python = ">=3.14"
 dependencies = [
@@ -19,6 +19,17 @@ dev = [
     "pip-audit==2.10.0",
 ]
 summarize = ["openai==2.32.0", "jinja2==3.1.6"]
+telemetry = [
+    "opentelemetry-distro==0.62b1",
+    "opentelemetry-exporter-otlp-proto-http==1.41.1",
+    "opentelemetry-instrumentation-logging==0.62b1",
+    "opentelemetry-instrumentation-openai-v2==2.3b0",
+    "opentelemetry-instrumentation-requests==0.62b1",
+    # opentelemetry-instrumentation-openai-v2 calls wrap_function_wrapper(module=...) using
+    # the wrapt 1.x keyword name; wrapt 2.x renamed it to `target=`, breaking instrumentation.
+    # Pin to 1.x until upstream fixes the kwarg name.
+    "wrapt==1.17.3",
+]
 
 [tool.ruff]
 line-length = 100

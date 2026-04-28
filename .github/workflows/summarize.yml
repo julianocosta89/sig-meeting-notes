@@ -30,16 +30,24 @@ jobs:
           enable-cache: true
 
       - name: Install Python dependencies
-        run: uv sync --frozen --group summarize
+        run: uv sync --frozen --group summarize --group telemetry
 
       - name: Generate summaries
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=llmobs,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT: event_only
+          OTEL_SEMCONV_STABILITY_OPT_IN: gen_ai_latest_experimental
+          OTEL_SERVICE_NAME: otel-minutes-summarize
         run: uv run python generate_summaries.py
 
       - name: Commit changes if any
         env:
           TRIGGER_SHA: ${{ github.sha }}
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_SERVICE_NAME: otel-minutes-build-site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
