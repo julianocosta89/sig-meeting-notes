@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: ["Refresh Transcripts"]
     types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,8 @@ jobs:
     if: >-
       (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
       (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_branch == 'main')
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
@@ -37,7 +39,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
           OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=llmobs,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
-          OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT: event_only
+          OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT: span_only
           OTEL_SEMCONV_STABILITY_OPT_IN: gen_ai_latest_experimental
           OTEL_SERVICE_NAME: otel-minutes-summarize
         run: uv run python generate_summaries.py
