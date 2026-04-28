@@ -97,9 +97,8 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
     for has_speaker, text in raw[1:]:
         if has_speaker:
             result.append(text)
-        elif (speaker_match := _SPEAKER_LIKE_RE.match(text)) and _is_new_speaker_start(
-            speaker_match
-        ):
+            continue
+        if (speaker_match := _SPEAKER_LIKE_RE.match(text)) and _is_new_speaker_start(speaker_match):
             result.extend(_split_embedded_boundaries(text))
         elif m := _first_embedded_boundary(text):
             # Split at the embedded boundary: the prefix (up to and including the
