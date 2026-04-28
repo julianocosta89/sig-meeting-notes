@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Josh Suereth (Google)
+- Christophe Kamphaus
+- Liudmila Molkova (Grafana Labs)
+- Ruediger Schulze (IBM)
+- Trask Stalnaker (Microsoft)
+- Armin Ruech (Dynatrace)
+
+### Agenda
+- (timebox 7 min) Project Status + Triage + Blockers
+  - Stability Blockers
+  - PR Triage Board: [https://github.com/orgs/open-telemetry/proje](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - [cts/67/views/1](https://github.com/orgs/open-telemetry/projects/67/views/1)
+  - Issue Triage Board: [https://github.com/orgs/open-telemetry/projects/131/views/1](https://github.com/orgs/open-telemetry/projects/131/views/1)
+- (timebox 50 min) General topics
+  - [Liudmila] `data` attributes - could we have some intro to this? [https://github.com/open-telemetry/semantic-conventions/pull/3644](https://github.com/open-telemetry/semantic-conventions/pull/3644)
+    - Annotating service based on serv characteristics
+    - Can flow downstream in baggage
+    - Context: [Introduce "data" attribute group in OTEL](https://docs.google.com/document/d/13jCkwYxS6pHTFTAPXqMljp2lTkO3FXKzKf34BFB2YEA/edit?tab=t.0)
+    - Why not `service.data.*`
+      - Because of baggage
+    - Q:
+      - What's being classified (e.g. with sensitivity)? Individual signals? Entities? E.g.
+        - This service has `data.sensitivity = high` and it's set on service entity
+        - Vs this span has `data.sensitivity = high` because it describes operation that deals and potentially records sensitive data
+          - How would instrumentation know?
+          - Only case for manual / custom / context-scoped attrs?
+          - It can come from the upstream in the baggage
+      - Assuming it's about entities, should we think about it as another case for embedding?
+        - `service.data.sensitivity = high`
+        - `service.data.category = financial`
+      - Would we use `data` namespace for non-entities reasons
+        - `data.content` (relevant in AI, databases)
+        - `data.size`
+    - Somewhat related to annotating specific attributes with metadata
+  - [Liudmila] Process attrs RC: [https://github.com/open-telemetry/semantic-conventions/pull/3564](https://github.com/open-telemetry/semantic-conventions/pull/3564)
+    - Open discussion - should we merge?
+    - Stability scope: do we plan to RC corresponding resource / entity soon?
+  - [Liudmila] FYI - browser.document entity PR [https://github.com/open-telemetry/semantic-conventions/pull/3633](https://github.com/open-telemetry/semantic-conventions/pull/3633)
+  - [chrismark] Ask for SemConv release: [https://cloud-native.slack.com/archives/C041APFBYQP/p1777294687882729?thread_ts=1777283393.988019&cid=C041APFBYQP](https://cloud-native.slack.com/archives/C041APFBYQP/p1777294687882729?thread_ts=1777283393.988019&cid=C041APFBYQP)
+    - Trask will start a release
+    - Slack integration - can we trigger release from a message in maintainer channel
+      - At least as a reminder
+  - [Liudmila] Last chance to review gce instance labels [https://github.com/open-telemetry/semantic-conventions/pull/2617](https://github.com/open-telemetry/semantic-conventions/pull/2617)
+  - [Trask] Ready to split out genai semconv to its own repo
+    - [https://github.com/trask/semantic-conventions-genai](https://github.com/trask/semantic-conventions-genai)
+      - Double check that policies are running
+      - Convert to V2
+        - Then can use policies from [weaver packages](https://github.com/open-telemetry/opentelemetry-weaver-packages/tree/main/policies/check)
+          - Backcompat
+          - Attribute naming
+          - Stabilization / lifecycle management
+          - (documented in OTEP)
+      - How will it be published to website?
+        - Need to add website automation
+    - What version?
+      - Continue? v1.41.0
+      - Reset? v1.0.0
+      - Alpha? v0.41.0
+      - Deprecate current semconv (essentially stable v1/v0?)
+  - [Christophe] Guidance for opt-in label detail
+    - [https://github.com/open-telemetry/semantic-conventions/issues/3651](https://github.com/open-telemetry/semantic-conventions/issues/3651)
