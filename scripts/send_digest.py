@@ -156,28 +156,28 @@ def parse_summary_sections(content: str) -> dict:
     }
 
 
+def _render_summary_lines(summary: dict[str, str]) -> list[str]:
+    """Render a single summary into digest-source lines."""
+    sections = parse_summary_sections(summary["content"])
+    lines = [f"### {summary['slug']} ({summary['date']})"]
+
+    if sections["highlights"]:
+        lines.append("Key topics:")
+        lines.extend(f"- {item}" for item in sections["highlights"])
+
+    if sections["action_items"]:
+        lines.append("Action items:")
+        lines.extend(f"- {item}" for item in sections["action_items"])
+
+    if len(lines) == 1:
+        lines.append(summary["content"].strip())
+
+    return lines
+
+
 def build_digest_source(summaries: list[dict[str, str]]) -> str:
     """Render only digest-relevant summary sections for the model input."""
-    rendered: list[str] = []
-
-    for summary in summaries:
-        sections = parse_summary_sections(summary["content"])
-        lines = [f"### {summary['slug']} ({summary['date']})"]
-
-        if sections["highlights"]:
-            lines.append("Key topics:")
-            lines.extend(f"- {item}" for item in sections["highlights"])
-
-        if sections["action_items"]:
-            lines.append("Action items:")
-            lines.extend(f"- {item}" for item in sections["action_items"])
-
-        if len(lines) == 1:
-            lines.append(summary["content"].strip())
-
-        rendered.append("\n".join(lines))
-
-    return "\n\n".join(rendered)
+    return "\n\n".join("\n".join(_render_summary_lines(s)) for s in summaries)
 
 
 def _get_incomplete_reason(response: object) -> str | None:
@@ -213,6 +213,42 @@ def _request_digest_narrative(client: OpenAI, *, model: str, prompt: str, max_ou
         input=prompt,
         max_output_tokens=max_output_tokens,
     )
+
+
+def _handle_max_tokens_retry(
+    client: OpenAI, *, model: str, prompt: str, original_response: object
+) -> str:
+    """Retry with a higher token budget after a max_output_tokens truncation.
+
+    Returns the best available text, or raises ValueError if unrecoverable.
+    """
+    print("WARNING: OpenAI digest response hit max_output_tokens; retrying once.")
+    retry_response = _request_digest_narrative(
+        client,
+        model=model,
+        prompt=prompt,
+        max_output_tokens=DIGEST_RETRY_MAX_OUTPUT_TOKENS,
+    )
+    if retry_response.status != "incomplete":
+        text = retry_response.output_text
+        if not text:
+            raise ValueError("OpenAI returned no output text")
+        return text.strip()
+
+    retry_reason = _get_incomplete_reason(retry_response)
+    if retry_reason == "max_output_tokens":
+        salvaged = _trim_to_complete_sentences(retry_response.output_text) or (
+            _trim_to_complete_sentences(getattr(original_response, "output_text", ""))
+        )
+        if salvaged:
+            print(
+                "WARNING: OpenAI digest response remained truncated; using completed"
+                " sentences from the partial output."
+            )
+            return salvaged
+
+    suffix = f": {retry_reason}" if retry_reason else ""
+    raise ValueError(f"OpenAI response incomplete{suffix}")
 
 
 def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -> str:
@@ -262,33 +298,9 @@ Source material:
     if response.status == "incomplete":
         reason = _get_incomplete_reason(response)
         if reason == "max_output_tokens":
-            print("WARNING: OpenAI digest response hit max_output_tokens; retrying once.")
-            retry_response = _request_digest_narrative(
-                client,
-                model=model,
-                prompt=prompt,
-                max_output_tokens=DIGEST_RETRY_MAX_OUTPUT_TOKENS,
+            return _handle_max_tokens_retry(
+                client, model=model, prompt=prompt, original_response=response
             )
-            if retry_response.status != "incomplete":
-                if not retry_response.output_text:
-                    raise ValueError("OpenAI returned no output text")
-                return retry_response.output_text.strip()
-
-            retry_reason = _get_incomplete_reason(retry_response)
-            if retry_reason == "max_output_tokens":
-                salvaged = _trim_to_complete_sentences(retry_response.output_text) or (
-                    _trim_to_complete_sentences(response.output_text)
-                )
-                if salvaged:
-                    print(
-                        "WARNING: OpenAI digest response remained truncated; using completed"
-                        " sentences from the partial output."
-                    )
-                    return salvaged
-
-            response = retry_response
-            reason = retry_reason
-
         suffix = f": {reason}" if reason else ""
         raise ValueError(f"OpenAI response incomplete{suffix}")
     if not response.output_text:
