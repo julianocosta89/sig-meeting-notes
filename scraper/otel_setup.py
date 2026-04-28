@@ -11,7 +11,7 @@ import atexit
 import contextlib
 import os
 from collections.abc import Generator
-from typing import Any
+from typing import Protocol
 
 try:
     from opentelemetry.trace import StatusCode
@@ -24,14 +24,20 @@ except ImportError:
         ERROR = 2
 
 
+class _Tracer(Protocol):
+    def start_as_current_span(
+        self, name: str, **kwargs: object
+    ) -> contextlib.AbstractContextManager[object]: ...
+
+
 class _NoOpSpan:
-    def set_attribute(self, key: str, value: Any) -> None:  # noqa: ARG002
+    def set_attribute(self, key: str, value: object) -> None:  # noqa: ARG002
         pass
 
-    def set_status(self, status: Any, description: str = "") -> None:  # noqa: ARG002
+    def set_status(self, status: object, description: str = "") -> None:  # noqa: ARG002
         pass
 
-    def record_exception(self, exception: Exception, **kwargs: Any) -> None:  # noqa: ARG002
+    def record_exception(self, exception: Exception, **kwargs: object) -> None:  # noqa: ARG002
         pass
 
 
@@ -41,11 +47,13 @@ def _noop_ctx() -> Generator[_NoOpSpan]:
 
 
 class _NoOpTracer:
-    def start_as_current_span(self, name: str, **kwargs: Any) -> Any:  # noqa: ARG002
+    def start_as_current_span(  # noqa: ARG002
+        self, name: str, **kwargs: object
+    ) -> contextlib.AbstractContextManager[_NoOpSpan]:
         return _noop_ctx()
 
 
-def configure_tracer(service_name: str) -> Any:
+def configure_tracer(service_name: str) -> _Tracer:
     """Return a tracer for *service_name*.
 
     Reads ``OTEL_EXPORTER_OTLP_ENDPOINT`` and ``OTEL_EXPORTER_OTLP_HEADERS``
