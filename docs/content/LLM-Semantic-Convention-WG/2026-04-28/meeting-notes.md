@@ -1,0 +1,51 @@
+## Meeting Notes
+
+### Attendees
+- Surya Teja
+- Liudmila Molkova
+- Trask Stalnaker (Microsoft)
+- Dat Ngo (Arize)
+- Leighton Chen (Microsoft)
+- Ankit Singhal (Microsoft)
+- Wolfgang Therrien (Honeycomb)
+- Jamie Danielson (Honeycomb)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Keith Decker (Cisco/Splunk)
+- Aaron Abbott (Google)
+- Shubhanshu Surana(Apple)
+- Josh Winerman (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+
+### Agenda
+- Triage
+  - WG Project board: PRs only: [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+)
+    - Everything: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+  - AI: auto-include PRs
+  - is:pr is:open label:area:gen-ai -is:draft
+  - [everyone, 5 min]  Intro for new members
+- [Jamie / Liudmila] [[DRAFT] GenAI SIG Roadmap  ](https://docs.google.com/document/d/1VIuXAViKylPoBJVQRLdKOsUXZ7Rp79fNLX2L9iZY4rU/edit?usp=sharing)
+  - Liudmila working on Python repo setup
+  - Trask working on genai semconv repo
+  - PR guidelines
+    - Related: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4457](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4457)
+- [Liudmila] Blog on AI coding agents + OTel [https://github.com/open-telemetry/opentelemetry.io/pull/9708](https://github.com/open-telemetry/opentelemetry.io/pull/9708)
+  - Please review
+  - Should we mention [native instrumentations](https://github.com/open-telemetry/opentelemetry.io/pull/9708/changes#r3155029622) ? Which ones are we aware of?
+- [Liudmila] Do people want to go on a live stream and do What's up OTel for GenAI SIG? [https://docs.google.com/forms/d/e/1FAIpQLSfkW3wBNuIm-HLj2vpAiOErEcm6WEHU9sKkcBZoHiVhfuNIQA/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfkW3wBNuIm-HLj2vpAiOErEcm6WEHU9sKkcBZoHiVhfuNIQA/viewform)
+  - Jamie signed up for May/June, will reach out to Liudmila to coordinate planned messaging
+- [Trask] Update on the semantic-conventions-genai repo breakout
+  - [https://github.com/trask/semantic-conventions-genai](https://github.com/trask/semantic-conventions-genai)
+  - [Update to Schema v2](https://github.com/trask/semantic-conventions-genai/pull/16)
+  - [PULL_REQUEST_TEMPLATE.md](https://github.com/trask/semantic-conventions-genai/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
+  - Approver responsibilities, initial thoughts:
+    - Approvers assign themselves to non-editorial PRs to signal that they will drive the review. **A PR can have multiple approvers assigned, and that is highly encouraged for medium and high complexity PRs.**
+    - Over a rolling 3-month window, an approver is expected to sign up for and drive the review of at least 3 non-editorial PRs. "Driving the review" means staying engaged with the PR through to its merge or close: providing timely initial reviews and follow-up feedback, requesting changes, asking design questions, and re-reviewing revisions promptly until the PR lands or is rejected.
+  - Discussion:
+    - 2 companies to approve
+    - Version schema url
+      - V0
+    - [https://opentelemetry.io/schemas/gen-ai-dev/1.0.0](https://opentelemetry.io/schemas/gen-ai-dev/1.0.0)
+    - [https://opentelemetry.io/schemas/gen-ai/1.0.0](https://opentelemetry.io/schemas/gen-ai-dev/1.0.0)
+    - In the core repo, need to deprecate genai conventions in that repo
+    - Consequences for semconv constants packaging
+    - Different release cadence of federated semconv will require separate language “constants” artifacts
