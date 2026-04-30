@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T13:52:11Z",
+  "generated_at": "2026-04-30T14:28:47Z",
   "min_date": "2025-06-16",
   "max_date": "2026-04-30",
   "sigs": [
@@ -32,7 +32,7 @@
           "participants": [
             "Tigran Najaryan",
             "Braydon Kains",
-            "dpaasman",
+            "Dpaasman",
             "Juande Manjon",
             "Evan Bradley",
             "Michael"
@@ -45,7 +45,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "dpaasman",
+            "Dpaasman",
             "Michel Laterman",
             "Evan Bradley",
             "Juande Manjon",
@@ -63,7 +63,7 @@
             "Tigran Najaryan",
             "Andy Keller",
             "Evan Bradley",
-            "dpaasman",
+            "Dpaasman",
             "Juande Manjon"
           ]
         },
@@ -88,7 +88,7 @@
           "trivial": false,
           "participants": [
             "Evan Bradley",
-            "dpaasman",
+            "Dpaasman",
             "Andy"
           ]
         },
@@ -99,7 +99,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "dpaasman",
+            "Dpaasman",
             "Michel Laterman",
             "Evan Bradley",
             "Tigran Najaryan",
@@ -130,7 +130,7 @@
             "Tigran Najaryan",
             "Evan Bradley",
             "Michel Laterman",
-            "dpaasman"
+            "Dpaasman"
           ]
         },
         {
@@ -145,7 +145,7 @@
             "Evan Bradley",
             "Michel Laterman",
             "Eric Chlebek",
-            "dpaasman"
+            "Dpaasman"
           ]
         },
         {
@@ -157,7 +157,7 @@
           "participants": [
             "Michel Laterman",
             "Andy Keller",
-            "dpaasman",
+            "Dpaasman",
             "Evan Bradley"
           ]
         }
@@ -421,7 +421,7 @@
           "trivial": false,
           "participants": [
             "Jason Plumb",
-            "cleverchuk",
+            "Cleverchuk",
             "Jairo Mendoza",
             "Jamie Lynch",
             "Hanson Ho"
@@ -437,7 +437,7 @@
             "Mustafa Haddara",
             "Jason Plumb",
             "Bee Klimt",
-            "cleverchuk"
+            "Cleverchuk"
           ]
         },
         {
@@ -604,7 +604,7 @@
             "Hanson Ho",
             "Cesar Munoz",
             "Manoel",
-            "cleverchuk"
+            "Cleverchuk"
           ]
         },
         {
@@ -762,8 +762,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
-            "utpilla",
+            "Jmacdonald",
+            "Utpilla",
             "Laurent Querel",
             "Albert",
             "Budkarsh"
@@ -813,7 +813,7 @@
             "Aaron Marten",
             "Laurent Querel",
             "Albert Lockett",
-            "jmacdonald",
+            "Jmacdonald",
             "Jake Dern",
             "Lalit",
             "Nikhil Manchanda (SlickNik)"
@@ -866,12 +866,12 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Laurent Querel",
             "Gokhan Uslu",
             "Albert Lockett",
             "Jake Dern",
-            "drewrelmas"
+            "Drewrelmas"
           ]
         },
         {
@@ -921,8 +921,8 @@
           "participants": [
             "Laurent Querel",
             "Jake Dern",
-            "jmacdonald",
-            "drewrelmas",
+            "Jmacdonald",
+            "Drewrelmas",
             "Aaron Marten"
           ]
         },
@@ -948,7 +948,7 @@
             "Utkarsh",
             "Jake Dern",
             "Laurent Querel",
-            "jmacdonald",
+            "Jmacdonald",
             "Aaron Marten",
             "Andres Borja",
             "Drew",
@@ -995,7 +995,7 @@
           "trivial": false,
           "participants": [
             "Laurent Querel",
-            "jmacdonald",
+            "Jmacdonald",
             "Chanly Ly",
             "Drew Relmas"
           ]
@@ -1009,7 +1009,7 @@
           "participants": [
             "Laurent Querel",
             "Albert Lockett",
-            "jmacdonald",
+            "Jmacdonald",
             "Jake Dern",
             "Drew Relmas",
             "Josh Buchan"
@@ -1022,7 +1022,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Jake Dern",
             "Aaron Marten",
             "Chanley",
@@ -1038,8 +1038,8 @@
           "trivial": false,
           "participants": [
             "Laurent Querel",
-            "jmacdonald",
-            "drewrelmas",
+            "Jmacdonald",
+            "Drewrelmas",
             "Albert Lockett",
             "Tom"
           ]
@@ -1255,7 +1255,7 @@
             "Joshua MacDonald",
             "Albert Lockett",
             "Chris Hain",
-            "utpilla"
+            "Utpilla"
           ]
         },
         {
@@ -1304,8 +1304,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
-            "albertlockett",
+            "Jmacdonald",
+            "Albertlockett",
             "Laurent",
             "Ukarsh",
             "Josh"
@@ -1364,7 +1364,7 @@
           "trivial": false,
           "participants": [
             "Laurent Quérel",
-            "jmacdonald",
+            "Jmacdonald",
             "Utkarsh"
           ]
         },
@@ -1377,7 +1377,7 @@
           "participants": [
             "Laurent Quérel",
             "Chris Hain",
-            "jmacdonald",
+            "Jmacdonald",
             "Albert",
             "David",
             "Michael"
@@ -1432,9 +1432,9 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Drew Relmas",
-            "tristan",
+            "Tristan",
             "Utkarsh Umesan Pillai"
           ]
         },
@@ -1460,8 +1460,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
-            "albertlockett",
+            "Jmacdonald",
+            "Albertlockett",
             "Michael Salib",
             "Drew Relmas",
             "Laurent",
@@ -1633,7 +1633,7 @@
           "participants": [
             "Benoît Zugmeyer",
             "Joaquín Díaz",
-            "martinkuba",
+            "Martinkuba",
             "Ted Young",
             "Carlos Alberto Cortez",
             "Daniel Dyla"
@@ -1647,7 +1647,7 @@
           "trivial": false,
           "participants": [
             "Jared Freeze",
-            "martinkuba",
+            "Martinkuba",
             "David Luna Bistuer",
             "Marco Schäfer"
           ]
@@ -1673,7 +1673,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "martinkuba",
+            "Martinkuba",
             "Marco Schäfer",
             "Jared Freeze",
             "Daniel Dyla"
@@ -1686,7 +1686,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "martinkuba",
+            "Martinkuba",
             "Benoît Zugmeyer",
             "David Luna Bistuer",
             "Jared Freeze",
@@ -2153,8 +2153,8 @@
           "trivial": false,
           "participants": [
             "Tom Tan",
-            "malff",
-            "lalitb",
+            "Malff",
+            "Lalitb",
             "Nalid",
             "Severin"
           ]
@@ -2178,7 +2178,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Tom Tan",
             "Ehsan"
           ]
@@ -2190,7 +2190,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Tom Tan",
             "Ehsan",
             "Lalit (not present)"
@@ -2203,7 +2203,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Tom Tan"
           ]
         },
@@ -2214,7 +2214,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Tom Tan",
             "Ehsan",
             "Ali Sedighi"
@@ -2290,7 +2290,7 @@
           "participants": [
             "Nikhil Bhatia",
             "Pranav Sharma",
-            "malff"
+            "Malff"
           ]
         },
         {
@@ -2300,7 +2300,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Pranav Sharma",
             "Nikhil Bhatia",
             "Doug Barker",
@@ -2316,7 +2316,7 @@
           "trivial": false,
           "participants": [
             "Nikhil Bhatia",
-            "malff",
+            "Malff",
             "Doug"
           ]
         },
@@ -2353,7 +2353,7 @@
           "trivial": false,
           "participants": [
             "Tom Tan",
-            "malff",
+            "Malff",
             "Lalit Kumar Bhasin"
           ]
         },
@@ -2365,7 +2365,7 @@
           "trivial": false,
           "participants": [
             "Ehsan",
-            "malff",
+            "Malff",
             "Nikhil Bhatia",
             "Rafael Roquetto"
           ]
@@ -2377,7 +2377,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "malff",
+            "Malff",
             "Ehsan",
             "Tom Tan",
             "Nikhil Bhatia",
@@ -3066,7 +3066,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "scheler",
+            "Scheler",
             "Hanson Ho",
             "Jason Plumb",
             "Martin Kuba"
@@ -3144,7 +3144,7 @@
           "trivial": false,
           "participants": [
             "Andrzej Stencel",
-            "atoulme",
+            "Atoulme",
             "Pablo Baeyens",
             "Jade Guiton",
             "Tiffany Hrabusa",
@@ -3160,7 +3160,7 @@
           "trivial": false,
           "participants": [
             "Andrew Wilkins",
-            "jmacdonald",
+            "Jmacdonald",
             "Dmitrii Anoshin"
           ]
         },
@@ -3187,7 +3187,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Dakota Paasman",
             "Mike Goldsmith",
             "Mikołaj Świątek",
@@ -3204,7 +3204,7 @@
           "participants": [
             "Andrew Wilkins",
             "Blake Rouse",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -3228,8 +3228,8 @@
           "trivial": false,
           "participants": [
             "Andrzej Stencel",
-            "atoulme",
-            "jmacdonald",
+            "Atoulme",
+            "Jmacdonald",
             "Blake Rouse",
             "Jade Guiton",
             "Andy Keller"
@@ -3242,8 +3242,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
-            "atoulme",
+            "Jmacdonald",
+            "Atoulme",
             "Anton",
             "Arthur"
           ]
@@ -3320,9 +3320,9 @@
             "Andrzej Stencel",
             "Evan Bradley",
             "Mikołaj Świątek",
-            "dpaasman",
+            "Dpaasman",
             "Fairly OddParents",
-            "ariannavespri",
+            "Ariannavespri",
             "Yaten Dhingra",
             "Jade Guiton"
           ]
@@ -3449,7 +3449,7 @@
             "Pablo Baeyens",
             "Dmitrii Anoshin",
             "Ernest Owojori",
-            "kushal"
+            "Kushal"
           ]
         },
         {
@@ -3535,7 +3535,7 @@
             "Israel Blancas",
             "João Duarte",
             "Roger Coll",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -3690,7 +3690,7 @@
             "Evan Bradley",
             "Dmitrii Anoshin",
             "Jade Guiton",
-            "jmacdonald",
+            "Jmacdonald",
             "Sam DeHaan"
           ]
         },
@@ -3702,7 +3702,7 @@
           "trivial": false,
           "participants": [
             "Andrew Wilkins",
-            "jmacdonald",
+            "Jmacdonald",
             "Paulo Janotti"
           ]
         },
@@ -4401,7 +4401,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jberg",
+            "Jberg",
             "Alex Boten",
             "Tyler Yahn"
           ]
@@ -4822,7 +4822,7 @@
           "participants": [
             "Damien Mathieu",
             "Diana Todea",
-            "tristan",
+            "Tristan",
             "Johanna Öjeling",
             "Pavol Loffay"
           ]
@@ -4926,8 +4926,8 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "akasprzok",
-            "tristan"
+            "Akasprzok",
+            "Tristan"
           ]
         },
         {
@@ -5104,7 +5104,7 @@
           "participants": [
             "Juliano Costa",
             "Damien Mathieu",
-            "tristan"
+            "Tristan"
           ]
         },
         {
@@ -5417,7 +5417,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "lciukaj@splunk.com",
+            "Lciukaj@Splunk.Com",
             "Tiffany Hrabusa",
             "Kevin Wagner",
             "Dan Gomez Blanco"
@@ -5458,8 +5458,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "lciukaj@splunk.com",
-            "neil yashinsky",
+            "Lciukaj@Splunk.Com",
+            "Neil Yashinsky",
             "Joy",
             "Dan",
             "Tiffany",
@@ -5680,7 +5680,7 @@
           "participants": [
             "Josh Suereth",
             "Daniel Dyla (Dynatrace)",
-            "krajo",
+            "Krajo",
             "David Ashpel",
             "Jack",
             "Josh McDonald"
@@ -6553,7 +6553,7 @@
           "trivial": false,
           "participants": [
             "Tyler Benson",
-            "Maxime DAVID",
+            "Maxime David",
             "Warre Pessers",
             "Serkan Ozal"
           ]
@@ -7438,7 +7438,7 @@
           "trivial": false,
           "participants": [
             "Tyler Yahn",
-            "Damien MATHIEU"
+            "Damien Mathieu"
           ]
         },
         {
@@ -8177,7 +8177,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "austinparker",
+            "Austinparker",
             "Trask Stalnaker",
             "Juraci Paixão Kröhling",
             "Morgan McLean",
@@ -8652,7 +8652,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Name2",
             "Name3",
             "Name4",
@@ -8942,7 +8942,7 @@
             "Steve Rao",
             "Minghui Zhang",
             "Huxing Zhang",
-            "patrickpok"
+            "Patrickpok"
           ]
         },
         {
@@ -9003,7 +9003,7 @@
           "trivial": false,
           "participants": [
             "Robert Niedziela",
-            "jberg",
+            "Jberg",
             "John Watson",
             "Jay DeLuca",
             "Jason Plumb",
@@ -9360,7 +9360,7 @@
           "participants": [
             "Trent Mick",
             "Hector Hernandez",
-            "abhinama",
+            "Abhinama",
             "Marylia Gutierrez",
             "Maxime David",
             "Jamie Danielson"
@@ -9860,7 +9860,7 @@
             "Raphaël Thériault",
             "David Luna Bistuer",
             "Trent Mick",
-            "t2t2"
+            "T2T2"
           ]
         },
         {
@@ -10297,8 +10297,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "ploffay",
-            "jea",
+            "Ploffay",
+            "Jea",
             "Mikołaj Świątek"
           ]
         },
@@ -10309,13 +10309,13 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jea",
+            "Jea",
             "Anton",
             "Kai L",
             "David Ashpole",
             "Evan Torrie",
             "Mikolai",
-            "atoulme"
+            "Atoulme"
           ]
         },
         {
@@ -10326,9 +10326,9 @@
           "trivial": false,
           "participants": [
             "Mikołaj Świątek",
-            "ploffay",
+            "Ploffay",
             "Arthur Silva Sens",
-            "jea"
+            "Jea"
           ]
         },
         {
@@ -10352,7 +10352,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Mikołaj Świątek",
             "Benedikt Bongartz",
             "Pavol Loffay"
@@ -10365,7 +10365,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jea",
+            "Jea",
             "Mikołaj Świątek",
             "Pavol Loffay"
           ]
@@ -10379,7 +10379,7 @@
           "participants": [
             "Benedikt Bongartz",
             "Mikołaj Świątek",
-            "jea"
+            "Jea"
           ]
         },
         {
@@ -10394,7 +10394,7 @@
             "David Ashpole",
             "Benedikt Bongartz",
             "Pavol Loffay",
-            "jea"
+            "Jea"
           ]
         },
         {
@@ -10429,9 +10429,9 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "yurioliveirasa",
+            "Yurioliveirasa",
             "Timo Johner",
-            "jea",
+            "Jea",
             "David Ashpole",
             "Pavol Loffay"
           ]
@@ -10444,7 +10444,7 @@
           "trivial": false,
           "participants": [
             "Antoine Toulme",
-            "jea",
+            "Jea",
             "Mikołaj Świątek",
             "Mátyás Végh",
             "Vincent de Bois"
@@ -10513,7 +10513,7 @@
             "Benedikt Bongartz",
             "Jacob Aronoff",
             "Antoine Toulme",
-            "yurioliveirasa"
+            "Yurioliveirasa"
           ]
         },
         {
@@ -10523,7 +10523,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "ploffay",
+            "Ploffay",
             "Mikołaj Świątek"
           ]
         }
@@ -10630,7 +10630,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "aditya (cisco/splunk)",
+            "Aditya (Cisco/Splunk)",
             "Sergey Sergeev",
             "Erden"
           ]
@@ -10703,7 +10703,7 @@
             "Sergey Sergeev",
             "Wolfgang Therrien",
             "Victor Lu",
-            "nagkumar",
+            "Nagkumar",
             "Keith Decker",
             "Pradeep Nair",
             "Kam Chehresa",
@@ -10749,11 +10749,11 @@
           "trivial": false,
           "participants": [
             "Liudmila Molkova",
-            "shuwpan",
+            "Shuwpan",
             "James Mattei",
-            "nagkumar",
+            "Nagkumar",
             "Aaron",
-            "anksing"
+            "Anksing"
           ]
         },
         {
@@ -10876,7 +10876,7 @@
           "trivial": false,
           "participants": [
             "Sergey Sergeev",
-            "nagkumar",
+            "Nagkumar",
             "Ridhima Satam"
           ]
         },
@@ -10896,7 +10896,7 @@
             "Sujay Solomon",
             "Liudmila Molkova",
             "Alex Boten",
-            "anksing"
+            "Anksing"
           ]
         },
         {
@@ -10951,7 +10951,7 @@
           "trivial": false,
           "participants": [
             "Ridhima Satam",
-            "shuwpan",
+            "Shuwpan",
             "Keith Decker"
           ]
         },
@@ -10984,7 +10984,7 @@
             "Pradeep Nair",
             "Surya Teja",
             "Keith Decker",
-            "shuwpan",
+            "Shuwpan",
             "Erdenesaikhan Tserendavga"
           ]
         },
@@ -11014,7 +11014,7 @@
             "Josh Winerman",
             "Aaron Abbott",
             "Alex Hall",
-            "shuwpan"
+            "Shuwpan"
           ]
         },
         {
@@ -11442,7 +11442,7 @@
             "Zach Montoya",
             "Igor Kiselev",
             "Alexey Pukhov",
-            "efshaikh"
+            "Efshaikh"
           ]
         },
         {
@@ -11542,7 +11542,7 @@
           "participants": [
             "Mateusz Łach",
             "Piotr Kiełkowicz",
-            "efshaikh",
+            "Efshaikh",
             "Alexey Pukhov",
             "Chris Ventura",
             "Zach Montoya",
@@ -11600,7 +11600,7 @@
           "trivial": false,
           "participants": [
             "Mateusz Łach",
-            "efshaikh",
+            "Efshaikh",
             "Alexey Pukhov",
             "Zach Montoya",
             "Yevhenii Solomchenko",
@@ -11638,7 +11638,7 @@
             "Chris Ventura",
             "Piotr Kiełkowicz",
             "Rajkumar Rangaraj",
-            "efshaikh"
+            "Efshaikh"
           ]
         },
         {
@@ -11679,7 +11679,7 @@
             "Zach Montoya",
             "Mateusz Łach",
             "Rhynier",
-            "efshaikh",
+            "Efshaikh",
             "Rasmus Kuusmann",
             "Igor Kiselev"
           ]
@@ -11691,7 +11691,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "efshaikh",
+            "Efshaikh",
             "Igor Kiselev",
             "Piotr Kiełkowicz",
             "Mateusz Łach",
@@ -11711,7 +11711,7 @@
             "Rajkumar Rangaraj",
             "Chris Ventura",
             "Igor Kiselev",
-            "efshaikh"
+            "Efshaikh"
           ]
         },
         {
@@ -11776,7 +11776,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "efshaikh",
+            "Efshaikh",
             "Yevhenii Solomchenko",
             "Piotr Kiełkowicz",
             "Zach Montoya",
@@ -11942,7 +11942,7 @@
             "Zach Montoya",
             "Piotr Kiełkowicz",
             "Paulo Janotti",
-            "efshaikh"
+            "Efshaikh"
           ]
         },
         {
@@ -11954,7 +11954,7 @@
           "participants": [
             "Mateusz Łach",
             "Piotr Kiełkowicz",
-            "efshaikh",
+            "Efshaikh",
             "Zach Montoya",
             "Chris Ventura",
             "Rasmus Kuusmann"
@@ -12862,7 +12862,7 @@
             "Anand Somasundaram",
             "Richard Nikula",
             "Morgan McLean",
-            "atoulme"
+            "Atoulme"
           ]
         },
         {
@@ -12913,7 +12913,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Greg Shriver",
             "Ruediger Schulze",
             "Morgan",
@@ -13768,7 +13768,7 @@
             "Florian Lehner",
             "Nayef Ghattas",
             "Brennan Vincent",
-            "kushal",
+            "Kushal",
             "Christos Kalkanis",
             "Ivo Anjo",
             "Alexey A",
@@ -14001,7 +14001,7 @@
           "trivial": false,
           "participants": [
             "Trask Stalnaker",
-            "jea"
+            "Jea"
           ]
         },
         {
@@ -14143,7 +14143,7 @@
             "Arthur Silva Sens",
             "Braden Keynes",
             "Gregor Zeitlinger",
-            "krajo",
+            "Krajo",
             "Owen Williams"
           ]
         },
@@ -14167,7 +14167,7 @@
           "trivial": false,
           "participants": [
             "Arve Knudsen",
-            "krajo",
+            "Krajo",
             "Arthur Silva Sens",
             "David Ashpole"
           ]
@@ -14192,7 +14192,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "krajo",
+            "Krajo",
             "David Ashpole",
             "Arthur Silva Sens",
             "Owen Williams"
@@ -14357,7 +14357,7 @@
             "krajo Krajcsovits",
             "Arve Knudsen",
             "Owen Williams",
-            "jurajmichalek",
+            "Jurajmichalek",
             "Jonathan (jojo)",
             "David Ashpole"
           ]
@@ -14387,7 +14387,7 @@
             "Jayesh Hire",
             "Jeff",
             "Liudmila Molkova",
-            "lechen"
+            "Lechen"
           ]
         },
         {
@@ -14443,7 +14443,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "lechen",
+            "Lechen",
             "Tammy Baylis",
             "Paulo Vital",
             "Surya Teja"
@@ -14457,12 +14457,12 @@
           "trivial": false,
           "participants": [
             "Riccardo Magliocchetti",
-            "jayesh",
+            "Jayesh",
             "Erdenesaikhan Tserendavga",
             "Aaron Abbott",
             "Benjamin Kawecki",
             "Tammy Baylis",
-            "lechen",
+            "Lechen",
             "Josh Winerman",
             "Surya Teja",
             "Shuning Chen",
@@ -14484,7 +14484,7 @@
             "Liudmila Molkova",
             "Lukas",
             "Erdenesaikhan Tserendavga",
-            "lechen"
+            "Lechen"
           ]
         },
         {
@@ -14511,7 +14511,7 @@
           "participants": [
             "Riccardo Magliocchetti",
             "Erdenesaikhan Tserendavga",
-            "shuwpan",
+            "Shuwpan",
             "Aaron Abbott",
             "Tammy Baylis",
             "Emídio",
@@ -14643,7 +14643,7 @@
             "Keith Decker",
             "Aaron Abbott",
             "Emídio",
-            "shuwpan"
+            "Shuwpan"
           ]
         },
         {
@@ -14654,7 +14654,7 @@
           "trivial": false,
           "participants": [
             "Riccardo Magliocchetti",
-            "lechen",
+            "Lechen",
             "Dylan Russell",
             "Alex Boten",
             "Hector Hernandez"
@@ -14670,7 +14670,7 @@
             "Riccardo Magliocchetti",
             "Aaron Abbott",
             "Hector Hernandez",
-            "guptaradhika",
+            "Guptaradhika",
             "Liudmila Molkova",
             "Yazdankhah",
             "Mani"
@@ -14687,7 +14687,7 @@
             "Keith Decker",
             "Hector Hernandez",
             "Aaron Abbott",
-            "lechen",
+            "Lechen",
             "Liudmila Molkova"
           ]
         },
@@ -14701,8 +14701,8 @@
             "Riccardo Magliocchetti",
             "Hector Hernandez",
             "Aaron Abbott",
-            "lechen",
-            "guptaradhika",
+            "Lechen",
+            "Guptaradhika",
             "Tammy Baylis"
           ]
         },
@@ -14777,7 +14777,7 @@
             "Nagkumar Arkalgud",
             "Aaron Abbott",
             "Dylan Russell",
-            "lechen",
+            "Lechen",
             "Sergey Sergeev",
             "Hector Hernandez"
           ]
@@ -14794,7 +14794,7 @@
             "Emídio",
             "Nagkumar Arkalgud",
             "Aaron Abbott",
-            "lechen",
+            "Lechen",
             "Dylan Russell",
             "Sergey Sergeev",
             "Keith Decker"
@@ -14883,8 +14883,8 @@
             "Riccardo Magliocchetti",
             "John Scancella",
             "Shuwen Pan",
-            "lechen",
-            "tammy.baylis",
+            "Lechen",
+            "Tammy.Baylis",
             "Dylan Russell",
             "Emídio",
             "Pablo Collins"
@@ -14911,8 +14911,8 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "lechen",
-            "tammy.baylis",
+            "Lechen",
+            "Tammy.Baylis",
             "John Scancella",
             "Paulo Vital",
             "Ridhima Satam",
@@ -14966,7 +14966,7 @@
             "Jeremy",
             "Aaron Abbott",
             "Dylan Russell",
-            "jeremyvoss"
+            "Jeremyvoss"
           ]
         },
         {
@@ -15008,7 +15008,7 @@
           "trivial": false,
           "participants": [
             "Riccardo Magliocchetti",
-            "lechen",
+            "Lechen",
             "Dylan Russell",
             "Aaron Abbott",
             "Jeremy"
@@ -16113,7 +16113,7 @@
           "participants": [
             "Cijo Thomas",
             "Zhongyang",
-            "lalit",
+            "Lalit",
             "Lilith"
           ]
         },
@@ -16126,7 +16126,7 @@
           "participants": [
             "Cijo Thomas",
             "Nikhil Bhatia",
-            "lalit"
+            "Lalit"
           ]
         },
         {
@@ -16224,7 +16224,7 @@
             "Nikola Grcevski",
             "Bastian Krol",
             "Ted Young",
-            "atoulme"
+            "Atoulme"
           ]
         },
         {
@@ -16234,7 +16234,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Bastian Krol",
             "Jack Berg",
             "Michaela",
@@ -16263,7 +16263,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Michele Mancioppi",
             "Bastian Krol",
             "Jack Berg"
@@ -16278,7 +16278,7 @@
           "participants": [
             "Michele Mancioppi",
             "Jack Berg",
-            "atoulme"
+            "Atoulme"
           ]
         },
         {
@@ -16314,11 +16314,11 @@
           "trivial": false,
           "participants": [
             "Bastian Krol",
-            "atoulme",
+            "Atoulme",
             "Nikola Grcevski",
             "Jack Berg",
             "Michele Mancioppi",
-            "jea"
+            "Jea"
           ]
         },
         {
@@ -16328,7 +16328,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Bastian Krol",
             "Ted Young",
             "Nikola Grcevski"
@@ -16341,7 +16341,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Nikola Grcevski",
             "Ted Young",
             "Cal"
@@ -16380,7 +16380,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Ted Young",
             "Bastian Krol",
             "Jack Berg"
@@ -16406,7 +16406,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Jack Berg",
             "Raphael",
             "Mikarena Dazzio"
@@ -16419,7 +16419,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "atoulme",
+            "Atoulme",
             "Bastian Krol",
             "Rafael Roquetto",
             "Ted Young"
@@ -16552,7 +16552,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Carson Ip",
             "Yuanyuan Zhao"
@@ -16567,7 +16567,7 @@
           "participants": [
             "Chris Marchbanks",
             "Otmar Ertl",
-            "jmacdonald",
+            "Jmacdonald",
             "Yuanyuan Zhao",
             "Sean Porter"
           ]
@@ -16579,7 +16579,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Chris Marchbanks",
             "Yuanyuan Zhao",
             "Peter Findeisen"
@@ -16595,7 +16595,7 @@
             "Otmar Ertl",
             "Chris Marchbanks",
             "Peter Findeisen",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -16607,7 +16607,7 @@
           "participants": [
             "Kent Quirk",
             "Peter Findeisen",
-            "jmacdonald",
+            "Jmacdonald",
             "Otmar Ertl",
             "Yuanyuan Zhao",
             "Chris Marchbanks"
@@ -16620,7 +16620,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Yuanyuan Zhao"
           ]
@@ -16632,7 +16632,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Alf Kenny",
             "Otmar Ertl",
             "Yuanyuan Zhao"
@@ -16702,7 +16702,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Otmar Ertl",
             "Kent Quirk",
@@ -16716,7 +16716,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Alf Kenny",
             "Kent Quirk"
           ]
@@ -16728,7 +16728,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Otmar Ertl",
             "Carlos Alberto Cortez",
@@ -16743,7 +16743,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Otmar Ertl",
             "Admir"
@@ -16756,7 +16756,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Otmar Ertl",
             "Tristan",
@@ -16771,7 +16771,7 @@
           "trivial": false,
           "participants": [
             "Kent Quirk",
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Carlos Alberto Cortez",
             "Patrick Pok"
@@ -16797,7 +16797,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Otmar Ertl",
             "Yuanyuan Zhao"
@@ -16810,7 +16810,7 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Peter Findeisen",
             "Carlos Alberto Cortez"
           ]
@@ -17651,7 +17651,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "ariannavespri",
+            "Ariannavespri",
             "Josh Suereth",
             "Laurent Querel",
             "Liudmila Molkova"
@@ -17664,7 +17664,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "ariannavespri",
+            "Ariannavespri",
             "Jeremy Blythe",
             "Laurent Querel",
             "Josh Suereth",
@@ -17720,7 +17720,7 @@
           "trivial": false,
           "participants": [
             "Nicolas Takashi",
-            "ariannavespri",
+            "Ariannavespri",
             "Josh Suereth",
             "Liudmila Molkova",
             "Jeremy Blythe",
@@ -17767,7 +17767,7 @@
             "Jeremy Blythe",
             "Liudmila Molkova",
             "Josh Suereth",
-            "ariannavespri"
+            "Ariannavespri"
           ]
         },
         {
@@ -18368,7 +18368,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Carlos Alberto Cortez",
             "Pellared",
             "Josh Suereth",
@@ -18535,7 +18535,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "jmacdonald",
+            "Jmacdonald",
             "Jonatan Ivanov",
             "Daniel Dyla",
             "David Ashpole"
@@ -18691,7 +18691,7 @@
           "trivial": false,
           "participants": [
             "Marylia Gutierrez",
-            "jberg",
+            "Jberg",
             "Ted Young",
             "Alex Boten",
             "Liudmila Molkova",
@@ -18743,7 +18743,7 @@
             "Tigran Najaryan",
             "Mladjan Gadzic",
             "Josh Suereth",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -18758,7 +18758,7 @@
             "Armin (Dynatrace)",
             "Robert Pająk",
             "Carlos Alberto Cortez",
-            "tsloughter",
+            "Tsloughter",
             "Trask Stalnaker"
           ]
         },
@@ -18920,7 +18920,7 @@
             "Robert Pająk",
             "Daniel Dyla",
             "Tyler Yahn",
-            "ap"
+            "Ap"
           ]
         },
         {
@@ -19037,8 +19037,8 @@
           "has_meeting_notes": false,
           "trivial": false,
           "participants": [
-            "vvydier",
-            "nacho"
+            "Vvydier",
+            "Nacho"
           ]
         },
         {
@@ -19191,7 +19191,7 @@
           "trivial": false,
           "participants": [
             "Bryce Buchanan",
-            "nacho",
+            "Nacho",
             "Bee Klimt"
           ]
         },
@@ -19376,7 +19376,7 @@
             "Bryce Buchanan",
             "Arri Blais",
             "Martin Holman",
-            "nacho",
+            "Nacho",
             "Alex Cohen",
             "Ari Demarco",
             "Vinod Vydier",
@@ -19488,7 +19488,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "nacho",
+            "Nacho",
             "Martin Holman",
             "Arri Blais"
           ]
@@ -20042,7 +20042,7 @@
             "Armin (Dynatrace)",
             "Josh Suereth",
             "David Ashpole",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -20056,7 +20056,7 @@
             "Chuck",
             "Josh Suereth",
             "Jack Berg",
-            "jmacdonald",
+            "Jmacdonald",
             "David Ashpole",
             "Carlos Alberto Cortez",
             "Armin (Dynatrace)"
@@ -20076,7 +20076,7 @@
             "Liudmila Molkova",
             "David Ashpole",
             "Jack Berg",
-            "jmacdonald",
+            "Jmacdonald",
             "Armin (Dynatrace)"
           ]
         },
@@ -20090,7 +20090,7 @@
             "David Ashpole",
             "Tigran Najaryan",
             "Jack Berg",
-            "jmacdonald",
+            "Jmacdonald",
             "Liudmila Molkova",
             "Carlos Alberto Cortez",
             "Reiley"
@@ -20107,7 +20107,7 @@
             "Tigran Najaryan",
             "Armin (Dynatrace)",
             "David Ashpole",
-            "jmacdonald"
+            "Jmacdonald"
           ]
         },
         {
@@ -20180,7 +20180,7 @@
             "Jack Berg",
             "David Ashpole",
             "Reiley",
-            "jmacdonald",
+            "Jmacdonald",
             "Liudmila Molkova",
             "Tyler"
           ]
@@ -20338,7 +20338,7 @@
           "participants": [
             "Tigran Najaryan",
             "Armin (Dynatrace)",
-            "jmacdonald",
+            "Jmacdonald",
             "Liudmila Molkova",
             "David Ashpole (dashpole)",
             "Carlos Alberto Cortez"
@@ -20856,7 +20856,7 @@
             "Mattia Meleleo",
             "Stephen Lang",
             "Nimrod Avni",
-            "kushal"
+            "Kushal"
           ]
         },
         {
@@ -21215,7 +21215,7 @@
           "participants": [
             "Imma Valls",
             "Diana Todea",
-            "krol3"
+            "Krol3"
           ]
         },
         {
@@ -21330,7 +21330,7 @@
             "杉本浩平",
             "杉本将来",
             "Kazunori Otani",
-            "akihisa hino"
+            "Akihisa Hino"
           ]
         },
         {
@@ -21355,7 +21355,7 @@
             "杉本 将来",
             "杉本浩平",
             "Kazunori \"Kaz\" Otani",
-            "kaotani"
+            "Kaotani"
           ]
         },
         {

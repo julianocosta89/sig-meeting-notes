@@ -9,6 +9,7 @@ from unittest.mock import patch
 import pytest
 
 from build_site import (
+    _normalize_name_case,
     _strip_initials_prefix,
     build_manifest,
     build_speakers_index,
@@ -700,6 +701,43 @@ class TestStripInitialsPrefix:
         p = tmp_path / "summary.md"
         p.write_text("## Participants\nMG Marylia Gutierrez, Marylia Gutierrez\n", encoding="utf-8")
         assert parse_summary(p) == ["Marylia Gutierrez"]
+
+
+# ---------------------------------------------------------------------------
+# TestNormalizeNameCase
+# ---------------------------------------------------------------------------
+
+
+class TestNormalizeNameCase:
+    def test_all_lowercase_single_word(self) -> None:
+        assert _normalize_name_case("tristan") == "Tristan"
+
+    def test_all_lowercase_multi_word(self) -> None:
+        assert _normalize_name_case("neil yashinsky") == "Neil Yashinsky"
+
+    def test_all_lowercase_with_parenthetical(self) -> None:
+        assert _normalize_name_case("aditya (cisco/splunk)") == "Aditya (Cisco/Splunk)"
+
+    def test_all_caps_surname_longer_than_four_chars_capitalized(self) -> None:
+        assert _normalize_name_case("Damien MATHIEU") == "Damien Mathieu"
+        assert _normalize_name_case("Maxime DAVID") == "Maxime David"
+
+    def test_short_acronym_preserved(self) -> None:
+        assert _normalize_name_case("Patrice CNCF") == "Patrice CNCF"
+        assert _normalize_name_case("Christos (PTO)") == "Christos (PTO)"
+        assert _normalize_name_case("Ruediger Schulze (IBM)") == "Ruediger Schulze (IBM)"
+
+    def test_mixed_case_name_unchanged(self) -> None:
+        assert _normalize_name_case("MacDonald") == "MacDonald"
+        assert _normalize_name_case("CleverChuk") == "CleverChuk"
+
+    def test_no_alpha_chars_unchanged(self) -> None:
+        assert _normalize_name_case("42") == "42"
+
+    def test_case_normalization_enables_dedup(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nTristan, tristan\n", encoding="utf-8")
+        assert parse_summary(p) == ["Tristan"]
 
 
 # ---------------------------------------------------------------------------

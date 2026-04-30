@@ -53,11 +53,37 @@ def _strip_initials_prefix(name: str) -> str:
     return full if initials == prefix else name
 
 
+def _normalize_name_case(name: str) -> str:
+    alpha = [c for c in name if c.isalpha()]
+    if not alpha:
+        return name
+    # Entirely lowercase → title-case the whole string (handles "tristan", "neil yashinsky")
+    if all(c.islower() for c in alpha):
+        return name.title()
+    # Pure-alpha all-caps word with >4 chars → surname written in all-caps, capitalize it
+    # (Handles "Damien MATHIEU" but leaves acronyms like CNCF, IBM, (PTO) intact)
+    words = name.split()
+    result = []
+    for word in words:
+        word_alpha = [c for c in word if c.isalpha()]
+        if (
+            word_alpha
+            and word == "".join(word_alpha)
+            and all(c.isupper() for c in word_alpha)
+            and len(word_alpha) > 4
+        ):
+            result.append(word.capitalize())
+        else:
+            result.append(word)
+    return " ".join(result)
+
+
 def _clean_participant(raw: str) -> str:
     name = raw.strip().rstrip(".")
     if not name or _PARTICIPANT_NOISE_RE.match(name):
         return ""
-    return _strip_initials_prefix(name)
+    name = _strip_initials_prefix(name)
+    return _normalize_name_case(name)
 
 
 def parse_summary(path: Path) -> list[str]:

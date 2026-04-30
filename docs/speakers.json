@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T13:52:11Z",
+  "generated_at": "2026-04-30T14:28:47Z",
   "speakers": [
     {
       "name": "Aaron",
@@ -375,6 +375,19 @@
       ]
     },
     {
+      "name": "Abhinama",
+      "meeting_count": 1,
+      "sigs": [
+        "JavaScript-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "JavaScript-SIG",
+          "date": "2026-04-01"
+        }
+      ]
+    },
+    {
       "name": "Abinet Debele",
       "meeting_count": 4,
       "sigs": [
@@ -463,11 +476,15 @@
     },
     {
       "name": "Aditya (Cisco/Splunk)",
-      "meeting_count": 4,
+      "meeting_count": 5,
       "sigs": [
         "LLM-Semantic-Convention-WG"
       ],
       "meetings": [
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-03-30"
+        },
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-03-23"
@@ -714,6 +731,32 @@
         {
           "sig": "PHP-SIG",
           "date": "2025-07-02"
+        }
+      ]
+    },
+    {
+      "name": "Akasprzok",
+      "meeting_count": 1,
+      "sigs": [
+        "Developer-Experience-SIG-Meeting"
+      ],
+      "meetings": [
+        {
+          "sig": "Developer-Experience-SIG-Meeting",
+          "date": "2025-11-14"
+        }
+      ]
+    },
+    {
+      "name": "Akihisa Hino",
+      "meeting_count": 1,
+      "sigs": [
+        "ja-JA-Localization-SIG-Communications"
+      ],
+      "meetings": [
+        {
+          "sig": "ja-JA-Localization-SIG-Communications",
+          "date": "2026-03-18"
         }
       ]
     },
@@ -1107,6 +1150,23 @@
         {
           "sig": "Arrow-SIG",
           "date": "2025-06-17"
+        }
+      ]
+    },
+    {
+      "name": "Albertlockett",
+      "meeting_count": 2,
+      "sigs": [
+        "Arrow-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-09-18"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-06-26"
         }
       ]
     },
@@ -2692,11 +2752,19 @@
     },
     {
       "name": "Anksing",
-      "meeting_count": 1,
+      "meeting_count": 3,
       "sigs": [
         "LLM-Semantic-Convention-WG"
       ],
       "meetings": [
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-02-24"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-01-20"
+        },
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2025-08-26"
@@ -3073,6 +3141,19 @@
       ]
     },
     {
+      "name": "Ap",
+      "meeting_count": 1,
+      "sigs": [
+        "Specification-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Specification-SIG",
+          "date": "2025-07-22"
+        }
+      ]
+    },
+    {
       "name": "Ari",
       "meeting_count": 1,
       "sigs": [
@@ -3169,6 +3250,36 @@
         {
           "sig": "Semantic-Convention-Tooling",
           "date": "2025-12-17"
+        }
+      ]
+    },
+    {
+      "name": "Ariannavespri",
+      "meeting_count": 5,
+      "sigs": [
+        "Collector-SIG",
+        "Semantic-Convention-Tooling"
+      ],
+      "meetings": [
+        {
+          "sig": "Semantic-Convention-Tooling",
+          "date": "2026-03-11"
+        },
+        {
+          "sig": "Semantic-Convention-Tooling",
+          "date": "2026-03-04"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-01-28"
+        },
+        {
+          "sig": "Semantic-Convention-Tooling",
+          "date": "2026-01-28"
+        },
+        {
+          "sig": "Semantic-Convention-Tooling",
+          "date": "2026-01-07"
         }
       ]
     },
@@ -3822,6 +3933,95 @@
       ]
     },
     {
+      "name": "Atoulme",
+      "meeting_count": 19,
+      "sigs": [
+        "Collector-SIG",
+        "Java-SIG",
+        "Kubernetes-Operator-SIG",
+        "OpenTelemetry-on-Mainframes-Weekly-Meeting",
+        "SIG-Injector"
+      ],
+      "meetings": [
+        {
+          "sig": "Java-SIG",
+          "date": "2026-04-30"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-04-27"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-04-22"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-04-20"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-04-01"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-03-30"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-03-16"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-03-11"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-03-04"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-02-26"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-02-23"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-02-09"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-01-26"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-01-15"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-01-05"
+        },
+        {
+          "sig": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
+          "date": "2025-12-10"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2025-11-24"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2025-11-17"
+        },
+        {
+          "sig": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
+          "date": "2025-11-05"
+        }
+      ]
+    },
+    {
       "name": "Aunsh Chaudhari",
       "meeting_count": 2,
       "sigs": [
@@ -4067,6 +4267,19 @@
         {
           "sig": "Governance-Committee",
           "date": "2025-12-17"
+        }
+      ]
+    },
+    {
+      "name": "Austinparker",
+      "meeting_count": 1,
+      "sigs": [
+        "Governance-Committee"
+      ],
+      "meetings": [
+        {
+          "sig": "Governance-Committee",
+          "date": "2025-08-27"
         }
       ]
     },
@@ -7547,7 +7760,7 @@
     },
     {
       "name": "Cleverchuk",
-      "meeting_count": 2,
+      "meeting_count": 5,
       "sigs": [
         "Android-SIG"
       ],
@@ -7555,6 +7768,18 @@
         {
           "sig": "Android-SIG",
           "date": "2026-04-28"
+        },
+        {
+          "sig": "Android-SIG",
+          "date": "2025-12-02"
+        },
+        {
+          "sig": "Android-SIG",
+          "date": "2025-11-25"
+        },
+        {
+          "sig": "Android-SIG",
+          "date": "2025-08-26"
         },
         {
           "sig": "Android-SIG",
@@ -7734,21 +7959,8 @@
       ]
     },
     {
-      "name": "Damien MATHIEU",
-      "meeting_count": 1,
-      "sigs": [
-        "Go-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Go-SIG",
-          "date": "2025-09-04"
-        }
-      ]
-    },
-    {
       "name": "Damien Mathieu",
-      "meeting_count": 40,
+      "meeting_count": 41,
       "sigs": [
         "Collector-SIG",
         "Developer-Experience-SIG-Meeting",
@@ -7887,6 +8099,10 @@
         {
           "sig": "Developer-Experience-SIG-Meeting",
           "date": "2025-09-17"
+        },
+        {
+          "sig": "Go-SIG",
+          "date": "2025-09-04"
         },
         {
           "sig": "Developer-Experience-SIG-Meeting",
@@ -10148,6 +10364,52 @@
       ]
     },
     {
+      "name": "Dpaasman",
+      "meeting_count": 9,
+      "sigs": [
+        "Agent-Management-WG",
+        "Collector-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-01-28"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2026-01-21"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2026-01-07"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-10-29"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-09-17"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-09-03"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-08-06"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-07-23"
+        },
+        {
+          "sig": "Agent-Management-WG",
+          "date": "2025-07-09"
+        }
+      ]
+    },
+    {
       "name": "Drew",
       "meeting_count": 4,
       "sigs": [
@@ -10255,6 +10517,27 @@
         {
           "sig": "Arrow-SIG",
           "date": "2025-06-17"
+        }
+      ]
+    },
+    {
+      "name": "Drewrelmas",
+      "meeting_count": 3,
+      "sigs": [
+        "Arrow-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-03-19"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-03-05"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-01-22"
         }
       ]
     },
@@ -10397,6 +10680,55 @@
         {
           "sig": "Collector-SIG",
           "date": "2025-10-22"
+        }
+      ]
+    },
+    {
+      "name": "Efshaikh",
+      "meeting_count": 10,
+      "sigs": [
+        "NET-Auto-Instr-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2026-04-08"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2026-02-18"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2026-01-21"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2026-01-07"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-12-03"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-11-26"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-11-19"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-10-15"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-07-23"
+        },
+        {
+          "sig": "NET-Auto-Instr-SIG",
+          "date": "2025-07-16"
         }
       ]
     },
@@ -12254,11 +12586,19 @@
     },
     {
       "name": "Guptaradhika",
-      "meeting_count": 2,
+      "meeting_count": 4,
       "sigs": [
         "Python-SIG"
       ],
       "meetings": [
+        {
+          "sig": "Python-SIG",
+          "date": "2025-12-04"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-11-13"
+        },
         {
           "sig": "Python-SIG",
           "date": "2025-10-23"
@@ -15326,6 +15666,19 @@
       ]
     },
     {
+      "name": "Jayesh",
+      "meeting_count": 1,
+      "sigs": [
+        "Python-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Python-SIG",
+          "date": "2026-03-19"
+        }
+      ]
+    },
+    {
       "name": "Jayesh Hire",
       "meeting_count": 1,
       "sigs": [
@@ -15335,6 +15688,80 @@
         {
           "sig": "Python-SIG",
           "date": "2026-04-23"
+        }
+      ]
+    },
+    {
+      "name": "Jberg",
+      "meeting_count": 3,
+      "sigs": [
+        "Configuration-WG",
+        "Java-SIG",
+        "Specification-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Java-SIG",
+          "date": "2025-10-30"
+        },
+        {
+          "sig": "Specification-SIG",
+          "date": "2025-10-28"
+        },
+        {
+          "sig": "Configuration-WG",
+          "date": "2025-10-27"
+        }
+      ]
+    },
+    {
+      "name": "Jea",
+      "meeting_count": 10,
+      "sigs": [
+        "Kubernetes-Operator-SIG",
+        "Project-Tooling-SIG",
+        "SIG-Injector"
+      ],
+      "meetings": [
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-03-12"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-02-26"
+        },
+        {
+          "sig": "SIG-Injector",
+          "date": "2026-02-23"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-02-12"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-12-18"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-12-04"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-11-20"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-10-09"
+        },
+        {
+          "sig": "Project-Tooling-SIG",
+          "date": "2025-10-09"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-09-25"
         }
       ]
     },
@@ -15632,6 +16059,19 @@
       ]
     },
     {
+      "name": "Jeremyvoss",
+      "meeting_count": 1,
+      "sigs": [
+        "Python-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Python-SIG",
+          "date": "2025-07-17"
+        }
+      ]
+    },
+    {
       "name": "Jim Porell",
       "meeting_count": 20,
       "sigs": [
@@ -15781,6 +16221,203 @@
         {
           "sig": "K8s-Semantic-Convention-SIG",
           "date": "2025-09-03"
+        }
+      ]
+    },
+    {
+      "name": "Jmacdonald",
+      "meeting_count": 46,
+      "sigs": [
+        "Arrow-SIG",
+        "Collector-SIG",
+        "Sampling-SIG",
+        "Specification-SIG",
+        "Technical-Committee"
+      ],
+      "meetings": [
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-04-29"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-04-23"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-04-22"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-04-21"
+        },
+        {
+          "sig": "Specification-SIG",
+          "date": "2026-04-21"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-04-15"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-04-15"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-04-09"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-04-02"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-04-01"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-03-26"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-03-25"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-03-25"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-03-19"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-03-12"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-03-11"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-03-05"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2026-03-04"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-02-26"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-02-24"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-02-10"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-02-05"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2026-02-04"
+        },
+        {
+          "sig": "Specification-SIG",
+          "date": "2026-02-03"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-01-29"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-01-27"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-01-22"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2026-01-15"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-10-09"
+        },
+        {
+          "sig": "Specification-SIG",
+          "date": "2025-10-07"
+        },
+        {
+          "sig": "Technical-Committee",
+          "date": "2025-10-01"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-09-25"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2025-09-24"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-09-18"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-09-11"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-08-28"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-08-14"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-08-12"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-08-07"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-07-31"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-07-10"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-07-03"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2025-07-02"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-06-26"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2025-06-25"
+        },
+        {
+          "sig": "Sampling-SIG",
+          "date": "2025-06-19"
         }
       ]
     },
@@ -18119,6 +18756,19 @@
       ]
     },
     {
+      "name": "Jurajmichalek",
+      "meeting_count": 1,
+      "sigs": [
+        "Prometheus-WG"
+      ],
+      "meetings": [
+        {
+          "sig": "Prometheus-WG",
+          "date": "2025-06-18"
+        }
+      ]
+    },
+    {
       "name": "Kai",
       "meeting_count": 1,
       "sigs": [
@@ -18218,6 +18868,19 @@
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-03-09"
+        }
+      ]
+    },
+    {
+      "name": "Kaotani",
+      "meeting_count": 1,
+      "sigs": [
+        "ja-JA-Localization-SIG-Communications"
+      ],
+      "meetings": [
+        {
+          "sig": "ja-JA-Localization-SIG-Communications",
+          "date": "2026-01-21"
         }
       ]
     },
@@ -18738,6 +19401,32 @@
       ]
     },
     {
+      "name": "Krajo",
+      "meeting_count": 4,
+      "sigs": [
+        "Entities-SIG",
+        "Prometheus-WG"
+      ],
+      "meetings": [
+        {
+          "sig": "Prometheus-WG",
+          "date": "2026-02-13"
+        },
+        {
+          "sig": "Prometheus-WG",
+          "date": "2026-01-16"
+        },
+        {
+          "sig": "Entities-SIG",
+          "date": "2025-12-08"
+        },
+        {
+          "sig": "Prometheus-WG",
+          "date": "2025-12-05"
+        }
+      ]
+    },
+    {
       "name": "Krish Aryan",
       "meeting_count": 1,
       "sigs": [
@@ -18747,6 +19436,19 @@
         {
           "sig": "Community-Demo-App-SIG",
           "date": "2025-11-19"
+        }
+      ]
+    },
+    {
+      "name": "Krol3",
+      "meeting_count": 1,
+      "sigs": [
+        "es-Localization-SIG-Communications"
+      ],
+      "meetings": [
+        {
+          "sig": "es-Localization-SIG-Communications",
+          "date": "2025-12-02"
         }
       ]
     },
@@ -18778,15 +19480,30 @@
     },
     {
       "name": "Kushal",
-      "meeting_count": 2,
+      "meeting_count": 5,
       "sigs": [
+        "Collector-SIG",
         "Configuration-WG",
-        "Governance-Committee"
+        "Governance-Committee",
+        "Profiling-WG",
+        "eBPF-instrumentation"
       ],
       "meetings": [
         {
+          "sig": "Profiling-WG",
+          "date": "2026-02-05"
+        },
+        {
           "sig": "Configuration-WG",
           "date": "2026-02-02"
+        },
+        {
+          "sig": "Collector-SIG",
+          "date": "2025-11-05"
+        },
+        {
+          "sig": "eBPF-instrumentation",
+          "date": "2025-11-05"
         },
         {
           "sig": "Governance-Committee",
@@ -18894,7 +19611,7 @@
     },
     {
       "name": "Lalit",
-      "meeting_count": 15,
+      "meeting_count": 17,
       "sigs": [
         "Arrow-SIG",
         "CC-SIG",
@@ -18938,12 +19655,20 @@
           "date": "2025-08-25"
         },
         {
+          "sig": "Rust-SIG",
+          "date": "2025-08-12"
+        },
+        {
           "sig": "CC-SIG",
           "date": "2025-08-11"
         },
         {
           "sig": "CC-SIG",
           "date": "2025-08-06"
+        },
+        {
+          "sig": "Rust-SIG",
+          "date": "2025-08-05"
         },
         {
           "sig": "Rust-SIG",
@@ -18986,6 +19711,19 @@
         {
           "sig": "CC-SIG",
           "date": "2025-09-08"
+        }
+      ]
+    },
+    {
+      "name": "Lalitb",
+      "meeting_count": 1,
+      "sigs": [
+        "CC-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "CC-SIG",
+          "date": "2026-03-09"
         }
       ]
     },
@@ -19415,6 +20153,23 @@
       ]
     },
     {
+      "name": "Lciukaj@Splunk.Com",
+      "meeting_count": 2,
+      "sigs": [
+        "End-User-SIG-OTel-Blueprints"
+      ],
+      "meetings": [
+        {
+          "sig": "End-User-SIG-OTel-Blueprints",
+          "date": "2026-04-02"
+        },
+        {
+          "sig": "End-User-SIG-OTel-Blueprints",
+          "date": "2026-02-19"
+        }
+      ]
+    },
+    {
       "name": "Le Chen",
       "meeting_count": 2,
       "sigs": [
@@ -19463,14 +20218,62 @@
     },
     {
       "name": "Lechen",
-      "meeting_count": 1,
+      "meeting_count": 13,
       "sigs": [
         "Python-SIG"
       ],
       "meetings": [
         {
           "sig": "Python-SIG",
+          "date": "2026-04-23"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2026-03-26"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2026-03-19"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2026-03-12"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-12-11"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-11-20"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-11-13"
+        },
+        {
+          "sig": "Python-SIG",
           "date": "2025-10-16"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-10-09"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-10-02"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-08-21"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-08-07"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-06-26"
         }
       ]
     },
@@ -20832,6 +21635,59 @@
       ]
     },
     {
+      "name": "Malff",
+      "meeting_count": 11,
+      "sigs": [
+        "CC-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "CC-SIG",
+          "date": "2026-03-09"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2026-02-09"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2026-02-04"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2026-01-21"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2026-01-12"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-10-15"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-10-06"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-10-01"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-09-08"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-09-03"
+        },
+        {
+          "sig": "CC-SIG",
+          "date": "2025-08-25"
+        }
+      ]
+    },
+    {
       "name": "Mani",
       "meeting_count": 2,
       "sigs": [
@@ -21940,6 +22796,31 @@
       ]
     },
     {
+      "name": "Martinkuba",
+      "meeting_count": 4,
+      "sigs": [
+        "Browser-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Browser-SIG",
+          "date": "2026-02-19"
+        },
+        {
+          "sig": "Browser-SIG",
+          "date": "2026-02-12"
+        },
+        {
+          "sig": "Browser-SIG",
+          "date": "2026-01-29"
+        },
+        {
+          "sig": "Browser-SIG",
+          "date": "2026-01-22"
+        }
+      ]
+    },
+    {
       "name": "Maryam Saeidi",
       "meeting_count": 1,
       "sigs": [
@@ -22733,21 +23614,8 @@
       ]
     },
     {
-      "name": "Maxime DAVID",
-      "meeting_count": 1,
-      "sigs": [
-        "FAAS-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "FAAS-WG",
-          "date": "2025-07-02"
-        }
-      ]
-    },
-    {
       "name": "Maxime David",
-      "meeting_count": 4,
+      "meeting_count": 5,
       "sigs": [
         "FAAS-WG",
         "JavaScript-SIG"
@@ -22764,6 +23632,10 @@
         {
           "sig": "FAAS-WG",
           "date": "2025-09-25"
+        },
+        {
+          "sig": "FAAS-WG",
+          "date": "2025-07-02"
         },
         {
           "sig": "FAAS-WG",
@@ -24020,7 +24892,7 @@
     },
     {
       "name": "Nacho",
-      "meeting_count": 22,
+      "meeting_count": 26,
       "sigs": [
         "Swift-SIG"
       ],
@@ -24028,6 +24900,10 @@
         {
           "sig": "Swift-SIG",
           "date": "2026-04-23"
+        },
+        {
+          "sig": "Swift-SIG",
+          "date": "2026-04-16"
         },
         {
           "sig": "Swift-SIG",
@@ -24052,6 +24928,10 @@
         {
           "sig": "Swift-SIG",
           "date": "2026-01-08"
+        },
+        {
+          "sig": "Swift-SIG",
+          "date": "2025-12-11"
         },
         {
           "sig": "Swift-SIG",
@@ -24087,6 +24967,10 @@
         },
         {
           "sig": "Swift-SIG",
+          "date": "2025-09-04"
+        },
+        {
+          "sig": "Swift-SIG",
           "date": "2025-08-21"
         },
         {
@@ -24107,6 +24991,10 @@
         },
         {
           "sig": "Swift-SIG",
+          "date": "2025-07-10"
+        },
+        {
+          "sig": "Swift-SIG",
           "date": "2025-07-03"
         },
         {
@@ -24117,11 +25005,19 @@
     },
     {
       "name": "Nagkumar",
-      "meeting_count": 2,
+      "meeting_count": 5,
       "sigs": [
         "LLM-Semantic-Convention-WG"
       ],
       "meetings": [
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-03-09"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-02-24"
+        },
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-02-03"
@@ -24129,6 +25025,10 @@
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-02-02"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-01-26"
         }
       ]
     },
@@ -24390,7 +25290,7 @@
     },
     {
       "name": "Neil Yashinsky",
-      "meeting_count": 26,
+      "meeting_count": 27,
       "sigs": [
         "CICD-SemConv-SIG",
         "End-User-SIG-OTel-Blueprints",
@@ -24440,6 +25340,10 @@
         {
           "sig": "CICD-SemConv-SIG",
           "date": "2026-02-24"
+        },
+        {
+          "sig": "End-User-SIG-OTel-Blueprints",
+          "date": "2026-02-19"
         },
         {
           "sig": "System-Sem-Conv-Stability-WG",
@@ -25895,6 +26799,19 @@
       ]
     },
     {
+      "name": "Patrickpok",
+      "meeting_count": 1,
+      "sigs": [
+        "Java-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Java-SIG",
+          "date": "2025-11-27"
+        }
+      ]
+    },
+    {
       "name": "Paul Le Grand des Cloizeaux",
       "meeting_count": 4,
       "sigs": [
@@ -26833,6 +27750,27 @@
         {
           "sig": "NET-Auto-Instr-SIG",
           "date": "2025-06-25"
+        }
+      ]
+    },
+    {
+      "name": "Ploffay",
+      "meeting_count": 3,
+      "sigs": [
+        "Kubernetes-Operator-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-03-12"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2026-02-12"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-06-19"
         }
       ]
     },
@@ -29539,11 +30477,16 @@
     },
     {
       "name": "Scheler",
-      "meeting_count": 1,
+      "meeting_count": 2,
       "sigs": [
-        "Browser-SIG"
+        "Browser-SIG",
+        "Client-Instrumentation-SIG"
       ],
       "meetings": [
+        {
+          "sig": "Client-Instrumentation-SIG",
+          "date": "2025-08-05"
+        },
         {
           "sig": "Browser-SIG",
           "date": "2025-07-24"
@@ -30524,11 +31467,20 @@
     },
     {
       "name": "Shuwpan",
-      "meeting_count": 2,
+      "meeting_count": 8,
       "sigs": [
-        "LLM-Semantic-Convention-WG"
+        "LLM-Semantic-Convention-WG",
+        "Python-SIG"
       ],
       "meetings": [
+        {
+          "sig": "Python-SIG",
+          "date": "2026-02-26"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-02-24"
+        },
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-02-03"
@@ -30536,6 +31488,22 @@
         {
           "sig": "LLM-Semantic-Convention-WG",
           "date": "2026-01-12"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2026-01-05"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-12-18"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2025-12-15"
+        },
+        {
+          "sig": "LLM-Semantic-Convention-WG",
+          "date": "2025-12-02"
         }
       ]
     },
@@ -31363,6 +32331,19 @@
       ]
     },
     {
+      "name": "T2T2",
+      "meeting_count": 1,
+      "sigs": [
+        "JavaScript-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "JavaScript-SIG",
+          "date": "2025-07-09"
+        }
+      ]
+    },
+    {
       "name": "Tammy Baylis",
       "meeting_count": 17,
       "sigs": [
@@ -31436,6 +32417,23 @@
         {
           "sig": "Python-SIG",
           "date": "2025-06-19"
+        }
+      ]
+    },
+    {
+      "name": "Tammy.Baylis",
+      "meeting_count": 2,
+      "sigs": [
+        "Python-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Python-SIG",
+          "date": "2025-08-21"
+        },
+        {
+          "sig": "Python-SIG",
+          "date": "2025-08-07"
         }
       ]
     },
@@ -33707,8 +34705,9 @@
     },
     {
       "name": "Tristan",
-      "meeting_count": 19,
+      "meeting_count": 23,
       "sigs": [
+        "Arrow-SIG",
         "Configuration-WG",
         "Developer-Experience-SIG-Meeting",
         "Sampling-SIG",
@@ -33733,6 +34732,10 @@
         },
         {
           "sig": "Developer-Experience-SIG-Meeting",
+          "date": "2026-01-28"
+        },
+        {
+          "sig": "Developer-Experience-SIG-Meeting",
           "date": "2026-01-21"
         },
         {
@@ -33750,6 +34753,10 @@
         {
           "sig": "Developer-Experience-SIG-Meeting",
           "date": "2025-11-26"
+        },
+        {
+          "sig": "Developer-Experience-SIG-Meeting",
+          "date": "2025-11-14"
         },
         {
           "sig": "Developer-Experience-SIG-Meeting",
@@ -33778,6 +34785,14 @@
         {
           "sig": "Specification-SIG",
           "date": "2025-07-15"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-07-10"
+        },
+        {
+          "sig": "Developer-Experience-SIG-Meeting",
+          "date": "2025-07-09"
         },
         {
           "sig": "Configuration-WG",
@@ -33855,6 +34870,19 @@
         {
           "sig": "Developer-Experience-SIG-Meeting",
           "date": "2025-06-18"
+        }
+      ]
+    },
+    {
+      "name": "Tsloughter",
+      "meeting_count": 1,
+      "sigs": [
+        "Specification-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Specification-SIG",
+          "date": "2025-09-30"
         }
       ]
     },
@@ -34663,6 +35691,23 @@
       ]
     },
     {
+      "name": "Utpilla",
+      "meeting_count": 2,
+      "sigs": [
+        "Arrow-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Arrow-SIG",
+          "date": "2026-04-21"
+        },
+        {
+          "sig": "Arrow-SIG",
+          "date": "2025-10-21"
+        }
+      ]
+    },
+    {
       "name": "Uzochukwu Winnie",
       "meeting_count": 1,
       "sigs": [
@@ -35103,6 +36148,19 @@
         {
           "sig": "Communications-SIG",
           "date": "2025-09-03"
+        }
+      ]
+    },
+    {
+      "name": "Vvydier",
+      "meeting_count": 1,
+      "sigs": [
+        "Swift-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Swift-SIG",
+          "date": "2026-04-16"
         }
       ]
     },
@@ -35895,6 +36953,23 @@
       ]
     },
     {
+      "name": "Yurioliveirasa",
+      "meeting_count": 2,
+      "sigs": [
+        "Kubernetes-Operator-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-10-09"
+        },
+        {
+          "sig": "Kubernetes-Operator-SIG",
+          "date": "2025-07-17"
+        }
+      ]
+    },
+    {
       "name": "Yusuf",
       "meeting_count": 1,
       "sigs": [
@@ -36200,740 +37275,6 @@
       ]
     },
     {
-      "name": "abhinama",
-      "meeting_count": 1,
-      "sigs": [
-        "JavaScript-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "JavaScript-SIG",
-          "date": "2026-04-01"
-        }
-      ]
-    },
-    {
-      "name": "aditya (cisco/splunk)",
-      "meeting_count": 1,
-      "sigs": [
-        "LLM-Semantic-Convention-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-03-30"
-        }
-      ]
-    },
-    {
-      "name": "akasprzok",
-      "meeting_count": 1,
-      "sigs": [
-        "Developer-Experience-SIG-Meeting"
-      ],
-      "meetings": [
-        {
-          "sig": "Developer-Experience-SIG-Meeting",
-          "date": "2025-11-14"
-        }
-      ]
-    },
-    {
-      "name": "akihisa hino",
-      "meeting_count": 1,
-      "sigs": [
-        "ja-JA-Localization-SIG-Communications"
-      ],
-      "meetings": [
-        {
-          "sig": "ja-JA-Localization-SIG-Communications",
-          "date": "2026-03-18"
-        }
-      ]
-    },
-    {
-      "name": "albertlockett",
-      "meeting_count": 2,
-      "sigs": [
-        "Arrow-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-09-18"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-06-26"
-        }
-      ]
-    },
-    {
-      "name": "anksing",
-      "meeting_count": 2,
-      "sigs": [
-        "LLM-Semantic-Convention-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-02-24"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-01-20"
-        }
-      ]
-    },
-    {
-      "name": "ap",
-      "meeting_count": 1,
-      "sigs": [
-        "Specification-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Specification-SIG",
-          "date": "2025-07-22"
-        }
-      ]
-    },
-    {
-      "name": "ariannavespri",
-      "meeting_count": 5,
-      "sigs": [
-        "Collector-SIG",
-        "Semantic-Convention-Tooling"
-      ],
-      "meetings": [
-        {
-          "sig": "Semantic-Convention-Tooling",
-          "date": "2026-03-11"
-        },
-        {
-          "sig": "Semantic-Convention-Tooling",
-          "date": "2026-03-04"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-01-28"
-        },
-        {
-          "sig": "Semantic-Convention-Tooling",
-          "date": "2026-01-28"
-        },
-        {
-          "sig": "Semantic-Convention-Tooling",
-          "date": "2026-01-07"
-        }
-      ]
-    },
-    {
-      "name": "atoulme",
-      "meeting_count": 19,
-      "sigs": [
-        "Collector-SIG",
-        "Java-SIG",
-        "Kubernetes-Operator-SIG",
-        "OpenTelemetry-on-Mainframes-Weekly-Meeting",
-        "SIG-Injector"
-      ],
-      "meetings": [
-        {
-          "sig": "Java-SIG",
-          "date": "2026-04-30"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-04-27"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-04-22"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-04-20"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-04-01"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-03-30"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-03-16"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-03-11"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-03-04"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-02-26"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-02-23"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-02-09"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-01-26"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-01-15"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-01-05"
-        },
-        {
-          "sig": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
-          "date": "2025-12-10"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2025-11-24"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2025-11-17"
-        },
-        {
-          "sig": "OpenTelemetry-on-Mainframes-Weekly-Meeting",
-          "date": "2025-11-05"
-        }
-      ]
-    },
-    {
-      "name": "austinparker",
-      "meeting_count": 1,
-      "sigs": [
-        "Governance-Committee"
-      ],
-      "meetings": [
-        {
-          "sig": "Governance-Committee",
-          "date": "2025-08-27"
-        }
-      ]
-    },
-    {
-      "name": "cleverchuk",
-      "meeting_count": 3,
-      "sigs": [
-        "Android-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Android-SIG",
-          "date": "2025-12-02"
-        },
-        {
-          "sig": "Android-SIG",
-          "date": "2025-11-25"
-        },
-        {
-          "sig": "Android-SIG",
-          "date": "2025-08-26"
-        }
-      ]
-    },
-    {
-      "name": "dpaasman",
-      "meeting_count": 9,
-      "sigs": [
-        "Agent-Management-WG",
-        "Collector-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-01-28"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2026-01-21"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2026-01-07"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-10-29"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-09-17"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-09-03"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-08-06"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-07-23"
-        },
-        {
-          "sig": "Agent-Management-WG",
-          "date": "2025-07-09"
-        }
-      ]
-    },
-    {
-      "name": "drewrelmas",
-      "meeting_count": 3,
-      "sigs": [
-        "Arrow-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-03-19"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-03-05"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-01-22"
-        }
-      ]
-    },
-    {
-      "name": "efshaikh",
-      "meeting_count": 10,
-      "sigs": [
-        "NET-Auto-Instr-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2026-04-08"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2026-02-18"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2026-01-21"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2026-01-07"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-12-03"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-11-26"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-11-19"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-10-15"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-07-23"
-        },
-        {
-          "sig": "NET-Auto-Instr-SIG",
-          "date": "2025-07-16"
-        }
-      ]
-    },
-    {
-      "name": "guptaradhika",
-      "meeting_count": 2,
-      "sigs": [
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2025-12-04"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-11-13"
-        }
-      ]
-    },
-    {
-      "name": "jayesh",
-      "meeting_count": 1,
-      "sigs": [
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2026-03-19"
-        }
-      ]
-    },
-    {
-      "name": "jberg",
-      "meeting_count": 3,
-      "sigs": [
-        "Configuration-WG",
-        "Java-SIG",
-        "Specification-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Java-SIG",
-          "date": "2025-10-30"
-        },
-        {
-          "sig": "Specification-SIG",
-          "date": "2025-10-28"
-        },
-        {
-          "sig": "Configuration-WG",
-          "date": "2025-10-27"
-        }
-      ]
-    },
-    {
-      "name": "jea",
-      "meeting_count": 10,
-      "sigs": [
-        "Kubernetes-Operator-SIG",
-        "Project-Tooling-SIG",
-        "SIG-Injector"
-      ],
-      "meetings": [
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-03-12"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-02-26"
-        },
-        {
-          "sig": "SIG-Injector",
-          "date": "2026-02-23"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-02-12"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-12-18"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-12-04"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-11-20"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-10-09"
-        },
-        {
-          "sig": "Project-Tooling-SIG",
-          "date": "2025-10-09"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-09-25"
-        }
-      ]
-    },
-    {
-      "name": "jeremyvoss",
-      "meeting_count": 1,
-      "sigs": [
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2025-07-17"
-        }
-      ]
-    },
-    {
-      "name": "jmacdonald",
-      "meeting_count": 46,
-      "sigs": [
-        "Arrow-SIG",
-        "Collector-SIG",
-        "Sampling-SIG",
-        "Specification-SIG",
-        "Technical-Committee"
-      ],
-      "meetings": [
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-04-29"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-04-23"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-04-22"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-04-21"
-        },
-        {
-          "sig": "Specification-SIG",
-          "date": "2026-04-21"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-04-15"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-04-15"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-04-09"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-04-02"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-04-01"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-03-26"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-03-25"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-03-25"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-03-19"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-03-12"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-03-11"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-03-05"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2026-03-04"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-02-26"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-02-24"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-02-10"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-02-05"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2026-02-04"
-        },
-        {
-          "sig": "Specification-SIG",
-          "date": "2026-02-03"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-01-29"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-01-27"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-01-22"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2026-01-15"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-10-09"
-        },
-        {
-          "sig": "Specification-SIG",
-          "date": "2025-10-07"
-        },
-        {
-          "sig": "Technical-Committee",
-          "date": "2025-10-01"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-09-25"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2025-09-24"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-09-18"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-09-11"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-08-28"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-08-14"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-08-12"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-08-07"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-07-31"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-07-10"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-07-03"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2025-07-02"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-06-26"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2025-06-25"
-        },
-        {
-          "sig": "Sampling-SIG",
-          "date": "2025-06-19"
-        }
-      ]
-    },
-    {
-      "name": "jurajmichalek",
-      "meeting_count": 1,
-      "sigs": [
-        "Prometheus-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "Prometheus-WG",
-          "date": "2025-06-18"
-        }
-      ]
-    },
-    {
-      "name": "kaotani",
-      "meeting_count": 1,
-      "sigs": [
-        "ja-JA-Localization-SIG-Communications"
-      ],
-      "meetings": [
-        {
-          "sig": "ja-JA-Localization-SIG-Communications",
-          "date": "2026-01-21"
-        }
-      ]
-    },
-    {
-      "name": "krajo",
-      "meeting_count": 4,
-      "sigs": [
-        "Entities-SIG",
-        "Prometheus-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "Prometheus-WG",
-          "date": "2026-02-13"
-        },
-        {
-          "sig": "Prometheus-WG",
-          "date": "2026-01-16"
-        },
-        {
-          "sig": "Entities-SIG",
-          "date": "2025-12-08"
-        },
-        {
-          "sig": "Prometheus-WG",
-          "date": "2025-12-05"
-        }
-      ]
-    },
-    {
       "name": "krajo Krajcsovits",
       "meeting_count": 15,
       "sigs": [
@@ -37000,480 +37341,6 @@
         {
           "sig": "Prometheus-WG",
           "date": "2025-06-18"
-        }
-      ]
-    },
-    {
-      "name": "krol3",
-      "meeting_count": 1,
-      "sigs": [
-        "es-Localization-SIG-Communications"
-      ],
-      "meetings": [
-        {
-          "sig": "es-Localization-SIG-Communications",
-          "date": "2025-12-02"
-        }
-      ]
-    },
-    {
-      "name": "kushal",
-      "meeting_count": 3,
-      "sigs": [
-        "Collector-SIG",
-        "Profiling-WG",
-        "eBPF-instrumentation"
-      ],
-      "meetings": [
-        {
-          "sig": "Profiling-WG",
-          "date": "2026-02-05"
-        },
-        {
-          "sig": "Collector-SIG",
-          "date": "2025-11-05"
-        },
-        {
-          "sig": "eBPF-instrumentation",
-          "date": "2025-11-05"
-        }
-      ]
-    },
-    {
-      "name": "lalit",
-      "meeting_count": 2,
-      "sigs": [
-        "Rust-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Rust-SIG",
-          "date": "2025-08-12"
-        },
-        {
-          "sig": "Rust-SIG",
-          "date": "2025-08-05"
-        }
-      ]
-    },
-    {
-      "name": "lalitb",
-      "meeting_count": 1,
-      "sigs": [
-        "CC-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "CC-SIG",
-          "date": "2026-03-09"
-        }
-      ]
-    },
-    {
-      "name": "lciukaj@splunk.com",
-      "meeting_count": 2,
-      "sigs": [
-        "End-User-SIG-OTel-Blueprints"
-      ],
-      "meetings": [
-        {
-          "sig": "End-User-SIG-OTel-Blueprints",
-          "date": "2026-04-02"
-        },
-        {
-          "sig": "End-User-SIG-OTel-Blueprints",
-          "date": "2026-02-19"
-        }
-      ]
-    },
-    {
-      "name": "lechen",
-      "meeting_count": 12,
-      "sigs": [
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2026-04-23"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2026-03-26"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2026-03-19"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2026-03-12"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-12-11"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-11-20"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-11-13"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-10-09"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-10-02"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-08-21"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-08-07"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-06-26"
-        }
-      ]
-    },
-    {
-      "name": "malff",
-      "meeting_count": 11,
-      "sigs": [
-        "CC-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "CC-SIG",
-          "date": "2026-03-09"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2026-02-09"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2026-02-04"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2026-01-21"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2026-01-12"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-10-15"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-10-06"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-10-01"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-09-08"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-09-03"
-        },
-        {
-          "sig": "CC-SIG",
-          "date": "2025-08-25"
-        }
-      ]
-    },
-    {
-      "name": "martinkuba",
-      "meeting_count": 4,
-      "sigs": [
-        "Browser-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Browser-SIG",
-          "date": "2026-02-19"
-        },
-        {
-          "sig": "Browser-SIG",
-          "date": "2026-02-12"
-        },
-        {
-          "sig": "Browser-SIG",
-          "date": "2026-01-29"
-        },
-        {
-          "sig": "Browser-SIG",
-          "date": "2026-01-22"
-        }
-      ]
-    },
-    {
-      "name": "nacho",
-      "meeting_count": 4,
-      "sigs": [
-        "Swift-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Swift-SIG",
-          "date": "2026-04-16"
-        },
-        {
-          "sig": "Swift-SIG",
-          "date": "2025-12-11"
-        },
-        {
-          "sig": "Swift-SIG",
-          "date": "2025-09-04"
-        },
-        {
-          "sig": "Swift-SIG",
-          "date": "2025-07-10"
-        }
-      ]
-    },
-    {
-      "name": "nagkumar",
-      "meeting_count": 3,
-      "sigs": [
-        "LLM-Semantic-Convention-WG"
-      ],
-      "meetings": [
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-03-09"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-02-24"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-01-26"
-        }
-      ]
-    },
-    {
-      "name": "neil yashinsky",
-      "meeting_count": 1,
-      "sigs": [
-        "End-User-SIG-OTel-Blueprints"
-      ],
-      "meetings": [
-        {
-          "sig": "End-User-SIG-OTel-Blueprints",
-          "date": "2026-02-19"
-        }
-      ]
-    },
-    {
-      "name": "patrickpok",
-      "meeting_count": 1,
-      "sigs": [
-        "Java-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Java-SIG",
-          "date": "2025-11-27"
-        }
-      ]
-    },
-    {
-      "name": "ploffay",
-      "meeting_count": 3,
-      "sigs": [
-        "Kubernetes-Operator-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-03-12"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2026-02-12"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-06-19"
-        }
-      ]
-    },
-    {
-      "name": "scheler",
-      "meeting_count": 1,
-      "sigs": [
-        "Client-Instrumentation-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Client-Instrumentation-SIG",
-          "date": "2025-08-05"
-        }
-      ]
-    },
-    {
-      "name": "shuwpan",
-      "meeting_count": 6,
-      "sigs": [
-        "LLM-Semantic-Convention-WG",
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2026-02-26"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-02-24"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2026-01-05"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-12-18"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2025-12-15"
-        },
-        {
-          "sig": "LLM-Semantic-Convention-WG",
-          "date": "2025-12-02"
-        }
-      ]
-    },
-    {
-      "name": "t2t2",
-      "meeting_count": 1,
-      "sigs": [
-        "JavaScript-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "JavaScript-SIG",
-          "date": "2025-07-09"
-        }
-      ]
-    },
-    {
-      "name": "tammy.baylis",
-      "meeting_count": 2,
-      "sigs": [
-        "Python-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Python-SIG",
-          "date": "2025-08-21"
-        },
-        {
-          "sig": "Python-SIG",
-          "date": "2025-08-07"
-        }
-      ]
-    },
-    {
-      "name": "tristan",
-      "meeting_count": 4,
-      "sigs": [
-        "Arrow-SIG",
-        "Developer-Experience-SIG-Meeting"
-      ],
-      "meetings": [
-        {
-          "sig": "Developer-Experience-SIG-Meeting",
-          "date": "2026-01-28"
-        },
-        {
-          "sig": "Developer-Experience-SIG-Meeting",
-          "date": "2025-11-14"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-07-10"
-        },
-        {
-          "sig": "Developer-Experience-SIG-Meeting",
-          "date": "2025-07-09"
-        }
-      ]
-    },
-    {
-      "name": "tsloughter",
-      "meeting_count": 1,
-      "sigs": [
-        "Specification-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Specification-SIG",
-          "date": "2025-09-30"
-        }
-      ]
-    },
-    {
-      "name": "utpilla",
-      "meeting_count": 2,
-      "sigs": [
-        "Arrow-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Arrow-SIG",
-          "date": "2026-04-21"
-        },
-        {
-          "sig": "Arrow-SIG",
-          "date": "2025-10-21"
-        }
-      ]
-    },
-    {
-      "name": "vvydier",
-      "meeting_count": 1,
-      "sigs": [
-        "Swift-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Swift-SIG",
-          "date": "2026-04-16"
-        }
-      ]
-    },
-    {
-      "name": "yurioliveirasa",
-      "meeting_count": 2,
-      "sigs": [
-        "Kubernetes-Operator-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-10-09"
-        },
-        {
-          "sig": "Kubernetes-Operator-SIG",
-          "date": "2025-07-17"
         }
       ]
     },
