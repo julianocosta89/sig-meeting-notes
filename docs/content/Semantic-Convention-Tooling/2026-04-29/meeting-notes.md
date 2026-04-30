@@ -1,0 +1,53 @@
+## Meeting Notes
+
+### Attendees
+- Arianna Vespri
+- Josh Suereth
+- Jeremy Blythe
+- Laurent Querel
+- [Alex Van Boxel](mailto:alex.vanboxel@collibra.com)
+
+### Agenda
+- [Alex Van Boxel](mailto:alex.vanboxel@collibra.com) value typing for v2: [https://github.com/open-telemetry/weaver/issues/892](https://github.com/open-telemetry/weaver/issues/892)
+  - Going over the proposed YAML
+  - Quick show where we use events with typed bodies (using v1)
+- [Liudmila] Forward compatibility for resolved schema / publication manifest [https://github.com/open-telemetry/weaver/pull/1365](https://github.com/open-telemetry/weaver/pull/1365)
+- [Liudmila] Definition needs the same - follow-up
+  - Support **definition/2** (ease of use) (MUST) and definition/2.x (? MAY)
+  - weaver knows minor: fails on unknown
+  - weaver doesn't know minor: WARN, tolerate
+  - With definition/2: worse diagnostics, can't ever fail on unknown props. Also not consistent
+  - Action items:
+    - Have it documented somewhere (weaver --version) the list of major versions we support
+- Updates from [federated OTEP](https://github.com/open-telemetry/opentelemetry-specification/pull/4815#discussion_r3023425913)
+  - Terminology
+  - **schema**Url points to manifest
+  - manifest points to resolved **schema**
+- Schema url format: `https://opentelemetry.io/schemas/semconv-dev/1.40.0-dev`
+  - semconv-**dev** - essentially separate registry / artifact, necessary for ordering
+    - Q: can you depend on semconv and semconv-dev at the same time? Should we not allow it?
+      - Right now - we'll fail on conflict - same attribute in different registry
+    - Should -dev depend on stable one? Or duplicated in dev
+  - 1.40.0**-dev** is for semver, convention, understandable
+- [suereth] Multiple Dependencies
+  - Part 1 - https://github.com/open-telemetry/weaver/pull/1368
+  - Part 2 - [https://github.com/open-telemetry/weaver/pull/1377](https://github.com/open-telemetry/weaver/pull/1377)
+  - Schema A
+    - Attribute A
+    - Span A
+    - Metric A
+  - Schema B
+    - depends on schema A version 1.0.0
+    - Imports Span A
+    - defines Span B, uses attribute A
+  - Our schema
+    - Depends on A version 1.1.0
+    - Depends on B
+    - import Metric A
+    - import Span B and Span A
+  - Algorithm
+    - When I import Span A -> Schema A and Schema B both have Span A. Conflict resolution -> 1.1.0 as the resolved version.
+    - When I import Metric A -> no conflicts, we just get 1.1.0.
+    - If I use span B -> use attribute A @ 1.0.0
+- [suereth] Security Vulnerabilities
+- FYI - version bumps [https://github.com/open-telemetry/opentelemetry-weaver-packages/pull/31](https://github.com/open-telemetry/opentelemetry-weaver-packages/pull/31)
