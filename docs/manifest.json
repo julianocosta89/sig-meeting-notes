@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T14:28:47Z",
+  "generated_at": "2026-04-30T15:09:24Z",
   "min_date": "2025-06-16",
   "max_date": "2026-04-30",
   "sigs": [
@@ -5417,7 +5417,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "Lciukaj@Splunk.Com",
+            "lciukaj@splunk.com",
             "Tiffany Hrabusa",
             "Kevin Wagner",
             "Dan Gomez Blanco"
@@ -5458,7 +5458,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "Lciukaj@Splunk.Com",
+            "lciukaj@splunk.com",
             "Neil Yashinsky",
             "Joy",
             "Dan",
@@ -9860,7 +9860,7 @@
             "Raphaël Thériault",
             "David Luna Bistuer",
             "Trent Mick",
-            "T2T2"
+            "t2t2"
           ]
         },
         {
@@ -21215,7 +21215,7 @@
           "participants": [
             "Imma Valls",
             "Diana Todea",
-            "Krol3"
+            "krol3"
           ]
         },
         {

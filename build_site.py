@@ -57,8 +57,10 @@ def _normalize_name_case(name: str) -> str:
     alpha = [c for c in name if c.isalpha()]
     if not alpha:
         return name
-    # Entirely lowercase → title-case the whole string (handles "tristan", "neil yashinsky")
+    # Entirely lowercase → title-case, but skip identifiers (emails, alphanumeric handles)
     if all(c.islower() for c in alpha):
+        if "@" in name or any(c.isdigit() for c in name):
+            return name
         return name.title()
     # Pure-alpha all-caps word with >4 chars → surname written in all-caps, capitalize it
     # (Handles "Damien MATHIEU" but leaves acronyms like CNCF, IBM, (PTO) intact)

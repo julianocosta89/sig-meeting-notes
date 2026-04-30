@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T14:28:47Z",
+  "generated_at": "2026-04-30T15:09:24Z",
   "speakers": [
     {
       "name": "Aaron",
@@ -19440,19 +19440,6 @@
       ]
     },
     {
-      "name": "Krol3",
-      "meeting_count": 1,
-      "sigs": [
-        "es-Localization-SIG-Communications"
-      ],
-      "meetings": [
-        {
-          "sig": "es-Localization-SIG-Communications",
-          "date": "2025-12-02"
-        }
-      ]
-    },
-    {
       "name": "Kumar",
       "meeting_count": 1,
       "sigs": [
@@ -20149,23 +20136,6 @@
         {
           "sig": "Java-SIG",
           "date": "2025-06-19"
-        }
-      ]
-    },
-    {
-      "name": "Lciukaj@Splunk.Com",
-      "meeting_count": 2,
-      "sigs": [
-        "End-User-SIG-OTel-Blueprints"
-      ],
-      "meetings": [
-        {
-          "sig": "End-User-SIG-OTel-Blueprints",
-          "date": "2026-04-02"
-        },
-        {
-          "sig": "End-User-SIG-OTel-Blueprints",
-          "date": "2026-02-19"
         }
       ]
     },
@@ -32331,19 +32301,6 @@
       ]
     },
     {
-      "name": "T2T2",
-      "meeting_count": 1,
-      "sigs": [
-        "JavaScript-SIG"
-      ],
-      "meetings": [
-        {
-          "sig": "JavaScript-SIG",
-          "date": "2025-07-09"
-        }
-      ]
-    },
-    {
       "name": "Tammy Baylis",
       "meeting_count": 17,
       "sigs": [
@@ -37341,6 +37298,49 @@
         {
           "sig": "Prometheus-WG",
           "date": "2025-06-18"
+        }
+      ]
+    },
+    {
+      "name": "krol3",
+      "meeting_count": 1,
+      "sigs": [
+        "es-Localization-SIG-Communications"
+      ],
+      "meetings": [
+        {
+          "sig": "es-Localization-SIG-Communications",
+          "date": "2025-12-02"
+        }
+      ]
+    },
+    {
+      "name": "lciukaj@splunk.com",
+      "meeting_count": 2,
+      "sigs": [
+        "End-User-SIG-OTel-Blueprints"
+      ],
+      "meetings": [
+        {
+          "sig": "End-User-SIG-OTel-Blueprints",
+          "date": "2026-04-02"
+        },
+        {
+          "sig": "End-User-SIG-OTel-Blueprints",
+          "date": "2026-02-19"
+        }
+      ]
+    },
+    {
+      "name": "t2t2",
+      "meeting_count": 1,
+      "sigs": [
+        "JavaScript-SIG"
+      ],
+      "meetings": [
+        {
+          "sig": "JavaScript-SIG",
+          "date": "2025-07-09"
         }
       ]
     },

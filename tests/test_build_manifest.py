@@ -734,6 +734,13 @@ class TestNormalizeNameCase:
     def test_no_alpha_chars_unchanged(self) -> None:
         assert _normalize_name_case("42") == "42"
 
+    def test_email_address_not_title_cased(self) -> None:
+        assert _normalize_name_case("lciukaj@splunk.com") == "lciukaj@splunk.com"
+
+    def test_alphanumeric_handle_not_title_cased(self) -> None:
+        assert _normalize_name_case("krol3") == "krol3"
+        assert _normalize_name_case("t2t2") == "t2t2"
+
     def test_case_normalization_enables_dedup(self, tmp_path: Path) -> None:
         p = tmp_path / "summary.md"
         p.write_text("## Participants\nTristan, tristan\n", encoding="utf-8")
