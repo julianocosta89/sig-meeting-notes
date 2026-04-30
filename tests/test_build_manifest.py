@@ -824,6 +824,22 @@ class TestIterMeetingsJsonl:
         record = json.loads(lines[0])
         assert "Meeting Notes" in record["meeting_notes"]
 
+    def test_missing_summary_file_falls_back_to_empty(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        manifest = self._make_manifest_entry("Go-SIG", "2026-02-05", has_summary=True)
+        lines = list(iter_meetings_jsonl(manifest, src))
+        record = json.loads(lines[0])
+        assert record["summary"] == ""
+
+    def test_missing_notes_file_falls_back_to_empty(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        manifest = self._make_manifest_entry("Go-SIG", "2026-02-05", has_meeting_notes=True)
+        lines = list(iter_meetings_jsonl(manifest, src))
+        record = json.loads(lines[0])
+        assert record["meeting_notes"] == ""
+
     def test_empty_manifest_produces_no_lines(self, tmp_path: Path) -> None:
         manifest = {"sigs": []}
         lines = list(iter_meetings_jsonl(manifest, tmp_path))
