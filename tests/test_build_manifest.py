@@ -656,6 +656,11 @@ class TestParseSummary:
         p.write_text("## Participants\nAlice, others (not specified).\n", encoding="utf-8")
         assert parse_summary(p) == ["Alice"]
 
+    def test_deduplicates_repeated_names(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nAlice, Bob, Alice\n", encoding="utf-8")
+        assert parse_summary(p) == ["Alice", "Bob"]
+
 
 # ---------------------------------------------------------------------------
 # TestManifestSummaryFields

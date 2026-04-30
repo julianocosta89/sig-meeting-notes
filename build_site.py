@@ -63,7 +63,9 @@ def parse_summary(path: Path) -> list[str]:
             in_participants = line[3:].strip() == "Participants"
             continue
         if in_participants and line.strip():
-            return [n for raw in line.split(",") if (n := _clean_participant(raw))]
+            return list(
+                dict.fromkeys(n for raw in line.split(",") if (n := _clean_participant(raw)))
+            )
 
     return []
 
