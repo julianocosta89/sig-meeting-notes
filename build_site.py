@@ -75,7 +75,11 @@ def build_speakers_index(manifest: dict) -> dict:
     for sig in manifest["sigs"]:
         slug = sig["slug"]
         for meeting in sig["meetings"]:
+            seen_in_meeting: set[str] = set()
             for name in meeting.get("participants", []):
+                if name in seen_in_meeting:
+                    continue
+                seen_in_meeting.add(name)
                 if name not in speaker_data:
                     speaker_data[name] = {"meetings": [], "_sigs": set()}
                 speaker_data[name]["meetings"].append({"sig": slug, "date": meeting["date"]})

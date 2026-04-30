@@ -754,6 +754,16 @@ class TestBuildSpeakersIndex:
         result = build_speakers_index(manifest)
         assert result["generated_at"] == "2026-04-30T08:00:00Z"
 
+    def test_duplicate_participant_in_meeting_counted_once(self) -> None:
+        manifest = self._make_manifest(
+            {"Go-SIG": [{"date": "2026-02-05", "participants": ["Alice", "Alice"]}]}
+        )
+        result = build_speakers_index(manifest)
+        assert len(result["speakers"]) == 1
+        alice = result["speakers"][0]
+        assert alice["meeting_count"] == 1
+        assert len(alice["meetings"]) == 1
+
 
 # ---------------------------------------------------------------------------
 # TestIterMeetingsJsonl
