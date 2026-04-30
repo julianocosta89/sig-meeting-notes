@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T12:51:34Z",
+  "generated_at": "2026-04-30T13:52:11Z",
   "min_date": "2025-06-16",
   "max_date": "2026-04-30",
   "sigs": [
@@ -19,7 +19,7 @@
             "Douglas Camata",
             "Tigran Najaryan",
             "Evan Bradley",
-            "JM Juande Manjon",
+            "Juande Manjon",
             "Aunsh Chaudhari"
           ]
         },
@@ -33,7 +33,7 @@
             "Tigran Najaryan",
             "Braydon Kains",
             "dpaasman",
-            "JM Juande Manjon",
+            "Juande Manjon",
             "Evan Bradley",
             "Michael"
           ]
@@ -48,7 +48,7 @@
             "dpaasman",
             "Michel Laterman",
             "Evan Bradley",
-            "JM Juande Manjon",
+            "Juande Manjon",
             "Raphael Menderico"
           ]
         },
@@ -64,7 +64,7 @@
             "Andy Keller",
             "Evan Bradley",
             "dpaasman",
-            "JM Juande Manjon"
+            "Juande Manjon"
           ]
         },
         {
@@ -115,7 +115,7 @@
           "participants": [
             "Jack Peterson",
             "Evan Bradley",
-            "JM Juande Manjon",
+            "Juande Manjon",
             "Michel Laterman"
           ]
         },
@@ -407,7 +407,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Mustafa Haddara",
             "Hanson Ho",
             "Jamie Lynch"
@@ -420,7 +420,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "JP Jason Plumb",
+            "Jason Plumb",
             "cleverchuk",
             "Jairo Mendoza",
             "Jamie Lynch",
@@ -435,7 +435,7 @@
           "trivial": false,
           "participants": [
             "Mustafa Haddara",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Bee Klimt",
             "cleverchuk"
           ]
@@ -449,7 +449,7 @@
           "participants": [
             "Mustafa Haddara",
             "Hanson Ho",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Cesar Munoz",
             "Bee Klimt"
           ]
@@ -464,7 +464,7 @@
             "Hanson Ho",
             "Cesar Munoz",
             "Mustafa Haddara",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Jamie Lynch"
           ]
         },
@@ -475,7 +475,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Cesar Munoz",
             "Mustafa Haddara"
           ]
@@ -628,7 +628,7 @@
           "trivial": false,
           "participants": [
             "Jason Plumb",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Leonardo Serrano",
             "Hanson Ho",
             "Cesar Munoz"
@@ -668,7 +668,7 @@
           "trivial": false,
           "participants": [
             "Jason Plumb",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Hanson Ho"
           ]
         },
@@ -694,7 +694,7 @@
             "Jason Plumb",
             "Cesar Munoz",
             "Hanson Ho",
-            "GZ Gregor Zeitlinger"
+            "Gregor Zeitlinger"
           ]
         },
         {
@@ -729,7 +729,7 @@
           "trivial": false,
           "participants": [
             "Jason Plumb",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Hanson Ho",
             "Cesar Munoz",
             "Clever Chuck"
@@ -1754,7 +1754,7 @@
             "Benoit",
             "Jared Freeze",
             "Martin Kuba",
-            "HL Hugo Levy",
+            "Hugo Levy",
             "David Luna Bistuer",
             "Wolfgang Therrien",
             "Trent Mick",
@@ -2975,7 +2975,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Maciek Grzybowski",
             "Wolfgang Therrien"
           ]
@@ -2988,7 +2988,7 @@
           "trivial": false,
           "participants": [
             "Martin Kuba",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Maciek Grzybowski",
             "Bee Klimt"
           ]
@@ -3002,7 +3002,7 @@
           "participants": [
             "João Oliveira",
             "Maciek Grzybowski",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Martin Kuba",
             "Dan Gomez Blanco"
           ]
@@ -3016,7 +3016,7 @@
           "participants": [
             "Jason Plumb",
             "Martin Kuba",
-            "VP Valentin Pertuisot",
+            "Valentin Pertuisot",
             "Surbhi A"
           ]
         },
@@ -3041,7 +3041,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "VP Valentin Pertuisot",
+            "Valentin Pertuisot",
             "Hanson Ho",
             "Jason Plumb",
             "Santosh",
@@ -3093,7 +3093,7 @@
           "trivial": false,
           "participants": [
             "Hanson Ho",
-            "VP Valentin Pertuisot",
+            "Valentin Pertuisot",
             "Dan Gomez Blanco",
             "Maryam Saeidi",
             "Jason Plumb",
@@ -3528,7 +3528,7 @@
           "trivial": false,
           "participants": [
             "Alf Kenny",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Dmitrii Anoshin",
             "Evan Bradley",
             "Jade Guiton",
@@ -3892,7 +3892,7 @@
             "Vitor Vasconcellos",
             "Patrice CNCF",
             "Severin Neumann",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -3930,7 +3930,7 @@
           "participants": [
             "Patrice",
             "Jay DeLuca",
-            "TH Tiffany Hrabusa",
+            "Tiffany Hrabusa",
             "Severin Neumann",
             "Vitor Vasconcellos"
           ]
@@ -3942,7 +3942,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "TH Tiffany Hrabusa",
+            "Tiffany Hrabusa",
             "Sophia Solomon"
           ]
         },
@@ -4117,7 +4117,7 @@
           "trivial": false,
           "participants": [
             "Juliano Costa",
-            "JM Juande Manjon",
+            "Juande Manjon",
             "Jonathan Munz"
           ]
         },
@@ -4377,7 +4377,7 @@
           "participants": [
             "Jack Berg",
             "Marylia Gutierrez",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Jamie Danielson",
             "Yevhenii Solomchenko"
           ]
@@ -4451,7 +4451,7 @@
           "trivial": false,
           "participants": [
             "Dan Gomez Blanco",
-            "GZ Gregor Zeitlinger"
+            "Gregor Zeitlinger"
           ]
         },
         {
@@ -4590,7 +4590,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Amy Super"
           ]
         },
@@ -4602,7 +4602,7 @@
           "trivial": false,
           "participants": [
             "Amy Super",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -4615,7 +4615,7 @@
             "Amy Super",
             "Antoine Toulme",
             "Bogdan Nicolae Stancu",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -4626,7 +4626,7 @@
           "trivial": false,
           "participants": [
             "Amy Super",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Kayla Reopelle"
           ]
         },
@@ -4649,7 +4649,7 @@
           "trivial": false,
           "participants": [
             "Amy Super",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -4810,7 +4810,7 @@
             "Tristan",
             "Perk (Marcin Stożek)",
             "Nicolas Wörner",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -4824,7 +4824,7 @@
             "Diana Todea",
             "tristan",
             "Johanna Öjeling",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -4876,7 +4876,7 @@
             "Damien Mathieu",
             "Tristan",
             "Nicolas Wörner",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -4888,7 +4888,7 @@
           "participants": [
             "Tristan",
             "Damien Mathieu",
-            "PL Pavol Loffay",
+            "Pavol Loffay",
             "Nicolas Wörner",
             "Johanna Öjeling",
             "Andrei Raiu"
@@ -7983,7 +7983,7 @@
           "trivial": false,
           "participants": [
             "Trask Stalnaker",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Austin Parker",
             "Tedsuo",
             "Alolita Sharma",
@@ -8016,7 +8016,7 @@
             "Kushal",
             "Dan Gomez Blanco",
             "Juraci Paixão Kröhling",
-            "RP Robert Pająk",
+            "Robert Pająk",
             "Severin Neumann"
           ]
         },
@@ -8358,7 +8358,7 @@
             "Ted Young",
             "Pablo Baeyens",
             "Morgan McLean",
-            "SN Severin Neumann"
+            "Severin Neumann"
           ]
         },
         {
@@ -8518,7 +8518,7 @@
           "participants": [
             "Prasad (PR454D)",
             "Jay DeLuca",
-            "GZ Gregor Zeitlinger"
+            "Gregor Zeitlinger"
           ]
         },
         {
@@ -8606,7 +8606,7 @@
           "trivial": false,
           "participants": [
             "Robert Niedziela",
-            "GZ Gregor Zeitlinger"
+            "Gregor Zeitlinger"
           ]
         },
         {
@@ -8871,7 +8871,7 @@
           "participants": [
             "Bruno Baptista",
             "John Watson",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Trask Stalnaker",
             "Lauri"
           ]
@@ -8887,7 +8887,7 @@
             "Trask Stalnaker",
             "Jason Plumb",
             "John Watson",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Lauri"
           ]
         },
@@ -8928,7 +8928,7 @@
             "Trask Stalnaker",
             "Jonathan Halliday",
             "Jack Shirazi",
-            "JP Jason Plumb"
+            "Jason Plumb"
           ]
         },
         {
@@ -8952,11 +8952,11 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Trask Stalnaker",
             "Peter Findeisen",
             "Jack Berg",
-            "JP Jason Plumb",
+            "Jason Plumb",
             "Jay DeLuca",
             "Lauri",
             "Ghareeb Falazi"
@@ -8971,7 +8971,7 @@
           "participants": [
             "Trask Stalnaker",
             "John Watson",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Tyler Benson",
             "Lauri",
             "Jack Shirazi",
@@ -9080,7 +9080,7 @@
           "participants": [
             "Trask Stalnaker",
             "John Watson",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Jason Plumb",
             "Jay DeLuca",
             "Lauri Tulmin"
@@ -9138,7 +9138,7 @@
           "participants": [
             "Trask Stalnaker",
             "Jason Plumb",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Lauri Tulmin",
             "Jay DeLuca",
             "John Watson"
@@ -9224,7 +9224,7 @@
           "participants": [
             "Trask Stalnaker",
             "Robert Niedziela",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Jack Shirazi",
             "Jason Plumb",
             "John Watson",
@@ -9612,7 +9612,7 @@
           "trivial": false,
           "participants": [
             "Marc Pichler",
-            "AA Abdelrahman Awad",
+            "Abdelrahman Awad",
             "Hector Hernandez",
             "Marylia Gutierrez"
           ]
@@ -9639,7 +9639,7 @@
           "trivial": false,
           "participants": [
             "Trent Mick",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "David Luna Bistuer",
             "Jamie Danielson",
             "Raphaël Thériault"
@@ -9655,7 +9655,7 @@
             "David Luna Bistuer",
             "Hector Hernandez",
             "Marc Pichler",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Jamie Danielson"
           ]
         },
@@ -9683,7 +9683,7 @@
           "trivial": false,
           "participants": [
             "Marten Hennoch",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Marc Pichler",
             "Trent Mick",
             "Jamie Danielson"
@@ -9722,7 +9722,7 @@
           "trivial": false,
           "participants": [
             "Marc Pichler",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Trent Mick",
             "Raphaël Thériault"
           ]
@@ -9736,7 +9736,7 @@
           "participants": [
             "Marc Pichler",
             "Trent Mick",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Hector Hernandez"
           ]
         },
@@ -9751,7 +9751,7 @@
             "Trent Mick",
             "Carlos Alberto Cortez",
             "Aaron Abbott",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -9762,7 +9762,7 @@
           "trivial": false,
           "participants": [
             "Marc Pichler",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "David Luna Bistuer"
           ]
         },
@@ -9787,7 +9787,7 @@
           "trivial": false,
           "participants": [
             "Marc Pichler",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Daniel Dyla",
             "Trent Mick"
           ]
@@ -9813,7 +9813,7 @@
           "trivial": false,
           "participants": [
             "Marc Pichler",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "David Luna Bistuer",
             "Trent Mick",
             "Daniel Dyla",
@@ -9828,7 +9828,7 @@
           "trivial": false,
           "participants": [
             "Jamie Danielson",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Jimmy Thomson",
             "Daniel Dyla"
           ]
@@ -9856,7 +9856,7 @@
           "participants": [
             "Marc Pichler",
             "Daniel Dyla",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Raphaël Thériault",
             "David Luna Bistuer",
             "Trent Mick",
@@ -9870,7 +9870,7 @@
           "has_meeting_notes": true,
           "trivial": false,
           "participants": [
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Trent Mick",
             "Marc Pichler",
             "Daniel Dyla"
@@ -9901,7 +9901,7 @@
             "Hector Hernandez",
             "Trent Mick",
             "Daniel Dyla",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         }
       ],
@@ -10355,7 +10355,7 @@
             "atoulme",
             "Mikołaj Świątek",
             "Benedikt Bongartz",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -10367,7 +10367,7 @@
           "participants": [
             "jea",
             "Mikołaj Świątek",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -10393,7 +10393,7 @@
             "Joe Sirianni",
             "David Ashpole",
             "Benedikt Bongartz",
-            "PL Pavol Loffay",
+            "Pavol Loffay",
             "jea"
           ]
         },
@@ -10433,7 +10433,7 @@
             "Timo Johner",
             "jea",
             "David Ashpole",
-            "PL Pavol Loffay"
+            "Pavol Loffay"
           ]
         },
         {
@@ -11295,7 +11295,7 @@
           "participants": [
             "Liudmila Molkova",
             "Shipra Jain",
-            "AB Austin Born",
+            "Austin Born",
             "Sergey Sergeev",
             "Ridhima Satam",
             "Aaron Abbott",
@@ -13433,7 +13433,7 @@
             "Chris Lightfoot-Wild",
             "Pawel Filipczak",
             "Sergey",
-            "MG Marylia Gutierrez",
+            "Marylia Gutierrez",
             "Samuel Arogbonlo"
           ]
         },
@@ -14268,7 +14268,7 @@
           "trivial": false,
           "participants": [
             "Juraj Michalek",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Owen Williams",
             "Arthur Silva Sens",
             "krajo Krajcsovits",
@@ -14287,7 +14287,7 @@
             "Arthur Silva Sens",
             "Juraj Michalek",
             "Kyle Eckhart",
-            "GZ Gregor Zeitlinger"
+            "Gregor Zeitlinger"
           ]
         },
         {
@@ -14299,7 +14299,7 @@
           "participants": [
             "Arthur Silva Sens",
             "krajo Krajcsovits",
-            "CE Carrie Edwards",
+            "Carrie Edwards",
             "Juraj Michalek",
             "Owen Williams",
             "David Ashpole"
@@ -15980,7 +15980,7 @@
           "participants": [
             "Cijo Thomas",
             "Franco Posa",
-            "BA Björn Antonsson",
+            "Björn Antonsson",
             "Christian Leghadjeu"
           ]
         },
@@ -16026,7 +16026,7 @@
           "trivial": false,
           "participants": [
             "Cijo Thomas (Microsoft)",
-            "BA Björn Antonsson",
+            "Björn Antonsson",
             "Prasad Sawool"
           ]
         },
@@ -16061,7 +16061,7 @@
           "trivial": false,
           "participants": [
             "Scott Gerring",
-            "BA Björn Antonsson",
+            "Björn Antonsson",
             "Paul Le Grand des Cloizeaux",
             "Christian Leghadjeu"
           ]
@@ -16076,7 +16076,7 @@
             "Cijo Thomas",
             "Sven Cowart",
             "Christian Leghadjeu",
-            "BA Björn Antonsson",
+            "Björn Antonsson",
             "Lalit"
           ]
         },
@@ -16202,7 +16202,7 @@
             "Cijo Thomas",
             "Anton",
             "Zhongyang",
-            "BA Björn Antonsson"
+            "Björn Antonsson"
           ]
         }
       ],
@@ -16434,7 +16434,7 @@
           "participants": [
             "Ted Young",
             "Bastian Krol",
-            "JP Jason Plumb"
+            "Jason Plumb"
           ]
         },
         {
@@ -17432,7 +17432,7 @@
             "Christophe Kamphaus",
             "James Thompson",
             "Joao G. (Dynatrace)",
-            "MG Marylia Gutierrez"
+            "Marylia Gutierrez"
           ]
         },
         {
@@ -18839,7 +18839,7 @@
             "Josh Suereth",
             "Kayla Reopelle",
             "Robert Pająk",
-            "GZ Gregor Zeitlinger",
+            "Gregor Zeitlinger",
             "Liudmila Molkova",
             "Carlos Alberto Cortez"
           ]
@@ -19234,7 +19234,7 @@
           "participants": [
             "Bryce Buchanan",
             "Nacho",
-            "ES Erick Sanchez",
+            "Erick Sanchez",
             "Billy Zhou",
             "Bee Klimt"
           ]
@@ -20990,7 +20990,7 @@
             "Nikola Grcevski",
             "Mike Dame",
             "Nimrod Avni",
-            "MM Mario Macias",
+            "Mario Macias",
             "Rafael Roquetto"
           ]
         },
@@ -21135,7 +21135,7 @@
             "Nikola Grcevski",
             "Tyler Yahn",
             "Nimrod Avni",
-            "MM Mario Macias",
+            "Mario Macias",
             "Mattia Meleleo",
             "Rafael Roquetto"
           ]
@@ -21214,7 +21214,7 @@
           "trivial": false,
           "participants": [
             "Imma Valls",
-            "DT Diana Todea",
+            "Diana Todea",
             "krol3"
           ]
         },
@@ -21496,7 +21496,7 @@
           "trivial": false,
           "participants": [
             "Irina Acasandrei",
-            "DT Diana Todea",
+            "Diana Todea",
             "Diana Nanuti",
             "Mihai Lemnaru"
           ]

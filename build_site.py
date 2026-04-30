@@ -41,13 +41,23 @@ MEETINGS_JSONL_PATH = DOCS_DIR / "meetings.jsonl"
 
 
 _PARTICIPANT_NOISE_RE = re.compile(r"^\.+$|^(and\s+)?others?(\b|$)", re.IGNORECASE)
+_INITIALS_PREFIX_RE = re.compile(r"^([A-Z]{2,3})\s+(.+)$")
+
+
+def _strip_initials_prefix(name: str) -> str:
+    m = _INITIALS_PREFIX_RE.match(name)
+    if not m:
+        return name
+    prefix, full = m.group(1), m.group(2)
+    initials = "".join(w[0].upper() for w in full.split() if w and w[0].isalpha())
+    return full if initials == prefix else name
 
 
 def _clean_participant(raw: str) -> str:
     name = raw.strip().rstrip(".")
     if not name or _PARTICIPANT_NOISE_RE.match(name):
         return ""
-    return name
+    return _strip_initials_prefix(name)
 
 
 def parse_summary(path: Path) -> list[str]:

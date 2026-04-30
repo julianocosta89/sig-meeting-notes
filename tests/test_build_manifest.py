@@ -8,7 +8,13 @@ from unittest.mock import patch
 
 import pytest
 
-from build_site import build_manifest, build_speakers_index, iter_meetings_jsonl, parse_summary
+from build_site import (
+    _strip_initials_prefix,
+    build_manifest,
+    build_speakers_index,
+    iter_meetings_jsonl,
+    parse_summary,
+)
 from build_site import main as build_main
 from scraper.transcript_io import parse_header
 
@@ -660,6 +666,40 @@ class TestParseSummary:
         p = tmp_path / "summary.md"
         p.write_text("## Participants\nAlice, Bob, Alice\n", encoding="utf-8")
         assert parse_summary(p) == ["Alice", "Bob"]
+
+    def test_strips_initials_prefix_in_full_pipeline(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nMG Marylia Gutierrez, AB Austin Born\n", encoding="utf-8")
+        assert parse_summary(p) == ["Marylia Gutierrez", "Austin Born"]
+
+
+# ---------------------------------------------------------------------------
+# TestStripInitialsPrefix
+# ---------------------------------------------------------------------------
+
+
+class TestStripInitialsPrefix:
+    def test_strips_matching_two_letter_prefix(self) -> None:
+        assert _strip_initials_prefix("MG Marylia Gutierrez") == "Marylia Gutierrez"
+
+    def test_strips_orphan_with_matching_initials(self) -> None:
+        assert _strip_initials_prefix("AB Austin Born") == "Austin Born"
+        assert _strip_initials_prefix("CE Carrie Edwards") == "Carrie Edwards"
+        assert _strip_initials_prefix("ES Erick Sanchez") == "Erick Sanchez"
+        assert _strip_initials_prefix("JM Juande Manjon") == "Juande Manjon"
+
+    def test_leaves_name_unchanged_when_initials_do_not_match(self) -> None:
+        assert _strip_initials_prefix("NYC 46.24 Hell's Kitchen") == "NYC 46.24 Hell's Kitchen"
+        assert _strip_initials_prefix("CJ (not present)") == "CJ (not present)"
+
+    def test_leaves_plain_name_unchanged(self) -> None:
+        assert _strip_initials_prefix("Alice") == "Alice"
+        assert _strip_initials_prefix("Marylia Gutierrez") == "Marylia Gutierrez"
+
+    def test_deduplicates_after_prefix_strip(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nMG Marylia Gutierrez, Marylia Gutierrez\n", encoding="utf-8")
+        assert parse_summary(p) == ["Marylia Gutierrez"]
 
 
 # ---------------------------------------------------------------------------
