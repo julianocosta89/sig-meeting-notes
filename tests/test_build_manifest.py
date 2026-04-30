@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pytest
 
-from build_site import build_manifest
+from build_site import build_manifest, build_speakers_index, iter_meetings_jsonl, parse_summary
 from build_site import main as build_main
 from scraper.transcript_io import parse_header
 
@@ -69,6 +69,18 @@ SAMPLE_METADATA = """\
 SIG: Go SIG
 Meeting Notes: https://docs.google.com/document/d/go-doc/edit
 Repository: https://github.com/open-telemetry/opentelemetry-go
+"""
+
+SAMPLE_SUMMARY = """\
+## Key Topics
+- Discussion on merging PRs related to instrumentation release.
+- Debate on the necessity and content of `agents.md`.
+
+## Action Items
+- Jack Berg to refine the `agents.md`.
+
+## Participants
+Trask Stalnaker, John Watson, Jack Berg
 """
 
 
@@ -511,6 +523,8 @@ class TestBuildSiteMain:
             patch("build_site.TRANSCRIPTS_SRC", src),
             patch("build_site.DOCS_DIR", docs),
             patch("build_site.MANIFEST_PATH", manifest_path),
+            patch("build_site.SPEAKERS_PATH", docs / "speakers.json"),
+            patch("build_site.MEETINGS_JSONL_PATH", docs / "meetings.jsonl"),
         ):
             build_main()
 
@@ -518,6 +532,50 @@ class TestBuildSiteMain:
         data = json.loads(manifest_path.read_text(encoding="utf-8"))
         assert len(data["sigs"]) == 1
         assert data["sigs"][0]["slug"] == "Go-SIG"
+
+    def test_main_writes_speakers_json(self, tmp_path: Path) -> None:
+        """main() should write speakers.json."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "Go-SIG" / "2026-02-05" / "summary.md").write_text(SAMPLE_SUMMARY, encoding="utf-8")
+        speakers_path = docs / "speakers.json"
+        with (
+            patch("build_site.TRANSCRIPTS_SRC", src),
+            patch("build_site.DOCS_DIR", docs),
+            patch("build_site.MANIFEST_PATH", docs / "manifest.json"),
+            patch("build_site.SPEAKERS_PATH", speakers_path),
+            patch("build_site.MEETINGS_JSONL_PATH", docs / "meetings.jsonl"),
+        ):
+            build_main()
+
+        assert speakers_path.exists()
+        data = json.loads(speakers_path.read_text(encoding="utf-8"))
+        assert "speakers" in data
+        names = [s["name"] for s in data["speakers"]]
+        assert "Trask Stalnaker" in names
+
+    def test_main_writes_meetings_jsonl(self, tmp_path: Path) -> None:
+        """main() should write meetings.jsonl with one line per meeting."""
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        meetings_jsonl_path = docs / "meetings.jsonl"
+        with (
+            patch("build_site.TRANSCRIPTS_SRC", src),
+            patch("build_site.DOCS_DIR", docs),
+            patch("build_site.MANIFEST_PATH", docs / "manifest.json"),
+            patch("build_site.SPEAKERS_PATH", docs / "speakers.json"),
+            patch("build_site.MEETINGS_JSONL_PATH", meetings_jsonl_path),
+        ):
+            build_main()
+
+        assert meetings_jsonl_path.exists()
+        lines = meetings_jsonl_path.read_text(encoding="utf-8").strip().splitlines()
+        assert len(lines) == 1
+        record = json.loads(lines[0])
+        assert record["slug"] == "Go-SIG"
+        assert record["date"] == "2026-02-05"
 
     def test_main_creates_docs_dir(self, tmp_path: Path) -> None:
         """main() should create DOCS_DIR if it doesn't exist."""
@@ -529,6 +587,8 @@ class TestBuildSiteMain:
             patch("build_site.TRANSCRIPTS_SRC", src),
             patch("build_site.DOCS_DIR", docs),
             patch("build_site.MANIFEST_PATH", manifest_path),
+            patch("build_site.SPEAKERS_PATH", docs / "speakers.json"),
+            patch("build_site.MEETINGS_JSONL_PATH", docs / "meetings.jsonl"),
         ):
             build_main()
 
@@ -546,3 +606,250 @@ class TestBuildSiteMain:
             pytest.raises(RuntimeError, match="build failed"),
         ):
             build_main()
+
+
+# ---------------------------------------------------------------------------
+# TestParseSummary
+# ---------------------------------------------------------------------------
+
+
+class TestParseSummary:
+    def test_parses_participants(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text(SAMPLE_SUMMARY, encoding="utf-8")
+        result = parse_summary(p)
+        assert result == ["Trask Stalnaker", "John Watson", "Jack Berg"]
+
+    def test_missing_file_returns_empty(self, tmp_path: Path) -> None:
+        assert parse_summary(tmp_path / "missing.md") == []
+
+    def test_no_participants_section_returns_empty(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Key Topics\n- Topic A\n", encoding="utf-8")
+        assert parse_summary(p) == []
+
+    def test_participants_extracted_correctly(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nAlice, Bob\n", encoding="utf-8")
+        assert parse_summary(p) == ["Alice", "Bob"]
+
+    def test_strips_trailing_dot_from_names(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nAlice., Bob.\n", encoding="utf-8")
+        assert parse_summary(p) == ["Alice", "Bob"]
+
+    def test_filters_ellipsis_placeholder(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nAlice, Bob, ...\n", encoding="utf-8")
+        assert parse_summary(p) == ["Alice", "Bob"]
+
+    def test_filters_others_variants(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text(
+            "## Participants\nAlice, others, and others., and other unnamed members.\n",
+            encoding="utf-8",
+        )
+        assert parse_summary(p) == ["Alice"]
+
+    def test_filters_others_with_parenthetical(self, tmp_path: Path) -> None:
+        p = tmp_path / "summary.md"
+        p.write_text("## Participants\nAlice, others (not specified).\n", encoding="utf-8")
+        assert parse_summary(p) == ["Alice"]
+
+
+# ---------------------------------------------------------------------------
+# TestManifestSummaryFields
+# ---------------------------------------------------------------------------
+
+
+class TestManifestSummaryFields:
+    def test_manifest_includes_participants_from_summary(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "Go-SIG" / "2026-02-05" / "summary.md").write_text(SAMPLE_SUMMARY, encoding="utf-8")
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+        meeting = manifest["sigs"][0]["meetings"][0]
+        assert "key_topics" not in meeting
+        assert meeting["participants"] == ["Trask Stalnaker", "John Watson", "Jack Berg"]
+
+    def test_manifest_empty_participants_when_no_summary(self, tmp_path: Path) -> None:
+        docs = tmp_path / "docs"
+        src = docs / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        with patch("build_site.TRANSCRIPTS_SRC", src), patch("build_site.DOCS_DIR", docs):
+            manifest = build_manifest()
+        meeting = manifest["sigs"][0]["meetings"][0]
+        assert "key_topics" not in meeting
+        assert meeting["participants"] == []
+
+
+# ---------------------------------------------------------------------------
+# TestBuildSpeakersIndex
+# ---------------------------------------------------------------------------
+
+
+class TestBuildSpeakersIndex:
+    def _make_manifest(self, meetings_by_sig: dict) -> dict:
+        sigs = []
+        for slug, meetings in meetings_by_sig.items():
+            sigs.append({"slug": slug, "name": slug.replace("-", " "), "meetings": meetings})
+        return {"generated_at": "2026-04-30T08:00:00Z", "sigs": sigs}
+
+    def test_single_speaker_single_sig(self) -> None:
+        manifest = self._make_manifest(
+            {"Go-SIG": [{"date": "2026-02-05", "participants": ["Alice"]}]}
+        )
+        result = build_speakers_index(manifest)
+        assert len(result["speakers"]) == 1
+        speaker = result["speakers"][0]
+        assert speaker["name"] == "Alice"
+        assert speaker["meeting_count"] == 1
+        assert speaker["sigs"] == ["Go-SIG"]
+        assert speaker["meetings"] == [{"sig": "Go-SIG", "date": "2026-02-05"}]
+
+    def test_speaker_across_multiple_sigs(self) -> None:
+        manifest = self._make_manifest(
+            {
+                "Go-SIG": [{"date": "2026-02-05", "participants": ["Alice", "Bob"]}],
+                "Java-SIG": [{"date": "2026-02-06", "participants": ["Alice"]}],
+            }
+        )
+        result = build_speakers_index(manifest)
+        alice = next(s for s in result["speakers"] if s["name"] == "Alice")
+        assert alice["meeting_count"] == 2
+        assert alice["sigs"] == ["Go-SIG", "Java-SIG"]
+        assert len(alice["meetings"]) == 2
+
+    def test_speakers_sorted_alphabetically(self) -> None:
+        manifest = self._make_manifest(
+            {"Go-SIG": [{"date": "2026-02-05", "participants": ["Zara", "Alice", "Bob"]}]}
+        )
+        result = build_speakers_index(manifest)
+        names = [s["name"] for s in result["speakers"]]
+        assert names == ["Alice", "Bob", "Zara"]
+
+    def test_meetings_sorted_newest_first(self) -> None:
+        manifest = self._make_manifest(
+            {
+                "Go-SIG": [
+                    {"date": "2026-01-01", "participants": ["Alice"]},
+                    {"date": "2026-03-01", "participants": ["Alice"]},
+                ]
+            }
+        )
+        result = build_speakers_index(manifest)
+        alice = result["speakers"][0]
+        assert alice["meetings"][0]["date"] == "2026-03-01"
+        assert alice["meetings"][1]["date"] == "2026-01-01"
+
+    def test_no_participants_produces_empty_speakers(self) -> None:
+        manifest = self._make_manifest({"Go-SIG": [{"date": "2026-02-05", "participants": []}]})
+        result = build_speakers_index(manifest)
+        assert result["speakers"] == []
+
+    def test_generated_at_copied_from_manifest(self) -> None:
+        manifest = self._make_manifest({})
+        result = build_speakers_index(manifest)
+        assert result["generated_at"] == "2026-04-30T08:00:00Z"
+
+
+# ---------------------------------------------------------------------------
+# TestIterMeetingsJsonl
+# ---------------------------------------------------------------------------
+
+
+class TestIterMeetingsJsonl:
+    def _make_manifest_entry(self, slug: str, date: str, **kwargs) -> dict:
+        defaults = {
+            "has_summary": False,
+            "has_meeting_notes": False,
+            "trivial": False,
+            "duration_minutes": 33,
+            "participants": [],
+        }
+        defaults.update(kwargs)
+        return {
+            "sigs": [
+                {
+                    "slug": slug,
+                    "name": slug.replace("-", " "),
+                    "meetings": [{"date": date, **defaults}],
+                }
+            ]
+        }
+
+    def test_produces_valid_json_line(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        manifest = self._make_manifest_entry("Go-SIG", "2026-02-05")
+        lines = list(iter_meetings_jsonl(manifest, src))
+        assert len(lines) == 1
+        record = json.loads(lines[0])
+        assert record["slug"] == "Go-SIG"
+        assert record["sig_name"] == "Go SIG"
+        assert record["date"] == "2026-02-05"
+        assert record["summary"] == ""
+        assert record["meeting_notes"] == ""
+
+    def test_includes_summary_text_when_present(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "Go-SIG" / "2026-02-05" / "summary.md").write_text(SAMPLE_SUMMARY, encoding="utf-8")
+        manifest = self._make_manifest_entry("Go-SIG", "2026-02-05", has_summary=True)
+        lines = list(iter_meetings_jsonl(manifest, src))
+        record = json.loads(lines[0])
+        assert "Key Topics" in record["summary"]
+        assert record["meeting_notes"] == ""
+
+    def test_includes_meeting_notes_when_present(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        (src / "Go-SIG" / "2026-02-05" / "meeting-notes.md").write_text(
+            "## Meeting Notes\n\n### Attendees\n- Tyler\n", encoding="utf-8"
+        )
+        manifest = self._make_manifest_entry("Go-SIG", "2026-02-05", has_meeting_notes=True)
+        lines = list(iter_meetings_jsonl(manifest, src))
+        record = json.loads(lines[0])
+        assert "Meeting Notes" in record["meeting_notes"]
+
+    def test_empty_manifest_produces_no_lines(self, tmp_path: Path) -> None:
+        manifest = {"sigs": []}
+        lines = list(iter_meetings_jsonl(manifest, tmp_path))
+        assert lines == []
+
+    def test_multiple_meetings_produce_multiple_lines(self, tmp_path: Path) -> None:
+        src = tmp_path / "content"
+        _write_transcript(src, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
+        _write_transcript(src, "Go-SIG", "2026-02-12.md", SAMPLE_TRANSCRIPT_2)
+        manifest = {
+            "sigs": [
+                {
+                    "slug": "Go-SIG",
+                    "name": "Go SIG",
+                    "meetings": [
+                        {
+                            "date": "2026-02-12",
+                            "duration_minutes": 45,
+                            "has_summary": False,
+                            "has_meeting_notes": False,
+                            "trivial": False,
+                            "participants": [],
+                        },
+                        {
+                            "date": "2026-02-05",
+                            "duration_minutes": 33,
+                            "has_summary": False,
+                            "has_meeting_notes": False,
+                            "trivial": False,
+                            "participants": [],
+                        },
+                    ],
+                }
+            ]
+        }
+        lines = list(iter_meetings_jsonl(manifest, src))
+        assert len(lines) == 2
+        dates = [json.loads(line)["date"] for line in lines]
+        assert set(dates) == {"2026-02-05", "2026-02-12"}

@@ -4,9 +4,11 @@
 
 ## Resources
 
-- Web UI: https://julianocosta89.github.io/sig-meeting-notes/
-- Manifest (JSON): https://julianocosta89.github.io/sig-meeting-notes/manifest.json
-- Full LLM reference: https://julianocosta89.github.io/sig-meeting-notes/llms-full.txt
+- Web UI: https://otelminutes.jcosta.dev/
+- Manifest (JSON): https://otelminutes.jcosta.dev/manifest.json
+- Speaker index: https://otelminutes.jcosta.dev/speakers.json
+- Bulk JSONL export: https://otelminutes.jcosta.dev/meetings.jsonl
+- Full LLM reference: https://otelminutes.jcosta.dev/llms-full.txt
 - Source: https://github.com/julianocosta89/sig-meeting-notes
 
 ## How to find content
@@ -15,14 +17,14 @@
 
 Fetch the manifest to discover all SIGs and their meetings:
 
-    GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+    GET https://otelminutes.jcosta.dev/manifest.json
 
 Response shape:
 
     {
-      "generated_at": "2026-03-02T20:28:12Z",
+      "generated_at": "2026-04-30T08:26:35Z",
       "min_date": "2025-06-16",
-      "max_date": "2026-02-27",
+      "max_date": "2026-04-30",
       "sigs": [
         {
           "slug": "Collector-SIG",
@@ -31,7 +33,14 @@ Response shape:
           "repository_url": "https://github.com/open-telemetry/opentelemetry-collector",
           "meeting_count": 28,
           "meetings": [
-            { "date": "2026-02-04", "duration_minutes": 42, "has_summary": true, "has_meeting_notes": true }
+            {
+              "date": "2026-02-04",
+              "duration_minutes": 42,
+              "has_summary": true,
+              "has_meeting_notes": true,
+              "trivial": false,
+              "participants": ["Alice", "Bob", "Carol"]
+            }
           ]
         }
       ]
@@ -54,12 +63,14 @@ Meeting fields:
 - `duration_minutes` — meeting length in minutes
 - `has_summary` — true if an AI summary exists (skip fetching summary.md when false)
 - `has_meeting_notes` — true if meeting notes exist (skip fetching meeting-notes.md when false)
+- `trivial` — true if the transcript has fewer than 3 non-blank lines (no substantive content)
+- `participants` — names extracted from the AI summary's Participants line (empty list when no summary)
 
 ### 2. Fetch individual files
 
 Each meeting has up to three files. Build the URL from the SIG slug and date:
 
-    https://julianocosta89.github.io/sig-meeting-notes/content/{slug}/{YYYY-MM-DD}/{file}
+    https://otelminutes.jcosta.dev/content/{slug}/{YYYY-MM-DD}/{file}
 
 Files (in recommended read order):
 
@@ -67,27 +78,44 @@ Files (in recommended read order):
 - `meeting-notes.md` — attendees and agenda (only exists when `has_meeting_notes` is true)
 - `transcript.md` — full Zoom transcript (always exists; can be very long)
 
-### 3. Typical workflow
+### 3. Use the speaker index
+
+Find all meetings for a specific speaker without reading individual files:
+
+    GET https://otelminutes.jcosta.dev/speakers.json
+
+Each entry lists the speaker's name, total meeting count, SIG slugs, and a meetings array of {sig, date} objects sorted newest-first.
+
+### 4. Bulk consumption (RAG / offline analysis)
+
+For indexing all meetings at once, use the JSONL export:
+
+    GET https://otelminutes.jcosta.dev/meetings.jsonl
+
+Each line is a self-contained JSON object with all meeting fields plus the full `summary` and `meeting_notes` text. Transcripts are not included (fetch individually when needed).
+
+### 5. Typical workflow
 
 1. Fetch `manifest.json` to find SIG slugs, date ranges, and availability flags
 2. Filter to the SIG and date range you need using `slug` and `date` fields
-3. Read `summary.md` first (check `has_summary`) — gives a concise overview
-4. If you need attendees or agenda, read `meeting-notes.md` (check `has_meeting_notes`)
-5. Fall back to `transcript.md` only for verbatim quotes or the full discussion
+3. Use `participants` in the manifest to filter by speaker without extra fetches
+4. Read `summary.md` first (check `has_summary`) — gives a concise overview
+5. If you need attendees or agenda, read `meeting-notes.md` (check `has_meeting_notes`)
+6. Fall back to `transcript.md` only for verbatim quotes or the full discussion
 
-### 4. Examples
+### 6. Examples
 
 Get the AI summary for the Collector SIG meeting on 2026-02-04:
 
-    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/summary.md
+    GET https://otelminutes.jcosta.dev/content/Collector-SIG/2026-02-04/summary.md
 
 Get the meeting notes (attendees + agenda) for the same meeting:
 
-    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/meeting-notes.md
+    GET https://otelminutes.jcosta.dev/content/Collector-SIG/2026-02-04/meeting-notes.md
 
 Get the full transcript:
 
-    GET https://julianocosta89.github.io/sig-meeting-notes/content/Collector-SIG/2026-02-04/transcript.md
+    GET https://otelminutes.jcosta.dev/content/Collector-SIG/2026-02-04/transcript.md
 
 ## File formats
 

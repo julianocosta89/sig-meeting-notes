@@ -69,7 +69,7 @@ jobs:
           else
             echo "New summaries detected — rebuilding manifest."
             uv run python build_site.py
-            git add docs/manifest.json
+            git add docs/manifest.json docs/speakers.json docs/meetings.jsonl
             git commit -m "chore: generate meeting summaries $(date -u +%Y-%m-%d)"
             git push
             PUSHED_SHA=$(git rev-parse HEAD)

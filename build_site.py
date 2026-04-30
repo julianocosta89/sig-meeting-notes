@@ -17,7 +17,9 @@ and writes docs/manifest.json with metadata about every SIG and meeting.
 from __future__ import annotations
 
 import json
+import re
 import shutil
+from collections.abc import Iterator
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -34,6 +36,106 @@ ROOT = Path(__file__).parent
 TRANSCRIPTS_SRC = ROOT / "docs" / "content"
 DOCS_DIR = ROOT / "docs"
 MANIFEST_PATH = DOCS_DIR / "manifest.json"
+SPEAKERS_PATH = DOCS_DIR / "speakers.json"
+MEETINGS_JSONL_PATH = DOCS_DIR / "meetings.jsonl"
+
+
+_PARTICIPANT_NOISE_RE = re.compile(r"^\.+$|^(and\s+)?others?(\b|$)", re.IGNORECASE)
+
+
+def _clean_participant(raw: str) -> str:
+    name = raw.strip().rstrip(".")
+    if not name or _PARTICIPANT_NOISE_RE.match(name):
+        return ""
+    return name
+
+
+def parse_summary(path: Path) -> list[str]:
+    """Extract participant names from a summary.md file."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return []
+
+    in_participants = False
+    for line in text.splitlines():
+        if line.startswith("## "):
+            in_participants = line[3:].strip() == "Participants"
+            continue
+        if in_participants and line.strip():
+            return [n for raw in line.split(",") if (n := _clean_participant(raw))]
+
+    return []
+
+
+def build_speakers_index(manifest: dict) -> dict:
+    """Build a speaker cross-reference index from the manifest."""
+    speaker_data: dict[str, dict] = {}
+
+    for sig in manifest["sigs"]:
+        slug = sig["slug"]
+        for meeting in sig["meetings"]:
+            for name in meeting.get("participants", []):
+                if name not in speaker_data:
+                    speaker_data[name] = {"meetings": [], "_sigs": set()}
+                speaker_data[name]["meetings"].append({"sig": slug, "date": meeting["date"]})
+                speaker_data[name]["_sigs"].add(slug)
+
+    speakers = []
+    for name in sorted(speaker_data):
+        entry = speaker_data[name]
+        entry["meetings"].sort(key=lambda m: m["date"], reverse=True)
+        speakers.append(
+            {
+                "name": name,
+                "meeting_count": len(entry["meetings"]),
+                "sigs": sorted(entry["_sigs"]),
+                "meetings": entry["meetings"],
+            }
+        )
+
+    return {
+        "generated_at": manifest["generated_at"],
+        "speakers": speakers,
+    }
+
+
+def iter_meetings_jsonl(manifest: dict, src: Path) -> Iterator[str]:
+    """Yield JSONL lines — one per meeting — with full summary and meeting-notes text."""
+    for sig in manifest["sigs"]:
+        slug = sig["slug"]
+        sig_name = sig["name"]
+        for meeting in sig["meetings"]:
+            date = meeting["date"]
+            meeting_dir = src / slug / date
+
+            summary_text = ""
+            if meeting.get("has_summary"):
+                try:
+                    summary_text = (meeting_dir / "summary.md").read_text(encoding="utf-8")
+                except OSError:
+                    pass
+
+            notes_text = ""
+            if meeting.get("has_meeting_notes"):
+                try:
+                    notes_text = (meeting_dir / "meeting-notes.md").read_text(encoding="utf-8")
+                except OSError:
+                    pass
+
+            record: dict = {
+                "slug": slug,
+                "sig_name": sig_name,
+                "date": date,
+                "duration_minutes": meeting["duration_minutes"],
+                "has_summary": meeting["has_summary"],
+                "has_meeting_notes": meeting["has_meeting_notes"],
+                "trivial": meeting["trivial"],
+                "participants": meeting.get("participants", []),
+                "summary": summary_text,
+                "meeting_notes": notes_text,
+            }
+            yield json.dumps(record, ensure_ascii=False)
 
 
 def _remove_stale_docs(source_slugs: set[str]) -> None:
@@ -64,12 +166,14 @@ def build_manifest() -> dict:
             continue
 
         date_str = header["date"]
-        has_summary = (md_path.parent / "summary.md").exists()
-
+        summary_path = md_path.parent / "summary.md"
+        has_summary = summary_path.exists()
         has_meeting_notes = (md_path.parent / "meeting-notes.md").exists()
 
         body = read_transcript_body(md_path)
         is_trivial = count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
+
+        participants = parse_summary(summary_path) if has_summary else []
 
         meeting_entry = {
             "date": date_str,
@@ -77,6 +181,7 @@ def build_manifest() -> dict:
             "has_summary": has_summary,
             "has_meeting_notes": has_meeting_notes,
             "trivial": is_trivial,
+            "participants": participants,
             "_sig_name": header["sig_name"],
         }
 
@@ -131,6 +236,16 @@ def main() -> None:
                 json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
                 encoding="utf-8",
             )
+
+            speakers = build_speakers_index(manifest)
+            SPEAKERS_PATH.write_text(
+                json.dumps(speakers, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            with MEETINGS_JSONL_PATH.open("w", encoding="utf-8") as f:
+                for line in iter_meetings_jsonl(manifest, TRANSCRIPTS_SRC):
+                    f.write(line + "\n")
 
             total_sigs = len(manifest["sigs"])
             total_meetings = sum(len(s["meetings"]) for s in manifest["sigs"])

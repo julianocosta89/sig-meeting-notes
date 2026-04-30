@@ -50,6 +50,11 @@ Supporting modules:
 
 **`main.py`** orchestrates the pipeline: fetches all date-range meetings, then runs `_resolve_sig()` when `--sig` is given. Before matching, the filter is looked up in `_SIG_ALIASES` (e.g. `gc` → searches for `"gc"` in the slug, `semconv` → `semantic-convention`/`semconv`/`sem-conv`); unrecognised values are used as-is. If the (expanded) terms match multiple SIG slugs it prints a numbered list and prompts the user to pick one interactively. After disambiguation it filters to the chosen slug, then processes recordings with one fresh Playwright browser context per recording (to avoid session state leakage), skipping already-downloaded transcripts, and writing output to `docs/content/{sig-slug}/YYYY-MM-DD/transcript.md`. Meeting notes are fetched from Google Docs and written to `meeting-notes.md` alongside the transcript.
 
+**`build_site.py`** walks `docs/content/` and generates three output files in `docs/`:
+- `manifest.json` — discovery index with per-meeting metadata including `key_topics` and `participants` extracted from `summary.md`
+- `speakers.json` — cross-reference index mapping speaker names to all meetings they attended (aggregated from `participants` in each summary)
+- `meetings.jsonl` — JSONL bulk export (one line per meeting) with all meeting fields plus full `summary` and `meeting_notes` text, suitable for RAG indexing and offline analysis
+
 ## Output Structure
 
 `docs/content/` is the single source of truth — `main.py` writes there directly and `build_site.py` reads from there (no copy step).

@@ -4,15 +4,15 @@
 
 ## Manifest schema
 
-    GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+    GET https://otelminutes.jcosta.dev/manifest.json
 
 ### Full example (truncated)
 
 ```json
 {
-  "generated_at": "2026-03-02T20:28:12Z",
+  "generated_at": "2026-04-30T08:26:35Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-02-27",
+  "max_date": "2026-04-30",
   "sigs": [
     {
       "slug": "Collector-SIG",
@@ -25,13 +25,17 @@
           "date": "2026-02-25",
           "duration_minutes": 42,
           "has_summary": true,
-          "has_meeting_notes": true
+          "has_meeting_notes": true,
+          "trivial": false,
+          "participants": ["Alice", "Bob", "Carol"]
         },
         {
           "date": "2026-02-18",
           "duration_minutes": 35,
           "has_summary": true,
-          "has_meeting_notes": false
+          "has_meeting_notes": false,
+          "trivial": false,
+          "participants": ["Alice", "Dave"]
         }
       ]
     },
@@ -46,7 +50,9 @@
           "date": "2026-02-05",
           "duration_minutes": 33,
           "has_summary": false,
-          "has_meeting_notes": true
+          "has_meeting_notes": true,
+          "trivial": false,
+          "participants": []
         }
       ]
     }
@@ -72,10 +78,86 @@
 | `sigs[].meetings[].duration_minutes` | integer | Meeting duration in minutes |
 | `sigs[].meetings[].has_summary` | boolean | True if AI summary exists |
 | `sigs[].meetings[].has_meeting_notes` | boolean | True if meeting notes exist |
+| `sigs[].meetings[].trivial` | boolean | True if transcript has fewer than 3 non-blank lines |
+| `sigs[].meetings[].participants` | array of strings | Names from the summary's Participants line (empty when no summary) |
+
+## Speaker index schema
+
+    GET https://otelminutes.jcosta.dev/speakers.json
+
+Aggregated cross-reference of all speakers extracted from AI summaries. Allows finding all meetings where a specific person participated without reading individual files.
+
+### Example
+
+```json
+{
+  "generated_at": "2026-04-30T08:26:35Z",
+  "speakers": [
+    {
+      "name": "Alice",
+      "meeting_count": 12,
+      "sigs": ["Collector-SIG", "Go-SIG"],
+      "meetings": [
+        {"sig": "Collector-SIG", "date": "2026-02-25"},
+        {"sig": "Go-SIG", "date": "2026-02-05"}
+      ]
+    }
+  ]
+}
+```
+
+### Field reference
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `generated_at` | string | UTC ISO 8601 timestamp of last build |
+| `speakers` | array | Speaker objects, sorted alphabetically by name |
+| `speakers[].name` | string | Speaker's name as extracted from summary.md |
+| `speakers[].meeting_count` | integer | Total meetings this speaker appeared in |
+| `speakers[].sigs` | array of strings | Unique SIG slugs this speaker appeared in (sorted) |
+| `speakers[].meetings` | array | {sig, date} pairs sorted newest-first |
+
+## Bulk JSONL export schema
+
+    GET https://otelminutes.jcosta.dev/meetings.jsonl
+
+One JSON object per line — every meeting including full summary and meeting-notes text. Ideal for offline analysis, RAG indexing, or building search indexes. Transcripts are omitted (fetch individually via the content URL pattern when needed).
+
+### Example line
+
+```json
+{
+  "slug": "Collector-SIG",
+  "sig_name": "Collector SIG",
+  "date": "2026-02-25",
+  "duration_minutes": 42,
+  "has_summary": true,
+  "has_meeting_notes": true,
+  "trivial": false,
+  "participants": ["Alice", "Bob"],
+  "summary": "## Key Topics\n- Discussion on tail sampling...\n\n## Participants\nAlice, Bob",
+  "meeting_notes": "## Meeting Notes\n\n### Attendees\n- Alice (Elastic)\n- Bob (Grafana)\n\n### Agenda\n- Tail sampling API review"
+}
+```
+
+### Field reference
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `slug` | string | SIG URL-safe identifier |
+| `sig_name` | string | SIG human-readable display name |
+| `date` | string | ISO 8601 date (YYYY-MM-DD) |
+| `duration_minutes` | integer | Meeting duration in minutes |
+| `has_summary` | boolean | True if summary text is non-empty |
+| `has_meeting_notes` | boolean | True if meeting_notes text is non-empty |
+| `trivial` | boolean | True if transcript has fewer than 3 non-blank lines |
+| `participants` | array of strings | Participant names (empty when no summary) |
+| `summary` | string | Full text of summary.md (empty string when none) |
+| `meeting_notes` | string | Full text of meeting-notes.md (empty string when none) |
 
 ## Content URL pattern
 
-    https://julianocosta89.github.io/sig-meeting-notes/content/{slug}/{YYYY-MM-DD}/{file}
+    https://otelminutes.jcosta.dev/content/{slug}/{YYYY-MM-DD}/{file}
 
 Where `{slug}` and `{YYYY-MM-DD}` come from the manifest, and `{file}` is one of:
 
@@ -151,28 +233,41 @@ Jared Freeze, martinkuba, David Luna Bistuer, Marco Schafer
 **Parsing notes:**
 - Three sections: Key Topics (bulleted), Action Items (bulleted), Participants (comma-separated)
 - Generated by GPT-4o-mini from the transcript
+- `participants` field in the manifest is extracted from this file
 
-## Query walkthrough
+## Query walkthroughs
 
 **Goal:** Find what the Collector SIG discussed about telemetry providers in August 2025.
 
 1. Fetch the manifest:
 
-       GET https://julianocosta89.github.io/sig-meeting-notes/manifest.json
+       GET https://otelminutes.jcosta.dev/manifest.json
 
-2. Find the Collector SIG entry (slug: `Collector-SIG`), filter meetings to August 2025:
+2. Find the Collector SIG entry (slug: `Collector-SIG`), filter meetings to August 2025.
 
-       dates: ["2025-08-26", "2025-08-20", "2025-08-13", "2025-08-05"]
-
-3. Check `has_summary` for each date. If true, start with the summary:
+3. Fetch the summary for each candidate meeting to identify relevant ones:
 
        GET .../content/Collector-SIG/2025-08-05/summary.md
 
-4. If the summary mentions telemetry providers, get the full transcript for details:
+4. If the summary confirms relevance, get the full transcript for details:
 
        GET .../content/Collector-SIG/2025-08-05/transcript.md
 
-5. Search the transcript for relevant keywords to find the exact discussion.
+**Goal:** Find all meetings where Alice participated.
+
+1. Fetch the speaker index:
+
+       GET https://otelminutes.jcosta.dev/speakers.json
+
+2. Find the entry where `name == "Alice"` — the `meetings` array lists all her appearances with SIG and date.
+
+**Goal:** Build a search index over all meeting summaries.
+
+1. Stream the JSONL export:
+
+       GET https://otelminutes.jcosta.dev/meetings.jsonl
+
+2. Parse each line as a JSON object. The `summary` field contains the full AI summary text. Index `slug`, `date`, `participants`, and `summary` for search.
 
 **Goal:** List all SIGs that met in the last week.
 
@@ -185,4 +280,4 @@ Jared Freeze, martinkuba, David Luna Bistuer, Marco Schafer
 - Data source: public OTel recordings spreadsheet
 - Update frequency: automated on weekdays (GitHub Actions cron at 6 AM UTC)
 - Date range: check `min_date` and `max_date` in the manifest
-- 57 SIGs, 1200+ meetings as of March 2026
+- 58 SIGs, 1,500+ meetings as of April 2026
