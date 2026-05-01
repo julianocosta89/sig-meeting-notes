@@ -1,0 +1,57 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Scott Gerring](mailto:scott@datadoghq.com)(Datadog)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- Frederic Branczyk (Polar Signals)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+
+### Agenda
+- Review action items:
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Comment on [https://github.com/open-telemetry/opentelemetry-proto/pull/782](https://github.com/open-telemetry/opentelemetry-proto/pull/782) based on discussion on Apr 2.
+    - Currently still blocked waiting on data.
+  - Felix: KeyValueAndUnit proposals ([gh comment](https://github.com/open-telemetry/opentelemetry-proto/issues/766#issuecomment-4288921999)).
+    - Two proposals, one short quick win: [Replace KeyValueAndUnit with Semantic Conventions](https://docs.google.com/document/d/1ddDC4ZGCRFUionGl8GAX9IywCpGjK1GKezgR9EnsYCY/edit?tab=t.0#heading=h.kzrc9emx1jun). Pro: doesn’t impact any signal, fastest way forward that doesn’t involve any work with other signals.
+    - Long term proposal: [Extend KeyValue with Unit information](https://docs.google.com/document/d/17dyg0Wf6N_RVYNSga-jo0TD0WWOD4pR5tu2oHm7ZSn4/edit?tab=t.0). This would change semantic convention format by adding explicit units. Would require work and alignment with other signals.
+    - Alexey: I will take a look.
+    - Florian: There could be interest in the OTel community for other signals, but nobody currently has capacity to champion the long-term change. Both proposals are not mutually exclusive, we can start with the short-term proposal, and then later go after the long-term change.
+    - Christos: There might be a possibility of collisions in the short-term proposal. The example might be misleading. I’ll add a comment on the doc.
+    - Alexey: We might want to use something else than underscore. I’ll comment on the doc.
+    - Florian: Are there any conventions that pprof follows for units?
+    - Alexey: There are conventions regarding to known units and fallback, will need to follow-up for more details.
+  - Jonathan: PR for moving original_payload to a dictionary. Done: [https://github.com/open-telemetry/opentelemetry-proto/pull/786](https://github.com/open-telemetry/opentelemetry-proto/pull/786)
+    - Jonathan: Not merged to avoid breaking compatibility. We’ll do the potential breaking changes at once when we switch from alpha to beta.
+    - Alexey: Is there a way to have a branch where we keep all these breaking changes?
+    - Jonathan: Fortunately the proto doesn’t move that frequently, except profiles everything else is quite stable.
+    - Christos: We don’t have the permissions to create branches in the repo. I’ll reach out to Tigran.
+    - Jonathan: For the SDK it was hard to get it to consume anything else that the official version of the repo (the Java stubs are built from it). Might be worth trying having a branch, but it might be more hassle than it’s worth.
+    - The PR is ready for review, please review!
+  - Alexey: Add duplicate and orphan checks to the conformance checker.
+  - Alexey: Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Sent [#791](https://github.com/open-telemetry/opentelemetry-proto/pull/791)
+    - Alexey: Do we have cases where periods could be empty and should we add examples for that?
+    - Florian: It’s hard to add period for OffCpu profiles in the ebpf profiler, because the time between samples is not constant. If we added a value it wouldn’t reflect the actual samples. It does downsampling of the off cpu events.
+    - Alexey: Does downsampling have a fixed rate?
+    - Florian: No, it’s based on a threshold + probabilistic sampling, not on a fixed frequency.
+    - Frederic: Is that the same thing statistically on average over a large distribution?
+    - Florian: It depends on the scheduler and the number of interrupts and it can introduce a high variance on this.
+    - Alexey: Is the period purely informational?
+    - Nayef: This is not the case today for the opentelemetry-ebpf-profiler, it submits [cpu,count] sample time for on-cpu profiles, and backends deduce the cpu time equivalent by using the period.
+    - Alexey: Why does the ebpf profiler put the counts and not the periods?
+    - Florian: On-cpu we set the period as the 10^9/sampling_frequency, and for off cpu profiles
+    - Alexey: We need to document how values and timestamps play with periods.
+    - Frederic: Go profiler produces both counts and cpu nanoseconds for CPU profiles.
+    - Nayef: Should we instead be documenting the different sample type values that we support in `sample_type` in semantic conventions?
+    - Christos: Not sure if semantic convention is the right place for this vs the spec. Agreed that currently the documentation on that field can be confusing, and very tied to pprof.
+    - Frederic: We can’t currently represent the probability of an off cpu profile in a sample
+    - Alexey: I’ll continue iterating on this.
+- Jonathan: feedback and recommendations based on implementation experience: [https://github.com/open-telemetry/opentelemetry-java/pull/8349#issuecomment-4352927214](https://github.com/open-telemetry/opentelemetry-java/pull/8349#issuecomment-4352927214)
+  - Jonathan: Zero-encoding is not compatible with the trace spec.
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Quick) – There's a PR for adding process context to opentelemetry-rust! [https://github.com/open-telemetry/opentelemetry-rust/pull/3460](https://github.com/open-telemetry/opentelemetry-rust/pull/3460)
+  - FYI, we opened that PR and discussing with the OpenTelemtry Rust maintainers.
+  - Christos: Do we have any updates for thread-context?
+  - Ivo: We’ve gotten some feedback and replying to it. Please throw more feedback at us!
+  - Christos: Let’s all have a look.
