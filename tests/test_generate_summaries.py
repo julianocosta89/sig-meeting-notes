@@ -51,7 +51,7 @@ SAMPLE_TRANSCRIPT_LEGACY = textwrap.dedent("""\
     Tyler 02:20 How's it going?
 """)
 
-LONG_TRANSCRIPT_BODY = f"**Alice** 00:01 {'word ' * 3000}\n"
+LONG_TRANSCRIPT_BODY = f"**Alice** 00:01 {'word ' * 20000}\n"
 LONG_TRANSCRIPT = (
     textwrap.dedent("""\
     SIG: Go SIG
@@ -143,8 +143,8 @@ class TestTranscriptParsing:
         assert "Damien Mathieu 02:19 Hey!" in body
 
     def test_truncate_long_transcript(self, tmp_path: Path) -> None:
-        """Transcripts exceeding ~12,000 chars should be truncated."""
-        assert len(LONG_TRANSCRIPT_BODY) > 12_000
+        """Transcripts exceeding MAX_TRANSCRIPT_CHARS should be truncated."""
+        assert len(LONG_TRANSCRIPT_BODY) > MAX_TRANSCRIPT_CHARS
         p = tmp_path / "long.md"
         p.write_text(LONG_TRANSCRIPT, encoding="utf-8")
         body = read_transcript_body(p)
