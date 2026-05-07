@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the importance of the Packaging SIG and its relationship with component definition in OpenTelemetry.
-- Need for community involvement and Technical Committee (TC) support to enforce policies across different SIGs.
-- Insights from Michele Mancioppi on improving user experience in observability tools and the necessity of simplifying the monitoring process.
-- Concerns regarding the representation of end users in the OpenTelemetry community and the need for outreach to gather feedback.
+- Discussion on the importance of the Packaging SIG and its relationship with the stability of OpenTelemetry components.
+- Proposal for a structured approach to improve instrumentation consistency across different languages.
+- Concerns regarding maintainer workload and the need for additional contributors to support packaging efforts.
+- The idea of creating a "mega project" to encompass various components of OpenTelemetry to streamline efforts and prioritize resources.
+- Strategies for leveraging existing tooling and community involvement to enhance the OpenTelemetry ecosystem.
 
 ## Action Items
-- TC to actively support and drive the work related to the Packaging SIG and component definitions.
-- Encourage outreach to end users for feedback on monitoring tools and to ensure their needs are represented.
+- Identify and assign two people (a maintainer and a contributor) for each language that requires changes for packaging.
+- Update the community on the project proposal and discussions held during the meeting.
+- Explore the potential for a new role focused on managing instrumentation contributions across languages.
 
 ## Participants
-Trask Stalnaker, Marylia Gutierrez, Austin Parker, Ted Young, Jack Berg, Tigran Najaryan, Pablo Baeyens, Alolita Sharma, Juraci Paixão Kröhling, Josh Suereth, Liudmila Molkova, Michele Mancioppi, Morgan McLean.
+Trask Stalnaker, Marylia Gutierrez, Austin Parker, Ted Young, Jack Berg, Tigran Najaryan, Pablo Baeyens, Alolita Sharma, Josh Suereth, Juraci Paixão Kröhling, Michele Mancioppi, Liudmila Molkova, Morgan McLean, Carlos Alberto Cortez.

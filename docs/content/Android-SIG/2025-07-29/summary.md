@@ -1,14 +1,14 @@
 ## Key Topics
-- Improvements in build times for OpenTelemetry Android SDK.
-- Discussion on the ability to shut down and restart the span processor.
-- Need for supporting multiple RUM (Real User Monitoring) instances and changing API tokens/endpoints dynamically.
-- Exploration of using supplier patterns for dynamic configuration changes.
-- Consideration of technical limitations versus conceptual design decisions regarding SDK reinitialization.
+- **Build Enhancements**: Discussion on improvements in build times, reducing from 40 minutes to 20 minutes.
+- **Span Processor Reinitialization**: Need for the ability to shut down and restart the span processor for custom user sessions.
+- **Multiple RUM Instances**: Concerns about supporting multiple instances of RUM and the implications of doing so.
+- **Permission Management**: The decision to remove sensitive permissions from the SDK manifest and document their necessity for specific features.
+- **Trace ID Propagation**: Clarification on the existing trace context propagation in HTTP requests and potential enhancements.
 
 ## Action Items
-- Investigate the feasibility of supporting the shutdown and restart of the span processor.
-- Explore the implementation of a delegating exporter for easier dynamic configuration.
-- Consider providing examples or documentation on using supplier patterns for API tokens and endpoints.
+- **Investigate Shutdown Method**: Mustafa to explore the implementation of a shutdown method for the SDK to facilitate clean reinitialization.
+- **Documentation Update**: Surbhi to update documentation to reflect changes in permissions and required configurations for network attributes.
+- **Log Implementation**: Consider implementing logging when permissions are not granted to assist with debugging.
 
 ## Participants
-Jason Plumb, Hanson Ho, Cesar Munoz, Mustafa Haddara, Cleverchuk
+Jason Plumb, Hanson Ho, Cesar Munoz, Mustafa Haddara, Surbhi, Cleverchuk

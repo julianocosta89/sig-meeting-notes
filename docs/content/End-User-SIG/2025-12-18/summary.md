@@ -1,13 +1,16 @@
 ## Key Topics
-- Discussion on the upcoming holiday break and the next SIG meeting scheduled for January 1st.
-- Update on the Japanese survey, which has received 70 responses, with plans to close it in early January.
-- Promotion strategies for the survey, including potential social media posts.
-- Recognition of a new maintainer in the community and discussions about a mascot for OpenTelemetry.
+- **Japanese Survey Update**: 70 responses received; survey to close in early January. Discussion on promoting it further.
+- **Guidelines PR**: Ernest's guidelines PR is ready for review and merging.
+- **Video Transcription Process**: Discussion on improving video transcripts with chapters using ChatGPT; concerns about code maintenance.
+- **APAC SIG Meetings**: Proposal for APAC-focused meetings to engage the community; potential overlap with EMEA meetings.
+- **Renovate Bot Configuration**: Updates on managing PRs for dependencies to reduce clutter in GitHub.
 
 ## Action Items
-- Andrej to collaborate with Ernest on promotional copy for the survey and reach out to Yoshi for translation.
-- Victoria to assist with posting the survey on social media.
-- Review and possibly repurpose previous social media posts related to the survey.
+- **Promote Japanese Survey**: Andre to coordinate with Yoshi for translations and social media posts.
+- **Review Guidelines PR**: Participants encouraged to review and merge Ernest's guidelines PR.
+- **Video Editing**: Sophia to collaborate with Reese on combining video segments for consistency.
+- **CNCF Ticket Submission**: Dan to submit a ticket to add new organizers for OpenTelemetry Live.
+- **Admin Access**: Adriana to add Andre and Sophia as admins/contributors for social media management.
 
 ## Participants
 Adriana Villela, Victoria Nduka, Andrej Kiripolsky, Dan Gomez Blanco, Reese Lee, Sophia Solomon

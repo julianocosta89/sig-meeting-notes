@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on cold start times when transitioning from New Relic APM to OpenTelemetry APM layers.
-- Bhaskar Banerjee shared comparative data on cold start and execution times for Java, Python, and JavaScript using New Relic vs. OpenTelemetry.
+- Discussion on cold start times when transitioning from New Relic to OpenTelemetry for AWS Lambda.
+- Bhaskar Banerjee presented performance metrics comparing New Relic and OpenTelemetry SDKs across Java, Python, and JavaScript.
 - Exploration of potential optimizations for the Java agent to reduce cold start times.
-- Introduction of a new contributor, Lucas, who is working on AWS Lambda telemetry API metrics.
+- Mention of a need for automated testing for Lambda runtimes to prevent issues during releases.
+- Updates on ongoing work for JavaScript AWS Lambda instrumentation and SQS context propagation.
 
 ## Action Items
-- Bhaskar Banerjee to gather and test thoughts on optimizing the Java agent settings locally.
-- Tyler Benson to explore profiling information for startup periods to identify bottlenecks.
-- Warre Pessers to update the calendar invite with the new document and add attendees to the meeting notes.
+- Investigate ways to optimize Java agent settings to improve cold start performance.
+- Explore the possibility of creating a test suite for Lambda runtimes to ensure stability during updates.
+- Review the latest changes in the JavaScript layer to improve performance for ESM.
 
 ## Participants
-Bhaskar Banerjee, Stephen Hong, Warre Pessers, Tyler Benson, Lucas (new contributor)
+Bhaskar Banerjee, Stephen Hong, Warre Pessers, Tyler Benson, Lucas (not present)

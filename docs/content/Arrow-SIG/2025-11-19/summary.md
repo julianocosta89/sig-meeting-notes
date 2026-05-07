@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on handling syslog data and attribute condensing.
-- Performance considerations of implementing features in the syslog receiver vs. attribute processor.
-- Introduction of new participant, Kennedy Bushnell, and their involvement in the project.
-- Need for defining principles around feature implementation in the syslog receiver.
+- Discussion on the syslog receiver and attribute processor for condensing attributes.
+- Updates on the P data library for OTLP and OTAP conversion.
+- Performance improvements in the new gRPC implementation for OTLP and OTAP receivers.
+- Proposal for a new file format for OTAP records that allows multiple schemas in a single file.
+- Future considerations for supporting additional protocols and optimizing the emitter for performance.
 
 ## Action Items
-- Further evaluate the necessity of the condensed operation in the syslog receiver.
-- Consider defining principles for feature implementation in the syslog receiver.
-- Revisit performance implications of using the attribute processor for data transformation.
+- Continue discussions on the syslog receiver and attribute processor design decisions.
+- Review and provide feedback on the updated proposal for the P data library.
+- Monitor performance metrics from the new gRPC implementation and consider further optimizations.
+- Explore the feasibility of supporting a unary OTAP request in addition to streaming.
 
 ## Participants
-Albert Lockett, Aaron Marten, Danny Chin, Joshua MacDonald, Kennedy Bushnell, Utkarsh, Laurent Querel
+Albert Lockett, Aaron Marten, Danny Chin, Joshua MacDonald, Utkarsh, Kennedy Bushnell, Laurent Querel, Drew Relmas, Andres Borja.

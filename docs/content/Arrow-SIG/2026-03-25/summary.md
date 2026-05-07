@@ -1,13 +1,14 @@
 ## Key Topics
-- Progress on attribute assignment in the query engine and challenges faced.
-- Discussion on schema-aware concatenation for record batches in the query engine.
-- Concerns about orphaned dictionary values in Arrow compute kernels and their implications for sensitive data.
-- Introduction of a sanitization step for record batches to handle orphaned values.
-- Ongoing debates about default settings for sanitization in the query engine.
+- Progress on attribute assignment in the query engine.
+- Discussion on handling orphaned dictionary values in Arrow.
+- Performance considerations in filtering and querying with different data types.
+- Challenges with handling null values in dictionary arrays.
+- Comparison of engine designs and performance benchmarks.
 
 ## Action Items
-- Albert to post about orphaned dictionary values behavior in Arrow on Discord for community feedback.
-- Review and finalize the PR related to sanitization in the query engine.
+- Albert to post about the orphaned dictionary value issue in the Arrow Discord.
+- Further investigation into handling dynamic types and null values in the query engine.
+- Continue performance benchmarking and optimization discussions.
 
 ## Participants
 Mike "Blanch" Blanchard, Albert Lockett

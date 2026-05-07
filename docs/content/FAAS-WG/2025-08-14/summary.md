@@ -1,13 +1,14 @@
 ## Key Topics
-- Upcoming release planned for the week, with no critical issues reported.
-- Warre Pessers presented a draft on context propagation for AWS Lambda, including SQS event handling.
-- Discussion on span linking and the hierarchy of spans in tracing, particularly between Lambda invocation spans and processing spans.
-- Concerns raised about the compatibility of trace linking with various tracing backends.
+- Upcoming release scheduled for the week following the meeting.
+- Discussion on Warre Pessers' draft for context propagation in AWS Lambda with SQS.
+- Review of span linking and its implications for tracing backends.
+- Concerns about visibility and trace completeness when using SNS and SQS together.
+- Agreement on focusing efforts on SQS context propagation for the current issue.
 
 ## Action Items
-- Warre to share the JSON file and export traces to a tracing backend for visual verification.
-- Test the implementation with different tracing backends (Grafana, Zipkin, etc.) to assess support for trace linking.
-- Consider additional properties for identifying SQS events to enhance robustness.
+- Tyler Benson to work on the release within the next week.
+- Warre Pessers to share the JSON file and test the implementation with various tracing backends.
+- Further exploration of SNS to SQS tracing capabilities to be addressed later.
 
 ## Participants
 Serkan Özal, Tyler Benson, Warre Pessers

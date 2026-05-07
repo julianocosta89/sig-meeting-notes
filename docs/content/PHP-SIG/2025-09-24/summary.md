@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the C++ SIG's review of the Elastic contribution and its integration with PHP.
-- Challenges related to the C++ library's linking and initialization timing affecting PHP integration.
-- Updates on open pull requests, including the D4 temporality spec and SQL Commenter implementation.
-- Milestone achievement of over 20 million contributions in the project.
+- Discussion on the C++ SIG's review of the Elastic contribution and open questions.
+- Issues with the C++ library's integration with PHP, particularly around startup timing and resource attributes.
+- Update on ongoing pull requests, including the D4 temporality update and SQL Commenter integration.
+- Plans for the SDK V2 release and finalizing remaining tasks.
 
 ## Action Items
-- Pawel Filipczak to plan and draft a solution for the integration issues discussed.
-- Bob Strecansky to review the open pull requests related to D4 temporality and SQL Commenter.
+- Pawel Filipczak to draft a plan for addressing issues with the C++ library integration.
+- Bob Strecansky to review the open pull requests and provide feedback.
+- Participants to continue discussing context propagation and related specifications.
 
 ## Participants
 Brett McBride, Bob Strecansky, Chris Lightfoot-Wild, Pawel Filipczak, Nick Schuch

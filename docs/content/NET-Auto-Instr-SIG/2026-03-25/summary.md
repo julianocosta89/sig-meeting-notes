@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on recent PRs, including fallback instrumentation and allocation sampling.
-- Updates on the instrumentation stability proposal and its alignment with ongoing spec changes.
+- Discussion of recent PRs, including fallback instrumentation and allocation sampling.
+- Updates on the stability proposal for instrumentation and its alignment with ongoing spec changes.
 - Progress on resolving .NET assembly version conflicts and related issues.
-- Review of SDK updates and upcoming release milestones.
+- Plans for SDK updates and release management.
+- Need for documentation improvements and addressing cryptic errors.
 
 ## Action Items
-- Zach Montoya to review the fallback instrumentation PR offline.
-- Chris Ventura to add links to the spec PR related to instrumentation stability.
-- Piotr Kiełkowicz to create milestone 1.16 after the meeting.
-- Team to monitor assembly version conflict issues and ensure proper resolution.
+- Review and finalize the instrumentation stability proposal.
+- Address comments and finalize the PR related to assembly conflict resolution.
+- Create a milestone for SDK updates and ensure they are tracked in the project board.
+- Post relevant links to the spec PR in the meeting chat.
 
 ## Participants
 Piotr Kiełkowicz, Igor Kiselev, Alexey Pukhov, Zach Montoya, Yevhenii Solomchenko, Chris Ventura

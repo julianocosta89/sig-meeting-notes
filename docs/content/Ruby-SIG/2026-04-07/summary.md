@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on recent PR related to HTTP response size limitations and potential changes to exporters.
-- Proposal for system packages to streamline OpenTelemetry installation and improve auto-instrumentation.
-- Review of a PR concerning the organization of requires in logs and metrics repositories to enhance testing.
-- Update on stable migration for database span names and the implications of parsing for span names.
-- Announcement of a significant release with updates to Ruby version support and improvements to exporters.
+- Updates on recent PRs related to HTTP response size limitations and memory usage risks.
+- Discussion on a project proposal for system packages to streamline OpenTelemetry installation.
+- Review of a pull request addressing the organization of requires in logs and metrics repositories.
+- Ongoing conversation about stable migration for database span names and options for parsing.
+- Upcoming release highlights, including Ruby version updates and improvements to exporters.
 
 ## Action Items
-- Participants to review the PR regarding requires in logs and metrics for feedback.
-- Xuan Cao to take a closer look at the metrics-related PR and provide insights.
-- Hannah Ramadan to follow up on the stable migration for database span names once reconnected.
-- Participants encouraged to contribute to issues related to test coverage improvements.
+- Participants are encouraged to review the PR regarding requires organization and provide feedback.
+- Hannah to prepare a document outlining options for database span name parsing for discussion next week.
+- Xuan to review the pull request related to metrics and provide insights.
 
 ## Participants
 Kayla Reopelle, Hannah Ramadan, Xuan Cao, Arjun Rajappa

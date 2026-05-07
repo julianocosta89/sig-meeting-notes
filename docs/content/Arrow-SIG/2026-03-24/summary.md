@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on triaging new issues, including metrics optimization and handling of duplicate metrics.
-- Overview of internal telemetry requirements and the integration of the internal metrics pipeline with the data flow engine.
-- Presentation of a new interactive benchmark UI for comparing the performance of different data collection solutions.
-- Exploration of memory management strategies, including process-wide and pipeline-level memory limits.
-- Updates on ongoing PRs and issues related to the AC redesign and shutdown processes.
+- Discussion on internal telemetry improvements and the need for a unified internal telemetry pipeline.
+- Review of ongoing issues related to metrics, including deduplication and optimization of existing metrics.
+- Presentation of a new interactive benchmark UI for comparing performance across different collectors.
+- Triage of new issues, particularly focusing on time zone designation and metrics handling.
+- Considerations for graceful shutdown processes and control flow in the system.
 
 ## Action Items
-- Update labels for triaged issues in real-time during the meeting.
-- Document performance optimization ideas for the column recovery engine.
-- Follow up on the implementation of process-wide memory limits and NUMA-aware memory logic.
-- Plan for further discussions on the unbounded data structures in the context of the ICMAC PR.
+- Follow up on the implementation of the internal telemetry pipeline and associated metrics.
+- Continue refining the interactive benchmark UI based on feedback.
+- Create GitHub issues for proposed changes and optimizations discussed during the meeting.
+- Merge the large PR related to ACNAC refinement after addressing outstanding comments.
 
 ## Participants
 Albert Lockett, Utkarsh, Gokhan Uslu, Laurent Querel, Joey, Joshua Macdonald, Jake Dern, Drew, Lalit

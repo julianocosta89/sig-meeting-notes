@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the potential use of GitHub projects for better issue tracking and visibility within the JavaScript SIG.
-- Feedback on the effectiveness and maintenance of GitHub projects, with concerns about keeping them updated.
-- The need for a "good first issue" tag to help new contributors find suitable tasks.
-- Consideration of cross-language projects and how to track them effectively.
-- Insights from participants on their experiences with GitHub projects in other SIGs.
+- Discussion on using GitHub Projects for issue tracking and contributions in the JavaScript SIG.
+- Feedback on the effectiveness of labeling issues (e.g., "good first issue") to facilitate contributions.
+- Review of ongoing pull requests (PRs) and updates on various issues related to exporters and instrumentation.
+- Concerns about maintaining project management tools and ensuring they are kept up to date.
 
 ## Action Items
-- Evaluate the feasibility of implementing GitHub projects for the JavaScript SIG and gather feedback from contributors.
-- Consider establishing a dedicated project triage session in meetings to keep project information current.
-- Encourage better use of "good first issue" tags across all repositories to assist new contributors.
+- Monitor feedback from the Browser SIG regarding the use of GitHub Projects.
+- Encourage better use of issue labels like "good first issue" across all OpenTelemetry repositories.
+- Review and merge outstanding PRs, particularly those related to exporters and instrumentation updates.
 
 ## Participants
-Daniel Dyla, Marylia Gutierrez, Trent Mick, Jonathan Munz, Raphaël Thériault
+Daniel Dyla, Marylia Gutierrez, Trent Mick, Raphaël Thériault, Jonathan Munz, Hector Hernandez

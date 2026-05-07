@@ -1,12 +1,13 @@
 ## Key Topics
-- **SQL Commenter Discussion**: The committee discussed the status and performance issues of SQL Commenter, noting that it has been archived and questioning the renewed interest in it.
-- **Context Propagation**: The challenges of SQL context propagation and the need for database-specific solutions were addressed.
-- **Onboarding New Members**: David Ashpole's onboarding process and responsibilities within the Technical Committee were discussed.
-- **SIG Engagement**: Members discussed their involvement with various Special Interest Groups (SIGs) and the need for better communication and support.
+- Discussion on the status and future of SQL Commenter within OpenTelemetry, including performance concerns and community interest.
+- Review of responsibilities and assignments for Technical Committee (TC) members regarding different Special Interest Groups (SIGs).
+- Updates on the current and estimated sponsorship levels for various SIGs, including potential changes to the tracking document structure.
+- Engagement of new TC member David Ashpole and his involvement with various SIGs.
 
 ## Action Items
-- Tigran Najaryan will post in the private channel regarding SQL Commenter and gather additional context from Josh.
-- Carlos Alberto Cortez will coordinate with David Ashpole regarding his involvement with the eBPF SIG and potential scheduling changes.
+- Tigran Najaryan to post a summary of the SQL Commenter discussion in the private channel for further input.
+- TC members to review and potentially update the SIG sponsorship document to reflect current responsibilities and needs.
+- Carlos Alberto Cortez and David Ashpole to discuss involvement in the End User SIG and other SIGs of interest.
 
 ## Participants
 Tigran Najaryan, Armin (Dynatrace), jmacdonald, Liudmila Molkova, David Ashpole (dashpole), Carlos Alberto Cortez

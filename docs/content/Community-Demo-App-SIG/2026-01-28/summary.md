@@ -1,14 +1,12 @@
 ## Key Topics
-- Progress on Kotlin SDK for OpenTelemetry and its implications for mobile observability.
-- Discussion on the evolution of the OpenTelemetry JavaScript SDK, including browser instrumentation.
-- The relationship between the new Kotlin SDK and the existing Android SDK.
-- Challenges and strategies for managing breaking changes in SDK versions.
-- The establishment of a dedicated Browser SIG to focus on browser-specific instrumentation.
+- Progress on OpenTelemetry mobile observability, including the development of a new Kotlin SDK.
+- Discussion on the separation of browser and Node.js environments in OpenTelemetry JavaScript SDK.
+- Current status of the OpenTelemetry demo application and its browser instrumentation capabilities.
+- Challenges in demonstrating browser instrumentation effectively in the demo application.
 
 ## Action Items
-- Follow up on the formation and meetings of the Kotlin SIG.
-- Monitor the development and publication of packages from the OpenTelemetry Browser repo.
-- Investigate the long-term plans for the existing Android SDK in relation to the new Kotlin SDK.
+- Investigate how to better showcase browser instrumentation in the OpenTelemetry demo application.
+- Follow up on the Kotlin SDK's integration and its relationship with the existing Android SDK.
 
 ## Participants
 Jonathan Munz, Cyrille Le Clerc

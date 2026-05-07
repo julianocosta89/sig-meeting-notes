@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on conducting a new survey regarding OpenTelemetry and Prometheus interoperability.
-- Exploration of user preferences between Prometheus exporters and OpenTelemetry collector receivers.
-- Clarification of what constitutes a "queryless experience" in the context of OpenTelemetry.
-- Consideration of user setups and preferences for metrics collection and querying.
+- Discussion on running a new survey regarding Prometheus and OpenTelemetry interoperability, including questions about SDK and exporter preferences.
+- Exploration of user preferences for queryless experiences versus manual query writing in OpenTelemetry.
+- Challenges in migrating between Prometheus SDK and OpenTelemetry SDK, and the need for clear migration or comparison guides.
+- Updates on ongoing projects and specifications related to OpenTelemetry and Prometheus, including stabilization efforts.
+- Discussion on naming conventions and compatibility issues between Prometheus and OpenTelemetry metrics.
 
 ## Action Items
-- Finalize the survey questions regarding SDK and exporter preferences.
-- Gather additional input from participants on potential survey questions.
-- Assess the user base's preference for Prometheus exporters versus OTLP exporters.
+- Review and provide feedback on the survey questions proposed by Andrej Kiripolsky.
+- Participants to check the PR regarding the migration guide and ensure it is framed neutrally.
+- Prepare for the presentation to the Technical Committee about current projects and needs.
+- Volunteers needed to review the exponential histograms spec PR.
 
 ## Participants
-Arthur Silva Sens, David Ashpole, Andrej Kiripolsky, Cryo, Owen
+Arthur Silva Sens, David Ashpole, Andrej Kiripolsky, krajo Krajcsovits, Owen Williams, Cryo

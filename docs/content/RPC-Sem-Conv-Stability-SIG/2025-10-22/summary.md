@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the status of various RPC conventions and their progress.
-- Clarification of the differences between gRPC and Dubbo protocols, including their compatibility and variations.
-- Exploration of how to record protocol names and attributes in OpenTelemetry for different RPC frameworks.
-- Consideration of the implications of using different content types and protocols in network traffic.
+- Discussion on the stability and approval of RPC conventions for gRPC and Dubbo.
+- Clarification on the differences between network protocols and RPC protocols, particularly regarding Dubbo and its versions.
+- Exploration of how to capture protocol names and network protocol names in OpenTelemetry spans.
+- Consideration of retry mechanisms in RPC calls and how they should be represented in telemetry.
 
 ## Action Items
-- Liudmila Molkova to update the status of certain metrics and conventions in progress.
-- Further discussions needed on the naming conventions for rpc.system and rpc.protocol attributes.
-- Participants to continue exploring the distinctions between network protocols and RPC protocols for better clarity in OpenTelemetry.
+- Review and finalize the naming conventions for RPC and network protocols.
+- Further discussion on how to handle retries in telemetry spans.
+- Continue triaging items in the "null status" category for future meetings.
 
 ## Participants
-Liudmila Molkova, Steve Rao, Trask Stalnaker, James Thompson, Sean Yang, Albumen
+Liudmila Molkova, Steve Rao, Trask Stalnaker, James Thompson, Sean Yang, Albumen, Matthew Hensley

@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on recent OPL PRs, particularly adding datetime support to the parser.
-- Issues with date parsing in the current implementation, specifically regarding timezone support.
-- Clarification on the date formats supported by KQL and their implications for OPL.
-- Plans for future work on expression evaluation within the columnar query engine.
-- Challenges related to joining datasets in expression evaluation.
+- Updates on OPL PRs, including datetime support and issues with date parsing.
+- Discussion on KQL date format specifications and their implications for OPL.
+- Challenges in implementing expression evaluation in the OTAP query engine.
+- Progress on the Arrow Rust Collector and complexities with nested attributes.
+- Importance of documentation and specifications for the Arrow data structure.
 
 ## Action Items
-- Albert to document the identified issue with date parsing (GitHub issue 2047).
-- Albert to explore the implementation of expression evaluation using DataFusion.
-- Mike to continue work on achieving parity between the Go Collector and Aero Rust Collector.
+- Albert to document the date parsing issue (GitHub issue 2047) for future reference.
+- Mike to investigate KQL date format specifications further.
+- Both participants to continue working on their respective projects and share updates in the next meeting.
 
 ## Participants
 Albert Lockett, Mike "Blanch" Blanchard

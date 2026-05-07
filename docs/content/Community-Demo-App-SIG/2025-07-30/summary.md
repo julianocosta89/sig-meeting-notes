@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on Java memory settings for OpenSearch and the need for adjustments.
-- Strategies for optimizing Docker images by stripping unnecessary plugins from OpenSearch.
-- Concerns regarding Jaeger version 2 and its compatibility with Helm charts.
-- The rationale behind using an all-in-one Jaeger setup for demo purposes.
-- Suggestions for configuring OpenSearch to manage log retention effectively.
+- Discussion on Java memory settings for OpenSearch and related container issues.
+- Strategies for minimizing Docker image size by removing unnecessary plugins.
+- Concerns regarding Jaeger version compatibility and the need for updates in Helm charts.
+- Proposal to implement basic authentication for UI endpoints using Envoy proxy.
+- Plans to consolidate Docker Compose files into a single file with profiles for easier deployment.
 
 ## Action Items
-- Shenoy to edit the Docker file to remove unnecessary plugins from OpenSearch.
-- Pierre to investigate the Jaeger Helm chart and its updates.
-- Juliano to follow up on the PR related to Jaeger version 2 and its implications.
+- Shenoy to explore options for reducing OpenSearch memory usage and log retention.
+- Pierre to investigate the Jaeger Helm chart and consider removing the sub-chart for better control.
+- Juliano to implement a new environment variable for Kafka usage in the demo.
+- Documentation improvements to include SSL setup and basic auth for security.
 
 ## Participants
 Juliano Costa, Shenoy Pratik, Pierre Tessier

@@ -1,13 +1,16 @@
 ## Key Topics
-- Discussion on the resource PR and the need for additional reviews before merging.
-- Overview of a new API for network phase timestamps in OKHTTP instrumentation.
-- Client TLS configuration enhancement request and its potential implementation.
-- Semantic conventions related to new features and their development timeline.
+- **Network Phase Timestamps**: Discussion on adding timestamps for various network phases in OKHTTP instrumentation, with a focus on API review and semantic conventions.
+- **Client TLS Configuration**: Proposal for enhancing client TLS configuration through the initializer, with a partial implementation discussed.
+- **Resource PR Review**: Ongoing review of a PR related to customizing resource attributes, seeking additional feedback before merging.
+- **Gradle Dependency Management**: Issues surrounding BOM dependencies and their implications for API vs. implementation declarations, with a focus on Sonatype validation failures.
+- **Kotlin Donation Update**: Progress on the Kotlin donation to OpenTelemetry, with acceptance requirements and potential maintainers discussed.
 
 ## Action Items
-- Review Jamie's resource PR for merging.
-- Surbhi to finalize and submit the semantic convention YAML file after the new API is approved.
-- Jason to work on the client TLS feature request and potentially submit a PR after the meeting.
+- Surbhi A to seek additional reviews for the network phase timestamps PR.
+- Jason Plumb to finalize and submit the client TLS configuration PR after the meeting.
+- Participants to review the resource PR and provide feedback.
+- Follow up on Gradle dependency management issues and clarify the implications for future releases.
+- Jamie Lynch to continue coordinating on the Kotlin donation and identify potential maintainers.
 
 ## Participants
 Jason Plumb, Mustafa Haddara, Surbhi A, Jamie Lynch, Hanson Ho

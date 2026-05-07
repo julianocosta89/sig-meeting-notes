@@ -1,14 +1,15 @@
 ## Key Topics
-- Launch of the Ecosystem Explorer project and its features.
-- Discussion on UI builder for declarative configuration and feedback on default settings.
-- Updates on data gathering methods for the Java agent and collector.
-- Exploration of extending telemetry to Gen AI projects and cross-language support.
-- Development of a system for compliance tracking against semantic conventions.
+- Launch of the Ecosystem Explorer project and UI builder for declarative configuration.
+- Discussion on the integration of metadata and schema for Java instrumentation.
+- Proposal for a pretty print configuration option for OTLP exporters.
+- Strategies for speeding up build processes and optimizing smoke tests.
+- Ongoing discussions about the stability and configuration of Java agent properties.
 
 ## Action Items
-- Jay DeLuca to incorporate feedback on default configurations into the UI builder.
-- Create an issue to explore telemetry normalization for Gen AI projects.
-- Review and refine the automatic converter for environment variables in the Spring Boot documentation.
+- Jay DeLuca to gather feedback on the Ecosystem Explorer UI and its configuration options.
+- Gregor Zeitlinger to create a PR for clarifying the stability of declarative configuration in documentation.
+- Jack Berg to explore the possibility of adding a pretty print option for OTLP exporters and its implications.
+- Team to evaluate the effectiveness of current smoke tests and consider reducing the number of tests run on pull requests.
 
 ## Participants
-Trask Stalnaker, Jay DeLuca, Gregor Zeitlinger, Jack Berg
+Trask Stalnaker, Jay DeLuca, Gregor Zeitlinger, Jack Berg, Lauri, Peter Findeisen

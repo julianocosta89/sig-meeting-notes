@@ -1,13 +1,16 @@
 ## Key Topics
-- Debug-level logging for errors in consume calls was discussed, with a focus on limiting logs to errors only.
-- The need for broader end-to-end testing for metrics to prevent unnoticed name changes was highlighted, with a reference to existing automation tools like OATS.
-- The current end-to-end validation framework was reviewed, including its limitations and the need for more contributors to enhance its functionality.
-- Discussion on the integration of existing testing frameworks into the collector core and contrib to ensure metric consistency.
+- Discussion on adding debug-level logs for errors in consume calls.
+- Proposal for a new OTTL function to split batched JSON logs from CloudTrail into individual events.
+- Ongoing conversation about the deprecation of the OpenCensus Receiver and Exporter, with concerns from users about its removal.
+- Plans for building Windows ARM support and potential concurrency issues in tests.
+- Discussion on improving the onboarding process for first-time contributors to the project.
 
 ## Action Items
-- Jade Guiton to add a link in the GitHub issue regarding the debug logging announcement.
-- Arthur Silva Sens to research the existing end-to-end testing framework and explore how to integrate it into the collector core and contrib.
-- Participants to consider the potential move of the Golden testing tool to the core for better access and functionality.
+- Jade Guiton to add a link to the RFC amendment regarding debug logs in the GitHub issue.
+- Arthur Silva Sens to investigate existing automation for testing metric name changes and consider how to integrate it into the collector core.
+- Raj Nishtala to find a sponsor for the proposed OTTL function for splitting logs.
+- Heitor (Huawei) to clarify the need for a custom logs receiver and provide use case details in the issue.
+- Paulo Janotti to continue working on Windows ARM support and ensure thorough testing before integration into the releases repository.
 
 ## Participants
-Sylvain, Antoine Toulme, Sean Marciniak, Andrzej Stencel, Jade Guiton, Arthur Silva Sens, Pablo Baeyens, Dmitrii Anoshin, Israel Blancas
+Sylvain, Antoine Toulme, Sean Marciniak, Andrzej Stencel, Jade Guiton, Arthur Silva Sens, Pablo Baeyens, Dmitrii Anoshin, Israel Blancas, Raj Nishtala, Tyler Helmuth, Heitor (Huawei), Paulo Janotti, Evan Bradley.

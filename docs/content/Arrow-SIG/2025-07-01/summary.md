@@ -1,13 +1,14 @@
 ## Key Topics
-- Overview of recent achievements in the OpenTelemetry Arrow SIG.
-- Discussion on Albert's contributions regarding the view mechanism and performance benchmarks.
-- Utkarsh's update on the Syslog receiver development and future plans for data conversion.
-- Insights on optimizing data pipelines and maintaining a single type of pipeline for efficiency.
+- Updates on the progress of the OpenTelemetry Arrow SIG, including achievements from Albert and Utkarsh.
+- Discussion on the integration of Syslog and Otlp receivers, and the development of a query engine for processing logs.
+- Exploration of the interoperability between the Go collector and the Arrow data flow engine.
+- Progress on the query engine updates, including the development of an expression tree and Kql parser for logs.
+- Considerations for future enhancements, including user-defined functions and leveraging data fusion capabilities.
 
 ## Action Items
-- Continue exploring the implementation of a single type of pipeline for data processing.
-- Utkarsh to implement views for the Syslog receiver in future updates.
-- Participants to review and provide feedback on the recent PRs and documents shared.
+- Utkarsh to resolve comments on the Syslog receiver PR and continue developing the view implementation.
+- Mike to provide documentation on the Kql flavor for logs and coordinate with Drew for further development.
+- Laurent to review the ongoing efforts and provide feedback on the integration of the query engine with the Arrow data flow engine.
 
 ## Participants
-Laurent Quérel, Utkarsh, Mike Blanchard, Jake Dern, Albert (absent), David
+Laurent Quérel, Utkarsh, Mike "Blanch" Blanchard, Jake Dern, David, Albert, Josh, Tom

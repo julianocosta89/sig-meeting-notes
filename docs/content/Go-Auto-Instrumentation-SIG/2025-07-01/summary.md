@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on adding the distro version to the default pipeline and its implications.
-- Challenges with module cyclical dependencies and release tooling for version updates.
-- Decision to proceed with a patch release for ARM fixes without waiting for the versioning PR.
-- Updates on probe lifecycle management and feedback from Raphael.
+- Discussion on the milestone for adding the distro version to the default pipeline and its implications for SDK identification.
+- Updates on the PR for shifting probe management to a manager, emphasizing the need for a clearer scope and vision for the probe API.
+- The importance of aligning the probe API across OpenTelemetry Go instrumentation and the OB project for unified functionality.
+- The need for a proof of concept to demonstrate compatibility between the OpenTelemetry Go instrumentation and the OB project.
 
 ## Action Items
-- Tyler to create a PR for the distro version update and link it in the relevant issue.
-- Tyler to work on a patch release for ARM fixes and move the versioning PR to the next milestone.
-- Mike to resolve conflicts in the probe lifecycle management PR and incorporate feedback from Raphael.
+- Create an issue for "Operation Steel Thread" to outline the proof of concept for using a probe from OpenTelemetry Go instrumentation in the OB project.
+- Review and potentially merge the current PR related to probe management, ensuring it aligns with the overall goals discussed.
+- Document the vision and goals for the probe API to ensure alignment among all participants.
 
 ## Participants
 Tyler Yahn, Mike Dame, Ron Federman, Raphael, Nicola

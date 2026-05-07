@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on upcoming localization events and potential participation.
-- Sharing experiences about organizing events and securing sponsorships.
-- Strategies for engaging local and global sponsors for events.
-- Importance of maintaining connections within the community for future collaborations.
+- Discussion on upcoming localization events and potential participation in conferences.
+- Strategies for organizing events, including sponsorship and ticket pricing.
+- Importance of community engagement and collaboration in OpenTelemetry initiatives.
+- Experiences and challenges faced in previous events, particularly in Latin America.
 
 ## Action Items
-- Explore the possibility of creating a dedicated website for event information.
-- Reach out to potential sponsors, both local and global, for upcoming events.
-- Consider combining tourism with event participation to enhance engagement.
+- Explore potential sponsorship opportunities with local and global companies.
+- Finalize details for upcoming events, including ticket pricing and logistics.
+- Create a webpage for event promotion and information sharing.
 
 ## Participants
 Carol Valencia, Christopher Tineo, Josh Suereth

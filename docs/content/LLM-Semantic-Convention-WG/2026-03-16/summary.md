@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on mapping OpenTelemetry to MITRE Defend ontology for AI security metrics.
-- Integration of supply chain information within OpenTelemetry metrics, particularly in Kubernetes environments.
-- Importance of a standardized ontology for analyzing supply chain data across different frameworks.
-- Collaboration opportunities between OpenTelemetry and Cisco's AI defense team regarding security standards.
-- The need for a multidimensional approach to supply chain data analysis, moving beyond one-dimensional models.
+- Discussion on mapping OpenTelemetry to MITRE Defend ontology and OCSF for AI security metrics.
+- Challenges in integrating supply chain information with OpenTelemetry, particularly in Kubernetes environments.
+- Importance of standardized ontologies (e.g., SPDX) for consistent data analysis across different organizations.
+- Exploration of agent frameworks and their associated vulnerabilities in telemetry data capture.
+- Need for actionable AI-specific use cases and standards within the OpenTelemetry context.
 
 ## Action Items
-- Victor Lu to provide links to the COSI meeting outcomes and relevant documents.
-- Participants to review the shared documents and summaries asynchronously.
-- Sergey Sergeev to communicate with Cisco's defense team about security standards and collaboration.
+- Victor Lu to provide links to the COSI meeting notes and relevant documents.
+- Participants to identify AI-specific use cases for review by the group.
+- Sergey Sergeev to share insights with the Cisco AI defense team regarding security proposals.
 
 ## Participants
 Sergey Sergeev, Victor Lu, Aditya (Cisco/Splunk)

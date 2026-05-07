@@ -1,11 +1,11 @@
 ## Key Topics
-- Proposal to stabilize service and deployment semantic conventions, including new attributes and stabilization of existing concepts.
-- Discussion on the handling of complex attributes and empty values in protocol buffers, highlighting serialization issues and implications for compatibility.
-- Clarification on the distinction between empty values and their representation in protocol buffers, and the need for a clear understanding of data types in the specification.
+- Proposal to stabilize service and deployment semantic conventions, including new attributes for service ownership and criticality.
+- Discussion on the serialization of complex attributes and handling of empty values in protocol buffers, highlighting issues with default behavior in libraries.
+- Need for clarification on the treatment of empty values in the OpenTelemetry specification and potential conflicts within the spec.
 
 ## Action Items
-- Update the thread regarding the stabilization proposal and clarify the relationship between service ownership and namespace.
-- Prepare for a deeper discussion on complex attributes and serialization issues in the upcoming public meeting.
+- Josh Suereth to update the thread regarding the stabilization of semantic conventions.
+- Prepare for a deeper discussion on the serialization of complex attributes and empty values in the upcoming public meeting.
 
 ## Participants
 Tigran Najaryan, Carlos Alberto Cortez, Josh Suereth, Armin (Dynatrace), Liudmila Molkova

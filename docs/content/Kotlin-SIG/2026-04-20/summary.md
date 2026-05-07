@@ -1,12 +1,15 @@
 ## Key Topics
-- **Branch Protection Settings**: Discussion on implementing branch protection for the release branch and its impact on CI workflows.
-- **Bug Report on Protobuf Export**: Identified an issue where integer values in attributes cause exceptions; proposed solutions to handle integer values.
-- **Handling Complex Attributes**: Explored how complex attributes are serialized and the need for better type handling in the exporter.
+- **Branch Protection**: Discussion on implementing branch protection for the release branch and its impact on CI workflows.
+- **Bug Report**: Addressing a bug related to protobuf exports that fails when handling integer values instead of long.
+- **API Stabilization**: Conversations around stabilizing the logging and tracing APIs, with a focus on attributes and propagators.
+- **No-op Implementation**: Discussion on the necessity of a no-op implementation in the API for uniformity and compatibility with other SDKs.
+- **Upcoming Changes**: Jamie's upcoming paternity leave and the need to prepare for reduced capacity in the team.
 
 ## Action Items
-- Jamie to link the PR for branch protection to Jason for review.
-- Investigate how integers are being set in attributes and ensure proper type handling in both SDK and exporter.
-- Document the need for coercing integers to long in the codebase.
+- Jamie to provide a link to the PR regarding branch protection for review.
+- Investigate and address the bug related to integer handling in protobuf exports.
+- Create issues based on the stabilization milestones for attributes and propagators.
+- Prepare tickets for new contributors to facilitate onboarding and contributions during Jamie's leave.
 
 ## Participants
-Jason Plumb, Hanson, Jamie Lynch
+Jason Plumb, Hanson, Jamie Lynch, Carlos Alberto Cortez

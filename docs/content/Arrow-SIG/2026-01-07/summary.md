@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the new syntax for the KQL parser and the introduction of a new parser for OPL.
-- Review of the shared parser rules between KQL and OPL, and the rationale behind the separation.
-- Debate on whether OPL should be a superset of KQL and the implications of maintaining both parsers.
-- Importance of the summarize operation and its potential inclusion in the OPL language.
+- Discussion on the new syntax for KQL parser and the creation of a new parser for OPL language.
+- Debate on whether OPL should be a superset of KQL or maintain independent grammar.
+- The implications of sharing code between KQL and OPL parsers, including maintenance concerns.
+- Exploration of summarization features and their integration within OpenTelemetry.
+- Agreement on having separate grammars for KQL and OPL while sharing the same AST.
 
 ## Action Items
-- Review the code for maintenance implications and clarify the responsibilities for the KQL and OPL parsers.
-- Consider moving the summarize function to the base if deemed necessary for OPL.
-- Further discussion needed on the structure and features of the OPL language.
+- Albert Lockett to refactor the KQL parser and create a new grammar for the OPL parser.
+- Mike "Blanch" Blanch to dig up and share documentation on summarization for further review.
+- Team to continue discussions on the summarization feature and its specifications in OpenTelemetry.
 
 ## Participants
-Albert Lockett, Drew Relmas, Laurent Querel, Mike "Blanch" Blanchard
+Albert Lockett, Drew Relmas, Mike "Blanch" Blanchard, Laurent Querel, Joshua MacDonald

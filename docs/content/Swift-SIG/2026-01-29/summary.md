@@ -1,13 +1,14 @@
 ## Key Topics
-- Updates on the implementation of environment context propagation and its relation to the tracing spec.
-- Discussion on the challenges of integrating WebSocket instrumentation with Swift's async/await APIs.
-- Review of semantic conventions for WebSocket protocols and the need for community input on naming conventions.
-- Progress on fixing issues with the OSSF card and Swift 6 rebase.
+- Updates on WebSocket instrumentation and challenges with async APIs.
+- Discussion on semantic conventions for WebSocket protocol and configuration options.
+- Review of ongoing pull requests and their statuses, including issues related to Swift NIO and CodeQL analysis.
+- Strategies for improving build times in GitHub Actions, including caching and architecture selection.
 
 ## Action Items
-- Billy Zhou to revise feedback on his items and reach out for help if needed.
-- Ariel Demarco to document findings and decisions regarding WebSocket instrumentation in the issue tracker.
-- Team to discuss and finalize semantic conventions for WebSocket protocols in future meetings.
+- Billy Zhou to revise and submit updates on feedback received.
+- Ariel Demarco to investigate build time issues in GitHub Actions and implement caching.
+- Vinod Vydier to resolve conflicts in the Crash Reporter pull request.
+- Team to discuss and finalize semantic conventions for WebSocket instrumentation.
 
 ## Participants
-Vinod Vydier, Billy Zhou, Ariel Demarco, Bryce Buchanan, Nacho
+Vinod Vydier, Billy Zhou, Ariel Demarco, Nacho, Bryce Buchanan

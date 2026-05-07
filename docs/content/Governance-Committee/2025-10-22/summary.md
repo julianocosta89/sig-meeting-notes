@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the status and approval of the CICD project proposal.
-- Evaluation of the audit logging proposal and its potential separation from OpenTelemetry.
-- Consideration of creating a sandbox project for external contributions to facilitate innovation without directly integrating into OpenTelemetry.
-- Community Awards nominations and deadlines.
+- **Community Awards Nominations**: Reminder to nominate individuals for the Community Awards by November 6.
+- **Project Proposals**: Discussion on donation and project proposals, particularly around audit logging and the need for clearer project scopes.
+- **Stability and Documentation**: Emphasis on the importance of improving documentation and defining stability metrics for OpenTelemetry.
+- **Adopter Information**: Need for more adopter contacts to provide to the TOC for feedback purposes.
+- **Hotel Unplugged**: Discussion on promoting the event and engaging maintainers to participate.
 
 ## Action Items
-- Participants to finalize and submit nominations for the Community Awards by November 6.
-- Further discussion on the audit logging proposal and its implications for OpenTelemetry's scope.
-- Explore the possibility of establishing a sandbox project to support external development efforts.
+- Participants to nominate individuals for Community Awards by November 6.
+- Finalize and publish a blog post on stability guidelines and initiate a public discussion on GitHub.
+- Compile a list of adopters with names, emails, and titles to provide to the TOC.
+- Dan Gomez Blanco to draft a project proposal for the end-user SIG regarding reference architectures.
 
 ## Participants
-Severin Neumann, Austin Parker, Pablo Baeyens, Dan Gomez Blanco, Trask Stalnaker, Alolita Sharma, Ted Young
+Severin Neumann, Austin Parker, Pablo Baeyens, Dan Gomez Blanco, Trask Stalnaker, Alolita Sharma, Ted Young, Juraci Paixão Kröhling, Morgan.

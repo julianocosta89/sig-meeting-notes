@@ -1,13 +1,15 @@
 ## Key Topics
-- Next steps for PR 719 and the need for additional reviews from the community.
-- Update on the recent Hotel Unplugged event in Brussels and plans for a future event in Canada.
-- Proposal for a community project to create a meta package for OpenTelemetry components to simplify installation.
-- Discussion on prioritization of different auto-instrumentation mechanisms and the need for clearer documentation on their interactions.
+- Next steps for PR 719 and the need for additional reviews.
+- Update on the Hotel Unplugged event and plans for future gatherings.
+- Proposal for a system packaging project to streamline OpenTelemetry installations.
+- Discussion on prioritizing different auto-instrumentation mechanisms and their documentation.
+- Proposal for making clock interfaces available in the API for better instrumentation accuracy.
 
 ## Action Items
-- Participants are encouraged to review PR 719 and provide feedback.
-- Community members are invited to contribute to the system packaging project proposal.
-- Further discussion on the prioritization of instrumentation mechanisms will be pursued in future meetings.
+- Review PR 719 for additional feedback and approvals.
+- Provide feedback on the system packaging project proposal.
+- Continue discussions on the prioritization of auto-instrumentation mechanisms offline.
+- Finalize and clarify the OTEP regarding stability in instrumentation and semantic conventions.
 
 ## Participants
-Carlos Alberto Cortez, Ted Young, Ivo Anjo, Austin Parker, Tigran Najaryan, Jack Berg, Florian Lehner, Liudmila Molkova, Tyler
+Carlos Alberto Cortez, Ted Young, Austin Parker, Ivo Anjo, Tigran Najaryan, Jack Berg, Florian Lehner, Josh Suereth, Liudmila Molkova, Trask Stalnaker, John McDonald.

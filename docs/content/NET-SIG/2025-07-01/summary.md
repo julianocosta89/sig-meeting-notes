@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on updating Grafana's OpenTelemetry libraries from version 1.9 to 1.12, and the implications of .NET 9 on compatibility.
-- Challenges faced by .NET Framework users due to binding redirects and the complexities introduced by new APIs in .NET 9.
-- Consideration of future strategies for supporting .NET Framework alongside newer .NET versions, including potential pinning to specific versions.
-- The need for clarity on the support lifecycle of extension packages in relation to .NET Framework.
+- Discussion on updating OpenTelemetry libraries in Grafana from version 1.9 to 1.12, addressing compatibility issues with .NET 9 and .NET Framework.
+- Challenges faced by .NET Framework users regarding binding redirects and the implications of adopting the latest versions of packages.
+- Consideration of future strategies for managing package versions in relation to .NET Framework and upcoming .NET versions (10, 11, and 12).
+- Proposal for implementing GitHub attestations for software provenance in builds.
+- Review of issues related to Prometheus metrics and resource attributes.
 
 ## Action Items
-- Mike "Blanch" Blanchard to inquire with the .NET team about ideal extension package versions for .NET Framework and present the friction caused by the current policy of always using the latest versions.
-- Martin Costello to provide feedback on the proposed stance for future .NET versions and their implications for .NET Framework users.
+- Martin to summarize data points and create a document regarding the friction experienced by .NET Framework users for discussion with Microsoft.
+- Martin to explore the feasibility of adjusting the PR to allow diagnostic source to remain at the latest version while pinning other extension packages.
+- Mike to follow up with the .NET team regarding the current policy on package versioning and its impact on users.
+- Alan to leave comments on PRs regarding adherence to the specification and the need for further review.
 
 ## Participants
-Alan West, Martin Costello, Mike "Blanch" Blanchard
+Alan West, Martin Costello, Mike "Blanch" Blanchard, Matthew Hensley, Peter

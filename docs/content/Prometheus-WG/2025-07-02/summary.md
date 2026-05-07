@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the challenges of correlating metrics with logs and traces in Grafana.
-- Proposal to maintain resource attributes (service name, namespace, instance ID) during translation from OTLP to Prometheus to improve correlation.
-- Need for consistency across exporters regarding resource attributes and their promotion.
-- Exploration of popular storage solutions for logs and traces to enhance correlation capabilities.
+- Discussion on correlating metrics with logs and traces, focusing on retaining resource attributes during translation from OTLP to Prometheus.
+- Proposal to update the OpenTelemetry specification to ensure consistency across exporters regarding resource attributes.
+- Review of ongoing spec changes, including handling of histograms and translation modes.
+- Challenges faced in implementing features and the need for collaboration on code reviews and prototypes.
 
 ## Action Items
-- Open an issue in the OpenTelemetry specification repository to discuss the proposed changes regarding resource attributes.
-- Gather data on commonly used storage solutions for logs and traces to inform future developments.
+- Arthur Silva Sens to open an issue in the OpenTelemetry specification repository regarding the retention of resource attributes.
+- Revere Beach to rebase and reopen the PR related to type and unit features in the translation layer.
+- Krajo Krajcsovits to assist Arthur with the PR related to the Prometheus receiver.
+- Participants to review the histogram spec changes and provide approvals for merging.
 
 ## Participants
 Cyrille Le Clerc, krajo Krajcsovits, Arve Knudsen, Arthur Silva Sens, Revere Beach

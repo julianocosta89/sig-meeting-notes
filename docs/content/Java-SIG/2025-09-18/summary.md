@@ -1,13 +1,15 @@
 ## Key Topics
-- **Documentation Updates**: Jay DeLuca introduced a new README for instrumentation documentation and discussed moving the supported libraries list to the documentation site for better accessibility.
-- **Instrumentation Stability**: The group discussed the challenges of declaring stability for instrumentations, particularly in relation to semantic conventions and the impact on users' production readiness.
-- **Production Readiness Concerns**: Participants shared feedback from users regarding the alpha tagging of libraries and its implications for production use.
-- **Semantic Convention Stability**: The conversation included considerations on how to communicate stability and production readiness to users without causing confusion or fear.
+- Documentation improvements for instrumentation guidelines and README updates.
+- Discussion on declaring stability for instrumentations and its implications.
+- Bug report on the Prometheus Exporter and the need for a patch release.
+- Metrics naming conventions and potential conflicts in metric names.
+- Upcoming support for complex attributes in the Java SDK.
 
 ## Action Items
-- Jay DeLuca to finalize and share the community project documentation for the instrumentation explorer.
-- Consider incorporating a semantic convention scorecard to indicate stability in future documentation.
-- Revisit the discussion on stability and production readiness in future meetings.
+- Gregor to follow up with Jack on the bug fix and initiate a patch release.
+- Jay to incorporate semantic convention stability into documentation.
+- Patrick to build tests for his PR and seek feedback on the implementation.
+- Trask to explore the implications of unsafe usage in Java 26 and update the test matrix accordingly.
 
 ## Participants
-Gregor Zeitlinger, John Watson, Trask Stalnaker, Jay DeLuca, Jason Plumb, Jack Shirazi, Lauri Tulmin
+Gregor Zeitlinger, John Watson, Trask Stalnaker, Jay DeLuca, Jason Plumb, Jack Shirazi, Lauri Tulmin, Patrick Pok, Robert Niedziela, Peter Findeisen, Jonathan Halliday.

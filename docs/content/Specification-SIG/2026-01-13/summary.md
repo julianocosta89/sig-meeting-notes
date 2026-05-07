@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on handling auto resource attributes and environment variables, highlighting inconsistencies across different SDKs.
-- Updates on the upcoming Hotel Unplugged unconference in Brussels, aimed at fostering community engagement.
-- Progress on the declarative configuration spec, with emphasis on tightening the data model and addressing feedback received.
-- Need for uniformity in handling whitespace and invalid entries in environment variable specifications.
+- Discussion on handling auto resource attributes and environment variables, highlighting inconsistencies across SDKs.
+- Updates on the upcoming Hotel Unplugged unconference in Brussels.
+- Progress on stabilizing the declarative config data model, including feedback solicitation from participants.
+- Exploration of metric levels and the introduction of an opt-in advisory parameter for metrics.
+- Entity SIG updates regarding the definition of data models for entity events and the entity merge algorithm.
 
 ## Action Items
-- Carlos Alberto Cortez to create an issue tracking the behavior of different SDKs regarding environment variable handling.
-- Jack Berg to provide a link to the Java examples repo for declarative config and gather feedback on the spec stabilization PR.
+- Carlos Alberto Cortez to compile a list of behaviors from different SDKs regarding auto resource attributes.
+- Jack Berg to provide links to demo environments and examples for the declarative config.
+- Participants to review and provide feedback on the entity merge algorithm and data model proposals.
+- David Ashpole to update the proposal to support opt-in or recommended metric levels.
 
 ## Participants
-Trask Stalnaker, Reiley, Ted Young, Carlos Alberto Cortez, David Ashpole, Jack Berg
+Trask Stalnaker, Reiley, Ted Young, Carlos Alberto Cortez, David Ashpole, Ludmila Molkova, Jack Berg, Josh Suereth, Tigran Najaryan, Liudmila Molkova.

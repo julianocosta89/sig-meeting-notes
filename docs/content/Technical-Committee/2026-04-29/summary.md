@@ -1,15 +1,16 @@
 ## Key Topics
-- **Triaging Unassigned Issues**: Discussion on assigning unassigned PRs and issues, with emphasis on community consensus and bandwidth considerations.
-- **Audit Logging Signal**: Concerns raised about a proposal's scope and the need for community requirements before proceeding.
-- **Tenancy and Tracing**: Critical review of a PR related to tenancy in tracing, with multiple participants agreeing to contribute.
-- **System Packaging**: Discussion on the scope of Phase 1 for system packaging and the need for a defined process for engaging delegates.
-- **Periodic Engagement**: Proposal for establishing a cadence for updates and engagement between SIG members and maintainers.
+- **Triage of Unassigned PRs**: Discussion on assigning unassigned PRs and the need for community consensus on larger scope changes.
+- **System Packaging Proposal**: Proposal for a phased approach to system packaging, emphasizing regular check-ins and engagement with maintainers.
+- **Security Advisory Process**: Concerns regarding the handling of security advisories, including the need for clear processes and responsibilities for maintainers.
+- **Context Scoped Attributes**: Discussion on the use of context scoped attributes in instrumentation, with emphasis on judicious use and potential default settings.
+- **Maintainer Engagement**: Suggestions for improving communication and accountability among maintainers, including a potential registry of Slack handles.
 
 ## Action Items
-- **Reiley** to respond to the audit logging signal issue and drive community consensus.
-- **Josh Suereth** and **Carlos Alberto Cortez** to review the tenancy and tracing PR.
-- **Tigran Najaryan** to ping profiling maintainers for review on the thread context proposal.
-- Establish a plan for periodic status updates from SIG members to maintainers regarding system packaging.
+- **Assign PRs**: Jack to assign PRs that require discussion and follow up with community members for consensus.
+- **System Packaging Proposal**: Tigran to communicate the agreed approach to the GC and set expectations for the project.
+- **Security Advisory Documentation**: Josh to propose documentation for maintainers regarding security advisory responsibilities.
+- **Context Scoped Attributes**: Carlos to continue developing prototypes for context scoped attributes in Java and explore further implementations in other languages.
+- **Maintainer Registry**: Reiley to propose the creation of a registry for maintainers including their Slack handles for better communication.
 
 ## Participants
-Reiley, Tigran Najaryan, Carlos Alberto Cortez, Jack Berg, Armin (Dynatrace), Josh Suereth, David Ashpole, jmacdonald
+Reiley, Tigran Najaryan, Carlos Alberto Cortez, Jack Berg, Josh Suereth, Liudmila Molkova, Armin (Dynatrace), jmacdonald.

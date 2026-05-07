@@ -1,14 +1,14 @@
 ## Key Topics
-- Introduction of David Ashpole as a new member of the Technical Committee (TC) and his connection to the Operator SIG.
-- Discussion on the challenges with semantic versioning and compatibility issues between different programming languages (Java, .NET, Node.js).
-- Timo Johner raised concerns about using OpenTelemetry for audit logs and the need for access to host PID, discussing potential solutions like sidecar injection.
-- Ongoing issues with agent image builds and the need for better coordination with language-specific SIGs.
-- Updates on open tickets related to Gemini code review and its potential implementation.
+- Introduction of David Ashpole as a new member of the Technical Committee (TC) and his involvement with the Operator SIG.
+- Discussion on the challenges of handling semantic versioning changes across different programming languages in OpenTelemetry.
+- Timo Johner raised concerns regarding the use of OpenTelemetry for audit logs and the need for access to host PID.
+- Exploration of potential security implications and solutions related to host PID access and sidecar injection.
+- Need for better coordination between SIGs regarding auto instrumentation and image builds.
 
 ## Action Items
-- David Ashpole to stay engaged and monitor developments within the Operator SIG.
-- Timo Johner to outline the security implications and potential solutions for the audit log issue in the SIG notes.
-- Participants to follow up on the open ticket regarding Gemini code review and check for updates.
+- Timo Johner to provide a custom resource (CR) example related to collector builds.
+- Pavel Loffay to inquire with the OpenShift team about the block collector and its relation to audit logs.
+- Jacob (jea) to summarize the discussion points and provide documentation on security contexts and host PID settings.
 
 ## Participants
 yurioliveirasa, Timo Johner, jea, David Ashpole, PL Pavol Loffay

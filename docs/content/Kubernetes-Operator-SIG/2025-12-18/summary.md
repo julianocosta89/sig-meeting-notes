@@ -1,14 +1,15 @@
 ## Key Topics
-- Review and approval of pending pull requests, including the scrape classes and host PID PRs.
-- Discussion on handling SBOMs and provenance issues, with a preference for fixing security rather than disabling features.
-- Updates on Prometheus version upgrade and performance implications due to changes in internal label representation.
-- Review of a PR regarding finalizer scoping and its implications on cluster roles.
-- Documentation improvements suggested for the addagents.md PR.
+- Review and approval of pending pull requests (PRs), including scrape classes and host PID configurations.
+- Discussion on improving documentation, specifically the usefulness of the `agents.md` file.
+- Performance concerns regarding the upgrade of Prometheus and its impact on the operator.
+- The need for better handling of SBOMs and provenance in the context of security.
+- Decision to skip the next meeting due to the New Year's holiday.
 
 ## Action Items
 - **Mikołaj Świątek** to open an issue regarding upgrades before Christmas.
-- **PL Pavol Loffay** to review the finalizer scoping PR.
-- **Mikołaj Świątek** to continue investigating performance issues related to the Prometheus upgrade over the holidays.
+- **PL Pavol Loffay** to review the PR related to finalizers.
+- Participants to review the `agents.md` PR and provide feedback.
+- **Mikołaj Świątek** to continue exploring Prometheus upgrade options over the holidays.
 
 ## Participants
 jea, Mikołaj Świątek, PL Pavol Loffay

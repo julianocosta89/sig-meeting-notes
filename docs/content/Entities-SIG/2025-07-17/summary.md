@@ -1,15 +1,16 @@
 ## Key Topics
-- Discussion on the need for an API in the OpenTelemetry SDK and its implications.
-- Challenges faced in implementing the entity provider and the need for substantial changes to the SDK.
-- The importance of defining SDK startup processes and their relation to entity providers.
-- Coordination between different SIGs on configuration and startup processes.
-- Prototyping efforts in Java and other languages to address SDK initialization and shutdown issues.
+- Discussion on the need for an API in the OpenTelemetry SDK and the implications of this shift in scope.
+- Review of the entity provider's functionality and the challenges associated with implementing it.
+- Prototyping efforts for SDK startup initialization and entity detection, with a focus on ensuring coherent state management.
+- Conflict resolution strategies for entity attributes, particularly regarding overlapping identifiers from different detectors.
+- Updates on PRs related to entity specifications and environmental variable handling.
 
 ## Action Items
-- Update the existing OTEP to incorporate the API discussions and resolve complications.
-- Define and prototype SDK startup processes, focusing on Java, JavaScript, and Go.
-- Explore the integration of startup processes with the new configuration language.
-- Document and advertise the tasks related to entity provider and startup improvements.
+- Update the current OTEP to address complications arising from the API and entity provider.
+- Prototype SDK startup initialization across multiple languages (Java, Go, JavaScript).
+- Explore the implementation of a multi-entity detector to manage conflicts between different sources of entity data.
+- Ensure that the environmental variable format for entities is user-friendly and allows for easy appending.
+- Follow up with Kubernetes operators to discuss the integration of entity detection via environment variables.
 
 ## Participants
-Josh Suereth, Nathan Smith, Ted Young, Daniel Dyla
+Josh Suereth, Nathan Smith, Ted Young, Daniel Dyla, Dmitrii Anoshin

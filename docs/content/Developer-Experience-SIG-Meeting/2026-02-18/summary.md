@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the integration and management of Read AI in meetings, including opt-out options.
-- Updates on the MCP proposal status and its implications for the project, focusing on the collector aspect.
-- Exploration of Jaeger's new MCP integration capabilities and their potential uses.
-- Use of AI tools for productivity, including voice-to-text applications and the Ralph Wiggum technique for task management.
-- Progress on blog posts and visual content for the project, including updates on diagrams and logos.
+- Discussion about the integration and management of Read AI in meetings.
+- Updates on the MCP proposal and its current status concerning the collector.
+- Review and approval process for blog posts, including the Adobe blog post.
+- Use of logos and images for documentation clarity.
+- Exploration of AI tools and techniques in development workflows.
 
 ## Action Items
-- Follow up with Bogdan for any additional content related to the approved blog post.
-- Update diagrams to clarify the type of collector being represented.
-- Decide on the usage of the OpenTelemetry logo in project materials.
+- Juliano to nudge Tim for approval on the blog post.
+- Johanna to update the image for the Adobe blog post.
+- Both to review and finalize blog posts for publication on OpenTelemetry's site.
 
 ## Participants
 Johanna Öjeling, Juliano Costa, Nicolas Wörner

@@ -1,15 +1,15 @@
 ## Key Topics
-- Review of 2025 goals and accomplishments, including metrics for various projects.
-- Discussion on the status of the Go runtime metric stabilization and logs API stabilization.
-- Brainstorming for 2026 goals, including the need for better documentation and clarity on existing metrics.
-- Identification of missing metrics in the OpenTelemetry HTTP implementation compared to SEMCON metrics.
-- Importance of tracking non-goal accomplishments to assess community effectiveness.
+- Review of 2026 goals and progress on previous goals.
+- Discussion on the stabilization of various APIs and metrics, including HTTP and logs.
+- Performance benchmarks for the Go SDK, focusing on attribute handling and bound instruments.
+- Proposal for a project board to track goals and ownership of tasks.
+- Feedback on documentation and visibility of metrics and APIs.
 
 ## Action Items
-- Finalize 2026 goals based on current developer capacity and past accomplishments.
-- Improve documentation and accessibility of metrics for better clarity.
-- Explore the addition of missing metrics in the OpenTelemetry HTTP implementation.
-- Consider drafting a blog post to highlight both goal-oriented and non-goal accomplishments.
+- Finalize and document 2026 goals, including identifying owners for each task.
+- Create a project board to track progress and ownership of goals.
+- Explore the implementation of bound instruments for better performance in the SDK.
+- Discuss the need for improved documentation and metadata for metrics.
 
 ## Participants
 Bryan Boreham, Owen Williams, Tyler, Pellared, David Ashpole

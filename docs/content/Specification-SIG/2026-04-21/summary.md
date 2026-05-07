@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the "stable by default" proposal and its implications for maintainers.
-- Concerns regarding the lack of maintainer approvals for the OTEP related to stability.
-- The need for leadership and coordination among SIGs to ensure successful implementation of the proposal.
-- Challenges faced by maintainers in keeping up with rapid changes and ensuring stability in specifications.
-- Suggestions for breaking down the OTEP into smaller parts for easier management and approval.
+- Discussion on "stable by default" and the need for maintainer approvals on related OTEPs.
+- Updates on the Contact Scope Attributes Project, focusing on configuration and cardinality concerns.
+- Overview of the Sampling SIG's progress on probability sampling and trace context improvements.
+- Challenges with merging metric views and proposed solutions for better view behavior.
 
 ## Action Items
-- Identify a lead for the "stable by default" initiative to drive the proposal forward.
-- Encourage maintainers to express their concerns and feedback regarding the OTEP.
-- Consider splitting the OTEP into separate documents to facilitate discussion and approval.
+- Maintain a campaign to gather feedback from maintainers on the "stable by default" proposal.
+- Carlos to revise the Contact Scope Attributes OTEP based on feedback received during the meeting.
+- Josh to track stabilization issues for components discussed in the Sampling SIG.
+- Follow up on the implementation of composable samplers in SDKs.
 
 ## Participants
-jmacdonald, Carlos Alberto Cortez, Pellared, Josh Suereth, Tigran Najaryan, Kayla Reopelle
+jmacdonald, Carlos Alberto Cortez, Pellared, Josh Suereth, Tigran Najaryan, Kayla Reopelle, Jack Berg, David Ashpole, Trask Stalnaker, Reiley

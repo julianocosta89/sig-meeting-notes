@@ -1,15 +1,15 @@
 ## Key Topics
-- Proposal for a new repository for web with a single convenience bundle to simplify dependency management.
-- Discussion on shared GitHub actions for running tests in the Node repository.
-- Updates to page view semantic conventions and attributes, including moving attributes from body fields to regular attributes.
-- Agreement on splitting browser observability model into actionable tickets for instrumentation.
-- Review of existing issues and tasks related to semantic conventions and instrumentation.
+- Proposal for creating a new repository for web instrumentation, focusing on a single convenience bundle.
+- Discussion on page view semantic conventions and the need to move attributes from body fields to regular attributes.
+- Review of browser data collection objectives, including page load, sessions, network requests, and user interactions.
+- Updates on existing issues and tasks related to semantic conventions and instrumentation.
+- Introduction of a prototype for a session manager interface.
 
 ## Action Items
-- Participants to review the proposed new repo document and provide feedback.
-- Martin to update the PR regarding page view semantic conventions before the next meeting.
-- Joaquín to create actionable tickets for the browser observability model based on the discussed items.
-- Wolfgang to follow up on the PR for error events and address requested changes.
+- Participants to review the proposed documentation for the new repository and provide feedback.
+- Martin to finalize changes to the PR regarding page view attributes and share updates with Abinet.
+- Joaquín to propose options for capturing page load as either a span or an event.
+- Participants to review the session manager prototype before merging.
 
 ## Participants
 Jared Freeze, Martin Kuba, Abinet Debele, Joaquín Díaz, Wolfgang Therrien

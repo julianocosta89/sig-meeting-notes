@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the stabilization of log exception documents and individual events.
-- Consensus on the need for semantic conventions related to logging errors.
-- Prototyping of logging events in various programming languages (Java, Go, Python).
-- Examination of the Record Events API and its deprecation status.
-- Clarification on how exceptions are reported across different languages and frameworks.
+- Discussion on the stabilization of logging and exception events.
+- Review of the status of prototypes for Java and potential for Python.
+- Consensus on not documenting the conversion from span events to log events.
+- Clarification on the handling of exception attributes in different programming languages.
+- Exploration of interest in prototyping for Rust.
 
 ## Action Items
-- Create prototypes for logging events in Go and Python.
-- Add the issue of stabilizing HTTP and database exception events to the agenda.
-- Review and finalize the log exception document for stabilization.
+- Liudmila to reach out to the Python SIG for potential prototyping help.
+- Robert to ping the Rust community member regarding prototyping.
+- Create a follow-up agenda item to discuss the stabilization of HTTP and database exception events.
 
 ## Participants
-Liudmila Molkova, Pellared, Trask Stalnaker, Ultravity
+Liudmila Molkova, Pellared, Trask Stalnaker, Robert

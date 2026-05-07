@@ -1,13 +1,13 @@
 ## Key Topics
-- Proposal to transition from span events to standalone events for better granularity in HTTP request tracking.
-- Discussion on backward compatibility and deprecation strategies for existing Java SDK APIs.
-- Consideration of performance implications and use cases for standalone events versus spans.
-- Examination of existing semantic conventions and their application in the proposed model.
+- Proposal to move from span events to standalone events for better granularity in telemetry.
+- Discussion on backward compatibility and deprecation strategies for the Java SDK.
+- Consideration of how to model events and spans in semantic conventions.
+- Review of a blog post outlining the rationale and structure for upcoming changes.
 
 ## Action Items
-- Evaluate the feasibility of implementing a configuration option for using either standalone events or span events in the Java SDK.
-- Further investigate the potential performance impacts of adding numerous events and their implications on query time.
-- Review existing implementations in .NET for insights on handling DNS, TCP, and TLS events.
+- Surbhi A to bring the discussion on modeling events and spans to the semantic conventions call.
+- Trask Stalnaker to send the formal OpenTelemetry IOPL request for the blog post.
+- Participants to review and provide feedback on the blog post structure and content.
 
 ## Participants
-Trask Stalnaker, Austin Parker, Surbhi A, Liudmila Molkova
+Trask Stalnaker, Austin Parker, Surbhi A, Liudmila Molkova, Robert Pająk

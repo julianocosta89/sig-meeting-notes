@@ -1,14 +1,16 @@
 ## Key Topics
-- **Previous Action Items Review**: Discussion on pending feedback for PRIs and the PProf Hotel Converter, which is blocked by lack of responses from code owners.
-- **Context Propagation Documents**: Updates on the process-level document and the need for feedback on protobuf-based formats and resource definitions.
-- **Runtime Specific Solutions**: Exploration of how profiling solutions can be tailored for different runtimes, including V8, C, C++, and Rust.
-- **Protobuf Schema Location**: Proposal to temporarily store the protobuf schema in the SIG profiling repository until a permanent location is determined.
+- **Feedback on PRs**: Discussion on pending feedback for various pull requests, particularly regarding the PProf Hotel Converter and process-level documents.
+- **Context Propagation Documents**: Updates on the status of context propagation documents and the need for feedback on protobuf-based formats.
+- **Security Issues**: Discussion on potential security vulnerabilities related to the eBPF profiler and the need for further engagement with the Linux kernel community.
+- **Semantic Conventions**: Ongoing discussions about semantic conventions and the merging of related pull requests.
+- **Line and Column Representation**: Consideration of renaming the "line" message to "position" to better reflect its contents.
 
 ## Action Items
-- Follow up with code owners for feedback on the PProf Hotel Converter.
-- Gather feedback on the process-level context propagation document, particularly regarding the protobuf format.
-- Ensure Frederic's team reviews the thread-level information document and provides feedback.
-- Consider the temporary storage of the protobuf schema in the SIG profiling repository.
+- **Follow Up on PR Feedback**: Florian to reach out to code owners for feedback on the PProf Hotel Converter.
+- **Document Feedback Request**: Paris to continue seeking feedback on context propagation documents.
+- **Engage Kernel Community**: Alban to initiate discussions with the Linux kernel community regarding security vulnerabilities.
+- **Clarify Semantic Conventions**: Alexey to submit a pull request regarding the documentation of dictionary values and their uniqueness.
+- **Review Line Message Naming**: Participants to consider whether to rename the "line" message to "position" and potentially submit a PR.
 
 ## Participants
-Felix Geisendörfer, Florian Lehner, Ivo, Frederic Branczyk, Jonathan Halliday, Paris (21RC)-7.07 Rhone
+Felix Geisendörfer, Florian Lehner, Paris (21RC)-7.07 Rhone, Alban Crequy, Frederic Branczyk, Alexey A, Jonathan Halliday

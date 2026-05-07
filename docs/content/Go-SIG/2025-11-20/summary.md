@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the progress of the OTelConf PR and its implications for the upcoming release.
-- Review of the deprecation of default clients and the need for adjustments in the API.
-- Exploration of experimental features and their integration into the collector implementation.
-- Consideration of creating a sub-module for experimental APIs to manage stability concerns.
+- Discussion on the progress of the OTelConf PR and its impact on the upcoming release.
+- Review of the deprecation of default client functions in OTel HTTP and related PRs.
+- Proposal to move the enable method from the filter processor to the processor interface.
+- Updates on the removal of Google Proto dependency in the OTel collector and its performance improvements.
+- Consideration of adding support for insecure connections in logs.
 
 ## Action Items
-- Alex Boten to create an issue to track the evaluation of the experimental API structure.
-- Participants to review the current API presented in the PR and provide feedback.
+- Review the OTelConf PR and provide feedback.
+- Create an issue to track the evaluation of the experimental API structure.
+- Review and discuss the proposal for the enable method at the next SIG meeting.
+- Explore the implications of the Protogen changes and potential benchmarking.
 
 ## Participants
-Tyler Yahn, Owen Williams, Sam, Robert, Alex Boten
+Tyler Yahn, Owen Williams, Sam, Robert, Alex Boten, David Ashpole, Bryan Boreham

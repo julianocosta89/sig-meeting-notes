@@ -1,13 +1,14 @@
 ## Key Topics
-- Ongoing issues with the Prometheus receiver and its impact on releases.
-- Discussion on running daily end-to-end tests on the latest contrib image to catch issues early.
-- Plans for releasing a new version of instrumentation CRDs with a manual upgrade process to manage breaking changes.
-- Consideration of switching from Prometheus metrics to OTLP for improved reliability in tests.
+- Ongoing issues with Prometheus receiver and dependency management in OpenTelemetry.
+- Discussion on running end-to-end tests on the latest contrib image daily to catch issues early.
+- Proposal to embed instrumentation CRDs in a YAML config file for operator configuration, with concerns about code duplication.
+- Introduction of network policies for the operator and collector to enhance security, with discussions on defaults and feature flags.
 
 ## Action Items
-- Jacob to write a PR for running daily end-to-end tests on the latest contrib image.
-- Tyler to implement a replace statement in the manifest file to address dependency issues and prepare for a 1.31.1 release of artifacts.
-- Follow up on the progress of the instrumentation CRDs upgrade process and communicate breaking changes to users.
+- Jacob to write a PR for running contrib tests daily.
+- Tyler to handle the release of the collector artifacts and address the dependency issue.
+- Further discussion needed on Antoine's proposal regarding embedding instrumentation CRDs.
+- Evaluate the implementation of network policies and their default settings.
 
 ## Participants
-Jacob Aronoff, Benedikt Bongartz, Tyler Helmuth
+Jacob Aronoff, Benedikt Bongartz, Tyler Helmuth, Pavel, Yuri Oliveira, and others.

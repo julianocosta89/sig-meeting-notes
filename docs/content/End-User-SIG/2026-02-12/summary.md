@@ -1,14 +1,15 @@
 ## Key Topics
-- Recap of the recent OpenTelemetry event and its engagement levels.
-- Introduction of new participants, including Joy, a front-end engineer from Nigeria.
-- Discussion on vendor neutrality and the need for documentation on the topic.
-- Plans to review and publish recordings from the recent event.
-- Transition of some SIG members to community management roles.
+- Updates on the recent "Hotel in Practice" session and its engagement levels.
+- Discussion on vendor neutrality and the need for documentation regarding its implications.
+- Review of survey results and updates on ongoing surveys, including the Japanese survey.
+- Plans for future sessions and the need for a more formalized process for speaker engagement in "Hotel in Practice" and "O'Tell Me."
+- Introduction of new participant Joy and her interest in contributing to the SIG.
 
 ## Action Items
-- Adriana and Reece to review recordings for publication.
-- Andrej to create a Google Doc for vendor neutrality guidelines and involve new contributors.
-- Joy to be guided on her interest in LFX internship opportunities.
+- Adriana and Reese to review recordings from the recent "Hotel in Practice" session for publication.
+- Andre to create an issue for documenting vendor neutrality and collaborate with Adriana and others.
+- Reese to draft a Google Form for soliciting speakers for "Hotel in Practice" and "O'Tell Me."
+- Joy to be directed to the appropriate channels for her LFX mentorship applications.
 
 ## Participants
 Ernest Owojori, Andrej, Adriana Villela, Reese Lee, Joy

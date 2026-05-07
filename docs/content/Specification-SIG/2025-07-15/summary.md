@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the measurement processor pull request, including approval status and concerns about feature creep.
-- Debate on the ability to drop or modify measurements and its implications for statistical correctness.
-- Exploration of use cases for measurement manipulation, including unit conversion and attribute grouping.
-- Consideration of whether functionality should be handled in the SDK or the collector.
+- **Measurement Processor Pull Request**: Discussion on the status of the pull request, with concerns about the ability to drop or modify measurements and its implications for statistical correctness.
+- **Use Cases for Measurement Modification**: Debate on whether there are sufficient use cases to justify adding features to modify measurements, with suggestions to gather more use cases before merging.
+- **Schema URL Changes**: Updates on the schema URL in the context of Prometheus compatibility and semantic conventions.
+- **Log Record Concurrency**: Clarification on the concurrency safety of log records and proposed changes to improve documentation.
+- **Configuration Specification Review**: Efforts to stabilize and clarify the configuration specification, seeking input from relevant maintainers.
 
 ## Action Items
-- Collect and evaluate use cases related to measurement manipulation for further discussion.
-- Resolve comments on the measurement processor pull request based on recent approvals.
+- Gather use cases for modifying measurements to inform decision-making on the pull request.
+- Review Robert Pająk's changes to the log record concurrency documentation and provide feedback.
+- Tyler Yahn and others to review the configuration specification for clarity and consistency.
+- Merge the discussed OTEP after final reviews.
 
 ## Participants
-Carlos Alberto Cortez, Liudmila Molkova, Lukasz Gut, Robert Pająk, Reiley Yang, Ted Young, Tyler Yahn, Tristan
+Carlos Alberto Cortez, Liudmila Molkova, Bob Strecansky, Lukasz Gut, Robert Pająk, Reiley Yang, Ted Young, Tyler Yahn, Trask Stalnaker, David Ashpole, Josh Suereth.

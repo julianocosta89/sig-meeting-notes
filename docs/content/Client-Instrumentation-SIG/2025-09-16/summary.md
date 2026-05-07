@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the warning at the top of the document and its editability.
-- Proposal for Kotlin API SDK donation by Embassa and the need for community feedback.
-- Exploration of Performance SLAs for app startup latency, memory utilization, and network bandwidth for SDKs.
-- Challenges in establishing benchmarks for instrumentation performance due to diverse runtime environments.
-- The importance of user-specific testing for SDK integration based on strict performance requirements.
+- Discussion on the Kotlin API SDK donation proposal and the need for contributors and reviewers.
+- Performance SLAs for app startup latency, memory utilization, and network bandwidth in SDKs.
+- Proposal for session-based tracing and visualization using trace linking.
+- Review of the OpenTelemetry roadmap and the potential closure of the client instrumentation project.
 
 ## Action Items
-- Jamie Lynch to share details about the Kotlin API SDK donation proposal with the community for feedback.
-- Leonardo Serrano to gather and share specific performance SLA numbers from users regarding acceptable latency increases.
+- Gather feedback on the Kotlin API SDK donation proposal.
+- Investigate and share specific SLA numbers related to app startup latency from user feedback.
+- Explore the feasibility of implementing session-based telemetry visualization.
+- Consider archiving the current client instrumentation project and defining new project scopes.
 
 ## Participants
-Hanson Ho, Leonardo Serrano, Jason Plumb, Dan Gomez Blanco, Jamie Lynch
+Hanson Ho, Leonardo Serrano, Jason Plumb, Jamie Lynch, Dan Gomez Blanco, Grace Lim

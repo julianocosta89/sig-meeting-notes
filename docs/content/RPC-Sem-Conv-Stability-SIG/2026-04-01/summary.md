@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the need for a unified RPC semantic convention across different platforms, particularly focusing on gRPC.
-- Review of the release candidate for RPC semantic conventions and the differences between existing and proposed schemas.
-- Challenges in aligning metrics and attributes between gRPC and OpenTelemetry, including handling retries and error semantics.
-- Importance of distinguishing between logical and physical representations in RPC metrics.
+- Discussion on the convergence of RPC semantic conventions between OpenTelemetry and gRPC.
+- Review of the release candidate for RPC semantic conventions and feedback from the gRPC team.
+- Clarification on the differences in metrics and spans between OpenTelemetry and gRPC.
+- Strategies for handling breaking changes in telemetry and configuration options for users.
+- Next steps for collaboration, including meetings with key team members.
 
 ## Action Items
-- gRPC team to conduct an audit of the proposed RPC semantic conventions and provide feedback.
-- Madhav to take the lead on the telemetry work from the gRPC side.
-- Both teams to establish a timeline for further discussions and potential adjustments to the release candidate.
+- gRPC team to review the release candidate and provide feedback on specific concerns.
+- Schedule a meeting with Madhav to discuss the RPC semantic conventions in detail.
+- Explore the possibility of aligning gRPC metrics with OpenTelemetry's semantic conventions.
+- Determine timelines for the review and potential implementation of changes.
 
 ## Participants
-Trask Stalnaker, John (Ghosts N Goblins), Eric (Segway), Liudmila Molkova, Madhav
+Trask Stalnaker, John (Ghosts N Goblins), Eric (Segway), Liudmila Molkova, Madhav, Matthew Hensley.

@@ -1,13 +1,15 @@
 ## Key Topics
-- **Project Proposal Process**: Discussion on streamlining the project proposal review process, including immediate triage by the Technical Committee (TC) and the creation of a rubric for evaluations.
-- **Communication and Responsiveness**: Emphasis on improving communication between the Governance Committee (GC) and TC to ensure timely feedback on proposals.
-- **Upcoming Talks**: Plans to rearrange the schedule for upcoming talks to provide a general overview before diving into specific topics.
-- **Maintainer Status and Repositories**: Discussion on the importance of maintaining accurate information about repositories and the potential need for a Maintainer Change Proposal (MCP).
+- Discussion on improving project proposal processes and ensuring faster feedback.
+- Proposal for clearer expectations regarding Technical Committee (TC) sponsorship levels.
+- Need for better communication and coordination among Special Interest Groups (SIGs) and project proposals.
+- Exploration of making trade-offs visible in project proposals to enhance accountability.
+- Addressing the capacity and involvement of maintainers in ongoing projects.
 
 ## Action Items
-- **Triage Process Update**: The GC will update the triage process to ensure project proposals are reviewed by the TC immediately upon submission.
-- **Rubric Development**: The TC will create a rubric for evaluating project proposals to ensure transparency and fairness in feedback.
-- **Communication Improvement**: Establish a checklist or script for the GC to enhance communication regarding proposal statuses and feedback.
+- **Pablo Baeyens** to implement changes in project proposals to include impacted SIGs.
+- **Liudmila Molkova** to update the SIGS YAML file to reflect TC sponsorship levels and track TC workload.
+- **Jack Berg** to explore relationships between SIGs, projects, and OTEPs to formalize data structure.
+- **Severin Neumann** to drive the effort on setting clear expectations for project proposals.
 
 ## Participants
-Pablo Baeyens, Tigran Najaryan, Ted Young, Alolita Sharma, Marylia Gutierrez, Josh Suereth, Severin Neumann, Liudmila Molkova.
+Pablo Baeyens, Tigran Najaryan, Ted Young, Alolita Sharma, Marylia Gutierrez, Josh Suereth, Severin Neumann, Liudmila Molkova, Jack Berg, Trask Stalnaker, Carlos Alberto Cortez, Morgan McLean, Juraci Paixão Kröhling.

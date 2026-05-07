@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on enabling thread details by default versus disabling them, referencing semantic conventions.
-- Clarification on the configuration of thread details for spans and logs, including potential unification of settings.
-- Exploration of the configuration schema allowing for multi-valued settings for thread details across different signal types.
-- Consideration of aligning configuration defaults with existing agent behavior and upcoming version changes.
+- Discussion on enabling/disabling thread details in OpenTelemetry configuration, with recommendations from Laurie and Trask.
+- Consideration of unifying log settings and thread details under a common configuration.
+- Early initialization properties and their limitations in declarative configuration.
+- The need for a validation component in the configuration architecture.
+- Extended OpenTelemetry SDK implementation and challenges related to final classes and configuration.
 
 ## Action Items
-- Trask to seek clarification from the community group regarding the requirement level for thread details in semantic conventions.
-- Gregor to ensure that thread details configuration is structured appropriately in the PR.
-- Further discussion on the potential unification of thread details settings for spans and logs.
+- Trask to seek clarification on thread details recommendations from the semantic conventions group.
+- Gregor to create an issue to discuss moving certain components into the instrumentation repository.
+- Robert to provide details for the proposed validation component for future discussion.
 
 ## Participants
 Gregor Zeitlinger, Robert Niedziela, Jason Plumb, Trask Stalnaker, Jay DeLuca

@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on naming conventions for severity text across different implementations (snake case, Pascal case).
-- Introduction of an aliasing feature to accommodate multiple naming conventions for user flexibility.
-- Updates on the development of a new parser for OPL based on previous work with KQL.
-- Consideration of schema handling in the columnar query engine and the need for validation against the OTAP schema.
-- Exploration of prefix usage in queries and potential aliasing for source identifiers.
+- Discussion on naming conventions for severity text in OpenTelemetry, including the introduction of an aliasing feature to accommodate different naming styles.
+- Updates on the development of a new parser for OPL and considerations for schema mutation.
+- Review of a PR for attribute insertion in the OTAP transform and its implications for the query engine.
+- Discussion on the redundancy of prefixes in log and metric identifiers and their impact on query syntax.
 
 ## Action Items
-- Review and finalize the PR for the aliasing feature (PR1725).
-- Integrate aliasing into the parser and ensure compatibility with existing implementations.
-- Investigate schema validation in the columnar query engine and reference the aliasing PR in related issues.
+- Mike and Drew to finalize and submit the aliasing feature PR (1725).
+- Albert to review and provide feedback on Tom's PR for attribute insertion.
+- Drew to explore the possibility of allowing log prefixes in the record set engine.
 
 ## Participants
 Albert Lockett, Mike "Blanch" Blanchard, Drew Relmas

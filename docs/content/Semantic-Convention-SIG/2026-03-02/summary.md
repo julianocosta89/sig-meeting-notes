@@ -1,15 +1,15 @@
 ## Key Topics
-- Transition to Markdown Lint CLI 2 for improved linting and VS Code integration.
-- Approval processes for GenAI exception events and other attributes needing review.
-- Discussion on the stabilization of deployment environments and related PRs.
-- Event naming and severity for exceptions, including guidance from LogSig.
-- Automation issues with GitHub project management affecting approval statuses.
+- Discussion on transitioning to Markdown Lint CLI 2 for better design and efficiency.
+- Review of exception events and severity levels for OpenTelemetry instrumentation.
+- Proposal for stabilizing `otel.event.name` to improve event logging consistency.
+- Concerns regarding the naming conventions for service and client attributes in OpenTelemetry.
+- Discussion on the need for a clearer way to handle canceled requests and their representation in spans.
 
 ## Action Items
-- Review and approve outstanding PRs related to GenAI exception events.
-- Consider streamlining the approval process by potentially removing the "ready to be merged" status.
-- Encourage team members to review ongoing PRs, especially those related to deployment environments.
-- Provide feedback on the use of Perl in post-processing scripts and suggest limiting the number of programming languages used.
+- Review and finalize naming conventions for service and client attributes.
+- Clarify the guidance on exception severity levels for internal versus external spans.
+- Explore the implementation of a cancellation status for spans.
+- Continue discussions on the audit log event naming and its implications.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Josh Suereth, Christophe Kamphaus
+Liudmila Molkova, Trask Stalnaker, Josh Suereth, Christophe Kamphaus, Michele Mancioppi, Hilmar, Neil Yashinsky.

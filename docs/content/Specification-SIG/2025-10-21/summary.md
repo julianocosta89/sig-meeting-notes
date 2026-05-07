@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the graduation process and feedback from the Technical Oversight Committee regarding release quality and user experience.
-- The need for a centralized location for users to understand component stability, as current documentation is scattered and inconsistent.
-- Proposed changes to improve user experience, including clearer documentation requirements and the distinction between end-user and developer documentation.
-- Introduction of OTEPs to address stability guidance, performance, compatibility, and the handling of stable vs. unstable components.
-- New defaults for stable artifacts to prevent automatic enabling of unstable components.
+- **Graduation Process Feedback**: Discussion on concerns from the Technical Oversight Committee regarding the quality of OpenTelemetry releases and the need for clearer documentation on stability.
+- **Documentation Improvements**: Emphasis on creating a centralized location for stability information and improving user-facing documentation to enhance accessibility.
+- **OTEP Proposals**: Introduction of four OTEPs aimed at updating stability guidance, defining stable vs. unstable components, and establishing a project-wide release process.
+- **Focus on Productization**: Discussion on the need to shift focus from feature shipping to productizing OpenTelemetry, including addressing installation challenges and performance issues.
+- **Collector Configuration Debate**: Ongoing discussion about the use of "enabled" vs. "disabled" flags in configurations and the implications for user clarity.
 
 ## Action Items
-- Draft and publish OTEPs related to stability guidance and documentation by KubeCon.
-- Establish clearer documentation requirements and ensure user-facing documentation is easily discoverable.
-- Implement a new default for stable artifacts that prevents automatic enabling of unstable components.
+- **Draft OTEPs**: Aim to draft and publish OTEPs by KubeCon for community feedback.
+- **Centralize Documentation**: Work towards creating a centralized documentation hub for stability and user guidance.
+- **Feedback Collection**: Encourage maintainers to actively seek user feedback on needed features and improvements.
+- **Unconference Planning**: Promote participation in the upcoming OpenTelemetry Unplugged event in Brussels to gather user insights.
 
 ## Participants
-Reiley Yang, Austin Parker, Liudmila Molkova, Ted Young, Antoine Toulme
+Reiley Yang, Austin Parker, Liudmila Molkova, Ted Young, Todd, Antoine Toulme, Trask Stalnaker, Daniel Dyla, Josh Suereth, Pablo Baeyens.

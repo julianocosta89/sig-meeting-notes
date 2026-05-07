@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on marking stable instrumentation within the Java agent and the need for clarity on stability levels.
-- The proposal to classify SEMCOM as beta to facilitate better user expectations and support.
-- Emphasis on improving user experience and feedback loops for instrumentation issues.
-- The importance of establishing a clear release cadence and support timelines for beta features.
-- Consideration of breaking changes during stabilization and the need for migration paths.
+- Discussion on the stability of Java instrumentation and the need for clearer definitions of stable and beta statuses.
+- The importance of user experience and feedback loops in improving OpenTelemetry's offerings.
+- Proposal for marking messaging instrumentation as beta and the implications for SEMCOM stability.
+- The balance between maintaining a broad scope versus focusing on core functionalities and stability.
+- Strategies for enhancing community involvement and ownership of semantic conventions.
 
 ## Action Items
-- Determine which internal instrumentations can be marked stable.
-- Finalize the classification of SEMCOM and related instrumentation as beta.
-- Develop a clear communication strategy for users regarding stability and support timelines.
-- Establish a regular release schedule to improve planning and documentation.
+- Define and clarify what constitutes stable and beta statuses for instrumentation.
+- Develop a clearer communication strategy regarding the expectations for users when installing OpenTelemetry components.
+- Explore the possibility of allowing individual components (e.g., collector-receivers) to own their own semantic conventions.
 
 ## Participants
 Austin Parker, Trask Stalnaker

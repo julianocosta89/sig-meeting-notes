@@ -1,14 +1,16 @@
 ## Key Topics
-- **Milestone Planning**: Discussion on the September 2025 milestone, with 23 tasks identified, including work on rate limiting and attribute processing.
-- **Rate Limiting Work**: jmacdonald expressed interest in advancing rate limiting components, suggesting a focus on applying design work to the OTAP.
-- **Signal Type Router**: Updates on the signal type router processor, which routes data based on signal type, with David working on its implementation.
-- **Performance Benchmarking**: Review of performance comparisons between the Go collector and the Rust data flow engine, highlighting bottlenecks and future improvements.
-- **Monitoring Strategies**: Introduction of monitoring strategies within the benchmarking framework to assess load generators and receivers.
+- **Milestone Planning**: Discussion on tasks grouped under the September 2025 milestone, including rate limiting and attribute processing.
+- **Performance Benchmarking**: Updates on comparing the Go collector with the Rust data flow engine, including traffic generation and backend performance.
+- **Telemetry Instrumentation**: Ongoing work on tracing proposals and the need for matrix integration with OpenTelemetry SDK.
+- **KQL Implementation**: Progress on KQL parsing for renaming and potential integration with the attributes processor.
+- **TLS Support**: Discussion on the need for TLS support for TCP reception and certificate handling.
 
 ## Action Items
-- jmacdonald to proceed with rate limiting component work.
-- Chris Hain to update performance benchmarking documentation.
-- Team to explore enhancements for traffic generation and backend scaling.
+- **Rate Limiting Work**: jmacdonald to focus on implementing rate limiting components.
+- **Benchmark Infrastructure**: Chris to update performance metrics and improve traffic generation and backend scaling.
+- **Telemetry Proposal**: Laurent to draft a proposal for telemetry instrumentation and notify relevant participants.
+- **KQL Task Creation**: jmacdonald to create a stretch goal task for KQL integration in the milestone.
+- **TLS Support Task**: Create a task to track the implementation of TLS support for TCP connections.
 
 ## Participants
-Laurent Quérel, Chris Hain, jmacdonald, Albert, David, Michael
+Laurent Quérel, Chris Hain, jmacdonald, Jake Dern, Utkarsh Umesan Pillai, Michael Salib, Albert, David, Cj, Joshua

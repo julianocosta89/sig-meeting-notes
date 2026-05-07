@@ -1,14 +1,14 @@
 ## Key Topics
 - Discussion on GitHub actions and administrative access for OpenTelemetry on mainframes.
-- Updates from the GS UK mainframe conference, including native distributed tracing support.
-- Plans for participation at KubeCon and the importance of mainframe representation.
-- Ongoing work on semantic conventions and virtualization entities within the OpenTelemetry project.
-- Need for community feedback on proposed changes and PRs related to mainframe subsystems.
+- Updates from the GS UK mainframe conference, including interest in native distributed tracing.
+- Plans for KubeCon and promoting mainframe discussions.
+- Need for documentation on mainframe concepts and their integration with OpenTelemetry.
+- Ongoing efforts to stabilize the OpenTelemetry collector and ensure it supports mainframe architectures.
 
 ## Action Items
-- Organize a meeting with Trask, Ruediger, and Elizabeth Joseph to resolve GitHub administrative access issues.
-- Prepare PRs for native distributed tracing and semantic conventions for community review.
-- Follow up on virtualization discussions and ensure mainframe entities are aligned with community standards.
+- Greg Shriver to gather and curate existing documentation related to mainframes for OpenTelemetry.
+- Antoine to arrange a meeting with Trask and Elizabeth Joseph to address GitHub administrative access issues.
+- Follow-up on creating introductory documentation or blog posts about mainframes and OpenTelemetry.
 
 ## Participants
-atoulme, Greg Shriver, Ruediger Schulze, Morgan, Elizabeth Joseph, Craig, Antoine
+atoulme, Greg Shriver, Ruediger Schulze (IBM), Richard Nikula

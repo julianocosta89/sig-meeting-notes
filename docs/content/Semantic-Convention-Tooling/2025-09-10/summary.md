@@ -1,16 +1,14 @@
 ## Key Topics
 - Discussion on merging YAML schema V2 work into the Weaver Project Board.
-- Review of recent bugs and pull requests related to the Weaver project.
-- Consideration of new features and design discussions for upcoming releases.
-- Debugging enhancements and documentation improvements.
-- Decisions on whether certain features should be part of V1 or V2.
+- Updates on debugging features and bug triaging related to the Weaver project.
+- Consideration of attribute groups and their implications for sampling relevance in spans.
+- Proposal for improving the reporting mechanism of the LifeCheck tool to summarize violations more effectively.
 
 ## Action Items
 - Move YAML schema V2 bugs into the Weaver Project Board.
-- Cut a release that includes a debug feature to assist with troubleshooting.
-- Include Liudmila's pull request (928) in the next release after review.
-- Create a backlog item for V2 schema improvements.
-- Move the JSON schema generation issue into V2 for future work.
+- Implement debugging features and improve documentation around debugging.
+- Explore the implications of public vs. internal attribute groups and their sampling relevance.
+- Enhance the LifeCheck reporting to provide a summary of violations in a more compact format.
 
 ## Participants
-Josh Suereth, Nathan Smith, Liudmila Molkova, Jeremy Blythe
+Josh Suereth, Nathan Smith, Liudmila Molkova, Jeremy Blythe, Juraci Paixão Kröhling

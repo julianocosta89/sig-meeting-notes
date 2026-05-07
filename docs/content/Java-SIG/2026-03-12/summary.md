@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on merging PRs related to instrumentation release.
-- Debate on the necessity and content of `agents.md` versus `contributing.md`.
-- Development of a code review agent to automate adherence to coding conventions.
-- Exploration of how to document coding standards for both human contributors and automated agents.
-- Updates on testing and refining the code review process in the instrumentation repository.
+- Discussion on the differences and purposes of `agents.md` and `contributing.md` files.
+- The development and testing of a code review agent for the instrumentation repository.
+- The use of AI tools (like Copilot) for automating code reviews and PR submissions.
+- Strategies for documenting coding conventions and idioms for both human and machine consumption.
+- The importance of maintaining a balance between machine-focused documentation and human readability.
 
 ## Action Items
-- Jack Berg to refine the `agents.md` to ensure it complements `contributing.md`.
-- Trask Stalnaker to continue testing the code review agent and its effectiveness in the instrumentation repo.
-- Team to consider how to evolve documentation practices to better serve both human and machine users.
+- Jack Berg to consider creating an index of coding patterns and idioms for better documentation.
+- Trask Stalnaker to continue testing the code review agent and share findings.
+- Explore the potential for enabling AI tools in the core repository.
 
 ## Participants
-Trask Stalnaker, John Watson, Jack Berg, Jack Shirazi
+Trask Stalnaker, John Watson, Jack Berg, Jack Shirazi, Jay DeLuca

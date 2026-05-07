@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the Japanese survey for OpenTelemetry adoption, including objectives and questions.
-- Clarification on the phrasing of survey questions to gather more detailed responses regarding OpenTelemetry usage.
-- Consideration of dropping certain questions to streamline the survey and improve response rates.
-- Importance of involving the OpenTelemetry Collector SIG for insights on component usage.
+- Discussion on the Japanese survey for OpenTelemetry adoption, including questions about community events and information sources.
+- Review of survey questions, focusing on the need for more granular responses regarding OpenTelemetry usage.
+- Updates on upcoming events, including a livestream titled "What's New in OTL" and coordination for KubeCon North America.
+- Importance of refining survey questions to better understand user experiences and adoption levels.
 
 ## Action Items
-- Finalize the draft of the Japanese survey and share it in the SIG channel for further comments and suggestions.
-- Confirm with the OpenTelemetry Collector SIG regarding the potential addition of components in the survey.
+- Finalize and share the draft of the Japanese survey questions for feedback.
+- Reach out to OpenTelemetry users in the APAC region for event coordination.
+- Prepare promotional materials for the upcoming livestream.
+- Review and approve pending PRs related to survey templates and documentation updates.
 
 ## Participants
 Victoria Nduka, Ernest Owojori, Andrej Kiripolsky, Reese Lee

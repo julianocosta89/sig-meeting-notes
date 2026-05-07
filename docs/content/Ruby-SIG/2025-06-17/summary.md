@@ -1,16 +1,15 @@
 ## Key Topics
-- Stabilization of log parameters and the process for stabilization.
-- Approval of Browser SIG Phase One and upcoming meeting details.
-- Updates on maturity levels for OpenTelemetry components.
-- Discussion on the transition of CNCF Slack workspace to a free plan and potential platform changes.
-- Review of PRs related to core Ruby SDK and upcoming releases.
+- Stabilization of logs features: event name parameter and logger enabled.
+- Approval of Browser SIG Phase One and new maturity levels for features.
+- Discussion on OpenTelemetry Enhancement Proposals (OTEPs) and their integration into specifications.
+- Changes in CNCF Slack workspace and potential migration to Discord.
+- Review and merging of various PRs related to core and instrumentation.
 
 ## Action Items
-- Kayla to find and share the stabilization process details.
-- Update documentation regarding the status of metrics and logs once PRs are merged.
-- Verify the status of the Ruby release policies.
-- Consider immediate release of fixes before further changes to libraries.
+- Kayla to find and share the stabilization process documentation.
+- Update documentation to clarify the status of metrics and logs once the relevant PR is merged.
 - Xuan to check in with Ariel regarding PR approvals.
+- Kayla to prepare for potential migration of the Slack workspace.
 
 ## Participants
 Kayla Reopelle, Hannah Ramadan, Xuan Cao

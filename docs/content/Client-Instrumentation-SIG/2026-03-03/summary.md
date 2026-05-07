@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on structuring SDK and packages for OpenTelemetry, focusing on the need for a specific API for RUM (Real User Monitoring).
-- The reasoning behind the introduction of the RUM API, emphasizing its application-facing nature and the need for event handling.
-- Consideration of modeling sessions as entities within the SDK and its implications for metrics aggregation.
-- The potential for a common client API to facilitate session management across different platforms.
+- Discussion on structuring the SDK and API for client instrumentation, with emphasis on the need for a specific API for application developers.
+- Exploration of modeling sessions as entities and the implications for metrics SDK.
+- Debate on the use of metrics in client-side instrumentation and the challenges of high cardinality metrics.
+- Suggestions for creating conventions to translate events into metrics for user-facing applications.
 
 ## Action Items
-- Explore the implementation of the RUM API and session management features, with flexibility for future adjustments.
-- Align on the session management API to ensure consistency across different platforms.
-- Continue discussions on the implications of modeling sessions as entities and its impact on metrics SDK.
+- Continue discussions on the potential for a client-specific API for metrics in future meetings.
+- Explore the possibility of defining conventions for translating events into metrics.
+- Review the crash semantic convention in Slack for further insights.
 
 ## Participants
-Santosh, Martin Kuba, Hanson, Jason Plumb
+Santosh, Martin Kuba, Jason Plumb, Hanson, Ladd Van Tol

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on a proposal for instrumenting tracing channels with a simple example based on the authorized role application.
-- Announcement of cancellation of SIG calls during the last two weeks of December for holiday breaks.
-- Consideration of relaxing version bounds for the "import in the middle" package to facilitate smoother upgrades for dependent packages.
-- Updates on the Logger Configurator, which has reverted to the original spec-based implementation.
-- Bug triage regarding a vulnerability in JS Yammer, confirmed to not affect released artifacts.
+- Discussion on the proposal for instrumenting tracing channels with a simple example.
+- Updates on the versioning of the `import-in-the-middle` package and potential issues with multiple versions.
+- Logger configurator updates, reverting to the original spec-based approach.
+- Bug triage, including a vulnerability in `JS Yammer` and issues related to metrics export and gRPC instrumentation.
+- Ongoing discussions about the priority of configuration methods (programmatic vs. environment variables) and the potential for a new Node SDK path.
 
 ## Action Items
-- Participants are encouraged to review the tracing channels proposal and provide feedback.
-- Raphaël Thériault to open an issue regarding the versioning concerns with "import in the middle."
-- Marc Pichler to assign himself to review the Logger Configurator changes.
+- Raphael to open an issue regarding the `import-in-the-middle` versioning concerns.
+- Jackson to continue working on the logger configurator and solicit reviews.
+- Marylia to bring up the configuration priority discussion in the next working group meeting.
+- Participants to review open PRs related to configuration and logger updates.
 
 ## Participants
-Marc Pichler, Andrei Borza, Marylia Gutierrez, Raphaël Thériault, Trent Mick, Jamie Danielson, Jackson Weber
+Marc Pichler, Andrei Borza, Marylia Gutierrez, Raphaël Thériault, Trent Mick, Jamie Danielson, Jackson Weber, David Luna Bistuer

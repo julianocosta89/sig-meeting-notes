@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on changes to the OpenTelemetry Entity Provider and the implications of mutable vs. immutable resources.
-- Proposal for a two-phase rollout to manage the introduction of mutable resources while minimizing breaking changes.
-- Exploration of pseudocode syntax and its impact on the OpenTelemetry model.
-- Consideration of how to handle metrics related to resource mutation and the challenges involved.
+- Discussion on the OpenTelemetry Entity Provider and its implications for mutable resources.
+- Proposed changes to the OTEP regarding resource immutability and entity management.
+- The need for a two-phase rollout to manage breaking changes in the OpenTelemetry SDK.
+- Considerations for handling metrics and state mutations in the context of entities.
+- Exploration of how to integrate entity references into the instrumentation scope.
 
 ## Action Items
-- Josh to push his local changes regarding resource initialization and status handling for review.
-- Daniel to share the latest version of his prototype related to entity provider creation.
-- Further discussion on the straw man proposal regarding resource immutability and entity handling in the next meeting.
+- Josh to draft an OTEP addressing the discussed changes and implications for resource immutability.
+- Daniel to push the latest version of his prototype for review.
+- Both to continue refining the approach to entity management and mutable resources.
 
 ## Participants
 Josh Suereth, Daniel Dyla (Dynatrace)

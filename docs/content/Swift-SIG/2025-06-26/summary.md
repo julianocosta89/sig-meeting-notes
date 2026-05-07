@@ -1,14 +1,15 @@
 ## Key Topics
-- **Data Compression Issues**: Discussion on conflicts arising from a data compression library conflicting with OpenTelemetry SDK due to naming issues.
-- **CocoaPods Failures**: Ongoing issues with CocoaPods and synchronization problems in CI jobs were addressed.
-- **Metrics PR Review**: Review of a pull request aimed at extending span data and removing old metrics references, with concerns about attribute accessibility and thread safety.
-- **Persistent Metrics Exporter**: Introduction of a persistent metric exporter for stable metrics and the challenges faced in implementation.
+- Data compression conflicts with another library in Swift Package Manager (SPM).
+- Ongoing issues with CocoaPods and CI job synchronization.
+- Discussion on metrics PR, including attribute accessibility and immutability.
+- Updates on stable metrics implementation and removal of old metrics references.
+- Need for thread safety in metrics initialization.
 
 ## Action Items
-- Address the data compression naming conflict in a branch for user resolution.
-- Document CocoaPods issues and propose fixes to avoid waiting for the next release.
-- Create a pull request to improve span attribute accessibility and ensure thread safety.
-- Review and finalize the metrics pull request, focusing on persistent metrics and encoding/decoding tests.
+- NATO to address data compression conflict issue.
+- Ariel to document CocoaPods issues and propose fixes.
+- Bryce to create a PR for span attributes accessibility.
+- Review and approve metrics PR changes.
 
 ## Participants
 Bryce Buchanan, Ariel Demarco, Martin Holman

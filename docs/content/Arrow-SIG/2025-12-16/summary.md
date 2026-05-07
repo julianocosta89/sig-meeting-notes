@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the progress of the Quiver project, particularly the new persistence layer and recent PRs.
-- Ongoing performance issues, including 100% load losses in performance tests and the need for further investigation.
-- Updates on CI test coverage improvements, including plans to add support for ARM64 and Windows.
-- Review of issues related to the batch processor and the importance of tracking binary size.
-- Introduction of new methods for handling Arrow-based batching processes.
+- Progress updates on the Quiver project, including a new PR for the persistence layer by Aaron Marten.
+- Discussion on performance issues related to benchmarks and Windows builds, led by Cijo Thomas.
+- Introduction of the Transform Processor by Albert Lockett, which applies transformations to OTLP batches.
+- Development of a KQL processor by Joshua MacDonald, focusing on telemetry data manipulation.
+- Enhancements to the batch processor for handling OTLP bytes and OTAP records.
 
 ## Action Items
-- Review Aaron Marten's recent PR on the Quiver persistence layer.
-- Investigate the performance issues reported by Cijo Thomas, particularly the dropping of logs in tests.
-- Continue improving CI test coverage and address Windows build failures.
-- Monitor the binary size impact as new logging features are added.
+- Review Aaron Marten's new PR on the persistence layer.
+- Investigate performance issues reported by Cijo Thomas regarding 100% load losses and log drops.
+- Albert Lockett to work on eager validation for the Transform Processor's pipeline definitions.
+- Joshua MacDonald to continue refining the KQL processor and explore integration with existing telemetry systems.
 
 ## Participants
-Albert Lockett, Aaron Marten, Joshua MacDonald, Cijo Thomas
+Albert Lockett, Aaron Marten, Joshua MacDonald, Cijo Thomas, Venkat Allam, Blanche

@@ -1,14 +1,13 @@
 ## Key Topics
-- Review of pull requests, particularly focusing on the role versus gold versus description debate.
-- Discussion on agentic systems and the need for better communication among contributors.
-- Proposal for adding agent attributes to Gen AI metrics to improve monitoring.
-- Overview of triage board and new issues, including the need to remove inheritance from invoke agent to inference.
-- Introduction of new participants and their roles in the observability team.
+- Review of pull requests related to agentic attributes and GenAI metrics.
+- Discussion on the need for standardization of metrics related to inference costs and evaluation metrics.
+- Exploration of auditing events for reconstructing requests and interactions with LLMs.
+- Status update on the current state of OpenTelemetry's semantic conventions for GenAI.
 
 ## Action Items
-- Review and provide feedback on the pull request regarding definitions of call arguments and call results by the end of the day.
-- Participants working on agentic systems to link previous work and proposals in the relevant GitHub issues.
-- Sergey to create a pull request to add missing agent attributes to Gen AI metrics for better tracking.
+- Sergey to share a proof of concept (POC) for agentic attributes in the Slack channel.
+- Participants to review and provide feedback on the status update document shared by Liudmila.
+- Pavan to keep PR 2594 open for further discussion despite being marked stale.
 
 ## Participants
-Liudmila Molkova, Shipra Jain, Bruno Baptista, Endre Sara, Sergey Sergeev, Tristan Sloughter, Aaron Abbott, Sujay Solomon.
+Liudmila Molkova, shiprajain, Bruno Baptista, Endre Sara, Sergey Sergeev, Tristan Sloughter, Aaron Abbott, Sujay Solomon, Hardik Surana, Alex Hall, Pavan.

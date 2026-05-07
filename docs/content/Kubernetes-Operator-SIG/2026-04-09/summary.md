@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the Instrumentation CRD and its development status.
-- Plans for integrating the injector into the operator and associated refactoring.
-- Debate on whether to support both structured and raw configuration in the CRD.
-- Proposal for creating an issue to document the goals for V1 Beta 1.
-- Considerations for organizing end-to-end tests and manifests for the target allocator.
+- Discussion on the Instrumentation CRD and plans for its development.
+- Review of the integration of the injector into the operator and related refactoring.
+- Consideration of structured vs. raw configuration for the CRD.
+- Updates on the Docker CVE and its impact on the operator.
+- Proposal to create an official customized manifest for the target allocator.
 
 ## Action Items
-- Pavol to create an issue for V1 Beta 1 goals and open a pull request for the CRD.
-- Jacob to begin work on the injector integration and associated refactoring.
-- Participants to review the organization of manifests and tests for the target allocator.
+- Pavol to create an issue for the view on Beta 1 and open a pull request for the CRD.
+- Participants to review the location of the new end-to-end test for the target allocator.
+- Mikołaj to provide links to the Docker CVE issue and upstream fixes.
+- Discussion on making the GoVolumeCheck not a required action for merge.
 
 ## Participants
-Benedikt Bongartz, Pavol Loffay, Ozzy, Mikołaj Świątek, Jacob (jea)
+Benedikt Bongartz, Pavol Loffay, Ozzy, Mikołaj Świątek, Jacob, jea

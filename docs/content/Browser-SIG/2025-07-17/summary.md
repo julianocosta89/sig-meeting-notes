@@ -1,15 +1,14 @@
 ## Key Topics
-- Session Management: Discussion on the current state of session management work and its integration with the entity provider.
-- Concurrency Issues: Feedback on handling concurrency in local storage and cookies, suggesting asynchronous APIs for better performance.
-- Backlog Management: Overview of the work streams including semantic conventions, session management, and improvements to the OpenTelemetry JavaScript API.
-- API Prototyping: Consensus on moving forward with a new API prototype to address package size and usability concerns.
-- Instrumentation: Consideration of quick wins by completing existing instrumentation tasks to provide immediate value to users.
+- Session Management: Discussion on the current prototype state and the need for session ID attributes.
+- Backlog Management: Overview of the work streams, including semantic conventions, session management, and improving the OpenTelemetry JavaScript API.
+- Instrumentation: Need for quick wins by completing existing instrumentation work and the importance of feedback from current implementations.
+- Metrics and Benchmarks: Identifying metrics for performance targets and gathering existing event capture lists from participating organizations.
+- Donations of Existing Work: Discussion on upstreaming existing instrumentation from various organizations.
 
 ## Action Items
-- Review and evaluate the current session management prototype for potential implementation.
-- Explore the transition to asynchronous APIs for local storage and cookie handling.
-- Establish metrics for performance targets related to the new JavaScript API.
-- Prioritize completing existing instrumentation tasks to enhance user experience.
+- Create issues in the JavaScript repo to track discussions and progress on the identified topics.
+- Each participant organization to audit and report on their current event captures and metrics.
+- Joaquín to own the testing topic and provide updates after his return.
 
 ## Participants
-Martin Kuba, Jared Freeze, Ted Young, Daniel Dyla, Benoît Zugmeyer
+Martin Kuba, Jared Freeze, Ted Young, Daniel Dyla, Benoît Zugmeyer, Purvi Kanal, Joaquín Díaz, Dan Gomez Blanco

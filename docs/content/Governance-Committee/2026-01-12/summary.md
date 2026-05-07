@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on community feedback for ongoing OpenTelemetry issues.
-- Updates on the OpenTelemetry Collector Cookbook and Juraci's book project.
-- Review of recent issues and their classifications (e.g., editorial, needs info).
-- Triage of issues related to Prometheus and sampling.
-- General repository maintenance and handling of feedback requests.
+- Discussion on community feedback regarding ongoing OpenTelemetry specifications.
+- Updates on the OpenTelemetry Collector Cookbook and related content.
+- Review of issues related to Prometheus and sampling within OpenTelemetry.
+- Maintenance of OpenTelemetry repositories and handling of community inquiries.
+- Planning for future discussions on the Dart SDK and API for OpenTelemetry.
 
 ## Action Items
-- Keep ongoing discussions open for community feedback on various issues.
-- Add editorial labels where necessary for accepted issues.
-- Remove issues from the project that require more information or author feedback.
-- Engage with SIG Infra regarding infrastructure-related issues.
+- Keep ongoing discussions open for community feedback on specifications.
+- Add the Dart SDK and API discussion to the agenda for the next GC meeting.
+- Ensure that issues requiring author feedback are labeled appropriately in the repository.
 
 ## Participants
 Juraci Paixão Kröhling, Pablo Baeyens, Severin Neumann

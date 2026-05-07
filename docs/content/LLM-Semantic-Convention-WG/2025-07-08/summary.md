@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on project planning and updates on multi-agent proposals.
-- Presentation of the Langchain instrumentation framework and feedback on initial PR.
-- Ongoing deliberations regarding the recording of chat history and attributes for input/output messages.
-- Clarification on the use of complex attributes in spans and events within OpenTelemetry specifications.
+- Updates on multi-agent proposals and collaboration between Cisco and Microsoft.
+- Discussion on Langchain instrumentation framework and initial PR for basic structure.
+- Ongoing debates about chat history recording, including attributes for input and output messages.
+- Project planning exercise to prioritize focus areas for the working group.
+- Proposal for a new attribute to record costs associated with LLM calls.
 
 ## Action Items
-- Ridhima to incorporate feedback on the Langchain instrumentation PR and discuss package naming with Near.
-- Continue discussions on the uploading process for chat history content and finalize specifications.
-- Monitor the status of changes regarding event attributes and log entry body fields in OpenTelemetry.
+- Ridhima Satam to finalize and seek reviews for the Langchain instrumentation PR.
+- Liudmila Molkova to facilitate discussions on the uploading process for chat history.
+- Participants to contribute to the project planning exercise by allocating their budget across focus areas.
+- Samuel Colvin to create an issue for the proposed cost recording attributes and gather feedback.
 
 ## Participants
-Giovanna Carofiglio, Ridhima Satam, Samuel Colvin, Josh Bonczkowski, Liudmila Molkova, Shipra Jain, Sergey Sergeev, Pavan, Aaron Abbott.
+Giovanna Carofiglio, Ridhima Satam, Samuel Colvin, Josh Bonczkowski, Liudmila Molkova, shiprajain, Sergey Sergeev, Pavan, Aaron Abbott, Alex Hall, Tao Chen, AB Austin Born.

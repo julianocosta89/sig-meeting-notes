@@ -1,15 +1,15 @@
 ## Key Topics
-- Updates on the OTLP P-Prof converter and the need for semantic convention attributes.
-- Progress on context propagation documents and the transition to OTEP format.
-- Discussion on the consistency of values and timestamps in sample messages.
-- Security concerns regarding the use of ProcFS and alternative proposals for system calls.
-- Ongoing review and feedback processes for various pull requests.
+- Updates on the OTLP P-Prof converter and context propagation documents.
+- Discussion on the use of ProcFS vs. alternative methods for memory reading in profiling.
+- Review and progress on various pull requests related to Ruby stack traces and profiling improvements.
+- Benchmarking setup for profiling data and its implications on performance.
+- Code ownership discussions for interpreter contributions.
 
 ## Action Items
-- Florian to review the OTLP P-Prof converter PR.
-- Ivo to open a PR for moving reference implementations to the SIG profiling repo.
-- Jonathan to address comments on PR 724 and discuss with Josh.
-- Alban to continue discussions on the use of ProcFS and explore alternatives.
+- Review the OTLP P-Prof converter PR and provide feedback.
+- Alban to follow up on the security advisories and pull requests.
+- Alexey to investigate serialization methods for attribute comparison.
+- Dale to continue working on Ruby profiling improvements and follow up with additional PRs.
 
 ## Participants
-Ivo Anjo, Felix Geisendörfer, Florian Lehner, Alban Crequy, Christos Kalkanis, Jonathan Halliday
+Felix Geisendörfer, Florian Lehner, Ivo Anjo, Alban Crequy, Christos Kalkanis, Jonathan Halliday, Alexey A, Nayef Ghattas, Dale Hamel.

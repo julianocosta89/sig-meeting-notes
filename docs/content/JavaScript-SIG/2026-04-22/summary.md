@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on a PR for enabling host metrics collection via environment variable and potential changes to the instrumentation interface.
-- Consensus on using OpenTelemetry Collector for host metrics collection instead of language-specific SDKs.
-- Consideration of having host metrics off by default in auto instrumentation due to performance concerns.
-- Proposal to enhance documentation on recommended practices for host metrics setup, including potential examples for JavaScript.
+- Discussion on the proposal to enable host metrics collection in Auto Instrumentation, including the potential renaming of the host metrics package to "Instrumentation Host Metrics."
+- Agreement on the preference for using OpenTelemetry Collector for host metrics collection rather than language-specific SDKs.
+- Debate on whether SDK metrics should be enabled by default or require opt-in configuration, particularly in relation to the declarative config schema.
+- Updates on ongoing PRs related to SDK metrics and the need for clearer documentation on configuration options.
+- Announcement of progress towards graduation for the OpenTelemetry project.
 
 ## Action Items
-- Follow up on the host metrics specific JavaScript package and update the README to include links to the host metrics receiver documentation.
-- Explore creating a dedicated page on OpenTelemetry.io for recommended host metrics setup.
-- Continue discussions in the End User and Blueprints SIGs to gather more examples and best practices.
+- Follow up on the host metrics package renaming proposal and update the README to include references to the OpenTelemetry Collector.
+- Open an issue in the JavaScript repo to track discussions on SDK metrics configuration.
+- Review and provide feedback on open PRs related to log stabilization and SDK metrics.
+- Explore the addition of a Boolean option in the declarative config schema for enabling SDK metrics.
 
 ## Participants
-Trent Mick, Marylia Gutierrez, Marc Pichler, Daniel Dyla, Jamie Danielson
+Trent Mick, Marylia Gutierrez, Marc Pichler (Dynatrace), Daniel Dyla (Dynatrace), Jamie Danielson, Marten Hennoch

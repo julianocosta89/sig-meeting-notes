@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of environment variable propagation names and the need for stabilization.
-- Presentation on the "always record sampler" and "Tracer-enabled" components, both now stable.
-- Discussion on multi-tenancy at the SDK level and context-scoped attributes for better telemetry.
-- Consideration of declarative configuration for new concepts in the specification.
-- Feedback on the proposed context-scoped attributes and their implementation challenges.
+- Review of async changes and environment variable propagation.
+- Presentation on multi-tenancy support at the SDK level.
+- Updates on OTEP proposals, including entity merge algorithms and event definitions.
+- Discussion on Prometheus interoperability and the need for stable components.
+- OpenMetrics 2.0 updates and its implications for OpenTelemetry.
 
 ## Action Items
-- Review the environment variable propagation names offline.
-- Discuss the multi-tenancy proposal and context-scoped attributes further, with emphasis on user opt-in configurations.
-- Explore the declarative configuration approach for new SDK features.
+- Review and provide feedback on the OTEP proposals and multi-tenancy support.
+- Finalize the Prometheus receiver and OTLP specs for stability.
+- Clarify the review process for Prometheus-related PRs in the spec repository.
 
 ## Participants
-Tigran Najaryan, Trask Stalnaker, Carlos Alberto Cortez, Josh Suereth, Jack Berg, David
+Tigran Najaryan, Trask Stalnaker, Carlos Alberto Cortez, Ivo Anjo, Josh Suereth, David Ashpole, Arthur Silva Sens, Jack Berg, Mattia Meleleo, Lucas Hering, Daniel Dyla, Liudmila Molkova, Tyler.

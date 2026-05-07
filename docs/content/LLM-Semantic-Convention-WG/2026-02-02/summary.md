@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the memory operations specification for AI agents, focusing on how memory updates are tracked.
-- Inquiry into the use of session IDs and conversation IDs in tracking multi-turn conversations.
-- Proposal for a semantic convention around security events and spans for telemetry from AI providers like OpenAI and Anthropic.
-- Clarification on the usage of "Create Agent" vs. "Invoke Agent" spans, particularly in local vs. remote agent scenarios.
+- Discussion on the memory operations specification for AI agents and its implications for monitoring.
+- Exploration of session ID and conversation ID usage in tracking multi-turn conversations.
+- Proposal for a new semantic convention around security events and telemetry.
+- Clarification on the usage of "create agent" vs. "invoke agent" spans in monitoring frameworks.
+- Review of the non-normative specification document and its relevance to ongoing projects.
 
 ## Action Items
-- Review and provide feedback on the memory operations spec and security event spans.
-- Further investigate the implementation of session IDs and conversation IDs in current frameworks.
-- Surya Teja to explore and clarify the use cases for "Create Agent" spans in the context of local agent instantiation.
+- Participants to review the non-normative specification document and provide feedback.
+- Surya Teja to draft use cases and examples for the "create agent" span and present them in the next meeting.
+- Josh Winerman to review the memory operations spec in the context of retrieval before the next meeting.
 
 ## Participants
 Sergey Sergeev, Keith Decker, Aditya (Cisco/Splunk), Ridhima Satam, Nagkumar, Josh Winerman, Surya Teja

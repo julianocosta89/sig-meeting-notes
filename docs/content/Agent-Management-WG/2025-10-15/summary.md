@@ -1,13 +1,14 @@
 ## Key Topics
-- Proposal for payload trust verification in the OpenTelemetry Agent Management protocol.
-- Discussion on the need for community support and interest before proceeding with the proposal.
-- Exploration of using custom messages as a means to prototype new features without altering the core protocol.
-- Clarification on the signing of messages and the role of certificate chains in ensuring message authenticity.
+- Proposal for payload trust verification in OpenTelemetry Agent Management.
+- Discussion on the need for community support for new features.
+- Suggestions for implementing a REST API for server configuration.
+- Clarification on agent identification and instance ID handling.
+- Exploration of custom capabilities and their potential implementation.
 
 ## Action Items
-- Jack Peterson to refine the proposal and engage the community for feedback and support.
-- Consider opening an issue or PR in the spec repository to gather input from a broader audience.
-- Explore the use of custom messages as a temporary solution for implementing the proposed features.
+- Jack Peterson to refine the payload trust verification proposal and seek community feedback.
+- JM Juande Manjon to push the pending PR and implement a REST API for server configuration.
+- Andy Keller to open a PR in the spec regarding agent description updates and clarify instance ID handling.
 
 ## Participants
-Jack Peterson, Tigran Najaryan, Raphael Menderico, Andy Keller
+Tigran Najaryan, Jack Peterson, Raphael Menderico, Andy Keller, JM Juande Manjon, Evan Bradley

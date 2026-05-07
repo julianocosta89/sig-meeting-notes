@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on feature gates and their stability status, particularly regarding Golang flags and MTLS.
+- Discussion on feature gates and their stability, including Golang flags and MTLS.
 - Instrumentation V1 Beta 1 CR and the challenges of supporting declarative configuration across different languages.
-- The complexity of the declarative config interface versus environment variable configuration.
-- The need for a review process for future gates to ensure timely updates and stability.
+- Transition from annotations to labels for pod instrumentation and the implications of this change.
+- Semantic conventions and the potential for users to specify versions to avoid breaking changes.
+- The need for better documentation and discoverability of instrumentation images and their versions.
 
 ## Action Items
-- Benedikt Bongartz to follow up on the stability of Golang flags.
-- Pavol Loffay to investigate issues related to enabling network policies for the operator.
-- Team to consider the approach for supporting declarative config in the instrumentation CR and its implications.
+- Open a pull request for V1 Beta 1 that includes cleanup and introduces declarative config as a raw field.
+- Explore the implementation of a schema processor to assist with semantic convention upgrades.
+- Improve documentation regarding instrumentation images and their release processes.
 
 ## Participants
-Mikołaj Świątek, Israel Blancas, Benedikt Bongartz, Pavol Loffay, Antoine Toulme
+Mikołaj Świątek, Israel Blancas, Benedikt Bongartz, PL Pavol Loffay, jea

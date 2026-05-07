@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the naming of the data entity vs. data source in OpenTelemetry.
-- Consideration of whether data should be classified as an entity or an attribute group.
-- Importance of standardizing attribute values for backend services to ensure consistency.
-- Exploration of existing standards for data sensitivity and categorization.
+- Discussion on naming conventions for the data entity vs. data source in OpenTelemetry.
+- Proposal to categorize data as an attribute group rather than an entity.
+- Need for standardization of backend services' handling of data attributes.
+- Business unit proposal and its relationship to service ownership attributes.
+- Upcoming demo on sensitivity propagation in data sources.
 
 ## Action Items
-- Ayushi to revise the proposal to potentially classify data as an attribute group instead of an entity.
-- Research on standard vocabulary for data categories and sensitivity attributes.
-- Develop recommendations or enums for backend services to handle attributes consistently.
+- Yoshi to comment on the PR regarding the business unit proposal.
+- Ayushi to rewrite the proposal to reflect the direction towards data as an attribute group.
+- Ayushi to reach out to security professionals for input on standardizing data sensitivity attributes.
 
 ## Participants
 Ayushi Asthana, Yoshi

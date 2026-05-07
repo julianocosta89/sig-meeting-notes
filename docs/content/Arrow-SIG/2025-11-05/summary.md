@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on multivariate metrics support for Apache Arrow and ongoing exploration.
-- Issue triage of recent developments and updates on the OTAP data flow crates.
-- Performance improvements and bug fixes related to the new filter processor.
-- Proposed features for batch processing, including deduplication and sorting by trace ID.
-- Plans to consolidate the Hotel Arrow Rust modules into the OTAP data flow.
+- Discussion on multivariate metrics and ongoing exploration.
+- Updates on the OTAP data flow crates and filter processor improvements.
+- Proposal for internal telemetry configuration and concerns about bypassing existing SDKs.
+- Demonstration of the KQL-like query engine and its capabilities in processing logs and metrics.
+- Performance optimizations and caching mechanisms for data fusion plans.
 
 ## Action Items
-- Jake Dern to revisit the multivariate metrics exploration.
-- Joshua MacDonald to continue working on the batch processing design and related issues.
-- Albert Lockett to coordinate with Chanley upon his return for the filter processor improvements.
-- Joshua MacDonald to consolidate generated code between OTel Arrow Rust and OTAP Dataflow.
+- Joshua to send out a PR for the proto names and potentially consolidate code.
+- Albert to continue working on the filter processor and its performance improvements.
+- Andres to refine the internal telemetry proposal based on feedback.
+- Follow-up meeting scheduled to further discuss the internal telemetry configuration.
 
 ## Participants
-Laurent Querel, Chris Hain, Jake Dern, Joshua MacDonald, Albert Lockett, Aaron, Andres, Mark, Jaime
+Laurent Querel, Chris Hain, Jake Dern, Joshua MacDonald, Albert Lockett, Andres Borja, Utkarsh Pilla, Jaime, Aaron, Mark, Cijo.

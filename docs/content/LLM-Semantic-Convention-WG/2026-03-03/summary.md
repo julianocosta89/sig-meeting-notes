@@ -1,13 +1,16 @@
 ## Key Topics
-- Discussion on the OpenTelemetry agents and the need for clarity on the roles and versions of agents.
-- Clarification on the differences between "Invoke Agent" and "Invoke Workflow" and the need for better guidance on their usage.
-- Async modeling in spans and how to handle trace contexts in asynchronous communication between clients and servers.
-- Membership requests and sponsorship for contributions to the OpenTelemetry organization.
+- Discussion on the OpenTelemetry agent and workflow span definitions, including distinctions between `Invoke Agent` and `Invoke Workflow`.
+- Review of the project board and updates on ongoing issues, including membership requests and bug tracking.
+- Clarification on the handling of asynchronous operations and their impact on trace context.
+- Proposal for new semantic conventions regarding error handling and exception events.
+- Consideration of client address and port attributes for security and privacy compliance.
 
 ## Action Items
-- Nakumar to request membership in the OpenTelemetry organization.
-- Tao to propose clearer definitions and distinctions between "Invoke Agent" and "Invoke Workflow" in the documentation.
-- Trask to provide a spec link regarding trace boundaries in distributed systems.
+- Nagkumar to follow up on membership request for OpenTelemetry organization.
+- Tao to suggest clearer distinctions between `Invoke Agent` and `Invoke Workflow` in documentation.
+- Trask to explore implications of treating async and non-async spans uniformly.
+- Team to review and finalize the handling of exception events and their attributes.
+- Aaron to follow up on minor PRs and ensure they align with current standards.
 
 ## Participants
-Neil Yashinsky, Liudmila Molkova, Sergey Sergeev, Nakumar, Trask Stalnaker, Tao
+Neil Yashinsky, Liudmila Molkova, Sergey Sergeev, Nagkumar, Trask Stalnaker, Tao, Aaron Abbott, Ankit.

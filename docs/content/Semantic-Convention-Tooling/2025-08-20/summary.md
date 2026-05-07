@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the integration of semantic conventions and the Weaver project.
-- Schema V2 and its implications for attribute management and consistency.
-- Proposal for reintroducing attribute groups to avoid redundancy in defining attributes across different spans and metrics.
-- Review of project boards and the relevance of separating tasks related to semantic conventions from the Weaver project.
+- Discussion on the integration and management of semantic conventions and the Weaver project.
+- Proposal for the introduction of Schema V2 and its implications for attribute groups.
+- Exploration of multivariate metrics and the concept of metric sets to optimize reporting and storage.
+- Conflict resolution strategies for attribute groups and their visibility in schemas.
+- Feedback on the current state of metrics and potential challenges in implementation.
 
 ## Action Items
-- Laurent to prepare a document outlining the proposed changes to the schema and attribute groups.
-- Liudmila to further investigate the integration of semantic conventions with the Weaver project and the necessity of maintaining separate project boards.
-- Team to review the current status of issues in the semantic conventions project and identify any new ones for discussion.
+- Liudmila Molkova to prototype the attribute group concept with private visibility.
+- Laurent Quérel to create a GitHub issue regarding the definition of metric sets and their relation to attribute groups.
 
 ## Participants
-Laurent Quérel, Matthew Hensley, Jay DeLuca, Liudmila Molkova, Jeremy Blythe
+Laurent Quérel, Matthew Hensley, Jay DeLuca, Liudmila Molkova, Jeremy Blythe, Christian Leghadjeu

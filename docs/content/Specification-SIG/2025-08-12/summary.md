@@ -1,13 +1,13 @@
 ## Key Topics
-- Conflict in stability guarantees between OpenTelemetry components, specifically regarding configuration changes in the Prometheus exporter and OTEL Collector.
-- Discussion on deprecating an existing configuration option in favor of a new one and how to manage backward compatibility.
-- Proposal to formalize the handling of deprecated configurations in the declarative config.
-- Review of two pending PRs related to proto changes and clarification of breaking changes in the specification.
+- Discussion on stability guarantees and configuration changes in OpenTelemetry, particularly regarding the Prometheus exporter and declarative config.
+- Proposal to deprecate an old configuration option while introducing a new one, with considerations on how to manage backward compatibility.
+- Updates on two PRs related to proto changes and the specification of attribute extensions.
+- Announcement of the CFP for KubeCon Europe and discussion about the maintainer summit.
 
 ## Action Items
-- Owen Williams and Arthur Silva to explore how to phase out deprecated configuration options and report back.
-- Robert Pająk to add a prominent note in the changelog regarding the change in breaking change status for extending attributes.
-- Participants to consider how to better communicate spec changes to less engaged users.
+- Robert to ensure the changelog highlights the change in breaking change status for attribute extensions.
+- Participants to consider how to communicate the deprecation of configuration options effectively.
+- Follow-up discussions to be held regarding the impact of configuration changes on users.
 
 ## Participants
-Armin (Dynatrace), Owen Williams, Artur Silva Sens, Trask Stalnaker, Robert Pająk, Josh Suereth, Tyler Yahn, Reiley Yang
+Armin (Dynatrace), Owen Williams, Trask Stalnaker, Arthur Silva Sens, Robert Pająk, Josh Suereth, Tyler Yahn, Reiley Yang, Carlos Alberto Cortez, Antoine Toulme, Bob Strecansky, GZ Gregor Zeitlinger.

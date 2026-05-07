@@ -1,13 +1,13 @@
 ## Key Topics
-- Sonal Gaud shared insights from her recent talks on OpenTelemetry, emphasizing community contributions.
-- Discussion on a PR from Sam addressing baggage limits to prevent memory overload, with a focus on implementing new size restrictions.
-- Tyler and David explored proposals to reduce memory allocations in the API surface, including options for reset functions and interface optimizations.
-- The potential for creating an experimental module to test new interface designs without impacting the main API.
+- Sonal Gaud's recent talks on OpenTelemetry and community engagement.
+- Discussion on a PR addressing baggage limits and memory management issues.
+- Proposals for optimizing API performance by reducing allocations in the Go SDK.
+- Exploration of a potential resettable options interface to enhance usability and performance.
 
 ## Action Items
-- Review Sam's PR on baggage limits for potential fixes and improvements.
-- Further discuss and evaluate the proposals for reducing allocations in the API surface.
-- Consider creating an experimental module for testing interface changes.
+- Review and provide feedback on Sam's PR regarding baggage limits.
+- Document the discussion points and proposals for the resettable options interface.
+- Consider the implications of introducing a reset function in the public API.
 
 ## Participants
-Sonal Gaud, Tyler, David Ashpole, Brian, Damien, Robert, Sam
+Sonal Gaud, Tyler, David Ashpole, Bryan Boreham, Brian

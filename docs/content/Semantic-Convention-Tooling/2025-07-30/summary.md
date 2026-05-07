@@ -1,14 +1,16 @@
 ## Key Topics
-- Introduction of a new documentation system for Java instrumentation telemetry by Jay DeLuca.
-- Discussion on integrating the new system with the Weaver tool for better telemetry management.
-- Exploration of how to handle multiple modules and shared templates in the documentation process.
-- Feedback on the need for a schema-driven approach and common formats across projects.
-- Consideration of documenting spans and their attributes in a more descriptive manner.
+- Introduction of Jay DeLuca and his work on Java instrumentation documentation.
+- Discussion on the integration of Jay's work with Weaver and the potential for unified approaches across languages.
+- Feedback on the current state of the Semantic Convention Tooling and the upcoming V2 schema.
+- Exploration of span types and attributes, including the need for better definitions and documentation.
+- Consideration of entity associations and their structure within the new schema.
 
 ## Action Items
-- Jay DeLuca to provide feedback on using Weaver and its capabilities for Java instrumentation.
-- Participants to explore the integration of documentation efforts with Weaver's existing features.
-- Further discussion on the development of default templates and policies for custom libraries.
+- Jay DeLuca to continue developing Java instrumentation documentation and explore integration with Weaver.
+- Liudmila Molkova to assist in defining the name pattern for spans and other related tasks.
+- Team to evaluate and potentially implement a more robust definition for span types and attributes.
+- Consideration to remove or redefine the body attribute in events to improve usability.
+- Update the V2 schema PR based on discussions and feedback from the meeting.
 
 ## Participants
-Josh Suereth, Jay DeLuca, Laurent Quérel
+Josh Suereth, Jay DeLuca, Laurent Quérel, Liudmila Molkova, Jeremy Blythe, Nathan Smith

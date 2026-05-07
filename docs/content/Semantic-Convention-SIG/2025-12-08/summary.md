@@ -1,14 +1,15 @@
 ## Key Topics
-- Introduction of Oracle Cloud's resource detection processor for OpenTelemetry.
-- Discussion on adding Oracle-specific attributes to semantic conventions.
-- Proposal for creating an approvers group for Oracle contributions.
-- Importance of maintaining boundaries between general-purpose and Oracle-specific semantic conventions.
-- Future considerations for potentially forming a SIG for broader collaboration.
+- **Oracle Cloud Contributions**: Discussion on Oracle Cloud's involvement in OpenTelemetry, including the introduction of new attributes and the establishment of an approvers group.
+- **V2 Schema Updates**: Overview of changes in the V2 schema, including the removal of groups, new attribute definitions, and the introduction of refinements for spans and metrics.
+- **Triage of Issues**: Review of pending issues and PRs, with emphasis on the need for approvals on specific contributions.
+- **Semantic Convention Governance**: Consideration of whether to create a SIG for Oracle Cloud contributions or maintain an approvers group.
+- **Future Plans for Documentation and Templates**: Discussion on improving documentation and templates for semantic conventions to facilitate easier use and integration.
 
 ## Action Items
-- Review and approve the service criticality attribute, RPC metadata attributes, and Prettier dependency updates.
-- Establish an approvers group for Oracle's contributions to semantic conventions.
-- Explore the possibility of forming a SIG in the future for Oracle Cloud contributions.
+- Create an approvers group for Oracle Cloud contributions.
+- Submit a PR to add Oracle Cloud attributes to the semantic conventions repository.
+- Transition existing semantic convention files to the V2 format incrementally.
+- Develop a generic set of templates for documentation that can be used across different projects.
 
 ## Participants
-Liudmila Molkova, Dave Cadwallader, Donal O'Sullivan, Trask Stalnaker, Josh Suereth
+Liudmila Molkova, Josh Suereth, Trask Stalnaker, Dave Cadwallader, Donal O'Sullivan

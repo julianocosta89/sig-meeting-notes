@@ -1,14 +1,13 @@
 ## Key Topics
-- Review process for the large Seek PR and its implications on project stability.
-- Configuration mechanism updates for .NET and other runtimes.
-- Need for integration tests with packaging for RPM and Debian.
-- Discussion on maintainer roles and responsibilities within the OpenTelemetry project.
-- Future steps including Docker image creation and community engagement.
+- Review and merging of a significant PR for the OpenTelemetry injector, which is a full rewrite of existing code.
+- Discussion on the new configuration mechanism for multiple runtimes and its implications for testing and integration.
+- Plans for creating a Docker image and engaging with other SIGs for collaboration and ownership of the injector code.
+- Considerations for maintaining compatibility with various environments, including Kubernetes and serverless architectures like AWS Lambda.
 
 ## Action Items
-- Bastian to address open points in the PR, including fixing packaging issues and updating documentation.
-- Plan to land the Seek PR in a week or two after necessary adjustments.
-- Explore building a Docker image to replicate the operator's functionality.
+- Bastian to address open points in the PR, including fixing packaging issues and updating documentation (READMEs).
+- Antoine to facilitate Bastian's transition to a maintainer role for the injector project.
+- Explore options for integrating the injector with existing Docker images and engaging other SIGs for broader collaboration.
 
 ## Participants
 Bastian Krol, Antoine Toulme

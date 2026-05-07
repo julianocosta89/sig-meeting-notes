@@ -1,15 +1,13 @@
 ## Key Topics
-- Discussion on the alignment of histogram bucket exemplars and time-weighted sampling.
-- Overview of the current status of the OpenTelemetry project, including triage meetings and issue resolution.
-- Concerns regarding GitHub cache limits and potential costs associated with exceeding them.
-- Technical issues related to expired certificates for subdomains and the need for clearer ownership of infrastructure tasks.
-- Feedback on the role of the governance committee (GC) in handling technical issues versus focusing on strategic initiatives.
+- Discussion on the status of OpenTelemetry GC and triage processes.
+- Clarification of ownership and responsibilities regarding Go OpenTelemetry I.O.
+- Concerns about GitHub usage limits and caching strategies.
+- Need for improved communication and documentation within the community.
+- Feedback on the responsibilities of the GC versus the TC.
 
 ## Action Items
-- Assign sponsorship for the histogram bucket exemplars issue to David.
-- Investigate the GitHub cache usage and determine if an increase in capacity is necessary.
-- Remove outdated DNS entries with expired certificates for specific subdomains.
-- Consider restructuring responsibilities within the GC to focus more on strategic oversight rather than technical details.
+- Severin to raise a community issue regarding communication improvements and tag Robert.
+- Robert to follow up on the community issue and ensure it gets tracked.
 
 ## Participants
 Robert Pająk, Severin Neumann

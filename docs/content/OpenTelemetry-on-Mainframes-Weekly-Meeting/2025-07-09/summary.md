@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the distinction between transaction processing systems (TPS) and workflows, emphasizing their different purposes and complexities.
-- Review of the semantic conventions document and the need to update it based on recent developments and community feedback.
-- Consideration of how to appropriately map mainframe-specific concepts (e.g., process IDs) to broader IT terminology without causing confusion.
-- The importance of maintaining clarity in naming conventions for attributes across different operating systems, particularly between mainframe and non-mainframe environments.
+- Discussion on the distinction between transaction processing systems (TPS) and workflows, emphasizing that TPS should not be represented through workflow mechanisms.
+- Review of the semantic conventions document and the need to update it to better align with current practices and community feedback.
+- Proposal to start drafting pull requests (PRs) for semantic conventions related to metrics, beginning with the CPC metric group.
+- Planning for upcoming conferences, including session proposals related to mainframe observability and education.
 
 ## Action Items
-- Ruediger to formulate a response regarding TPS and workflows by tomorrow.
-- Team to discuss the approach for updating the semantic conventions document and transitioning to GitHub PRs.
-- Identify and preserve useful definitions from the existing semantic conventions document during the transition.
+- Ruediger Schulze to draft a response regarding TPS and workflows by tomorrow.
+- Ruediger to prepare a draft of the survey results by next week.
+- Team to discuss the approach for semantic conventions for metrics in upcoming meetings, starting with one metric group before potentially splitting efforts.
 
 ## Participants
-Richard Nikula, Greg Shriver, Ruediger Schulze (IBM), Anand Somasundaram
+Ruediger Schulze (IBM), Greg Shriver, Richard Nikula, Anand Somasundaram

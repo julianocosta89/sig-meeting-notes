@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on SEMCOM dependency and versioning concerns.
-- Importance of aligning schema URLs with semantic versioning.
-- Potential issues with blindly updating schema versions without proper checks.
-- Clarification on how different components in Laravel can emit different schema versions.
-- Need for safeguards or guidelines in PR templates regarding version updates.
+- Discussion on SEMCOM dependency management and versioning safeguards.
+- Release planning for the new minor version of the product.
+- Blog post preparation for OpenTelemetry IO and documentation updates.
+- Code quality tools and their impact on CI/CD processes.
+- Community engagement regarding the adoption of new tools and practices.
 
 ## Action Items
-- Consider adding warnings in PR or issue templates about the risks of blindly bumping schema versions.
-- Review the current process for updating schema versions to ensure alignment with specifications.
+- Chris Lightfoot-Wild to explore the use of the Weaver tool for semantic conventions and report back.
+- Bob Strecansky to initiate a community discussion on code quality tools and gather feedback.
+- Pawel Filipczak to publish the blog post and update documentation on OpenTelemetry IO.
+- Team to evaluate the integration of new code quality tools and their impact on CI/CD.
 
 ## Participants
-Bob Strecansky, Chris Lightfoot-Wild, Sergey
+Bob Strecansky, Chris Lightfoot-Wild, Sergey, Pawel Filipczak

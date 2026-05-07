@@ -1,12 +1,15 @@
 ## Key Topics
-- Overview of the OpenTelemetry collector deployment and management at Grok.
-- Discussion on the architecture of data collection, including the use of daemon sets and various backend systems (Victoria Metrics, Tempo, Honeycomb).
-- Insights into the custom configurations and metrics collection strategies, including the use of Node Exporter and tailored receivers.
-- Challenges and considerations regarding configuration validation and deployment cadence.
+- Overview of OpenTelemetry Collector deployment and configuration at Grok.
+- Discussion on the use of daemon sets for metrics, logs, and traces across multiple data centers.
+- Challenges faced with building custom receivers and the need for better documentation and tooling.
+- Insights on using the OpenTelemetry Operator for auto-instrumentation without deploying the collector.
+- Performance and uptime metrics of the OpenTelemetry Collector in production.
 
 ## Action Items
-- Explore the possibility of implementing automation for component updates in the OpenTelemetry collector.
-- Document the architecture and metrics collection strategies for future reference and sharing with the community.
+- Share the diagram of the collector pod configuration with Tristan.
+- Explore the use of semantic conventions and metrics/log schemas for better consistency.
+- Investigate the ZPages extension for improved introspection of the OpenTelemetry Collector.
+- Consider documenting SLOs and performance metrics for inclusion in the blog post.
 
 ## Participants
 akasprzok, tristan

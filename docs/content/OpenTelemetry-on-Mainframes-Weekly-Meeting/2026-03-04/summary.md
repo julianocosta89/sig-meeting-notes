@@ -1,13 +1,14 @@
 ## Key Topics
-- **OpenTelemetry Usage in Development**: Discussion on how the MQ development team utilized OpenTelemetry as a primary debugging tool, with similar sentiments from the Kix development team.
-- **Semantic Conventions Meeting**: Plans for Ruediger to attend the Semantic Convention meeting and gather input on the TPS PR and other topics.
-- **Open PRs Status**: Review of current open PRs, including TPS and documentation PRs, and the need to consolidate comments for further action.
-- **Performance Concerns**: Discussion on potential performance overhead when using OpenTelemetry in production environments, particularly with high transaction volumes on mainframes.
+- Discussion on the effectiveness of OpenTelemetry in debugging, particularly with MQ and Kix development teams.
+- Updates on the TPS PR and plans to address it in the upcoming Semantic Convention meeting.
+- Concerns regarding performance overhead when using OpenTelemetry on mainframes, especially in production environments.
+- The need for a consolidated list of use cases for OpenTelemetry to better understand its application and impact.
+- Inquiry about the Java agent from Madeframe and its potential interest in collaboration.
 
 ## Action Items
-- Ruediger to attend the Semantic Convention meeting and gather input from participants on topics to discuss.
-- Participants to comment on the TPS PR directly or share general topics in the Slack channel.
-- Consolidate questions for the Semantic Convention meeting regarding virtualization and entity relationships.
+- Ruediger Schulze to follow up with the Semantic Convention meeting regarding the TPS PR and gather input from participants.
+- Participants to provide comments on the TPS PR directly or via Slack for further discussion.
+- Ruediger to check with Madeframe about their interest in the Java agent and potential next steps.
 
 ## Participants
-Jim Porell, Richard Nikula, Greg Shriver, Ruediger Schulze (IBM), Kai, Aaron Richards
+Jim Porell, Richard Nikula, Ruediger Schulze (IBM), Greg Shriver, Kai Kirsch, Richard Salac

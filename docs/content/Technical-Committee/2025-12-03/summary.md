@@ -1,14 +1,12 @@
 ## Key Topics
-- Discussion on the necessity of having a dictionary at the top level for profiling.
-- Review of benchmarking results from the profiling SIG and their implications.
-- Clarification on resource attributes and their impact on payload size.
-- Debate on the handling of dictionaries in relation to resources and batching.
-- Consideration of principles around profiling and the practicality of batching.
+- Discussion on the necessity of a dictionary at the top level for profiling and its implications on benchmarking.
+- Clarification on how resource attributes and dictionaries should be structured for efficient profiling.
+- The need for a consistent approach to handling profiling data in OpenTelemetry, including potential changes to the SDK and exporter interactions.
+- Exploration of the concept of sub-providers and their impact on resource management and processing.
 
 ## Action Items
-- Review the profiling SIG's benchmarks to understand their implications better.
-- Clarify the requirements for resource attributes and dictionary usage with the profiling SIG.
-- Decide on principles for profiling that align with the committee's goals.
+- Josh Suereth to draft a write-up summarizing the discussion points and proposed approaches regarding profiling and resource attributes.
+- Move the conversation regarding profiling and resource attributes to a public channel for broader input and collaboration.
 
 ## Participants
-Josh Suereth, Tigran Najaryan, David Ashpole, Reiley
+Josh Suereth, Tigran Najaryan, David Ashpole, Reiley, Jack Berg, Liudmila Molkova, Armin (Dynatrace)

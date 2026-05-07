@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on integrating Opam into the OpenTelemetry demo app for better management of collectors.
-- Considerations for scaling collectors in Docker Compose and Kubernetes environments.
-- Feedback from the community regarding the demo's size and resource consumption.
-- Plans to create a smaller, more efficient demo for local use.
-- The importance of maintaining configuration control while using dynamic management tools like Opam.
+- Discussion on integrating Opam support into the OpenTelemetry demo app.
+- Consideration of Docker Compose and Kubernetes deployment strategies.
+- Need for a smaller demo version to run locally on less powerful machines.
+- Challenges and benefits of using Opam for managing collector configurations.
+- Discussion on reducing dependencies in the demo to improve performance.
 
 ## Action Items
-- JM Juande Manjon to work on integrating Opam into the demo app, focusing on Docker Compose initially.
-- Address issues with the current Docker Compose setup, particularly related to SQL server integration.
-- Explore the possibility of enhancing the demo's UI in the future.
+- JM Juande Manjon to work on integrating Opam support and fixing the Docker Compose minimal configuration.
+- Jonathan Munz to review and update dependencies in the React Native app PR.
+- Open a discussion issue regarding the potential removal of certain services and the introduction of a more streamlined demo setup.
 
 ## Participants
 Juliano Costa, JM Juande Manjon, Jonathan Munz

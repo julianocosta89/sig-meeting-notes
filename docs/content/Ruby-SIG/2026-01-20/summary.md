@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on Ruby's absence from the SPEC chart and potential contributions to hotel resource attributes.
-- Review of new issues in the core, including improvements to test cases and feature requests.
-- Updates on a logger bug and modifications to GitHub Actions workflows to improve CI processes.
-- Exploration of two approaches to handle Renovate updates and their implications.
-- Proposal for a feature to add a query summary attribute to database spans under new semantic conventions.
+- Discussion on the hotel resource attributes and its relevance to Ruby.
+- Review of new issues and feature requests in the core repository.
+- Updates on the handling of Ruby version changes in GitHub Actions workflows.
+- Proposal for a new feature to add a query summary attribute to database spans, with concerns about performance overhead.
+- Ongoing discussions about PRs and the need for more eyes on complex changes.
 
 ## Action Items
-- Xuan to seek additional reviews for the changes related to CGI and URL encoding.
-- Daniel to gather opinions on the two approaches for handling Renovate updates.
-- Hannah to prepare for further discussion on the query summary attribute feature next week.
+- Xuan to improve the test case for determinism.
+- Daniel to gather opinions on the proposed changes to GitHub Actions workflows.
+- Hannah to review the large PR for the query summary attribute and consider fallback options for performance.
 
 ## Participants
-Hannah Ramadan, Daniel Azuma, Xuan Cao
+Hannah Ramadan, Daniel Azuma, Xuan Cao, Schwan

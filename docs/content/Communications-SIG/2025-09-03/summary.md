@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the Linux Foundation's legal assessment of AI services for CNCF projects.
-- The importance of building a community around localization efforts rather than relying solely on AI-driven solutions.
-- Proposal to create a unified `agents.md` file for various AI tools used within the project.
-- Exploration of how agent-enabled capacities might influence documentation practices.
-- Emphasis on the balance between utilizing AI tools and maintaining human contributions in the OpenTelemetry community.
+- Discussion on AI services and legal assessments by the Linux Foundation for CNCF projects.
+- Updates on the multilingual crowd-in initiative and the importance of community involvement in localization efforts.
+- Presentation by Jay DeLuca on improving instrumentation documentation and the potential for an Instrumentation Explorer tool.
+- Challenges with the OpenTelemetry collector release updates and link checking for documentation.
+- Romanian localization efforts and the need for community support.
 
 ## Action Items
-- Severin to raise an issue on the community repo regarding the potential rollout of GitHub Copilot.
-- Consideration of establishing a unified `agents.md` file for AI tools to streamline documentation.
+- Jay DeLuca to open an issue on the community repo regarding the Instrumentation Explorer tool.
+- Tiffany Hrabusa to follow up on Romanian localization and seek community support.
+- Severin Neumann to share the proposed architecture for the collector with the governance committee for feedback.
 
 ## Participants
-Patrice, Jay DeLuca, TH Tiffany Hrabusa, Severin Neumann, Vitor Vasconcellos
+Patrice, Jay DeLuca, TH Tiffany Hrabusa, Severin Neumann, Vitor Vasconcellos, Sophia Solomon

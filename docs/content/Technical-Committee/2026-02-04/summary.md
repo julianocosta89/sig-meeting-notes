@@ -1,11 +1,14 @@
 ## Key Topics
-- Discussion on concurrency requirements for OpenTelemetry APIs, focusing on the need for clear documentation regarding concurrent safety.
-- Debate on whether APIs should explicitly state that implementations must be concurrent safe, with differing opinions on normative language in specifications.
-- Examination of specific examples from various programming languages, particularly Go and Rust, regarding concurrency handling and its implications for API design.
+- Discussion on concurrency requirements in OpenTelemetry APIs and the need for normative language to ensure concurrent safety.
+- The role of the Packaging SIG in creating a streamlined installation process for OpenTelemetry on Linux, including package dependencies and configurations.
+- Concerns about the stability and quality of components included in the OpenTelemetry package, and the implications for user experience.
+- The need for better management of open PRs and the assignment of TC members to oversee them.
 
 ## Action Items
-- Reiley to propose a PR to change the language in the spec to require APIs to document concurrent safety.
-- Further discussions needed to clarify the expectations for concurrency across different programming languages.
+- Riley to open a PR to add normative language regarding concurrency requirements in the API spec.
+- TC members to provide comments on the concurrency issue to ensure all perspectives are captured.
+- Jack to bring up the PR assignment process in the next TC meeting for further discussion.
+- Members to consider participation in the Packaging SIG and contribute to discussions about installation processes.
 
 ## Participants
-Jack Berg, David Ashpole, Reiley, jmacdonald, Liudmila Molkova, Tyler
+Jack Berg, David Ashpole, Reiley, jmacdonald, Liudmila Molkova, Carlos Alberto Cortez

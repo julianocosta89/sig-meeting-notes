@@ -1,14 +1,13 @@
 ## Key Topics
-- Review of the triage board and merging of status metrics.
-- Discussion on the organization and duplication of attributes across different signals.
-- Updates on the CICD group's Phase 2 proposal and its impact on current tasks.
-- Examination of enum briefs for system metrics and the need for clarity and consistency in descriptions.
-- Proposal for restructuring documentation to improve clarity on semantic conventions.
+- Review of the triage board and status of ongoing PRs, particularly regarding metrics and attribute naming conventions.
+- Discussion on the organization of OpenTelemetry documentation, specifically the structure of semantic conventions and the registry.
+- Proposal to stabilize the peer namespace and the implications of changing the `peer.service` attribute.
+- Feedback on improving the visibility and structure of semantic conventions documentation, including versioning and attribute stability.
 
 ## Action Items
-- James Thompson to sort out discrepancies in enum briefs related to memory metrics.
-- Consider drafting or closing the CICD-related task until Phase 2 is finalized.
-- Explore restructuring documentation for better organization of semantic conventions.
+- Liudmila Molkova to create issues to track table reorganization in documentation.
+- Michele Mancioppi to draft a project proposal regarding the stabilization of the peer namespace.
+- Trask Stalnaker to share details about the new SIG meeting for further discussion on the peer namespace.
 
 ## Participants
-Trask Stalnaker, Liudmila Molkova, James Thompson, Christophe Kamphaus, Daniel Dyla, Fairly OddParents.
+Trask Stalnaker, Liudmila Molkova, James Thompson, Christophe Kamphaus, Michele Mancioppi, Daniel Dyla, Fairly OddParents.

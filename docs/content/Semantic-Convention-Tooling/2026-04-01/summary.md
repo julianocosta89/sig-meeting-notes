@@ -1,14 +1,15 @@
 ## Key Topics
-- Updates on the OpenTelemetry packaging and semantic conventions compliance efforts.
-- Discussion of a draft PR related to automation for compliance checks using LiveCheck.
-- Introduction of new features in the latest release, including a health endpoint and improved output handling.
-- Coordination and communication challenges among team members regarding ongoing projects.
-- Future plans for validating the basic version of the package and potential adoption as a gold package.
+- Updates on the OpenTelemetry Semantic Convention Tooling, including the integration of markdown templates into the package repository.
+- Discussion on the use of LiveCheck for ensuring compliance with semantic conventions in telemetry components.
+- Review of recent features in the Weaver tool, including improvements in health checks and output handling.
+- Exploration of new skills and tools for code review and telemetry validation, including the CheckSemConf skill.
+- Insights from KubeCon, including discussions on community engagement and project updates.
 
 ## Action Items
-- Arianna to share the draft PR link in the chat for review.
-- Team members to review the recent changes and provide feedback on the draft PR.
-- Further discussions on integrating new features into the existing workflow.
+- Arianna to share the draft PR related to the markdown templates for review.
+- Liudmila to provide feedback on the markdown changes and assist with template improvements.
+- Jeremy to review and approve pending PRs, including those from Arthur and Josh.
+- Participants to clarify the context of the OpenAPI support PR and gather more information from the contributor.
 
 ## Participants
-Arianna Vespri, Jeremy Blythe, Laurent, LaMilla, Braden Keynes
+Arianna Vespri, Jeremy Blythe, Liudmila Molkova, Braden Keynes

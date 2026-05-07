@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on transitioning from XHR to Fetch for OTLP exporters, considering browser compatibility.
-- Updates on project organization and management within the OpenTelemetry community.
-- Clarification on implementing interfaces and class structures in the config provider.
-- Triage of issues related to lazy loading of the create service client constructor.
+- Discussion on transitioning from XHR to Fetch for OTLP exporters in the browser.
+- Updates on project organization and the introduction of project roadmaps for SIGs.
+- Clarification on implementing interfaces for the config provider to avoid version conflicts.
+- Triage of ongoing issues and PRs related to instrumentation and SDK updates.
+- Review of the status of various PRs, including those related to Redis V5 and messaging specifications.
 
 ## Action Items
 - Daniel Dyla to bring up the XHR vs. Fetch discussion in the browser SIG meeting.
-- Marc Pichler to review the project organization proposals and their potential impact on maintainers.
-- Marylia Gutierrez to implement feedback regarding interface usage in the config provider.
+- Marc Pichler to review and provide feedback on the project organization proposals.
+- Team members to look into the OpenAI SDK instrumentation PR and consider code ownership.
+- Follow up on the status of various PRs, especially those related to Redis and messaging.
 
 ## Participants
 Marc Pichler, MG Marylia Gutierrez, Daniel Dyla, Trent Mick

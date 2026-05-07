@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the need for expert input on deployment types and targets to ensure alignment with existing tools.
-- Proposal to form a group to stabilize deployment semantics and improve overall deployment representation.
-- Ongoing conversations about the relationship between semantic conventions and declarative configuration, particularly regarding opt-in attributes.
-- Review of pull requests related to GCP apphub conventions and documentation updates.
+- Discussion on the deployment type and target attributes, emphasizing the need for expert input from Kubernetes and CICD SIGs.
+- Proposal for a declarative configuration structure to manage semantic conventions, including YAML structures for better validation.
+- Review of GCP AppHub conventions and the need for clarity on attributes related to spans and their usage.
+- SQL Commenter propagator behavior and the potential need for a dedicated propagator for SQL serialization.
+- Consideration of event.name attributes and their implications for consistency in OpenTelemetry.
 
 ## Action Items
-- Form a group of subject matter experts to research and discuss deployment types and targets.
-- Update comments on PRs to include links to relevant CICD scopes.
-- Discuss the ownership of instrumentation configuration in the context of semantic conventions with the configuration SIG.
-- Explore potential YAML structures for declarative configuration with Gregor.
+- Form a group of experts to stabilize deployment attributes and discuss with relevant SIGs.
+- Update the comment on the CICD scope link regarding deployment attributes.
+- Michael Safyan to add GCP AppHub destination attributes to the PR and document them in YAML.
+- Create an issue in the spec repo to discuss the SQL commenter propagator.
+- Trask Stalnaker to provide feedback on the event.name attribute proposal.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Josh Suereth, Christophe Kamphaus, Michael Safyan
+Liudmila Molkova, Christophe Kamphaus, Trask Stalnaker, Josh Suereth, Michael Safyan, Gregor, Robert

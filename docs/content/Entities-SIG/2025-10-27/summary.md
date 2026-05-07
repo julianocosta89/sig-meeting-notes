@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the terminology for entity attributes (identity vs. identifying, description vs. descriptive).
-- Updates on the prototypes for entity handling and the challenges faced by participants.
-- Planning for upcoming events, including KubeCon and potential presentations related to entities.
-- Review of entity type uniqueness and attribute ownership in the context of OpenTelemetry specifications.
+- Discussion on inconsistent attribute field names and the need for standardization (identity vs. identifying, description vs. descriptive).
+- Prototyping efforts for entity detection and resource merging logic.
+- Timeline concerns regarding the completion of specifications and potential delays.
+- Plans for upcoming KubeCon and potential presentations related to entities.
+- Updates on the Go SDK and performance improvements.
 
 ## Action Items
-- Dmitrii Anoshin to revise wording in documentation to ensure consistent use of terms (identity and description).
-- Participants to continue working on their prototypes and provide updates in the next meeting.
-- Josh Suereth to check travel permissions for KubeCon and potential presentations.
+- Dmitrii Anoshin to propose changes to standardize attribute naming conventions.
+- Daniel Dyla to draft a specification for entity detection and resource merging.
+- Josh Suereth to communicate the breaking change regarding non-mutable attributes in the specification.
+- Team to prioritize tasks to ensure completion of Phase 1 of the project by the end of the year.
 
 ## Participants
 Josh Suereth, Dmitrii Anoshin, Daniel Dyla

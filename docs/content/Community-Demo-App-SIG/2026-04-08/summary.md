@@ -1,13 +1,15 @@
 ## Key Topics
-- Proposal to move the OpenTelemetry Community Demo App SIG meetings from bi-weekly to weekly to enhance discussion frequency.
-- Updates on the integration of MCP server and agentic UI by IBM into the demo app.
-- Discussion on the architecture and functionality of a PR that adds multiple microservices to the demo, including concerns about API calls and token usage.
-- Considerations for implementing a caching mechanism for LLM responses to avoid unnecessary costs.
+- Proposal to move the OpenTelemetry Community Demo App SIG meetings from bi-weekly to weekly.
+- Discussion on the integration of MCP server and agentic UI from IBM into the demo app.
+- Review of a PR related to adding a waiver to the demo and its implications for documentation and code generation.
+- Concerns regarding the potential costs associated with API calls in the demo and the need for a feature flag to manage token usage.
+- Consideration of Docker profiles and Helm chart configurations for running different demo setups.
 
 ## Action Items
-- Juliano Costa to reach out to Marilla to arrange the change to weekly meetings.
-- Team members to review the PR and provide feedback on the architectural decisions and integration of new features.
-- Ensure that any API calls made in the demo can be controlled via feature flags to prevent unintended costs.
+- Reach out to Marilla to finalize the meeting cadence change to weekly.
+- Review and finalize the PR for adding a waiver to the demo, with input from Shanoy.
+- Explore the implementation of a feature flag system to control token usage in the demo.
+- Investigate the possibility of creating a sample values file for minimal mode in the Helm chart.
 
 ## Participants
-Juliano Costa, Antonin Bruneau, Pierre Tessier, Shenoy Pratik Gurudatt, Rohan Arora, Gerard, Cyrille Le Clerc
+Juliano Costa, Pierre Tessier, Shenoy Pratik Gurudatt, Rohan Arora, Cyrille Le Clerc, Gerard

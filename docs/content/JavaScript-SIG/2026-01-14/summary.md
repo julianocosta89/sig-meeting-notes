@@ -1,15 +1,16 @@
 ## Key Topics
-- Upcoming release of a new version pending workflow approval.
-- Discussion on stabilizing the logs API and SDK as a priority for other packages.
-- Need for feedback on the new stable default for the OpenTelemetry project.
-- Plans for JS SDK 3.0 and the importance of organizing backlog items for upcoming changes.
-- Proposal to separate declarative config tasks into core and additional items for better prioritization.
+- Release of new version pending workflow approval.
+- Discussion on stabilizing logs API and SDK as a priority for upcoming focus topics.
+- Proposal to create a focus topic for JS SDK 3.0 to accommodate breaking changes with Node.js updates.
+- Need for a structured approach to declarative config and core features for upcoming implementations.
+- Review of ongoing issues and PRs related to AWS Lambda instrumentation and CI caching problems.
 
 ## Action Items
-- Review and provide feedback on the new stable default for OpenTelemetry.
-- Open PRs for logger, meter, and tracer based on the release candidate.
-- Organize project board to differentiate between core declarative config tasks and other items.
-- Prepare for a review from the Technical Committee (TC) once stabilization tasks are completed.
+- Review and finalize focus topics for the next meeting.
+- Organize project boards to clarify core and additional tasks for declarative config.
+- Follow up with Ted regarding the browser SIG's roadmap and focus topics.
+- Investigate and address the AWS Lambda instrumentation issues raised by users.
+- Update documentation related to ESM instrumentation and ensure it aligns with current practices.
 
 ## Participants
-Marc Pichler, Marylia Gutierrez, Trent Mick, Carlos Alberto Cortez, Jamie Danielson
+Marc Pichler, Marylia Gutierrez, Trent Mick, Carlos Alberto Cortez, Jamie Danielson, Andrei Borza, David Luna Bistuer, Jackson-iPhone15, Martin Hennoch.

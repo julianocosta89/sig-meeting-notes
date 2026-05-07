@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on identifying executables in OpenTelemetry profiling using build IDs versus executable names.
-- Proposal to use a custom hashing scheme for unique identification of executables.
-- The relationship between build IDs and resource attributes, particularly in containerized environments.
-- Considerations for grouping resources based on build ID and additional metadata.
+- Discussion on the identification of executables in profiling, focusing on using build IDs versus executable names.
+- Proposal for a new resource model to include identifying attributes for better correlation across signals.
+- Need for benchmarking to assess the efficiency of the new profiling protocol and resource attributes.
+- Updates on ongoing action items related to the profiling protocol and resource attributes.
 
 ## Action Items
-- Develop a proposal to model executables with a unique ID based on a custom hashing scheme.
-- Ensure the algorithm for generating build IDs is shared across all signals for correlation purposes.
-- Clarify how multiple entities can participate in a resource, particularly in relation to container metadata.
+- Develop a benchmarking strategy to demonstrate the performance of the new profiling protocol.
+- Finalize and merge the proposal for resource attributes and their identification in the profiling context.
+- Convert existing documentation into OTEP format for better clarity and feedback.
+- Address comments and finalize the PR related to encoding different samples in the profiling protocol.
 
 ## Participants
-Josh Suereth, Felix Geisendörfer, Braden (Fraggle Rock), Christos Kalkanis
+Josh Suereth, Felix Geisendörfer, Braden, Christos Kalkanis, Florian Lehner, Ivo Anjo, Alban Crequy, Tigran, Naev, and others.

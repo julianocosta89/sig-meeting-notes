@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the context manager, including the Stack Context Manager and its integration with the SDK.
-- Consideration of a default configuration for context management to simplify user experience.
-- Challenges with Zone.js and its impact on async context management.
-- Review of data loss issues in browsers, particularly in Chrome, and strategies to mitigate them.
-- Updates on the removal of SendBeacon due to redundancy with Keep Alive.
+- Discussion on the context manager implementation and the need for a simplified version without Zone.js.
+- Consideration of a default configuration or meta package to streamline user experience.
+- Exploration of versioning strategies for the repository, including independent vs. shared versioning for components.
+- Insights on data loss in browsers and improvements to manage requests effectively.
+- Need for tooling and GitHub workflows to support the release and publish process.
 
 ## Action Items
-- Explore the feasibility of creating a simplified context manager without Zone.js.
-- Review and finalize the PR addressing data loss and context management improvements.
+- Participants to review the versioning options and provide feedback.
+- Further discussion on the context manager and default configurations to be scheduled for next week.
+- Creation of subtasks for building out release and publish tooling.
 
 ## Participants
 Jared Freeze, martinkuba, David Luna Bistuer, Marco Schäfer

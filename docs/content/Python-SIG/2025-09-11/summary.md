@@ -1,15 +1,15 @@
 ## Key Topics
 - Release issues with OpenTelemetry Python packages and the need for CI checks.
-- Discussion on the OPMP client and its integration into the OpenTelemetry framework.
-- Debate on handling breaking changes in the API, including deprecation strategies.
-- Suggestions for automated tools to assist users with code migration during major updates.
-- Concerns about the impact of breaking changes on downstream libraries and user experience.
+- Discussion on breaking changes and deprecation policies for the logs API.
+- Introduction of a new PR for GenAI utilities focusing on LLMs and telemetry.
+- Proposal for a decorator-based approach to improve instrumentation for GenAI applications.
+- Documentation updates related to SQL Commenter and DB API utilities.
 
 ## Action Items
-- Implement CI checks to prevent release issues encountered in the latest package release.
-- Review and provide feedback on the OPMP client PR.
-- Establish a clear policy for managing breaking changes and deprecation warnings.
-- Explore automated migration tools for users to ease transitions during major updates.
+- Test the new release and report any issues.
+- Evaluate ongoing PRs related to breaking changes in the logs API.
+- Add a follow-up issue regarding telemetry in the GenAI utils PR.
+- Review and provide feedback on documentation updates for SQL Commenter.
 
 ## Participants
-Riccardo Magliocchetti, Aaron Abbott, Marcelo Trylesinski, Dylan Russell, John Scancella
+Riccardo Magliocchetti, Aaron Abbott, Marcelo Trylesinski, Dylan Russell, John Scancella, Hector Hernandez, Ridhima Satam, Keith Decker, Pavan, Tammy Baylis.

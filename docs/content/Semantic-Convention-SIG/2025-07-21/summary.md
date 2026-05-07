@@ -1,14 +1,16 @@
 ## Key Topics
-- Triage of pull requests and the need for approvals on stalled requests.
-- Discussion on the progress of user actions and currency-related PRs.
-- Updates on the GraphQL SIG and its monthly meetings.
-- Proposal for a service propagator in SQL commenter to enhance context propagation.
-- Need for a consistent method to propagate service names across SDKs.
+- Review of pull requests and their statuses, including discussions on user actions and GraphQL.
+- Updates on the GCP client library and its integration with OpenTelemetry.
+- Proposal for a new service propagator in SQL commenter to enhance context propagation.
+- Discussion on aligning OpenTelemetry security components with the OCSF standard for vulnerabilities.
+- Proposal for a unified namespace registry for metrics, spans, and events to improve documentation.
 
 ## Action Items
-- Clear approvals on stale PRs and move them back to "waiting for SIG approval."
-- Josh to discuss with Michael about moving GCP-related PRs to draft status.
-- Sam to present the service propagator proposal at the Spec Maintainers meeting for further discussion.
+- Review and approve pending pull requests, especially those related to user actions and GraphQL.
+- Sam to present the service propagator proposal in the Spec Maintainers meeting.
+- Trask to investigate issues with HTML tables on OpenTelemetry I/O.
+- James to create a mock-up of the proposed namespace registry for better visualization.
+- Alexandra to continue adapting the vulnerability component to align with OCSF standards.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Daniel Dyla, James Thompson, Josh Suereth, Sam
+Liudmila Molkova, Trask Stalnaker, Daniel Dyla, Josh Suereth, Sam, Nick Moore, Alexandra Konrad, James Thompson, Braydon Kains, Bertrand (MetricsHub)

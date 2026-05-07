@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the precedence of exception attributes in log records, specifically whether user-defined attributes should override auto-generated ones.
-- Consideration of JSON encoding for complex attributes and the implications of using OTLP JSON versus simplified JSON encoding.
-- The importance of maintaining user expectations when querying data from backends that may not conform to OTLP standards.
+- Discussion on the precedence of exception attributes in log records, with a focus on user intent versus last write wins.
+- JSON encoding of complex attributes and the choice between OTLP JSON and simplified JSON representations.
+- Handling of baggage format and the inconsistencies across different programming languages regarding unencoded characters and error handling.
+- The need for unified guidance on fail-fast behavior for SDKs in response to invalid configurations.
 
 ## Action Items
-- Finalize the decision on how to handle precedence between user-defined and auto-generated exception attributes.
-- Determine the approach for JSON encoding of complex attributes, weighing the pros and cons of lossy vs. lossless representations.
-- Gather feedback from participants on the implications of using OTLP format in non-OTLP data storage backends.
+- Trask to send a PR regarding the JSON encoding decisions and any edge cases.
+- Carlos to gather feedback from C++ and Rust communities about relaxing baggage format conditions.
+- Review and potentially update the spec to clarify handling of unencoded characters and fail-fast behavior across languages.
 
 ## Participants
-Josh Suereth, Armin (Dynatrace), Jack Berg, Trask Stalnaker, Liudmila Molkova, Tigran Najaryan, Ted Young, Daniel Dyla (Dynatrace)
+Josh Suereth, Peyton, Armin (Dynatrace), Jack Berg, Trask Stalnaker, Liudmila Molkova, Tigran Najaryan, Ted Young, Daniel Dyla (Dynatrace), Carlos Alberto Cortez, David Ashpole.

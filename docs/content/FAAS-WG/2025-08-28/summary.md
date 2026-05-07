@@ -1,14 +1,16 @@
 ## Key Topics
 - Congratulations to Gory for promotion to maintainer status.
-- Discussion on improving semantic conventions for FAS attributes, including the introduction of a standalone ID for FAS instances.
-- James Thompson's proposal to rename attributes for better clarity and usability, particularly for on-premise users.
-- Implementation concerns regarding changes across various programming languages and libraries.
-- Clarification on the impact of attribute changes on backend vendors like Datadog and New Relic.
+- Discussion on the SEMCO of PRs and improvements to attribute definitions for FAS instances.
+- Context propagation issues and the challenges with vendor support for span linking.
+- Proposed changes to default parent-child relationships in span linking for better compatibility with observability vendors.
+- Ongoing efforts to enhance Python instrumentation and address callback-style lambda handler warnings.
 
 ## Action Items
-- Review and approve James Thompson's PR regarding semantic conventions.
-- Warre to assist with JavaScript implementation related to the new attributes.
-- Participants to look into the changes in YAML files and their implications for documentation.
+- Review and approve James Thompson's PR regarding FAS instance attributes.
+- Warre to assist with JavaScript implementation of the new attributes.
+- Serkan to explore configurable linking options in the context propagation PR.
+- Warre to test the impact of additional Python instrumentation on layer size and cold starts.
+- Tyler to ping Max regarding callback-style lambda handler issues.
 
 ## Participants
-Tyler Benson, Warre Pessers, Serkan Özal, James Thompson, Gory
+Tyler Benson, Warre Pessers, Serkan Özal, James Thompson

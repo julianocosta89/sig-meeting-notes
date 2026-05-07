@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the restructuring of the Client Instrumentation SIG, focusing on semantic conventions.
-- Ongoing efforts to stabilize the Android agent and release a 1.0 version.
-- Debate on how to handle stability in instrumentation packages, including enabling/disabling unstable components.
-- Need for a standardized approach across all languages for managing instrumentation stability.
+- Discussion on the stability of the Android agent and the need for a 1.0 release.
+- The importance of semantic conventions and potential rebranding of the SIG to focus on client-side semantic conventions.
+- The need for a standardized approach to handling stable and unstable instrumentation packages.
+- Ongoing discussions about session IDs and their implementation in telemetry.
+- Plans for a meeting at KubeCon to establish goals for the SIG.
 
 ## Action Items
-- Further discussion needed on the stability of instrumentation packages and potential configuration options.
-- Guidance required for the Android team regarding the release strategy and stability definitions.
-- Explore the possibility of a common flag for enabling/disabling instrumentation packages across all components.
+- Dan Gomez Blanco to write up a proposal regarding the focus and structure of the SIG after KubeCon.
+- Participants to consider the implications of marking instrumentation packages as stable while semantic conventions remain in flux.
+- Follow-up discussions on session ID implementation and its relation to resource attributes.
 
 ## Participants
 João Oliveira, Maciek Grzybowski, JP Jason Plumb, Martin Kuba, Dan Gomez Blanco

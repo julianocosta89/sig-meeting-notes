@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on the crash issue and repo status update.
-- Introduction of a new OpenTelemetry Swift Library.
-- Issues related to URL session instrumentation with KTOR client.
-- Updates on gRPC 2.0 compatibility and Swift 6 migration.
-- Need for sample apps for testing OpenTelemetry features.
+- Discussion on the new OpenTelemetry Swift Library and its features.
+- Ongoing issues with URL session instrumentation and its relation to KTOR client.
+- Updates on metric filters and gRPC 2.0 migration to Swift 6.
+- Need for a sample app for testing and potential log sampling instrumentation.
+- General updates on open issues and the status of ongoing projects.
 
 ## Action Items
-- Alex to provide a link to the new OpenTelemetry Swift Library.
-- Ariel to follow up on the URL session instrumentation issue.
-- Vinod to address the metric filters and consider picking up the task.
-- Bryce to investigate GitHub settings to streamline PR merging.
+- Billy Zhou to explore migration to Swift 6.
+- Ariel Demarco to follow up on the URL session instrumentation issue.
+- Participants encouraged to pick up open issues from the repository.
 
 ## Participants
 Ariel Demarco, Bee Klimt, Bryce Buchanan, Alex Cohen, Billy Zhou, Vinod Vydier

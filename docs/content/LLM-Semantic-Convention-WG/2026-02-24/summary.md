@@ -1,14 +1,13 @@
 ## Key Topics
-- Overview of the project board and current pull requests (PRs).
-- Discussion on the memory specification for GenAI agents, including operations like create, search, update, and delete memory.
-- Introduction of new span types related to memory operations and their mapping to various SDKs (Google's ADK, AWS Bedrock).
-- Clarification on how memory interactions will be captured and represented in spans.
-- Questions regarding the structure and retrieval of memory content within agents.
+- Discussion on the Memory Specification for GenAI agents, including new span types for memory operations (create, update, retrieve).
+- Exploration of server-side telemetry for GenAI operations and the need for async operation modeling.
+- Review of the implications of invoking agents and how spans should be structured to capture both client and server perspectives.
+- Consideration of workflow definitions and attributes to better categorize and track agent interactions.
 
 ## Action Items
-- Clean up the current pull request to ensure it only contains relevant changes.
-- Gather more feedback on the memory spec and its implementation across different frameworks.
-- Follow up on the security discussion and memory spec in the next meeting.
+- Nagkumar to clean up the pull request related to memory spans for better clarity for reviewers.
+- Ankit and Trask to consolidate feedback and develop a concrete proposal for server-side spans and async operations.
+- Aaron to review the workflow and agent invocation proposals iteratively, focusing on attributes and potential changes.
 
 ## Participants
-Liudmila Molkova, shuwpan, James Mattei, nagkumar, Aaron, anksing
+Liudmila Molkova, shuwpan, James Mattei, nagkumar, Aaron Abbott, Ankit, Surya Teja, Trask Stalnaker, Ridhima Satam, neil yashinsky.

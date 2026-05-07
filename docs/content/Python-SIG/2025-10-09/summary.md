@@ -1,14 +1,15 @@
 ## Key Topics
-- Update on log stabilization process and transition from event API to log API.
-- Discussion on communication with OpenTelemetry regarding breaking changes.
-- Proposal to open an issue in OpenTelemetry's repo to inform them of upcoming changes.
-- Review of PRs related to instrumentation and log data removal.
-- Feedback on breaking up large PRs for easier review.
+- Update on log stabilization and transition from event API to log API.
+- Discussion on the impact of breaking changes and communication with users.
+- Review of PRs related to OpenAI agents and trace/span implementation.
+- Ongoing work on context manager behavior and potential refactoring.
+- Coordination on upcoming instrumentation updates and semantic conventions.
 
 ## Action Items
-- Open an issue in OpenTelemetry's repo to inform them about the transition from event API to log API.
-- Review and provide feedback on the current PRs related to instrumentation and log data.
-- Identify other users of the event API to assess potential impact.
+- Open an issue in the OpenTelemetry repo to inform users about the upcoming breaking changes.
+- Review and provide feedback on the newly split PRs for OpenAI instrumentation.
+- Discuss the context manager behavior and potential reuse of existing decorators.
+- Follow up on the integration of the line chain tracers with the latest specifications.
 
 ## Participants
-Riccardo Magliocchetti, Nagkumar Arkalgud, Aaron Abbott, Dylan Russell, lechen, Sergey Sergeev, Hector Hernandez.
+Riccardo Magliocchetti, Nagkumar Arkalgud, Aaron Abbott, Dylan Russell, lechen, Sergey Sergeev, Hector Hernandez, Keith Decker.

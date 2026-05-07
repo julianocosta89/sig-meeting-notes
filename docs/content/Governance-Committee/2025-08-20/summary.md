@@ -1,13 +1,14 @@
 ## Key Topics
-- Review of the Governance Committee work project board and ongoing projects.
-- Discussion on handling deviations from the OpenTelemetry specification, particularly regarding .NET implementation.
-- Need for a policy to manage exceptions to the spec and how to document them.
-- Updates on the roadmap management process and the importance of tracking governance-related issues.
+- Review of the GC work project board and ongoing projects.
+- Discussion on handling deviations from the OpenTelemetry specification, particularly for language-specific implementations.
+- Proposal to enable co-author verification for contributions and its implications for using Copilot in PRs.
+- Consideration of jersey designs and names for contributors and maintainers.
 
 ## Action Items
-- Create a card for hotel graduation follow-up and link it to the relevant issue.
-- Open an issue to define the process for handling spec deviations and exceptions.
-- Ensure governance-related items are tagged and tracked on the project board.
+- Create a card for hotel graduation follow-up on the project board.
+- Document the process for handling exceptions to the OpenTelemetry spec and share it with the GC.
+- Enable co-author verification and communicate changes to maintainers.
+- Follow up with the contributor experience SIG regarding a survey for new contributors.
 
 ## Participants
-Alolita Sharma, Dan Gomez Blanco, Austin Parker, Trask Stalnaker, Juraci Paixão Kröhling
+Alolita Sharma, Dan Gomez Blanco, Austin Parker, Trask Stalnaker, Juraci Paixão Kröhling, Pablo Baeyens.

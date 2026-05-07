@@ -1,13 +1,13 @@
 ## Key Topics
-- **Incident Discussion**: Review of the recent incident affecting go.opentelemetry.io, focusing on DNS entry issues and SSL certificate generation.
-- **Platform Migration**: Proposal to migrate GoVanity URLs from App Engine to a static site on Netlify using Hugo to reduce complexity and improve reliability.
-- **Ownership and Responsibility**: Ongoing debate about the ownership of the go.opentelemetry.io domain and the need for clearer roles and responsibilities among team members.
-- **Checks and Balances**: Discussion on the necessity of implementing checks and balances to prevent future incidents and ensure oversight in decision-making processes.
+- **Incident Discussion**: Review of the recent incident involving Go.opentelemetry.io and the implications of DNS changes and certificate management.
+- **Transition to Netlify**: Proposal to move GoVanity URLs from App Engine to Netlify for better management and reduced risk of incidents.
+- **Ownership and Responsibility**: Ongoing discussion about the ownership of Go.opentelemetry.io and the need for clearer roles and responsibilities among the SIG members.
+- **PR Review**: Updates on the internal observability package and performance improvements for counters in the OpenTelemetry TraceGRPC package.
 
 ## Action Items
-- Damien to work with team members who have access to Netlify to facilitate the migration of GoVanity URLs.
-- Establish a process for monitoring DNS changes that could impact the Go project.
-- Discuss potential adjustments to roles and responsibilities within the team to ensure better oversight.
+- **Damien Mathieu**: Create a community issue to discuss ownership and responsibilities with relevant stakeholders (GC, comms, collector maintainers).
+- **David Ashpole**: Continue refining the counter performance improvements and address feedback on the PRs.
+- **Participants**: Review the benchmark PR and provide feedback on performance improvements.
 
 ## Participants
 Bryan Boreham, Damien Mathieu, Tyler Yahn, David Ashpole, Robert Pająk

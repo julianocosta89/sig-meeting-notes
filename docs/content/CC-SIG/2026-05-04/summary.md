@@ -1,15 +1,16 @@
 ## Key Topics
-- Discussion on creating an error handling and exception handling policy for the OpenTelemetry C/C++ repository.
-- Review of recent code cleanups and progress on addressing exception escape warnings.
-- Updates on handling breaking changes in Rapid YAML and its impact on the codebase.
-- New workflow for maintaining approver and maintainer activity within the community.
-- Security report concerning memory allocation when handling HTTP responses.
+- **Exception Handling Policy**: Discussion on creating a clear error handling and exception handling policy for the repository to guide developers.
+- **Security Issues**: Addressing a security report related to HTTP response handling and deciding whether to handle it as a regular PR or through the security report process.
+- **Benchmarking**: The need for better benchmarking practices, especially for the OTLP hot path and export path, to improve performance measurement.
+- **YAML Configuration**: Ongoing discussions about the integration of YAML specifications and identifying gaps in current implementations.
+- **CI Efficiency**: Concerns about the efficiency of CI runners and the time taken for builds, with suggestions for improvements.
 
 ## Action Items
-- Draft an issue and PR for the exception handling policy to provide guidance for developers.
-- Mark to review and comment on the pull request related to exception handling.
-- Doug to add his name as a maintainer in the README for CPP and CPP Contrib repositories.
-- Investigate the implications of the Rapid YAML changes and communicate necessary updates in release notes.
+- Draft an issue to establish an exception handling policy.
+- Investigate the process for using a bare metal runner for benchmarking.
+- Prepare a PR for the HTTP security issue, considering whether to use the private branch process.
+- Add missing YAML-specific issues to GitHub for tracking and contributor engagement.
+- Review and potentially update CI processes to improve efficiency.
 
 ## Participants
-malff, Doug Barker
+malff, Doug Barker, Tom Tan

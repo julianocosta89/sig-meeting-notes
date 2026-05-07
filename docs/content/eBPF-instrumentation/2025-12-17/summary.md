@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the OpenTelemetry Injector Project and its capabilities for auto-instrumentation.
-- Exploration of merging the OpenTelemetry Injector with eBPF for better runtime detection and instrumentation.
-- Challenges of integrating auto-instrumentation and eBPF instrumentation without duplication.
-- Potential benefits of combining features from both systems for comprehensive monitoring solutions.
+- Discussion on merging the OpenTelemetry Injector Project with eBPF for better runtime detection and instrumentation.
+- Exploration of the feasibility of using eBPF for dynamic environment variable mutation and auto-instrumentation.
+- Review of MongoDB crashing issues and the importance of buffer checks in user space code.
+- Updates on open pull requests, including ongoing work on trace log correlation and Java agent injection.
+- Plans for a year-end retrospective and goal setting for the next year.
 
 ## Action Items
-- Prototype a proof of concept for merging the OpenTelemetry Injector and eBPF functionalities.
-- Research the feasibility of integrating both auto-instrumentation and eBPF instrumentation without service restarts.
-- Investigate how to link eBPF spans with application SDKs for improved context propagation.
+- Explore the integration of the OpenTelemetry Injector Project with eBPF and prototype a proof of concept.
+- Investigate MongoDB buffer issues further to ensure robustness in error handling.
+- Review and provide feedback on open pull requests, especially those related to trace log correlation and Java agent injection.
+- Prepare for a year-end retrospective discussion in January.
 
 ## Participants
-Tyler Yahn, Giuseppe Ognibene, Mario Macias, Nikola Grcevski, Nimrod Avni
+Tyler Yahn, Giuseppe Ognibene, Mario Macias, Nikola Grcevski, Stephen Lang, Nimrod Avni, Mattia Meleleo

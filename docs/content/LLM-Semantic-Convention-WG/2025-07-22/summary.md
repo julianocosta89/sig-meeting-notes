@@ -1,15 +1,14 @@
 ## Key Topics
 - Review of project board and progress on pull requests (PRs).
-- Discussion on OpenAI instrumentation for JavaScript and the need for community review and ownership.
-- Naming conventions for system instructions and handling sensitive content.
-- Structure and recording of chat history for agents, including input and output parameters.
-- Suggestions for improving the clarity and functionality of agent responses.
+- Discussion on inputs and outputs for agent-related PRs, including naming conventions and structure.
+- Contributions from Elastic regarding OpenAI instrumentation for JavaScript.
+- Clarification on handling chat history and tool outputs in agent spans.
+- Design document for Gen AI retail types and evaluation types.
 
 ## Action Items
-- Review and approve the OpenAI JavaScript instrumentation PR.
-- Finalize naming conventions for system instructions.
-- Explore the structure of chat history for agents and how to record tool calls and responses.
-- Shipra to present details on agent invocation input and output in the spans YAML.
+- Participants to review the proposed design document and provide feedback.
+- Shipra to add links to the PRs that showcase instrumentation prototypes.
+- Pavan to share a demo or code related to the new spans or metrics discussed.
 
 ## Participants
-Liudmila Molkova, Shipra Jain, AB Austin Born, Sergey Sergeev, Ridhima Satam, Aaron Abbott, Alex Hall
+Liudmila Molkova, Shipra Jain, Sergey Sergeev, Ridhima Satam, Aaron Abbott, Alex Hall, Ankit, Pavan, AB Austin Born.

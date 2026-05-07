@@ -1,13 +1,16 @@
 ## Key Topics
-- Build issues related to Weaver due to discrepancies between Debian and Alpine environments, particularly with CLIB versions.
-- Challenges with Node.js version management and its impact on package dependencies, specifically around NPM versions.
-- Discussion on potential solutions for managing UI and Rust builds separately to reduce dependency churn.
-- Consideration of reaching out to the JavaScript SDK team for expertise on packaging issues.
+- **Build Issues with Weaver**: Discussion on problems arising from different C libraries in Debian and Alpine, impacting dependency updates.
+- **Node.js Version Conflicts**: Challenges with varying Node.js and NPM versions causing build issues; a proposal to lock versions to reduce churn.
+- **Template Repository Proposal**: Introduction of a new repository for default templates and policies for Weaver, aiming for better organization and testing.
+- **Dependency Resolution in V2**: Updates on the ability to import schemas and the limitations regarding spans; discussions on refining the syntax and handling conflicts.
+- **Semantic Versioning Considerations**: Debate on how to manage versioning for semantic conventions, including potential breaking changes and the implications of dev dependencies.
 
 ## Action Items
-- Reach out to the JavaScript SDK team for assistance with packaging and dependency management.
-- Lock the Node.js and NPM versions in the project to prevent dependency churn.
-- Investigate potential workarounds for CLIB compatibility issues between Debian and Alpine.
+- **Reach out to JavaScript SDK**: Josh will contact the JavaScript SDK team for insights on packaging issues.
+- **Lock Node and NPM Versions**: Josh to propose locking the versions of Node and NPM to stabilize builds.
+- **Create Template Repository**: Josh to set up a repository for templates and policies, including documentation for contributors.
+- **Investigate Dependency Resolution**: Liudmila and Josh to explore how to refine dependencies in V2 and establish a clear resolution mechanism.
+- **Review OTEP Implementation**: Participants to review the OTEP related to dependency resolution and provide feedback.
 
 ## Participants
-Nicolas Takashi, ariannavespri, Josh Suereth, Liudmila Molkova, Jeremy Blythe, Nathan Smith, Arthur Silva Sens
+Nicolas Takashi, Arianna Vespri, Josh Suereth, Liudmila Molkova, Jeremy Blythe, Nathan Smith, Arthur Silva Sens

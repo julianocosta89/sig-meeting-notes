@@ -1,13 +1,14 @@
 ## Key Topics
-- Updates on OTEP progress and upcoming changes.
-- Discussion on the deprecation of span events and the need for stabilization.
-- Complex attributes and their implementation in various languages.
-- The potential impact of blog posts on user planning and understanding of upcoming features.
+- Progress on OTEP updates and slow rollout of complex attributes.
+- Discussion on the stabilization of events and the need for a blog post to announce it.
+- Plans for log-based event deprecation and stabilization of log exceptions.
+- Consideration of semantic conventions and their potential reworking into policies.
+- Future actions regarding complex attributes in various programming languages.
 
 ## Action Items
-- Robert Pająk to continue work on the complex attributes and related OTEPs.
-- Liudmila Molkova to merge the semantic conventions PR and prepare a blog post on complex attributes.
-- Trask Stalnaker to follow up on event stabilization announcements and check with Jack regarding Java support.
+- Liudmila Molkova to work on a blog post regarding complex attributes and stabilization of events.
+- Review and finalize the semantic conventions document for clarity and policy alignment.
+- Robert Pająk to follow up on the status of the log exception setup.
 
 ## Participants
 Robert Pająk, Trask Stalnaker, Liudmila Molkova

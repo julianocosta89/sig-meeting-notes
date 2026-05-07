@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on moving from notebooks to Python scripts for OpenTelemetry.
-- Proposal to establish conventions regarding the relationship between LLM spans and execute tool spans.
-- Feedback from MCP (Multi-Channel Protocol) regarding context and transport conventions.
-- Consideration of prefix usage in context propagation for MCP and its implications.
+- Discussion on moving from notebook to Python script for orchestration.
+- Conventions for span relationships between LLM calls and tool executions.
+- Feedback from MCP regarding protocol versioning and context key formats.
+- Proposed changes to MCP transport attributes and their implications.
+- Instrumentation of retrieval queries in Llama Index and Langchain.
 
 ## Action Items
-- Alex Hall to create an issue regarding the transition from notebooks to Python scripts.
-- Liudmila Molkova to leave a comment on the MCP prefix discussion and monitor for any pushback from MCP.
+- Alex Hall to create an issue for transitioning from notebook to Python script.
+- Liudmila Molkova to leave comments regarding MCP prefix discussions.
+- Josh Winerman to propose attribute names for retrieval queries that are not Gen AI-specific.
 
 ## Participants
-Mayank Ramkishore Gupta, Liudmila Molkova, Alex Hall, Samuel
+Liudmila Molkova, Alex Hall, Mayank Ramkishore Gupta, Josh Winerman, Xander Song

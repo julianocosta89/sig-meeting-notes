@@ -1,13 +1,13 @@
 ## Key Topics
 - Discussion on upcoming release milestones and dependencies on the contrib repository.
-- Updates on the gRPC client and TraceHeady issues, with Rafael volunteering to handle the PR.
-- Clang Tidy and ClinkFormat tools for code consistency were discussed, with Rafael proposing to migrate existing configurations from the Obi project.
-- Observability Day schedule and conference attendance were mentioned, with participants discussing their plans.
+- Updates on the gRPC client and TraceHeady issues, with Rafael Roquetto volunteering to address them.
+- Proposal to replicate Clang Tidy configurations from the Obi project for consistency in coding standards.
+- Plans for the Observability Day at the upcoming conference and participant attendance.
 
 ## Action Items
-- Rafael to create PRs for Clang Tidy and ClinkFormat configurations.
-- Tyler to update the milestone to reflect progress and ensure readiness for the upcoming release.
-- Ron to review the Fix Other Arch subs issue within the week.
+- Tyler Yahn to update the milestone for the upcoming release.
+- Rafael Roquetto to create PRs for ClangFormat and Clang Tidy configurations.
+- Ron Federman to check on the status of the Fix Other Arch subs issue.
 
 ## Participants
 Rafael Roquetto, Tyler Yahn, Mike Dame, Ron Federman, Nikola Grcevski, Nithin

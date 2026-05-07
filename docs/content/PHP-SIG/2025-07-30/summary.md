@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on SPI (Service Provider Interface) configuration for multiple sources in OpenTelemetry PHP SDK.
-- The need for a priority system to manage the order of sources when multiple entries are defined.
-- Review of existing implementations and potential adjustments needed for the resolver interface.
-- Clarification on how the SDK loads and prioritizes sources from Composer JSON files.
+- Discussion on SPI (Service Provider Interface) and its implementation in OpenTelemetry PHP.
+- Configuration management, including the handling of multiple sources and priority settings.
+- OPAMP (OpenTelemetry Protocol for Remote Configuration) and its integration with PHP SDK.
+- The need for dynamic configuration updates during runtime, especially in long-running PHP applications.
+- Logging configuration and its interaction with the SDK.
 
 ## Action Items
-- Chris to provide examples of the priority implementation in the SPI.
-- Team to consider how to incorporate the priority system into the current SDK version.
-- Sergey to draft a proposal for handling multiple sources and their order in the SDK.
+- Chris to merge the PR related to configuration management.
+- Sergey to investigate the interaction between SPI and instrumentation loading.
+- Team to discuss the implications of dynamic configuration changes in future meetings.
 
 ## Participants
 Chris Lightfoot-Wild, Bob Strecansky, Pawel Filipczak, Sergey, Brett McBride

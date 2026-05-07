@@ -1,13 +1,14 @@
 ## Key Topics
-- **Meeting Organization**: Discussion on procedural issues regarding meeting invites and calendar management to ensure better attendance.
-- **Service Definitions**: Formalization of service concepts, including service namespace, service name, and service instance, with a focus on creating clear definitions and relationships.
-- **Service Instance ID**: Ongoing discussions about stabilizing the service instance ID and its attributes.
-- **Feedback on Definitions**: Participants expressed the need for better clarity and satisfaction with the current definitions of services and their components.
+- Clarification on meeting scheduling and calendar invites for OpenTelemetry SIGs.
+- Discussion on the definitions and relationships of service namespace, service, and service instance.
+- Review of a draft PR proposing formal definitions and diagrams for service concepts in OpenTelemetry.
+- The importance of logical versus physical definitions in the context of services and instances.
+- Consideration of how Kubernetes and other systems define services and how OpenTelemetry can align with those definitions.
 
 ## Action Items
-- **Calendar Management**: Ensure that all participants join the OpenTelemetry calendar group to receive proper meeting invites and updates.
-- **Review PR**: Participants are encouraged to review the draft PR regarding service definitions and provide feedback.
-- **Clarify Definitions**: Further discussions are needed to refine the definitions of service concepts to enhance understanding and usability.
+- Participants to review the draft PR and provide feedback on definitions of service name, service namespace, and service instance.
+- Future discussions to focus on the relationship between service definitions and deployment concepts.
+- Ensure wider community engagement with the definitions through Slack for additional input.
 
 ## Participants
 Josh Suereth, Dotan Horovits, Joao G. (Dynatrace), Trask Stalnaker

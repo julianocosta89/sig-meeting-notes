@@ -1,15 +1,14 @@
 ## Key Topics
-- Metrics filter implementation and interest from the community.
-- Status updates on data compression PR and CocoaPods issues.
-- Discussion on removing NEO dependencies and related test files.
-- Release plans for OpenTelemetry Swift and addressing customer requests for CocoaPods.
-- Contributions to semantic conventions for session attributes and app metrics.
+- Discussion on the implementation of a metrics filter and data compression follow-up.
+- Review of the Swift Core release and the need for a new Slack channel for notifications.
+- Updates on semantic conventions for screen loading, app launches, and app attributes.
+- Issues with user defaults and dependency updates, including potential impacts on version support.
 
 ## Action Items
-- Bryce to message Alolita about creating a new Slack channel for notifications.
-- Ari to prepare a new release of OpenTelemetry Swift.
-- Billy to implement changes related to semantic conventions and address comments on his PR.
-- Grace to finalize contributions to the semantic conventions repo and gather feedback.
+- Bryce to message Alolita regarding the new Slack channel for notifications.
+- Ari to proceed with the release of OpenTelemetry Swift now that it includes the necessary updates.
+- Vinod to review the getting started instructions for accuracy.
+- Team members to investigate the user defaults issue and dependency updates for potential impacts.
 
 ## Participants
-Bryce Buchanan, Billy Zhou, Martin Holman, Vinod Vydier, Nacho, Ariel Demarco, Grace Lim
+Bryce Buchanan, Billy Zhou, Martin Holman, Vinod Vydier, Nacho, Ariel Demarco, Grace Lim, Alex Cohen.

@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on OpenTelemetry demo app memory issues, particularly with OpenSearch.
-- Experiences from KubeCon and its relation to OpenTelemetry.
-- Potential improvements to the demo app's load generator using K6 and alternatives.
-- Ongoing issues with user experience related to memory allocation in Kubernetes.
+- Discussion on OpenTelemetry demo app performance issues, particularly related to OpenSearch memory consumption.
+- Review of potential solutions for reducing memory footprint in the demo application.
+- Exploration of load testing tools, specifically mentioning K6 and its potential integration with a Chromium-based solution.
+- Updates on community events like KubeCon and their relevance to OpenTelemetry.
 
 ## Action Items
-- Follow up on the OpenSearch memory issue and explore potential solutions.
-- Investigate the use of K6 or similar tools for load generation in the demo app.
-- Keep track of discussions regarding the minimal OpenSearch image for better resource management.
+- Follow up on the OpenSearch memory issue and explore potential PRs for optimization.
+- Investigate the use of K6 with a Chromium embedded solution for load testing in the demo app.
+- Keep track of community contributions and insights regarding memory management in OpenSearch.
 
 ## Participants
 Juliano Costa, Roger Coll

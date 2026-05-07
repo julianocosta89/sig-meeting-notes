@@ -1,14 +1,14 @@
 ## Key Topics
-- Upcoming release planning and public API review.
-- Schema URL support added to Tracer and Activity API.
-- Discussion on database instrumentation release timeline.
-- Review of changes and bug fixes in the OTLP exporter.
-- Consideration of future improvements based on feedback from the Blazor team.
+- Discussion on the upcoming release and public API review.
+- Overview of changes in the public API, including schema URL support and exporter updates.
+- Review of database instrumentation and potential release timeline.
+- Consideration of feedback on a PR related to browser scenarios and thread management.
+- Plans for future discussions on ongoing issues and PRs.
 
 ## Action Items
-- Pyotr to handle the upcoming release.
-- Rajkumar to follow up with Larry regarding Noah's comments on the PR.
-- Team to review the public API changes offline before the release.
+- Rajkumar to run the release workflow and review the public API changes.
+- Follow up on Noah's comments regarding the PR for further clarification.
+- Consider improvements to the current approach in the PR based on discussions.
 
 ## Participants
 Alan West, Matthew Hensley, Zach Montoya, Rajkumar Rangaraj

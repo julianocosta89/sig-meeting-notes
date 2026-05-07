@@ -1,16 +1,15 @@
 ## Key Topics
 - Appreciation for PR reviews leading to reduced backlog.
-- Discussion on plans to graduate experimental packages to stable versions, focusing on dependencies and the API logs package.
-- Ongoing publishing issues in Contrib due to a typo in the release workflow.
-- SDK shutdown process and its impact on log flushing.
-- Issues with Socket.IO integration and the need for further investigation.
+- Discussion on plans to graduate experimental packages to stable versions, focusing on dependency issues.
+- Ongoing publishing issues in the Contrib repository and proposed solutions.
+- Triage of bugs and PRs, including discussions on instrumentation for various libraries and context propagation.
+- Review of ESLint upgrade and its implications on the project.
 
 ## Action Items
-- Address the PR related to circular references in the attributes type.
-- Review the API logs to remove unnecessary exports.
-- Create a patch release to rectify the publishing issue on NPM.
-- Follow up on the SDK shutdown process and explore the use of `before exit` for log flushing.
-- Investigate the Socket.IO integration issue and gather more information.
+- Marc to follow up on the API logs package and dependencies.
+- Team members to assist with specific PRs needing attention.
+- Trent to review the HView Instrumentation PR for meta changes.
+- Marc to add comments on PRs regarding messaging semantic conventions and context propagation.
 
 ## Participants
-Marc Pichler, Andrei Borza, Trent Mick, ...
+Marc Pichler, Andrei Borza, Trent Mick, Hector Hernandez

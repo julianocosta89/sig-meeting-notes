@@ -1,13 +1,14 @@
 ## Key Topics
-- Updates on the retry processor implementation and design changes.
-- Discussion on the OTAP PData interface modifications.
-- Review of the new retry state and reply state handling in the pipeline.
-- Exploration of the implications of interest specification in PData messages.
+- Updates on the retry processor implementation and its integration with the OTAP pipeline.
+- Discussion on the handling of Arrow IPC stream messages and the need for schema management.
+- Presentation of a new observed state model for pipeline instances, inspired by Kubernetes.
+- Ongoing work on the batch processor and internal telemetry integration.
 
 ## Action Items
-- Josh to finalize and submit the PR after review.
-- Albert to provide approval on the changes discussed.
-- Laurent to follow up on the implications of the interest specification in future designs.
+- Laurent to provide feedback on the retry processor implementation.
+- Josh to extend the timer mechanism in the pipeline controller for retry processing.
+- Albert to finalize the batch processor and integrate fixes and optimizations.
+- David to add internal telemetry to several processors.
 
 ## Participants
-Albert Lockett, Laurent Quérel, Josh MacDonald
+Albert Lockett, Laurent Quérel, Josh MacDonald, David Dahl, Chris Hain

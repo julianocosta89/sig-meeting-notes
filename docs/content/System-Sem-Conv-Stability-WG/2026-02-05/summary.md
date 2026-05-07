@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the dual schema and M.O.Gen tool, with emphasis on a single schema approach for versioned metrics.
-- Review of the mdataGen tool updates and its implications for user configuration and metric naming.
-- Consideration of potential conflicts when emitting metrics with the same name but different attributes or types.
-- Importance of backend compatibility when handling metrics with the same name but varying data types.
+- Discussion on dual schema and the M.O.Gen tool updates.
+- Progress on implementing a single schema with versioned metrics.
+- Challenges with metric name conflicts and data types in the context of double writing.
+- Need for clear documentation on handling metric conflicts.
+- Coordination on host metrics PR and additional metrics for Darwin.
 
 ## Action Items
-- Participants to review comments and discussions on the GitHub issue regarding dual schema and mdataGen tool.
-- Further exploration of how to handle conflicts in metric names and types in user configurations.
+- Review and provide feedback on the dual schema discussion and M.O.Gen tool updates.
+- Create an issue regarding the challenges of double writing metrics.
+- Draft a practical example of metric conflicts for documentation.
+- Reach out to Roger regarding Darwin-specific metrics and standardization.
 
 ## Participants
 Donal O'Sullivan, Dmitrii Anoshin, Neil Yashinsky, Christos Markou, Braydon Kains, Pablo Baeyens

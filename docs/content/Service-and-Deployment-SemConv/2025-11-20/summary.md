@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the definition and structure of service namespace, service, and service instance in OpenTelemetry.
-- Review of active pull requests (PRs) related to the service definitions.
-- Clarification on the relationship between service namespace and application, and how they can be modeled in OpenTelemetry.
-- Consideration of stability in entity attributes and definitions within the OpenTelemetry framework.
+- Discussion on the PR for splitting the service namespace into three components: namespace, service, and service instance.
+- Review of the new service criticality attribute and its implications for operational importance and data handling.
+- Proposal to move `peer.service.name` to `service.peer.name` for better clarity in service communication.
+- Need for a structured approach to stabilizing deployment definitions and naming conventions.
 
 ## Action Items
-- Josh to make changes to the PR based on feedback regarding definitions of service and service instance.
-- Follow up on the stabilization of service and service instance attributes post-PR submission.
-- Explore the potential for defining "application" as a separate entity in the future.
+- Josh to update the PR with discussed changes and provide a link to the hotel demo.
+- Janhvi to investigate existing criticality attributes and collaborate with Bhagtiar on prototyping.
+- Trask to outline steps needed for stabilizing the `peer.service.name` change and communicate with Michelle.
+- Janhvi to draft a one-pager on considerations for stabilizing deployment definitions for discussion in the next meeting.
 
 ## Participants
 Janhvi, Josh Suereth, Trask Stalnaker, Kartik

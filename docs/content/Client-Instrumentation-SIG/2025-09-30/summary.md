@@ -1,12 +1,12 @@
 ## Key Topics
-- Proposal for adding detailed events to HTTP spans to capture various network request durations (DNS resolution, TLS setup, connection time, server processing time).
-- Discussion on the implementation of these events as span events versus standalone events.
-- Agreement on the opt-in nature of the proposed events to avoid impacting existing users.
-- Consideration of feedback regarding the future deprecation of span events in favor of standalone events.
+- Proposal for adding detailed HTTP span events to capture various network request durations (DNS resolution, TLS setup, etc.).
+- Discussion on defining span events for mobile application screens, including time to first appear and screen load metrics.
+- Consideration of the differences in event handling between mobile platforms (Android vs. iOS) and browsers.
+- Potential pushback on the use of span events versus standalone events in the future.
 
 ## Action Items
-- Surbhi A to start working on the implementation of the proposed events in the Java instrumentation and semantic conventions.
-- Jason Plumb to assign the task to Surbhi A for tracking progress.
+- Surbhi A to work on the implementation of the proposed HTTP span events and semantic conventions.
+- Grace Lim to refine and update the proposal for mobile screen load definitions and continue discussions in Slack.
 
 ## Participants
-Jason Plumb, Martin Kuba, VP Valentin Pertuisot, Surbhi A
+Jason Plumb, Martin Kuba, Surbhi A, VP Valentin Pertuisot, Grace Lim

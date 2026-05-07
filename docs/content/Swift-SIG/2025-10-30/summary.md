@@ -1,13 +1,14 @@
 ## Key Topics
-- **CocoaPods Compilation Issues**: Discussion on fixing compilation errors related to CocoaPods and updating version dependencies.
-- **Crash Reporting**: Implementation of KS Crash Reporter and its integration challenges within the main repository.
-- **Metric Kit Support**: Addressing issues with Metric Kit support on macOS and potential solutions for CI compatibility.
-- **Stack Trace Formats**: Debate on the appropriate format for stack traces in exception reporting, including the use of native formats versus Metric Kit formats.
+- **CocoaPods Compilation Issue**: Resolved a compilation error related to versioning and dependencies.
+- **Crash Reporting**: Discussion on the implementation of KS Crash Reporter and its integration.
+- **Metric Kit Support**: Addressed issues with compiling Metric Kit and the decision to temporarily remove macOS support.
+- **Stack Trace Formats**: Debated the structure of stack traces for exceptions and metrics, including potential standardization.
+- **Use of Spans vs Metrics**: Discussed the rationale for capturing data as spans instead of metrics due to aggregation complexities.
 
 ## Action Items
-- **Ariel Demarco**: Work on removing macOS support for Metric Kit until the CI can be fully migrated to Xcode 26.
-- **Billy Zhou**: Finalize and submit PRs related to crash reporting and stack trace formats.
-- **Team**: Review and address comments on the Metric Kit PR to ensure compatibility and functionality.
+- **Ariel Demarco**: Edit the codebase to remove macOS support until migration to Xcode 26 is complete.
+- **Billy Zhou**: Address comments on the PR regarding stack trace formats and crash messaging.
+- **Vinod Vydier**: Confirm the status of the README update PR.
 
 ## Participants
-Bee Klimt, Billy Zhou, Ariel Demarco, Vinod Vydier, Alex Cohen
+Ariel Demarco, Billy Zhou, Bee Klimt, Vinod Vydier, Alex Cohen

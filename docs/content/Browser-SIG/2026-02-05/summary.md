@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on unified semantics for resource timing data in both browser and mobile contexts.
-- Proposal for new semantic conventions related to network timing metrics, including event and span attributes.
-- Debate on naming conventions for attributes to ensure clarity across different platforms (browser vs. mobile).
-- Consideration of whether to have separate or unified naming for similar metrics in browser and mobile implementations.
+- Discussion on unifying semantic conventions for resource timing data across mobile and browser platforms.
+- Proposal for naming conventions and attributes for timing metrics, including potential confusion between browser and mobile naming.
+- Consideration of using delta time versus absolute time for timestamps in metrics.
+- Importance of consistent naming for attributes to facilitate cross-platform comparisons.
 
 ## Action Items
-- Surbhi Agarwal to add comments regarding the need for event-based metrics versus span attributes.
-- Martin Kuba to provide additional arguments supporting the event-based approach.
-- Participants to finalize naming conventions for semantic attributes to ensure consistency across platforms.
+- Surbhi to explore better naming conventions that work for both mobile and browser use cases.
+- Martin to update comments regarding browser API workings and add a summary of the discussion.
+- Participants to review the proposed changes and provide feedback.
 
 ## Participants
-Marco Schäfer, Martin Kuba, Surbhi Agarwal, Joaquín Díaz, Benoît Zugmeyer
+Marco Schäfer, martinkuba, Surbhi Agarwal, Joaquín Díaz, Benoît Zugmeyer, David Luna Bistuer

@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on the placement of criticality under service in OpenTelemetry.
-- Review and approval process for PRs related to service.namespace and service.instance.id.
-- Research on the usage of criticality in other open-source projects, particularly Kubernetes.
-- Stabilization process for new features and the requirement for prototypes.
-- Overview of PRs raised for stabilizing service attributes.
+- Discussion on the placement of the criticality attribute within OpenTelemetry, agreeing it should be under the service namespace.
+- Review of PRs related to stabilizing service.instance.id and service.namespace, with plans to monitor for community feedback.
+- Proposal to stabilize deployment.environment.name, including gathering usage data from relevant communities.
+- Importance of aligning naming conventions and definitions with other vendors and open-source projects.
 
 ## Action Items
-- Janhvi to ping Bhaktia regarding comments on the criticality PR.
-- Both Janhvi and Yoshi to review and approve the criticality PR.
-- Janhvi to check with Josh about the number of prototypes required for stabilization.
-- Janhvi to share PR links in the Slack channel for increased visibility.
+- Janhvi to ping Bhaktia regarding the criticality PR and request reopening.
+- Both Janhvi and Yoshi to review and approve the criticality PR once reopened.
+- Janhvi to draft a proposal for stabilizing deployment.environment.name and share it for review.
+- Yoshi to reach out to contacts in the DevOps community for insights on deployment.environment.name usage.
 
 ## Participants
-Janhvi, Yoshi Yamaguchi, Ayushi, Josh, Trask, Anav, Bhaktia
+Janhvi, Yoshi Yamaguchi

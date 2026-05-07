@@ -1,13 +1,15 @@
 ## Key Topics
-- **PR Triage and Management**: Discussion on the current state of PRs, with a focus on closing stale PRs and improving the review process.
-- **Labeling and Tagging PRs**: Proposal to implement tagging for PRs to streamline reviews, especially for specific areas like GenAI instrumentation.
-- **Best Practices for PRs**: Emphasis on establishing naming conventions and documentation to assist reviewers and maintainers.
-- **Community Contributions**: Discussion on the criteria for accepting new instrumentation contributions and the need for community support for ongoing maintenance.
+- Triage session led by Tammy Baylis to address stale PRs and improve review processes.
+- Discussion on labeling PRs to facilitate quicker reviews, particularly for GenAI-related contributions.
+- Importance of naming conventions for PRs to enhance visibility and ease of review.
+- Ongoing efforts to stabilize the logging API and the need for community support for new instrumentation contributions.
+- Updates on specific PRs, including an embedding PR that is blocking other GenAI PRs.
 
 ## Action Items
-- Explore the automation of tagging PRs based on folder changes.
-- Consider creating documentation for naming conventions for PRs.
-- Encourage participants to propose ideas for improving the PR review process during SIG meetings.
+- Implement tagging for PRs to categorize them by related topics (e.g., GenAI).
+- Encourage contributors to follow naming conventions for PRs to improve clarity.
+- Review and address the embedding PR to unblock related contributions.
+- Create an issue for any new instrumentation requests to gauge community interest.
 
 ## Participants
-lechen, Tammy Baylis, Paulo Vital, Surya Teja
+lechen, Tammy Baylis, Paulo Vital, Surya Teja, Hector Hernandez, Shuning Chen, Keith Decker

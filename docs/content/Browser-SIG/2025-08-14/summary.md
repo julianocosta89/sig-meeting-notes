@@ -1,14 +1,14 @@
 ## Key Topics
 - Overview of the observability model for browser instrumentation, focusing on page load, network requests, and user interactions.
-- Discussion on the use of spans versus events for capturing browser metrics and the implications for overhead and data collection.
-- Proposal for flowcharts or Gantt charts to visualize browser-level events during page loads.
-- Metrics to be captured, including timing for page load, resource loading, and user interactions.
-- Consideration of exceptions and network requests as part of the observability model.
+- Discussion on the distinction between spans and events in data collection and visualization.
+- Proposal to commit to ES2022 for browser support and its implications for instrumentation.
+- Consideration of deprecating XHR support in favor of Fetch API due to its wider availability.
+- Discussion on improving meeting productivity and encouraging asynchronous communication.
 
 ## Action Items
-- Participants to review the observability model document and provide feedback via comments and Slack.
-- Further discussion on the distinction between spans and events in capturing browser metrics.
-- Explore the possibility of combining the observability model with existing documentation.
+- Continue discussions on spans vs. events through comments and Slack.
+- Create a GitHub issue to debate the ES2022 commitment and its implications.
+- Document the decision to potentially drop XHR support and communicate it clearly to users.
 
 ## Participants
-Ted Young, Joaquín Díaz, Martin Kuba
+Ted Young, Joaquín Díaz, Martin Kuba, Jared Freeze, Daniel Dyla (Dynatrace)

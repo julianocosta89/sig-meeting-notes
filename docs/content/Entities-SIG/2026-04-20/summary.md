@@ -1,15 +1,15 @@
 ## Key Topics
-- **Meeting Time Adjustment**: The group agreed to move future meetings 30 minutes later due to scheduling conflicts.
-- **PR Updates**: Discussion on merging two major pull requests (PRs) related to entity relationships and the entity merge algorithm. Dmitrii Anoshin's PR was deemed ready for merging pending conflict resolution.
-- **SDK Specification**: Daniel Dyla is working on SDK prototypes and will open a PR after resolving conflicts with existing code.
-- **OpAMP Specification**: Dmitrii Anoshin proposed a new approach for identifying attributes in the OpAMP spec, focusing on service identifying attributes.
-- **Merging Issues**: A discussion on how to handle conflicting identifying attributes from different telemetry observers, referencing Michele's upcoming issue.
+- Discussion on moving the meeting time to 30 minutes later for better attendance.
+- Updates on the status of major PRs, including the entity merge PR and SDK specifications.
+- Review of the entity merging logic and how it affects the SDK implementations.
+- Proposal for handling identifying attributes in the OpAMP specification.
+- Need for clarifying relationships between entities in the data model.
 
 ## Action Items
-- **Dmitrii Anoshin**: Resolve conflicts in his PR and finalize the merge.
-- **Daniel Dyla**: Rebase his branch and open a PR for the SDK after merging the relevant changes.
-- **Josh Suereth**: Review and refresh SDK prototypes against the latest changes once Daniel opens his PR.
-- **All Participants**: Monitor Michele's issue regarding telemetry observers and provide feedback once it is opened.
+- Dmitrii Anoshin to close the PR related to the Kubernetes Cluster Receiver.
+- Daniel Dyla to open a PR for the SDK startup specification.
+- Dmitrii Anoshin to create a new task for documenting local vs. universal IDs.
+- Josh Suereth to follow up on the issue raised by Michele regarding telemetry observers.
 
 ## Participants
 Josh Suereth, Dmitrii Anoshin, Daniel Dyla (Dynatrace)

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on prioritizing PR triage over issue triage for better workflow.
-- Need for improved PR triage board to include an "in discussion" state.
-- Updates on specific semantic convention PRs, including Heroku conventions and retrieval span support.
-- Proposal to revisit the stability requirements for instrumentation and semantic conventions.
-- Introduction of three principles for stable instrumentation: documentation of data, prevention of breaking changes, and communication of major version bumps.
+- Discussion on PR vs. issue triage, with a focus on prioritizing PRs.
+- Updates on semantic conventions, including renaming and unblocking Heroku conventions.
+- Proposal for marking instrumentation stability independent of semantic convention stability.
+- Need for dedicated ownership of cloud semantic conventions.
+- Governance committee elections and their importance in OpenTelemetry.
 
 ## Action Items
-- Move retrieval span support to "awaiting Code Owners approval."
-- Comment on Heroku conventions to involve the Heroku telemetry team.
-- Consider revisiting the stability requirements for instrumentation in future discussions.
+- Liudmila Molkova to cut the release this week.
+- James Thompson to rebase and merge the PR once conflicts are resolved.
+- Mackenzie Jomard to draft a PR for EKS Fargate detection and seek sponsorship from maintainers.
+- Participants encouraged to vote in the governance committee elections.
 
 ## Participants
-Josh Suereth, Joao G. (Dynatrace), Liudmila Molkova, James Thompson, Trask Stalnaker
+Josh Suereth, Joao G. (Dynatrace), Liudmila Molkova, Trask Stalnaker, James Thompson, Mackenzie Jomard, Christophe Kamphaus.

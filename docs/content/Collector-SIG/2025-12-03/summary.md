@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on semantic conventions and the need for a unified approach, including the proposal for a short RFC.
-- Consideration of feature gates for migrating from old to new semantic conventions, with varying opinions on whether to use a single or multiple feature gates.
-- Updates on the stabilization process for various components, including the file receiver and Kubernetes attributes.
-- Introduction of a design proposal for auto-discovery of domain controllers in the Windows log receiver.
-- Addressing out-of-memory crashes related to large OTLP messages and the potential for lazy deserialization.
+- Discussion on semantic conventions and the potential for a unified RFC to address various subtopics.
+- Debate on the implementation of feature gates for semantic conventions, with suggestions for multiple gates versus a single pair.
+- Updates on the stabilization of components, specifically the file receiver and the need for defining stabilization criteria.
+- Proposal for lazy deserialization of OTLP messages to prevent out-of-memory crashes.
+- Discussion on improving the collector config schema and generating documentation for components.
 
 ## Action Items
-- Pablo to draft and share feedback on the RFC regarding semantic conventions.
-- Andrzej to reach out to Braden about stabilizing the file receiver.
-- Pankaj to follow up with Paulo Gianotti regarding the Windows log receiver design.
-- Laurent to gather feedback on the lazy deserialization issue and its implementation.
+- Pablo Baeyens to draft a document outlining the discussion on semantic conventions and feature gates.
+- Andrzej Stencel to reach out to Braden regarding the file receiver stabilization.
+- PL Pavol Loffay to document his schema generation process and potentially open a new issue or PR.
+- Participants to review and provide feedback on Israel Blancas' PR for the reduction processor.
 
 ## Participants
-Andrzej Stencel, Jade Guiton, Pablo Baeyens, Christos Markou, Pankaj Kumar, Laurent Dufresne
+Andrzej Stencel, Jade Guiton, Pablo Baeyens, Christos Markou, Pankaj Kumar, Laurent Dufresne, Douglas Camata, PL Pavol Loffay, Israel Blancas, Evan Bradley.

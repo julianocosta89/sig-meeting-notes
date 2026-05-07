@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on recent release problems and the impact of merging PRs too early.
-- Challenges and considerations regarding dynamic loading of the Java agent.
-- Testing issues related to the Prometheus module and its dependency on the collector.
-- Strategies for managing dependencies and ensuring test reliability.
+- Discussion on release problems and the implications of merging PRs too early.
+- Impediments to dynamic loading for the Java Agent and potential contributions from Obi.
+- Issues with Prometheus module tests failing due to changes in the collector implementation.
+- Naming conventions and configuration for enabling/disabling instrumentations in the Java agent.
+- Gradle 9 update challenges and its impact on existing plugins and configurations.
 
 ## Action Items
-- Explore updating testing procedures for dynamic loading of the Java agent.
-- Consider implementing Renovate for automatic updates of dependencies while maintaining test reliability.
+- John Watson to comment on the issue regarding the Prometheus module tests and propose a PR for using Renovate to manage collector versions.
+- GZ Gregor Zeitlinger to explore the dynamic loading capabilities and update tests accordingly.
+- Gregor to remove the "default enabled" line from the PR and create a new issue for further discussion.
+- Participants to continue investigating Gradle 9 update issues and share findings.
 
 ## Participants
-Gregor Zeitlinger, Trask Stalnaker, Jason Plumb, Jay DeLuca, John Watson
+GZ Gregor Zeitlinger, Trask Stalnaker, Jason Plumb, John Watson, Jay DeLuca, Lauri Tulmin, Antoine Toulme, Robert Niedziela.

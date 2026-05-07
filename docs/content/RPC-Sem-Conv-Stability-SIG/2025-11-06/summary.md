@@ -1,14 +1,14 @@
 ## Key Topics
-- **Meeting Time Adjustment**: Discussion on moving the meeting time an hour earlier for winter.
-- **Stability Targets**: Agreement on focusing on gRPC, ConnectRPC, and Dubbo for stability, with considerations on JSON RPC's relevance.
-- **RPC Status Codes**: Decision to unify RPC status codes to a single `rpc.statuscode` to avoid confusion and potential sensitive information exposure.
-- **Duration Metrics**: Proposal to align duration metrics with existing Java instrumentation and gRPC metrics, focusing on the logical layer and call duration.
-- **Streaming vs Non-Streaming Metrics**: Exploration of how to handle metrics for different types of RPC calls, including streaming scenarios.
+- Discussion on moving the meeting time to accommodate participants in different time zones.
+- Progress on defining stability for RPC protocols, specifically targeting gRPC, ConnectRPC, and Dubbo.
+- Review of RPC status codes, focusing on standardizing to a single rpc.statuscode and addressing concerns about sensitive information in error messages.
+- Consideration of call duration metrics for RPC, including the distinction between unary and streaming calls.
+- Exploration of the implications of mixing unary and streaming metrics and the need for clear definitions and dimensions.
 
 ## Action Items
-- **Meeting Time Update**: Liudmila Molkova to update the meeting calendar to reflect the new time.
-- **Documentation Review**: Review and finalize the status code unification PR and address sensitive information concerns.
-- **Metric Naming**: Consider naming conventions for duration metrics to ensure clarity and consistency.
+- Liudmila Molkova to update the meeting calendar to reflect the new time.
+- Create an issue to define stream type or call type for RPC metrics.
+- Review existing conventions for streaming metrics and their alignment with current practices.
 
 ## Participants
 Trask Stalnaker, Steve Rao, Matthew Hensley, Liudmila Molkova, Albumen Kevin

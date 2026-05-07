@@ -1,13 +1,16 @@
 ## Key Topics
-- Review of action items from previous meetings, particularly regarding increasing the default request size and the key value unit proposal.
-- Discussion on two proposals for handling key value units: one focusing on semantic conventions and the other on protocol changes.
-- Updates on the Java SDK's interoperability with DevFiler and the need for specification updates to address metadata requirements and encoding compatibility.
-- The importance of feedback on proposals and the challenges of aligning changes with existing OpenTelemetry signals.
+- Review of action items from previous meetings, including updates on increasing the default request size and proposals for key value units.
+- Discussion on two proposals regarding changes to semantic conventions and protocol for PPROF, with a focus on unit information.
+- Updates on Java SDK interoperability with DevFiler and issues related to specification compliance.
+- Ongoing discussions about improving documentation for period types in profiling and the implications of sampling rates.
+- Updates on thread context and feedback from the OpenTelemetry Rust team.
 
 ## Action Items
-- Review and provide feedback on the two proposals regarding key value units.
-- Jonathan to queue up specification updates for review concerning metadata and encoding issues.
-- Alexey to look into the documents related to the key value unit proposal.
+- Felix to provide data regarding the default request size.
+- Participants to review and provide feedback on the proposals for key value units.
+- Jonathan to queue up additional specification updates for review.
+- Alexey to document recommendations regarding sample types and periods.
+- Ivo to continue addressing feedback on thread context.
 
 ## Participants
-Scott Gerring, Ivo Anjo, Frederic Branczyk, Christos Kalkanis, Alexey A, Florian Lehner, Jonathan Halliday
+Scott Gerring, Ivo Anjo, Frederic Branczyk, Christos Kalkanis, Alexey A, Florian Lehner, Jonathan Halliday, Nayef Ghattas.

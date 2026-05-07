@@ -1,11 +1,15 @@
 ## Key Topics
-- Discussion on the need for a formal specification for OTAP (OpenTelemetry Arrow Protocol) to clarify behaviors and onboarding processes.
-- Proposal for adding validation checks to OTAP Arrow Records to ensure data integrity and reduce defensive coding.
-- Consideration of whether all Rust CI jobs should pass on all platforms as a precondition for merging code changes.
+- Discussion on OTAP specification and the need for formal documentation.
+- Proposal for improving the GoCollector configuration model to support Directed Acyclic Graphs (DAGs) and reduce redundancy.
+- Validation processes for OTAP Arrow records and the introduction of a centralized validation mechanism.
+- CI/CD process improvements, including requiring Rust CI jobs to pass on all platforms.
+- Renaming and organizing issue labels for better clarity and triage processes.
 
 ## Action Items
-- Jake Dern to draft a formal specification for OTAP and outline necessary validations for Arrow Records.
-- Group to discuss the requirement for Rust CI jobs to pass on all platforms before merging.
+- Create a formal specification for OTAP and document necessary validations for Arrow records.
+- Implement changes to the GoCollector configuration model to support DAGs and reduce redundancy.
+- Require Rust CI jobs to pass on Ubuntu and Windows, with optional checks for macOS.
+- Review and implement proposed changes to issue labels and triage processes.
 
 ## Participants
-Laurent Querel, Albert Lockett, jmacdonald, Jake Dern, Drew Relmas, Josh Buchan
+Laurent Querel, Albert Lockett, jmacdonald, Jake Dern, Drew Relmas, Tom, Josh Buchan, Andres Borja

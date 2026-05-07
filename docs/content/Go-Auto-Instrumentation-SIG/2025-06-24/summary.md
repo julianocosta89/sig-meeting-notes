@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the current milestone and the status of the patch release.
-- Issues with telemetry not capturing the SDK version in instrumentation.
-- Review of a pull request related to handlers and the need for better understanding of its design and integration.
-- Importance of unifying project efforts to avoid duplication and enhance collaboration between projects.
-- Upcoming community events and participation.
+- Discussion on the milestone for the OpenTelemetry Go project, focusing on the patch release and issues with the telemetry versioning.
+- Updates on the probe API refactor and the need for better integration with the OpenTelemetry project.
+- Plans for a community day event and the importance of submitting talks for observability days.
+- Coordination between team members for reviewing pull requests and improving project documentation.
 
 ## Action Items
-- Rafael to schedule a call with Mike to discuss the pull request and gain context.
-- Tyler to consider submitting a solution for the telemetry issue as a module for multimod compatibility.
+- Tyler to submit a pull request to support the multimod tooling for the patch release.
+- Rafael to schedule a call with Mike to discuss the probe API and its rationale.
+- Mike to consider creating a new pull request for the probe API to simplify the review process.
+- Team members to check the status of the observability day proposals and submit any ideas.
 
 ## Participants
 Rafael Roquetto, Tyler, Mike Dame

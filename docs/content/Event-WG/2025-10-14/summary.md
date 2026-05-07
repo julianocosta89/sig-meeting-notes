@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on changes to the OpenTelemetry Event specifications, including the proposal to change certain attributes to "must" for all languages.
-- The need for clarity on semantic conventions for events, particularly around the use of attributes versus body.
-- The goal of stabilizing event-related features and ensuring user-facing APIs are ergonomic and consistent across different languages.
-- The importance of stabilizing the `event.name` attribute to provide confidence to users and developers.
-- Plans for a blog post to communicate recent updates and changes once the necessary components are finalized.
+- Discussion on the stabilization of the event name attribute and its implications for the OpenTelemetry specification.
+- Consideration of the differences between using `event.name` as an attribute versus a proto field.
+- The need for clear documentation on how event names should be handled in various logging frameworks.
+- Agreement on the introduction of `otel.event.name` for clarity and backward compatibility.
+- The importance of semantic conventions in defining event attributes and ensuring consistency across implementations.
 
 ## Action Items
-- Liudmila Molkova will work on the blog post and share a PR once ready.
-- Robert Pająk to create issues regarding the stabilization of the `event.name` attribute.
-- Follow-up on the semantic conventions for events and ensure documentation is clear and comprehensive.
+- Liudmila Molkova to create an issue for stabilizing the event name attribute.
+- Robert Pająk to revert the commit introducing the deprecated event name and create a new PR for the new attribute.
+- Participants to update documentation to clarify the handling of event names in logging frameworks.
 
 ## Participants
-Robert Pająk, Trask Stalnaker, Liudmila Molkova
+Robert Pająk, Trask Stalnaker, Liudmila Molkova, Austin Parker

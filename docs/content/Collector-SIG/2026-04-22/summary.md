@@ -1,14 +1,15 @@
 ## Key Topics
-- Progress on Prometheus side and stabilization of host metric receivers.
-- Introduction of new Bloomberg employees participating in OpenTelemetry.
-- Discussion on improving meeting accessibility for APAC participants.
-- Proposal for a weekly summary of ready-to-merge PRs in Slack.
-- Presentation of a new component, Cardinality Guardian, aimed at managing metric cardinality.
+- Progress on Prometheus metrics and stability of the collector.
+- Introduction of new participants from Bloomberg joining OpenTelemetry.
+- Discussion on improving accessibility for APAC participants in meetings.
+- Yasmin's presentation on the Cardinality Guardian component for metric cardinality management.
+- Updates on the stabilization of config HCP and the addition of new metrics for log body sizes.
 
 ## Action Items
-- Explore ways to make meeting notes more structured and accessible.
-- Implement a weekly Slack message summarizing ready-to-merge PRs and RFCs.
-- Gather feedback on the Cardinality Guardian component and its integration process.
+- Yasmin to open a PR for the Cardinality Guardian component and provide necessary documentation.
+- Pablo to automate weekly Slack messages for ready-to-merge PRs.
+- Participants to review and provide feedback on ongoing PRs, especially regarding the new metrics and config changes.
+- Mikołaj to continue discussions on the partial config reload RFC and gather more feedback.
 
 ## Participants
-Andrzej Stencel, atoulme, Pablo Baeyens, Jade Guiton, Tiffany Hrabusa, Evan Bradley, Yasmine
+Andrzej Stencel, atoulme, Pablo Baeyens, Jade Guiton, Tiffany Hrabusa, Evan Bradley, Mikołaj Świątek, dpaasman, Kells Kearney, Andy Keller, Yasmin.

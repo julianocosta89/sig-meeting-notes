@@ -1,15 +1,14 @@
 ## Key Topics
-- Support for OpenTelemetry entity protocol and configuration enhancements.
-- Discussion on performance discrepancies in benchmarking metrics, particularly for traces.
-- Evaluation of cargo test vs. cargo next test for performance improvements.
-- Exploration of WASM integration for the Go Collector and potential binary size reduction strategies.
-- Live reconfiguration demo and updates on ongoing PRs.
+- Support for OpenTelemetry entity protocol and configuration updates.
+- Discussion on optimizing metrics generation and benchmarking for GoCollector.
+- Introduction of live reconfiguration capabilities for pipelines and the DFCTL command line tool.
+- Evaluation of processor chain optimizations and memory consumption improvements.
+- Importance of testing and maintaining code quality amidst increasing contributions.
 
 ## Action Items
-- Investigate and address performance issues in OTLP benchmarking metrics.
-- Continue evaluating cargo test performance and its implications for project efficiency.
-- Explore options for reducing binary size and making certain features optional.
-- Follow up on WASM integration possibilities and its impact on the Go Collector.
+- Review and finalize the PRs related to live reconfiguration and DFCTL.
+- Investigate performance discrepancies in processor duration metrics.
+- Explore additional testing approaches to maintain quality with increased code contributions.
 
 ## Participants
 Jake Dern, Aaron Marten, Gokhan Uslu, Laurent Querel, Albert Lockett, Joshua MacDonald, Drew Relmas.

@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the future of the OpenTelemetry Sampling SIG and the potential to pause its activities.
-- Proposal to document requirements for a minimum viable sampling solution within the collector.
-- Exploration of AI coding assistants for developing sampling solutions, with mixed opinions on their effectiveness.
-- Need for enhancements in the current sampling tools, including rate limiting and tail sampling features.
-- Collaboration on defining sampling requirements and configurations for the collector.
+- Discussion on the future of the Sampling SIG and potential pause of meetings.
+- Importance of merging the pending OTEP related to sampling.
+- Exploration of AI coding assistants for developing sampling solutions.
+- Need for enhancements in the tail sampling processor to align with OTEP 2.35.
+- Proposal for a collaborative blog post to highlight ongoing work in the Sampling SIG.
 
 ## Action Items
-- Draft a document outlining the requirements for a community-owned sampler component for the collector.
-- Investigate the integration of rate limiting and tail sampling into the existing sampling framework.
-- Consider upgrading the tail sampling processor to align with the latest OTEP specifications.
+- Draft a document outlining requirements for a minimum viable sampling solution.
+- Explore enhancements to the tail sampling processor, focusing on compatibility with OTEP 2.35.
+- Consider co-authoring a blog post to communicate the SIG's progress and upcoming developments.
 
 ## Participants
 jmacdonald, Peter Findeisen, Carlos Alberto Cortez

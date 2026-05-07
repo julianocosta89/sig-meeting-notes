@@ -1,15 +1,15 @@
 ## Key Topics
-- Review and approval of pull requests related to Laravel 13.
-- Upcoming release plans for HP DevTools and instrumentation packages.
-- Discussion on improving test coverage using AI tools.
-- Update on dependency shadowing and testing with larger applications.
-- Consideration of access permissions for merging pull requests.
+- Discussion on recent and upcoming releases for OpenTelemetry PHP.
+- Review of pull requests and test coverage improvements.
+- Updates on dependency shadowing and feedback requests.
+- Consideration of project board maintenance and organization.
+- Discussion on handling renovate PRs and supply chain security.
 
 ## Action Items
-- Bob to finalize the current release and prepare for the next one.
-- Chris to review and approve pending pull requests.
-- Pawel to gather feedback after the release of version 0.20.
-- Explore the possibility of Chris gaining merge access for the repository.
+- Bob to finalize the current release and plan a new one for next week.
+- Chris to review and merge minor pull requests.
+- Bob and Chris to clean up the project board in the next meeting.
+- Pawel to provide feedback on dependency shadowing after the next release.
 
 ## Participants
 Chris Lightfoot-Wild, Bob Strecansky, Pawel Filipczak

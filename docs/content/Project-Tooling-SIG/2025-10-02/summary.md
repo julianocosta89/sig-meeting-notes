@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on ergonomic improvements for workstations, including keyboard and mouse choices.
-- Issues with Gradle and CAA records preventing Let's Encrypt from issuing certificates.
-- Consideration of whether certain domain subdomains are necessary or just vanity URLs.
-- Potential problems with existing Docker OpenTelemetry setups and their certificate management.
+- Discussion on ergonomic improvements for keyboard and mouse usage.
+- Issues with Let's Encrypt CAA records affecting certificate issuance.
+- Review of the Gradle configuration and potential changes to CAA records.
+- Planning for an upcoming blog post related to the observatory and scheduling.
 
 ## Action Items
-- Investigate the necessity of the Gradle subdomain and whether it can be removed.
-- Explore the possibility of adding multiple CAA records to allow different issuers for certificates.
-- Review the status of Docker OpenTelemetry and its integration with scarf analytics.
+- Investigate the necessity of the Gradle subdomain and its potential removal.
+- Check with the end-user SIG regarding the observatory blog post and scheduling.
+- Consider creating a placeholder spreadsheet for the observatory schedule.
 
 ## Participants
 Trask Stalnaker, Austin Parker, Antoine Toulme

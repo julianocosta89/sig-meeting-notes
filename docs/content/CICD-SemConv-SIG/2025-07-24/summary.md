@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the transition to Phase 2 of the CI/CD Semantic Conventions.
-- Review of current tasks and their statuses, including the need for feedback on the Phase 2 proposal.
-- Consideration of timelines for Phase 2, with suggestions to extend deadlines to accommodate summer availability.
-- Strategies for increasing adoption of the semantic conventions within OpenTelemetry and other projects.
-- Insights from a recent Cloud Native Summit regarding interest from Cisco and GitLab in semantic conventions.
+- Discussion on transitioning tasks to Phase 2 of the CI/CD project, including criteria for task selection.
+- Proposal for a new meeting schedule and feedback solicitation on the Phase 2 draft.
+- Goals for Phase 2, including implementation of specifications in various languages and increased adoption.
+- Updates on community engagement with GitLab and Open Tofu regarding semantic conventions.
+- Importance of soliciting feedback from the Governance Committee on project scope and milestones.
 
 ## Action Items
 - Adriel Perkins to post about the open pull request in the CI/CD channel for visibility.
-- Dotan Horovits to comment on the pull request and formalize feedback for broader input.
-- Participants to solicit feedback from the Governance Committee regarding the Phase 2 goals and adoption strategies.
+- Dotan Horovits to comment on the pull request and engage with GitLab for potential collaboration.
+- Adriel Perkins to reach out to Open Tofu contacts to discuss compliance and potential case studies.
 
 ## Participants
 Adriel Perkins, Martin Costello, Dotan Horovits

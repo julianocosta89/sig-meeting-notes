@@ -1,13 +1,15 @@
 ## Key Topics
-- **Liaison Check-ins**: Importance of monthly check-ins by GC liaisons with their respective SIGs to ensure communication and progress.
-- **Stability Graduation**: Discussion on the approach to stability, including the idea of a universal declarative configuration for enabling/disabling packages and the challenges of maintaining contributions across different languages.
-- **Contrib Ecosystem Management**: Concerns about under-resourcing in managing contributions and the need for better tooling to ease maintenance burdens.
-- **Feedback from Maintainers**: Insights on how the stability graduation approach may disincentivize maintainers from marking their projects as stable due to concerns about maintainership and exposure.
+- Liaison check-ins: Importance of regular communication between Governance Committee (GC) liaisons and their respective SIGs.
+- Stability graduation: Discussion on the approach to stability and packaging, including the idea of a declarative configuration for enabling/disabling packages.
+- Community engagement: Updates on the mentorship program with Bloomberg and its implications for OpenTelemetry contributions.
+- Archiving inactive SIGs: Consideration of archiving the eBPF Network SIG due to inactivity and the status of the Go Instrumentation SIG.
+- Security vulnerabilities: Strategies for identifying and addressing security issues within the OpenTelemetry ecosystem.
 
 ## Action Items
-- All GC liaisons to ensure they conduct their monthly check-ins with SIGs.
-- Ted Young to continue discussions with maintainers about the stability and contrib management strategies.
-- Austin Parker to follow up on comments regarding the stable by default auto proposal and provide updates.
+- All liaisons to ensure monthly check-ins with their SIGs.
+- Ted Young to reach out to Jonathan Perry regarding the eBPF Network SIG's status and initiate the archival process if necessary.
+- Marylia Gutierrez to compile and share actionable survey questions for end users to guide maintainers.
+- Austin Parker to follow up with community managers regarding the Call for Proposals (CFP) communication.
 
 ## Participants
-Austin Parker, Marylia Gutierrez, Trask Stalnaker, Ted Young, Juraci Paixão Kröhling, Alolita Sharma, Pablo Baeyens
+Austin Parker, Marylia Gutierrez, Trask Stalnaker, Ted Young, Juraci Paixão Kröhling, Alolita Sharma, Pablo Baeyens, Morgan McLean, Severin Neumann.

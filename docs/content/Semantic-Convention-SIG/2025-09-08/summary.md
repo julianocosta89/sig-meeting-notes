@@ -1,13 +1,16 @@
 ## Key Topics
-- Review of pull requests and discussions around merging.
+- Discussion on merging pull requests and resolving ongoing discussions.
 - Strategy for documenting database system constants and discouraging piecemeal additions.
-- Introduction of PPROF-specific attributes for semantic conventions in profiling.
-- Discussion on defining semantic conventions for CICD system logs and their categorization.
+- Proposal for adding PPROF-specific attributes to semantic conventions for profiling.
+- Defining semantic conventions for CICD logs and the distinction between logs and events.
+- Schema V2 updates, including the introduction of attribute groups and concerns regarding sampling relevance.
 
 ## Action Items
-- Liudmila to create an issue documenting the strategy for database system constants.
-- Florian to update the PR for PPROF attributes and consider adding documentation for mapping between protocols.
-- Christophe to further define the structure for CICD logs as events linked to specific builds.
+- Liudmila to create an issue documenting the strategy for system constants.
+- Florian to update the PR for PPROF-specific attributes.
+- Christophe to prepare a PR for documenting CICD log conventions.
+- Alexandra to open an issue regarding the device namespace discussion.
+- Josh to share notes and feedback on Schema V2 after the meeting.
 
 ## Participants
-Liudmila Molkova, Christophe Kamphaus, Bertrand (MetricsHub), Florian Lehner, Trask, Joao G. (Dynatrace), James Thompson, Mike, Meg, Lauren, Bent.
+Liudmila Molkova, Christophe Kamphaus, Bertrand, Florian Lehner, Joao G. (Dynatrace), Trask, James Thompson, Josh Suereth, Alexandra Konrad (Elastic Security), Braydon Kains, Daniel Dyla (Dynatrace).

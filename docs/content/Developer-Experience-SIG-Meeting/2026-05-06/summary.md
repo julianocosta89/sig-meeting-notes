@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on improving documentation practices for OpenTelemetry, including the idea of a standardized template for documenting components in repositories.
-- The need for a vendor-agnostic approach to showcase OpenTelemetry in documentation to enhance developer experience.
-- Exploration of translation management for documentation and how it can be effectively handled across different repositories.
-- Plans for future surveys focused on API and SDK experiences to gather feedback from developers.
+- Discussion on improving documentation and establishing a single source of truth for OpenTelemetry components.
+- Proposal for a structured documentation template to be maintained in individual repositories to ensure up-to-date documentation.
+- Exploration of telemetry levels in tracing to improve user experience and reduce data overload.
+- Review of ongoing initiatives, including the Ecosystem Explorer and redesigning the Getting Started section for better user onboarding.
 
 ## Action Items
-- Propose a standardized documentation template for SIGs to ensure consistency and reduce the burden on maintainers.
-- Investigate how translations are managed in existing documentation and consider best practices for future translations.
-- Plan outreach to gather feedback from developers regarding their experiences with APIs and SDKs.
+- Juliano Costa to draft a proposal for the documentation template.
+- Tristan to create a pitch regarding telemetry levels.
+- Johanna Öjeling to work on the documentation proposal.
+- Perk to follow up with Fabry regarding the documentation initiatives and gather feedback from the community.
 
 ## Participants
 Johanna Öjeling, Juliano Costa, Tristan, Perk (Marcin Stożek)

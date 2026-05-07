@@ -1,16 +1,14 @@
 ## Key Topics
-- Discussion on open PRs, particularly the draft for allowing multiple resources in the SDK.
-- Clarification on handling errors when multiple entities of the same type are provided.
-- Review of comments on the entity merge algorithm and how to handle conflicting attributes.
-- Terminology issues and the need for clearer definitions in the specifications.
-- General updates on ongoing work and upcoming deadlines.
+- Discussion on open PRs, particularly the implementation of allowing multiple resources in the SDK.
+- Clarification on the entity merge algorithm and how to handle conflicting attributes.
+- Terminology issues regarding identity and description in the context of attributes and keys.
+- Exploration of using AI to generate code for prototypes and the implications for maintainers.
 
 ## Action Items
-- Update prototypes to include links as needed for the draft PR.
-- Finish the JavaScript prototype for the multiple resources feature.
-- Clarify the merge algorithm to ensure it logs conflicts appropriately.
-- Define dropped attributes and entities in the context of the entity reference.
-- Follow up on terminology issues once Dimitri is available.
+- Update the prototypes to list links for the open PR on multiple resources.
+- Address comments on the entity merge algorithm and clarify the handling of conflicting attributes.
+- Revise terminology in the documentation to ensure consistency between attributes and keys.
+- Consider offering AI-generated PRs to other SIGs based on successful prototypes.
 
 ## Participants
-Josh Suereth, Daniel Dyla (Dynatrace), krajo, David Ashpel, Jack, Josh McDonald.
+Josh Suereth, Daniel Dyla, krajo, Dmitrii Anoshin

@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on scheduling conflicts with other SIG meetings and potential rescheduling.
-- Review of a .NET integration PR, addressing compatibility issues between OpenTelemetry APIs and SDKs.
-- Considerations for system packaging and declarative configuration across different programming languages.
-- Exploration of universal configuration options and defaults for the OpenTelemetry injector.
+- Discussion on moving the meeting time to avoid conflicts with other SIGs.
+- Review of a PR related to .NET checks and potential version conflicts with OpenTelemetry APIs.
+- Proposal for a universal declarative configuration format for OpenTelemetry across different languages.
+- Concerns about maintainers' involvement and the need for better engagement with language-specific SIGs.
+- The importance of establishing stable defaults and configurations for user satisfaction.
 
 ## Action Items
-- Follow up on the .NET PR to clarify compatibility concerns regarding API versions.
-- Discuss potential rescheduling of meetings once all participants are present.
-- Gather feedback on the proposed universal configuration approach for the injector.
+- Bastian Krol to open a community issue to move the meeting from 9:30 AM PST on Mondays to 8:00 AM PST on Thursdays.
+- Participants to engage with the broader community and maintainers regarding the packaging SIG and configuration discussions.
 
 ## Participants
-Nikola Grcevski, Bastian Krol, Ted Young, atoulme
+Nikola Grcevski, Bastian Krol, Ted Young, atoulme, Michele Mancioppi, Jack Berg

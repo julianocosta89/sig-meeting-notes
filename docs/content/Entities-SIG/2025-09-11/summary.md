@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on breaking changes related to entity mutation and resource attributes in OpenTelemetry.
-- Clarification on the immutability of resource attributes and the implications for existing receivers.
-- Proposal for handling descriptive and identifying attributes, including potential configurations for opt-in behavior.
-- Consideration of default behaviors for resource attributes and the impact on users.
+- Discussion on the implications of allowing mutation on resource attributes and its classification as a breaking change.
+- Examination of existing practices regarding resource mutability and how they impact OpenTelemetry specifications.
+- Proposal for a new configuration approach to differentiate between identifying and descriptive attributes in resources.
+- Communication strategies for informing users about the breaking changes and their rationale.
+- Update on project status and timeline for stabilizing the specification and SDKs.
 
 ## Action Items
-- Evaluate the proposed straw man regarding default behaviors and opt-in configurations for resource attributes.
-- Document the discussed proposals and clarify the implications for existing resource detectors.
-- Identify and categorize attributes that could be considered immutable descriptive attributes for default inclusion.
+- Discuss with specification maintainers on how to communicate the breaking change effectively.
+- Evaluate existing resource detectors to understand potential impacts of the proposed changes.
+- Update Prometheus exporter specifications to reflect the new understanding of resource attributes.
 
 ## Participants
-Josh Suereth, Ted Young, Daniel Dyla (Dynatrace)
+Josh Suereth, Ted Young, Daniel Dyla, Dmitrii Anoshin

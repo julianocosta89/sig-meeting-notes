@@ -1,14 +1,15 @@
 ## Key Topics
 - **Exposing Resource Attributes**: Discussion on merging an OTEP for exposing resource attributes in SDKs, with a proposal to finalize by the end of the week.
-- **Decoupling Environmental Context Propagation**: Review of a PR aimed at improving environmental variable context propagation, with a focus on documentation clarity and alignment across languages.
-- **OTLP Exporter Vulnerability**: Addressing a bug in OTLP exporters related to large responses that could exhaust application resources, with a recommendation for a 4MB response limit.
-- **Server Response Management**: Discussion on how servers should handle large responses and the potential for a follow-up PR to clarify server behavior in relation to client recommendations.
+- **Decoupling Environmental Context Propagation**: Updates on improving environmental variable context propagation, including documentation and implementation across languages.
+- **OTLP Exporter Vulnerabilities**: Addressing vulnerabilities in OTLP exporters related to large responses and proposing safeguards in the proto-specification.
+- **Error Reporting Standards**: Proposals for handling aggregated errors and exceptions in various programming languages, emphasizing the need for language-agnostic conventions.
+- **Span Lifecycle Events**: Discussion on implementing span lifecycle event reporting for long-running spans and the challenges associated with memory management in different languages.
 
 ## Action Items
 - Carlos to merge the OTEP on resource attributes by the end of the week, pending final reviews.
-- Robert to finalize and merge the PR on environmental context propagation after addressing comments.
-- Review and implement safeguards in OTLP exporter implementations against large responses.
-- Prepare a follow-up PR to clarify server response management in relation to large payloads.
+- Robert to finalize and address the OTLP exporter vulnerability documentation.
+- Further discussions on error reporting standards to continue in the logs call later.
+- Carlos to create a prototype for span lifecycle events and address feedback on instrumentation usage.
 
 ## Participants
-Jack Berg, Trask Stalnaker, Carlos Alberto Cortez, Ivo Anjo, Reiley, Pellared, Robert, Armin (Dynatrace), Daniel Dyla (Dynatrace)
+Jack Berg, Trask Stalnaker, Carlos Alberto Cortez, Ivo Anjo, Pellared, Robert, Armin (Dynatrace), Daniel Dyla (Dynatrace), Liudmila Molkova, Aaron Abbott, David Ashpole, Josh McDonald, Reiley.

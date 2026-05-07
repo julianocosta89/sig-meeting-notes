@@ -1,13 +1,12 @@
 ## Key Topics
-- Discussion on the ownership of the `data` namespace within the service and deployment SIG.
-- Proposal to stabilize `service.criticality` and the need for documentation.
-- Clarification on the scope of the SIG regarding cross-service dependencies and Kubernetes namespace issues.
-- Debate on the relevance of `service.cost center` attributes in relation to multiple service instances and deployments.
+- Discussion on the ownership of the new `data` namespace within the semantic conventions and its implications.
+- Proposal to stabilize `service.criticality` and the need for documentation around it.
+- Debate on the placement of `cost center` attribute, considering its relevance to service instances versus services.
+- Clarification on the identity of service instances and their implications for cost tracking and observability.
 
 ## Action Items
-- Ayushi to share the proposal for `service.criticality` in relevant groups for feedback.
-- Participants encouraged to raise real-life use cases and issues for discussion.
-- Follow-up on the status of the `data` namespace PR with semantic convention maintainers.
+- Ayushi Asthana to explore the implications of moving `cost center` to `instance.cost_center` and prepare a new proposal.
+- Participants to share the proposal on `service.criticality` for feedback in relevant groups.
 
 ## Participants
 Ayushi Asthana, Anthony Mirabella, Josh Suereth, Tyler Kight

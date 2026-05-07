@@ -1,13 +1,13 @@
 ## Key Topics
 - Discussion on the impact of recent layoffs on organizational morale.
-- Updates on the progress of the OpenTelemetry CI/CD SemConv SIG, particularly the transition from Phase 1 to Phase 2.
-- Plans to relaunch a survey regarding meeting times and potential adjustments to accommodate participants better.
-- Introduction of a new initiative to form a SIG focused on resource metadata, aiming for vendor-agnostic solutions.
+- Updates on the progress of the OpenTelemetry CI/CD SemConv SIG, specifically wrapping up Phase 1 and initiating Phase 2.
+- Plans to revisit and potentially reschedule regular meeting times based on a survey.
+- Introduction of a new initiative focused on resource metadata and its potential implications for cloud vendors.
 
 ## Action Items
-- Finalize the scoping of Phase 2 and seek sign-off from oversight.
-- Relaunch the survey for meeting times post-summer break.
-- Review and comment on the draft proposal for resource metadata SIG.
+- Finalize the scoping of Phase 2 of the tag and obtain necessary sign-offs.
+- Relaunch the survey regarding meeting times after the summer break.
+- Share the draft proposal for Phase 2 in Slack for review and comments.
 
 ## Participants
 Johannes Koch, Dotan Horovits

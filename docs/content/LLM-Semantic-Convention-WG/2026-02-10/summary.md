@@ -1,15 +1,15 @@
 ## Key Topics
-- Review of ongoing issues and merging of general definitions related to OpenTelemetry.
-- Discussion on new issues, specifically around level attributes and events, and the need for collaboration with A2A teams.
-- Introduction of new members and their roles, particularly focusing on observability tooling and standardization in agent workflows.
-- JSON schema definition updates and the need for further review and approvals.
-- Exploration of telemetry standards for debugging multi-agent scenarios and the importance of quality in agent development.
+- Discussion on the status of various issues and pull requests related to OpenTelemetry.
+- Introduction of new members and their focus areas, particularly around agent observability and standardization of evaluation tools.
+- Review of JSON schema definitions and the need for additional feedback on function tool definitions.
+- Roadmap planning for 2026, focusing on prioritizing key features and improvements.
+- Exploration of automation and tooling to streamline the review process for pull requests.
 
 ## Action Items
-- Aaron Abbott to reach out to A2A teams regarding level attributes and events.
-- Ankit and Anirudha to collaborate on evaluation organization and related topics.
-- Participants to review and provide feedback on the JSON schema definition.
-- Further discussions on telemetry standards to be scheduled for future meetings.
+- Anirudha Jadhav to break down his proposal into smaller parts for easier implementation.
+- Liudmila Molkova to prepare an updated triage board aligning with the group's priorities.
+- Participants to review outstanding pull requests and provide feedback.
+- Discussion on integrating GitHub Actions for automated compliance checks in future meetings.
 
 ## Participants
-Neil Yashinsky, Liudmila Molkova, Josh Bonczkowski, Aaron Abbott, Anirudha Jadhav, Dylan Russell, Ankit.
+Neil Yashinsky, Liudmila Molkova, Josh Bonczkowski, Aaron Abbott, Anirudha Jadhav, Dylan Russell, Sergey Sergeev, Ridhima Satam, Surya Teja, Pavan, Trask Stalnaker.

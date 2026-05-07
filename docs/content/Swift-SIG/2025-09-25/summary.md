@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the need for a new release and updates on ongoing issues.
-- Review of changes related to log events and the deprecation of the event domain.
-- Consideration of removing the package resolve to allow for more flexibility with SwiftCore versions.
-- Clarification on the impact of package resolve on dependency management.
-- Review of Billy's PR regarding log events and the new API for event names.
+- Discussion on the need for a release and the state of package resolution in Swift.
+- Updates on log events and the deprecation of the event domain in favor of a first-class event name field.
+- Review of a PR related to log event updates and the importance of maintaining backward compatibility.
+- Consideration of whether to commit the package resolve file for dependency management.
 
 ## Action Items
-- Bryce to conduct further research on the implications of removing the package resolve.
-- Bryce to document the release behavior and prepare for a new release.
-- Team to review Billy's PR on log events before merging.
+- Bryce to conduct further research on package resolution behavior in Swift.
+- Ari to review and test the log events PR to ensure compatibility before merging.
+- Billy to correct the implementation of the event name as a top-level field in a follow-up PR.
 
 ## Participants
 Bryce Buchanan, Martin Holman, Vinod, Billy Zhou, Ari Demarco

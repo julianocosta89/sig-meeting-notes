@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the potential shift of entities from being an SDK-only feature to an API feature.
-- Proposal for a resource provider API that includes methods for adding, removing, and replacing entities.
-- Consideration of synchronous vs asynchronous operations for entity detection and management.
-- Feedback from participants on the proposed changes and their implications for implementation.
+- Discussion on transitioning entities to an API instead of being SDK-only, including the implications for resource detection and threading concerns.
+- Proposal to remove asynchronous options for entity detection and focus on synchronous implementations.
+- Updates on various ongoing projects, including resource detection in the collector and the integration of environment variables for entity detection.
+- Considerations for maintaining backward compatibility while introducing new entity features and specifications.
 
 ## Action Items
-- Update the specification PR to reflect the new resource provider API structure.
-- Consider the necessity of asynchronous operations for entity management based on further discussions.
+- Josh to update the specification PR to reflect the new API structure for entities.
+- Dmitrii to design the environment variable setup for entity detection.
+- Josh to clarify and finalize the logic for handling entity references and attributes in the API.
 
 ## Participants
 Josh Suereth, Dmitrii Anoshin, Tyler Yahn, Daniel Dyla (Dynatrace)
