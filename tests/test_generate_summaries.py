@@ -245,6 +245,28 @@ class TestGenerateSummary:
         assert "Tyler" in prompt_text
         assert "Damien" in prompt_text
 
+    def test_prompt_includes_asr_normalization_instruction(self) -> None:
+        """The prompt should tell the model to normalize 'Hotel'/'O'Tell' → 'OTel'.
+
+        Zoom ASR frequently mistranscribes 'OTel'/'OpenTelemetry' as 'Hotel' or
+        'O'Tell'; the prompt must instruct the model to interpret these from
+        context so future summaries don't ship the artifacts.
+        """
+        mock_client = _mock_openai_client()
+        generate_summary(
+            mock_client,
+            "Collector SIG",
+            "2025-07-23",
+            "60",
+            "https://zoom.us/rec/share/example",
+            "Speaker 00:01 We discussed Hotel Arrow today.",
+        )
+        call_args = mock_client.chat.completions.create.call_args
+        prompt_text = " ".join(m["content"] for m in call_args.kwargs["messages"])
+        assert "Hotel" in prompt_text
+        assert "O'Tell" in prompt_text
+        assert "OTel" in prompt_text
+
 
 # ---------------------------------------------------------------------------
 # Tests: process_transcripts integration
