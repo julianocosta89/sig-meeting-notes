@@ -1,0 +1,56 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila Molkova
+- Trask Stalnaker (Microsoft)
+- Aaron Abbott (Google)
+- Wolfgang Therrien (Honeycomb)
+- Shubhanshu Surana(Apple)
+- Keith Decker (Cisco/Splunk)
+- Alolita Sharma (Apple)
+- Josh Bonczkowski (New Relic)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Wolfgang Therrien (Honeycomb)
+- Mike Goldsmith (Honeycomb)
+- Leighton Chen (Microsoft)
+- Surya Teja
+- Endre Sara (Causely)
+- Ridhima Satam (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - WG Project board: PRs only: [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+)
+    - Everything: [https://github.com/orgs/open-telemetry/projects/82](https://github.com/orgs/open-telemetry/projects/82)
+- GenAI conventions have a new home [https://github.com/open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai) built on SemConv v2 ([OTEP](https://github.com/open-telemetry/opentelemetry-specification/pull/4815)) and Federated semconv ([OTEP](https://github.com/open-telemetry/opentelemetry-specification/pull/4906))
+  - See and discuss [next](https://github.com/open-telemetry/community/issues/3414#issuecomment-4376502353)
+  - Wolfgand is kind enough to post a comment on existing PRs
+  - Trask will transfer issues in bulk
+  - Surya will take a look at existing issues and triage in the new repo
+- Python repo prototype: [https://github.com/lmolkova/opentelemetry-python-genai](https://github.com/lmolkova/opentelemetry-python-genai) [[EXTERNAL] opentelemetry-python-genai plan](https://docs.google.com/document/d/1qayEmzxeB1PlINbKBBZW5HKgA7_72WlZ-DGNfMZ5l9E/edit?tab=t.0#heading=h.bwbejxe2a1xx)
+  - IMPORTANT: until this repo is in otel org, nothing changes in python contrib
+    - New instrumentations: probably wait?
+    - New features: yes
+    - Bugs: definitely yes
+    - Don't  stop work in existing repos
+  - Let's put weaver rego policies into semconv
+  - What happens in contrib
+    - We release new package from python-genai with a new name
+      - It's a clean slate
+    - We release final version of lib from contrib, e.g. openai-v2
+      - Deprecate it along the way, point to new package
+      - Depends on the first step
+  - Do we need to preserv back-compat in the new repo
+  - What should we do with PRs in contrib?
+    - Let's merge them and sync prototype
+- Can native instrumentations consume otel-util-genai
+  - Should we have it stable
+  - Will native instrs consume them?
+  - Weaver codegen can replace 80% of genai-utils
+  - Experience from Java instrumentation API
+    - Took a while to stabilize
+    - Not a lot of adoption
+  - Hook - it is important
+- Next steps
+  - Collect feedback from Aaron, Mike, Keith, Leighton, Dylan on python tooling / high-level repo structure
+  - Sync again on Python call on Thu
+  - Liudmila and Trask to figure out repo bootstrapping
