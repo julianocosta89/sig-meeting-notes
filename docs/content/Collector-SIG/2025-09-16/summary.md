@@ -1,14 +1,14 @@
 ## Key Topics
-- **PR Review Process**: Paulo Janotti is seeking a core maintainer to review his PR related to Windows ARM support.
-- **New Processor Proposal**: Raj Nishtala discussed the need for a new processor in Contrib to unroll log records containing slices into multiple records, highlighting its potential use cases.
-- **Community Sponsorship**: The group discussed the challenges of finding sponsors for new components and the importance of community involvement in the process.
-- **Use Cases for Generic Log Processing**: Raj outlined the motivation for a generic processor that can handle various log formats, not limited to specific sources like CloudTrail.
-- **Next Steps for Proposal**: Antoine suggested revisiting the sponsorship discussion in two weeks to gauge community interest and progress.
+- **PR Review and Core Maintenance**: Paulo Janotti requested a core maintainer to review his PR and discussed ongoing work on Windows ARM support.
+- **New Processor Proposal**: Raj Nishtala proposed a new processor to unroll aggregated log records into multiple records, discussing its potential use cases and the need for sponsorship.
+- **Telemetry and Authentication Support**: Andrew Wilkins raised an issue regarding internal telemetry and authentication support for the collector, suggesting a shift in how authentication is handled.
+- **Dependency Management**: Antoine Toulme discussed the complexity of dependencies in the collector's codebase and proposed restructuring to reduce indirect dependencies.
+- **Telemetry Configuration**: The group discussed the challenges of managing telemetry settings and the need for clearer configuration options within the SDK.
 
 ## Action Items
-- Paulo will push for PR review after the meeting.
-- Raj will follow up on his processor proposal and check for community feedback in two weeks.
-- Antoine will remind Raj to mention the discussion from the SIG meeting in the issue related to the new processor.
+- Raj Nishtala to follow up on sponsorship for the new processor proposal in two weeks.
+- Andrew Wilkins to discuss potential use cases for the new processor with his team.
+- Antoine Toulme to continue exploring ways to simplify the dependency structure and telemetry configuration.
 
 ## Participants
 Andrew Wilkins, Raj Nishtala, Antoine Toulme, Paulo Janotti

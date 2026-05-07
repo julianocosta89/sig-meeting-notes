@@ -1,13 +1,13 @@
 ## Key Topics
-- **Rate Limiting Component**: Discussion on the design and implementation of a rate limiting solution, including interim solutions for traffic generation.
-- **Telemetry Framework**: Updates on the development of a telemetry framework to track global metrics for rate limiting and load balancing.
-- **Load Balancing and eBPF**: Exploration of using eBPF for effective load balancing and rate limiting, including potential parsing of gRPC payloads for more granular control.
-- **Integration with Existing Models**: Consideration of existing models, like Envoy, for implementing sophisticated rate limiting strategies.
+- **Rate Limiting Component**: Discussion on the design and implementation of a rate limiting solution, including interim measures for traffic generation.
+- **Telemetry Framework**: Exploration of a telemetry system for metrics reporting, focusing on NUMA-aware architecture and multivariate metrics.
+- **Multivariate Metrics**: Proposal for a new metric representation that allows for multiple values under a single timestamp and attribute set, enhancing performance and reducing overhead.
+- **Integration with OpenTelemetry Rust SDK**: Considerations for how the new telemetry system will interact with the existing OpenTelemetry Rust SDK, including potential optimizations.
 
 ## Action Items
-- Laurent and Josh to continue developing the rate limiting design and telemetry framework.
-- Review and potentially clean up the issues list related to rate limiting and memory limiter frameworks.
-- Further explore the use of eBPF for rate limiting and load balancing in future discussions.
+- Continue developing the rate limiting design and interim solutions for traffic generation.
+- Investigate the implementation of a telemetry framework that supports multivariate metrics.
+- Explore integration strategies with the OpenTelemetry Rust SDK for efficient metrics reporting.
 
 ## Participants
-Laurent Quérel, jmacdonald, Utkarsh
+Laurent Quérel, Jack Macdonald, Utkarsh

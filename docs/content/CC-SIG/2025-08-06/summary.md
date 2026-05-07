@@ -1,14 +1,13 @@
 ## Key Topics
-- Introduction of new participants and their interest in contributing to OpenTelemetry.
-- Discussion on the proposal for resource detectors, including built-in detectors for host, process, container, and service.
-- Consideration of where to place cloud provider-specific resource detectors in the repository.
-- Review of the implementation of a container detector and its dependencies, including the need for external libraries.
-- Agreement to start with a simple implementation of the container ID and expand later if needed.
+- Discussion on resource detectors for OpenTelemetry C/C++ SDK, including proposals for organization and implementation.
+- Consideration of cloud provider-specific resource detectors and their placement in the repository.
+- Implementation details for the container detector, including dependencies and platform-specific considerations.
+- Interest in reviewing pull requests and contributing to the codebase among participants.
 
 ## Action Items
-- Nikhil Bhatia to implement the container detector focusing on the container ID.
-- Further discussions to be held on the documentation of supported platforms for the container detector.
-- Review and address any issues related to resource detectors offline.
+- Nikhil Bhatia to work on the metric filter issue by adding an exclude list.
+- Participants to review the resource detector proposal and provide feedback.
+- Rafael Roquetto to start reviewing pull requests to become more involved with the codebase.
 
 ## Participants
 Doug Barker, Nikhil Bhatia, Pranav Sharma, Rafael Roquetto, Lalit

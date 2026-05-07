@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on finalizing semantic conventions for page view events, including hard and soft navigations.
-- Consensus on tracking both hard navigations and soft navigations for accurate business metrics.
-- Proposal for a session manager prototype and its implementation.
-- Importance of separating page view events from navigation timing events for reliability.
-- Consideration of event updates and their feasibility in telemetry systems.
+- Discussion on finalizing semantic conventions for page view events, including hard and soft navigation definitions.
+- Proposal for a session manager prototype and its integration into the current system.
+- Importance of capturing intended data usage to guide data modeling and event definitions.
+- Review of project roadmap focusing on semantic conventions, sessions, and instrumentation.
 
 ## Action Items
-- Review and provide feedback on the two PRs related to semantic conventions.
-- Continue discussions on the session manager prototype and consider merging for further experimentation.
+- Participants to review and provide feedback on the two open PRs related to semantic conventions.
+- Assign team members to draft and work on specific semantic conventions.
+- Retrieve and share past documentation related to data modeling and conventions for reference.
 
 ## Participants
-Jared Freeze, Martin Kuba, Dan Gomez Blanco, Ram Thiru, Benoît Zugmeyer, Ted Young
+Jared Freeze, Martin Kuba, Dan Gomez Blanco, Ram Thiru, Benoît Zugmeyer, Ted Young, scheler, Daniel Dyla, Karlie L, Hector Hernandez.

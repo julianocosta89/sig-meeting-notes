@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on CI/CD issues related to `npm ci` and potential network problems affecting builds.
-- Updates on configuration work by Marylia and Jamie, including handling database instrumentation.
-- Plans for dropping support for older Node versions and expectations for the next major version release.
-- Ongoing triage of bugs and PRs, including discussions around Azure and Next.js instrumentation issues.
+- Discussion on CI/CD issues related to NPMCI and compilation steps.
+- Updates on configuration work and ongoing PRs, including database instrumentation.
+- Plans for major version updates and dropping support for older Node versions.
+- Review of stability and graduation criteria for OpenTelemetry components.
+- Exploration of performance improvements and benchmarking for the SDK.
 
 ## Action Items
-- Trent to investigate CI issues further and attempt to reproduce the problem in his own branch.
-- Jamie to follow up on Azure instrumentation issues and consider opening an issue in the Azure repo.
-- Participants to continue working on their assigned PRs and configurations for database instrumentation.
+- Trent to investigate CI issues further and possibly try running tests in his own branch.
+- Jamie to create a meta-issue for tracking stability and graduation discussions.
+- David to look into a PR regarding TypeScript type correctness.
+- Marylia to respond to an issue regarding environment variables.
 
 ## Participants
-Trent Mick, MG Marylia Gutierrez, David Luna Bistuer, Jamie Danielson, Raphaël Thériault
+Trent Mick, MG Marylia Gutierrez, David Luna Bistuer, Jamie Danielson, Raphaël Thériault, Marten Hennoch

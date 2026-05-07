@@ -1,12 +1,14 @@
 ## Key Topics
-- **First Release Announcement**: The team celebrated the first release of their project, which includes three instrumentations.
-- **Naming Conventions for Attributes**: Discussion on whether to use `browser.page` or `browser.url` for naming attributes related to URLs and page context.
-- **Namespace Considerations**: Debate on the implications of adding a `page` namespace versus using `document` for clarity and consistency across platforms.
-- **Moving Instrumentations**: Consideration of whether to move all browser instrumentations to the new repository and the status of existing instrumentations.
+- Announcement of the first release of OpenTelemetry Browser instrumentation.
+- Discussion on naming conventions for browser attributes, particularly the use of "page" vs. "url" in attribute names.
+- Consideration of moving all browser instrumentations to a unified repository and the implications of deprecating older instrumentations.
+- Challenges with overlapping patches in instrumentations and the decision to avoid unpatching in production environments.
+- Proposal for an end-to-end prototype and demo for OpenTelemetry Browser.
 
 ## Action Items
-- Continue the discussion on attribute naming conventions and namespace usage in a separate issue.
-- Review the status of existing browser instrumentations and decide on moving them to the new repository.
+- David Luna Bistuer to create an issue for reviewing and discussing the migration of browser instrumentations.
+- Team members to provide feedback on the naming conventions for browser attributes.
+- Collaboration invitation for the end-to-end prototype and demo project.
 
 ## Participants
-Maxime Quentin, Martin Kuba, Jared Freeze, Daniel Dyla, Joaquín Díaz, Hugo Levy, David Luna Bistuer
+Maxime Quentin, Martin Kuba, Jared Freeze, Daniel Dyla, David Luna Bistuer, Joaquín Díaz, Hugo Levy

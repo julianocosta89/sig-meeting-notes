@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the optimization of schema size by removing optional properties.
-- The importance and potential use cases for lineage in the schema, including debugging and UI rendering.
-- Proposal for separating lineage information from the main schema to reduce complexity and size.
-- Consideration of multi-registry support and the need for versioning and overrides in the registry.
-- Exploration of different use cases for schema consumption, suggesting multiple files for various needs.
+- Discussion on schema optimization and the removal of optional properties to reduce size.
+- Importance of lineage in the schema and its implications for debugging and UI rendering.
+- Proposal for separating stable and unstable versions of semantic conventions in registry publishing.
+- Need for a feature flag to support new schema versions and maintain backward compatibility.
+- Refinement of naming conventions and attributes in the schema for clarity and consistency.
 
 ## Action Items
-- Open a ticket for an optimization pass on the schema.
-- Determine the necessary information for lineage and how to publish it effectively.
-- Explore the possibility of creating separate documents for lineage and resolved schemas.
+- Liudmila Molkova to create a feature request template for the new schema support in Weaver.
+- Open a ticket for optimization of lineage handling and its use cases.
+- Explore the implementation of stability filtering in Jq as a first step before adding it as a top-level parameter.
+- Plan for a follow-up meeting to discuss unresolved schema changes and further refine the resolution process.
 
 ## Participants
 Josh Suereth, Laurent Quérel, Liudmila Molkova

@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on a proposed structured mentorship program for OpenTelemetry maintainers.
-- Review of the MCP (Multi-Channel Protocol) proposal and its implications for the project.
-- Concerns about prioritization of new proposals amidst existing commitments.
-- Debate on whether MCP standardization is necessary at this stage.
+- Discussion on a structured mentorship program and its potential implementation.
+- Review of the MCP (Multi-Channel Protocol) proposal and concerns regarding its timing and necessity.
+- Planning for KubeCon, including speaker assignments and project update submissions.
+- Community engagement and documentation improvement suggestions.
 
 ## Action Items
-- Severin Neumann to inform Nate and Patrice about the committee's interest in exploring the mentorship program and to potentially involve other maintainers.
-- Further discussion and evaluation of the MCP proposal to determine its relevance and timing for the project.
+- Severin Neumann to coordinate exploratory conversation for the mentorship program on December 9th.
+- Participants to comment on the MCP proposal in the issue tracker for further discussion.
+- Pablo Baeyens to draft and share the project update submission description for KubeCon.
+- Juraci Paixão Kröhling to add community presence planning for KubeCon to the agenda for the next meeting.
 
 ## Participants
-Austin Parker, Marylia Gutierrez, Severin Neumann, Trask Stalnaker, Juraci Paixão Kröhling, Pablo Baeyens, Morgan McLean
+Austin Parker, Marylia Gutierrez, Severin Neumann, Trask Stalnaker, Juraci Paixão Kröhling, Pablo Baeyens, Morgan McLean.

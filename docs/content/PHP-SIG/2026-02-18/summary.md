@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the cleanup of dependencies in the Elastic instrumentation, separating worker and coordinator processes.
-- Review of various Pull Requests (PRs), primarily focusing on Renovate updates and instrumentation improvements.
-- Exploration of how Laravel's logging can be better integrated with PSR3 logging standards to avoid duplication of functionality.
-- Consideration of how to enable or disable specific instrumentation features via environment variables for better debugging.
+- Discussion on the cleanup of dependencies in the Elastic project, focusing on separating worker and coordinator processes.
+- Review of ongoing PRs, primarily related to Renovate and instrumentation updates.
+- Exploration of better integration between Laravel instrumentation and PSR3 logging.
+- Consideration of enabling/disabling specific parts of instrumentation for troubleshooting purposes.
+- Discussion on naming conventions for trace IDs and span IDs, particularly regarding snake case vs. camel case.
 
 ## Action Items
-- Chris to update his branch related to Laravel instrumentation and explore integration with PSR3 logging.
-- Sergey to investigate the configurator for managing environment variables and its impact on instrumentation.
+- Chris to follow up with Bob regarding the status of PRs and any necessary actions post-deployment.
+- Chris to work on updating his branch to merge improvements related to instrumentation.
 
 ## Participants
 Pawel Filipczak, Chris Lightfoot-Wild, Sergey

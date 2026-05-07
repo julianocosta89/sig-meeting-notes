@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on promoting semantic conventions to release candidate status.
-- Challenges with the process state metric on Windows vs. Linux.
-- Importance of user feedback and reference implementation for the release candidate.
-- Concerns about breaking changes with the host metrics receiver and maintaining backward compatibility.
-- Exploration of existing guidelines for release quality and stability levels.
+- Discussion on promoting the process to release candidate for semantic conventions.
+- Challenges with the process state metric on Windows and Linux.
+- Need for user feedback and reference implementation for the release candidate.
+- Consideration of configuration changes and potential breaking changes during the transition.
+- Proposal to enhance mDataGen for seamless transitions in metric configurations.
 
 ## Action Items
-- Donal O'Sullivan to comment on the existing issue regarding the intention to release a candidate.
-- Braydon Kains to finalize PRs related to required attributes and process state metrics.
-- Group to consider creating a draft PR to facilitate discussion on the metrics and attributes.
+- Braydon Kains to finalize PRs related to process state metrics and required attributes.
+- Donal O'Sullivan to comment on the existing issue regarding the intention to release.
+- Team to explore the possibility of modifying mDataGen to handle dual schema configurations more intelligently.
 
 ## Participants
-Donal O'Sullivan, Braydon Kains, Pablo Baeyens, Christos Markou, Neil Yashinsky
+Donal O'Sullivan, Braydon Kains (Google), Pablo Baeyens, Christos Markou, Neily Ashinsky

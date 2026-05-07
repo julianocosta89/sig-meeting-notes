@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on blog posts related to OpenTelemetry, including a significant one regarding graduation criteria.
-- Clarification on the appropriateness of a blog post about OpenTelemetry certification.
-- Emphasis on the need for SIGs to take responsibility for reviewing their own blog posts.
-- Recognition of the increasing workload due to blog post submissions and the need to balance it with documentation efforts.
+- Discussion on blog posts related to OpenTelemetry, including graduation-related content and certification insights.
+- Exploration of the "Ecosystem Explorer" project and its implications for metadata and visualization.
+- Proposal for improving communication channels within the community to distinguish important announcements from general updates.
+- Updates on operational documentation and shadowing sessions for new contributors.
 
 ## Action Items
-- Finalize and send out the graduation-related blog post early next week.
-- Review the OpenTelemetry certification blog post for CNCF approval.
-- Document the process for SIGs to take ownership of their blog post reviews in the Operations Manual.
+- Finalize and publish the graduation-related blog post by next week.
+- Review and provide feedback on the certification blog post to ensure it aligns with CNCF guidelines.
+- Implement tagging or categorization for blog posts to enhance navigation and accessibility.
+- Schedule shadowing sessions for new contributors to build expertise in specific areas.
 
 ## Participants
 Vitor Vasconcellos, Patrice CNCF, Severin Neumann, MG Marylia Gutierrez

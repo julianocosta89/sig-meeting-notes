@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on the merge algorithm for entities and resources, including criteria for merging.
-- Clarification on the distinction between merging entities and merging resources.
-- Updates needed for the SDK specification to accommodate new merging methods.
-- Importance of ensuring backward compatibility while transitioning to the new entity model.
-- Proposal for future PRs to implement the discussed changes.
+- Discussion on the merge algorithm for entities and resources, including the criteria for merging and the handling of attributes.
+- Clarification of terminology related to entity identity and descriptive attributes to reduce confusion among participants.
+- Updates on the OTEP next steps and the need for prototypes in various programming languages.
+- Review of the current state of semantic conventions and their impact on entity definitions and stability.
 
 ## Action Items
-- Josh to fix spelling mistakes in the draft and finalize the merge algorithm documentation.
-- Nathan to review the merge algorithm and provide feedback.
-- Josh to propose changes to the SDK specification in a separate PR after merging the algorithm.
-- Team to consider how to communicate the transition to the new entity model clearly.
+- Josh Suereth to fix spelling mistakes in the merge algorithm documentation.
+- Daniel Dyla to finish the JavaScript prototype for the entity-bound provider.
+- Nathan Smith to explore potential contributors for a Go prototype.
+- Josh to add the Java prototype to the OTEP documentation.
 
 ## Participants
-Josh Suereth, Nathan Smith, Daniel Dyla
+Josh Suereth, Nathan Smith, Daniel Dyla, Dimitri (not present)

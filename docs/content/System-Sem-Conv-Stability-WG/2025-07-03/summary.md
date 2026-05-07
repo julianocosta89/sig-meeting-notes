@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on updating memory usage metrics in the host metric receiver to use the more accurate "available" memory metric instead of the current derived usage metric.
-- The need for alignment with industry standards and practices regarding memory metrics, particularly in light of changes made in common Linux tools.
-- Proposal to create a feature gate for the new memory calculation and to document the changes through a blog post.
-- Ongoing discussions about moving components to stable semantic conventions and the approach for adopting Kubernetes-specific metrics.
+- Discussion on improving memory usage metrics in the host metric receiver by using the more accurate "available" memory metric instead of the current derived usage metric.
+- Consideration of how to handle the transition to stable semantic conventions for metrics within the OpenTelemetry collector, including the potential for feature gating.
+- Exploration of strategies for managing changes in metrics, including maintaining separate packages or using tooling to automate documentation of changes.
+- Ongoing work on guidance for designing status metrics to ensure consistency across various implementations.
 
 ## Action Items
-- Roger Coll to share a gist or small program demonstrating the memory metric discrepancies.
-- Consider creating a pull request to the semantic conventions to reflect the proposed changes in memory calculation.
-- Plan to document the changes and rationale in a blog post to raise visibility.
-- Internal discussions to prioritize addressing unknowns related to the adoption of stable semantic conventions.
+- Roger Coll to share a gist or program demonstrating the memory metric differences.
+- Create a pull request (PR) to update semantic conventions based on the discussed changes.
+- Consider writing a blog post to explain the changes and their rationale.
+- Fraggle Rock to reopen and address a previous PR related to Mdata Gen for metric generation.
 
 ## Participants
-Dmitrii Anoshin, Roger Coll, Fraggle Rock, Christos Markou
+Dmitrii Anoshin, Roger Coll, Fraggle Rock (ca-wat-brt3), Christos Markou, Evan Bradley

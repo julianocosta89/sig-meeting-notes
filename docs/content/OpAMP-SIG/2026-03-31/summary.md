@@ -1,15 +1,15 @@
 ## Key Topics
-- Summary of the in-person meeting at KubeCon, focusing on stabilization goals for the next 6-12 months.
-- Discussion on the OpAMP server and supervisor demo, showcasing data flow and UI.
-- Agreement on prioritizing stability for specific components in a sequence: spec, implementation, supervisor, bridge, and extension use cases.
-- Proposal to create GitHub issues and a project board to track progress on the roadmap and stability efforts.
-- Discussion on Kubernetes management enhancements and the need for further exploration and issue creation.
+- Summary of discussions and decisions made during the KubeCon meeting, including stabilization goals for the OpAMP project.
+- Proposed changes to the OpAMP specification regarding agent capabilities and their restrictions.
+- Discussion on the creation of a new repository for an OpenTelemetry-based application and the need for multiple maintainers.
+- Exploration of remote configuration capabilities in Kubernetes and the potential conflicts with existing operators.
+- Clarification on maintaining a generic OpAMP spec while providing supplementary guidelines for specific implementations.
 
 ## Action Items
-- Finalize the Google Doc containing the roadmap and decisions made at KubeCon.
-- Create corresponding GitHub issues and a project board to track progress.
-- Engage with Jacob and Dimitri on Kubernetes management discussions and create relevant issues.
-- Consider reaching out to Pablo for assistance in setting up project tracking similar to the collector's SIG.
+- Finalize the Google Doc with the roadmap and create corresponding GitHub issues and project boards.
+- Review and provide feedback on the proposed spec changes regarding agent capabilities.
+- Identify a second maintainer for the new repository to meet OpenTelemetry's requirements.
+- Engage with Jacob to ensure his comments on the remote configuration issue are documented publicly.
 
 ## Participants
-Tigran Najaryan, Andy Keller, Aunsh Chaudhari, Dakota Paasman, Douglas Camata, Michel Laterman
+Tigran Najaryan, Andy Keller, Aunsh Chaudhari, Dakota Paasman, Douglas Camata, Michel Laterman, JM Juande Manjon

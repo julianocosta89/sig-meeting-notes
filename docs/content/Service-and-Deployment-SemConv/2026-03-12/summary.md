@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the data entity proposal and the need for feedback from data security experts.
-- Proposal for a new attribute, `businessunit.id`, to standardize business unit identification across platforms.
-- Clarification on the distinctions between `cost center`, `business unit`, and `service owner`.
-- Need for a demo showcasing the implementation of the `business unit` attribute in OpenTelemetry.
-- Open discussion on the relationship between service ownership and business units.
+- Discussion on the data entity proposal and the need for standardization of attributes like business unit and cost center.
+- Instrumentation considerations for the data entity, including how attributes should propagate through infrastructure.
+- The distinction between data and data source, with a focus on sensitivity and categorization of data.
+- Feedback on how to implement and demo the proposed changes in OpenTelemetry.
 
 ## Action Items
-- Ankit to collaborate with Ayushi to create a demo showcasing the `business unit` attribute in OpenTelemetry.
-- Further refinement needed on the definitions of `service owner`, `cost center`, and `business unit` to avoid overlap and confusion.
+- Ankit to work on a demo showcasing the business unit attribute.
+- Ayushi to prepare a formal proposal for the data entity, including use cases and considerations discussed.
+- Participants to review the relationship between service owner, business unit, and cost center for clarity in future discussions.
 
 ## Participants
-Ayushi Asthana, Josh Suereth, Ankit (Google), Anthony Mirabella, Neil Yashinsky
+Ayushi Asthana, Josh Suereth, Ankit (Google), Trask Stalnaker, Anthony Mirabella, Neil Yashinsky

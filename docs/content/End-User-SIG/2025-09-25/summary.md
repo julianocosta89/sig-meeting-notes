@@ -1,14 +1,16 @@
 ## Key Topics
-- Update on the end user section PR for the main website.
-- Completion of the collector flow survey with 120 responses and next steps for analysis.
-- Discussion on the mainframe survey and the need for collaboration with the mainframe SIG.
-- Acknowledgment of contributions to social media outreach for survey responses.
+- **Collector Flow Survey**: Victoria Nduka reported achieving the target of 120 responses and discussed the next steps for analysis and reporting.
+- **Mainframe Survey Update**: Discussion on the status of the mainframe survey and the need for collaboration with the mainframe team for blog post assistance.
+- **Upcoming Events**: Planning for a "What's New in OTEL" session, targeting mid-October, with potential speakers from the governance committee and contributors.
+- **Humans of OTEL at KubeCon**: Discussion on organizing interviews with diverse participants for KubeCon, emphasizing representation and scheduling.
+- **Hacktoberfest Participation**: Victoria raised the idea of participating in Hacktoberfest and discussed the process for preparing beginner-friendly issues.
 
 ## Action Items
-- Andrej to follow up with Dan, Reece, and Adriana regarding the PR approval.
-- Victoria to comment on the GitHub issue about the survey completion.
-- Ernest to reach out to the collector's SIG for awareness on the analysis.
-- Sophia to assist with the mainframe survey blog post.
+- Victoria to analyze survey responses and update the GitHub issue.
+- Sophia Solomon to reach out to the mainframe team for blog assistance.
+- Adriana Villela to coordinate with potential speakers for the "What's New in OTEL" session.
+- Sophia to help organize the Humans of OTEL interviews at KubeCon.
+- Victoria to investigate Hacktoberfest participation and create an issue for planning.
 
 ## Participants
-Andrej Kiripolsky, Ernest Owojori, Victoria Nduka, Lisa Jung, Adriana Villela, Sophia Solomon
+Andrej Kiripolsky, Ernest Owojori, Victoria Nduka, Lisa Jung, Adriana Villela, Sophia Solomon, Rhys, Dan, Harice, and others.

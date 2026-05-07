@@ -1,13 +1,15 @@
 ## Key Topics
-- Review of pull requests related to executing native tests on Linux and assembly resolver concerns.
-- Discussion on the implications of assembly resolver behavior in NuGet deployments and potential breaking changes.
-- Clarification on plugin deployment and documentation, emphasizing the experimental nature of plugins.
-- Instrumentation stability proposal and the need to wait for final decisions from OTAP discussions.
+- Discussion of PRs related to executing native tests on Linux and assembly resolver behavior in NuGet deployments.
+- Concerns about potential breaking changes due to disabling the assembly resolver for NuGet deployments.
+- Instrumentation stability proposal and the need for alignment between .NET and .NET Core versions.
+- Future plans for handling dependencies and the impact of .NET 11 on existing functionality.
+- Ongoing discussions about the necessity of certain environment variables in the startup process.
 
 ## Action Items
-- Review and provide feedback on the pending pull requests.
-- Further discussion on the assembly resolver options and their implications for NuGet deployments.
-- Monitor the OTAP discussions for updates on the instrumentation stability proposal.
+- Review and finalize the PRs regarding native tests and assembly resolver behavior.
+- Document the decisions made regarding environment variables and their necessity.
+- Open a ticket to explore the implications of .NET 11 on OpenTelemetry auto-instrumentation.
+- Prepare for a cutoff for the beta version in the upcoming weeks.
 
 ## Participants
-Piotr Kiełkowicz, Yevhenii Solomchenko, Alexey Pukhov, Zach Montoya, Igor Kiselev, Chris Ventura, Rajkumar Rangaraj
+Piotr Kiełkowicz, Yevhenii Solomchenko, Alexey Pukhov, Zach Montoya, Chris Ventura, Igor Kiselev, Rajkumar Rangaraj.

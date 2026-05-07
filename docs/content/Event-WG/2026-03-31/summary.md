@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the deprecation of span events and potential impacts on workflows.
-- Feedback received regarding span event deprecation and strategies for addressing concerns.
-- Updates on the integration of tail-based sampling in the collector and its implications for log events.
-- Conversations about the quality of food at recent KubeCon events, highlighting improvements.
-- Plans for creating a processor to convert logs to span events and the prioritization of collector-based solutions.
+- Discussion on the deprecation of span events and feedback from the community.
+- Updates on the implementation of tail-based sampling and its integration with the collector.
+- Stabilization of error recording documents and semantic conventions for exceptions.
+- Review of the quality of food at recent events and its impact on attendee experience.
+- Plans for creating a processor that converts logs to span events.
 
 ## Action Items
-- Create a processor that converts logs to span events.
-- Follow up on feedback regarding span event deprecation and ensure user concerns are addressed.
-- Prioritize the implementation of tail-based sampling in the collector.
+- Liudmila to document feedback regarding span event deprecation.
+- Pellared to work on the processor for converting logs to span events and the declarative config.
+- Trask to push for stabilizing individual exceptions in the Java SDK.
+- Team to consider guidance on unwrapping junk exceptions in the SDK.
 
 ## Participants
 Liudmila Molkova, Pellared, Trask Stalnaker

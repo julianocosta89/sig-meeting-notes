@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the appropriate namespace for transaction processing systems (TPS) in OpenTelemetry, with suggestions leaning towards IBM-specific or ZOS namespaces.
-- Concerns about vendor conflicts and data emission overlaps when using vendor-specific namespaces.
-- Emphasis on the need for consistency with OpenTelemetry's existing semantic conventions and namespaces.
-- The importance of further discussions to clarify feedback from the Semantic Conventions group regarding mainframe-specific considerations.
+- Discussion on the namespace for transaction processing systems (TPS) in OpenTelemetry, with suggestions for IBM-specific vs. ZOS namespaces.
+- Feedback from the semantic conventions group regarding the potential for limited vendor support for TPS.
+- Exploration of the implications of using vendor-specific namespaces and the need for broader industry alignment.
+- Open issue regarding high CPU usage of the OpenTelemetry collector on Linux 390, with a need for further investigation.
 
 ## Action Items
-- Reach out to Rudiger for clarification on feedback from the Semantic Conventions group.
-- Plan for a follow-up discussion to address namespace concerns and gather more input from absent participants.
+- Jim Porell to reply to the 1898 PR with examples of other TPSs that are not solely IBM-related.
+- Greg Shriver to gather more feedback from Broadcom regarding their potential involvement with TPS standards.
+- Further discussion on the namespace topic to be scheduled for future meetings.
 
 ## Participants
 Greg Shriver, Richard Nikula, Jim Porell, Morgan McLean

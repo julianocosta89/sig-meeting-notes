@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on issues with the front-end proxy and Playwright related to image loading and API responses.
-- Updates on Podman support, including necessary changes to the Docker Compose file and potential issues with tags.
-- Jonathan's PR focusing on updating the React Native app to the latest Expo version and removing version-controlled native folders.
-- Plans for documentation updates regarding Podman usage and Docker metrics compatibility.
+- Issues with Playwright and front-end proxy causing 404 errors due to image loading.
+- Support for Podman discussed, including necessary changes to Docker Compose files.
+- Updates on React Native app and the removal of version-controlled native folders.
+- Discussion on testing and validation processes for OpenTelemetry components, including Jaeger and OpenSearch.
+- Need for an open-source profiling solution for the demo application.
 
 ## Action Items
-- Donal O'Sullivan to open a PR to remove the tag from the Docker Compose file for Podman compatibility.
-- Create a draft PR demonstrating how to run the demo with Podman.
-- Update documentation on OpenTelemetry.io to include instructions for using Podman.
-- Verify if the Docker metrics receiver works with Podman and update documentation accordingly.
+- Donal O'Sullivan to open a PR to remove the tag from Docker Compose for Podman compatibility.
+- Jonathan Munz to create a draft PR demonstrating how to run the demo with Podman.
+- Juliano Costa to create an issue regarding OpenSearch log mapping inconsistencies.
+- Pierre Tessier to draft a PR for comprehensive CI testing that includes OpenSearch and metrics validation.
+- Donal O'Sullivan to explore options for an open-source profiling solution.
 
 ## Participants
-Juliano Costa, Pierre Tessier, Donal O'Sullivan, Jonathan Munz
+Juliano Costa, Pierre Tessier, Donal O'Sullivan, Jonathan Munz, Shenoy Pratik Gurudatt

@@ -1,15 +1,15 @@
 ## Key Topics
-- Release of OpenTelemetry Python 1.38 and related warnings.
-- Discussion on log stabilization and merging of PRs (4676 and 4647).
-- Introduction of OpenAI agents tracing V2 and Langchain updates.
-- Urgency in finalizing ownership and namespace for new packages.
-- Proposal for implementing severity filtering on logs and concerns regarding API stability.
+- Release of OpenTelemetry Python 1.38 and discussions on backward compatibility checks.
+- Updates on log stabilization efforts and merging of related PRs.
+- Introduction of OpenAI agents tracing V2 and discussions on naming conventions and ownership.
+- Implementation of severity filtering on logs and concerns about API stability.
+- Independent releases process for contrib packages and the need for clearer guidelines.
 
 ## Action Items
-- Review and merge PRs related to log stabilization (4676 and 4647).
-- Reach out to original package owners for approval on naming conventions.
-- Consider implementing severity filtering in log processors instead of directly in the API.
-- Follow up on ownership discussions for the Weave instrumentation.
+- Review and merge log stabilization PRs, starting with PR 4676.
+- Create a PR to update dependencies in the Langchain package.
+- Reach out to TraceLoop regarding package ownership for new instrumentation.
+- Document the independent release process and approval guidelines.
 
 ## Participants
-Riccardo Magliocchetti, Aditya Mehra, Dylan Russell, Aaron Abbott, Lechen, Nagkumar Arkalgud, Keith Decker, Guptaradhika.
+Riccardo Magliocchetti, Aditya Mehra, Dylan Russell, Aaron Abbott, Le Chen, Nagkumar Arkalgud, Keith Decker, Luke Zhang, Hector Hernandez, Guptaradhika.

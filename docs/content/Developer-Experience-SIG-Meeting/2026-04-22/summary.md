@@ -1,15 +1,16 @@
 ## Key Topics
 - Discussion on the recent Skyscanner blog post and its impact on OpenTelemetry users.
 - Introduction of new blueprints and reference implementations for OpenTelemetry.
-- Updates on the Grok blog post and challenges in obtaining necessary approvals.
-- Follow-up on the Atlassian interview and sharing of recordings.
-- Exploration of connections to reach out to Grok for collaboration.
+- Updates on ongoing blog posts, including the Grok blog post and the need for approvals.
+- Presentation of a new UI tool for the OpenTelemetry collector called OPAMI.
+- Challenges with documentation and the need for improved guidelines for SDKs and APIs.
 
 ## Action Items
-- Johanna to follow up on her email to K. Kosich regarding the Grok blog post.
-- Tristan to send the recording of the Atlassian interview.
-- Juliano to tag Tristan in the GitHub issue related to the Atlassian recording.
-- Team to discuss how to maintain and update blueprints and reference implementations effectively.
+- Johanna to follow up with K. Kosich regarding the Grok blog post approval.
+- Perk to share the draft of the Kickloak blog post once ready.
+- Tristan to send the Atlassian interview recording to the team.
+- Explore the possibility of creating a structured README for repositories to improve documentation consistency.
+- Consider inviting Fabri to discuss documentation stats and improvements in the next meeting.
 
 ## Participants
 Juliano Costa, Johanna Öjeling, Tristan, Perk (Marcin Stożek)

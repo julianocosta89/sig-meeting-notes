@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the OpenTelemetry demo app and its integration with LLMs (Large Language Models).
-- Updates on caching responses to improve performance for users without LLM access.
-- Feedback on PRs (Pull Requests) related to the demo app, including issues with GET and POST requests.
-- Instrumentation of the demo app using TraceLoop and the potential conversion to OpenTelemetry spans.
-- Exploration of using open-source models and creating a generic wrapper for model integration.
+- Discussion on the ad agent astronomy Shop and MCP server PRs.
+- Implementation of caching responses for LLM calls to improve performance.
+- Instrumentation of generative AI components in accordance with OpenTelemetry standards.
+- Challenges with context propagation in MCP server communication.
+- Plans for integration tests and validation of traces, metrics, and logs in the demo.
 
 ## Action Items
-- Felix to share updates on the caching feature and its performance.
-- Shenoy to verify API functionality and assist with PR concerns.
-- Felix to consider using open-source models and create a README for onboarding custom models.
-- Team to explore the integration of TraceLoop spans with OpenTelemetry standards.
+- Felix to share updates on the caching mechanism and fine-tuning of models.
+- Shenoy to create a PR for testing everything related to logs and metrics.
+- Discussion on writing a README for onboarding custom LLM models.
+- Juliano to investigate the integration of TraceLoop spans with OpenTelemetry standards.
 
 ## Participants
 Juliano Costa, Felix George, Donal O'Sullivan, Shenoy Pratik Gurudatt

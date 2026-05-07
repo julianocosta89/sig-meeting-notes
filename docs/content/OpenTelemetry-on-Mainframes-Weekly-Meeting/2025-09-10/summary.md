@@ -1,14 +1,15 @@
 ## Key Topics
 - **PR Updates**: Discussion on the long-running PR for the transaction processing system and the need for a TPS entity.
-- **Entity Definitions**: Clarification on the role of entities in telemetry, including the need for identifying and descriptive attributes.
-- **Metric Semantic Conventions**: Ongoing work on establishing consistent metric definitions and attributes within the HMC context.
-- **Documentation Improvements**: Need to address inconsistencies in documentation related to CUS software attributes.
-- **Publication Timeline**: Update on the survey block publication scheduled for September.
+- **Entity Definitions**: Clarification on what constitutes an entity and its relationship with telemetry data.
+- **Metric Semantic Conventions**: Ongoing work on defining metrics and attributes specific to mainframes, including CPU types and environmental metrics.
+- **Action Items for PRs**: Plans to split upcoming PRs into manageable pieces for review and approval.
+- **Namespace Differentiation**: Discussion on how to differentiate between system and mainframe namespaces in metric definitions.
 
 ## Action Items
-- **Greg Shriver**: Request organization membership at the OpenTelemetry project and provide sponsorship details.
-- **Ruediger Schulze**: Respond to David's comments on the SOC channel and address documentation inconsistencies.
-- **Team**: Review and approve upcoming PRs related to MQ, DP2, KICS, and IMS attributes.
+- Greg Shriver to request organization membership at the OpenTelemetry project.
+- Ruediger Schulze to respond to David's comments on the SOC channel.
+- Team to review and split the metric definitions spreadsheet into smaller PRs for discussion in future meetings.
+- Ruediger to address Dai's question regarding attribute group documentation.
 
 ## Participants
-Jim Porell, Ruediger Schulze, Anand Somasundaram, Greg Shriver
+Jim Porell, Ruediger Schulze, Anand Somasundaram, Greg Shriver, Richard Nikula

@@ -1,13 +1,13 @@
 ## Key Topics
 - Discussion on the need for a common instrumentation SDK to handle different telemetry types (spans, metrics, events).
-- Exploration of separating instrumentation from telemetry emission to improve flexibility and standardization.
-- Proposal for defining generic types for Gen AI that reflect semantic conventions without being tied to specific telemetry outputs.
-- Evaluation of runtime telemetry and the potential for callback mechanisms to facilitate evaluations based on Gen AI types.
+- Proposal for a multi-agent tracing standard, focusing on task-based spans and agent interactions.
+- Evaluation metrics and the challenges of defining cost metrics for different AI models and their usage.
+- Refactoring existing conventions to enhance usability for various backends and scenarios.
 
 ## Action Items
-- Sergey to provide additional details on telemetry emission practices and potential SDK designs.
-- Team members to review the current status of instrumentation and its adherence to semantic conventions.
-- Further discussion on the implementation of callbacks and their signatures for instrumentation.
+- Sergey to review PRs and add schemas/diagrams for proposed types.
+- Shipra to circulate the multi-agent tracing proposal for internal feedback before wider distribution.
+- Participants to prioritize existing workstreams and provide feedback on areas of focus for the next meeting.
 
 ## Participants
-Aaron Abbott, Shipra Jain, Sergey Sergeev, Sujay Solomon, Samuel Colvin, Alex Hall
+Aaron Abbott, Shipra Jain, Sergey Sergeev, Sujay Solomon, Liudmila Molkova, Samuel Colvin, Alex Hall, Paul Shealy.

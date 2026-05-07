@@ -1,16 +1,15 @@
 ## Key Topics
-- Review of open pull requests (PRs) and merging RPC stability warnings.
-- Discussion on automatically adding issues to the project board based on RPC labels.
-- Proposal to remove network type from RPC due to lack of utility.
-- Findings on metrics related to OpenConnect and Connect RPC protocols, including the need for metric deprecation.
-- Consideration of alignment between gRPC status codes and RPC conventions.
+- Review of open PRs and merging of the RPC stability warning.
+- Discussion on automatically adding issues to the project board based on labels.
+- Proposal to remove network type from RPC conventions.
+- Findings on metrics used in OpenConnect and Connect RPC protocols.
+- Alignment of gRPC error codes with existing RPC conventions.
 
 ## Action Items
-- Merge the RPC stability warning PR after obtaining necessary approvals.
-- Explore the automatic addition of issues to the project board when labeled.
-- Update the title of the issue regarding the removal of network type from RPC.
-- Deprecate certain metrics while considering future renaming based on utility.
-- Investigate the alignment of gRPC status codes with RPC conventions and document findings.
+- Merge the RPC stability warning PR after obtaining the necessary approval.
+- Investigate the automation of issue labeling on the project board.
+- Update the title of the issue regarding the removal of network type.
+- Continue research on gRPC status codes and their implications for RPC conventions.
 
 ## Participants
 Liudmila Molkova, James Thompson, Trask Stalnaker

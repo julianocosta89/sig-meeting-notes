@@ -1,15 +1,16 @@
 ## Key Topics
-- Standardization of maintainer publication for OpenTelemetry projects.
-- Progress on the declarative configuration project and need for consistency across implementations.
-- Discussion on the default compression for the OTLP exporter and its implications across languages.
-- Updates on the Async metrics pull request and the need for API enhancements.
-- Exploration of new sampling strategies, including a probability sampler.
+- Standardization of maintainers for OpenTelemetry projects and automation for PR submissions.
+- Progress on the declarative configuration project and need for further analysis to ensure consistency across implementations.
+- Discussion on the default compression settings for the OTLP exporter and potential changes.
+- Updates on the Async metrics PR and the need for additional documentation for asynchronous instruments.
+- Ongoing work on HTTP semantic conventions and span name adjustments.
 
 ## Action Items
-- Trask to work on automation for maintainer publication across repositories.
-- Follow up on the OTLP exporter compression discussion in the Slack channel and Spec SIG.
-- Encourage community involvement in resolving the connection re-establishment issue.
-- Add documentation for the observe method in the Async metrics API.
+- Trask to work on automation for maintainers' PR submissions.
+- Participants to review the complex attribute values PR and provide feedback.
+- Kayla to encourage collaboration on the connection error issue.
+- Hannah to add comments to PRs for easier reviews and to ensure consistency across libraries.
+- Xuan to follow up on the 0 code instrumentation review with Ariel.
 
 ## Participants
-Kayla Reopelle, Hannah Ramadan, Xuan Cao, others
+Kayla Reopelle, Hannah Ramadan, Xuan Cao

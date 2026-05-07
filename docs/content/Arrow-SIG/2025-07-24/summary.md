@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the implementation of the operational Mini pipeline and its configuration.
-- Overview of the progress on the PR for the data flow engine, including the integration of OTLP and TAP pipelines.
-- Challenges and considerations regarding pipeline configuration, including the handling of shared nodes and synchronization.
-- Presentation of the pipeline configuration builder and its capabilities for defining and interpreting pipeline structures.
-- Issues encountered with screen sharing and presentation tools during the meeting.
+- Discussion on the implementation and performance of the OpenTelemetry Arrow pipeline, including a demo of the first operational mini pipeline.
+- Review of the release process for Go and Rust components, focusing on automation and versioning strategies.
+- Issues with Delta dictionary support in the Arrow Rust implementation and potential solutions.
+- Updates on the integration of Rust and Go components in the OpenTelemetry collector, including community feedback and support.
 
 ## Action Items
-- Review the unapproved PR related to the operational Mini pipeline.
-- Further evaluate the broadcast strategy for hyper edges in the pipeline.
-- Implement the configuration file translator for compatibility with Google collector configurations.
+- Review PR 532 related to the pipeline implementation.
+- Follow up on Delta dictionary support in Arrow Rust via Discord and other community channels.
+- Explore automation improvements for the release process of Go components and plan for Rust integration when ready.
+- Prepare for a discussion on testing work in the next meeting.
 
 ## Participants
-Albert Lockett, Drew Relmas, Michael Salib, Laurent Quérel, David Dahl, Jake Dern, J. Macdonald
+Laurent Quérel, Drew Relmas, Michael Salib, David Dahl, Jake Dern, Albert Lockett, jmacdonald

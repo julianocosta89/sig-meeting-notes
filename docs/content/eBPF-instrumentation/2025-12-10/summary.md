@@ -1,14 +1,16 @@
 ## Key Topics
-- **Open PRs Review**: Discussion on various open pull requests, including MQTT draft, uniform debug print message, and support for distributed tracing in Ruby on Rails.
-- **Automation Feedback**: Positive feedback on the recent automation release, which streamlined the release process.
-- **JSON Schema Proposal**: Suggestion to use JSON schema for configuration files to improve usability and maintainability.
-- **Kernel Version Support**: Discussion on minimum kernel version requirements for certain features in eBPF instrumentation.
+- Review of open pull requests (PRs) and their current statuses.
+- Discussion on MQTT draft progress and implementation of trace log correlation.
+- Updates on uniform debug print message and kernel compatibility.
+- Proposal to use JSON schema for configuration management.
+- Announcement of meeting-free weeks during the holiday season.
 
 ## Action Items
-- **Giuseppe**: To implement feedback on the uniform debug print message by checking for BBFSAPrintf availability.
-- **Mattia**: To address feedback on the implemented trace log correlation PR.
-- **Rafael**: To review changes on the Ruby on Rails distributed tracing PR before merging.
-- **Tyler**: To follow up on the JSON schema integration proposal.
+- Giuseppe to implement feedback on the uniform debug print message.
+- Mark to address feedback on the Python async support PR.
+- Rafael to review the Ruby on Rails distributed tracing PR before merging.
+- Mattia to finalize the revert of the BPF Core headers and merge once approved.
+- Marc to complete the SQL database hostname capture PR for review.
 
 ## Participants
-Rafael Roquetto, Giuseppe Ognibene, Tyler, Stephen Lang, Mattia, Mario Macias, Mark
+Rafael Roquetto, Giuseppe Ognibene, Tyler, Stephen Lang, Mattia Meleleo, Mario Macias, Marc

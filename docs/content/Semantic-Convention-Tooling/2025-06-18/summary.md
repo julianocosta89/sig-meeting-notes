@@ -1,14 +1,13 @@
 ## Key Topics
-- Project triage and updates on the Semantic Convention and Weaver projects.
-- Discussion on the implementation of value types and requirement levels in YAML configurations.
-- Review of the new README style and its alignment with observability principles.
-- Proposal for an import section in the Weaver project to enhance custom registry functionalities.
-- Clarification on the representation of attributes and metrics in the context of semantic conventions.
+- Discussion on the current status and updates regarding the Semantic Convention and Weaver projects.
+- Proposal to split the issue related to value types and requirement levels in semantic conventions.
+- Presentation by Nicolas Takashi on a proof of concept for a schema-first telemetry approach and its integration with existing observability tools.
+- Ideas for enhancing the Weaver project with a UI for schema management and a potential data governance platform.
 
 ## Action Items
-- Liudmila Molkova to create a new issue for requirement levels and link it to the existing discussions.
-- Jeremy Blythe to refine the README based on feedback and ensure clarity on the project's capabilities.
-- Team to finalize the proposal for the import section in the Weaver project.
+- Liudmila Molkova to create a new issue for requirement levels in semantic conventions.
+- Nicolas Takashi to open a GitHub issue to discuss the integration of his UI and registry inference mechanism into the Weaver project.
+- Team to review and refine the proposal for the import section in the semantic conventions PR.
 
 ## Participants
 Laurent Quérel, Nicolas Takashi, Jeremy Blythe, Liudmila Molkova

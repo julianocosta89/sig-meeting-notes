@@ -1,13 +1,16 @@
 ## Key Topics
-- Leadership for the meeting and future meetings.
-- Discussion on the naming conventions for applications in OpenTelemetry and Kubernetes.
-- Schema URL updates for Java instrumentation and compliance with semantic conventions.
-- Proposed renaming of system metrics from "System Linux Memory" to "System Memory Linux" and its implications.
+- Discussion on the naming conventions for applications in Kubernetes and OpenTelemetry, highlighting the need for a unified approach.
+- Schema URL considerations for Java instrumentation, focusing on stability and compliance with semantic conventions.
+- Renaming of system memory metrics and the implications for naming consistency across different operating systems.
+- Review of PRs and issues related to semantic conventions, including the need for clearer documentation and SIG involvement.
+- Triage of new issues, including the handling of attribute identities and metric streams.
 
 ## Action Items
-- Liudmila Molkova to research prior art related to application naming conventions for better discussion in future meetings.
-- Trask Stalnaker to invite mobile client representatives to the next meeting for further discussions on app naming conventions.
-- Review and finalize the approach for schema URLs in Java instrumentation.
+- Research prior art related to application naming conventions and prepare for a future discussion.
+- Invite mobile client representatives to the next meeting for further discussion on application naming.
+- Create an issue to document principles for naming conventions and address the current lack of guidance.
+- Close PRs that lack SIG ownership and direct them to the appropriate SIG for further action.
+- Update the policy regarding handling deprecated metrics and collisions in entities.
 
 ## Participants
 Liudmila Molkova, Christophe Kamphaus, Trask Stalnaker, Josh Suereth, Armin (Dynatrace), Alexandra Konrad (Elastic Security)

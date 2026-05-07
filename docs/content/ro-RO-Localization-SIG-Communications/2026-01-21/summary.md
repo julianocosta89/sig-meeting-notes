@@ -1,15 +1,13 @@
 ## Key Topics
-- Discussion on the creation and management of Pull Requests (PRs) for Romanian localization.
-- Challenges faced with the default language settings and error messages during the PR process.
-- Importance of handling Romanian language exceptions, particularly with diacritics.
-- Suggestions for improving translations, specifically regarding the term "unknown unknowns."
-- Updates on CI/CD processes and the need for better documentation.
+- Discussion on PR (Pull Request) processes and issues encountered with default language settings.
+- Review of localization practices and handling of Romanian language exceptions, particularly with diacritics.
+- Suggestions for translating specific terms, including "unknown unknowns."
+- Plans for future meetings and collaboration on OpenTelemetry localization efforts.
 
 ## Action Items
-- Review and update the Romanian language dictionary to include necessary exceptions.
-- Ensure all PRs are properly formatted and follow the established guidelines.
-- Explore alternative translations for "unknown unknowns" and finalize terminology.
-- Investigate CI/CD errors that occur locally but not in the CI environment.
+- Participants to review and address issues in PRs related to language settings and exceptions.
+- Victor to check the cloud policy before proceeding with any new contributions.
+- Diana to follow up on attracting more contributors through LinkedIn.
 
 ## Participants
 Irina Acasandrei, Diana Todea, Diana Nanuti, Mihai Lemnaru, Victor Varza

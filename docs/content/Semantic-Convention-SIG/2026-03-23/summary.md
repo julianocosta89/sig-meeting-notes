@@ -1,14 +1,13 @@
 ## Key Topics
 - Introduction of new participants and their backgrounds in OpenTelemetry.
-- Discussion on the challenges of contributing to OpenTelemetry, particularly regarding semantic conventions for observability.
-- The need for a dedicated special interest group (SIG) for storage-related semantic conventions.
-- Exploration of existing SIGs and their relevance to storage and observability.
-- The importance of community support and guidance for newcomers in OpenTelemetry.
+- Discussion on the challenges of contributing to OpenTelemetry and the need for clearer guidance for newcomers.
+- Exploration of the need for semantic conventions in observability and storage.
+- Mention of existing groups and resources within the OpenTelemetry community, including the Weaver project for semantic tooling.
+- Importance of vendor neutrality and standardization in observability practices.
 
 ## Action Items
-- Identify and connect with key leaders of the OpenTelemetry community, particularly those involved with storage.
-- Explore the possibility of establishing a new SIG focused on storage semantic conventions.
-- Encourage new participants to engage with existing community resources and support systems.
+- Participants to review the shared resources and materials regarding OpenTelemetry and the Weaver project.
+- Follow-up in the next meeting to discuss findings and understanding of the processes.
 
 ## Participants
-Ramakrishna Vadla, Neil Yashinsky, Sanjay
+Ramakrishna Vadla, Neil Yashinsky, Sanjay Lokhande

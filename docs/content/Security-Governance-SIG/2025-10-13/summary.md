@@ -1,13 +1,14 @@
 ## Key Topics
-- Review of a pull request related to security governance processes.
-- Discussion on improving notifications for maintainers regarding security advisories.
-- Concerns about GitHub's permissions for maintainers in relation to security advisories.
-- Bug bounty program inquiries and issues with permissions on security email aliases.
+- Review of PR and recommendations for the security process.
+- Discussion on the visibility of security advisories to maintainers.
+- Issues with GitHub notifications and access for maintainers regarding security advisories.
+- Inquiry about penetration testing for OpenTelemetry Java agent and collector.
+- Exploration of potential collaboration with third-party security firms for testing.
 
 ## Action Items
 - Reiley to follow up on the visibility of security advisories for maintainers.
-- Trask to investigate and turn on the Zapier integration for security advisory notifications.
-- Jeremy to respond to the email regarding the bug bounty program after resolving permission issues.
+- Trask to investigate and enable the Zapier integration for security advisory notifications.
+- Trask to open a CNCF ticket regarding penetration testing and potential collaborations with security firms.
 
 ## Participants
 Trask Stalnaker, Reiley, Jeremy Corley

@@ -1,14 +1,15 @@
 ## Key Topics
-- **Issue Triage**: Discussion on various open issues, including MMSC instruments, histogram instrumentation, and renaming the OTLP exporter for clarity.
-- **OTAP Spec**: Jake Dern presented updates and proposals related to the OTAP specification, including batching and process-level metrics.
-- **Pipeline Control Improvements**: Addressed improvements to avoid blocking and deadlocking in the control message processing.
-- **Durable Buffer Gauges**: Aaron Marten discussed inaccuracies in gauge metrics and ongoing work to address these issues.
+- Updates on issue triage and ongoing PRs, including the proposal for renaming the OTLP exporter.
+- Discussion on the implementation of a topic mechanism for connecting independent pipelines, including use cases and potential benefits.
+- Presentation of a demo showcasing a UI for monitoring pipeline performance and configuration.
+- Review of Jake Dern's OTAP spec proposals and the importance of merging them for collaborative development.
+- Gokhan Uslu's PR on the extension system, addressing design trade-offs and the need for documentation.
 
 ## Action Items
-- Update the attendees' list for accuracy.
-- Follow up on the proposed changes to OTLP exporter naming.
-- Ensure important PRs are announced in the hotel dev channel for better visibility.
-- Aaron Marten to continue working on the PR addressing gauge inaccuracies.
+- Follow up on labeling issues for better triage management.
+- Review and provide feedback on Gokhan's extension system PR and accompanying design document.
+- Consider merging Jake's OTAP spec draft to facilitate further contributions.
+- Improve documentation organization within the repository to enhance clarity for future users.
 
 ## Participants
-Laurent Querel, Jake Dern, jmacdonald, drewrelmas, Aaron Marten
+Laurent Querel, Jake Dern, jmacdonald, drewrelmas, Aaron Marten, Tom Tan, Gokhan Uslu, CJ, Michael, Albert, and others.

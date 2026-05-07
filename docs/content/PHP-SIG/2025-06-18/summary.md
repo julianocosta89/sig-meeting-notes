@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the progress of various pull requests and issues related to OpenTelemetry PHP SDK.
-- Updates on the transition of the CNCF Slack from a paid to a free plan, including potential impacts on integrations.
-- Review of the PHP Road to SDK V. 2 and the creation of a new label for versioning.
-- Importance of structuring metrics and instrumentation properly to avoid past mistakes.
+- Review of open pull requests and their statuses.
+- Discussion on transitioning the CNCF Slack from a paid to a free plan and potential alternatives.
+- Need for a code owners file in the repository for better collaboration and documentation.
+- Updates on instrumentation requests, including PostgreSQL driver and PDO metrics.
+- Discussion on optimizing connection pooling in the PSR Transport factory.
 
 ## Action Items
-- Brett McBride to finalize and move issue 1626 to in progress.
-- Review of the PDO instrumentation pull request to ensure it meets standards.
-- Participants to back up important information from the CNCF Slack before the transition to a free plan.
-- Consideration of alternative communication platforms, with a focus on Discord.
+- Brett McBride to review the PDO instrumentation pull request.
+- Bob Strecansky to create a code owners file and document the release process.
+- Chris Lightfoot-Wild to document the connection pooling issue as a bug if it persists after updates.
+- Shawn Maddock to follow up on the deprecated HTTP discovery issue and consider tagging it as help wanted.
 
 ## Participants
-Chris Lightfoot-Wild, Brett McBride, Pawel Filipczak, Bob Strecansky, Shawn Maddock
+Chris Lightfoot-Wild, Brett McBride, Bob Strecansky, Pawel Filipczak, Shawn Maddock, Nevae

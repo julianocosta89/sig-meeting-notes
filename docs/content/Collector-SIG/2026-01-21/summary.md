@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the timing of the OpenTelemetry Collector SIG meetings to increase participation.
-- Proposal for adding metadata keys to the Exporter Helper's QBatch config to enable multi-tenant batching.
-- Concerns regarding the complexity of introducing an extension point for different exporter types.
-- Exploration of partitioning options in exporters, particularly in relation to Kafka and other streaming systems.
-- Consideration of the impact of synchronous vs. asynchronous processing on performance and resilience.
+- Discussion on optimizing meeting times to increase participation.
+- Proposal for adding metadata keys to the Exporter Helper for multi-tenant batching.
+- Exploration of a pluggable scraper controller for on-demand data collection.
+- Consideration of potential complexities and use cases for the proposed changes.
 
 ## Action Items
-- Make an announcement in the OpenTelemetry Collector Dev channel or Slack to gauge interest in changing meeting times.
-- Review the proposal for the Exporter Helper and gather feedback from other contributors on potential use cases and concerns.
+- Andrew to raise the metadata keys proposal in the leads channel for additional approval.
+- Andrew to create a processor for partitioning and discuss its potential inclusion in contrib.
+- Dmitrii to explore the need for scraper controller extensions and report back.
 
 ## Participants
 Andrew Wilkins, Dmitrii Anoshin

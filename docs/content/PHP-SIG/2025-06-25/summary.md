@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the current status of the Kubernetes operator work.
-- Review of open pull requests, including updates on the log record processor and PDO metrics.
-- Clarification on responsibilities for maintaining third-party contributions and the distinction between contrib and main repositories.
-- Best practices for handling contributions from companies and institutions.
+- Discussion on the Kubernetes operator for OpenTelemetry PHP and its current status.
+- Review of ongoing pull requests and contributions, including the log record processor and PDO metrics.
+- Clarification of responsibilities regarding contrib packages and their maintenance.
+- Importance of documentation for the Kubernetes operator and user configuration requirements.
+- Consideration of gathering telemetry data to understand user needs and deployment contexts.
 
 ## Action Items
-- Brett to review the log record processor and PDO metrics pull requests.
-- Team to finalize expectations regarding third-party contributions and their maintenance.
-- Further discussion needed on the distinction between contrib and main repositories.
+- Sergey to provide updates on the Kubernetes operator's documentation once implemented.
+- Bob to review the log record processor and other open pull requests.
+- Team to discuss and finalize wording regarding responsibilities for contrib packages.
 
 ## Participants
-Sergey, Chris Lightfoot-Wild, Shawn Maddock, Brett, Bob Strecansky, Nive
+Sergey, Chris Lightfoot-Wild, Shawn Maddock, Brett, Bob Strecansky

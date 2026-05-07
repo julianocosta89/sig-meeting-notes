@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the recent release status of the Swift project and integration with nightly tests.
+- Discussion on the recent release of the OpenTelemetry Swift library and its integration into nightly tests.
 - Updates on the deprecation of span events and ongoing PR reviews.
-- Review of asynchronous support for export methods and the need for consistent naming conventions.
-- Concerns regarding changes in environment propagation carrier and the complexity it introduces.
-- Addressing issues with AI-generated PRs and the need for proper documentation and language consistency.
+- Concerns regarding the implementation of asynchronous support in export methods and environment propagation.
+- Issues with AI-generated PRs lacking proper documentation and comments.
+- Plans for future releases and the need for better management of PR noise from third-party library updates.
 
 ## Action Items
-- Validate the integration of the latest changes in nightly tests.
-- Review and finalize the asynchronous support for export methods.
-- Investigate the changes in the environment propagation carrier and provide feedback.
-- Ensure that AI-generated PRs include proper documentation and are reviewed for clarity.
+- Validate the stability of the recent release and prepare for a public release.
+- Review and refine the asynchronous support in export methods.
+- Establish a policy for AI-generated contributions to ensure clarity and quality.
+- Address the noise from third-party library updates in PR notifications.
 
 ## Participants
 vvydier, nacho

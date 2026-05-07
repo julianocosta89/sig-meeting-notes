@@ -1,14 +1,16 @@
 ## Key Topics
-- **Floating Point Precision**: Discussion on handling floating point precision in attribute values and potential precision loss during conversion to string representation.
-- **Resource Attributes Handling**: Updates on a PR that aims to fail fast on errors and ensure proper encoding of characters outside the baggage octet.
-- **Multi-Resource Export Support**: Ongoing discussion about an OTEP for supporting multiple resources in the SDK, with a focus on unblocking the browser SIG.
-- **Batch Size Limitation for Metrics SDK Exporters**: Proposal for limiting the maximum batch size for metrics SDK exporters, addressing concerns from various participants.
+- **Floating Point Precision**: Discussion on the handling of floating-point numbers in attributes and potential precision loss during conversion to string representation.
+- **Resource Attributes Handling**: Updates on a PR to relax resource attributes handling, focusing on error reporting and character encoding.
+- **Multi-Resource Support**: OTEP discussion regarding support for multiple resources in the SDK, with emphasis on unblocking the browser SIG.
+- **Metrics SDK Exporters**: Need for limiting maximum batch size in metrics SDK exporters, with insights on handling data points and potential implications.
+- **Time Series Start Time Tracking**: Clarification on defining the start time for time series, aiming for consistency across implementations.
 
 ## Action Items
-- **Trask Stalnaker**: To send a PR to the collector to handle edge cases for floating point values.
-- **Carlos Alberto Cortez**: To finalize and share the PR regarding resource attributes handling with C++ and ROS 6 maintainers.
-- **Josh Suereth**: Request for participants to review the OTEP for multi-resource support and provide feedback.
-- **David Ashpole**: To gather interest from others regarding the need for batch size limitations in metrics SDK exporters.
+- Trask to send a PR to the collector to handle edge cases in floating-point values.
+- Carlos to finalize the PR on resource attributes handling and check with C++ and ROS teams.
+- Josh to gather feedback on the multi-resource support OTEP and aim for agreement on the direction.
+- David to prototype a solution for limiting maximum batch size in metrics SDK exporters and potentially draft a PR.
+- David to update the PR on time series start time tracking based on feedback for specificity.
 
 ## Participants
-Reiley, Tigran Najaryan, Trask Stalnaker, David Ashpole, Carlos Alberto Cortez, Josh Suereth
+Reiley, Tigran Najaryan, Trask Stalnaker, Carlos Alberto Cortez, Josh Suereth, David Ashpole, Jack Berg, jmacdonald

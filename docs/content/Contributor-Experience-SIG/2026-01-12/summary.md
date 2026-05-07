@@ -1,13 +1,12 @@
 ## Key Topics
-- Update on the research project regarding new contributor experiences, including participant engagement and feedback.
-- Discussion about the high no-show rate for interviews and the need for clearer communication in outreach materials.
-- Ideas for improving the onboarding process for new contributors, such as creating an index of important links and resources.
-- Challenges faced by new contributors in navigating documentation and finding community support channels like Slack.
+- Update on the contributor experience research project, including participant feedback and no-show rates.
+- Discussion about the need for better communication and resources for new contributors, including potential office hours and clearer documentation.
+- Challenges faced by new contributors, particularly regarding understanding existing documentation and resources.
+- Suggestions for creating an index or video guide for new contributors to help them navigate the community and resources.
 
 ## Action Items
-- Amy to synthesize interview results and consider involving others in the process.
-- Explore the creation of a one-page index for new contributors to streamline access to important resources.
-- Review and potentially revise the language on the community page to improve clarity and accessibility.
+- Marylia to review and potentially improve the community page for clarity and accessibility for new contributors.
+- Amy to consider synthesizing interview results with community input and feedback.
 
 ## Participants
 Amy Super, Marylia Gutierrez, Kayla Reopelle

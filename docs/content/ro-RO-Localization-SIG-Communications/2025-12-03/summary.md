@@ -1,14 +1,13 @@
 ## Key Topics
-- Introduction of new participant Mihai Lemnaru and his background in localization.
-- Discussion on the Romanian localization guide and the importance of having beginner-friendly resources.
-- Overview of the steps required for contributing to translations and using GitHub.
-- Suggestions for starting with simpler translation tasks to build familiarity.
-- Collaboration opportunities among participants for translation efforts.
+- Introduction of new participant Mihai Lemnaru and his background.
+- Discussion on the Romanian localization guide and its importance for contributors.
+- Steps for creating pull requests (PRs) for translations and the need for beginner-friendly resources.
+- Coordination for future meetings and collaboration among participants.
 
 ## Action Items
-- Participants to review the Romanian localization guide and provide feedback or corrections.
-- Irina to assist Diana with the initial setup for translation tasks.
-- Mihai and Diana to collaborate on translation tasks, starting with simpler documents.
+- Participants to review the localization guide and provide feedback.
+- Schedule a follow-up meeting for further discussions on translations.
+- Mihai to familiarize himself with the documentation and reach out for assistance as needed.
 
 ## Participants
 Irina Acasandrei, DT Diana Todea, Diana Nanuti, Mihai Lemnaru

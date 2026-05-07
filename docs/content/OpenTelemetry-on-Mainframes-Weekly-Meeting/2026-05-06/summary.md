@@ -1,13 +1,13 @@
 ## Key Topics
-- **Firefly's AI Note-Taker**: Discussion on how to disable the note-taker tool during meetings.
-- **S390X Runners Update**: Ongoing efforts to access S390X hardware for testing, with updates on legal discussions between the Linux Foundation and IBM.
-- **Semantic Conventions**: Updates on the semantic conventions discussions, including plans to split mainframe-specific conventions into a separate repository.
-- **Mainframe Metrics**: Discussion on the unique characteristics of mainframe metrics and the need for collaboration with other communities for standardization.
+- Discussion on the status of S390X runners and the need for access to test resources.
+- Updates on the federated semantic conventions and the potential separation of mainframe-specific conventions into their own repository.
+- The importance of collaboration with external communities for semantic conventions, particularly in relation to security mappings.
+- Challenges and strategies for maintaining consistency between mainframe and broader semantic conventions while avoiding unique naming conventions.
 
 ## Action Items
-- Follow up with Jeffrey Sika for updates on S390X runner access.
-- Engage with the community regarding the separation of mainframe semantic conventions into its own repository.
-- Explore the possibility of building a model from HMC metrics using Prometheus exporters.
+- Unarchive the mainframe repository and open issues related to mainframe-specific metrics.
+- Invite Ludmila to the next meeting to discuss the federated semantic conventions and how to proceed.
+- Find a suitable meeting time for Rudiger to improve attendance and participation.
 
 ## Participants
-Jim Porell, Richard Nikula, Joris Yangsheng Xu, Antoine T. A. Ulme, Greg Shriver, Rudiger
+Jim Porell, Richard Nikula, Antoine Atoulme, Joris Yangsheng Xu, Greg Shriver, Kai Kirsch.

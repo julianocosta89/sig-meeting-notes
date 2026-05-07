@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on deprecating span events and transitioning to log records for error reporting.
-- Consensus on refining documentation regarding event names and severity levels.
-- Consideration of guidelines for writing log appenders or bridges for various programming languages.
-- Ongoing discussions about the implications of naming conventions for exceptions across different languages.
+- Discussion on deprecating span events in favor of log records for error handling.
+- Agreement on the need to clarify event naming and severity in documentation.
+- Consideration of guidelines for writing log appenders and structured logging.
+- Review of how to handle exceptions and error logging in instrumentation libraries.
+- Discussion on feature flag evaluation and logging best practices.
 
 ## Action Items
-- Update the documentation to include guidance on event names and severity.
-- Create a separate document for log appenders and bridges specifications.
-- Gather feedback from language communities regarding the use of exception naming conventions.
+- Update documentation to reflect changes regarding event naming and severity.
+- Create a separate document for log appenders and structured logging guidelines after current tasks are completed.
+- Send a PR to deprecate the old feature flag logging method and switch to the new approach.
 
 ## Participants
 Pellared, Trask Stalnaker, Liudmila Molkova

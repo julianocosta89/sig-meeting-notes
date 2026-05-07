@@ -1,13 +1,15 @@
 ## Key Topics
 - Discussion on the new version of the JavaScript prototype with all three signals.
-- Updates on the metrics SDK and export pipeline simplifications.
-- Overview of entity stability policies in SEMCOF, including entity association and stability checks.
-- Introduction of Rego for policy definitions and checks for entities.
+- Entity stability policies and their implementation using Rego syntax.
+- Updates on the entity merge algorithm and its integration into SDKs.
+- Challenges with NPM and CI processes in the development environment.
+- Plans for future specifications and merging of experimental features.
 
 ## Action Items
-- Daniel to review the PR related to the new version of the prototype.
-- Josh to send Daniel the PR regarding NPM issues and CI configurations.
-- Further exploration of compatibility checks between entity versions.
+- Josh to send Daniel the PR regarding NPM issues.
+- Continue refining entity stability policies and implement them in the OpenTelemetry Weaver Packages repo.
+- Review and finalize the entity merge algorithm PR.
+- Discuss the potential merging of Java prototypes into the SDK once experimental specs are established.
 
 ## Participants
-Josh Suereth, Daniel Dyla
+Josh Suereth, Daniel Dyla (Dynatrace)

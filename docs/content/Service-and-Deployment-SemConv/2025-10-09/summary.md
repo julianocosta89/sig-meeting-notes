@@ -1,14 +1,13 @@
 ## Key Topics
-- Overview of the project phases for stabilizing service and deployment attributes in OpenTelemetry.
-- Discussion on defining what constitutes a "service" and a "deployment" within OpenTelemetry.
-- Considerations for adding new attributes like `service.owner` and `service.criticality`.
-- Exploration of existing issues and concerns regarding naming conventions and the structure of services and deployments.
-- Importance of establishing clear definitions to guide future discussions and decisions.
+- Overview of the Semantic Convention for Service and Deployment in OpenTelemetry.
+- Discussion on defining "service" and "deployment" and their attributes.
+- Proposal to stabilize the deployment.environment.name attribute and define it as an enum.
+- Consideration of incremental stabilization for service components and attributes like owner and criticality.
 
 ## Action Items
-- Formulate a common definition of "service" and "deployment" to ensure consistency in discussions.
-- Review open issues related to service and deployment attributes and prioritize them for resolution.
-- Discuss the implications of modeling services that may contain sub-services or pools.
+- Define deployment.environment.name as an enum and open an issue for discussion.
+- Write up the discussion on service definitions and attributes for further review.
+- Discuss the interaction of criticality and owner with the service namespace model in the next meeting.
 
 ## Participants
-Janhvi, Trask Stalnaker, Josh Suereth, Kartik, Joao G.
+Janhvi, Trask Stalnaker, Josh Suereth, Kartik, Joao G. (Dynatrace)

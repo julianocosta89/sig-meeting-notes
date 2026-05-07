@@ -1,15 +1,15 @@
 ## Key Topics
-- Review of the OpenTelemetry tracing bridge and pending comments.
-- Discussion on the stabilization of distributed tracing APIs and the need for a final document outlining its evolution.
-- Consideration of bundling breaking changes into a single release to improve user experience.
-- Updates on the status of various pull requests and the timeline for the Otlp stable release.
-- Concerns regarding the frequency of breaking changes and their impact on users.
+- Review and updates on the OpenTelemetry tracing bridge and distributed tracing API.
+- Discussion on bundling breaking changes into a single release to improve user experience.
+- Updates on the status of various pull requests (PRs) and their implications for the SDK and API.
+- Introduction of Copilot for automating trivial PRs and the concerns surrounding its implementation.
+- Plans for writing a blog post detailing the evolution of the distributed tracing API.
 
 ## Action Items
-- Cijo to share a document outlining the final shape of distributed tracing for community feedback.
-- Lalit to revisit and prepare the modifications for the pending pull request.
-- Scott to create a parent issue to track Otlp-related tasks and blockers.
-- Team to discuss and agree on the approach for handling breaking changes in future releases.
+- Cijo Thomas to share a draft document on the final shape of distributed tracing for community feedback.
+- Lalit to revisit and prepare the PR related to modifications.
+- Scott to create a parent issue for tracking OTLP-related tasks.
+- Participants to review and provide feedback on ongoing PRs, especially regarding breaking changes.
 
 ## Participants
-Cijo Thomas, Utkarsh Umesan Pillai, Björn Antonsson, Lalit, Paul Le Grand des Cloizeaux
+Cijo Thomas, Utkarsh Umesan Pillai, BA Björn Antonsson, Lalit, Paul Le Grand des Cloizeaux

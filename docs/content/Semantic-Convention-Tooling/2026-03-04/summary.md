@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the generation of telemetry and its organization within the project crates.
-- Consideration of whether to maintain separate registries for each crate or a single registry for the entire Weaver project.
-- Challenges related to maintaining stable builds while using the current build system for code generation.
-- The need for a solution to manage dependencies and ensure that builds are reproducible despite local changes.
+- Discussion on the generation of telemetry code within the OpenTelemetry project and the implications of crate independence.
+- Concerns about maintaining stable builds while dogfooding the project and the need for a stable version of Weaver for testing.
+- Introduction of a new registry package command and the structure of publication and definition manifests.
+- Refinements to the V2 syntax, including a merge algorithm for handling attributes and annotations.
+- Ongoing discussions about the use of YAML vs. TOML for configuration files and how to manage command-line parameters versus persistent settings.
 
 ## Action Items
-- Explore the possibility of using a previous version of the crate for building to avoid dependency issues.
-- Investigate how to allow users to provide schema URLs for better integration in monorepo setups.
-- Review the current implementation of X task to ensure it operates independently of the main project build.
+- Explore the implications of separating schema URLs for different crates versus a single registry for the entire project.
+- Review and finalize the structure of the publication and definition manifests to ensure clarity and functionality.
+- Continue refining the merge logic for V2 syntax and address the handling of optional attributes.
+- Consider the feedback on configuration file formats and finalize the decision on using YAML or TOML.
 
 ## Participants
-ariannavespri, Jeremy Blythe, Laurent Querel, Josh Suereth, Liudmila Molkova
+Arianna Vespri, Jeremy Blythe, Laurent Querel, Josh Suereth, Ludmila Molkova

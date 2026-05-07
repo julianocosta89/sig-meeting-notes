@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the SPI (Service Provider Interface) implementation and its importance.
-- Updates on ongoing pull requests and instrumentation work, particularly for PostgreSQL.
-- Exploration of the Elastic OpenTelemetry PHP distribution and its autoloading mechanism.
-- Challenges with version conflicts when using multiple vendor directories.
+- Discussion on the SPI (Service Provider Interface) implementation and its current status.
+- Updates on instrumentation for large objects in PostgreSQL and related pull requests.
+- Challenges with dependency management and version conflicts in the Elastic PHP distribution.
+- Exploration of the Elastic PHP Distro's autoloading mechanism and its implications for application dependencies.
+- Future agenda items, including further discussions on the SPI and instrumentation topics.
 
 ## Action Items
-- Chris to follow up with Sergey regarding his availability for the SPI discussion.
-- Pawel to create a pull request for PostgreSQL instrumentation by the end of the week.
-- Participants to review and provide feedback on ongoing pull requests.
+- Chris Lightfoot-Wild to message Sergey regarding his availability for the SPI discussion.
+- Pawel Filipczak to create a pull request for PostgreSQL instrumentation by the end of the week.
+- Bob Strecansky to prepare a proactive agenda for the next meeting, including the SPI discussion.
 
 ## Participants
 Chris Lightfoot-Wild, Nick Schuch, Bob Strecansky, Ago Allikmaa, Pawel Filipczak

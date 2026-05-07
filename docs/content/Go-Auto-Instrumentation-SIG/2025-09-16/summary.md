@@ -1,14 +1,15 @@
 ## Key Topics
-- Release of OpenTelemetry Go V0.23.0, including new features and dropping support for Go 1.23.
-- Discussion on open PRs, particularly regarding improvements to decoding events and type checks.
-- Introduction of the LLM project and its relevance to OpenTelemetry, with a focus on eBPF and manual instrumentation.
-- Need for community involvement in the LLM SIG to help shape observability practices.
-- Upcoming DevConf and its potential insights into LLM and OpenTelemetry.
+- Release of OpenTelemetry Go V0.23.0 with new features and bug fixes.
+- Discussion on open PRs, particularly a linting PR and improvements to decoding events.
+- Proposal for involvement in the LLM (Large Language Model) SIG for observability in Kubernetes.
+- Need for expertise in OpenTelemetry for LLM projects and potential collaboration opportunities.
+- Nikola's upcoming talk on GPU metrics at SRECon.
 
 ## Action Items
-- Review and validate the allocation concerns related to the decoding events PR.
-- Add links to LLM project proposals in the meeting notes.
-- Encourage participation in the LLM SIG and explore scheduling conflicts with existing meetings.
+- Review and validate the allocation concerns raised in Ron's PR.
+- Mike to add links to LLM proposals in the meeting notes.
+- Tyler to check calendar invites for the LLM SIG meetings and try to attend.
+- Nikola to share his SRECon talk and insights on GPU metrics.
 
 ## Participants
-Tyler Yahn, Nikola Grcevski, Mike Dame, Ron Federman, Rafael
+Tyler Yahn, Nikola Grcevski, Mike Dame, Ron Federman

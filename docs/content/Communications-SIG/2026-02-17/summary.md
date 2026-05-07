@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on proposed changes to the homepage copy, particularly the tagline, and the need for community input.
-- Challenges faced by localization teams in managing their work and the request for higher permissions to edit issues.
-- Suggestions for improving localization team autonomy, including creating separate repositories for different languages.
-- Exploration of GitHub's permission limitations and potential solutions for better organization and management of localization efforts.
+- Discussion on proposed changes to the OpenTelemetry homepage copy, including a new tagline.
+- Challenges faced by localization teams regarding permissions and editing capabilities in GitHub.
+- Exploration of potential solutions for empowering localization teams, including the idea of separate repositories or using a bot for automation.
+- Updates on social media cover images for OpenTelemetry and their integration into the existing framework.
+- Clarification on the roles and responsibilities of triagers within the OpenTelemetry communications team.
 
 ## Action Items
-- Patrice to present homepage copy changes to the governing committee (GC) for feedback.
-- Localization teams to consider creating their own issues for tracking work and propose team members for approver roles.
-- Further discussion on GitHub permissions and potential restructuring of repositories to enhance localization team capabilities.
+- Severin to create an issue regarding localization team permissions and potential solutions.
+- Tiffany to create an issue to assess interest from localization approvers on experimenting with new workflows.
+- Leandro to raise an issue for the social media cover images to be included in the repository.
 
 ## Participants
-Vitor Vasconcellos, Patrice CNCF, Severin Neumann, Kasper Nissen, Tiffany Hrabusa, Diana Todea, Marilia, Nima
+Vitor Vasconcellos, Patrice CNCF, Severin Neumann, Kasper Nissen, Tiffany Hrabusa, Diana Todea, Leandro Caracciolo, Marylia Gutierrez

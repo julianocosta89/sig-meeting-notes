@@ -1,16 +1,14 @@
 ## Key Topics
-- Discussion on rescheduling bi-weekly meetings for better accessibility.
-- Updates on the draft PR for changes to the service entity, including namespace and instance ID clarifications.
-- Proposal to stabilize the criticality attribute based on use cases from Google Cloud and Zendesk.
-- Need for prototypes to support the introduction of new attributes in OpenTelemetry.
-- Review of existing issues related to stabilizing service.instance.id and deployment attributes.
+- Discussion on rescheduling bi-weekly meetings to accommodate different time zones.
+- Updates on the draft PR for service entity changes, including namespace and instance ID clarifications.
+- Proposal to stabilize the criticality attribute based on use cases from various organizations.
+- Review of the process for introducing new attributes and the need for prototypes.
+- Discussion on managing untriaged issues and their relevance to the SIG's charter.
 
 ## Action Items
-- Janhvi to raise an issue regarding the meeting rescheduling.
-- Janhvi to assist Josh in resolving comments on the draft PR.
-- Participants to review the criticality attribute issue and provide feedback.
+- Janhvi to work with Josh to resolve comments on the draft PR.
 - Janhvi and Bakhtiyar to investigate existing Kubernetes attributes related to criticality.
-- Trask to guide the process for proposing new attributes through the SIG.
+- Janhvi to check the untriaged issue list and collaborate with Josh for better management.
 
 ## Participants
-Janhvi, Bakhtiyar Garashov, Trask Stalnaker, ...
+Janhvi, Bakhtiyar Garashov, Trask Stalnaker, Kartik

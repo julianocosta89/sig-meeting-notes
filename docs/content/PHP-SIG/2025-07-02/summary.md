@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the removal of the event logger and transition to logging events as logs.
-- Review of ongoing pull requests (PRs) and updates on SDK changes.
-- Clarification on the implementation of Dotenv support for configuration in the SDK.
-- Exploration of dependencies and potential restructuring of the SDK and API.
-- General updates on participant contributions and issues.
+- Discussion on the removal of the event logger and its implications for the SDK.
+- Review of ongoing pull requests and their statuses.
+- Proposal for handling experimental features in the SDK, including potential separation into distinct packages.
+- Configuration management strategies for handling environment variables and their priorities.
+- Update on the donation process for contributions to the OpenTelemetry PHP project.
 
 ## Action Items
-- Brett to finalize and submit the PR for removing the event logger.
-- Chris to review the draft PR related to SDK configuration.
-- Team to discuss the integration of Dotenv support and its implications for various frameworks.
+- Brett to follow up on the status of the SDK v2 and its ongoing development.
+- Paul to share the donation process document on Slack for further review.
+- Sergey and Shawn to explore the possibility of implementing static analysis tools to flag experimental features in the codebase.
 
 ## Participants
 Chris Lightfoot-Wild, Brett, Shawn Maddock, Ago Allikmaa, Sergey, Pawel Filipczak

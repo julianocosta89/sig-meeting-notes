@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the need for an AI code policy due to increasing AI-generated contributions.
-- Review of existing guidelines for AI usage in code submissions and the importance of ownership.
-- Exploration of how to implement skills for AI agents to assist with specific tasks, such as adding new protocols.
-- The potential for iterative development of guidelines as AI technology evolves.
+- Discussion on AI code policy and guidelines for submissions.
+- Review of open PRs and their statuses, including dynamic PID selection and HTTP header handling.
+- Updates on instrumentation for SQL databases and the need for server spans.
+- Ongoing work on the OpenTelemetry specification and OTEPs.
+- Acknowledgment of Giuseppe's approval as a maintainer.
 
 ## Action Items
-- Rafael to draft initial guidelines for AI code contributions for review and iteration.
-- Participants to consider how AI agents can be guided to improve code submissions and review processes.
+- Rafael to draft AI code policy guidelines for contributing.md.
+- Tyler and Nikola to assist with ongoing PR reviews and issues.
+- Mattia to present OTEP in the specification meeting for feedback.
+- Florian to comment on the OTEP discussion to raise visibility.
 
 ## Participants
-Nikola Grcevski, Giuseppe Ognibene, Florian Lehner, Tyler, Rafael Roquetto, Marc
+Nikola Grcevski, Giuseppe Ognibene, Florian Lehner, Tyler, Rafael Roquetto, Marc, Mike Dame, Nimrod Avni, Mario Macias, Mattia Meleleo, Robert Pająk.

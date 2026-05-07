@@ -1,12 +1,14 @@
 ## Key Topics
-- Consolidation of instrumentation into a single package for OpenTelemetry browser.
-- Discussion on the structure and naming conventions for URLs in the context of browser instrumentation.
-- Proposal for a new namespace for URL-related attributes to avoid confusion between resource URLs and application URLs.
-- Consideration of how to handle different contexts (e.g., web vs. mobile) in naming conventions.
+- Discussion on consolidating OpenTelemetry browser instrumentations into a single package.
+- Proposal for a main entry point package for users, including configuration and session management.
+- Exploration of naming conventions for URLs and navigation types in the browser context.
+- Need for a demo to visualize and test the discussed concepts and implementations.
+- Review of the entities concept and its relevance to browser navigation and session management.
 
 ## Action Items
-- Review and provide feedback on the PR for the consolidated instrumentation package.
-- Further discussion on the appropriate naming conventions for URL attributes in the OpenTelemetry browser context.
+- Review and provide feedback on the PR for consolidating instrumentations.
+- Develop a demo showcasing the discussed browser SDK features and entity implementations.
+- Share progress on the entities API and SDK for further group discussion.
 
 ## Participants
 Jared Freeze, Benoît Zugmeyer, Martin Kuba, Maxime Quentin, Ted Young, Joaquín Díaz

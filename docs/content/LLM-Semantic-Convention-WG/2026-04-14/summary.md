@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of PRs and issues related to semantic conventions and instrumentation.
-- Collaboration with other working groups (OCSF, COSI) for GenAI security.
-- Discussion on semantic conventions for memory operations and planning operations.
-- Introduction of new participants and their interests in contributing to the project.
-- Identification of areas needing improvement in instrumentation coverage and process efficiency.
+- Review of PRs and issues related to semantic conventions and instrumentation coverage.
+- Discussion on the roadmap for the Semantic Convention Working Group, focusing on improving instrumentation coverage and process efficiency.
+- Exploration of context-scoped attributes and their implications for agent and workflow naming in spans and metrics.
+- Consideration of major release cadence for semantic conventions and instrumentation libraries.
 
 ## Action Items
-- Trask to add PRs in progress to the triage board.
-- Ridhima to review comments on the workflow metric and add important topics to the agenda.
-- Participants to explore good first issues and contribute to ongoing PRs, especially in areas of interest.
+- Trask Stalnaker to add PRs to the triage board.
+- Ridhima Satam to explore the addition of agent names to child spans and discuss with the group.
+- Participants to comment on the context-scoped attributes proposal and its potential use in instrumentation.
+- Review and provide feedback on the roadmap document.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Wolfgang Therrien, Dat Ngo, Kumar, Ridhima Satam, Surya Teja, Benjamin Kawecki, Aaron Abbott, Shubhanshu Surana.
+Liudmila Molkova, Trask Stalnaker, Dat Ngo, Wolfgang Therrien, Alolita Sharma, Ridhima Satam, Surya Teja, Aaron Abbott, Benjamin Kawecki.

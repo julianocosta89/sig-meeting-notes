@@ -1,15 +1,15 @@
 ## Key Topics
-- Resolution of issues related to the OpenTelemetry Collector and OTLP specifications.
+- Resolution of issues related to OTel resource attributes and environment variables.
 - Discussion on deprecating OpenTracing compatibility requirements.
-- Community feedback on proposed enhancements and metrics specifications.
-- Triaging of ongoing tasks and clarifications needed for API specifications.
-- Review of blocked and stalled issues within the OpenTelemetry ecosystem.
+- Proposal to enhance the OpenTelemetry Collector's functionality regarding pipeline shutdown.
+- Community feedback on various metrics and specifications.
+- Ongoing discussions about the expected delta calculation and instrument concurrency requirements.
 
 ## Action Items
-- Update TC inbox regarding the proposal to enhance the collector.
-- Gather community feedback on several ongoing discussions.
-- Assign tasks to sponsors for further action and clarification.
-- Follow up on the status of various issues in the next meeting.
+- Juraci and Severin to follow up on community feedback regarding the proposed changes.
+- Severin to tag TC inbox for further discussion on the pipeline shutdown proposal.
+- Juraci to communicate with TC about closing issues if no further action is required.
+- Participants to monitor the new contributors channel and ensure outstanding issues are addressed.
 
 ## Participants
-Juraci Paixão Kröhling, Severin Neumann, ...
+Juraci Paixão Kröhling, Severin Neumann

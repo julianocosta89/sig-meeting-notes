@@ -1,14 +1,14 @@
 ## Key Topics
-- Updates on the CPU scraper and host metrics receiver, including the merging of a PR to enable aggregation.
-- Discussion on the process attributes and the need to update the collector to align with new semantic conventions.
-- Consideration of the process status metric and its potential conflict with existing metrics.
-- Proposal to move the process executable to its own entity and the need for further investigation before making a decision.
-- Review of PRs related to metrics requirement levels and their readiness for merging.
+- Discussion on enabling aggregation in various receivers and the merging of related PRs.
+- Updates on the process attributes and the need for consistency in the collector.
+- Consideration of moving process executable to its own entity and the implications of such a change.
+- Review of process status metrics and potential blockers related to GA readiness.
+- Agreement on actions to update PR descriptions and create issues for further discussions.
 
 ## Action Items
-- Donal O'Sullivan to open an issue regarding the proposal to move the process executable to its own entity and involve Thompson for feedback.
-- Donal O'Sullivan to update the PR description to clarify the nature of the changes made.
-- Dmitrii Anoshin to provide additional approval after reviewing the PR more thoroughly.
+- Donal O'Sullivan to open an issue regarding moving process executable to its own entity and involve Thompson for feedback.
+- Donal O'Sullivan to update the PR description to clarify it updates rather than fixes the issue.
+- Dmitrii Anoshin to provide deeper review and approval of the process metrics PR after the meeting.
 
 ## Participants
-Donal O'Sullivan, Dmitrii Anoshin, Christos Markou, Pablo Baeyens
+Donal O'Sullivan, Dmitrii Anoshin, Pablo Baeyens, Christos Markou

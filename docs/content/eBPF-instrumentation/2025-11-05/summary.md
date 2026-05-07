@@ -1,13 +1,15 @@
 ## Key Topics
-- Release of V02 for OpenTelemetry eBPF instrumentation and tagging issues.
-- Discussion on updating Helm chart versions in relation to app versions.
-- Need for a project changelog to document features and changes.
-- Upcoming eBPF Profiling SIG meeting scheduled for November 13th.
+- Release of OpenTelemetry eBPF V02 and issues with tagging images.
+- Discussion on Helm chart versioning and synchronization with app versions.
+- Proposal for implementing a changelog policy to improve communication of changes.
+- Review of open PRs and their statuses, including a PR related to fixing tests.
+- Consideration of release cadence and versioning policies moving towards a stable version.
 
 ## Action Items
-- Nimrod Avni to work on a PR to bump the Helm chart version.
-- Tyler Yahn to open an issue for adding a project changelog and define tooling and policy around it.
-- Participants to check the Slack channel for updates regarding the eBPF Profiling SIG.
+- Create a changelog issue and establish a policy for maintaining it.
+- Work on a PR to improve Helm chart versioning practices.
+- Explore automation for release processes to streamline tagging and changelog generation.
+- Confirm plans for meeting at KubeCon and communicate with the team.
 
 ## Participants
 Tyler Yahn, Giuseppe Ognibene, Mattia Meleleo, Stephen Lang, Nimrod Avni, kushal

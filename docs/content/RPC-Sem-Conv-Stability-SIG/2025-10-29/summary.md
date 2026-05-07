@@ -1,12 +1,12 @@
 ## Key Topics
-- Discussion on the layers of instrumentation for RPC, focusing on logical vs. physical layers.
+- Discussion on the instrumentation layers for RPC, focusing on logical vs. physical layers.
 - Comparison of gRPC and HTTP protocols regarding retries and telemetry.
-- Agreement to prioritize logical layer instrumentation for RPC in the current iteration.
-- Review of open pull requests related to RPC status codes and error types.
+- Agreement to align on defining RPC at the logical layer for semantic conventions.
+- Review of open PRs, particularly around error handling and status codes in RPC conventions.
 
 ## Action Items
-- Document the decision to focus on the logical layer for RPC instrumentation.
-- Review the pull request concerning RPC status codes and update the generic error type definition as needed.
+- Document the decision to define RPC at the logical layer and review the PR.
+- Update the base note for error handling to reflect domain-specific attributes for gRPC status codes.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Steve Rao, James Thompson

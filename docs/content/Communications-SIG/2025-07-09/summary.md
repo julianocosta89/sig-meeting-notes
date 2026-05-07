@@ -1,14 +1,15 @@
 ## Key Topics
-- Update on collector documentation refactoring and analysis of user feedback.
-- Discussion on improving the visibility of component documentation and its organization.
-- Plans for gathering user insights through surveys and interviews regarding documentation usability.
-- Strategies for enhancing the information architecture of the documentation.
+- Update on the collector documentation refactoring project.
+- Analysis of Slack data to identify documentation gaps and user needs.
+- Discussion on the challenges of maintaining up-to-date component documentation.
+- Suggestions for improving documentation findability and user experience.
+- Plans for future collaboration and input from the community.
 
 ## Action Items
-- Tiffany to analyze Slack data for common documentation complaints and frequently consulted pages.
+- Tiffany to analyze Slack data for insights on documentation usage and complaints.
 - Lisa to work on adding a list of processors with brief descriptions to the documentation.
-- Tiffany to create a focused work plan and issues related to specific tasks for documentation improvements.
-- Explore options for linking to the component documentation repository from the main documentation site.
+- Tiffany to create a focused work plan and issues for specific tasks related to documentation improvements.
+- Explore the possibility of creating a landing page for component documentation.
 
 ## Participants
 Tiffany Hrabusa, Lisa Jung, Sophia Solomon

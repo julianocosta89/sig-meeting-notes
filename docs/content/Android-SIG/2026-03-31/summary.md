@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the instrumentation API changes and the need for stabilization.
-- Concerns about exposing unstable interfaces in the instrumentation API.
-- The role of session providers and observers in monitoring session changes.
-- Potential solutions to avoid casting issues in the API design.
-- The balance between modularization and the risk of creating a "God object" in the API.
+- Discussion on stabilizing the instrumentation API, particularly the session provider and observer interfaces.
+- Review of AndroidX dependencies and their impact on host applications, including strategies for minimizing dependency issues.
+- Proposed solutions for managing AndroidX dependencies, such as using minimum needed versions and separating modules.
+- Reflection on the fragility of using reflection for dependency management and the need for a mixed strategy in handling dependencies.
 
 ## Action Items
-- Jason to follow up with Servi regarding her contributions to the agenda.
-- Further discussions needed on stabilizing the session provider and observer interfaces.
-- Evaluate the possibility of merging provider and publisher interfaces to simplify API usage.
+- Jason to create a milestone for stabilizing the session API before the next release.
+- Surbhi to update her PR by removing the reflection changes and addressing the AndroidX dependencies.
+- Team to explore reducing AndroidX usage where feasible and consider creating internal annotations.
 
 ## Participants
-Jason Plumb, Cesar Munoz, Jamie Lynch, Servi
+Jason Plumb, Cesar Munoz, Surbhi Agarwal, Jamie Lynch, David

@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on resource timing semantic conventions and their implementation in OpenTelemetry.
-- Proposal for unified HTTP semantic conventions to align browser and mobile instrumentation.
-- Ergonomic considerations for developers regarding timestamp formats (absolute vs. relative).
-- Importance of cross-platform consistency in naming conventions and data representation.
+- Discussion on resource timing semantic conventions and the need for unified HTTP conventions.
+- Proposal to use absolute timestamps versus relative timestamps for resource timing.
+- Consistency in event naming conventions (underscore vs. dot).
+- Consideration of URL tracking for events and potential implications for session management.
+- Plans for a demo to prototype mechanisms for generating resource attributes.
 
 ## Action Items
-- Participants to review the draft PR on unified HTTP semantic conventions.
-- Decision needed on the timestamp format (absolute vs. relative) for resource timing.
-- Further exploration of linking front-end and back-end traces through trace IDs.
+- Review the draft PR on unified HTTP semantic conventions and provide feedback.
+- Change resource timing event names to ensure consistency (underscore vs. dot).
+- Prototype browser location tracking in the demo and explore implications for URL changes during events.
+- Decide on the timing of the next release after addressing naming convention changes.
 
 ## Participants
-Martin Kuba, Hugo Levy, Jared Freeze, Santosh, Ted Young, Maxime Quentin, Joaquín Díaz
+Hugo Levy, Martin Kuba, Jared Freeze, Santosh, Ted Young, Maxime Quentin, Joaquín Díaz

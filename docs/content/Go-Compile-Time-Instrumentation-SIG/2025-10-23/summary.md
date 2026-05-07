@@ -1,15 +1,14 @@
 ## Key Topics
-- Updates on the plan for the first demo, including NetHTTP instrumentation.
-- Discussion on the timeline for draft completion and preparations for KubeCon North America.
+- Updates on the plan for the first demo, including NetHTTP instrumentation and OTL SDK usage.
+- Discussion on creating documentation and a QR code for sharing resources at KubeCon.
 - Proposal creation for Observability Day and Platform Engineering, focusing on compile-time instrumentation.
-- Exploration of potential co-located events related to AI and observability at KubeCon.
-- Collaboration on submission proposals and roles for presentations.
+- Updates on participation in KCD Hangzhou and potential submissions for KubeCon EU.
 
 ## Action Items
-- Kemal to create a draft for the NetHTTP instrumentation by November 6th.
-- Kemal to prepare a documentation page with links to previous talks and create a QR code for KubeCon.
-- Kemal to draft two proposals for Observability Day and Platform Engineering by November 2nd.
-- Huxing to consider co-authoring the proposals and confirm participation.
+- Kemal to draft the NetHTTP instrumentation by November 6th.
+- Kemal to create a documentation page with links and QR code for KubeCon.
+- Kemal to prepare two proposals for Observability Day and Platform Engineering by November 2nd.
+- Huxing to consider submitting a proposal related to AI agents.
 
 ## Participants
 Kemal Akkoyun, Romain Marcadier, Dario Castañé, Huxing Zhang

@@ -1,12 +1,13 @@
 ## Key Topics
-- Update on SDK support for environment variable context propagation, with Python PR awaiting merge and progress on Go implementation.
-- Discussion on the lifecycle of spans in CI/CD, including potential out-of-the-box solutions for reporting span events.
-- Consideration of how observability backends would handle new event types and their integration into existing systems.
-- Exploration of whether backends should create spans from emitted events or wait until all events are received.
+- Updates on SDK support for environment variable context propagation, including progress on Python and Go implementations.
+- Discussion on CI/CD producing long-running traces and the proposed approach for reporting span lifecycle events.
+- Consideration of how observability backends might handle new event types and their implications for existing systems.
+- Exploration of the handling of attributes within spans and the future of span events in the context of the OpenTelemetry specification.
 
 ## Action Items
-- Adriel Perkins to review the open question regarding context extraction in Go.
-- Participants to consider how observability backends can support new event functionalities and provide feedback.
+- Adriel Perkins to post the Dagger implementation details regarding in-progress spans.
+- Carlos Alberto Cortez to finalize and submit a PR related to the span lifecycle event reporting.
+- Alan Clucas to investigate the environment variable length limitations in the Go implementation and how to handle them appropriately.
 
 ## Participants
-Christophe Kamphaus, Adriel Perkins, Neil Yashinsky, Carlos Alberto Cortez, ...
+Adriel Perkins, Christophe Kamphaus, Neil Yashinsky, Carlos Alberto Cortez, Alan Clucas

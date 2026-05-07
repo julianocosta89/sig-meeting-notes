@@ -1,15 +1,14 @@
 ## Key Topics
-- Review of PRs related to the configuration bridge and packaging.
-- Discussion on extracting resources correctly in the SDK and the challenges involved.
-- Exploration of MDC context data and its integration with resource attributes.
-- Use cases for accessing resource attributes in custom agent code and span processors.
-- Proposal for adding a method to retrieve resources from the SDK.
+- Review of PRs, particularly focusing on the config bridge and resource extraction.
+- Discussion on the challenges of exposing resources in the SDK and their usage in instrumentation.
+- Exploration of enabling/disabling settings for instrumentations and their implications for Java agents and native instrumentation.
+- Consideration of integration tests for resource providers and where they should be placed.
+- Proposal for a PR to clarify default settings for instrumentations.
 
 ## Action Items
-- Trask to hit "comment" on pending PR reviews.
-- Gregor to address comments and finalize the configuration bridge PR.
-- Robert to review the PR created by Gregor regarding resource handling.
-- Further discussion on the need for a method to access resources in the SDK.
+- Gregor to create a PR regarding default settings for instrumentations.
+- Trask to review the integration test placement for resource providers.
+- Team to continue discussions on resource exposure and configuration in future meetings.
 
 ## Participants
 Gregor Zeitlinger, Trask Stalnaker, Jay DeLuca, Robert Niedziela

@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on dropping support for the `bottle` instrumentation due to low usage.
-- Introduction of a basic OPM protocol client for remote configuration of OpenTelemetry applications.
-- Consideration of supporting Protobuf 6 and the implications of relaxing dependencies on older versions.
-- Strategies for managing compatibility and testing with different Protobuf versions.
+- Discussion on dropping support for the old `bottle` instrumentation due to lack of users.
+- Introduction of a basic OpenTelemetry Management Protocol (OPMP) client, with ongoing development and testing.
+- Consideration of supporting Protobuf 6, including options to relax dependencies or focus solely on version 6.
+- Discussion on the potential need for different versions of exporters as Protobuf versions evolve.
 
 ## Action Items
-- Create an issue to formally drop the `bottle` instrumentation and allow for community feedback.
-- Review the draft PR for the basic OPM client once available.
-- Explore relaxing the dependency on Protobuf 5 to support Protobuf 6 while ensuring functionality.
-- Update the issue regarding Protobuf support with discussion outcomes.
+- Create an issue to formally drop the `bottle` instrumentation from CI.
+- Review the draft PR for the OPMP client once it's ready.
+- Test compatibility with Protobuf 6 and relax the dependency as a short-term solution.
+- Update the issue regarding Protobuf support with the discussed points.
 
 ## Participants
 Riccardo Magliocchetti, Tammy Baylis, Ezio Moreira, Dan Gomez Blanco, Emídio, Le Chen

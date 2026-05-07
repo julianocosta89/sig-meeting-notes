@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on handling dependencies for ASP.NET Core instrumentation in OpenTelemetry.
-- Proposal for build-time errors to prompt users to add necessary references for instrumentation.
-- Consideration of breaking changes and versioning implications for the NuGet package.
-- Exploration of alternative approaches to manage framework references and dependencies.
-- Long-term plans for native support of instrumentation in .NET.
+- Discussion on handling ASP.NET Core instrumentation and its implications for users.
+- Proposed changes to the NuGet package structure to improve dependency management and user experience.
+- Feedback on draft pull requests, particularly regarding error handling for missing references.
+- Consideration of breaking changes and their impact on versioning.
+- Exploration of workarounds for console applications affected by framework references.
 
 ## Action Items
-- Igor Kiselev to refine the pull request regarding ASP.NET Core instrumentation and gather further feedback.
-- Team to evaluate the implications of making changes as breaking changes and consider versioning strategy.
-- Consider the possibility of creating an opt-in build property or a separate NuGet package to manage dependencies without breaking existing functionality.
+- Igor Kiselev to create a pull request to remove the framework reference conditionally.
+- Documentation to be updated to guide users on handling missing references.
+- Follow-up on the analysis regarding ASP.NET Core hosting assemblies and potential solutions.
 
 ## Participants
-Zach Montoya, Igor Kiselev, Chris Ventura, Piotr Kiełkowicz, Yevhenii Solomchenko, Alexey Pukhov
+Zach Montoya, Igor Kiselev, Chris Ventura, Piotr Kiełkowicz, Yevhenii Solomchenko, Alexey Pukhov, Mateusz Łach.

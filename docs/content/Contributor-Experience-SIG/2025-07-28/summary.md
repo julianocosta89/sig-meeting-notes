@@ -1,13 +1,15 @@
 ## Key Topics
-- Review of the contributor experience survey results and identification of issues.
-- Discussion on improving the "getting started" guides and how to promote them.
-- Suggestions for enhancing meeting notes and templates for better clarity.
-- Exploration of contributors' understanding of project priorities and how to communicate them effectively.
+- Discussion of issues arising from the contributor experience survey.
+- Strategies for improving the "getting started" guides and increasing awareness of their availability.
+- The need for clearer communication regarding project priorities and contributor expectations.
+- Ideas for enhancing meeting notes and documentation for better onboarding of new contributors.
+- Potential creation of a blog post to guide new contributors on how to navigate open source contributions.
 
 ## Action Items
-- Amy to follow up on the effectiveness of the "getting started" guides and consider a blog post to promote them.
-- Amy to work on a template for meeting notes to improve clarity and understanding.
-- Assign issue #38 to Amy for further investigation into contributors' awareness of project priorities.
+- Amy to follow up with contributors regarding the effectiveness of the "getting started" guides.
+- Marylia to draft a blog post outlining how to contribute and the importance of owning one's contribution path.
+- Amy to propose a template for meeting notes to improve clarity and accessibility.
+- Both to explore the creation of a Slack channel with committed maintainers to ensure active engagement.
 
 ## Participants
 Amy Super, MG Marylia Gutierrez, Kayla Reopelle

@@ -1,13 +1,14 @@
 ## Key Topics
-- Release Progress: Bob provided updates on the current release and an instrumentation fix, with Pawel agreeing to review it.
-- Response Body Size Limitation: Discussion on implementing a 4MB response size limit in the OpenTelemetry collector to mitigate memory risks.
-- AI Integration: Introduction of ClaudeMD for code guidance in the repository.
-- Serialization Optimization: Sergey proposed a modification to allow passing a custom serializer in the SDK to avoid duplicating classes.
+- Release progress and instrumentation fixes
+- Implementation of response body size limitations in the OpenTelemetry collector
+- Discussion on optimizing serialization in the PHP SDK
+- Introduction of AI code guidance in the repository
+- Strategies for managing dependencies and versioning in the distro
 
 ## Action Items
-- Pawel to review the instrumentation fix and provide feedback.
-- Bob to open an issue regarding the response body size limitation for implementation.
-- Sergey to explore the possibility of modifying the serializer class to allow for custom serialization without duplicating code.
+- Pawel to review the instrumentation fix for the release.
+- Sergey to open an issue regarding the serialization and potential SPI integration.
+- Sergey to share a link to the draft changes for review and discussion.
 
 ## Participants
-Bob Strecansky, Chris Lightfoot-Wild, Sergey, Pawel Filipczak
+Chris Lightfoot-Wild, Bob Strecansky, Sergey, Pawel Filipczak

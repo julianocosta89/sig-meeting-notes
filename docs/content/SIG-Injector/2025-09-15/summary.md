@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the use of the injector alongside the operator for system packages.
-- Challenges with Python dependency management and the need for better testing frameworks.
-- Plans for a community summit in Belgium to further the OpenTelemetry initiative.
-- Importance of collaboration among different SDKs to improve injector functionality.
-- Need for comprehensive testing to ensure compatibility across various languages and environments.
+- Discussion on the role of the injector alongside the operator and its potential as a replacement for existing agents.
+- Challenges with Python SDK integration and the need for better testing and support for various languages.
+- Plans for a community summit to align on SDK configuration and improve compatibility across different runtimes.
+- The importance of establishing a standardized configuration file format for SDKs to enhance usability.
+- Ongoing discussions about packaging and distribution strategies for the injector and associated SDKs.
 
 ## Action Items
-- Jack Shirazi to discuss Python issues with his colleague and prioritize them.
-- Create a comprehensive list of Python-related issues and potential solutions.
-- Develop a testing matrix for various languages and environments to ensure compatibility.
-- Explore community involvement in the upcoming summit to address technical and product-related challenges.
+- Jack Shirazi to discuss Python SDK issues with his colleague and prioritize necessary changes.
+- Explore the creation of a standardized configuration file format for SDKs.
+- Investigate the possibility of a community summit to address SDK integration and configuration issues.
+- Review and improve testing strategies for the injector, particularly for Python and other languages.
 
 ## Participants
-Antoine Toulme, Bastian Krol, Michele Mancioppi, Jack Shirazi
+Antoine Toulme, Bastian Krol, Michele Mancioppi, Jack Shirazi, Jacob Aronoff

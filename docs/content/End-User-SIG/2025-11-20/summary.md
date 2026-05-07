@@ -1,15 +1,16 @@
 ## Key Topics
-- Discussion on sharing the Japanese survey and its current status.
-- Updates from KubeCon, including the end user panel and interest in the blueprints project.
-- Plans for the blueprints project and the use of AI-enabled notebooks for reference architectures.
-- Review process for pull requests and updates on the adopters list for OpenTelemetry.
-- Next steps for KubeCon-related tasks and follow-ups.
+- Discussion on the Japanese survey for OpenTelemetry adoption and event interest.
+- Updates on the Blueprints project proposal, including the need for reference architectures.
+- KubeCon follow-ups, including reaching out to speakers for the adopters list.
+- Review of the transcripts PR and its integration with video content.
+- Plans for a blog post summarizing the recent livestream and interviews.
 
 ## Action Items
-- Ernest to share the Japanese survey once he receives confirmation from Yoshima.
-- Dan to finalize and submit the blueprints project PR for review.
-- Participants to reach out to KubeCon speakers to encourage them to add their names to the adopters list.
-- Follow-up on any outstanding tasks related to KubeCon and the end user SIG.
+- Follow up with Yoshima for the finalized Japanese survey translation.
+- Reach out to KubeCon speakers to encourage them to add their names to the adopters list.
+- Merge the transcripts PR to include chapters and finalize the content.
+- Draft a blog post based on the recent livestream and interviews.
+- Discuss potential verticals for the Blueprints project in the Slack channel.
 
 ## Participants
-Ernest Owojori, Andrej Kiripolsky, Lisa Jung, Dan Gomez Blanco
+Ernest Owojori, Andrej Kiripolsky, Lisa Jung, Dan Gomez Blanco, Reese Lee, lciukaj@splunk.com

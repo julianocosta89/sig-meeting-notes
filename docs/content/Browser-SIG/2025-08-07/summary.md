@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the PR for the browser page view event and the need for human-readable enums instead of numeric values.
-- Clarification on the use of body properties versus attributes in the schema, emphasizing a shift towards attributes.
-- The need for a documented model of browser observability to clarify expectations and data representation.
-- The distinction between page view events and performance timing metrics, with a focus on counting page views rather than measuring load times.
+- Discussion on the browser page view event PR and the need for human-readable enums.
+- Clarification on the use of body properties vs. attributes in the schema.
+- Importance of documenting the browser observability model and its intended use.
+- Overview of the testing harness for the SDK, including performance metrics and compatibility tests.
+- Considerations for where to document semantic conventions and testing processes.
 
 ## Action Items
-- Create an issue to define the browser observability model.
-- Determine the appropriate repository for storing design documents and semantic conventions.
+- Create a document outlining the browser observability model.
+- Post the testing harness details and solicit feedback in the Slack channel.
+- Raise an issue in the semantic conventions repository regarding the documentation of expected usage.
 
 ## Participants
-Jared Freeze, Ted Young, Dan Gomez Blanco, Daniel Dyla
+Jared Freeze, Ted Young, Dan Gomez Blanco, Daniel Dyla, Joaquin

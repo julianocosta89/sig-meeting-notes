@@ -1,12 +1,15 @@
 ## Key Topics
-- **Contribution Process Feedback**: Discussion on improving the PR approval and merging process, including clarifying roles of maintainers and code owners.
-- **PR Review Challenges**: Addressing slow feedback on PRs, particularly regarding a specific PR related to tail sampling processor.
-- **New Component Proposal**: Introduction of the AWS Lambda Receiver component for OpenTelemetry, aimed at enhancing data collection from AWS services.
+- Feedback on the contribution process, highlighting delays in PR merges and suggestions for improvement.
+- Proposal for a new AWS Lambda Receiver component to collect telemetry data from AWS services.
+- Discussion on the OpenTelemetry graduation process and recommendations from the Technical Oversight Committee.
+- Consideration of changing the default logging library from ZAP to a more actively maintained option like S-Log.
+- Recent bugs related to Prometheus and AutelGo dependencies, and the implementation of nightly end-to-end tests.
 
 ## Action Items
-- Create issues to automate the addition of labels for PRs that have received code owner approval.
-- Move the PR review process documentation to the contributing guidelines for better accessibility.
-- Follow up on the specific PR regarding tail sampling in the relevant SIG meeting for further assistance.
+- Open issues to clarify the PR review process and improve communication on merge statuses.
+- Explore automation for labeling PRs that have received code owner approvals.
+- Consider sponsorship for the AWS Lambda Receiver component proposal.
+- Investigate the potential transition from ZAP to S-Log for logging in the core collector.
 
 ## Participants
-Pablo Baeyens, Marylia Gutierrez, Jade Guiton, Edmo Vamerlatti, Christos Markou, Dhanya R Mathews, Michalis Katsoulis
+Pablo Baeyens, MG Marylia Gutierrez, Jade Guiton, Edmo Vamerlatti, Christos Markou, Dhanya R Mathews, Michalis Katsoulis, Roger Coll, Mikołaj Świątek.

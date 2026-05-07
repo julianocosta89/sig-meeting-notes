@@ -1,13 +1,14 @@
 ## Key Topics
 - Discussion on the behavior of the enabled API calls in OpenTelemetry, particularly regarding logger configuration and visibility of changes.
-- Concerns about the performance implications of using volatile reads in Java and the need for a balance between correctness and performance.
-- The potential introduction of extended attributes for metrics in JavaScript and the implications for backward and forward compatibility.
-- The importance of ensuring that changes to the API do not disrupt existing third-party SDKs.
+- Concerns about the performance implications of making certain fields volatile in Java, balancing correctness and efficiency.
+- Debate on the introduction of complex attributes in metrics and whether they should be universally supported or selectively implemented based on use cases.
+- The importance of maintaining forward compatibility in API changes, especially in JavaScript, and the potential reputational risks of breaking existing implementations.
+- Strategies for communicating changes to the SDK implementation community to mitigate backlash from breaking changes.
 
 ## Action Items
-- Robert Pająk to revise the PR based on feedback regarding the visibility of changes in the enabled API calls.
-- Daniel Dyla to explore options for introducing extended attributes in a way that maintains backward compatibility, potentially by creating a new API method.
-- Participants to review the implications of proposed changes across different languages and SDKs.
+- Robert Pająk to revise the PR regarding the enabled API calls to clarify visibility guarantees.
+- Daniel Dyla to explore options for implementing extended attributes in JavaScript without breaking existing SDKs, potentially using a new API method.
+- Participants to consider outreach to third-party SDK maintainers regarding upcoming API changes to ensure they are prepared.
 
 ## Participants
-Liudmila Molkova, Bogdan Drutu, Carlos Alberto Cortez, Trask Stalnaker, Ted Young, Robert Pająk, Josh Suereth, Daniel Dyla
+Liudmila Molkova, Bogdan Drutu, Carlos Alberto Cortez, Trask Stalnaker, Robert Pająk, Ted Young, Josh Suereth, Daniel Dyla

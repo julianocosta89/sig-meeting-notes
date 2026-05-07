@@ -1,13 +1,15 @@
 ## Key Topics
-- Review of the current blueprint template and its finalization process.
-- Discussion on the progress of existing blueprints, particularly for non-Kubernetes environments and centralized telemetry platforms.
-- Identification of additional blueprint topics that may need to be addressed, including mainframe observability.
-- Encouragement for teams to start working on blueprints despite the template not being finalized.
+- Review of the current state of blueprints and templates for OpenTelemetry.
+- Discussion on the progress of specific blueprints: non-Kubernetes environments, centralized telemetry platforms, and Kubernetes observability.
+- Agreement on using Mermaid and D2 for diagramming tools.
+- Importance of moving forward with blueprints despite the template not being finalized.
+- Exploration of additional blueprints and their scopes.
 
 ## Action Items
-- Participants to begin drafting blueprints based on current discussions and templates.
-- Comment on the board regarding the scope and number of blueprints to be included.
-- Follow up on contributions from other team members interested in specific blueprints.
+- Participants to start working on their respective blueprints even if the template is not finalized.
+- Lucas to create a Google Doc for the non-Kubernetes environments blueprint.
+- Team to discuss the inclusion of additional blueprints in future meetings.
+- Verify the availability of OpenTelemetry-specific icons for diagramming.
 
 ## Participants
-lciukaj@splunk.com, neil yashinsky, Joy, Dan, Tiffany, Gabrielle, Alex
+Lucas, Neil

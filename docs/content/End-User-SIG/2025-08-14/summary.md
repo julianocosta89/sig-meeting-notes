@@ -1,14 +1,13 @@
 ## Key Topics
-- **Mentorship Program Update**: 23 applicants received, selection process to be completed by August 26, with the program starting on September 1.
-- **Issue Productization**: Discussion on using reactions to prioritize issues and the need for clearer communication in the maintainer's guide.
-- **First-Time Contributor Support**: Proposal to flag first-time contributors to streamline the triage process and enhance their experience.
-- **OpenTelemetry Bot Utilization**: Exploring the use of the bot to assist new contributors and provide feedback on their contributions.
+- Update on mentorship program: 23 applicants, selection process to be completed by August 26.
+- Discussion on issue productization and prioritization using thumbs-up reactions.
+- Proposal to flag new contributors and streamline their experience in the contribution process.
+- Mention of the Contributor Experience SIG and its initiatives for new contributors.
 
 ## Action Items
-- Review and select mentees for the mentorship program by August 26.
-- Publish a blog post to promote issue prioritization and encourage community engagement.
-- Investigate the functionality of the OpenTelemetry bot for notifying contributors about missing information in their issue submissions.
-- Collaborate with the Contributor Experience SIG to standardize the onboarding process for new contributors across different projects.
+- Andrej and Adriana to review mentorship applications and finalize selections by August 26.
+- Dan to publish a blog post to promote the issue prioritization process.
+- Antoine to reach out to the Contributor Experience SIG for insights on improving new contributor experiences.
 
 ## Participants
 Antoine Toulme, Andrej Kiripolsky, Sophia Solomon, Dan Gomez Blanco

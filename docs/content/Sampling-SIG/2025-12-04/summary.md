@@ -1,13 +1,14 @@
 ## Key Topics
-- Access issues with the agenda document and its implications for meeting continuity.
-- Discussion on the status of the randomness requirements and their impact on SDK implementations.
-- Updates on the declarative configuration work and its experimental status.
-- Compatibility concerns regarding the parent-based sampler and new trace ID ratio implementations.
-- Interest in stabilizing the randomness aspects and trace state handling in OpenTelemetry.
+- Access issues with the agenda document for the SIG.
+- Discussion on the status and implementation of randomness requirements and sampling in SDKs.
+- Progress on declarative configuration and its experimental status.
+- Compatibility concerns regarding parent-based samplers and new trace ID ratio specifications.
+- The need for stabilization of the randomness and trace state handling documents.
 
 ## Action Items
-- Joshua MacDonald to push for the stabilization of randomness requirements and trace state handling in the OpenTelemetry specification.
-- Participants from Datadog to advocate for SDK implementations during SIG meetings.
+- Joshua MacDonald will advocate for the stabilization of randomness parts and trace state documents in the specs SIG.
+- Alf Kenny's PR (number 44378) will be reviewed by Joshua MacDonald and Kent Quirk.
+- Yuanyuan Zhao will attend the specs SIG meeting to discuss implementation interests.
 
 ## Participants
 Kent Quirk, Alf Kenny, Peter Findeisen, Joshua MacDonald, Yuanyuan Zhao

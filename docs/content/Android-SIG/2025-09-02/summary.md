@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on slow rendering listener and potential memory leaks due to holding strong references to activities.
-- Proposal to use weak references for activity listeners to prevent memory leaks.
-- Introduction of disk buffering for metrics collection in constrained server environments, focusing on performance optimizations.
-- Addressing inefficiencies in disk buffering related to serialization and deserialization processes.
-- Balancing feature development with maintenance concerns in the OpenTelemetry library.
+- Discussion on slow rendering listener and the potential use of weak references to prevent memory leaks.
+- Review of disk buffering implementation and performance optimizations, including the need for direct streaming from disk to network.
+- Debate over the new API's extensibility and its impact on existing use cases, particularly regarding serialization and deserialization.
+- Consideration of balancing feature enhancements with maintenance concerns in the API design.
 
 ## Action Items
-- Explore the implementation of weak references for activity listeners.
-- Conduct an audit of the project to identify other potential memory leak issues.
-- Tyler to continue optimizing disk buffering and address serialization inefficiencies in future PRs.
+- Tyler Benson to provide details on how the old API supported use cases that may not be possible with the new API.
+- Cesar Munoz to explore decoupling read and write interfaces in the API to enhance extensibility.
+- Participants to review the current PR and provide feedback on its size and complexity.
 
 ## Participants
-Greg Zeitlinger, Jason Plumb, Cesar Munoz, Hanson Ho, Tyler Benson
+Jason Plumb, Cesar Munoz, Tyler Benson, Hanson Ho, GZ Gregor Zeitlinger

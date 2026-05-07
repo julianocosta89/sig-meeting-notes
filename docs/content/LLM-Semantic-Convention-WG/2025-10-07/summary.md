@@ -1,15 +1,14 @@
 ## Key Topics
-- Review of backlog items and triage process for ongoing issues.
-- Discussion on OpenAI embedding instrumentation and the need for reviews on PRs.
-- Clarification on the handling of URI and file parts in the context of OpenTelemetry.
-- Introduction of new members and their roles in the project.
-- Ongoing updates and action items related to various PRs.
+- Review of backlog items and triage processes.
+- Discussion on OpenAI embedding instrumentation and related PRs.
+- Documentation roadmap for instrumentation tracking.
+- Proposal for extending agent span specifications to include internal and service kinds.
+- Development of a utility library for telemetry and semantic conventions.
 
 ## Action Items
-- Aaron to check with Ludmilla regarding the status of backlog items.
-- Sergey to improve the handling and updating of existing issues.
-- Keith to update comments on PR based on feedback received.
-- Aaron to address follow-up comments on the URI and file part discussion.
+- Sergey to propose GitHub issues for tracking instrumentation needs.
+- Sergey to move documentation to a Google Doc for community feedback.
+- Michael to set up a session to discuss switching to the generated library for agent invocation types.
 
 ## Participants
-Aaron Abbott, Sergey Sergeev, Michael He, Alex Hall, Pavan, Keith Decker, Marcelo Trylesinski, Drew, Dylan, Ricardo.
+Aaron Abbott, Sergey Sergeev, Michael He, Alex Hall, Keith Decker, Pavan, Marcelo Trylesinski.

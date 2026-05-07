@@ -1,13 +1,13 @@
 ## Key Topics
 - Discussion on the implementation of feature gates in the mdataGen tool and its benefits for consistency across metrics.
-- Review of open issues related to requirement levels for attributes, particularly for process attributes, and the need for clarity on their conditional requirements.
-- Agreement on the need for a migration section in documentation to clarify transitions and attribute control through gates.
-- Consideration of the timeline for KubeCon and the feasibility of having a release candidate ready.
+- Review of open issues related to requirement levels for process attributes and the need for clearer definitions.
+- Consideration of candidate attributes for KubeCon and the feasibility of meeting that target.
+- Clarification on the status of conditionally required attributes and the need for revisiting their definitions.
 
 ## Action Items
-- Christos to summarize the agreement on the feature gate implementation and document the situation.
-- Group to revisit the requirement levels for attributes and clarify the status of the related issue.
-- Follow up on the potential need for consistent required attributes across different systems.
+- Christos Markou to update the issue regarding feature gates and summarize the group's agreement on the implementation approach.
+- Group to revisit the requirement levels of process attributes before the release candidate.
+- Further discussions to be held in upcoming meetings to finalize decisions on attribute requirements.
 
 ## Participants
 Pablo Baeyens, Neil Yashinsky, Donal O'Sullivan, Braydon Kains, Christos Markou, Dmitrii Anoshin

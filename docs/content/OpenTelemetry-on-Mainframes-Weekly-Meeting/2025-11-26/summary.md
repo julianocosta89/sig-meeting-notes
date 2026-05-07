@@ -1,11 +1,13 @@
 ## Key Topics
-- **Mainframe Documentation Update**: Greg Shriver provided an update on the progress of creating mainframe overview documentation, including the structure and approach for the documentation.
-- **GitHub Contribution Process**: Discussion on the mechanics of contributing to the OpenTelemetry documentation via GitHub, including forking repositories and creating pull requests (PRs).
-- **GitHub Action Runner Issues**: Ruediger Schulze shared updates regarding the GitHub Action Runner for Linux S390, including authorization issues and potential collaboration with CNCF for a community-driven solution.
+- **Documentation Update**: Greg Shriver is working on an overview document for mainframe contributions and plans to submit a PR for review.
+- **GitHub Actions for Mainframes**: Ruediger Schulze discussed issues with GitHub Action Runner authorization and mentioned CNCF's initiative for a community-driven GitHub Action Runner for Linux on S390.
+- **Automated Testing**: The need for improved automated testing for mainframe components was highlighted, with a focus on collaboration with CNCF.
+- **PR Submission Process**: Discussion on the process for submitting documentation PRs, including the need for a separate branch and the use of GitHub UI for ease.
 
 ## Action Items
-- **Greg Shriver**: Continue working on the mainframe documentation and prepare to open a PR once ready.
-- **Ruediger Schulze**: Follow up on the GitHub Action Runner situation and any developments from CNCF.
+- Greg Shriver to submit a PR for the mainframe documentation once ready.
+- Ruediger Schulze to identify the CNCF contact for collaboration on GitHub Actions and report back to the group.
+- Morgan McLean to assist with PR review once submitted.
 
 ## Participants
-Greg Shriver, Morgan McLean, Richard Nikula, Ruediger Schulze
+Greg Shriver, Morgan McLean, Richard Nikula, Ruediger Schulze (IBM)

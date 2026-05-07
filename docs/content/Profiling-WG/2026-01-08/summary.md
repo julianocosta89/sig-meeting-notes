@@ -1,15 +1,15 @@
 ## Key Topics
-- Review of previous action items and updates on the OTLP to P-Prof converter.
-- Discussion on the Review Process Context Propagation, including updates on specifications and approvals.
-- Updates from a recent meeting with the TC regarding the handling of profiling payloads in the collector.
-- Concerns about memory efficiency in the collector and strategies to address them.
-- Ongoing discussions about the implementation details for profiling data structures.
+- Review of previous action items and updates on OTLP to P-Prof converter.
+- Discussion on the Review Process Context Propagation and the need for approvals.
+- Updates on the profiling protocol and collector's internal data model.
+- Ruby PR reviews and merging priorities.
+- Clarification needed on attributes with and without references in profiling signals.
 
 ## Action Items
-- Florian to ping Antoine for approvals on the OTLP to P-Prof converter.
-- Christos to provide a final review of the specifications for the Review Process Context Propagation.
-- Participants to review and approve the updated specifications by the next meeting.
-- Felix to follow up on the implementation details discussed regarding memory efficiency.
+- Christos to ping Bogdan for clarification on attribute handling in profiling.
+- Ivo to finalize the review of the PR for context propagation.
+- Felix to follow up on the OTLP to P-Prof converter approvals.
+- Dale to prioritize Ruby PR reviews and manage merging order.
 
 ## Participants
-Florian Lehner, Ivo Anjo, Frederic Branczyk, Felix Geisendörfer, Christos Kalkanis
+Florian Lehner, Ivo Anjo, Frederic Branczyk, Felix Geisendörfer, Christos Kalkanis, Dale Hamel, Nayef Ghattas, Josh Suereth, Jonathan Halliday.

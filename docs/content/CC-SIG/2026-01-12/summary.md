@@ -1,14 +1,14 @@
 ## Key Topics
-- Deprecation of Jaeger propagator and Zipkin exporter in the OpenTelemetry spec.
-- Changes in logger configuration properties in the spec, including a breaking change from "disabled" to "enabled".
-- Upcoming release of Semantic Convention and adjustments needed for code generation.
-- Discussion on cleaning up CI issues related to code warnings and tidy issues.
-- Consideration of contributions, including unit tests and CI test cases.
+- **Deprecation of Jaeger Propagator and Zipkin Exporter**: The Jaeger propagator is now optional, and the Zipkin exporter is deprecated due to Zipkin's support for the OTLP protocol.
+- **Changes in Logger Configuration**: A breaking change in the spec regarding logger configuration was discussed, specifically the renaming of the property for enabling/disabling the tracer.
+- **Upcoming Semantic Conventions Release**: An upcoming release of Semantic Convention was mentioned, with code generation adjustments expected.
+- **CI Improvements and Code Cleanup**: Discussion on cleaning up CI issues and warnings in the codebase to enhance code quality.
+- **Contribution Opportunities**: A new contributor is interested in adding unit tests, and there was a discussion on supporting mixed C++ standards in builds.
 
 ## Action Items
-- Prepare a PR to adjust the logger configuration in the CPP area to align with the spec changes.
-- Respond to a contributor regarding a PR for a unit test to cover new behavior.
-- Clarify the intent of a PR related to mixing C++ standards in CI and decide on support for this practice.
+- Prepare a small PR to adjust the logger configuration in the CPP area to align with spec changes.
+- Address CI warnings and clean up the codebase as part of ongoing maintenance.
+- Clarify the intent behind a PR related to mixed C++ standards and decide on support for this practice.
 
 ## Participants
 malff, Tom Tan, Ehsan, Ali Sedighi

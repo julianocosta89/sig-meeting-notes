@@ -1,14 +1,15 @@
 ## Key Topics
-- Review of pull requests, including updates on dependabot and issues with scripts.
-- Discussion on the need for clearer documentation regarding Kafka-related tests and dependencies.
-- Ongoing work on frequent sampling of threads and configuration-based instrumentation.
-- Consideration of adding new attributes to HTTP client metrics and the relationship between SDK and runtime.
-- Discussion on the process for handling .NET version changes and the use of SHA checks versus public signing keys.
+- Discussion on pull requests and updates, including dependabot bumps and issues with scripts and checksums.
+- Review of broken links and documentation updates, particularly regarding the transition from old documentation to GitHub-hosted resources.
+- Updates on Kafka-related tests and frequent thread sampling, with a focus on improving performance and reducing overhead in logging.
+- Consideration of new attributes for HTTP client metrics and the relationship between SDK and runtime.
+- Discussion on handling .NET version changes and the implications for installation scripts and assembly loading.
 
 ## Action Items
-- Chris Ventura to update the proposal in the issue regarding change notifications and documentation processes.
-- Paulo Janotti to validate the dependency on PowerShell and Windows environments.
-- Participants to continue reviewing and providing feedback on the frequent sampling of threads PR.
+- Chris to update the proposal regarding the SHA check process and document change notifications.
+- Mateusz to work on the log flushing issue and prepare a pull request.
+- Rasmus to check permissions for migrating issues between repositories.
+- Team to review and provide feedback on the frequent thread sampling PR.
 
 ## Participants
-Chris Ventura, Paulo Janotti, Rasmus Kuusmann, Mateusz Łach
+Chris Ventura, Paulo Janotti, Rasmus Kuusmann, Mateusz Łach, Igor Kiselev

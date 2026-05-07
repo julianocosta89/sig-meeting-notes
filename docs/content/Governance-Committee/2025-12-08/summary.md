@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on triaging various issues related to OpenTelemetry projects.
-- Need for clarity on the deprecation process for the Jaeger propagator and its implications.
-- Automation workflow issues that have been broken since August.
-- Community repo updates and the importance of labeling pull requests for maintainers.
-- Ownership and management of Go OpenTelemetry UI and related permissions.
+- Discussion on triaging issues and workflow improvements.
+- Review of the declarative config support and its stability status.
+- Need for Technical Committee (TC) input on deprecating Jaeger propagator.
+- Issues with automation workflows and their resolution.
+- Ownership and management of Go OpenTelemetry resources on Netlify.
 
 ## Action Items
-- Create an issue to address the broken automation workflow since August.
-- Follow up with the Technical Committee regarding the deprecation process for the Jaeger propagator.
-- Review and potentially update the agenda for the next meeting based on previous discussions.
-- Clarify permissions and management responsibilities for the Netlify instance related to the Go OpenTelemetry UI.
+- Create an issue to address broken automation workflows since August.
+- Follow up with Damien regarding the Go OpenTelemetry Netlify project and permissions.
+- Clarify the deprecation process with the Technical Committee.
 
 ## Participants
 Juraci Paixão Kröhling, Severin Neumann, Pellared

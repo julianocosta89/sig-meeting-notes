@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on updates to the SEMCOM and Weaver format.
-- Review of PRs related to upstream OTLP exporters and middleware args in Rack applications.
-- Clarification on attribute value restrictions in OpenTelemetry proto.
-- Examination of the implications of the stability opt-in for Rack middleware.
+- Discussion on PRs related to the OpenTelemetry Ruby project, including updates on the SEMCOM and a remote flag for OTLP exporters.
+- Proposal to deprecate the SQL Obfuscation gem and create a new SQL Processor gem for better organization of SQL-related functionalities.
+- Clarification on middleware arguments in Rack applications and their implications for stability and instrumentation.
+- Feedback on the need for better metrics logging and usability improvements in the OpenTelemetry SDK.
 
 ## Action Items
-- Eric to review and provide feedback on the PR regarding upstream OTLP exporters.
-- Eric to comment on the draft PR for Rack middleware and confirm the use case with the author.
-- Participants encouraged to open PRs in the channel for discussion.
+- Review and provide feedback on the PR regarding the remote flag for OTLP exporters.
+- Start research on renaming the SQL Obfuscation gem to SQL Processor and plan for the deprecation process.
+- Investigate the middleware arguments PR to ensure it meets use cases without breaking existing functionality.
+- Explore options for enhancing metrics logging to improve user feedback and usability.
 
 ## Participants
-Eric Mustin, Arjun Rajappa, Wendy Smoak, Hannah Ramadan
+Eric Mustin, Arjun Rajappa, Wendy Smoak, Hannah Ramadan, Ishwan

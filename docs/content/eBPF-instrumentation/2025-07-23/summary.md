@@ -1,15 +1,16 @@
 ## Key Topics
-- Review of progress on OpenTelemetry eBPF instrumentation milestone.
-- Discussion on the need for updated documentation, particularly for new features and service exclusions.
-- Updates on the removal of the "Bela" name from metrics and configurations.
-- Plans for releasing Helm charts and managing versioning for stability.
-- Strategies for encouraging contributions through "good first issues."
+- Progress on the OpenTelemetry eBPF instrumentation milestone and documentation needs.
+- Discussion on the removal of the "Bela" name from metrics and configurations.
+- Need for documentation on excluding services and the release process.
+- Challenges with Kubernetes pod telemetry and service discovery.
+- Ongoing work on distributed tracing and instrumentation of demo applications.
 
 ## Action Items
-- Mario and Severn to finalize the Bayla documentation before copying to OpenTelemetry.
-- Create issues for renaming internal functions as "good first issues" to attract new contributors.
-- Nimrod to address comments on the Helm chart PR and ensure it gets merged.
-- Ensure Helm chart versions are pinned to avoid breaking changes for users.
+- Tyler Yahn to open an issue to track the addition of release documentation.
+- Mario Macias to create "good first issues" for renaming internal symbols.
+- Nimrod Avni to investigate telemetry issues with Kubernetes pods and share logs.
+- Nikola Grcevski to assist with debugging and discuss code improvements for context propagation.
+- Mattia Meleleo to open an issue regarding the vendor folder discussion.
 
 ## Participants
-Tyler Yahn, Mike Dame, Rafael Roquetto, Nikola Grcevski, Mario Macias, Nimrod Avni
+Tyler Yahn, Mike Dame, Rafael Roquetto, Nikola Grcevski, MM Mario Macias, Nimrod Avni, Mattia Meleleo, Stephen Lang.

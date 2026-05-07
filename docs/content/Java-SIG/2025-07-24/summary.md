@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on validating declarative configuration in OpenTelemetry Java.
-- Need for early validation of configuration properties to prevent runtime errors.
-- Consideration of logging warnings versus stopping the application on configuration errors.
-- Proposal for a dedicated validation framework for configuration issues.
-- Importance of consistency across languages regarding configuration validation.
+- Discussion on validating declarative configuration in OpenTelemetry to ensure early detection of configuration issues.
+- Overview of the new IBM MQ metrics module and its integration with OpenTelemetry.
+- Exploration of the Weaver tool for generating metrics and documentation, including potential uses for metadata and configuration generation.
+- Categorization of instrumentation types, including internal, custom, and enrichers, to improve documentation and usability.
 
 ## Action Items
-- Robert Niedziela to open an issue in the Java or configuration repository regarding validation needs.
-- Explore the possibility of implementing a validation step within the configuration customizer process.
+- Robert Niedziela to create an issue regarding the need for a dedicated validation step for declarative configuration.
+- Jason Plumb to share insights and findings from his work with the IBM MQ metrics module and Weaver.
+- Jay DeLuca to further explore the categorization of instrumentations and consider supporting multiple categories for better documentation.
 
 ## Participants
-Gregor Zeitlinger, Robert Niedziela, Trask, Jason Plumb, Peter Findeisen
+Gregor Zeitlinger, Robert Niedziela, Trask, Jason Plumb, Jay DeLuca, Peter Findeisen, Lauri Tulmin

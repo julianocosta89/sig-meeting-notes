@@ -1,15 +1,16 @@
 ## Key Topics
-- Review of the triage board and updates on various issues related to telemetry schema.
-- Discussion on handling attributes in signal definitions and the need for refining entity views.
-- Updates on the V2 schema generation from Rust models and potential automation for schema updates.
-- Importance of defining event severity in logs and establishing a policy for it.
-- Consideration of adding links in YAML for span definitions and their validation.
+- Review of the triage board and discussion on closing old issues.
+- Updates on V2 schema development, including JSON schema generation and the need for automation in releases.
+- Discussion on logging conventions and the implementation of message templates in log records.
+- Plans for refactoring the Weaver codebase to improve structure and clarity.
+- Updates on the status of various tasks and features related to semantic conventions and telemetry schema.
 
 ## Action Items
-- Josh Suereth to close the Rego policy violation properties issue.
-- Jeremy Blythe to create a tag for live check on the triage board.
-- Team to decide on the automation process for dumping JSON schema into release assets.
-- Liudmila Molkova to test the URL handling for Visual Studio Code integration.
+- Jeremy Blythe to add a "live check" tag to relevant issues.
+- Josh Suereth to implement automation for JSON schema dumping into releases.
+- Liudmila Molkova to continue working on helper functions for attribute tracking and documentation.
+- Jeremy Blythe to take ownership of the search feature implementation.
+- Team to provide feedback on the new logging conventions and message template implementation.
 
 ## Participants
 Jeremy Blythe, Nathan Smith, Josh Suereth, Liudmila Molkova

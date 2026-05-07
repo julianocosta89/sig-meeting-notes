@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on PRs and issues related to cleanup for CMake and codebase improvements.
-- Reversion of gRPC changes due to interface design concerns.
-- Clarification on serialization compliance with OpenTelemetry proto specifications.
-- Dependency management and testing strategies for various versions of libraries.
-- Unexpected behavior in Windows installation process regarding dependency resolution.
+- Discussion on PRs related to cleanup for CMake and gRPC interface changes.
+- Review of dependency management and versioning for OpenTelemetry C++.
+- Updates on the configuration report and its upcoming release.
+- Insights on instrumentation types (traces, metrics, logs) and their complexities.
+- Participant introductions and plans for future contributions to the project.
 
 ## Action Items
-- Doug to revert gRPC changes and mark the PR ready for review.
-- Further investigation needed on serialization compliance with the spec, awaiting Lalit's input.
-- Review and finalize dependency management strategy for testing different library versions.
+- Doug Barker to revert gRPC changes and mark the PR ready for review.
+- Marc Alff to merge approved PRs and address comments on the configuration work.
+- Participants to provide feedback on any issues that need to be prioritized for the next release.
 
 ## Participants
 Doug Barker, Rafael Roquetto, Marc Alff

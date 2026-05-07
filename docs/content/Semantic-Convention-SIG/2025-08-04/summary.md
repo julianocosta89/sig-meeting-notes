@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on requiring briefs for attributes and metrics in OpenTelemetry.
-- Updates on the status of mainframe-related PRs and coordination with the mainframe SIG.
-- Ongoing discussions about defining infometrics and their relationship to existing metrics.
-- Clarification on the modeling of CI/CD pipeline runs as entities and their implications for observability.
-- Concerns regarding high cardinality issues when associating metrics with entities.
+- Discussion on the requirement of briefs for attributes and metrics, with ongoing efforts to ensure compliance.
+- Updates on the status of the mainframe SIG and its interactions with the Semantic Convention SIG.
+- Exploration of the concept of info metrics and their relevance in OpenTelemetry, particularly in relation to CI/CD pipelines.
+- Review of proposed changes to the modeling of operating systems within OpenTelemetry.
+- Consideration of default behaviors for attributes in the context of semantic conventions and instrumentation.
 
 ## Action Items
-- Liudmila Molkova to follow up with the mainframe SIG regarding the status of their PRs.
-- Trask Stalnaker to create a hardware code owners list.
-- Further discussion on the definition and implementation of infometrics to be scheduled.
-- Address concerns about high cardinality in metrics associated with pipeline run entities.
+- Liudmila Molkova to follow up with the mainframe SIG regarding their status.
+- Christophe Kamphaus to create an issue on handling info metrics in semantic conventions and gather examples of their usage.
+- James Thompson to re-raise the discussion on OS modeling when relevant participants are available.
+- Participants to provide feedback on the proposed summary tables for attributes and metrics.
 
 ## Participants
-Josh Suereth, Trask Stalnaker, Liudmila Molkova, James Thompson, Christophe Kamphaus, Joao G.
+Josh Suereth, Christophe Kamphaus, Trask Stalnaker, Liudmila Molkova, James Thompson, Daniel Dyla, Armin (Dynatrace)

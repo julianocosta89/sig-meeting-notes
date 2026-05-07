@@ -1,15 +1,16 @@
 ## Key Topics
-- Discussion on splitting remaining blog posts among team members.
-- Updates on blog post approvals and timelines.
-- Exploration of how industry verticals might influence collector deployment.
-- Clarification on instrumentation issues related to HTTP response codes.
-- Coordination for participation in the End User SIG.
+- Discussion on the status of blog posts and approval processes.
+- Assignment of blog post topics among participants.
+- Integration of blog content with contributor SIG and blueprints.
+- Technical discussion regarding a bug in the airline service instrumentation.
+- Exploration of how industry verticals may affect collector deployment.
 
 ## Action Items
 - Juliano to follow up on blog post approvals.
-- Tristan to complete the Grok blog post and assist with the remaining ones.
+- Tristan to complete the Grok blog post.
 - Damien to draft the Skyscanner blog post.
-- Team to investigate the instrumentation bug related to HTTP response codes.
+- Juliano to handle the Atlassian blog post.
+- Tristan to investigate the WebSocket issue in the Elixir service and consult with Bandit developers.
 
 ## Participants
 Juliano Costa, Tristan, Damien Mathieu

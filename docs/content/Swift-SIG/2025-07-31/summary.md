@@ -1,13 +1,15 @@
 ## Key Topics
-- **Data Compression Issues**: Discussion on the challenges with CocoaPods and Vision OS support, including a pull request (PR) that is pending review.
-- **Platform-Specific Concerns**: Addressing the complications arising from supporting multiple platforms (mobile, desktop, backend) and the impact on build and dependency management.
-- **Metrics Signal Warning**: Introduction of a warning for mobile users regarding the use of the metric signal due to potential overload on collectors.
-- **Collaboration on Browser SIG**: Mention of contributions to a new Browser SIG as a subset of the existing JSIG.
+- Discussion on the pre-release of version 2.0 and testing updates.
+- Issues with data compression library compatibility with CocoaPods and potential solutions.
+- Considerations for supporting multiple platforms (iOS, Vision OS, etc.) and the challenges it poses.
+- Namespace conflicts between SwiftUI and OpenTelemetry SDK views.
+- Feature request for capturing ISP network type and device information in iOS SDK.
 
 ## Action Items
-- Link the PR related to data compression in the meeting chat for further visibility and support.
-- Explore the possibility of using a fork temporarily until the upstream issue is resolved.
-- Research alternative data compression methods or libraries that could be utilized instead of the current implementation.
+- Ariel to follow up on the data compression issue and explore potential solutions.
+- Participants to review and contribute to the PR regarding CocoaPods compatibility.
+- Vinod to investigate the issue with the app's inability to decode responses.
+- Alex to check on privacy-related flags for capturing ISP information.
 
 ## Participants
-Ariel Demarco, Bryce Buchanan, Alex Cohen, Arri Blais
+Ariel Demarco, Bryce Buchanan, Alex Cohen, Vinod Vydier, Arri Blais

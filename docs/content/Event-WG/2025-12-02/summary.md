@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on new metric value types and limits, with emphasis on stabilizing specifications by January 15th.
-- Recommendations for setting severity numbers for logs and events, including the need for semantic conventions.
-- Review of the log signature board and the importance of external reviews.
-- Clarification on the distinction between error and exception types in the context of OpenTelemetry.
-- Considerations for Java PRs regarding argument naming conventions.
+- Discussion on new metric value types and limits, focusing on the need for stability by January 15th.
+- Recommendations for setting severity numbers for logs and events, emphasizing the need for context in severity levels.
+- Review of the log signature board and the need for external review.
+- Clarification on the distinction between errors and exceptions in the context of the OTEP.
+- Consideration of named parameters versus arguments in structured logging for Java.
 
 ## Action Items
-- Liudmila to push for stability on the prototypes and finalize the PR for Python.
-- Document the recommended severity number for events in semantic conventions.
-- Liudmila to draft a proposal regarding the relationship between the current work and the OTEP.
-- Trask to leave feedback on log signature changes and ensure external reviews are sought.
+- Liudmila to work on stabilizing the prototypes and push for PR merges.
+- Trask to follow up on the log signature board review and seek external input.
+- Both to revisit the OTEP discussions and clarify the relationship with the ergonomic API updates.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker

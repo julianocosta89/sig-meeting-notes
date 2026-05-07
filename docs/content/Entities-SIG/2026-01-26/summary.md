@@ -1,13 +1,15 @@
 ## Key Topics
-- **Project Progress and Prioritization**: Discussion on the current status of the project and the need to prioritize tasks due to delays.
-- **Entity Update Model**: Concerns raised about the existing model for entity updates and the need for a more efficient approach, especially in large-scale environments like Kubernetes.
-- **Temporary Measures for Session Management**: Agreement on using temporary measures for session management while working towards a more permanent solution.
-- **Pull Request Review**: Review of Dimitrii's pull request, focusing on the entity state and relationship handling.
+- Progress on the entity model and prototype work, with discussions on prioritization and resource management.
+- Review of Dimitrii's pull request concerning the entity update model and concerns regarding the overall data model.
+- Discussion on the merge algorithm for entities and the implications of conflicts in attribute keys.
+- Strategies for handling asynchronous attributes and their impact on entity identity.
+- Updates on the project board, including timelines and next steps for SDK implementations.
 
 ## Action Items
-- **Prototype Development**: Daniel Dyla to resume work on the prototype, with a focus on prioritizing tasks based on the meeting's discussions.
-- **Follow-up on Pull Request**: Dmitrii Anoshin to update the pull request based on feedback regarding entity state and relationship management.
-- **Prioritization Discussion**: Conclude the meeting with a prioritization of tasks to ensure progress on key issues.
+- Josh to update and push the merge algorithm PR and notify the team.
+- Daniel to present the entity manager OTEP in the browser meeting for feedback.
+- Dimitrii to clarify and add tasks related to the entity as a signal to the project board.
+- Daniel to work on the SDK startup specification this week.
 
 ## Participants
 Josh Suereth, Dmitrii Anoshin, Daniel Dyla, Ted Young

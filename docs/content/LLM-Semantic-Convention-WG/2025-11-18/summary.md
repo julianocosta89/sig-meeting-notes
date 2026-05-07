@@ -1,15 +1,15 @@
 ## Key Topics
-- Triage of new issues related to OpenTelemetry LLM Semantic Conventions.
-- Proposal to add attributes for tool configuration and representation of tool types.
-- Discussion on the need for component ownership and review processes for pull requests.
-- Feedback from MCP regarding the use of prefixes for keys in metadata.
-- Updates on the integration of attributes related to GenAI tools.
+- Triage of new issues related to agent and client ID conventions.
+- Discussion on tool orchestration and the addition of new attributes for tool configuration.
+- Review and approval process for pull requests, particularly concerning contributions to the Python repository and instrumentation for the Anthropic SDK.
+- Concerns about the responsiveness of existing component owners and the need for updates in ownership.
+- Discussions on MCP recommendations regarding prefix usage for keys and the structure of capturing parameters in telemetry.
 
 ## Action Items
-- Surya Teja to raise a PR for adding instrumentation around Anthropic SDK.
-- Liudmila Molkova to send a PR to update the list of component owners and encourage more active participation.
-- Group to discuss the implementation of a review process for pull requests to enhance contributions.
-- Liudmila to leave a comment regarding the MCP tool name and its alignment with GenAI attributes.
+- Liudmila to send a PR regarding the update of component ownership lists.
+- Surya Teja to proceed with a PR for Anthropic SDK instrumentation and seek community involvement for component ownership.
+- Liudmila to leave comments on the MCP prefix discussion and gather feedback on capturing parameters.
+- Explore the possibility of unifying workflows across different groups (GenAI and CICD).
 
 ## Participants
-Liudmila Molkova, Aaron Abbott, Surya Teja, Alex, others (not specified).
+Liudmila Molkova, Aaron Abbott, Surya Teja, Keith Decker, Alex Hall, Dylan, Ricardo.

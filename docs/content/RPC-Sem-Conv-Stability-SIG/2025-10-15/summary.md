@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on request hedging and error handling in RPC.
-- Clarification on the status of various issues related to RPC conventions.
-- Examination of the Dubbo protocol and its relationship with gRPC.
-- Importance of defining the scope of the stability effort for RPC semantic conventions.
-- Differentiation between framework-level and protocol-level instrumentation.
+- Discussion on request hedging and cancellation issues in RPC.
+- Clarification of RPC protocol names and distinctions between Dubbo's double and triple protocols.
+- Exploration of how to capture API calls versus protocol calls in instrumentation.
+- Consideration of end-to-end duration metrics for streaming versus non-streaming RPC calls.
+- Review of existing conventions and proposals for RPC semantic conventions.
 
 ## Action Items
-- Determine if any issues related to cancellation and hedging can be closed as duplicates.
-- Define the scope of the stability effort for RPC conventions, similar to previous efforts for databases.
-- Explore the differences and compatibility between Dubbo's double and triple protocols.
-- Continue discussions on capturing instrumentation at the appropriate layer (API vs. protocol).
+- Close duplicate issues related to cancellation and hedging.
+- Define the scope of stability efforts for RPC protocols.
+- Investigate the differences between Dubbo's double and triple protocols and their implications for instrumentation.
+- Follow up on the proposal for capturing duration metrics in streaming RPC calls.
 
 ## Participants
 Trask Stalnaker, Steve Rao, Liudmila Molkova, James Thompson, Matthew Hensley

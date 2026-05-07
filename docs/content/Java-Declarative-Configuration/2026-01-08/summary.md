@@ -1,13 +1,14 @@
 ## Key Topics
-- **Declarative Configuration**: Discussion on the progress and expectations for the declarative configuration feature in OpenTelemetry Java.
-- **3.0 Release Timeline**: Targeting an early 2026 release, with a focus on database stabilization and RPC SEMCOM completion.
-- **Instrumentation and SDK Updates**: Review of ongoing PRs related to instrumentation and SDK adjustments.
-- **Testing Enhancements**: Introduction of new tests to ensure base behavior without overrides.
+- Discussion on the timeline for OpenTelemetry Java 3.0 release, aiming for April 2026.
+- Focus on stabilizing database features and RPC semantics.
+- Review of pull requests related to declarative configuration and instrumentation.
+- Challenges with YAML configuration loading and implications for logging setup.
+- Consideration of breaking changes and their impact on distros and extensions.
 
 ## Action Items
-- Trask to provide feedback on the PRs related to declarative configuration and instrumentation.
-- Gregor to check if using a global configuration is feasible instead of passing the auto-configured SDK.
-- Team to sync on the database stability tracking issue and finalize remaining tasks.
+- Trask to open an issue to track the possibility of reshuffling the startup sequence for logging and extensions.
+- Gregor to check comments on PRs and ensure all necessary features are covered.
+- Plan to discuss instrumentation mode enum in the next meeting.
 
 ## Participants
 Gregor Zeitlinger, Trask Stalnaker, Jay DeLuca

@@ -1,14 +1,13 @@
 ## Key Topics
 - Discussion on performance improvements related to ID map pooling and heap allocations.
-- Exploration of Rust's memory management and performance implications compared to other languages like .NET.
-- Performance measurements of different data structures (e.g., HashSet vs. Roaring Bitmap vs. AHashMap).
-- Analysis of specific benchmarks related to attribute filtering and performance discrepancies.
-- Strategies for optimizing Arrow compute kernels and reducing overhead in code.
+- Exploration of Rust's memory management and performance optimization techniques.
+- Comparison of different data structures (e.g., HashSet vs. Roaring Bitmap) for performance gains.
+- Analysis of filtering performance in the Arrow compute kernels and potential optimizations.
 
 ## Action Items
-- Mike to revisit the ID map pooling implementation and conduct further performance measurements.
-- Albert to check the benchmark "Attribute and OR together" for potential optimizations.
-- Both participants to explore short-circuiting in their filter implementations for performance gains.
+- Albert to revisit and gather performance benchmarks related to ID map pooling.
+- Mike to investigate the performance of his attribute caching implementation compared to Albert's.
+- Both to continue exploring optimization strategies in Rust for better performance in their respective implementations.
 
 ## Participants
 Albert Lockett, Mike "Blanch" Blanchard

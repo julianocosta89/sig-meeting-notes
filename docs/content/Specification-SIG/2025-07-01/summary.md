@@ -1,15 +1,14 @@
 ## Key Topics
-- **Canada Day Impact**: Noted low attendance due to Canada Day and U.S. Independence Day week.
-- **Proto Repo Specification Change**: Discussion on a minor spec change related to retry status calls, deemed ready for merging.
-- **Clarification on Spec Adjustments**: Updates on application owner vs. application developer terminology and context handling in the spec.
-- **Semantic Conventions Issue**: Announcement of a problem with the latest semantic conventions release affecting code generation, with a fix expected soon.
-- **Complex Attributes Discussion**: Ongoing debate about allowing complex attributes in the protocol, with concerns about potential confusion and breaking changes.
+- Discussion on merging a minor spec change regarding the proto repo and retry status.
+- Review of Robert's PR for clarification in the spec, awaiting final approvals.
+- Announcement of issues with the latest semantic conventions affecting code generation.
+- Ongoing debate about the inclusion of complex attributes in metrics and their implications on identity and compatibility.
 
 ## Action Items
-- Merge the proto repo specification change after final reviews.
-- Robert to review Adriel's spec adjustments.
-- Liudmila to address the semantic conventions issue and provide a fix.
-- Daniel to review the complex attributes PR again and provide feedback.
+- Merge the minor spec change once conflicts are resolved.
+- Robert to conduct a final review of the PR shared by Adriel.
+- Liudmila to address the issues with the semantic conventions and provide a fix.
+- Participants to continue discussions on complex attributes offline and seek consensus.
 
 ## Participants
-Carlos Alberto Cortez, Tristan, Robert Pająk, Adriel Perkins, Liudmila Molkova, Daniel Dyla, Jack Berg, Josh McDonald
+Carlos Alberto Cortez, Tristan, Robert Pająk, Adriel Perkins, Liudmila Molkova, Daniel Dyla, Jack Berg, Tedsuo, jmacdonald

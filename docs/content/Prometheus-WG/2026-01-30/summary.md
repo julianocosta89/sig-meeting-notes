@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the transition to OpenTelemetry's append V2 and its impact on the Prometheus receiver.
-- Review of ongoing PRs, including timing changes and speed-up tests, with a focus on improving performance and reducing flaky tests.
-- Challenges in implementing sync tests and the need for concrete examples to facilitate testing in the OpenTelemetry Collector.
-- Expectations for the stabilization timeline of the OpenTelemetry Collector and its alignment with KubeCon EU.
-- Announcement of increased participation from krajo Krajcsovits in the upcoming quarter due to team restructuring.
+- Discussion on the transition to OpenTelemetry's append V2 and its implications for the Prometheus receiver.
+- Review of the speed-up test PR and strategies for refactoring tests to reduce timeouts.
+- Challenges with implementing synchronous tests and the need for a potential rewrite of existing tests.
+- Plans for increased participation and contribution from team members in the upcoming quarter.
+- Ongoing issues with the performance of created timestamps in OpenMetrics and potential solutions.
 
 ## Action Items
-- David Ashpole to review the timing change PR and provide feedback.
-- krajo Krajcsovits to share examples of tests related to the Prometheus receiver to assist Arve Knudsen.
-- Participants to clarify expectations for stabilization and provide updates as needed.
+- David Ashpole to review the timing change PR.
+- Arve Knudsen to explore the possibility of rewriting tests to use SyncTest.
+- Krajo Krajcsovits to provide examples of tests for the OpenTelemetry Collector Prometheus receiver.
+- Participants to continue triaging issues and identifying areas for improvement in documentation and support.
 
 ## Participants
 krajo Krajcsovits, Arve Knudsen, David Ashpole

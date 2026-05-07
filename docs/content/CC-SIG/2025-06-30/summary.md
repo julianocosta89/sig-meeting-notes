@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the integration of `clang-tidy` and addressing warnings in the codebase.
-- Review of pending pull requests (PRs) and their impact on Windows build configurations.
-- Need for clarification on the Prometheus exporter and timestamp settings.
-- Progress on YAML file reviews and overall code cleanup.
+- Discussion on the integration of `clang-tidy` and the need to address persistent warnings.
+- Review and approval of several pull requests (PRs) related to configuration and cleanup tasks.
+- Need for feedback on a specific PR affecting Windows builds and `vc package`.
+- Ongoing issues with timestamp settings in the Prometheus exporter and seeking input from contributors.
+- Plans for a release of OpenTelemetry C++ and discussions on summer availability of team members.
 
 ## Action Items
-- Doug to ping Lillette for feedback on the Windows build PR if Tom is unavailable.
-- Tom to review the VC package part of the PR before merging.
-- Pranav to consult with his team member about the Prometheus exporter behavior regarding timestamps.
-- Marc to prepare PRs to enable certain flags by default.
+- Marc to merge approved PRs after the meeting.
+- Tom to review the PR related to Windows builds and `vc package`.
+- Pranav to consult with his team member about the behavior of timestamp settings in the Prometheus exporter.
+- Team members to add comments on the release issue for any specific PRs that need merging.
 
 ## Participants
-Doug Barker, Marc Alff, Tom Tan, Pranav Sharma
+Doug Barker, Marc Alff, Tom Tan, Pranav Sharma, Lalit

@@ -1,12 +1,16 @@
 ## Key Topics
-- **Election Preparation**: Discussion on the upcoming election, including the use of Helios for voting and potential issues with ranked voting.
-- **Community Recognition at KubeCon**: Plans to continue community recognition initiatives, including trophy distribution and feedback on voting participation.
-- **Reddit Community Management**: Update on the management of the OpenTelemetry subreddit by Severin Neumann and Dan Gomez Blanco.
+- **Election Process**: Discussion on the upcoming election, including the use of Helios for voting and the need for ranked voting options.
+- **Community Engagement**: Plans for community recognition at KubeCon North America and discussion on improving participation in voting.
+- **Reddit Community**: Updates on managing the OpenTelemetry subreddit and strategies to increase engagement.
+- **Donation Proposals**: Review of a new Kotlin donation proposal and the need for additional contributors beyond the proposing entity.
+- **Communication Strategy**: Discussion on how to effectively communicate with potential contributors and promote new SIGs.
 
 ## Action Items
-- **Morgan McLean**: Finalize election dates and create the Helios poll.
-- **Severin Neumann**: Investigate and prepare for community recognition at KubeCon, including reviewing last year's form and feedback.
-- **Dan Gomez Blanco**: Provide access to previous year's voting form and responses for review.
+- Morgan McLean to finalize election dates and create the Helios poll.
+- Severin Neumann to follow up on community recognition plans and check for previous forms used.
+- Alolita Sharma to ask clarifying questions on the Kotlin proposal in the issue thread.
+- All participants to review the Kotlin donation proposal and provide feedback by next week.
+- Severin Neumann to discuss the idea of blog posts for donation proposals in the comms meeting.
 
 ## Participants
-Severin Neumann, Trask Stalnaker, Pablo Baeyens, Alolita Sharma, Morgan McLean, Juraci Paixão Kröhling, Dan Gomez Blanco
+Severin Neumann, Trask Stalnaker, Pablo Baeyens, Alolita Sharma, Morgan McLean, Juraci Paixão Kröhling, Dan Gomez Blanco.

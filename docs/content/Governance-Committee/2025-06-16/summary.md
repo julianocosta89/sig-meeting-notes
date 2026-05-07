@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the maximum tension value and its implications for metric descriptions.
-- The role of semantic conventions in defining telemetry metrics and potential collaboration with maintainers.
-- Changes in OpenTelemetry organization and code ownership affecting automation and responsibilities.
-- Clarification of roles and responsibilities for triagers and code owners to alleviate concerns about workload.
-- Proposal to revise documentation to better define the responsibilities of maintainers and triagers.
+- Discussion on the role of code owners and triagers within the OpenTelemetry project, including the need for clearer definitions and responsibilities.
+- Challenges with GitHub automation and code owner assignments due to changes in repository management.
+- Proposals for creating a separate role for code owners to distinguish between project management and component ownership.
+- The importance of lowering entry barriers for triagers to encourage participation in the project.
+- Review of community issues and triage processes.
 
 ## Action Items
-- Dan to reach out to the semantic conventions team for input on metric descriptions.
-- Robert to open an issue regarding the clarification of triager responsibilities and the potential creation of a new role for code owners.
-- Dan to revise documentation to clarify the responsibilities of maintainers and triagers.
+- Robert Pająk to summarize the discussion on code owners and triagers and open an issue for further community input.
+- Consider creating a new role for code owners that clarifies their responsibilities and relationship to triagers and maintainers.
+- Juraci Paixão Kröhling to potentially open a PR to formalize the code owner role with existing wording from other repositories.
 
 ## Participants
-Dan Gomez Blanco, Robert Pająk, Severin (joined later), Us (joined later).
+Dan Gomez Blanco, Robert Pająk, Severin Neumann, Juraci Paixão Kröhling

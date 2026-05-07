@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the maintenance of unmaintained browser-related instrumentations in the JS contrib repository.
-- Proposal to review a PR affecting the way bundlers interpret the package.json file.
-- Review of a draft data model for browser instrumentation, including the need for feedback and further refinement.
-- Importance of defining user session experiences and scenarios for testing the new browser client.
-- Suggestions for establishing benchmarks and example scenarios to evaluate the client’s performance against existing implementations.
+- Discussion on maintaining unmaintained browser-related instrumentations in JS Contrib.
+- Review of a proposed change in the JS SDK affecting bundlers.
+- Feedback on the initial data model for the browser and the need for a structured approach to defining user sessions and scenarios.
+- Project management updates, including a roadmap and task breakdown for the Browser SIG.
+- Exploration of target implementations for benchmarking and comparison.
 
 ## Action Items
-- Continue half-maintaining existing browser-related instrumentations until new APIs are released.
-- Jared Freeze to review the PR related to bundler interpretation.
-- Participants to provide feedback on the draft data model and identify existing implementations for reference.
-- Propose defining user session scenarios and benchmarks for the new browser client.
+- Review and provide feedback on the proposed changes in the JS SDK.
+- Document and present example user sessions and scenarios for the data model.
+- Organize and finalize the project management structure and tasks for the Browser SIG.
+- Consider creating a dedicated team for managing issues in the JS repo related to the Browser SIG.
 
 ## Participants
-Jared Freeze, Ted Young, Daniel Dyla, Trent Mick, Dan Gomez Blanco
+Jared Freeze, Ted Young, Daniel Dyla, Trent Mick, Dan Gomez Blanco, Joaquín Díaz

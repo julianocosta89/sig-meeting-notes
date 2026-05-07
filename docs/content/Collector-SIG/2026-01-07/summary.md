@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on naming conventions for accessing Golang context in OTL.
-- Consideration of user experience when exposing metadata paths in OTL.
-- Feedback on the Prometheus receiver and the necessity of including multiple processors for metrics.
-- Exploration of potential improvements to the Prometheus receiver configuration.
+- Discussion on naming conventions for OTL paths related to context metadata.
+- User experience concerns regarding the Prometheus receiver and the need for additional processors.
+- Update on the collector documentation refactoring, with a call for volunteers for Phase 2.
+- Review of competing PRs for collector config JSON schema generation.
+- Ongoing discussions regarding the AWS ECS Attributes Processor implementation.
 
 ## Action Items
-- Gather community feedback on naming preferences for the context path in OTL.
-- Evaluate the feasibility of making the Metric start time processor a receiver helper.
-- Continue discussions on improving user experience with the Prometheus receiver setup.
+- Community members to provide feedback on naming conventions for OTL paths.
+- Volunteers to assist with Phase 2 of the collector documentation refactoring.
+- Coordination on PRs related to JSON schema generation to avoid duplication of effort.
+- Review and contribute to the AWS ECS Attributes Processor discussions.
 
 ## Participants
-Evan Bradley, Jade Guiton, Edmo Vamerlatti, David Ashpole, Pablo, Jod
+Evan Bradley, Jade Guiton, Edmo Vamerlatti, David Ashpole, Tiffany Hrabusa, ploffay, Israel Blancas, Andrzej Stencel

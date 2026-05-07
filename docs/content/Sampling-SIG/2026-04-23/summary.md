@@ -1,13 +1,14 @@
 ## Key Topics
-- Introduction of new participant Carson Ip and his role in the Elastic team.
-- Updates on the tail sampling processor and its integration challenges.
-- Discussion on the current status of the OpenTelemetry specification and the implementation of the composable sampler.
-- Clarification on the handling of always-on sampling and the threshold values in the Go SDK.
-- Examination of randomness guarantees in trace IDs and their implications for sampling decisions.
+- Introduction of new participant Carson Ip and his role in the tail sampling processor.
+- Updates on the state of OpenTelemetry sampling specifications and the roadmap for future work.
+- Discussion on the handling of the "always-on" sampling feature and its implications for the specification.
+- Clarification of the treatment of randomness in trace IDs and the implications for sampling decisions.
+- Agreement to take further discussions on probabilistic sampler specifications offline.
 
 ## Action Items
-- Review and update the specification to clarify the handling of always-on sampling and threshold values.
-- Address the missing text in the specification regarding randomness guarantees and their treatment in sampling.
+- Review and clarify the specification regarding the handling of randomness and thresholds in sampling.
+- Discuss the implications of presumed randomness in trace IDs and how it affects downstream metrics.
+- Follow up on the PR related to the probabilistic sampler and ensure all necessary rules are documented.
 
 ## Participants
 jmacdonald, Peter Findeisen, Carson Ip, Yuanyuan Zhao

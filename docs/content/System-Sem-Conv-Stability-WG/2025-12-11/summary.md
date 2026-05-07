@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on clarifying semantic conventions for stability levels and migration processes.
-- Proposal to define which semantic conventions should be included in alpha and beta feature gates.
-- Introduction of a new entities section in the configuration interface for managing resource attributes.
-- Options for handling identifying and descriptive attributes within entities were debated, focusing on user interface simplification.
+- Discussion on clarifying the stability levels of semantic conventions and their alignment with feature gates.
+- Proposal for defining which semantic conventions should be included in alpha and beta phases.
+- Introduction of entities in receivers and processors, focusing on how to manage resource attributes and entity attributes.
+- Options for configuring entities and resource attributes, with a preference for a cleaner approach to avoid user confusion.
+- Performance concerns related to merging an RFC that may degrade performance.
 
 ## Action Items
-- Christos Markou to clarify comments on the RFC and provide feedback on semantic conventions.
-- Dmitrii Anoshin to prepare a PR for the new entities section and deprecate the resource attributes section.
-- Pablo Baeyens to review the proposed changes and provide feedback.
+- Christos Markou to clarify the selection criteria for semantic conventions in feature gates.
+- Dmitrii Anoshin to prepare a PR regarding the new entities section and discuss with the entities team for further insights.
+- Pablo Baeyens to mark the related PR as ready for review and address the performance degradation issue.
 
 ## Participants
-Christos Markou, Pablo Baeyens, Dmitrii Anoshin, Roger Coll
+Christos Markou, Pablo Baeyens, Dmitrii Anoshin, Braydon Kains, Roger Coll

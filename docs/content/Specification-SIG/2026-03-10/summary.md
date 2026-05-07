@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the stabilization effort for OpenTelemetry specifications and the need for ongoing feedback.
-- Proposal to merge the OpenTelemetry Configuration repository into the specification to ensure synchronized updates.
-- Review of the declarative configuration's stability and its implications for the specification process.
-- Importance of aligning specification changes with configuration schema updates to maintain coherence.
+- **Profiling State TA**: Discussion on the profiling signal's structure, including the use of dictionaries for stack traces and resource attributes.
+- **Stabilization Efforts**: Ongoing efforts to stabilize the OpenTelemetry specification, with a focus on OTEPs and their review process.
+- **Declarative Configuration**: Proposal to change the specification contribution process to prioritize declarative configuration, including potential merging of configuration repositories.
+- **Context Scoped Attributes**: Update on the process context sharing and its implications for optional features in SIGs.
+- **KubeCon Preparation**: Plans for announcements and presentations related to profiling at KubeCon.
 
 ## Action Items
-- Participants to review OTEP 48 and 13 and provide feedback.
-- Consider the proposal to merge configuration and specification processes for better alignment.
-- Encourage feedback on Kubernetes SIG's stabilization of semantic conventions.
+- Review and provide feedback on OTEPs 48 and 13 to finalize work streams.
+- Consider the proposal to merge the configuration repository into the specification and discuss its implications.
+- Prepare for the alpha announcement of the profiling signal at KubeCon.
+- Continue discussions on context scoped attributes and their optional implementation.
 
 ## Participants
-Liudmila Molkova, Bob Strecansky, Ted Young, Austin Parker, Jack Berg, Tigran Najaryan, Daniel Dyla
+Liudmila Molkova, Bob Strecansky, Ted Young, Austin Parker, Jack Berg, Carlos Alberto Cortez, Ivo Anjo, Florian Lehner, Josh Suereth, Tigran Najaryan, Daniel Dyla.

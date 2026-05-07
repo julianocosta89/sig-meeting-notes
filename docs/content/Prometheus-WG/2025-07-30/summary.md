@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on stabilizing the OpenTelemetry collector before the release of version 1.0.
-- Importance of maintaining consistent metrics emitted by the collector to avoid breaking changes.
-- Challenges with metric name changes and the need for a testing platform to ensure stability.
-- Differentiation between OpenTelemetry metrics and Prometheus translation metrics.
-- Proposed solutions for automation and end-to-end testing to ensure metric consistency.
+- Discussion on stabilizing metrics emitted by the OpenTelemetry collector before the release of version 1.0.
+- Need for a testing platform to ensure metric names do not change with new PRs.
+- Clarification on the differences between OpenTelemetry metrics and Prometheus translations.
+- Updates on the Prometheus release 3.5 and the remote write support in the Prometheus remote exporter.
+- Ongoing mentorship projects related to native summaries and exponential histograms.
 
 ## Action Items
-- Develop a testing platform to assert that metric names do not change with new PRs.
-- Explore automation solutions to help maintain metric stability across components.
-- Consider creating unit tests to cover the translation of metrics to Prometheus format.
+- Arthur Silva Sens to explore building a testing platform for metric stability.
+- Krajo Krajcsovits to review the CI failure for Prometheus release 3.5.
+- Juraj Michalek to finalize the draft PR for exponential histograms and gather feedback on necessary features before user testing.
 
 ## Participants
 Juraj Michalek, krajo Krajcsovits, Arthur Silva Sens, Owen Williams, Jonathan (jojo)

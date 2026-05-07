@@ -1,13 +1,16 @@
 ## Key Topics
-- **Instrumentation Merge**: The first instrumentation that emits events has been successfully merged, marking a significant milestone for the team.
-- **URL Semantic Conventions**: Discussion around creating a practical solution for URL handling in telemetry, including stripping unnecessary parts and proposing canonical URLs.
-- **Testing and Merging PRs**: Updates on pending PRs and the importance of merging to facilitate ongoing development and testing processes.
-- **Document ID Proposal**: Benoît proposed a new resource to link telemetry from a single document across multiple tabs or iframes.
+- Merging of new instrumentation that emits events, marking a significant milestone for OpenTelemetry.
+- Discussion on URL semantic conventions and the practicality of stripping unnecessary URL components.
+- Proposal for a document ID to link telemetry from multiple tabs or iframes.
+- Review and merging of browser navigation instrumentation PRs.
+- Consideration of versioning for instrumentation packages and the need for dedicated maintainers.
 
 ## Action Items
-- Jared to compile use cases for URL semantic conventions and propose them for discussion.
-- Joaquín to finalize and merge his instrumentation PR by the end of the day.
-- Benoît to draft a proposal for a document ID to group telemetry events from the same document.
+- Jared to propose the URL semantic convention for discussion.
+- Benoît to open an issue regarding the document ID concept.
+- Abinet to add PR links to the Google Doc and prepare for a demo next week.
+- Joaquín to create tickets for migration processes and documentation.
+- Group to discuss maintainership responsibilities in the next meeting.
 
 ## Participants
-Jared Freeze, Martin Kuba, Wolfgang Therrien, Joaquín Díaz, Benoît Zugmeyer
+Jared Freeze, Martin Kuba, Wolfgang Therrien, Benoît Zugmeyer, Joaquín Díaz, Abinet Debele

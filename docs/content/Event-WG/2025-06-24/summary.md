@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on merging PRs related to OpenTelemetry specifications.
-- Clarification on handling severity numbers in the specification, particularly for Java and other languages.
-- Introduction of new participant Nicole van der Hoeven and her interest in OpenTelemetry logging.
-- Ongoing work on stabilizing events and logs within the OpenTelemetry framework.
+- Progress on merging PRs related to OpenTelemetry specifications, particularly for OTLP.
+- Discussion on the handling of severity numbers in different programming languages and implications for the specification.
+- Introduction of new participant Nicole van der Hoeven and her interest in OpenTelemetry and logging.
+- Ongoing work on stabilizing events and logs within OpenTelemetry, including semantic conventions for error handling.
+- Overview of upcoming work on filtering and sampling in Java.
 
 ## Action Items
-- Trask to follow up with Josh regarding the merging of the spec PR.
-- Robert to consider the implications of restricting severity numbers to a specific range in the spec.
-- Nicole to engage with the group and share insights on logging challenges and improvements.
+- Trask to follow up on merging the complex attribute PR and related discussions.
+- Robert to provide feedback on error reporting in Go instrumentation libraries.
+- Nicole to familiarize herself with OpenTelemetry and contribute to discussions on logging.
+- Trask to work on implementing the log processor design in Java and gather feedback.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Robert Pająk, Nicole van der Hoeven

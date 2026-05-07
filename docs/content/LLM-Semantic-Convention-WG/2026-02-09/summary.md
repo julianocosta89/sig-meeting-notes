@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the prototype for Claude Agent SDK and its instrumentation.
-- Clarification on the usage and boundaries of the CreateAgent function.
-- Exploration of multi-agent semantic conventions and their implications for data workflows.
-- Introduction of the concept of standard events in CI/CD pipelines and their relevance to agent operations.
+- Review of the Claude Agent SDK boilerplate and instrumentation for Anthropic SDK.
+- Discussion on the use and definition of the `CreateAgent` function and its implications for instrumentation.
+- Introduction of the CNCF Cloud Event and CDEvent specifications for standardizing events in CI/CD workflows.
+- Exploration of how data-related events can be standardized across various operations (DevOps, DataOps, etc.).
+- Overview of the roadmap and structure for future meetings and working groups.
 
 ## Action Items
-- Review and provide feedback on the Claude Agent SDK boilerplate and related PRs.
-- Further investigate the CreateAgent span usage and its implications in different agent architectures.
-- Identify potential stakeholders and needs for standard events in data operations.
+- Surya Teja to finalize and seek reviews for the Claude Agent SDK boilerplate.
+- Sergey Sergeev to confirm assumptions regarding `CreateAgent` spans in the next meeting.
+- Victor Lu to investigate existing definitions for CICD events within OpenTelemetry.
+- Anirudha Jadhav to review the 2026 roadmap document for the Semantic Convention WG.
 
 ## Participants
-Sergey Sergeev, Surya Teja, Anirudha Jadhav, Victor Lu, Keith Decker, Mega, Josh, others.
+Sergey Sergeev, Keith Decker, Surya Teja, Anirudha Jadhav, Victor Lu, Mega, Josh

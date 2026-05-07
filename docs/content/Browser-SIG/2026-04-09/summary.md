@@ -1,13 +1,13 @@
 ## Key Topics
-- **End-to-End Demo for Fonda Dashboards**: Joaquín Díaz presented a Grafana dashboard showing metrics collected from the SDK, including web vitals and logs.
-- **New Browser Package Draft**: David Luna Bistuer discussed a draft for a new browser package that allows independent configuration of SDK signals to control bundle size.
-- **Instrumentation Configuration**: Discussion on how to enable/disable instrumentation dynamically and the need for standardization on element identifiers for click events.
-- **Feedback on API Design**: Participants provided feedback on the API design for the new browser package and discussed potential improvements for instrumentation setup.
+- **End-to-End Demo for Fonda Dashboards**: Joaquín presented a Grafana dashboard showcasing metrics collected from the SDK, including web vitals and logs.
+- **Browser Package Draft**: David discussed a new browser package that allows for independent configuration of SDK signals, enhancing bundle size control.
+- **Fetch Instrumentation Changes**: Daniel addressed the removal of high-resolution time from fetch instrumentation, emphasizing its irrelevance in browser contexts.
+- **Standardization of Element Identifiers**: Discussion on how to standardize the identification of clicked elements in the SDK to avoid high cardinality issues.
 
 ## Action Items
-- Review the Grafana dashboard PR and provide feedback.
-- Review the draft for the new browser package and finalize the design and API.
-- Create an issue to standardize element identifiers for click instrumentation.
+- **Review Browser Package Draft**: Participants to provide feedback on the new browser package and its API design.
+- **Standardize Click Element Identification**: Create an issue to discuss standardizing the method for identifying clicked elements.
+- **Copy Fetch Utility Function**: Daniel to copy the utility function from the trace web package into the instrumentation to avoid breaking changes while implementing updates.
 
 ## Participants
-Joaquín Díaz, Jared Freeze, Christopher Arredondo, Ted Young, David Luna Bistuer, Hugo Levy
+Joaquín Díaz, Jared Freeze, Christopher Arredondo, Ted Young, David Luna Bistuer, Hugo Levy, Daniel Dyla

@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the promotion of API features to stable status before the January 15 deadline.
-- Review of the need for instrumentation in the OpenTelemetry API and its implications for users.
-- Exploration of ways maintainers can communicate priorities and areas for contributions from the community.
-- Updates on ongoing PRs, particularly for Apache Iceberg instrumentation and the challenges faced in the review process.
-- Consideration of stability issues across various components, including logging and RPC.
+- Discussion on promoting certain APIs to stable before the January 15 deadline.
+- Need for better communication regarding areas where maintainers require assistance.
+- Updates on PRs for Apache Iceberg instrumentation and the challenges faced in getting reviews.
+- Refactoring efforts for the HTTP and gRPC senders, aiming for a public API.
+- Introduction of a formal specification for a rule-based sampler across languages.
 
 ## Action Items
-- Merge the current PR to allow for further testing and feedback before the January release.
-- Maintain a list of high-priority issues and PRs for community contributors to assist with.
-- Review and address the Apache Iceberg instrumentation PR to facilitate its progression.
+- Merge the discussed PRs to stabilize APIs before the January deadline.
+- Create a list of high-priority PRs and issues for contributors to assist maintainers.
+- Explore upstreaming instrumentation to Apache Iceberg and consider contributions to the Java contrib repository.
+- Restructure the PR for senders to avoid shadowing Java agent modules.
+- Coordinate on the public API for senders and determine the next steps for review.
 
 ## Participants
-GZ Gregor Zeitlinger, Trask Stalnaker, Peter Findeisen, Jack Berg, JP Jason Plumb, Jay DeLuca, Lauri, Ghareeb Falazi
+Gregor Zeitlinger, Trask Stalnaker, Peter Findeisen, Jack Berg, Jason Plumb, Jay DeLuca, Garib Falazi, Bruno Baptista, Lauri, Prasad Sawool, Tyler Benson.

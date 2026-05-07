@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the MCP (Multi-Channel Protocol) proposal and its relationship with existing OpenTelemetry projects.
-- Concerns about ensuring collaboration with existing Special Interest Groups (SIGs) to avoid duplication and ensure compatibility.
-- The importance of creating a coherent user experience across different components of OpenTelemetry.
-- The role of AI agents in improving OpenTelemetry configurations and documentation.
-- Clarification on whether the MCP server is intended to be a canonical solution for all vendors or a raw material for various implementations.
+- Discussion on the MCP (Multi-Component Project) proposal and its relationship with existing OpenTelemetry projects.
+- Concerns about collaboration with existing Special Interest Groups (SIGs) and avoiding duplication of efforts.
+- The need for a clear scope and phased approach for the MCP project, focusing initially on the collector's configuration and health.
+- Update on the Bloomberg mentorship program aimed at increasing contributions to OpenTelemetry.
+- Discussion on improving the contributor experience and communication within SIGs.
 
 ## Action Items
-- Collaborate with existing SIGs to integrate MCP functionalities into their projects.
-- Define the scope and objectives of the MCP project more clearly to avoid confusion within the community.
-- Explore user feedback and conduct experiments to refine the MCP proposal and its implementation.
+- Schedule a follow-up meeting to further discuss the MCP proposal and clarify project scopes.
+- Create a Slack channel for the Bloomberg mentorship program to facilitate communication.
+- Consider inviting Merle Krantz to discuss contributor experience improvements based on Apache Foundation practices.
 
 ## Participants
-Severin Neumann, Alolita Sharma, Trask Stalnaker, Juraci Paixão Kröhling, Liudmila Molkova, Ted Young, Pavel, Lydmila.
+Severin Neumann, Alolita Sharma, Pavel Baeyens, Juraci Paixão Kröhling, Ted Young, Liudmila Molkova, Trask Stalnaker, Marylia Gutierrez.

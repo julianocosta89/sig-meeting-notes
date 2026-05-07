@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the need for more active reviewers and maintainers in the Kotlin SIG.
-- Agreement to release updates, with a focus on API compatibility and maintaining a monthly release cadence.
-- Introduction of a new guide for getting started with the Kotlin SDK on the OpenTelemetry website, and the desire to make the website the primary source of documentation.
-- Proposal to create issues based on the spec compliance matrix to identify missing features in the repo.
-- Discussion on expanding platform support for the library beyond JVM, Android, JavaScript, and iOS.
+- **Release Schedule**: Discussion on the need for a release this week due to recent changes and API compatibility issues.
+- **Documentation Strategy**: Proposal to centralize documentation on OpenTelemetry.io rather than in README files, with a focus on creating a guide for the Kotlin SDK.
+- **Spec Compliance Issues**: Plans to create issues based on the spec compliance matrix to track missing features and improvements.
+- **Platform Support Expansion**: Discussion on the potential for supporting additional platforms beyond JVM, Android, JavaScript, and iOS, with emphasis on resource constraints.
+- **Readable Span API**: Exploration of adding a method for readable spans, with suggestions for implementation and concerns about performance implications.
 
 ## Action Items
-- Jamie Lynch to prepare for a release midweek and ensure compatibility with the latest SDK updates.
-- Jamie Lynch to create issues based on the spec compliance matrix and group them effectively for contributors.
-- Participants to review the new getting started guide and provide feedback.
+- **Jamie Lynch**: To prepare for a release midweek and finalize the initial guide for the Kotlin SDK documentation.
+- **Hanson**: To summarize the discussion on the readable span API in a GitHub issue and work on additional tests for a PR.
+- **Jason Plumb**: To add comments to the GitHub issue regarding the readable span API discussion.
 
 ## Participants
 Hanson, Jason Plumb, Jamie Lynch

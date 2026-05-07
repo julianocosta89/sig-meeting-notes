@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the implementation of OpenTelemetry C++ and related issues.
-- Clarification on CMake dependencies and user installation paths.
-- Scope configuration for tracer and its intended use.
-- Issues with metrics and synchronous instruments leading to crashes.
-- Ongoing discussions about the Prometheus exporter for metrics.
+- Discussion on OpenTelemetry C++ implementation and configuration issues.
+- Clarification on metric aggregation and its configuration in OpenTelemetry.
+- Review of existing pull requests (PRs) and their statuses.
+- Upcoming release plans and potential delays due to summer vacations.
 
 ## Action Items
-- Provide clarification and documentation examples for scope configuration usage.
-- Investigate the unresolved issue regarding the Prometheus exporter and timestamp sources.
-- Await feedback from Michael regarding the scope configuration feature.
+- Marc to update the integration PR for the YAML Configuration project.
+- Doug to provide comments on the CMake files.
+- Participants to update the agenda regarding their availability for the August meeting.
 
 ## Participants
 Marc Alff, Doug Barker, Victor Lu, Ehsan

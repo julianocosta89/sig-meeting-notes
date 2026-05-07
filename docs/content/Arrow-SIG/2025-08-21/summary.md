@@ -1,14 +1,13 @@
 ## Key Topics
 - Introduction of participants and their roles in the OpenTelemetry Arrow project.
-- Discussion on the recent changes made to the codebase, including a major PR that may have introduced issues.
-- Overview of the Rotel project and its relevance to the OpenTelemetry Arrow initiative.
-- Exploration of the attribute processor and its integration with OTAP.
-- Concerns regarding test failures and code organization after recent modifications.
+- Discussion on recent changes and issues in the codebase, including a significant PR that raised concerns about test failures.
+- Overview of the Rotel project, focusing on performance optimizations and integration with OpenTelemetry.
+- Exploration of the new telemetry SDK being developed, emphasizing schema-first design and performance improvements.
+- Collaboration opportunities between the OpenTelemetry Arrow project and Rotel, particularly regarding processing layers and metrics.
 
 ## Action Items
-- Investigate the test failures resulting from the recent PR and address any issues.
-- Connect Drew's data transformation work with Ray's interest in query support.
-- Continue discussions on the integration of the attribute processor with OTAP.
+- Albert to address and fix issues he raised in the codebase by the end of the week.
+- Further discussions between Laurent, Ray, and Josh to explore collaboration opportunities and align on priorities.
 
 ## Participants
-Laurent Quérel, Josh Macdonald, Albert Lockett, Tristan Sloughter, David Dahl, Ray Jenkins, Jake Dern, Drew Relmas, Utkarsh Umesan Pillai.
+Laurent Quérel, Tristan Sloughter, Albert Lockett, David Dahl, Ray Jenkins, Jake Dern, Drew Relmas, Utkarsh Umesan Pillai, jmacdonald

@@ -1,13 +1,15 @@
 ## Key Topics
-- **Protocol Support Scenarios**: Discussion on supporting multiple protocols (TLP, TAP, Syslog) within a single pipeline system.
-- **Benchmarking Infrastructure**: Updates on the development of a multi-core benchmark for performance comparison between different implementations.
-- **Pipeline Configuration**: Exploration of dynamic reconfiguration capabilities for pipeline nodes and the overall architecture.
-- **Syslog Receiver Implementation**: Challenges and strategies for batching Syslog messages to improve processing efficiency.
+- Discussion on protocol support and optimization scenarios for OpenTelemetry Arrow.
+- Presentation of various pipeline scenarios, including protocol translation and lazy serialization.
+- Considerations for benchmarking and performance metrics in CI/CD processes.
+- Updates on the implementation of new features in the Arrow and Parquet components.
+- Ongoing work on the fixed email receiver and configuration for synthetic traffic generation.
 
 ## Action Items
-- Laurent to finalize and demonstrate basic scenarios for protocol support by the beginning of September.
-- Joshua to coordinate with participants from Microsoft regarding alignment issues.
-- Utkarsh to explore batching mechanisms for the Syslog receiver and propose configurations for latency management.
+- Follow up on making the cargo benchmark step optional for PRs.
+- Explore the integration of performance benchmarks into CI/CD pipelines.
+- Share a document outlining the discussed scenarios and configurations for reference.
+- Coordinate with Microsoft team members for alignment on project updates.
 
 ## Participants
-Drew Relmas, Albert Lockett, Laurent Quérel, Joshua MacDonald, Utkarsh
+Drew Relmas, Albert Lockett, Laurent Quérel, Joshua MacDonald, Utkarsh, Jake Dern, Chanly Ly, Gokhan.

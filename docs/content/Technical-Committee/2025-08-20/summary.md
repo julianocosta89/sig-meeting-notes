@@ -1,13 +1,14 @@
 ## Key Topics
-- **Access to Audit Logs**: Discussion on the current process of granting temporary access to audit logs and the need for a more efficient solution.
-- **Grafana Dashboard**: The status of the Grafana dashboard was reviewed; it is currently not functioning, and there are concerns about its utility.
-- **Security Process Improvement**: A proposal to consolidate security processes and clarify expectations for maintainers regarding vulnerability responses.
-- **Communication with Maintainers**: The need for improved communication and accountability among maintainers regarding reported vulnerabilities and their prioritization.
+- Discussion on access to audit logs and security processes within the Technical Committee (TC).
+- Proposal for a new security response team to improve vulnerability management.
+- Review of a feature request regarding calculating in-memory size for log records and the need for clarity on its purpose.
+- Introduction of a new structure for maintainers and approvers in the proto repository to streamline processes.
 
 ## Action Items
-- Armin to add Liudmila to the necessary tickets for audit log access.
-- Liudmila to reach out to GC regarding the possibility of TC having permanent access to audit logs.
-- Reiley to gather more feedback on the proposed changes to the security process and share updates in the Tuesday SPAC meeting.
+- Armin to temporarily grant access to audit logs for Liudmila.
+- Liudmila to follow up with Trask regarding the security response team.
+- TC members to provide feedback on the proposed changes to the maintainer structure.
+- Reiley to share the updated process in the upcoming SPAC meeting.
 
 ## Participants
-Liudmila Molkova, Armin (Dynatrace), Reiley, Tigran Najaryan
+Liudmila Molkova, Armin (Dynatrace), Reiley, Tigran Najaryan, Carlos Alberto Cortez

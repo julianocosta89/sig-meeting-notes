@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the new Query Transform subgroup and its implications for the project.
-- Updates on benchmarks transitioning from Phase 1 to Phase 2, including the need for new metrics and tests.
-- Load testing results from the Go Collector and plans to compare it with the Rust collector.
-- Exploration of authentication and configuration options for the Parquet exporter and potential integration with cloud storage solutions.
-- Roadmapping for Phase 3, focusing on extensibility and SDK integrations.
+- Discussion on the new columnar query engine prototype and related issues.
+- Update on benchmarks from Phase 2 and the proposal to transition to new benchmarks.
+- Load testing results for the Go Collector and plans to compare it with the Rust collector.
+- Introduction of potential auth extension for the Rust collector and discussions on its implementation.
+- Evaluation of serialization and compression methods, particularly comparing OTLP and OpenZL.
 
 ## Action Items
 - Cijo to send PRs updating benchmarks to reflect Phase 2 results.
-- Jake to explore authentication options for the Parquet exporter and investigate reusable credential handling across different cloud providers.
-- Schedule a follow-up discussion on Phase 3 roadmapping topics.
+- Jake to introduce a small auth package in the experimental folder.
+- Andres to file an issue regarding the lack of metric-level attributes in the internal SDK.
+- Follow-up on resource configuration improvements and potential extension proposals.
 
 ## Participants
-Albert Lockett, Joshua MacDonald, Drew Relmas, Cijo Thomas, Danny, Jake Dern, Lalit
+Joshua MacDonald, Cijo Thomas, Jake Dern, Andres Borja, Danny Chin, Albert Lockett, Drew Relmas

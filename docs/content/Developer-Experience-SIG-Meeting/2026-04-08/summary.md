@@ -1,14 +1,15 @@
 ## Key Topics
-- Updates on blog posts related to OpenTelemetry, including the Adobe and Skyscanner posts.
-- Discussion on Keycloak and its integration with OpenTelemetry for identity and access management.
-- Introductions of new participants and their roles within the OpenTelemetry community.
-- Overview of Keycloak's capabilities, including authentication methods and integration with various systems.
+- Updates on blog posts related to OpenTelemetry and Keycloak.
+- Discussion on the integration of OpenTelemetry tracing in Keycloak.
+- Challenges and experiences with OpenTelemetry metrics and logging.
+- Importance of semantic conventions in OpenTelemetry.
+- Developer experience improvements and recommendations for other projects.
 
 ## Action Items
-- Johanna to finalize and publish the Adobe blog post.
-- Tristan to find Andreas' email for review of the Grok blog post draft.
-- Alexander to provide updated architecture diagrams for Skyscanner's blog post.
-- Continue drafting the Keycloak blog post based on the discussion.
+- Johanna to finalize and publish the blog post on Adobe.
+- Alexander to share architecture diagrams and configuration methods for inclusion in the blog post.
+- Tristan to find Andreas' email for Grok blog post review.
+- Team to consider discussing semantic conventions for identity providers.
 
 ## Participants
 Juliano Costa, Johanna Öjeling, Tristan, Alexander Schwartz, Perk (Marcin Stożek), Martin Bartos

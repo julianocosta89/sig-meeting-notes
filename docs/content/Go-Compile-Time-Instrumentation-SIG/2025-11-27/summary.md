@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on instrumentation tethering and the need for flexibility in instrumentation methods.
+- Discussion on instrumentation tethering and the need for flexibility in instrumentation approaches.
 - Proposal to remove premature abstractions in instrumentation and allow for more join points.
-- The importance of providing initial examples of integrations to help onboard users.
-- Concerns about over-engineering the architecture for integrations and the need for community contributions.
-- Suggestions for separating the basic tool from the instrumentation to maintain focus and quality.
+- Agreement on the eventual separation of the core tool and instrumentation into different repositories.
+- Importance of providing guidance and examples for developers to create their own instrumentation.
+- Consensus on enabling other instrumentation libraries and maintaining a flexible approach.
 
 ## Action Items
-- Develop initial rule files for common integrations (e.g., HTTP, gRPC) to guide users.
-- Advocate for the new tool and propose adding rule files to third-party libraries.
-- Onboard contributors to help write and maintain integrations.
+- Kemal Akkoyun to split the large pull request into smaller, manageable parts for review.
+- Participants to provide feedback on the pull request and suggest improvements.
+- Further discussions needed on the structure and organization of instrumentation repositories.
 
 ## Participants
-Kemal Akkoyun, Huxing Zhang, Przemyslaw Delewski, Timo Zhu, Ziming Liu, Yi Yang
+Kemal Akkoyun, Huxing Zhang, Przemyslaw Delewski, Xabier Martinez, Yi Yang, Timo Zhu, Ziming Liu

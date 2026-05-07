@@ -1,14 +1,15 @@
 ## Key Topics
-- **Logger Bridge Update**: Discussion on the logger bridge's status in staging and release notes discrepancies.
-- **Sampling Algorithm Changes**: Plans for transitioning to a new probability sampler by 2027, with current trace ID ratio-based samplers remaining until then.
-- **Span Events Proposal**: Proposal for adding span events related to network phases faced pushback; a prototype is to be developed.
-- **SQL Processing Updates**: Changes to SQL obfuscation and processor gems, including API updates and the introduction of a new gem for SQL parsing.
-- **Error Reporting Improvements**: Discussion on enhancing error reporting for OTLP default HTTP exporters.
+- Discussion on the logger bridge and its inclusion in release notes.
+- Updates on the trace ID ratio-based sampler and plans for a new probability sampler.
+- Proposal for adding span events for network phases breakdowns faced pushback due to concerns over deprecated span events.
+- Adjustments to the sampling algorithm for exemplar reservoirs and upcoming changes to minimum Ruby and Rails versions.
+- Ongoing work on SQL query parsing and the creation of a new gem for SQL obfuscation.
 
 ## Action Items
-- **Prototype Development**: Create a prototype for the span events proposal.
-- **Release Notes Cleanup**: Kayla to clean up release notes regarding the RubyLogger.
-- **Feedback Request**: Participants encouraged to provide feedback on SQL processing gem changes and error reporting improvements.
+- Kayla to clean up release notes regarding the logger bridge.
+- Create an issue for the planned switch to the new probability sampler.
+- Participants to provide feedback on the SQL processor gem and its API changes.
+- Robb to explore the error reporting improvements and consider performance impacts.
 
 ## Participants
-Kayla Reopelle, Wendy Smoak, Liudmila Molkova, Robb Kidd
+Kayla Reopelle, Wendy Smoak, Liudmila Molkova, Robb Kidd, Xuan Cao

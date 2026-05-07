@@ -1,12 +1,16 @@
 ## Key Topics
-- Discussion on the usefulness of internal metrics and whether to export traces each time new trace data is sent.
-- Proposal to disable internal trace metrics by default due to potential confusion and verbosity.
-- Examination of whether connection info should include network namespace for better identification of connections.
-- Consideration of network interfaces and potential duplication of metrics in Kubernetes environments.
+- Discussion on internal metrics and the potential redundancy of exporting trace data.
+- Proposal to include network namespace in connection info type for better context.
+- Ongoing issues with CI stability affecting multiple pull requests.
+- Updates on various open pull requests and their statuses, including Redis database tracking.
+- Reminder about the open call for papers for Observability Day.
 
 ## Action Items
-- Nikola to propose an issue to disable internal trace metrics by default.
-- Mattia to consider proposing a change to include network namespace in connection info struct.
+- Nikola to create an issue proposal to disable internal trace metrics by default.
+- Mattia to propose a change regarding network namespace inclusion in connection info.
+- Mario to investigate and address CI failures related to Kubernetes integration tests.
+- Nimrod to submit a PR for tracking Redis database connections.
+- Participants to consider submitting talks for Observability Day by the upcoming deadline.
 
 ## Participants
 Mike Dame, Nikola Grcevski, Tyler Yahn, Nimrod Avni, MM Mario Macias, Mattia Meleleo, Rafael Roquetto

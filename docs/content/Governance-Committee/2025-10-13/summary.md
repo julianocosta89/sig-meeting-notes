@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on project triage and rejection of outdated proposals.
-- Handling non-value entries in the Propagator and the need for community feedback.
-- The concept of a sandbox for new projects to allow experimentation before formal approval.
-- Maintenance of donation repositories and coordination of meeting times.
-- Concerns over project proposal edits and the inclusion of company names in project documentation.
+- Discussion on project triage and rejected proposals.
+- Handling of non-value entries in the Propagator and community feedback.
+- Need for a community sandbox for new projects and proposals.
+- Maintenance of donation repositories and project proposals.
+- Audit logging and community engagement for ongoing projects.
 
 ## Action Items
 - Write comments on rejected proposals for clarity.
-- Schedule a vote on the dependency dashboard.
-- Add the sandbox concept to the agenda for further discussion.
-- Monitor project proposal edits and ensure adherence to guidelines.
+- Schedule a vote on the community dashboard.
+- Add the sandbox concept to the agenda for future discussions.
+- Follow up on the audit logging project and community contributions.
 
 ## Participants
 Severin Neumann, Juraci Paixão Kröhling

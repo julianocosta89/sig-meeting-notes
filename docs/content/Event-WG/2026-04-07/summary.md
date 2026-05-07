@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the requirement for configuration changes accompanying spec PRs.
-- Review of PRs related to unwrapping exceptions and handling span events from logs.
-- Concerns regarding dual emitting of events and the need for differentiation between error and non-error span events.
-- Proposal for a processor to convert log events into span events, with considerations for user configuration options.
-- Ongoing discussions about the stability of the logs API and its implications for merging changes.
+- Progress updates on logs and configuration changes for PRs.
+- Discussion on unwrapping exceptions and handling error types in spans.
+- Proposal for adding span events based on log events and the need for configuration.
+- Concerns about dual emitting of events and the need for a clear separation of event types.
+- Suggestions for improving error handling and status setting in spans.
 
 ## Action Items
-- Draft a PR for configuration changes related to spec PRs.
-- Follow up on the implementation of the unwrapping process for exceptions.
-- Create a separate issue to address concerns about dual pumping of events.
-- Explore the possibility of filtering events through a separate processor in the pipeline.
+- Draft a PR for configuration changes related to spec updates.
+- Create an issue for event routing processor to handle different event types.
+- Review and comment on existing PRs regarding error handling and span events.
+- Explore the possibility of setting error types as optional parameters in the SDK.
 
 ## Participants
 Liudmila Molkova, Pellared, Trask Stalnaker

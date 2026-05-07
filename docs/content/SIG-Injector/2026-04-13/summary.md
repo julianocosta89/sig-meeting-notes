@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on the `conf.d` approach for system packaging and its implications on backward compatibility.
-- Consensus on making breaking changes before reaching version 1.0, with a focus on user impact mitigation.
-- Urgency around addressing issues related to the injector on RHEL, particularly concerning libc detection errors.
-- Plans for merging PRs related to the injector and packaging changes, with a focus on timely releases.
+- Discussion on the conf.D approach for injector configuration and its implications for system packaging.
+- Decision to proceed with breaking changes in version 0.6.0 to improve the injector's configuration system.
+- Urgency to address RHEL-related issues affecting users and the injector's performance.
+- Updates on the packaging SIG and the need for a phased approach to system packaging, focusing on stable versus experimental packages.
 
 ## Action Items
-- Michele Mancioppi to work on the PR for the `conf.d` changes and aim for a quick merge.
-- Review and merge PR 291, which includes the `conf.d` changes, after resolving build issues.
-- Jack Berg to continue addressing RHEL-related issues and provide updates on user feedback.
+- Michele to finalize and merge PR related to conf.D changes.
+- Jack to open an issue for performance budget discussions regarding the injector.
+- Ted and Michele to propose next steps for the packaging SIG and engage with other SIGs for collaboration.
 
 ## Participants
-Jack Berg, Ted Young, Bastian Krol, Michele Mancioppi, Nikola Grcevski
+Jack Berg, Ted Young, Michele Mancioppi, Bastian Krol, Nikola Grcevski

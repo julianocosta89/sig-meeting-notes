@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the implementation of trace ID ratio sampler in Go.
-- Clarification of TH0 and its implications for sampling behavior, particularly in legacy cases.
-- The introduction of attributes to distinguish how sampling counts are derived (extrapolated vs. counted).
-- Consideration of user choice in counting unknown TH values and its impact on metrics.
-- The relationship between TH values and randomness in sampling algorithms.
+- Discussion on the implementation of the trace ID ratio sampler in Go.
+- Clarification of TH0 behavior and its implications for sampling metrics.
+- Examination of attributes related to sampling methods and their impact on metrics.
+- Consideration of tail sampling and the need for accurate representation of sampling probabilities.
+- Review of a PR by Yuan Yuan regarding changes to the sampling implementation.
 
 ## Action Items
-- Review and finalize the PR for adding the trace ID ratio sampler in Go.
-- Further discussion on whether to support user-defined counting for unknown TH values.
-- Evaluate the implications of modifying TH values in multi-stage sampling scenarios.
+- jmacdonald to review Yuan Yuan's PR and provide feedback.
+- Participants to consider the implications of counting unknown TH values as one or zero.
+- Further discussion on tail sampling processor improvements to be scheduled.
 
 ## Participants
 jmacdonald, Chris Marchbanks, Yuanyuan Zhao, Peter Findeisen

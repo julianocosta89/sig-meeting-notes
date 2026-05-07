@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on splitting the project into tiers and managing the roadmap.
-- Updates on the status of various issues, including the stabilization of process namespaces and entities.
-- Review of PRs related to guidance on naming conventions and attributes.
-- Coordination on tasks among participants, including assignments for working on entities and process metrics.
+- Discussion on splitting the project into Tier 1 and managing the roadmap.
+- Updates on the status of various issues, including the entities and process namespace.
+- Review of pull requests (PRs) and guidance on naming conventions.
+- Clarification on the implementation of entities in the collector and related attributes.
+- Coordination on upcoming tasks and responsibilities among participants.
 
 ## Action Items
-- Christos to work on providing guidance related to process entities.
-- Dimitrii to work on defining identifying attributes for processes and implement related changes in the collector.
-- Pablo to review two PRs and coordinate with the governance committee regarding project updates.
+- Christos Markou to work on providing guidance related to the entities issue.
+- Dmitrii Anoshin to define identifying attributes for the process and work on the entities implementation.
+- Pablo Baeyens to follow up on the status updates and PR reviews.
+- Participants to review and provide feedback on the two PRs discussed.
 
 ## Participants
 Christos Markou, Pablo Baeyens, Dmitrii Anoshin

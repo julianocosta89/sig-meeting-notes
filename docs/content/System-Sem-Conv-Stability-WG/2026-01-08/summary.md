@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on updating the design philosophy document to clarify naming conventions and decisions.
-- Review of a PR proposing new PSI metrics for Linux and their alignment with existing metrics.
-- Debate on whether to include "Linux" in metric names and the implications for future OS compatibility.
-- Consideration of naming conventions for time window metrics and their representation in the system.
+- Updates to the design philosophy document regarding naming conventions and clarity.
+- Discussion on the inclusion of OS names in metric names, specifically for PSI metrics.
+- Proposal for new metrics related to Linux PSI and their naming conventions.
+- Consideration of dynamic time windows for metrics and their implications on naming.
+- Review of a PR for system memory shared metrics and the necessity of including "Linux" in the name.
 
 ## Action Items
-- Participants to review the design philosophy PR and provide feedback.
-- Roger to inquire internally about equivalent pressure metrics in other operating systems.
-- Further discussion on metric naming conventions to be scheduled for future meetings.
+- Braydon Kains to review the PR on the design philosophy document.
+- Roger Coll to gather internal feedback on the PSI metrics and their naming conventions.
+- Donal O'Sullivan to open a PR for the naming change in the semantic conventions repository.
 
 ## Participants
-Donal O'Sullivan, Braydon Kains, Bhupinder Singh, Roger Coll, Dmitrii Anoshin
+Donal O'Sullivan, Braydon Kains, Bhupinder Singh, Roger Coll, Dmitrii Anoshin, Christos Markou

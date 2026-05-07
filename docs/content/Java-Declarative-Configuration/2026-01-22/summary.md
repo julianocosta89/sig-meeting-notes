@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of PRs related to OpenTelemetry Java Declarative Configuration.
-- Discussion on the implications of supporting declarative configuration with existing extensions.
-- Consideration of deprecated methods and their continued use in non-declarative configurations.
-- Cleanup of config property utilities and naming conventions for clarity.
-- Strategies for managing configuration properties in the Java agent tooling.
+- Discussion on the implications of declarative configuration and its support for extensions.
+- Review of specific PRs related to configuration property cleanup and the handling of thread details.
+- Challenges with lazy configuration for the OpenTelemetry appender in Spring and its impact on log events.
+- Alignment of the OpenTelemetry SDK with existing patterns and organization of extended components.
+- Consideration of using Jackson for binding configuration properties and potential alternatives.
 
 ## Action Items
-- Trask to leave comments on PRs regarding the handling of deprecated methods.
-- Gregor to explore the possibility of refining the config properties utility to limit its scope.
-- Team to decide on the future of the bridge related to declarative configuration.
+- Trask to leave comments on PRs regarding configuration cleanup and thread details.
+- Jack to provide a commit illustrating the alignment of the OpenTelemetry SDK with existing patterns.
+- Further exploration of lazy configuration for the OpenTelemetry appender to avoid losing log events at startup.
 
 ## Participants
 Trask Stalnaker, Gregor Zeitlinger, Jack Berg

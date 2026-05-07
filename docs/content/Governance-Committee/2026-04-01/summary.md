@@ -1,11 +1,14 @@
 ## Key Topics
-- Discussion on global hotel nights organized by Juraci, aiming to expand the concept beyond Berlin while maintaining a vendor-free environment.
-- Update on OpenTelemetry's graduation process, with positive indications from adopter interviews and pending paperwork.
-- Importance of maintaining guidelines for events to prevent vendor dominance and ensure a focus on end-user experiences.
+- **Global OTel Nights**: Discussion on expanding the concept of OTel Nights to other locations globally, maintaining a no-vendor pitch policy.
+- **Graduation Update**: Progress on graduation with positive recommendations pending from adopter interviews.
+- **GenAI Semantic Conventions**: Discussion on the need for a unified approach to GenAI semantic conventions and the proposal for a faster release cycle.
+- **KubeCon Feedback**: Insights on the recent KubeCon, including attendance and interest in OpenTelemetry sessions.
+- **Bloomberg Mentoring Program**: Announcement of a new mentoring initiative involving engineers eager to contribute to OpenTelemetry.
 
 ## Action Items
-- Juraci to formalize the global hotel nights proposal as a pull request in the CNCF repository.
-- Austin to continue following up on the graduation process and ensure all necessary adopter interviews are completed.
+- **Juraci Paixão Kröhling**: To formalize the global OTel Nights proposal as a pull request in the CNCF repositories.
+- **Austin Parker**: To follow up on the graduation process and ensure all adopter interviews are completed.
+- **Participants**: To consider a public statement regarding the official status of GenAI semantic conventions.
 
 ## Participants
 Marylia Gutierrez, Trask Stalnaker, Juraci Paixão Kröhling, Severin Neumann, Austin Parker, Morgan McLean

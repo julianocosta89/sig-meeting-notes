@@ -5,7 +5,7 @@
 
 ## Action Items
 - Tyler to move agenda items to next week's meeting.
-- Participants to provide feedback on the observability guideline document in the Hotel Leads channel.
+- Participants to provide feedback on the observability guideline document in the OTel Leads channel.
 
 ## Participants
 Tyler Yahn, Damien MATHIEU

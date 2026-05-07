@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the integration of long-running spans using events in OpenTelemetry.
-- Overview of a proposal by Josh regarding out-of-band spans and memory mapping.
-- Insights on the balance between fast implementation and long-term solutions for event handling.
-- Clarification on the differences between inner and outer mechanics in CI/CD observability.
-- The importance of understanding both high-level and low-level visibility in CI/CD processes.
+- Discussion on the progress of sending long-running spans using events and the implications for semantic conventions.
+- Review of Josh's proposal for out-of-band spans and its potential impact on the current approach.
+- Updates on the development of prototypes for Java, Python, and C++ related to CI/CD semantic conventions.
+- Consideration of a roadmap for 2026, focusing on semantic conventions and the introduction of release candidates.
+- The need for further prototypes and discussions on modeling CI/CD system events and incident conventions.
 
 ## Action Items
-- Review Josh's project on out-of-band spans and evaluate its potential benefits.
-- Inspect and discuss trade-offs between current approaches and Josh's proposal in future meetings.
-- Continue to explore the implications of sending spans as events and necessary specification changes.
+- Carlos to create a draft PR for the span processor and semantic conventions.
+- Participants to review and comment on the roadmap for 2026 regarding semantic conventions.
+- Adriel to draft a proposal for modeling CI/CD system events and incident conventions for the roadmap.
 
 ## Participants
 Adriel Perkins, Alan Clucas, Neil Yashinsky, Christophe, Carlos Alberto Cortez

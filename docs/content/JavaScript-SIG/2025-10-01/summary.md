@@ -1,12 +1,15 @@
 ## Key Topics
-- Review of the user HPR PR addressing user agent header issues in the gRPC exporter.
-- Discussion on CI performance improvements and challenges with current testing processes.
-- Introduction of Ian Ferrier and his issue with spans getting stuck in a pending state in the browser.
-- Suggestions for debugging and potential limits related to the fetch-based transport.
+- Review of the user HPR PR addressing the gRPC exporter user agent issue.
+- Discussion on CI performance and potential improvements to speed up testing and compilation.
+- Troubleshooting a pending state issue with spans in the OpenTelemetry browser SDK.
+- Updates on documentation and examples for consistency across languages.
+- Consideration of adding more approvers from the browser SIG for package management.
 
 ## Action Items
-- David Luna Bistuer to create an issue for discussing CI improvements and testing processes.
-- Ian Ferrier to open a GitHub issue regarding the pending spans problem.
+- David Luna Bistuer to create an issue for CI improvements and gather feedback.
+- Ian Ferrier to open a GitHub issue regarding the pending state of spans.
+- Marc Pichler to follow up on the documentation changes and ensure consistency across language examples.
+- David Luna Bistuer to discuss adding browser SIG members as approvers in the next meeting.
 
 ## Participants
-Marc Pichler, David Luna Bistuer, Trent Mick, Ian Ferrier
+Marc Pichler, David Luna Bistuer, Trent Mick, Ian Ferrier, Jamie Danielson, MG Marylia Gutierrez

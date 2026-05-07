@@ -1,14 +1,13 @@
 ## Key Topics
-- Ongoing discussions regarding the method for updating span names in the span processor.
-- Community feedback on the composable sampler naming and exception recording as events.
-- Consideration of how to include file names and line numbers when recording spans.
-- Triage of issues in the community repository and the need for community input.
-- Update on the status of elections within the project.
+- Ongoing discussions about the `onSpan name updated` method in `spanProcessor`.
+- Review of community feedback on composable sampler naming and exception recording as events.
+- Consideration of where to document the suggestion for including file names and line numbers when recording spans.
+- Status update on elections and the need to prioritize discussions around it.
 
 ## Action Items
-- Severin to encourage authors to present their ideas in the upcoming meetings.
-- Follow up on community feedback regarding the span recording specifications.
-- Consider moving certain issues to the semantic conventions for better visibility.
+- Severin to suggest to the author of the span name update to join the next meeting for further discussion.
+- Follow up on community feedback regarding the exception recording and span events.
+- Ensure elections are discussed in the upcoming meetings, with a focus on what needs to be done.
 
 ## Participants
 Pablo Baeyens, Dan Gomez Blanco, Severin Neumann, Juraci Paixão Kröhling

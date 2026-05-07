@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the impact of the `detect` tool on PR reviews and the need for a streamlined set of rules.
-- Proposal to expose the network status refresh API to allow developers to manually refresh network details after permission is granted.
-- Consideration of the implications of first-session data accuracy when permissions are granted in Android applications.
-- Suggestions for documenting permission-related behavior in the SDK to inform developers about potential limitations.
+- Discussion on the impact of using the "detect" tool on PR reviews and potential improvements.
+- Proposal to expose a network status refresh API to handle permission changes more effectively.
+- Client tracing issues, particularly around maintaining trace context across different activities and sessions.
+- Progress on the Kotlin multiplatform implementation of OpenTelemetry and plans for community involvement.
+- Roadmap discussion for reaching a stable 1.0 version of OpenTelemetry Android.
 
 ## Action Items
-- Review and potentially consolidate the rules for the `detect` tool to improve PR review processes.
-- Investigate the feasibility of exposing the network status refresh API.
-- Document the behavior regarding permissions and network status in the SDK documentation.
+- Surbhi to create a tracking issue for the network status refresh API.
+- Surbhi to propose a smaller footprint API for network status refresh.
+- Participants to review the list of issues for potential 1.0 requirements before the next SIG meeting.
+- Documentation improvements to be discussed in future meetings.
 
 ## Participants
-Gregor Zeitlinger, Hanson Ho, Jason Plumb, Surbhi, Cesar Munoz, Jamie Lynch, Mustafa Haddara
+Gregor Zeitlinger, Hanson Ho, Jason Plumb, Surbhi, Cesar Munoz, Jamie Lynch, Mustafa Haddara, Leonardo Serrano.

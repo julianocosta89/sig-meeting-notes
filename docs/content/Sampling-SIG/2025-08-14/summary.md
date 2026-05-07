@@ -1,12 +1,13 @@
 ## Key Topics
-- Migration strategies for samplers, focusing on head sampling and the implications of using old vs. new sampling policies.
-- Discussion on consistent probability samplers and their advantages over legacy trace ID ratio samplers.
-- Exploration of rate limiting approaches and the potential for a standard configuration for sampling rules.
-- Proposal of a composite sampling policy evaluator that allocates rates to different rules based on specified proportions.
+- Migration strategies for samplers, particularly head sampling and the challenges with legacy trace ID ratio samplers.
+- Discussion on rate limiting and its relationship with sampling, including the concept of composite sampling policies.
+- The need for a standard configuration model for composite predicates and filters in sampling and rate limiting.
+- Updates on the status of pull requests related to composite samplers and the importance of documenting changes.
 
 ## Action Items
-- jmacdonald to follow up on the migration strategies for samplers with further thought before the next Spec SIG meeting.
-- Participants to provide feedback on the proposed composite sampling policy and rate limiting strategies.
+- jmacdonald to follow up on the migration thread regarding replacing trace ID ratio samplers.
+- jmacdonald to meet with Sean Porter to discuss future maintenance and gather insights.
+- Carlos Alberto Cortez to prepare a PR with a banner noting the recent specification update.
 
 ## Participants
-jmacdonald, Peter Findeisen, Otmar Ertl, Tristan, Carlos
+jmacdonald, Peter Findeisen, Otmar Ertl, Carlos Alberto Cortez

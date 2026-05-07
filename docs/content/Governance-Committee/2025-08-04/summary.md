@@ -1,15 +1,13 @@
 ## Key Topics
-- Discussion on triaging issues related to OpenTelemetry, including community feedback and maintainers' involvement.
-- Updates on the status of asynchronous histogram instrument support and its labeling.
-- Review of Prometheus metrics development and the need for clearer communication with C++ maintainers.
-- Challenges faced with Slack's new bookmark feature impacting workflow.
-- General updates on ongoing issues and follow-ups needed for specific items.
+- Discussion on triaging issues related to OpenTelemetry, including asynchronous histogram instruments and Prometheus metrics.
+- Feedback on Slack's new bookmark feature and its impact on workflows.
+- Plans to standardize project governance and discuss graduation reviews.
+- Creation of a GitHub area for admin maintenance tasks.
 
 ## Action Items
-- Add comments to issues for community feedback and tag relevant maintainers for further context.
-- Follow up on the Prometheus metrics issue and request links to related pull requests from the authors.
-- Consider bringing up certain issues in the spec meeting for broader discussion.
-- Check with C++ maintainers regarding the current status of the Prometheus exporter.
+- Tag community feedback on specific issues and follow up with maintainers for additional context.
+- Create a GitHub area for admin maintenance tasks.
+- Leave notes for the next meeting in the absence of a participant.
 
 ## Participants
 Dan Gomez Blanco, Pablo Baeyens, Severin Neumann

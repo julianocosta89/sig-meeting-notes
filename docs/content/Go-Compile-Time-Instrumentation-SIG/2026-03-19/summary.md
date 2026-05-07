@@ -1,14 +1,14 @@
 ## Key Topics
-- Introduction of new participant, Marc Schäfer, and his background in OpenTelemetry and Go.
+- Introduction of new participant, Marc Schäfer, and his background in OpenTelemetry and Go development.
 - Discussion on compile-time instrumentation and its implementation using YAML configurations.
-- Updates on the current status of the SIG and the momentum in PR reviews and contributions.
-- Plans for KubeCon EU, including potential collaborations and sharing the SIG's work with other groups.
-- Aim for a stable release (V1) by the next KubeCon and the possibility of presenting at KubeCon North America.
+- Plans for promoting the SIG at KubeCon and potential collaboration with other SIGs.
+- Emphasis on maintaining review standards for pull requests to ensure diverse approvals before merging.
+- Updates on ongoing projects and contributions, including the integration of new features and migration plans from existing tools.
 
 ## Action Items
-- Marc to join the OpenTelemetry Slack channel for further engagement and questions.
-- Discuss and plan for a presentation at KubeCon North America to promote the SIG's work.
-- Explore opportunities for collaboration with other SIGs at KubeCon EU.
+- Marc to join the OpenTelemetry Slack channel and engage with the community.
+- Huxing to propose an issue or PR regarding the new JNI UTL SDK for integration into the OpenTelemetry compile-time repo.
+- Participants to focus on reviewing pending pull requests, especially those from outside contributors.
 
 ## Participants
-Marc Schäfer, Przemek Delewski, Huxing Zhang, Kemal Akkoyun
+Marc Schäfer, Przemek Delewski, Huxing Zhang, Kemal Akkoyun, Yi Yang

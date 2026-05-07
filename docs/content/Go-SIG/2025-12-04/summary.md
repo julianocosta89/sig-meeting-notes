@@ -1,15 +1,13 @@
 ## Key Topics
-- Upcoming release timeline and necessary merges before release.
-- Discussion on the optimized histogram reservoir and sync map for non-locking algorithms.
-- Review process for pending pull requests and issues.
-- Experimental functionality packaging and its implications for the collector.
-- Semantic convention cleanup and its status.
+- Discussion on the overdue release and tasks needed for completion.
+- Review of open pull requests and issues, including optimized histogram reservoir and sync map.
+- Plans for the release candidate of declarative config and handling experimental features.
+- Mention of interest in adding Go runtime metrics from KubeCon.
 
 ## Action Items
-- Move unresolved issues to the next milestone.
-- Review pending pull requests, particularly the optimized histogram and sync map.
-- Aim for a release candidate by tomorrow if no blockers arise.
-- Consider restructuring experimental packages for better clarity.
+- Aim to finalize and release updates by the end of the week.
+- David to follow up on the issue regarding Go runtime metrics.
+- Review and merge outstanding pull requests as needed.
 
 ## Participants
 Tyler Yahn, Owen Williams, Sam, David Ashpole

@@ -1,12 +1,14 @@
 ## Key Topics
 - Discussion on audio issues and technology preferences.
 - Review of open pull requests and code coverage checks.
-- Debate on the implementation of automatic merging in GitHub.
-- Importance of maintaining a review process for better coordination on releases.
+- Debate on the merits of automatic merging of pull requests.
+- Updates on the contribution of the Elastic Distributed OpenTelemetry (EDOT) project.
+- Exploration of remote configuration features and vendor-neutral implementations.
 
 ## Action Items
-- Sergey to review and provide feedback on open pull requests.
-- Bob to consider bringing up the automatic merge feature in future meetings for broader input.
+- Bob to review and approve pending pull requests.
+- Pawel to merge the EDOT agent into the main repository and remove vendor-related dependencies.
+- Sergey to gather feedback on remote configuration features from other contributors.
 
 ## Participants
 Sergey, Bob Strecansky, Pawel Filipczak

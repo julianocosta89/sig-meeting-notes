@@ -1,12 +1,16 @@
 ## Key Topics
-- Discussion on improving the testing workflow for pull requests (PRs) and main pushes, including coverage report uploads.
-- Updates on the declarative configuration PRs, including parsing configuration files and integration with existing components.
-- Consideration of the incubator package's inclusion in workspaces and its future in the project.
+- Discussion on optimizing testing workflows for pull requests and main pushes, including coverage report uploads.
+- Updates on the declarative configuration PRs and the need for further reviews.
+- Concerns about code ownership and the responsibilities of new code owners in the community.
+- Introduction of a malware PSA affecting developers and suggestions for local checks.
+- Overview of ongoing PRs, including semantic conventions for AWS SDK and instrumentation updates.
 
 ## Action Items
-- David Luna Bistuer to update the PR with changes to the testing workflow and coverage report uploads.
-- Participants encouraged to review the declarative configuration PRs for feedback.
-- Marc Pichler to clarify the migration of code to the new interface for component providers in future discussions.
+- David Luna Bistuer to update the testing workflow PR and ping for reviews.
+- Participants encouraged to review the declarative configuration PRs.
+- Eric Han to create an issue regarding code ownership responsibilities.
+- Marc Pichler to merge approved PRs and follow up on outstanding reviews.
+- Participants to check for malware vulnerabilities as per the PSA.
 
 ## Participants
-Marc Pichler, MG Marylia Gutierrez, David Luna Bistuer
+Marc Pichler, MG Marylia Gutierrez, David Luna Bistuer, Eric Han, Luke (GuangHui) Zhang, Hector Hernandez, Jackson Weber.

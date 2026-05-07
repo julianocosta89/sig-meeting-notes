@@ -1,15 +1,16 @@
 ## Key Topics
-- **Status Metrics Approval**: Discussion on the need for additional reviews and approvals for non-normative guidance on status metrics.
-- **App Screen Name Status**: Updates on the approval process and the need for further reviews due to changes made in the PR.
-- **Entity Identification**: Concerns regarding the uniqueness of entities based on build IDs and the need for additional identifying attributes.
-- **RPC Meetings**: Announcement of upcoming RPC meetings and discussions about backlog and PRs.
-- **Best Practices for Attributes**: Review of guidance on defining attributes and the importance of documenting stable instrumentation.
+- **Triage Process Improvements**: Discussion on streamlining the triage process for issues and PRs, including categorization and labeling.
+- **Semantic Conventions Updates**: Review of the status and approval processes for various semantic convention proposals, including status metrics and app screen names.
+- **General Signal Documentation**: Efforts to standardize documentation for general signals to improve clarity and usability.
+- **Community Feedback Mechanism**: Establishing a clearer path for community feedback on issues and proposals, including the role of SIGs.
+- **Technical Challenges**: Addressing technical challenges related to attribute namespaces and how they are documented and utilized within OpenTelemetry.
 
 ## Action Items
-- **Review Non-Normative Guidance**: Participants to review and provide feedback on the status metrics guidance.
-- **Follow Up on App Screen Name**: Ensure additional reviews are completed for the app screen name PR.
-- **Discuss Entity Identification**: Schedule discussions with the client SIG to clarify entity identification issues.
-- **Participate in RPC Meetings**: Encourage members to join and contribute to the upcoming RPC meetings.
+- Review and approve the non-normative guidance for status metrics.
+- Clarify the status of the app screen name proposal and ensure it receives necessary approvals.
+- Finalize the new triage process and document it for contributors.
+- Discuss the implications of general signal documentation changes in the next meeting.
+- Ensure that the new processes do not hinder the ability to open PRs without linked issues for minor changes.
 
 ## Participants
-Josh Suereth, Trask Stalnaker, Daniel Dyla, Joao G., James Thompson, Hugo Frontmatter, Lyudmila, Steve (Alibaba), Lanila
+Josh Suereth, Trask Stalnaker, Daniel Dyla, Joao G., James Thompson, Lyudmila, Steve, and others from the OpenTelemetry community.

@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the inclusion of extended attributes in metrics and logs, with differing opinions on their necessity.
-- Proposal for a pointer mechanism to handle large or complex attributes efficiently.
-- Consideration of how to balance the needs of various programming languages and their SDK implementations.
-- Strategies for achieving consensus among stakeholders with conflicting views on attribute usage.
+- Discussion on the use of pointers for large attributes in OpenTelemetry and the implications for metrics and logs.
+- Debate on whether extended attributes should be universally applied or limited to specific contexts, with a focus on balancing complexity and usability.
+- Clarification on the handling of instrumentation scope attributes and their relationship to regular attributes.
+- Strategies for reaching consensus among stakeholders with differing opinions on attribute handling.
+- Updates on the status of semantic conventions and the need for documentation regarding instrumentation scope attributes.
 
 ## Action Items
-- Explore the possibility of making extended attributes optional rather than mandatory.
-- Draft a proposal for a pointer type that can be integrated at the protocol level.
-- Develop guidelines for SDKs regarding the handling of complex attributes, particularly in relation to different programming languages.
+- Trask and Liudmila to reach out to Josh for further discussions on the spec and seek his approval.
+- Liudmila to create an issue summarizing the discussion on instrumentation scope attributes for future reference.
+- Participants to finalize discussions and document decisions by the next meeting.
 
 ## Participants
 Robert Pająk, Austin Parker, Trask Stalnaker, Liudmila Molkova

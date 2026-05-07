@@ -1,14 +1,14 @@
 ## Key Topics
-- Attendance issues and communication challenges within the OpenTelemetry FAAS Working Group.
-- Discussion on cold start times for collectors and potential optimizations.
-- Strategies for reducing the binary size of the collector layer to improve performance.
-- Insights on SDK usage and auto-instrumentation libraries, particularly for Python.
-- Recommendations for customizing builds to include only necessary components.
+- Attendance issues and communication gaps within the OpenTelemetry FAAS Working Group.
+- Discussion on cold start performance and SDK optimizations for AWS Lambda.
+- Examination of the impact of auto-instrumentation on metric data points and potential solutions.
+- Recommendations for reducing binary size in Lambda layers and improving performance.
+- Exploration of community contributions and collaboration opportunities.
 
 ## Action Items
-- Investigate and implement strategies to reduce the binary size of the collector layer.
-- Explore the possibility of excluding unnecessary processors and connectors to optimize cold start times.
-- Review and customize the SDK usage to improve performance, especially regarding auto-instrumentation.
+- Lucas to follow up with Serkan regarding his contributions and progress.
+- Bhaskar to set up a follow-up meeting with Lucas to discuss performance metrics and configurations.
+- Lucas to investigate and propose enhancements to the Lambda instrumentation library to reduce metric data points.
 
 ## Participants
 Bhaskar Banerjee, Sateesh Mamidala, Stephen Hong, Lukas Herring

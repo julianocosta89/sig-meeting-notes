@@ -1,13 +1,14 @@
 ## Key Topics
-- **Open Spec PRs Assignment**: Discussion on assigning Technical Committee (TC) members to unassigned open specification pull requests (PRs) and the need for progress on priority items.
-- **Security Advisories Increase**: A rise in security advisories due to AI tools enabling easier vulnerability detection. The committee discussed the implications for on-call responsibilities and the need for preemptive scanning by maintainers.
-- **Prometheus Updates**: Updates on Prometheus-related PRs and the assignment of ownership for ongoing work.
-- **OTEPS Discussion**: Addressing the status of OpenTelemetry Enhancement Proposals (OTEPS) and the need for clearer communication and alignment on their content.
+- **Security Advisories**: Discussion on the increase in security advisories due to AI and community engagement, and the need for improved tracking and response mechanisms.
+- **Stable by Default**: Ongoing discussions about prioritizing the merging of the "stable by default" initiative and the need for dedicated calls to drive progress.
+- **Set Error Status Proposal**: Introduction of a helper method to standardize error status recording across SDKs, aiming for consistency in error handling.
+- **Packaging Strategy**: Debate on the scope of packaging efforts, including the creation of an Uber package versus focusing on existing packages, and the need for an OTAP to guide packaging principles.
 
 ## Action Items
-- Assign a TC member to drive the progress of the stable by default OTEP.
-- Maintain a dedicated time in future spec calls to resolve outstanding issues related to OTEPS.
-- Encourage maintainers to conduct preemptive scans of repositories to reduce the number of security advisories.
+- Assign a TC member to drive the "stable by default" initiative and ensure progress.
+- Liudmila to draft a proposal for the set error status helper method and mark it for triage.
+- Explore the creation of a security rotation for maintainers to manage vulnerability reports more effectively.
+- Discuss the packaging strategy further in Slack and identify potential leads for the OTAP.
 
 ## Participants
-Reiley, Carlos Alberto Cortez, Tigran Najaryan, Josh Suereth, Liudmila Molkova, David Ashpole, Jack Berg, jmacdonald, Armin (Dynatrace)
+Reiley, Carlos Alberto Cortez, Tigran Najaryan, Josh Suereth, Liudmila Molkova, Jack Berg, David Ashpole, jmacdonald, Armin (Dynatrace)

@@ -1,13 +1,15 @@
 ## Key Topics
-- **Maintainer and Approver Roles**: Discussion on the need for more maintainers and approvers for the demo app, with a focus on expanding the team.
-- **Pull Request Management**: Review of ongoing pull requests, including a significant one from Henrik introducing Dapper and concerns about database instrumentation.
-- **Community Engagement**: Emphasis on the importance of community contributions and potential blog posts to attract more participants.
-- **OpenSearch Integration**: Discussion on the integration of OpenSearch and its role in observability within the demo app.
+- Need for more maintainers and approvers for the OpenTelemetry demo application.
+- Discussion on the integration of OpenSearch and its role in the demo.
+- Review of ongoing pull requests, including those related to the Dapper instrumentation and changes to frontend instrumentation.
+- Exploration of creating a simplified, uninstrumented version of the demo for workshops.
+- Importance of documentation and structured workshops to facilitate learning and adoption of OpenTelemetry.
 
 ## Action Items
-- **Recruit More Maintainers**: Prioritize finding additional maintainers and approvers for the demo app.
-- **Review Pending Pull Requests**: Participants to review and provide feedback on outstanding pull requests, particularly Henrik's Dapper PR.
-- **Community Outreach**: Consider writing blog posts to engage the community and attract new contributors.
+- Identify and onboard additional approvers for the demo project.
+- Review and address open pull requests, particularly those from Cedric and Henrik.
+- Consider creating a simplified version of the demo for educational purposes.
+- Develop documentation and scripts for conducting workshops using the demo.
 
 ## Participants
-Juliano Costa, Pierre Tessier, Ani (Opensearch), Shenoy Pratik, Cedric
+Juliano Costa, Pierre Tessier, Ani (OpenSearch), Shenoy Pratik

@@ -1,13 +1,15 @@
 ## Key Topics
-- **Demo of OpenTelemetry eBPF Instrumentation**: Nimrod presented a demo showcasing the OpenTelemetry demo with microservices, highlighting modifications made to enhance observability.
-- **Context Propagation Issues**: Discussion on challenges with context propagation between services, particularly across different nodes, and potential solutions involving C group versions.
-- **Kafka Integration Challenges**: Issues with Kafka message metadata and suggestions for enriching messages to improve traceability.
-- **Observability Enhancements**: Insights on achieving complete observability with the current setup and minor bugs encountered during implementation.
+- **Demo of OpenTelemetry eBPF Instrumentation**: Nimrod presented a demo showcasing modifications to the OpenTelemetry demo, focusing on microservices and database communications.
+- **Context Propagation Issues**: Discussion on challenges with context propagation between services, particularly regarding trace and span IDs.
+- **Pull Request Review**: Review of open pull requests, including dependency updates and issues with the collector API.
+- **HTTP Header and Body Extraction**: Proposal to enhance HTTP spans by including headers and payloads, with considerations for performance impacts.
+- **Socket Programs Discussion**: Rafael shared insights on using socket message and string verdict programs for tracking socket lifecycles and improving observability.
 
 ## Action Items
-- Investigate C group version compatibility issues and their impact on context propagation.
-- Explore the possibility of enriching Kafka message metadata to improve traceability.
-- Review the architecture diagram and identify potential connection issues with Kafka clients.
+- **Create Issues for Identified Bugs**: Document and create issues for the bugs and challenges discussed during the demo.
+- **Update CI Checks for Copyright Headers**: Implement CI checks to ensure consistent copyright headers across all file types.
+- **Benchmark Large Buffer Processing**: Develop benchmarks to assess the performance of large buffer processing in user space.
+- **Explore Socket Iterators**: Investigate the use of socket iterators for tracking sockets and potentially filtering based on process IDs.
 
 ## Participants
-Rafael Roquetto, Tyler Yahn, Nikola Grcevski, Nimrod Avni, Mattia Meleleo
+Rafael Roquetto, Tyler Yahn, Nikola Grcevski, Nimrod Avni, Mattia Meleleo, Marc

@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the status and future of the Security Response Committee.
-- Challenges in maintaining up-to-date dependencies and handling security vulnerabilities in repositories.
-- Need for automation tools to manage dependency updates and security checks across projects.
-- Importance of establishing processes for identifying and addressing legacy packages and security issues systematically.
+- Discussion on the status of the Security Response Committee and its relevance moving forward.
+- Challenges with maintaining dependencies and ensuring timely updates for security vulnerabilities.
+- Need for automation tools to manage dependency updates and security checks across repositories.
+- Establishing a list of security best practices for maintainers to follow regarding package management and vulnerability handling.
+- Ongoing discussions about the use of generative AI tools in the community and the need for clear policies.
 
 ## Action Items
-- Explore automation tools like Dependabot and Renovate for regular dependency updates.
-- Investigate GitHub's security features and tools for better vulnerability management.
-- Develop a process to identify and communicate potential issues related to legacy packages and security vulnerabilities.
+- Create an issue to document security best practices and questions for maintainers.
+- Explore existing tools like Sncc for automated security checks and dependency management.
+- Draft a policy for GitHub admin changes that includes community input and communication with maintainers.
+- Follow up with maintainers regarding the use of generative AI tools and their feedback.
 
 ## Participants
 Reiley Yang, Jeremy Corley, Trask Stalnaker

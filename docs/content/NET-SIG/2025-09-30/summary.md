@@ -1,14 +1,13 @@
 ## Key Topics
-- Review of unshipped APIs and change logs before the upcoming release.
-- Discussion on the release schedule for ASP.NET Core library enhancements.
-- Issues with OpenTelemetry Collector breaking the .NET SDK due to protobuf changes.
-- Need for better integration tests in both the .NET SDK and OpenTelemetry Collector.
+- Review of unshipped APIs and change logs for upcoming release.
+- Discussion on the urgency of integration tests for the .NET SDK due to issues with the OpenTelemetry Collector.
+- Proposal for multiple releases before .NET 10 RTM, including a patch for a one-line bug.
+- Need for better integration tests to prevent future compatibility issues.
 
 ## Action Items
 - Rajkumar to check with Piotr about his involvement in the release process.
-- Proceed with the current release after reviewing public API changes.
-- Martin to work on improving integration tests for the .NET SDK.
-- Address the ongoing issues with the OpenTelemetry Collector and its impact on .NET metrics.
+- Martin to assign himself the task of adding integration tests to the .NET SDK.
+- Martin to investigate and fix a failing test in a PR related to major version changes.
 
 ## Participants
-Rajkumar Rangaraj, Martin Costello, Mike "Blanch" Blanchard
+Rajkumar Rangaraj, Martin Costello, Mike "Blanch" Blanchard, Piotr (mentioned)

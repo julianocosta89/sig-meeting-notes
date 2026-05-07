@@ -1,16 +1,15 @@
 ## Key Topics
-- Review of the triage board and merging of PRs.
-- Discussion on the use of GitHub Co-Pilot for code reviews and the status of CNCF ticket for licenses.
-- Planning for the June release and necessary updates for the release mechanism.
-- Debate on whether changing metric value types (int to double) constitutes a breaking change.
-- Considerations for semantic conventions and their impact on backend expectations.
+- Review of the triage board and progress on pull requests (PRs).
+- Discussion on the implications of changing metric value types from int to double.
+- Updates on the automation of review processes using co-pilot.
+- Naming conventions for up-down counters and their implications.
+- Proposal for a standardized workflow namespace across different systems (CICD and Kubernetes).
 
 ## Action Items
-- Liudmila to add comments to the agenda for discussion.
-- Trask to follow up on CNCF ticket for Co-Pilot licenses.
-- Team to aim for merging PRs and making the June release today.
-- James to provide links to his PRs for review.
-- Consider renaming "value type" in the API to "value type API hint" for clarity.
+- Liudmila to add comments to the agenda and track PR approvals.
+- Trask to finalize the June release and ensure necessary PRs are merged.
+- Josh to update documentation regarding the entity registry and semantic conventions.
+- James to provide more detailed justification for the workflow namespace proposal and seek feedback from relevant groups.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Josh Suereth, Braydon Kains, James Thompson
+Liudmila Molkova, Trask Stalnaker, Josh Suereth, Braydon Kains, James Thompson, Christophe Kamphaus.

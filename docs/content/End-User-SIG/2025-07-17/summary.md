@@ -1,12 +1,15 @@
 ## Key Topics
 - Introduction of new participants, including Sophia Solomon from Elastic.
-- Discussion on the recent APAC OpenTelemetry event and its time zone challenges.
-- Andrej's experience with the Linux Foundation mentorship program and the upcoming call for topics.
-- Brainstorming potential mentorship topics related to OpenTelemetry.
+- Discussion on mentorship opportunities within the OpenTelemetry community.
+- Recap of recent events and the need for more APAC-focused sessions.
+- Ideas for community engagement, including a "What's New" series and collaboration with other SIGs.
+- Plans for upcoming events and outreach efforts in Nigeria.
 
 ## Action Items
-- Participants to brainstorm and propose topics for the upcoming mentorship program.
-- Follow-up on the recap of the APAC OpenTelemetry event.
+- Andrej to prepare a mentorship proposal and seek feedback from the group.
+- Adriana to reach out to Dan about potential collaboration on community updates.
+- Lisa to connect with Japanese translation efforts for outreach.
+- Group to explore hosting a "What's New" series and identify potential speakers.
 
 ## Participants
-Andrej, Sophia Solomon, Adriana Villela, Reese Lee, Lisa Jung, Lutao Xie
+Andrej, Sophia Solomon, Adriana Villela, Reese Lee, Lisa Jung, Lutao Xie, Victoria Nduka.

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on summarizing the Gentic track topics, specifically regarding OCSF and OpenTelemetry convergence.
-- Proposal review by Wolf Gunn on existing GenAI semantics and potential actions.
-- Challenges with managing dependencies in the GenAI monorepo and suggestions for synchronized releases.
-- Need for formal documentation of configuration options for GenAI instrumentation.
-- Capturing error messages and severity in GenAI evaluation results and the distinction between evaluation results and errors.
+- Summary of discussions from the Gentic track, including convergence with OCSF and proposals for guardrails.
+- Challenges with user information capture and the need for formal documentation of configuration options.
+- Updates on the GenAI memory specification, including the removal of `genai.memory.type` and the introduction of vendor-specific attributes.
+- Discussion on the implementation of notifications in the MCP ecosystem and their implications for tracing.
+- Review of the Invoke Agent spans and the need for clarity on capturing tokens and telemetry.
 
 ## Action Items
-- Wolf Gunn to review existing GenAI semantics and report back on actionable items.
-- Neil Yashinsky to take the lead on formalizing configuration documentation.
-- Further discussion on the documentation of error handling in evaluation results to be scheduled.
+- Neil Yashinsky to take a first shot at formalizing configuration options.
+- Trask Stalnaker to update the memory specification PR with links for easier validation.
+- Sergey Sergeev to review Aaron Abbott's work on the MCP SDK instrumentation.
+- Aaron Abbott to coordinate with UI teams regarding the handling of token usage in spans.
 
 ## Participants
-Sergey Sergeev, Liudmila Molkova, Surya Teja, Aaron Abbott, Trask Stalnaker, Neil Yashinsky, Eugene, Erdenesaikhan Tserendavga
+Sergey Sergeev, Liudmila Molkova, Surya Teja, Aaron Abbott, Trask Stalnaker, Neil Yashinsky, Eugene, Erdenesaikhan Tserendavga, Ankit, Nagkumar.

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on open PRs and issues, including Redis Instrumentation.
-- Review of the current status of documentation and instrumenting processes.
-- Consensus on maintaining the current approach for instrumentation while discussing future DSL options.
-- Planning for a feature-complete V1 release by June 2026.
-- Need for documentation on the release process and assigning release responsibilities.
+- Discussion on the status of open PRs and ongoing projects, including Redis Instrumentation.
+- Review of the release process and the need for documentation on release cadence.
+- Consensus on maintaining the current approach for Go and YAML instrumentation while discussing DSL in parallel.
+- Planning for a feature-complete V1 release by June and potential announcements at KubeCon events.
+- Collaboration with other projects to avoid duplication of efforts in auto-instrumentation.
 
 ## Action Items
 - Document the release process and assign release shepherds.
 - Aim to merge the import config PR before team members go on holiday.
-- Create a roadmap for tasks to be completed before the V1 release.
+- Huxing Zhang to inquire about KubeCon EU tickets for potential attendance.
+- List any blockers or additional features needed for V1 from team members.
 
 ## Participants
 Kemal Akkoyun, Dario Castañé, Huxing Zhang, Yi Yang

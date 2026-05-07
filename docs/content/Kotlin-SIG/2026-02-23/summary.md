@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on merging a PR for meeting information and updating the SIG directory.
-- Decision on meeting cadence, leaning towards weekly 45-minute meetings.
-- Technical discussion regarding the minimum Compile SDK version for the SDK, with a proposal to set it to 34.
-- Plans for a blog post to announce OpenTelemetry Kotlin and guidelines for marketing.
+- Discussion on merging a PR for meeting information updates.
+- Decision on meeting cadence: maintaining weekly meetings for 45 minutes.
+- Setting the minimum compile SDK version to 34 for the OpenTelemetry Kotlin SDK.
+- Discussion on the Span API and its compliance with OpenTelemetry specifications regarding reading and writing telemetry data.
+- Plans for a blog post to announce OpenTelemetry Kotlin.
 
 ## Action Items
 - Alolita to update the meeting invite to reflect the weekly cadence.
-- Jamie to finalize and submit a draft blog post about OpenTelemetry Kotlin.
-- Alolita to update the SIG directory with the Zoom link and other necessary information.
+- Jamie to merge the PR regarding the minimum compile SDK version.
+- Team to investigate the implications of allowing reading attributes in spans before they are ended.
+- Hanson to explore use cases for introspection in spans and report back.
 
 ## Participants
-Jamie Lynch, Jason Plumb, Francisco Prieto, Alolita Sharma, Carlos Alberto Cortez
+Jamie Lynch, Jason Plumb, Alolita Sharma, Francisco Prieto, Carlos Alberto Cortez, Hanson

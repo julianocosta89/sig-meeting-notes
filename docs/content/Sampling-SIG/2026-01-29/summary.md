@@ -1,13 +1,14 @@
 ## Key Topics
-- Introduction of a new PR by Peter Findeisen for a flag in the Java SDK to comply with W3C Trace Level 2 specifications.
-- Discussion on the progress of the Go SDK and the need for a similar random flag implementation.
-- Proposal for a new sampler donation and review process, including feedback on compatibility with existing sampling components.
-- Yuanyuan Zhao's updates on performance improvements in the Go SDK, specifically regarding stochastic counting and regex parsing optimizations.
+- Introduction of a new PR by Peter for a flag indicating compliance with W3C Trace Level 2 for randomness in Java SDK.
+- Discussion on the need for a similar implementation in the Go SDK, with Yuan Yuan providing updates on progress.
+- Proposal for a new sampling processor in the collector, with feedback on compatibility and aggregation based on trace state.
+- Performance improvements in the Go SDK related to stochastic counting and regex parsing optimizations.
+- Recommendations for separating changes into multiple PRs for easier review and maintaining consistency across SDKs.
 
 ## Action Items
-- Peter Findeisen to finalize and submit the Java SDK PR for review.
-- Yuanyuan Zhao to push the latest version of the Go SDK PR and provide performance comparison benchmarks.
-- Consider separating the regex to hand parsing change into a distinct PR for easier review.
+- Peter to review and approve his PR.
+- Yuan Yuan to upload the latest version of the Go SDK PR and separate changes for easier review.
+- Participants to follow up on the Go SDK implementation and ensure consistency with Java SDK changes.
 
 ## Participants
-jmacdonald, Peter Findeisen, Yuanyuan Zhao
+jmacdonald, Peter Findeisen, Yuan Yuan Zhao, Otmar Ertl

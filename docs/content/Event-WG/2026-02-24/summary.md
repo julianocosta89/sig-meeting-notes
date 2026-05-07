@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on handling exceptions as logs in Java, focusing on severity levels and semantic conventions.
-- Exploration of local root spans and their importance in determining severity for emitted exceptions.
-- Consideration of the API's ability to identify local routes and how it impacts logging behavior.
-- Debate on the default logging behavior for internal spans and the implications of emitting logs by default.
-- Clarification of span kinds (client, server, consumer) and their roles in logging exceptions.
+- Discussion on Java instrumentation and handling exceptions as logs.
+- Exploration of severity levels for exceptions and spans, including the context of local routes.
+- Consideration of internal spans and their logging behavior.
+- Review of semantic conventions and the need for clarity on severity levels.
+- User feedback regarding the use of body fields in semantic conventions and potential implications for Weaver.
 
 ## Action Items
-- Trask to further investigate the implementation of a default policy for handling exceptions in Java.
-- Consider developing an API specification that allows identification of local routes.
-- Review and finalize the logging behavior for internal spans, potentially making it opt-in.
+- Liudmila to apply comments and clean up the documentation after the meeting.
+- Further discussion needed on the implications of user-defined semantic conventions and their impact on Weaver.
 
 ## Participants
 Trask Stalnaker, Pellared, Liudmila Molkova

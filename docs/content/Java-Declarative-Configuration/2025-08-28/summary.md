@@ -1,13 +1,12 @@
 ## Key Topics
-- **PR Review**: Discussion on the current pull request and its implications for declarative configuration.
-- **Declarative Config YAML Modeling**: Need for structured YAML representation for SEMCOM configurations; initial focus on HTTP headers and DB query parameters.
-- **Instrumentation and Peer Service Mapping**: Challenges in mapping peer services using attributes and the need for a common approach across different instrumentations.
-- **Testing and Milestones**: Review of testing strategies and setting realistic milestones for ongoing work.
+- Review of the PR related to declarative configuration and its implications for other components.
+- Discussion on milestones and the timeline for ongoing work, including spec and SEMCONF tasks.
+- Exploration of declarative configuration YAML modeling, focusing on structured representation and common components across languages.
 
 ## Action Items
-- Develop a proposal for structured YAML representation for SEMCOM configurations.
-- Explore common components for instrumentation to facilitate peer service mapping.
-- Set clear milestones for ongoing projects and testing efforts.
+- Gregor to add an algorithm for implementing peer service mapping in the pull request.
+- Liudmila to assist in developing a proposal for structured YAML representation of configuration.
+- Consideration of how to handle peer service mapping across different programming languages.
 
 ## Participants
-Gregor Zeitlinger, Jay DeLuca, Trask Stalnaker, Antoine Toulme, Liudmila Molkova
+Gregor Zeitlinger, Jay DeLuca, Trask Stalnaker, Liudmila Molkova, Antoine Toulme

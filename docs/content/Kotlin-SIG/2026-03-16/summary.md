@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the need for issue templates in the OpenTelemetry Kotlin repository.
-- Consideration of agent-aided PR documentation and the implications of using AI in PRs.
-- The balance between structure in issue reporting and the current low volume of external contributions.
-- The potential redundancy of AI usage disclosures in PRs as AI becomes more common.
+- Discussion on the need for issue templates in the new repository.
+- Proposal for agent-aided PR documentation to indicate AI involvement in PRs.
+- Review of getting started documentation for the OpenTelemetry website.
+- Discussion on the readable span interface and its implications for the API module.
+- Consideration of the instrumentation model and whether to maintain it within the current repo or create a separate contribs model.
 
 ## Action Items
-- Hanson to explore the creation of issue templates and defer until further need arises.
-- Hanson to propose a PR template regarding AI usage in contributions.
-- Jason to assist in finding the right location for the PR template in the repository.
+- Hanson to propose a solution for documenting AI involvement in PRs.
+- Jamie to review and progress the getting started documentation.
+- Jason to leave comments on the instrumentation PR regarding its organization and testing.
+- Carlos to raise the issue of deprecated methods in the span interface at the next spec meeting.
 
 ## Participants
-Jamie Lynch, Jason Plumb, Hanson, Francisco Prieto
+Jamie Lynch, Jason Plumb, Hanson, Francisco Prieto, Carlos Alberto Cortez

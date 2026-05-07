@@ -1,13 +1,13 @@
 ## Key Topics
-- Overview of the OpenTelemetry SIG and its three-phase approach to extending service entities.
-- Discussion on stabilizing deployment and service attributes, including the introduction of new attributes like owner, criticality, and data sensitivity.
-- Feedback on the current model of service entities, particularly regarding the grouping of services and instances.
-- Suggestions for improving clarity in documentation and definitions related to service and instance attributes.
+- Discussion on the three phases for extending OpenTelemetry service attributes: service entity, deployment stabilization, and data sensitivity attributes.
+- Feedback on the service entity model and the need for clearer documentation regarding service instances and their IDs.
+- Review of the deployment attributes, focusing on the clarity and utility of `deployment.environment.name` and `deployment.id`.
+- Consideration of standardization for environment naming conventions and potential use of enums versus free text.
 
 ## Action Items
-- Janhvi to post a message in the group regarding the meeting notes and potential follow-up.
-- Rewrite the description of service entities to clarify the relationship between service name and instances.
-- Consider expanding the attributes under service.instance for future use cases and ensure clarity on their definitions.
+- Janhvi to rewrite the description of service attributes for clarity.
+- Janhvi to gather feedback from other team members regarding deployment attributes and naming conventions.
+- Yoshi to add comments to the existing issue regarding environment naming conventions and potential enums.
 
 ## Participants
 Janhvi, Yoshi Yamaguchi

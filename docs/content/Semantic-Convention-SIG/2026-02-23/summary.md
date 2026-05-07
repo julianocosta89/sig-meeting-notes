@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the deprecation of span events, particularly around exceptions and the introduction of log-based exceptions.
-- Consideration of whether to duplicate attributes in exception events or rely on correlation.
-- Exploration of span identity and categorization for better identification of spans.
-- Review of AWS Lambda invocation and its instrumentation within OpenTelemetry conventions.
-- Clarification on naming conventions for function as a service (FaaS) and AWS-specific implementations.
+- Discussion on span event deprecation and the introduction of log-based exceptions.
+- Proposal for defining a span identity to improve span categorization.
+- Review of the inconsistency in error message handling in semantic conventions.
+- Exploration of long-running spans and the need for a span processor to report lifecycle events.
+- Presentation of federated conventions and their potential implementation in Java instrumentation.
 
 ## Action Items
-- Follow up on the decision regarding making certain attributes an enum.
-- Further define and document the log-based exceptions and their configurations.
-- Investigate the potential for a standardized span identity property.
-- Review AWS SDK instrumentation for Lambda and its implications on OpenTelemetry conventions.
+- Follow up on the PR regarding enum decisions and gather more approvals.
+- Encourage the community to review the error type PR for consistency.
+- Explore the implementation of a span processor for long-running spans.
+- Continue developing the federated conventions and consider a smaller example for demonstration.
 
 ## Participants
-Trask Stalnaker, Liudmila Molkova, Michele Mancioppi, Josh Suereth, Christophe Kamphaus
+Trask Stalnaker, Liudmila Molkova, Michele Mancioppi, Carlos Alberto Cortez, Josh Suereth, Christophe Kamphaus, Daniel Dyla

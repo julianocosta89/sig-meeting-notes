@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on consistency in required metrics for RPC and database metrics.
-- Clarification on handling cancellations and errors in RPC spans.
-- The need for a Dubbo page and community involvement in its development.
-- Consideration of deprecating error messages and implications for RPC.
-- Proposal to add warnings regarding sensitive information in exception messages.
+- Discussion on the consistency of required metrics for RPC and HTTP.
+- Clarification on cancellation handling in RPC spans and its implications for error recording.
+- Proposal to deprecate error messages and its impact on RPC.
+- Need for documentation on Dubbo and its specific attributes.
+- Review of ongoing PRs and the importance of stabilizing the RPC semantic conventions.
 
 ## Action Items
-- Create a separate issue to address the consistency of required metrics.
-- Steve Rao to work on adding a Dubbo page and report any issues found.
-- Modify the YAML for exception messages to include a note about potential sensitive information.
+- Create a separate issue to ensure consistency in required metrics for RPC.
+- Steve Rao to work on adding documentation for Dubbo.
+- Liudmila Molkova to modify YAML for exception messages to include warnings about sensitive information.
+- Review ongoing PRs and finalize the migration guide.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Steve Rao, Matthew Hensley

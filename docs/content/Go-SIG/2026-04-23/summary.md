@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on Go metrics and the categorization of memory usage, particularly the 'other' category.
-- Review of a PR related to runtime metrics and the need for detailed memory metrics.
+- Discussion on Go metrics and the categorization of memory metrics, particularly the 'other' category.
 - Exploration of algorithms for exemplar reservoirs, specifically the challenges of implementing Algorithm L in a concurrent manner.
-- Debate on the statistical validity of running multiple instances of Algorithm L for improved performance.
+- Review of pending PRs and issues blocking the next release, including byte slice limits and OTLP limits.
+- Consideration of topics for KubeCon North America, including potential talks on improvements in metrics.
 
 ## Action Items
-- Bryan to conduct experiments with Go apps to better understand the practical implications of memory metrics.
-- David to refine the approach to implementing Algorithm L based on feedback regarding statistical distribution and bucket sampling.
+- David Ashpole to conduct experiments on Go metrics to assess meaningfulness and distribution.
+- Pellared to add pending PRs related to byte slice limits and OTLP limits to the milestone.
+- Participants to brainstorm and propose topics for KubeCon North America.
 
 ## Participants
-Tyler Yahn, Bryan Boreham, David Ashpole
+Tyler Yahn, Bryan Boreham, David Ashpole, Pellared

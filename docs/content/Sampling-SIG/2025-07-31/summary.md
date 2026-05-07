@@ -1,13 +1,14 @@
 ## Key Topics
-- Introduction of new participant, Patrick, and overview of meeting structure.
-- Follow-up on previous meeting's discussion regarding SDK sampler specifications and the need for clarity on trace ID ratio and probability samplers.
-- Proposal for rate limiting interfaces in the OpenTelemetry collector, distinguishing between rate limits and resource limits.
-- Discussion on the complexity of implementing limiting mechanisms and the need for a well-defined configuration model.
-- Exploration of existing rate limiting architectures, particularly the envoy model, and their implications for OpenTelemetry.
+- Introduction of new participant, Patrick, to the OpenTelemetry Sampling SIG.
+- Discussion on the approval and merging of SDK sampler specifications, specifically around the trace ID ratio and probability sampler.
+- Exploration of rate limiting and resource limiting configurations in the OpenTelemetry collector, including the need for a community-owned tail sampling processor.
+- Comparison of different rate limiting models, particularly between Envoy and tail sampling configurations.
+- Challenges in implementing complex sampling logic and the implications for metrics calculation.
 
 ## Action Items
-- jmacdonald to read and approve the SDK sampler specifications before the next meeting.
-- Further research and report on rate limiting configurations and interfaces to be developed by jmacdonald.
+- jmacdonald to read and approve the SDK sampler specifications by 10 AM.
+- jmacdonald to prepare a report for the Collector group on rate limiting and resource limiting configurations.
+- Participants to review the linked issue from Peter regarding SDK specifications.
 
 ## Participants
-Kent Quirk, jmacdonald, Peter Findeisen, Carlos Alberto Cortez, Patrick Pok
+Kent Quirk, jmacdonald, Patrick, Peter Findeisen, Carlos Alberto Cortez

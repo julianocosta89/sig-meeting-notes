@@ -2,14 +2,14 @@
 - Discussion on semantic conventions for Tokyo Level Attributes and events.
 - Proposal for user-provided association properties in Python instrumentation.
 - Need for improved CI tooling and cross-instrumentation unit test helpers.
-- Review of component ownership and responsiveness among contributors.
-- Triage roles and permissions for better issue management.
+- Review of component ownership and triager roles within the group.
+- Exploration of capturing user and agent identities in GenAI operations.
 
 ## Action Items
-- Sergey to work on a prototype for user-provided association properties.
-- Aaron to follow up on improving CI tooling and code review processes.
-- Liudmila to update component ownership based on responsiveness and contributions.
-- Document the process for becoming a component owner in the Python community.
+- Follow up on the proposal for user-provided association properties.
+- Create a table to analyze SDKs and their support for concepts similar to workflows.
+- Discuss the need for a conversational route attribute in future PRs.
+- Ensure better communication for PR reviews and merging strategies.
 
 ## Participants
-Liudmila Molkova, Josh Bonczkowski, Sergey Sergeev, Aaron Abbott, Kyle Hounslow, Ankit Singh, Surya Teja.
+Liudmila Molkova, Josh Bonczkowski, Sergey Sergeev, Aaron Abbott, Kyle Hounslow, Ankit, Surya Teja, Ridhima Satam, and others.

@@ -1,14 +1,14 @@
 ## Key Topics
-- Announcement of Hotel Unplug event in Brussels on February 2nd.
-- Acknowledgment of efforts in HTTP and database SEMCOM stabilization, with plans to enable stable SEMCOM by June.
-- Discussion on the upcoming release of the OpenTelemetry API package and whether to classify it as a bug fix or a feature release.
-- Review of changes to the OpenTelemetry resources and alignment with other SDKs regarding attribute encoding.
-- Proposal to clarify the encoding specification in the SDKs to ensure consistent behavior.
+- Upcoming OTel Unplugged event in Brussels on February 2nd.
+- Acknowledgment of contributions to HTTP and database SEMCOM stabilization efforts.
+- Discussion on the release strategy for the OpenTelemetry API package, considering whether to release it as a bug fix or feature release.
+- Updates on the OpenTelemetry resources and the need for alignment with other SDKs regarding attribute encoding.
+- Conversations around improving communication and roadmap alignment among different SIGs.
 
 ## Action Items
-- Follow up on the HTTP and database SEMCOM stabilization efforts.
-- Delay the API package release until February and reassess for potential features.
-- Carlos Alberto Cortez to investigate and open an issue regarding the encoding specification for attributes.
+- Marc Pichler to reach out to the browser SIG regarding the Zone Context Manager issue.
+- Carlos Alberto Cortez to open a spec issue for clarification on attribute encoding behavior.
+- Review and discuss the proposed changes to the OpenTelemetry API package release strategy in February.
 
 ## Participants
-Marc Pichler, Marylia Gutierrez, Trent Mick, Daniel Dyla, Jackson, Jeremy Voss, Carlos Alberto Cortez
+Marc Pichler, Marylia Gutierrez, Trent Mick, Daniel Dyla, Jackson, Jeremy Voss, Carlos Alberto Cortez.

@@ -1,13 +1,14 @@
 ## Key Topics
-- Introduction of new participants and their backgrounds in OpenTelemetry and AI observability.
-- Discussion on the AI Agents track and its differentiation from the main working group.
-- Review of a pull request aimed at improving semantic conventions for built-in tools in OpenTelemetry, focusing on separating tool calls and responses.
-- Exploration of the need for clearer documentation on different tracks within the SIG.
+- Introductions of new participants and their interests in OpenTelemetry.
+- Discussion on the representation of built-in tool calls and responses in OpenTelemetry conventions.
+- Review of the AI Agents track and its differentiation from the main working group.
+- Proposal for session ID propagation in OpenTelemetry instrumentation.
+- Metrics for workflows and the need for distinct metrics for different operations.
 
 ## Action Items
-- Update documentation to clarify the purpose and topics of different tracks within the SIG.
-- Gather feedback on the proposed separation of tool calls and responses in the pull request.
-- Ensure that the PR regarding built-in tools is updated to reflect the decisions made during the meeting.
+- Update the PR to reflect decisions on tool call and response representations.
+- File an issue regarding the need for separate metrics for workflows and invocation durations.
+- Encourage participants to review ongoing PRs to enhance contributions.
 
 ## Participants
-Aaron Abbott, Keith Decker, Jeff, Neil Ishinsky, John McBride, Jamie Danielson, Sujay Solomon, Liudmila Molkova, Alex Boten, anksing
+Aaron Abbott, Keith Decker, Jeff, Neil Ishinsky, John McBride, Jamie Danielson, Sujay Solomon, Liudmila Molkova, Alex Boten, Pavan, Ridhima Satam, Ankit.

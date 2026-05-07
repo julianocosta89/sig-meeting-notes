@@ -1,14 +1,14 @@
 ## Key Topics
-- **Introduction of New Participants**: Several new members introduced themselves and their affiliations.
-- **Semantic Conventions Updates**: Discussion on closing obsolete issues and updates related to semantic conventions, particularly regarding evaluation results.
-- **Evaluation Results as Events**: Ongoing work on capturing evaluation results as events and the need for clarification on response IDs in the context of spans.
-- **Pull Requests and Issue Management**: Review of existing pull requests and issues on the project board, with a focus on closing outdated items.
-- **Configuration Discussions**: Conversations about stability mode and environment variable configurations for new changes.
+- **Introduction of New Members**: New participants introduced themselves and their roles.
+- **Semantic Convention Updates**: Discussion on closing issues related to semantic conventions and updates on pull requests (PRs).
+- **Evaluation Results**: Proposal for capturing evaluation results as events and the need for a semantic convention around this.
+- **Agent and Tool Definitions**: Debate over the necessity and structure of agent and tool definitions, including the role attribute.
+- **Backend Data Optimization**: Discussion on creating a unified event for evaluation results to simplify backend processing and querying.
 
 ## Action Items
-- **Link PRs**: Shipra to add the link to her PR regarding evaluation results.
-- **Review and Close Issues**: Dylan to review specific issues for potential closure.
-- **Clarification on Response IDs**: Team to clarify the purpose and usage of response IDs in the context of evaluation results.
+- **Follow-Up on PRs**: Participants to resolve outstanding comments on PRs and continue discussions in Slack.
+- **Split PR for Tool Definitions**: Shipra to split the PR to address non-controversial parts and continue discussions on orchestration.
+- **Further Discussion on Evaluation Events**: Sergey to gather feedback on the proposed event structure for evaluation results and discuss with the group.
 
 ## Participants
-Liudmila Molkova, Sergey Sergeev, Aaron Abbott, Alex Hall, Samuel Colvin, Dylan Russell, Shipra Jain, Pradeep Nair, Josh Winerman, Anksing
+Liudmila Molkova, Sergey Sergeev, Aaron Abbott, Shipra Jain, Alex Hall, Samuel Colvin, Dylan Russell, Ankit Nair, Pradeep Nair, Josh Winerman.

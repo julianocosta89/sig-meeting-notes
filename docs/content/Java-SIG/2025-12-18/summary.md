@@ -1,14 +1,14 @@
 ## Key Topics
 - Merging of a PR for new internal telemetry following experimental semantic conventions.
-- Discussion on handling configuration properties in instrumentation, specifically regarding type mismatches (null vs. exception).
-- Considerations on the impact of failing fast versus graceful degradation in the Java agent during startup.
-- Clarification on how YAML parsing affects configuration properties and their types.
-- The implications of instrumentation installation timing and its relation to application startup.
+- Discussion on handling configuration type mismatches in instrumentation properties (fail fast vs. graceful handling).
+- Proposal for shortcuts in declarative config access methods.
+- Plans for promoting senders to the public API and the approach for merging changes (big PR vs. feature branch).
+- Inquiry about supporting HTTPS for Prometheus exporter.
 
 ## Action Items
-- Jack to explore options for opting into new telemetry formats via declarative config.
-- Team to define clear behavior for type mismatches in configuration properties.
-- Further investigation needed on the consequences of failing fast versus allowing the Java agent to continue running.
+- Trask to open an issue to track the discussion on configuration handling.
+- Jack to explore the option of using a feature branch for the public API changes.
+- Trask to review the draft PR for promoting senders and provide feedback.
 
 ## Participants
-Jack Berg, John Watson, Trask Stalnaker, Jay DeLuca, Lauri
+Jack Berg, John Watson, Trask Stalnaker, Jay DeLuca, Lauri, GZ Gregor Zeitlinger

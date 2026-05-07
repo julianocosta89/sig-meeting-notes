@@ -1,13 +1,14 @@
 ## Key Topics
-- Ongoing discussion about introducing reference-based attributes for profiling, with several approvals and pending minor revisions.
-- Entity event reporting work is open and under discussion, though not extensively covered in this meeting.
-- Concerns raised regarding the representation of state-set metrics in Prometheus and the need for better instrumentation practices.
-- Discussion on the challenges of OTLP (OpenTelemetry Protocol) binary distribution and the need for a stable client library for easier user implementation.
+- Discussion on introducing reference-based attributes for profiling, with approvals and next steps outlined.
+- Ongoing conversation about entity event reporting and its implications for OpenTelemetry.
+- Concerns regarding the OpenTelemetry Protocol (OTLP) binary distribution and the need for a stable client library.
+- Feedback on the use of resource messages versus key-value attributes in eBPF profiling.
+- Exploration of state-set metrics and their potential implementation challenges.
 
 ## Action Items
-- Follow up with Tigran for updates on reference-based attributes and their applicability to other signals.
-- Continue discussions on state-set metrics and explore potential improvements in representation.
-- Investigate the feasibility of creating a stable OTLP client library to simplify usage for developers.
+- Follow up with Tigran and Florian on the reference-based attributes PR and its implications for other signals.
+- Create an issue regarding the OTLP binary distribution request to gauge community interest.
+- Review and potentially revise the eBPF payload format to clarify its naming and usage.
 
 ## Participants
-jmacdonald, Jonatan Ivanov, Daniel Dyla, David Ashpole, ...
+Bob Strecansky, jmacdonald, Jonatan Ivanov, Daniel Dyla, David Ashpole, Tigran Najaryan, Ivo Anjo, Reiley, Florian Lehner, Trask Stalnaker.

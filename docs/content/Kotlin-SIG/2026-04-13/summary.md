@@ -1,12 +1,13 @@
 ## Key Topics
-- **Release Workflow Issues**: Discussion on branch protection and permissions affecting the release workflow.
-- **Logging API Stabilization**: Need for stabilization of logging API dependent on other APIs like context and attributes.
-- **No-op Implementation**: Ongoing discussion about the no-op implementation and its implications for the API.
-- **Context Implementation**: Clarification on the need for a context implementation and its differences across languages (Java vs. Kotlin).
+- **Release Workflow Issues**: Discussion on branch permissions affecting release workflows and the need to investigate OpenTelemetry Android's setup.
+- **Logging API Stabilization**: Ongoing discussion about dependencies required for stabilizing the logging API, including context, attributes, and baggage.
+- **No-op Implementation**: Exploration of the no-op implementation's role in the API and its necessity for instrumentation.
+- **Global OpenTelemetry Object**: Debate on the necessity and implications of having a global object for OpenTelemetry in the Kotlin SDK.
 
 ## Action Items
-- Jamie to investigate OpenTelemetry Android's handling of branch protection and permissions.
-- Follow-up on the no-op implementation and its impact on context and API stability.
+- Jamie to investigate OpenTelemetry Android's branch permissions and workflows.
+- Carlos to follow up with Java maintainers regarding the global OpenTelemetry object and its implications.
+- Team to create milestones for dependent APIs to facilitate stabilization of logging and tracing APIs.
 
 ## Participants
 Hanson, Jamie Lynch, Carlos Alberto Cortez

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on stabilizing exception parameters for logger emit and the deprecation of span events.
-- Progress on declarative configuration nearing stability.
-- Introduction of a new concept of "entity" separate from resources, with a need for further exploration.
-- Meta-discussions on organizing SIGs and improving communication about specifications.
-- Review of new issues and pull requests, including a focus on metrics reporting and the handling of HTTP responses.
+- Stabilization of exception parameters for logger emit and declarative config nearing stability.
+- Discussion on the new concept of entities and their separation from resources.
+- Meta-discussions on organizing SIGs and improving communication regarding specifications.
+- Review of new issues and pull requests, including metrics reporting and exporting failures.
+- Ongoing work on semantic conventions and the need for better documentation and tracking.
 
 ## Action Items
-- Robb Kidd to respond to the issue regarding metrics reporting inconsistencies.
-- Kayla Reopelle to investigate the exporting failures related to 204 responses.
-- Participants to keep an eye on the progress of declarative config and entity support.
+- Robb to respond to the issue regarding trace export report inconsistencies.
+- Kayla to review the pull request related to exporting failures.
+- Daniel to update gem specs to include source links for archived versions.
+- Kayla to suggest creating a project board for better tracking of semantic conventions and instrumentation updates.
 
 ## Participants
-Kayla Reopelle, Daniel Azuma, Robb Kidd, ...
+Kayla Reopelle, Daniel Azuma, Robb Kidd

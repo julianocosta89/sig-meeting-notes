@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the upcoming release process and responsibilities in the absence of a key team member.
-- Clarification on GitHub permissions for approvers and maintainers regarding release actions.
-- Experimentation with the Weaver project for instrumentation and metrics generation.
-- Plans for improving the integration of semantic conventions in future metrics work.
-- Need for documentation review to ensure accuracy in the release process.
+- **Release Process Discussion**: Clarification on who can perform releases and the need for documentation updates.
+- **Weaver Experimentation**: Jay DeLuca shared progress on using Weaver for metrics generation and plans for further exploration.
+- **Context-Based Filtering**: Discussion on implementing session-based filtering for telemetry logs and spans.
+- **Apache Spark Instrumentation**: Patrick raised the need for better tracing support in Apache Spark, particularly for Kafka interactions.
+- **Instrumentor API Concerns**: Jason Plumb highlighted the limitations of the current Instrumentor API for handling events and suggested potential expansions.
 
 ## Action Items
-- John Watson to assist with merging necessary PRs for the release process.
-- Jason Plumb to verify and potentially update documentation related to the release process.
-- Jay DeLuca to continue exploring the Weaver project and seek feedback on his progress.
+- **Release Preparation**: John Watson to assist with merging necessary PRs for the upcoming release.
+- **Documentation Review**: Jason Plumb to verify and update release documentation.
+- **Weaver Feedback**: Participants encouraged to review Jay DeLuca's PR related to Weaver and provide feedback.
+- **Spark Instrumentation Proposal**: Patrick to create a GitHub issue to discuss Apache Spark instrumentation further and share manual instrumentation examples.
 
 ## Participants
-Trask Stalnaker, Jason Plumb, John Watson, Jay DeLuca, Peter Findeisen, Gregor
+Trask Stalnaker, Jason Plumb, Peter Findeisen, John Watson, Jay DeLuca, Antoine Toulme, Patrick Pok, Gregor Trust.
