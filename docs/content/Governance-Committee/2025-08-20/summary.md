@@ -5,7 +5,7 @@
 - Consideration of jersey designs and names for contributors and maintainers.
 
 ## Action Items
-- Create a card for hotel graduation follow-up on the project board.
+- Create a card for OTel graduation follow-up on the project board.
 - Document the process for handling exceptions to the OpenTelemetry spec and share it with the GC.
 - Enable co-author verification and communicate changes to maintainers.
 - Follow up with the contributor experience SIG regarding a survey for new contributors.

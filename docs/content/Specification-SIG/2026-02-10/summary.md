@@ -1,6 +1,6 @@
 ## Key Topics
 - Next steps for PR 719 and the need for additional reviews.
-- Update on the Hotel Unplugged event and plans for future gatherings.
+- Update on the OTel Unplugged event and plans for future gatherings.
 - Proposal for a system packaging project to streamline OpenTelemetry installations.
 - Discussion on prioritizing different auto-instrumentation mechanisms and their documentation.
 - Proposal for making clock interfaces available in the API for better instrumentation accuracy.

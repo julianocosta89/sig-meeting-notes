@@ -6,7 +6,7 @@
 - Suggestions for breaking down the project into manageable phases for further development.
 
 ## Action Items
-- Create GitHub issues for the hotel demo repo to organize feedback and suggestions.
+- Create GitHub issues for the OTel demo repo to organize feedback and suggestions.
 - Break down project ideas into sub-domains for clarity and focus.
 - Engage with the AI special interest group for domain expertise and collaboration.
 

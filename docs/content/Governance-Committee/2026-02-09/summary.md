@@ -1,5 +1,5 @@
 ## Key Topics
-- Resolution of issues related to hotel resource attributes and environment variables.
+- Resolution of issues related to OTel resource attributes and environment variables.
 - Discussion on deprecating OpenTracing compatibility requirements.
 - Proposal to enhance the OpenTelemetry Collector's functionality regarding pipeline shutdown.
 - Community feedback on various metrics and specifications.

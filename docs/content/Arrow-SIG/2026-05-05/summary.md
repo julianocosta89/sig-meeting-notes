@@ -7,7 +7,7 @@
 
 ## Action Items
 - Document the performance issues related to using the muscle C library and recommend using a distro-less Docker image.
-- Open discussions in the Hotel Arrow dev channel regarding the implementation of benchmarks and their automation.
+- Open discussions in the OTel Arrow dev channel regarding the implementation of benchmarks and their automation.
 - Explore the integration of durable buffer processors in future benchmarks.
 - Collect feedback on the file log receiver design and consider community suggestions for enhancements.
 

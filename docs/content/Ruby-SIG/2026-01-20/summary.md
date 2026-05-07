@@ -1,5 +1,5 @@
 ## Key Topics
-- Discussion on the hotel resource attributes and its relevance to Ruby.
+- Discussion on the OTel resource attributes and its relevance to Ruby.
 - Review of new issues and feature requests in the core repository.
 - Updates on the handling of Ruby version changes in GitHub Actions workflows.
 - Proposal for a new feature to add a query summary attribute to database spans, with concerns about performance overhead.

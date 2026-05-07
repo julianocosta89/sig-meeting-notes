@@ -1,7 +1,7 @@
 ## Key Topics
 - Early feedback on span visibility changes and SDK modifications.
 - Discussion on introducing support for complex data structures in attributes.
-- Updates on the Hotel Community Awards and KubeCon participation.
+- Updates on the OTel Community Awards and KubeCon participation.
 - Review of ongoing PRs related to metrics and error handling in exporters.
 - Considerations for Sidekiq instrumentation and handling job parameters in traces.
 

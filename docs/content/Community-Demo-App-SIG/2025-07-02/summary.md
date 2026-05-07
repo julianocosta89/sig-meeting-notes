@@ -6,7 +6,7 @@
 - Plans for releasing a new version of the demo app and upcoming contributions.
 
 ## Action Items
-- Ani to complete hotel approval process by the end of the week.
+- Ani to complete OTel approval process by the end of the week.
 - Alessio to draft a PR for the Elixir service and keep it updated.
 - Juliano to open a PR for adding the NGINX metrics receiver to the collector.
 - Pierre to follow up with the JS SIG regarding the duplicate spans issue.

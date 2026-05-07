@@ -1,7 +1,7 @@
 ## Key Topics
 - Discussion on KubeCon presentation focusing on the cost of auto-instrumentation and data management.
 - Updates on blog posts related to OpenTelemetry, including timelines for publication.
-- Introduction of the "Hotel Blueprints" project aimed at providing live documentation for best practices in using OpenTelemetry.
+- Introduction of the "OTel Blueprints" project aimed at providing live documentation for best practices in using OpenTelemetry.
 - Future initiatives for improving developer experience, including potential surveys on SDK configuration.
 
 ## Action Items

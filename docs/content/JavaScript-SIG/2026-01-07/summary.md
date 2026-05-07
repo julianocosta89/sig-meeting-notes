@@ -1,5 +1,5 @@
 ## Key Topics
-- Upcoming Hotel Unplug event in Brussels on February 2nd.
+- Upcoming OTel Unplugged event in Brussels on February 2nd.
 - Acknowledgment of contributions to HTTP and database SEMCOM stabilization efforts.
 - Discussion on the release strategy for the OpenTelemetry API package, considering whether to release it as a bug fix or feature release.
 - Updates on the OpenTelemetry resources and the need for alignment with other SDKs regarding attribute encoding.

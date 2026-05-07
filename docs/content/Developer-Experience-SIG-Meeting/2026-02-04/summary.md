@@ -1,5 +1,5 @@
 ## Key Topics
-- Review of recent events and discussions at the unconference, including topics like hotel blueprints and MCP (Multi-Channel Protocol).
+- Review of recent events and discussions at the unconference, including topics like OTel Blueprints and MCP (Multi-Channel Protocol).
 - Updates on blog posts, particularly the Skyscanner blog post and the need for coordination on publication timelines.
 - Discussion on the MCP server, its security concerns, and the potential collaboration with other SIGs (Special Interest Groups).
 - The importance of establishing a central place for MCP-related discussions within the DevEx SIG.

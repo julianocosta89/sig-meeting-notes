@@ -8,7 +8,7 @@
 - Amy to organize and analyze interview findings for the next meeting.
 - Marylia to check the contributing page for updates before her time off.
 - Explore the creation of video content aimed at new contributors.
-- Consider gathering feedback on contributing experiences at Hotel Unplugged.
+- Consider gathering feedback on contributing experiences at OTel Unplugged.
 
 ## Participants
 Amy Super, Kayla Reopelle, Marylia Gutierrez

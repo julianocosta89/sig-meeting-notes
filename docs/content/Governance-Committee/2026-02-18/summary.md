@@ -3,7 +3,7 @@
 - Updates on the GC Charter and approvals for changes.
 - Progress on the Zig Zig project and potential liaisons for the project.
 - Concerns regarding a draft maturity model blog post and its implications for the project.
-- Planning for future community events, including Hotel Unplugged and potential sponsorships.
+- Planning for future community events, including OTel Unplugged and potential sponsorships.
 
 ## Action Items
 - Morgan McLean to follow up on permissions management for the profiling SIG.

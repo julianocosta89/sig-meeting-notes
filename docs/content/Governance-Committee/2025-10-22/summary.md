@@ -3,7 +3,7 @@
 - **Project Proposals**: Discussion on donation and project proposals, particularly around audit logging and the need for clearer project scopes.
 - **Stability and Documentation**: Emphasis on the importance of improving documentation and defining stability metrics for OpenTelemetry.
 - **Adopter Information**: Need for more adopter contacts to provide to the TOC for feedback purposes.
-- **Hotel Unplugged**: Discussion on promoting the event and engaging maintainers to participate.
+- **OTel Unplugged**: Discussion on promoting the event and engaging maintainers to participate.
 
 ## Action Items
 - Participants to nominate individuals for Community Awards by November 6.

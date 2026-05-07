@@ -7,7 +7,7 @@
 ## Action Items
 - Pavel to discuss with the MCP project lead and potentially join the next meeting to outline collaboration needs.
 - Damien to add the MCP project discussion to the agenda for the next meeting.
-- Juliano to reach out to Hano for updates on the Hotel Blueprints project and coordinate with Bruno if necessary.
+- Juliano to reach out to Hano for updates on the OTel Blueprints project and coordinate with Bruno if necessary.
 
 ## Participants
 Juliano Costa, Damien Mathieu, Michele Orlandi, Pavol Loffay

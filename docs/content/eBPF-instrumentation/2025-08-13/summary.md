@@ -1,5 +1,5 @@
 ## Key Topics
-- **Documentation Updates**: The hotel docs for Obi are published, marking a significant milestone.
+- **Documentation Updates**: The OTel docs for Obi are published, marking a significant milestone.
 - **Release Planning**: Discussion on whether to include ongoing documentation items in the upcoming 0.1 release.
 - **Helm Chart Stability**: Need for stable image tagging for releases and potential branching for patches.
 - **Internal vs. External Packages**: Consideration of moving certain Go packages to internal to avoid versioning issues.

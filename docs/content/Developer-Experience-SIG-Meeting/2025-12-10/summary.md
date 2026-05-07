@@ -1,6 +1,6 @@
 ## Key Topics
 - **Developer Experience SIG Updates**: Discussion on blog posts based on interviews with companies about their real-world experience with OpenTelemetry.
-- **Hotel Blueprints Project**: Introduction of a project aimed at creating a registry of reference configurations for OpenTelemetry usage.
+- **OTel Blueprints Project**: Introduction of a project aimed at creating a registry of reference configurations for OpenTelemetry usage.
 - **Model Context Protocol (MCP)**: Overview of MCP, its purpose in enhancing AI agent interactions with OpenTelemetry, and the need for a common place to discuss use cases and implementations.
 - **Documentation Improvements**: Suggestions for enhancing documentation accessibility for AI agents, including markdown formats.
 

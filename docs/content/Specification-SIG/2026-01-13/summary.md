@@ -1,6 +1,6 @@
 ## Key Topics
 - Discussion on handling auto resource attributes and environment variables, highlighting inconsistencies across SDKs.
-- Updates on the upcoming Hotel Unplugged unconference in Brussels.
+- Updates on the upcoming OTel Unplugged unconference in Brussels.
 - Progress on stabilizing the declarative config data model, including feedback solicitation from participants.
 - Exploration of metric levels and the introduction of an opt-in advisory parameter for metrics.
 - Entity SIG updates regarding the definition of data models for entity events and the entity merge algorithm.

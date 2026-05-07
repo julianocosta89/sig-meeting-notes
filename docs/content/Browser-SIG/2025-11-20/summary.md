@@ -5,7 +5,7 @@
 - Challenges with GitHub project management and the need for better organization of issues and PRs.
 
 ## Action Items
-- Benoît to follow up on the session ID requirements for Ram Hotel support.
+- Benoît to follow up on the session ID requirements for RUM OTel support.
 - Abinet to address feedback on the NavVision instrumentation PR and document missing features.
 - Participants encouraged to review ongoing PRs for improvements and provide feedback.
 - Ted to clean up GitHub issues and project management for better visibility.
