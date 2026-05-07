@@ -1,13 +1,13 @@
 ## Key Topics
-- **Declarative Configuration vs. Programmatic Configuration**: Discussion on how to handle conflicts between settings in declarative config files and programmatic setups, particularly in JavaScript and Java.
-- **Priority of Configurations**: Agreement that programmatic configurations currently take precedence over environment variables, with a suggestion to apply the same principle to declarative configurations.
-- **Language-Specific Options**: Acknowledgment that certain configuration options are unique to specific programming languages and may not be representable in declarative config.
-- **Customization Mechanisms**: Introduction of a Service Provider Interface (SPI) in Java for customizing SDK components, allowing for additional configurations beyond what's available in declarative config.
+- **Declarative vs. Programmatic Configuration**: Discussion on the precedence of declarative configuration over programmatic configuration, particularly in JavaScript and Java environments.
+- **Vendor-Specific Configuration**: Exploration of where to place vendor-specific configurations in the OpenTelemetry structure, with suggestions for a dedicated vendor block.
+- **Default Behavior Specification**: Introduction of a PR to define default behaviors for omitted or null properties in the configuration schema to avoid future discrepancies between languages.
+- **Environment Variable Handling**: Clarification on how environment variable replacements work, especially regarding type handling in YAML.
 
 ## Action Items
-- Clarify and document the precedence rules for declarative config versus programmatic configurations.
-- Explore the possibility of enforcing that declarative config takes precedence over other configurations.
-- Investigate the need for a new SDK extension plugin interface for authenticators.
+- **Open a PR for Vendor Configuration**: Yevhenii Solomchenko to propose a PR for a vendor-specific configuration block.
+- **Feedback on Declarative Config**: Marylia Gutierrez to gather user feedback on the interaction between programmatic and declarative configurations.
+- **Review Default Behavior PR**: Participants to review the PR regarding default behaviors and provide feedback.
 
 ## Participants
-Jack Berg, Marylia Gutierrez, GZ Gregor Zeitlinger, Jamie Danielson, Yevhenii Solomchenko
+Jack Berg, Marylia Gutierrez, Jamie Danielson, GZ Gregor Zeitlinger, Yevhenii Solomchenko, Alex Boten, Tyler Yahn

@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the challenges of managing jank metrics and the need for semantic conventions in OpenTelemetry.
-- Proposal to simplify resource attributes for metrics to reduce cardinality and improve data usability.
-- Debate on the effectiveness of treating jank as a metric versus an event, emphasizing the importance of context in user experience.
-- Consideration of user experience and the significance of temporal data in understanding jank occurrences.
+- Discussion on the use of metrics vs. events for tracking jank in mobile applications, including the implications of high cardinality.
+- Proposal for a new semantic convention for jank events, including the need for minimal resource attributes and potential implementation challenges.
+- Review of GitHub token permissions and security measures in OpenTelemetry.
+- Consideration of whether the Android SDK should be a Singleton and the implications for dependency injection and reinitialization.
 
 ## Action Items
-- Participants to review the proposal on resource attribute simplification and provide feedback.
-- Further discussion on standardizing jank as an event or span to capture temporal data effectively.
+- Jason to draft a pull request regarding the new semantic convention for jank events.
+- Mustafa to file an issue regarding the need for a shutdown mechanism in the Android SDK.
+- Participants to review open PRs and provide comments or approvals.
 
 ## Participants
-Cesar Munoz, Jason Plumb, Hanson Ho
+Cesar Munoz, Jason Plumb, Hanson Ho, Mustafa Haddara

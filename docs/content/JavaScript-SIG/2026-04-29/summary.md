@@ -1,13 +1,16 @@
 ## Key Topics
-- Discussion on a PR that proposes changes to the tracer provider API and concerns about vendor neutrality.
-- Review of a PR related to context propagation in Postgres, with requests for assistance from more experienced contributors.
-- Examination of a new PR regarding profiling that raises questions about adherence to specifications and potential vendor lock-in.
-- Clarification on the use of Datadog dependencies in the context of profiling and its implications for OpenTelemetry.
+- Discussion on vendor neutrality and feature requests for modifying tracer provider creation.
+- Review of PRs related to Postgres implementation and context propagation.
+- Proposal for a unified SDK for traces and the transition to a new major release.
+- Consideration of adding support for Cloudflare and its specific bundling requirements.
+- Bundle size testing and tracking for OpenTelemetry packages.
 
 ## Action Items
-- Follow up with the authors of the tracer provider PR to clarify their use case and intentions.
-- Assign contributors to assist Marylia with the Postgres context propagation PR.
-- Investigate the new profiling PR further and consider discussing it with the specification core for guidance.
+- Follow up with Datadog regarding their feature request for tracer provider modifications.
+- Review and assist with the PR related to Postgres context propagation.
+- Begin work on a draft PR for the unified SDK and consolidate packages.
+- Open a ticket with Cloudflare regarding their bundling and export requirements.
+- Investigate methods for tracking bundle sizes and implement testing for it.
 
 ## Participants
-Trent Mick, David Luna Bistuer, Daniel Dyla, Marc Pichler, Marylia Gutierrez, Marten Hennoch, Raphaël Thériault, Jamie Danielson
+Trent Mick, David Luna Bistuer, Daniel Dyla, Marc Pichler, Marylia Gutierrez, Marten Hennoch, Raphaël Thériault, Jamie Danielson, Jan Peer.

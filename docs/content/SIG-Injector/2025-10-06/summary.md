@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the project file for the OpenTelemetry Injector SIG and its scope.
-- Clarification on the focus of the SIG, emphasizing the development of the injector mechanism rather than broader packaging efforts.
-- The need for collaboration with the Operator SIG for integration and delivery of the injector.
-- Concerns about misinterpretation of the SIG's goals and deliverables, especially regarding future projects.
+- Discussion on the project file for the OpenTelemetry Injector SIG, focusing on balancing information and scope.
+- Clarification on the SIG's current focus on building the injector mechanism and not expanding into packaging or productization at this stage.
+- Importance of collaboration with other SIGs, particularly the Operator SIG, to integrate the injector effectively.
+- Emphasis on improving the installation experience and documentation for OpenTelemetry to better serve operators and developers.
+- Strategies for community engagement and selling the vision of the injector to various stakeholders.
 
 ## Action Items
-- Michele to revise the project file to clarify the SIG's focus and deliverables.
-- Ensure clear communication about the SIG's current objectives to prevent confusion among stakeholders.
-- Discuss potential collaboration with the Operator SIG for integrating the injector.
+- Michele Mancioppi to refine the project file and clarify the goals and milestones.
+- Tedsuo to reach out to Jack Berg regarding TC membership.
+- Discussion on engaging with Dynatrace and other vendors for feedback on the injector project.
 
 ## Participants
 Michele Mancioppi, Tedsuo, Bastian Krol, Antoine Toulme

@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of pending PRs, including issues with N-Log instrumentation and the need for requested changes.
-- Discussion on instrumentation configuration and the importance of file-based configuration for the Tracy provider.
-- Igor Kiselev presented updates on .NET Framework assembly handling and the integration of central package management.
-- Changes in ASP.NET instrumentation loading and its implications.
+- Discussion on pending PRs, particularly the N-Log instrumentation and issues with test execution.
+- Review of file-based configuration and its implications for the Tracy provider.
+- Updates on ASP.NET instrumentation and concerns about loading timing.
+- Igor's PR regarding .NET Framework assembly management and dependency handling.
+- Need for additional automated tests and discussions on dependency management.
 
 ## Action Items
-- Piotr Kiełkowicz to review the Tracy provider configuration and address identified issues.
-- Zach Montoya to assist Steve Gordon with his instrumentation issue.
-- Team to review Igor's PR offline and consider automated testing coverage.
-- Discussion on the integration of central package management assemblies to be continued.
+- Piotr to review the Tracy provider configuration and address identified issues.
+- Zach to assist Steve with instrumentation issues and review Igor's PR offline.
+- Team to consider additional automated tests for Igor's changes and discuss dependency management strategies.
 
 ## Participants
-Mateusz Łach, Zach Montoya, Piotr Kiełkowicz, Steve Gordon, Igor Kiselev, Chris Ventura
+Mateusz Łach, Zach Montoya, Piotr Kiełkowicz, Igor Kiselev, Chris Ventura

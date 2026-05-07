@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on telemetry types (logs, metrics, traces) to be emitted from the Supervisor.
-- Customer feedback on the need for more metrics related to supervisor operations, especially in IoT deployments.
-- The potential for standardizing telemetry signals and their representation in semantic conventions.
-- Consideration of how to handle health status and configuration errors in telemetry.
-- The idea of adding a telemetry payload message for agents to use the OP.Amp connection for telemetry.
+- Discussion on telemetry emitted from the Supervisor, focusing on logs, metrics, and traces.
+- Customer feedback emphasizing the need for more metrics from the Supervisor for better monitoring.
+- Proposal for a telemetry payload using the OP Amp connection to streamline data transmission.
+- Consideration of long polling HTTP connections for clients unable to use WebSockets.
+- Review of ongoing PRs related to connection settings and WebSocket library changes.
 
 ## Action Items
-- dpaasman to evaluate the proposed metrics and contribute to the discussion on the issue.
-- Participants to consider how telemetry generalizes to semantic conventions and whether new definitions are needed.
-- Andy Keller to explore the idea of a telemetry payload message for agents.
+- Evan to evaluate the proposed metrics for the Supervisor and contribute to the discussion.
+- Andy to draft a proposal for the telemetry payload over OP Amp.
+- Michel to explore alternative WebSocket libraries and update PRs accordingly.
+- Team to discuss the potential for long polling in the spec and its implications.
 
 ## Participants
 Michel Laterman, Andy Keller, dpaasman, Evan Bradley

@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on a null reference exception bug and whether to release a patch.
-- Consideration of versioning strategy, including semantic versioning and potential changes to release policies.
-- Debate on the structure of packages, including the possibility of consolidating multiple SDK packages into one.
-- Review of ongoing work related to database changes and other minor updates in the pipeline.
+- Discussion on a null reference exception bug and its potential patch release.
+- Consideration of versioning strategy for upcoming releases, particularly in relation to semantic versioning.
+- Conversations about the implementation of retry logic in the OTLP exporter and its alignment with specifications.
+- Proposal for fuzz testing to enhance code reliability and performance.
+- General updates on ongoing PRs and future work plans.
 
 ## Action Items
-- Alan to write notes on the versioning and release policy discussion for future reference.
-- Alan to comment on the issue regarding the null reference exception bug and the team's consensus on the release strategy.
-- Further exploration of the idea to consolidate SDK packages into a single package for simplification.
+- Write notes on the versioning discussion and comment on the relevant issue.
+- Monitor Steve's work for potential release candidate preparation.
+- Follow up on the retry logic implementation and its specification alignment.
+- Review fuzz testing implementation and its integration into the testing framework.
 
 ## Participants
-Alan West, Martin Costello, Matthew Hensley, Peter, Raj
+Alan West, Martin Costello, Matthew Hensley

@@ -1,12 +1,14 @@
 ## Key Topics
-- Review requests for PRs and the importance of community involvement in the review process.
-- Discussion on runtime PPROF and proposed changes to the public API to enhance user control over profiling tasks and regions.
-- Clarification of the differences between tasks and regions in Go's runtime tracing.
-- Consideration of the implications of changing public APIs and the need for thorough documentation and discussion of proposals.
+- Review of PR for enabling features in OpenTelemetry Go.
+- Discussion on runtime PPROF and changes to the public API for better user control.
+- Importance of contributions and reviews from all members, not just maintainers.
+- Suggestions for incremental changes to the public API to minimize disruption.
+- Introduction of new participants and their willingness to contribute.
 
 ## Action Items
-- Nico Hertz to create an issue documenting the proposed changes and alternatives for the PR, including a detailed explanation of the current problems and potential benefits.
-- Encourage more community members to participate in PR reviews, regardless of their experience level.
+- Nico to create an issue explaining the need for disabling the current profiling behavior.
+- Nico to draft a document outlining the proposed changes and their implications.
+- Participants encouraged to review open PRs and issues to assist with contributions.
 
 ## Participants
-Michal Jarmolkiewicz, Damien Mathieu, Pellared, Nico Hertz
+Michal Jarmolkiewicz, Damien Mathieu, Pellared, Nico Hertz, Bryan Boreham

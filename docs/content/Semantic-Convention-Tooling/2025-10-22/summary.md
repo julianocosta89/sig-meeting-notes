@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on V2 Resolve schema and related PRs.
-- Review of a significant bug fix PR related to Panic and Weaver.
-- Authentication handling for remote archives and proposed changes to support auth tokens.
-- Considerations for managing multiple authentication requirements in dependency chains.
-- Importance of keeping secrets secure and not embedding them in configuration files.
+- Discussion on V2 Resolve schema design and the need for attribute groups.
+- Review of two significant PRs: a bug fix for Panic and Weaver, and an authentication token option for remote archives.
+- Considerations on how to handle refinements and registry vs. catalog terminology.
+- Performance benchmarking and profiling strategies for Weaver.
 
 ## Action Items
-- Finalize the review and potential merge of the Panic and Weaver bug fix PR.
-- Develop a strategy for handling authentication in a way that aligns with curl's command line structure and supports complex dependency chains.
-- Explore options for integrating secret management into the configuration for authentication.
+- Josh to finalize the Weaver Resolver fix and the initial WeaverForge proposal for the schema.
+- Team to review the PRs and provide feedback, especially on the authentication token implementation.
+- Laurent to provide recommendations for performance profiling tools for Weaver.
 
 ## Participants
 Josh Suereth, Jeremy Blythe, Liudmila Molkova, Laurent Querel

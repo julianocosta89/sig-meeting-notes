@@ -1,13 +1,12 @@
 ## Key Topics
-- Discussion on timeout handling for batching metrics in OpenTelemetry Go.
-- Proposal to split metrics into smaller batches with individual timeouts.
-- Clarification on the application of timeouts during metrics collection and export.
-- Introduction of experimental options for metrics that can be defined outside stable packages.
-- Need for maintaining existing behavior while introducing new features.
+- Discussion on timeout handling for metrics batching and export calls.
+- Proposal for defining experimental options outside of stable packages to avoid cross-module dependencies.
+- Upcoming release coordination and addressing security issues.
+- Reminder about participant availability due to upcoming leave.
 
 ## Action Items
-- David to preserve existing timeout behavior until the new feature stabilizes.
-- Review and finalize the implementation of experimental options in the codebase.
+- Damien to coordinate the release and address security issues by tomorrow.
+- Tyler to provide feedback on the experimental options proposal after the meeting.
 
 ## Participants
 Tyler, Damien Mathieu, David Ashpole

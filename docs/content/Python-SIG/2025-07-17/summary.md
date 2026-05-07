@@ -1,12 +1,16 @@
 ## Key Topics
-- Discussion on Jeremy's PR and its progress, including dependency checks and instrumentation methods.
-- Review of issues that arose after the recent release, particularly related to deprecation warnings in the logging SDK.
-- Updates on ongoing instrumentor PRs and the transition from the event API to the logging API.
+- Discussion on Jeremy's PR regarding instrumentation dependencies and feedback from maintainers.
+- Issues identified post-release related to deprecation warnings and logging in the SDK.
+- Introduction of a new PR for Langchain instrumentation support, pending approval from maintainers.
+- Tammy's PR to add Max export batch size to the HTTP metric exporter.
+- Dylan's PR on log data structure updates and potential removal of the SDK log record.
 
 ## Action Items
-- Jeremy and Emídio to collaborate on resolving the issues with the PR and dependency checks.
-- Emídio to investigate and provide a quick fix for the deprecation warnings related to the logging SDK.
-- Participants to continue working on instrumentor PRs to switch to the logging API.
+- Jeremy and Emídio to collaborate on resolving issues with Jeremy's PR.
+- Emídio to investigate and provide fixes for post-release issues related to deprecation warnings.
+- Ridhima to follow up with Near from Traceloop regarding package naming for Langchain instrumentation.
+- Tammy to seek additional reviews for her PR on the HTTP metric exporter.
+- Dylan to clarify the log data structure in his PR and gather feedback from Hector.
 
 ## Participants
-Pablo Collins, Emídio, Tammy Baylis, Jeremy, Aaron Abbott, Dylan Russell, jeremyvoss, Aaron Abbott
+Pablo Collins, Emídio, Tammy Baylis, Jeremy Voss, Aaron Abbott, Aaron, Dylan Russell, Ridhima Satam

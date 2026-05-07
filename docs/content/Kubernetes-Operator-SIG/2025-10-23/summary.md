@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of feature gates for native sidecar containers and their lifecycle management.
-- Discussion on the Golang GOMEM limit and Go Max Prox settings, including potential deprecation.
-- Updates on mutual TLS (MTLS) configuration issues and the need for proper strategies.
-- Proposal to move conflict defaulting feature to stable status due to lack of complaints.
-- Removal of the feature gate for using the target allocator CRD by default.
+- Review of feature gates and their lifecycle, particularly focusing on native sidecars and their default enablement.
+- Discussion on Golang's GOMEM limit and Go Max Prox, with a consensus on deprecating certain flags due to automatic handling in newer Go versions.
+- Updates on mutual TLS (MTLS) issues and the need for stable configurations before enabling by default.
+- Plans for KubeCon, including discussions on instrumentation and the injector project.
+- The need for better communication regarding stability efforts and breaking changes in the OpenTelemetry ecosystem.
 
 ## Action Items
-- Create an issue to track the move of the conflict defaulting feature to stable.
-- Monitor and potentially deprecate the Golang GOMEM limit feature.
-- Investigate the MTLS configuration issues further and develop a proper configuration API.
+- Create an issue to track the transition of the feature gate for native sidecars to stable.
+- Start a milestone for moving instrumentation to beta, including necessary changes.
+- Research and review how other projects handle annotations and labels for better observability in instrumentation.
 
 ## Participants
-Antoine Toulme, Benedikt Bongartz, Mikołaj Świątek, Jacob (jea)
+Antoine Toulme, Benedikt Bongartz, Mikołaj Świątek, Jacob Ashpole, David Ashpole, Pavol Loffay.

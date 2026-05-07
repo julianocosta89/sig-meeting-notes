@@ -1,13 +1,13 @@
 ## Key Topics
-- Correlation of op-amp payloads with internal telemetry metrics.
-- Discrepancies between service.instance.id and instance UID configuration.
-- Proposal for handling identifying and non-identifying attributes in telemetry.
-- Discussion on edge cases for service instance IDs and their validation.
+- Correlation of op-amp payloads with internal telemetry and discrepancies in service.instance.id.
+- Discussion on the roadmap for the OPAMP project, focusing on the supervisor, OPAMP specification, and Go implementation.
+- Proposal for partial reload support in the collector configuration.
+- Consideration of remote configuration capabilities for the extension versus the supervisor.
 
 ## Action Items
-- Jade to revise the draft PR to ensure service.instance.id aligns with resource attributes.
-- Consider implementing a feature gate for the instance UID configuration.
-- Explore the possibility of exposing collector distribution attributes under non-identifying attributes.
+- Jade Guiton to create an issue regarding service.name and service.version attributes.
+- Review and refine the roadmap document to clarify goals and include feedback on the extension.
+- Gather community feedback on the necessity of remote configuration support for the extension.
 
 ## Participants
-Tigran Najaryan, Michel Laterman, Jade Guiton, Evan Bradley, Andy Keller
+Tigran Najaryan, Michel Laterman, Jade Guiton, Evan Bradley, Andy Keller, Aunsh Chaudhari, Blake Rouse, Bejal Lewis.

@@ -1,12 +1,15 @@
 ## Key Topics
-- **Stabilization of Configuration Model V1**: Discussion on the need to stabilize the configuration model for better project readiness and user adoption.
-- **Crate Renaming and Structure**: Proposal to separate core nodes and control nodes into distinct crates for better organization and ownership.
-- **Multi-Tenancy and Pipeline Groups**: Introduction of a hierarchical configuration model allowing multiple pipeline groups and pipelines, enabling multi-tenant capabilities.
-- **Issue Management Improvements**: Suggestion to implement a labeling system for issues to indicate their readiness for contribution.
+- Stabilization of the configuration model V1 and its importance for user experience.
+- Discussion on crate renaming and the distinction between core nodes and control nodes.
+- Multi-tenancy considerations and the need for flexible infrastructure to support multiple pipeline groups.
+- User experience improvements, particularly regarding URN and output representation.
+- Updates on the internal telemetry system and its integration with the pipeline.
 
 ## Action Items
-- Document the decision to use "nodes" terminology and separate crates for core and control nodes.
-- Implement a labeling system for issue management to indicate when issues are not ready for work.
+- Document the decision to use two distinct crates for core and control nodes.
+- Implement a labeling system for issues to indicate readiness for contribution.
+- Review the proposals for user experience improvements in the configuration model.
+- Discuss the multi-tenancy and global channels topic in the next meeting.
 
 ## Participants
-Laurent Querel, jmacdonald, drewrelmas, Albert Lockett, Tom
+Laurent Querel, jmacdonald, drewrelmas, Albert Lockett, Utkarsh Umesan Pillai, Andres Borja

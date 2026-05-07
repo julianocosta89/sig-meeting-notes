@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on renaming "profile" to "instrumentation mode" to avoid confusion.
-- Review of smoke tests for declarative configuration and potential expansion.
-- Verification of resource attributes and the need for additional assertions in tests.
-- Establishing naming conventions for resource providers and detectors.
-- Updates on the status of PRs and testing infrastructure for Java agent compatibility.
+- Discussion on renaming "profile" to "instrumentation mode" for clarity.
+- Expansion of smoke tests for declarative configuration and resource detectors.
+- Naming conventions for resource providers and detectors to ensure consistency.
+- Default resource attributes and their implications for user configuration.
+- Review of the distribution detector and its naming considerations.
 
 ## Action Items
-- Rename "profile" to "instrumentation mode" in the codebase.
-- Expand smoke tests for declarative configuration, considering both combined and separate tests.
-- Add more assertions for resource attributes where feasible.
-- Consider cleanup of naming conventions for resource providers and detectors.
+- Gregor to implement the renaming of "profile" to "instrumentation mode" in follow-up PR.
+- Consider adding more assertions to smoke tests for resource attributes.
+- Trask to open an issue regarding naming conventions for resource providers.
+- Gregor to split the current PR into two, focusing on distribution in one and service in another.
 
 ## Participants
 Trask Stalnaker, Gregor Zeitlinger, Jay DeLuca, Robert Niedziela

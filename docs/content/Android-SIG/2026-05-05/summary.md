@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on naming conventions for suppressing instrumentations by name.
-- Clarification on the difference between suppressing and disabling instrumentations.
-- Exploration of how to handle both agent-provided and user-supplied instrumentations.
-- Consideration of whether to separate suppression functionality for agent and class path instrumentations.
-- Review of the default instrumentations included in the agent.
+- Discussion on naming conventions for suppressing instrumentations in OpenTelemetry.
+- Proposal for expanding documentation to include "recipes" for common use cases in OpenTelemetry Android.
+- Clarification on the mechanism for customizing HTTP client spans and the need for span processors.
+- Review of recent pull requests and issues related to CLA (Contributor License Agreement) and signed commits.
 
 ## Action Items
-- Finalize the naming convention for suppressing instrumentations.
-- Investigate the possibility of separating the suppression mechanism for agent and class path instrumentations.
-- Review and address comments regarding the new Qlik instrumentation.
+- Jason to create a tracking issue for moving the demo app to the OpenTelemetry demo project.
+- Jason to document the behavior of the new DSL feature for suppressing instrumentations.
+- Jason to investigate and clarify the requirements for signed commits and the CLA process.
 
 ## Participants
-Jason Plumb, Cesar Munoz, Jamie Lynch, Hanson, Zelda
+Jason Plumb, Cesar Munoz, Jamie Lynch, Hanson, David Grath

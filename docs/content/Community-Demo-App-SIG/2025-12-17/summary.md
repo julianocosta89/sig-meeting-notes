@@ -1,14 +1,15 @@
 ## Key Topics
 - Transition of Pierre Tessier's role and increased focus on the demo application.
-- Discussion on the stability and performance of various services in the demo, including accounting, Kafka, and Postgres.
-- Proposal for implementing a cron job to periodically restart services to manage resource consumption.
-- Exploration of replacing the current load generator with a Rust-based headless Chrome for better memory efficiency.
-- Issues with the Gen AI capture message functionality in the demo and updates to semantic conventions.
+- Discussion on service restarts in the demo environment to manage resource consumption.
+- Exploration of using Rust for load generation to optimize memory usage.
+- Issues with Gen AI instrumentation and capturing spans correctly.
+- Consideration of documentation generation and schema management for the demo and OpenTelemetry.io.
 
 ## Action Items
-- Implement a cron job to restart key services in the demo to prevent resource exhaustion.
-- Investigate the memory usage of the load generator and consider the Rust headless Chrome alternative.
-- Review and troubleshoot the Gen AI capture message functionality to ensure it records events correctly.
+- Implement a cron job for service restarts in the demo to manage temporary space.
+- Investigate and resolve issues with Gen AI capturing spans as intended.
+- Discuss and finalize the approach for documentation generation using Weaver.
+- Hold off on merging the current PR until clarity on schema management is achieved.
 
 ## Participants
-Pierre Tessier, Juliano Costa, Roger (mentioned), Severin (mentioned)
+Pierre Tessier, Juliano Costa, Roger, Martin

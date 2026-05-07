@@ -1,13 +1,16 @@
 ## Key Topics
 - Approval of the new Service and Deployment Semantic Convention (SEMconv) SIG.
-- Discussion on scheduling meetings and the results of a straw poll regarding availability.
-- Updates on Phase 2 scoping, including comments and approvals from community members.
-- Consideration of deliverables such as best practice implementations and marketing materials for the SIG.
+- Discussion on scheduling and participation for Phase 2 meetings.
+- Updates on Phase 2 scoping and deliverables, including potential marketing efforts.
+- Exploration of vendor involvement, specifically GitLab's recent observability announcements.
+- Strategies for engaging additional vendors and contributors for Phase 2.
 
 ## Action Items
-- Adriel to repost the straw poll to remind participants and finalize it in a week or two.
-- Adriel to add CICD SIG approvers to the community template for clarity on responsibilities.
-- Further discussion needed on potential deliverables, including documentation and blog posts related to semantic conventions.
+- Adriel Perkins to repost the straw poll for meeting times and finalize it within two weeks.
+- Dotan Horovits and Adriel Perkins to collaborate on a blog post summarizing Phase 1 and announcing Phase 2.
+- Dotan Horovits to follow up with Jenkins and TeamCity for integration updates.
+- Johannes Koch to reach out to Dash Zero for potential collaboration.
+- Mihir to explore connections with Bitbucket for future implementations.
 
 ## Participants
-Dotan Horovits, Adriel Perkins, Johannes Koch
+Dotan Horovits, Adriel Perkins, Johannes Koch, Mihir

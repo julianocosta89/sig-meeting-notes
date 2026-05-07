@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the roadmap and achievements of the OpenTelemetry Collector SIG.
-- Issues with observability of dynamically spawned components in the collector, particularly concerning the receiver creator.
-- Proposal for a new subcomponents concept to improve status reporting for components and their subcomponents.
-- Introduction of a new architecture tuple for the collector targeting Linux RISC-V 64.
-- Process for adding tier 3 support for the collector and requirements for verification.
+- Discussion on the observability of dynamic components in the OpenTelemetry Collector and the proposal to introduce a subcomponent ID for better status reporting.
+- Proposal for a file watch receiver to monitor file changes for auditing purposes, distinguishing it from existing file log receivers.
+- RFC for simplifying statefulness in the collector through a converter approach, allowing easier management of storage extensions.
+- Enhancements to the Zipkin exporter to support scope attributes.
+- Review requests for two pull requests related to configuration management and reloading in the collector.
 
 ## Action Items
-- Participants to provide comments on the roadmap document before the end of the week.
-- Follow up on the proposal for subcomponents and their status reporting in the collector.
-- Mateusz to present his RISC-V architecture proposal in the next meeting for further discussion and approval.
+- Participants to provide feedback on the proposed subcomponent ID and its implementation.
+- Simon Olander to seek sponsorship for the file watch receiver proposal.
+- Vihas Makwana to gather feedback on the RFC for enabling statefulness via converters.
+- Yaten Dhingra to add tests for the Zipkin exporter enhancement.
+- Douglas Camata to implement config validation before reloading configurations in the collector.
 
 ## Participants
-Andrzej Stencel, Christos Markou, Roger Coll, Vihas Makwana, Jade Guiton, Evan Bradley, Mikołaj Świątek, Yaten Dhingra, Simon Olander, Mateusz Urbanek.
+Andrzej Stencel, Christos Markou, Roger Coll, Vihas Makwana, Jade Guiton, Evan Bradley, Mikołaj Świątek, Yaten Dhingra, MU Mateusz Urbanek, Simon Olander, Douglas Camata.

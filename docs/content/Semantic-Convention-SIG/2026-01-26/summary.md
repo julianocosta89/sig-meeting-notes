@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the approval process for PRs and the implications of marking attributes as beta.
-- Concerns regarding the deprecation of `error.message` and its impact on the Open Feature community.
+- Discussion on the approval and implications of marking certain attributes as beta.
 - Overview of the Semantic Convention roadmap for 2026, focusing on stabilization efforts.
-- Introduction of new terminology for PC protocol and framework.
-- The need for clarity on the definitions of error message, exception message, and log error body.
+- Introduction of network-specific semantic conventions, particularly around NetFlow data and its integration with OpenTelemetry.
+- Exploration of alarm handling and TRAS logging standards in telecommunications, and the need for corresponding semantic conventions.
+- Addressing gaps in TLS-related logging attributes and the potential revival of the Security SIG.
 
 ## Action Items
-- Trask Stalnaker to follow up on discussions regarding the beta marking and its implications.
-- Trask Stalnaker to take a look at the trivial PR for corrections and beautifications.
-- Daniel Dyla to consider sending a PR to mark feature flags as stable after resolving the `error.message` issue.
+- Trask Stalnaker to follow up on discussions regarding the approval process for beta attributes.
+- Participants to provide feedback and suggestions for the 2026 roadmap in their respective SIGs.
+- Sven Cowart to document the initial phase of the flow project and propose guidelines for network connection attributes.
+- Kai Levin to explore the creation of a repository for telecom-specific conventions and engage with the community for contributions.
 
 ## Participants
-Sven Cowart, Liudmila Molkova, Christophe Kamphaus, Kai Levin, Donal O'Sullivan, Trask Stalnaker, Daniel Dyla
+Liudmila Molkova, Trask Stalnaker, Sven Cowart, Kai Levin, Donal O'Sullivan, Christophe Kamphaus, Daniel Dyla, RC Robert Cowart, Josh Suereth.

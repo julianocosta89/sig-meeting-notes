@@ -1,13 +1,14 @@
 ## Key Topics
 - Discussion on a draft PR for adding entity references to Kubernetes resource telemetry.
-- Clarification on the stabilization of entities and metrics within the OpenTelemetry framework.
-- Performance improvements related to the extraction of deployment names from replica set names.
-- Updates on the stabilization of Kubernetes metrics, particularly focusing on CPU limits and requests.
+- Clarification on the status and stabilization of attributes and entities in semantic conventions.
+- Updates on Kubernetes metrics, particularly regarding pod limits and dynamic changes in resource requests.
+- Consideration of configuration API changes and performance improvements before the V1 release.
+- Coordination on upcoming KubeCon and the importance of finalizing PRs before the event.
 
 ## Action Items
-- Dmitrii Anoshin to submit a fix to mDataGen to unblock the draft PR.
-- Christos Markou to review the draft PR for entity references before KubeCon.
-- Further discussion on the configuration API changes and performance improvements to be held after KubeCon.
+- Dmitrii Anoshin to submit a fix for mDataGen to unblock the PR for entity references.
+- Christos Markou to review the draft PR for entity references within the next few days.
+- João Marques Correia to continue researching Kubernetes metrics and provide updates on the pod limits and dynamic changes.
 
 ## Participants
 Christos Markou, Dmitrii Anoshin, João Marques Correia

@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on prioritizing translation of OpenTelemetry documentation.
-- Strategies to engage more contributors and motivate existing ones.
-- Review of the translation process to identify areas for improvement.
-- Potential outreach via LinkedIn and local meetups to attract new contributors.
-- Ideas for automating parts of the contribution process to ease participation.
+- Discussion on current translation efforts and priorities for OpenTelemetry documentation.
+- Strategies to engage more contributors and motivate existing members.
+- Ideas for utilizing analytics to prioritize which documentation pages to translate.
+- Suggestions for hosting virtual events or tutorials to help newcomers contribute.
+- Review of the translation process and potential improvements to make it easier for contributors.
 
 ## Action Items
-- Review and improve the translation process to facilitate contributions.
-- Create a LinkedIn post to invite new contributors in a couple of weeks.
-- Explore the possibility of hosting a virtual workshop to demonstrate the contribution process.
+- Carol to share a tutorial for starting contributions via LinkedIn.
+- Pablo to review the translation process and identify areas for improvement.
+- Both to consider hosting a virtual meetup to attract more contributors.
+- Follow up on the progress of translations and share updates in the next meeting.
 
 ## Participants
 Pablo Baeyens, Carol Valencia

@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the use of JSON schema vs. YAML schema for defining types in OpenTelemetry.
-- Importance of schema-first approach for logs and events to prevent breaking changes.
-- Proposal for a new type system that is more readable and tailored to OpenTelemetry's needs.
-- Concerns about the complexity and maintainability of JSON schema.
-- Need for a unified approach to type definitions that allows for reusability and embedding.
+- Discussion on JSON schema vs. YAML schema for defining types in OpenTelemetry.
+- Proposal for a versioning system for definition schemas to improve diagnostics and error handling.
+- Concerns about dependency resolution and handling multiple versions of attributes in the semantic conventions.
+- Security vulnerabilities related to Weaver packages and the need for better documentation and testing.
 
 ## Action Items
-- Alex Van Boxel to lead the exploration of a new schema format and gather group approval.
-- Josh Suereth to support Alex's work and provide code reviews.
-- Liudmila Molkova to investigate the integration of JSON schema capabilities for immediate needs in Gen AI.
+- Alex Van Boxel to lead the effort on schema definition and gather group approval for the proposed direction.
+- Liudmila Molkova to follow up on the pull request for forward compatibility and ensure version tracking in the release process.
+- Josh Suereth to expand test cases for the multi-dependency implementation and address security vulnerabilities in Weaver.
 
 ## Participants
 Liudmila Molkova, Alex Van Boxel, Trask Stalnaker, Josh Suereth, Laurent Querel

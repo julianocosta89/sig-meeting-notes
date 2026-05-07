@@ -1,12 +1,13 @@
 ## Key Topics
-- Progress towards releasing a Release Candidate (RC) for the semantic conventions.
-- Discussion on handling server addresses in relation to registry addresses and load balancing.
-- Clarification on the differences between logical server addresses and network peer addresses.
-- Review of recent pull requests (PRs) and their implications on the semantic conventions.
+- Progress towards releasing the RC version of the OpenTelemetry RPC Semantic Convention.
+- Discussion on server address vs. network peer address in client-side load balancing scenarios.
+- Clarification on handling registry addresses and their implications on cardinality in metrics.
+- Proposal to potentially introduce a separate attribute for registry addresses.
 
 ## Action Items
-- Steve Rao to finalize the PR regarding server address clarifications.
-- Participants to review the implications of registry address handling in relation to server address reporting.
+- Steve Rao to finalize the PR regarding server address and registry address handling.
+- Trask Stalnaker to block the gRPC target mapping until further discussions are held.
+- Participants to gather more input on client-side load balancing and its implications for semantic conventions.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Steve Rao, Matthew Hensley

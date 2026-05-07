@@ -1,12 +1,15 @@
 ## Key Topics
-- **Version Compatibility Issues**: Discussion on the conflict between OpenTelemetry's OKHTTP versions, specifically between versions 4 and 5, affecting Google Cloud SDK users.
-- **Downgrading OpenTelemetry**: Google Cloud SDK team is considering downgrading OpenTelemetry from version 1.52 to 1.51 to resolve compatibility issues for a major customer.
-- **Dependency Management Challenges**: The complexities of managing dependencies in large projects, particularly with transitive dependencies and build systems like Maven.
-- **Documentation Improvement**: Suggestions to enhance documentation to assist users in resolving similar dependency issues in the future.
+- **Sender Compatibility Issues**: Discussion on the challenges faced by a Google Cloud SDK user regarding version conflicts with OKHTTP due to OpenTelemetry's dependencies.
+- **Dependency Management**: The need for OpenTelemetry to potentially downgrade its version to accommodate users still on OKHTTP4.
+- **Logging Configuration**: Addressing concerns about sensitive information being logged and the need to adjust logging levels in the Java agent.
+- **Network Timing Attributes**: Debating the best approach to implement timing attributes for network phases in the Java Instrumentation repo.
+- **Future Releases**: Planning for the upcoming 3.0 release and discussing breaking changes related to semantic conventions and dependency updates.
 
 ## Action Items
-- Update documentation to provide clear steps for users on managing OpenTelemetry dependencies.
-- Explore options for minimizing dependency conflicts in future releases.
+- **Documentation Update**: Create clearer documentation for users on how to manage dependencies and resolve version conflicts.
+- **Investigate Dependency Options**: Explore the possibility of downgrading OpenTelemetry for specific users while maintaining compatibility with newer versions.
+- **Logging Level Adjustment**: Implement changes to ensure sensitive information is not logged at the info level.
+- **Semantic Conventions Proposal**: Develop a proposal for how to model timing attributes and discuss it in the semantic conventions group.
 
 ## Participants
-Robert Niedziela, Gregor Zeitlinger, Trask Stalnaker, Peter Findeisen, Jason Plumb, Jack Berg, Blake Li, John Watson
+Robert Niedziela, Gregor Zeitlinger, Trask Stalnaker, Peter Findeisen, Jason Plumb, Jack Berg, Blake Li, John Watson, Lauri, Pranav Sharma, Surbhi Agarwal, Bruno Baptista

@@ -1,14 +1,15 @@
 ## Key Topics
-- **Triage Process for Semantic Conventions**: Introduction of a new triage process requiring all PRs to be linked to an accepted issue label.
-- **JSON Schema Discussion**: Debate on making keys optional in JSON schemas to improve clarity and reduce redundancy.
-- **GenAI Retrieval Spans**: Discussion on the appropriateness of categorizing retrieval spans under GenAI versus database calls, with input from multiple participants on potential implications.
-- **Embedding and VectorDB Calls**: Clarification on how retrieval spans can be structured, including the need for minimal attributes and avoiding duplication across spans.
-- **General Search vs. GenAI Specificity**: Exploration of whether conventions should be tied to GenAI or remain general for broader applicability.
+- **Triage Process for Semantic Conventions**: Discussion on the new triage process requiring all issues to be labeled for PRs to be accepted.
+- **JSON Schema for Optional Keys**: Debate on making JSON schemas more strict regarding optional keys and null values.
+- **GenAI Retrieval Spans**: Exploration of whether retrieval spans should be categorized under GenAI or databases, with various perspectives shared on their implementation.
+- **Defining Workflows and Tasks**: Proposal to add attributes for tracking workflows and tasks in semantic conventions, with a focus on how they relate to agent invocations.
+- **Multimodal Data Handling**: Discussion on the representation of complex attributes in JSON and the implications of using bytes versus Base64 encoding.
 
 ## Action Items
-- Mark the JSON schema changes as a to-do for further discussion.
-- Follow up on the PR related to GenAI retrieval spans with examples and clarifications.
-- Consider developing conventions that are not strictly tied to GenAI but applicable to general search.
+- Review and finalize the JSON schema changes regarding optional keys.
+- Clarify the implementation details for GenAI retrieval spans and their categorization.
+- Investigate how different frameworks represent workflows and tasks to inform the proposal.
+- Address the technical concerns regarding the handling of complex attributes in JSON.
 
 ## Participants
-Aaron Abbott, Liudmila Molkova, Josh Winerman, Sergey Sergeev, Xander Song
+Aaron Abbott, Liudmila Molkova, Josh Winerman, Sergey Sergeev, Xander Song, Keith Decker, Alex Hall

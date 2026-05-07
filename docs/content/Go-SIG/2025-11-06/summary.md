@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the status of OTLP feature stability for Go, particularly regarding the console exporter for traces, metrics, and logs.
-- Interest from Andrew Wong's team in contributing to the development of a JSON format exporter.
-- Current lack of work on this feature within the Go SIG, but potential for new contributions.
-- Proposal to create a module for the JSON file serializer and the need for a broader organizational plan.
-- Mention of the upcoming KubeCon and potential impact on future meetings.
+- Discussion on OTLP feature stability and the need for a JSON format exporter for traces, metrics, and logs.
+- Andrew Wong's team expressed interest in contributing to the development of the OTLP exporter for Go.
+- Plans for a potential release before KubeCon, focusing on stabilizing existing features and addressing outstanding PRs.
+- Mention of the importance of stabilizing HTTP and Go runtime metrics in future releases.
 
 ## Action Items
-- Andrew Wong's team to open an issue regarding the JSON file serializer and propose a plan for development.
-- Tyler Yahn to leave a comment on the existing issue to document the discussion and potential proposal.
-- Follow-up on contributions and further discussions in future meetings, particularly after KubeCon.
+- Andrew Wong and his teammate to open an issue regarding the OTLP JSON exporter and propose a plan for development.
+- Tyler Yahn to prioritize reviewing outstanding PRs related to metrics and consider moving some to the next release.
+- Follow up with Alex regarding the status of OTELConf 1.0 and its potential inclusion in the upcoming release.
 
 ## Participants
 Tyler Yahn, Andrew Wong, David Ashpole

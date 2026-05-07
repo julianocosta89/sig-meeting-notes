@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the relationship between OpenTelemetry CICD Semantic Conventions and CD Events.
-- Collaboration opportunities with the DataOps events initiative and the need for unified semantic conventions.
-- Clarification on the uniqueness of task and pipeline run IDs in the context of OpenTelemetry.
-- Review of existing issues in the semantic conventions and the need for additional input to enhance the board.
+- Discussion on the relationship between OpenTelemetry CI/CD Semantic Conventions and CD Events.
+- Consideration of unifying workflows and pipelines within semantic conventions.
+- Review of task run IDs and their uniqueness within pipeline runs.
+- Progress towards releasing a candidate version of the CI/CD conventions.
+- Need for collaboration with other groups and vendors to ensure stability and gather feedback.
 
 ## Action Items
-- Adriel Perkins to share the long discussion link regarding CICD SAMconf for Victor Lu.
-- Participants to explore collaboration with CD Events and DataOps events.
-- Christophe Kamphaus to create a PR for clarifying task run ID stability within pipeline runs.
-- Review and potentially address the issue regarding artifact build pipeline URL.
+- Bring the discussion on stabilization of CI/CD conventions to the larger Semantic Convention group meeting.
+- Create a blog post to announce the move towards release candidate stability.
+- Clarify the use cases for task run IDs and their correlation with pipeline runs in the documentation.
 
 ## Participants
 Adriel Perkins, Victor Lu, Christophe Kamphaus, Dotan Horovits

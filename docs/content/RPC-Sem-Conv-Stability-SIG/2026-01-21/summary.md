@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on the new bot's functionality and user consent.
+- Discussion on the new bot and its functionalities.
 - Review of the triage board and ongoing tasks related to gRPC.
-- Clarification on status codes for different versions of the protocol (W2 and W3).
-- Decision-making on documenting differences between W2 and W3, particularly regarding protocol versions and attributes.
-- Consideration of default values for protocol versions in documentation.
+- Defining conventions for different versions of the Dubbo protocol (W2 and W3).
+- Addressing the differences in status codes between Dubbo versions and their documentation.
+- Proposal for how to handle target URLs in gRPC instrumentation.
 
 ## Action Items
-- Review and finalize the migration document.
-- Update documentation to clarify the status codes for W2 and W3.
-- Decide on how to represent protocol versions in the semantic conventions.
-- Consider the implications of default values for future protocol versions.
+- Steve Rao to update documentation to reflect differences between Dubbo versions.
+- Investigate how to capture HTTP version from instrumentation for gRPC and Dubbo.
+- Review and refine the proposal for handling target URLs in gRPC instrumentation.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Steve Rao

@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the EC2 detector and the transition to a v2 module, including deprecating the old SDK.
-- Proposal for minimum logging severity and trace space logger configuration parameters, emphasizing a declarative configuration approach.
-- Concerns about the logger configurator in the SDK and its necessity, with suggestions for optional implementation.
-- SQS context propagation and the lack of specification for its implementation outside of X-ray.
+- Discussion on the Ec.2 detector and the deprecation of the SDK.
+- Proposal for minimum severity and trace space logger configuration parameters.
+- SQS context propagation and its implications for the spec.
+- Updates on milestones and progress towards the next release.
+- Review of logging severity parsing and handling attributes in logs.
 
 ## Action Items
-- Tyler to create an issue regarding the deprecation of the old EC2 detector module.
-- Further discussion needed on the logger configurator's role and potential changes in the SDK.
-- Alex to explore SQS context propagation implementation and gather feedback from the group.
+- Tyler to create an issue regarding the deprecation of the SDK.
+- Review the proposal for minimum severity configuration and provide feedback.
+- Alex to follow up with AWS regarding SQS context propagation.
+- Participants to review the logging severity parsing PR and provide comments.
 
 ## Participants
-Tyler Yahn, Robert Pająk, Sam, Alex Kats
+Tyler Yahn, Robert Pająk, Sam, Alex Kats, Bryan Boreham

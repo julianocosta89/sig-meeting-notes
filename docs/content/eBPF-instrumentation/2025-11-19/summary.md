@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on adding artifacts to the release process using Cosign for signing binaries and eBPF programs.
-- Integration of OpenTelemetry with AutoCollector and potential duplication of work.
-- Development of a Java agent for TLS support in OpenTelemetry.
-- Issues with trace submission failures and potential loss of traces during resubmission.
+- Discussion on integrating artifact signing into the release process using Cosign for better security.
+- Exploration of the integration of eBPF programs with the OpenTelemetry Collector and potential overlaps with AutoCollector.
+- Updates on the Java support for TLS, including the development of a Java agent for better integration.
+- Issues with trace submission failures and potential solutions for reducing trace loss during retries.
+- Review of open pull requests and challenges faced with dependencies and CI/CD processes.
 
 ## Action Items
-- Explore the implementation of Cosign in the release process and consider creating a PR for experimentation.
-- Investigate the integration of OpenTelemetry with AutoCollector to avoid duplication of efforts.
-- Continue development on the Java agent for TLS support and resolve packaging issues.
-- Review the trace submission logic to address potential loss of traces during retries.
+- Experiment with integrating Cosign into the release process and consider creating a PR.
+- Investigate the trace submission issue further and document findings regarding queue sizes and back-off times.
+- Consider switching from Alpine to a different base image for Docker to avoid compatibility issues.
+- Follow up on the Java agent development and ensure the necessary packaging is completed.
 
 ## Participants
-Nikola Grcevski, Giuseppe Ognibene, Florian Lehner, Stephen Lang, Mario Macias, Rafael Roquetto
+Nikola Grcevski, Giuseppe Ognibene, Florian Lehner, Stephen Lang, Mario Macias, Rafael Roquetto, Cheithanya PR

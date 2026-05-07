@@ -1,14 +1,12 @@
 ## Key Topics
-- Discussion on enforcing specific formatting conventions in documentation.
-- Triage of various pull requests (PRs) and their statuses.
-- Proposal for unifying workflows across different areas (CICD and Gen AI).
-- Clarification on the relationship between common YAML and registry YAML in semantic conventions.
-- Review of the current state of semantic conventions and potential future directions.
+- Discussion on enforcing specific formatting conventions for documentation.
+- Proposal for unifying workflow conventions across different areas, including CICD and Gen AI.
+- Clarification on the use of service.peer.name and namespace attributes in semantic conventions.
+- Review of PRs and triaging of issues related to semantic conventions.
 
 ## Action Items
-- Christophe Kamphaus to investigate Cloudflare's job processing instrumentation and discuss in the Gen AI call.
-- Liudmila Molkova to follow up on comments regarding PRs and ensure proper documentation practices.
-- Participants to continue triaging unaddressed PRs and provide updates.
+- Christophe Kamphaus to investigate Cloudflare's job processing instrumentation and discuss with the Gen AI SIG.
+- Michele Mancioppi to submit a PR regarding the deprecation of peer.service in favor of service.peer.name.
 
 ## Participants
 Liudmila Molkova, Christophe Kamphaus, Trask Stalnaker, Armin (Dynatrace), Michele Mancioppi

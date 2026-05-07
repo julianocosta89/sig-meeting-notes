@@ -1,14 +1,13 @@
 ## Key Topics
-- Review of open issues and pull requests related to upcoming milestones.
-- Discussion on cardinality limit performance overheads and configuration options.
-- Updates on Prometheus error handling and metrics aggregation optimizations.
-- Concerns regarding performance trade-offs in histogram implementations.
-- Strategies for improving code readability and maintainability during refactoring.
+- Review of open issues and pull requests for upcoming milestones.
+- Discussion on the performance overhead of cardinality limits and optimized locking for metrics aggregation.
+- Updates on Prometheus error handling and the status of related pull requests.
+- Consideration of benchmark improvements and performance trade-offs.
+- Migration issues related to the OTEL HTTP SEMConf and unresolved discussions.
 
 ## Action Items
-- David to switch the default for the new configuration options.
-- Continue monitoring the progress of the Prometheus error handling PR.
-- David to focus on testing and refactoring the metrics aggregation code sequentially.
+- Add the issue regarding recording errors in the OTEL HTTP SEMConf migration to the milestone for prioritization.
+- David to switch the default for the new configuration options as discussed.
 
 ## Participants
 Damien Mathieu, Tyler Yahn, Bryan Boreham, David Ashpole

@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on self-observability span metrics and proposed documentation changes.
+- Discussion on self-observability span metrics and documentation approaches.
 - Proposal to reuse attribute key-value pairs in logs and remove log-specific attributes.
-- Consideration of the impact of changes on current log API usage and necessary updates to bridges.
-- Decision to postpone certain changes until after the next release due to potential complications.
+- Cardinality limit default values and their implications on performance and user experience.
+- Review of various issues and bugs related to OpenTelemetry components.
 
 ## Action Items
-- Robert to update the documentation format to align with existing practices.
-- Team to review the proposed changes to logs and attribute handling before implementation.
-- Plan for further discussion on handling empty values in the logging context.
+- Robert Pająk to implement proposed changes in documentation format for self-observability metrics.
+- Tyler Yahn to create an issue tracking the discussion on cardinality limits and their default values.
+- Yevhenii Solomchenko to be assigned to work on applying cardinality limits to aggregation.
 
 ## Participants
-Robert Pająk, Tyler Yahn
+Robert Pająk, Tyler Yahn, Yevhenii Solomchenko

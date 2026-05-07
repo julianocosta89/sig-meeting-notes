@@ -1,14 +1,15 @@
 ## Key Topics
-- Review of David Ashpole's PRs related to runtime metrics and semantic conventions.
-- Discussion on the utility and opt-in nature of new garbage collection metrics.
-- Feedback on naming conventions for CPU and memory metrics attributes.
-- Ongoing issues with PR reviews and the use of AI tools for code review improvements.
-- Updates on Robert's PR regarding attribute slice handling and string truncation bugs.
+- Discussion on PRs related to runtime metrics and garbage collection.
+- Review of new features for handling attribute slices and their performance implications.
+- Introduction of a draft for AI agent support in PRs and its potential impact on contributor experience.
+- Concerns about memory usage related to exemplar reservoirs in the metrics SDK.
+- Ongoing improvements and bug fixes in the SDK, including character limits for strings.
 
 ## Action Items
-- David Ashpole to incorporate feedback on naming conventions into his PR.
-- Brian Boreham to document his thoughts on the PR for future reference.
-- Robert to add his PR on attribute slice handling to the agenda for further discussion.
+- David to seek reviews on his PRs regarding runtime metrics and garbage collection.
+- Robert to finalize and seek reviews on his PRs related to attribute slices and AI agent support.
+- Participants to provide feedback on the draft PR for AI agent instructions.
+- Follow-up on performance benchmarks for the attribute handling changes.
 
 ## Participants
 Tyler, Pellared, Damien Mathieu, Bryan Boreham, David Ashpole

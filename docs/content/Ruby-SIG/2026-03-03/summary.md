@@ -1,15 +1,15 @@
 ## Key Topics
-- **Declarative Configuration**: Discussion on the new YAML configuration for SDK and the need to transition from code-based configurations.
-- **Stabilization of RPC Calls**: Plans to stabilize RPC conventions similar to previous HTTP stabilization efforts.
-- **Backwards Compatibility**: Strategies for maintaining backwards compatibility with older conventions while transitioning to new schema versions.
-- **Kubernetes Operator Updates**: Updates on the Kubernetes operator and concerns regarding the Ulta operator generation.
-- **Open PRs and Issues**: Review of outstanding pull requests and issues, including Dependabot updates and new examples.
+- New release of the OpenTelemetry specification including declarative configuration (YAML).
+- Discussion on stabilizing RPC calls and backward compatibility concerns.
+- Review of instrumentation scope attributes and their implementation.
+- AI-generated contributions and associated guidelines for maintainers.
+- Consideration of testing strategies for multiple versions of data stores.
 
 ## Action Items
 - Set up tasks related to the new declarative configuration.
-- Reach out to Robert regarding the stabilization of RPC conventions and schema URL availability.
-- Investigate the status of the Kubernetes operator and address concerns raised in the PR.
-- Review and merge outstanding pull requests, particularly those related to examples and tests.
+- Reach out to Robert regarding RPC conventions and backward compatibility.
+- Review and finalize the PR on AI-generated query summaries.
+- Discuss and decide on testing strategies for supporting multiple versions of data stores.
 
 ## Participants
 Ariel Valentin, Hannah Ramadan, Arjun Rajappa

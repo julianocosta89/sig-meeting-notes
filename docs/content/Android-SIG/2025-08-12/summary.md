@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on implementing draw signals for performance monitoring in OpenTelemetry Android.
-- Clarification of the scope and vision for the OpenTelemetry Android repository.
-- Comparison with the Embrace SDK and potential for shared APIs for instrumentation.
-- Challenges related to API versioning and the complexity of measuring app performance.
-- Importance of starting with simple implementations and iterating based on user feedback.
+- Discussion on the inclusion of draw signals for performance monitoring in OpenTelemetry Android.
+- Exploration of monitoring relative CPU utilization for client spans and the complexities involved.
+- Proposal for zero-code instrumentation using a content provider for easier initialization.
+- Updates on disk buffering API and the transition to a stable status.
+- Decision to deprecate Volley instrumentation due to lack of use and support.
 
 ## Action Items
-- Leonardo Serrano to prototype draw signal implementations and gather feedback.
-- Participants to explore real-world use cases for performance monitoring to guide development.
-- Consideration of focusing on newer API versions for initial implementations, with potential for backward compatibility later.
+- Review and provide feedback on the new disk buffering API proposal.
+- Deprecate Volley instrumentation and monitor for any user complaints over the next few months.
+- Investigate the implementation of a Gradle plugin for zero-code instrumentation.
 
 ## Participants
-Jason Plumb, GZ Gregor Zeitlinger, Leonardo Serrano, Hanson Ho, Cesar Munoz
+Jason Plumb, GZ Gregor Zeitlinger, Leonardo Serrano, Hanson Ho, Cesar Munoz, Jamie Lynch, Mustafa Haddara

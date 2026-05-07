@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on SQL Server content and context propagation for database instrumentation.
-- Concerns regarding baggage propagation over linked spans in messaging.
-- Triage process and approval status for various PRs.
-- Updates on Kubernetes-related semantic conventions and the need for additional SIG approvals.
-- Strategies for managing PRs and ensuring timely merges.
+- Discussion on SQL Server context propagation and its implications for traceability.
+- Messaging related concerns regarding baggage propagation over linked spans.
+- Review of the entity modeling guide and the definition of entities in OpenTelemetry.
+- Challenges with CPU utilization metrics and their calculation over time windows.
+- Triage process for managing pull requests and approvals within the SIG.
 
 ## Action Items
-- Sam to provide a link to the prototype implementation for SQL Server context propagation.
-- Liudmila to share a link regarding the optional parenting in messaging.
-- Christos to manage approvals for Kubernetes-related PRs.
-- Alexandra to follow up on the timeframe for a blocked PR related to security.
+- Sam to provide a link to the prototype implementation of SQL Server context propagation.
+- Liudmila to share a link regarding the optional parenting in linked spans.
+- Josh to refine the entity modeling guide based on feedback and clarify language.
+- Braydon to document usability issues with CPU utilization metrics and propose solutions.
 
 ## Participants
-Trask Stalnaker, Sam, Liudmila Molkova, Josh Suereth, Braydon Kains, Christos Markou, Alexandra Konrad
+Trask Stalnaker, Sam, Liudmila Molkova, Josh Suereth, Braydon Kains, Christos Markou, Alexandra Konrad.

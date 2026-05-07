@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on RFCs: Blake Rouse's RFC for partial reload and Andrew Wilkins' RFC for the scraper controller were highlighted.
-- Procedural updates regarding interface stability and documentation were presented by jmacdonald.
-- Review of the stability board and the need for more community engagement in picking up tasks.
-- Importance of establishing and following patterns for stable long-term interface commitments in the codebase.
+- Discussion on the RFCs for partial reload and scraper controller.
+- Importance of engaging the community for RFC reviews and feedback.
+- Overview of procedural updates and stability phase on the project board.
+- Formalization of interface patterns and documentation for long-term stability in the codebase.
+- Strategies for improving visibility and review processes for RFCs.
 
 ## Action Items
-- Andrew Wilkins to review jmacdonald's RFC on interface stability.
-- jmacdonald to advocate for Andrew Wilkins' scraper controller RFC in the next maintainer meeting.
+- Josh to bring up Andrew's RFC (14469) and Blake's RFC (14640) in the maintainers' stability meeting.
+- Andrew to consider creating a demo for the scraper controller RFC if needed.
+- Blake to follow up on the partial reload RFC for additional reviews.
 
 ## Participants
 Andrew Wilkins, Blake Rouse, jmacdonald

@@ -1,14 +1,13 @@
 ## Key Topics
-- Status update on Cloudflare and CICD migration.
-- Discussion on automating contributor onboarding processes for OpenTelemetry repositories.
-- Exploration of using GitHub Actions and templates for standardizing contributions across repositories.
-- Challenges with permissions and repository management.
-- Ideas for improving developer experience and documentation for contributors.
+- Discussion on the status of Cloudflare setup and its impact on CI/CD processes.
+- Exploration of automating contributor onboarding processes across OpenTelemetry repositories.
+- Challenges and strategies regarding cache management in GitHub Actions to improve build efficiency.
+- The need for a centralized repository for reusable workflows and best practices.
 
 ## Action Items
-- Adriel to follow up with Austin regarding Cloudflare setup.
-- Consider developing a centralized GitHub app for automating contributor interactions.
-- Explore the possibility of creating reusable GitHub Actions for onboarding new contributors.
+- Adriel Perkins to follow up with Austin regarding Cloudflare setup.
+- Antoine Toulme to explore creating a standardized onboarding process for new contributors.
+- Trask Stalnaker to consider setting up a centralized repository for reusable workflows.
 
 ## Participants
-Trask Stalnaker, Adriel Perkins, Antoine Toulme
+Trask Stalnaker, Adriel Perkins, Antoine Toulme, Jacob Aronoff

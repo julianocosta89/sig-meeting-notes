@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the logging API and its intended use cases within OpenTelemetry Ruby.
-- Updates on the merging of various specifications, including the log record processor and Always Record Sampler.
-- Compatibility issues with the Thrift gem and its impact on Jaeger exporters in Ruby.
-- Ongoing conversations about the potential deprecation of Zipkin and its implications for the SDK.
-- The need for clarity on the stability of OpenTelemetry components and semantic conventions.
+- Discussion on the merging of various OpenTelemetry specifications, including the log record processor and Always Record Sampler.
+- Ongoing issues with the compatibility of the Jaeger exporter and the thrift gem in Ruby, particularly with JRuby.
+- The need for better automation in keeping up with protobuf releases and specifications compliance.
+- Feedback on HTTP instrumentation and span naming conventions, particularly regarding the handling of unknown HTTP methods.
+- Exploration of runtime metrics and their importance for future versions of OpenTelemetry.
 
 ## Action Items
-- Review and provide feedback on the logging API usage and its specifications.
-- Investigate the compatibility issues related to the Thrift gem and JRuby.
-- Follow up on the status of Zipkin and its future in the OpenTelemetry Ruby SDK.
-- Engage with the community to clarify the definition of stability for OpenTelemetry components.
+- Kayla to add the automation of protobuf updates to the SPECSIG agenda.
+- Ariel to create an issue to track the automation idea for protobuf updates.
+- Team to consider the implications of changing span names in the HTTP instrumentation PR and decide on how to address broken implementations.
+- Follow-up discussions on Jaeger and its future in the OpenTelemetry ecosystem.
 
 ## Participants
-Hannah Ramadan, Ariel Valentin, Kayla Reopelle, Xuan Cao, Sheila, Wendy
+Hannah Ramadan, Ariel Valentin, Kayla Reopelle, Xuan Cao, Alex Arnell

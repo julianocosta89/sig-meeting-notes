@@ -1,14 +1,15 @@
 ## Key Topics
-- Collaboration challenges between OpenTelemetry and GitHub, focusing on PR management and review processes.
-- Discussion on the complexities of CI processes and the impact of flaky tests on PR throughput.
-- Issues with notification systems for code owners and maintainers, leading to delays in PR reviews.
-- Introduction of a first-time contributor workflow to improve onboarding and engagement.
-- Exploration of GitHub's features and potential improvements to enhance collaboration and efficiency.
+- Challenges with managing PR throughput and review processes in OpenTelemetry repositories.
+- Discussion on GitHub collaboration features and the need for better notification systems for code owners.
+- Introduction of a first-time contributor workflow to enhance onboarding for new contributors.
+- Exploration of GitHub Actions and AI tools for automating triage and labeling of PRs.
+- Issues related to CI performance and caching strategies in the OpenTelemetry Collector repository.
 
 ## Action Items
-- Antoine to provide specific feedback on pain points related to PR management to GitHub.
-- GitHub team to explore potential solutions for improving notification systems for code owners.
-- Follow-up on the implementation of the first-time contributor workflow and its effectiveness.
+- Antoine to share the link regarding caching issues with GitHub Actions.
+- Trask to update the CNCF ticket regarding access to Copilot Enterprise.
+- Participants to experiment with GitHub project boards for better PR management and reporting.
+- Ashley to provide a list of GitHub tools and actions that can assist with PR triaging.
 
 ## Participants
 Ashley Wolf, Adriel Perkins, Antoine Toulme, Zack Koppert, Trask Stalnaker

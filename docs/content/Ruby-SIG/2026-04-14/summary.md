@@ -1,14 +1,15 @@
 ## Key Topics
 - Discussion on the new Policies OTEP for global configuration in OpenTelemetry.
-- Ongoing efforts to stabilize OpenTelemetry for graduation from incubation.
-- Proposal for adding event names to logs and related PRs.
-- Security concerns regarding response body size in OTLP exporters.
-- Semantic conventions updates and the transition to using Renovate for version bumps.
+- Ongoing efforts to stabilize OpenTelemetry code and the implications for user requirements.
+- Proposal for adding metrics to the contrib section and the challenges related to stability.
+- Review of PRs related to security improvements and semantic conventions.
+- Conversations around database semantic conventions and the flexibility of user configurations.
 
 ## Action Items
-- Participants to review the security-related PR regarding response body limits.
-- Follow up on the Policies OTEP and provide feedback if interested.
-- Continue discussions on stabilization efforts in the SPEC SIG meeting next week.
+- Bart to add configuration options for metrics in his PR.
+- Kayla to document the discussion points on database conventions and link them to the relevant PR.
+- Robb to provide feedback on PRs regarding test coverage and configuration standards.
+- Team to investigate the GitHub action responsible for applying labels to PRs and consider simplifying the reviewer list.
 
 ## Participants
-Kayla Reopelle, Bart de Water, Robb Kidd, Ed Young, Ariel, James Thompson-Tomo
+Kayla Reopelle, Bart de Water, Robb Kidd, Xuan Cao, Hannah Ramadan

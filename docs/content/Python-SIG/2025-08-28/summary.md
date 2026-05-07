@@ -1,13 +1,16 @@
 ## Key Topics
-- Introduction of a new utility for adding custom attributes to HTTP server metrics by Tammy Baylis.
-- Discussion on the inconsistency of model attributes across different providers (OpenAI, AWS Bedrock, Gemini) in the context of Langchain instrumentation by Ridhima Satam.
-- Consideration of whether to support multiple providers or focus solely on OpenAI for the current PR.
-- Debate on the necessity of instrumentation at the Langchain level versus relying on underlying client library instrumentation.
+- Introduction of a new utility for adding custom attributes to HTTP server metrics (Tammy Baylis).
+- Discussion on the inconsistencies in attributes across different model providers for LLM span invocation (Ridhima Satam).
+- Documentation improvements and areas needing attention (John Scancella).
+- Upcoming PRs related to configuration approaches for GenAI (Liudmila Molkova and Dylan Russell).
+- Brainstorming on telemetry sampling strategies for asynchronous evaluation (Sergey Sergeev).
 
 ## Action Items
-- Tammy Baylis to put her PR on the project board for review.
-- Liudmila Molkova to share a link to the Java client metric pull request in the meeting notes.
-- Ridhima Satam to open a ticket for follow-up support of additional providers after the current PR is completed.
+- Review and provide feedback on Tammy's PR for the new labeler utility.
+- Ridhima to explore the possibility of supporting multiple model providers in the LLM instrumentation.
+- John to work on improving documentation, focusing on areas identified during the meeting.
+- Liudmila and Dylan to discuss upcoming PRs and configuration approaches further.
+- Sergey to investigate sampling strategies and potentially collaborate with the sampling working group.
 
 ## Participants
-Riccardo Magliocchetti, Shuwen Pan, John Scancella, Tammy Baylis, Liudmila Molkova, Ridhima Satam, Aaron Abbott, Sergey Sergeev.
+Riccardo Magliocchetti, Shuwen Pan, John Scancella, Tammy Baylis, Liudmila Molkova, Ridhima Satam, Aaron Abbott, Sergey Sergeev, Dylan Russell.

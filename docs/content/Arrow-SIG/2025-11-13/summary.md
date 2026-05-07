@@ -1,13 +1,13 @@
 ## Key Topics
-- **Issue Triage**: Discussion on recent issues and administrative tasks, including the need for changelog management and documentation.
-- **API Design**: Review of proposed changes to the API structure for the query engine, addressing functionality gaps identified from previous proof-of-concept work.
-- **Quiver Proposal**: Introduction of a new subsystem for persistent storage using Arrow IPC, aimed at improving efficiency and handling offline periods.
-- **Data Fusion Challenges**: Exploration of complexities in implementing data fusion plans and potential solutions for filtering logs and attributes.
+- Discussion on the Quiver proposal for persistent storage in OpenTelemetry Arrow.
+- Issue triage, including API design and functionality gaps identified from previous proof-of-concept work.
+- Challenges related to schema management and data serialization in Arrow IPC format.
+- Future planning for the project, including Phase 3 objectives and performance studies.
 
 ## Action Items
-- Review and address outstanding documentation issues and changelog management.
-- Gather feedback on the Quiver proposal and consider its implementation as a standalone crate.
-- Continue discussions on API design and data fusion plan execution strategies.
+- Continue discussions on the Quiver proposal and its implementation details.
+- Explore schema management strategies for handling varying schemas in record batches.
+- Schedule a follow-up meeting to discuss Phase 3 of the project and gather input from participants.
 
 ## Participants
-Albert Lockett, Utkarsh Umesan Pillai, Joshua MacDonald, Aaron Marten, Laurent
+Joshua MacDonald, Albert Lockett, Utkarsh Umesan Pillai, Aaron Marten, Laurent Querel, Pablo Baeyens, Danny Chin.

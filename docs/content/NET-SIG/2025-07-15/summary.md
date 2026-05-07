@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on performance tweaks in the library and ongoing PRs.
-- Proposal for file-based configuration in the SDK and its potential implementation in the Contrip repository.
-- Exploration of leveraging existing SDK features for configuration management.
-- Debate on whether configuration should be part of the main SDK or remain as an add-on package.
-- Consideration of integrating configuration with the existing .NET `IConfiguration` system for consistency.
+- Discussion on performance tweaks in existing PRs.
+- Proposal for file-based configuration in the SDK.
+- Consideration of integrating configuration with existing .NET practices (e.g., `IConfiguration`).
+- Exploration of separate packages for configuration versus integrating it into the main SDK.
+- Need for a clear plan and structure for implementing configuration features.
 
 ## Action Items
-- Review and merge the performance tweak PR.
-- Further explore the implementation of file-based configuration and its repository placement.
-- Investigate the possibility of integrating configuration with `IConfiguration` for better usability.
+- Yevhenii to open an issue to outline the configuration plan and gather input.
+- Participants to review PRs and provide support for implementation tasks.
+- Consideration of creating a separate package for configuration in the contrib repository.
 
 ## Participants
-Yevhenii Solomchenko, Martin Costello, Alan West, Mike "Blanch" Blanchard, Matthew Hensley
+Yevhenii Solomchenko, Martin Costello, Alan West, Mike "Blanch" Blanchard, Matthew Hensley, Zach Montoya

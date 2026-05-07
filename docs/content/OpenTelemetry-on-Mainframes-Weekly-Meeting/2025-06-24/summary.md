@@ -1,15 +1,15 @@
 ## Key Topics
-- Proposal to move the meeting from Tuesdays to Wednesdays for better scheduling.
-- Discussion on harmonizing transaction processing systems with workflow concepts in OpenTelemetry.
-- Clarification needed on the definition and application of "workflow" in the context of OpenTelemetry.
-- Upcoming GSE UK Tech Exchange and plans for a presentation on the progress of the semantic conventions.
-- Drafting and publishing a survey related to OpenTelemetry, with a deadline set for the beginning of July.
+- Proposal to move the meeting from Tuesdays to Wednesdays for better attendance.
+- Discussion on harmonizing transaction processing systems (TPS) with workflow concepts in OpenTelemetry.
+- Need for clarity on the definition and application of workflows within the context of mainframes.
+- Upcoming GSE UK Tech Exchange and the need to prepare a presentation on semantic conventions.
+- Plans to publish a survey related to OpenTelemetry and gather feedback.
 
 ## Action Items
-- Ruediger to post a question on the Slack channel regarding the meeting schedule change.
-- Ruediger to follow up on the workflow proposal and prepare for discussion at the semantic conventions meeting.
-- Draft of the survey to be prepared by Ruediger for review by the team.
-- Greg to contact Aaron regarding the GSE UK Tech Exchange presentation.
+- Ruediger to post a question about moving the meeting day on the Slack channel.
+- Review the workflow proposal and prepare for a discussion in the next semantic conventions meeting.
+- Draft the survey for feedback by next week.
+- Follow up on the COBOL SDK design ideas and customer use cases.
 
 ## Participants
-Morgan McLean, Greg Shriver, Ruediger Schulze (IBM), Joe Korchmar
+Morgan McLean, Greg Shriver, Ruediger Schulze, Joe Korchmar

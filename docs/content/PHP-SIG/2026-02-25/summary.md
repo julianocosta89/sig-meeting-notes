@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on a recently merged logging PR that had breaking functionality and was reverted.
-- Introduction of Mego, a new Rust toolchain for static analysis and linting in PHP, which is fast and still in beta.
-- Comparison of Mego with existing tools like PHPStan and PHP CS Fixer, and considerations for future adoption.
-- Importance of evaluating Mego's capabilities against existing tools before making a switch.
+- Merging and reverting of a logging PR due to breaking functionality.
+- Introduction and discussion of Mego, a new Rust toolchain for PHP static analysis and linting.
+- Update on the Distro project, including progress on unit testing and fixing flaky tests.
+- Discussion on improving test stability and reliability in the project.
+- Plans for future focus on stabilizing tests and enhancing project confidence.
 
 ## Action Items
-- Monitor the development of Mego and wait for a stable release before considering its adoption.
-- Explore running Mego in parallel with existing tools for comparative analysis without blocking builds.
+- Investigate and monitor the performance of Mego once it becomes stable.
+- Continue fixing the flaky test in the Distro project before merging.
+- Analyze the current testing situation and propose next steps for improving test reliability.
+- Finish shadowing for the Distro to avoid vendor clashes.
 
 ## Participants
 Sergey, Bob Strecansky, Pawel Filipczak

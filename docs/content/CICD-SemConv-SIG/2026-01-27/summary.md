@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the Golang Environment Context Propagation PR and the need for sponsorship in OpenTelemetry.
-- Updates on tracing workflows and the plan to release an alpha version for community feedback.
-- Exploration of unified conventions and the need for additional implementations beyond CI/CD.
-- Interest in AI agent semantic conventions and potential contributions from participants.
+- Discussion on Golang Environment Context Propagation and PR review.
+- Feedback on the need for community input on CI/CD semantic conventions.
+- Exploration of long-running spans and their implications for CI/CD workflows.
+- The importance of maintaining span context across different processes and controller restarts.
+- Consideration of using heartbeat events versus incomplete spans for observability.
 
 ## Action Items
-- Alan Clucas to reach out to Adrielle and Dotem regarding sponsorship for OpenTelemetry membership.
-- Christoph Kamphaus to review Alan's PR and consider opening an issue for his membership proposal.
-- Participants to review the unified conventions proposal and provide feedback or insights before the next meeting.
+- Alan Clucas to follow up with Adrielle and Dotem regarding OpenTelemetry membership sponsorship.
+- Christoph Kamphaus to review the Golang PR and potentially open an issue for Alan's membership proposal.
+- Participants to provide feedback on the unified conventions issue and explore implementations beyond CI/CD.
 
 ## Participants
-Alan Clucas, Neily Ashinsky, Christoph Kamphaus, Totan (not present), Adrielle (mentioned)
+Alan Clucas, Neily Ashinsky, Christoph Kamphaus, Carlos Alberto Cortez

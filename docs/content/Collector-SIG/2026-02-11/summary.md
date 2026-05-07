@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the new RFC regarding migration between semantic conventions and conflict resolution.
-- Ongoing development of extension interfaces, particularly for storage in the OpenTelemetry Collector.
-- The need for extensions to be developed outside the core repository before being considered for inclusion.
-- The proposal for a new storage extension interface to accommodate different storage types, including Pebble.
+- **RFC for Migration of Semantic Conventions**: Discussion on the RFC that clarifies handling conflicts during migration from one semantic convention to another.
+- **Extension Interfaces**: Ongoing conversation about the need for new storage extension interfaces to support various storage types, including Pebble.
+- **Partial Pipeline Reloads**: Proposal for enabling partial reloads of the OpenTelemetry collector to reduce downtime and lost events during configuration changes.
+- **Scraper Receivers Interface**: Introduction of a new interface for scraper receivers to allow different invocation methods, aiming for better horizontal scaling.
+- **Resource Attributes Management**: Discussion on how receivers should handle resource attributes and the need for consistency across different data sources.
 
 ## Action Items
-- Review and provide feedback on the proposed component interface guidelines for extensions.
-- Explore the implementation of a new storage extension interface that supports both existing and new storage types.
-- Validate the functionality of new extensions before considering their integration into the core repository.
+- **Josh Macdonald**: File a core collector issue regarding the new storage extension interface and its implications.
+- **Blake Rouse**: Work on an RFC for the partial reload feature in the collector.
+- **Liudmila Molkova**: Reach out to Postgres receiver owners for feedback on proposed changes to resource attributes.
+- **Dmitrii Anoshin**: Review the RFC for the scraper receivers interface and provide feedback.
 
 ## Participants
-Liudmila Molkova, Andrew Wilkins, Josh Macdonald, Dmitrii Anoshin, Antoine Toulme
+Liudmila Molkova, Andrew Wilkins, Josh Macdonald, Dmitrii Anoshin, Blake Rouse, Antoine Toulme

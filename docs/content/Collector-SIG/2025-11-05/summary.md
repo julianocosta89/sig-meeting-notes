@@ -1,14 +1,13 @@
 ## Key Topics
-- Presentation of initial analysis from the OpenTelemetry Collector follow-up survey.
-- Discussion on the significance of changes in survey responses compared to previous years.
-- Insights on the usage of various deployment scenarios, including Kubernetes and virtual machines.
-- Importance of sample size in data analysis and its impact on drawing conclusions.
-- Collaboration on refining questions for future surveys to enhance data quality.
+- **Data Analysis Guide Presentation**: Ernest Owojori presented initial findings from the OpenTelemetry collector follow-up survey, seeking input on effective questions for analysis.
+- **Component Approval Process**: Discussion on improving the process for approving new components to reduce the workload on maintainers and ensure quality.
+- **Enrichment Processor Proposal**: Rob Bavey discussed a proposal for an enrichment processor, emphasizing the importance of community approval and avoiding competing proposals.
+- **CI Review Process**: Trent Vigar raised concerns about the CI approval process for his PR, leading to a discussion on best practices for contributors.
 
 ## Action Items
-- Participants to review the document shared by Ernest and provide feedback.
-- Collaborate on formulating better questions for the data analysis guide.
-- Ernest to incorporate feedback regarding sample size considerations into the guide.
+- Ernest Owojori to share the data analysis document for further feedback and collaboration.
+- Participants to provide feedback on the component approval process proposals in the relevant issue.
+- Contributors to consider running CI tests locally to expedite the review process.
 
 ## Participants
-Pablo Baeyens, Dmitrii Anoshin, Ernest Owojori, kushal
+Pablo Baeyens, Dmitrii Anoshin, Ernest Owojori, kushal, Christos Markou, Paulo Janotti, Rob Bavey, João Duarte, Trent Vigar, Jade Guiton, Sam DeHaan.

@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on PRs related to folder naming conventions and automation checks.
-- Proposal to allow labeling of PRs to bypass certain checks for non-semantic changes.
-- Consideration of merging the "container" area with "Kubernetes" due to overlapping ownership and contributions.
-- Update on the V2 schema for Weaver, focusing on improved usability and the importance of publishing schemas.
-- Plans for federating semantic conventions to allow for decentralized contributions and version management.
+- Discussion on PRs related to semantic conventions and automation issues.
+- Proposal to merge the container area with Kubernetes due to lack of contributions.
+- Overview of the V2 schema for Weaver, focusing on improved usability and readability.
+- Plans for federation of semantic conventions to allow for decentralized contributions.
+- Call for feedback on the new V2 schema and its implementation in projects.
 
 ## Action Items
-- Liudmila to check with Kubernetes approvers regarding the merging of the container area.
-- Liudmila to leave comments on PRs to facilitate discussions on titles and labels.
-- Josh to provide examples of the V2 schema for further review.
+- Liudmila to follow up on merging the container area with Kubernetes and check with approvers.
+- Participants encouraged to experiment with the V2 schema and provide feedback on usability.
+- Josh to ensure documentation and policies are generated for the new schema.
 
 ## Participants
 Josh Suereth, Armin (Dynatrace), Liudmila Molkova, Trask Stalnaker

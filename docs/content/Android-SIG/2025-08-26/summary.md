@@ -1,14 +1,15 @@
 ## Key Topics
-- Review of recent changes and file removals in the OpenTelemetry Android implementation.
-- Discussion on the integration tests and their coverage for the new API.
-- Consideration of user experience regarding the complexity of the API and potential simplifications.
-- Ongoing work related to crash instrumentation and semantic conventions for crash reporting.
-- Exploration of configuration options for different signal types in the storage system.
+- Discussion on the migration of the OpenTelemetry Android SDK and the number of file changes involved.
+- Improvements to crash handling and the need for better session management during crashes.
+- Ongoing work on semantic conventions for crashes and how to improve the data captured during such events.
+- The need for documentation regarding strict mode violations and the impact on app performance.
+- Plans for future contributions to the OpenTelemetry documentation and community resources.
 
 ## Action Items
-- Cesar Munoz to consider splitting the PR for better readability and review.
-- Hanson Ho to review the changes and provide comments.
-- Discussion on improving crash reporting and recording to be continued in future meetings.
+- Cesar Munoz to explore splitting the migration PR for better readability.
+- Hanson Ho to finalize and implement the semantic conventions for crash handling.
+- Jason Plumb to create an issue regarding strict mode violations and document the team's approach.
+- Participants to review the Jenk pull request and provide feedback.
 
 ## Participants
-Jason Plumb, Hanson Ho, Cesar Munoz, Manoel, cleverchuk
+Jason Plumb, Hanson Ho, Cesar Munoz, Manoel, Cleverchuk

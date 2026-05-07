@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on handling runtime checks in OpenTelemetry SDK to avoid application crashes.
-- Importance of not using `checkNotNull` or `require` in production code paths.
-- Review of attribute handling in spans and ensuring that existing attributes are not overwritten.
-- Clarification on the implementation of `setAttributes` in Java and its behavior regarding attribute updates.
+- Discussion on runtime checks in OpenTelemetry SDK to avoid app crashes.
+- Clarification on the behavior of setting attributes in spans and their consistency with Java implementation.
+- Review of the AnyValue PR and the need to account for null values in attribute representation.
+- Suggestions for improving the specification language regarding attribute handling.
 
 ## Action Items
 - Hanson to clean up and submit a PR related to runtime checks.
-- Carlos to verify the behavior of attribute handling with Jack for further clarity.
+- Carlos to verify and clarify the implementation details with Jack regarding attribute handling.
+- Consider updating the spec language for clarity on attribute behavior.
 
 ## Participants
 Jason Plumb, Hanson, Carlos Alberto Cortez

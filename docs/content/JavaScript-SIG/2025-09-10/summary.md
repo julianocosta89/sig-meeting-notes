@@ -1,15 +1,16 @@
 ## Key Topics
-- Survey results indicated a high satisfaction score (4.8/5) for the main repo, but highlighted areas for improvement in documentation clarity.
-- Discussion on the need for better organization of contributing documentation to enhance user experience.
-- Recent releases (2.1.0 and 0.205.0) addressed issues with the browser exporter and improved type decoupling.
-- Ongoing bug triage focused on issues related to async context and browser environment leaks.
-- Review and triage of open pull requests, with emphasis on the importance of community contributions to speed up the review process.
+- Survey results from new contributors indicated a high satisfaction score of 4.8/5, with suggestions for clearer documentation on testing processes.
+- Discussion on recent configuration pull requests and the need for more reviews to expedite the process.
+- Updates on the release of versions 2.1.0 and 0.205.0, addressing previous issues with the browser exporter.
+- Ongoing bug triage, including issues with async context and browser environment leaks.
+- Review of open pull requests, with emphasis on the need for more contributors to take ownership of components.
 
 ## Action Items
-- Reorganize contributing documentation to improve clarity on running tests, especially for browser tests.
-- Encourage community members to review open pull requests to facilitate faster merges.
-- Create documentation around async context challenges and add to the FAQ section.
-- Follow up on the GraphQL instrumentation component to find new maintainers.
+- Reorganize contributing documentation to improve clarity on testing steps.
+- Encourage team members to review pull requests to speed up the review process.
+- Explore the documentation of async context issues and consider adding to the FAQ.
+- Follow up on the TypeScript version compatibility issue and consider using the "skip lib check" option.
+- David to bring up instrumentation discussions in the next processing meeting.
 
 ## Participants
-Marc Pichler, Trent Mick, MG Marylia Gutierrez, Hector Hernandez
+Marc Pichler, Trent Mick, Marylia Gutierrez, Hector Hernandez, David Luna Bistuer, Amir Blum, Jackson Weber

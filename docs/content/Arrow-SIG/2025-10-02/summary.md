@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on milestone planning for the next month and a half.
-- Review of KQL (Kusto Query Language) and its integration with Data Fusion.
-- Presentation of a proof of concept for a tail sampling processor using Parquet files.
-- Exploration of user-defined aggregate functions (UDAFs) in Data Fusion for sampling.
-- Challenges and learnings from implementing logging and data processing.
+- Discussion on KQL and Data Fusion integration for OpenTelemetry.
+- Updates on hackathon projects and proof of concepts related to Parquet and sampling.
+- Milestone planning for upcoming features and improvements, focusing on production readiness.
+- Error handling strategies and back pressure mechanisms within the pipeline.
+- Continuous benchmarking and testing infrastructure to ensure performance and reliability.
 
 ## Action Items
-- Albert to share the details of his hackathon project related to KQL.
-- Team to explore the implementation of a tail sampling processor leveraging Data Fusion.
-- Further research and discussion on user-defined aggregate functions for effective data sampling.
+- Josh to update milestones with priorities discussed in the meeting.
+- Laurent and team to categorize and order the list of tasks for the next milestone.
+- Explore the implementation of user-defined functions (UDFs) in Data Fusion for better query handling.
+- Develop a systematic approach for error handling and validation of data streams.
 
 ## Participants
-Albert Lockett, Laurent Quérel, Josh MacDonald, Ukarsh
+albertlockett, Laurent Quérel, jmacdonald, Ukarsh, Chris

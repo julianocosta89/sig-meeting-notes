@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on integrating Weaver Life Check into the collector for real-time telemetry validation.
-- Prototypes developed by Ariana and Josh to validate telemetry metrics using Weaver.
-- Challenges and considerations regarding the implementation of Weaver Life Check in the collector, including performance and efficiency.
-- The need for a language-agnostic approach and the potential for a plugin ecosystem within the collector.
-- Clarification on the scope of current work and the focus on specific telemetry components.
+- Discussion on integrating Weaver Life Check into the Collector for real-time telemetry validation.
+- Exploration of maintaining a single codebase for policies and checks across Weaver and the Collector to avoid duplication.
+- Updates on the Provenance tracking implementation and its implications for schema management.
+- Debate on the necessity and structure of manifest files in dependency resolution systems.
 
 ## Action Items
-- Continue discussions on the implementation details of integrating Weaver Life Check into the collector.
-- Ariana to address feedback on her PR and clarify misunderstandings regarding the prototype.
-- Explore potential first adopters for the telemetry validation package once the PR is completed.
+- Open an issue to track the need for authorization in local publishing for Weaver.
+- Follow up on the integration of Weaver Life Check into the Collector.
+- Review and approve the PR related to fixing Weaver Packages.
+- Consider the feedback on the manifest file structure and its necessity for dependency resolution.
 
 ## Participants
-Laurent Querel, Arthur Silva Sens, Josh Suereth, Ariana Navespri, Liudmila Molkova, Joshua McDonald
+Laurent Querel, Arthur Silva Sens, Josh Suereth, Ariana Navespri, Liudmila Molkova, Jeremy Blythe, Joshua McDonald.

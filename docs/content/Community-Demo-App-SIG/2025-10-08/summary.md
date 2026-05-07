@@ -1,14 +1,15 @@
 ## Key Topics
-- Updates on the OpenTelemetry demo app and pull requests.
-- Discussion on the instrumentation of the demo app, including environment variable injection and HTTP vs. gRPC protocols.
-- Challenges with the instrumentation CRD and its limitations regarding OTLP endpoints.
-- Importance of documentation for cloud provider-specific configurations and resource detectors.
-- Enhancements to the KubeStack for better metric collection and metadata enrichment.
+- Updates on the OpenTelemetry demo app and recent pull requests.
+- Discussion on instrumenting the demo app with an operator and addressing feature gaps.
+- Transitioning to HTTP protocol for all services to simplify integration.
+- Challenges with environment variable management and secrets in Kubernetes.
+- Enhancements to the Helm chart for better deployment practices.
 
 ## Action Items
 - Cyrille to finalize the Helm chart pull request and address identified feature gaps.
-- Team to discuss with instrumentation CRD maintainers about supporting multiple OTLP endpoints.
-- Documentation to be created for cloud provider configurations and order of resource detectors.
+- Team to discuss the transition to HTTP protocol for all services.
+- Roger to explore the use of Kubernetes secrets in the collector configuration.
+- Alessio to test the demo on K3S and Rancher environments.
 
 ## Participants
-Cyrille Le Clerc, Alessio, Pierre Tessier, Roger Coll
+Cyrille Le Clerc, Alessio, Pierre Tessier, Roger Coll, Shenoy Pratik Gurudatt

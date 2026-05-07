@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on upcoming KubeCon presentation focusing on the cost of auto-instrumentation.
-- Updates on blog posts, including two lined up for publication: one today and another after KubeCon.
-- Introduction of the "Hotel Blueprints" project aimed at providing live documentation for using OpenTelemetry.
-- Future initiatives within the SIG, including potential surveys on SDK configuration and user experiences.
-- Ongoing collaboration and updates regarding the Skyscanner post and interview with Key Club.
+- Discussion on KubeCon presentation focusing on the cost of auto-instrumentation and data management.
+- Updates on blog posts related to OpenTelemetry, including timelines for publication.
+- Introduction of the "OTel Blueprints" project aimed at providing live documentation for best practices in using OpenTelemetry.
+- Future initiatives for improving developer experience, including potential surveys on SDK configuration.
 
 ## Action Items
-- Juliano to finalize and submit KubeCon presentation slides.
-- Johanna to confirm and update architecture diagrams for the Skyscanner post.
+- Juliano to finalize and submit KubeCon slides.
+- Publish the first blog post today and the second post after KubeCon.
+- Johanna to confirm architecture diagrams for the Skyscanner blog post.
 - Prepare for the interview with Key Club and finalize questions.
-- Tristan to revisit SDK-related initiatives and consider running a survey for user feedback.
 
 ## Participants
-Juliano Costa, Johanna Öjeling, Tristan, Neil, Danielle Gomez Blanco, Alex Bolton
+Juliano Costa, Johanna Öjeling

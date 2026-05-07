@@ -1,13 +1,15 @@
 ## Key Topics
-- Introductions of new participants and their backgrounds in OpenTelemetry.
-- Discussion on the challenges faced by first-time contributors and the need for better onboarding processes.
-- Overview of recent initiatives, including surveys to gather feedback from new contributors.
-- Importance of creating uniform contribution guidelines across different SIGs to enhance contributor experience.
+- Introductions and experiences of new contributors to OpenTelemetry.
+- Discussion on improving the onboarding process for first-time contributors.
+- Challenges with managing pull requests (PRs) and the need for standardized processes across different SIGs.
+- The importance of creating clear guidelines for labeling issues, particularly for "good first issues."
+- Strategies for maintaining engagement and accountability among code owners and maintainers.
 
 ## Action Items
-- Continue developing and refining the contributing documentation for all repositories.
-- Analyze feedback from surveys to identify key challenges and areas for improvement.
-- Implement a more structured approach to onboarding first-time contributors across different SIGs.
+- Review and provide feedback on the research plan for interviews with new contributors.
+- Create a common set of guidelines for labeling issues and handling PRs across SIGs.
+- Consider establishing a Slack channel for new contributors to ask questions and find resources.
+- Develop a maintainer handbook to standardize responses and processes for contributors.
 
 ## Participants
 Amy Super, Antoine Toulme, Bogdan Nicolae Stancu, MG Marylia Gutierrez

@@ -1,13 +1,16 @@
 ## Key Topics
-- Project updates on the integration of Rust and Go collector codebases, including a phased proposal for development.
-- Discussion on the limitations of Go plugins and the need for a fallback mechanism in the project.
-- Consideration of CI optimizations, specifically regarding the `cargo bench` job and its relevance in the CI pipeline.
-- The importance of maintaining effective communication and collaboration among team members, especially with vacations affecting attendance.
+- Project status update on the integration of Go and Rust collector codebases.
+- Proposal for a phased approach to merge the two codebases, including lifecycle management and fallback mechanisms.
+- Discussion on the performance benchmarking process and its relevance in CI.
+- Repository maintenance and handling of dependency updates using Renovate.
+- Overview of ongoing work related to OTLP receivers and exporters.
 
 ## Action Items
-- Feedback is requested on the proposed plan for integrating the Rust and Go codebases.
-- Evaluate whether `cargo bench` should run at CI time or be scheduled as a nightly job, with input from the OpenTelemetry Rust group.
-- Follow up on the performance label for pull requests to ensure benchmarks are only run when necessary.
+- jmacdonald to share the proposal document with the Collector SIG after feedback from the meeting.
+- Drew Relmas to discuss the performance benchmarking process with Gokhan and CJ.
+- Consider moving cargo bench to a nightly job instead of running it on every PR.
+- Discuss the proposal to limit Docker digest updates to once a month.
+- Plan for a follow-up discussion on the status of the Boberg repository and its future.
 
 ## Participants
-jmacdonald, Drew Relmas, tristan, Utkarsh Umesan Pillai
+jmacdonald, Drew Relmas, Tristan, Utkarsh Umesan Pillai, Matthias

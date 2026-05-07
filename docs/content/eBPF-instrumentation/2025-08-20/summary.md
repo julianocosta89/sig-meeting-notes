@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of open PRs and their statuses.
-- Discussion on Kafka integration tests and improvements.
-- Updates on Trace Exporter internal metrics and error handling in integration tests.
-- New feature for logging configuration in JSON format for better debugging.
-- Plans for trace-to-log correlation based on customer feedback.
+- Review of open PRs and their statuses, including security issues and testing failures.
+- Discussion on Kafka integration tests and improvements made by Mattia.
+- Introduction of Trace Exporter internal metrics and the need for further reviews.
+- Proposal for trace-to-log correlation to enhance debugging and monitoring capabilities.
+- Challenges and ideas around capturing and correlating logs with traces using BPF.
 
 ## Action Items
-- Review pending PRs, especially for Kafka integration and Trace Exporter metrics.
-- Add comments to the JSON logging feature for clarity on its implementation.
-- Continue discussions on trace-to-log correlation plans.
+- Review open PRs, particularly those related to Kafka integration and Trace Exporter metrics.
+- Nimrod to add comments to the log configuration JSON PR for clarity.
+- Continue discussions on trace-to-log correlation and explore potential solutions.
 
 ## Participants
-Mattia Meleleo, Tyler Yahn, Nimrod Avni, Stephen Lang, Rafael Roquetto
+Mattia Meleleo, Tyler Yahn, Nimrod Avni, Stephen Lang, Rafael Roquetto, Florian Lehner

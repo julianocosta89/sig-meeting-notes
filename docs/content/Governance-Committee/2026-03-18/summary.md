@@ -1,15 +1,15 @@
 ## Key Topics
-- Updates for Observability Day presentation, focusing on key community topics and project highlights.
-- Discussion on the deprecation of span events and the stability of releases.
-- Plans for blog posts leading up to KubeCon.
-- Encouragement for community involvement in new projects and the browser SIG.
-- Ongoing discussions regarding AI contributions and policies.
+- Updates for Observability Day presentation and community engagement strategies.
+- Discussion on the status and stabilization of GenAI semantic conventions.
+- Challenges in packaging decisions and the need for TC sponsorship.
+- Collaboration opportunities between the Observability Working Group and OpenTelemetry.
+- Strategies for modularity and versioning of semantic conventions.
 
 ## Action Items
-- Prepare slides for the Observability Day update, including key topics like span events and stability.
-- Ensure the Kotlin PR is merged before the event.
-- Share project update slides with the community manager for their presentation.
-- Confirm the timing for the project update on Tuesday.
+- Finalize and share slides for Observability Day presentation.
+- Engage with TC to clarify sponsorship needs and responsibilities.
+- Explore the potential for modular semantic conventions and follow up on OTEPs.
+- Schedule and participate in relevant meetings for ongoing discussions.
 
 ## Participants
-Marylia Gutierrez, Severin Neumann, Austin Parker, Trask, Ted Young, Reese Lee, Juraci Paixão Kröhling, Morgan McLean
+Marylia Gutierrez, Severin Neumann, Austin Parker, Trask Stalnaker, Ted Young, Reese Lee, Juraci Paixão Kröhling, Morgan McLean, Matt Lee, Julien Le Dem, Liudmila Molkova, Josh Suereth.

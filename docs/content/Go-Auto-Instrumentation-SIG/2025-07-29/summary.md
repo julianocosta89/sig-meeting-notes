@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the migration to the bail integration and its impact on binary file object tracking.
-- Presentation of a proof of concept for a Go module proxy to serve binary files, highlighting security concerns.
-- Exploration of Git branching strategies for managing release branches and binary object files.
-- Consideration of long-term preservation and reliability in serving generated files.
+- Discussion on the migration to the bail integration and its impact on binary object file tracking.
+- Review of a proof of concept for a Go module proxy and its potential security risks.
+- Exploration of committing object files into release branches and the associated Git workflows.
+- Consideration of CI/CD processes for validating and managing object files in the repository.
 
 ## Action Items
-- Investigate Git configurations to exclude certain branches during cloning to maintain a clean local history.
-- Explore alternative branching strategies for better management of binary objects in the repository.
+- Continue exploring the best Git branching strategy for handling binary object files.
+- Investigate CI/CD solutions for automatically generating and validating object files.
+- Review and refine the approach to managing release branches and their contents.
 
 ## Participants
-Tyler Yahn, Mike Dame, Rafael Roquetto, Ron (arrived late)
+Tyler Yahn, Mike Dame, Rafael Roquetto

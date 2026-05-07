@@ -1,13 +1,15 @@
 ## Key Topics
-- **Declarative Configuration Stabilization**: Discussion on the ongoing work to stabilize the declarative configuration specification, with an emphasis on instrumentation config and eBPF support.
-- **Metrics SDK Implementation Challenges**: Concerns raised about the complexity of implementing the metrics SDK, particularly regarding the integration of baggage processors.
-- **Measurement Filtering Use Cases**: Debate over the necessity and implications of allowing users to drop specific measurements in the metrics pipeline, with differing opinions on its practicality.
-- **Action Plan for Specification Compliance**: Agreement on the need for an audit of the specification compliance, with Robert Pająk volunteering to assist in this effort.
+- Follow-up on the stabilization of the OpenTelemetry specification for declarative configuration.
+- Discussion on the implementation of metrics SDK and its challenges.
+- Updates on the SDK self-observability signals and the status of ongoing work.
+- Review of the log stabilization project and the impact of complex attributes.
+- Progress on the HTTP stabilization project and the removal of old versions.
 
 ## Action Items
-- Robert Pająk to work on the specification compliance audit and create issues related to it.
-- Tyler Yahn to provide guidance on which parts of the config SDK need to be stabilized.
-- Participants to review the metrics SDK implementation and provide feedback on the challenges discussed.
+- Robert Pająk to work on the audit for the declarative configuration and create issues for specification compliance.
+- Damien Mathieu to start cleanup tasks related to the HTTP stabilization project next week.
+- David Ashpole to provide updates on the SDK self-observability signals and consider handing off work to others.
+- Participants to voice their opinions on the complex attributes OTEP to help guide decisions.
 
 ## Participants
 Tyler Yahn, Damien Mathieu, Sam, Robert Pająk, David Ashpole

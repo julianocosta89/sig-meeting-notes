@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on updates to the entity detector specification and handling of environment variables.
-- Clarification on the use of "must" vs. "should" in the specification regarding SDK requirements.
-- Conflict resolution strategies for environment variable detection.
-- Review and merging of PRs related to the specification.
-- Addressing concerns about entity churn in mobile environments.
+- Updates on the PR for the entity detector specification, including renaming to "Environment Entity Detector."
+- Discussion on whether the SDK should "must" or "should" provide an entity detector, considering scenarios like browsers and embedded systems.
+- Conflict resolution strategies for environment variables and entity detection.
+- The need for backward and forward compatibility in the SDK, especially regarding resource and entity handling.
+- Considerations for breaking changes in the SDK and how to communicate these to users.
 
 ## Action Items
-- Dmitrii Anoshin to push changes to the PR, including renaming the entity detector to NV Entity Detector.
-- Daniel Dyla to review and approve the updated PR after his next meeting.
-- Josh Suereth to resolve open questions regarding entity churn in the OTEP.
+- Dmitrii Anoshin to push updates to the PR, including renaming the entity detector.
+- Daniel Dyla to review the updated PR after his next meeting.
+- Josh Suereth to merge the PR once approvals are in place.
+- Further discussions on handling mutable resources and entity reporting to continue in future meetings.
 
 ## Participants
-Josh Suereth, Dmitrii Anoshin, Daniel Dyla
+Josh Suereth, Dmitrii Anoshin, Daniel Dyla (Dynatrace)

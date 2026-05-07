@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the naming and deprecation of event types, specifically around arbitrary exceptions.
-- Concerns regarding the logging of exceptions and the criteria for what constitutes a meaningful exception.
-- Clarification on the difference between "instrumented operations" and "instrumented code" in the context of exception handling.
-- The need for guidance on logging practices for both native and business instrumentation.
+- Discussion on naming conventions for logging events, with preferences leaning towards specific event names (e.g., `exception.http.server`).
+- Considerations for deprecating certain event definitions and the impact on future developments.
+- The importance of distinguishing between logged exceptions and operational failures in instrumentation.
+- Agreement on the need for a prototype to test new event naming and logging strategies.
+- Plans to stabilize documentation and definitions related to error recording in spans and metrics.
 
 ## Action Items
-- Liudmila to draft a response to Tomo regarding his concerns on technical details.
-- Pellared to revert changes related to the deprecation of events based on the naming decision.
-- Further discussion needed on the wording around logging exceptions to ensure clarity and proper guidance.
+- Liudmila to work on a prototype for event naming and logging strategies.
+- Robert to create a PR for HTTP instrumentation to add new events.
+- Group to stabilize documentation regarding error types and logging conventions.
+- Further discussions to be held on severity considerations in future meetings.
 
 ## Participants
 Liudmila Molkova, Pellared, Trask Stalnaker

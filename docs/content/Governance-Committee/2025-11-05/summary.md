@@ -1,14 +1,14 @@
 ## Key Topics
 - Discussion on managing Google groups with Terraform.
 - SIG liaison handover and reassignment of responsibilities.
-- Monthly check-ins for SIGs and maintaining communication.
-- Updates on the stability blog and the need for approvals.
-- Recent changes to the project roadmap and syncing issues.
+- Review and approval process for the stability blog post.
+- Concerns regarding the content and consensus-building around the blog post.
+- Roadmap updates and project board synchronization.
 
 ## Action Items
-- Austin Parker to finalize and publish the stability blog as a statement of intent.
-- Participants to review SIG assignments and consider any trades or reassignments.
-- Juraci Paixão Kröhling to provide insights on monthly check-ins for new liaisons.
+- Participants to review the latest version of the stability blog post and provide feedback.
+- Marillia to check the SIG assignments and express any preferences for reassignment.
+- Trask to provide specific feedback on the blog post after another review.
 
 ## Participants
-Trask Stalnaker, MG Marylia Gutierrez, Austin Parker, Tedsuo, Alolita Sharma, Dan Gomez Blanco, Juraci Paixão Kröhling.
+Trask Stalnaker, MG Marylia Gutierrez, Austin Parker, Tedsuo, Alolita Sharma, Dan Gomez Blanco, Juraci Paixão Kröhling, Morgan McLean.

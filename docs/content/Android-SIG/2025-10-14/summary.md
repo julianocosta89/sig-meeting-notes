@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on two PRs related to CPU attributes and semantic conventions for screen load.
-- Clarification on the distinction between app start and initial draw events in instrumentation.
-- Analysis of app start performance and its correlation with OpenTelemetry client initialization, specifically regarding OKHTTP.
-- Consideration of platform-agnostic terms in semantic conventions to avoid Android/iOS-specific terminology.
+- Review of PRs related to CPU attributes and screen load proposals.
+- Discussion on app startup profiling and performance impacts of OpenTelemetry client.
+- Considerations for disk buffering vs. network exporting of telemetry data.
+- Differentiation between app performance monitoring and real user monitoring.
+- Preparation for the first release candidate of the OpenTelemetry Android SDK.
 
 ## Action Items
-- Participants to review and provide feedback on the two PRs discussed.
-- Leonardo to create a separate SEMCONE PR to refine the definitions of nodes and depth.
-- Hanson to investigate the complexities of Android activity and window lifecycles in relation to screen load spans.
-- Leonardo to share Profetto traces for further analysis of app start performance.
+- Hanson Ho to create an issue regarding manual flush for telemetry data.
+- Jason Plumb to investigate the release process for handling RC suffixes in version strings.
+- Cesar Munoz to review the GitHub workflows and scripts for the release process.
 
 ## Participants
 Hanson Ho, Jason Plumb, Mustafa Haddara, Cesar Munoz, Leonardo Serrano

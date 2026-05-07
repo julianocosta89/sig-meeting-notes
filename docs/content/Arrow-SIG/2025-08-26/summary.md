@@ -1,14 +1,15 @@
 ## Key Topics
-- Collaboration on the Rotel project and integration with other languages.
-- Review of issues related to rate limiting and error propagation in the pipeline.
-- Updates on the telemetry system and its capabilities, including multivariate metrics and dynamic attributes.
-- Discussion of a pull request (PR) for the telemetry system integration and its design.
-- Future plans for making the system NUMA-aware and improving performance.
+- Collaboration on the Rotel project between F5 and Microsoft.
+- Review of issues related to rate limiting and error propagation in the OpenTelemetry Arrow pipeline.
+- Discussion of the new telemetry system design, including multivariate metrics and aggregation strategies.
+- The need for dynamic attributes and their potential integration into the current system.
+- Prioritization of tasks and collaboration processes between teams.
 
 ## Action Items
-- Laurent to check for team members who can assist with the GitHub issue related to testing object equivalence.
-- Josh to continue working on the roadmap document for collaboration opportunities.
-- Participants to review the PR for the telemetry system and provide feedback.
+- Laurent to explore team resources for assistance on the GitHub issue related to testing the OTAP P data.
+- Josh to finalize and share the roadmap document.
+- Mike and Ray to prioritize tasks and identify areas for collaboration.
+- Further discussions on the integration of dynamic attributes and feedback loops in the telemetry system.
 
 ## Participants
-Albert Lockett, Gokhan, Laurent Quérel, Mike Heffner, Josh MacDonald, Ray Jenkins
+Laurent Quérel, Mike Heffner, Josh MacDonald, Ray Jenkins, Albert Lockett, Utkash Pillai.

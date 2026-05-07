@@ -1,14 +1,14 @@
 ## Key Topics
-- Review of previous insights and observations from the OpenTelemetry mainframe project.
-- Discussion on the importance of performance system metrics and batch information in telemetry format.
-- Consideration of how OpenTelemetry can enhance visibility and accountability for mainframe systems.
-- Development of a metrics semantic conventions table to standardize metrics across different mainframe components.
-- Exploration of how to structure metrics, attributes, and namespaces for better organization and clarity.
+- Review of insights from recent survey data regarding mainframe telemetry.
+- Discussion on the importance of visibility into mainframe performance for executives.
+- Development of a metrics semantic conventions table for mainframe metrics.
+- Consideration of how to structure metrics and attributes across different mainframe environments.
+- Plans for a joint presentation at the upcoming Tech Exchange event.
 
 ## Action Items
-- Participants to add any additional observations or insights to the existing documentation by mid-next week.
-- Ruediger to hand over the finalized insights to the OMP project and OpenTelemetry project by the end of next week.
-- Further discussions on the structure of metrics and attributes to be continued in future meetings.
+- Participants to add observations and insights to the survey data by the end of next week.
+- Begin populating the metrics semantic conventions table and prepare for pull requests.
+- Confirm details for the joint presentation at the Tech Exchange event.
 
 ## Participants
-Ruediger Schulze, Jim Porell, Greg Shriver, Anand Somasundaram
+Ruediger Schulze, Jim Porell, Greg Shriver, Anand Somasundaram, Morgan McLean

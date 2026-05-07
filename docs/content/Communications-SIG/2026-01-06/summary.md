@@ -1,12 +1,15 @@
 ## Key Topics
-- **Collector Documentation Refactoring**: Tiffany Hrabusa discussed the completion of Phase 1 and plans for Phase 2, which will involve more extensive changes and new content.
-- **AI-Generated Content Detection**: Vitor Vasconcellos raised concerns about security and the need for an organization-level token to access Copilot features for workflow automation.
-- **Mentorship Announcement**: Tiffany announced a new LFX mentorship program focused on improving interoperability documentation between Prometheus and OpenTelemetry.
+- Progress on the collector documentation refactoring, with Phase 1 nearly complete and Phase 2 planning underway.
+- Discussion on managing issues and pull requests to avoid overwhelming reviewers.
+- Introduction of an AI-generated content detection workflow and its implications for contributor submissions.
+- Announcement of an LFX mentorship program focused on interoperability documentation between Prometheus and OpenTelemetry.
+- Updates on the redesign of the OpenTelemetry homepage and the need for additional illustrations.
 
 ## Action Items
-- Tiffany will create and assign issues for Phase 2 of the collector documentation refactoring and block them until ready for community contributions.
-- Vitor will follow up on obtaining the organization-level token for Copilot access and configure the AI-generated content detection workflow.
-- Tiffany, Arthur Silva Senz, and Victoria Enduca will begin their mentorship program and may open an issue related to interoperability documentation.
+- Tiffany to create and assign issues for Phase 2 of the documentation refactoring.
+- Vitor to submit a PR regarding the removal of links to private documents in the specifications.
+- Tiffany to lead the year-in-review blog post, incorporating team growth and contributor milestones.
+- Leandro to finalize illustrations for the OpenTelemetry homepage redesign.
 
 ## Participants
-Vitor Vasconcellos, Patrice CNCF, Tiffany Hrabusa, Leandro, Arthur Silva Senz, Victoria Enduca
+Vitor Vasconcellos, Patrice CNCF, Tiffany Hrabusa, Leandro Caracciolo, others.

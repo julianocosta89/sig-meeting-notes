@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the instrument management model, focusing on the use of Go vs. YAML for defining instrumentation hooks.
-- Consideration of using a Domain-Specific Language (DSL) in Go for more sophisticated instrumentation rules.
-- The potential impact of Large Language Models (LLMs) on the instrumentation process and the need for a flexible rule definition.
-- The need for consensus on the direction of the instrumentation model before adding new instrumentation packages.
+- **Instrument Management Model**: Discussion on using Go vs. YAML for defining instrumentation rules, with a proposal for a DSL in Go.
+- **Instrumentation Scope**: Agreement to work on existing instrumentation while planning for migration to a new approach.
+- **Testing Framework**: Need for standardized testing for instrumentation packages to ensure consistency and reliability.
+- **Release Schedule**: Proposal for monthly releases to maintain progress visibility and regular updates.
 
 ## Action Items
-- Przemyslaw Delewski to start working on a pull request to demonstrate the proposed DSL approach and its integration into the tool.
-- Participants to reach a consensus on whether to proceed with the DSL in Go before adding new instrumentation packages.
+- Przemyslaw Delewski to prepare a GitHub issue describing the DSL approach and its rationale.
+- Xabier Martínez to create an issue regarding the integration with GoContrib and discuss alignment.
+- Przemyslaw Delewski to draft a proposal for an IDE-like tool for instrumentation visualization.
+- Yi Yang to manage the initial release process and coordinate future release managers.
 
 ## Participants
-Przemyslaw Delewski, Dario Castañé, Huxing Zhang, Yi Yang, Xabier Martínez
+Przemyslaw Delewski, Dario Castañé, Huxing Zhang, Xabier Martínez, Yi Yang

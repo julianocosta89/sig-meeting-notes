@@ -1,14 +1,13 @@
 ## Key Topics
-- Call for more reviews on the LogSig approval and coordination with the Configuration SIG.
+- Call for more reviews on LogSig and configuration-related PRs.
 - Discussion on the addition of database system names in semantic conventions and the implications for instrumentation stability.
-- Proposal for an "eventually visible" option in configurations and the need for a prototype for Java SIG review.
-- Review of extending attribute types and making configurator optional in the context of different programming languages (Java vs. Go).
+- Proposal to make configurator optional and the need for further clarification on its impact on dynamic configuration.
+- Concerns about consistency in enum values for different database systems and the flexibility for instrumentation.
 
 ## Action Items
-- Trask to coordinate with the Configuration SIG for additional reviews.
-- Participants to comment on the PR regarding database system names for further clarification.
-- Trask to develop a prototype for the "eventually visible" configuration option for Java SIG discussion.
-- Tyler to gather feedback from the Configuration SIG regarding the optional configurator implementation.
+- Trask to reach out to the configuration SIG for additional reviews.
+- Carlos to investigate the necessity of the configurator for remote configuration support.
+- Participants to review PRs, especially regarding extending attribute value types.
 
 ## Participants
-Carlos Alberto Cortez, Trask Stalnaker, Tyler Yahn, Josh Suereth, Daniel Dyla, Robert, and others.
+Carlos Alberto Cortez, Trask Stalnaker, Tyler Yahn, Josh Suereth, Daniel Dyla

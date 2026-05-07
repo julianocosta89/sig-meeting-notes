@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the policy regarding note-takers in meetings and the need for enforcement.
-- Updates on the OpenTelemetry SDK, specifically the consolidation of instrumentation packages for Fetch and XHR.
-- Debate on whether to move existing code for Fetch and XHR to a common package or keep them separate.
-- Importance of maintaining spans in instrumentation for better data collection and traceability.
-- Proposal to draft a PR for the new instrumentation structure in the browser repository.
+- Discussion on the policy regarding note-takers in meetings and privacy concerns.
+- Updates on the OpenTelemetry SDK, including plans for a unified SDK by summer and discussions about code duplication in XHR and Fetch instrumentations.
+- Debate on whether to move certain utilities into a shared package or keep them within their respective instrumentations.
+- Proposal to separate XHR and Fetch traces from user interactions to improve backend correlation.
+- Importance of maintaining loose coupling in OpenTelemetry's design philosophy while addressing context issues in web instrumentation.
 
 ## Action Items
-- Explore the possibility of enforcing the note-taker policy during meetings.
-- Draft a PR to outline the new instrumentation structure for Fetch and XHR in the browser repo.
-- Consider a timeline for migrating users to the new instrumentation packages without disrupting current installations.
+- Explore the possibility of moving utility code into a shared package for XHR and Fetch instrumentations.
+- Create a draft PR to visualize the proposed instrumentation changes in the browser repo.
+- Consider creating a configuration flag to separate traces for XHR and Fetch from user interactions.
+- Schedule a follow-up discussion on spans, logs, and events for the next meeting.
 
 ## Participants
-Martin Kuba, Jared Freeze, Maxime Quentin, Ted Young, Daniel Dyla, David Luna Bistuer, Joaquín Díaz
+Martin Kuba, Jared Freeze, Maxime Quentin, Ted Young, Daniel Dyla, David Luna Bistuer, Joaquín Díaz, Abinet Debele

@@ -1,14 +1,15 @@
 ## Key Topics
-- Introduction of new participants and their backgrounds in OpenTelemetry and observability.
-- Discussion on the need for reference architectures and blueprints for OpenTelemetry adoption.
-- The role of Prometheus in conjunction with OpenTelemetry and how it can be integrated into the project.
-- Overview of ongoing projects and contributions from various members.
-- Importance of collaboration and communication within the OpenTelemetry community.
+- Introduction of new participants and their backgrounds in OpenTelemetry.
+- Discussion on the structure and content of blueprints and reference architectures.
+- Agreement on initial focus areas for blueprints: centralized telemetry platform, Kubernetes observability, and non-Kubernetes environments.
+- Consideration of diagramming tools for blueprints and the importance of uniformity in presentation.
+- Clarification of the distinction between blueprints and reference architectures.
 
 ## Action Items
-- Neil to share the repository link for the Blueprints project.
-- Participants to add agenda items for future discussions.
-- Tiffany to facilitate the transition of blueprints from the end-user SIG repo to the OpenTelemetry website.
+- Neil to explore diagramming tools and report back.
+- Dan to reach out to the DevEx SIG for existing reference architecture templates.
+- Participants to provide feedback on the blueprint template asynchronously.
+- Alain and Alexandre to scope their respective blueprints on centralized telemetry and Kubernetes observability.
 
 ## Participants
-Dan Gomez Blanco, Tiffany Hrabusa, Alain Pham, Alexandre Ferreira, Neil Yashinsky, Amine Amanzou, Ukash Lciukaj.
+Dan Gomez Blanco, Tiffany Hrabusa, Alain Pham, Alexandre Ferreira, Neil Yashinsky, Ukash, Amine Amanzou.

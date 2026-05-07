@@ -1,13 +1,16 @@
 ## Key Topics
-- **Blocked Pull Requests**: Discussion on the status of several pull requests that are currently blocked, with a focus on understanding the reasons behind the blocks and potential resolutions.
-- **Client and Browser SIG**: Updates on the transition from the client SIG to the browser SIG, including the need for clarity on group names and contributors.
-- **Consistency in Metric Descriptions**: Debate on whether metric descriptions should consistently end with a period, with suggestions for tooling to enforce this.
-- **Span Kind Definitions**: Examination of the use of "should" vs. "must" in span kind definitions, and the implications for instrumentation and documentation.
+- **Blocked Pull Requests**: Discussion on the status and resolution of blocked pull requests, particularly regarding client and browser SIGs.
+- **Span Kind Definition**: Debate on the use of "should" vs. "must" in span kind definitions and the implications for internal vs. client/server spans.
+- **Hardware Metrics Migration**: Discussion on moving hardware metrics to YAML and the need for a dedicated SIG for hardware.
+- **Event Registry Development**: Proposal for a unified event registry and the challenges of avoiding duplication in definitions across documents.
+- **Prototyping Requirement Changes**: Introduction of a new requirement for prototypes in semantic conventions to ensure practical implementation.
 
 ## Action Items
-- Daniel Dyla to gather more information on the status of the client SIG and its relationship with the browser SIG.
-- Trask Stalnaker to submit a pull request addressing the consistency of metric description endings.
-- James Thompson to provide links to specific pull requests related to span kind definitions for further review.
+- Daniel Dyla to gather more information on the client SIG's pull requests.
+- Create a spec issue regarding the delineation of span kinds and nested spans.
+- Form a dedicated SIG for hardware metrics if there is enough interest.
+- Develop a plan to consolidate event definitions and avoid duplication in documentation.
+- Encourage contributors to provide prototypes alongside new semantic convention proposals.
 
 ## Participants
-Liudmila Molkova, Josh Suereth, Daniel Dyla, Trask Stalnaker, James Thompson, Armin (Dynatrace)
+Liudmila Molkova, Josh Suereth, Daniel Dyla, James Thompson, Trask Stalnaker, Alexandra Konrad, Joao G.

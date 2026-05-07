@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on implementing a customizable parent class loader for the Java agent.
-- Crash log collection strategies and the use of the `-XX:OnError` parameter in JVM.
-- The challenges of collecting crash logs in Kubernetes environments.
-- The importance of crash logs for diagnosing application crashes and failures.
-- Potential solutions for log collection and crash analysis, including using profiling tools and Kubernetes log management.
+- Discussion on the implementation of a customizable parent class loader for the Java agent.
+- Crash log collection mechanisms and the use of the `-XX:OnError` parameter for executing scripts on JVM crashes.
+- Strategies for filtering out unnecessary spans (e.g., ping and hello spans) in Redis instrumentation.
+- Optimization of the SDK span attributes to reduce overhead and improve performance.
+- Exploration of extending the OpenTelemetry SDK to allow deeper customization of trace providers.
 
 ## Action Items
-- Steve Rao to provide a proof of concept for the crash data collector and its integration with the agent class loader.
-- Participants to explore additional logging strategies that do not rely solely on the Java agent.
+- Steve Rao to send a PR regarding the crash data collector implementation.
+- Ziming Liu to add tests for capturing ping and hello commands in Redis instrumentation.
+- Trask Stalnaker to add discussions on tracer provider customization to the agenda for the next meeting.
 
 ## Participants
-Trask Stalnaker, Steve Rao, Jared, Antoine Toulme, Zimi, Huxing
+Trask Stalnaker, Steve Rao, Jared, Antoine Toulme, Ziming Liu, Huxing Zhang

@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on upcoming Java release and PRs needing attention.
-- Review of the end-user survey questions being prepared by Marillia for SIGs.
+- Discussion on the upcoming Java release and PRs needing attention.
+- Gathering input for an end-user survey from SIGs.
 - Feedback on the user-facing Logs API and its potential adoption.
-- Changes to the Metrics SDK regarding time series start times and their implications.
-- Introduction of OSGI support and collaboration with OSGI experts.
+- Updates on PRs related to metric time series start times and OSGI support.
+- Addressing test flakiness and verbose logging issues in builds.
 
 ## Action Items
-- Collect ideas for the end-user survey from participants.
-- Review and provide feedback on the PR related to Metrics SDK start times.
-- Encourage participation in discussions about the Logs API and its usage.
+- Compile ideas for the end-user survey questions.
+- Review and provide feedback on the PRs related to metric time series and OSGI support.
+- Investigate the cause of test failures and verbose logs in builds.
 
 ## Participants
-Jack Berg, Trask Stalnaker, Jason Plumb, Jay DeLuca, John Watson
+Jack Berg, Trask Stalnaker, Jason Plumb, Jay DeLuca, John Watson, Lauri, Pranav Sharma

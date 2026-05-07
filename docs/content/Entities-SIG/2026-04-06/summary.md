@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on resource attributes and entities in OpenTelemetry.
-- Overview of the phases for implementing entity features, with emphasis on Phase 1 and its delays.
-- The concept of a hierarchical view for observability data and its implications for data aggregation.
-- Clarification on how identifying and descriptive attributes will be handled in the data model.
-- Accessing meeting recordings and resources for further information.
+- Discussion on the integration of resource attributes and entities in OpenTelemetry.
+- Clarification of the phases of the entities implementation and their timelines.
+- The importance of identifying attributes versus descriptive attributes in observability data.
+- Challenges and considerations regarding merging resource attributes and handling conflicts.
+- The implications of asynchronous data transfer in alerting and query performance.
 
 ## Action Items
-- Josh to provide a link to the OpenTelemetry Community's README and meeting recordings.
-- krajo to read the OTEPs for more context on resource attributes and entities.
+- krajo Krajcsovits to explore documentation improvements based on common user questions.
+- Follow-up discussions on the event model and its implications for data integrity and alerting.
 
 ## Participants
 Arve Knudsen, krajo Krajcsovits, Josh Suereth

@@ -1,13 +1,14 @@
 ## Key Topics
-- **Repository Structure**: Discussion on splitting the repository into smaller, more manageable pieces to reduce dependencies and bloat.
-- **Dependency Management**: Exploration of which dependencies are causing issues and how to effectively manage them, including the potential separation of gRPC and other large packages.
-- **Release Workflow Improvement**: Efforts to enhance the CocoaPods workflow to address frequent failures.
-- **Community Feedback**: Gathering insights from the community regarding repository management and potential solutions.
+- Workflow improvements for CocoaPods and release processes.
+- Discussion on repository division and the creation of a new repository for OpenTelemetry Swift.
+- Evaluation of dependencies causing bloat, particularly gRPC and Prometheus.
+- Proposal to create a core repository containing only the API and SDK, with future plans to separate out larger dependencies.
+- Introduction of a PR for session implementation by Billy Zhou.
 
 ## Action Items
-- **Audit Dependencies**: Create a ticket to analyze the sizes of dependencies and identify major offenders for potential separation.
-- **Repository Naming**: Consider the naming conventions for new repositories to accurately reflect their contents and avoid confusion.
-- **Add Ari to Trunk**: Bryce to add Ariel to the trunk for CocoaPods management.
+- Bryce Buchanan to create a new core repository for OpenTelemetry Swift containing only the API and SDK.
+- Team members to investigate and identify major dependencies contributing to repository size.
+- Billy Zhou to follow up on his PR for session implementation and propose additional instrumentation ideas.
 
 ## Participants
-Bryce Buchanan, Ariel Demarco, Alex Cohen, Vinod Vydier
+Bryce Buchanan, Ariel Demarco, Alex Cohen, Vinod Vydier, Martin Holman, Billy Zhou, Bee Klimt.

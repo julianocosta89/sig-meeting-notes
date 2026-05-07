@@ -1,16 +1,15 @@
 ## Key Topics
-- Discussion on PRs versus issues for project progress.
-- Updates on memory operations and Gen AI agent planning operation PRs.
-- Roadmap for new repositories and action items for ongoing development.
-- Overview of a blog related to GitHub Copilot and semantic conventions.
-- Announcement of an end-user SIG podcast opportunity for sharing updates.
+- Discussion on the progress of PRs, particularly memory operations and Gen AI agent planning operation.
+- Updates on the SIG roadmap, including the creation of new repositories for semantic conventions.
+- Review of the new GenAI repo and its implications for versioning and schema management.
+- Discussion on the need for a two-company approval policy for semantic convention PRs.
+- Consideration of how to handle the integration of GenAI conventions into existing repositories.
 
 ## Action Items
-- Participants to review and comment on the memory operations PR.
-- Trask to provide updates on the GenAI repo and its implications for PRs.
-- Liudmila to work on the new Python repo setup.
+- Trask to prepare a draft PR for coordinating the release of GenAI conventions with the Query repo.
+- Liudmila to work on the new Python repo setup and provide updates in the next meeting.
 - Jamie to draft PR guidelines for the repositories.
-- Participants to consider contributing to the end-user SIG podcast.
+- Participants to review and provide feedback on the current PRs and the proposed changes.
 
 ## Participants
-Trask Stalnaker, Wolfgang Therrien, Liudmila Molkova, Surya Teja, Jamie Danielson, Billy Zhou, Ankit Singh
+Trask Stalnaker, Wolfgang Therrien, Liudmila Molkova, Surya Teja, Jamie Danielson, Aaron Abbott, Ankit Singh, Billy Zhou.

@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the maturity status of the OpenTelemetry Python logs API and SDK, with a focus on transitioning from Alpha to a more stable version.
-- Inquiry about FIPS compliance for OpenTelemetry components, particularly for IBM's government client.
+- Discussion on the status and stabilization of the OpenTelemetry Python logs API and SDK, with emphasis on moving from Alpha to a more stable release.
+- FIPS compliance inquiry regarding OpenTelemetry components used in government applications, with suggestions for testing and potential project proposals.
 - Plans to add Weva instrumentation to the Python SDK, addressing naming conflicts with existing packages.
-- Review of the project board to prioritize tasks related to logs stabilization and other ongoing efforts.
+- Review of ongoing pull requests (PRs) related to logging changes, including breaking changes and coordination for future releases.
 
 ## Action Items
-- Review and update the project board to prioritize tasks for logs stabilization.
-- Conduct tests on FIPS-enabled systems to ensure compliance.
-- Coordinate with Near from TraceLoop regarding naming resolution for Weva instrumentation.
+- Review and prioritize tasks on the project board related to logs stabilization.
+- Conduct tests for FIPS compliance on the OpenTelemetry Python SDK.
+- Coordinate with the Weva instrumentation team to resolve naming conflicts.
+- Update the changelog process to clearly indicate breaking changes in future releases.
 
 ## Participants
-Riccardo Magliocchetti, Keith Decker, Aaron Abbott, Emídio, Hector Hernandez, Paulo Vital, Dan Gomez Blanco.
+Riccardo Magliocchetti, Keith Decker, Aaron Abbott, Emídio, Hector Hernandez, Paulo Vital, Dan Gomez Blanco, Jeremy

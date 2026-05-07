@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on improving contributions to OpenTelemetry localization and addressing barriers for new contributors.
-- Ideas for organizing workshops or events to encourage participation in the localization process.
-- Updates on community engagement and recognition of Japanese users in the global OpenTelemetry community.
-- Consideration of applying for CNCF Ambassador status to enhance community visibility and support.
+- Updates on recent contributions and pull requests in the OpenTelemetry project.
+- Discussion on increasing participation and lowering barriers for new contributors.
+- Plans for upcoming events, including the OpenTelemetry meetup in Sapporo and the Road to KubeCon.
+- Consideration of applying for CNCF Ambassador status to enhance community recognition.
+- Challenges in communication and collaboration within the Japanese OpenTelemetry community.
 
 ## Action Items
-- Explore the possibility of organizing a workshop or event to facilitate contributions.
-- Discuss the application process for CNCF Ambassador status within the community.
-- Monitor and report on the progress of Japanese community activities to CNCF.
+- Explore the possibility of organizing workshops to encourage new contributors.
+- Discuss the idea of establishing a clearer process for identifying unlocalized documentation.
+- Consider applying for CNCF Ambassador status and report on community activities.
+- Prepare for the upcoming OpenTelemetry meetup in Sapporo on February 19.
 
 ## Participants
 杉本 将来, Yoshi Yamaguchi, 杉本浩平

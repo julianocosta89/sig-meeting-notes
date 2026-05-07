@@ -1,14 +1,15 @@
 ## Key Topics
-- **Token Issues**: Discussion on problems with PR creation due to token authorization errors.
+- **Token and PR Issues**: Discussion on challenges with GitHub actions and PR creation, including 401 unauthorized errors.
 - **Stabilization of Instrumentation**: Need for a new approach to manage and stabilize instrumentation packages, including the use of tools like Weaver.
-- **Labor Shortage in Contributions**: Concerns about the decreasing interest from vendors in contributing to OpenTelemetry due to perceived stability and maintenance burdens.
-- **Conformance Testing**: Exploration of using conformance testing to benchmark different instrumentations and drive improvements.
-- **Community Engagement**: Discussion on how to encourage more contributions from the community and address the labor shortage.
+- **Labor Shortage in Contributions**: Concerns about the lack of contributors and maintainers for OpenTelemetry, leading to a "tragedy of the commons."
+- **Recognition and Incentives**: Ideas for recognizing contributors and companies that actively support OpenTelemetry, including potential badges or seals of approval.
+- **Project Management and Direction**: The evolving role of maintainers as project managers and the need for clearer direction in project goals.
 
 ## Action Items
-- Ted Young to propose a new approach for managing instrumentation packages.
-- Participants to explore the use of Weaver and other tools for improving instrumentation stability.
-- Discussion on creating incentives for vendors and community members to contribute labor to OpenTelemetry.
+- **Investigate Weaver Tools**: Ted Young to explore how Weaver and testing tools can improve instrumentation management.
+- **Proposal for Stability**: Ted Young to draft a proposal addressing the stabilization of instrumentation and the management of contrib packages.
+- **Recognition Badges**: Develop a plan for recognition badges for contributors and companies, ensuring they reflect meaningful contributions.
+- **Engagement with Vendors**: Create strategies to encourage vendors to contribute to OpenTelemetry, possibly through incentives tied to their participation.
 
 ## Participants
-Marylia Gutierrez, Austin Parker, Trask Stalnaker, Alolita Sharma, Ted Young, Morgan McLean, Pablo Baeyens
+Marylia Gutierrez, Austin Parker, Trask Stalnaker, Alolita Sharma, Ted Young, Pablo Baeyens, Morgan McLean, Juraci Paixão Kröhling, Severin Neumann.

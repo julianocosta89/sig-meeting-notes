@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the end-user SIG and the need for better engagement with users in East Asia.
-- Plans for user interviews and sharing best practices in the localization SIG.
-- The upcoming Open Source Summit Japan and potential participation from SIG members.
-- Challenges with scheduling and time zone considerations for meetings and events.
-- The importance of creating content tailored to the Japanese audience and ensuring accessibility.
+- Discussion on the end-user SIG and the need for better engagement with users in the Asia-Pacific region.
+- Plans for user interviews and best practices sharing, emphasizing the importance of user participation.
+- Challenges with scheduling and time zones affecting participation in meetings and events.
+- Upcoming Open Source Summit Japan and potential participation from team members.
+- Review of untranslated content and the need for clarity in localization efforts.
 
 ## Action Items
-- Kazunori and Yamaguchi to collaborate on user interviews and content creation.
-- Follow up on the untranslatable content list and ensure it is accessible.
-- Confirm participation in the Open Source Summit Japan and coordinate with other attendees.
-- Explore options for live streaming and recording user interviews.
+- Collaborate on user interviews and ensure they are scheduled at convenient times for participants.
+- Explore options for live streaming and recording sessions, including setting up accounts and technical requirements.
+- Confirm participation in the Open Source Summit Japan and coordinate with team members.
+- Review and update the untranslated content list to ensure necessary materials are accessible.
 
 ## Participants
-Kazunori Otani, Yamaguchi, Andrea, and other unnamed members.
+Kazunori Otani, やまぐち

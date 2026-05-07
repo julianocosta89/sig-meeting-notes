@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the event specification for OpenTelemetry entities, focusing on the necessity of telemetry and relationships between entities.
-- Clarification on how relationships should be reported, emphasizing that an entity should ideally own the relationship.
-- Exploration of relationship types and their definitions, including the need for standard and custom relationship types.
-- Consideration of how to model relationships in a way that accommodates potential complexities, such as multi-entity relationships.
+- Discussion on the event specification and its necessity for telemetry.
+- Entity relationships and how they should be reported, including ownership and types.
+- Considerations for handling entity lifecycle and relationship lifecycle separately.
+- The merge algorithm for entities and how to manage conflicts in attribute keys.
+- Future plans for SDK implementations and prototype development.
 
 ## Action Items
-- Dmitrii Anoshin to add clarifications to the documentation regarding relationship types and their definitions.
-- Further discussion on whether to separate relationships into their own entities or keep them integrated with the current model.
+- Dmitrii to submit a PR with pros and cons of different approaches to entity relationships.
+- Josh to comment on the PR regarding the data model and instrumentation scope.
+- Further discussion needed on handling undefined behavior in attribute ownership.
+- Explore the possibility of allowing partial updates in entity states and relationships.
 
 ## Participants
 Josh Suereth, Dmitrii Anoshin, Endre Sara

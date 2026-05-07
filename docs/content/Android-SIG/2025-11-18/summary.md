@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on stability and the plan to cut a release candidate (RC1) for OpenTelemetry Android.
-- The need for improved documentation as the project moves towards stability.
-- Insights on user feedback regarding the Core builder and Kotlin DSL usage.
-- Cesar Munoz's upcoming time off and the impact on project responsibilities.
+- Discussion on the stability of OpenTelemetry and plans to cut an RC1 release.
+- Documentation improvements needed before declaring stability, including clarifying usage of the builder and initializer APIs.
+- Feedback on the Kotlin DSL and the need for better support for Java users.
+- Plans for triaging issues and PRs to manage the increasing volume of contributions.
 
 ## Action Items
-- Review and update the documentation, particularly for disk buffering and overall project outlines.
-- Address the PR related to extracting the RUM API to a separate module to clarify usage.
-- Ensure project continuity during Cesar's absence, with Jason and other approvers stepping in as needed.
+- Jason to document the consensus on cutting an RC1 and the stability plan.
+- Cesar to review documentation updates and provide input before his time off.
+- Hanson to improve the README and add examples for the initializer API.
+- Team to establish a formal triaging process for issues and PRs.
 
 ## Participants
-Mustafa Haddara, Hanson Ho, JP Jason Plumb, Cesar Munoz, Bee Klimt
+Mustafa Haddara, Hanson Ho, JP Jason Plumb, Cesar Munoz, Jamie Lynch, Bee Klimt

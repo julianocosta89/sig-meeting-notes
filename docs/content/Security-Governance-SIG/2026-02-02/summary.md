@@ -1,13 +1,15 @@
 ## Key Topics
-- Overview of the current process for handling security advisories within the OpenTelemetry Technical Committee.
-- Discussion on the challenges faced by maintainers regarding accountability and timely responses to security vulnerabilities.
-- Exploration of potential collaboration with NIST to establish clearer guidelines for fixing security vulnerabilities.
-- Consideration of interim measures for setting expectations around vulnerability fixes, including the idea of a tracking system for compliance.
+- Overview of the OpenTelemetry Technical Committee's security advisory process.
+- Discussion on the challenges of maintaining accountability and timely responses from maintainers regarding security advisories.
+- Proposal to engage with NIST for better guidance on security vulnerability timelines and expectations.
+- Consideration of a reporting system to track compliance with security advisories across repositories.
+- Exploration of potential release trains for coordinated updates across OpenTelemetry repositories.
 
 ## Action Items
-- Reiley to decide whether to abandon the existing PR or propose a soft guidance timeline for vulnerability fixes.
-- Explore the possibility of creating a reporting tool to track compliance with security advisory resolutions.
-- Follow up with NIST regarding recommendations and standards for security vulnerability management.
+- Reiley to decide on the approach for the PR regarding security advisory timelines and provide context for it.
+- Explore the possibility of a dashboard to track repository compliance with security advisories.
+- Follow up with NIST for recommendations on security vulnerability timelines.
+- Consider the implementation of a reporting system for maintainers to ensure timely updates on security issues.
 
 ## Participants
 Reiley, Jeremy Corley, Trask Stalnaker

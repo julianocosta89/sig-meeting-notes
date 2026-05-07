@@ -1,12 +1,14 @@
 ## Key Topics
-- Updates on the engine's filtering code and changes in approach since the last discussion.
-- Discussion on handling heterogeneous types within dictionaries and the implications for Arrow arrays.
-- Overview of the integration of the new engine with KQL processors and the goal of enhancing performance.
-- Clarification on the differences between the OTAP-specific engine and the more general columnar engine.
+- Updates on the OpenTelemetry Arrow engine, including changes in filtering and record structures.
+- Discussion on the integration of KQL (Kusto Query Language) with the new engine and its potential benefits.
+- The importance of maintaining interoperability between different query languages and engines.
+- Challenges and strategies related to mutability in the engine's architecture.
+- Plans for transitioning code from a branch to the main repository and ensuring proper testing.
 
 ## Action Items
-- Albert to review the latest changes in Mike's branch for further understanding.
-- Mike to continue refining the KQL columnar processor for better integration and performance.
+- Albert to review the implementation of the `slice` and `length` functions in Mike's code.
+- Mike to continue working on mutability and prepare for PR submissions to the main repository.
+- Albert to change GitHub labels from "engine columnar" to "engine OTAP" for clarity.
 
 ## Participants
 Albert Lockett, Mike "Blanch" Blanchard

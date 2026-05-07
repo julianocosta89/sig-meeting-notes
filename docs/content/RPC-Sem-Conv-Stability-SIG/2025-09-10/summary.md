@@ -1,14 +1,16 @@
 ## Key Topics
-- Review of RPC-related issues on the project board and triaging of items.
-- Discussion on creating a "post-stability" column for non-actionable items.
-- Clarification of RPC metrics and the need for consistent attributes across different RPC frameworks.
-- Consideration of how to handle canceled spans in RPC systems, particularly in relation to gRPC.
-- Adoption of system-specific naming practices for RPC attributes.
+- Triage of RPC-related issues on the project board.
+- Discussion on creating a post-stability column for non-actionable items.
+- Review of RPC metrics and attributes, including the need for a PR to address missing attributes.
+- Consideration of common semantic conventions across various RPC frameworks (gRPC, JSON RPC, Dubbo).
+- Importance of defining conventions for canceled spans and their impact on metrics.
 
 ## Action Items
-- Create a "post-stability" column on the project board for non-actionable items.
-- Move relevant issues to "in progress" or "to-do" based on discussions.
-- Address the need for consistent error handling and status codes across various RPC frameworks.
+- Create a post-stability column on the project board for non-actionable items.
+- Move certain issues to the "to-do" list for further action.
+- Update three PRs to follow the existing database semantic convention format.
+- Review and finalize naming conventions for JSON RPC attributes.
+- Ensure clarity on the handling of canceled spans in relation to metrics.
 
 ## Participants
 Trask Stalnaker, Steve Rao, Matthew Hensley, James Thompson, Liudmila Molkova, Albumen Kevin

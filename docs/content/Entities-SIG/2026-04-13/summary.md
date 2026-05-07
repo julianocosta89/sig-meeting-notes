@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on the need for a common core for language SDKs and the challenges with semantic conventions.
-- Updates on the Browser Prototype for entities and SDK startup specification.
-- Concerns regarding overlapping information from entities and resource attributes, and the need for conflict resolution rules.
-- The importance of prioritizing accurate information from different sources when merging entity data.
-- The role of collectors in gathering and appending resource information from various SDKs.
+- Discussion on the need for a common core in language SDKs for OpenTelemetry.
+- Updates on the Browser Prototype for entities, with a demo expected soon.
+- Challenges regarding overlapping information from entities and resource attributes, and the need for conflict resolution rules.
+- Importance of identifying attributes and their specificity in entity modeling.
+- The role of collectors in providing accurate entity information and resolving conflicts.
 
 ## Action Items
-- Michele to follow up on the conflict resolution rules for overlapping entity information.
-- Daniel to check on the status of the Browser Prototype and SDK startup specification draft.
-- Participants to consider the implications of merging entities with conflicting attributes and how to handle them.
+- Michele Mancioppi to share a snippet of the PRD related to entity conflict resolution on GitHub.
+- Daniel Dyla to summarize the meeting for the agenda and ensure it is communicated to absent members.
 
 ## Participants
 Michele Mancioppi, Daniel Dyla, Arve Knudsen, krajo Krajcsovits, Ted Young, Martin Kuba

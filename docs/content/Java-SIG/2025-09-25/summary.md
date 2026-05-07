@@ -1,13 +1,13 @@
 ## Key Topics
-- **Issue Triage**: Discussion on improving the triage process for old issues and PRs, recognizing a backlog that needs attention.
-- **Automation Suggestions**: Proposals for automating the closure of stale issues and PRs after a year of inactivity, with specific tags for feature requests and feedback needed.
-- **Weekly Triage Sessions**: Consideration of establishing regular triage sessions to address backlog issues collaboratively.
-- **Communication Strategies**: Ideas for better communication with contributors regarding unresolved issues, including tagging for author feedback and encouraging opt-out responses.
+- **Issue Triage and Backlog Management**: Discussion on improving the triage process for old issues and PRs, including potential automation for closing stale issues.
+- **Unsafe Usage in Core Repo**: Review of the current state of unsafe usage in the core repository and plans for simplifying implementations based on benchmarks.
+- **Event Logging for HTTP Spans**: Proposal to add events related to DNS, TLS, and TCP durations to HTTP spans, with a focus on creating a semantic convention.
+- **Lyci Upgrade Discussion**: Consideration of upgrading the Lyci tool and the implications of anchor checking on GitHub.
 
 ## Action Items
-- **Jay DeLuca** to implement automation for closing issues and PRs that have been inactive for over a year, including tagging for feedback and repro requests.
-- **Participants** to consider starting a weekly thread for discussing specific issues and PRs that need attention.
-- **Lauri Tulmin** to assist in identifying PRs that may need closure after a specified period of inactivity.
+- **Jay DeLuca**: Implement automation for auto-closing issues that are inactive for over a year and consider tagging issues needing author feedback.
+- **Trask Stalnaker**: Open an issue with the Armaria team regarding dependency updates.
+- **Surbhi Agarwal**: Create proposals in the semantic convention repo and Java instrumentation repo for adding event logging to HTTP spans.
 
 ## Participants
-Trask Stalnaker, John Watson, GZ Gregor Zeitlinger, Jason Plumb, Jay DeLuca, Lauri Tulmin
+Trask Stalnaker, John Watson, GZ Gregor Zeitlinger, Jason Plumb, Jay DeLuca, Lauri Tulmin, Patrick Pok, Surbhi Agarwal, Jonathan Halliday, Jack Shirazi.

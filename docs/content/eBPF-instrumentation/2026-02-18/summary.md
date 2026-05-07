@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on enhancing the OTL eBPF debug environment variable to allow selective logging to trace pipe only, improving usability.
-- Proposal for modifying logging macros to include function names at the beginning of trace pipe logs for better readability.
-- Ongoing issue regarding committing generated BPF2Go files to the repository, exploring the implications on repository size and usability.
-- Evaluation of the impact of committing binary files on Git history and repository cloning efficiency.
+- Discussion on enhanced OTL eBPF debug environment variable for better logging.
+- Review of the long-standing issue regarding committing generated BPF2Go files to the repo.
+- CI performance issues due to GitHub's migration to Azure, leading to increased runtimes and instability.
+- Review of several open PRs, including AWS cloud metadata and TCP options in the TP injector.
 
 ## Action Items
-- Rafael to raise a PR for the proposed changes to the logging mechanism for community feedback.
-- Further evaluation of the implications of committing generated files to the repository, including potential strategies for managing repository size.
+- Rafael to raise a PR for the enhanced OTL eBPF debug logging feature.
+- Tyler to sync with the collector contrib team regarding the BPF2Go files committing issue.
+- Stephen to raise awareness of CI performance issues in the OpenTelemetry governance channel.
+- Participants to review open PRs, especially those related to AWS cloud metadata and TCP options.
 
 ## Participants
-Rafael Roquetto, Giuseppe Ognibene, Tyler, Nimrod Avni, Mario Macias, Robert
+Rafael Roquetto, Giuseppe Ognibene, Tyler, Nimrod Avni, Mario Macias, Mike Dame, Stephen Lang, Nikola Grcevski, Pellared.

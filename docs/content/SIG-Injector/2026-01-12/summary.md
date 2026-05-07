@@ -1,14 +1,16 @@
 ## Key Topics
-- Release of OpenTelemetry Injector version 0.0.3 and plans for integration into the zero operator.
-- Discussion on versioning strategy, including moving to version 1.0.0 and defining what constitutes a breaking change.
-- The importance of stability in APIs versus other components like the injector and collector.
-- Consideration of adding Python support and its implications on versioning.
-- Proposal to document stability guarantees and breaking change criteria before the next release.
+- Release of OpenTelemetry Injector version 0.0.3 and discussion on moving to version 1.0.
+- Importance of defining breaking changes and stability guarantees before major version releases.
+- Integration of the injector with the OpenTelemetry operator and potential changes to its configuration approach.
+- Challenges and considerations regarding adding support for new languages like Python and Ruby.
+- Discussion on the need for a consistent configuration interface across different SDKs.
 
 ## Action Items
-- Define stability guarantees and criteria for breaking changes for the OpenTelemetry Injector.
-- Consider the timeline for adding Python support and its impact on versioning decisions.
-- Draft documentation outlining the API and versioning strategy for the injector.
+- Finalize the decision on versioning strategy (0.0.x vs. 1.0).
+- Document what constitutes a breaking change for the injector.
+- Explore the integration of the injector with the operator, focusing on simplifying user configuration.
+- Investigate the feasibility of adding Ruby support and address issues with Python SDK dependencies.
+- Prepare an elevator pitch for the upcoming Fostom conference to promote cross-collaboration.
 
 ## Participants
-Bastian Krol, Nikola Grcevski, Jack Berg, Antoine Toulme
+Bastian Krol, Nikola Grcevski, Jack Berg, Antoine Toulme, Michele Mancioppi

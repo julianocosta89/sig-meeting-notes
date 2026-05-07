@@ -1,13 +1,14 @@
 ## Key Topics
 - Discussion on the feasibility of creating a separate OpenTelemetry eBPF collector distribution.
-- Consideration of combining eBPF instrumentation with profiler components for better functionality.
-- Security concerns regarding running components with elevated privileges and the desire for minimal configurations.
-- The need for community consensus on the direction of eBPF integration within the OpenTelemetry ecosystem.
-- The potential for creating community artifacts that bundle eBPF and profiler components.
+- Concerns regarding AI-generated code in PRs and the need for clearer contribution policies.
+- Review and prioritization of upcoming PRs for the next release, including GenAI improvements and bug fixes.
+- Strategies for improving the integration and functionality of eBPF components within the OpenTelemetry ecosystem.
 
 ## Action Items
-- Nimrod to open an issue regarding the proposed separate collector distribution and tag relevant contributors for feedback.
-- Participants to provide their opinions on the feasibility and desirability of the proposed distribution model.
+- Nimrod to open an issue regarding the separate eBPF collector distribution and gather feedback.
+- Rafael to explore ways to improve AI policy and potentially flag AI-generated PRs.
+- Nikola to follow up with contributors on pending PRs and ensure timely reviews.
+- Team to prioritize and finalize PRs for the upcoming release by the end of the week.
 
 ## Participants
-Giuseppe Ognibene, Mario Macias, Rafael Roquetto, Michele Mancioppi, Nikola Grcevski, Tyler, Nimrod Avni
+Giuseppe Ognibene, Mario Macias, Rafael Roquetto, Michele Mancioppi, Nikola Grcevski, Tyler, Stephen Lang, nimrodavni.

@@ -1,13 +1,14 @@
 ## Key Topics
-- **Stability Initiative**: Discussion on the need to stabilize current projects before starting new ones, emphasizing collaboration with SDK SIGs.
-- **Prototyping Efforts**: Updates on the OTEP for reporting multiple resources from an SDK, with a focus on ensuring stability and defining export pipeline behaviors.
-- **Export Pipeline Management**: Detailed conversation on how to handle flushing and shutdown processes for child and parent providers in SDKs.
-- **KubeCon Aftermath**: Participants shared experiences and challenges faced after attending KubeCon, impacting their work schedules.
+- **Stability Initiative**: Discussion on the need to focus on stability before starting new initiatives, particularly in relation to SDK SIGs.
+- **Prototyping Efforts**: Updates on the OTEP for reporting multiple resources from an SDK, with a focus on ensuring confidence in the direction before full implementation.
+- **Entity and Resource Management**: Conversations around entity detection, resource merging, and the implications for Prometheus integration.
+- **Configuration Handling**: Debates on how child providers inherit configurations from parent providers and the implications for operational management.
+- **Future Work**: Plans to finalize specifications for entity detection and resource merging, with a target for completion before the end of the year.
 
 ## Action Items
-- Finalize the OTEP for reporting multiple resources while ensuring it aligns with the stability initiative.
-- Address questions regarding the behavior of export pipelines and child provider shutdowns in the next meeting.
-- Review and refine the prototype implementations based on feedback from the meeting.
+- **Daniel Dyla** to take over the OTEP and finalize the three questions discussed.
+- **Josh Suereth** to prepare a PR for the resource merge specification and work on an entity detector that uses environment variable propagation.
+- **Group** to evaluate the progress on stability work and prioritize it over new features.
 
 ## Participants
 Daniel Dyla, Ted Young, Josh Suereth, krajo Krajcsovits

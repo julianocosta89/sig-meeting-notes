@@ -1,15 +1,14 @@
 ## Key Topics
-- Review of the Federated Semantic Conventions Lifecycle proposal and its implications for mainframe-specific conventions.
-- Discussion on the need for a dedicated repository for mainframe semantic conventions to enhance visibility and collaboration.
-- Consideration of virtualization and namespace management in the context of federated repositories.
-- Proposal to create a "mainframe stub" semantic convention to start building definitions incrementally.
-- Importance of aligning with existing semantic conventions while ensuring the mainframe domain's unique requirements are met.
+- Discussion on the Federated Semantic Conventions Lifecycle proposal and its implications for mainframe-specific conventions.
+- The need for a centralized repository for mainframe semantic conventions to avoid namespace collisions.
+- Agreement on starting with a minimal mainframe semantic convention and building it out iteratively.
+- Importance of vendor collaboration and validation for the proposed conventions.
+- Challenges related to virtualization definitions and namespace management.
 
 ## Action Items
-- Explore the establishment of a dedicated repository for mainframe semantic conventions.
-- Develop a "mainframe stub" for semantic conventions to facilitate incremental building.
-- Engage with contributors from the Semantic Instrumentation Committee (SIC) to validate and refine the proposed conventions.
-- Address namespace management and virtualization concerns as part of the development process.
+- Ruediger to provide comments on the documentation and assist with the PR.
+- Greg to socialize the federated semantic conventions proposal within Broadcom for feedback.
+- Both to prioritize the federated semantic conventions lifecycle in upcoming meetings.
 
 ## Participants
 Ruediger Schulze, Greg Shriver

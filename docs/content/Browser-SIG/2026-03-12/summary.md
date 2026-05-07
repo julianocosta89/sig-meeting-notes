@@ -1,14 +1,15 @@
 ## Key Topics
-- Update on release workflow and consolidation of instrumentation packages.
-- Discussion on moving two instrumentations (navigation and exceptions) to the main repository.
-- Proposal for increased collaboration between Browser SIG and Entity SIG.
-- Need for roadmap updates and report backs at Spec SIG meetings.
-- Issues with overlapping APIs in instrumentations causing functionality conflicts.
+- Consolidation of instrumentation packages into a single package and preparation for the first release.
+- Discussion on moving existing instrumentations (navigation and exceptions) from GSContrib to the main repo.
+- Importance of cross-SIG collaboration, particularly with the Entity SIG and Spec SIG, to align roadmaps and share updates.
+- Issues with API conflicts between different instrumentations and the need for a unified approach.
+- Ongoing discussions about browser URL attributes and the potential for separate namespaces for page view context.
 
 ## Action Items
-- Martin to create issues for moving navigation and exceptions instrumentations, including updating README and marking old packages as deprecated.
-- David to reproduce the issue with overlapping APIs and share a repository for further investigation.
-- Participants to consider volunteering for report backs at Spec SIG meetings.
+- Martin to create issues for moving instrumentations and updating documentation.
+- David to create a reproduction of the API conflict issue and share it for further investigation.
+- Ted to coordinate participation from the Browser SIG in the ND SIG meetings during his absence.
+- Consider scheduling a report back at the Spec SIG to share the Browser SIG's roadmap.
 
 ## Participants
 David Luna Bistuer, Benoît Zugmeyer, Ted Young, Jared Freeze, Martin Kuba, Trent Mick, Daniel Dyla

@@ -1,14 +1,16 @@
 ## Key Topics
-- **Release of Version 1.12.0**: Discussion on the internal request to release the current state of auto instrumentation.
-- **SDK Dependencies**: Updates on the status of Microsoft extensions dependencies and potential impacts on future .NET versions.
-- **File-Based Configuration**: Progress on implementing file-based configuration for auto instrumentation, including environment variable management.
-- **Bug Fix for Logging**: A specific bug related to logging was identified, with plans to prepare a pull request for review.
-- **Continuous Integration Changes**: Discussion on updates to job names and required checks in the CI process.
+- Release of OpenTelemetry .NET Auto-Instrumentation version 1.12.0 discussed, with plans to finalize early next week.
+- Updates on SDK dependencies and potential issues with Microsoft extensions, particularly concerning .NET 8 and future versions.
+- Introduction of file-based configuration for auto-instrumentation, with discussions on environment variables and YAML parsing.
+- Ongoing work on logging issues and Kafka instrumentation, with plans for adjustments and improvements.
+- Coordination of job name changes in CI/CD processes to ensure compatibility with new requirements.
 
 ## Action Items
-- **Prepare PR for Logging Bug**: Mateusz Łach will prepare a pull request for the logging issue by early next week.
-- **Release Version 1.12.0**: Piotr Kiełkowicz plans to cut off the release early next week after addressing the logging bug.
-- **Review CI Changes**: Participants are encouraged to review and comment on continuous integration pull requests next week.
+- Piotr Kiełkowicz to finalize the release of version 1.12.0 next week.
+- Mateusz Łach to prepare a PR for logging issues by early next week.
+- Yevhenii Solomchenko to continue developing file-based configuration features.
+- Chris Ventura to investigate logs related to method exceptions and binding redirects.
+- Participants to review and provide feedback on ongoing PRs and issues.
 
 ## Participants
 Paulo Janotti, Piotr Kiełkowicz, Mateusz Łach, Yevhenii Solomchenko, Zach Montoya, Chris Ventura

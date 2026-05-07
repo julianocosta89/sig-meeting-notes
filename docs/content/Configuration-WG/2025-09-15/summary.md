@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the new translation strategy for OpenTelemetry configuration and its backward compatibility.
-- Review of the deprecation strategy for the Prometheus exporter in the OpenTelemetry Collector.
-- Issues with the migration schema regarding environment variable types (integer vs. string).
-- Consideration of supporting strings in the migration schema for better user experience.
+- Discussion on the deprecation strategy for configuration options in OpenTelemetry Collector.
+- Migration schema bug regarding environment variable handling in Java.
+- Documentation updates for declarative configuration in Java.
+- Suggestions for improving user navigation in the documentation.
 
 ## Action Items
-- Gregor to finalize the PR for removing deprecated options in the configuration.
-- Team to provide feedback on the migration schema bug and potential solutions.
+- Gregor to explore Java-specific solutions for the migration schema bug.
+- Gregor to incorporate feedback into the documentation PR and consider linking general and Java-specific configuration sections.
+- Team to consider creating a compatibility table for declarative configuration across languages.
 
 ## Participants
-Gregor Zeitlinger, Marylia Gutierrez, Jay DeLuca, Tyler Yahn, Alex Boten
+Gregor Zeitlinger, Marylia Gutierrez, Jay DeLuca, Tyler Yahn, Alex Boten, Dan Gomez Blanco

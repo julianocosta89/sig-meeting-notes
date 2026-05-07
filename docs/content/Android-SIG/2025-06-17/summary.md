@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on Clever Chuck's click instrumentation nearing completion.
-- Ongoing issues with Sonatype's snapshot repository outage affecting builds.
-- Challenges with Compose version compatibility and internal API access.
-- Proposal for integration tests to ensure runtime compatibility with newer Compose versions.
-- Consideration of whether to support only the latest versions of Compose for easier maintenance.
+- Discussion on CleverChuck's click instrumentation nearing completion.
+- Ongoing issues with Sonatype's outage affecting snapshot repositories.
+- Need for integration tests to ensure compatibility with future Compose versions.
+- Consideration of maintaining support for the latest Compose versions versus older ones.
+- Updates on the contrib release and its relation to disk buffering issues.
 
 ## Action Items
-- Jason to follow up on Clever Chuck's review.
-- Clever Chuck to research a workaround for the internal API access issue.
-- Team to create integration tests for runtime compatibility with newer Compose versions.
-- Document version compatibility in the README for future reference.
+- CleverChuck to investigate and open an issue regarding integration tests for Compose compatibility.
+- Team to monitor Sonatype's status and plan for a contrib release once resolved.
+- Review of existing changes and potential adjustments based on the latest updates.
 
 ## Participants
-Jason Plumb, GZ Gregor Zeitlinger, Hanson Ho, Cesar Munoz, Clever Chuck
+Jason Plumb, GZ Gregor Zeitlinger, Hanson Ho, Cesar Munoz, CleverChuck

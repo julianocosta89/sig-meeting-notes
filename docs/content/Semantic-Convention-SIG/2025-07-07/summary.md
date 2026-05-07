@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on aligning OS type values with Elastic Common Schema (ECS) and the proposal to deprecate the existing OS type in favor of OS base.
-- Consideration of extending OS type to include specific operating systems and the implications of broad categories like Linux and Unix.
-- The importance of ensuring that OpenTelemetry can generate and detect OS names accurately across various platforms.
-- The need for prototypes to demonstrate the feasibility of proposed changes and how they integrate with existing OpenTelemetry systems.
+- Discussion on aligning OS type values with ECS and potential deprecation of existing OS types.
+- Proposal for new OS family and OS name attributes to improve clarity and usability.
+- Clarification on how to populate OS resource attributes and the need for a kernel version attribute.
+- Review of hardware metrics and the potential naming collisions in metric definitions.
+- Introduction of Schema V2 for semantic conventions, focusing on direct attribute specification and consistency.
 
 ## Action Items
-- Create prototypes to demonstrate how OS names can be generated and detected in OpenTelemetry.
-- Further discussions with Elastic representatives regarding the alignment and potential conflicts with ECS.
-- Document the decisions made about OS type and OS base for clarity in future semantic conventions.
+- Propose changes to OS resource attributes to the System Semantic Conventions SIG for approval.
+- Review and provide feedback on the PR for renaming genai.system to genai.provider_name and its transition plan.
+- Review the PR that automates schema generation for next-generation metrics.
+- Gather real-world use cases and examples to inform ongoing discussions about metric naming and definitions.
 
 ## Participants
-Josh Suereth, Alexandra Konrad, James Thompson, Liudmila Molkova, Bertrand (MetricsHub)
+Josh Suereth, Alexandra Konrad, James Thompson, Liudmila Molkova, Bertrand (MetricsHub), Braydon Kains

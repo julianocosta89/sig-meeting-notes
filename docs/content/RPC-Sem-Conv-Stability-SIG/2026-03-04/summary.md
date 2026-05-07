@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on removing the client address port from RPC conventions due to redundancy.
-- Clarification on the stability levels of attributes and spans in the context of RPC.
-- Consideration of recording RPC status codes for failed operations and the implications of capturing non-error status codes.
-- Updates on the Python prototype for RPC instrumentation and feedback on its implementation.
-- Discussion on server address identification in Dubbo and its integration with registry information.
+- Discussion on removing client address port from RPC attributes due to redundancy.
+- Clarification on the stability levels of attributes and spans in the documentation.
+- Proposal to record RPC status codes for failed operations and the implications of capturing non-error status codes.
+- Updates on the Python prototype and the need for metrics and message events.
+- Exploration of server address handling in Dubbo and its relation to service discovery.
 
 ## Action Items
-- Finalize the decision on the removal of client address port from RPC conventions.
-- Update documentation to clarify the stability levels of attributes and spans.
-- Review and address the feedback on the Python prototype, particularly regarding metrics and message events.
-- Implement the server address identification approach in Dubbo based on registry information.
+- Steve Rao to research and provide examples of how to consolidate server address complexity into a single string.
+- Follow up on the discussion regarding the necessity of registry information in RPC scenarios.
+- Review and finalize the Python prototype and address any outstanding issues.
 
 ## Participants
-Trask Stalnaker, Liudmila Molkova, Steve Rao
+Trask Stalnaker, Liudmila Molkova, Steve Rao, Matthew Hensley

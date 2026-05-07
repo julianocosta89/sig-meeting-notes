@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the new spec for consistent probability sampling and its implementation across different languages.
-- Update on the release of Instrumentation 2 versions 130 and 131, with a note on a minor issue regarding version content.
-- Monitoring of security advisories for the repositories and potential testing with large language models for vulnerability detection.
-- The need for PECL access for future releases and updates on the status of team members on leave.
+- Discussion on the implementation of consistent probability sampling in OpenTelemetry.
+- Updates on recent releases and issues with the Laravel contrib package.
+- Proposal for improving contributor notifications and ownership in the repository.
+- Ongoing discussions about stable components and their inclusion in the distribution.
+- Plans for testing repositories with large language models for security vulnerabilities.
 
 ## Action Items
-- Sergey to follow up with the sampling SIG regarding the status of the consistent probability sampling spec.
-- Bob to monitor security advisories and consider creating an issue for testing repositories with large language models.
-- Bob to seek PECL access for future releases.
+- Sergey to follow up on the implementation of consistent probability sampling in the SDK.
+- Chris to revert a problematic PR in the Laravel contrib package and tag a new release.
+- Chris to explore the implementation of a contributor notification system similar to Java's approach.
+- Bob to monitor discussions on stable components and report back on any actionable items.
 
 ## Participants
-Bob Strecansky, Chris Lightfoot-Wild, Andrii Androshchuk, Sergey
+Bob Strecansky, Chris Lightfoot-Wild, Andrii Androshchuk, Sergey, Pawel Filipczak

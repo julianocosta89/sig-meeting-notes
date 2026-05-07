@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the status of Pull Requests and the need for reviews, particularly regarding a large internal PR.
-- Ongoing conversations about the transition to SDK version 2, including potential trial periods and breaking changes.
-- Considerations for maintaining compatibility between version 1 and version 2, including documentation for migration.
-- The structure of the SDK and the implications of a monorepo versus multiple packages.
+- Discussion on the status and future of SDK version 2, including breaking changes and compatibility with existing instrumentations.
+- Ongoing work on metrics collection in PHP, including challenges related to memory management and aggregation.
+- Updates on the donation process for the PHP OpenTelemetry project and its implications for future developments.
+- Exploration of the differences in metrics handling between PHP and other languages like Node.js and Java.
 
 ## Action Items
-- Compile thoughts and questions regarding SDK version 2 for future discussion with Brett.
-- Create documentation outlining any breaking changes and migration strategies for users transitioning to version 2.
+- Chris to follow up with Bob and Brett regarding the SDK version 2 and its implications for instrumentations.
+- Sergey to investigate the feasibility of adding process IDs to metrics for better aggregation.
+- Pawel to continue work on the metrics collection process and aim for completion by November.
 
 ## Participants
 Chris Lightfoot-Wild, Nick Schuch, Sergey, Pawel Filipczak

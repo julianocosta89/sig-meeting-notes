@@ -1,12 +1,12 @@
 ## Key Topics
-- Proposal for a new module called `instrumentation-all` to simplify dependency management for users who want to include multiple instrumentations without individually specifying each one.
-- Discussion on the challenges of integrating build-time instrumentation with the new module and ensuring compatibility with the existing agent.
-- Clarification on the current state of the BOM (Bill of Materials) for the instrumentation modules and its versioning.
-- Importance of documentation to guide users on how to use the new module effectively.
+- Proposal for a new module called `instrumentation-all` to simplify dependency management for users.
+- Discussion on the deprecation of span events in OpenTelemetry Android instrumentation and the need for alignment with the spec.
+- Ongoing issues with Sonatype snapshots and the impact on releasing version 0.12.
+- Plans for Kotlin API development and its integration with existing Java SDK.
 
 ## Action Items
-- CleverChuk to create an issue for the proposal of the `instrumentation-all` module.
-- Team to explore the implications of merging resources for all instrumentations in the new module and ensure proper documentation is provided.
+- CleverChuk to create an issue regarding the deprecation of span events.
+- Jason to follow up on the status of the 0.12 release once upstream dependencies are resolved.
 
 ## Participants
-Hanson Ho, Jason Plumb, CleverChuk
+Hanson Ho, Jason Plumb, CleverChuk, Leonardo Serrano, GZ Gregor Zeitlinger

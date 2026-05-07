@@ -1,13 +1,14 @@
 ## Key Topics
-- Release readiness of OpenTelemetry Swift version 2.0 and discussions on race condition fixes.
-- Minimum iOS version support considerations and market share analysis for iOS 15 and 16.
-- Impact assessment of dropping support for iOS 13 and 14 based on session data.
-- Issues with Prometheus exporter metrics duplication and configuration settings.
+- Release readiness of OpenTelemetry Swift version 2.0, including discussions on race condition fixes and necessary PRs.
+- Consideration of minimum iOS version support, with data on market share and user impact from dropping support for iOS 13 and 14.
+- Issues with the Prometheus exporter, particularly regarding metric duplication and clearing behavior.
+- Discussion on session IDs and how to incorporate them into resource objects without disrupting the system.
 
 ## Action Items
-- Review and finalize the race condition fix PR before the 2.0 release.
-- Determine the minimum upload version requirements for the App Store regarding iOS.
-- Investigate the Prometheus exporter settings to address duplicate metrics issue.
+- Review and finalize the race condition PR before the version 2.0 release.
+- Investigate the minimum supported iOS version for Xcode and its implications for the project.
+- Charlie to share relevant Prometheus exporter specifications to clarify expected behavior.
+- Billy to draft a proposal for handling session IDs in the resource object for review.
 
 ## Participants
-Bryce Buchanan, Arri Blais, Charlie Le, Vinod Vydier, Nacho, Martin Holman, Ari Demarco
+Bryce Buchanan, Arri Blais, Charlie Le, Vinod Vydier, Nacho, Martin Holman, Billy

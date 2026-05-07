@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on continuing schema versioning (Schema V. 2).
-- Review of a proposal for generating YAML configurations for collectors and semantic conventions.
-- Updates on the README documentation, emphasizing a streamlined approach and linking to additional resources.
-- Challenges with YAML structure and potential bugs related to group handling.
-- Planning for future enhancements and clarifications on instrumentation and schema refinement.
+- Discussion on continuing schema version 2 and its implications for semantic conventions.
+- Review of recent bug reports and enhancements related to collector configuration generation.
+- Updates on the README documentation for better user onboarding.
+- Proposed roadmap for transitioning from version 1 to version 2 of the schema and resolving existing issues.
+- Exploration of attribute refinement and its impact on signal definitions.
 
 ## Action Items
-- Request further clarification on the YAML generation proposal from the collector team.
-- Liudmila to document current thoughts on schema refinements and respond to the proposal.
-- Jeremy to finalize the README updates and merge them after review.
-- Continue discussions on the two YAML structure and its implications.
+- Follow up with the collector team for clarification on their enhancement request regarding YAML generation.
+- Merge the updated README once reviewed by team members.
+- Continue working on the proposed roadmap for schema version 2, focusing on resolving existing issues and transitioning from version 1.
+- Investigate how to handle attribute refinements and their integration into the schema.
 
 ## Participants
 Josh Suereth, Liudmila Molkova, Jeremy Blythe

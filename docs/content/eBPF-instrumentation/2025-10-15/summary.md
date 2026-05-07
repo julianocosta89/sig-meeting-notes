@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on open PRs and their review status.
-- Validation tooling for configuration in OpenTelemetry eBPF.
-- User-friendliness of configuration validations and potential changes.
-- Dependency management between configuration fields and their implications.
-- Future steps for splitting up larger validation tasks into manageable parts.
+- Review of open PRs and their statuses, including discussions on CI failures and validation tooling.
+- User-friendliness of configuration validations and potential changes to improve it.
+- Discussion on structuring configuration to avoid redundancy and improve clarity.
+- Milestone updates pending feedback from Grafana team.
+- Ongoing projects, including Elasticsearch support and AWS integrations.
 
 ## Action Items
-- Giuseppe to remove certain validations and request a review for the configuration validation PR.
-- Team to discuss and finalize the approach for handling dependent configuration fields.
-- Consideration of refactoring configuration structures for better validation in future iterations.
+- Giuseppe to remove certain validations and request reviews on the updated PR.
+- Tyler to open an issue regarding structuring configuration fields to avoid redundancy.
 
 ## Participants
 Giuseppe Ognibene, Tyler Yahn, Mattia Meleleo, Nimrod Avni

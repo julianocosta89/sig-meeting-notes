@@ -1,15 +1,14 @@
 ## Key Topics
-- Discussion on the beta release of the Frequent Sampling feature and related PRs.
-- Update on the publishing of a new package related to .NET Monitor and its upcoming demo.
-- Review of open pull requests, including N-Log instrumentation and vendor changes.
-- Preparation for .NET 10 and its implications for the LogsBridge API.
-- Concerns regarding licensing and maintenance of vendored libraries.
+- Discussion on the beta release of the Frequent Sampling feature, with plans for follow-up PRs.
+- Update on the publishing of a new package related to .NET Monitor, with plans for a demo in an upcoming SIG meeting.
+- Review of open pull requests, including N-Log instrumentation and vendor changes, with emphasis on minimizing maintenance burdens.
+- Updates on the LogsBridge API and its stabilization timeline in relation to .NET 10 preparations.
+- Ongoing discussions regarding ASP.NET Core instrumentation and routing issues.
 
 ## Action Items
-- Mateusz Łach to clean up issue descriptions and link remaining tasks related to Frequent Sampling.
-- Rajkumar Rangaraj to prepare a demo of the new package functionality in an upcoming SIG meeting.
-- Participants to review the N-Log instrumentation PR and provide feedback.
-- Piotr Kiełkowicz to finalize and approve changes related to vendor updates.
+- Mateusz to clean up and link remaining issues related to the Frequent Sampling feature.
+- Rajkumar to prepare a demo of the .NET Monitor functionality for a future SIG meeting.
+- Piotr to follow up on the ASP.NET Core routing issue next week.
 
 ## Participants
-Zach Montoya, Mateusz Łach, Piotr Kiełkowicz, Chris Ventura, Rajkumar Rangaraj
+Zach Montoya, Mateusz Łach, Piotr Kiełkowicz, Chris Ventura, Rajkumar Rangaraj, Matthew Hensley

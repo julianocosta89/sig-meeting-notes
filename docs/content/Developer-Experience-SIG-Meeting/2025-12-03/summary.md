@@ -1,12 +1,13 @@
 ## Key Topics
-- Proposal for a new SIG for the MCP server in OpenTelemetry and discussions on its placement within existing SIGs.
-- Ongoing efforts in the Developer Experience SIG to improve user onboarding and experience with OpenTelemetry, including user interviews and the Hotel Blueprints project.
-- Concerns about bandwidth and the current workload of the Developer Experience SIG members.
-- The importance of collaboration between the MCP initiative and the Developer Experience SIG to enhance user experience and streamline workflows.
+- Discussion on the proposal for a new SIG for the MCP server in OpenTelemetry and its potential alignment with the Developer Experience SIG.
+- Ongoing work on user interviews and surveys to identify pain points in using OpenTelemetry, particularly around the OpenTelemetry Collector.
+- The relationship between the MCP project and the Developer Experience SIG, focusing on simplifying user onboarding and experience.
+- Insights shared on how OpenTelemetry handles distributed tracing, particularly with Kafka and context propagation.
 
 ## Action Items
-- Pavel to discuss with the MCP project lead about potential collaboration and joining the next Developer Experience SIG meeting.
-- Explore the possibility of integrating findings from user interviews into the MCP project to inform its development.
+- Pavel to discuss with the MCP project lead and potentially join the next meeting to outline collaboration needs.
+- Damien to add the MCP project discussion to the agenda for the next meeting.
+- Juliano to reach out to Hano for updates on the OTel Blueprints project and coordinate with Bruno if necessary.
 
 ## Participants
 Juliano Costa, Damien Mathieu, Michele Orlandi, Pavol Loffay

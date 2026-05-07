@@ -1,15 +1,15 @@
 ## Key Topics
-- Follow-up on the survey conducted by Tristan and the need for a mid-sized company for qualitative feedback.
-- Discussion about the collector follow-up survey and the need for access to the original survey form.
-- Update on blog post drafts related to OpenTelemetry research and the need for sponsorship.
-- Guidance for issue participation and how end users can engage with GitHub issues effectively.
-- Update on the integration of feedback mechanisms into the OpenTelemetry documentation.
+- Discussion on follow-up qualitative survey for OpenTelemetry, seeking a midsize company for feedback.
+- Updates on the collector follow-up survey and the need for access to the original survey form.
+- Review and drafting of a blog post related to OpenTelemetry research.
+- Guidance on how end users can participate in issues and provide feedback.
+- Announcement regarding the transition of the CNCF Slack workspace to a free plan with 90-day message retention.
 
 ## Action Items
-- Dan to reach out to potential mid-sized companies for the survey feedback session.
-- Victoria to draft the follow-up collector survey and locate the original survey form.
-- Adriana to review the blog post draft once available.
-- Implement guidance for issue participation on the OpenTelemetry website and integrate it into relevant repositories.
+- Dan Gomez Blanco to reach out to potential midsize companies for the qualitative survey.
+- Victoria Nduka to draft the follow-up collector survey and seek access to the original survey form.
+- Andrej to update the community page and review changes.
+- Team to consider options for archiving private Slack channels before the retention change.
 
 ## Participants
-Dan Gomez Blanco, Andrej, Victoria Nduka, Adriana
+Dan Gomez Blanco, Andrej, Victoria Nduka

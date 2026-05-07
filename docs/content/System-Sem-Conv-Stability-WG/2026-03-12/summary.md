@@ -1,14 +1,14 @@
 ## Key Topics
 - Discussion on the use of AI note-takers in meetings and privacy concerns.
-- Updates on the requirement level PR for process resource attributes and the introduction of general file semantic conventions.
-- Planning for KubeCon, including coordination for a booth and meeting logistics.
-- Finalizing outstanding PRs related to the process executable entity and metrics before a release candidate is considered.
-- Discussion on the aggregation of metrics and the necessity of certain attributes.
+- Updates on pull requests (PRs) related to process resource attributes and executable entities.
+- Proposal for introducing general file semantic conventions to improve attribute management.
+- Coordination for discussions at KubeCon, including booth availability and community engagement.
+- Debate on the classification of metric attributes as required or recommended based on their utility for aggregation.
 
 ## Action Items
-- Braydon Kains to open an issue for discussing general file semantic conventions.
-- Participants to coordinate a meeting at KubeCon to discuss ongoing projects.
-- Follow-up on reopening the PR related to requirement levels on metrics and attributes.
+- Braydon Kains to open an issue to discuss general file semantic conventions.
+- Christos Markou to coordinate a meeting time for KubeCon attendees to discuss ongoing projects.
+- Reopen the PR related to requirement levels for attributes to facilitate the release candidate process.
 
 ## Participants
-Donal O'Sullivan, Braydon Kains, Neil Yashinsky, Christos Markou, Dmitrii Anoshin
+Donal O'Sullivan, Braydon Kains, Neil Yashinsky, Dmitrii Anoshin, Christos Markou

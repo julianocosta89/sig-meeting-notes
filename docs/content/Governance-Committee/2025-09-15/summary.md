@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on upcoming conferences and travel plans, including InfoQ Dev Summit and PromCon.
-- Triage and maintenance of community repositories, including labeling and managing issues.
-- Proposal for a structured membership request process to streamline sponsor requirements.
-- Updates on donation proposals and project statuses, including a preview version release for a specific project.
+- Upcoming conferences and participation plans.
+- Discussion on triaging issues and repo maintenance.
+- Review of donation proposals and project updates.
+- Management of Reddit community and content guidelines.
+- Strategies for moderating vendor-specific content.
 
 ## Action Items
-- Dan Gomez Blanco to follow up with Hanson regarding the donation timeline.
-- Severin Neumann to consider creating a checklist for membership requests.
-- Review and possibly close outdated donation proposals based on project statuses.
+- Juraci to follow up on the status of donation proposals.
+- Severin to draft comments on issues regarding closed donation proposals.
+- Team to discuss the management and moderation of Reddit content further.
 
 ## Participants
 Severin Neumann, Juraci Paixão Kröhling, Dan Gomez Blanco, Henry Stief

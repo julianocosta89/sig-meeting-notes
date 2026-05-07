@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the blog post from the OpenTelemetry and practice session with Alibaba, with a suggestion to create two detailed posts.
-- Updates on the OB documentation, including the decision to hide incomplete pages and the potential merging timeline.
-- Experimentation with language maintainers merging their own pull requests, with a plan to review the process in two months.
-- Updates on the .NET documentation and the need for continued collaboration with Fabricio.
-- Mention of the reference app project and the desire for more focus on it.
+- Discussion on the blog post from the OpenTelemetry and practice session with Alibaba, with a consensus to create two posts.
+- Update on the OpenTelemetry documentation (OB docs) and the decision to potentially hide incomplete pages until they are ready.
+- Experimentation with allowing language maintainers to merge their own pull requests, with a review period set for the end of September.
+- Updates on the .NET documentation and the need for continued collaboration with .NET maintainers.
+- Plans for the reference application project, including distribution among language SIGs and the need for engagement from maintainers.
 
 ## Action Items
 - Tiffany to review the blog post and merge it if ready.
-- Severin to continue working on the OB documentation and aim for merging by the end of the week.
-- Monitor the language maintainers experiment for two months and discuss outcomes.
-- Follow up on the reference app project discussion outside of the meeting.
+- Severin to continue working on the OB docs and aim for a merge by the end of the week.
+- Monitor the language maintainers' experiment and reconvene in two months to assess.
+- Sophia to help coordinate the reference application project and engage with language SIGs.
 
 ## Participants
 Severin Neumann, Lisa Jung, Tiffany Hrabusa, Sophia Solomon, Antoine Toulme

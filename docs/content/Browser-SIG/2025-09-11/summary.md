@@ -1,13 +1,14 @@
 ## Key Topics
 - Discussion on page view semantic conventions and the inclusion of soft navigation events.
-- Differentiation between page views and navigation events, emphasizing the complexity of instrumentation.
-- The need for a user-controlled API to define what constitutes a page view in various application contexts.
-- The potential for users to emit supplemental page views based on their specific application needs.
+- Differentiation between hard and soft navigation in relation to page views.
+- Proposal for a separate instrumentation for soft navigation and virtual page views.
+- Exploration of how to handle URL changes and their relation to page views.
+- Consideration of user-defined page view events and the need for a flexible API.
 
 ## Action Items
 - Martin to follow up with Carly regarding her involvement and contributions.
-- Hector to speak with Carly and encourage her to engage with the team on Slack.
-- Participants to consider the implications of soft navigation on page view definitions and report back.
+- Joaquín to draft a proposal on navigation performance API and resource loading events.
+- Team to continue discussions in Slack regarding the instrumentation and semantic conventions.
 
 ## Participants
-Jared Freeze, Benoît Zugmeyer, Martin Kuba, Ted Young, Daniel Dyla, Hector Hernandez, Joaquín Díaz, Wolfgang Therrien
+Jared Freeze, Benoît Zugmeyer, Martin Kuba, Ted Young, Daniel Dyla, Hector Hernandez, Joaquín Díaz, Wolfgang Therrien, Abinet Debele.

@@ -1,14 +1,15 @@
 ## Key Topics
-- Merged navigation timing instrumentation and ongoing PR for console instrumentation.
-- Discussion on resolving conflicts with the diagnostic logger in the SDK.
-- Considerations for release and versioning strategies, including independent versioning for instrumentations.
-- Tooling options for release management, including Lerna and Semantic Release.
-- Review of OTEP related to mutable resources and session entities.
+- Merged navigation timing instrumentation.
+- Discussion on resolving conflicts with diagnostic logger in PR for council instrumentation.
+- Versioning strategy for instrumentations and release processes.
+- Proposal for mutable resources and session entities in OTEP.
+- Reminder about increased PR reviews due to updated code owners.
 
 ## Action Items
-- Participants to provide feedback on release and versioning strategies.
-- Jared to investigate custom setups for instrumentation versioning.
-- Daniel to gather further input on the OTEP from the browser SIG.
+- Explore options for resolving diagnostic logger conflicts.
+- Decide on tooling and process for versioning and releases.
+- Continue development of the prototype for mutable resources in the JS SDK.
+- Monitor and manage PR reviews as the group is now receiving more notifications.
 
 ## Participants
 martinkuba, Marco Schäfer, Jared Freeze, Daniel Dyla

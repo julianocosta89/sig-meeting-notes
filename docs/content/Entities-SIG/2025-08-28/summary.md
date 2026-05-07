@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the implementation of the entity detector and its relation to the SDK.
-- Review of a pull request regarding the definition of "entity" and its relationship with "resource."
-- Need for clear conflict resolution guidelines between entity detectors and resource detectors.
-- Proposal to create sections in the specification for entity detection and conflict resolution.
-- Importance of having additional reviewers before merging changes.
+- Discussion on PR regarding entity detector implementation and its relation to the SDK.
+- Review of conflict resolution between entity detectors and resource detectors.
+- Proposed updates to definitions of "resource" and "entity" in the specification.
+- Updates on the SDK's initialization process and entity provider creation.
+- Considerations for handling multi-tenancy in telemetry data reporting.
 
 ## Action Items
-- Address concerns raised by Lyudmila and Daniel before merging the PR.
-- Create a section in the specification for Entity Detector and conflict resolution.
-- Update the definitions of "entity" and "resource" to clarify their relationship and attributes.
+- Address concerns raised by reviewers before merging the PR.
+- Create sections in the specification for entity detector and conflict resolution.
+- Finalize definitions for "resource" and "entity" based on group consensus.
+- Explore implementation details for handling resource detection in Java and Node.js.
+- Consider proposal for dynamic reporting against different entities in multi-tenant scenarios.
 
 ## Participants
-Nathan Smith, Josh Suereth, Daniel Dyla, Lyudmila
+Nathan Smith, Josh Suereth, Daniel Dyla

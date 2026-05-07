@@ -1,13 +1,15 @@
 ## Key Topics
-- **Issue Review and Milestones**: Discussion on the upcoming milestone for December and the importance of addressing open PRs.
-- **Semantic Convention Registry**: Laurent presented the idea of implementing custom semantic convention registries for better documentation and validation of telemetry data.
-- **Metrics Instrumentation**: Concerns about the current state of metrics instrumentation and the need for a unified approach to handle multivariate metrics.
-- **OTLP Metrics Representation**: Exploration of the current limitations in OTLP representation for metrics and the need for improvements.
+- **Issue Review and Milestones**: Discussion on the upcoming milestone for December and review of open issues and pull requests.
+- **Semantic Convention Registry**: Laurent presented ideas on integrating custom semantic conventions into the pipeline engine, enhancing documentation and validation.
+- **Multivariate Metrics**: Exploration of multivariate metrics, their importance, and the challenges in implementing them within OpenTelemetry.
+- **Rate Limiting and Memory Control**: Discussion on implementing rate limiting and memory control mechanisms in the pipeline.
+- **KQL and OpenTelemetry Processing Language**: Development of a query language inspired by KQL for processing OpenTelemetry data, focusing on pipeline-oriented syntax and ensuring valid signal outputs.
 
 ## Action Items
-- Review and prioritize open PRs related to the retry processor and back pressure implementation.
-- Laurent to provide updates on the semantic convention registry and its integration with the pipeline engine.
-- Follow up on the implementation of OTLP metrics and ensure all metric types are supported.
+- **Review Open PRs**: Participants to provide attention and discussion on open pull requests.
+- **Explore Multivariate Metrics**: Further investigation into the implementation of multivariate metrics and their integration into the existing framework.
+- **Document KQL Development**: Continue refining the KQL-inspired query language and ensure alignment with OpenTelemetry principles.
+- **Rate Limiting Design**: Collaborate on designing a proof of concept for rate limiting and memory control in the pipeline.
 
 ## Participants
-Laurent Quérel, Pablo Baeyens, Joshua MacDonald
+Laurent Quérel, Pablo Baeyens, Joshua MacDonald, Albert Lockett, Drew, Riley

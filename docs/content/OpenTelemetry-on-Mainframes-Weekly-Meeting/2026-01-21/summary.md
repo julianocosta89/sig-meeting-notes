@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the progress of semantic conventions and naming for mainframe systems.
-- Importance of creating smaller pull requests (PRs) to facilitate quicker approvals.
-- Need for defining unique naming conventions for different operational environments and database types.
-- Balancing the integration of mainframe-specific conventions with existing semantic conventions.
-- Proposal to create a matrix to illustrate differences in process models and naming conventions.
+- Discussion on the need for smaller pull requests (PRs) to expedite the approval process for OpenTelemetry mainframe semantic conventions.
+- The importance of distinguishing between different process models and naming conventions for mainframe systems.
+- Addressing discrepancies between OpenTelemetry SDK for Java and mainframe semantics, particularly regarding process identifiers and attributes.
+- Customer priorities regarding observability, focusing on major transaction systems and databases.
+- Presentation by Richard Salac on the API Mediation Layer's implementation of OpenTelemetry and related challenges.
 
 ## Action Items
-- Jim Porell to draft a matrix for process models and naming conventions for different operational environments.
-- Angelika Heinrich to review mainframe-specific database systems and propose relevant semantic conventions.
-- Participants encouraged to attend SIG meetings to expedite PR approvals.
+- Participants to review and comment on open PRs to prevent them from becoming stale.
+- Jim Porell to work on a matrix for process models and naming conventions.
+- Angelika Heinrich to summarize customer needs regarding mainframe-specific semantic conventions and share in the Slack channel.
+- Richard Salac to share his presentation on the Slack channel for further discussion.
 
 ## Participants
-Greg Shriver, Jim Porell, Angelika Heinrich, Richard Nikula
+Greg Shriver, Jim Porell, Angelika Heinrich, Richard Nikula, Richard Salac, Morgan, Antoine, Rudiger

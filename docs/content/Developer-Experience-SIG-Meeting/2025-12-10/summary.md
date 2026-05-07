@@ -1,12 +1,13 @@
 ## Key Topics
-- **Developer Experience Updates**: Discussion on the progress of blog posts based on interviews conducted with various companies about their usage of OpenTelemetry.
-- **Blueprints Project**: Introduction of the Hotel Blueprints project aimed at creating a registry of reference configurations for OpenTelemetry usage, transitioning from interviews to long-term documentation.
-- **Model Context Protocol (MCP)**: Overview of the MCP, which facilitates communication between agents and tools, allowing for configuration and management of the OpenTelemetry Collector.
+- **Developer Experience SIG Updates**: Discussion on blog posts based on interviews with companies about their real-world experience with OpenTelemetry.
+- **OTel Blueprints Project**: Introduction of a project aimed at creating a registry of reference configurations for OpenTelemetry usage.
+- **Model Context Protocol (MCP)**: Overview of MCP, its purpose in enhancing AI agent interactions with OpenTelemetry, and the need for a common place to discuss use cases and implementations.
+- **Documentation Improvements**: Suggestions for enhancing documentation accessibility for AI agents, including markdown formats.
 
 ## Action Items
-- Tristan to provide contact information for interviewees to Damien for referencing in the Blueprints project.
-- Tristan to finalize and submit the draft blog post by the next meeting.
-- Team to consolidate and clarify the documentation of conducted interviews for better accessibility.
+- **Blog Post Updates**: Tristan to draft and finalize blog posts based on interviews, aiming for publication before Christmas.
+- **MCP Project Proposal**: Pavol to update the project proposal in the community repo to reflect the hosting of the MCP project within the Developer Experience SIG.
+- **Meeting Coordination**: Consideration of adjusting meeting times to accommodate participants from different time zones.
 
 ## Participants
 Tristan, Damien Mathieu, PL Pavol Loffay, Nicolas Wörner, Johanna Öjeling, Andrei Raiu

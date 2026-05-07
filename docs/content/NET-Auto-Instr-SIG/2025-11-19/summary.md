@@ -1,16 +1,15 @@
 ## Key Topics
-- Upcoming release plans for .NET 10 support and experimental file-based configuration.
+- Upcoming release with support for .NET 10 and experimental file-based configuration.
 - Discussion on memory leak issues related to continuous profiling and tracking span-context correlation.
-- OTLP exporter configuration discrepancies and the need for fixes in the SDK.
-- Review of various ongoing PRs, including SP.NET Core support and continuous profiling implementation.
-- Need for improvements in file-based configuration and handling of specific instrumentation issues.
+- OTLP exporter configuration issues and the need for fixes in the SDK.
+- Review of ongoing PRs, including ASP.NET Core support and continuous profiling implementation.
+- Status updates on various issues and blockers for the next release.
 
 ## Action Items
-- Verify and review the open PR for SP.NET Core 10 support.
-- Mateusz to create a PR addressing the memory leak issue related to profiling.
-- Rajkumar to follow up on the OTLP exporter configuration bug.
-- Igor to finalize comments on the startup hook PR for approval.
-- Piotr to cut off the release early next week and review pending PRs.
+- Mateusz to create a PR for the memory leak fix by the end of the week.
+- Rajkumar to follow up on OTLP exporter configuration issues.
+- Efshaikh to create a separate PR for performance improvements related to future usage.
+- Participants to review ongoing PRs and provide feedback.
 
 ## Participants
-Mateusz Łach, Piotr Kiełkowicz, Rajkumar Rangaraj, Chris Ventura, Igor Kiselev, efshaikh
+Mateusz Łach, Piotr Kiełkowicz, Rajkumar Rangaraj, Chris Ventura, Igor Kiselev, efshaikh, Rhynier

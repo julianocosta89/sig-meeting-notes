@@ -1,14 +1,15 @@
 ## Key Topics
-- Proposal to add Mattia Meleleo and Steven Lang as approvers to the OpenTelemetry project.
+- Proposal to add Mattia and Steven as approvers to the OpenTelemetry project.
 - Discussion on improving source code documentation and comments for better context.
-- Update on CI performance improvements for Kubernetes and VM integration tests by Steven Lang.
-- Introduction of random ordering for test execution to balance CI load.
+- Update on CI performance improvements for Kubernetes and VM integration tests.
+- Proposal for tracking DNS disconnects and failures in instrumentation.
+- Internal metrics collection for eBPF programs and performance concerns.
 
 ## Action Items
-- Nikola to reach out to Nimrod regarding approver status.
-- Tyler to investigate the process of adding new approvers and update documentation as necessary.
-- Mario to ensure comments in the code are reviewed for accuracy.
-- Steven to continue working on CI performance enhancements and report back on progress.
+- Tyler to follow up on adding Mattia and Steven as approvers.
+- Mario to seek reviews on documentation improvements.
+- Rafael to open an issue to track performance concerns related to internal metrics collection.
+- Nikola to explore adding metrics for DNS failures and connection issues.
 
 ## Participants
-Tyler Yahn, Mattia Meleleo, Stephen Lang, Nikola Grcevski, Mario Macias, Rafael Roquetto
+Tyler Yahn, Mattia Meleleo, Stephen Lang, Nikola Grcevski, Mario Macias, Rafael Roquetto, Giuseppe Ognibene.

@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on the default inclusion of a service detector in OpenTelemetry configurations.
-- Debate on the philosophy of "what you see is what you get" versus providing safe defaults in SDK configurations.
-- Consideration of the implications of having certain configurations enabled by default, including service instance IDs and resource detectors.
-- Review of recent PRs related to configuration conventions and their impact on user experience.
+- Discussion on the inclusion of service detectors by default in OpenTelemetry configuration.
+- Debate on the philosophy of "what you see is what you get" versus providing safe defaults.
+- Consideration of default propagators and their implications for user experience.
+- Proposal for using snippets to improve documentation and user understanding of configuration.
+- Exploration of the need for a new authenticator concept in the specification.
 
 ## Action Items
-- Gregor to refine the proposal for including a service detector by default and gather feedback.
-- Team to evaluate the implications of enabling certain configurations by default in the context of user experience and SDK stability.
+- Jack to draft a PR regarding the inclusion of service detectors in starter templates.
+- Gregor to collaborate with Jack on the authenticator specification.
+- Alex to work on integrating description fields into the JSON schema for better documentation.
+- Jack to create a draft PR for the snippet concept to enhance user experience in configuration documentation.
 
 ## Participants
-Gregor Zeitlinger, Alex Boten, Jack Berg
+Gregor Zeitlinger, Alex Boten, Jack Berg, Jamie Danielson

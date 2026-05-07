@@ -1,12 +1,12 @@
 ## Key Topics
-- Integration of OpenTelemetry Traces into Rust applications using Tokyo Tracing.
-- Challenges in logging correlation between traces and logs due to backend-specific implementations.
-- Discussion on the need for improved documentation and examples for using OpenTelemetry with Tokyo Tracing.
-- Consideration of how to handle trace context when interfacing between Rust and Python applications.
+- Discussion on integrating OpenTelemetry traces into Rust applications, specifically with Tokyo Tracing.
+- Need for documentation on using OpenTelemetry with Tokyo Tracing and log correlation.
+- Challenges faced by developers when trying to correlate logs and traces across Rust and Python applications.
+- Exploration of potential solutions for propagating trace context between Rust and Python.
 
 ## Action Items
-- Warren Snipes to open an issue on the GitHub repository detailing his experience and solutions regarding OpenTelemetry integration.
-- Team to consider creating documentation or examples based on Warren's findings to assist future users.
+- Warren Snipes to open an issue on GitHub detailing his challenges and solutions regarding OpenTelemetry integration.
+- Participants encouraged to contribute to documentation and examples for better onboarding and usability.
 
 ## Participants
 Scott Gerring, Parth Sharma, Warren Snipes, Björn Antonsson

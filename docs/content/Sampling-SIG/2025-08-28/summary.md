@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on naming conventions in Java and Python implementations of hotel sampling.
-- Options for handling discrepancies in naming: do nothing, wait for core repository promotion, or make immediate changes.
-- Exploration of composite rate-limited sampling methods and their complexities.
-- Tail sampling processor improvements and user understanding of sampling options.
-- Proposed plan for memory management in sampling processes.
+- Discussion on naming conventions in Java implementation compared to specifications.
+- Options for handling naming discrepancies: do nothing, wait for core repository promotion, or make immediate changes.
+- Review of composite rate-limited sampling strategies and their implications.
+- Proposal for a blog post to update the OpenTelemetry community on recent developments.
+- Need for a spec issue regarding legacy names in Java implementation.
 
 ## Action Items
-- jmacdonald to follow up on naming conventions with the spec SIG and post an issue on Slack.
-- jmacdonald to explore improvements for the tail sampling processor, including recognition of incoming weights and memory limits.
+- jmacdonald to file a spec issue regarding naming conventions and assign it to Carlos Alberto Cortez.
+- jmacdonald to draft a blog post outline to inform the community about ongoing work and updates.
 
 ## Participants
-jmacdonald, Peter Findeisen, Otmar Ertl, Admir
+jmacdonald, Peter Findeisen, Otmar Ertl, Carlos Alberto Cortez, Admir

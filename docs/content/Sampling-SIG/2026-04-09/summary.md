@@ -1,14 +1,14 @@
 ## Key Topics
-- **OTEP235 Progress**: Discussion on the progress of OTEP235, which has been merged to the specification, with ongoing implementations in JavaScript and Python.
-- **OTEP250 and Composable Samplers**: Concerns about the stalled progress on OTEP250 due to the preference for declarative configurations over a fully configurable sampler API.
-- **Tail Sampling Processor Updates**: New ownership and ongoing developments, including a storage extension for disk storage and a new trace pruning processor proposed by Sean Porter.
-- **Span to Metrics Processor**: Updates on the span to metrics processor recognizing OTEP235 trace thresholds and discussions around naming conventions for samplers.
-- **Community Contributions**: Emphasis on community-driven projects and the approval process for new features and enhancements.
+- **OTEP 235 Progress**: Discussion on the status of OTEP 235, which has been merged to the specification, with ongoing implementations in JavaScript and Python.
+- **OTEP 250 and Composable Samplers**: Concerns about the stalled progress due to the need for declarative configuration and the desire for simpler configuration options.
+- **Tail Sampling Processor Updates**: New ownership and ongoing development of the tail sampling processor and its storage extension for disk storage.
+- **Trace Pruning Processor**: Introduction of a new processor aimed at limiting the size of large traces and computing aggregates before tail sampling.
+- **Span to Metrics Processor**: Updates on the span to metrics processor recognizing OTEP 235 trace thresholds and discussions on naming conventions for samplers.
 
 ## Action Items
-- **Prepare Presentation**: jmacdonald to prepare slides summarizing recent accomplishments for the Specifications SIG meeting.
-- **Follow Up on OTEP250**: jmacdonald to catch up with Peter on the status of OTEP250 before the next meeting.
-- **Review Trace Pruning Processor**: Participants to review the proposed trace pruning processor and its integration into the existing framework.
+- **Prepare Presentation for Specifications SIG**: jmacdonald to prepare slides summarizing the sampling group's recent accomplishments for the upcoming Specifications SIG meeting.
+- **Follow Up on OTEP 250**: jmacdonald to catch up with Peter on the draft related to OTEP 250 and discuss declarative configuration.
+- **Review Trace Pruning and Tail Sampling**: Participants to review the trace pruning and tail sampling developments and prepare for further discussions in Slack.
 
 ## Participants
-Chris Marchbanks, Otmar Ertl, jmacdonald, Yuanyuan Zhao, Sean Porter
+Chris Marchbanks, Otmar Ertl, jmacdonald, Yuanyuan Zhao

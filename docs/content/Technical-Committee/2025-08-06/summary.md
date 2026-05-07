@@ -1,13 +1,14 @@
 ## Key Topics
-- Introduction of the new Injector SIG, which focuses on environment variable injection for SDKs and APIs.
+- Introduction of a new SIG called the Injector SIG, focused on environment variable injection for SDKs and APIs.
 - Discussion on the sponsorship level required for the Injector SIG, with considerations for coordination with the Configuration SIG.
-- Update on the PHP auto-instrumentation donation from Elastic, including technical concerns and collaboration with Datadog.
-- Potential overlap between the new Injector SIG and existing PHP instrumentation methods.
+- Update on the PHP auto-instrumentation donation from Elastic, addressing technical concerns and collaboration with Datadog.
+- Exploration of the OPAMP initiative and its potential adoption across various SDKs, emphasizing a bottom-up approach for integration.
 
 ## Action Items
-- Follow up with the Injector SIG for a charter detailing phase one objectives.
-- Prepare a document outlining due diligence and concerns regarding the PHP donation for discussion with PHP maintainers in the next meeting.
-- Investigate potential overlaps between the Injector SIG and the PHP instrumentation approach.
+- Follow up on the Injector SIG's phase one charter to clarify objectives and requirements.
+- Schedule a meeting with PHP maintainers to discuss the donation and address any concerns.
+- Confirm that the PHP auto-instrumentation uses existing OpenTelemetry instrumentation and is not duplicative.
+- Consider formalizing a project for OPAMP adoption across OpenTelemetry SDKs while maintaining an organic approach.
 
 ## Participants
 Tigran Najaryan, Josh Suereth, Reiley Yang, Armin (Dynatrace), Carlos Alberto Cortez

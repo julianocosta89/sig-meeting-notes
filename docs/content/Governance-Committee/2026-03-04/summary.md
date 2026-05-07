@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the need for clearer policies regarding moderation and code of conduct within the OpenTelemetry community.
-- Updates on the transition from Google Slides to Microsoft Office and issues with broken links.
-- The increase in security reports and the challenges associated with managing them.
-- The idea of engaging more actively with other CNCF projects for security testing and collaboration.
+- Discussion on the need for clearer moderation policies and separation from code of conduct issues.
+- Updates on the proposal for a new SIG (ZigSig) and the process for its approval.
+- Review of ongoing security concerns and the need for regular audits and assessments.
+- Exploration of using Open Collective for managing finances related to OpenTelemetry events.
+- Progress on the stability and graduation of OpenTelemetry components, with plans for ongoing community engagement.
 
 ## Action Items
-- Pablo Baeyens to move the proposed document to a GitHub PR for further discussion.
-- Morgan McLean to follow up with Steve regarding the broken Google Slides template link.
-- Participants to review the proposed document and provide feedback.
+- Pablo Baeyens to create a GitHub PR for the moderation policy.
+- Ted Young to follow up with Josh McDonald regarding the ZigSig proposal and its TC sponsorship.
+- Austin Parker to reach out to Amir from OSTIF for security audit discussions.
+- Regular updates to be scheduled in meetings regarding the stability and graduation efforts.
 
 ## Participants
-Marylia Gutierrez, Austin Parker, Severin Neumann, Alolita Sharma, Trask Stalnaker, Pablo Baeyens, Ted Young, Morgan McLean
+Marylia Gutierrez, Austin Parker, Severin Neumann, Alolita Sharma, Trask Stalnaker, Pablo Baeyens, Morgan McLean, Ted Young

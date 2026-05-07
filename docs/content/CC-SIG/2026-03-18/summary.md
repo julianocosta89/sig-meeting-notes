@@ -1,15 +1,15 @@
 ## Key Topics
-- **Spec Compatibility**: Discussion on the divergence from the OpenTelemetry spec in C++ and the need to track and implement missing features.
-- **OpenTelemetry Version Update**: Transition from OpenTelemetry version 8 to version 10 and the implications for C++ regarding new profiles and exporters.
-- **Release Management**: Plans for an upcoming release, including updates on third-party dependencies and the cleanup of existing issues.
-- **Preview Flags**: Proposal to mainstream long-standing preview flags in the codebase for better accessibility.
-- **CPPContrib Maintenance**: Concerns over the state of the CPPContrib repository, including broken CI processes and outdated workflows, and the need for a strategy moving forward.
+- **Spec Compatibility**: Discussion on the divergence from the OpenTelemetry spec and the need to track and implement missing features.
+- **OpenTelemetry Version Update**: Transitioning from version 8 to version 10, including the need for new exporters and SDK code.
+- **CI and PR Management**: Concerns about the state of the CPPContrib repository, including broken CI processes and outdated dependencies.
+- **Release Preparation**: Plans for an upcoming release, including updates to third-party dependencies and addressing preview flags.
+- **Open PRs**: Review of open PRs and the need to close stale ones, particularly those related to Copilot experiments.
 
 ## Action Items
-- Create PRs for spec updates and track compatibility metrics.
-- Update third-party dependencies in the C++ project.
-- Evaluate and possibly mainstream preview flags in the next release.
-- Develop a plan for addressing the maintenance issues in CPPContrib, including identifying which contributions are still relevant.
+- Create a list of spec compatibility metrics to track implemented features and missing items.
+- Prepare a PR to update third-party dependencies (gRPC and Protobuf).
+- Review and potentially close old PRs, especially those related to Copilot experiments.
+- Investigate the state of the CPPContrib repository and decide on maintenance or deprecation of certain components.
 
 ## Participants
 Doug Barker, Tom Tan, Marc Alff, Luke, Severin

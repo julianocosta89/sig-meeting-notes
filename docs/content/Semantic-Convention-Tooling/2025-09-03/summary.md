@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on Rust programming language and its complexities.
-- Migration to Schema V2 and the need for attribute groups.
-- Proposal for internal and external attribute groups to reduce redundancy.
-- Validation constraints for attributes in the context of semantic conventions.
-- Prototyping of attribute groups in Rust and its implications for schema representation.
+- Discussion on Rust programming language and its features.
+- Proposal for handling attribute groups in OpenTelemetry Schema V2, focusing on internal vs. public groups.
+- Need for cleaning up old PRs and issues in the project repository.
+- Feedback on the concept of metric sets and their implementation.
 
 ## Action Items
-- Liudmila to refine the proposal for internal groups and address Josh's concerns.
-- Participants to review the implications of attribute groups on the migration to Schema V2.
+- Liudmila to continue discussions on attribute groups and gather feedback from other semantic convention authors.
+- Jeremy to initiate a cleanup of old PRs and issues in the repository.
+- Participants to provide feedback on the metric set concept as discussed by Laurent.
 
 ## Participants
-Liudmila Molkova, Jeremy Blythe, Laurent Quérel, Alexandra Konrad, Joshua McDonald
+Liudmila Molkova, Jeremy Blythe, Laurent Quérel, Alexandra Konrad

@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on creating memory profiles due to higher memory usage on Windows tests compared to Linux.
-- Introduction of continuous testing for Windows and ongoing PRs related to this.
-- Open issues related to AC and NAC, including control flow and back pressure in the batch processor.
-- Bugs and feature requests, including a log view for the admin console and a file log receiver.
-- Updates on the refactoring of crates OTAP into core and contrib nodes, with a focus on clearer contributor guidelines.
+- Updates on memory profiling and continuous testing for Windows.
+- Discussion on ACNAC (Acknowledgment and Negative Acknowledgment) handling and deadlock issues.
+- Introduction of deterministic simulation testing (DST) for validating system behavior under various scenarios.
+- Overview of pipeline lifecycle management and dynamic reconfiguration capabilities.
+- Review of recent bugs and proposed fixes related to attribute transformations and Parquet exporter schemas.
 
 ## Action Items
-- Document memory profiling processes for better developer understanding.
-- Follow up on the PR for continuous testing on Windows.
-- Address open issues related to AC and NAC, particularly around control flow.
-- Improve clarity in contributor guidelines to avoid misinterpretation of tasks.
+- Follow up on the implementation of memory profiling documentation.
+- Review and provide feedback on Laurent's draft PR addressing ACNAC and deadlock issues.
+- Investigate the handling of timestamps and ensure UTC is used consistently.
+- Explore the potential for runtime abstraction to improve flexibility in future development.
 
 ## Participants
-jmacdonald, Laurent Querel, Gokhan Uslu, Albert Lockett, Jake Dern, drewrelmas
+jmacdonald, Laurent Querel, Gokhan Uslu, Albert Lockett, Jake Dern, Drew Relmas, Utkarsh Umesan Pillai, Aaron

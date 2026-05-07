@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on tracking database-related plugins and issues in OpenTelemetry.
-- Update on the configuration provider development, including plans for environment variable handling.
-- ES Build support challenges and potential solutions for OpenTelemetry instrumentation.
-- Importance of separating the core package into more specific packages for better maintainability.
+- Discussion on database-related plugins and tracking progress on PostgreSQL and MySQL implementations.
+- Overview of a new configuration provider being developed to manage environment variables and configuration files.
+- Challenges with ES Build support for OpenTelemetry and potential collaboration on existing solutions.
+- Consolidation of Google Cloud Platform (GCP) resource detector code into the main repository and its implications.
+- Updates on various pull requests (PRs) and the stabilization of the logs API.
 
 ## Action Items
-- Marilia to create a new package for configuration instead of placing it in the core package.
-- Participants to explore existing work on ES Build support and provide feedback on its applicability.
+- Marylia to pin the database-related issue for better visibility.
+- Team members to explore Drew's ES Build plugin and provide feedback.
+- Aaron to investigate the possibility of integrating GCP metadata functionality into the main repo.
+- Daniel to assist with the SDK 2.0 update for the resource changes in GCP.
 
 ## Participants
-Jamie Danielson, MG Marylia Gutierrez, Jimmy Thomson, Daniel Dyla
+Jamie Danielson, MG Marylia Gutierrez, Jimmy Thomson, Daniel Dyla, David Luna Bistuer, Trent Mick, Svetlana Brennan, Aaron Abbott, Swapnil Nagar.

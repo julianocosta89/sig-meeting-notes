@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the Instrumentation API incubator and its relation to the SDK.
-- Updates on the metadata updater job and issues arising from the Gradle 9 upgrade.
-- Clarification on the need for a bridge for configuration properties in SDK versus library instrumentations.
-- Potential restructuring of modules to improve clarity and functionality.
+- Discussion on the Instrumentation API incubator and its implications for the SDK.
+- Updates on the Gradle 9 upgrade affecting test configurations and metadata jobs.
+- Tyler's proposal for optimizing disk buffering in metric collection and concerns about API redesign compatibility.
+- Milestones for the declarative configuration, including stability and integration testing.
+- Feedback on resource configuration and the need for better integration with existing systems.
 
 ## Action Items
-- Gregor to find examples of needing the API in the instrumentation context.
-- Jay to fix test suite configurations affected by Gradle 9 changes.
-- Jay to explore using testing suites instead of specifying test classes directly.
+- Gregor to investigate the need for examples in the Instrumentation API.
+- Jay to fix Gradle test configuration issues and explore using GitHub Copilot for automation.
+- Tyler to check his calendar for participation in the Android SIG meeting regarding disk buffering.
+- Gregor to outline milestones for declarative configuration and gather feedback from distros.
 
 ## Participants
-Trask Stalnaker, Jason Plumb, GZ Gregor Zeitlinger, Lauri Tulmin, Jay DeLuca, John Watson
+Trask Stalnaker, Jason Plumb, GZ Gregor Zeitlinger, Lauri Tulmin, Jay DeLuca, Tyler Benson, John Watson, Robert Niedziela, Pranav Sharma.

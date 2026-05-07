@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on how to record Errors vs. Exceptions in OpenTelemetry, particularly in logs.
-- The plan to deprecate span events at the API level while maintaining them over OTLP for a transitional period.
-- Need for clarity and consistency in terminology and implementation across different programming languages regarding error handling.
-- Stabilization of HTTP instrumentation and the importance of resolving ambiguities around error and exception recording.
-- The distinction between errors and exceptions and its implications for current and future specifications.
+- Discussion on the distinction between errors and exceptions in OpenTelemetry and how to effectively record them.
+- Ongoing work related to the deprecation of span events and the preference for logging.
+- Review of Robert's PR and its implications for stabilizing HTTP instrumentation.
+- Clarification on semantic conventions for error and exception recording.
+- Consideration of how to handle attributes related to exceptions in spans and logs.
 
 ## Action Items
-- Clarify the definitions and handling of errors and exceptions in the documentation.
-- Unblock Robert's progress on HTTP instrumentation by reaching consensus on recording errors on spans.
-- Review and potentially revise the existing proposals regarding error recording before stabilization.
+- Robert to follow up on his PR and determine what can be salvaged or split out.
+- Lyudmila to work on clarifying severity and event name considerations.
+- Participants to propose concrete recommendations for recording exceptions and errors in spans and logs.
+- Discussion on how to handle duplication of information between spans and logs.
 
 ## Participants
-Trask Stalnaker, Pellared, Alex Hall, Liudmila Molkova, Alan West
+Trask Stalnaker, Pellared, Alex Hall, Liudmila Molkova, Alan West, Robert

@@ -1,16 +1,15 @@
 ## Key Topics
 - **Trace Context Specification**: Discussion on updating the trace context level 2 as required and ensuring adequate test coverage.
-- **Clang Tidy Cleanup**: Plans for a significant cleanup of the codebase using Clang Tidy, including managing warnings and potential ABI impacts.
-- **Meeting Schedule**: Consideration of meeting dates in December due to the holiday season.
-- **Windows Singleton Issues**: Ongoing problems with singleton implementation on Windows and potential solutions, including creating a small API library.
-- **Compliance Matrix Update**: Transition from a complex Markdown file to a more manageable YAML file for tracking feature compliance across languages.
+- **Clang Tidy Cleanup**: Review of the Clang Tidy cleanup PR, with emphasis on organizing warnings and addressing potential ABI issues.
+- **Windows Singleton Issues**: Ongoing problems with singleton implementations on Windows and potential solutions, including the possibility of creating a small API library.
+- **Documentation Updates**: Need to maintain and update the documentation generated from the code, which has fallen behind.
+- **Single DLL Challenges**: Issues related to the single DLL build, including missing symbols and linking problems, particularly with gRPC.
 
 ## Action Items
-- Review and adjust the trace context level 2 implementation and test coverage.
-- Coordinate on the Clang Tidy cleanup process and manage warnings effectively.
-- Confirm availability for meetings on December 10 and 15.
-- Investigate solutions for Windows singleton issues, potentially involving a separate library.
-- Update the compliance matrix to reflect current features and ensure it is maintained in YAML format.
+- Review and merge the Clang Tidy cleanup PR to facilitate further cleanup efforts.
+- Investigate the Windows singleton issue and potential workarounds.
+- Update the documentation generation process to ensure it reflects the current state of the codebase.
+- Address the issues with the single DLL build and ensure all necessary symbols are included.
 
 ## Participants
-Doug Barker, Tom Tan, Mark, Ehsan
+Doug Barker, Tom Tan, Mark, Ehsan, malff

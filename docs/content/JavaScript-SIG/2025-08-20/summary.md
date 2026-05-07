@@ -1,14 +1,15 @@
 ## Key Topics
-- PR triage process based on repository activity and open PRs.
-- Discussion on the BioConfig PR and its complexity due to numerous parameters.
-- Environment variables for migration and their handling in the configuration.
-- Code ownership and the potential transition of a package from private to public.
-- Need for more moderators for SIG meetings to share responsibilities.
+- PR triage process improvement based on repository activity.
+- Discussion on the BioConfig PR and environment variable handling.
+- Code ownership and public vs. private package considerations.
+- Bug triage and ongoing issues with MongoDB instrumentation.
+- Review of multiple PRs and their statuses, including breaking changes.
 
 ## Action Items
-- Review the BioConfig PR for further discussion and feedback.
-- Consider opening a PR for the SDK node to utilize the new configuration package.
-- Encourage participants to volunteer for moderating future SIG meetings.
+- Review and address the BioConfig PR for environment variables.
+- Consider marking the configuration package as public once integrated with core packages.
+- Follow up on MongoDB metrics issue and add stack trace logging for diagnostics.
+- Create follow-up issues for PRs that require further work or are not ready for merging.
 
 ## Participants
-Marc Pichler, Trent Mick, Marylia Gutierrez, Raphaël Thériault
+Marc Pichler, Trent Mick, MG Marylia Gutierrez, Raphaël Thériault

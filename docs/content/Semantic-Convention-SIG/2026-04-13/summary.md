@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on merging PRs related to entity naming and process attributes.
-- Ongoing collaboration with the OCSF regarding security metrics and AI security.
-- Exploration of the relationship between Kubernetes CPU limits and OpenTelemetry metrics.
-- Coordination between OpenTelemetry and the COSI community for AI security standards.
-- Need for a structured approach to avoid creating multiple standards in security metrics.
+- Triage of pending PRs and discussions on merging processes.
+- Coordination and collaboration on AI security metrics with OCSF and COSI.
+- Status updates on Kubernetes PR and Semantic Convention stabilization.
+- Discussion on the upcoming V2 schema changes and their implications.
+- Conformance reporting and compliance across different language implementations.
 
 ## Action Items
-- Trask to follow up on merging the discussed PRs.
-- Victor to share links for the COSI community and facilitate connections.
-- Consider setting up a meeting to discuss security-related metrics within OpenTelemetry.
+- Trask Stalnaker to reach out to OCSF for alignment on security discussions.
+- Victor Lu to send links for COSI and invite participants to relevant meetings.
+- Liudmila Molkova to draft a blog post outlining OpenTelemetry's perspective on AI security standards.
 
 ## Participants
-Christophe Kamphaus, Trask Stalnaker, Armin (Dynatrace), Liudmila Molkova, Victor Lu
+Christophe Kamphaus, Trask Stalnaker, Armin (Dynatrace), Liudmila Molkova, Victor Lu, Michele Mancioppi.

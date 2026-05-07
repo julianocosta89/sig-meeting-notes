@@ -1,14 +1,14 @@
 ## Key Topics
-- Introduction of Neil Yashinsky and his project, Context Core, aimed at enhancing OpenTelemetry for project management.
-- Discussion on the long-running traces issue and its implications for CI/CD processes.
-- Triage of ongoing issues related to OpenTelemetry, including Python and Go implementations.
-- Clarification on the use of spans and the need for maintaining context across long-running processes.
-- Exploration of how to manage spans in Kubernetes environments and the challenges faced.
+- Introduction of new participant Neil Yashinsky and his project, Context Core, related to OpenTelemetry.
+- Discussion on the long-running traces issue and its implications for CI/CD.
+- Clarification on span and trace structures in OpenTelemetry, particularly regarding parent and child spans.
+- Exploration of how to handle span recreation in cases of interruptions in Kubernetes environments.
+- Suggestions for improving observability and reporting through metadata and event logging.
 
 ## Action Items
-- Alan Clucas to follow up with Robert Payjack regarding the differences in terminology between OpenTelemetry Go and OpenTelemetry Go Contrib.
-- Team to continue monitoring the long-running traces issue and await updates from Kristoff.
-- Encourage Neil Yashinsky to engage with small tasks for contributions to OpenTelemetry.
+- Neil Yashinsky to explore GitHub issues for further context and contribute feedback.
+- Alan Clucas to follow up with Robert regarding the differences in OpenTelemetry Go and Contrib implementations.
+- Adriel Perkins to continue monitoring the long-running traces issue and updates from Kristoff.
 
 ## Participants
-Adriel Perkins, Christophe, Alan Clucas, Neil Yashinsky
+Christophe, Alan Clucas, Adriel Perkins, Neil Yashinsky, Dotan Horovits

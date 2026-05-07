@@ -1,13 +1,13 @@
 ## Key Topics
-- **David's Involvement**: Discussion on David joining the OpenTelemetry technical committee and its impact on Prometheus SIG meetings.
-- **Scheduling Meetings**: Exploration of scheduling options for future meetings to accommodate David's availability.
-- **UX Research and UI Design**: Announcement of a UX research initiative led by Anna, seeking participants familiar with Prometheus and OpenTelemetry for brainstorming sessions.
-- **Prometheus Remote Write Receiver Bug**: Discussion of a concurrency issue affecting the Prometheus Remote Write Receiver, with a focus on troubleshooting and testing.
+- David's involvement in the OpenTelemetry technical committee and scheduling conflicts with Prometheus SIG meetings.
+- UX research and UI design session for Prometheus, seeking participants with Prometheus and OpenTelemetry experience.
+- Discussion of a bug in the Prometheus Remote Write Receiver related to concurrency issues and data handling.
+- Proposed solutions for fixing the bug, including potential changes to caching mechanisms and mutex usage.
 
 ## Action Items
-- **Meeting Scheduling**: Arthur to send DMs to past participants to gather availability for future meetings.
-- **Participant Recruitment**: Arthur to seek additional participants for the UX research session and post in the Prometheus channel.
-- **Bug Investigation**: Team to continue investigating the concurrency issue with the Remote Write Receiver and share findings asynchronously.
+- Arthur to send DMs to participants from the last three months to gather availability for future meetings.
+- Jonathan to open a PR addressing the identified bug in the Prometheus Remote Write Receiver.
+- Participants to consider testing and reviewing the PR for potential issues related to data races and attribute handling.
 
 ## Participants
 Arthur Silva Sens, Jonathan, Owen Williams, Arve Knudsen

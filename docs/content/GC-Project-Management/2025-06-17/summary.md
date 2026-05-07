@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on Slack's sudden changes affecting large open source organizations and potential migration to Discord.
-- Concerns about Salesforce's pricing strategy and its impact on open source communities.
-- Potential benefits of using Discord over Slack for community management and collaboration.
-- Consideration of Discord's capabilities for integration with GitHub and community engagement.
-- Speculation on Discord's future monetization strategies and its implications for the CNCF.
+- Discussion on Slack's sudden rate limiting and potential migration to Discord for community communication.
+- Concerns about Salesforce's pricing strategy affecting open-source communities.
+- Plans for upcoming meetings and coordination of schedules.
+- Review of GitHub repository management and maintaining team structures.
 
 ## Action Items
-- Evaluate the feasibility and timeline for migrating from Slack to Discord.
-- Explore integration options between GitHub and Discord for improved community management.
-- Consider using Discord for video calls and other collaborative functions post-migration.
+- Evaluate the migration process to Discord and how it can enhance community interaction.
+- Update GitHub repository management documentation to clarify team roles and responsibilities.
+- Confirm details for the upcoming GC meetings scheduled for next week.
 
 ## Participants
 Trask Stalnaker, Austin Parker, Morgan McLean

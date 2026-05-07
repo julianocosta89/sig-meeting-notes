@@ -1,13 +1,15 @@
 ## Key Topics
 - Discussion on context propagation in Kotlin coroutines and the challenges associated with it.
-- Proposal for a Kotlin compilation plugin to facilitate context propagation.
-- Planning for participation in KubeCon and discussions around Kubernetes app namespace.
-- Review of existing issues and PRs related to OpenTelemetry SDK development.
+- Review of the OpenTelemetry Android agent's stability and the implications of marking components as stable or unstable.
+- Consideration of documentation improvements for API usage, especially regarding coroutine context management.
+- Planning for the upcoming KubeCon and its impact on the next meeting schedule.
+- Overview of the release candidate timeline and the need for clarity on stability definitions within OpenTelemetry.
 
 ## Action Items
-- Investigate the feasibility of creating instrumentation for context propagation in coroutines.
-- Follow up on the Kotlin compilation plugin proposal for context propagation.
-- Prepare for discussions at KubeCon regarding the app namespace issue.
+- Create an issue focused on documentation for coroutine context propagation.
+- Follow up with users regarding their issues with context propagation in coroutines.
+- Seek additional clarity and guidance from the governing committee on stability definitions and implications for the Android agent.
+- Prepare for the next meeting on November 18, after KubeCon.
 
 ## Participants
-Hanson Ho, Cesar Munoz, Mustafa Haddara, JP Jason Plumb, Jamie Lynch
+Hanson Ho, Cesar Munoz, Mustafa Haddara, JP Jason Plumb, Jamie Lynch, Manoel

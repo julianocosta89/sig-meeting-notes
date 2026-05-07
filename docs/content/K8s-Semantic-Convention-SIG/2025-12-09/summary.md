@@ -1,15 +1,15 @@
 ## Key Topics
-- Review of differences between implementation and current state of Kubernetes resource attributes.
-- Discussion on the stability levels of attributes and the process for transitioning them.
-- Clarification on the role of restart count as an identifying or descriptive attribute for Kubernetes containers.
-- Updates on PRs related to Kubernetes attributes and entities.
-- Consideration of next steps for Kubernetes attributes processor and entities development.
+- Discussion on discrepancies between implementation and current state of semantic conventions, particularly regarding labels and annotations.
+- Review of PRs related to Kubernetes attributes processor and the need for feedback from maintainers.
+- Debate on whether the restart count should be an identifying or descriptive attribute for containers.
+- Consideration of stability levels for attributes and entities, with a focus on the Kubernetes attributes processor.
+- Plans for future work on entities in the collector and the need for a migration plan.
 
 ## Action Items
-- Review the PR linked in the agenda regarding Kubernetes resource attributes.
-- Clarify the need for restart count in relation to container execution and its implications for defining entities.
-- Determine the process for marking attributes as beta or release candidates.
-- Continue discussions on the stability of entities and attributes before making any changes.
+- Review and provide feedback on the PRs related to Kubernetes attributes processor.
+- Clarify the role of restart count in relation to container execution and definition.
+- Raise awareness and create issues regarding the stability of Kubernetes attributes processor and related components.
+- Schedule the next meeting for early next year.
 
 ## Participants
 Stephen Lang, Christos Markou, Dmitrii Anoshin

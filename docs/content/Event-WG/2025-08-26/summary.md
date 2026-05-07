@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on the terminology and structure of attribute values and any values in OpenTelemetry.
-- Review of recent PRs and proposals, including the need for further review and approval processes.
-- Consideration of how to handle nested attributes and their representation in APIs.
-- Exploration of the distinction between structured values and primitive types in the context of attribute representation.
+- Discussion on terminology for attribute values and event body types, including the distinction between "attribute value" and "any value."
+- Review of recent PRs and drafts related to specifications, with emphasis on terminology consistency.
+- Consideration of nested structures in configuration settings, particularly for severity filters.
+- Prototyping discussions for various languages (Go, Java, Python, .NET) and their handling of attribute types.
 
 ## Action Items
-- Robert Pająk to finalize and submit the draft PR for review once the current release is completed.
-- Participants to provide feedback on the proposed terminology changes regarding attribute values and any values.
+- Robert Pająk to revert changes from "any value" to "attribute value" in the PR for consistency.
+- Trask Stalnaker to prototype in Java by next week to gather more perspectives.
+- Participants to review the proposed configuration structure and provide feedback before the next spec meeting.
 
 ## Participants
 Liudmila Molkova, Trask Stalnaker, Robert Pająk

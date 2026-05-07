@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the replacement for deprecated Serdiamil and the readiness of Sapphire.
-- Review of the Weaver Registry Search subcommand and a proof of concept by Jeremy Blythe.
-- Updates on the dependency dashboard and the need to clean up open PRs.
-- Consideration of the markdown update to support V2 and discussions about registry vs. refinements.
-- Examination of Prometheus metric naming and the need for documentation clarity.
+- Discussion on replacing deprecated Serdiamil with Sapphire and its readiness for use.
+- Review of the Weaver Registry Search subcommand and a proof of concept demo by Jeremy Blythe.
+- Updates on the dependency dashboard and handling of open PRs.
+- Consideration of the V2 preview release and necessary features for it.
+- Discussion on the implementation of contextual groups and their implications for metrics and spans.
 
 ## Action Items
-- Review and merge the proposed changes to clean up open PRs.
-- Hold off on the markdown update until further discussions on the V2 schema.
-- Ensure documentation is updated for the Prometheus metric naming functions.
+- Jeremy Blythe to finalize and refactor the proof of concept for the Weaver Registry Search.
+- Josh Suereth to review and merge updates related to the dependency dashboard and continuous live check.
+- Liudmila Molkova to work on documentation for V2 as semantic conventions transition.
+- Team to prepare for the V2 preview release and discuss promotion strategies.
 
 ## Participants
-Josh Suereth, Jeremy Blythe, Laurent, Liudmila Molkova
+Josh Suereth, Jeremy Blythe, Liudmila Molkova

@@ -1,13 +1,12 @@
 ## Key Topics
-- Status update on the OpenTelemetry Go Compile Time Instrumentation project, including progress on the MVP and dependencies.
-- Discussion on the dependency management challenges faced during instrumentation, including potential solutions.
-- Plans for documenting architectural decisions and design considerations for the project.
-- Assignment of tasks among team members and the need for additional volunteers.
+- Status update on the current project and progress towards the MVP, with discussions on dependencies and task assignments.
+- Challenges related to dependency management in Go, particularly concerning the orchestration of instrumentation and ensuring compatibility.
+- Discussion of the recent rejection of a conference talk submission and plans for future submissions.
+- Plans for documentation to formalize architectural decisions and address dependency conflicts.
 
 ## Action Items
-- Przemyslaw Delewski to synthesize community engagement information for next meeting.
-- Team members to review and assign pending tasks related to the project.
-- Romain Marcadier and Przemyslaw Delewski to prepare a document outlining architectural decisions and design considerations for dependency management.
+- Romain Marcadier to write documentation regarding dependency management issues and proposed solutions.
+- Team members to consider task assignments and volunteer for implementation phases as they become available.
 
 ## Participants
 Przemyslaw Delewski, Romain Marcadier, Ziming Liu, Huxing Zhang, Kemal Akkoyun, Yi Yang

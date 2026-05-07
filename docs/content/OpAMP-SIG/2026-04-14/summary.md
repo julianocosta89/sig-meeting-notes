@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the limitations of capability changes in OPAMP implementations and their implications for the specification.
-- Consideration of whether to amend the specification to restrict dynamic capability changes.
-- Guidelines for SDK configuration using OPAMP, including identifying attributes for different language implementations.
-- The need for clarity on identifying versus non-identifying attributes in SDKs.
+- Discussion on the implications of allowing dynamic changes to capabilities in OPAMP clients, particularly regarding HTTP transport.
+- Guidelines for SDK configuration using OPAMP, including identifying attributes and their implications for future-proofing.
+- Interest in adding extension support in the supervisor for storage and auth extensions, with a focus on implementation logistics.
+- Proposal for adding a root certificate signing chain for message verification to enhance security in OPAMP.
+- Addressing duplicate agent IDs and the need for a consistent approach across WebSocket and HTTP connections.
 
 ## Action Items
-- Review the proposed guidelines for SDKs and provide feedback.
-- Consider moving sections from the protocol specification to supplementary guidelines for SDKs and collectors.
-- Further discussion needed on the implications of capability changes and their enforcement in implementations.
+- Tigran Najaryan to review the proposal for root certificate signing and provide feedback once a proof of concept is ready.
+- Dakota Paasman to write up an issue summarizing the discussion on extension support and propose next steps.
+- Michel Laterman to create a PR addressing duplicate agent ID detection in the spec.
 
 ## Participants
-Tigran Najaryan, Andy Keller, Evan Bradley, ...
+Tigran Najaryan, Andy Keller, Evan Bradley, Michel Laterman, Dakota Paasman, Stanley Liu

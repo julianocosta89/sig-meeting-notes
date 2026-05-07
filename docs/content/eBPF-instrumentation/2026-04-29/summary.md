@@ -1,13 +1,15 @@
 ## Key Topics
-- **Automatic Copilot Reviews**: Discussion on automating Copilot reviews post-CI passes and concerns about budget implications.
-- **Maintainer Spec SIG Updates**: Updates on the roadmap, goals for SDK integration, and community feedback on better SDK collaboration.
-- **CI Minutes Optimization**: Ideas presented by Stephen Lang on reducing CI minutes, including container management and workflow efficiency.
-- **User Space Instrumentation**: Exploration of improving communication between OpenTelemetry and user space, with a focus on SDK enhancements.
+- **Automatic Copilot Reviews**: Discussion on automating Copilot reviews after CI passes and concerns about GitHub action budgets.
+- **Maintainer Spec SIG Updates**: Roadmap discussions including SDK integration and feature requests for better SDK support.
+- **CI Optimization Strategies**: Ideas presented to reduce CI minutes through container restarts, shared artifacts, and lightweight testing approaches.
+- **Flaky Test Reporting**: Proposal to address flaky tests and improve the health of the test suite through a daily report and potential issue delegation.
+- **Roadmap Check-in**: Updates on protocol support, SDK integrations, and ongoing stabilization efforts.
 
 ## Action Items
-- Nimrod to investigate the feasibility of automating Copilot reviews and follow up on Slack.
-- Proposal to be drafted for better integration of SDKs with OpenTelemetry.
-- Team to explore container management strategies to optimize CI minutes.
+- Nimrod to investigate the automation of Copilot reviews and follow up with the maintainer's channel.
+- Stephen to explore CI optimization strategies and present a proposal.
+- Stephen to create a weekly roll-up report for flaky tests to improve tracking and resolution.
+- Nikola and Nimrod to work on expanding telemetry schemas and integrating with the Weaver tool.
 
 ## Participants
-Tyler, Nikola Grcevski, Nimrod Avni, Mattia Meleleo, Stephen Lang, Antonio Jimenez
+Stephen Lang, Tyler, Nikola Grcevski, Nimrod Avni, Mattia Meleleo, Antonio Jimenez, Mario Macias, Rafael Roquetto.

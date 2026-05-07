@@ -1,13 +1,14 @@
 ## Key Topics
-- Challenges in coordinating content contributions and responsibilities within the SIG Communications team.
-- Discussion on the importance of translations for community engagement and the need for more contributors.
-- Updates on the Grafana Champions program and efforts to increase diversity among participants.
-- Strategies for mentoring underrepresented groups and encouraging contributions to the community.
+- Discussion on the progress of translation tasks for OpenTelemetry and Kubernetes documentation.
+- Challenges in community engagement and the need for more contributors to support translation efforts.
+- Insights on the importance of mentorship and diversity within the community.
+- Experiences and considerations regarding attending conferences, including logistical challenges and funding.
+- Observations on the competitive landscape of search technologies and the impact of open-source solutions.
 
 ## Action Items
-- Imma Valls to create 1-2 pull requests for translations in Kubernetes.
-- Participants to encourage more people to join and contribute to translation efforts.
-- Explore opportunities for mentorship and support for potential Grafana Champions.
+- Imma to work on translation tasks for Kubernetes and OpenTelemetry documentation.
+- Carol to assist Imma with access permissions for relevant documents.
+- Both participants to encourage more community involvement in translation efforts.
 
 ## Participants
 Carol Valencia, Imma Valls

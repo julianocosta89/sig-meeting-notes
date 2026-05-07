@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the status and feedback for various pull requests related to OpenTelemetry.
-- Proposal for a data sensitivity attribute to annotate services interacting with sensitive data.
-- Debate on naming conventions for the data sensitivity attribute, with considerations for broader implications across SIGs.
-- Need for documentation regarding the guidelines for including AI frameworks in the OpenTelemetry ecosystem.
-- Exploration of the impact of sensitive data handling on telemetry and data flow in systems.
+- Discussion on pull requests related to data sensitivity and the need for documentation on guidelines for including constants.
+- Proposal for a new attribute related to data sensitivity and its implications for telemetry.
+- Review of the process for marking attributes and entities as stable and the need for a policy on this.
+- Updates on the new repo for federated semantic conventions and its integration with existing systems.
+- Discussion on versioning and the importance of adhering to semantic versioning for stability.
 
 ## Action Items
-- Document the guidelines for including AI frameworks in OpenTelemetry.
-- Review and provide feedback on the pull requests related to data sensitivity and other topics.
-- Consider formal proposals for naming conventions related to data sensitivity attributes.
+- Document guidelines for including constants in pull requests.
+- Review and provide feedback on the data sensitivity proposal and its implications.
+- Establish a policy for marking attributes and entities as stable.
+- Merge Ludmila's OTEP and the federated SEMCOM OTEP for clarity and alignment.
+- Set up reminders for regular releases in the maintainer channel.
 
 ## Participants
-Liudmila Molkova, Josh Suereth, Trask Stalnaker, Christophe Kamphaus
+Liudmila Molkova, Josh Suereth, Trask Stalnaker, Christophe Kamphaus, Michele Mancioppi, Ruediger Schulze, Armin (Dynatrace).

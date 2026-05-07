@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on security advisories and triage process.
-- Issues with automation for community inbox and project proposals.
-- Triage of unassigned issues in the specification repository.
-- Debate on the organization of components in the OpenTelemetry spec.
-- Proposal for standardizing JSON object encoding for attribute debugging.
+- Discussion on triaging security advisories and community proposals.
+- Automation issues related to GitHub actions affecting community inbox.
+- Clarification on the role of the Technical Committee (TC) in packaging SIG proposals.
+- Debate on the specification of debugging output for attributes and its applicability.
+- Assignment of issues and responsibilities among TC members.
 
 ## Action Items
-- Josh Suereth to address automation issues in the community inbox.
-- Josh to respond to a proposal regarding packaging SIG and ensure it is triaged.
-- Reiley and Carlos Alberto to collaborate on resolving component organization concerns.
-- David Ashpole to take on the assignment for JSON object encoding discussions.
+- Josh to fix GitHub action permissions for community inbox automation.
+- Josh to respond to the community proposal regarding packaging SIG.
+- David to take on the assignment related to string functions for attributes.
+- All members to review the OTEP for collective consideration.
 
 ## Participants
-Reiley, Chuck, Josh Suereth, Jack Berg, jmacdonald, David Ashpole, Carlos Alberto Cortez, Armin (Dynatrace)
+Reiley, Jack Berg, jmacdonald, Josh Suereth, Armin (Dynatrace), Carlos Alberto Cortez, David Ashpole

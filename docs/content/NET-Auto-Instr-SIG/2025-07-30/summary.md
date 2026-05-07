@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on naming the NuGet package for out-of-process collection, with suggestions for clearer naming conventions.
-- Updates on ongoing pull requests, including testing for different signals and addressing potential deadlocks.
-- Review of configuration settings, particularly around file-based and environment variable configurations.
-- Feature requests and potential bugs, including extending SQL statement capturing for legacy .NET Framework libraries.
-- Discussion on handling stale issues and contributions from the community.
+- Discussion on naming the NuGet package for out-of-process collection, with suggestions like "out of process collection" and "forwarder configuration."
+- Updates on open pull requests, including testing for different signals and addressing a potential deadlock issue.
+- Configuration discussions, particularly around file-based and environment variable settings, including the fail-fast behavior.
+- Feature requests regarding SQL statement capturing for legacy .NET framework libraries.
+- Review of stale issues and potential contributions from the community.
 
 ## Action Items
-- Participants to provide feedback on the NuGet package naming issue before the next meeting.
-- Piotr to review the draft pull request related to out-of-process collection.
-- Zach to respond to feature requests and stale issues as needed.
-- Chris to investigate the SQL statement capturing issue and follow up with Steve for potential contributions.
+- Participants to provide feedback on NuGet package naming by the next meeting.
+- Piotr to review the draft related to the deadlock issue.
+- Zach to respond to feature requests and stale issues.
+- Chris to check on the SQL statement capturing request and see if Steve can provide a proof of concept.
 
 ## Participants
 Mateusz Łach, Zach Montoya, Piotr Kiełkowicz, Yevhenii Solomchenko, Chris Ventura

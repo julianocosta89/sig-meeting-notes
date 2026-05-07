@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on Go instrumentation for TCP and HTTP protocols, including challenges with different pipelines.
-- Need for consistent telemetry and guidelines for adding instrumentation across various libraries.
-- Exploration of using existing code for Go instrumentation to avoid duplicate telemetry.
-- Proposal for handling HTTP events and body extraction to improve classification and processing.
-- Consideration of future reliance on TCP instrumentation versus library-specific approaches.
+- Discussion on Go instrumentation for TCP and HTTP, including the need for consistent pipelines and handling of large buffers.
+- Updates on .NET work regarding header injection and the challenges faced with kernel manipulation.
+- Proposal for sharing service metadata through protocols to enhance observability, particularly in non-Kubernetes environments.
+- Plans for the next release, including embedding the Java agent and optimizing large buffer handling.
+- Considerations for enabling large buffers automatically based on observed traffic patterns.
 
 ## Action Items
-- Nimrod to create a separate PR for HTTP body serialization and ensure it flows through the same pipeline.
-- Team to discuss and establish guidelines for when to use U-probes versus Go instrumentation.
+- Nimrod to create a PR for HTTP instrumentation that ensures consistent processing through the same pipeline.
+- Rafael to finalize changes to large buffer settings to be per request rather than per buffer.
+- Nikola to prototype metadata sharing between services and evaluate header naming conventions.
+- Participants to review and provide feedback on outstanding PRs and issues for the next release.
 
 ## Participants
-Tyler, Rafael Roquetto, Giuseppe Ognibene, Nikola Grcevski, Nimrod Avni, Mattia Meleleo
+Tyler, Rafael Roquetto, Nikola Grcevski, Nimrod Avni, Giuseppe Ognibene, Mattia Meleleo, Stephen Lang, Florian Lehner

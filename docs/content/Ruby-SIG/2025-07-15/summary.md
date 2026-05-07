@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the merging of specifications, particularly extending attributes to support complex values.
-- Review of the measurement processor for metrics, with uncertainty about its necessity.
-- Updates on pull requests related to exponential bucket histogram and cumulative metrics.
-- Need for Ruby implementation updates in response to new specifications.
-- General discussion on the importance of reviewing and managing pull requests across repositories.
+- Discussion on the status and future of the measurement processor for metrics.
+- Updates on the merging of extending attributes to support complex values.
+- Review of pull requests related to the exponential bucket histogram and cumulative metrics.
+- Ongoing discussions about semantic conventions and their migration strategies.
+- Eric Mustin's new role at Elastic and its implications for his participation.
 
 ## Action Items
-- Kayla to check in with Ariel regarding a review for a pull request.
-- Eric to pick up a few pull requests for review.
-- Team to assess the stability of semantic conventions before adding new features.
+- Kayla Reopelle to check if any adjustments are needed for Ruby to support the newly merged complex values.
+- Eric Mustin to review pull requests and provide feedback.
+- Hannah Ramadan to create companion issues to notify about upcoming changes in semantic conventions.
+- Team to follow up on the sampling specification and related issues discussed in the meeting.
 
 ## Participants
-Xuan Cao, Eric Mustin, Hannah Ramadan, Kayla Reopelle
+Xuan Cao, Eric Mustin, Kayla Reopelle, Hannah Ramadan

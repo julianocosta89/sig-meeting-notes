@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on model parameters and object attributes in OpenTelemetry.
-- Proposal for introducing new spans: workflow and step, particularly in relation to agentic frameworks.
-- Review and feedback on the MCPPR (Multi-Cloud Platform Proposal Review).
-- Bug fixes and triage of existing issues within the project.
-- Clarification of terminology and differentiation between workflow and invoke agent spans.
+- Discussion on new issues related to model parameters and object attributes.
+- Proposal for introducing new spans: workflow and step, and their differentiation.
+- Review of session ID vs. conversation ID and its implications for tracking user interactions.
+- Updates on built-in tool support and the need for a more flexible schema for tool calls.
 
 ## Action Items
-- Participants to review the MCPPR and provide feedback or approval.
-- Liudmila Molkova to monitor the bug issue and potentially submit a fix if no one else does.
-- Further discussion on the proposed workflow and step spans to clarify terminology and implementation.
+- Review and provide feedback on the MCP proposal.
+- Ankit to update Python code related to built-in tools in the PR.
+- Participants to review the session ID documentation and provide input offline.
 
 ## Participants
-Liudmila Molkova, Alex Hall, Aaron Abbott, Surya Teja, Ridhima Satam, Ankit
+Liudmila Molkova, Alex Hall, Aaron Abbott, Ridhima Satam, Ankit, Pradeep Nair, Surya Teja, Don B.

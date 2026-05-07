@@ -1,13 +1,14 @@
 ## Key Topics
-- Contributor Experience: Marylia Gutierrez discussed feedback from PR surveys indicating confusion about the merging process after approval, highlighting the need for clearer communication.
-- Maintainer Bottlenecks: John Watson and Jack Berg addressed delays in PR approvals due to limited maintainers and the need for more contributors to focus on code reviews rather than just code submissions.
-- Automation Suggestions: The group discussed potential automation to improve communication around PR statuses, such as tagging with release milestones and adding comments to clarify expectations.
-- Distinction Between Repositories: Clarification on the differences in approval processes between the core repo and the instrumentation repo, emphasizing the need for more maintainers in the latter.
+- **Contributor Experience Feedback**: Discussion on PR approval and merging delays, highlighting confusion among contributors regarding the merging process and the need for clearer communication.
+- **OpenTelemetry eBPF Profiler**: Presentation on the development of a specification for correlating profiling data with traces, including feedback on Java compatibility and the need for a prototype.
+- **Java Agent Configuration**: Updates on creating a searchable configuration page for Java instrumentation, addressing the need for clarity on which configurations apply to specific instrumentations.
+- **Stability and Experimental Components**: Discussion on the implications of marking components as stable or experimental, and the impact on user experience and versioning.
 
 ## Action Items
-- Jay DeLuca to create a GitHub action for annual meeting document rollover.
-- Consider creating documentation or a blog post to clarify the path to becoming a maintainer, focusing on the importance of code reviews.
-- Explore automation options for tagging PRs with release milestones and adding comments to improve clarity.
+- **Documentation Improvement**: Enhance clarity around the PR merging process and contributor expectations.
+- **Feedback on eBPF Profiler Specification**: Participants to review and provide feedback on the proposed specification for the eBPF profiler.
+- **Configuration Page Development**: Jay DeLuca to iterate on the configuration page for better display and discoverability of Java instrumentation configurations.
+- **Discussion on Stability Guidelines**: Continue the conversation on how to manage stable vs. experimental components in the Java agent, including the implications for future releases.
 
 ## Participants
-Jay DeLuca, Marylia Gutierrez, Trask Stalnaker, Jason Plumb, John Watson, Jack Berg, Lauri Tulmin
+Jay DeLuca, Marylia Gutierrez, Trask Stalnaker, Jason Plumb, John Watson, Jack Berg, Ivo Anjo, Lauri Tulmin, Jack Shirazi.

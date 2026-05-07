@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the test harness plan and its relevance to event capturing.
-- Review of past research on events and attributes captured by various vendors' SDKs.
-- Proposal for a standardized template to facilitate comparisons of existing implementations.
-- Importance of establishing benchmarks for performance metrics and data integrity checks.
-- Clarification on the scope of Phase 1 focusing on API and instrumentation versus optimization work.
+- Discussion on the current state and relevance of existing event attributes for browser instrumentation.
+- Proposal for a test harness to evaluate performance metrics and data integrity of SDKs.
+- Importance of establishing benchmarks for comparing OpenTelemetry implementations against legacy agents.
+- Need for a minimum set of useful instrumentation and API features to ensure relevance and performance.
+- Review of open PRs related to browser instrumentation and their current status.
 
 ## Action Items
-- Participants to review existing implementations and provide data on events and attributes captured.
-- Create a standardized template for vendors to fill out regarding their SDKs.
-- Further discussion on the relationship between the test harness and event capturing.
+- Participants to review existing SDK implementations and provide data for comparison.
+- Martin to ensure there are no open comments on the PRs before the next meeting and remind the group to add their comments.
+- Group to brainstorm a template for gathering information from different vendors about their implementations.
 
 ## Participants
 Ted Young, Martin Kuba, Jared Freeze, Daniel Dyla, Dan Gomez Blanco, Santosh, Scheler

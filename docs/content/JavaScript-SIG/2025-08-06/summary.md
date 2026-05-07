@@ -1,16 +1,15 @@
 ## Key Topics
-- Announcement of updates to AWS Lambda instrumentation and its review status.
-- Discussion on OpenAI instrumentation and naming conventions for event exports.
-- Triage of bugs, including exporter proxy settings and resource attributes handling.
-- Review of ongoing pull requests (PRs) and their statuses.
-- Exploration of issues related to async attributes and their logging behavior.
+- Announcement of AWS Lambda instrumentation review and its implications for download numbers.
+- Discussion on OpenAI instrumentation and naming conventions for events.
+- Triage of various PRs, including bug reports and feature requests.
+- Review of ongoing issues with resource attributes and async handling.
+- Consideration of a new project management approach for tracking PR statuses.
 
 ## Action Items
-- Andrei Borza to seek reviews for AWS Lambda instrumentation.
-- Daniel Dyla to review OpenAI instrumentation PR and provide feedback.
-- Marc Pichler to continue reviewing the exporter proxy settings PR.
-- Daniel Dyla to reproduce and investigate the resource attributes issue.
-- Trent Mick to follow up on the license header plugin PR for variance support.
+- Andrei Borza to follow up on AWS Lambda instrumentation reviews.
+- Daniel Dyla to review OpenAI instrumentation PR.
+- Marc Pichler to continue reviewing PRs related to exporter proxy settings and resource attributes.
+- Consider implementing a Kanban project for PR triage and owner approvals.
 
 ## Participants
-Marc Pichler, Andrei Borza, Daniel Dyla, Trent Mick
+Marc Pichler, Andrei Borza, Daniel Dyla, Trent Mick, Hector Hernandez, Antoine Toulme

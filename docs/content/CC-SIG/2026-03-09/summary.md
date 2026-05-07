@@ -1,15 +1,16 @@
 ## Key Topics
-- CI issues related to recent benchmark workflow changes.
+- CI issues related to recent benchmark merges causing build failures.
 - Discussion on two mutually exclusive PRs related to Prometheus and the need for a decision on which to merge.
-- Updates on spec compliance and the transition to YAML for the spec component matrix.
-- Exploration of potential contributions from new C++ community members, particularly from Bloomberg.
-- Identifying areas for improvement, including performance tuning and code coverage.
+- Updates on spec compliance and the transition to YAML for documentation.
+- The importance of identifying areas for new contributors to focus on, including performance improvements and spec completeness.
+- Plans for a new release due to recent fixes and updates.
 
 ## Action Items
-- Investigate and resolve CI failures in the benchmark workflow.
-- Review and decide on the two PRs related to Prometheus.
-- Update the spec compliance metrics to reflect current implementation status.
-- Create an issue to capture performance improvement suggestions, particularly regarding locking mechanisms in the metrics API.
+- Investigate the CI issues with the benchmark workflow.
+- Review the two PRs related to Prometheus to decide on the appropriate course of action.
+- Document areas of spec compliance that need attention and update the YAML file.
+- File an issue regarding performance improvements related to metrics and logging.
+- Prepare for a new release and address any outstanding PRs.
 
 ## Participants
-Tom Tan, malff, lalitb, Nalid, Severin
+Tom Tan, malff, lalitb

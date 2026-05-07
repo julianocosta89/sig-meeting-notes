@@ -1,7 +1,7 @@
 ## Key Topics
 - Discussion on the creation of the MCP repository and ongoing blog post drafts.
 - Updates on interviews with end users regarding their experiences with the OpenTelemetry collector.
-- Plans for upcoming events, including Hotel Unplugged and KubeCon.
+- Plans for upcoming events, including OTel Unplugged and KubeCon.
 - Challenges faced in getting feedback and approvals for blog posts from companies like Mastodon.
 - Insights into the acceptance of talks at KubeCon and Observability Day.
 

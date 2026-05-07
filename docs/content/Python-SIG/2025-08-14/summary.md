@@ -1,12 +1,14 @@
 ## Key Topics
-- **New Instrumentation Feature**: Tammy Baylis presented a prototype PR for a new labeler class in Python instrumenters to add custom attributes to HTTP metrics, inspired by a Go implementation.
-- **HTTP Exporter Specification**: Riccardo Magliocchetti discussed a draft PR regarding allowing users to override HTTP headers, including user agent and content type, and sought feedback on the specification implications.
-- **LLM Semantic Conventions**: Ridhima Satam requested reviews for a PR related to LLM semantic conventions, specifically addressing the removal of a redundant system attribute.
+- **New Instrumentation Proposal**: Tammy Baylis presented a prototype PR for a new labeler class in Python HTTP instrumenters to add custom attributes to metrics.
+- **HTTP Exporter Enhancements**: Riccardo Magliocchetti discussed a PR regarding the ability to override HTTP headers in exporters, seeking feedback on the specification.
+- **Langchain LLM Instrumentation**: Ridhima Satam requested reviews for a PR related to LLM semantic conventions, discussing potential duplication of spans and attributes.
+- **TraceWhoop Integration**: Sergey Sergeev raised questions about integrating TraceWhoop instrumentation with OpenTelemetry, exploring options for attribute transformation.
 
 ## Action Items
-- Tammy will double-check the OpenTelemetry specification regarding the addition of custom attributes and create a new issue to encapsulate related smaller issues.
-- Riccardo will seek reviews and opinions on his draft PR about overriding HTTP headers.
-- Ridhima will continue to seek feedback from maintainers on the LLM semantic conventions PR.
+- Tammy to check the OpenTelemetry spec regarding custom attributes and baggage.
+- Riccardo to gather feedback on his HTTP exporter PR.
+- Ridhima to continue discussions on Langchain instrumentation and address concerns in follow-up PRs.
+- Sergey to investigate implementing a custom span processor for TraceWhoop integration.
 
 ## Participants
-Riccardo Magliocchetti, Tammy Baylis, John Scancella, Aaron Abbott, Ridhima Satam
+Riccardo Magliocchetti, Tammy Baylis, John Scancella, Aaron Abbott, Ridhima Satam, Sergey Sergeev

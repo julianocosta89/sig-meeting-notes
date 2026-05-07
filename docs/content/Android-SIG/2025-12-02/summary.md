@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on feedback for Release Candidate 1 (RC1) and its slow adoption due to the holiday season.
-- Considerations for updating minimum SDK requirements and dependencies for future versions (2.x).
-- Strategies for managing versioning and release branches post-1.0 release.
-- The impact of Kotlin and Android Gradle Plugin version requirements on future development.
+- Discussion on feedback for Release Candidate 1 (RC1) and the slow pace of contributions during the holiday season.
+- Plans for bumping the minimum SDK and dependencies in future versions, particularly after the stable release of version 1.0.
+- The logistics of managing versioning and release branches, including the transition from version 1.x to 2.x.
+- Importance of community contributions and maintaining pull requests, including the potential for an open call for contributors.
+- Review of the CLO monitor score and the project's adherence to best practices.
 
 ## Action Items
-- Participants to provide feedback on RC1 asynchronously or in the next meeting.
-- Plan for a potential 2.0 release after stabilizing 1.0 and updating dependencies.
-- Clarify the release process and branch management for upcoming versions.
+- Pin existing PRs to the current version to prevent unwanted updates until the major version bump.
+- Create a milestone for version 2.x to track necessary updates and changes.
+- Consider drafting a section in the README to attract more contributors and clarify how they can help.
+- Review and potentially implement a tagging process for better organization of issues and PRs.
 
 ## Participants
 JP Jason Plumb, cleverchuk, Jairo Mendoza, Jamie Lynch, Hanson Ho

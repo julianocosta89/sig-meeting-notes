@@ -1,13 +1,14 @@
 ## Key Topics
-- Onboarding updates from Pratik regarding his new job in observability.
-- Progress on agent skills and documentation, with Vitor working on a PR.
-- Discussion about a potential showcase page for OpenTelemetry, including concerns about neutrality and vendor participation.
-- Exploration of visualization tools and the possibility of integrating them with existing demos and blueprints.
+- Update on agent skills and documentation improvements.
+- Discussion on the potential showcase page for OpenTelemetry.
+- Feedback on the use of maintainer skills and their effectiveness.
+- Challenges and considerations regarding vendor participation in the showcase.
+- Clarification on the demo's role in showcasing OpenTelemetry capabilities.
 
 ## Action Items
-- Vitor to finalize the PR on agent skills and experiment with documentation to reduce repetition.
-- Patrice to gather more feedback on the showcase page and confirm details before proceeding.
-- Participants to explore existing open-source dashboards and visualizers for potential inclusion in the showcase.
+- Vitor to finalize the PR on agent skills and experiment with documentation structure.
+- Marylia to open an issue regarding the tools folder link on the community repo.
+- Tiffany to postpone blog drafts and social media activities until her return.
 
 ## Participants
 Vitor Vasconcellos, Patrice C (CNCF), Tiffany Hrabusa, Pratik, Sophia Solomon, Marylia Gutierrez

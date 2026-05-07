@@ -1,14 +1,13 @@
 ## Key Topics
-- Discussion on stabilizing prototypes and proposing changes to the API.
-- The need for structured logs versus string formatting in the ergonomic API.
-- Emily Stolfo's contribution to the collector and the potential for defining semantic conventions for logs.
-- The importance of documenting semantic conventions for specific components like load balancers.
-- Consensus on the need for conventions, even if they are not unified across all cloud providers.
+- Discussion on the stabilization of prototypes and proposed changes to the API.
+- The need for semantic conventions for logging, particularly for cloud provider components.
+- Differentiation between error messages and exception messages in logging.
+- The decision to stabilize complex attributes in the SDKs by January 15th.
 
 ## Action Items
-- Pellared to investigate historical use cases for emitting logs and provide rationale.
-- Emily Stolfo to reach out to Antoine for guidance on documenting semantic conventions.
-- Participants encouraged to provide feedback on drafts or issues related to semantic conventions.
+- Pellared to prepare and propose changes to the API for stabilization.
+- Emily Stolfo to draft semantic conventions for specific components and seek feedback.
+- Team to finalize and document the stabilization of complex attributes by January 15th.
 
 ## Participants
 Liudmila Molkova, Pellared, Trask Stalnaker, Emily Stolfo

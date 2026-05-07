@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the order of releasing instrumentation and contrib components.
-- Review of a GCP project pull request and its approval status.
-- Proposal for a single page that consolidates all configuration options for easier access.
-- Introduction of a metaschema concept to enhance documentation and configuration management.
-- Challenges related to managing a large number of configuration options and their usability.
+- Discussion on the order of releases for instrumentation and contrib components.
+- Proposal for a single page to consolidate all configuration options for easier access and searchability.
+- Updates on the declarative configuration and its compatibility with existing environment variables and system properties.
+- Examination of internal logging configurations and the need for a throttling mechanism.
+- Divergence of metric descriptions in Java instrumentation from semantic conventions and potential solutions.
 
 ## Action Items
-- Lauri to review the GCP project pull request and follow up for approval.
-- Jason to explore the feasibility of creating a consolidated configuration page and open an issue for discussion.
-- Jack to further develop the metaschema concept for better documentation.
+- Lauri to review and potentially merge the GCP project pull request.
+- Jason to open an issue regarding the proposal for a consolidated configuration page.
+- Robert to create an issue addressing the handling of known values in declarative config.
+- Jack to explore the implications of adding programmatic customizers for specific use cases.
 
 ## Participants
-Jason Plumb, Trask Stalnaker, Jack Berg, Lauri Tulmin, Robert Niedziela, Bruno Baptista
+Jason Plumb, Trask Stalnaker, Jack Berg, Lauri Tulmin, Robert Niedziela, Bruno Baptista, John Watson.

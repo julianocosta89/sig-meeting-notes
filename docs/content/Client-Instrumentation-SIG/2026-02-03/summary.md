@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on network timing attributes and modeling for HTTP spans on the client side.
-- Consideration of aligning mobile instrumentation with browser-side timing events.
-- Exploration of aggregation concepts in telemetry data to answer performance-related questions (e.g., error rates, view performance).
-- Challenges in defining and aggregating metrics and sessions within OpenTelemetry.
+- Discussion on network timing attributes for HTTP spans and alignment with browser-side events.
+- Exploration of aggregation concepts in telemetry data to answer specific application performance questions.
+- Challenges with defining "session" in OpenTelemetry and its implications for mobile platforms.
+- Concerns regarding payload size and the mutable nature of session IDs and other attributes.
 
 ## Action Items
-- Review and potentially refine semantic conventions for client-side metrics and aggregation.
-- Investigate how to better define and standardize the concept of sessions in OpenTelemetry.
+- Participants to look into the network timing events and their relevance for mobile platforms.
+- Consideration of how to effectively aggregate telemetry data to answer key performance questions.
+- Follow-up on the state of the Client SIG and potential outreach to sponsors for engagement.
 
 ## Participants
-Maciek Grzybowski, Jason Plumb, João Oliveira, ...
+Maciek Grzybowski, Jason Plumb, João Oliveira

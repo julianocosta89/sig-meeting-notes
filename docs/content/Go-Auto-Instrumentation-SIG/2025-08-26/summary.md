@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on standardizing the Clang format version across the project.
-- Proposal to Dockerize the Clang format setup to ensure consistent developer environments.
-- Review of open pull requests and the need for additional eyes on a specific TestifyLint rule.
-- Updates on the upcoming milestone related to the hotel upstream release.
+- Discussion on standardizing Clang format usage across the project.
+- Proposal to Dockerize the build process for consistent tooling.
+- Review of open PRs and upcoming milestones, including the need to upgrade to semantic conventions.
+- Plans for the next release and support for Go 1.25.
 
 ## Action Items
-- Rafael to investigate Dockerizing the Clang format setup and explore options for a static compile version.
-- Document in contributing guidelines that Clang Format 19 is the required version.
-- Tyler to review and finalize the open pull request related to TestifyLint.
+- Rafael to explore Docker options for Clang format and document contributing guidelines.
+- Team to review and finalize open PRs, particularly the TestifyLint rule.
+- Prepare for the upcoming milestone release and ensure compatibility with Go 1.25.
 
 ## Participants
 Rafael Roquetto, Tyler Yahn, Mike Dame

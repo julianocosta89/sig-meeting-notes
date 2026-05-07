@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on profiling use cases and the role of the OpenTelemetry SDK in supporting profiling tools like eBPF, async Profiler, and JFR.
-- The need for a library to build data for export rather than just an exporter, focusing on data capture and translation.
-- Challenges related to the JFR file format and the potential need for filtering events to manage data size.
-- The current state of profiling SDKs and the absence of a standardized API for profiling in OpenTelemetry.
-- Consideration of an internal API or SPI for profiling to facilitate data handling without being a full user-level API.
+- Discussion on profiling use cases and SDK implications, including support for async Profiler and JFR.
+- The need for a profiling SDK and internal API for building data to be exported.
+- Introduction of a rule-based sampler into the core Java agent distribution, addressing security concerns.
+- Consideration of creating a project for version 3.0 and the status of existing PRs and issues.
+- Discussion on the integration of declarative configuration and potential contributions for the micrometer bridge.
 
 ## Action Items
-- Define the scope of support for profiling use cases and determine which functionalities to include in the SDK.
-- Explore the feasibility of creating a library for data capture and translation for profiling.
-- Investigate the implementation of an internal API to assist in building profiling data for export.
+- Evaluate the support for async Profiler and JFR in the SDK and determine the necessary configurations.
+- Create a separate module for the rule-based sampler to avoid security risks associated with arbitrary code execution.
+- Establish a project for version 3.0 and clarify priorities for upcoming work.
+- Investigate the feasibility of integrating the micrometer bridge into the project and address the public API surface.
 
 ## Participants
-Trask Stalnaker, Jay DeLuca, Jason Plumb, Jonathan Halliday, Lauri Tulmin
+Trask Stalnaker, Jay DeLuca, Jason Plumb, Jonathan Halliday, Lauri Tulmin, John Watson, Peter Findeisen.

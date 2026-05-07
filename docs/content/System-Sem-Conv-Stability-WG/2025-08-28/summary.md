@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the operating system (OS) attributes and related PRs, specifically focusing on extending OS properties and addressing inconsistencies.
-- Feedback from participants regarding the usefulness of distinguishing between Unix and non-Unix systems.
-- The need for further insights from Elastic on the practical use of OS types in their dashboards.
-- Review of the current status of the GA board and the focus on process areas for KubeCon.
+- Discussion on OS attributes and related PRs, including the need for documentation and feedback on OS types.
+- Consideration of the usefulness of distinguishing between Unix and non-Unix systems in the context of OS attributes.
+- Review of the GA board status and focus on process areas for KubeCon.
+- Introduction of a generic process executable ID and versioning for better entity management.
+- Need for feedback from Elastic regarding the practical use of OS types in dashboards.
 
 ## Action Items
-- Reach out to Elastic for feedback on the usage of OS types, particularly Unix and Windows, in their systems.
-- Continue discussions on the OS attributes and refine the proposed changes based on participant feedback.
-- Monitor progress on the GA board and aim for updates by the next meeting.
+- Roger to inquire internally at Elastic about the usefulness of Unix and Windows OS types.
+- James to finalize documentation for OS attributes and seek assistance for macOS information.
+- Participants to review PRs related to OS attributes and process executable versions.
 
 ## Participants
 Christos Markou, Pablo Baeyens, Roger Coll, James Thompson

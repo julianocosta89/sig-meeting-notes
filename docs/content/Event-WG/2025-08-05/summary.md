@@ -1,14 +1,15 @@
 ## Key Topics
-- Discussion on the naming convention for event attributes, specifically `event.name` and its implications.
-- Proposal to introduce new attribute types and the need for a minor version bump in the specification.
-- Planning for a blog post to communicate changes and updates regarding the new attribute types.
-- Review of the current state of the OpenTelemetry collector and its log processing capabilities.
+- Discussion on the naming convention for the `event.name` attribute and its scoping under the OpenTelemetry namespace.
+- Plans for introducing new attribute types and the implications for versioning (minor vs. major bumps).
+- Updates on the draft PRs related to specification changes and the need for alignment with blog posts.
+- Overview of the log processing capabilities in the OpenTelemetry collector, including log filtering and transformation processors.
+- Feedback on declarative configuration proposals and the direction for future implementations.
 
 ## Action Items
-- Robert Pająk to edit the description and update the PR for event naming conventions.
-- Draft PRs to be created for specification changes and complex attributes.
-- Follow-up on the blog post to reference the draft PRs once they are ready.
-- Schedule a follow-up meeting to discuss progress on action items.
+- Robert Pająk to edit the description of the event naming convention and update the PR with alternative naming options.
+- Create draft PRs for specification changes regarding attribute types and update the language on versioning.
+- Trask Stalnaker to send a new Java proof of concept for the alternative discussed in the spec meeting.
+- Follow up on the configuration discussions and ensure alignment with the community's preferences.
 
 ## Participants
-Trask Stalnaker, Antoine Toulme, Robert Pająk
+Trask Stalnaker, Antoine Toulme, Robert Pająk, Jason Plumb

@@ -1,12 +1,14 @@
 ## Key Topics
-- Release candidate for SQL client instrumentation discussed and agreed upon.
-- Review of remaining issues in the milestone, with focus on stability requirements for ORM instrumentation.
-- Discussion on sanitization of SQL query comments and its implications for stability.
-- Upcoming events: FOSDEM and OTEL Unplugged, with plans for attendance and information sharing.
+- Release Candidate for SQL client instrumentation pushed forward; documentation updated.
+- Discussion on remaining issues in the milestone and their impact on stability.
+- Review of PRs related to TLS/MTLS support and console exporter format changes.
+- Upcoming events: FOSDEM and OTEL Unplugged, with plans for roadmap discussions.
+- Concerns about the sanitization of comments in SQL queries and its implications.
 
 ## Action Items
-- Alan West to write up notes on the sanitization issue for future consideration.
-- Matthew Hensley to share updates from FOSDEM and OTEL Unplugged with the team.
+- Alan West to summarize discussions on issues and PRs for clarity.
+- Rajkumar Rangaraj to follow up with contributors regarding PR questions and potential SIG engagement.
+- Participants to provide feedback on the console exporter format PR and consider broader discussions on telemetry output formats.
 
 ## Participants
 Matthew Hensley, Martin Costello, Rajkumar Rangaraj, Alan West

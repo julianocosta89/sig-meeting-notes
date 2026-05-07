@@ -1,14 +1,15 @@
 ## Key Topics
-- Documentation improvements for manual spans in the Auto SDK.
-- Progress on the V01 milestone and internal package management.
-- Review and status updates on open pull requests, particularly regarding test execution times.
-- Discussion on the challenges of VM-based testing and potential solutions.
+- Documentation updates for Auto SDK and manual spans.
+- Progress on V01 milestone and internal package discussions.
+- Review of open pull requests and CI issues.
+- Discussion on test performance and potential optimizations.
+- Updates on large buffer handling for HTTP requests.
 
 ## Action Items
-- Participants to review the new documentation on manual spans.
-- Tyler to sync with Mario regarding the internal package imports.
-- Raphael to provide feedback on Mattia's pull request.
-- Team to explore ways to optimize testing duration and efficiency.
+- Review and provide feedback on the Auto SDK documentation.
+- Sync with Mario regarding the internal package imports.
+- Steven to investigate the long-running VM tests and propose optimizations.
+- Rafael to review Mattia's PR on configurable large buffers.
 
 ## Participants
 Tyler Yahn, Mattia Meleleo, Mike Dame, Rafael Roquetto, Stephen Lang

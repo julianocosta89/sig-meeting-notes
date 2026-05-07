@@ -1,14 +1,14 @@
 ## Key Topics
-- Update on the pull request regarding standard attributes and complex attributes.
-- Discussion on YAML-ification of the spec compliance matrix and its implications for future updates.
-- Proposal to make profiling maintainers official maintainers of the repository.
-- Consideration of creating a separate group for protocol maintainers and approvers.
-- Need for visibility in the README regarding maintainers and approvers.
+- Discussion on the removal of a note regarding complex attributes in the OpenTelemetry specification.
+- YAML-ification of the spec compliance matrix and the implications of splitting YAML files into language-specific repositories.
+- Proposal for the creation of a named authenticator in Java's declarative configuration.
+- Updates on the trace ID ratio sampler specification and its deprecation plan.
+- User experience concerns regarding instrument registration and access in metrics.
 
 ## Action Items
-- Merge the pull request on standard attributes by the end of the day.
-- Trask to send a pull request to the admin repo to make profiling maintainers global maintainers.
-- Reiley to create a protocol maintainers and approvers group and add relevant individuals.
+- Trask to send a PR to the admin repo to make profiling maintainers global maintainers.
+- Gregor to start a prototype for the authenticator in Java's declarative configuration.
+- Josh to remove the exacting nature of the description in the probability sampler specification.
 
 ## Participants
-Liudmila Molkova, Trask Stalnaker, Tigran Najaryan, Reiley, Carlos Alberto Cortez, Kayla Reopelle, Gregor Zeitlinger, Tristan Sloughter.
+Liudmila Molkova, Trask Stalnaker, GZ Gregor Zeitlinger, Kayla Reopelle, Carlos Alberto Cortez, Tigran Najaryan, Reiley, Tristan Sloughter, jmacdonald.

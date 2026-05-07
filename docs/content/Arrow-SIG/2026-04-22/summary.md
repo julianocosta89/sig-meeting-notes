@@ -1,12 +1,13 @@
 ## Key Topics
-- Discussion on handling variable numbers of parameters in function definitions.
-- Exploration of default parameter values and potential redundancy in defining them both internally and externally.
-- Proposal for improving function signature management to accommodate functions with variable parameters.
-- Clarification on existing functionality in the parser for handling optional parameters and arrays.
+- Discussion on handling variable and optional parameters in function definitions.
+- Proposed changes to the parser state to manage optional parameters more effectively.
+- Clarification on the use of default values and how they relate to function signatures.
+- Exploration of existing tests for optional parameters in the parser.
 
 ## Action Items
-- Review existing tests related to optional parameters in the KQL implementation.
-- Consider potential changes to function signature management based on the discussion.
+- Albert to experiment with using `null` as a default value for optional parameters.
+- Consider creating a helper method for defining optional parameters in the parser state.
+- Review existing tests related to optional parameters to ensure they align with proposed changes.
 
 ## Participants
 Albert Lockett, Mike "Blanch" Blanchard

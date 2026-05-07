@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on improving the OpenTelemetry Operator's usability and integration with Kubernetes.
-- Concerns about code duplication and maintenance related to the operator's configuration.
-- The need for a better user experience in the operator to match the ease of use of the Prometheus operator.
-- Exploration of the potential for OpenTelemetry to be included as a default option in OpenShift.
-- Strategies for addressing customer security concerns regarding OpenTelemetry.
+- Discussion on the PR regarding the duplication of model code and the need to manage it better between different usages.
+- Plans for enhancing the OpenTelemetry operator to improve user experience and reduce complexity for customers.
+- Challenges faced with OpenShift integration and the need for a more streamlined installation process without CRDs.
+- Exploration of using a managed custom resource (CR) to simplify instrumentation and configuration for users.
+- Concerns about the performance impact of the current webhook implementation and potential optimizations.
 
 ## Action Items
-- Antoine to open a Jira ticket to document customer concerns regarding OpenTelemetry's integration and usability.
-- Further discussions needed with Jamie regarding the integration of OpenTelemetry in OpenShift.
-- Develop a managed CR (Custom Resource) approach to simplify the operator's setup for users.
+- Antoine to open a Jira ticket to address customer concerns about OpenTelemetry's integration with OpenShift.
+- Follow up on the instrumentation code refactor and explore caching strategies to reduce API server load.
+- Investigate the feasibility of embedding instrumentation CR directly into operator configuration to simplify user experience.
 
 ## Participants
-Antoine Toulme, Jacob Aronoff, Mikolaj, Pavel, Kalash, Bene
+Antoine Toulme, Jacob Aronoff, ploffay

@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the approval process for PRs and the need for multiple approvals from different SIGs.
-- Review of a PR regarding best practices for defining spans in tracing, focusing on naming, documentation, and attributes.
-- Introduction of a vendor-specific attribute "Realm" for Oracle Cloud and its implications for future-proofing and entity definitions.
-- Clarification on the relationship between availability zones and realms in cloud environments.
+- Discussion on service criticality and merge conflicts in PRs.
+- Review of RPC protocol versus framework terminology and its implications for semantic conventions.
+- Introduction of vendor-specific attributes for Oracle Cloud, specifically the "Realm" attribute.
+- Progress on Schema V2 and the proposal for decentralization of semantic conventions.
+- Need for clarity on how to manage schema transformations and versioning.
 
 ## Action Items
-- Trask to investigate the approval process for PRs and confirm the requirements for merging.
-- Liudmila to share a draft blog post for review regarding span definitions.
-- Josh to review and provide final approval on the Profile Attribute PR.
+- Liudmila to share the draft blog for review.
+- Dave to add Oracle Cloud owners to the code owners file as a separate PR.
+- Josh to implement changes in Weaver to utilize resolved schema instead of re-resolving.
+- Liudmila to document the decentralization and importing process in the Schema V2 proposal.
 
 ## Participants
-Josh Suereth, Trask Stalnaker, Liudmila Molkova, Dave Cadwallader
+Josh Suereth, Trask Stalnaker, Liudmila Molkova, Dave Cadwallader, Christophe Kamphaus

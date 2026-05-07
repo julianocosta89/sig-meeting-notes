@@ -1,14 +1,15 @@
 ## Key Topics
 - Discussion on the need for a new release of the OpenTelemetry injector.
-- Clarification of the roles of the injector and other components like Obi in the OpenTelemetry ecosystem.
-- Proposal for a structured installation approach using RPM packages that include dependencies for various SDKs.
-- Exploration of user scenarios for installing OpenTelemetry, emphasizing ease of use for non-expert users.
-- Consideration of how to handle package dependencies and installation processes for different programming languages.
+- Clarification on the relationship between the injector and other tools like Obi, and the installation process for various SDKs.
+- Plans to simplify the installation story for OpenTelemetry, including packaging strategies (RPM and Debian).
+- Exploration of integration between the injector and Kubernetes operator, addressing current challenges and future enhancements.
+- Emphasis on community engagement and feedback for improving the injector and its documentation.
 
 ## Action Items
-- Prepare a new release of the injector.
-- Develop a top-level OpenTelemetry RPM package that includes dependencies for the injector and various SDKs.
-- Ensure clear documentation and installation instructions for users to simplify the setup process.
+- Create an issue to add installation steps for the injector to the OpenTelemetry documentation.
+- Follow up on the Renovate tool to ensure SDK versions are updated.
+- Explore adding Ruby support to the injector and improve testing for various languages.
+- Engage with the community to gather feedback and increase usage of the injector.
 
 ## Participants
-atoulme, Jack Berg, Raphael, Mikarena Dazzio
+atoulme, Jack Berg, Raphael, Mikarena Dazzio, Michele, Dagio, Jakobaronov

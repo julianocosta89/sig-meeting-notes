@@ -1,15 +1,15 @@
 ## Key Topics
-- Discussion on the recent release of OpenTelemetry Swift version 2.4.1 and its implications.
-- Updates to the CI/CD process, including changes to how devices are selected for testing.
-- The introduction of a nightly build process and its integration with the main branch.
-- Issues encountered with dependency updates and CI failures.
-- Plans for merging PRs and addressing pending issues related to the new version.
+- Release of OpenTelemetry Swift version 2.4.1 and issues with CI on macOS runners.
+- Discussion on the deprecation of span events and transition to the Autel Events API.
+- Review of ongoing pull requests, including updates for Swift 6 and integration with Apple’s Distributed Tracing Library.
+- Challenges with GitHub Actions and CI/CD workflows, particularly around status checks and unverified commits.
+- Strategies for handling async and non-async methods in exporters.
 
 ## Action Items
-- Validate the new CI approach for device selection before finalizing the release.
-- Monitor the nightly build for any issues and ensure it runs smoothly.
-- Merge the PRs once all tests pass and issues are resolved.
-- Follow up on the issue that was waiting for the new version to be released.
+- Merge the approved pull requests and validate the new version.
+- Investigate and resolve CI issues related to the random trace propagation PR.
+- Draft new PRs for the Autel Events API and async methods in exporters.
+- Communicate with contributors regarding the status of their PRs and suggest improvements.
 
 ## Participants
-Vinod Vydier, Nacho, Ariel Demarco
+Nacho, Vinod Vydier, Ariel Demarco

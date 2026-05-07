@@ -1,6 +1,6 @@
 ## Key Topics
 - Attendance and participation in the meeting.
-- Discussion about upcoming conferences (KubeCon, Fosdem, Hotel Unplugged).
+- Discussion about upcoming conferences (KubeCon, Fosdem, OTel Unplugged).
 - Review of the Elastic Developer blog post and questions regarding its content.
 - Information on CFP (Call for Proposals) processes for various events.
 

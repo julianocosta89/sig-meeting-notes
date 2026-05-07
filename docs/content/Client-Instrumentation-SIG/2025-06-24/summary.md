@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the scheduling of future meetings, potentially moving to a bi-weekly format.
-- Transition from span events to log records and the implications for backend processing.
-- Current projects and deliverables for the client-side SIG and the need to define next steps.
-- Instrumentation efforts in the Atlantic project and their potential migration to the browser SIG.
+- Discussion on the bi-weekly meeting schedule and potential changes to meeting frequency.
+- Transition from span events to log records and the challenges associated with this migration.
+- Current projects and deliverables for the client-side SIG, including session management and instrumentation.
+- Consideration of moving ongoing instrumentation projects (e.g., page view instrumentation) to the browser SIG.
+- Need for clarity on repository management for the browser SIG.
 
 ## Action Items
-- Dan Gomez Blanco to start a thread regarding the migration of ongoing instrumentation projects to the browser SIG.
-- Participants to review the deprecation plan for span events and provide feedback in the relevant Slack channel.
+- Start a thread to discuss which ongoing projects should be moved to the browser SIG.
+- Develop a communication plan for the deprecation of span events and publish a blog post for feedback.
+- Review the deprecation plan and its implications for backend processing.
 
 ## Participants
 Dan Gomez Blanco, Jason Plumb, Abinet Debele, Joaquín Díaz, Leonardo Serrano

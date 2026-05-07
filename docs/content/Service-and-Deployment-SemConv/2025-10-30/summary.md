@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the definition of "service" and "service instance" in OpenTelemetry, including their relationship to Kubernetes concepts.
-- Review of Josh's pull request (PR) aimed at formalizing service definitions and nomenclature.
-- Examination of Kubernetes labels and how they map to OpenTelemetry attributes, including potential use of existing labels for service names.
-- Consideration of adding new attributes to the service entity, such as cost center and criticality, and the approach to researching existing vendor implementations.
+- Discussion on the definition of "service" and "service instance" in OpenTelemetry.
+- Review of Josh's pull request (PR) regarding service definitions and nomenclature.
+- Exploration of Kubernetes naming conventions and their relationship to OpenTelemetry.
+- Proposal to add new attributes (e.g., cost center, criticality) to the service entity.
+- Need for alignment on namespace terminology and its implications for Kubernetes integration.
 
 ## Action Items
-- Participants to review Josh's pull request and provide feedback on the service definitions.
-- Research on how other vendors utilize service attributes to inform potential new attributes for OpenTelemetry.
-- Create an issue to document findings related to new attributes for the service entity.
+- Participants to review Josh's PR and provide feedback on service definitions.
+- Janhvi to research how other vendors are using attributes like cost center and criticality for the next meeting.
+- Follow up with Josh regarding GitHub access for editing project boards.
 
 ## Participants
 Janhvi, Joao G. (Dynatrace), Kartik, Dotan Horovits

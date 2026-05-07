@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on deprecating OpenTracing compatibility requirements due to low usage and the archived status of OpenTracing.
-- Proposal to seek community feedback before proceeding with the deprecation process.
-- Consideration of assigning Technical Committee members to PRs to ensure accountability and progress.
-- Review of GitHub notification settings and their impact on tracking PRs and issues.
+- Discussion on deprecating OpenTracing compatibility requirements due to low usage and the need for community feedback.
+- Proposal to assign Technical Committee (TC) members to PRs to ensure progress and accountability.
+- Consideration of sponsorship levels for new Special Interest Groups (SIGs), including Packaging SIG.
+- Review of the process for handling PRs authored by TC members and the responsibilities of assignees versus reviewers.
 
 ## Action Items
-- Liudmila Molkova to potentially sponsor the deprecation issue, pending feedback from the issue creator on usage statistics.
-- Josh Suereth to mark the deprecation issue for community feedback and monitor responses.
-- Technical Committee members to trial the assignment of members to PRs for a couple of weeks to evaluate effectiveness.
+- Mark the OpenTracing deprecation issue for community feedback and identify a sponsor to lead the process.
+- Test the assignment of TC members to PRs for a trial period and evaluate its effectiveness.
+- Discuss and determine appropriate sponsorship levels for new SIGs in the next meeting.
 
 ## Participants
-Josh Suereth, Tigran Najaryan, Jack Berg, Liudmila Molkova, Carlos Alberto Cortez, Reiley, and others.
+Reiley, Josh Suereth, Tigran Najaryan, Jack Berg, Liudmila Molkova, Carlos Alberto Cortez

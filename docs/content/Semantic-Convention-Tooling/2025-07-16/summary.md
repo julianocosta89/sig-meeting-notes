@@ -1,12 +1,15 @@
 ## Key Topics
-- Discussion on closing old issues related to semantic convention tooling.
-- Debate on the use of annotations versus structured properties for defining metrics and namespaces.
-- Need for clearer guidance on when to use annotations versus schema definitions.
-- Importance of understanding the impact of changes in histogram boundaries on telemetry stability.
+- Triage of existing issues and pull requests related to semantic convention tooling.
+- Discussion on the use of annotations versus structured properties for defining parameters in semantic conventions.
+- Proposal for a new version (V2) of the schema, including changes to how attributes and groups are handled.
+- Need for clearer guidelines on when to use annotations versus structured properties.
+- Importance of documentation and clarity in the semantic conventions for users and instrumentation authors.
 
 ## Action Items
-- Create an issue to document guidance on the use of annotations versus structured properties.
-- Invite James to clarify his vision on namespaces and their relevance in the context of semantic conventions.
+- Leave a comment on the pull request to clarify the direction and vision for namespaces.
+- Create an issue to document the guidelines for using annotations versus structured properties.
+- Update the pull request to include a version header for better validation and parsing.
+- Consider developing a separate schema for V2 to allow for independent evolution from V1.
 
 ## Participants
 Liudmila Molkova, Matthew Hensley, Jeremy Blythe, Josh Suereth

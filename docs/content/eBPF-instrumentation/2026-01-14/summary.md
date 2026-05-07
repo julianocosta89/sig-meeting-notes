@@ -1,14 +1,16 @@
 ## Key Topics
-- Discussion on the implementation of vanity URLs in OpenTelemetry packages and the need for better discoverability.
-- Roadmapping ideas for 2026, including stabilization of features, performance improvements, and preparation for a 1.0 release.
-- Enhancements to .NET support, including context propagation and compatibility with various OpenTelemetry SDKs.
-- Proposed integration of telemetry naming conventions and semantic compliance.
-- Exploration of additional protocol coverage and runtime metrics for better insights.
+- Discussion on the use of vanity URLs in OpenTelemetry packages and the need for better discoverability.
+- Roadmapping ideas for 2026, including stabilization of features, performance improvements, and integration with various protocols.
+- Plans for improving context propagation in .NET and Rust applications.
+- Exploration of telemetry naming conventions and semantic compliance.
+- Discussion on reducing overhead in eBPF instrumentation and the potential for HTTP full payload extraction.
 
 ## Action Items
-- Florian to take on the task of implementing vanity URLs across all packages and open a PR.
-- Participants to brainstorm and add any additional topics or ideas to the roadmap document.
-- Further investigation into .NET context propagation and its integration with OpenTelemetry.
+- Florian to take on the task of implementing vanity URLs across all packages.
+- Participants to document their proposed topics and link them to relevant issues.
+- Create a project board to track goals and prioritize tasks for the upcoming year.
+- Explore the integration of telemetry schemas for better version control of metrics and attributes.
+- Open an issue to document deployment instructions for OBI.
 
 ## Participants
-Tyler, Florian Lehner, Giuseppe Ognibene, Steve Moon, Mario, Nicola Grcevski, Nimrod, Mattia, Stephen Lang
+Tyler, Florian Lehner, Giuseppe Ognibene, Stephen Lang, Nikola Grcevski, Nimrod Avni, Mario Macias, Sven Cowart, Rob Cowart, Maksym Iv, Mattia Meleleo.

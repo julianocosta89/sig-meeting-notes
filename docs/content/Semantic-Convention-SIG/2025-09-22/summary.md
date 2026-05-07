@@ -1,14 +1,14 @@
 ## Key Topics
-- Merging of the triage document and its approval status.
-- Discussion on the OpenTelemetry Prometheus compatibility specification.
-- Exploration of instrumentation scope attributes and their implications for span identity.
-- Proposal for handling session entities and mutable resources in OpenTelemetry.
-- Challenges with metrics aggregation due to mutable resources.
+- Merging the triage document and current approvals.
+- Discussion on Prometheus compatibility specification and related approvals.
+- Challenges with instrumentation scope attributes and their support across different SDKs.
+- Proposal for handling session information within instrumentation scope.
+- Ongoing work on multi-tenancy scenarios for OpenTelemetry.
 
 ## Action Items
-- Merge the triage document once minor comments are resolved.
-- Follow up with David Ashpole and Arthur regarding the Prometheus compatibility specification.
-- Draft a proposal addressing span identity and instrumentation scope attributes.
+- Merge the triage document once discussions are resolved.
+- Follow up with David Ashpole and Arthur regarding Prometheus compatibility.
+- Prototype the proposal for attaching session information to instrumentation scope.
 
 ## Participants
-Liudmila Molkova, Josh Suereth, Trask, Christophe Kamphaus, Armin (Dynatrace)
+Liudmila Molkova, Josh Suereth, Trask, Christoph Kamphaus, Armin (Dynatrace)

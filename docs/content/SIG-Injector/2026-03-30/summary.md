@@ -1,13 +1,16 @@
 ## Key Topics
-- Creation of a new repository for Injector packaging to separate concerns from the main Injector repository.
-- Discussion on the implications of breaking changes in the current PR, particularly regarding configuration file structure.
-- Feedback on the usage of Injector by vendors and the importance of clear communication about changes.
-- Strategies for integrating declarative configuration formats in packaging.
+- Creation of a new GitHub repository for Injector packaging to streamline responsibilities and prepare for the Packaging SIG.
+- Discussion on breaking changes in PRs, particularly regarding configuration and package structure.
+- The need for integration tests to ensure compatibility between Injector and other packages, especially in Kubernetes environments.
+- Resource detection strategies and their implications for various programming languages and environments.
+- Future plans for documentation and hosting on GitHub Pages versus other platforms.
 
 ## Action Items
-- Michele to create a new repository in his personal GitHub organization for Injector packaging.
-- Team to finalize the PR and address the breaking changes while ensuring proper documentation in the changelog.
-- Pablo to work on getting the packaging SIG established based on feedback received.
+- Michele to create a new repository in his personal GitHub account for Injector packaging.
+- Team to apply PR changes to the new repository and work towards the Packaging SIG.
+- Develop integration tests for the Injector to ensure compatibility with other vendor packages.
+- Explore resource detection improvements and consider integrating with the collector's resource detection framework.
+- Plan for GitHub Pages hosting for documentation and development artifacts.
 
 ## Participants
 atoulme, Michele Mancioppi, Bastian Krol, Jack Berg

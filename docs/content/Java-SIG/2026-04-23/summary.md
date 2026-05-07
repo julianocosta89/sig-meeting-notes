@@ -1,13 +1,14 @@
 ## Key Topics
-- **Ecosystem Explorer Update**: Jay DeLuca provided an update on the Ecosystem Explorer project, highlighting its usability and upcoming blog post to attract contributors.
-- **Null Checks Standardization**: Jack Berg discussed the need for a consistent approach to null checks in APIs, proposing guidelines for configuration API boundaries and runtime boundaries.
-- **API Usage Logger**: A proposal to standardize the use of an API Usage Logger for logging null parameter usage across APIs to improve diagnostics.
-- **Future Ecosystem Expansion**: Discussion on expanding the Ecosystem Explorer to include other programming languages like Go and JavaScript.
+- **Ecosystem Explorer Update**: Jay DeLuca provided an update on the Ecosystem Explorer project, highlighting its usability and upcoming blog post for visibility and contributor recruitment.
+- **Null Checks Standardization**: Jack Berg proposed a consistent approach to null checks across APIs, suggesting fail-fast checks at configuration boundaries and graceful handling at runtime.
+- **Batching in Metric Reader**: Pranav Sharma discussed the implementation of batching for the metric reader, emphasizing sequential processing as per the spec and addressing concerns about handling concurrent exports.
+- **Declarative Config Module**: Jack Berg announced the separation of declarative configuration from the SDK incubator into its own module, aiming for future stability and user clarity.
 
 ## Action Items
-- Publish a blog post on OpenTelemetry.io to raise awareness of the Ecosystem Explorer project.
-- Standardize null check practices across APIs as discussed, and update the knowledge base with new guidance.
-- Explore contributions from other ecosystems to enhance the Ecosystem Explorer.
+- Publish a blog post about the Ecosystem Explorer project on OpenTelemetry.io.
+- Jack Berg to create a PR for standardizing null checks across APIs.
+- Pranav Sharma to finalize the PR for the metric reader batching implementation.
+- Jack Berg to draft a PR for the new declarative config module.
 
 ## Participants
-Jack Berg, John Watson, Jason Plumb, Jay DeLuca, Trask Stalnaker, Jack Shirazi
+Jack Berg, John Watson, Jason Plumb, Jay DeLuca, Trask Stalnaker, Gregor Zeitlinger, Pranav Sharma, Lauri

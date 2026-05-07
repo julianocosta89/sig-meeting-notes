@@ -1,13 +1,14 @@
 ## Key Topics
-- Discussion on the profiling SIG's context-sharing spec and its compatibility with Java versions.
-- Updates on the demo implementation for the profiling spec.
-- Debate on using eBPF maps versus traditional memory maps for inter-process communication.
-- Consideration of the implications of requiring Java 25+ for new features and potential alternatives for older versions.
-- Importance of aligning communication mechanisms between different OpenTelemetry groups.
+- Discussion on the profiling SIG and the process context for sharing application context with the profiler.
+- Update on the demo implementation to align with the current version of the spec.
+- Debate on the use of the new foreign function and memory API in Java and its compatibility with older Java versions.
+- Communication mechanisms between eBPF instrumentation and OpenTelemetry profiler, including the potential use of eBPF maps.
+- Release of complex attributes and their implications for Java SDK and backend compatibility.
 
 ## Action Items
-- Gather feedback on the proposed Java 25+ requirement and explore potential solutions for users on older Java versions.
-- Continue discussions with the OBI team to clarify communication mechanisms between eBPF profiling and SDKs.
+- Ivo Anjo to continue refining the proposal for context sharing and gather feedback on the Java 25+ requirement.
+- Participants to consider the implications of using native extensions for older Java versions.
+- Review of the recent refactoring work on metric storage for performance improvements.
 
 ## Participants
 Gregor Zeitlinger, Peter Findeisen, Ivo Anjo, Jack Shirazi, Jason Plumb, Trask Stalnaker, John Watson, Jack Berg

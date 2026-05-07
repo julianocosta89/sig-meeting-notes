@@ -1,13 +1,15 @@
 ## Key Topics
-- Discussion on the stability of the trace ID ratio-based sampling algorithm and its implications for Java and other languages.
-- Consideration of whether changing the existing hashing algorithm constitutes a breaking change for users.
-- Agreement on the need to create a new sampler with a different name while potentially deprecating the old one.
-- Communication strategies regarding changes to the specification and ensuring users are informed.
+- Discussion on the new trace ID ratio-based sampling algorithm and its implications for Java and other languages.
+- Proposal to create a new sampler with a different name to avoid breaking changes for existing users.
+- Review of several PRs related to the OpenTelemetry specification, including clarifications and fixes.
+- Introduction of a proposal for handling exceptions and logs, focusing on severity and stack trace management.
+- Consideration of how to communicate changes and deprecations effectively to users.
 
 ## Action Items
-- Create a new sampler implementing the updated algorithm with a new configuration name.
-- Develop a plan to deprecate the old sampler once the new one is stable.
-- Improve communication regarding specification changes to ensure users are well-informed.
+- Create a new sampler with a different name and deprecate the old one once the new one is stabilized.
+- Ensure documentation is clear regarding the transition from the old to the new sampling method.
+- Draft a blog post explaining the changes and the rationale behind them.
+- Develop best practices for handling exceptions in logs, including severity and stack trace management.
 
 ## Participants
-Carlos Alberto Cortez, Trask Stalnaker, Josh McDonald, Robert Pająk, Daniel Dyla, Tyler Yahn, ap
+Carlos Alberto Cortez, Trask Stalnaker, Josh Mcdonald, Robert Pająk, Daniel Dyla, Tyler Yahn, Liudmila Molkova, Bogdan, Reiley Yang, Josh Suereth.

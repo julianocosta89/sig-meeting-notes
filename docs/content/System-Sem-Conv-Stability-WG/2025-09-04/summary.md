@@ -1,13 +1,13 @@
 ## Key Topics
-- Discussion on metric naming conventions and attributes, particularly in relation to Kubernetes metrics.
-- Clarification on whether metrics can have the same name as their attributes and the implications for semantic conventions.
-- Ongoing issues with the stability of existing guidelines and the need for consensus on naming practices.
-- Concerns raised by participants regarding the usability and implementation of existing metrics and attributes.
+- Discussion on Kubernetes-related metrics and naming conventions for metrics and attributes.
+- Concerns regarding the stability of OpenTelemetry and the impact of delays on user trust.
+- Strategies for stabilizing the process namespace while managing new feature requests.
+- The need for more contributors and engagement from the community to aid stabilization efforts.
 
 ## Action Items
-- Participants to comment on the relevant issue to facilitate progress on the metric naming conventions.
-- Further discussion needed to reach consensus on whether to allow metrics and attributes to share names.
-- Review and potentially revise existing guidelines based on feedback and concerns raised during the meeting.
+- Participants to comment on the PR regarding metric naming conventions to reach consensus.
+- Explore ways to engage users in contributing to stabilization efforts.
+- Identify and stabilize a core set of process metrics while allowing for incremental additions.
 
 ## Participants
 Pablo Baeyens, Dmitrii Anoshin, Christos Markou, Josh Suereth, Braydon Kains

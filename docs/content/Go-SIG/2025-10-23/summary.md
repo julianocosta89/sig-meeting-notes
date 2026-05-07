@@ -1,12 +1,12 @@
 ## Key Topics
-- Discussion on implementing support for an environment variable to configure the OpenTelemetry SDK in Go.
-- Review of the current state of environment variable support across different languages (notably PHP).
-- Considerations on how to manage potential import cycles when adding new features.
-- Exploration of user expectations regarding configuration and the use of global tracer providers.
+- Discussion on implementing support for an environment variable to load configuration files for the OpenTelemetry SDK in Go.
+- Review of the experimental package structure and its implications for adding new features.
+- Consideration of user expectations regarding the global tracer provider and configuration options.
+- Update on the exponential histogram optimization work and related challenges.
 
 ## Action Items
-- Alex Boten to continue working on the implementation of the environment variable support.
-- Tyler Yahn to provide further insights on handling import cycles and feature implementation.
+- Alex to explore the implementation of the environment variable support and its integration with the SDK.
+- Tyler to review existing PRs for optimizations in the metrics pipeline.
 
 ## Participants
-Tyler Yahn, Alex Boten
+Tyler Yahn, Alex Boten, David Ashpole

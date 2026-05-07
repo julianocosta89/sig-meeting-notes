@@ -1,14 +1,14 @@
 ## Key Topics
-- Issues with Zoom account access due to overlapping meetings.
-- Introduction of new participants and their backgrounds.
-- Ongoing work on semantic conventions for mainframe observability.
-- Discussion on the performance issues of the OpenTelemetry collector on IBM Z systems.
-- Resources for learning about OpenTelemetry, particularly for infrastructure and middleware.
+- Issues with simultaneous Zoom meetings causing access problems.
+- Introduction of new participants and their goals in joining the OpenTelemetry community.
+- Ongoing work on semantic conventions for mainframes and the standardization of attributes.
+- Discussion on the performance of the OpenTelemetry collector on mainframe systems.
+- Resources for learning OpenTelemetry, including training and documentation.
 
 ## Action Items
-- Review and contribute to the ongoing PRs related to mainframe observability.
-- Join the OpenTelemetry Slack channel for updates and communication.
-- Explore OpenTelemetry I.O. training resources for better understanding and implementation.
+- Review and contribute to the ongoing PRs related to mainframes.
+- Join the Slack channel for updates on meetings and community discussions.
+- Explore OpenTelemetry training resources to enhance understanding and application.
 
 ## Participants
-Jim Porell, Antoine Atoulme, Joris Yangsheng Xu, Craig, Morgan, Rudiger Schultz, Greg Shriver, Angelica, Heinrich.
+Jim Porell, Antoine (atoulme), Joris Yangsheng Xu

@@ -1,15 +1,16 @@
 ## Key Topics
 - Discussion on the PR for batch log record processor options by Nikhil Bhatia.
-- Need for improvements in CI coverage for the Windows DLL and cleanup of the Windows DLL build.
-- Updates on third-party dependencies and issues faced with Bazel and CMake build systems.
-- Clarification on the export mechanism for symbols in the Windows library, including the use of both code exports and definition files.
-- Upcoming changes in GitHub's macOS images affecting CI.
+- Need for cleanup and improvements in the Windows DLL build and CI coverage.
+- Updates on third-party dependencies and issues with Bazel build errors.
+- Clarification on symbol exports for Windows libraries and the need for both code declarations and definition files.
+- Positive feedback on using Copilot for code reviews, with some limitations noted.
 
 ## Action Items
-- Review and approve Nikhil Bhatia's PR for batch log record processor options.
-- Doug Barker to continue working on updating third-party dependencies and address Bazel build issues in a separate PR.
-- Investigate and clarify the export mechanism for symbols in the Windows library to ensure proper functionality.
-- Prepare for upcoming changes in GitHub's macOS images and update CI accordingly.
+- Review and approve Nikhil's PR for batch log record processor options.
+- Investigate and address the cleanup needed for the Windows DLL build.
+- Doug to continue working on the third-party dependencies PR and address Bazel issues separately.
+- Tom to explore the symbol export mechanism further and provide insights.
+- Review contributions from the new contributor regarding improvements for multiple instruments.
 
 ## Participants
 malff, Pranav Sharma, Nikhil Bhatia, Doug Barker, Ehsan, Tom Tan

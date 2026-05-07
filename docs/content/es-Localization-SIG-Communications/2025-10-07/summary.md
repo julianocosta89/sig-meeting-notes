@@ -1,14 +1,14 @@
 ## Key Topics
 - Introduction of new participants and their roles in the OpenTelemetry project.
-- Discussion on the process of contributing to the project, including challenges faced by newcomers.
-- Strategies for managing pull requests and ensuring code quality.
-- Importance of communication and coordination among contributors to avoid overlaps in work.
-- Updates on ongoing translation projects and troubleshooting issues with links and headers.
+- Discussion on the process of creating and reviewing pull requests.
+- Challenges faced by participants in translating documentation and ensuring proper formatting.
+- Strategies for effective collaboration and avoiding conflicts in contributions.
+- Updates on ongoing projects and the need for documentation improvements.
 
 ## Action Items
-- Participants to continue working on their respective pull requests and address any identified issues.
-- Carol to provide additional resources and guidance on the contribution process.
-- Imma to update the agenda with completed tasks and outstanding items.
+- Camila to finalize her pull request and address any remaining issues.
+- Carol to update the documentation and ensure clarity on contribution processes.
+- Participants to share their progress and any challenges in future meetings.
 
 ## Participants
-Camila Sofia Fernandez, Imma Valls, Abraham, Carol Valencia
+CAMILA SOFIA FERNANDEZ, Imma Valls, Abraham, Carol Valencia

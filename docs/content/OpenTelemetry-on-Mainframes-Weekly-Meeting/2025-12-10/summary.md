@@ -1,13 +1,14 @@
 ## Key Topics
-- Update on GitHub Actions runners for mainframes: Access is being negotiated and expected to be set up early next year.
-- Proposed schedule change for the weekly meeting to accommodate European participants.
-- Discussion on issue #12177 regarding the integration of extensions into the OpenTelemetry collector.
-- Clarification on the design and implementation of extensions in the collector, particularly regarding OAuth and access token management.
+- Update on GitHub Actions runners for OpenTelemetry on mainframes, expected to be set up in early 2026.
+- Discussion on changing the meeting time to accommodate European participants.
+- Integration of extensions into the OpenTelemetry collector and related RFC discussions.
+- Proposal to add IBM MQ to the list of well-known messaging systems in OpenTelemetry.
+- Ongoing issues with a pull request related to documentation and EZCLA checks.
 
 ## Action Items
-- Morgan to follow up with Rudiger about the meeting schedule change and ensure he is notified.
-- Anand to comment on issue #12177 regarding the integration of extensions and provide specific use cases.
-- Participants encouraged to engage in discussions in the collector's SIG regarding extension mechanisms.
+- Morgan to follow up with Rudiger regarding the meeting time change.
+- Kai to draft a PR to add IBM MQ to the semantic conventions.
+- Anand to comment on the RFC regarding the integration of extensions in the collector.
 
 ## Participants
 Jim Porell, Greg Shriver, Kai Kirsch, Ambili Pallimakkal, Andrej Chmelo, Anand Somasundaram, Richard Nikula, Morgan McLean, atoulme

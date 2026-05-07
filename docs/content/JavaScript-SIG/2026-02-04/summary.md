@@ -1,15 +1,15 @@
 ## Key Topics
 - Discussion on the async local storage API and its prototype status.
-- Issues related to fetch instrumentation and its impact on request attributes.
-- Updates on P1 issues and the need for further review and fixes.
-- Challenges with import in the middle and circular dependencies in libraries.
-- The current state of auto-instrumentation for ESM and related documentation.
+- Adoption of tracing channels in libraries for easier integration.
+- Review of several P1 issues, including problems with fetch instrumentation.
+- Updates on various PRs and issues related to OpenTelemetry JavaScript.
+- Ongoing discussions about the implementation of composable samplers and their specifications.
 
 ## Action Items
-- Wait for Mark's return to discuss the async local storage prototype.
-- Review and address the fetch instrumentation issue as a priority.
-- Follow up on the circular import issue and its resolution.
-- Investigate the state of auto-instrumentation for ESM and improve documentation.
+- Wait for Mark's return to discuss the async local storage prototype further.
+- Review and address the P1 issues, particularly the fetch instrumentation problem.
+- Participants to look into open PRs and issues for potential resolution.
+- Follow up on the implementation of composable samplers in the OpenTelemetry JavaScript library.
 
 ## Participants
-Trent Mick, Andrei Borza, Raphaël Thériault, David Luna Bistuer
+Trent Mick, Andrei Borza, Raphaël Thériault, David Luna Bistuer, Hector Hernandez

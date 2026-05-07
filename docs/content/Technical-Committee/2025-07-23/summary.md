@@ -1,14 +1,14 @@
 ## Key Topics
-- Discussion on the responsibilities and rotations for security within the Technical Committee (TC).
-- Proposal to shift security oversight from the TC to a dedicated security group.
-- Concerns about the current security rotation process and its effectiveness in addressing critical vulnerabilities.
-- Suggestions for improving communication and accountability among maintainers regarding security issues.
-- The need for a systematic approach to security management rather than reactive measures.
+- Discussion on the responsibilities and rotations for security within the OpenTelemetry Technical Committee (TC).
+- Proposal for a dedicated Security Special Interest Group (SIG) to handle security issues and advisories.
+- Concerns about the current process for managing security vulnerabilities and the need for a more systematic approach.
+- Introduction of a public dashboard for maintainers to track security action items and deadlines.
+- Consideration of reducing the frequency of TC meetings to bi-weekly.
 
 ## Action Items
-- Evaluate the proposal to transfer security responsibilities to the security sync group.
-- Consider implementing tools to automate security oversight and improve accountability.
-- Review and discuss Reiley's suggestions in a private session for further clarity.
+- Reiley Yang to draft and share a proposal regarding the security rotation and responsibilities.
+- TC members to provide feedback on the proposal once shared.
+- Explore the feasibility of reducing TC meetings to bi-weekly.
 
 ## Participants
-Tigran Najaryan, Reiley Yang, Josh Suereth, Carlos Alberto Cortez, Armin (Dynatrace)
+Tigran Najaryan, Reiley Yang, Josh Suereth, Carlos Alberto Cortez, Armin (Dynatrace), Ludmilla, Bogdan Drutu, Trust, Andrea, Jeremy.

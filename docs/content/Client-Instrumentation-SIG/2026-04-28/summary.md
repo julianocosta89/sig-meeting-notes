@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on the renaming of the crash event from `device.crash` to `app.crash` in the Android PR and its corresponding Semantic Conventions PR.
-- Santosh's evolving perspective on client-side metrics, particularly in relation to WebSocket instrumentation and the need for metrics aggregation.
-- Concerns regarding the reliability of sending metrics from RAM clients to backends, especially in unstable network conditions.
-- The potential for high cardinality metrics and the implications for data handling on the client side versus the backend.
+- Discussion on renaming the crash event from `device.crash` to `app.crash` in Android instrumentation.
+- Santosh's evolving perspective on client-side metrics, particularly in relation to WebSockets instrumentation.
+- Concerns about high cardinality in metrics and the need for backend aggregation.
+- The complexity of the Metrics API and its implications for SDK ergonomics.
+- The need for a prototype around sessions and metrics in the browser SDK.
 
 ## Action Items
-- Participants are encouraged to review and approve the Android PR regarding the crash event renaming.
-- Santosh will discuss the client-side metrics topic with his mobile team for further insights and feedback.
+- Participants are encouraged to review the open PR for renaming the crash event and provide approvals.
+- Santosh to further explore the reliability of shipping metrics from RAM clients.
+- Martin to work on a prototype for sessions and metrics, seeking feedback from Jason.
 
 ## Participants
 Jason Plumb, Martin Kuba, Santosh

@@ -1,13 +1,16 @@
 ## Key Topics
-- Discussion on the new versions of OKHTTP and dependency management issues across different build systems (Gradle vs. Maven).
-- Evaluation of the OpenTelemetry ZIO instrumentation, with concerns about its functionality and potential removal.
-- Consideration of disabling problematic instrumentation by default, including Kotlin coroutines instrumentation.
-- Suggestions for providing guidance on alternative libraries or solutions for users affected by disabled instrumentation.
+- Discussion on the new version of OKHTTP and its impact on dependency management for Android and JVM.
+- Evaluation of the ZIO instrumentation's functionality and potential removal due to being deemed "broken."
+- Proposal for additional commands in the Mize tool for common tasks like formatting and testing.
+- Updates on the declarative configuration meetings and their scheduling.
+- Review of the release process and pending PRs for the upcoming release.
 
 ## Action Items
-- Jason to test the snapshot version of the OKHTTP dependency to confirm if it resolves the issues.
-- Jay to open an issue regarding the ZIO instrumentation and discuss its potential removal.
-- Consider creating guidance for users on alternatives if certain instrumentation is disabled by default.
+- Jason Plumb to test the new OKHTTP snapshot to verify dependency issues.
+- Jay DeLuca to open an issue regarding the ZIO instrumentation and its status.
+- Gregor Zeitlinger to explore adding Mize commands for common tasks and gather feedback.
+- Trask Stalnaker to document the performance implications of using unsafe methods in Java.
+- Gregor Zeitlinger to open an issue in the configuration repo regarding semantic stability and declarative config.
 
 ## Participants
-Gregor Zeitlinger, Trask Stalnaker, Jason Plumb, Jack, Lauri Tulmin, Jay DeLuca
+Gregor Zeitlinger, Trask Stalnaker, Jason Plumb, Jay DeLuca, Lauri Tulmin, Jack, Bruno Baptista, John Watson.

@@ -1,14 +1,15 @@
 ## Key Topics
-- Triage of ongoing projects and PRs, including the status of the OpenAI embedding instrumentation.
-- Discussion on the Attributes Virginia External Storage Reference and the need for real usage feedback.
-- Introduction of new members and their contributions to the group.
-- Examination of the blob and file JSON schema and Alibaba's semantic conventions.
-- Design considerations for OpenTelemetry, including compatibility with TraceWoop and the handling of telemetry emitters.
+- Progress updates on OpenTelemetry semantic conventions, including PR statuses and ongoing discussions.
+- Introductions of new members and their contributions to the group.
+- Discussion on the design and extensibility of telemetry emitters, particularly regarding compatibility with TraceWoop.
+- Review of PRs related to GenAI tools and agent span support in Langchain.
+- Ongoing discussions about blob and file types in semantic conventions, including naming and categorization challenges.
 
 ## Action Items
-- Convert the PR related to the Attributes Virginia External Storage Reference to draft status until further progress is made.
-- Continue discussions on the JSON schema for blob and file.
-- Explore the integration of TraceWoop-compatible emitters to support additional telemetry features.
+- Convert Aaron Abbott's PR to draft status until further feedback is received.
+- Create an issue to clarify the semantic conventions regarding agent invocation types.
+- Update the naming convention for media types in blob and file discussions to "modality."
+- Review and provide feedback on the GenAI tools PR and the agent span support PR.
 
 ## Participants
-Liudmila Molkova, Sergey Sergeev, Josh Bonczkowski, Aaron Abbott, Michael He, Joseph Wang, Drew, Tara, Pierre.
+Liudmila Molkova, Sergey Sergeev, Josh Bonczkowski, Aaron Abbott, Michael He, Joseph Wang, Alex Hall, Keith Decker, Shuwen Pan.

@@ -1,12 +1,14 @@
 ## Key Topics
-- Discussion on bumping the minimum Kotlin version, with considerations on breaking changes and compatibility.
-- Agreement to handle the Kotlin version bump as a breaking change without a major version increase.
-- Importance of documenting breaking changes in the changelog and ensuring clear communication to users.
-- Mention of the fast-moving nature of the Android ecosystem and its impact on library support.
+- Discussion on bumping the minimum Kotlin version and its implications for compatibility.
+- Issues with the Animal Sniffer tool not catching certain classes leading to runtime crashes on older Android versions.
+- Proposal to raise the minimum SDK version to address compatibility issues with certain Java classes.
+- Introduction of a proof of concept (POC) for an instrumentation module using Kotlin API.
+- Consideration of declarative configuration for the OpenTelemetry SDK.
 
 ## Action Items
-- Jamie Lynch to update the PR with revised wording regarding Kotlin version compatibility and add a note in the changelog about the breaking change.
-- Ensure that future version bumps are documented clearly to inform users of potential impacts.
+- Jamie to update the PR with changes discussed regarding the Kotlin version bump and changelog.
+- Cesar to create a PR for the disk buffering issue and add Android 21 tests.
+- Jason to initiate discussions on supporting declarative configuration in the OpenTelemetry Android SDK.
 
 ## Participants
 Jason Plumb, Manoel Neto, Hanson, Cesar Munoz, Jamie Lynch
