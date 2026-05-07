@@ -32,7 +32,7 @@ if TYPE_CHECKING:
 ROOT = Path(__file__).parent
 DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
 
-MAX_TRANSCRIPT_CHARS = 12_000
+MAX_TRANSCRIPT_CHARS = 80_000
 _API_RATE_LIMIT_S = 1
 
 
@@ -73,7 +73,7 @@ def generate_summary(
             {"role": "user", "content": f"{prompt}\n\n---\n\n{transcript_body}"},
         ],
         temperature=0.3,
-        max_tokens=1024,
+        max_tokens=1500,
     )
     return response.choices[0].message.content
 
