@@ -1,0 +1,55 @@
+## Meeting Notes
+
+### Attendees
+- Ernest
+- Victoria
+- Sophia
+- Henrik
+- Adriana
+
+### Agenda
+- [Adriana & Henrik] Monthly or quarterly Spec-tacular Gameshow stream (a gameshow based on the OTel Specs - themed with questions)
+  - [Adriana] Henrik is asking if we can expand the panel we did at kubecon to a quarterly event?
+  - [Henrik] shifting the concept to who want to be a Otel ….?
+    - Attendees play kahoot similar to the game show
+    - Expert questions towards the end, and a member of the community could judge on the call.
+    - Henrik has prepared the quiz questions. We need like 2 personnel (host and the expert).
+    - In the beginning we could have other fillers like; news in Otel, some short Otel educational content… Maybe we could add prize in the future (sticker, etc).
+  - [Adriana} virtual certificates, virtual otel box are possible prizes
+    - Community managers could host the recurring sessions
+    - The main goal is to not make people feel stupid for not knowing, and rather find a fun way to make people learn… And a CTA to join the SIG(s) after the quiz/show.
+    - Is there interest from the end-user-sig to run something like this?
+  - [Victoria]]
+    - More than happy to support
+    - One of the prizes could be to promote the winners on the show
+  - [Henrik]
+    - We could have a defending champion style. The winner of today’s section hosts the next one.
+  - [Sophia]
+    - More than happy to host it!
+  - [Adriana]
+    - Sig experts hosts, other sigs draft the questions
+  - [Henrik]
+    - For a start, we should reach out to those volunteering. 15-20 multiple choice questions should be fine on kahoot.
+  - [Ernest] are we sure kahoot offer first 50 free?
+  - [Adriana] maybe we can start from first come first play scheme, and if we scale, we request for licensing.
+  - [Henrik]
+    - If one of the companies have corporate license, we can use that
+  - {Sophia} I will talk with Elastic to confirm if we have the license.
+  - [Adriana] we can reach out to Alex at the collector. Henrik will reach to Alex.
+  - [Henrik] I’ve done a very brief designs with AI agents that can design what we need.
+  - [Sophia] is there a sig we are focusing for the first one?
+  - [Adriana] we start with collector sig.
+    - We need to recruit 2 people.
+  - [Henrik] We stick to asking your friend alone since that’s what is possible in kahoot.
+  - [Brainstorming doc](https://docs.google.com/document/d/1xpBBf00zC2uNHUcZRcL77mI5pi_CcBaVJAGpNYvNNDI/edit?pli=1&tab=t.0)
+  - [Henrik] we could scan the repo to generate questions and validate with a sig member. Already generated 15 questions as an example.
+  - [Adriana] Community managers would be a good way to showcase the **OTel-lionaire.**
+    - Should we reach out to collector sig now or wait for the doc to be ready?
+  - [Henrik] we can reach out to collector now, structure is already clear.
+  - [Adriana] Sophia and Victoria should send a message on collector sig and tag Adriana and Henrik.
+  - [Henrik] we should have a demo OTel-lionaire to confirm the flow works.
+- OTel in practice
+  - [Adriana] how are the prospects from your end, Victoria?
+  - [Victoria] I’ve messaged but they’re yet to commit.
+- Prometheus survey
+  - Wait for next meeting.
