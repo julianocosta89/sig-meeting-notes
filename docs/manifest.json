@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-11T09:36:08Z",
+  "generated_at": "2026-05-12T08:39:05Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-05-08",
+  "max_date": "2026-05-11",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2950,6 +2950,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
+          "date": "2026-05-11",
+          "duration_minutes": 58,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-04-27",
           "duration_minutes": 29,
           "has_summary": true,
@@ -3006,7 +3013,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 8
+      "meeting_count": 9
     },
     {
       "slug": "Entities-SIG",
@@ -3014,6 +3021,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/15Yt9ss2_EhuFPqItPbk4vjfpeRDAQ5WCUVuY_kCeOAo",
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
+        {
+          "date": "2026-05-11",
+          "duration_minutes": 66,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-05-04",
           "duration_minutes": 51,
@@ -3239,7 +3253,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 32
+      "meeting_count": 33
     },
     {
       "slug": "Erlang-SIG",
@@ -5547,6 +5561,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-05-11",
+          "duration_minutes": 31,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-05-04",
           "duration_minutes": 21,
           "has_summary": true,
@@ -5617,7 +5638,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 10
+      "meeting_count": 11
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -9132,6 +9153,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-security",
       "meetings": [
         {
+          "date": "2026-05-11",
+          "duration_minutes": 38,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-02-02",
           "duration_minutes": 38,
           "has_summary": true,
@@ -9216,7 +9244,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 12
+      "meeting_count": 13
     },
     {
       "slug": "Semantic-Convention-SIG",
@@ -9224,6 +9252,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/10xG7DNKWRhxNmFGt3yYd3980a9uwS8lMl2LvQL3VNK8",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-05-11",
+          "duration_minutes": 64,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-05-04",
           "duration_minutes": 79,
@@ -9512,7 +9547,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 41
+      "meeting_count": 42
     },
     {
       "slug": "Semantic-Convention-Tooling",
