@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Trask Stalnaker (Microsoft)
+- Ted Young (Grafana Labs)
+- Liudmila Molkova
+- Dylan Russell
+- Mike Goldsmith (Honeycomb)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Aaron Abbott (Google)
+- Marisa Boston (Reins AI)
+- Shubhanshu Surana(Apple)
+- Alolita Sharma (Apple)
+- Dat Ngo (Arize AI)
+- Jamie Danielson (Honeycomb)
+- Leighton Chen (Microsoft)
+- Wolfgang Therrien (Honeycomb)
+- Josh Winerman (Cisco/Splunk)
+- Surya Teja
+- Jamie Danielson
+- Josh Wienerman
+- Keith Decker (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+- Ankit Singhal (Microsoft)
+- Sergey Sergeev (Cisco/Splunk)
+
+### Agenda
+- Triage
+  - [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+)
+  - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/102](https://github.com/open-telemetry/semantic-conventions-genai/issues/102)
+- [everyone, 5 min]  Intro for new members
+- [Steve, but can’t join the meeting] [A proposal for adding **gen_ai.prompt.version**](https://github.com/open-telemetry/semantic-conventions-genai/issues/137)
+- [Surya / Liudmila] Final review on [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4500](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4500)
+- [Liudmila] Python repo [[EXTERNAL] opentelemetry-python-genai plan](https://docs.google.com/document/d/1qayEmzxeB1PlINbKBBZW5HKgA7_72WlZ-DGNfMZ5l9E/edit?tab=t.0)
+  - Option1: bootstrap with refactored utils, bring libs one by one
+    - Currently softly blocked on some changes to genai util
+    - Needs a lot of coordination and good state of everything in different repos
+  - Option 2: bootstrap with content  of python-contrib (utils, all existing libs)
+    - As first steps drop legacy / back-compat from utils and libs
+    - Easier to review - see what's being removed / updated
+    - Rip the bandaid (moving to new repo) in one step
+    - Don't migrate vertex - deprecated
+    - Google genai
+  - [aaron] FYI I reserved some package names, some don’t match the pattern we proposed
+    - opentelemetry-instrumentation-vertexai
+      - Let’s not migrate it, just deprecated
+    - opentelemetry-instrumentation-google-genai
+      - Do we keep the original name or follow the naming convention we came up with `opentelemetry-instrumentation-genai-google-genai`
+      - Let’s stick with otel-instr-google-genai
+- [trask] Refining AI commenting policy from community repo
+  - I find works well when replying to copilot reviews for example
+  - And other places
+  - But maybe not all the places
+  - Clearly communicate that it is from AI, via header
+  - Clear instructions for the agent
+    - Editing documents
+    - Fully AI generated PR? If so include prompt
+    - Reviewing spec / reviewing code
+  - AGENTS.md
+    - Be concise
+    - Identify yourself in comments
+    - When submitting a PR, include the spec (maybe under collapsed section)
+- [mike] do we want to migrate some of the python repo automations, SPDX, towncrier, etc work we’ve been doing in python core/contrib into the new python genai instrumentation repo?
