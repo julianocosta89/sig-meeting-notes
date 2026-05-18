@@ -7,7 +7,8 @@ meta-summary narrative, and sends the digest via the Resend email API.
 Required env vars:
     OPENAI_API_KEY  — OpenAI API key
     RESEND_API_KEY  — Resend API key
-    DIGEST_TO       — comma-separated list of recipient email addresses
+    PRIVATE_EMAIL   — single visible recipient (``to`` field)
+    DIGEST_TO       — comma-separated list of bcc recipient email addresses
 """
 
 from __future__ import annotations
@@ -371,18 +372,30 @@ def build_email(
     return {"subject": subject, "html": html_body, "text": text_body}
 
 
-def send_email(api_key: str, recipients: list[str], email: dict[str, str]) -> None:
-    """POST the email to the Resend API."""
+def send_email(
+    api_key: str,
+    to_address: str,
+    bcc: list[str],
+    email: dict[str, str],
+) -> None:
+    """POST the email to the Resend API.
+
+    ``to_address`` is the single visible recipient; ``bcc`` is the list of
+    blind-copied recipients (omitted from the payload when empty).
+    """
+    payload: dict[str, object] = {
+        "from": "digest@otelminutes.jcosta.dev",
+        "to": [to_address],
+        "subject": email["subject"],
+        "html": email["html"],
+        "text": email["text"],
+    }
+    if bcc:
+        payload["bcc"] = bcc
     resp = requests.post(
         "https://api.resend.com/emails",
         headers={"Authorization": f"Bearer {api_key}"},
-        json={
-            "from": "digest@otelminutes.jcosta.dev",
-            "to": recipients,
-            "subject": email["subject"],
-            "html": email["html"],
-            "text": email["text"],
-        },
+        json=payload,
         timeout=30,
     )
     if resp.status_code not in (200, 201):
@@ -427,13 +440,18 @@ def main() -> None:
         print("No new summaries, skipping.")
         sys.exit(0)
 
+    private_email = os.environ.get("PRIVATE_EMAIL", "").strip()
+    if not private_email:
+        print("PRIVATE_EMAIL not set, skipping.")
+        sys.exit(0)
+
     digest_to = os.environ.get("DIGEST_TO", "").strip()
     if not digest_to:
         print("DIGEST_TO not set, skipping.")
         sys.exit(0)
 
-    recipients = [r.strip() for r in digest_to.split(",") if r.strip()]
-    if not recipients:
+    bcc_recipients = [r.strip() for r in digest_to.split(",") if r.strip()]
+    if not bcc_recipients:
         print("DIGEST_TO contains no valid addresses, skipping.")
         sys.exit(0)
 
@@ -459,14 +477,14 @@ def main() -> None:
 
     with tracer.start_as_current_span("send digest") as span:
         span.set_attribute("digest.summary.count", len(summaries))
-        span.set_attribute("digest.recipient.count", len(recipients))
+        span.set_attribute("digest.recipient.count", len(bcc_recipients))
         try:
             client = _create_openai_client(api_key)
             narrative = generate_digest_narrative(client, summaries)
 
             today = date.today().isoformat()
             email = build_email(narrative, summaries, today, len(summaries))
-            send_email(resend_key, recipients, email)
+            send_email(resend_key, private_email, bcc_recipients, email)
         except Exception as exc:  # noqa: BLE001
             span.record_exception(exc)
             span.set_status(StatusCode.ERROR, str(exc))
