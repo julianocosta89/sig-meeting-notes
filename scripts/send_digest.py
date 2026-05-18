@@ -477,7 +477,7 @@ def main() -> None:
 
     with tracer.start_as_current_span("send digest") as span:
         span.set_attribute("digest.summary.count", len(summaries))
-        span.set_attribute("digest.recipient.count", len(bcc_recipients))
+        span.set_attribute("digest.recipient.count", 1 + len(bcc_recipients))
         try:
             client = _create_openai_client(api_key)
             narrative = generate_digest_narrative(client, summaries)
