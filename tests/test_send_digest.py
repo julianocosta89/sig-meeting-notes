@@ -72,6 +72,7 @@ def _env(**overrides: str) -> dict[str, str]:
     base = {
         "OPENAI_API_KEY": "test-openai-key",
         "RESEND_API_KEY": "test-resend-key",
+        "PRIVATE_EMAIL": "private@example.com",
         "DIGEST_TO": "user@example.com",
     }
     base.update(overrides)
@@ -201,6 +202,7 @@ class TestMain:
                 {
                     "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
                     "SUMMARIZE_COMMIT_FOUND": "true",
+                    "PRIVATE_EMAIL": "private@example.com",
                     "DIGEST_TO": "",
                 },
             ),
@@ -208,6 +210,28 @@ class TestMain:
         ):
             main()
         assert exc_info.value.code == 0
+
+    def test_missing_private_email(self) -> None:
+        """PRIVATE_EMAIL not set -> exits cleanly."""
+        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
+        with (
+            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
+            patch("send_digest._is_trivial_transcript", return_value=False),
+            patch.dict(
+                "os.environ",
+                {
+                    "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
+                    "SUMMARIZE_COMMIT_FOUND": "true",
+                    "PRIVATE_EMAIL": "",
+                    "DIGEST_TO": "user@example.com",
+                },
+            ),
+            patch("send_digest.requests.post") as mock_post,
+            pytest.raises(SystemExit) as exc_info,
+        ):
+            main()
+        assert exc_info.value.code == 0
+        mock_post.assert_not_called()
 
     def test_missing_resend_api_key(self) -> None:
         """RESEND_API_KEY not set -> exits with error."""
@@ -254,11 +278,12 @@ class TestMain:
         mock_post.assert_called_once()
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
         assert call_json["from"] == "digest@otelminutes.jcosta.dev"
-        assert call_json["to"] == ["user@example.com"]
+        assert call_json["to"] == ["private@example.com"]
+        assert call_json["bcc"] == ["user@example.com"]
         assert "Go-SIG" in call_json["subject"] or "1 meetings" in call_json["subject"]
 
     def test_multiple_recipients(self, tmp_path: Path) -> None:
-        """DIGEST_TO with comma-separated list -> to field is a list."""
+        """DIGEST_TO with comma-separated list -> bcc field is a list."""
         mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
@@ -287,7 +312,8 @@ class TestMain:
             main()
 
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
-        assert call_json["to"] == ["a@test.com", "b@test.com", "c@test.com"]
+        assert call_json["to"] == ["private@example.com"]
+        assert call_json["bcc"] == ["a@test.com", "b@test.com", "c@test.com"]
 
     def test_blank_recipients_filtered(self, tmp_path: Path) -> None:
         """Trailing comma or double-comma in DIGEST_TO -> blank entries dropped."""
@@ -319,7 +345,8 @@ class TestMain:
             main()
 
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
-        assert call_json["to"] == ["a@test.com", "b@test.com"]
+        assert call_json["to"] == ["private@example.com"]
+        assert call_json["bcc"] == ["a@test.com", "b@test.com"]
 
     def test_resend_error_handling(self, tmp_path: Path) -> None:
         """Resend returns 400 -> error printed, exits non-zero."""
@@ -752,7 +779,10 @@ class TestSendEmail:
         mock_resp.status_code = 200
         with patch("send_digest.requests.post", return_value=mock_resp):
             send_email(
-                "key", ["u@example.com"], {"subject": "S", "html": "<p>test</p>", "text": "test"}
+                "key",
+                "private@example.com",
+                ["u@example.com"],
+                {"subject": "S", "html": "<p>test</p>", "text": "test"},
             )
 
     def test_201_status_succeeds(self) -> None:
@@ -760,7 +790,10 @@ class TestSendEmail:
         mock_resp.status_code = 201
         with patch("send_digest.requests.post", return_value=mock_resp):
             send_email(
-                "key", ["u@example.com"], {"subject": "S", "html": "<p>test</p>", "text": "test"}
+                "key",
+                "private@example.com",
+                ["u@example.com"],
+                {"subject": "S", "html": "<p>test</p>", "text": "test"},
             )
 
     def test_error_status_exits(self) -> None:
@@ -771,9 +804,40 @@ class TestSendEmail:
             with pytest.raises(SystemExit):
                 send_email(
                     "key",
+                    "private@example.com",
                     ["u@example.com"],
                     {"subject": "S", "html": "<p>test</p>", "text": "test"},
                 )
+
+    def test_payload_shape(self) -> None:
+        """to should be a list with the single PRIVATE_EMAIL; bcc carries the digest list."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        with patch("send_digest.requests.post", return_value=mock_resp) as mock_post:
+            send_email(
+                "key",
+                "private@example.com",
+                ["a@test.com", "b@test.com"],
+                {"subject": "S", "html": "<p>test</p>", "text": "test"},
+            )
+        call_json = mock_post.call_args.kwargs["json"]
+        assert call_json["to"] == ["private@example.com"]
+        assert call_json["bcc"] == ["a@test.com", "b@test.com"]
+
+    def test_payload_omits_bcc_when_empty(self) -> None:
+        """No bcc list -> bcc key omitted from the Resend payload."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        with patch("send_digest.requests.post", return_value=mock_resp) as mock_post:
+            send_email(
+                "key",
+                "private@example.com",
+                [],
+                {"subject": "S", "html": "<p>test</p>", "text": "test"},
+            )
+        call_json = mock_post.call_args.kwargs["json"]
+        assert call_json["to"] == ["private@example.com"]
+        assert "bcc" not in call_json
 
 
 # ---------------------------------------------------------------------------
@@ -788,6 +852,7 @@ class TestMainExtra:
         env = {
             "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
             "SUMMARIZE_COMMIT_FOUND": "true",
+            "PRIVATE_EMAIL": "private@example.com",
             "DIGEST_TO": "user@example.com",
             "OPENAI_API_KEY": "",
             "RESEND_API_KEY": "key",
