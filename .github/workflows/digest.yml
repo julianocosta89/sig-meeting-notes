@@ -74,6 +74,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          PRIVATE_EMAIL: ${{ secrets.PRIVATE_EMAIL }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
           # SHA of the exact commit summarize pushed (empty if nothing was pushed).
           # found=true means this is a workflow_run trigger; found=false means workflow_dispatch.
