@@ -1,0 +1,85 @@
+## Meeting Notes
+
+### Attendees
+- Liudmila
+- Trask
+- Minghui
+- Steve
+- Huxing
+- Aaron
+- Dylan Russell
+- Mike Goldsmith (Honeycomb)
+- Keith Decker (Cisco/Splunk)
+- Josh Winerman (Cisco/Splunk)
+- Ridhima Satam (Cisco/Splunk)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Aditya
+- Marisa Boston (Reins AI)
+- Surya Teja
+- Sergey Sergeev (Cisco/Splunk)
+- Shuwen Pan (Cisco)
+
+### Agenda
+- [Steve] [A proposal for adding **gen_ai.prompt.version**](https://github.com/open-telemetry/semantic-conventions-genai/issues/137)
+  - Currently only on MCP span
+  - Could be on inference span (applicable to OpenAI Responses)
+    - Should work for alibaba
+- [Steve] Proposal:Establish GenAI Utils as a cross-language implementation convention
+  - Weaver codegen vs handwritten vs instrumentation API
+  - Helps with config too (across languages)
+- Triage
+  - WG Project board:
+    - [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Apr+is%3Aopen+label%3Aarea%3Agen-ai+-is%3Adraft+)
+      - AI (Liudmila) to fix
+    - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/102](https://github.com/open-telemetry/semantic-conventions-genai/issues/102)
+  - [everyone, 5 min]  Intro for new members
+- [trask, 10m] Changing `gen_ai.client.token.usage` from histogram to counter
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/96#discussion_r3253221521](https://github.com/open-telemetry/semantic-conventions-genai/pull/96#discussion_r3253221521)
+    - Histogram: `gen_ai.client.token.usage`
+      - Attribute: `gen_ai.token.type`
+      - Splits the value
+        - `input` / `output`
+        - One operation (inference) results in 2 different measurements (with proposal to split further) with type as a dimension
+        - Almost like different units
+      - 80 input 20 output, total is 100, but
+        - P95 over gen_ai.client.token.usage without token type is meaningless
+        - P95(gen_ai.client.token.usage{type=input}) + P95(gen_ai.client.token.usage{type=output}) (still meaningless) != P95(gen_ai.client.token.usage)
+    - ~~CI pipeline~~ VCS metrics switched from histogram to gauges
+  - Counters are fine to split this way
+    - Proposal: change to counter
+    - sum(gen_ai.client.token.usage{type=input}) + sum(gen_ai.client.token.usage{type=output}) == sum(gen_ai.client.token.usage) // total token usage
+  - More to come
+    - input_cache_read, input_cache_write, output_reasoning, output_generate
+    - per modality (tokens per image / text / etc)
+  - Are there cases that require histograms
+    - And over which types of tokens
+  - [aaron] [https://opentelemetry.io/docs/specs/semconv/general/metrics/#general-guidelines](https://opentelemetry.io/docs/specs/semconv/general/metrics/#general-guidelines)
+- [trask, 5m] [Add GenAI memory operation conventions](https://github.com/open-telemetry/semantic-conventions-genai/pull/140)
+  - Needs one more approval
+- [aditya] suppress language model instrumentation’s spans
+  - OTel upstream (OTEL_PYTHON_DISABLED_INSTRUMENTATIONS) vs traceloop/openllmetry (SUPPRESS_LANGUAGE_MODEL_INSTRUMENTATION_KEY)
+  - Installing instrumentation vs disabling them: same artifact, different configuration
+  - OTEL_PYTHON_DISABLED_INSTRUMENTATIONS  should continue to work in zero code
+    - This should be the path forward
+    - Consider creating an issue to disable all inference-level spans
+  - Traceloop has dynamic / granular code suppression via context key
+- [dylan] discuss doing a release GenAI utils from new repo.
+  - Blocking features
+  - 1. Port package releases for GenAI from contrib
+    - Easy, but hard on maintainers
+    - Per-package for GenAI, monolith for the rest
+  - 2. Porting and adapting release all from contrib
+    - Bit more complex to implement, easier in the long run
+    - Mike is working on releasing different versions for genai
+    - Oidc for pypi secrets
+  - Proposal for the new repo:
+    - Per-package version
+      - Do we actually need it?
+      - Java has one version per all
+      - Per-module tagging?
+      - We can explore one version for all of them and do the highest among all of them
+    - One release for all
+- [aaron, 5m] OTLP clients enforcing size limits
+  - [https://github.com/open-telemetry/opentelemetry-proto/pull/782/changes#r3267718027](https://github.com/open-telemetry/opentelemetry-proto/pull/782/changes#r3267718027)
+  - We have a PR but it’s a bit complicated [https://github.com/open-telemetry/opentelemetry-python/pull/5032](https://github.com/open-telemetry/opentelemetry-python/pull/5032)
+- [Ridhima- 1m] - [workflow.name](https://github.com/open-telemetry/semantic-conventions/issues/3603) and [agent.name](https://github.com/open-telemetry/semantic-conventions-genai/issues/91) on child spans using context scoped attributes
