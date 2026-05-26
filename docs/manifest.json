@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-25T10:01:50Z",
+  "generated_at": "2026-05-26T09:48:08Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-05-22",
+  "max_date": "2026-05-25",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -9605,6 +9605,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-05-25",
+          "duration_minutes": 6,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-05-18",
           "duration_minutes": 63,
           "has_summary": true,
@@ -9906,7 +9913,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 43
+      "meeting_count": 44
     },
     {
       "slug": "Semantic-Convention-Tooling",
