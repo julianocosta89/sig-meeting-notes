@@ -1,0 +1,66 @@
+## Meeting Notes
+
+### Attendees
+- Changlong
+- Steve
+- Trask
+- Dylan
+- Liudmila
+- Huxing
+- Keith Decker (Cisco/Splunk)
+- Alolita
+- Josh Bonczkowski (New Relic)
+- Aaron
+- Shuwen Pan (Cisco)
+- Billy Zhou (AWS)
+- Leighton
+- Surya Teja
+- Ted Young (Grafana Labs)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Nikhil Pallepati
+- Shubhanshu Surana (Apple)
+
+### Agenda
+- [ ] APAC
+      - [changlong] Proposal: Add CLI semconv to support Agentic Infra(GenAI、SKILL、CLI)
+- [Steve] [GenAI semconv needs vendor-neutral reasoning parts and continuity tokens](https://github.com/open-telemetry/semantic-conventions-genai/issues/192)
+- [ ] [aaron, 5m] discuss vagueness in gen_ai[.agent.id](http://.agent.id)
+      - Right now for it’s for OpenAI assistants and we put it in the client side agent invocation
+        - Maybe we should remove it from the server side?
+        - Fyi assistants api is deprecated
+      - [aaron] Was hoping to re-use this for GCP use case on the server side
+        - Agents are automatically registered and they get a unique identifier which acts like a service discovery key
+        - Ideally it would be a resource identifier on the server side
+        - There’s fuzziness if gen_ai.agent.id is intended to be used for multiple agents in process
+        - [trask] You’d want to define an agent identity to make that in scope then
+      - [Liudmila] is this related to A2A service discovery
+        - Sort of but i don’t think a2a has unique ID as part of the agent card
+- [ ] [Surya] Semconv for compaction, a2a protocol [https://github.com/open-telemetry/semantic-conventions-genai/pull/162](https://github.com/open-telemetry/semantic-conventions-genai/pull/162)
+- [ ] [Marisa] What is the status of [experimental results](https://github.com/open-telemetry/semantic-conventions-genai/issues/79) and [tasks](https://github.com/open-telemetry/semantic-conventions-genai/issues/37)?
+      - Anthropic shipped proprietary equivalents of both in [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview) (May 6).
+      - This looks like closed telemetry :/.
+- [ ] [dylan] are we getting rid of the deprecated sem conv instrumentation variant in the new repo before doing a release??
+      - Yes
+      - Google GenAI - Dylan
+      - OpenAI - Leighton
+      - OpenAI Agents - Liudmila
+      - Anthopic - Surya
+      - Claude - NA I think as we haven’t added any instrumentation code here.
+      - Langchain
+      - Bedrock hasn’t been moved to new repo because it’s part of larger boto instrumentation
+        - Open question: move it out of boto instrumentation and into the new repo?
+        - [https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore)
+        - Liudmila to start chat between Billy and boto instr owners
+          - Draft PR to help with migration using best guess migration. We should review - [https://github.com/open-telemetry/opentelemetry-python-genai/pull/93](https://github.com/open-telemetry/opentelemetry-python-genai/pull/93)
+      - Semconv - remove OTEL_SEMCONV_STABILITY_OPT_IN blurb - Trask
+- [ ] [Liudmila] OpenAI agents instrumentation:
+      - Conformance [https://github.com/open-telemetry/opentelemetry-python-genai/pull/85](https://github.com/open-telemetry/opentelemetry-python-genai/pull/85)
+      - Rewrite: [https://github.com/open-telemetry/opentelemetry-python-genai/pull/90](https://github.com/open-telemetry/opentelemetry-python-genai/pull/90)
+        - Double-collection for inference: let's prefer inner layer and either drop its instrumentation from agent side or make the latter opt-in
+        - Another approach: suppression (outer only) for the same layer
+          - Lower instrumentation can instead stamp additional attrs
+- [ ] [Surya]: Semconv for a2a protocol
+- [ ] [Nikhil]: **PR #96 followup: histogram to counter pivot** [https://github.com/open-telemetry/semantic-conventions-genai/pull/96#issuecomment-4526349166](https://github.com/open-telemetry/semantic-conventions-genai/pull/96#issuecomment-4526349166)
+- Keep the name, change the instrument type from histogram to counter. Clean naming, but breaks anyone relying on histogram aggregations.
+- Keep the histogram, add a counter alongside under a new name. Non-breaking but we end up with two instruments for the same data and have to tell people which to use.
+- Deprecate the histogram, ship the counter under a new name.
