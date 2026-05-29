@@ -1,0 +1,80 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- [Alexey Alexandrov](mailto:aalexand@google.com)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Florian Lehner](mailto:florian.lehner@elastic.co)(Elastic)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) (Elastic)
+- Alban Crequy (Microsoft / Inspektor Gadget team)
+- [Scott Gerring](mailto:scott@datadoghq.com) (Datadog)
+- [Frederic Branczyk](mailto:frederic@polarsignals.com) (Polar Signals) - Joined 10min into it
+
+### Agenda
+- Review action items:
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) Comment on [https://github.com/open-telemetry/opentelemetry-proto/pull/782](https://github.com/open-telemetry/opentelemetry-proto/pull/782) based on discussion on Apr 2.
+    - Felix: New limit is 64 MiB.
+    - Florian: [PR needs merging](https://github.com/open-telemetry/sig-profiling/pull/123/changes#diff-04e5d29d65d29bb6783ee7b4a249c8ee2184d82c76f38f9b5c2d04f9b4b5df9e).
+  - Jonathan: PR for moving original_payload to a dictionary. Done: [https://github.com/open-telemetry/opentelemetry-proto/pull/786](https://github.com/open-telemetry/opentelemetry-proto/pull/786)
+    - Jonathan: More feedback welcome. 🚨
+    - Jonathan: Payloads could come from in-memory, so there might not be a filename.
+  - [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+    - Felix: No progress, but will try to do this until next meeting.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Specification PR [https://github.com/open-telemetry/opentelemetry-specification/pull/4932](https://github.com/open-telemetry/opentelemetry-specification/pull/4932) Please review!
+    - Merged.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Data Format PR
+    - Christos: Blocked on (1 more) TC approval + merge.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Related documentation changes to the proto
+    - Christos: Approvals might become easier because TC is expanding the pool of approvers.
+    - Florian: Yes, but profiling SIG was already approvers.
+    - Christos: One more SIG reviewer please. 🚨
+  - —
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - No update from me, I know Florian has a PR for adding this for mappings, I need to review that.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics. See [this discussion](#bookmark=id.9nkv5styhrxf) below.
+    - Sent [#791](https://github.com/open-telemetry/opentelemetry-proto/pull/791) previously, there was a [discussion](#bookmark=id.j6n3lln9n34g) of it a few weeks ago in the meeting here, I need to address that feedback.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Figure out what to do with this [older Profiles OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md). See [this discussion below](#bookmark=id.mjn7dj4yyazk).
+    - Depends on [https://github.com/open-telemetry/opentelemetry-specification/pull/4965](https://github.com/open-telemetry/opentelemetry-specification/pull/4965)
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) / [florian.lehner@elastic.co](mailto:florian.lehner@elastic.co): Figure out KeyValueUnit proposal, see Apr 2 discussion.
+    - [Replace KeyValueAndUnit with Semantic Conventions](https://docs.google.com/document/d/1ddDC4ZGCRFUionGl8GAX9IywCpGjK1GKezgR9EnsYCY/edit?tab=t.0#heading=h.kzrc9emx1jun)
+      - Felix: Needs follow-up comments from Christos. Then I can update the proposal and push upstream.
+    - [Extend KeyValue with Unit information](https://docs.google.com/document/d/17dyg0Wf6N_RVYNSga-jo0TD0WWOD4pR5tu2oHm7ZSn4/edit?tab=t.0)
+    - Christos: Alexey might have some feedback.
+    - This is blocked by christos PRs above. When they land, we can update the OTEP and point to these newer docs.
+    - Alexey: Didn’t have a chance to look yet.
+    - Alexey: Sample type also has unit, which we should consider for consistency. OTel uses a standard for units that pprof doesn’t follow.
+    - Felix: The upstream issue is: [https://github.com/open-telemetry/opentelemetry-proto/issues/766](https://github.com/open-telemetry/opentelemetry-proto/issues/766)
+    - Alexey: To confirm: The main goal is to get rid of the profiling specific KeyValueAndUnit message.
+    - Felix: Yes.
+    - Felix: Maybe the next step here is to get TC temperature.
+- ([Scott Gerring](mailto:scott@datadoghq.com)) [Thread context OTEP (4947)](https://github.com/open-telemetry/opentelemetry-specification/pull/4947) - [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)and I would love some more feedback!
+  - Scott: More feedback on PR 🚨.
+  - Florian: Coralogix person (?) open a [PR](https://github.com/open-telemetry/opentelemetry-specification/pull/5116) to make use of process context for OBI.
+  - Ivo: Maybe people could pay special attention to how keys are set, and how we can tackle the use case of custom labels.
+  - Scott: Keys are published via process context, which can be updated.
+  - Felix: Sounds reasonable, since we don’t want high cardinality / frequent churn of keys.
+  - Frederic: Makes sense. In fact we had a recent incident with go labels becoming high cardinality due to a bug which was bad.
+  - Frederic: How will this work from a library perspective?
+  - Florian: How do we want to expose custom labels in the protocol? As an attribute on the sample?
+  - Frederic: Should behave like go labels → become attributes.
+  - Florian: Go labels have semconv.
+  - Frederic: In our protocol labels are flat, custom labels just get added to those. In our database we added the query plan node name, which was useful.
+  - Frederic: Custom labels are only useful if they don’t need to be defined ahead of time in sem conv.
+  - Felix: +1
+  - Ivo: In DD our labels are also flat.
+  - Florian: There are processors that drop all attributes that don’t conform to otel semconv. The attributes should be at the sample level, not resource.
+  - Felix: No existing processor would drop profiling sample attributes tho, right?
+  - Florian: Yes.
+  - Christos: Process context publish is async. But consumers might not read it fast enough.
+  - Scott: Yeah, publishing keys frequently via process context would be problematic.
+  - Ivo: Yes.
+  - Scott: Do we want to support dynamic keys?
+  - Felix: I think we should discourage high cardinality / frequently churning keys. Lazy key registration at first use time is fine. But for use cases with high cardinality, people should use a single key and a complex label.
+  - Frederic: How do we expect this to work?
+  - Felix: I think that process context should be republished when a new key is used. After 256 key limit is hit, an error should be returned.
+  - Frederic: That could work as long as we get the DevX right in the libraries.
+  - Ivo: The key limit will be documented. We could evolve this over time. Newer writers could support dynamic keys. One advantage of dynamic keys is that you get more separation between process context and thread context. I.e. you could manage keys with just thread context.
+  - Frederic: The current solution seems suitable.
+  - Scott: I can ping people on this block in the OTEP to confirm.
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) review [beta roadmap](https://github.com/open-telemetry/sig-profiling/issues/117).
