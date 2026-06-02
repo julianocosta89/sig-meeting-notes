@@ -83,6 +83,15 @@ def docs_site(tmp_path_factory):
                 ],
             },
             {
+                "slug": "Summary-SIG",
+                "name": "Summary SIG",
+                "meeting_notes_url": "",
+                "repository_url": "",
+                "meetings": [
+                    {"date": "2026-02-12", "duration_minutes": 40, "has_summary": True},
+                ],
+            },
+            {
                 "slug": "Unsafe-SIG",
                 "name": "Unsafe SIG",
                 "meeting_notes_url": "javascript:alert('xss')",
@@ -96,12 +105,14 @@ def docs_site(tmp_path_factory):
     (site / "manifest.json").write_text(json.dumps(manifest))
 
     # Create per-meeting folder structure: content/{slug}/{date}/transcript.md
-    def _write_meeting(slug, date, transcript_text, meeting_notes_text=None):
+    def _write_meeting(slug, date, transcript_text, meeting_notes_text=None, summary_text=None):
         d = site / "content" / slug / date
         d.mkdir(parents=True, exist_ok=True)
         (d / "transcript.md").write_text(transcript_text)
         if meeting_notes_text:
             (d / "meeting-notes.md").write_text(meeting_notes_text)
+        if summary_text:
+            (d / "summary.md").write_text(summary_text)
 
     _write_meeting(
         "Go-SIG",
@@ -173,6 +184,20 @@ def docs_site(tmp_path_factory):
         "### Agenda\n"
         "- Review last meeting\n"
         "- New proposals\n",
+    )
+    _write_meeting(
+        "Summary-SIG",
+        "2026-02-12",
+        "SIG: Summary SIG\n"
+        "Date: 2026-02-12\n"
+        "Duration: 40 minutes\n"
+        "Zoom Recording URL: https://zoom.us/rec/share/summary-example\n"
+        "============================================================\n"
+        "\n"
+        "## Zoom Recording Transcript\n"
+        "\n"
+        "**Alice** 00:30 Discussed generated summaries.\n",
+        summary_text="# Summary Heading\n\n- Generated summaries need clear warnings.\n",
     )
     _write_meeting(
         "Unsafe-SIG",
@@ -295,6 +320,26 @@ def test_transcript_header_rendered(browser_ctx):
     assert "Go SIG" in header
     assert "2026-02-05" in header
     assert "33 minutes" in header
+    page.close()
+
+
+def test_summary_warning_renders_before_summary_content(browser_ctx):
+    """Summary tab should warn that generated content may be inaccurate."""
+    context, url = browser_ctx
+    page = context.new_page()
+    _wait_for_app_ready(page, url)
+    page.select_option("#sig-select", "Summary-SIG")
+    page.wait_for_selector("#date-list .date-btn")
+    page.locator("#date-list .date-btn", has_text="2026-02-12").click()
+    page.wait_for_selector(".summary-body .summary-warning")
+
+    warning_text = page.locator(".summary-warning").text_content()
+    assert "AI-generated summary" in warning_text
+    assert "hallucinations" in warning_text
+    expect(page.locator(".summary-warning-icon")).to_be_visible()
+
+    summary_text = page.locator(".summary-body").text_content()
+    assert summary_text.index("AI-generated summary") < summary_text.index("Summary Heading")
     page.close()
 
 

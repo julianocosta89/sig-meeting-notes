@@ -1005,6 +1005,54 @@ async function getSummary(slug, date) {
   return summaryCache.get(key);
 }
 
+function createSummaryWarning() {
+  const warning = document.createElement('div');
+  warning.className = 'summary-warning';
+  warning.setAttribute('role', 'note');
+
+  const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  icon.setAttribute('viewBox', '0 0 24 24');
+  icon.setAttribute('width', '18');
+  icon.setAttribute('height', '18');
+  icon.setAttribute('fill', 'none');
+  icon.setAttribute('stroke', 'currentColor');
+  icon.setAttribute('stroke-width', '2');
+  icon.setAttribute('stroke-linecap', 'round');
+  icon.setAttribute('stroke-linejoin', 'round');
+  icon.setAttribute('aria-hidden', 'true');
+  icon.classList.add('summary-warning-icon');
+
+  const triangle = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  triangle.setAttribute('d', 'M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z');
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', '12');
+  line.setAttribute('y1', '9');
+  line.setAttribute('x2', '12');
+  line.setAttribute('y2', '13');
+  const dot = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  dot.setAttribute('x1', '12');
+  dot.setAttribute('y1', '17');
+  dot.setAttribute('x2', '12.01');
+  dot.setAttribute('y2', '17');
+  icon.appendChild(triangle);
+  icon.appendChild(line);
+  icon.appendChild(dot);
+
+  const text = document.createElement('span');
+  text.className = 'summary-warning-text';
+  const label = document.createElement('strong');
+  label.textContent = 'AI-generated summary.';
+  text.appendChild(label);
+  text.appendChild(document.createTextNode(
+    ' This summary is based on the transcript and may contain inaccuracies or hallucinations.',
+  ));
+
+  warning.appendChild(icon);
+  warning.appendChild(text);
+
+  return warning;
+}
+
 async function switchToView(view) {
   if (!currentSig || !currentDate) return;
   const requestedSig = currentSig;
@@ -1046,6 +1094,7 @@ async function switchToView(view) {
         const md = await getSummary(requestedSig, requestedDate);
         if (currentSig !== requestedSig || currentDate !== requestedDate) return;
         const summaryEl = makePanel('summary-body');
+        summaryEl.appendChild(createSummaryWarning());
         summaryEl.appendChild(renderMarkdown(md));
         bodyEl.replaceWith(summaryEl);
       } catch (err) {
