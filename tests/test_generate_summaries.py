@@ -28,7 +28,6 @@ SAMPLE_TRANSCRIPT = textwrap.dedent("""\
     SIG: Go SIG
     Date: 2026-02-05
     Duration: 33 minutes
-    Zoom Recording URL: https://zoom.us/rec/share/example
     ============================================================
 
     ## Zoom Recording Transcript
@@ -43,7 +42,6 @@ SAMPLE_TRANSCRIPT_LEGACY = textwrap.dedent("""\
     SIG: Go SIG
     Date: 2026-02-05
     Duration: 33 minutes
-    Source URL: https://zoom.us/rec/share/example
     ============================================================
 
     Tyler 02:14 Hey, Damien.
@@ -57,7 +55,6 @@ LONG_TRANSCRIPT = (
     SIG: Go SIG
     Date: 2026-02-05
     Duration: 60 minutes
-    Zoom Recording URL: https://zoom.us/rec/share/example
     ============================================================
 
     ## Zoom Recording Transcript
@@ -70,7 +67,6 @@ FAKE_SUMMARY_MD = textwrap.dedent("""\
     # Go SIG — 2026-02-05
 
     **Duration:** 33 minutes
-    **Source:** https://zoom.us/rec/share/example
 
     ## Key Topics
     - Discussed recent Fostim conference highlights
@@ -164,7 +160,6 @@ class TestTranscriptParsing:
             "SIG: Test SIG\n"
             "Date: 2026-01-01\n"
             "Duration: 60 minutes\n"
-            "Zoom Recording URL: https://example.com\n"
             "============================================================\n\n"
         )
         p = tmp_path / "empty.md"
@@ -195,7 +190,6 @@ class TestGenerateSummary:
             "Go SIG",
             "2026-02-05",
             "33",
-            "https://zoom.us/rec/share/example",
             "Tyler 02:14 Hey!",
         )
         mock_client.chat.completions.create.assert_called_once()
@@ -208,7 +202,6 @@ class TestGenerateSummary:
             "Go SIG",
             "2026-02-05",
             "33",
-            "https://zoom.us/rec/share/example",
             "Tyler 02:14 Hey!",
         )
         assert "Go SIG" in result
@@ -222,7 +215,6 @@ class TestGenerateSummary:
             "Go SIG",
             "2026-02-05",
             "33",
-            "https://zoom.us/rec/share/example",
             "Tyler 02:14 Hey!",
         )
         call_args = mock_client.chat.completions.create.call_args
@@ -236,7 +228,6 @@ class TestGenerateSummary:
             "Go SIG",
             "2026-02-05",
             "33",
-            "https://zoom.us/rec/share/example",
             "Tyler 02:14 Hey, Damien!",
         )
         call_args = mock_client.chat.completions.create.call_args
@@ -259,7 +250,6 @@ class TestGenerateSummary:
             "Collector SIG",
             "2025-07-23",
             "60",
-            "https://zoom.us/rec/share/example",
             "Speaker 00:01 We discussed Hotel Arrow today.",
         )
         call_args = mock_client.chat.completions.create.call_args
@@ -422,9 +412,8 @@ class TestSummaryFormat:
         assert "## Participants" in FAKE_SUMMARY_MD
 
     def test_summary_has_metadata(self) -> None:
-        """Generated summaries should include duration and source URL."""
+        """Generated summaries should include duration metadata."""
         assert "**Duration:**" in FAKE_SUMMARY_MD
-        assert "**Source:**" in FAKE_SUMMARY_MD
 
 
 # ---------------------------------------------------------------------------
@@ -477,7 +466,6 @@ class TestProcessTranscriptsEdgeCases:
             "SIG: Go SIG\n"
             "Date: 2026-02-05\n"
             "Duration: 33 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
             "**Tyler** 02:14 Hey, Damien.\n"
@@ -500,7 +488,6 @@ class TestProcessTranscriptsEdgeCases:
             "SIG: Go SIG\n"
             "Date: 2026-02-05\n"
             "Duration: 33 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
             "**Tyler** 02:14 Hey, Damien.\n"
@@ -524,7 +511,6 @@ class TestProcessTranscriptsEdgeCases:
             "SIG: Go SIG\n"
             "Date: 2026-02-05\n"
             "Duration: 33 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
             "**Tyler** 02:14 Hey, Damien.\n"
@@ -549,7 +535,6 @@ class TestProcessTranscriptsEdgeCases:
             "SIG: es-Localization\n"
             "Date: 2026-02-05\n"
             "Duration: 5 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
             "**Fernando Grimaldo** 13:47 Okay\u2026\n"
@@ -572,7 +557,6 @@ class TestProcessTranscriptsEdgeCases:
             "SIG: Go SIG\n"
             "Date: 2026-02-05\n"
             "Duration: 33 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/example\n"
             "============================================================\n\n"
             "## Zoom Recording Transcript\n\n"
             "   \n"

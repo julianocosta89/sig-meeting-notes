@@ -740,21 +740,7 @@ function renderTranscript(text, query) {
     const dt = document.createElement('dt');
     dt.textContent = key;
     const dd = document.createElement('dd');
-    if (key === 'Source URL' || key === 'Zoom Recording URL') {
-      const safeHref = sanitizeHref(val);
-      if (safeHref) {
-        const a = document.createElement('a');
-        a.href = safeHref;
-        a.textContent = val;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        dd.appendChild(a);
-      } else {
-        dd.textContent = val;
-      }
-    } else {
-      dd.textContent = val;
-    }
+    dd.textContent = val;
     dl.appendChild(dt);
     dl.appendChild(dd);
   }

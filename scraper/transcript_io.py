@@ -84,11 +84,7 @@ def _parse_kv_block(path: Path, max_lines: int = 20) -> dict[str, str] | None:
 def parse_header(path: Path) -> dict | None:
     """Parse the header of a transcript file.
 
-    Supports both the legacy format (Source URL:) and the new format
-    (Zoom Recording URL:). Fields are parsed as key-value pairs split
-    on the first colon, so URLs in values are handled correctly.
-
-    Returns a dict with keys: sig_name, date, duration_minutes, source_url.
+    Returns a dict with keys: sig_name, date, duration_minutes.
     Returns None if required fields are missing or the file cannot be read.
     """
     kv = _parse_kv_block(path)
@@ -108,15 +104,10 @@ def parse_header(path: Path) -> dict | None:
         return None
     duration_minutes = int(dur_match.group(1))
 
-    source_url = kv.get("zoom recording url") or kv.get("source url", "")
-    if not source_url:
-        return None
-
     return {
         "sig_name": sig_name,
         "date": date_str,
         "duration_minutes": duration_minutes,
-        "source_url": source_url,
     }
 
 

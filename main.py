@@ -131,7 +131,6 @@ def write_transcript(
         f"SIG: {meeting.sig_name}",
         f"Date: {date_str}",
         f"Duration: {meeting.duration_minutes} minutes",
-        f"Zoom Recording URL: {meeting.url}",
         SEPARATOR,
         "",
         "## Zoom Recording Transcript",

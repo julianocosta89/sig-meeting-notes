@@ -89,37 +89,20 @@ class TestParseHeader:
         assert result["sig_name"] == "Go SIG"
         assert result["date"] == "2026-02-05"
         assert result["duration_minutes"] == 33
-        assert result["source_url"] == "https://zoom.us/rec/share/abc123"
-
-    def test_new_format_zoom_recording_url(self, tmp_path: Path) -> None:
-        p = tmp_path / "test.md"
-        p.write_text(
-            "SIG: Go SIG\nDate: 2026-02-05\nDuration: 33 minutes\n"
-            "Zoom Recording URL: https://zoom.us/rec/share/abc123\n"
-            "============================================================\n"
-        )
-        result = parse_header(p)
-        assert result is not None
-        assert result["source_url"] == "https://zoom.us/rec/share/abc123"
 
     def test_missing_sig_prefix(self, tmp_path: Path) -> None:
         p = tmp_path / "bad.txt"
-        p.write_text("Name: Go SIG\nDate: 2026-02-05\nDuration: 33 minutes\nSource URL: x\n===\n")
+        p.write_text("Name: Go SIG\nDate: 2026-02-05\nDuration: 33 minutes\n===\n")
         assert parse_header(p) is None
 
     def test_missing_date_prefix(self, tmp_path: Path) -> None:
         p = tmp_path / "bad.txt"
-        p.write_text("SIG: Go SIG\nWhen: 2026-02-05\nDuration: 33 minutes\nSource URL: x\n===\n")
+        p.write_text("SIG: Go SIG\nWhen: 2026-02-05\nDuration: 33 minutes\n===\n")
         assert parse_header(p) is None
 
     def test_missing_duration_prefix(self, tmp_path: Path) -> None:
         p = tmp_path / "bad.txt"
-        p.write_text("SIG: Go SIG\nDate: 2026-02-05\nLength: 33 minutes\nSource URL: x\n===\n")
-        assert parse_header(p) is None
-
-    def test_missing_url_prefix(self, tmp_path: Path) -> None:
-        p = tmp_path / "bad.txt"
-        p.write_text("SIG: Go SIG\nDate: 2026-02-05\nDuration: 33 minutes\nURL: x\n===\n")
+        p.write_text("SIG: Go SIG\nDate: 2026-02-05\nLength: 33 minutes\n===\n")
         assert parse_header(p) is None
 
     def test_nonexistent_file(self, tmp_path: Path) -> None:

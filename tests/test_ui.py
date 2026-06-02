@@ -784,21 +784,6 @@ def test_search_jump_to_next_match(browser_ctx):
 # ── New format rendering tests ───────────────────────────────
 
 
-def test_transcript_header_zoom_url_is_link(browser_ctx):
-    """'Zoom Recording URL' field in the header should render as a clickable link."""
-    context, url = browser_ctx
-    page = context.new_page()
-    _wait_for_app_ready(page, url)
-    page.select_option("#sig-select", "Go-SIG")
-    page.wait_for_selector("#date-list .date-btn")
-    page.locator("#date-list .date-btn", has_text="2026-02-05").click()
-    page.wait_for_selector(".transcript-header")
-
-    link = page.locator(".transcript-header a[href*='zoom.us']")
-    assert link.count() > 0, "Expected a link to zoom.us in the transcript header"
-    page.close()
-
-
 def test_manifest_meeting_notes_url_rendered_as_link(browser_ctx):
     """SIG-level meeting_notes_url from the manifest should render as a link."""
     context, url = browser_ctx

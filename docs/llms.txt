@@ -96,7 +96,6 @@ Get the full transcript:
     SIG: Collector SIG
     Date: 2026-02-04
     Duration: 42 minutes
-    Zoom Recording URL: https://zoom.us/rec/share/...
     ============================================================
 
     ## Zoom Recording Transcript

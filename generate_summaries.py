@@ -53,7 +53,6 @@ def generate_summary(
     sig_name: str,
     date: str,
     duration: str,
-    source_url: str,
     transcript_body: str,
 ) -> str:
     """Call OpenAI to generate a summary of the transcript."""
@@ -154,7 +153,6 @@ def process_transcripts(
                     header["sig_name"],
                     header["date"],
                     str(header["duration_minutes"]),
-                    header["source_url"],
                     body,
                 )
             except Exception as exc:  # noqa: BLE001
