@@ -13,6 +13,9 @@
   --accent-subtle: #ddf4ff;
   --border: #d1d9e0;
   --mark-bg: #fff8c5;
+  --warning-bg: #fff8c5;
+  --warning-border: #d4a72c;
+  --warning-fg: #7d4e00;
   --focus-ring: #0969da;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
   --radius: 6px;
@@ -30,6 +33,9 @@
     --accent-subtle: #121d2f;
     --border: #30363d;
     --mark-bg: #3a2f00;
+    --warning-bg: #2d2300;
+    --warning-border: #8a6a00;
+    --warning-fg: #f0c36a;
     --focus-ring: #58a6ff;
   }
 }
@@ -44,6 +50,9 @@
   --accent-subtle: #121d2f;
   --border: #30363d;
   --mark-bg: #3a2f00;
+  --warning-bg: #2d2300;
+  --warning-border: #8a6a00;
+  --warning-fg: #f0c36a;
   --focus-ring: #58a6ff;
 }
 
@@ -536,6 +545,41 @@ body {
   font-family: inherit;
   font-size: 0.9375rem;
   line-height: 1.7;
+}
+
+.summary-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.875rem;
+  color: var(--warning-fg);
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.summary-warning-icon {
+  flex: 0 0 auto;
+  margin-top: 0.125rem;
+}
+
+.summary-warning-text {
+  min-width: 0;
+}
+
+.summary-warning strong {
+  font-weight: 700;
+}
+
+.summary-warning + h1,
+.summary-warning + h2,
+.summary-warning + h3,
+.summary-warning + p,
+.summary-warning + ul {
+  margin-top: 0;
 }
 
 .summary-body h1 {
