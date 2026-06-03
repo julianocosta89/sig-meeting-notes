@@ -1,0 +1,98 @@
+## Meeting Notes
+
+### Attendees
+- Steve
+- Trask Stalnaker (Microsoft)
+- Liudmila
+- Ziming
+- Josh Bonczkowski (New Relic)
+- Jamie Danielson (Honeycomb)
+- Mike Goldsmith (Honeycomb)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Josh Winerman (Cisco/Splunk)
+- Wolfgang Therrien (Honeycomb)
+- Ted Young (Grafana Labs)
+- Marisa Boston (Reins AI)
+- Keith Decker (Cisco/Splunk)
+- Dat Ngo (Arize AI)
+- Surya Teja
+- Ankit Singhal (Microsoft)
+- Aaron Abbott (Google)
+- Shuwen Pan (Cisco)
+- Aditya Mehra (Cisco)
+
+### Agenda
+- [ ] APAC
+      - [Steve] Proposal: Add Server-side or inference engine span
+      - [changlong] Proposal: Add CLI semconv to support Agentic Infra(GenAI、SKILL、CLI)
+- [ ] Triage
+      - WG Project board:
+        - [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr)
+          - AI:
+            - Let's remove PRs
+            - Let's make sure new issues land in the column
+            - One dash for python and semconv for now
+        - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/102](https://github.com/open-telemetry/semantic-conventions-genai/issues/102)
+        - Python GenAI PR dashboard
+          - TODO
+      - [everyone, 5 min]  Intro for new members
+- [ ] [jamie] issue for tracking repos generating genai semconv
+      - [https://github.com/open-telemetry/semantic-conventions-genai/issues/233](https://github.com/open-telemetry/semantic-conventions-genai/issues/233)
+      - Wolfgang has one started for JS, also includes more details to maybe add here
+        - Wolfgang will open the issue and post link in slack (and link here for posterity)
+      - Notes:
+        - Option 1 - Add to same semantic-conventions generated package in the same entrypoint as other semantic conventions
+          - Would need the same versioning (for artifact) and Schema URL shenanigans
+        - We should still have stable and unstable packages
+          - JS: two entrypoints, one package
+          - Python: one package, _incubating namespace
+          - Not recommended to depend on experimental semconv (in instrumentation libs)
+        - Java: also prefer Option 3 - Create a new, separate package for semantic-conventions-genai
+          - Versioning alignment
+        - Recommendation in general: split out genai stuff into separate artifact(s)
+          - If there was one, now it will be semconv and semconv-genai
+          - If there were two, now there will be 4
+        - Dependency from genai semconv to core semconv?
+          - Based on weaver dependency
+        - Python: generate in genai util
+        - Long term in other languages: [https://github.com/open-telemetry/semantic-conventions-genai/issues/166](https://github.com/open-telemetry/semantic-conventions-genai/issues/166)
+        - Consensus is on Option 3
+- [ ] [Liudmila] First release, what should code-generators in specific languages do about GenAI SemConv
+      - Core semconv release is due
+      - Can we have more time?
+        - Probably no
+      - AI: Liudmila to post in maintainers channel announcing stuff being deprecated and not block core release on release here
+- [ ] [Liudmila] Replacing jupiter notebook with python [https://github.com/open-telemetry/semantic-conventions-genai/pull/226](https://github.com/open-telemetry/semantic-conventions-genai/pull/226)
+      - Turns out system instructions have the same type as input messages - will send PR to change to text parts only, can evolve to support other parts in the future if needed
+- [ ] [Liudmila] PTAL at the openai agents conformance testing - blocks quite a few PRs around openai-agents qui[https://github.com/open-telemetry/opentelemetry-python-genai/pull/85](https://github.com/open-telemetry/opentelemetry-python-genai/pull/85)
+- [ ] [Erden] Adding MCP tool type handler in util [https://github.com/open-telemetry/opentelemetry-python-genai/pull/105](https://github.com/open-telemetry/opentelemetry-python-genai/pull/105)
+      - [aaron] where would we use this? [https://github.com/modelcontextprotocol/python-sdk/blob/a9381263275a86257002c1e34101c1dce70cbc05/src/mcp/shared/session.py#L258-L262](https://github.com/modelcontextprotocol/python-sdk/blob/a9381263275a86257002c1e34101c1dce70cbc05/src/mcp/shared/session.py#L258-L262)
+      - There is a native instrumentation in MCP server
+        - We don't really need another instrumentation for python
+      - Fast MCP instrumentation is not fully following semconv
+        - Can we contribute gaps to Fast MCP?
+      - Context prop: v2
+      - [aditya] Open issues/PRs on fastmcp repo -
+        - [https://github.com/PrefectHQ/fastmcp/issues/3993](https://github.com/PrefectHQ/fastmcp/issues/3993)
+        - Close PRs
+          - https://github.com/PrefectHQ/fastmcp/pull/3992
+          - [https://github.com/PrefectHQ/fastmcp/pull/3997](https://github.com/PrefectHQ/fastmcp/pull/3997)
+        - Current open PR
+          - [https://github.com/PrefectHQ/fastmcp/pull/4046](https://github.com/PrefectHQ/fastmcp/pull/4046)
+- [ ] [Marisa] What is the status of [experimental results](https://github.com/open-telemetry/semantic-conventions-genai/issues/79) and [tasks](https://github.com/open-telemetry/semantic-conventions-genai/issues/37)?
+      - Anthropic shipped proprietary equivalents of both in [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview) (May 6).
+      - No updates, Marisa will coordinate on Slack to coordinate proposals.
+      - Please reach out to [Marisa Boston](mailto:marisa@reinsai.com) if you’re interested.
+      - General guidance: post on issues when interested in moving something forward; if nobody is assigned or commented on it, that probably means nobody is working on it. Slack and this SIG meeting are also great places to ask about things.
+      - GenAI Approvers are approvers across the repo, not specific to areas right now.
+- [ ] [Surya]: 1. Semconv for a2a protocol
+      - There is an alternative proposal internal to Google
+      - There is some existing instrumentation (no attributes)
+      - Aaron will reach out and put in touch with Surya
+      - Similar to MCP
+        - Also server and client
+      - How would it connect with invoke_agent
+        - Context propagation
+        - Overlap in attributes / scope
+- [ ] [Liudmila] What would it take to enable PR dashboard for python-genai repo?
+      - AI: trask
