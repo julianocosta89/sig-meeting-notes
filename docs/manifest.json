@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T09:51:23Z",
+  "generated_at": "2026-06-08T10:33:10Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-06-04",
+  "max_date": "2026-06-05",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -6258,6 +6258,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-06-05",
+          "duration_minutes": 114,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-06-02",
           "duration_minutes": 36,
           "has_summary": true,
@@ -6678,7 +6685,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 60
+      "meeting_count": 61
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -8287,6 +8294,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-06-05",
+          "duration_minutes": 42,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-05-22",
           "duration_minutes": 41,
           "has_summary": true,
@@ -8448,7 +8462,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 23
+      "meeting_count": 24
     },
     {
       "slug": "Python-SIG",
