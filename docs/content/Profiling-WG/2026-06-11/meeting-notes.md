@@ -1,0 +1,80 @@
+## Meeting Notes
+
+### Attendees
+- [Alexey Alexandrov](mailto:aalexand@google.com) (second half only, I got a standing conflict for first 30 minutes)
+- Jonathan Halliday (IBM)
+- Mattia Meleleo (Coralogix)
+- Matthew Hensley (Grafana Labs)
+- Aditya Konarde (Grafana Labs)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com)(Datadog)
+- [Christian Simon](mailto:christian.simon@grafana.com) (Grafana Labs)
+- Frederic Branczyk (Polar Signals)
+- [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) (Datadog)
+- [Marc Sanmiquel](mailto:marc.sanmiquel@grafana.com) (Grafana Labs)
+
+### Agenda
+- Review action items:
+  - [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) / [florian.lehner@elastic.co](mailto:florian.lehner@elastic.co): Figure out KeyValueUnit proposal, see Apr 2 discussion. Next step: Felix will ping TC to get their thoughts on the options:
+    - [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) is taking this over, he’ll attend the Spec SIG and ping TC folks (Josh, Tigran) if needed.
+  - Jonathan: PR for moving original_payload to a dictionary. Done: [https://github.com/open-telemetry/opentelemetry-proto/pull/786](https://github.com/open-telemetry/opentelemetry-proto/pull/786)
+    - Moved to [https://github.com/open-telemetry/sig-profiling/issues/117](https://github.com/open-telemetry/sig-profiling/issues/117)
+  - [Felix Geisendörfer](mailto:felix.geisendorfer@datadoghq.com) Open GH issue on including OTLP version in payloads.
+    - Felix: Nayef Ghattas is probably taking this over.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Data Format PR
+    - Felix: Seems to be blocked on merge conflicts.
+  - [Christos Kalkanis](mailto:christos.kalkanis@elastic.co) Related documentation changes to the proto
+    - Merged.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Add duplicate and orphan checks to the conformance checker.
+    - Alexey: No progress.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Clarify Profile.period_type and Profile.period semantics). See [this discussion](#bookmark=id.9nkv5styhrxf) below. And later discussion [here](#bookmark=id.j6n3lln9n34g).
+    - Sent [#791](https://github.com/open-telemetry/opentelemetry-proto/pull/791)
+    - Alexey: The question is about whether period is optional. When you only specify timestamps, it means “weight of 1”, but if there is a period, it should probably be a period.
+    - Frederic: When sample type is count_of_samples and period type is cpu_nanoseconds this comes up.
+    - Alexey: Why not specify the values and timestamps. Was it for efficiency?
+    - Felix: Yeah, avoiding the repeating of the same value over and over again was the goal.
+    - Frederic: The concept doesn’t just apply for timestamps, but also for occurrences. E.g. period would tell you to multiply counts by period to get the real counts (not the sampled ones).
+    - Alexey: High level we should either always multiply sample values by period or assume the multiplication has already taken place in the sample values (and division could be used to get back to the sampled counts).
+      - Option 1: Producers should upscale the values.
+      - Option 2: If sample type is count, consumers should multiply by period.
+    - Felix: I prefer option1, b/c it means that naive clients display the most useful value to users by default.
+    - Frederic: No strong preferences, but we have some customers that use option 2. But option 2 can be complicated when there are different frequencies. Some customers use high profiling frequencies in canary environments.
+    - Felix: Go’s Memory profiler uses a more complex sampling mechanism.
+    - Alexey: We need to think about the timestamp case.
+    - Felix: I’ll need to look at this offline, needs some more concentration. Especially for thinking about the timestamp.
+    - Felix: But if we find that repeating the same value multiple times makes the spec simpler, I’d be open to it.
+  - [Alexey Alexandrov](mailto:aalexand@google.com) Figure out what to do with this [older Profiles OTEP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md). See [this discussion below](#bookmark=id.mjn7dj4yyazk).
+    - Depends on [https://github.com/open-telemetry/opentelemetry-specification/pull/4965](https://github.com/open-telemetry/opentelemetry-specification/pull/4965)
+    - This is blocked by christos PRs above. When they land, we can update the OTEP and point to these newer docs.
+- [JH] FYI, tracking issue now exists for the rough edges in the way we handle dictionary _table[0] ‘default’ elements: [https://github.com/open-telemetry/opentelemetry-proto/issues/812](https://github.com/open-telemetry/opentelemetry-proto/issues/812)
+  - JH: I’ll add it to the beta burndown. [now added] We should decide before beta.
+- [JH] Also FYI, mainly for Java people: async-profiler has a new Span API proposal. Making sure this plays nice with OTel Spans and how it encodes in the async-profiler JFR file format output may be of interest. Early intervention to prevent incompatibilities in the wider ecosystem may save pain later on.  [https://github.com/async-profiler/async-profiler/pull/1755](https://github.com/async-profiler/async-profiler/pull/1755)
+  - JH: I’ll look into this, but if other Java adjacent folks here are available, please also take a look.
+- [Frederic] Process context implementation for Go (and its relationship with thread context)
+  - Frederic: I opened issues for all SDKs. Go is a special case for thread context (pprof labels). Do we agree that we won’t implement thread context for Go? If yes, what does that mean for process context?
+  - Ivo: I expect Go to implement process context. We implemented it in Datadog SDKs already. But I don’t think Go SDKs should implement OTel thread context.
+  - Frederic: SGTM. Let’s make sure we write this down.
+  - Ivo: Will take an action item for writing it down.
+  - Frederic: v8 will probably also need something special.
+  - Ivo: Yeah, we’ll have different schema versions for these.
+- [Mattia] GPU profiling
+  - Mattia: Is there an appetite to have it in the profiler? I made a POC: http://github.com/coralogix/opentelemetry-ebpf-profiler/pull/6.
+  - Frederic: I mentioned this in past meetings. Yesterday we launched our PC sampling feature for nvdia cuda. It’s OSS and we intend to contribute it to this project. We’ve already done some ground work to make this happen (Tommy and Brendon are working on it). Includes discovery of whether cuda is loaded (via dlopen). Happy to work on this together as well. If you took a different approach to what we’ve done, we’d be happy to reconcile.
+  - Mattia: I saw your blog post an hour ago and had chatted with Tommy a month ago or so. Next step should be comparing implementations. Maybe create an umbrella issue.
+  - Frederic: Lots of different approaches and tradeoffs here.
+- [Matthew] .NET profiling [https://github.com/open-telemetry/opentelemetry-dotnet/issues/7404](https://github.com/open-telemetry/opentelemetry-dotnet/issues/7404)
+  - CLR profilers are typically C/C++, SDK maintainers strongly prefer to avoid native code in the repo
+  - Looking to support .NET Framework on Windows, cross-platform for modern .NET
+  - Zero-code instrumentation implemented as a CLR Profiler. Only one profiler slot on .NET Framework
+  - Felix: Maybe the profiler could be a separate library? Which could use C/C++?
+  - Matthew: There is already zero-code instrumentation to deal with.
+  - Christian: Isn’t that based on a fork from Datadog which used C++?
+  - Matthew: Yeah, older fork from 2023.
+  - Matthew: The zero code project uses the SDK and is a superset that adds stuff like profiling. Zero code can also add dependencies.
+  - Felix: I can loop my .NET colleagues into the discussions in the SDK SIGs.
+  - Matthew: Sounds good, just wanted to make sure people understand it’s not gonna be a quick and easy project.
+  - Frederic: In-process CPU profilers can be useful, but SDKs should probably focus on other profile types (e.g. memory). CPU will still be needed for environments where eBPF is not available (e.g. serverless).
+  - Matthew: Ack. Microsoft has some work on eBPF on Windows, but no timeline on when that will be real yet.
+  - Ivo: Could we support profiling only e.g. Linux for recent .NET versions to make it simpler to implement something?
+  - Matthew: Long term it needs to support all versions covered by the SDK. The windows framework is still in heavy use, with EOL planned for 2040. Lots of end users using .NET framework app and can’t migrate b/c of their big code bases. There is a lot of demand for profiling from these users.
+  - Felix: Is .NET framework also available on Linux?
+  - Matthew: No, it’s windows only. .NET 8 or later is multi-platform.
