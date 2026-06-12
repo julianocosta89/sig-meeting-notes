@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T10:12:12Z",
+  "generated_at": "2026-06-12T10:14:04Z",
   "min_date": "2025-06-16",
   "max_date": "2026-06-11",
   "sigs": [
@@ -443,7 +443,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 61,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -872,7 +872,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 31,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -4326,7 +4326,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 35,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -5242,7 +5242,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 56,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
@@ -8257,7 +8257,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -8662,7 +8662,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 66,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -9014,7 +9014,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 44,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -9748,7 +9748,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 18,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -11400,7 +11400,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 57,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -11724,7 +11724,7 @@
         {
           "date": "2026-06-11",
           "duration_minutes": 20,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
