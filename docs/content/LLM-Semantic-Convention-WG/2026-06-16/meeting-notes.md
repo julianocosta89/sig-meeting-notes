@@ -1,0 +1,54 @@
+## Meeting Notes
+
+### Attendees
+- Trask
+- Liudmila
+- Huxing
+- Steve
+- Changlong
+- Dat Ngo (Arize AI)
+- Shuwen Pan (Cisco)
+- Aaron Abbott (Google)
+- Wolfgang Therrien ([Honeycomb.io](http://Honeycomb.io))
+- Nagkumar Arkalgud (Microsoft)
+- Josh Bonczkowski (New Relic)
+- Josh Winerman (Cisco/Splunk)
+- Endre Sara (Causely)
+- Keith Decker (Cisco/Splunk)
+- Alex Boten (Honeycomb)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Neil Yashinsky ([ContextCore](https://contextcore.me/))
+- Surya Teja
+- Leighton Chen (Microsoft)
+- Habiba Mohamed (Microsoft)
+
+### Agenda
+- [https://github.com/open-telemetry/semantic-conventions-genai/issues/294](https://github.com/open-telemetry/semantic-conventions-genai/issues/294)
+- [Huxing] Participation in OpenInference donation and contribute LoongSuite instrumentation
+  - [https://github.com/open-telemetry/opentelemetry-python-genai/issues/141](https://github.com/open-telemetry/opentelemetry-python-genai/issues/141)
+  - [https://github.com/open-telemetry/opentelemetry-python-genai/pull/143](https://github.com/open-telemetry/opentelemetry-python-genai/pull/143)
+- [Huxing] Introduction to loongsuite-pilot, a collector to collect OTel GenAI compatible agent trajectory for Claude Code, Codex, Cursor, and etc. [https://github.com/alibaba/loongsuite-pilot](https://github.com/alibaba/loongsuite-pilot)
+- WG Project board:
+  - [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr)
+  - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/102](https://github.com/open-telemetry/semantic-conventions-genai/issues/102)
+  - Python GenAI PR dashboard
+    - TODO
+  - [everyone, 5 min]  Intro for new members
+- [Liudmila] OpenInference donation progress:  DONE!!! MERGED!!!
+  - [https://github.com/open-telemetry/community/issues/3467#issuecomment-4714647351](https://github.com/open-telemetry/community/issues/3467#issuecomment-4714647351)
+  - Next steps (after [https://github.com/open-telemetry/donation-openinference/pull/1](https://github.com/open-telemetry/donation-openinference/pull/1) is merged): DONE!
+    - Migration tracking issue: [https://github.com/open-telemetry/opentelemetry-python-genai/issues/141](https://github.com/open-telemetry/opentelemetry-python-genai/issues/141)
+    - Migration skills [https://github.com/open-telemetry/opentelemetry-python-genai/pull/143](https://github.com/open-telemetry/opentelemetry-python-genai/pull/143)
+    - [https://github.com/open-telemetry/opentelemetry-python-genai/pull/142](https://github.com/open-telemetry/opentelemetry-python-genai/pull/142)
+- [Aaron] Agent entity [https://github.com/open-telemetry/semantic-conventions-genai/pull/270](https://github.com/open-telemetry/semantic-conventions-genai/pull/270)
+  - Introduces resource attributes for agents `gen_ai.agent.{id,name,description}`
+  - Duplicates attributes on Invoke Agent spans ([Trask’s comment](https://github.com/open-telemetry/semantic-conventions-genai/pull/270/changes#diff-effbc0b76f59666997d73a39a90be18ec530d56d5cafb87885941fd71163dcb2))
+- [Aaron] gen_ai.agent.version on INTERNAL spans? [https://github.com/open-telemetry/semantic-conventions-genai/issues/284](https://github.com/open-telemetry/semantic-conventions-genai/issues/284)
+- [Nagkumar] Run Guardrail [https://github.com/open-telemetry/semantic-conventions-genai/pull/262](https://github.com/open-telemetry/semantic-conventions-genai/pull/262)
+  - Additional features: as a follow up
+  - Hashing is a follow up
+- [Alex] OpenLLMetry donation?
+  - [https://github.com/open-telemetry/community/issues/2571](https://github.com/open-telemetry/community/issues/2571)
+  - Trask will leave a comment and close
+- [Aaron] [https://github.com/open-telemetry/semantic-conventions-genai/pull/201](https://github.com/open-telemetry/semantic-conventions-genai/pull/201)
+- [Surya] Review for this pr [https://github.com/open-telemetry/opentelemetry-python-genai/pull/13](https://github.com/open-telemetry/opentelemetry-python-genai/pull/13). It helps onboard new streaming semconv metrics. CC: Nikhil.
