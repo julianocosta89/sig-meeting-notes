@@ -1,0 +1,58 @@
+## Meeting Notes
+
+### Attendees
+- Diego Hurtado (Dash0)
+- Tammy Baylis (SolarWinds)
+- Riccardo Magliocchetti (Elastic)
+- Dylan Russell (google)
+- Shuwen Pan (Cisco)
+- Lukas Hering (Oracle)
+- Aaron Abbott (Google)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Leighton Chen (Microsoft)
+- Keith Decker (Cisco/Splunk)
+- Carlos Cortez (Dash0)
+- Pablo Collins (Cisco)
+- Mike Goldsmith (Honeycomb)
+- Jackson Weber (Microsoft)
+- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
+  - Update automation to move closed issues to done? e.g. [#4641](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4641)
+  - [#5262](https://github.com/open-telemetry/opentelemetry-python/issues/5262): open census shim is deprecated
+    - Deprecation: [https://github.com/open-telemetry/opentelemetry-specification/pull/5138](https://github.com/open-telemetry/opentelemetry-specification/pull/5138)
+    - To be released with Spec 1.58.0: [https://github.com/open-telemetry/opentelemetry-specification/pull/5164](https://github.com/open-telemetry/opentelemetry-specification/pull/5164)
+    - Created Python issue: [https://github.com/open-telemetry/opentelemetry-python/issues/5325](https://github.com/open-telemetry/opentelemetry-python/issues/5325)
+- [Lukas] Exporter related work
+- [Riccardo] Reviews before next release
+- [Dylan] extended attributes
+- [Aaron] stretch goal looking at tooling improvements and locking
+- [Leighton] Looking into instrumentation stability
+- [Mike] Declarative config, final push - making it accessible to users now
+
+### Agenda
+- [Riccardo] Ok for an Openai v2 release? [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4710](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4710)
+  - Liudmila: sounds good to me, plan was to cut release from genai repo first but not a problem
+- [Diego (ocelotl)] Policy regarding AI usage in reviews
+  - [Lukas] +1
+  - [Liudmila]: we have copilot setup with instructions, on genai we are using it as first reviewers
+  - [Leighton]: contributors create Prs for issues we have not validated or ack’ed yet, automation to enforce that?
+    - [Lukas] we should start by addressing the volume before leveraging AI
+  - [Aaron] leverage github settings for limiting concurrent PRs for users [https://github.blog/open-source/maintainers/how-pull-request-limits-are-cutting-down-the-noise/](https://github.blog/open-source/maintainers/how-pull-request-limits-are-cutting-down-the-noise/) [https://github.blog/changelog/2026-06-17-limit-open-pull-requests-for-users-without-write-access/](https://github.blog/changelog/2026-06-17-limit-open-pull-requests-for-users-without-write-access/)
+  - [Aaron] we can improve the copilot instructions, go SIG happy with that
+  - [Liudmila] ask contributions to don’t use their human identity for ai PRs
+    - [Mike] That may not work with the CLA
+    - [Liudmila] Copilot should be fine wrt that
+- [Aaron] From last week, can we consolidate logging stabilization tracking
+  - *Riccardo was tracking here [https://github.com/open-telemetry/opentelemetry-python/issues/4750](https://github.com/open-telemetry/opentelemetry-python/issues/4750)*
+  - *There’s also GC review [https://github.com/open-telemetry/community/issues/1751](https://github.com/open-telemetry/community/issues/1751)*
+    - *Liudmila to take another pass at the review*
+  - *[aaron] there’s some outstanding tech debt we wanted to clean up*
+    - [*Deprecate events API/SDK · Issue #4655 · open-telemetry/opentelemetry-python*](https://github.com/open-telemetry/opentelemetry-python/issues/4655)
+    - *Let’s remove deprecated stuff*
+- [Aaron] any update on OTLP/JSON?
+  - [Lukas] This is the last blocker before final PR: [https://github.com/open-telemetry/opentelemetry-python/pull/5252](https://github.com/open-telemetry/opentelemetry-python/pull/5252)
+- [Leighton] [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/2453#issuecomment-4719187060](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/2453#issuecomment-4719187060)
+  - [Lukas] We should have stable instrumentations “hard-code” their stability mode to HTTP in order to not touch “_StabilityMode”
+  - [Leighton] There are additional unstable instrumentations (e.g. DB) which we are still working on
+- [Lukas] Profiling?
+  - [https://github.com/open-telemetry/opentelemetry-python/issues/5291](https://github.com/open-telemetry/opentelemetry-python/issues/5291)
+- [Tammy] fyi new OpenCensus deprecation plan issue: [https://github.com/open-telemetry/opentelemetry-python/issues/5325](https://github.com/open-telemetry/opentelemetry-python/issues/5325)
