@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-19T10:28:54Z",
+  "generated_at": "2026-06-22T11:47:13Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-06-18",
+  "max_date": "2026-06-22",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -4762,10 +4762,17 @@
     },
     {
       "slug": "Governance-Committee",
-      "name": "Governance Committee",
+      "name": "GC Project Management (EU)",
       "meeting_notes_url": "",
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
+        {
+          "date": "2026-06-22",
+          "duration_minutes": 41,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-06-17",
           "duration_minutes": 25,
@@ -5215,7 +5222,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 64
+      "meeting_count": 65
     },
     {
       "slug": "Java-Declarative-Configuration",
@@ -8672,6 +8679,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-06-19",
+          "duration_minutes": 64,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-06-05",
           "duration_minutes": 42,
           "has_summary": true,
@@ -8840,7 +8854,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 24
+      "meeting_count": 25
     },
     {
       "slug": "Python-SIG",
