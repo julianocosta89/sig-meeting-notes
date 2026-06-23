@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T11:47:59Z",
+  "generated_at": "2026-06-23T09:34:44Z",
   "min_date": "2025-06-16",
   "max_date": "2026-06-22",
   "sigs": [
@@ -3321,6 +3321,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
+          "date": "2026-06-22",
+          "duration_minutes": 59,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-06-08",
           "duration_minutes": 58,
           "has_summary": true,
@@ -3391,7 +3398,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 10
+      "meeting_count": 11
     },
     {
       "slug": "Entities-SIG",
@@ -3399,6 +3406,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/15Yt9ss2_EhuFPqItPbk4vjfpeRDAQ5WCUVuY_kCeOAo",
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
+        {
+          "date": "2026-06-22",
+          "duration_minutes": 63,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-06-15",
           "duration_minutes": 25,
@@ -3659,7 +3673,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 37
+      "meeting_count": 38
     },
     {
       "slug": "Erlang-SIG",
@@ -6240,6 +6254,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-06-22",
+          "duration_minutes": 24,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-06-15",
           "duration_minutes": 49,
           "has_summary": true,
@@ -6345,7 +6366,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 15
+      "meeting_count": 16
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -10459,6 +10480,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-06-22",
+          "duration_minutes": 65,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-06-15",
           "duration_minutes": 60,
           "has_summary": true,
@@ -10788,7 +10816,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 47
+      "meeting_count": 48
     },
     {
       "slug": "Semantic-Convention-Tooling",
