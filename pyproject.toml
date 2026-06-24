@@ -5,20 +5,20 @@ description = "Fetch OpenTelemetry SIG meeting transcripts from Zoom recordings"
 requires-python = ">=3.14"
 dependencies = [
     "playwright==1.60.0",
-    "beautifulsoup4==4.14.3",
+    "beautifulsoup4==4.15.0",
     "requests==2.34.2",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest==9.0.3",
+    "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
     "pytest-cov==7.1.0",
-    "ruff==0.15.15",
+    "ruff==0.15.19",
     "pre-commit==4.6.0",
-    "pip-audit==2.10.0",
+    "pip-audit==2.10.1",
 ]
-summarize = ["openai==2.40.0", "jinja2==3.1.6"]
+summarize = ["openai==2.43.0", "jinja2==3.1.6"]
 telemetry = [
     "opentelemetry-distro==0.62b1",
     "opentelemetry-exporter-otlp-proto-http==1.41.1",
