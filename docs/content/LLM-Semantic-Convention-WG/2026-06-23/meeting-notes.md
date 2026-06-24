@@ -1,0 +1,80 @@
+## Meeting Notes
+
+### Attendees
+- Jeremy Eder (Red Hat)
+- Trask Stalnaker (Microsoft)
+- Josh Winerman (Cisco/Splunk)
+- Josh Bonczkowski (New Relic)
+- Liudmila Molkova (google)
+- Wolfgang Therrien (Honeycomb)
+- Imma Valls (Grafana Labs)
+- Dat Ngo (Arize AI)
+- Ted Young (Grafana Labs)
+- John McBride (Paper Compute Co.)
+- Keith Decker (Cisco/Splunk)
+- Tammy Baylis (SolarWinds)
+- Alexander Akhmetov (Grafana Labs)
+- Jack Gordley (Grafana Labs)
+- Shuwen Pan (Cisco)
+- Alolita Sharma (Apple)
+- Dylan Russell
+- Jeremy Eder (Red Hat)
+- Surya Teja
+- Shuning Chen
+
+### Agenda
+- [Steve] [https://github.com/open-telemetry/semantic-conventions-genai/pull/179](https://github.com/open-telemetry/semantic-conventions-genai/pull/179)
+- How to define event of genai [https://github.com/alibaba/loongsuite-semantic-conventions-genai/pull/32](https://github.com/alibaba/loongsuite-semantic-conventions-genai/pull/32)
+  - [https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/events.md#when-to-define-events](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/events.md#when-to-define-events)
+- Triage
+  - WG Project board:
+    - [https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr](https://github.com/orgs/open-telemetry/projects/82/views/1?filterQuery=is%3Aopen+-is%3Adraft+is%3Apr)
+    - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/204](https://github.com/open-telemetry/semantic-conventions-genai/issues/204)
+    - Python GenAI PR dashboard
+      - TODO
+  - [everyone, 5 min]  Intro for new members
+- [aaron] agent entity [#270](https://github.com/open-telemetry/semantic-conventions-genai/pull/270)
+  - Do we need one entity to solve all use cases, or focus on server based agents
+  - Could introduce others later
+  - Decide between
+    - server
+    - hosted_agent
+    - Main_agent
+  - Discussion
+    - Trask: Server is problematic on entities / resources
+      - Multiple entities to describe different agents
+      - Host_agent (can be cron job too)
+      - Main_agent
+      - Entrypoint_agent
+      - root_agent
+    - Limit to exposed?
+      - Why? What’s the benefit of this limitation
+      - What are we trying to encode in the entity
+        - Trask: main agent
+        - Aaron: exposed agent (using some protocol)
+      - IF we did this
+        - Server | Exposed_agent | main agent
+        - Cron_agent  | main agent | host agent
+    - On metrics:
+      - Gen_ai.agent.role = main | gen_ai.agent.is_main = true
+      - Or metics:[agent.name](http://agent.name) == entity:main_agent.name at query time
+    - Can entities be dynamic?
+      - [https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/entities/4665-multiple-resource-in-sdk.md](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/entities/4665-multiple-resource-in-sdk.md)
+- [Jeremy] Issues: #287 · #76 · #79 · #309 · #320 | PRs: #96 · #185 · #197 · #203 · #336Interest in GenAI semconv
+  - Trajectories
+    - [https://www.harborframework.com/docs/agents/trajectory-format](https://www.harborframework.com/docs/agents/trajectory-format)
+    - [https://github.com/harbor-framework/harbor/blob/main/rfcs/0001-trajectory-format.md](https://github.com/harbor-framework/harbor/blob/main/rfcs/0001-trajectory-format.md)
+    - Arize has converter from ATIF to OTel
+      - [https://github.com/Arize-ai/phoenix/tree/main/packages/phoenix-client/src/phoenix/client/helpers/atif](https://github.com/Arize-ai/phoenix/tree/main/packages/phoenix-client/src/phoenix/client/helpers/atif)
+    - +1 from Jack on it getting more popular
+    - Next steps:
+      - Define gaps: what’s on the trajectory and not on otel data
+        - AI: Jeremy
+      - Do we need a mapping at all?
+- [John] [tapes](https://github.com/papercomputeco/tapes) now aligning - conformance tests?
+  - Unfinished project: [https://github.com/trask/genai-otel-conformance](https://github.com/trask/genai-otel-conformance)
+  - Skill to write current conformance tests [https://github.com/lmolkova/opentelemetry-python-genai/blob/8a51b477a6247efd7ef6f57e59079983505571cd/.github/skills/review-migration/SKILL.md](https://github.com/lmolkova/opentelemetry-python-genai/blob/8a51b477a6247efd7ef6f57e59079983505571cd/.github/skills/review-migration/SKILL.md)
+- [Liudmila] Ongoing efforts in the project
+  - [Ted] next steps on porting/building instrumentation?
+    - Sign up here: [https://github.com/open-telemetry/opentelemetry-python-genai/issues/141](https://github.com/open-telemetry/opentelemetry-python-genai/issues/141)
+- Please approve [https://github.com/open-telemetry/opentelemetry-python-genai/pull/143](https://github.com/open-telemetry/opentelemetry-python-genai/pull/143)
