@@ -1,0 +1,65 @@
+## Meeting Notes
+
+### Attendees
+- Diego Hurtado (Dash0)
+- Lukas Hering (Oracle)
+- Riccardo Magliocchetti (Elastic)
+- Aaron Abbott (Google)
+- Mike Goldsmith (Honeycomb)
+- Marcelo Trylesinski (Pydantic)
+- Michele mancioppi (Dash0)
+- Tammy Baylis (SolarWinds)
+- Shuwen Pan (Cisco)
+- Keith Decker (Cisco/Splunk)
+- Gregory Loshkajian (Bloomberg)
+- Carlos Alberto Cortez (Dash0)
+- Hector Hernandez (Microsoft)
+- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
+  - Core 2797: pointing to [opentelemetry.io](http://opentelemetry.io) repo
+  - Contrib 4648: Riccardo will take a look, related to 4270
+- [Mike] Declarative config
+- [Lukas] JSON/General Exporter work + Process Context
+- [Greg] httpx2 extension to httpx instrumentor
+
+### Agenda
+- [Marcelo] Can I please set 120 line length? [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3908](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3908)
+  - Some positive feedback
+  - [Riccardo, Mike] I like 120
+  - Decision: Let’s do it
+- [Diego] [https://github.com/open-telemetry/opentelemetry-python/issues/5343](https://github.com/open-telemetry/opentelemetry-python/issues/5343)
+- [Mike] making config module public - is it stable? new module?
+  - [https://github.com/open-telemetry/opentelemetry-python/pull/5276](https://github.com/open-telemetry/opentelemetry-python/pull/5276)
+  - Aaron: having on a different package would not have people assume it’s stable just because it’s in the sdk. What other languages do?
+    - Js and java have separate package
+  - Lukas: lambda use case, avoid dependencies import slowdown
+  - Lukas: maybe optional dependency on opentelemetry-sdk?
+  - Liudmila: some code should live in the opentelemetry-api package
+  - Michele: from injector/system packages POV:
+    - Need some [experimental language override](https://github.com/open-telemetry/opentelemetry-configuration/blob/ce8471eb83d7d2c9e4f2c84c096d98efbdb556f0/schema/instrumentation.yaml#L50), would be great to add
+      - Riccardo: please open an issue [Update: [https://github.com/open-telemetry/opentelemetry-python/issues/5361](https://github.com/open-telemetry/opentelemetry-python/issues/5361)]
+    - Configuration package added to the SDK would be a slam dunk for us
+    - From system packages POV being able to point to a file would be great
+    - Curated distro with stable package would be great as well
+- [Diego] Save ourselves from protobuf, grpc/protobuf are not safe from the injector
+  - Prototype with a pure python protobuf reimplementation
+  - Aaron: Isn’t otlp json exporter not enough?
+    - Diego: Performance
+    - Michele: not the default exporter for other languages
+    - Aaron: way to have declarative config to just use the language default?
+      - Michele: endpoint for otlp depends on the language
+    - Liudmila: python grpc default http for other languages, we can prefer http one for declarative config
+  - Lukas: we shouldn’t ship our own thing, reuse something else (e.g prost)
+  - Follow up: let’s file an issue for it with motivation explained too, or reuse Lukas’s previous issue
+- [Lukas] Are we ok adding some Rust for packages that require native code?
+  - [OTEP-4719 (Process Context Sharing](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/4719-process-ctx.md)
+  - [https://github.com/open-telemetry/opentelemetry-python/pull/5337](https://github.com/open-telemetry/opentelemetry-python/pull/5337)
+  - Native code Should not be a problem
+- [Greg] anything in particular needed before more eyes on httpx2 outside of addressing anything from Marcelo?
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4730](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4730)
+  - Type checking issues
+    - httpx isn’t in the type checker?
+    - perhaps a subsequent PR should address this?
+- [Surya] Should we add these samplers into our opentelemetry-python core repo
+  - [https://opentelemetry.io/docs/specs/otel/trace/sdk/#compositesampler](https://opentelemetry.io/docs/specs/otel/trace/sdk/#compositesampler)
+  - [https://opentelemetry.io/docs/specs/otel/trace/sdk/#probabilitysampler](https://opentelemetry.io/docs/specs/otel/trace/sdk/#probabilitysampler)
+- Take a look at [https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk/src/opentelemetry/sdk/trace/_sampling_experimental](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk/src/opentelemetry/sdk/trace/_sampling_experimental)
