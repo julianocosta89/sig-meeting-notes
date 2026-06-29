@@ -652,6 +652,22 @@ class TestExtractSubsectionMd:
         assert not any("github.com/orgs" in item for item in attendees)
         assert not any("some topic" in item for item in attendees)
 
+    def test_colon_header_does_not_truncate_agenda(self) -> None:
+        # The colon-header stop must NOT apply to agenda extraction — agenda
+        # sections can legitimately contain non-list sub-headers like
+        # "Discussion:" or "Triage:" before their bullet items.
+        section = (
+            "Attendees:\n\n"
+            "* Alice\n\n"
+            "Topics:\n\n"
+            "Discussion:\n\n"
+            "* Item under discussion\n"
+            "* Another item\n"
+        )
+        agenda = _extract_subsection_md(section, "topic")
+        assert "- Item under discussion" in agenda
+        assert "- Another item" in agenda
+
     # ------------------------------------------------------------------
     # Bullet-label format: section headers are themselves top-level
     # bullet items (e.g. Client-Instrumentation-SIG style).

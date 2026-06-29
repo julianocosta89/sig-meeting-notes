@@ -271,13 +271,18 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
         # --- Stop conditions ---
 
         # Stop at another known section label (non-list line).
-        # Also stop at any short line ending with ":" — a reliable signal for
-        # a section header in SIG docs that use non-standard section names
-        # (e.g. "Triage:", "What I'm working on this week:") that would
-        # otherwise bleed their bullets into the preceding attendee list.
+        # For attendee extraction only, also treat any short line ending with
+        # ":" as a section boundary — a reliable signal for non-standard section
+        # names (e.g. "Triage:", "What I'm working on this week:") that would
+        # otherwise bleed their bullets into the attendee list.  This heuristic
+        # is intentionally NOT applied to agenda/topic/note extraction, where
+        # discussion sub-headers (e.g. "Discussion:", "Triage:") legitimately
+        # appear inline and should not truncate the agenda items.
         if in_target and stripped and not m:
             is_stop_keyword = any(kw in stripped.lower() for kw in _STOP_KEYWORDS)
-            is_colon_header = stripped.rstrip("*_ ").endswith(":")
+            is_colon_header = keyword.lower().startswith("attendee") and stripped.rstrip(
+                "*_ "
+            ).endswith(":")
             if (is_stop_keyword or is_colon_header) and len(stripped) < 200:
                 break
 
