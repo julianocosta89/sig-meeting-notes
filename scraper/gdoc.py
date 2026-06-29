@@ -17,7 +17,7 @@ import requests
 
 _DOC_ID_RE = re.compile(r"docs\.google\.com/document/d/([^/?#]+)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)")
-_LIST_ITEM_RE = re.compile(r"^( *)[-*]\s+(.+)")
+_LIST_ITEM_RE = re.compile(r"^( *)\\?[-*]\s+(.+)")
 
 # Non-English month abbreviations observed in OTel SIG docs, keyed by month
 # number.  Used by _date_variants() to generate localized heading variants and

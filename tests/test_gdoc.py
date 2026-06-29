@@ -401,6 +401,13 @@ class TestCollectListItem:
     def test_tab_indented_empty_text_returns_none(self) -> None:
         assert _collect_list_item("\t   ") is None
 
+    def test_backslash_escaped_dash_bullet(self) -> None:
+        # Google Docs sometimes exports list items with an escaped dash: "\- item"
+        assert _collect_list_item(r"\- Charlie") == "- Charlie"
+
+    def test_backslash_escaped_dash_nested(self) -> None:
+        assert _collect_list_item(r"  \- Nested") == "  - Nested"
+
     def test_plain_line_returns_none(self) -> None:
         assert _collect_list_item("Not a list item") is None
 
@@ -651,6 +658,22 @@ class TestExtractSubsectionMd:
         assert not any("Triage" in item for item in attendees)
         assert not any("github.com/orgs" in item for item in attendees)
         assert not any("some topic" in item for item in attendees)
+
+    def test_backslash_escaped_dash_bullets_collected(self) -> None:
+        # Google Docs occasionally exports agenda items with "\-" as the bullet
+        # marker instead of plain "-".  _LIST_ITEM_RE must match both forms so
+        # that agenda items aren't silently dropped (observed in Python-SIG
+        # 2025-09-04).
+        section = (
+            "Attendees:\n\n"
+            "- Alice\n\n"
+            "Topics:\n"
+            r"\- Ridhima - LangChain PR" + "\n"
+            r"\- Keith - GenAI PR" + "\n"
+        )
+        agenda = _extract_subsection_md(section, "topic")
+        assert "- Ridhima - LangChain PR" in agenda
+        assert "- Keith - GenAI PR" in agenda
 
     def test_colon_header_does_not_truncate_agenda(self) -> None:
         # The colon-header stop must NOT apply to agenda extraction — agenda
