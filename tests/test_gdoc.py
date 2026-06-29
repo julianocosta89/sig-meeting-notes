@@ -673,6 +673,20 @@ class TestExtractSubsectionMd:
     # bullet items (e.g. Client-Instrumentation-SIG style).
     # ------------------------------------------------------------------
 
+    def test_bold_bullet_label_attendees(self) -> None:
+        # "* **Attendees:**" — bold markers wrap the keyword; the colon is
+        # inside them so rstrip(": ") alone wouldn't reach it before strip("*_")
+        # removed the bold markers. Must strip formatting before the colon.
+        section = "* **Attendees:**\n  * Alice\n  * Bob\n* **Agenda:**\n  * Item 1\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert attendees == ["- Alice", "- Bob"]
+
+    def test_bold_bullet_label_agenda(self) -> None:
+        section = "* **Attendees:**\n  * Alice\n* **Agenda:**\n  * Item 1\n  * Item 2\n"
+        agenda = _extract_subsection_md(section, "agenda")
+        assert agenda == ["- Item 1", "- Item 2"]
+        assert not any("Alice" in item for item in agenda)
+
     def test_bullet_label_attendees(self) -> None:
         # "* Attendees" is the label bullet; sub-bullets are the attendees.
         section = (

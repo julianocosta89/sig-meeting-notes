@@ -261,7 +261,7 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
         # Bullet-label: top-level bullet whose entire text IS the keyword
         # (e.g. "* Attendees" or "* Agenda:" used as bullet-style section headers).
         if is_top_bullet and not in_target:
-            bullet_text = m.group(2).rstrip(": ").strip("*_ ")
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
             if re.fullmatch(re.escape(keyword) + r"s?", bullet_text, re.IGNORECASE):
                 in_target = True
                 bullet_label_mode = True
@@ -289,7 +289,7 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
         # In bullet-label docs, stop at the next top-level stop-keyword bullet
         # (e.g. "* Agenda:" signals the end of "* Attendees" content).
         if in_target and bullet_label_mode and is_top_bullet:
-            bullet_text = m.group(2).rstrip(": ").strip("*_ ")
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
             if any(kw in bullet_text.lower() for kw in _STOP_KEYWORDS) and len(bullet_text) < 50:
                 break
 
@@ -339,7 +339,7 @@ def _extract_leading_attendees(section_text: str) -> list[str]:
         m = _LIST_ITEM_RE.match(line.rstrip())
         if m and not line[:1].isspace():
             # Top-level bullet: check for section-boundary keywords
-            bullet_text = m.group(2).rstrip(": ").strip("*_ ")
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
             if any(kw in bullet_text.lower() for kw in _STOP_KEYWORDS) and len(bullet_text) < 50:
                 break
             # Skip the label bullet itself (e.g. "* Attendees")
