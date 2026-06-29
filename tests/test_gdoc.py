@@ -630,6 +630,46 @@ class TestExtractSubsectionMd:
         assert not any("Plan review" in item for item in attendees)
         assert not any("Alice" in item for item in agenda)
 
+    # ------------------------------------------------------------------
+    # Bullet-label format: section headers are themselves top-level
+    # bullet items (e.g. Client-Instrumentation-SIG style).
+    # ------------------------------------------------------------------
+
+    def test_bullet_label_attendees(self) -> None:
+        # "* Attendees" is the label bullet; sub-bullets are the attendees.
+        section = (
+            "* Attendees  \n"
+            "  * Santosh Cheler (Cisco/Splunk)  \n"
+            "  * João Oliveira (Datadog)  \n"
+            "* Agenda:  \n"
+            "  * Metrics discussion\n"
+        )
+        result = _extract_subsection_md(section, "attendee")
+        assert result == [
+            "- Santosh Cheler (Cisco/Splunk)",
+            "- João Oliveira (Datadog)",
+        ]
+
+    def test_bullet_label_attendees_do_not_include_agenda(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert not any("Item 1" in item for item in attendees)
+        assert not any("Agenda" in item for item in attendees)
+
+    def test_bullet_label_agenda(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n  * Item 2\n    * Sub-item\n"
+        result = _extract_subsection_md(section, "agenda")
+        assert "- Item 1" in result
+        assert "- Item 2" in result
+        assert "  - Sub-item" in result
+        assert not any("Alice" in item for item in result)
+
+    def test_bullet_label_agenda_does_not_include_attendees(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n"
+        agenda = _extract_subsection_md(section, "agenda")
+        assert not any("Alice" in item for item in agenda)
+        assert not any("Attendees" in item for item in agenda)
+
 
 # ---------------------------------------------------------------------------
 # DevEx SIG style: bold labels (**Attendees:**) + dash bullets (- )
@@ -1023,3 +1063,18 @@ class TestExtractLeadingAttendees:
         result = _extract_leading_attendees(section)
         assert "- Alice Smith" in result
         assert "- Bob Jones" in result
+
+    def test_stops_at_top_level_stop_keyword_bullet(self) -> None:
+        # Bullet-label format: "* Agenda:" is a section boundary, not an attendee.
+        section = "* Alice\n* Bob\n* Agenda:\n  * Item 1\n"
+        result = _extract_leading_attendees(section)
+        assert "- Alice" in result
+        assert "- Bob" in result
+        assert not any("Agenda" in item for item in result)
+        assert not any("Item 1" in item for item in result)
+
+    def test_skips_attendees_label_bullet(self) -> None:
+        # "* Attendees" is the label bullet itself and should not appear as a name.
+        section = "* Attendees\n  * Alice\n  * Bob\n* Agenda:\n  * Item 1\n"
+        result = _extract_leading_attendees(section)
+        assert not any("Attendees" in item for item in result)
