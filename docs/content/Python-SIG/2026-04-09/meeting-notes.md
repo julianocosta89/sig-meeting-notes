@@ -13,47 +13,46 @@
 - Jayesh Hire (Edgeverve System Ltd)
 - Josh Winerman (Cisco/Splunk)
 - Pablo Collins (Cisco/Splunk)
-- https://github.com/orgs/open-telemetry/projects/88/views/1
 
 ### Agenda
 - Riccardo: 1.41.0/0.62b0 is out!
   - Issues during the release:
-      - Packages that don’t use the stable versioning should be explicitly listed in eachdist.ini https://github.com/open-telemetry/opentelemetry-python/pull/5066
-      - Core repo required checks rules were out of date since we moved to alls-green, moved from opentelemetry-api to checks (requiring all jobs to pass)
-      - One job stuck in CI for more than 10 minutes, took a while to get cancelled -> lower timeout from 30 mins to 10 mins?
-      - Recent failures in CI https://github.com/open-telemetry/opentelemetry-python/issues/5067
-        - Lukas: I can reproduce locally
-- Riccardo: review exception to logger emit https://github.com/open-telemetry/opentelemetry-python/pull/4908
+    - Packages that don’t use the stable versioning should be explicitly listed in eachdist.ini [https://github.com/open-telemetry/opentelemetry-python/pull/5066](https://github.com/open-telemetry/opentelemetry-python/pull/5066)
+    - Core repo required checks rules were out of date since we moved to alls-green, moved from opentelemetry-api to checks (requiring all jobs to pass)
+    - One job stuck in CI for more than 10 minutes, took a while to get cancelled -> lower timeout from 30 mins to 10 mins?
+    - Recent failures in CI [https://github.com/open-telemetry/opentelemetry-python/issues/5067](https://github.com/open-telemetry/opentelemetry-python/issues/5067)
+      - Lukas: I can reproduce locally
+- Riccardo: review exception to logger emit [https://github.com/open-telemetry/opentelemetry-python/pull/4908](https://github.com/open-telemetry/opentelemetry-python/pull/4908)
   - Do we really need to add it to the version of the APIs passing a LogRecord?
-- Riccardo: OpAMP entry point in sdk configuration: https://github.com/open-telemetry/opentelemetry-python/pull/4646
+- Riccardo: OpAMP entry point in sdk configuration: [https://github.com/open-telemetry/opentelemetry-python/pull/4646](https://github.com/open-telemetry/opentelemetry-python/pull/4646)
   - Where to load the opamp init entry point, before setting up the sdk or after? I’m calling it after the sdk setup in my distro but maybe people want to get a configuration before loading stuff. Call an entry point in a not-so-generic name so that we can eventually add another one later?
-- Riccardo: on instrumentation specific exclusion options vs rule based sampler https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4373
+- Riccardo: on instrumentation specific exclusion options vs rule based sampler [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4373](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4373)
   - Mike: js has something similar for child spans, we can take a look at that
   - Lukas: TracerConfigurator sounds like a natural place to configure these things
 - Mike: Update on declarative config progress
   - Close to have a testable thing
   - Aaron: what’s the status of dynamic handling instead of static list of components?
-  - Pablo: Always use LogRecord.getMessage() to get the log body https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4372
-  - Jayesh: Can someone please review this PR?
-  - Shuning: Requested review for PR
-      - Liudmila: sorry for the conflicts but I think this PR can go after the refactoring
-      - Lukas: Want to merge in/additional reviews:
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4996
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4917
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4916
-      - Lukas: How to handle expected data while encoding for OTLP Proto/JSON
-      - https://github.com/open-telemetry/opentelemetry-python/issues/5050
-      - Liudmila: OTel components should not throw
+- Pablo: Always use LogRecord.getMessage() to get the log body [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4372](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4372)
+- Jayesh: Can someone please review this PR?
+- Shuning: Requested review for PR
+  - Liudmila: sorry for the conflicts but I think this PR can go after the refactoring
+- Lukas: Want to merge in/additional reviews:
+  - [https://github.com/open-telemetry/opentelemetry-python/pull/4996](https://github.com/open-telemetry/opentelemetry-python/pull/4996)
+  - [https://github.com/open-telemetry/opentelemetry-python/pull/4917](https://github.com/open-telemetry/opentelemetry-python/pull/4917)
+  - [https://github.com/open-telemetry/opentelemetry-python/pull/4916](https://github.com/open-telemetry/opentelemetry-python/pull/4916)
+- Lukas: How to handle expected data while encoding for OTLP Proto/JSON
+  - [https://github.com/open-telemetry/opentelemetry-python/issues/5050](https://github.com/open-telemetry/opentelemetry-python/issues/5050)
+    - Liudmila: OTel components should not throw
       - Lukas: current code does not catch exceptions and will bubble up
-      - Liudmila: I’d rather drop bad data instead of exporting partial
+    - Liudmila: I’d rather drop bad data instead of exporting partial
       - Mike: +1
-      - Aaron: I think the batch processor exporter will catch these
-      - Liudmila: some of these errors will be caught and reported as sdk health metric
-      - Liudmila: Should we go ahead with GenAI Util refactoring? https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4391
-      - Aaron: how big the PR would be if we move the users to new api in the same PR?
-      - Liudmila: not much bigger but would prefer to split
-      - https://docs.python.org/3/library/warnings.html#warnings.deprecated suppression for deprecations
-      - Liudmila: we can deprecate at a later stage
-      - Liudmila/ GenAI SIG. New pattern for genai packages
-      - Liudmila: OpenAI completion hook  - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315
-      - Josh: Additional review for:
+    - Aaron: I think the batch processor exporter will catch these
+    - Liudmila: some of these errors will be caught and reported as sdk health metric
+- Liudmila: Should we go ahead with GenAI Util refactoring? [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4391](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4391)
+  - Aaron: how big the PR would be if we move the users to new api in the same PR?
+    - Liudmila: not much bigger but would prefer to split
+    - [https://docs.python.org/3/library/warnings.html#warnings.deprecated](https://docs.python.org/3/library/warnings.html#warnings.deprecated) suppression for deprecations
+    - Liudmila: we can deprecate at a later stage
+- Liudmila/ GenAI SIG. New pattern for genai packages
+- Liudmila: OpenAI completion hook  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315)
+- Josh: Additional review for:

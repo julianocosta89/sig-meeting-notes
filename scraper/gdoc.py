@@ -270,9 +270,15 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
 
         # --- Stop conditions ---
 
-        # Stop at another known section label (non-list line)
+        # Stop at another known section label (non-list line).
+        # Also stop at any short line ending with ":" — a reliable signal for
+        # a section header in SIG docs that use non-standard section names
+        # (e.g. "Triage:", "What I'm working on this week:") that would
+        # otherwise bleed their bullets into the preceding attendee list.
         if in_target and stripped and not m:
-            if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
+            is_stop_keyword = any(kw in stripped.lower() for kw in _STOP_KEYWORDS)
+            is_colon_header = stripped.rstrip("*_ ").endswith(":")
+            if (is_stop_keyword or is_colon_header) and len(stripped) < 200:
                 break
 
         # In bullet-label docs, stop at the next top-level stop-keyword bullet

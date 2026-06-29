@@ -14,40 +14,40 @@
 - Mani Yazdankhah (JP morgan)
 - Shuwen Pan (Cisco)
 - Liudmila Molkova (Grafana Labs)
-- https://github.com/orgs/open-telemetry/projects/88/views/1
+- Pablo Collins (Cisco/Splunk)
 
 ### Agenda
 - Riccardo: 1.41.0 Reported regression (need a 1.41.1 imho):
-  - Wrapt2 BaseObjectProxy regressions: TLDR; wrapt ObjectProxy makes all objects iterable so they introduced a base version that did not that in wrapt 2. Also we tend to test our instrumentation but not that the instrumented code works as expected 😅
-      - Dbapi TracedCursorProxy is not iterable with wrapt2 https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4427
-        - Connection not iterable so it’s fine
-        - We can add a test in docker-tests that iterates over the cursor as well
-      - Other BaseObjectProxy user
-        - Bedrock: already implements __iter__
-        - Grpc, does not implement __iter__, not sure it needs to, please help  https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-grpc/src/opentelemetry/instrumentation/grpc/_aio_server.py#L33
-        - Pika, wraps a deque that is iterable so I think it needs a fix as well https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-pika/src/opentelemetry/instrumentation/pika/pika_instrumentor.py#L216  , PR to switch to ObjectProxy welcome
+  - [Wrapt2 BaseObjectProxy regressions:](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4462) TLDR; wrapt ObjectProxy makes all objects iterable so they introduced a base version that did not that in wrapt 2. Also we tend to test our instrumentation but not that the instrumented code works as expected 😅
+    - Dbapi TracedCursorProxy is not iterable with wrapt2 [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4427](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4427)
+      - Connection not iterable so it’s fine
+      - We can add a test in docker-tests that iterates over the cursor as well
+    - Other BaseObjectProxy user
+      - Bedrock: already implements __iter__
+      - Grpc, does not implement __iter__, not sure it needs to, please help  [https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-grpc/src/opentelemetry/instrumentation/grpc/_aio_server.py#L33](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-grpc/src/opentelemetry/instrumentation/grpc/_aio_server.py#L33)
+      - Pika, wraps a deque that is iterable so I think it needs a fix as well [https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-pika/src/opentelemetry/instrumentation/pika/pika_instrumentor.py#L216](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/34bfc28680e4e61b9904d151fa5955cad6c5644d/instrumentation/opentelemetry-instrumentation-pika/src/opentelemetry/instrumentation/pika/pika_instrumentor.py#L216)  , PR to switch to ObjectProxy welcome
   - Riccardo: I think we are missing a bit of coordination and I feel overwhelmed by very different stuff to review, thinking more of the random cleanups more than some specific work (but would be nice to track that as well, e.g. Mike declarative config). Can you please write a line here on what you are working right now / going to work (don’t over share)?
-      - Riccardo: opentelemetry-sdk under typechecking (https://github.com/open-telemetry/opentelemetry-python/issues/1608 may use some help), rule based sampler declarative config, getting sdk-metrics PRs merged
-      - Declarative config: https://github.com/open-telemetry/opentelemetry-python/issues/3631
-      - Leighton: add a section at the top of every weekly?
+    - Riccardo: opentelemetry-sdk under typechecking ([https://github.com/open-telemetry/opentelemetry-python/issues/1608](https://github.com/open-telemetry/opentelemetry-python/issues/1608) may use some help), rule based sampler declarative config, getting sdk-metrics PRs merged
+    - Declarative config: [https://github.com/open-telemetry/opentelemetry-python/issues/3631](https://github.com/open-telemetry/opentelemetry-python/issues/3631)
+    - Leighton: add a section at the top of every weekly?
   - Lukas: Hoping on getting the OTLP JSON common package merged in soon
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4996
+    - [https://github.com/open-telemetry/opentelemetry-python/pull/4996](https://github.com/open-telemetry/opentelemetry-python/pull/4996)
   - Lukas: Potential to remove protobuf dependency for OTLP exporters:
-      - https://github.com/open-telemetry/opentelemetry-python/issues/4226
-      - https://github.com/herin049/opentelemetry-proto-native
-        - Aaron: on some use cases (operator) native wheels are a PITA
-        - Liudmila: can protobuf dependency be a problem for onboarding?
-            - Yes, it Could be
-            - Aaron: making them a bit less toxic https://protobuf.dev/support/cross-version-runtime-guarantee/#major
+    - [https://github.com/open-telemetry/opentelemetry-python/issues/4226](https://github.com/open-telemetry/opentelemetry-python/issues/4226)
+    - [https://github.com/herin049/opentelemetry-proto-native](https://github.com/herin049/opentelemetry-proto-native)
+      - Aaron: on some use cases (operator) native wheels are a PITA
+      - Liudmila: can protobuf dependency be a problem for onboarding?
+        - Yes, it Could be
+        - Aaron: making them a bit less toxic [https://protobuf.dev/support/cross-version-runtime-guarantee/#major](https://protobuf.dev/support/cross-version-runtime-guarantee/#major)
   - Lukas: Extra PRs that I need eyes on:
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4916
-      - https://github.com/open-telemetry/opentelemetry-python/pull/4917
+    - [https://github.com/open-telemetry/opentelemetry-python/pull/4916](https://github.com/open-telemetry/opentelemetry-python/pull/4916)
+    - [https://github.com/open-telemetry/opentelemetry-python/pull/4917](https://github.com/open-telemetry/opentelemetry-python/pull/4917)
   - Shuning: PR review for Embedding metrics after API refactoring
-      - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4377
+    - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4377](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4377)
   - Josh: review for log handler config in autoinstrumentation
-      - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298
-  - Keith: Continue adding support for invocations to GenAI Utils. Current PR: Metrics for ToolInvocations: https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4443
-  - Erden: AgentInvocation PR applied latest API changes from GenAI Utils, please review https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274
-  - [Liudmila] Trivial fix for new wrapt https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4445
-      - Liudmila: Automated nightly test against latest releases? Java has something like this
-  - Liudmila: completion hook https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315
+    - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298)
+  - Keith: Continue adding support for invocations to GenAI Utils. Current PR: Metrics for ToolInvocations: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4443](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4443)
+  - Erden: AgentInvocation PR applied latest API changes from GenAI Utils, please review [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274)
+  - [Liudmila] Trivial fix for new wrapt [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4445](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4445)
+    - Liudmila: Automated nightly test against latest releases? Java has something like this
+  - Liudmila: completion hook [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4315)

@@ -12,10 +12,6 @@
 - Erdenesaikhan Tserendavga (Cisco/Splunk)
 - Leighton Chen (Microsoft)
 - Shuwen Pan (Cisco)
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
-- [Dylan] Extended Attributes
-- [Lukas] JSON Exporters work
-- [Mike] Declarative config – nearly there 🎉
 
 ### Agenda
 - [Leighton] Deprecating http old semantic conventions and making new ones default - [Implement migration plan for selected instrumentations · Issue #2453 · open-telemetry/opentelemetry-python-contrib](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/2453)

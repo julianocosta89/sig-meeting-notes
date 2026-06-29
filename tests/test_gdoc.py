@@ -630,6 +630,28 @@ class TestExtractSubsectionMd:
         assert not any("Plan review" in item for item in attendees)
         assert not any("Alice" in item for item in agenda)
 
+    def test_unknown_colon_section_header_stops_attendees(self) -> None:
+        # SIG docs sometimes have non-standard headers between Attendees and
+        # Topics (e.g. "Triage:", "What I'm working on this week:").  These
+        # should act as section boundaries even though they are not in
+        # _STOP_KEYWORDS, to avoid leaking their bullets into the attendee list.
+        section = (
+            "Attendees:\n\n"
+            "* Alice\n"
+            "* Bob\n\n"
+            "Triage:\n\n"
+            "* https://github.com/orgs/open-telemetry/projects/88/views/1\n\n"
+            "What I'm working on this week:\n\n"
+            "* Bob - some topic\n\n"
+            "Topics:\n\n"
+            "* Agenda item 1\n"
+        )
+        attendees = _extract_subsection_md(section, "attendee")
+        assert attendees == ["- Alice", "- Bob"]
+        assert not any("Triage" in item for item in attendees)
+        assert not any("github.com/orgs" in item for item in attendees)
+        assert not any("some topic" in item for item in attendees)
+
     # ------------------------------------------------------------------
     # Bullet-label format: section headers are themselves top-level
     # bullet items (e.g. Client-Instrumentation-SIG style).

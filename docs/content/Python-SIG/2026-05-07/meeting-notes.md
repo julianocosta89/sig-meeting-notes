@@ -16,8 +16,6 @@
 - Leighton Chen (Microsoft)
 - Josh Winerman (Cisco/Splunk)
 - Surya Teja
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
-- Lukas - JSON Exporters + Prometheus Stabilization
 
 ### Agenda
 - Riccardo: dependabot requirements broken after [https://github.com/open-telemetry/opentelemetry-python/pull/5142](https://github.com/open-telemetry/opentelemetry-python/pull/5142) , pip / uv is fine with that though. [Logs](https://github.com/open-telemetry/opentelemetry-python/actions/runs/25368454713/job/74385376366), tried to workaround but no joy [https://github.com/open-telemetry/opentelemetry-python/pull/5178](https://github.com/open-telemetry/opentelemetry-python/pull/5178)

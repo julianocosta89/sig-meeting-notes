@@ -18,45 +18,41 @@
 - Erdenesaikhan Tserendavga (Cisco/Splunk)
 - Lukas Hering (Oracle)
 - Pablo Collins (Cisco/Splunk)
-- https://github.com/orgs/open-telemetry/projects/88/views/1
-- [dylan russell] Moving google genAI instrumentation to use the genAi utils library
-- [riccardo] hopefully back to reviewing PRs
-- [lukas] OpenTelemetry exporters (generalization/json/etc.)
 
 ### Agenda
 - Aaron: improving contributor experience
   - Approved PRs waiting for maintainers
   - Approved PRs with merge conflicts
   - Github Merge Queue
-      - Aaron needs to fix the GHAs to actually trigger on merge_update
-      - * Making it more clear if an issue is “approved” for contribution
-  - https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/18435 ( https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/.github/scripts/pull-request-dashboard.py )
-      - Maybe duplicative of the project board we have?
-      - [mike] It’s a little easier to consume quickly
-      - Let’s do it and try it out :)
+    - Aaron needs to fix the GHAs to actually trigger on merge_update
+  - Making it more clear if an issue is “approved” for contribution
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/18435](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/18435) ( [https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/.github/scripts/pull-request-dashboard.py](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/.github/scripts/pull-request-dashboard.py) )
+    - Maybe duplicative of the project board we have?
+    - [mike] It’s a little easier to consume quickly
+    - Let’s do it and try it out :)
   - On the “Approved PRs” vs “ready to merge” columns
-      - [aaron] Can we make it more clear on the actual issue if it’s “accepted for contribution”?
-        - Sometimes obvious sometimes not
-        - If it was accepted for contribution, having approvals should be sufficient?
-      - [riccardo]
-- Diego: https://github.com/open-telemetry/opentelemetry-injector/issues/8
-  - https://github.com/open-telemetry/opentelemetry-python/issues/4226#issuecomment-4262773524
-      - https://github.com/herin049/opentelemetry-proto-native
-- Lukasz: https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4491
+    - [aaron] Can we make it more clear on the actual issue if it’s “accepted for contribution”?
+      - Sometimes obvious sometimes not
+      - If it was accepted for contribution, having approvals should be sufficient?
+    - [riccardo]
+- Diego: [https://github.com/open-telemetry/opentelemetry-injector/issues/8](https://github.com/open-telemetry/opentelemetry-injector/issues/8)
+  - [https://github.com/open-telemetry/opentelemetry-python/issues/4226#issuecomment-4262773524](https://github.com/open-telemetry/opentelemetry-python/issues/4226#issuecomment-4262773524)
+    - [https://github.com/herin049/opentelemetry-proto-native](https://github.com/herin049/opentelemetry-proto-native)
+- Lukasz: [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4491](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4491)
 - Riccardo: Is opentelemetry-util-genai supposed to be moved as well?
-  - To https://github.com/open-telemetry/opentelemetry-python-genai
+  - To [https://github.com/open-telemetry/opentelemetry-python-genai](https://github.com/open-telemetry/opentelemetry-python-genai)
   - Yes, but we should do a final release of this lib from contrib before, since we will remove the cruft
-  - https://github.com/open-telemetry/opentelemetry-python-genai/issues/15
-- Emidio: Adopt Renovate? https://github.com/open-telemetry/opentelemetry-python/pull/5202
+  - [https://github.com/open-telemetry/opentelemetry-python-genai/issues/15](https://github.com/open-telemetry/opentelemetry-python-genai/issues/15)
+- Emidio: Adopt Renovate? [https://github.com/open-telemetry/opentelemetry-python/pull/5202](https://github.com/open-telemetry/opentelemetry-python/pull/5202)
   - Ignore test-requirements.oldest.txt to not bump it. Maybe we can bump just in test-requirements.in
   - Decision: Let’s give it a try and leave dependabot for some time to test it out
-- Tammy: https://github.com/open-telemetry/opentelemetry-python/issues/4533
-  - Comment with link to spec and small summary https://github.com/open-telemetry/opentelemetry-python/pull/5032#issuecomment-4452430016
+- Tammy: [https://github.com/open-telemetry/opentelemetry-python/issues/4533](https://github.com/open-telemetry/opentelemetry-python/issues/4533)
+  - Comment with link to spec and small summary [https://github.com/open-telemetry/opentelemetry-python/pull/5032#issuecomment-4452430016](https://github.com/open-telemetry/opentelemetry-python/pull/5032#issuecomment-4452430016)
   - [aaron] concerned that this introduces a footgun, if you keep retrying with RESOURCE_EXHAUSTED you just consume more quota. Spec is pretty clear about RetryInfo
   - [Lukas] IMO it would be cleaner to just configure a batch byte size limits rather than this complicated adaptive splitting
-      - [aaron] +1
+    - [aaron] +1
   - [Liudmila] let’s get more feedback on how widespread this is and what kind of setup they’re running into this
-      - We can not block the spec though.
-        - E.g. Tell people to configure a smaller batch size
-        - The exporter allows a
-- Ridhima: langchain workflow and agent https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4449
+    - We can not block the spec though.
+      - E.g. Tell people to configure a smaller batch size
+      - The exporter allows a
+- Ridhima: langchain workflow and agent [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4449](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4449)

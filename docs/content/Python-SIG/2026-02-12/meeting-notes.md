@@ -18,51 +18,51 @@
 - Shuwen Pan (Cisco)
 
 ### Agenda
-- [Riccardo] PTAL sdk metrics PR https://github.com/open-telemetry/opentelemetry-python/pull/4880
-  - https://opentelemetry.io/docs/specs/semconv/otel/sdk-metrics/
+- [Riccardo] PTAL sdk metrics PR [https://github.com/open-telemetry/opentelemetry-python/pull/4880](https://github.com/open-telemetry/opentelemetry-python/pull/4880)
+  - [https://opentelemetry.io/docs/specs/semconv/otel/sdk-metrics/](https://opentelemetry.io/docs/specs/semconv/otel/sdk-metrics/)
 - [Riccardo] If someone has time (maybe after next release since next would be huge already)
   - 3.14 testing in -contrib, at least get any eventual fix required to the code, not sure deprecation/syntax warnings are easy to see though
-      - [emidio] just started working on 3.14 support this week, pushed a draft https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4193 need to fix some failures with genai packages
+    - [emidio] just started working on 3.14 support this week, pushed a draft [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4193](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4193) need to fix some failures with genai packages
   - Wrapt v2 support, two open PRs in -contrib missing testing with newer wrapt since changes for users of ObjectProxy are required
-- [Mani / James] Comments addressed on the following PR; any remaining concerns? How do we proceed to get approvals and merge? https://github.com/open-telemetry/opentelemetry-python/pull/4863
-- [Josh] Wanted to start looking into this, config log handler in auto instrumentation: https://github.com/open-telemetry/opentelemetry-python/issues/4034
-  - Existing, stale PR open here: https://github.com/open-telemetry/opentelemetry-python/pull/4203
+- [Mani / James] Comments addressed on the following PR; any remaining concerns? How do we proceed to get approvals and merge? [https://github.com/open-telemetry/opentelemetry-python/pull/4863](https://github.com/open-telemetry/opentelemetry-python/pull/4863)
+- [Josh] Wanted to start looking into this, config log handler in auto instrumentation: [https://github.com/open-telemetry/opentelemetry-python/issues/4034](https://github.com/open-telemetry/opentelemetry-python/issues/4034)
+  - Existing, stale PR open here: [https://github.com/open-telemetry/opentelemetry-python/pull/4203](https://github.com/open-telemetry/opentelemetry-python/pull/4203)
   - Difference between OTEL_LOG_LEVEL (sdk), OTEL_PYTHON_LOG_LEVEL (exporters?), or a new env var
   - Open declarative config PRs: 4879, 4898
-  - Declarative Config logger spec: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema/logger_provider.yaml
+  - Declarative Config logger spec: [https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema/logger_provider.yaml](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema/logger_provider.yaml)
   - [Riccardo]: should have a chat on how to map these handlers (structlog)
-- [Michael] How big should this PR be: https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4178
+- [Michael] How big should this PR be: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4178](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4178)
   - Everything in one go would touch 36 files + tests
   - Riccardo: let’s find agreement on one instrumentation first
 - [Liudmila, but I can't be here for this discussion :( ]  GenAI SIG - Python instrumentation seems to be the top priority. How can we do it without increasing maintainers' efforts?
   - Proposal
-      - The GenAI SIG needs to prioritize review in python
-      - As a rule of thumb, for SIG members: review at least 2 PRs for each PR you send
-      - We need to have everything common in utils
-      - We need common test utils to validate semconv
-        - There should be unit test helpers
-        - And weaver-live checks for general e2e testing
+    - The GenAI SIG needs to prioritize review in python
+    - As a rule of thumb, for SIG members: review at least 2 PRs for each PR you send
+    - We need to have everything common in utils
+    - We need common test utils to validate semconv
+      - There should be unit test helpers
+      - And weaver-live checks for general e2e testing
   - Feedback
-      - [Marcelo] could really improve the CI tooling to get stronger signal
-        - https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3547
-      - [aaron] I feel like more reviewers would be very helpful and for it to be more federated
-        - Dylan +1
-        - Riccardo +1 more reviewers
-      - [leighton] Problems with component owners?
-        - [aaron] afaict, it’s just a mechanism to tag people. The owners still need green chcek for the whole repo with our current mechanism
-        - Should be ways around it
-      - [Josh] Triager role could be helpful
-        - [aaron] +1
-      - [emidio] maybe get some feedback from opentelemetry.io maintainers team since they need to maintain a lot of groups for localization approvers https://github.com/orgs/open-telemetry/teams?query=docs
+    - [Marcelo] could really improve the CI tooling to get stronger signal
+      - [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3547](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3547)
+    - [aaron] I feel like more reviewers would be very helpful and for it to be more federated
+      - Dylan +1
+      - Riccardo +1 more reviewers
+    - [leighton] Problems with component owners?
+      - [aaron] afaict, it’s just a mechanism to tag people. The owners still need green chcek for the whole repo with our current mechanism
+      - Should be ways around it
+    - [Josh] Triager role could be helpful
+      - [aaron] +1
+    - [emidio] maybe get some feedback from [opentelemetry.io](http://opentelemetry.io) maintainers team since they need to maintain a lot of groups for localization approvers [https://github.com/orgs/open-telemetry/teams?query=docs](https://github.com/orgs/open-telemetry/teams?query=docs)
   - Copilot reviews?
-      - Anyone have experience with it
-        - [Marcelo] I found it useful, especially Devin
-      - Should add CLAUDE.md and symlink to AGENTS.md etc.
+    - Anyone have experience with it
+      - [Marcelo] I found it useful, especially Devin
+    - Should add CLAUDE.md and symlink to AGENTS.md etc.
 - [Surya] Boilerplate for anthropic agents
-- [Josh] handler for structlog: https://github.com/open-telemetry/opentelemetry-python/issues/2993
-  - Other issue regarding moving LoggingHandler out of SDK? https://github.com/open-telemetry/opentelemetry-python/issues/4330
-- [Marcelo] https://github.com/open-telemetry/opentelemetry-python-contrib/blob/93bea2dde78494d454f63248dc7759115830a93b/pyproject.toml#L218-L225 ?
+- [Josh] handler for structlog: [https://github.com/open-telemetry/opentelemetry-python/issues/2993](https://github.com/open-telemetry/opentelemetry-python/issues/2993)
+  - Other issue regarding moving LoggingHandler out of SDK? [https://github.com/open-telemetry/opentelemetry-python/issues/4330](https://github.com/open-telemetry/opentelemetry-python/issues/4330)
+- [Marcelo] [https://github.com/open-telemetry/opentelemetry-python-contrib/blob/93bea2dde78494d454f63248dc7759115830a93b/pyproject.toml#L218-L225](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/93bea2dde78494d454f63248dc7759115830a93b/pyproject.toml#L218-L225) ?
   - We can try good first issue for handling these
-- [Ridhima] - Workflow gen-ai semcov PR- https://github.com/open-telemetry/semantic-conventions/pull/3249
-- [Aaron] regarding typing issues, jas anyone tried “baseline” feature in basedpyright? https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/
+- [Ridhima] - Workflow gen-ai semcov PR- [https://github.com/open-telemetry/semantic-conventions/pull/3249](https://github.com/open-telemetry/semantic-conventions/pull/3249)
+- [Aaron] regarding typing issues, jas anyone tried “baseline” feature in basedpyright? [https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/)
   - Marcelo: I use that, not that feature in particular

@@ -14,12 +14,6 @@
 - Gregory Loshkajian (Bloomberg)
 - Carlos Alberto Cortez (Dash0)
 - Hector Hernandez (Microsoft)
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
-  - Core 2797: pointing to [opentelemetry.io](http://opentelemetry.io) repo
-  - Contrib 4648: Riccardo will take a look, related to 4270
-- [Mike] Declarative config
-- [Lukas] JSON/General Exporter work + Process Context
-- [Greg] httpx2 extension to httpx instrumentor
 
 ### Agenda
 - [Marcelo] Can I please set 120 line length? [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3908](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3908)
