@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import main
-from main import _write_meeting_notes
+from main import _write_meeting_notes, write_transcript
 
 # ---------------------------------------------------------------------------
 # _write_meeting_notes
@@ -55,6 +55,53 @@ class TestWriteMeetingNotes:
 
         assert result is False
         assert not notes_path.exists()
+
+
+# ---------------------------------------------------------------------------
+# write_transcript
+# ---------------------------------------------------------------------------
+
+
+class TestWriteTranscript:
+    def _make_meeting(self):
+        from datetime import datetime
+
+        m = MagicMock()
+        m.sig_name = "Test SIG"
+        m.sig_slug = "Test-SIG"
+        m.start_date = datetime(2026, 6, 16)
+        m.duration_minutes = 30
+        return m
+
+    def test_writes_transcript_file(self, tmp_path):
+        meeting = self._make_meeting()
+        path = tmp_path / "transcript.md"
+        write_transcript(path, meeting, ["Speaker 0:01 Hello"])
+        assert path.exists()
+        content = path.read_text()
+        assert "SIG: Test SIG" in content
+        assert "**Speaker** 0:01 Hello" in content
+
+    def test_writes_meeting_notes_when_notes_provided(self, tmp_path):
+        meeting = self._make_meeting()
+        path = tmp_path / "transcript.md"
+        notes = {"attendees": ["- Alice"], "agenda": ["- Item 1"]}
+        write_transcript(path, meeting, [], notes=notes)
+        notes_path = tmp_path / "meeting-notes.md"
+        assert notes_path.exists()
+        assert "- Alice" in notes_path.read_text()
+
+    def test_no_meeting_notes_when_notes_is_none(self, tmp_path):
+        meeting = self._make_meeting()
+        path = tmp_path / "transcript.md"
+        write_transcript(path, meeting, [], notes=None)
+        assert not (tmp_path / "meeting-notes.md").exists()
+
+    def test_no_meeting_notes_when_notes_is_empty(self, tmp_path):
+        meeting = self._make_meeting()
+        path = tmp_path / "transcript.md"
+        write_transcript(path, meeting, [], notes={"attendees": [], "agenda": []})
+        assert not (tmp_path / "meeting-notes.md").exists()
 
 
 # ---------------------------------------------------------------------------
