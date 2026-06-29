@@ -296,7 +296,7 @@ def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
             return None
 
 
-def _parse_args() -> argparse.Namespace:
+def _parse_args() -> argparse.Namespace:  # pragma: no cover
     parser = argparse.ArgumentParser(
         description="Download OTel SIG meeting transcripts from Zoom recordings."
     )
@@ -340,7 +340,7 @@ def _parse_date(value: str, flag: str) -> datetime | None:
         return None
 
 
-def main() -> int:
+def main() -> int:  # pragma: no cover
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
@@ -451,5 +451,5 @@ def main() -> int:
         return 0
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     sys.exit(main())
