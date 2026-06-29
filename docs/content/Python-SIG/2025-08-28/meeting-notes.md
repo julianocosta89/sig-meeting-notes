@@ -1,0 +1,69 @@
+## Meeting Notes
+
+### Attendees
+- Tammy Baylis (SolarWinds)
+- John Scancella
+- Dylan russell (google)
+- Liudmila Molkova (Grafana Labs)
+- Ridhima Satam(Cisco/Splunk)
+- Sergey Sergeev (Cisco/Splunk)
+- Hector Hernandez (Microsoft)
+- Jackson Weber (Microsoft)
+- Shuwen Pan (Cisco)
+- Keith Decker (Cisco/Splunk)
+- Riccardo Magliocchetti (Elastic)
+
+### Agenda
+- [Tammy] New Labeler
+  - Issue: [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3695](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3695)
+    - Could be achieved with baggage, but seems more complicated
+    - Does not conflict with semconv
+    - Liudmila:
+      - Discusses the same in java (around client metrics), it looks like a generic issue of being able to update stuff before being sent
+- PR: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3689/](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3689/)
+  - Should custom attributes support be opt-in?
+    - Split PR into Labeler + 5 instrumentors?
+      - Riccardo: Need to take a look
+- [ridhima]
+  - Riccardo: had add to conditional for bedrock in botocore
+  - Aaron: looks like the abstraction is leaking, does it provide enough value to trace langchain?
+  - Ridhima: we can support for multiple providers in a followup?
+  - Sergey: we can it opt-in
+  - Liudmila: why are we doing this instrumentation if it’s implementation dependent?
+    - Sergey: we want to trace the langchain / langgraph view
+  - Riccardo: do we have semantic conventions for orchestration level spans?
+  - Liudmila: maybe start with openai, add tests we don’t crash with other providers, look at how traceloop is doing.
+  - Aaron: Can you help understand value of capturing LLM calls from LangChain level with having to add special cases for each provider under the hood?
+  - Action items:
+    - Explain value of LLM Invocation in LangChain vs client-instrumentation (i.e. openai)
+    - How TraceLoop/OpenInference do it, document their approach
+    - Unit-test showing both openai/bedrock providers to match telemetry
+    - Opt-in telemetry for a short term and long-term strategy to avoid telemetry duplication.
+    - we’ll provide both testing with another llm and opt-in for filing attributes
+- [John Scancella] - I am planning on running through the documentation, but is there any area that you would like me to focus on?
+  - Aaron: forking docs
+  - Otel.io Python documentation, especially issues about “zero code” related to forking [https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Asig%3Apython](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Asig%3Apython)
+    - Published here: [https://opentelemetry.io/docs/zero-code/python/](https://opentelemetry.io/docs/zero-code/python/)
+  - If you want to look at docs validation [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3364](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/3364)
+  - Tammy: Feel free to also take on any open, relatively recent issues you’re interested in
+  - opentelemetry-python (“core SDK”) readthedocs open issues:
+    - [https://github.com/open-telemetry/opentelemetry-python/issues?q=is%3Aissue%20state%3Aopen%20documentation](https://github.com/open-telemetry/opentelemetry-python/issues?q=is%3Aissue%20state%3Aopen%20documentation)
+    - [https://github.com/open-telemetry/opentelemetry-python/issues?q=is%3Aissue%20state%3Aopen%20label%3Adoc](https://github.com/open-telemetry/opentelemetry-python/issues?q=is%3Aissue%20state%3Aopen%20label%3Adoc)
+  - opentelemetry-python-contrib (“instrumentors”) readthedocs open issues:
+    - [https://github.com/open-telemetry/opentelemetry-python-contrib/issues?q=is%3Aissue%20state%3Aopen%20documentation](https://github.com/open-telemetry/opentelemetry-python-contrib/issues?q=is%3Aissue%20state%3Aopen%20documentation)
+    - [https://github.com/open-telemetry/opentelemetry-python-contrib/issues?q=is%3Aissue%20state%3Aopen%20label%3Adocumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/issues?q=is%3Aissue%20state%3Aopen%20label%3Adocumentation)
+- [Liudmila] GenAI changes config specifically:
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3709](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3709)
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3715](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3715)
+  - [Dylan] also [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3718](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3718) and [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3716](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/3716)
+  - Keith: similar to what we have here [https://github.com/zhirafovod/opentelemetry-python-contrib/pull/3](https://github.com/zhirafovod/opentelemetry-python-contrib/pull/3)
+  - Ridhima: also see [https://github.com/wrisa/opentelemetry-python-contrib/pull/2/files#diff-51c0854054b600e5100a162494dfaa2cf9862b6ad5ede05b2ba4eb974f27812b](https://github.com/wrisa/opentelemetry-python-contrib/pull/2/files#diff-51c0854054b600e5100a162494dfaa2cf9862b6ad5ede05b2ba4eb974f27812b) and [https://github.com/wrisa/opentelemetry-python-contrib/pull/2/files#diff-6ef5d5b4666f208ed58793ef104b45ebfda2d6e2a58da3a3e72e87bdbd6886cb](https://github.com/wrisa/opentelemetry-python-contrib/pull/2/files#diff-6ef5d5b4666f208ed58793ef104b45ebfda2d6e2a58da3a3e72e87bdbd6886cb)
+  - Aaron: we may need more tooling in the future, but for now looks fine
+- [Sergey Sergeev] sampling telemetry and delaying it for evaluations
+  - any approaches to sample some trace for delayed aggregation in the agent/instrumentation, so it can be evaluated on the trace level (in-RPC)
+    - Aaron: usually you do Tail Based Sampling in the otel collector
+    - Tammy: take a look at [https://github.com/open-telemetry/opentelemetry-python/pull/4714](https://github.com/open-telemetry/opentelemetry-python/pull/4714)
+    - Liudmila: delayed telemetry is not great outside toy application
+    - Aaron: there is a sampling WG [https://github.com/open-telemetry/community#:~:text=Specification%3A%20Sampling](https://github.com/open-telemetry/community#:~:text=Specification%3A%20Sampling)
+  - approaches to deterministically select a trace for sampling across-boundaries? (i.e. every 100th)
+    - any ideas on how to select every 100th with a specific attribute (i.e. gen_ai.operation.name = chat)
