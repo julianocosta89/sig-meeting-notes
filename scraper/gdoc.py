@@ -17,7 +17,7 @@ import requests
 
 _DOC_ID_RE = re.compile(r"docs\.google\.com/document/d/([^/?#]+)")
 _HEADING_RE = re.compile(r"^(#{1,6})\s+(.+)")
-_LIST_ITEM_RE = re.compile(r"^( *)[-*]\s+(.+)")
+_LIST_ITEM_RE = re.compile(r"^( *)\\?[-*]\s+(.+)")
 
 # Non-English month abbreviations observed in OTel SIG docs, keyed by month
 # number.  Used by _date_variants() to generate localized heading variants and
@@ -229,40 +229,88 @@ def _extract_subsection_md(section_text: str, keyword: str) -> list[str]:
     "Agenda:" or "**Attendees:**" or "Topics"), then collects list items
     (``*`` or ``-`` prefixed), preserving indentation depth as ``  - ``
     prefixes.  Stops when another known section label is encountered.
+
+    Also handles docs where section headers are themselves top-level bullet
+    items (e.g. ``* Attendees`` / ``* Agenda:``).  In that case sub-items
+    are depth-normalised so they render at depth 0 rather than depth 1.
     """
     in_target = False
+    bullet_label_mode = False  # True when the section label was itself a bullet
     items: list[str] = []
 
     for line in section_text.split("\n"):
         stripped = line.strip()
 
-        # Section label: non-list line containing the keyword.
+        m = _LIST_ITEM_RE.match(line.rstrip())
+        indent = len(m.group(1)) if m else 0
+        is_top_bullet = bool(m) and indent == 0
+
+        # --- Detect section label ---
+
+        # Standard: non-list line containing the keyword (existing behaviour).
         # Use re.match to distinguish "* list item" from "**Bold label:**".
         # Allow up to 200 chars so inline-enriched labels (e.g. long Attendees
         # lines) are still recognised as labels.
-        if (
-            stripped
-            and not re.match(r"^[-*]\s", stripped)
-            and keyword.lower() in stripped.lower()
-            and len(stripped) < 200
-        ):
+        if stripped and not m and keyword.lower() in stripped.lower() and len(stripped) < 200:
             in_target = True
+            bullet_label_mode = False
             # Also capture content inline on the label line, e.g. "Attendees: Alice, Bob"
             items.extend(_parse_inline_label_content(stripped, keyword))
             continue
 
-        # Stop at another known section label
-        if in_target and stripped and not re.match(r"^[-*]\s", stripped):
-            if any(kw in stripped.lower() for kw in _STOP_KEYWORDS) and len(stripped) < 200:
+        # Bullet-label: top-level bullet whose entire text IS the keyword
+        # (e.g. "* Attendees" or "* Agenda:" used as bullet-style section headers).
+        if is_top_bullet and not in_target:
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
+            if re.fullmatch(re.escape(keyword) + r"s?", bullet_text, re.IGNORECASE):
+                in_target = True
+                bullet_label_mode = True
+                items.extend(_parse_inline_label_content(stripped, keyword))
+                continue
+
+        # --- Stop conditions ---
+
+        # Stop at another known section label (non-list line).
+        # For attendee extraction only, also treat any short line ending with
+        # ":" as a section boundary — a reliable signal for non-standard section
+        # names (e.g. "Triage:", "What I'm working on this week:") that would
+        # otherwise bleed their bullets into the attendee list.  This heuristic
+        # is intentionally NOT applied to agenda/topic/note extraction, where
+        # discussion sub-headers (e.g. "Discussion:", "Triage:") legitimately
+        # appear inline and should not truncate the agenda items.
+        if in_target and stripped and not m:
+            is_stop_keyword = any(kw in stripped.lower() for kw in _STOP_KEYWORDS)
+            is_colon_header = keyword.lower().startswith("attendee") and stripped.rstrip(
+                "*_ "
+            ).endswith(":")
+            if (is_stop_keyword or is_colon_header) and len(stripped) < 200:
                 break
+
+        # In bullet-label docs, stop at the next top-level stop-keyword bullet
+        # (e.g. "* Agenda:" signals the end of "* Attendees" content).
+        if in_target and bullet_label_mode and is_top_bullet:
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
+            if any(kw in bullet_text.lower() for kw in _STOP_KEYWORDS) and len(bullet_text) < 50:
+                break
+
+        # --- Collect items ---
 
         # Collect list items (* / - prefixed) and tab-indented lines.
         # Some docs (e.g. Rust SIG) write agenda notes as tab-indented plain
         # text rather than using bullet markers.
         if in_target:
-            item = _collect_list_item(line)
-            if item:
-                items.append(item)
+            if m:
+                # In bullet-label mode, sub-items are at depth≥1 under the label
+                # bullet; normalise by subtracting 1 so they render at depth 0.
+                raw_depth = indent // 2
+                depth = max(0, raw_depth - (1 if bullet_label_mode else 0))
+                text = _unescape_md(m.group(2).rstrip())
+                if text.strip():
+                    items.append(f"{'  ' * depth}- {text}")
+            else:
+                item = _collect_list_item(line)
+                if item:
+                    items.append(item)
 
     return items
 
@@ -275,16 +323,30 @@ def _extract_leading_attendees(section_text: str) -> list[str]:
     bullet block, stopping as soon as any non-empty non-list line is seen
     (headings, labels, free-text prose) to avoid pulling in content from
     later parts of the section (e.g. "Discussion" or "Parking lot" bullets).
+
+    Also stops at top-level bullets whose text is a known stop keyword (e.g.
+    ``* Agenda:`` in bullet-label-format docs) and skips the initial label
+    bullet itself (e.g. ``* Attendees``).
     """
     items: list[str] = []
     for line in section_text.split("\n"):
         stripped = line.strip()
         if not stripped:
             continue
-        # Stop at any non-list line — attendees are a contiguous bullet block
-        if not re.match(r"^[-*]", stripped):
+        # Stop at any non-list line — attendees are a contiguous bullet block.
+        # Allow an optional leading backslash so that Google Docs' escaped
+        # bullet markers (\- item) are recognised instead of stopping early.
+        if not re.match(r"^\\?[-*]", stripped):
             break
         m = _LIST_ITEM_RE.match(line.rstrip())
+        if m and not line[:1].isspace():
+            # Top-level bullet: check for section-boundary keywords
+            bullet_text = m.group(2).strip("*_ ").rstrip(": ").strip()
+            if any(kw in bullet_text.lower() for kw in _STOP_KEYWORDS) and len(bullet_text) < 50:
+                break
+            # Skip the label bullet itself (e.g. "* Attendees")
+            if re.fullmatch(r"attendees?", bullet_text, re.IGNORECASE):
+                continue
         if m:
             text = _unescape_md(m.group(2).rstrip())
             if text.strip():  # skip empty placeholder items like "* "

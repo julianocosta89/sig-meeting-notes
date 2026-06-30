@@ -19,7 +19,6 @@
 - Lukas Hering (Oracle)
 - Liudmila Molkova (Google)
 - Marcelo Trylesinski (Pydantic)
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
 
 ### Agenda
 - [Hector] Log Stabilization status

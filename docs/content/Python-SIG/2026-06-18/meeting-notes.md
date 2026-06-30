@@ -15,18 +15,6 @@
 - Pablo Collins (Cisco)
 - Mike Goldsmith (Honeycomb)
 - Jackson Weber (Microsoft)
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
-  - Update automation to move closed issues to done? e.g. [#4641](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4641)
-  - [#5262](https://github.com/open-telemetry/opentelemetry-python/issues/5262): open census shim is deprecated
-    - Deprecation: [https://github.com/open-telemetry/opentelemetry-specification/pull/5138](https://github.com/open-telemetry/opentelemetry-specification/pull/5138)
-    - To be released with Spec 1.58.0: [https://github.com/open-telemetry/opentelemetry-specification/pull/5164](https://github.com/open-telemetry/opentelemetry-specification/pull/5164)
-    - Created Python issue: [https://github.com/open-telemetry/opentelemetry-python/issues/5325](https://github.com/open-telemetry/opentelemetry-python/issues/5325)
-- [Lukas] Exporter related work
-- [Riccardo] Reviews before next release
-- [Dylan] extended attributes
-- [Aaron] stretch goal looking at tooling improvements and locking
-- [Leighton] Looking into instrumentation stability
-- [Mike] Declarative config, final push - making it accessible to users now
 
 ### Agenda
 - [Riccardo] Ok for an Openai v2 release? [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4710](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4710)

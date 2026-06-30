@@ -16,7 +16,7 @@
 - Mani Yazdankhah (JP Morgan)
 - Riccardo Magliocchetti (Elastic)
 - Mike Goldsmith (Honeycomb)
-- https://github.com/orgs/open-telemetry/projects/88/views/1
+- Pablo Collins (Cisco/Splunk)
 
 ### Agenda
 - [mike] Update core & contrib merge settings to use PR title and issue number instead of commit list
@@ -25,35 +25,37 @@
 - [mike] Made good progress on declarative config, would like more eyes on them. The tracer, meter & logger provider PRs depend on the resource & propagator PR
 - [aaron] Kubecon EU
   - anyone going
-      - Aaron
-      - Mike
-  - GenAI LLMKubeCon next week - GenAI SIG office hours  https://cloud-native.slack.com/archives/C06KR7ARS3X/p1773507150948619
+    - Aaron
+    - Mike
+  - GenAI LLMKubeCon next week - GenAI SIG office hours  [https://cloud-native.slack.com/archives/C06KR7ARS3X/p1773507150948619](https://cloud-native.slack.com/archives/C06KR7ARS3X/p1773507150948619)
   - SIG next week?
-      - Sounds like yes
-      - * [Surya] need reviews on two genai prs
-- [Shuning] Whether to keep start_[type], stop_[type], fail_[type] methods for gen_ai utils. We prefer to keep it as current langchain, anthropic and openai_v2 instrumentations have already had these llm methods applied. I followed the same pattern creating start_embedding, stop_embedding and fail_embedding methods. We can create a separate ticket if we want to remove them all later https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4219
+    - Sounds like yes
+- [Surya] need reviews on two genai prs
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4346](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4346)
+  - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4337](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4337)
+- [Shuning] Whether to keep start_[type], stop_[type], fail_[type] methods for gen_ai utils. We prefer to keep it as current langchain, anthropic and openai_v2 instrumentations have already had these llm methods applied. I followed the same pattern creating start_embedding, stop_embedding and fail_embedding methods. We can create a separate ticket if we want to remove them all later [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4219](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4219)
   - Liudmila: please don’t introduce {start,stop,fail}_embeddings methods
-- * [Lukas] Meter configurator update logic github.com/open-telemetry/opentelemetry-python/pull/4966 (https://opentelemetry.io/docs/specs/otel/metrics/sdk/#meterconfigurator)
+- [Lukas] Meter configurator update logic [github.com/open-telemetry/opentelemetry-python/pull/4966](http://github.com/open-telemetry/opentelemetry-python/pull/4966) ([https://opentelemetry.io/docs/specs/otel/metrics/sdk/#meterconfigurator](https://opentelemetry.io/docs/specs/otel/metrics/sdk/#meterconfigurator))
   - Maybe clarify with the specification if the tracer configurator functions should be pure
   - We can revisit since this is all private
   - Benjamin Kawecki: The reference changes if it returns the ProxyTracer / ProxyMeter right?
-- [Sergey] GenAI Conversation and association properties in util-genai
-  - Context-scoped attributes - https://github.com/open-telemetry/opentelemetry-specification/pull/4931/
+- [Sergey] [GenAI Conversation and association properties in util-genai](https://docs.google.com/document/d/1dIui4CYEkszQDgdmdXlklmhWuNgVVDPTTNPG5om5Y9U/edit?tab=t.zcy9z6jljptg)
+  - Context-scoped attributes - [https://github.com/open-telemetry/opentelemetry-specification/pull/4931/](https://github.com/open-telemetry/opentelemetry-specification/pull/4931/)
   - Liudmila: can we prototype the proposal?
   - Aaron: start by reviewing the OTEP first
-- [Ben] Compatibility for Logs API and span events in streaming events. (May be relevant to vendors) (slack thread conversation)
+- [Ben] Compatibility for Logs API and span events in streaming events. (May be relevant to vendors) ([slack thread conversation](https://cloud-native.slack.com/archives/C06KR7ARS3X/p1772737717842739))
   - No way to attach events data into span events
   - Liudmila: latest experimental semconv let you have chat history as span attributes
-  - https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md#sending-log-based-exceptions-and-events-as-span-events
+  - [https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md#sending-log-based-exceptions-and-events-as-span-events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md#sending-log-based-exceptions-and-events-as-span-events)
   - Aaron: if there’s a bug we can take a look
-- [Keith] Looking for reviews on https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4218
+- [Keith] Looking for reviews on [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4218](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4218)
 - [Erden] Asking reviews on utils PRs, validated instrumentations against Vertex AI Agent Engine and linked demo app implementation.
-  - create_agent - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4217
-      - Liudmila: Do we have a need for this?
-        - Sergey: same
-  - Invoke_agent -  https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274
-- [liudmila] Release GenAI libs along with the rest in the repo https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4232#issuecomment-4057494460
-- [Josh] more review for this PR please: https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298
-- [Ridhima] - (New PR for review*)Workflow support in genAI utils handler - https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4334
-- [Mani] updated PR (https://github.com/open-telemetry/opentelemetry-python/pull/4863) with additional tests are requested. The PR is already approved, how should I proceed with closing out remaining conversations and getting it merged?
-- [Lukas] W3C Tracecontext 2 update (see github.com/open-telemetry/opentelemetry-python/pull/4854)
+  - create_agent - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4217](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4217)
+    - Liudmila: Do we have a need for this?
+      - Sergey: same
+  - Invoke_agent -  [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4274)
+- [liudmila] Release GenAI libs along with the rest in the repo [https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4232#issuecomment-4057494460](https://github.com/open-telemetry/opentelemetry-python-contrib/issues/4232#issuecomment-4057494460)
+- [Josh] more review for this PR please: [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4298)
+- [Ridhima] - (New PR for review*)Workflow support in genAI utils handler - [https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4334](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4334)
+- [Mani] updated PR ([https://github.com/open-telemetry/opentelemetry-python/pull/4863](https://github.com/open-telemetry/opentelemetry-python/pull/4863)) with additional tests are requested. The PR is already approved, how should I proceed with closing out remaining conversations and getting it merged?
+- [Lukas] W3C Tracecontext 2 update (see [github.com/open-telemetry/opentelemetry-python/pull/4854](http://github.com/open-telemetry/opentelemetry-python/pull/4854))

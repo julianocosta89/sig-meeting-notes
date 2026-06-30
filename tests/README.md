@@ -16,4 +16,5 @@ Test suite for the project. Run with `make test` or `uv run --group dev pytest t
 | `test_sheet.py` | `scraper/sheet.py` — Zoom URL validation and meeting date filtering |
 | `test_send_digest.py` | `scripts/send_digest.py` — daily digest pipeline (git diff, OpenAI narrative, Resend email) |
 | `test_fix_merged_transcript_lines.py` | `scripts/fix_merged_transcript_lines.py` — speaker-merge detection and repair |
+| `test_main.py` | `main.py` — `_write_meeting_notes` helper and the backfill path in `process_meetings` |
 | `test_ui.py` | `docs/` web UI — browser-based tests for the single-page app |

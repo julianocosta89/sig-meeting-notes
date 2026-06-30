@@ -9,8 +9,6 @@
 - Dylan Russell (Google)
 - Tammy Baylis (SolarWinds)
 - Josh Winerman (Cisco/Splunk)
-- [https://github.com/orgs/open-telemetry/projects/88/views/1](https://github.com/orgs/open-telemetry/projects/88/views/1)
-- [Dylan] ExtendedAttributes everywhere
 
 ### Agenda
 - [Tammy] How to proceed with opt-in experimental feature when 413 at export

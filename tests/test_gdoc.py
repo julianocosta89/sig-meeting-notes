@@ -401,6 +401,13 @@ class TestCollectListItem:
     def test_tab_indented_empty_text_returns_none(self) -> None:
         assert _collect_list_item("\t   ") is None
 
+    def test_backslash_escaped_dash_bullet(self) -> None:
+        # Google Docs sometimes exports list items with an escaped dash: "\- item"
+        assert _collect_list_item(r"\- Charlie") == "- Charlie"
+
+    def test_backslash_escaped_dash_nested(self) -> None:
+        assert _collect_list_item(r"  \- Nested") == "  - Nested"
+
     def test_plain_line_returns_none(self) -> None:
         assert _collect_list_item("Not a list item") is None
 
@@ -629,6 +636,114 @@ class TestExtractSubsectionMd:
         agenda = _extract_subsection_md(section, "agenda")
         assert not any("Plan review" in item for item in attendees)
         assert not any("Alice" in item for item in agenda)
+
+    def test_unknown_colon_section_header_stops_attendees(self) -> None:
+        # SIG docs sometimes have non-standard headers between Attendees and
+        # Topics (e.g. "Triage:", "What I'm working on this week:").  These
+        # should act as section boundaries even though they are not in
+        # _STOP_KEYWORDS, to avoid leaking their bullets into the attendee list.
+        section = (
+            "Attendees:\n\n"
+            "* Alice\n"
+            "* Bob\n\n"
+            "Triage:\n\n"
+            "* https://github.com/orgs/open-telemetry/projects/88/views/1\n\n"
+            "What I'm working on this week:\n\n"
+            "* Bob - some topic\n\n"
+            "Topics:\n\n"
+            "* Agenda item 1\n"
+        )
+        attendees = _extract_subsection_md(section, "attendee")
+        assert attendees == ["- Alice", "- Bob"]
+        assert not any("Triage" in item for item in attendees)
+        assert not any("github.com/orgs" in item for item in attendees)
+        assert not any("some topic" in item for item in attendees)
+
+    def test_backslash_escaped_dash_bullets_collected(self) -> None:
+        # Google Docs occasionally exports agenda items with "\-" as the bullet
+        # marker instead of plain "-".  _LIST_ITEM_RE must match both forms so
+        # that agenda items aren't silently dropped (observed in Python-SIG
+        # 2025-09-04).
+        section = (
+            "Attendees:\n\n"
+            "- Alice\n\n"
+            "Topics:\n"
+            r"\- Ridhima - LangChain PR" + "\n"
+            r"\- Keith - GenAI PR" + "\n"
+        )
+        agenda = _extract_subsection_md(section, "topic")
+        assert "- Ridhima - LangChain PR" in agenda
+        assert "- Keith - GenAI PR" in agenda
+
+    def test_colon_header_does_not_truncate_agenda(self) -> None:
+        # The colon-header stop must NOT apply to agenda extraction — agenda
+        # sections can legitimately contain non-list sub-headers like
+        # "Discussion:" or "Triage:" before their bullet items.
+        section = (
+            "Attendees:\n\n"
+            "* Alice\n\n"
+            "Topics:\n\n"
+            "Discussion:\n\n"
+            "* Item under discussion\n"
+            "* Another item\n"
+        )
+        agenda = _extract_subsection_md(section, "topic")
+        assert "- Item under discussion" in agenda
+        assert "- Another item" in agenda
+
+    # ------------------------------------------------------------------
+    # Bullet-label format: section headers are themselves top-level
+    # bullet items (e.g. Client-Instrumentation-SIG style).
+    # ------------------------------------------------------------------
+
+    def test_bold_bullet_label_attendees(self) -> None:
+        # "* **Attendees:**" — bold markers wrap the keyword; the colon is
+        # inside them so rstrip(": ") alone wouldn't reach it before strip("*_")
+        # removed the bold markers. Must strip formatting before the colon.
+        section = "* **Attendees:**\n  * Alice\n  * Bob\n* **Agenda:**\n  * Item 1\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert attendees == ["- Alice", "- Bob"]
+
+    def test_bold_bullet_label_agenda(self) -> None:
+        section = "* **Attendees:**\n  * Alice\n* **Agenda:**\n  * Item 1\n  * Item 2\n"
+        agenda = _extract_subsection_md(section, "agenda")
+        assert agenda == ["- Item 1", "- Item 2"]
+        assert not any("Alice" in item for item in agenda)
+
+    def test_bullet_label_attendees(self) -> None:
+        # "* Attendees" is the label bullet; sub-bullets are the attendees.
+        section = (
+            "* Attendees  \n"
+            "  * Santosh Cheler (Cisco/Splunk)  \n"
+            "  * João Oliveira (Datadog)  \n"
+            "* Agenda:  \n"
+            "  * Metrics discussion\n"
+        )
+        result = _extract_subsection_md(section, "attendee")
+        assert result == [
+            "- Santosh Cheler (Cisco/Splunk)",
+            "- João Oliveira (Datadog)",
+        ]
+
+    def test_bullet_label_attendees_do_not_include_agenda(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n"
+        attendees = _extract_subsection_md(section, "attendee")
+        assert not any("Item 1" in item for item in attendees)
+        assert not any("Agenda" in item for item in attendees)
+
+    def test_bullet_label_agenda(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n  * Item 2\n    * Sub-item\n"
+        result = _extract_subsection_md(section, "agenda")
+        assert "- Item 1" in result
+        assert "- Item 2" in result
+        assert "  - Sub-item" in result
+        assert not any("Alice" in item for item in result)
+
+    def test_bullet_label_agenda_does_not_include_attendees(self) -> None:
+        section = "* Attendees  \n  * Alice\n* Agenda:  \n  * Item 1\n"
+        agenda = _extract_subsection_md(section, "agenda")
+        assert not any("Alice" in item for item in agenda)
+        assert not any("Attendees" in item for item in agenda)
 
 
 # ---------------------------------------------------------------------------
@@ -1023,3 +1138,25 @@ class TestExtractLeadingAttendees:
         result = _extract_leading_attendees(section)
         assert "- Alice Smith" in result
         assert "- Bob Jones" in result
+
+    def test_stops_at_top_level_stop_keyword_bullet(self) -> None:
+        # Bullet-label format: "* Agenda:" is a section boundary, not an attendee.
+        section = "* Alice\n* Bob\n* Agenda:\n  * Item 1\n"
+        result = _extract_leading_attendees(section)
+        assert "- Alice" in result
+        assert "- Bob" in result
+        assert not any("Agenda" in item for item in result)
+        assert not any("Item 1" in item for item in result)
+
+    def test_skips_attendees_label_bullet(self) -> None:
+        # "* Attendees" is the label bullet itself and should not appear as a name.
+        section = "* Attendees\n  * Alice\n  * Bob\n* Agenda:\n  * Item 1\n"
+        result = _extract_leading_attendees(section)
+        assert not any("Attendees" in item for item in result)
+
+    def test_backslash_escaped_dash_bullets(self) -> None:
+        # Google Docs sometimes exports bullets as "\- Alice" instead of "- Alice".
+        # The guard must not break before _LIST_ITEM_RE can match the line.
+        section = r"\- Alice" + "\n" + r"\- Bob" + "\nAgenda\n"
+        result = _extract_leading_attendees(section)
+        assert result == ["- Alice", "- Bob"]

@@ -47,7 +47,7 @@ class ZoomScrapeError(Exception):
     """Raised for recoverable per-recording errors (password, expired, etc.)."""
 
 
-def scrape_transcript(page: Page, url: str) -> list[str]:
+def scrape_transcript(page: Page, url: str) -> list[str]:  # pragma: no cover
     """
     Navigate to a Zoom recording page and return transcript lines.
 
@@ -121,7 +121,7 @@ def scrape_transcript(page: Page, url: str) -> list[str]:
     return lines
 
 
-def _scroll_transcript_into_view(page: Page) -> None:
+def _scroll_transcript_into_view(page: Page) -> None:  # pragma: no cover
     """
     Scroll the zm-scrollbar container to force all virtual-list items to render.
 

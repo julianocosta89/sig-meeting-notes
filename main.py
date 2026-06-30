@@ -118,6 +118,29 @@ def _ensure_metadata(meeting: Meeting, transcript_path: Path) -> str:
     return notes_url
 
 
+def _write_meeting_notes(notes_path: Path, notes: dict[str, list[str]]) -> bool:
+    """Write meeting-notes.md if attendees or agenda are present.
+
+    Returns True if the file was written, False if notes were empty.
+    """
+    has_attendees = notes.get("attendees")
+    has_agenda = notes.get("agenda")
+    if not has_attendees and not has_agenda:
+        return False
+    notes_parts = ["## Meeting Notes", ""]
+    if has_attendees:
+        notes_parts.append("### Attendees")
+        notes_parts.extend(notes["attendees"])
+        notes_parts.append("")
+    if has_agenda:
+        notes_parts.append("### Agenda")
+        notes_parts.extend(notes["agenda"])
+        notes_parts.append("")
+    notes_path.write_text("\n".join(notes_parts), encoding="utf-8")
+    logger.info("Saved %s", notes_path)
+    return True
+
+
 def write_transcript(
     path: Path,
     meeting: Meeting,
@@ -143,22 +166,8 @@ def write_transcript(
     path.write_text("\n".join(parts), encoding="utf-8")
     logger.info("Saved %s", path)
 
-    # Write meeting-notes.md only if we have content
-    has_attendees = notes and notes.get("attendees")
-    has_agenda = notes and notes.get("agenda")
-    if has_attendees or has_agenda:
-        notes_parts = ["## Meeting Notes", ""]
-        if has_attendees:
-            notes_parts.append("### Attendees")
-            notes_parts.extend(notes["attendees"])
-            notes_parts.append("")
-        if has_agenda:
-            notes_parts.append("### Agenda")
-            notes_parts.extend(notes["agenda"])
-            notes_parts.append("")
-        notes_path = path.parent / "meeting-notes.md"
-        notes_path.write_text("\n".join(notes_parts), encoding="utf-8")
-        logger.info("Saved %s", notes_path)
+    if notes:
+        _write_meeting_notes(path.parent / "meeting-notes.md", notes)
 
 
 def process_meetings(meetings: list[Meeting], tracer: object) -> tuple[int, int, list[str]]:
@@ -180,7 +189,15 @@ def process_meetings(meetings: list[Meeting], tracer: object) -> tuple[int, int,
             for meeting in meetings:
                 out_path = make_output_path(meeting)
 
+                date_str = meeting.start_date.strftime("%Y-%m-%d")
+
                 if out_path.exists():
+                    notes_path = out_path.parent / "meeting-notes.md"
+                    if not notes_path.exists():
+                        notes_url = _ensure_metadata(meeting, out_path)
+                        if notes_url:
+                            notes = gdoc.fetch_meeting_notes(notes_url, date_str)
+                            _write_meeting_notes(notes_path, notes)
                     logger.info(
                         "Skipping %s %s — already downloaded",
                         meeting.sig_name,
@@ -195,7 +212,6 @@ def process_meetings(meetings: list[Meeting], tracer: object) -> tuple[int, int,
                     meeting.url,
                 )
 
-                date_str = meeting.start_date.strftime("%Y-%m-%d")
                 with tracer.start_as_current_span("process meeting") as span:
                     span.set_attribute("sig.name", meeting.sig_name)
                     span.set_attribute("meeting.date", date_str)
@@ -280,7 +296,7 @@ def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
             return None
 
 
-def _parse_args() -> argparse.Namespace:
+def _parse_args() -> argparse.Namespace:  # pragma: no cover
     parser = argparse.ArgumentParser(
         description="Download OTel SIG meeting transcripts from Zoom recordings."
     )
@@ -324,7 +340,7 @@ def _parse_date(value: str, flag: str) -> datetime | None:
         return None
 
 
-def main() -> int:
+def main() -> int:  # pragma: no cover
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
@@ -435,5 +451,5 @@ def main() -> int:
         return 0
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     sys.exit(main())
