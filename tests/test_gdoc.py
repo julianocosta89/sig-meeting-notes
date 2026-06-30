@@ -1153,3 +1153,10 @@ class TestExtractLeadingAttendees:
         section = "* Attendees\n  * Alice\n  * Bob\n* Agenda:\n  * Item 1\n"
         result = _extract_leading_attendees(section)
         assert not any("Attendees" in item for item in result)
+
+    def test_backslash_escaped_dash_bullets(self) -> None:
+        # Google Docs sometimes exports bullets as "\- Alice" instead of "- Alice".
+        # The guard must not break before _LIST_ITEM_RE can match the line.
+        section = r"\- Alice" + "\n" + r"\- Bob" + "\nAgenda\n"
+        result = _extract_leading_attendees(section)
+        assert result == ["- Alice", "- Bob"]

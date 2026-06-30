@@ -333,8 +333,10 @@ def _extract_leading_attendees(section_text: str) -> list[str]:
         stripped = line.strip()
         if not stripped:
             continue
-        # Stop at any non-list line — attendees are a contiguous bullet block
-        if not re.match(r"^[-*]", stripped):
+        # Stop at any non-list line — attendees are a contiguous bullet block.
+        # Allow an optional leading backslash so that Google Docs' escaped
+        # bullet markers (\- item) are recognised instead of stopping early.
+        if not re.match(r"^\\?[-*]", stripped):
             break
         m = _LIST_ITEM_RE.match(line.rstrip())
         if m and not line[:1].isspace():
