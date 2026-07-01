@@ -1,0 +1,97 @@
+## Meeting Notes
+
+### Attendees
+- Steve
+- Huxing
+- Liudmila
+- Aaron
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Jack Gordley (Grafana)
+- Josh Bonczkowski (New Relic)
+- Wolfgang Therrien (Honeycomb)
+- Shuwen Pan (Cisco)
+- Surya Teja
+- Marisa Boston (Reins AI)
+- Mohnish (Reins AI)
+- Keith Decker (Cisco/Splunk)
+- Jackson Weber (Microsoft)
+- Josh Winerman (Cisco/Splunk)
+
+### Agenda
+- Task id on inference span
+  - Correlate tasker to related traces
+  - User can manage multi-agent scenario
+  - Tasker is a component provided by user
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/55](https://github.com/open-telemetry/semantic-conventions-genai/issues/55)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/37](https://github.com/open-telemetry/semantic-conventions-genai/issues/37)
+  - A team of agents are working on a task
+    - E.g. each of them in OpenClaw instance
+    - Multi-round collaboration
+    - How to propagate
+      - baggage
+    - Workflow <- a process of executing high-level task
+      - Traceid + spanid
+      - Invoke agent triage
+      - Workflow OpenClaw 1
+        - Sub-agent 123
+    - Task comes from an external world, with existing id
+      - Some other existing areas where 'task' is used: crewai, coding harnesses
+  - Next steps: define a task and scenarios around it
+- Session
+  - Define it - e.g. a session with coding agent or chat you can come back to
+    - Research on what different popular frameworks / standards consider to be a GenAI session e.g. [https://github.com/harbor-framework/harbor/blob/main/rfcs/0001-trajectory-format.md](https://github.com/harbor-framework/harbor/blob/main/rfcs/0001-trajectory-format.md)
+    - gen_ai.session.id is reasonable (within GenAI space)
+  - Conversation - multiple ones (maybe one per sub-agent)
+- [Huxing] [https://github.com/open-telemetry/opentelemetry-python-genai/issues/185](https://github.com/open-telemetry/opentelemetry-python-genai/issues/185)
+- Triage
+  - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/204](https://github.com/open-telemetry/semantic-conventions-genai/issues/204)
+  - Python GenAI PR dashboard
+  - [everyone, 5 min]  Intro for new members
+- [Liudmila] When/what can we released in the new Python repo
+  - [aaron] Riccardo sent [#4763](https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4763) for final release from python-contrib
+  - Remove never-released code from python-contrib
+  - Release python-genai
+    - Utils
+    - **Release Instrumentations with something useful in them from python-genai**
+      - Unblocks final deprecated version from python-contrib
+        - Release
+    - Need to set up trusted publishers for releasing
+      - AI: Aaron
+    - What's stopping us from releasing
+      - [https://github.com/open-telemetry/opentelemetry-python-genai/pull/90](https://github.com/open-telemetry/opentelemetry-python-genai/pull/90)
+      - Liudmila will check if anything else is blocking
+- [Liudmila] SemConv PRs
+  - https://github.com/open-telemetry/semantic-conventions-genai/pull/351
+  - https://github.com/open-telemetry/semantic-conventions-genai/pull/341
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/340](https://github.com/open-telemetry/semantic-conventions-genai/pull/340)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/336](https://github.com/open-telemetry/semantic-conventions-genai/pull/336)
+    - Marisa
+      - Customers are asking for it
+      - Tokenomics
+        - Token tell if it's expensive, need more to explain why
+          - Tracing can tell why if 100% sampled
+            - Honeycomb recommends using tracing
+            - Not possible at large scale
+            - Some of the outliers are sampled in
+        - Loops can be particularly expensive, tell where the architectural problems are
+          - These metrics are proxy to loops
+      - Monitoring is more interesting
+    - Honeycomb
+      - How to detect excessive looping
+        - Which tools i'm using
+        - More interested in tracing individual
+- [Mohnish / Marisa] [https://github.com/open-telemetry/semantic-conventions-genai/issues/79](https://github.com/open-telemetry/semantic-conventions-genai/issues/79)
+  - Information about judge and other metadata
+    - Provenance
+    - Source
+    - Type of eval
+  - Josh: evals in tests - also interested
+- [Liudmila] Trajectories
+  - Session is app-specific
+    - Sometimes session is one turn, sometimes is everything about one conversation
+    - RUM SIG: analogy can be made - session is a bucket, web has more clarity on this (user session, page session, still an overloaded term)
+  - Something (not a user) can start a session / trajectory / agent
+  - Initiator starts a session
+    - Trajectory is like a page load
+    - There are multiple conversations in the trajectory
+  - AI: Liudmila try out what's produced by harbor from Claude and other coding agents
