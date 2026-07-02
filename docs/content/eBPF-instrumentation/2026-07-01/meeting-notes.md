@@ -1,0 +1,64 @@
+## Meeting Notes
+
+### Attendees
+- Robert Pająk (Splunk)
+- Mario Macias (Grafana)
+- Tyler Yahn (Splunk)
+- Mattia Meleleo (Coralogix)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- Giuseppe Ognibene (Coralogix)
+- Nimrod Avni (Coralogix)
+- Mike Dame (Odigos)
+
+### Agenda
+- [Tyler] [2026 Goals](https://github.com/orgs/open-telemetry/projects/187)
+  - [AI tyler] follow up on .NET
+  - [AI tyler] define our acceptance criteria: [https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140)
+  - [AI tyler] define scope: [https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139)
+  - [AI nimrod]: scope: [https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1155](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1155)
+  - [AI tyler]: clean up: [https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1148](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1148)
+- [Tyler] [v0.11.0](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/milestone/13) planning (see below)
+- [Tyler] Declarative configuration placement — [#2211](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2211)
+  - Does #2211 propose a structural change that must happen before Config v2 becomes public, or is the current `extensions.obi` structure acceptable for v1?
+- [Tyler] Supported declarative configuration subset — [#594](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/594)
+  - Which declarative configuration fields are part of the OBI v1 contract?
+  - Should unsupported fields be rejected, ignored, or accepted with a warning?
+- [Tyler] Route and per-service semantics — [#747](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/747)
+  - Which route behaviors must be available globally and which must be available per rule or service?
+  - Are direction-specific, ignored-pattern, and unmatched-route semantics blockers for the v1 Config v2 contract, or can any be deferred?
+- [Tyler] Per-process configuration scope — [#923](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/923)
+  - Is any per-process declarative configuration required for OBI v1?
+    - If yes, what bounded subset is required?
+    - If no, should #923 be explicitly deferred and documented as post-v1?
+- [Tyler] Protocol- and signal-scoped filters — [#1282](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1282)
+  - Should a filter apply only to its configured protocol and signal so that unrelated spans are preserved?
+  - When migrating v1 configuration, should the application filter be copied to every protocol/signal filter and then allow users to narrow it?
+  - What behavior is expected for span metrics and service graph metrics?
+- [Tyler] Stable telemetry and schema adoption — [#1759](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1759) and [#1148](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1148)
+  - Which spans, metrics, names, attributes, units, and semantics are stable at v1?
+  - Which telemetry remains experimental or outside the v1 contract?
+  - Is publishing an OpenTelemetry telemetry schema required before v1?
+  - Who owns producing and documenting the decision in v0.11?
+- [Tyler] Raw GenAI provider error messages — [#2507](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2507)
+  - Should OBI keep the safe default with raw provider text suppressed, or provide an explicit opt-in?
+  - If opt-in is supported, should the value use an attribute-selection path aligned with database errors rather than unconditional `status.message`?
+- [Tyler] V1 stable-surface issue classification — [#2537](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2537)
+  - Does the SIG agree that each issue should be classified as a hard v1 blocker, documented limitation, or post-v1 work?
+  - If either is a hard blocker, who will implement the fix and in which pre-v1 milestone?
+  - As initial cases, how should [#1371](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1371) and [#994](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/994) be classified?
+- [Mattia] RFC custom spans - [#2552](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pull/2552)
+- [Nimrod] Nightly releases
+- Configuration validation and v1-to-v2 migration tooling.
+- Standalone OBI runtime loading.
+- The existing OBI Collector receiver.
+- Schema, examples, and migration documentation.
+- Final decisions around declarative configuration, routes, filtering, and per-service/per-process semantics.
+- **August 18:** v0.11.0 — Config v2 feature-complete.
+- **September 22:** v0.12.0 — stabilization, documentation cleanup, and confirmed v1 blockers.
+- **October 5:** v1.0.0-rc1 — begin release-candidate validation.
+- **October 26:** v1.0.0 — target final release, two weeks before KubeCon.
+- **November 9–12:** KubeCon North America.
+- Is any must-have v0.11 work missing from the current milestone?
+- Who will own and deliver it within the v0.11 timeline?
+- If there is no additional capacity, which current milestone item should move out to make room?
+- Does the August 18 v0.11 target make sense?
