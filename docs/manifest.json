@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-03T09:06:49Z",
+  "generated_at": "2026-07-06T10:11:53Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-02",
+  "max_date": "2026-07-03",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -13452,6 +13452,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-03",
+          "duration_minutes": 13,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-04-24",
           "duration_minutes": 32,
           "has_summary": true,
@@ -13536,7 +13543,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 12
+      "meeting_count": 13
     },
     {
       "slug": "ja-JA-Localization-SIG-Communications",
