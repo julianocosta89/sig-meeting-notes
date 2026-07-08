@@ -1,0 +1,57 @@
+## Meeting Notes
+
+### Attendees
+- Steve
+- Tom
+- Liudmila
+- Mohnish (Reins AI)
+- Trask Stalnaker (Microsoft)
+- Miguel Luna (JetBrains)
+- Josh Bonczkowski (New Relic)
+- Chris Larsen (Netflix)
+- Mike Goldsmith (Honeycomb)
+- Josh Winerman (Cisco/Splunk)
+- John McBride (Paper Compute Co.)
+- Erdenesaikhan Tserendavga (Cisco/Splunk)
+- Keith Decker (Cisco/Splunk)
+- Aaron Abbott (Google)
+- Imma Valls (Grafana)
+- Dat Ngo (Arize AI)
+- Shuwen Pan (Cisco)
+- Jackson Weber (Microsoft)
+
+### Agenda
+- [Tom Yu] [response finish reasons and system instruction role clarification](https://docs.google.com/document/d/1aAh1XpF42nORvIQe-sEHORAKBler6Y9prZ0TcC611XI/edit?usp=sharing)
+  - finish reasons: [https://github.com/open-telemetry/semantic-conventions-genai/pull/363](https://github.com/open-telemetry/semantic-conventions-genai/pull/363)
+  - system instruction: [https://github.com/open-telemetry/semantic-conventions-genai/pull/361](https://github.com/open-telemetry/semantic-conventions-genai/pull/361)
+- [Tom Yu] Add GenAI input messages delta attribute: [https://github.com/open-telemetry/semantic-conventions-genai/pull/365](https://github.com/open-telemetry/semantic-conventions-genai/pull/365)
+  - Auto-instrumentations
+    - Inference instrumentation
+      - Request
+        - Messages
+          - 1 hash1 ]  ha
+          - 2 hash2 ]  sh
+          - 3 ?
+    - Agent instrumentation (langchain)
+  - Manual instrumentation
+    - Populate delta on manually created spans
+  - Suggestion
+    - Good as opt-in, instrumentations may implement it, this make it standard for manual instrumentations too
+- [Huxing] [Building Agent Harness for OTel Instrumentation with GenAI Semantic Conventions and Weaver](https://docs.google.com/document/d/118x75XQsIxI3VjMAVwtcyJ4HJipgP5CqtFAfY5qhCxE/edit?tab=t.0#heading=h.lvj12xmaqyfb)
+- Meeting recordings: [https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s/edit?gid=0#gid=0)
+- ---
+- Triage
+  - SemConv PR dashboard: [https://github.com/open-telemetry/semantic-conventions-genai/issues/204](https://github.com/open-telemetry/semantic-conventions-genai/issues/204)
+  - Python GenAI PR dashboard
+    - AI Trask bump min approvals for dashboard to 2
+  - [everyone, 5 min]  Intro for new members
+- [Mohnish/ Marisa / Glen] Experiments & evals
+  - Guardrail target:  gen_ai.security.target.subtype [https://github.com/open-telemetry/semantic-conventions-genai/pull/262](https://github.com/open-telemetry/semantic-conventions-genai/pull/262)
+    - Not sure we can unify
+- [Liudmila] Workflow vs root agent, nesting and detection of outer
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/354](https://github.com/open-telemetry/semantic-conventions-genai/pull/354)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/355](https://github.com/open-telemetry/semantic-conventions-genai/pull/355)
+    - check / align with Ridhima
+    - Explore main_workflow.name attribute stamped on child spans
+  - [https://github.com/open-telemetry/opentelemetry-python-genai/pull/187](https://github.com/open-telemetry/opentelemetry-python-genai/pull/187)
+- [Add `gen_ai.main_agent` entity](https://github.com/open-telemetry/semantic-conventions-genai/pull/270)
