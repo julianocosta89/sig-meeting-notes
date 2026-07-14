@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-13T09:18:48Z",
+  "generated_at": "2026-07-14T08:00:55Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-09",
+  "max_date": "2026-07-13",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2888,6 +2888,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-13",
+          "duration_minutes": 13,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-06-15",
           "duration_minutes": 27,
           "has_summary": true,
@@ -3000,7 +3007,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "Developer-Experience-SIG-Meeting",
@@ -3596,6 +3603,13 @@
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
+          "date": "2026-07-13",
+          "duration_minutes": 26,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-06",
           "duration_minutes": 52,
           "has_summary": true,
@@ -3876,7 +3890,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 40
+      "meeting_count": 41
     },
     {
       "slug": "Erlang-SIG",
@@ -5014,10 +5028,17 @@
     },
     {
       "slug": "Governance-Committee",
-      "name": "Governance Committee",
+      "name": "GC Project Management (EU)",
       "meeting_notes_url": "",
       "repository_url": "https://github.com/open-telemetry/community",
       "meetings": [
+        {
+          "date": "2026-07-13",
+          "duration_minutes": 40,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-06-24",
           "duration_minutes": 37,
@@ -5481,7 +5502,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 66
+      "meeting_count": 67
     },
     {
       "slug": "Java-Declarative-Configuration",
@@ -6555,6 +6576,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-13",
+          "duration_minutes": 44,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-06",
           "duration_minutes": 20,
           "has_summary": true,
@@ -6681,7 +6709,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 18
+      "meeting_count": 19
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -8056,6 +8084,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-13",
+          "duration_minutes": 77,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-06",
           "duration_minutes": 42,
           "has_summary": true,
@@ -8091,7 +8126,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 5
+      "meeting_count": 6
     },
     {
       "slug": "OpAMP-SIG",
@@ -11040,6 +11075,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-07-13",
+          "duration_minutes": 68,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-06",
           "duration_minutes": 56,
           "has_summary": true,
@@ -11390,7 +11432,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 50
+      "meeting_count": 51
     },
     {
       "slug": "Semantic-Convention-Tooling",
