@@ -1,0 +1,79 @@
+## Meeting Notes
+
+### Attendees
+- [John Watson](mailto:jkwatson@gmail.com)(Sublime Security)
+- Jonathan Halliday (IBM)
+- Jack Berg (Grafana Labs)
+- Puneet Singh
+- Trask Stalnaker (Microsoft)
+- Jason (Splunk)
+- Felix Wong (IBM)
+- [Gregor Zeitlinger](mailto:gregor.zeitlinger@grafana.com) (Grafana Labs)
+- Jay DeLuca (Grafana Labs)
+- Peter Findeisen (Cisco)
+- Sylvain Juge (Elastic)
+- Pranav Sharma (Google)
+- Debashis Mitra (Upblit)
+- Jack Shirazi (Elastic)
+
+### Agenda
+- [Marylia] Survey answers from the past 6 months
+  - Java
+    - Total answers: 9
+    - Avg Score: 4.8/5
+    - Pros: Responsive maintainers, fast turnaround, clear and constructive feedback, productive design discussions, and strong emphasis on correctness, testing, and spec alignment.
+    - Improvements: First-time contributors may be unsure how CI reruns work, what tests/coverage are expected, or how protected-branch jobs behave; one response asked for more trust/autonomy.
+      - unsure how CI reruns work
+        - [trask] copy instrumentation build tooling to re-run workflow if <x% of build runs fail
+      - what tests/coverage are expected
+        - > threshold,
+        - Below threshold requires conversation about whether testing is impractical
+        - We won’t NOT look at a PR if below threshold
+          - Related to [https://github.com/open-telemetry/shared-workflows/pull/77](https://github.com/open-telemetry/shared-workflows/pull/77)
+        - Integrate codecov into PR dashboard?
+          - Did required status checks pass
+          - Optional things
+            - Link checking
+            - Code coverage
+        - PR dashboard
+          - Route based on (real) CI failure
+      - [jack] I wonder if the “protected-branch” bit is about people not understanding fork PR model?
+        - Related to discussion above (CI rerun, PR dashboard improvements, [first-time-pr](https://github.com/open-telemetry/shared-workflows/tree/main/first-time-pr))
+      - more trust/autonomy
+        - We have to be paranoid
+        - [jack] what would trust / autonomy look like
+        - Could document it in repo, [first-time-pr](https://github.com/open-telemetry/shared-workflows/tree/main/first-time-pr)
+  - Java-instrumentation
+    - Total answers: 12
+    - Avg Score: 4.9/5
+    - Pros: Very high satisfaction, including reports of fast responses.
+    - Improvements: Some PRs wait too long for an initial response or remain idle after approval; contributors may not know how to attract appropriate review attention.
+      - **Got first approval, now what?**
+      - Comment when approving that waiting for someone else to review (or tagged with milestone)
+      - Milestone triggers comment that it will be targeted to next release
+      - PR Dashboard live message
+- Java Instrumentation v3 review
+  - [https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/19175/changes#r3596930564](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/19175/changes#r3596930564)
+  - Message Semantic Conventions
+    - Need to research what convention version are we even using today?
+    - What’s diff between v1.24.0 and latest
+    - Default behavior should pin to v1.24.0
+    - When did semconv change to recommend using parent where possible (vs only links)
+    - No process metric? In v1.24.0 it was deliver.
+    - **Make sure to check trace structure**
+    - “Receive traces enabled flag”
+    - Check what other languages are doing?
+      - Trace structure?
+      - Messaging metrics?
+        - What names and attributes
+        - Is there even a point to aligning?
+- [prevent accidental instrumentation of JDK tools](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/19203)
+- [jack] Let’s try to get bound instruments reviewed / merged [https://github.com/open-telemetry/opentelemetry-java/pull/8527](https://github.com/open-telemetry/opentelemetry-java/pull/8527)
+- [puneet] Dynamic control for [MeterConfigurator](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#meterconfigurator), [Initial Spec PR, 2024](https://github.com/open-telemetry/opentelemetry-specification/pull/3877)
+  - fn(InstrumentationScope) -> MeterConfig {enabled/disabled}
+  - Spec extension to reader side.
+- [Sylvain] JMX stuff again
+  - Master plan: [#19227](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/19227)
+  - First PR [#19139](https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/19139)
+  - Auto stable metrics proposal [#19245](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/19245)
+- [Felix] Backporting CVE fixes to earlier versions
