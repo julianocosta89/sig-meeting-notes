@@ -1,0 +1,52 @@
+## Meeting Notes
+
+### Attendees
+- Hanson Ho (Embrace)
+- Jason (Splunk)
+- Ben (Grafana)
+- João (Datadog)
+- Cesar (Elastic)
+
+### Agenda
+- [ben] - Looking for feedback on two PRs
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1901](https://github.com/open-telemetry/opentelemetry-android/pull/1901)
+    - SpanProcessor is currently stomping over the name because the compose nav is not yet wired up to the VisibleScreenTracker. Follow-up work tbd.
+    - Issue to discuss approach there following.
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1899](https://github.com/open-telemetry/opentelemetry-android/pull/1899)
+    - Native crash handling, please give a thorough review!
+    - It is technical!
+- [David] - [https://github.com/open-telemetry/opentelemetry-android/issues/239](https://github.com/open-telemetry/opentelemetry-android/issues/239)
+  - Since a similar issue was visited in the Kotlin SIG yesterday
+  - [https://github.com/open-telemetry/opentelemetry-kotlin/pull/684](https://github.com/open-telemetry/opentelemetry-kotlin/pull/684)
+  - Would our issue be resolved by Kotlin’s PR when it gets merged?
+    - It wouldn’t in the short term, because we’re using the java sdk still and not the kotlin implementation.
+    - We need kotlin to be stable before we can adopt it here.
+    - And we will would need to use the API…so an instrumentation would use this api.
+    - [ThreadContextElement](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-thread-context-element/) also exists on android (which is a jvm target)
+    - The kotlin PR is similar to [https://github.com/open-telemetry/opentelemetry-java/tree/main/extensions/kotlin](https://github.com/open-telemetry/opentelemetry-java/tree/main/extensions/kotlin) from java core
+    - Similar reference [https://github.com/bugsnag/bugsnag-android-performance/blob/next/bugsnag-android-performance-coroutines/src/main/kotlin/com/bugsnag/android/performance/coroutines/BugsnagPerformanceCoroutines.kt#L129-L143](https://github.com/bugsnag/bugsnag-android-performance/blob/next/bugsnag-android-performance-coroutines/src/main/kotlin/com/bugsnag/android/performance/coroutines/BugsnagPerformanceCoroutines.kt#L129-L143)
+- [David] - [https://github.com/open-telemetry/opentelemetry-android/pull/1348](https://github.com/open-telemetry/opentelemetry-android/pull/1348)
+  - I want to tag the author. Do we still want this?
+  - Cool yeah let’s do this, feel free to reopen and ping them to see if they can finish it up.
+  - Good feature.
+- [João] - Looking to resurrect “First draw instrumentation” (TTID/TTFD) [https://github.com/open-telemetry/opentelemetry-android/issues/1143](https://github.com/open-telemetry/opentelemetry-android/issues/1143)
+  - Author could not (yet?) be reached on CNCF slack
+  - T1 time to first paint (non-splash screen)
+  - T2 final render completely drawn
+  - Requires some app-level api usage
+  - Related:  [https://github.com/open-telemetry/opentelemetry-android/pull/1864](https://github.com/open-telemetry/opentelemetry-android/pull/1864)
+  - Related: [Embrace implementation](https://github.com/embrace-io/embrace-android-sdk/tree/main/embrace-android-instrumentation-startup-trace/src/main/kotlin/io/embrace/android/embracesdk/internal/instrumentation/startup)
+  - We don’t have a spec for this, and no development semconv that I know of, so we should start with something and increment
+    - Can use federated semconv locally to start
+    - Having some precise description in the readme will be helpful
+  - Separating out TTFD/TTID implementations would be helpful
+  - Can we add attributes to indicate cold start vs. warm start?
+    - Do we have this already?
+    - AI: Jason to create tracking issue for cold start
+- [Hanson] - Semconv usage approach
+  - Generate our own source for all/some of the semantic conventions defined upstream?
+  - E.g. [https://github.com/open-telemetry/opentelemetry-android/pull/1884](https://github.com/open-telemetry/opentelemetry-android/pull/1884)
+  - [https://github.com/open-telemetry/opentelemetry-android/pull/1895/changes](https://github.com/open-telemetry/opentelemetry-android/pull/1895/changes)
+  - It eliminates dependency on upstream kotlin semconv and java semconv.
+  - Sounds like we generally like this
+  - AI:  Hanson to create issue to replace upstream dependencies for semconv
