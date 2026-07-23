@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-22T08:30:30Z",
+  "generated_at": "2026-07-23T08:27:30Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-21",
+  "max_date": "2026-07-22",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2572,7 +2572,7 @@
           "date": "2026-07-15",
           "duration_minutes": 31,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -3065,6 +3065,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-developer-experience",
       "meetings": [
         {
+          "date": "2026-07-22",
+          "duration_minutes": 26,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-15",
           "duration_minutes": 28,
           "has_summary": true,
@@ -3380,7 +3387,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 45
+      "meeting_count": 46
     },
     {
       "slug": "End-User-SIG",
@@ -7499,6 +7506,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation",
       "meetings": [
         {
+          "date": "2026-07-22",
+          "duration_minutes": 9,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-01",
           "duration_minutes": 13,
           "has_summary": true,
@@ -7863,7 +7877,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "NET-SIG",
@@ -8361,6 +8375,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-mainframe",
       "meetings": [
         {
+          "date": "2026-07-22",
+          "duration_minutes": 16,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-15",
           "duration_minutes": 11,
           "has_summary": true,
@@ -8648,7 +8669,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 41
+      "meeting_count": 42
     },
     {
       "slug": "PHP-SIG",
@@ -8656,6 +8677,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1WLDZGLY24rk5fRudjdQAcx_u81ZQWCF3zxiNT-sz7DI",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-php",
       "meetings": [
+        {
+          "date": "2026-07-22",
+          "duration_minutes": 19,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-07-15",
           "duration_minutes": 34,
@@ -9042,7 +9070,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 55
+      "meeting_count": 56
     },
     {
       "slug": "Packaging-SIG",
@@ -11644,6 +11672,13 @@
       "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
+          "date": "2026-07-22",
+          "duration_minutes": 52,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-15",
           "duration_minutes": 55,
           "has_summary": true,
@@ -11994,7 +12029,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 50
+      "meeting_count": 51
     },
     {
       "slug": "Service-and-Deployment-SemConv",
@@ -13525,6 +13560,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-22",
+          "duration_minutes": 26,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-08",
           "duration_minutes": 47,
           "has_summary": true,
@@ -13567,7 +13609,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 6
+      "meeting_count": 7
     },
     {
       "slug": "eBPF-instrumentation",
