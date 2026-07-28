@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-27T09:43:50Z",
+  "generated_at": "2026-07-28T08:30:28Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-23",
+  "max_date": "2026-07-27",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -3680,6 +3680,13 @@
       "repository_url": "https://github.com/orgs/open-telemetry/projects/85",
       "meetings": [
         {
+          "date": "2026-07-27",
+          "duration_minutes": 7,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-20",
           "duration_minutes": 49,
           "has_summary": true,
@@ -3974,7 +3981,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 42
+      "meeting_count": 43
     },
     {
       "slug": "Erlang-SIG",
@@ -6709,6 +6716,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-27",
+          "duration_minutes": 49,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-20",
           "duration_minutes": 45,
           "has_summary": true,
@@ -6849,7 +6863,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 20
+      "meeting_count": 21
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -8259,6 +8273,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-27",
+          "duration_minutes": 22,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-20",
           "duration_minutes": 37,
           "has_summary": true,
@@ -8308,7 +8329,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 7
+      "meeting_count": 8
     },
     {
       "slug": "OpAMP-SIG",
@@ -11341,6 +11362,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-07-27",
+          "duration_minutes": 21,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-20",
           "duration_minutes": 59,
           "has_summary": true,
@@ -11705,7 +11733,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "Semantic-Convention-Tooling",
