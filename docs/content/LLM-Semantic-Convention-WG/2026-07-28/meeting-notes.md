@@ -1,0 +1,75 @@
+## Meeting Notes
+
+### Attendees
+- John McBride (Paper Compute Co.)
+- Ankit Singhal (Microsoft)
+- Chris Larsen (Netflix)
+- Miguel Luna (JetBrains)
+- Shuwen Pan (Cisco)
+- Owen Xiao (VeloDB & Apache Doris)
+- Surya Teja
+- Dat Ngo (Arize AI)
+- Keith Decker (Cisco/Splunk)
+- Josh Winerman (Cisco/Splunk)
+- Jamie Danielson (Honeycomb)
+- Jackson Weber (Microsoft)
+- Avani Chheda (Microsoft)
+- Nikhil Chitlur Navakiran (Microsoft)
+- Joe Josue
+- Imma Valls (Grafana Labs)
+- Dylan russell (google)
+- [Mike Goldsmith](mailto:mike@honeycomb.io) (Honeycomb)
+
+### Agenda
+- [Huxing] Follow up blog post: [https://docs.google.com/document/d/118x75XQsIxI3VjMAVwtcyJ4HJipgP5CqtFAfY5qhCxE/edit?tab=t.0#heading=h.lvj12xmaqyfb](https://docs.google.com/document/d/118x75XQsIxI3VjMAVwtcyJ4HJipgP5CqtFAfY5qhCxE/edit?tab=t.0#heading=h.lvj12xmaqyfb)
+  - [https://github.com/trask/semantic-conventions-conformance](https://github.com/trask/semantic-conventions-conformance)
+- [Huxing] Connection with AAIF WG o11y: [https://github.com/aaif/wg-observability-and-traceability](https://github.com/aaif/wg-observability-and-traceability)
+- [Huxing] Observability[https://github.com/trask/semantic-conventions-conformance](https://github.com/trask/semantic-conventions-conformance)/OTel track for KCD Hangzhou
+- [Steve] Allow gen_ai.conversation.id on invoke_workflow spans for conversation-scoped evaluation [https://github.com/open-telemetry/semantic-conventions-genai/issues/409](https://github.com/open-telemetry/semantic-conventions-genai/issues/409)
+- [Ankit] [Realtime voice model Inference by singankit · Pull Request #394 · open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai/pull/394)
+  - Next step: add Gemini Live API, compare transcript
+- [Liudmila / Trask] conformance tests
+  - New semconv-conformance repo
+    - Self-contained - only show results from tests in there
+    - This is the place to have tests for native instrumentations
+  - Reference scenarios stay in semconv-genai
+  - Conformance harness stays in python for now
+    - Eventually could evolve in the same harness: to have the same criteria across otel
+  - [Clarsen] Conformance waterfall/trace viz PR [https://github.com/trask/semantic-conventions-conformance/pull/1](https://github.com/trask/semantic-conventions-conformance/pull/1)
+- [Liudmila] Guardrail PR [https://github.com/open-telemetry/semantic-conventions-genai/pull/262](https://github.com/open-telemetry/semantic-conventions-genai/pull/262)
+  - Nagkumar no longer works on it
+  - Ankit to check
+  - Surya is also interested in this and can drive
+- [Nikhil] Modeling agent to agent interaction, Subagent vs Handoff
+  - [Multi-agent - Docs by LangChain](https://docs.langchain.com/oss/python/langchain/multi-agent#visual-overview)
+    - Subagents vs handoff
+      - Handoff can be exposed, subagents usually internal
+      - Subagents are usually inside a tool call
+      - Handoff can also be a tool call, but not required(?)
+    - Subagents:
+      - Main agent span (returns response to user)
+        - Tool call span (agent as a tool)
+          - Subagent span (can be internal or client)
+    - Handoff
+      - Workflow / main agent
+        - Agent 1 span
+          - Maybe a tool span
+            - Handoff to agent 2
+        - Agent 2 span (returns response back to user)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/98](https://github.com/open-telemetry/semantic-conventions-genai/pull/98)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/243](https://github.com/open-telemetry/semantic-conventions-genai/issues/243)
+- [Liudmila] Native reinstrumentation criteria
+  - If conventional - don't  reinstrument
+  - Otherwise
+    - If authors are open to contributions or ready to adopt new conventions by themselves
+      - Don't instrument in our repos, try to contribute upstream
+    - If authors are not interested
+      - Ok to have ours
+      - Leave an issue on their repo and call out that's we'll retire ours if they update native to conform
+      - Ours: disables native then
+- [Surya] Do we have any direction on adding instrumentation for training apis like tinker
+- [Josh] Could use one more green check mark:
+  - [aaron] approved :)
+- [Liudmila] 1 approval on python-genai repo?
+  - Discuss maintainer company diversity
+- [Liudmila] reference scenarios using util-genai? [https://github.com/open-telemetry/semantic-conventions-genai/pull/324](https://github.com/open-telemetry/semantic-conventions-genai/pull/324)

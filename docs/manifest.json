@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T08:31:23Z",
+  "generated_at": "2026-07-29T08:37:20Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-27",
+  "max_date": "2026-07-28",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -95,6 +95,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1W72oElAJuYx3efM9wkH5l1iksdfwmTSkVl-H7KHTLnY",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-android",
       "meetings": [
+        {
+          "date": "2026-07-28",
+          "duration_minutes": 56,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-07-21",
           "duration_minutes": 58,
@@ -474,7 +481,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 54
+      "meeting_count": 55
     },
     {
       "slug": "Arrow-SIG",
@@ -482,6 +489,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/1z8_Ra-ALDaYNa88mMj1gOZtOpLZLRk0-dZEmDjPmcUs",
       "repository_url": "https://github.com/open-telemetry/otel-arrow",
       "meetings": [
+        {
+          "date": "2026-07-28",
+          "duration_minutes": 69,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-07-23",
           "duration_minutes": 56,
@@ -938,7 +952,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 65
+      "meeting_count": 66
     },
     {
       "slug": "Browser-SIG",
@@ -5768,7 +5782,7 @@
           "date": "2026-07-23",
           "duration_minutes": 62,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -7063,6 +7077,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-07-28",
+          "duration_minutes": 133,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-21",
           "duration_minutes": 32,
           "has_summary": true,
@@ -7539,7 +7560,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 68
+      "meeting_count": 69
     },
     {
       "slug": "NET-Auto-Instr-SIG",
