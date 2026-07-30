@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T08:38:21Z",
+  "generated_at": "2026-07-30T08:22:41Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-07-28",
+  "max_date": "2026-07-29",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -3086,6 +3086,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-developer-experience",
       "meetings": [
         {
+          "date": "2026-07-29",
+          "duration_minutes": 29,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 26,
           "has_summary": true,
@@ -3408,7 +3415,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 46
+      "meeting_count": 47
     },
     {
       "slug": "End-User-SIG",
@@ -7569,6 +7576,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation",
       "meetings": [
         {
+          "date": "2026-07-29",
+          "duration_minutes": 23,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 9,
           "has_summary": true,
@@ -7940,7 +7954,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 53
+      "meeting_count": 54
     },
     {
       "slug": "NET-SIG",
@@ -8445,6 +8459,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-mainframe",
       "meetings": [
         {
+          "date": "2026-07-29",
+          "duration_minutes": 34,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 16,
           "has_summary": true,
@@ -8739,7 +8760,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 42
+      "meeting_count": 43
     },
     {
       "slug": "PHP-SIG",
@@ -14317,6 +14338,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-07-29",
+          "duration_minutes": 63,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-06-24",
           "duration_minutes": 29,
           "has_summary": true,
@@ -14352,7 +14380,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 5
+      "meeting_count": 6
     }
   ]
 }
