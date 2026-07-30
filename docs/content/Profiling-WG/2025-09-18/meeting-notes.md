@@ -1,0 +1,92 @@
+## Meeting Notes
+
+### Attendees
+- Jonathan Halliday (IBM)
+- [Florian Lehner](mailto:florian.lehner@elastic.co) (Elastic)
+- [Nayef Ghattas](mailto:nayef.ghattas@datadoghq.com) (Datadog)
+- cleverchuk(solarwinds)
+- Frederic Branczyk (Polar Signals)
+- Christian Simon (Grafana Labs)
+- [Felix Geisendörfer](mailto:felix.geisendoerfer@datadoghq.com) (Datadog)
+- [Christos Kalkanis](mailto:christos.kalkanis@elastic.co)(Elastic)
+- [Daniel Schwartz-Narbonne](mailto:daniel.schwartznarbonne@datadoghq.com) (Datadog)
+- [Ivo Anjo](mailto:ivo.anjo@datadoghq.com) (Datadog)
+- [Fabrizio Ferri Benedetti](mailto:fabri.ferribenedetti@elastic.co) (Elastic)
+- Morgan McLean (Splunk)
+- [Alexey Alexandrov](mailto:aalexand@google.com) (Google)
+
+### Agenda
+- Previous Action Items
+  - [Alexey Alexandrov] Write a profiling signal proto consistency check tool / library (existing code: 1, 2). This is in progress now in sig-profiling repo (WIP diff).
+    - Alexey: No Updates. Will try to send a new PR before the next meeting.
+    - Frederic: I just updated the validation code in parca for 1.8.
+    - Alexey: I’m taking inspiration from that.
+  - [Alexey Alexandrov] pprof -> OTel converter.
+    - Link to [collector PR](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/40548#issuecomment-3254928482)
+    - Christos: v1.8 upgrade in collector is done now, so this is unblocked.
+    - Florian: I can also help out.
+    - Florian: For an independent tool going with the proto directly would make more sense. But for the collector it needs to go through pdata.
+    - Felix: I think there are use cases for a standalone tool as well as round-trip testing as part of collector receivers for non-otel profiling formats (in particular pprof).
+    - Felix: Doing a standalone tool might be lower priority than unblocking the work on the pprof collector receiver.
+    - Christos: The main question is if pprof->otel->pprof round trip can be done or not. If a standalone tool is faster, maybe we should do that instead.
+    - Christos: I think Antoine got confused in his PR due to lack of docs.
+    - Felix/Nayef: We convert 1.7 protos to pprof at Datadog right now and it works. We’ll do 1.8 soon.
+    - Felix: Ok, we (Florian, myself, …) will proceed with trying to help Antoine with his PR.
+    - Alexey: Ok, I’ll take a look and decide on continuing a standalone tool.
+  - [All] Review Context Propagation documents:[Resource Definition in the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1Ud2EQZMmFCYOhdSXW0VFHIdKb-Ltzd03bImZgIC1syM/edit?tab=t.0#heading=h.jav84tdbpj0h), [Sharing Resource Attributes with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1-4jo29vWBZZ0nKKAOG13uAQjRcARwmRc4P313LTbPOE/edit?tab=t.0#heading=h.lp3k1tq7iqaq), [Sharing Thread-Level Information with the OpenTelemetry eBPF Profiler](https://docs.google.com/document/d/1eatbHpEXXhWZEPrXZpfR58-5RIx-81mUgF69Zpn3Rz4/edit?tab=t.0#heading=h.rdsycckexrcs)
+    - Nayef: Resource definition in eBPF profiler: Christos [left a comment](https://docs.google.com/document/d/1Ud2EQZMmFCYOhdSXW0VFHIdKb-Ltzd03bImZgIC1syM/edit?disco=AAABpqtzqfE) about worst-case scenario about number of resources. In SDKs resource attributes can be configured on a per-process level. Worst case is to have one resource per process. The tradeoff is to accept the high cardinality and the resource attribute duplication (not in dictionary right now) or diverge from what the SDKs are doing. I’ll update the doc to weigh the tradeoff.
+    - Christos: If you can update the doc that’s great, I’ll then share it with other folks.
+    - Florian: Could you extend why sub-sequent processors like k8s attribute processors are not sufficient for your use case? Resource detection is a common processor that enriches attributes and resource attributes. Would be good to understand why these processors are not sufficient for these use cases.
+    - Nayef: I’m not sure I understand. I think the current state is not compliant with what the other SDKs are doing right now.
+    - Florian: We’ve experimented with this, and it works well (k8s attributes processor).
+    - Nayef: None of these processors enrich process-specific attributes.
+    - Felix: Let’s add an example of that in the document.
+    - Christos: Follow-up question: OTel says when there is no service name, it should be made up using the executable name.
+    - Nayef: In python you have a lot of forks, e.g. for python.
+    - Nayef: If we want the same resource attributes as the other signals (and provide correlation), we need to do the same thing the SDKs are doing. Otherwise the risk is to have a mismatch of resource attributes emitted by SDKs and the eBPF profiler.
+    - Alexey: Would be nice to list all alternatives with pros and cons. Especially for other OpenTelemetry stakeholders. Is the biggest problem resource per process outside of containers (there are many processes outside containers). For containers there is typically one process per container.
+    - Nayef: For forking languages, one container might have 10+ processes.
+  - [**Owner wanted**] We agree and should document that the values/timestamps shape should be the same for all samples in the given profile.
+    - We’ll discuss this when we talk about #714 later today.
+  - [Jonathan] Send a PR for adjusting the field order in Sample to group the key together.  Sent [#714](https://github.com/open-telemetry/opentelemetry-proto/pull/714)
+    - Also on the agenda, see below.
+- [Felix] Discuss [[Feedback] Profiles premature optimization · Issue #682 · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/issues/682)
+  - Felix: I think this is not a blocker. Needs to be more concrete. And we designed for full host, not single process profiling.
+  - Frederic: Yes, full host profiling support was an explicit goal.
+  - Christos: Yes, without more details, we should feel okay to proceed with the alpha. The more fresh eyes we get on the signal, the better. Speeding up the alpha is the way to go.
+  - Alexey: +1 from me as well. There was an argument on merging being more difficult.
+  - Felix: It is, because you need to update all dictionary table references on payload 2+ and later.
+  - Florian: We need to improve on documentation. We need people to understand what operations they can do, and how to do them. Similar issues exist in other signals. Other approaches like [OBI](https://opentelemetry.io/docs/zero-code/obi/) (ebpf tracing) would benefit from this as well, their approach is overloading the collectors.
+  - Alexey: Is there a collector requirement for merging?
+  - Felix: I think we should stop guessing and wait for Bogdan to write down his full use case in detail.
+  - Alexey: Should we close the issue?
+  - Felix: I think we should continue the discussion. Maybe we can still align.
+- [Alexey] original_payload_format and original_payload fields: we say "If the original payload is in pprof format, it SHOULD not be included in this field", is it still relevant to special-case pprof here?
+  - Alexey: Seems like a thing we put in a long time ago.
+  - Florian: I think it was because we thought pprof would be a valid otel without conversion. We should probably update it.
+  - Alexey: If the original payload was converted losslessly we wouldn't need it.
+  - Felix: The field is intended for go execution traces and JFR where data loss happens.
+  - Christos: It’s at the digression of the producer. Antoine was also confused about this.
+  - Alexey: I’ll try to improve the comment.
+  - Felix: Sounds good. Main message is that it’s intended for embedding payloads that are converted with data loss into OTLP.
+  - Frederic: Should be configurable in the collector to drop these.
+  - Felix: Yeah, even producers should be configurable.
+  - [Florian] What is the format of expected values in the field [original_payload_format](https://github.com/open-telemetry/opentelemetry-proto/blob/c0a98a1847d3124ac5f9ecd02d0e2d2732bbb590/opentelemetry/proto/profiles/v1development/profiles.proto#L285-L286)? The proto points to SemConv, but there is none for it. Prior discussion: [https://github.com/open-telemetry/opentelemetry-proto/issues/555#issuecomment-2092688632](https://github.com/open-telemetry/opentelemetry-proto/issues/555#issuecomment-2092688632)
+    - Florian: We want to hint to the reader what to do with the file.
+    - Alexey: pprof doesn’t have a version.
+    - Felix: I think readers don’t need the version. Only use case would be collectors dropping on version.
+    - Jonathan: Version could allow people to be more specific. The receiving end could choose how to parse it. Some files have magic data that has the version.
+    - Felix: Other than pprof, the profiles we think about have this metadata (JFRs, Go Execution Traces).
+    - Felix: I think just defining the format names would be the right thing for now. And people can add more formats if they need. Or even a new attribute with a version if they need that.
+    - Florian: As we provide examples, it would better fit into specification rather than semantic conventions. I’ll take a look and make a decision.
+- [Fabrizio Ferri Benedetti](mailto:fabri.ferribenedetti@elastic.co)OTel profiling documentation
+  - Fabrizio: I’m a maintainer of the docs. At which point we will need user facing docs on the docs site. Once we have an answer, we can start planning this and open an issue upstream. Right now we just have some old blog posts about profiling. We don’t have concept docs. No instructions on how to use it in the collector (it’s behind a feature gate). We don’t want to document the use of the binary (but we could)? The main question is about timing. And then it would be great for somebody to open an issue.
+  - Felix: I think we should start now / once we hit alpha. It’s time to get started.
+  - Christos: We hope to get alpha out by the end of September. What do you think is needed for alpha?
+  - Fabrizio: We need concept docs. Maybe otel demo can come later. Some stuff is about collector config, some stuff about SDK integration. We can do a new section
+  - Christos: I’ll open the issue [[repo](https://github.com/open-telemetry/opentelemetry.io/issues)]
+- -- meeting ended, copying the rest to the next meeting --
+- [Christos] We’ve recently received two back-to-back DoS advisories for eBPF profiler, discuss coming up with a service promise and documenting it as part of the project. The OTel Collector security policy is [here](https://github.com/open-telemetry/opentelemetry-collector?tab=security-ov-file#readme) (generic, covers other OTel projects too including the eBPF profiler). We’ll probably need something more fine-grained that addresses impractical DoS attacks that we’re not willing to mitigate. Is there precedent for finer-grained project-specific security policies in OTel?
+- [Christos] Clarify [profiles: improve Sample message clarity and usage documentation. by jhalliday · Pull Request #714 · open-telemetry/opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/pull/714)
+- [Nayef] Is the lack of `schema_url` for the InstrumentationScope attributes expected?
+- [Alexey] Zero index values discussion - [#711](https://github.com/open-telemetry/opentelemetry-proto/pull/711). Any changes we want based on that?

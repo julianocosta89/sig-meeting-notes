@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T08:23:46Z",
+  "generated_at": "2026-07-30T10:44:00Z",
   "min_date": "2025-06-16",
   "max_date": "2026-07-29",
   "sigs": [
@@ -31,6 +31,13 @@
           "trivial": false
         },
         {
+          "date": "2025-12-10",
+          "duration_minutes": 57,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2025-10-29",
           "duration_minutes": 9,
           "has_summary": true,
@@ -40,6 +47,13 @@
         {
           "date": "2025-10-15",
           "duration_minutes": 53,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2025-10-01",
+          "duration_minutes": 30,
           "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
@@ -87,7 +101,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 11
+      "meeting_count": 13
     },
     {
       "slug": "Android-SIG",
@@ -861,8 +875,22 @@
           "trivial": false
         },
         {
+          "date": "2025-09-23",
+          "duration_minutes": 35,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2025-09-18",
           "duration_minutes": 34,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2025-09-09",
+          "duration_minutes": 38,
           "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
@@ -952,7 +980,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 66
+      "meeting_count": 68
     },
     {
       "slug": "Browser-SIG",
@@ -2250,6 +2278,13 @@
           "trivial": false
         },
         {
+          "date": "2025-11-26",
+          "duration_minutes": 65,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2025-11-19",
           "duration_minutes": 16,
           "has_summary": true,
@@ -2404,7 +2439,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "Communications-SIG",
@@ -3511,7 +3546,7 @@
           "date": "2026-01-29",
           "duration_minutes": 36,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -5773,7 +5808,7 @@
           "date": "2025-07-17",
           "duration_minutes": 51,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         }
       ],
@@ -7518,6 +7553,13 @@
           "trivial": false
         },
         {
+          "date": "2025-08-05",
+          "duration_minutes": 63,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2025-07-29",
           "duration_minutes": 85,
           "has_summary": true,
@@ -7567,7 +7609,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 69
+      "meeting_count": 70
     },
     {
       "slug": "NET-Auto-Instr-SIG",
@@ -9396,6 +9438,20 @@
           "trivial": false
         },
         {
+          "date": "2025-09-18",
+          "duration_minutes": 62,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2025-09-04",
+          "duration_minutes": 61,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2025-08-21",
           "duration_minutes": 61,
           "has_summary": true,
@@ -9405,6 +9461,13 @@
         {
           "date": "2025-08-07",
           "duration_minutes": 68,
+          "has_summary": true,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2025-07-24",
+          "duration_minutes": 62,
           "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
@@ -9424,7 +9487,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 25
+      "meeting_count": 28
     },
     {
       "slug": "Project-Tooling-SIG",
@@ -12558,6 +12621,13 @@
           "trivial": false
         },
         {
+          "date": "2025-11-04",
+          "duration_minutes": 78,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2025-10-28",
           "duration_minutes": 55,
           "has_summary": true,
@@ -12698,7 +12768,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "Swift-SIG",
@@ -13586,6 +13656,13 @@
           "trivial": false
         },
         {
+          "date": "2025-10-22",
+          "duration_minutes": 42,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2025-10-15",
           "duration_minutes": 25,
           "has_summary": true,
@@ -13642,6 +13719,13 @@
           "trivial": false
         },
         {
+          "date": "2025-07-30",
+          "duration_minutes": 35,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2025-07-23",
           "duration_minutes": 34,
           "has_summary": true,
@@ -13670,7 +13754,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 38
+      "meeting_count": 40
     },
     {
       "slug": "Zig-SIG",
