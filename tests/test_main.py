@@ -8,7 +8,10 @@ from unittest.mock import MagicMock, patch
 import main
 from main import (
     _ensure_metadata,
+    _fetch_lfx_meetings,
+    _fetch_sheet_meetings,
     _format_body_line,
+    _merge_meetings,
     _parse_date,
     _resolve_sig,
     _write_meeting_notes,
@@ -96,6 +99,104 @@ class TestParseDate:
 
     def test_invalid_format_returns_none(self):
         assert _parse_date("16/06/2026", "--between") is None
+
+
+# ---------------------------------------------------------------------------
+# _fetch_sheet_meetings / _fetch_lfx_meetings
+# ---------------------------------------------------------------------------
+
+
+class TestFetchSheetMeetings:
+    def test_returns_filtered_meetings(self):
+        from datetime import datetime
+
+        fake_meeting = MagicMock()
+        with (
+            patch("main.fetch_csv", return_value=[{"Name": "Go SIG"}]),
+            patch("main.filter_meetings", return_value=[fake_meeting]) as mock_filter,
+        ):
+            result = _fetch_sheet_meetings(datetime(2026, 2, 1), datetime(2026, 2, 28))
+
+        assert result == [fake_meeting]
+        mock_filter.assert_called_once_with(
+            [{"Name": "Go SIG"}], since=datetime(2026, 2, 1), until=datetime(2026, 2, 28)
+        )
+
+    def test_returns_empty_list_on_fetch_failure(self):
+        from datetime import datetime
+
+        with patch("main.fetch_csv", side_effect=RuntimeError("network down")):
+            result = _fetch_sheet_meetings(datetime(2026, 2, 1), datetime(2026, 2, 28))
+
+        assert result == []
+
+
+class TestFetchLfxMeetings:
+    def test_returns_filtered_meetings(self):
+        from datetime import datetime
+
+        fake_meeting = MagicMock()
+        with (
+            patch("main.lfx.fetch_past_meetings", return_value=[{"title": "Go SIG"}]),
+            patch("main.lfx.filter_meetings", return_value=[fake_meeting]) as mock_filter,
+        ):
+            result = _fetch_lfx_meetings(datetime(2026, 2, 1), datetime(2026, 2, 28))
+
+        assert result == [fake_meeting]
+        mock_filter.assert_called_once_with(
+            [{"title": "Go SIG"}], since=datetime(2026, 2, 1), until=datetime(2026, 2, 28)
+        )
+
+    def test_returns_empty_list_on_fetch_failure(self):
+        from datetime import datetime
+
+        with patch("main.lfx.fetch_past_meetings", side_effect=RuntimeError("API down")):
+            result = _fetch_lfx_meetings(datetime(2026, 2, 1), datetime(2026, 2, 28))
+
+        assert result == []
+
+
+# ---------------------------------------------------------------------------
+# _merge_meetings
+# ---------------------------------------------------------------------------
+
+
+def _meeting(sig_slug: str, day: str, sig_name: str | None = None, url: str = "https://x"):
+    from datetime import datetime
+
+    m = MagicMock()
+    m.sig_slug = sig_slug
+    m.sig_name = sig_name or sig_slug
+    m.start_date = datetime.strptime(day, "%Y-%m-%d")
+    m.url = url
+    return m
+
+
+class TestMergeMeetings:
+    def test_combines_disjoint_sources(self):
+        sheet = [_meeting("Go-SIG", "2026-02-05")]
+        lfx_meetings = [_meeting("Java-SIG", "2026-02-06")]
+        result = _merge_meetings(sheet, lfx_meetings)
+        assert {m.sig_slug for m in result} == {"Go-SIG", "Java-SIG"}
+
+    def test_lfx_wins_on_same_sig_and_date(self):
+        sheet_meeting = _meeting("Go-SIG", "2026-02-05", url="https://sheet-url")
+        lfx_meeting = _meeting("Go-SIG", "2026-02-05", url="https://lfx-url")
+        result = _merge_meetings([sheet_meeting], [lfx_meeting])
+        assert len(result) == 1
+        assert result[0].url == "https://lfx-url"
+
+    def test_empty_sources_returns_empty(self):
+        assert _merge_meetings([], []) == []
+
+    def test_sorted_by_sig_name_then_date(self):
+        sheet = [_meeting("Zebra-SIG", "2026-02-05", sig_name="Zebra SIG")]
+        lfx_meetings = [
+            _meeting("Alpha-SIG", "2026-02-10", sig_name="Alpha SIG"),
+            _meeting("Alpha-SIG", "2026-02-05", sig_name="Alpha SIG"),
+        ]
+        result = _merge_meetings(sheet, lfx_meetings)
+        assert [m.sig_name for m in result] == ["Alpha SIG", "Alpha SIG", "Zebra SIG"]
 
 
 # ---------------------------------------------------------------------------

@@ -3,8 +3,9 @@
 OTel SIG Meeting Transcript Downloader
 =======================================
 Fetches OpenTelemetry SIG meeting recordings from the shared Google
-Spreadsheet, visits each Zoom recording page, extracts the transcript,
-and saves it organized by SIG name and meeting date.
+Spreadsheet and the LFX platform's public meetings API, visits each Zoom
+recording page, extracts the transcript, and saves it organized by SIG
+name and meeting date.
 
 Usage
 -----
@@ -29,12 +30,12 @@ import argparse
 import logging
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-from scraper import community, gdoc
+from scraper import community, gdoc, lfx
 from scraper.otel_setup import StatusCode, configure_tracer
 from scraper.sheet import Meeting, fetch_csv, filter_meetings
 from scraper.transcript_io import SEPARATOR, parse_reference
@@ -70,6 +71,44 @@ _SIG_ALIASES: dict[str, list[str]] = {
 
 
 _SPEAKER_LINE_RE = re.compile(r"^(.+?)\s+(\d{1,2}:\d{2})\s+(.*)$")
+
+
+def _fetch_sheet_meetings(since: datetime, until: datetime) -> list[Meeting]:
+    """Fetch meetings from the Google Sheet; returns [] (with a warning) on failure."""
+    try:
+        rows = fetch_csv()
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Failed to fetch Google Sheet — continuing without it: %s", exc)
+        return []
+    return filter_meetings(rows, since=since, until=until)
+
+
+def _fetch_lfx_meetings(since: datetime, until: datetime) -> list[Meeting]:
+    """Fetch meetings from the LFX platform; returns [] (with a warning) on failure."""
+    try:
+        rows = lfx.fetch_past_meetings(since, until)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Failed to fetch LFX platform meetings — continuing without it: %s", exc)
+        return []
+    return lfx.filter_meetings(rows, since=since, until=until)
+
+
+def _merge_meetings(sheet_meetings: list[Meeting], lfx_meetings: list[Meeting]) -> list[Meeting]:
+    """Combine Sheet and LFX meetings, preferring the LFX record for any SIG+date both cover.
+
+    The LFX platform is the source of truth going forward — the Sheet is
+    being retired — and its recording links have proven more accurate when
+    both sources cover the same occurrence (see project migration notes).
+    """
+    by_key: dict[tuple[str, object], Meeting] = {
+        (m.sig_slug, m.start_date.date()): m for m in sheet_meetings
+    }
+    for m in lfx_meetings:
+        by_key[(m.sig_slug, m.start_date.date())] = m
+
+    meetings = list(by_key.values())
+    meetings.sort(key=lambda m: (m.sig_name, m.start_date))
+    return meetings
 
 
 def make_output_path(meeting: Meeting) -> Path:
@@ -378,16 +417,32 @@ def main() -> int:  # pragma: no cover
         if args.sig:
             span.set_attribute("filter.sig", args.sig)
 
+        now = datetime.now()
+        effective_since = since or (now - timedelta(days=14)).replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
+        effective_until = until or now
+
         logger.info("Fetching Google Sheet …")
-        try:
-            rows = fetch_csv()
-        except Exception as exc:  # noqa: BLE001
-            logger.exception("Failed to fetch sheet")
-            span.record_exception(exc)
-            span.set_status(StatusCode.ERROR, str(exc))
+        sheet_meetings = _fetch_sheet_meetings(effective_since, effective_until)
+
+        logger.info("Fetching LFX platform …")
+        lfx_meetings = _fetch_lfx_meetings(effective_since, effective_until)
+
+        if not sheet_meetings and not lfx_meetings:
+            logger.error("Failed to fetch meetings from both the Google Sheet and the LFX platform")
+            span.set_status(StatusCode.ERROR, "both meeting sources failed")
             return 1
 
-        meetings = filter_meetings(rows, since=since, until=until)
+        meetings = _merge_meetings(sheet_meetings, lfx_meetings)
+        logger.info(
+            "Sources: %d from Google Sheet, %d from LFX platform (%d after merge)",
+            len(sheet_meetings),
+            len(lfx_meetings),
+            len(meetings),
+        )
+        span.set_attribute("meetings.sheet_count", len(sheet_meetings))
+        span.set_attribute("meetings.lfx_count", len(lfx_meetings))
 
         if args.sig:
             resolved_slug = _resolve_sig(meetings, args.sig)
@@ -406,7 +461,7 @@ def main() -> int:  # pragma: no cover
         span.set_attribute("meetings.count", len(meetings))
 
         if not meetings:
-            logger.warning("No meetings found — check sheet URL and column names")
+            logger.warning("No meetings found in either source for the given date range")
             return 0
 
         for m in meetings:
