@@ -291,7 +291,7 @@ def _resolve_sig(meetings: list[Meeting], sig_filter: str) -> str | None:
             print(f"Please enter a number between 1 and {len(matched)}.")
         except ValueError:
             print("Invalid input — please enter a number.")
-        except EOFError, KeyboardInterrupt:
+        except (EOFError, KeyboardInterrupt):  # fmt: skip
             print("\nAborted.")
             return None
 
