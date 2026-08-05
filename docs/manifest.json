@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:35:37Z",
+  "generated_at": "2026-08-05T08:37:12Z",
   "min_date": "2025-06-16",
   "max_date": "2026-08-04",
   "sigs": [
@@ -1646,7 +1646,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -2119,7 +2119,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 30,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         }
@@ -4701,7 +4701,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         }
@@ -4717,7 +4717,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 30,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         }
@@ -6849,7 +6849,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 30,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
@@ -8266,7 +8266,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
@@ -8713,7 +8713,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         }
@@ -8831,7 +8831,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
@@ -10785,7 +10785,7 @@
         {
           "date": "2026-08-04",
           "duration_minutes": 60,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": true,
           "trivial": false
         },
