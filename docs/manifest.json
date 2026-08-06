@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-05T08:37:12Z",
+  "generated_at": "2026-08-06T08:35:15Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-08-04",
+  "max_date": "2026-08-05",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -1372,7 +1372,7 @@
           "date": "2026-07-27",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -2523,6 +2523,22 @@
       "meeting_count": 1
     },
     {
+      "slug": "Collector-SIG-NA",
+      "name": "Collector SIG (NA)",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-08-05",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        }
+      ],
+      "meeting_count": 1
+    },
+    {
       "slug": "Communications-SIG",
       "name": "Communications SIG",
       "meeting_notes_url": "https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY",
@@ -2712,6 +2728,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/16f-JOjKzLgWxULRxY8TmpM_FjlI1sthvKurnqFz9x98",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
+        {
+          "date": "2026-08-05",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-07-29",
           "duration_minutes": 30,
@@ -2965,7 +2988,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Configuration-WG",
@@ -6446,6 +6469,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
+          "date": "2026-08-05",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-29",
           "duration_minutes": 60,
           "has_summary": true,
@@ -6838,7 +6868,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 56
+      "meeting_count": 57
     },
     {
       "slug": "K8s-Semantic-Convention-SIG",
@@ -8813,6 +8843,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-05",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-29",
           "duration_minutes": 60,
           "has_summary": true,
@@ -8820,7 +8857,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "OpenTelemetry-Specification-SIG-Maintainers-Sync",
@@ -12309,6 +12346,13 @@
       "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
+          "date": "2026-08-05",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 52,
           "has_summary": true,
@@ -12666,7 +12710,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 51
+      "meeting_count": 52
     },
     {
       "slug": "Semantic-Conventions-SIG",
@@ -14329,6 +14373,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-05",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-29",
           "duration_minutes": 60,
           "has_summary": true,
@@ -14343,7 +14394,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "eBPF-instrumentation",
