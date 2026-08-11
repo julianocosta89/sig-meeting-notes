@@ -53,7 +53,7 @@ def _parse_duration(value: object) -> int:
     """Return an int duration in minutes; non-numeric input yields 0."""
     try:
         return int(value)  # type: ignore[arg-type]
-    except (TypeError, ValueError):
+    except (TypeError, ValueError):  # fmt: skip
         return 0
 
 
