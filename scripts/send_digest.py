@@ -166,9 +166,7 @@ def _render_html(template_vars: dict) -> str:  # pragma: no cover
     return template.render(**template_vars)
 
 
-def build_email(
-    summaries: list[dict[str, str]], today: str, count: int
-) -> dict[str, str]:
+def build_email(summaries: list[dict[str, str]], today: str, count: int) -> dict[str, str]:
     """Build subject, HTML body, and plain-text body for the digest email."""
     subject = f"OTel SIG Daily Digest — {today} ({count} meetings)"
 
