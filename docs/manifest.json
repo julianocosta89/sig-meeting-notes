@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-12T07:27:22Z",
+  "generated_at": "2026-08-13T07:29:54Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-08-11",
+  "max_date": "2026-08-12",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2555,6 +2555,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 60,
           "has_summary": true,
@@ -2562,7 +2569,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "Collector-SIG-NA",
@@ -2770,6 +2777,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/16f-JOjKzLgWxULRxY8TmpM_FjlI1sthvKurnqFz9x98",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
+        {
+          "date": "2026-08-12",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
         {
           "date": "2026-08-05",
           "duration_minutes": 30,
@@ -3030,7 +3044,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 37
+      "meeting_count": 38
     },
     {
       "slug": "Configuration-WG",
@@ -3298,6 +3312,22 @@
           "date": "2026-07-27",
           "duration_minutes": 60,
           "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        }
+      ],
+      "meeting_count": 1
+    },
+    {
+      "slug": "Developer-Experience-SIG-EU",
+      "name": "Developer Experience SIG (EU)",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
           "has_meeting_notes": false,
           "trivial": false
         }
@@ -3649,6 +3679,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 10,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-15",
           "duration_minutes": 60,
           "has_summary": true,
@@ -3824,7 +3861,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 25
+      "meeting_count": 26
     },
     {
       "slug": "End-User-SIG-APAC",
@@ -3833,6 +3870,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-29",
           "duration_minutes": 60,
           "has_summary": true,
@@ -3840,7 +3884,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "End-User-SIG-OTel-Blueprints",
@@ -6553,6 +6597,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-05",
           "duration_minutes": 60,
           "has_summary": true,
@@ -6952,7 +7003,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 57
+      "meeting_count": 58
     },
     {
       "slug": "K8s-Semantic-Convention-SIG",
@@ -8949,6 +9000,22 @@
         }
       ],
       "meeting_count": 11
+    },
+    {
+      "slug": "OpenTelemetry-Net-Auto-Instrumentation-SIG",
+      "name": "OpenTelemetry .Net Auto Instrumentation SIG",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        }
+      ],
+      "meeting_count": 1
     },
     {
       "slug": "OpenTelemetry-PHP-SIG",
@@ -12527,6 +12594,13 @@
       "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-05",
           "duration_minutes": 60,
           "has_summary": true,
@@ -12891,7 +12965,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "Semantic-Conventions-SIG",
@@ -14517,6 +14591,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-12",
+          "duration_minutes": 24,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-22",
           "duration_minutes": 26,
           "has_summary": true,
@@ -14566,7 +14647,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 7
+      "meeting_count": 8
     },
     {
       "slug": "eBPF-Instrumentation",
@@ -14574,6 +14655,13 @@
       "meeting_notes_url": "",
       "repository_url": "",
       "meetings": [
+        {
+          "date": "2026-08-12",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-08-05",
           "duration_minutes": 60,
@@ -14596,7 +14684,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 3
+      "meeting_count": 4
     },
     {
       "slug": "eBPF-instrumentation",
