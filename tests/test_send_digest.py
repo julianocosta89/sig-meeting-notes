@@ -458,6 +458,18 @@ class TestBuildEmail:
         assert lines[1] == ""
         assert lines[2] == "---"
 
+    def test_text_body_uses_highlights_not_full_content(self) -> None:
+        """Plain-text body should contain key-topic highlights, not full summary content."""
+        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
+        with patch("send_digest._render_html", return_value="<html>mock</html>"):
+            email = build_email(summaries, "2026-03-05", 1)
+        text = email["text"]
+        # Key topic should be present
+        assert "Discussed collector stability" in text
+        # Action items and participants should NOT be in the text body
+        assert "Follow up on PR #123" not in text
+        assert "Tyler, Damien" not in text
+
 
 # ---------------------------------------------------------------------------
 # TestParseSummaryInfo — filesystem path (no commit SHA)

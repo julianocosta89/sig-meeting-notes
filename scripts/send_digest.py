@@ -197,11 +197,13 @@ def build_email(
         }
     )
 
-    # Plain-text body
+    # Plain-text body — key topics only, matching the HTML tiles
     text_parts = ["OTel SIG Daily Digest", "", "---", ""]
     for m in meetings:
         text_parts.append(f"{m['slug']} — {m['date']}")
-        text_parts.append(m["content"])
+        if m["highlights"]:
+            for item in m["highlights"]:
+                text_parts.append(f"- {item}")
         text_parts.append(f"Read more: {m['link']}")
         text_parts.append("")
 
