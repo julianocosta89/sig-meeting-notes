@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Send a daily digest email summarising new OTel SIG meeting summaries.
+"""Send a daily digest email with key topics from new OTel SIG meeting summaries.
 
-Detects new summary.md files via ``git diff``, asks OpenAI to produce a
-meta-summary narrative, and sends the digest via the Resend email API.
+Detects new summary.md files via ``git diff`` and sends the digest via the
+Resend email API.
 
 Required env vars:
-    OPENAI_API_KEY  — OpenAI API key
     RESEND_API_KEY  — Resend API key
     PRIVATE_EMAIL   — single visible recipient (``to`` field)
     DIGEST_TO       — comma-separated list of bcc recipient email addresses
@@ -18,7 +17,6 @@ import subprocess
 import sys
 from datetime import date
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 import requests
 
@@ -30,16 +28,9 @@ from scraper.transcript_io import (
     read_transcript_body,
 )
 
-if TYPE_CHECKING:
-    from openai import OpenAI
-
-
 ROOT = Path(__file__).resolve().parent.parent
 SITE_BASE_URL = "https://otelminutes.jcosta.dev/"
 LOGO_URL = "https://raw.githubusercontent.com/julianocosta89/sig-meeting-notes/refs/heads/main/docs/OTelMinutes-logo.png"
-DEFAULT_DIGEST_MODEL = "gpt-5-mini"
-DIGEST_MAX_OUTPUT_TOKENS = 2048
-DIGEST_RETRY_MAX_OUTPUT_TOKENS = 4096
 
 
 def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -157,158 +148,6 @@ def parse_summary_sections(content: str) -> dict:
     }
 
 
-def _render_summary_lines(summary: dict[str, str]) -> list[str]:
-    """Render a single summary into digest-source lines."""
-    sections = parse_summary_sections(summary["content"])
-    lines = [f"### {summary['slug']} ({summary['date']})"]
-
-    if sections["highlights"]:
-        lines.append("Key topics:")
-        lines.extend(f"- {item}" for item in sections["highlights"])
-
-    if sections["action_items"]:
-        lines.append("Action items:")
-        lines.extend(f"- {item}" for item in sections["action_items"])
-
-    if len(lines) == 1:
-        lines.append(summary["content"].strip())
-
-    return lines
-
-
-def build_digest_source(summaries: list[dict[str, str]]) -> str:
-    """Render only digest-relevant summary sections for the model input."""
-    return "\n\n".join("\n".join(_render_summary_lines(s)) for s in summaries)
-
-
-def _get_incomplete_reason(response: object) -> str | None:
-    """Extract the incomplete reason from a Responses API object."""
-    details = getattr(response, "incomplete_details", None)
-    if isinstance(details, dict):
-        return details.get("reason")
-    if details is not None:
-        return getattr(details, "reason", None)
-    return None
-
-
-def _trim_to_complete_sentences(text: str) -> str:
-    """Return only the completed sentence prefix from a truncated response."""
-    stripped = text.strip()
-    if not stripped:
-        return ""
-
-    last_sentence_end = max(stripped.rfind("."), stripped.rfind("!"), stripped.rfind("?"))
-    if last_sentence_end == -1:
-        return ""
-    return stripped[: last_sentence_end + 1].strip()
-
-
-def _request_digest_narrative(client: OpenAI, *, model: str, prompt: str, max_output_tokens: int):
-    """Issue a digest generation request to OpenAI."""
-    return client.responses.create(
-        model=model,
-        instructions=(
-            "You are an editor writing a concise daily digest for the OpenTelemetry"
-            " community. Prefer concrete, neutral prose over hype."
-        ),
-        input=prompt,
-        max_output_tokens=max_output_tokens,
-    )
-
-
-def _handle_max_tokens_retry(
-    client: OpenAI, *, model: str, prompt: str, original_response: object
-) -> str:
-    """Retry with a higher token budget after a max_output_tokens truncation.
-
-    Returns the best available text, or raises ValueError if unrecoverable.
-    """
-    print("WARNING: OpenAI digest response hit max_output_tokens; retrying once.")
-    retry_response = _request_digest_narrative(
-        client,
-        model=model,
-        prompt=prompt,
-        max_output_tokens=DIGEST_RETRY_MAX_OUTPUT_TOKENS,
-    )
-    if retry_response.status != "incomplete":
-        text = retry_response.output_text
-        if not text:
-            raise ValueError("OpenAI returned no output text")
-        return text.strip()
-
-    retry_reason = _get_incomplete_reason(retry_response)
-    if retry_reason == "max_output_tokens":
-        salvaged = _trim_to_complete_sentences(retry_response.output_text) or (
-            _trim_to_complete_sentences(getattr(original_response, "output_text", ""))
-        )
-        if salvaged:
-            print(
-                "WARNING: OpenAI digest response remained truncated; using completed"
-                " sentences from the partial output."
-            )
-            return salvaged
-
-    suffix = f": {retry_reason}" if retry_reason else ""
-    raise ValueError(f"OpenAI response incomplete{suffix}")
-
-
-def generate_digest_narrative(client: OpenAI, summaries: list[dict[str, str]]) -> str:
-    """Call OpenAI to produce a concise cross-SIG narrative."""
-    combined = build_digest_source(summaries)
-    model = os.environ.get("OPENAI_DIGEST_MODEL", DEFAULT_DIGEST_MODEL).strip() or (
-        DEFAULT_DIGEST_MODEL
-    )
-
-    if len(summaries) == 1:
-        user_prompt = """Write a 2-3 sentence email-ready digest paragraph
-about this OpenTelemetry SIG meeting.
-
-Focus on the most important themes and decisions discussed.
-Use plain, direct language. Avoid fancy or unusual vocabulary.
-Do not use imperative language or tell the reader to do anything.
-Do not mention any person's name or attribute anything to a specific individual.
-Do not use markdown, bullets, or headings.
-Do not mention that you were given summaries.
-Do not invent details that are not present in the source material.
-
-Source material:
-"""
-    else:
-        user_prompt = """Write a single 3-4 sentence email-ready digest paragraph
-connecting these OpenTelemetry SIG meetings.
-
-Synthesize shared themes, dependencies, and ongoing work across meetings.
-Do not turn the paragraph into a meeting-by-meeting list.
-Only mention SIG names when they materially help clarity.
-Use plain, direct language. Avoid fancy or unusual vocabulary.
-Do not use imperative language or tell the reader to do anything.
-Do not mention any person's name or attribute anything to a specific individual.
-Do not use markdown, bullets, or headings.
-Do not mention that you were given summaries.
-Do not invent details that are not present in the source material.
-
-Source material:
-"""
-    prompt = f"{user_prompt}\n\n{combined}"
-    response = _request_digest_narrative(
-        client,
-        model=model,
-        prompt=prompt,
-        max_output_tokens=DIGEST_MAX_OUTPUT_TOKENS,
-    )
-    if response.status == "incomplete":
-        reason = _get_incomplete_reason(response)
-        if reason == "max_output_tokens":
-            return _handle_max_tokens_retry(
-                client, model=model, prompt=prompt, original_response=response
-            )
-        suffix = f": {reason}" if reason else ""
-        raise ValueError(f"OpenAI response incomplete{suffix}")
-    if not response.output_text:
-        raise ValueError("OpenAI returned no output text")
-    return response.output_text.strip()
-
-
 def build_deep_link(slug: str, meeting_date: str) -> str:
     """Build a deep-link URL to the meeting on the site."""
     return f"{SITE_BASE_URL}?sig={slug}&date={meeting_date}"
@@ -328,7 +167,7 @@ def _render_html(template_vars: dict) -> str:  # pragma: no cover
 
 
 def build_email(
-    narrative: str, summaries: list[dict[str, str]], today: str, count: int
+    summaries: list[dict[str, str]], today: str, count: int
 ) -> dict[str, str]:
     """Build subject, HTML body, and plain-text body for the digest email."""
     subject = f"OTel SIG Daily Digest — {today} ({count} meetings)"
@@ -351,7 +190,6 @@ def build_email(
     # HTML body via Jinja2 template
     html_body = _render_html(
         {
-            "narrative": narrative,
             "date": today,
             "count": count,
             "meetings": meetings,
@@ -360,7 +198,7 @@ def build_email(
     )
 
     # Plain-text body
-    text_parts = ["OTel SIG Daily Digest", "", narrative, "", "---", ""]
+    text_parts = ["OTel SIG Daily Digest", "", "---", ""]
     for m in meetings:
         text_parts.append(f"{m['slug']} — {m['date']}")
         text_parts.append(m["content"])
@@ -425,13 +263,6 @@ def _is_trivial_transcript(summary_path: str, commit_sha: str = "") -> bool:
     return count_transcript_lines(body) < MIN_TRANSCRIPT_LINES
 
 
-def _create_openai_client(api_key: str) -> OpenAI:
-    """Create an OpenAI client instance (seam for testing)."""
-    from openai import OpenAI as _OpenAI  # noqa: PLC0415  # pragma: no cover
-
-    return _OpenAI(api_key=api_key)  # pragma: no cover
-
-
 def main() -> None:
     tracer = configure_tracer("otel-recordings-digest")
 
@@ -455,11 +286,6 @@ def main() -> None:
         print("DIGEST_TO contains no valid addresses, skipping.")
         sys.exit(0)
 
-    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-    if not api_key:
-        print("ERROR: OPENAI_API_KEY not set")
-        sys.exit(1)
-
     resend_key = os.environ.get("RESEND_API_KEY", "").strip()
     if not resend_key:
         print("ERROR: RESEND_API_KEY not set")
@@ -479,11 +305,8 @@ def main() -> None:
         span.set_attribute("digest.summary.count", len(summaries))
         span.set_attribute("digest.recipient.count", 1 + len(bcc_recipients))
         try:
-            client = _create_openai_client(api_key)
-            narrative = generate_digest_narrative(client, summaries)
-
             today = date.today().isoformat()
-            email = build_email(narrative, summaries, today, len(summaries))
+            email = build_email(summaries, today, len(summaries))
             send_email(resend_key, private_email, bcc_recipients, email)
         except Exception as exc:  # noqa: BLE001
             span.record_exception(exc)

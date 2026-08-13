@@ -72,7 +72,6 @@ jobs:
 
       - name: Send daily digest
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           PRIVATE_EMAIL: ${{ secrets.PRIVATE_EMAIL }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}

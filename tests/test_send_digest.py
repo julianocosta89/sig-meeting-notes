@@ -1,7 +1,7 @@
 """Tests for scripts/send_digest.py — daily digest email.
 
-These tests mock subprocess, OpenAI, requests, and env vars so no
-API keys or network access are needed.
+These tests mock subprocess, requests, and env vars so no API keys or
+network access are needed.
 """
 
 from __future__ import annotations
@@ -18,15 +18,9 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from send_digest import (  # noqa: E402
-    DIGEST_MAX_OUTPUT_TOKENS,
-    DIGEST_RETRY_MAX_OUTPUT_TOKENS,
-    _get_incomplete_reason,
     _is_trivial_transcript,
-    _trim_to_complete_sentences,
     build_deep_link,
-    build_digest_source,
     build_email,
-    generate_digest_narrative,
     get_new_summary_paths,
     main,
     parse_summary_info,
@@ -37,8 +31,6 @@ from send_digest import (  # noqa: E402
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-FAKE_NARRATIVE = "Today the OTel community discussed collector improvements and SDK updates."
 
 SAMPLE_SUMMARY = textwrap.dedent("""\
     ## Key Topics
@@ -57,20 +49,9 @@ GIT_DIFF_OUTPUT = (
 )
 
 
-def _mock_openai_client(response_text: str = FAKE_NARRATIVE) -> MagicMock:
-    mock_response = MagicMock()
-    mock_response.output_text = response_text
-    mock_response.status = "completed"
-    mock_response.incomplete_details = None
-    mock_client = MagicMock()
-    mock_client.responses.create.return_value = mock_response
-    return mock_client
-
-
 def _env(**overrides: str) -> dict[str, str]:
     """Return a base env dict with all required keys, updated with overrides."""
     base = {
-        "OPENAI_API_KEY": "test-openai-key",
         "RESEND_API_KEY": "test-resend-key",
         "PRIVATE_EMAIL": "private@example.com",
         "DIGEST_TO": "user@example.com",
@@ -250,8 +231,7 @@ class TestMain:
         assert exc_info.value.code == 1
 
     def test_happy_path(self, tmp_path: Path) -> None:
-        """New summaries found -> OpenAI called -> Resend POST made."""
-        mock_client = _mock_openai_client()
+        """New summaries found -> Resend POST made."""
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
@@ -268,13 +248,11 @@ class TestMain:
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._is_trivial_transcript", return_value=False),
-            patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
             main()
 
-        mock_client.responses.create.assert_called_once()
         mock_post.assert_called_once()
         call_json = mock_post.call_args.kwargs.get("json") or mock_post.call_args[1].get("json")
         assert call_json["from"] == "digest@otelminutes.jcosta.dev"
@@ -284,7 +262,6 @@ class TestMain:
 
     def test_multiple_recipients(self, tmp_path: Path) -> None:
         """DIGEST_TO with comma-separated list -> bcc field is a list."""
-        mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
@@ -305,7 +282,6 @@ class TestMain:
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._is_trivial_transcript", return_value=False),
-            patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
@@ -317,7 +293,6 @@ class TestMain:
 
     def test_blank_recipients_filtered(self, tmp_path: Path) -> None:
         """Trailing comma or double-comma in DIGEST_TO -> blank entries dropped."""
-        mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 200
 
@@ -338,7 +313,6 @@ class TestMain:
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._is_trivial_transcript", return_value=False),
-            patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest.requests.post", return_value=mock_resp) as mock_post,
         ):
@@ -350,7 +324,6 @@ class TestMain:
 
     def test_resend_error_handling(self, tmp_path: Path) -> None:
         """Resend returns 400 -> error printed, exits non-zero."""
-        mock_client = _mock_openai_client()
         mock_resp = MagicMock()
         mock_resp.status_code = 400
         mock_resp.text = "Bad Request"
@@ -368,7 +341,6 @@ class TestMain:
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._is_trivial_transcript", return_value=False),
-            patch("send_digest._create_openai_client", return_value=mock_client),
             patch("send_digest._render_html", return_value="<html>mock</html>"),
             patch("send_digest.requests.post", return_value=mock_resp),
             pytest.raises(SystemExit) as exc_info,
@@ -396,7 +368,7 @@ class TestMain:
         assert exc_info.value.code == 1
 
     def test_span_records_exception_on_error(self) -> None:
-        """When generate_digest_narrative raises, the exception is re-raised from main()."""
+        """When build_email raises, the exception is re-raised from main()."""
         env = _env(SUMMARIZE_COMMIT_SHA=FAKE_COMMIT_SHA, SUMMARIZE_COMMIT_FOUND="true")
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
 
@@ -410,12 +382,11 @@ class TestMain:
             ),
             patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
             patch("send_digest._is_trivial_transcript", return_value=False),
-            patch("send_digest._create_openai_client", return_value=MagicMock()),
             patch(
-                "send_digest.generate_digest_narrative",
-                side_effect=RuntimeError("OpenAI unavailable"),
+                "send_digest.build_email",
+                side_effect=RuntimeError("email build failed"),
             ),
-            pytest.raises(RuntimeError, match="OpenAI unavailable"),
+            pytest.raises(RuntimeError, match="email build failed"),
         ):
             main()
 
@@ -430,7 +401,7 @@ class TestBuildEmail:
             {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
         ]
         with patch("send_digest._render_html", return_value="<html>mock</html>"):
-            email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
+            email = build_email(summaries, "2026-03-05", 2)
         assert "2026-03-05" in email["subject"]
         assert "2 meetings" in email["subject"]
 
@@ -441,7 +412,7 @@ class TestBuildEmail:
             {"slug": "Collector-SIG", "date": "2026-03-06", "content": SAMPLE_SUMMARY},
         ]
         with patch("send_digest._render_html", return_value="<html>mock</html>"):
-            email = build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 2)
+            email = build_email(summaries, "2026-03-05", 2)
         assert "?sig=Go-SIG&date=2026-03-05" in email["text"]
         assert "?sig=Collector-SIG&date=2026-03-06" in email["text"]
 
@@ -455,220 +426,37 @@ class TestBuildEmail:
             return "<html>mock</html>"
 
         with patch("send_digest._render_html", side_effect=_capture_render):
-            build_email(FAKE_NARRATIVE, summaries, "2026-03-05", 1)
+            build_email(summaries, "2026-03-05", 1)
 
         meetings = captured[0]["meetings"]  # type: ignore[index]
         assert len(meetings) == 1
         assert "highlights" in meetings[0]
         assert meetings[0]["highlights"] == ["Discussed collector stability"]
 
-
-class TestGenerateDigestNarrative:
-    """Tests for OpenAI narrative generation."""
-
-    def test_calls_openai(self) -> None:
-        """OpenAI should be called with the combined summaries."""
-        mock_client = _mock_openai_client()
+    def test_no_narrative_in_template_vars(self) -> None:
+        """Template vars should not contain a 'narrative' key."""
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        result = generate_digest_narrative(mock_client, summaries)
-        mock_client.responses.create.assert_called_once()
-        assert result == FAKE_NARRATIVE
+        captured: list[dict] = []
 
-    def test_missing_output_text_raises_value_error(self) -> None:
-        """Blank output_text from OpenAI should raise ValueError."""
-        mock_client = MagicMock()
-        mock_response = MagicMock()
-        mock_response.output_text = ""
-        mock_response.status = "completed"
-        mock_response.incomplete_details = None
-        mock_client.responses.create.return_value = mock_response
+        def _capture_render(template_vars: dict) -> str:
+            captured.append(template_vars)
+            return "<html>mock</html>"
+
+        with patch("send_digest._render_html", side_effect=_capture_render):
+            build_email(summaries, "2026-03-05", 1)
+
+        assert "narrative" not in captured[0]
+
+    def test_no_narrative_in_text_body(self) -> None:
+        """Plain-text body should not contain a narrative paragraph."""
         summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        with pytest.raises(ValueError):
-            generate_digest_narrative(mock_client, summaries)
-
-    def test_incomplete_response_raises_value_error(self) -> None:
-        """Non-token-limit incomplete responses should still fail."""
-        mock_client = MagicMock()
-        mock_response = MagicMock()
-        mock_response.output_text = "Partial digest"
-        mock_response.status = "incomplete"
-        mock_response.incomplete_details = {"reason": "content_filter"}
-        mock_client.responses.create.return_value = mock_response
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        with pytest.raises(ValueError, match="content_filter"):
-            generate_digest_narrative(mock_client, summaries)
-
-    def test_incomplete_response_retries_when_limited_by_output_tokens(self) -> None:
-        """Token-limit truncation should retry with a larger output budget."""
-        mock_client = MagicMock()
-        first = MagicMock()
-        first.output_text = "Partial digest"
-        first.status = "incomplete"
-        first.incomplete_details = {"reason": "max_output_tokens"}
-        second = MagicMock()
-        second.output_text = FAKE_NARRATIVE
-        second.status = "completed"
-        second.incomplete_details = None
-        mock_client.responses.create.side_effect = [first, second]
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-
-        result = generate_digest_narrative(mock_client, summaries)
-
-        assert result == FAKE_NARRATIVE
-        first_call = mock_client.responses.create.call_args_list[0].kwargs
-        second_call = mock_client.responses.create.call_args_list[1].kwargs
-        assert first_call["max_output_tokens"] == DIGEST_MAX_OUTPUT_TOKENS
-        assert second_call["max_output_tokens"] == DIGEST_RETRY_MAX_OUTPUT_TOKENS
-
-    def test_incomplete_response_with_object_details_can_salvage_output(self) -> None:
-        """Object-style incomplete_details should still allow truncation recovery."""
-        mock_client = MagicMock()
-        first = MagicMock()
-        first.output_text = "Partial digest without punctuation"
-        first.status = "incomplete"
-        details = MagicMock(spec=["reason"])
-        details.reason = "max_output_tokens"
-        first.incomplete_details = details
-        second = MagicMock()
-        second.output_text = "Sentence one. Sentence two without ending"
-        second.status = "incomplete"
-        second.incomplete_details = details
-        mock_client.responses.create.side_effect = [first, second]
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-
-        result = generate_digest_narrative(mock_client, summaries)
-
-        assert result == "Sentence one."
-
-    def test_retry_completed_without_output_text_raises_value_error(self) -> None:
-        """A successful retry still needs output text."""
-        mock_client = MagicMock()
-        first = MagicMock()
-        first.output_text = "Partial digest"
-        first.status = "incomplete"
-        first.incomplete_details = {"reason": "max_output_tokens"}
-        second = MagicMock()
-        second.output_text = ""
-        second.status = "completed"
-        second.incomplete_details = None
-        mock_client.responses.create.side_effect = [first, second]
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-
-        with pytest.raises(ValueError, match="no output text"):
-            generate_digest_narrative(mock_client, summaries)
-
-    def test_retry_incomplete_without_salvage_raises_value_error(self) -> None:
-        """If both responses are truncated with no complete sentence, fail clearly."""
-        mock_client = MagicMock()
-        first = MagicMock()
-        first.output_text = "Partial"
-        first.status = "incomplete"
-        first.incomplete_details = {"reason": "max_output_tokens"}
-        second = MagicMock()
-        second.output_text = "Still partial"
-        second.status = "incomplete"
-        second.incomplete_details = {"reason": "max_output_tokens"}
-        mock_client.responses.create.side_effect = [first, second]
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-
-        with pytest.raises(ValueError, match="max_output_tokens"):
-            generate_digest_narrative(mock_client, summaries)
-
-    def test_retry_incomplete_for_non_token_reason_raises_not_salvages(self) -> None:
-        """Retry incomplete due to a non-token reason must raise, not salvage partial text."""
-        mock_client = MagicMock()
-        first = MagicMock()
-        first.output_text = "Partial digest"
-        first.status = "incomplete"
-        first.incomplete_details = {"reason": "max_output_tokens"}
-        second = MagicMock()
-        second.output_text = "Sentence one. Sentence two without ending"
-        second.status = "incomplete"
-        second.incomplete_details = {"reason": "content_filter"}
-        mock_client.responses.create.side_effect = [first, second]
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-
-        with pytest.raises(ValueError, match="content_filter"):
-            generate_digest_narrative(mock_client, summaries)
-
-    def test_single_meeting_uses_summary_prompt(self) -> None:
-        """One-meeting input should not ask for cross-SIG correlations."""
-        mock_client = _mock_openai_client()
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.responses.create.call_args[1]
-        user_msg = call_kwargs["input"]
-        assert "shared themes" not in user_msg
-        assert "meeting-by-meeting list" not in user_msg
-        assert "2-3 sentence" in user_msg
-
-    def test_multi_meeting_uses_cross_sig_prompt(self) -> None:
-        """Multiple meetings should get the cross-SIG correlation prompt."""
-        mock_client = _mock_openai_client()
-        summaries = [
-            {"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
-            {"slug": "Collector-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY},
-        ]
-        generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.responses.create.call_args[1]
-        user_msg = call_kwargs["input"]
-        assert "shared themes" in user_msg
-        assert "meeting-by-meeting list" in user_msg
-
-    def test_uses_current_digest_model_default(self) -> None:
-        """Digest generation should default to the current configured model constant."""
-        mock_client = _mock_openai_client()
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.responses.create.call_args[1]
-        assert call_kwargs["model"] == "gpt-5-mini"
-        assert "temperature" not in call_kwargs
-
-    def test_respects_digest_model_override(self) -> None:
-        """OPENAI_DIGEST_MODEL should override the default model alias."""
-        mock_client = _mock_openai_client()
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        with patch.dict("os.environ", {"OPENAI_DIGEST_MODEL": "gpt-5.4-mini"}):
-            generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.responses.create.call_args[1]
-        assert call_kwargs["model"] == "gpt-5.4-mini"
-
-    def test_uses_larger_output_budget(self) -> None:
-        """The digest budget should leave room for a full paragraph."""
-        mock_client = _mock_openai_client()
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        generate_digest_narrative(mock_client, summaries)
-        call_kwargs = mock_client.responses.create.call_args[1]
-        assert call_kwargs["max_output_tokens"] == DIGEST_MAX_OUTPUT_TOKENS
-
-
-class TestBuildDigestSource:
-    def test_uses_only_digest_relevant_sections(self) -> None:
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": SAMPLE_SUMMARY}]
-        result = build_digest_source(summaries)
-        assert "Key topics:" in result
-        assert "Action items:" in result
-        assert "Participants" not in result
-
-    def test_fallback_to_full_content_when_no_sections(self) -> None:
-        """When a summary has no highlights or action items, use the raw content."""
-        content = "Some freeform summary text with no structured sections."
-        summaries = [{"slug": "Go-SIG", "date": "2026-03-05", "content": content}]
-        result = build_digest_source(summaries)
-        assert content in result
-
-
-class TestDigestHelpers:
-    def test_get_incomplete_reason_returns_none_when_missing(self) -> None:
-        response = MagicMock()
-        response.incomplete_details = None
-        assert _get_incomplete_reason(response) is None
-
-    def test_trim_to_complete_sentences_empty_input(self) -> None:
-        assert _trim_to_complete_sentences("   ") == ""
-
-    def test_trim_to_complete_sentences_without_punctuation(self) -> None:
-        assert _trim_to_complete_sentences("unfinished sentence") == ""
+        with patch("send_digest._render_html", return_value="<html>mock</html>"):
+            email = build_email(summaries, "2026-03-05", 1)
+        # Text body should start with title, then separator, then meetings
+        lines = email["text"].splitlines()
+        assert lines[0] == "OTel SIG Daily Digest"
+        assert lines[1] == ""
+        assert lines[2] == "---"
 
 
 # ---------------------------------------------------------------------------
@@ -846,26 +634,6 @@ class TestSendEmail:
 
 
 class TestMainExtra:
-    def test_missing_openai_api_key(self) -> None:
-        """OPENAI_API_KEY not set → exits with error."""
-        diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
-        env = {
-            "SUMMARIZE_COMMIT_SHA": FAKE_COMMIT_SHA,
-            "SUMMARIZE_COMMIT_FOUND": "true",
-            "PRIVATE_EMAIL": "private@example.com",
-            "DIGEST_TO": "user@example.com",
-            "OPENAI_API_KEY": "",
-            "RESEND_API_KEY": "key",
-        }
-        with (
-            patch("send_digest.subprocess.run", return_value=_mock_subprocess_result(diff_output)),
-            patch("send_digest.os.environ.get", side_effect=lambda k, d="": env.get(k, d)),
-            patch("send_digest._is_trivial_transcript", return_value=False),
-            pytest.raises(SystemExit) as exc_info,
-        ):
-            main()
-        assert exc_info.value.code == 1
-
     def test_all_trivial_summaries_skips(self) -> None:
         """All summaries trivial → exits cleanly with no email sent."""
         diff_output = "docs/content/Go-SIG/2026-03-05/summary.md\n"
