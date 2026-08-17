@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-14T07:31:18Z",
+  "generated_at": "2026-08-17T06:49:27Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-08-13",
+  "max_date": "2026-08-14",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -10271,6 +10271,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-08-14",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-07-31",
           "duration_minutes": 60,
           "has_summary": true,
@@ -10460,7 +10467,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 27
+      "meeting_count": 28
     },
     {
       "slug": "Python-SIG",
