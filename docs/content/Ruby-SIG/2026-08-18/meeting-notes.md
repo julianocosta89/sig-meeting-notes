@@ -1,0 +1,66 @@
+## Meeting Notes
+
+### Attendees
+- Xuan Cao
+- Matt Wear
+- Kayla Reopelle
+
+### Agenda
+- [Spec SIG](https://docs.google.com/document/d/1pdvPeKjA8v8w_fGKAN68JjWBmVJtPCpqdi9IZrd6eEo/preview) Update (max 15 min)
+  - Resource detector example for Ruby: [https://github.com/dash0hq/opentelemetry-ruby-distribution/blob/main/lib/dash0/opentelemetry/resource/service_name_fallback.rb](https://github.com/dash0hq/opentelemetry-ruby-distribution/blob/main/lib/dash0/opentelemetry/resource/service_name_fallback.rb)
+  - [https://trask.github.io/semantic-conventions-conformance-prototype/http/](https://trask.github.io/semantic-conventions-conformance-prototype/http/)
+    - Project growing
+    - Should keep an eye on it
+    - Use it to make new issues for semconv
+  - Self-observability:
+    - [https://github.com/open-telemetry/semantic-conventions/issues/3954](https://github.com/open-telemetry/semantic-conventions/issues/3954)
+    - Where are we at with metrics?
+      - Kayla to share stability check-in tomorrow
+      - Road map / plan to stability (more sync work next meeting)
+      - Consider: When things are stable, do we want to merge the metrics and logs into the main sdk package?
+        - Ultimately, one gem to install everything
+        - Does the SDK bundle the other gems? Is it all physically in the sdk?
+        - What supports maintainability? Should Trace be extracted out of SDK?
+- Core ([Issues](https://github.com/open-telemetry/opentelemetry-ruby/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby/pulls))
+  - Declarative Config
+    - Needed to add Ruby to packaging project
+    - Kayla to review this week
+    - Once we finalize TracerProvider, Metrics and Logs should be easy
+  - [Kayla] [https://github.com/open-telemetry/opentelemetry-ruby/pull/2241](https://github.com/open-telemetry/opentelemetry-ruby/pull/2241)
+    - What should `dropped_attributes_count` represent in the Logs library?
+      - Idea 1: It should represent every mutation to the attributes array
+      - Idea 2: It should represent only attributes dropped due to limits
+    - Would like to un-block this to fix the existing bug/get started on related feature work for attributes mutation
+    - Look to see what other implementations are doing
+    - If we are the first, try to clarify the specification – question in the Spec SIG
+    - Kayla will also post in logs spec slack channel to see if we can get feedback sooner
+  - [Kayla] [https://github.com/open-telemetry/opentelemetry-ruby/issues/2293](https://github.com/open-telemetry/opentelemetry-ruby/issues/2293)
+    - What do we think about the Asynchronous instruments report?
+    - Xuan will review and comment
+  - [Kayla] Last step of GH Pages deprecation is deleting the branch. Any opposition?
+    - Will delete
+- Contrib ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pulls))
+  - [Kayla] [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2130](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2130)
+    - Bug with Rack context in two forms:
+      - Sinatra multi-apps
+      - Fiber-based web frameworks (ex. Falcon, Async, Rage)
+      - This PR attempts to solve them both
+      - Since I contributed some of the code, would like others to review
+  - [Kayla] [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2493](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2493)
+    - Does this make the most sense as a config? Or is this something we should recommend people take care of themselves using collector/span processor?
+      - Xuan approved, Kayla will re-review
+  - [Kayla] [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2202](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2202)
+    - Do we want CodeQL to run on all PR’s? Currently it is running randomly with notifications only in code scanning if file is not changed in that pr
+    - No objections if still valuable with zizmor
+    - Example with zizmor comment: [https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/pull/79](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/pull/79)
+- Auto Instrumentation ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/pulls))
+  - TracePoint
+- Burning questions?
+  - [Kayla] We’re getting lots of contributions to `otlp-common`, should we think about getting it ready to release/integrating it into our existing code?
+    - Matt is fine either way
+    - Should match the protobuf loose dependency versioning in our otlp exporter, the versions are much more strict in the current otlp-common gemspec
+    - Xuan - this is the right call
+    - Need dependabot or renovate to open PRs to update the proto version
+    - Once this is out, we can have a PR to fix the other exporters to use this common gem
+    - Xuan will keep an eye on it
+- ✨ Happy Reports ✨
