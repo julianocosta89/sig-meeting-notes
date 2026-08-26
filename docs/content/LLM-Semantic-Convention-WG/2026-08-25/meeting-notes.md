@@ -1,0 +1,66 @@
+## Meeting Notes
+
+### Attendees
+- Iwa Wong
+- Yuan Gao (Google)
+- Liudmila Molkova (google)
+- Trask Stalnaker (Microsoft)
+- Aaron Abbott (Google)
+- Steve (Alibaba)
+- Neil Yashinsky (ContextCore)
+- Alexander Akhmetov (Grafana Labs)
+- Chris Cordi
+- Surya Teja
+- Dylan russell (google)
+- Shuwen Pan (Cisco)
+- Pranav Sharma (Google)
+- Aaron Abbott (Google)
+- Zening Chen(Snowflake)
+- Marisa Boston (Reins AI)
+- Ankit Singhal (Microsoft)
+- Ridhima Satam (Cisco/Splunk)
+- Josh Winerman (Cisco/Splunk)
+- Tiffany Jernigan (Grafana Labs)
+
+### Agenda
+- [Steve / Huxing] Please review blog post [https://github.com/open-telemetry/opentelemetry.io/pull/11381](https://github.com/open-telemetry/opentelemetry.io/pull/11381)
+- [Yuan] Initial proposal: standard LLM Inference Telemetry - motivated by LLM-D and Kubernetes
+  - Call for interests and supports for me to drive the project to deliver standard LLM Inference Telemetry (mainly trace and metrics)
+  - Draft doc : [LLM-D + OTLP GenAI SemConv](https://docs.google.com/document/d/1adtXR_UxQh9Y-Y-ePZSUQNuLdTZLJgAudbDRWdjZgys/edit?usp=sharing)(will create a public editable version)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/408](https://github.com/open-telemetry/semantic-conventions-genai/issues/408)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/87](https://github.com/open-telemetry/semantic-conventions-genai/issues/87)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/issues/231](https://github.com/open-telemetry/semantic-conventions-genai/issues/231)
+  - Llm-d is a layer on top of different engines and unification is needed between upstream engines rather than within llm-d
+    - Also for other inference orchestrators
+- Victor/Authur wanted to discuss [ws2-defenders/telemetry/CoSAI-AI-Telemetry-RFC-0.3.md at main · cosai-oasis/ws2-defenders](https://github.com/cosai-oasis/ws2-defenders/blob/main/telemetry/CoSAI-AI-Telemetry-RFC-0.3.md)
+- [Pranav] GenAI Utils library for OpenTelemetry JS
+  - [https://github.com/open-telemetry/opentelemetry-js-contrib/pull/3677](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/3677)
+  - Any concerns / review?
+- [Liudmila] Token usage
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/469](https://github.com/open-telemetry/semantic-conventions-genai/pull/469)
+  - [https://github.com/open-telemetry/semantic-conventions-genai/pull/374](https://github.com/open-telemetry/semantic-conventions-genai/pull/374)
+- [Surya] Any idea on adding genai semantic conventions to claude-agent-sdk in python and typescript.
+  - [https://github.com/open-telemetry/opentelemetry-python-genai/issues/141#issuecomment-5013319771](https://github.com/open-telemetry/opentelemetry-python-genai/issues/141#issuecomment-5013319771)
+- [Ankit] [Realtime voice model Inference by singankit · Pull Request #394 · open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai/pull/394)
+  - Research on Google Gemini Live vs OpenAI Realtime [Designing Voice Agents in OpenTelemetry](https://docs.google.com/document/d/1JNYPFEijPVhZfdBZLHEllpo7iRwr8ImsEYb-gSm5VWA/edit?tab=t.0#heading=h.g586yaqw8riz)
+  - [Open Questions: Voice Agents](https://docs.google.com/document/d/1_Jq4-En18K2fx5QLULkjrx2pugxV9ldZ0laNaH_KVlw/edit?usp=sharing)
+- [Dylan] [Avoid duplicate inference spans by putting it in the context](https://github.com/open-telemetry/semantic-conventions-genai/pull/475%20)
+  - Inference suppression
+    - Have a context key to put the inference span in
+      - Before starting inference check if there is one in place
+        - Option 1: Enrich / modify span
+          - Can't enrich metrics / events
+          - Only spans
+          - Can't know what's already on the span (in general case)
+        - Option 2: Suppress
+          - Java:
+            - Strategies
+              - Never suppress
+              - Always suppress (server)
+              - Spans of the same type never nest
+            - API to get global static context key
+    - Keys are not string, it's opaque and it requires dependency / reflection on util-genai / common lib
+      - Let's have an opaque key, language-specific string - internal impl detail.
+  - Context-scoped attributes
+    - Orthogonal (enhance child vs enhance parent)
+    - Agent name: goes on all child spans / metrics within this process
