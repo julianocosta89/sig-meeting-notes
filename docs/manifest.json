@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-26T06:49:14Z",
+  "generated_at": "2026-08-27T15:31:26Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-08-25",
+  "max_date": "2026-08-26",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2657,6 +2657,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-05",
           "duration_minutes": 60,
           "has_summary": true,
@@ -2664,7 +2671,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "Communications-SIG",
@@ -2863,6 +2870,13 @@
       "meeting_notes_url": "https://docs.google.com/document/d/16f-JOjKzLgWxULRxY8TmpM_FjlI1sthvKurnqFz9x98",
       "repository_url": "https://github.com/open-telemetry/opentelemetry-demo",
       "meetings": [
+        {
+          "date": "2026-08-26",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-08-19",
           "duration_minutes": 30,
@@ -3137,7 +3151,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 39
+      "meeting_count": 40
     },
     {
       "slug": "Configuration-WG",
@@ -3984,6 +3998,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-12",
           "duration_minutes": 60,
           "has_summary": true,
@@ -3998,7 +4019,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "End-User-SIG-OTel-Blueprints",
@@ -6806,6 +6827,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-19",
           "duration_minutes": 60,
           "has_summary": true,
@@ -7219,7 +7247,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 59
+      "meeting_count": 60
     },
     {
       "slug": "K8s-Semantic-Convention-SIG",
@@ -9287,6 +9315,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-19",
           "duration_minutes": 60,
           "has_summary": true,
@@ -9301,7 +9336,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "OpenTelemetry-PHP-SIG",
@@ -9309,6 +9344,13 @@
       "meeting_notes_url": "",
       "repository_url": "",
       "meetings": [
+        {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-08-19",
           "duration_minutes": 60,
@@ -9331,7 +9373,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 3
+      "meeting_count": 4
     },
     {
       "slug": "OpenTelemetry-Profiling",
@@ -13022,6 +13064,13 @@
       "repository_url": "https://github.com/open-telemetry/weaver",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-19",
           "duration_minutes": 60,
           "has_summary": true,
@@ -13400,7 +13449,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 54
+      "meeting_count": 55
     },
     {
       "slug": "Semantic-Conventions-SIG",
@@ -15084,6 +15133,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 38,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-12",
           "duration_minutes": 24,
           "has_summary": true,
@@ -15140,7 +15196,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 8
+      "meeting_count": 9
     },
     {
       "slug": "eBPF-Instrumentation",
@@ -15148,6 +15204,13 @@
       "meeting_notes_url": "",
       "repository_url": "",
       "meetings": [
+        {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-08-19",
           "duration_minutes": 60,
@@ -15184,7 +15247,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 5
+      "meeting_count": 6
     },
     {
       "slug": "eBPF-instrumentation",
@@ -15815,6 +15878,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-26",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-07-29",
           "duration_minutes": 63,
           "has_summary": true,
@@ -15857,7 +15927,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 6
+      "meeting_count": 7
     }
   ]
 }
