@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-31T12:35:15Z",
+  "generated_at": "2026-09-01T11:05:45Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-08-28",
+  "max_date": "2026-08-31",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -4049,6 +4049,13 @@
       "repository_url": "https://github.com/open-telemetry/sig-end-user",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-03",
           "duration_minutes": 60,
           "has_summary": true,
@@ -4147,7 +4154,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "Entities-SIG",
@@ -7475,6 +7482,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-24",
           "duration_minutes": 60,
           "has_summary": true,
@@ -7650,7 +7664,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 25
+      "meeting_count": 26
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -9232,6 +9246,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-24",
           "duration_minutes": 60,
           "has_summary": true,
@@ -9253,7 +9274,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 3
+      "meeting_count": 4
     },
     {
       "slug": "OpAMP",
@@ -11536,6 +11557,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-24",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11571,7 +11599,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 5
+      "meeting_count": 6
     },
     {
       "slug": "Ruby-SIG",
@@ -12433,6 +12461,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-17",
           "duration_minutes": 60,
           "has_summary": true,
@@ -12447,7 +12482,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "Sampling-SIG",
@@ -13542,6 +13577,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-08-31",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-24",
           "duration_minutes": 60,
           "has_summary": true,
@@ -13570,7 +13612,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 4
+      "meeting_count": 5
     },
     {
       "slug": "Service-and-Deployment-SemConv",
