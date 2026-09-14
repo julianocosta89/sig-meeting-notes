@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-11T10:42:12Z",
+  "generated_at": "2026-09-14T11:40:37Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-09-10",
+  "max_date": "2026-09-11",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -5259,6 +5259,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-09-11",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-09",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5266,7 +5273,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -11019,6 +11026,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-09-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-08-28",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11222,7 +11236,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 29
+      "meeting_count": 30
     },
     {
       "slug": "Python-SIG",
@@ -16239,6 +16253,22 @@
         }
       ],
       "meeting_count": 56
+    },
+    {
+      "slug": "es-ES-Localization-SIG-Communications",
+      "name": "es-ES Localization (SIG Communications)",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-09-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        }
+      ],
+      "meeting_count": 1
     },
     {
       "slug": "es-Localization-SIG-Communications",
