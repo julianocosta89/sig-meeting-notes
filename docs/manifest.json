@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-18T10:37:40Z",
+  "generated_at": "2026-09-21T11:53:58Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-09-17",
+  "max_date": "2026-09-18",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -5343,6 +5343,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-09-18",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-16",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5371,7 +5378,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 4
+      "meeting_count": 5
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
