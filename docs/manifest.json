@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-25T11:11:06Z",
+  "generated_at": "2026-09-28T12:49:00Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-09-24",
+  "max_date": "2026-09-25",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -113,7 +113,7 @@
           "date": "2026-09-24",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -5448,6 +5448,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-09-25",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-23",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5497,7 +5504,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 7
+      "meeting_count": 8
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -6900,7 +6907,7 @@
           "date": "2026-09-24",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -11432,6 +11439,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-09-25",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-09-11",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11642,7 +11656,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 30
+      "meeting_count": 31
     },
     {
       "slug": "Python-SIG",
@@ -16800,6 +16814,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-09-25",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": true
+        },
+        {
           "date": "2026-09-11",
           "duration_minutes": 60,
           "has_summary": true,
@@ -16807,7 +16828,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "es-Localization-SIG-Communications",
