@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T11:57:40Z",
+  "generated_at": "2026-10-05T13:30:20Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-10-01",
+  "max_date": "2026-10-02",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -3727,6 +3727,22 @@
       "meeting_count": 1
     },
     {
+      "slug": "Dart-Flutter-SIG",
+      "name": "Dart & Flutter SIG",
+      "meeting_notes_url": "",
+      "repository_url": "",
+      "meetings": [
+        {
+          "date": "2026-10-02",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        }
+      ],
+      "meeting_count": 1
+    },
+    {
       "slug": "Developer-Experience-SIG-EU",
       "name": "Developer Experience SIG (EU)",
       "meeting_notes_url": "",
@@ -5539,6 +5555,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-02",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-30",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5609,7 +5632,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 10
+      "meeting_count": 11
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
