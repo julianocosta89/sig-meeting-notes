@@ -1,0 +1,54 @@
+## Meeting Notes
+
+### Attendees
+- Kayla Reopelle
+- Matt Wear
+- Josef Šimánek
+- Xuan Cao
+
+### Agenda
+- [Spec SIG](https://docs.google.com/document/d/1pdvPeKjA8v8w_fGKAN68JjWBmVJtPCpqdi9IZrd6eEo/preview) Update (max 15 min)
+- Core ([Issues](https://github.com/open-telemetry/opentelemetry-ruby/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby/pulls))
+  - [Metrics Milestone Progress](https://github.com/open-telemetry/opentelemetry-ruby/milestone/11)
+  - [Logs Milestone Progress](https://github.com/open-telemetry/opentelemetry-ruby/milestone/12)
+    - Lots of open metrics PRs, let’s focus on getting those merged and then we can look at logs
+  - [Add CodeQL for core?](https://github.com/open-telemetry/opentelemetry-ruby/pull/2320)
+    - Merge - make the new workflows required
+  - Logs Declarative Config PR: [https://github.com/open-telemetry/opentelemetry-ruby/pull/2439](https://github.com/open-telemetry/opentelemetry-ruby/pull/2439)
+    - Pretty much every language except Java is not zero-code, there’s at least one line to enabled declarative config
+    - Eventually, we want to be able to extend the declarative config for third-party components, which requires some level of registration to map config options to Ruby classes dynamically
+    - Gets hard in the zero-code case
+    - If declarative config is turned on with a line of code, then things just need to be registered
+- Contrib ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pulls))
+  - Possibly release all today with OpenAI?
+    - Should be fine. Will release after the open release PR is merged.
+  - PTAL: [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2562](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2562)
+- Auto Instrumentation ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/pulls))
+  - How’s the operator work going?
+    - Image is out
+    - Need to wait to merge the test PR
+    - Then will update the big pr with everything
+- Burning questions?
+  - [kayla] Now that we’ve merged [https://github.com/open-telemetry/opentelemetry-ruby/issues/2413](https://github.com/open-telemetry/opentelemetry-ruby/issues/2413) what are our next steps?
+    - Could leave it to 1.0, or just wait a few releases. The main place where you get in trouble is if you upgrade the API without the SDK.
+      - Check back in a few weeks
+    - Questions:
+      - Can we start adding metrics to HTTP in just the stable conventions?
+        - Clear to emit anything that conforms to semantic conventions
+        - Don’t emit metrics on old semconv
+        - If we go through those instrumentations and emit the right attrs on metrics it’s probably not a huge leap to update it for traces too. Could possibly follow each other and add the opt-in flags for stable shortly after
+      - Do we need to wait for convention migration in other categories?
+      - What do we want to do with PRs that were previously opened to add metrics to instrumentation?
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1785](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1785)
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1377](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1377)
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1324](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1324)
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1314](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1314)
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1213](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1213)
+        - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1129](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/1129)
+      - Ex. Sidekiq/Redis - do we have reliable conventions for those?
+        - Make sure that we’re adding things with reliable conventions - emit things defined by semconv, things that are not defined, think about that later on
+        - Do some research to see what other SIGs are doing there
+        - If there aren’t conventions, we could take what we can from the existing PRs, give credit where we can for the initial work and move them forward
+        - Can close, but shouldn’t forget
+- ✨ Happy Reports ✨
+  - Yay! We have a way to add metrics and logs to instrumentation! Thank you, Matt!
