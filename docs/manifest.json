@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-09T12:39:35Z",
+  "generated_at": "2026-10-12T14:19:04Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-10-08",
+  "max_date": "2026-10-09",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -5632,6 +5632,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-09",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-07",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5723,7 +5730,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 13
+      "meeting_count": 14
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -7147,7 +7154,7 @@
           "date": "2026-10-08",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -17385,6 +17392,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-09",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-25",
           "duration_minutes": 60,
           "has_summary": false,
@@ -17399,7 +17413,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 2
+      "meeting_count": 3
     },
     {
       "slug": "es-Localization-SIG-Communications",
