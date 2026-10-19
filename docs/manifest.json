@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-16T10:44:45Z",
+  "generated_at": "2026-10-19T12:00:50Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-10-15",
+  "max_date": "2026-10-16",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -3845,6 +3845,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-16",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-02",
           "duration_minutes": 30,
           "has_summary": true,
@@ -3852,7 +3859,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 1
+      "meeting_count": 2
     },
     {
       "slug": "Developer-Experience-SIG-EU",
@@ -5716,6 +5723,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-16",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-14",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5828,7 +5842,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
