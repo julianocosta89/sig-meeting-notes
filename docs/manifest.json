@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-23T11:06:17Z",
+  "generated_at": "2026-10-26T12:13:00Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-10-22",
+  "max_date": "2026-10-23",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -5814,6 +5814,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-10-23",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-21",
           "duration_minutes": 30,
           "has_summary": true,
@@ -5947,7 +5954,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 19
+      "meeting_count": 20
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -12283,6 +12290,13 @@
       "repository_url": "https://github.com/open-telemetry/prometheus-interoperability-spec",
       "meetings": [
         {
+          "date": "2026-10-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-09-25",
           "duration_minutes": 60,
           "has_summary": true,
@@ -12500,7 +12514,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 31
+      "meeting_count": 32
     },
     {
       "slug": "Python-SIG",
