@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T14:14:36Z",
+  "generated_at": "2026-11-10T14:15:14Z",
   "min_date": "2025-06-16",
   "max_date": "2026-11-09",
   "sigs": [
@@ -12361,7 +12361,7 @@
         {
           "date": "2026-11-09",
           "duration_minutes": 30,
-          "has_summary": false,
+          "has_summary": true,
           "has_meeting_notes": false,
           "trivial": false
         },
