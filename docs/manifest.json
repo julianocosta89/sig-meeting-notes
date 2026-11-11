@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-10T14:15:14Z",
+  "generated_at": "2026-11-11T13:31:38Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-11-09",
+  "max_date": "2026-11-10",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2001,6 +2001,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-11-10",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-11-03",
           "duration_minutes": 60,
           "has_summary": true,
@@ -2358,7 +2365,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 51
+      "meeting_count": 52
     },
     {
       "slug": "Client-Instrumentation-SIG",
@@ -7658,7 +7665,7 @@
           "date": "2026-11-05",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -8660,6 +8667,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-11-10",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-27",
           "duration_minutes": 30,
           "has_summary": true,
@@ -8856,7 +8870,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 28
+      "meeting_count": 29
     },
     {
       "slug": "Kotlin-SIG",
@@ -10259,6 +10273,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-10",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-27",
           "duration_minutes": 60,
           "has_summary": true,
@@ -10357,7 +10378,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "NET-SIG",
