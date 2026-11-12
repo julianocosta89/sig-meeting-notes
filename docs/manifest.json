@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-11T13:32:39Z",
+  "generated_at": "2026-11-12T14:36:19Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-11-10",
+  "max_date": "2026-11-11",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -3371,7 +3371,7 @@
           "date": "2026-11-04",
           "duration_minutes": 30,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -8168,6 +8168,13 @@
       "repository_url": "https://github.com/open-telemetry/opentelemetry-js",
       "meetings": [
         {
+          "date": "2026-11-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-11-04",
           "duration_minutes": 60,
           "has_summary": true,
@@ -8658,7 +8665,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 70
+      "meeting_count": 71
     },
     {
       "slug": "K8s-Semantic-Convention-SIG",
@@ -11048,6 +11055,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-04",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11139,7 +11153,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 13
+      "meeting_count": 14
     },
     {
       "slug": "OpenTelemetry-PHP-SIG",
@@ -11723,6 +11737,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-04",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11779,7 +11800,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 8
+      "meeting_count": 9
     },
     {
       "slug": "PHP-SIG",
@@ -17918,6 +17939,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-11",
+          "duration_minutes": 45,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-04",
           "duration_minutes": 45,
           "has_summary": true,
@@ -18037,7 +18065,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 17
+      "meeting_count": 18
     },
     {
       "slug": "eBPF-Instrumentation",
@@ -18045,6 +18073,13 @@
       "meeting_notes_url": "",
       "repository_url": "",
       "meetings": [
+        {
+          "date": "2026-11-11",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-11-04",
           "duration_minutes": 60,
@@ -18158,7 +18193,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 16
+      "meeting_count": 17
     },
     {
       "slug": "eBPF-instrumentation",
