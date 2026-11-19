@@ -739,3 +739,73 @@ class TestParseTranscriptHtml:
             ("Bob", "second."),
         )
         assert parse_transcript_html(html) == ["Alice: first,", "Bob: second."]
+
+
+# ---------------------------------------------------------------------------
+# parse_transcript_html — .transcript-list-item layout (Zoom, Nov 2026)
+# ---------------------------------------------------------------------------
+
+
+def _item(row: int, text: str, speaker: str = "", time: str = "") -> str:
+    header = ""
+    if speaker:
+        header = (
+            '<div class="header-info-container"><div class="header-info-left">'
+            f'<div class="user-info-name"><span class="user-name">{speaker}</span></div></div>'
+            f'<div class="header-info-right"><div class="time">{time}</div></div></div>'
+        )
+    return (
+        f'<div class="transcript-list-item" data-row="{row}">{header}'
+        '<div class="text-container"><div class="text-inner">'
+        f'<div class="transcript-translation-original"><span>{text}</span></div></div>'
+        '<div class="transcript-action-wrapper"><button aria-label="Translate"></button></div>'
+        "</div></div>"
+    )
+
+
+def _make_items(*items: str) -> str:
+    return "<div>" + "".join(items) + "</div>"
+
+
+class TestParseTranscriptListItems:
+    def test_header_item_has_speaker_and_time(self):
+        html = _make_items(_item(0, "Hey, good day.", "Alice (Acme, Inc.)", "01:22"))
+        assert parse_transcript_html(html) == ["Alice (Acme, Inc.) 01:22 Hey, good day."]
+
+    def test_continuation_after_sentence_end_is_own_line(self):
+        html = _make_items(
+            _item(0, "Hello.", "Bob", "01:25"),
+            _item(1, "How goes it?"),
+        )
+        assert parse_transcript_html(html) == ["Bob 01:25 Hello.", "How goes it?"]
+
+    def test_mid_sentence_continuation_merged(self):
+        html = _make_items(
+            _item(0, "I was asking about the", "Bob", "01:47"),
+            _item(1, "long-running spans."),
+        )
+        assert parse_transcript_html(html) == [
+            "Bob 01:47 I was asking about the long-running spans."
+        ]
+
+    def test_items_ordered_by_data_row(self):
+        html = _make_items(
+            _item(2, "Second.", "Bob", "00:05"),
+            _item(0, "First.", "Alice", "00:01"),
+        )
+        assert parse_transcript_html(html) == ["Alice 00:01 First.", "Bob 00:05 Second."]
+
+    def test_empty_items_skipped(self):
+        html = _make_items(_item(0, "", "Alice", "00:01"), _item(1, "Hi.", "Bob", "00:02"))
+        assert parse_transcript_html(html) == ["Bob 00:02 Hi."]
+
+    def test_text_speaker_like_not_split(self):
+        """Structured layout does not apply text heuristics to continuation rows."""
+        html = _make_items(
+            _item(0, "Agreed.", "Alice", "00:01"),
+            _item(1, "Bob 10:05 said that already."),
+        )
+        assert parse_transcript_html(html) == [
+            "Alice 00:01 Agreed.",
+            "Bob 10:05 said that already.",
+        ]

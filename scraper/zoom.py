@@ -12,14 +12,17 @@ from scraper.transcript import parse_transcript_html
 
 logger = logging.getLogger(__name__)
 
-# CSS selector for the transcript list rendered by Zoom's Vue SPA
-TRANSCRIPT_LIST_SELECTOR = "ul.transcript-list"
+# CSS selector for the transcript panel rendered by Zoom's Vue SPA
+TRANSCRIPT_LIST_SELECTOR = "[data-testid='transcript-list']"
 
-# Fallback broader selector if the precise one misses
-TRANSCRIPT_WRAPPER_SELECTOR = ".transcript-wrapper"
+# One element per utterance; each carries a stable ``data-row`` index
+TRANSCRIPT_ITEM_SELECTOR = ".transcript-list-item"
 
 # Scroll container for Zoom's virtual-list windowing
-SCROLL_CONTAINER_SELECTOR = ".zm-scrollbar__wrap"
+SCROLL_CONTAINER_SELECTOR = ".transcript-list .zoom-scrollbar__wrap"
+
+# Returns [row, outerHTML] for every transcript item currently in the DOM
+_COLLECT_ITEMS_JS = "els => els.map(el => [el.dataset.row ?? '', el.outerHTML])"
 
 # How long to wait for the page's load event after domcontentloaded (milliseconds)
 PAGE_LOAD_TIMEOUT_MS = 20_000
@@ -99,19 +102,20 @@ def scrape_transcript(page: Page, url: str) -> list[str]:  # pragma: no cover
     time.sleep(VUE_RENDER_WAIT_S)
 
     if page.query_selector(TRANSCRIPT_LIST_SELECTOR) is None:
-        if page.query_selector(TRANSCRIPT_WRAPPER_SELECTOR):
-            raise ZoomScrapeError("Transcript panel present but no content")
         raise ZoomScrapeError("No transcript found")
+    if page.query_selector(TRANSCRIPT_ITEM_SELECTOR) is None:
+        raise ZoomScrapeError("Transcript panel present but no content")
 
-    # Defeat virtual-list windowing by scrolling the container top-to-bottom
-    _scroll_transcript_into_view(page)
+    # The list is windowed: only ~100 items exist in the DOM at once, so items
+    # are collected at every scroll step rather than read once at the end.
+    items = _collect_transcript_items(page)
 
-    # Extract outerHTML of the transcript list
-    ul_element = page.query_selector(TRANSCRIPT_LIST_SELECTOR)
-    if ul_element is None:
-        raise ZoomScrapeError("Transcript list disappeared after scroll")
+    expected = page.get_attribute(TRANSCRIPT_ITEM_SELECTOR, "aria-setsize")
+    if expected and expected.isdigit() and len(items) < int(expected):
+        logger.warning("Collected %d of %s transcript items", len(items), expected)
 
-    outer_html = ul_element.evaluate("el => el.outerHTML")
+    ordered = sorted(items.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else -1)
+    outer_html = "<div>" + "".join(html for _, html in ordered) + "</div>"
     lines = parse_transcript_html(outer_html)
 
     if not lines:
@@ -121,34 +125,39 @@ def scrape_transcript(page: Page, url: str) -> list[str]:  # pragma: no cover
     return lines
 
 
-def _scroll_transcript_into_view(page: Page) -> None:  # pragma: no cover
+def _collect_transcript_items(page: Page) -> dict[str, str]:  # pragma: no cover
     """
-    Scroll the zm-scrollbar container to force all virtual-list items to render.
+    Scroll the transcript container and return {data-row: outerHTML} for every item.
 
-    Zoom's transcript uses a virtual scroll (zm-scrollbar) that only keeps
-    visible <li> elements in the DOM.  We scroll from top to bottom in steps,
-    pausing briefly at each step so Vue can materialise the next batch of items.
+    Zoom's transcript uses a virtual scroll (zoom-scrollbar) that only keeps a
+    window of items in the DOM.  We scroll from top to bottom in steps, pausing
+    briefly at each step so Vue can materialise the next batch, and snapshot the
+    rendered items each time.
     """
+    items: dict[str, str] = {}
+
+    def snapshot() -> None:
+        for row, html in page.eval_on_selector_all(TRANSCRIPT_ITEM_SELECTOR, _COLLECT_ITEMS_JS):
+            items[row] = html
+
     container = page.query_selector(SCROLL_CONTAINER_SELECTOR)
     if container is None:
         logger.warning(
-            "Scroll container %r not found; skipping scroll",
+            "Scroll container %r not found; collecting rendered items only",
             SCROLL_CONTAINER_SELECTOR,
         )
-        return
+        snapshot()
+        return items
 
     # Scroll to top first
     container.evaluate("el => { el.scrollTop = 0; }")
     time.sleep(SCROLL_PAUSE_S)
+    snapshot()
 
     # Get total scroll height
     scroll_height: int = container.evaluate("el => el.scrollHeight")
     client_height: int = container.evaluate("el => el.clientHeight")
     max_scroll = max(0, scroll_height - client_height)
-
-    if max_scroll == 0:
-        # Content fits without scrolling – nothing to do
-        return
 
     logger.debug(
         "Scrolling transcript container: scrollHeight=%d, clientHeight=%d",
@@ -161,6 +170,7 @@ def _scroll_transcript_into_view(page: Page) -> None:  # pragma: no cover
         current = min(current + SCROLL_STEP_PX, max_scroll)
         container.evaluate("(el, top) => { el.scrollTop = top; }", current)
         time.sleep(SCROLL_PAUSE_S)
+        snapshot()
 
         # Re-check scrollHeight in case new items pushed it down
         new_height: int = container.evaluate("el => el.scrollHeight")
@@ -168,8 +178,5 @@ def _scroll_transcript_into_view(page: Page) -> None:  # pragma: no cover
             scroll_height = new_height
             max_scroll = max(0, scroll_height - client_height)
 
-    # Scroll back to top so any final render pass picks up early items
-    container.evaluate("el => { el.scrollTop = 0; }")
-    time.sleep(SCROLL_PAUSE_S)
-
-    logger.debug("Finished scrolling transcript container")
+    logger.debug("Finished scrolling transcript container; collected %d items", len(items))
+    return items

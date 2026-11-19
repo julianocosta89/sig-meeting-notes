@@ -48,12 +48,20 @@ def _first_embedded_boundary(text: str):
     return None
 
 
+# ASCII and full-width/CJK sentence-ending punctuation.
+_SENTENCE_ENDS = {".", "?", "!", "。", "？", "！"}
+
+
 def parse_transcript_html(outer_html: str) -> list[str]:
     """
-    Parse the outerHTML of <ul class="transcript-list"> into lines of:
-        Speaker Name: utterance text
+    Parse Zoom transcript HTML into lines of:
+        Speaker Name MM:SS utterance text
 
-    Zoom renders each transcript utterance as an <li> containing:
+    Handles the current ``.transcript-list-item`` layout (see
+    ``_parse_list_items``) and falls back to the legacy
+    ``<ul class="transcript-list">`` layout.
+
+    In the legacy layout, Zoom renders each transcript utterance as an <li> containing:
       - An element with a class containing "speaker" (e.g. <span class="speaker">)
       - One or more text/paragraph elements with the spoken words
 
@@ -63,6 +71,9 @@ def parse_transcript_html(outer_html: str) -> list[str]:
     when the break is mid-sentence (previous line does not end with `.`, `?`, or `!`).
     """
     soup = BeautifulSoup(outer_html, "html.parser")
+    if items := soup.select(".transcript-list-item"):
+        return _parse_list_items(items)
+
     ul = soup.find("ul")
     if ul is None:
         return []
@@ -78,6 +89,40 @@ def parse_transcript_html(outer_html: str) -> list[str]:
     return _merge_continuation_lines(raw)
 
 
+def _parse_list_items(items: list[Tag]) -> list[str]:
+    """Parse ``.transcript-list-item`` elements (Zoom layout since Nov 2026).
+
+    The first item of each speaker turn has a header with ``.user-name`` and
+    ``.time``; following items from the same speaker have no header.  Those
+    continuation items are merged into the previous line when the break is
+    mid-sentence, otherwise emitted as their own line.
+    """
+    result: list[str] = []
+    for item in sorted(items, key=_row_index):
+        text_el = item.select_one(".transcript-translation-original") or item.select_one(
+            ".text-inner"
+        )
+        text = text_el.get_text(" ", strip=True) if text_el else ""
+        if not text:
+            continue
+
+        name_el = item.select_one(".user-name")
+        time_el = item.select_one(".time")
+        if name_el and time_el:
+            name = name_el.get_text(" ", strip=True)
+            result.append(f"{name} {time_el.get_text(strip=True)} {text}")
+        elif result and result[-1][-1] not in _SENTENCE_ENDS:
+            result[-1] += " " + text
+        else:
+            result.append(text)
+    return result
+
+
+def _row_index(item: Tag) -> int:
+    row = str(item.get("data-row") or "")
+    return int(row) if row.isdigit() else -1
+
+
 def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
     """Merge continuation <li>s into previous line when break is mid-sentence.
 
@@ -89,8 +134,7 @@ def _merge_continuation_lines(raw: list[tuple[bool, str]]) -> list[str]:
 
     Speaker lines (has_speaker=True) always start a new entry.
     """
-    # ASCII and full-width/CJK sentence-ending punctuation.
-    sentence_ends = {".", "?", "!", "。", "？", "！"}
+    sentence_ends = _SENTENCE_ENDS
     if not raw:
         return []
     result = [raw[0][1]]
