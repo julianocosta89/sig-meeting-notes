@@ -39,7 +39,7 @@ jobs:
         env:
           SINCE: ${{ github.event.inputs.since }}
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Bearer%20${{ secrets.DASH0_AUTH_TOKEN }}"
           OTEL_SERVICE_NAME: otel-minutes-refresh
         run: |
           if [ -n "$SINCE" ]; then
@@ -51,7 +51,7 @@ jobs:
       - name: Build site
         env:
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: "dd-api-key=${{ secrets.DD_API_KEY }},dd-otlp-source=datadog,dd-otel-metric-config=%7B%22resource_attributes_as_tags%22%3A%20true%7D"
+          OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Bearer%20${{ secrets.DASH0_AUTH_TOKEN }}"
           OTEL_SERVICE_NAME: otel-minutes-build-site
         run: |
           if [ -f build_site.py ]; then
