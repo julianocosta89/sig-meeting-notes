@@ -32,6 +32,10 @@ class Meeting:
 _CANONICAL_SLUGS: dict[str, str] = {
     "OpenTelemetry-CC-SIG": "CC-SIG",
     "GC-Project-Management-EU": "Governance-Committee",
+    # Case-only variants collide on case-insensitive filesystems (macOS)
+    "FaaS-WG": "FAAS-WG",
+    "GO-SIG": "Go-SIG",
+    "eBPF-Instrumentation": "eBPF-instrumentation",
 }
 
 _SLUG_STRIP_RE = re.compile(r"[^\w\s-]")

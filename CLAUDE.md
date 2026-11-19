@@ -70,5 +70,10 @@ Slug is generated from the SIG name by stripping special characters and replacin
 |----------|----------------|
 | `OpenTelemetry-CC-SIG` | `CC-SIG` |
 | `GC-Project-Management-EU` | `Governance-Committee` |
+| `FaaS-WG` | `FAAS-WG` |
+| `GO-SIG` | `Go-SIG` |
+| `eBPF-Instrumentation` | `eBPF-instrumentation` |
+
+Slugs that differ only in letter case must always be merged this way: they collide on case-insensitive filesystems (macOS), leaving files that show as modified and can't be restored.
 
 To merge a new SIG, move its existing transcript files into the canonical directory and add an entry to `_CANONICAL_SLUGS`.
