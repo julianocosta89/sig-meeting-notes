@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-19T15:14:47Z",
+  "generated_at": "2026-11-19T16:32:39Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-11-12",
+  "max_date": "2026-11-18",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -2022,6 +2022,13 @@
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
         {
+          "date": "2026-11-17",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
           "date": "2026-11-10",
           "duration_minutes": 60,
           "has_summary": true,
@@ -2386,7 +2393,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 52
+      "meeting_count": 53
     },
     {
       "slug": "Client-Instrumentation-SIG",
@@ -2579,6 +2586,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-17",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-03",
           "duration_minutes": 30,
           "has_summary": true,
@@ -2656,7 +2670,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 11
+      "meeting_count": 12
     },
     {
       "slug": "Collector-SIG",
@@ -4728,6 +4742,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-18",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-21",
           "duration_minutes": 60,
           "has_summary": true,
@@ -4770,7 +4791,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 6
+      "meeting_count": 7
     },
     {
       "slug": "End-User-SIG-OTel-Blueprints",
@@ -6031,6 +6052,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-16",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-06",
           "duration_minutes": 30,
           "has_summary": true,
@@ -6213,7 +6241,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 26
+      "meeting_count": 27
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -11083,6 +11111,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-18",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-11",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11181,7 +11216,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "OpenTelemetry-PHP-SIG",
@@ -11772,6 +11807,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-18",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-11",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11835,7 +11877,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 9
+      "meeting_count": 10
     },
     {
       "slug": "PHP-SIG",
