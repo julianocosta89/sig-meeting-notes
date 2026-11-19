@@ -82,6 +82,11 @@ class TestSanitizeSigName:
     def test_canonical_governance(self) -> None:
         assert sanitize_sig_name("GC Project Management EU") == "Governance-Committee"
 
+    def test_canonical_case_variants(self) -> None:
+        assert sanitize_sig_name("FaaS WG") == "FAAS-WG"
+        assert sanitize_sig_name("GO SIG") == "Go-SIG"
+        assert sanitize_sig_name("eBPF Instrumentation") == "eBPF-instrumentation"
+
 
 # ---------------------------------------------------------------------------
 # fetch_csv
