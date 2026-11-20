@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T16:32:39Z",
+  "generated_at": "2026-11-20T14:57:19Z",
   "min_date": "2025-06-16",
   "max_date": "2026-11-18",
   "sigs": [
@@ -5566,10 +5566,31 @@
     },
     {
       "slug": "FAAS-WG",
-      "name": "FAAS WG",
+      "name": "FaaS WG",
       "meeting_notes_url": "https://docs.google.com/document/d/16dGljp7YY7jgzxydDKsin8DQCCx6HQqdQHorDxTx6SQ",
       "repository_url": "https://github.com/open-telemetry/semantic-conventions",
       "meetings": [
+        {
+          "date": "2026-11-05",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
+          "date": "2026-09-10",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
+          "date": "2026-08-13",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
         {
           "date": "2026-07-30",
           "duration_minutes": 14,
@@ -5732,37 +5753,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 23
-    },
-    {
-      "slug": "FaaS-WG",
-      "name": "FaaS WG",
-      "meeting_notes_url": "",
-      "repository_url": "",
-      "meetings": [
-        {
-          "date": "2026-11-05",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-09-10",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-08-13",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        }
-      ],
-      "meeting_count": 3
+      "meeting_count": 26
     },
     {
       "slug": "GC-Project-Management",
@@ -5779,64 +5770,6 @@
         }
       ],
       "meeting_count": 1
-    },
-    {
-      "slug": "GO-SIG",
-      "name": "GO SIG",
-      "meeting_notes_url": "",
-      "repository_url": "",
-      "meetings": [
-        {
-          "date": "2026-11-05",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-10-22",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-10-08",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-09-24",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-09-10",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-08-27",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-08-13",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        }
-      ],
-      "meeting_count": 7
     },
     {
       "slug": "GenAI-SIG",
@@ -6569,10 +6502,24 @@
           "trivial": false
         },
         {
+          "date": "2026-11-05",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-29",
           "duration_minutes": 60,
           "has_summary": true,
           "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2026-10-22",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
           "trivial": false
         },
         {
@@ -6583,10 +6530,24 @@
           "trivial": false
         },
         {
+          "date": "2026-10-08",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-01",
           "duration_minutes": 60,
           "has_summary": true,
           "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2026-09-24",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
           "trivial": false
         },
         {
@@ -6597,6 +6558,13 @@
           "trivial": false
         },
         {
+          "date": "2026-09-10",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-09-03",
           "duration_minutes": 60,
           "has_summary": true,
@@ -6604,10 +6572,24 @@
           "trivial": false
         },
         {
+          "date": "2026-08-27",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-08-20",
           "duration_minutes": 60,
           "has_summary": true,
           "has_meeting_notes": true,
+          "trivial": false
+        },
+        {
+          "date": "2026-08-13",
+          "duration_minutes": 60,
+          "has_summary": true,
+          "has_meeting_notes": false,
           "trivial": false
         },
         {
@@ -6996,7 +6978,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 62
+      "meeting_count": 69
     },
     {
       "slug": "Governance-Committee",
@@ -18159,16 +18141,16 @@
       "meeting_count": 18
     },
     {
-      "slug": "eBPF-Instrumentation",
+      "slug": "eBPF-instrumentation",
       "name": "eBPF Instrumentation",
-      "meeting_notes_url": "",
-      "repository_url": "",
+      "meeting_notes_url": "https://docs.google.com/document/d/1ZkmUT2EHKfgtLqrgx3WI8aBy2QNyZeTwSKXxe3DI6Pw",
+      "repository_url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation",
       "meetings": [
         {
           "date": "2026-11-11",
           "duration_minutes": 60,
           "has_summary": true,
-          "has_meeting_notes": false,
+          "has_meeting_notes": true,
           "trivial": false
         },
         {
@@ -18269,29 +18251,6 @@
           "has_meeting_notes": false,
           "trivial": false
         },
-        {
-          "date": "2026-07-29",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        },
-        {
-          "date": "2026-07-22",
-          "duration_minutes": 60,
-          "has_summary": true,
-          "has_meeting_notes": false,
-          "trivial": false
-        }
-      ],
-      "meeting_count": 17
-    },
-    {
-      "slug": "eBPF-instrumentation",
-      "name": "eBPF Instrumentation",
-      "meeting_notes_url": "https://docs.google.com/document/d/1ZkmUT2EHKfgtLqrgx3WI8aBy2QNyZeTwSKXxe3DI6Pw",
-      "repository_url": "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation",
-      "meetings": [
         {
           "date": "2026-07-29",
           "duration_minutes": 60,
@@ -18685,7 +18644,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 56
+      "meeting_count": 71
     },
     {
       "slug": "es-ES-Localization-SIG-Communications",
