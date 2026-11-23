@@ -2,7 +2,7 @@
 """
 Generate AI summaries for OTel SIG meeting transcripts.
 
-Walks docs/content/, calls Claude Haiku for each transcript
+Walks docs/content/, calls OpenAI gpt-4o-mini for each transcript
 that doesn't already have a summary, and writes the result to
 docs/content/{slug}/{date}/summary.md.
 """
@@ -16,8 +16,6 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-import requests
-
 from scraper.otel_setup import StatusCode, _NoOpTracer, configure_tracer
 from scraper.transcript_io import (
     MIN_TRANSCRIPT_LINES,
@@ -29,7 +27,7 @@ from scraper.transcript_io import (
 )
 
 if TYPE_CHECKING:
-    from anthropic import Anthropic
+    from openai import OpenAI
 
 ROOT = Path(__file__).parent
 DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
@@ -37,25 +35,12 @@ DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
 MAX_TRANSCRIPT_CHARS = 80_000
 _API_RATE_LIMIT_S = 1
 
-MODEL = "claude-haiku-5-5"
-# Thinking is on by default for this model and counts toward max_tokens, so leave
-# room above the ~1,500 tokens a summary needs.
-MAX_TOKENS = 4096
-
-# Workload identity federation settings, read from the environment (set in summarize.yml).
-_WIF_ENV_VARS = {
-    "federation_rule_id": "ANTHROPIC_FEDERATION_RULE_ID",
-    "organization_id": "ANTHROPIC_ORGANIZATION_ID",
-    "service_account_id": "ANTHROPIC_SERVICE_ACCOUNT_ID",
-    "workspace_id": "ANTHROPIC_WORKSPACE_ID",
-}
-
 
 def read_transcript_body(path: Path) -> str:
     """Read a transcript and return only the Zoom Recording Transcript section.
 
     Delegates to scraper.transcript_io.read_transcript_body, then truncates
-    to MAX_TRANSCRIPT_CHARS to bound per-summary token usage.
+    to MAX_TRANSCRIPT_CHARS to stay within OpenAI token limits.
     """
     body = _read_transcript_body(path)
     if len(body) > MAX_TRANSCRIPT_CHARS:
@@ -64,13 +49,13 @@ def read_transcript_body(path: Path) -> str:
 
 
 def generate_summary(
-    client: Anthropic,
+    client: OpenAI,
     sig_name: str,
     date: str,
     duration: str,
     transcript_body: str,
 ) -> str:
-    """Call Claude to generate a summary of the transcript."""
+    """Call OpenAI to generate a summary of the transcript."""
     prompt = (
         f"Summarize this OpenTelemetry {sig_name} meeting transcript from {date} "
         f"({duration} minutes). Format your response EXACTLY as Markdown with these sections:\n\n"
@@ -88,65 +73,20 @@ def generate_summary(
         "as-is."
     )
 
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=MAX_TOKENS,
-        output_config={"effort": "low"},
-        system="You summarize meeting transcripts concisely.",
-        messages=[{"role": "user", "content": f"{prompt}\n\n---\n\n{transcript_body}"}],
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You summarize meeting transcripts concisely."},
+            {"role": "user", "content": f"{prompt}\n\n---\n\n{transcript_body}"},
+        ],
+        temperature=0.3,
+        max_tokens=1500,
     )
-    if response.stop_reason == "refusal":
-        raise RuntimeError(f"Claude declined to summarize {sig_name} {date}")
-    text = "".join(block.text for block in response.content if block.type == "text").strip()
-    if not text:
-        raise RuntimeError(f"Empty summary for {sig_name} {date} (stop: {response.stop_reason})")
-    return text
-
-
-def fetch_github_oidc_token() -> str:
-    """Request a fresh GitHub Actions OIDC token scoped to the Anthropic API.
-
-    Called by the SDK each time it needs to exchange a token, so a long run never
-    reuses an expired one. Requires ``permissions: id-token: write`` in the job.
-    """
-    resp = requests.get(
-        os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"],
-        params={"audience": "https://api.anthropic.com"},
-        headers={"Authorization": f"Bearer {os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']}"},
-        timeout=10,
-    )
-    resp.raise_for_status()
-    return resp.json()["value"]
-
-
-def make_client() -> Anthropic:
-    """Build the Anthropic client.
-
-    In GitHub Actions (OIDC available), authenticate via workload identity
-    federation; elsewhere fall back to the SDK's default credential chain
-    (e.g. ``ANTHROPIC_API_KEY``).
-    """
-    in_actions = bool(os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL"))
-    missing = [env for env in _WIF_ENV_VARS.values() if not os.environ.get(env)]
-    if in_actions and missing:
-        print(f"ERROR: missing workload identity settings: {', '.join(missing)}")
-        raise SystemExit(1)
-
-    from anthropic import Anthropic, WorkloadIdentityCredentials  # noqa: PLC0415
-
-    if not in_actions:
-        return Anthropic()
-
-    return Anthropic(
-        credentials=WorkloadIdentityCredentials(
-            identity_token_provider=fetch_github_oidc_token,
-            **{arg: os.environ[env] for arg, env in _WIF_ENV_VARS.items()},
-        )
-    )
+    return response.choices[0].message.content
 
 
 def process_transcripts(
-    client: Anthropic,
+    client: OpenAI,
     transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
     since: date | None = None,
     until: date | None = None,
@@ -241,10 +181,18 @@ def main() -> None:
     since = date.fromisoformat(args.since) if args.since else None
     until = date.fromisoformat(args.until) if args.until else None
 
-    # The SDK emits OTel spans via the global tracer provider, so the client is
-    # built after configure_tracer registers it.
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        print("ERROR: OPENAI_API_KEY environment variable is not set")
+        raise SystemExit(1)
+
     tracer = configure_tracer("otel-recordings-summarize")
-    client = make_client()
+
+    from openai import (
+        OpenAI,  # noqa: PLC0415 — deferred; must come after configure_tracer so OpenAIInstrumentor patches first
+    )
+
+    client = OpenAI(api_key=api_key)
 
     with tracer.start_as_current_span("generate summaries") as span:
         if args.since:

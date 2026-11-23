@@ -84,26 +84,26 @@ The following packages are used only when the optional "summarize" feature
 is enabled (uv sync --group summarize) and are not part of the base install:
 
 -------------------------------------------------------------------------------
-anthropic (Apache-2.0) — https://github.com/anthropics/anthropic-sdk-python
+openai (MIT) — https://github.com/openai/openai-python
 jinja2 (BSD-3-Clause) — https://jinja.palletsprojects.com
 markupsafe (BSD-3-Clause) — https://markupsafe.palletsprojects.com
-httpx2 (BSD-3-Clause) — https://github.com/pydantic/httpx2
-httpcore2 (BSD-3-Clause) — https://github.com/pydantic/httpx2
-truststore (MIT) — https://github.com/sethmlarson/truststore
-docstring-parser (MIT) — https://github.com/rr-/docstring_parser
+httpx (BSD-3-Clause) — https://www.python-httpx.org
+httpcore (BSD-3-Clause) — https://github.com/encode/httpcore
 h11 (MIT) — https://github.com/python-hyper/h11
 anyio (MIT) — https://anyio.readthedocs.io
 sniffio (MIT) — https://github.com/python-trio/sniffio
+distro (Apache-2.0) — https://github.com/python-distro/distro
 pydantic (MIT) — https://docs.pydantic.dev
 pydantic-core (MIT) — https://github.com/pydantic/pydantic-core
 annotated-types (MIT) — https://github.com/annotated-types/annotated-types
 typing-extensions (PSF-2.0) — https://github.com/python/typing_extensions
 typing-inspection (MIT) — https://github.com/Goldziher/typing-inspection
 jiter (MIT) — https://github.com/pydantic/jiter
+tqdm (MPL-2.0, MIT) — https://tqdm.github.io
 colorama (BSD-3-Clause) — https://github.com/tartley/colorama
 -------------------------------------------------------------------------------
 
-Note: All MPL-2.0 packages (certifi) are used unmodified.
+Note: All MPL-2.0 packages (certifi, tqdm) are used unmodified.
 The file-level copyleft obligation of MPL-2.0 applies only to modified files
 and is therefore not triggered by this project.
 
