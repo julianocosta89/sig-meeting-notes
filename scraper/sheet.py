@@ -116,6 +116,19 @@ def _parse_duration(value: str) -> int:
         return 0
 
 
+def _value_for_header_ending_in(row_lower: dict[str, str], word: str) -> str:
+    """Return the value of the first column whose header's last word is ``word``.
+
+    The sheet owners prepended a banner to the first header cell (e.g.
+    ``"MEETINGS RECORDINGS NOW AVAILABLE ON: https://… Name"``), so an exact
+    header match no longer finds the name column.
+    """
+    for key, value in row_lower.items():
+        if key.split()[-1:] == [word]:
+            return value
+    return ""
+
+
 def filter_meetings(
     rows: list[dict[str, str]],
     since: datetime | None = None,
@@ -150,6 +163,7 @@ def filter_meetings(
             or row_lower.get("sig")
             or row_lower.get("topic")
             or row_lower.get("meeting name")
+            or _value_for_header_ending_in(row_lower, "name")
             or ""
         ).strip()
 

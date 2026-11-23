@@ -212,6 +212,18 @@ class TestFilterMeetingsColumnSynonyms:
         }
         assert len(filter_meetings([row], **_RANGE)) == 1
 
+    def test_name_column_with_banner_prefix(self) -> None:
+        row = {
+            "MEETINGS RECORDINGS NOW AVAILABLE ON: "
+            "https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry?view=week "
+            "Name": "Example SIG",
+            "Start time": "2026-02-05 10:00",
+            "Duration": "30",
+            "URL": "https://zoom.us/rec/share/x",
+        }
+        meetings = filter_meetings([row], **_RANGE)
+        assert [m.sig_name for m in meetings] == ["Example SIG"]
+
     def test_start_column_for_date(self) -> None:
         row = {
             "Name": "Example SIG",

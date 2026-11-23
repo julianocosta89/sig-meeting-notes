@@ -1,0 +1,73 @@
+## Meeting Notes
+
+### Attendees
+- Robb
+- Kayla
+- Hannah
+- Bart
+- Matt
+- Xuan
+
+### Agenda
+- [Spec SIG](https://docs.google.com/document/d/1pdvPeKjA8v8w_fGKAN68JjWBmVJtPCpqdi9IZrd6eEo/preview) Update (max 15 min)
+  - [https://github.com/open-telemetry/semantic-conventions/issues/2133#issuecomment-6951032810](https://github.com/open-telemetry/semantic-conventions/issues/2133#issuecomment-6951032810)
+  - Intended to solve the problem of long-running traces
+  - Will likely move to an OTEP, probably can’t be accomplished with just semantic conventions
+- Core ([Issues](https://github.com/open-telemetry/opentelemetry-ruby/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby/pulls))
+  - [James] Naming of exporters are inconsistent. Proposing to standardise implementations into “exporter-{{protocol}}-{{variant?}}-{{signal?}}” with variant being grpc, http, file. Variant & signal only apply when the exporter supports multiple. Metapackages can bundle everything ie exporter-otlp contains http, grpc & eventually file exporters, exporter-otlp-trace contains exporter-otlp-http-trace etc.
+    - Promotes uniformity
+    - gRPC + protobuf have problems, giving users a way to avoid pulling in those dependencies is necessary (a customer’s version of pb can conflict with ours, and then you can’t use otel)
+    - gRPC is a pretty big dependency too
+    - Don’t want to have one exporter OTLP that bundles JSON, gRPC and HTTP/Protobuf all together. Avoids/reduces dependency conflicts
+    - Current names are not consistent with these new ones, so there’s a complicated migration plan to figure out. Oh no, dual support!
+    - Probably
+    - Next step: Figure out the end goal of what we’d want each package to be named and then decide on the format
+    - Consider moving toward putting all signals in the same package so we don’t need to keep supporting those extra variants (likely separated because of stability)
+    - Kayla TODO: figure out where to put these notes
+  - [mwear] Looking for another approval on: [https://github.com/open-telemetry/opentelemetry-ruby/pull/2236](https://github.com/open-telemetry/opentelemetry-ruby/pull/2236)
+    - Is this something we should wait on until we decide on the cascade of future exporter names?
+    - Types gem something everything depends on, and it has the dependency for google protobuf?
+    - Keep in mind that we’re close to the JSON exporter too. What does this look like when JSON lands? (don’t want it to end up in JSON)
+      - Kayla TODO: Add link to JSON PR; see if we need the protobuf types to use that exporter
+      - Is it a JSON exporter dev dependency?
+      - Are there other types, or is this just protobufs?
+  - [bdewater] looking into Ruby GC metrics, running into [https://github.com/open-telemetry/opentelemetry-ruby/issues/2293](https://github.com/open-telemetry/opentelemetry-ruby/issues/2293) - PR attached.
+    - This PR needs to be reviewed/merged first; [https://github.com/open-telemetry/opentelemetry-ruby/pull/2492](https://github.com/open-telemetry/opentelemetry-ruby/pull/2492)
+    - Somewhat related, eventually we may need to work on the self-observability metrics: [https://opentelemetry.io/docs/specs/semconv/otel/sdk-metrics/](https://opentelemetry.io/docs/specs/semconv/otel/sdk-metrics/)
+      - Would replace the metrics reporter
+  - [hannah + robb] Schema URL PR almost ready for review… will ping when ready:
+    - [https://github.com/open-telemetry/opentelemetry-ruby/pull/2402](https://github.com/open-telemetry/opentelemetry-ruby/pull/2402)
+- Contrib ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pulls))
+  - Review requested (from #otel-ruby):
+    - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2606](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2606)
+    - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2537](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2537)
+    - [https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2562](https://github.com/open-telemetry/opentelemetry-ruby-contrib/pull/2562)
+  - [robb]  [https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/2631](https://github.com/open-telemetry/opentelemetry-ruby-contrib/issues/2631)
+    - Original problem: How long did the job spend waiting in the queue?
+    - Intending to reduce span event volume
+    - Will look at metrics in a separate phase (customer request wasn’t related to metrics)
+    - Does this relate to other background jobs? (do they do the same thing?) - Robb can investigate
+      - Bart is 99.9% sure that’s not the case
+      - If this works, Robb would propose as a pattern
+    - Ruby’s not the only ecosystem with background job frameworks – what do other langs do
+    - What does Sidekiq call these numbers in their own observability?
+    - If these aren’t span events, what should they be?
+      - They are span events, but people have asked not to send them
+      - Could be a question of – could you drop down to the collector to deal with that? (for simple ruby app customer, difficult to negotiate)
+      - Current workaround - have a collector, run it, make span attributes, etc.
+      - May need to draw a line somewhere, otherwise end up with knobs for things you could do with a collector
+      - May be small enough apps that don’t want to have a collector
+      - If span events are deprecated, how does that complicate things? They become logs, but they’re correlated with your trace/span ID to be surfaced
+        - Would we log the job creation/enqueue time?
+        - In OpenTracing, these were called logs. When we merged to form OTel, logs and span events are the same thing, just the name was changed.
+      - If we’re emitting these as a separate signal, might be hard-to-impossible to use a collector to do the latency math
+      - Real proposal: put queue latency on the span
+        - Doesn’t need to be derived from events, feels more reasonable
+        - Optionally, put queue latency on the span
+        - Eventually have a meter that creates a histogram with queue latency
+        - Could do that without any knobs/configs
+        - Might even want to apply this to Rack as well (Robb can also investigate)
+      - Next time: Think about how to deprecate span events in our instrumentation overall
+- Auto Instrumentation ([Issues](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/issues) / [PRs](https://github.com/open-telemetry/opentelemetry-ruby-instrumentation/pulls))
+- Burning questions?
+- ✨ Happy Reports ✨

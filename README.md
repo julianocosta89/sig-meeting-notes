@@ -25,9 +25,9 @@ Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches t
 
 ## How it works
 
-1. Fetches the public [OTel recordings Google Sheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s) as CSV
+1. Discovers recordings from the [LFX meetings calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry?view=week) (public API) and the retiring [OTel recordings Google Sheet](https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s), skipping meetings LFX marks as restricted
 2. Navigates to each Zoom recording page using a headless Chromium browser
-3. Scrolls the transcript panel to defeat Zoom's virtual-list rendering
+3. Scrolls the transcript panel to defeat Zoom's virtual-list rendering (both of Zoom's player layouts are supported)
 4. Saves transcripts to `docs/content/{SIG-Slug}/{YYYY-MM-DD}/transcript.md`
 5. Optionally fetches meeting notes (attendees + agenda) from Google Docs into `meeting-notes.md`
 6. Optionally generates AI summaries via Claude into `summary.md`

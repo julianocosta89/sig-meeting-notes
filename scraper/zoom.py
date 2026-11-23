@@ -12,17 +12,25 @@ from scraper.transcript import parse_transcript_html
 
 logger = logging.getLogger(__name__)
 
-# CSS selector for the transcript panel rendered by Zoom's Vue SPA
-TRANSCRIPT_LIST_SELECTOR = "[data-testid='transcript-list']"
+# CSS selector for the transcript panel rendered by Zoom's Vue SPA.  Zoom
+# serves two variants of the recording player: the newer one tags the panel
+# with a data-testid, the ``oldStyle`` one renders a plain <ul>.
+TRANSCRIPT_LIST_SELECTOR = "[data-testid='transcript-list'], ul.transcript-list"
 
-# One element per utterance; each carries a stable ``data-row`` index
+# One element per utterance; each carries a stable index, either ``data-row``
+# (newer player) or an ``id="transcript-list-item-N"`` suffix (oldStyle player)
 TRANSCRIPT_ITEM_SELECTOR = ".transcript-list-item"
 
-# Scroll container for Zoom's virtual-list windowing
-SCROLL_CONTAINER_SELECTOR = ".transcript-list .zoom-scrollbar__wrap"
+# Scroll container for Zoom's virtual-list windowing (newer, then oldStyle player)
+SCROLL_CONTAINER_SELECTOR = (
+    ".transcript-list .zoom-scrollbar__wrap, .transcript-container .zm-scrollbar__wrap"
+)
 
 # Returns [row, outerHTML] for every transcript item currently in the DOM
-_COLLECT_ITEMS_JS = "els => els.map(el => [el.dataset.row ?? '', el.outerHTML])"
+_COLLECT_ITEMS_JS = (
+    "els => els.map(el => ["
+    "el.dataset.row ?? el.id.replace('transcript-list-item-', ''), el.outerHTML])"
+)
 
 # How long to wait for the page's load event after domcontentloaded (milliseconds)
 PAGE_LOAD_TIMEOUT_MS = 20_000
