@@ -20,10 +20,10 @@ dev = [
 ]
 summarize = ["anthropic==2.7.0", "jinja2==3.1.6"]
 telemetry = [
-    "opentelemetry-distro==0.62b1",
-    "opentelemetry-exporter-otlp-proto-http==1.41.1",
-    "opentelemetry-instrumentation-logging==0.62b1",
-    "opentelemetry-instrumentation-requests==0.62b1",
+    "opentelemetry-distro==0.66b2",
+    "opentelemetry-exporter-otlp-proto-http==1.45.2",
+    "opentelemetry-instrumentation-logging==0.66b2",
+    "opentelemetry-instrumentation-requests==0.66b2",
 ]
 
 [tool.ruff]

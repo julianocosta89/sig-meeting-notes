@@ -1,0 +1,75 @@
+name: Upgrade Lockstep Dependencies
+
+# Dependabot can't bump packages that pin each other to exact versions (the
+# OpenTelemetry contrib family), so it silently skips them. This workflow
+# upgrades the whole family together and opens a PR.
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"  # Mondays 07:00 UTC, alongside Dependabot's weekly run
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write  # dispatch test.yml on the PR branch
+
+concurrency:
+  group: "upgrade-lockstep"
+  cancel-in-progress: false
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+        with:
+          version: "latest"
+          enable-cache: true
+
+      - name: Upgrade OpenTelemetry packages together
+        id: upgrade
+        run: |
+          uv run --no-project python scripts/upgrade_lockstep.py --prefix opentelemetry- | tee changes.txt
+          if git diff --quiet -- pyproject.toml uv.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            # Branch per target version, so a rerun doesn't open a duplicate PR
+            DISTRO=$(grep -oE '"opentelemetry-distro==[^"]+"' pyproject.toml | cut -d= -f3 | tr -d '"')
+            echo "branch=deps/opentelemetry-${DISTRO}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open PR
+        if: steps.upgrade.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.upgrade.outputs.branch }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: |
+          if git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
+            echo "Branch $BRANCH already exists, skipping."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add pyproject.toml uv.lock
+          git commit -m "chore(deps): bump OpenTelemetry packages together" -m "$(cat changes.txt)"
+          git push -u origin "$BRANCH"
+          {
+            echo "Bumps the OpenTelemetry packages together. Dependabot can't, because they pin each other to exact versions."
+            echo
+            echo '```'
+            cat changes.txt
+            echo '```'
+            echo
+            echo "Opened by \`upgrade-lockstep.yml\`. Tests run through a dispatched \`test.yml\` run on this branch."
+          } > body.md
+          gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "chore(deps): bump OpenTelemetry packages together" --body-file body.md
+          # PRs opened with GITHUB_TOKEN don't trigger pull_request workflows
+          gh workflow run test.yml --ref "$BRANCH"
