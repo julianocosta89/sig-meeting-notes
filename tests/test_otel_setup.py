@@ -96,7 +96,6 @@ def test_configure_tracer_sdk_import_block_covered(monkeypatch):
         "opentelemetry.instrumentation": None,
         "opentelemetry.instrumentation.logging": None,
         "opentelemetry.instrumentation.requests": None,
-        "opentelemetry.instrumentation.openai_v2": None,
     }
 
     with unittest.mock.patch.dict("sys.modules", sdk_modules):

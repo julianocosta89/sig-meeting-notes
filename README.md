@@ -20,7 +20,7 @@ Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches t
 | [`.github/workflows/`](.github/workflows/) | CI/CD — automated fetching, summarisation, testing, and deployment |
 | `main.py` | CLI entry point — orchestrates the full pipeline |
 | `build_site.py` | Builds `docs/manifest.json` from the content tree |
-| `generate_summaries.py` | Generates AI summaries via OpenAI for meetings without one |
+| `generate_summaries.py` | Generates AI summaries via Claude for meetings without one |
 | `Makefile` | Developer shortcuts (`make install`, `make fetch`, `make test`, etc.) |
 
 ## How it works
@@ -30,7 +30,7 @@ Downloads OpenTelemetry SIG meeting transcripts from Zoom recordings, enriches t
 3. Scrolls the transcript panel to defeat Zoom's virtual-list rendering
 4. Saves transcripts to `docs/content/{SIG-Slug}/{YYYY-MM-DD}/transcript.md`
 5. Optionally fetches meeting notes (attendees + agenda) from Google Docs into `meeting-notes.md`
-6. Optionally generates AI summaries via OpenAI into `summary.md`
+6. Optionally generates AI summaries via Claude into `summary.md`
 7. Builds `docs/manifest.json` from the content tree for the web UI
 
 ## Setup
@@ -161,7 +161,7 @@ uv run python build_site.py
 
 ## AI Summaries
 
-Summaries are generated with OpenAI `gpt-4o-mini` and require an `OPENAI_API_KEY` environment variable.
+Summaries are generated with Claude Haiku (`claude-haiku-5-5`). In GitHub Actions the workflow authenticates with workload identity federation (the job's GitHub OIDC token is exchanged for a short-lived Anthropic token, so no API key is stored). Locally, set `ANTHROPIC_API_KEY`.
 
 ```bash
 uv run python generate_summaries.py --since 2026-02-01
@@ -169,9 +169,7 @@ uv run python generate_summaries.py --since 2026-02-01
 
 ## Daily Digest
 
-A daily email digest is sent after the summarize workflow runs. It uses OpenAI `gpt-5-mini` to produce a cross-SIG narrative and delivers it via the [Resend](https://resend.com) API. Requires `OPENAI_API_KEY`, `RESEND_API_KEY`, and `DIGEST_TO` secrets.
-
-The model can be overridden with the `OPENAI_DIGEST_MODEL` environment variable.
+A daily email digest is sent after the summarize workflow runs, collecting the new summaries and delivering them via the [Resend](https://resend.com) API. Requires `RESEND_API_KEY` and `DIGEST_TO` secrets.
 
 ## CI / Automation
 
@@ -179,7 +177,7 @@ The model can be overridden with the `OPENAI_DIGEST_MODEL` environment variable.
 |----------|----------|-------------|
 | `refresh.yml` | Weekdays 06:00 UTC | Fetches new transcripts and rebuilds the manifest |
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
-| `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `OPENAI_API_KEY` secret) |
+| `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (Claude via workload identity federation) |
 | `digest.yml` | After `summarize.yml` | Sends daily digest email (requires `RESEND_API_KEY` and `DIGEST_TO` secrets) |
 | `test.yml` | On every PR and push | Runs lint (`ruff`) and the full test suite |
 

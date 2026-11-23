@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write  # GitHub OIDC token for Anthropic workload identity federation
 
 concurrency:
   group: "summarize"
@@ -38,11 +39,15 @@ jobs:
 
       - name: Generate summaries
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Workload identity federation: identifiers only, no secret. The Anthropic
+          # SDK exchanges this job's GitHub OIDC token for a short-lived access token.
+          ANTHROPIC_FEDERATION_RULE_ID: fdrl_01R1uWHTvdcy81yaAZJyww2W
+          ANTHROPIC_ORGANIZATION_ID: ddb7a64a-6929-42ce-8d11-e4f5fc89ce6d
+          ANTHROPIC_SERVICE_ACCOUNT_ID: svac_01PXghRe2jyrmNtwoWVcccr8
+          ANTHROPIC_WORKSPACE_ID: wrkspc_01LeWAVYmjD9mMyZ5Ac1g4Hv
+          ANTHROPIC_OPEN_TELEMETRY_TRACES_CONTENT_MODE: content
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
           OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Bearer%20${{ secrets.DASH0_AUTH_TOKEN }}"
-          OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT: span_only
-          OTEL_SEMCONV_STABILITY_OPT_IN: gen_ai_latest_experimental
           OTEL_SERVICE_NAME: otel-minutes-summarize
         run: uv run python generate_summaries.py
 

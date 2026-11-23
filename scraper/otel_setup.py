@@ -123,15 +123,6 @@ def configure_tracer(service_name: str) -> _Tracer:
     except Exception:  # noqa: BLE001, S110  # pragma: no cover
         pass
 
-    try:  # pragma: no cover
-        from opentelemetry.instrumentation.openai_v2 import OpenAIInstrumentor  # noqa: PLC0415
-
-        OpenAIInstrumentor().instrument()
-    except Exception as exc:  # noqa: BLE001  # pragma: no cover
-        import logging  # noqa: PLC0415
-
-        logging.getLogger(__name__).warning("OpenAI instrumentation failed: %s", exc)
-
     def _shutdown() -> None:  # pragma: no cover
         # TracerProvider and LoggerProvider each register their own atexit handlers
         # when constructed (before this closure is registered). Because atexit runs
