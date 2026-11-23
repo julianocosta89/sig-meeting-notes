@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Lets upgrade-lockstep.yml run CI on the PRs it opens: PRs opened with
+  # GITHUB_TOKEN don't trigger pull_request workflows, but dispatch does.
+  workflow_dispatch:
 
 permissions:
   contents: read
