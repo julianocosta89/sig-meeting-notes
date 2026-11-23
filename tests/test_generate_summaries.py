@@ -1,6 +1,6 @@
 """Tests for generate_summaries.py — AI-powered transcript summarisation.
 
-These tests mock the Anthropic client so no credentials or network access are needed.
+These tests mock the OpenAI client so no API key or network access is needed.
 """
 
 from __future__ import annotations
@@ -14,11 +14,8 @@ import pytest
 
 from generate_summaries import (
     MAX_TRANSCRIPT_CHARS,
-    MODEL,
-    fetch_github_oidc_token,
     generate_summary,
     main,
-    make_client,
     process_transcripts,
     read_transcript_body,
 )
@@ -89,19 +86,19 @@ def _write_transcript(base: Path, slug: str, filename: str, content: str) -> Non
     (d / "transcript.md").write_text(content, encoding="utf-8")
 
 
-def _mock_claude_client(
-    response_text: str = FAKE_SUMMARY_MD, stop_reason: str = "end_turn"
-) -> MagicMock:
-    """Return a MagicMock that mimics anthropic.Anthropic().messages.create()."""
-    thinking_block = MagicMock(type="thinking", thinking="")
-    text_block = MagicMock(type="text", text=response_text)
+def _mock_openai_client(response_text: str = FAKE_SUMMARY_MD) -> MagicMock:
+    """Return a MagicMock that mimics openai.OpenAI().chat.completions.create()."""
+    mock_message = MagicMock()
+    mock_message.content = response_text
+
+    mock_choice = MagicMock()
+    mock_choice.message = mock_message
 
     mock_response = MagicMock()
-    mock_response.content = [thinking_block, text_block] if response_text else [thinking_block]
-    mock_response.stop_reason = stop_reason
+    mock_response.choices = [mock_choice]
 
     mock_client = MagicMock()
-    mock_client.messages.create.return_value = mock_response
+    mock_client.chat.completions.create.return_value = mock_response
     return mock_client
 
 
@@ -178,16 +175,16 @@ class TestTranscriptParsing:
 
 
 # ---------------------------------------------------------------------------
-# Tests: summary generation with mocked Claude
+# Tests: summary generation with mocked OpenAI
 # ---------------------------------------------------------------------------
 
 
 class TestGenerateSummary:
-    """Tests for the core summary generation logic with mocked Claude."""
+    """Tests for the core summary generation logic with mocked OpenAI."""
 
-    def test_calls_claude_with_transcript(self) -> None:
-        """The Claude API should be called with transcript content."""
-        mock_client = _mock_claude_client()
+    def test_calls_openai_with_transcript(self) -> None:
+        """The OpenAI API should be called with transcript content."""
+        mock_client = _mock_openai_client()
         generate_summary(
             mock_client,
             "Go SIG",
@@ -195,11 +192,11 @@ class TestGenerateSummary:
             "33",
             "Tyler 02:14 Hey!",
         )
-        mock_client.messages.create.assert_called_once()
+        mock_client.chat.completions.create.assert_called_once()
 
     def test_returns_summary_text(self) -> None:
-        """The function should return the summary text, ignoring thinking blocks."""
-        mock_client = _mock_claude_client()
+        """The function should return the summary from OpenAI."""
+        mock_client = _mock_openai_client()
         result = generate_summary(
             mock_client,
             "Go SIG",
@@ -210,9 +207,9 @@ class TestGenerateSummary:
         assert "Go SIG" in result
         assert "Key Topics" in result
 
-    def test_uses_haiku_model(self) -> None:
-        """The call should use Claude Haiku for cost efficiency."""
-        mock_client = _mock_claude_client()
+    def test_uses_gpt4o_mini_model(self) -> None:
+        """The OpenAI call should use gpt-4o-mini for cost efficiency."""
+        mock_client = _mock_openai_client()
         generate_summary(
             mock_client,
             "Go SIG",
@@ -220,12 +217,12 @@ class TestGenerateSummary:
             "33",
             "Tyler 02:14 Hey!",
         )
-        call_args = mock_client.messages.create.call_args
-        assert call_args.kwargs["model"] == MODEL == "claude-haiku-5-5"
+        call_args = mock_client.chat.completions.create.call_args
+        assert call_args.kwargs["model"] == "gpt-4o-mini"
 
     def test_prompt_includes_transcript_body(self) -> None:
-        """The prompt sent to Claude should include the transcript body."""
-        mock_client = _mock_claude_client()
+        """The prompt sent to OpenAI should include the transcript body."""
+        mock_client = _mock_openai_client()
         generate_summary(
             mock_client,
             "Go SIG",
@@ -233,7 +230,7 @@ class TestGenerateSummary:
             "33",
             "Tyler 02:14 Hey, Damien!",
         )
-        call_args = mock_client.messages.create.call_args
+        call_args = mock_client.chat.completions.create.call_args
         messages = call_args.kwargs["messages"]
         prompt_text = " ".join(m["content"] for m in messages)
         assert "Tyler" in prompt_text
@@ -247,7 +244,7 @@ class TestGenerateSummary:
         context so future summaries don't ship the artifacts. The rule must be
         scoped — legitimate hotel/lodging mentions should be left alone.
         """
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         generate_summary(
             mock_client,
             "Collector SIG",
@@ -255,7 +252,7 @@ class TestGenerateSummary:
             "60",
             "Speaker 00:01 We discussed Hotel Arrow today.",
         )
-        call_args = mock_client.messages.create.call_args
+        call_args = mock_client.chat.completions.create.call_args
         prompt_text = " ".join(m["content"] for m in call_args.kwargs["messages"])
         # Mentions the artifact tokens and the canonical replacements
         assert "Hotel" in prompt_text
@@ -280,14 +277,14 @@ class TestProcessTranscripts:
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
         summary_file = transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md"
         assert summary_file.exists()
         assert "Go SIG" in summary_file.read_text(encoding="utf-8")
-        mock_client.messages.create.assert_called_once()
+        mock_client.chat.completions.create.assert_called_once()
 
     def test_skips_existing_summaries(self, tmp_path: Path) -> None:
         """If a summary.md already exists, the transcript should be skipped."""
@@ -297,11 +294,11 @@ class TestProcessTranscripts:
         # Pre-create the summary
         (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").write_text("existing summary")
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
         assert (
             transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md"
         ).read_text() == "existing summary"
@@ -317,7 +314,7 @@ class TestProcessTranscripts:
             SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-02-12"),
         )
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
@@ -325,7 +322,7 @@ class TestProcessTranscripts:
 
         assert generated == 2
         assert skipped == 0
-        assert mock_client.messages.create.call_count == 2
+        assert mock_client.chat.completions.create.call_count == 2
         assert (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").exists()
         assert (transcripts_dir / "Go-SIG" / "2026-02-12" / "summary.md").exists()
 
@@ -334,11 +331,11 @@ class TestProcessTranscripts:
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Bad-SIG", "bad.md", "garbage content\n")
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_returns_counts(self, tmp_path: Path) -> None:
         """process_transcripts should return (generated, skipped) counts."""
@@ -354,7 +351,7 @@ class TestProcessTranscripts:
         # Pre-create one summary
         (transcripts_dir / "Go-SIG" / "2026-02-05" / "summary.md").write_text("existing")
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
@@ -372,7 +369,7 @@ class TestProcessTranscripts:
             "SIG: Go SIG\nMeeting Notes: https://docs.google.com/...\nRepository: \n"
         )
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
@@ -380,30 +377,18 @@ class TestProcessTranscripts:
 
         # Only the real transcript should be processed
         assert generated == 1
-        assert mock_client.messages.create.call_count == 1
-
-    def test_refusal_raises(self) -> None:
-        """A refusal must not be written out as a summary."""
-        mock_client = _mock_claude_client(stop_reason="refusal")
-        with pytest.raises(RuntimeError, match="declined"):
-            generate_summary(mock_client, "Go SIG", "2026-02-05", "33", "Tyler 02:14 Hey!")
-
-    def test_empty_response_raises(self) -> None:
-        """A response with no text (e.g. max_tokens hit while thinking) must raise."""
-        mock_client = _mock_claude_client(response_text="", stop_reason="max_tokens")
-        with pytest.raises(RuntimeError, match="Empty summary"):
-            generate_summary(mock_client, "Go SIG", "2026-02-05", "33", "Tyler 02:14 Hey!")
+        assert mock_client.chat.completions.create.call_count == 1
 
     def test_transcript_body_excludes_zoom_heading(self, tmp_path: Path) -> None:
         """The ## Zoom Recording Transcript heading must not appear in the AI prompt."""
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             process_transcripts(mock_client, transcripts_dir, since=date(2026, 1, 1))
 
-        call_args = mock_client.messages.create.call_args
+        call_args = mock_client.chat.completions.create.call_args
         messages = call_args.kwargs["messages"]
         prompt_text = " ".join(m["content"] for m in messages)
         assert "## Zoom Recording Transcript" not in prompt_text
@@ -444,32 +429,32 @@ class TestProcessTranscriptsEdgeCases:
         bad_dir.mkdir(parents=True)
         (bad_dir / "transcript.md").write_text(SAMPLE_TRANSCRIPT, encoding="utf-8")
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_skips_transcripts_after_until(self, tmp_path: Path) -> None:
         """Transcripts with dates after `until` should be skipped."""
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1), until=date(2026, 1, 31)
             )
         assert generated == 0
         assert skipped == 1
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_default_dates_run_without_error(self, tmp_path: Path) -> None:
         """Calling with since=None, until=None should apply the 2-week default."""
         transcripts_dir = tmp_path / "docs" / "content"
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(mock_client, transcripts_dir)
         assert generated == 0
@@ -487,14 +472,14 @@ class TestProcessTranscriptsEdgeCases:
         )
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", one_line)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
         assert skipped == 1
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_skips_trivial_transcript_two_lines(self, tmp_path: Path) -> None:
         """A transcript with MIN_TRANSCRIPT_LINES - 1 lines should be skipped."""
@@ -510,14 +495,14 @@ class TestProcessTranscriptsEdgeCases:
         )
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", two_lines)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
         assert skipped == 1
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_generates_summary_at_min_lines(self, tmp_path: Path) -> None:
         """A transcript with exactly MIN_TRANSCRIPT_LINES lines should be summarised."""
@@ -534,14 +519,14 @@ class TestProcessTranscriptsEdgeCases:
         )
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", three_lines)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 1
         assert skipped == 0
-        mock_client.messages.create.assert_called_once()
+        mock_client.chat.completions.create.assert_called_once()
 
     def test_skips_es_localization_trivial_body(self, tmp_path: Path) -> None:
         """An es-Localization-style single-line transcript should be skipped."""
@@ -556,14 +541,14 @@ class TestProcessTranscriptsEdgeCases:
         )
         _write_transcript(transcripts_dir, "es-Localization", "2026-02-05.md", es_body)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
         assert skipped == 1
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_skips_empty_transcript_body(self, tmp_path: Path) -> None:
         """Transcripts with no body after the separator should be skipped with a warning."""
@@ -578,13 +563,13 @@ class TestProcessTranscriptsEdgeCases:
         )
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", empty_body)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_skips_transcripts_before_since(self, tmp_path: Path) -> None:
         """Transcripts with dates before `since` should be skipped."""
@@ -592,14 +577,14 @@ class TestProcessTranscriptsEdgeCases:
         early = SAMPLE_TRANSCRIPT.replace("2026-02-05", "2026-01-15")
         _write_transcript(transcripts_dir, "Go-SIG", "2026-01-15.md", early)
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 2, 1)
             )
         assert generated == 0
         assert skipped == 1
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_warns_on_unparseable_header_with_valid_date_dir(self, tmp_path: Path) -> None:
         """A valid-date dir with an unparseable header should be warned and skipped."""
@@ -608,21 +593,21 @@ class TestProcessTranscriptsEdgeCases:
         bad_dir.mkdir(parents=True)
         (bad_dir / "transcript.md").write_text("garbage not a valid header\n", encoding="utf-8")
 
-        mock_client = _mock_claude_client()
+        mock_client = _mock_openai_client()
         with patch("generate_summaries.time.sleep"):
             generated, skipped = process_transcripts(
                 mock_client, transcripts_dir, since=date(2026, 1, 1)
             )
         assert generated == 0
-        mock_client.messages.create.assert_not_called()
+        mock_client.chat.completions.create.assert_not_called()
 
     def test_generate_summary_exception_is_reraised(self, tmp_path: Path) -> None:
         """If generate_summary() raises, the exception is recorded on the span and re-raised."""
         transcripts_dir = tmp_path / "docs" / "content"
         _write_transcript(transcripts_dir, "Go-SIG", "2026-02-05.md", SAMPLE_TRANSCRIPT)
 
-        mock_client = _mock_claude_client()
-        mock_client.messages.create.side_effect = ValueError("API error")
+        mock_client = _mock_openai_client()
+        mock_client.chat.completions.create.side_effect = ValueError("API error")
 
         with (
             patch("generate_summaries.time.sleep"),
@@ -637,11 +622,9 @@ class TestProcessTranscriptsEdgeCases:
 
 
 class TestMain:
-    def test_missing_wif_settings_exits(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        """In GitHub Actions without the federation env vars, exit with code 1."""
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example")
-        for env in _WIF_ENV.values():
-            monkeypatch.delenv(env, raising=False)
+    def test_missing_api_key_exits(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Missing OPENAI_API_KEY should print an error and exit with code 1."""
+        monkeypatch.delenv("OPENAI_API_KEY", raising=False)
         with patch("sys.argv", ["generate_summaries"]):
             with pytest.raises(SystemExit) as exc_info:
                 main()
@@ -653,81 +636,18 @@ class TestMain:
         """main() should invoke process_transcripts with the given date range."""
         import sys as _sys
 
-        mock_anthropic_mod = MagicMock()
-        mock_anthropic_mod.Anthropic.return_value = _mock_claude_client()
-        monkeypatch.delenv("ACTIONS_ID_TOKEN_REQUEST_URL", raising=False)
+        monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+        mock_openai_mod = MagicMock()
+        mock_openai_mod.OpenAI.return_value = _mock_openai_client()
 
         with (
             patch(
                 "sys.argv", ["generate_summaries", "--since", "2026-01-01", "--until", "2026-01-31"]
             ),
-            patch.dict(_sys.modules, {"anthropic": mock_anthropic_mod}),
+            patch.dict(_sys.modules, {"openai": mock_openai_mod}),
             patch("generate_summaries.DOCS_TRANSCRIPTS_DIR", tmp_path),
             patch("generate_summaries.process_transcripts", return_value=(0, 0)) as mock_proc,
         ):
             main()
 
         mock_proc.assert_called_once()
-
-
-# ---------------------------------------------------------------------------
-# Tests: client construction (workload identity federation)
-# ---------------------------------------------------------------------------
-
-_WIF_ENV = {
-    "federation_rule_id": "ANTHROPIC_FEDERATION_RULE_ID",
-    "organization_id": "ANTHROPIC_ORGANIZATION_ID",
-    "service_account_id": "ANTHROPIC_SERVICE_ACCOUNT_ID",
-    "workspace_id": "ANTHROPIC_WORKSPACE_ID",
-}
-
-
-class TestMakeClient:
-    def test_outside_actions_uses_default_credentials(
-        self, monkeypatch: pytest.MonkeyPatch
-    ) -> None:
-        """Without GitHub OIDC, fall back to the SDK's default credential chain."""
-        import sys as _sys
-
-        monkeypatch.delenv("ACTIONS_ID_TOKEN_REQUEST_URL", raising=False)
-        mock_mod = MagicMock()
-        with patch.dict(_sys.modules, {"anthropic": mock_mod}):
-            client = make_client()
-        mock_mod.Anthropic.assert_called_once_with()
-        mock_mod.WorkloadIdentityCredentials.assert_not_called()
-        assert client is mock_mod.Anthropic.return_value
-
-    def test_in_actions_uses_workload_identity(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        """With GitHub OIDC, build WorkloadIdentityCredentials from the env vars."""
-        import sys as _sys
-
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example")
-        for arg, env in _WIF_ENV.items():
-            monkeypatch.setenv(env, f"{arg}-value")
-        mock_mod = MagicMock()
-        with patch.dict(_sys.modules, {"anthropic": mock_mod}):
-            make_client()
-        mock_mod.WorkloadIdentityCredentials.assert_called_once_with(
-            identity_token_provider=fetch_github_oidc_token,
-            **{arg: f"{arg}-value" for arg in _WIF_ENV},
-        )
-        mock_mod.Anthropic.assert_called_once_with(
-            credentials=mock_mod.WorkloadIdentityCredentials.return_value
-        )
-
-
-class TestFetchGithubOidcToken:
-    def test_requests_token_for_anthropic_audience(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example/req")
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN", "req-token")
-        mock_resp = MagicMock()
-        mock_resp.json.return_value = {"value": "jwt-value"}
-        with patch("generate_summaries.requests.get", return_value=mock_resp) as mock_get:
-            assert fetch_github_oidc_token() == "jwt-value"
-        mock_get.assert_called_once_with(
-            "https://token.example/req",
-            params={"audience": "https://api.anthropic.com"},
-            headers={"Authorization": "Bearer req-token"},
-            timeout=10,
-        )
-        mock_resp.raise_for_status.assert_called_once()

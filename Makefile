@@ -12,7 +12,7 @@ help:
 	@echo "  make fetch SINCE=YYYY-MM-DD SIG=<slug>              Combine date and SIG filters"
 	@echo "  make test                                           Run tests"
 	@echo "  make build                                          Build docs/ site from transcripts"
-	@echo "  make summarize                                      Generate AI summaries (requires ANTHROPIC_API_KEY)"
+	@echo "  make summarize                                      Generate AI summaries (requires OPENAI_API_KEY)"
 	@echo "  make run                                            Serve docs/ site locally on http://localhost:8000"
 	@echo "  make lint                                           Run ruff linting and format check"
 	@echo "  make hooks                                          Install pre-commit hooks"
