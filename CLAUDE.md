@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This tool downloads OpenTelemetry SIG meeting transcripts from Zoom recording pages. It reads a public Google Spreadsheet listing all OTel SIG recordings, then uses Playwright to scrape each Zoom recording page and extract the transcript, saving it as a plain-text file organized by SIG name and date. It also fetches meeting notes (attendees + agenda) from Google Docs and generates AI summaries via OpenAI.
+This tool downloads OpenTelemetry SIG meeting transcripts from Zoom recording pages. It reads a public Google Spreadsheet listing all OTel SIG recordings, then uses Playwright to scrape each Zoom recording page and extract the transcript, saving it as a plain-text file organized by SIG name and date. It also fetches meeting notes (attendees + agenda) from Google Docs and generates AI summaries via Claude (Haiku).
 
 ## Commands
 

@@ -2,7 +2,7 @@
 """
 Generate AI summaries for OTel SIG meeting transcripts.
 
-Walks docs/content/, calls OpenAI gpt-4o-mini for each transcript
+Walks docs/content/, calls Claude Haiku for each transcript
 that doesn't already have a summary, and writes the result to
 docs/content/{slug}/{date}/summary.md.
 """
@@ -27,7 +27,7 @@ from scraper.transcript_io import (
 )
 
 if TYPE_CHECKING:
-    from openai import OpenAI
+    from anthropic import Anthropic
 
 ROOT = Path(__file__).parent
 DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
@@ -35,12 +35,17 @@ DOCS_TRANSCRIPTS_DIR = ROOT / "docs" / "content"
 MAX_TRANSCRIPT_CHARS = 80_000
 _API_RATE_LIMIT_S = 1
 
+MODEL = "claude-haiku-5-5"
+# Thinking is on by default for this model and counts toward max_tokens, so leave
+# room above the ~1,500 tokens a summary needs.
+MAX_TOKENS = 4096
+
 
 def read_transcript_body(path: Path) -> str:
     """Read a transcript and return only the Zoom Recording Transcript section.
 
     Delegates to scraper.transcript_io.read_transcript_body, then truncates
-    to MAX_TRANSCRIPT_CHARS to stay within OpenAI token limits.
+    to MAX_TRANSCRIPT_CHARS to bound per-summary token usage.
     """
     body = _read_transcript_body(path)
     if len(body) > MAX_TRANSCRIPT_CHARS:
@@ -49,13 +54,13 @@ def read_transcript_body(path: Path) -> str:
 
 
 def generate_summary(
-    client: OpenAI,
+    client: Anthropic,
     sig_name: str,
     date: str,
     duration: str,
     transcript_body: str,
 ) -> str:
-    """Call OpenAI to generate a summary of the transcript."""
+    """Call Claude to generate a summary of the transcript."""
     prompt = (
         f"Summarize this OpenTelemetry {sig_name} meeting transcript from {date} "
         f"({duration} minutes). Format your response EXACTLY as Markdown with these sections:\n\n"
@@ -73,20 +78,35 @@ def generate_summary(
         "as-is."
     )
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You summarize meeting transcripts concisely."},
-            {"role": "user", "content": f"{prompt}\n\n---\n\n{transcript_body}"},
-        ],
-        temperature=0.3,
-        max_tokens=1500,
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=MAX_TOKENS,
+        output_config={"effort": "low"},
+        system="You summarize meeting transcripts concisely.",
+        messages=[{"role": "user", "content": f"{prompt}\n\n---\n\n{transcript_body}"}],
     )
-    return response.choices[0].message.content
+    if response.stop_reason == "refusal":
+        raise RuntimeError(f"Claude declined to summarize {sig_name} {date}")
+    text = "".join(block.text for block in response.content if block.type == "text").strip()
+    if not text:
+        raise RuntimeError(f"Empty summary for {sig_name} {date} (stop: {response.stop_reason})")
+    return text
+
+
+def make_client() -> Anthropic:
+    """Build the Anthropic client from ``ANTHROPIC_API_KEY``."""
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("ERROR: ANTHROPIC_API_KEY environment variable is not set")
+        raise SystemExit(1)
+
+    from anthropic import Anthropic  # noqa: PLC0415
+
+    return Anthropic(api_key=api_key)
 
 
 def process_transcripts(
-    client: OpenAI,
+    client: Anthropic,
     transcripts_dir: Path = DOCS_TRANSCRIPTS_DIR,
     since: date | None = None,
     until: date | None = None,
@@ -181,18 +201,10 @@ def main() -> None:
     since = date.fromisoformat(args.since) if args.since else None
     until = date.fromisoformat(args.until) if args.until else None
 
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        print("ERROR: OPENAI_API_KEY environment variable is not set")
-        raise SystemExit(1)
-
+    # The SDK emits OTel spans via the global tracer provider, so the client is
+    # built after configure_tracer registers it.
     tracer = configure_tracer("otel-recordings-summarize")
-
-    from openai import (
-        OpenAI,  # noqa: PLC0415 — deferred; must come after configure_tracer so OpenAIInstrumentor patches first
-    )
-
-    client = OpenAI(api_key=api_key)
+    client = make_client()
 
     with tracer.start_as_current_span("generate summaries") as span:
         if args.since:
