@@ -15,7 +15,6 @@ import pytest
 from generate_summaries import (
     MAX_TRANSCRIPT_CHARS,
     MODEL,
-    fetch_github_oidc_token,
     generate_summary,
     main,
     make_client,
@@ -637,11 +636,9 @@ class TestProcessTranscriptsEdgeCases:
 
 
 class TestMain:
-    def test_missing_wif_settings_exits(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        """In GitHub Actions without the federation env vars, exit with code 1."""
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example")
-        for env in _WIF_ENV.values():
-            monkeypatch.delenv(env, raising=False)
+    def test_missing_api_key_exits(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Missing ANTHROPIC_API_KEY should print an error and exit with code 1."""
+        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
         with patch("sys.argv", ["generate_summaries"]):
             with pytest.raises(SystemExit) as exc_info:
                 main()
@@ -655,7 +652,7 @@ class TestMain:
 
         mock_anthropic_mod = MagicMock()
         mock_anthropic_mod.Anthropic.return_value = _mock_claude_client()
-        monkeypatch.delenv("ACTIONS_ID_TOKEN_REQUEST_URL", raising=False)
+        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
 
         with (
             patch(
@@ -671,63 +668,18 @@ class TestMain:
 
 
 # ---------------------------------------------------------------------------
-# Tests: client construction (workload identity federation)
+# Tests: client construction
 # ---------------------------------------------------------------------------
-
-_WIF_ENV = {
-    "federation_rule_id": "ANTHROPIC_FEDERATION_RULE_ID",
-    "organization_id": "ANTHROPIC_ORGANIZATION_ID",
-    "service_account_id": "ANTHROPIC_SERVICE_ACCOUNT_ID",
-    "workspace_id": "ANTHROPIC_WORKSPACE_ID",
-}
 
 
 class TestMakeClient:
-    def test_outside_actions_uses_default_credentials(
-        self, monkeypatch: pytest.MonkeyPatch
-    ) -> None:
-        """Without GitHub OIDC, fall back to the SDK's default credential chain."""
+    def test_uses_api_key_from_env(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """The client is built with the key from ANTHROPIC_API_KEY."""
         import sys as _sys
 
-        monkeypatch.delenv("ACTIONS_ID_TOKEN_REQUEST_URL", raising=False)
+        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
         mock_mod = MagicMock()
         with patch.dict(_sys.modules, {"anthropic": mock_mod}):
             client = make_client()
-        mock_mod.Anthropic.assert_called_once_with()
-        mock_mod.WorkloadIdentityCredentials.assert_not_called()
+        mock_mod.Anthropic.assert_called_once_with(api_key="test-key")
         assert client is mock_mod.Anthropic.return_value
-
-    def test_in_actions_uses_workload_identity(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        """With GitHub OIDC, build WorkloadIdentityCredentials from the env vars."""
-        import sys as _sys
-
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example")
-        for arg, env in _WIF_ENV.items():
-            monkeypatch.setenv(env, f"{arg}-value")
-        mock_mod = MagicMock()
-        with patch.dict(_sys.modules, {"anthropic": mock_mod}):
-            make_client()
-        mock_mod.WorkloadIdentityCredentials.assert_called_once_with(
-            identity_token_provider=fetch_github_oidc_token,
-            **{arg: f"{arg}-value" for arg in _WIF_ENV},
-        )
-        mock_mod.Anthropic.assert_called_once_with(
-            credentials=mock_mod.WorkloadIdentityCredentials.return_value
-        )
-
-
-class TestFetchGithubOidcToken:
-    def test_requests_token_for_anthropic_audience(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.example/req")
-        monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN", "req-token")
-        mock_resp = MagicMock()
-        mock_resp.json.return_value = {"value": "jwt-value"}
-        with patch("generate_summaries.requests.get", return_value=mock_resp) as mock_get:
-            assert fetch_github_oidc_token() == "jwt-value"
-        mock_get.assert_called_once_with(
-            "https://token.example/req",
-            params={"audience": "https://api.anthropic.com"},
-            headers={"Authorization": "Bearer req-token"},
-            timeout=10,
-        )
-        mock_resp.raise_for_status.assert_called_once()

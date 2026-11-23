@@ -161,7 +161,7 @@ uv run python build_site.py
 
 ## AI Summaries
 
-Summaries are generated with Claude Haiku (`claude-haiku-5-5`). In GitHub Actions the workflow authenticates with workload identity federation (the job's GitHub OIDC token is exchanged for a short-lived Anthropic token, so no API key is stored). Locally, set `ANTHROPIC_API_KEY`.
+Summaries are generated with Claude Haiku (`claude-haiku-5-5`) and require an `ANTHROPIC_API_KEY` environment variable.
 
 ```bash
 uv run python generate_summaries.py --since 2026-02-01
@@ -177,7 +177,7 @@ A daily email digest is sent after the summarize workflow runs, collecting the n
 |----------|----------|-------------|
 | `refresh.yml` | Weekdays 06:00 UTC | Fetches new transcripts and rebuilds the manifest |
 | `pages.yml` | On push to `main` | Deploys `docs/` to GitHub Pages |
-| `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (Claude via workload identity federation) |
+| `summarize.yml` | Weekdays 07:00 UTC | Generates AI summaries (requires `ANTHROPIC_KEY` secret) |
 | `digest.yml` | After `summarize.yml` | Sends daily digest email (requires `RESEND_API_KEY` and `DIGEST_TO` secrets) |
 | `test.yml` | On every PR and push | Runs lint (`ruff`) and the full test suite |
 
