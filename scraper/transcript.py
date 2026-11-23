@@ -96,11 +96,18 @@ def _parse_list_items(items: list[Tag]) -> list[str]:
     ``.time``; following items from the same speaker have no header.  Those
     continuation items are merged into the previous line when the break is
     mid-sentence, otherwise emitted as their own line.
+
+    Zoom serves two variants of this layout: the newer one keeps the text in
+    ``.text-inner`` and orders items by ``data-row``; the ``oldStyle`` player
+    keeps it in ``.timeline .text`` and orders items by an
+    ``id="transcript-list-item-N"`` suffix.
     """
     result: list[str] = []
     for item in sorted(items, key=_row_index):
-        text_el = item.select_one(".transcript-translation-original") or item.select_one(
-            ".text-inner"
+        text_el = (
+            item.select_one(".transcript-translation-original")
+            or item.select_one(".text-inner")
+            or item.select_one(".timeline .text")
         )
         text = text_el.get_text(" ", strip=True) if text_el else ""
         if not text:
@@ -118,8 +125,15 @@ def _parse_list_items(items: list[Tag]) -> list[str]:
     return result
 
 
+_ITEM_ID_PREFIX = "transcript-list-item-"
+
+
 def _row_index(item: Tag) -> int:
     row = str(item.get("data-row") or "")
+    if not row:
+        item_id = str(item.get("id") or "")
+        if item_id.startswith(_ITEM_ID_PREFIX):
+            row = item_id[len(_ITEM_ID_PREFIX) :]
     return int(row) if row.isdigit() else -1
 
 

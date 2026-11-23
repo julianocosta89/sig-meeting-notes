@@ -809,3 +809,53 @@ class TestParseTranscriptListItems:
             "Alice 00:01 Agreed.",
             "Bob 10:05 said that already.",
         ]
+
+
+# ---------------------------------------------------------------------------
+# parse_transcript_html — .transcript-list-item, Zoom "oldStyle" player
+# ---------------------------------------------------------------------------
+
+
+def _old_style_item(idx: int, text: str, speaker: str = "", time: str = "") -> str:
+    header = ""
+    if speaker:
+        header = (
+            '<div class="user-info"><div class="user-profile-info">'
+            '<div class="avatar-wrapper"><span class="zm-avatar"><img alt=""></span></div>'
+            f'<div class="user-name"><span class="user-name-span">{speaker}</span></div></div>'
+            f'<div class="user-info-right"><span class="time">{time}</span></div></div>'
+        )
+    return (
+        f'<li class="transcript-list-item" id="transcript-list-item-{idx}">{header}'
+        f'<div class="timeline"><div class="text">{text}</div></div></li>'
+    )
+
+
+def _make_old_style_list(*items: str) -> str:
+    return (
+        '<ul class="transcript-list" aria-label="Audio Transcript List">' + "".join(items) + "</ul>"
+    )
+
+
+class TestParseTranscriptOldStyleItems:
+    def test_header_item_has_speaker_and_time(self):
+        html = _make_old_style_list(_old_style_item(12, "iPhone.", "Shenoy Pratik", "00:43"))
+        assert parse_transcript_html(html) == ["Shenoy Pratik 00:43 iPhone."]
+
+    def test_continuation_items(self):
+        html = _make_old_style_list(
+            _old_style_item(12, "I was asking about the", "Bob", "01:47"),
+            _old_style_item(13, "long-running spans."),
+            _old_style_item(14, "Any news?"),
+        )
+        assert parse_transcript_html(html) == [
+            "Bob 01:47 I was asking about the long-running spans.",
+            "Any news?",
+        ]
+
+    def test_items_ordered_by_id_suffix(self):
+        html = _make_old_style_list(
+            _old_style_item(110, "Second.", "Bob", "00:05"),
+            _old_style_item(9, "First.", "Alice", "00:01"),
+        )
+        assert parse_transcript_html(html) == ["Alice 00:01 First.", "Bob 00:05 Second."]

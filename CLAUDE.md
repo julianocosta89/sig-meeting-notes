@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This tool downloads OpenTelemetry SIG meeting transcripts from Zoom recording pages. It reads a public Google Spreadsheet listing all OTel SIG recordings, then uses Playwright to scrape each Zoom recording page and extract the transcript, saving it as a plain-text file organized by SIG name and date. It also fetches meeting notes (attendees + agenda) from Google Docs and generates AI summaries via Claude (Haiku).
+This tool downloads OpenTelemetry SIG meeting transcripts from Zoom recording pages. It discovers recordings from the LFX platform's public meetings API and the (retiring) public Google Spreadsheet of OTel SIG recordings, then uses Playwright to scrape each Zoom recording page and extract the transcript, saving it as a plain-text file organized by SIG name and date. It also fetches meeting notes (attendees + agenda) from Google Docs and generates AI summaries via Claude (Haiku).
 
 ## Commands
 
@@ -36,11 +36,13 @@ uv run python main.py --since 2026-02-01 --sig go
 
 The pipeline has three stages:
 
-1. **`scraper/sheet.py`** — Fetches the public Google Sheet as CSV (`SHEET_CSV_URL`), parses it into `Meeting` dataclasses, and filters by date range. Column detection is case-insensitive and tries multiple synonyms (e.g., `name`/`sig`/`topic` for the SIG name). `_CANONICAL_SLUGS` normalizes slugs for SIGs that appear under multiple names in the spreadsheet (e.g. `OpenTelemetry-CC-SIG` → `CC-SIG`).
+1. **Discovery** — two sources, merged by `main.py` (the LFX record wins when both cover the same SIG+date):
+   - **`scraper/lfx.py`** — The primary source. Calls the LFX platform's public `/public/meetings/opentelemetry/past` API (the data behind https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry). Skips records flagged `restricted` or non-public, since the output is a public site. The API only returns roughly the last few weeks, and its `duration` is the scheduled length, not the recording length.
+   - **`scraper/sheet.py`** — The legacy Google Sheet (`SHEET_CSV_URL`), still used for older history while it exists. Parses it into `Meeting` dataclasses and filters by date range. Column detection is case-insensitive and tries multiple synonyms (e.g., `name`/`sig`/`topic` for the SIG name), falling back to any header whose last word is `name` (the sheet's first header cell now carries a banner pointing to LFX). `_CANONICAL_SLUGS` normalizes slugs for SIGs that appear under multiple names (e.g. `OpenTelemetry-CC-SIG` → `CC-SIG`).
 
-2. **`scraper/zoom.py`** — Uses a Playwright `Page` to navigate to each Zoom recording URL. Handles Zoom's Vue SPA virtual-list rendering by scrolling the `.zm-scrollbar__wrap` container in steps so all transcript `<li>` elements are materialized in the DOM before extraction. Raises `ZoomScrapeError` for known failure modes (password-protected, expired, no transcript).
+2. **`scraper/zoom.py`** — Uses a Playwright `Page` to navigate to each Zoom recording URL. Zoom serves two variants of the recording player, and both must be supported: a newer one (`[data-testid='transcript-list']`, items keyed by `data-row`, windowed to ~100 items in the DOM) and the `oldStyle` one (`ul.transcript-list` inside `.transcript-container .zm-scrollbar__wrap`, items keyed by an `id="transcript-list-item-N"` suffix). It scrolls the transcript container in steps and snapshots every `.transcript-list-item` at each step, so a windowed list is still collected in full. Raises `ZoomScrapeError` for known failure modes (password-protected, expired, no transcript).
 
-3. **`scraper/transcript.py`** — Parses the extracted `outerHTML` of `ul.transcript-list` using BeautifulSoup, producing lines in `"Speaker Name: utterance"` format.
+3. **`scraper/transcript.py`** — Parses the collected `.transcript-list-item` HTML with BeautifulSoup into `"Speaker Name MM:SS utterance"` lines (text from `.text-inner` in the newer player, `.timeline .text` in `oldStyle`), merging mid-sentence continuation items into the previous line. Falls back to the legacy `<ul class="transcript-list">` `<li class="speaker">` layout.
 
 Supporting modules:
 
