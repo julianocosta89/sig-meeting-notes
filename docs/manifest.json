@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-23T17:20:39Z",
+  "generated_at": "2026-11-24T17:01:56Z",
   "min_date": "2025-06-16",
-  "max_date": "2026-11-20",
+  "max_date": "2026-11-23",
   "sigs": [
     {
       "slug": "Agent-Management-WG",
@@ -6055,6 +6055,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-20",
           "duration_minutes": 30,
           "has_summary": true,
@@ -6258,7 +6265,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 29
+      "meeting_count": 30
     },
     {
       "slug": "Go-Auto-Instrumentation-SIG",
@@ -9036,6 +9043,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-16",
           "duration_minutes": 60,
           "has_summary": true,
@@ -9288,7 +9302,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 36
+      "meeting_count": 37
     },
     {
       "slug": "Kubernetes-Operator-SIG",
@@ -10982,6 +10996,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-16",
           "duration_minutes": 60,
           "has_summary": true,
@@ -11080,7 +11101,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "OpAMP",
@@ -12621,6 +12642,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 30,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-09",
           "duration_minutes": 30,
           "has_summary": true,
@@ -12649,7 +12677,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 4
+      "meeting_count": 5
     },
     {
       "slug": "Profiling-WG",
@@ -12928,6 +12956,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-26",
           "duration_minutes": 60,
           "has_summary": true,
@@ -12970,7 +13005,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 6
+      "meeting_count": 7
     },
     {
       "slug": "Prometheus-WG",
@@ -14016,6 +14051,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-16",
           "duration_minutes": 60,
           "has_summary": true,
@@ -14114,7 +14156,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 14
+      "meeting_count": 15
     },
     {
       "slug": "Ruby-SIG",
@@ -15053,6 +15095,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-10-26",
           "duration_minutes": 60,
           "has_summary": true,
@@ -15102,7 +15151,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 7
+      "meeting_count": 8
     },
     {
       "slug": "Sampling-SIG",
@@ -16309,6 +16358,13 @@
       "repository_url": "",
       "meetings": [
         {
+          "date": "2026-11-23",
+          "duration_minutes": 60,
+          "has_summary": false,
+          "has_meeting_notes": false,
+          "trivial": false
+        },
+        {
           "date": "2026-11-16",
           "duration_minutes": 60,
           "has_summary": true,
@@ -16414,7 +16470,7 @@
           "trivial": false
         }
       ],
-      "meeting_count": 15
+      "meeting_count": 16
     },
     {
       "slug": "Service-and-Deployment-SemConv",
